@@ -63,7 +63,12 @@ static gw_generic_table Tab[] =
     {sci_sig2data, "sig2data"},
     {sci_model2blk, "model2blk"},
     {sci_callblk, "callblk"},
-    {sci_loadScicos, "loadScicos"}
+    {sci_loadScicos, "loadScicos"},
+    {sci_scicos_diagram::allocate, "scicos_diagram"},
+    {sci_scicos_diagram::extract, "%scicos_diagram_e"},
+    {sci_scicos_diagram::insert_scicos_model, "%scicos_diagram_i_scicos_model"},
+    {sci_scicos_diagram::insert_scicos_graphics, "%scicos_diagram_i_scicos_graphics"},
+    {sci_scicos_diagram::print, "%scicos_diagram_p"}
 };
 /*--------------------------------------------------------------------------*/
 int gw_scicos(void)

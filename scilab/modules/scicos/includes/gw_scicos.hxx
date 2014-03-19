@@ -27,6 +27,9 @@
 /*--------------------------------------------------------------------------*/
 #include "dynlib_scicos.h"
 #include "machine.h"
+
+extern "C" {
+
 /*--------------------------------------------------------------------------*/
 SCICOS_IMPEXP int gw_scicos(void);
 /*--------------------------------------------------------------------------*/
@@ -68,6 +71,18 @@ SCICOS_IMPEXP int sci_model2blk(char *fname, unsigned long fname_len);
 SCICOS_IMPEXP int sci_callblk(char *fname, unsigned long fname_len);
 
 SCICOS_IMPEXP int sci_loadScicos(char *fname, unsigned long fname_len);
+
+} /* extern "C" */
+
+struct sci_scicos_diagram {
+    public:
+SCICOS_IMPEXP static int allocate(char *fname, unsigned long fname_len);
+SCICOS_IMPEXP static int extract(char *fname, unsigned long fname_len);
+SCICOS_IMPEXP static int insert_props(char *fname, unsigned long fname_len);
+SCICOS_IMPEXP static int insert_objs(char *fname, unsigned long fname_len);
+SCICOS_IMPEXP static int insert_version(char *fname, unsigned long fname_len);
+SCICOS_IMPEXP static int print(char *fname, unsigned long fname_len);
+};
 
 /*--------------------------------------------------------------------------*/
 #endif /*  __GW_SCICOS__ */

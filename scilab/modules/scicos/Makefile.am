@@ -93,6 +93,15 @@ sci_gateway/fortran/sci_f_tree4.f \
 sci_gateway/fortran/sci_f_var2vec.f \
 sci_gateway/fortran/sci_f_vec2var.f
 
+GATEWAY_CXX_SOURCES = sci_gateway/cpp/sci_scicos_diagram.cpp \
+sci_gateway/cpp/sci_scicos_params.cpp \
+sci_gateway/cpp/sci_scicos_block.cpp \
+sci_gateway/cpp/sci_scicos_model.cpp \
+sci_gateway/cpp/sci_scicos_graphics.cpp \
+sci_gateway/cpp/sci_scicos_links.cpp \
+sci_gateway/cpp/sci_scicos_cpr.cpp \
+sci_gateway/cpp/sci_scicos_state.cpp
+
 #### Multi-libraries handling ######
 
 noinst_LTLIBRARIES = libsciscicos-algo.la

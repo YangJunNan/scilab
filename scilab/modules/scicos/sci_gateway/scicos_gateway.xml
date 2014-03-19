@@ -58,4 +58,8 @@
     <PRIMITIVE gatewayId="45" primitiveId="31" primitiveName="callblk" />
     <!-- =================== -->
     <PRIMITIVE gatewayId="45" primitiveId="32" primitiveName="loadScicos" />
+    <PRIMITIVE gatewayId="45" primitiveId="33" primitiveName="scicos_diagram" />
+    <PRIMITIVE gatewayId="45" primitiveId="34" primitiveName="%scicos_diagram_e" />
+    <PRIMITIVE gatewayId="45" primitiveId="35" primitiveName="%scicos_diagram_i_scicos_model" />
+    <PRIMITIVE gatewayId="45" primitiveId="36" primitiveName="%scicos_diagram_i_scicos_graphics" />
 </GATEWAY>
