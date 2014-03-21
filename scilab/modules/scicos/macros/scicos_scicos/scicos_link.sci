@@ -28,7 +28,7 @@ function lnk=scicos_link(v1,v2,v3,v4,v5,v6,v7,v8)
     if exists("ct","local")==0 then ct=[1,1],end
     if exists("from","local")==0 then from=[],end
     if exists("to","local")==0 then to=[],end
-    lnk=mlist(["Link","xx","yy","id","thick","ct","from","to"],..
-    xx,yy,id,thick,ct,from,to)
 
+    linkClass = jimport("org.scilab.modules.xcos.model.Link");
+    lnk=jnewInstance(linkClass,xx,yy,id,thick,ct,from,to);
 endfunction

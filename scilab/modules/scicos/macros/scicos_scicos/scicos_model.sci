@@ -47,10 +47,8 @@ function model=scicos_model(v1,v2,v3,v4,v5,v6,v7,v8,v9,v10,v11,v12,v13,v14,v15,v
     if exists("equations","local")==0 then equations=list(),end
     if exists("uid","local")==0 then uid="",end
 
-    model=mlist(["model","sim","in","in2","intyp","out","out2","outtyp",...
-    "evtin","evtout","state","dstate","odstate","rpar","ipar","opar",...
-    "blocktype","firing","dep_ut","label","nzcross",..
-    "nmode","equations","uid"],..
+    modelClass = jimport("org.scilab.modules.xcos.model.model");
+    model=jnewInstance(modelClass,..
     sim,in,in2,intyp,out,out2,outtyp,evtin,evtout,state,dstate,odstate,..
     rpar,ipar,opar,blocktype,firing,dep_ut,label,nzcross,nmode,equations,uid)
 endfunction
