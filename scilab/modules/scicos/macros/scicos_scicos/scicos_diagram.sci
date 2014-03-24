@@ -25,6 +25,5 @@ function scs_m=scicos_diagram(v1,v2,v3)
     if exists("version","local")==0 then version="",end
     if exists("contrib","local")==0 then contrib=list(),end
 
-    diagramClass = jimport("org.scilab.modules.xcos.model.diagram");
-    scs_m=jnewInstance(diagramClass, props,objs,version,contrib);
+    scs_m=jnewInstance("org.scilab.modules.xcos.model.diagram", props,objs,version,contrib);
 endfunction

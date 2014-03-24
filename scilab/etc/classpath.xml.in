@@ -162,7 +162,7 @@ The option is "disableUnderMode" and can be:
 </path>
 
 <!-- Xcos module -->
-<path value="$SCILAB/modules/xcos/jar/org.scilab.modules.xcos.jar" load="onUse">
+<path value="$SCILAB/modules/xcos/jar/org.scilab.modules.xcos.jar">
     <load on="Xcos"/>
     <load on="documentationGeneration"/>
 </path>

@@ -37,7 +37,6 @@ function options = default_options()
 endfunction
 
 function options = scsoptlist(varargin)
-    lt = ["scsopt","3D","Background","Link","ID","Cmap"]
-    options = tlist(lt,varargin(:))
+    options = jnewInstance("org.scilab.modules.xcos.model.scsopt",varargin(:))
 endfunction
 
