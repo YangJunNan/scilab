@@ -131,26 +131,9 @@ public final class ScilabJavaArray {
      * @param x the element
      */
     public static void set(Object array, int[] index, Object x) throws ScilabJavaException {
-        Object obj = array;
-        int i = 0;
-        for (; i < index.length - 1; i++) {
-            if (obj != null && obj.getClass().isArray()) {
-                if (index[i] >= 0 && index[i] < Array.getLength(obj)) {
-                    obj = Array.get(obj, index[i]);
-                } else {
-                    throw new ScilabJavaException("Problem in retrieving " + i + "-th element: " + index[i] + ">" + (Array.getLength(obj) - 1));
-                }
-            } else if (obj instanceof List) {
-                List list = (List) obj;
-                if (index[i] >= 0 && index[i] < list.size()) {
-                    obj = list.get(index[i]);
-                } else {
-                    throw new ScilabJavaException("Problem in retrieving " + i + "-th element: " + index[i] + ">" + (list.size() - 1));
-                }
-            } else {
-                throw new ScilabJavaException("Problem in retrieving " + i + "-th element: it is not an array");
-            }
-        }
+        int[] recursiveIndex = new int[1];
+        final Object obj = recursiveExtract(array, index, recursiveIndex);
+        int i = recursiveIndex[0];
 
         if (obj != null && obj.getClass().isArray()) {
             if (index[i] >= 0 && index[i] < Array.getLength(obj)) {
@@ -174,6 +157,69 @@ public final class ScilabJavaArray {
         } else {
             throw new ScilabJavaException("Problem in retrieving " + i + "-th element: it is not an array");
         }
+    }
+
+    /**
+     * Multiple insert into an array o of objects x
+     *
+     * @param array the container to insert into
+     * @param a the indexes
+     * @param x the object (possible multiples) to insert
+     */
+    public static void setMultiple(Object array, Object a, Object x) throws IllegalArgumentException, ScilabJavaException {
+        //        int[] recursiveIndex = new int[1];
+        //        final Object obj = recursiveExtract(array, index, recursiveIndex);
+        //        int i = recursiveIndex[0];
+        //
+        //        if (obj != null && obj.getClass().isArray()) {
+        //
+        //        }  else if (obj instanceof List) {
+        //            List list = (List) obj;
+        //            if (index[i] >= 0 && index[i] < list.size()) {
+        //                list.set(index[i], x);
+        //            } else if (index[i] == list.size()) {
+        //                list.add(x);
+        //            } else {
+        //                throw new ScilabJavaException("Problem in retrieving " + i + "-th element: " + index[i] + ">" + (list.size() - 1));
+        //            }
+        //        } else {
+        //            throw new ScilabJavaException("Problem in retrieving " + i + "-th element: it is not an array");
+        //        }
+
+    }
+
+    /**
+     * Method to support array(i,j,k) notation with a Java array of Java array of Java array as 'array'
+     *
+     * @param array multi-array (array composition)
+     * @param index multi-index
+     * @param recursiveIndex output argument the element to use is at index[recursiveIndex]
+     * @return the list to perform operation on
+     */
+    private static Object recursiveExtract(Object array, int[] index, int[] recursiveIndex) throws IllegalArgumentException, ScilabJavaException {
+        Object obj = array;
+        int i = 0;
+        for (; i < index.length - 1; i++) {
+            if (obj != null && obj.getClass().isArray()) {
+                if (index[i] >= 0 && index[i] < Array.getLength(obj)) {
+                    obj = Array.get(obj, index[i]);
+                } else {
+                    throw new ScilabJavaException("Problem in retrieving " + i + "-th element: " + index[i] + ">" + (Array.getLength(obj) - 1));
+                }
+            } else if (obj instanceof List) {
+                List list = (List) obj;
+                if (index[i] >= 0 && index[i] < list.size()) {
+                    obj = list.get(index[i]);
+                } else {
+                    throw new ScilabJavaException("Problem in retrieving " + i + "-th element: " + index[i] + ">" + (list.size() - 1));
+                }
+            } else {
+                throw new ScilabJavaException("Problem in retrieving " + i + "-th element: it is not an array");
+            }
+        }
+
+        recursiveIndex[0] = i;
+        return obj;
     }
 
     /**

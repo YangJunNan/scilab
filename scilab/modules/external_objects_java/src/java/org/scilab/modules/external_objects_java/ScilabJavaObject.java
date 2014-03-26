@@ -1027,7 +1027,11 @@ public class ScilabJavaObject {
                         pos = ((Integer) a).intValue();
                     }
 
-                    ScilabJavaArray.set(o, new int[] {pos - 1}, arraySJO[value].object);
+                    if (a.getClass().isArray()) {
+                        ScilabJavaArray.setMultiple(o, a, arraySJO[value].object);
+                    } else {
+                        ScilabJavaArray.set(o, new int[] {pos - 1}, arraySJO[value].object);
+                    }
                 } else {
                     throw new ScilabJavaException("Invalid field " + (a == null ? "null" : a.toString()));
                 }
