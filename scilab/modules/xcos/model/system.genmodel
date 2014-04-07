@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" copyrightText="Scilab ( http://www.scilab.org/ ) - This file is part of Scilab&#xA;Copyright (C) 2014 - Scilab Enterprises&#xA;&#xA;This file must be used under the terms of the CeCILL.&#xA;This source file is licensed as described in the file COPYING, which&#xA;you should have received as part of this distribution.  The terms&#xA;are also available at&#xA;http://www.cecill.info/licences/Licence_CeCILL_V2.1-en.txt&#xA;"
+    modelDirectory="/xcos/java" editDirectory="/xcos/java" modelPluginID="xcos" modelName="System"
+    rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container" importerID="org.eclipse.emf.importer.ecore"
+    arrayAccessors="true" complianceLevel="6.0" copyrightFields="false" publicConstructors="true"
+    operationReflection="true" importOrganizing="true">
+  <foreignModel>system.ecore</foreignModel>
+  <genPackages prefix="System" basePackage="org.scilab.modules.xcos.modeling" disposableProviderFactory="true"
+      ecorePackage="system.ecore#/">
+    <genDataTypes ecoreDataType="system.ecore#//ScilabType"/>
+    <genDataTypes ecoreDataType="system.ecore#//ScilabDouble"/>
+    <genDataTypes ecoreDataType="system.ecore#//ScilabInteger"/>
+    <genDataTypes ecoreDataType="system.ecore#//ScilabBoolean"/>
+    <genDataTypes ecoreDataType="system.ecore#//ScilabString"/>
+    <genClasses ecoreClass="system.ecore#//Diagram">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute system.ecore#//Diagram/version"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference system.ecore#//Diagram/props"/>
+    </genClasses>
+    <genClasses ecoreClass="system.ecore#//Params">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute system.ecore#//Params/wpar"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute system.ecore#//Params/Title"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute system.ecore#//Params/tol"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute system.ecore#//Params/tf"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute system.ecore#//Params/context"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute system.ecore#//Params/void1"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference system.ecore#//Params/options"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute system.ecore#//Params/void2"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute system.ecore#//Params/void3"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute system.ecore#//Params/doc"/>
+    </genClasses>
+    <genClasses ecoreClass="system.ecore#//Scsopt">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute system.ecore#//Scsopt/_3D"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute system.ecore#//Scsopt/Background"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute system.ecore#//Scsopt/Link"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute system.ecore#//Scsopt/ID"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute system.ecore#//Scsopt/CMap"/>
+    </genClasses>
+    <genClasses ecoreClass="system.ecore#//Block">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute system.ecore#//Block/gui"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference system.ecore#//Block/graphics"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference system.ecore#//Block/model"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute system.ecore#//Block/doc"/>
+    </genClasses>
+    <genClasses ecoreClass="system.ecore#//Graphics">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute system.ecore#//Graphics/orig"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute system.ecore#//Graphics/sz"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute system.ecore#//Graphics/flip"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute system.ecore#//Graphics/theta"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute system.ecore#//Graphics/exprs"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute system.ecore#//Graphics/pin"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute system.ecore#//Graphics/pout"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute system.ecore#//Graphics/pein"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute system.ecore#//Graphics/peout"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute system.ecore#//Graphics/gr_i"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute system.ecore#//Graphics/id"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute system.ecore#//Graphics/in_implicit"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute system.ecore#//Graphics/out_implicit"/>
+    </genClasses>
+    <genClasses ecoreClass="system.ecore#//Model">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute system.ecore#//Model/sim"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute system.ecore#//Model/in"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute system.ecore#//Model/in2"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute system.ecore#//Model/intyp"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute system.ecore#//Model/out"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute system.ecore#//Model/out2"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute system.ecore#//Model/outtyp"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute system.ecore#//Model/evtin"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute system.ecore#//Model/evtout"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute system.ecore#//Model/state"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute system.ecore#//Model/dstate"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute system.ecore#//Model/odstate"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute system.ecore#//Model/rpar"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute system.ecore#//Model/ipar"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute system.ecore#//Model/opar"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute system.ecore#//Model/blocktype"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute system.ecore#//Model/firing"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute system.ecore#//Model/dep_ut"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute system.ecore#//Model/label"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute system.ecore#//Model/nzcross"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute system.ecore#//Model/nmode"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute system.ecore#//Model/equation"/>
+    </genClasses>
+    <genClasses ecoreClass="system.ecore#//Link">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute system.ecore#//Link/xx"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute system.ecore#//Link/yy"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute system.ecore#//Link/id"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute system.ecore#//Link/tick"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute system.ecore#//Link/ct"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute system.ecore#//Link/from"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute system.ecore#//Link/to"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="system" nsURI="http://wiki.scilab.org/xcos/modeling/system"
+    nsPrefix="org.scilab.modules.xcos.modeling.system">
+  <eClassifiers xsi:type="ecore:EDataType" name="ScilabType" instanceClassName="org.scilab.modules.types.ScilabType"/>
+  <eClassifiers xsi:type="ecore:EDataType" name="ScilabDouble" instanceClassName="org.scilab.modules.types.ScilabDouble"/>
+  <eClassifiers xsi:type="ecore:EDataType" name="ScilabInteger" instanceClassName="org.scilab.modules.types.ScilabInteger"/>
+  <eClassifiers xsi:type="ecore:EDataType" name="ScilabBoolean" instanceClassName="org.scilab.modules.types.ScilabBoolean"/>
+  <eClassifiers xsi:type="ecore:EDataType" name="ScilabString" instanceClassName="org.scilab.modules.types.ScilabString"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Diagram">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="version" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="props" eType="#//Params"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Params">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="wpar" eType="#//ScilabDouble"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="Title" eType="#//ScilabString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="tol" eType="#//ScilabDouble"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="tf" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="context" eType="#//ScilabString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="void1" eType="#//ScilabDouble"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="options" eType="#//Scsopt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="void2" eType="#//ScilabDouble"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="void3" eType="#//ScilabDouble"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="doc" upperBound="-1" eType="#//ScilabType"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Scsopt">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="_3D" upperBound="-1" eType="#//ScilabType"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="Background" eType="#//ScilabDouble"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="Link" eType="#//ScilabDouble"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="ID" upperBound="-1" eType="#//ScilabDouble"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="CMap" eType="#//ScilabDouble"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Block">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="gui" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="graphics" eType="#//Graphics"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="model" eType="#//Model"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="doc" upperBound="-1" eType="#//ScilabType"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Graphics">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="orig" eType="#//ScilabDouble"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="sz" eType="#//ScilabDouble"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="flip" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="theta" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="exprs" eType="#//ScilabString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="pin" eType="#//ScilabDouble"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="pout" eType="#//ScilabDouble"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="pein" eType="#//ScilabDouble"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="peout" eType="#//ScilabDouble"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="gr_i" upperBound="-1" eType="#//ScilabType"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="in_implicit" eType="#//ScilabString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="out_implicit" eType="#//ScilabString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Model">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="sim" upperBound="2" eType="#//ScilabType"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="in" eType="#//ScilabInteger"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="in2" eType="#//ScilabInteger"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="intyp" eType="#//ScilabInteger"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="out" eType="#//ScilabInteger"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="out2" eType="#//ScilabInteger"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="outtyp" eType="#//ScilabInteger"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="evtin" eType="#//ScilabInteger"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="evtout" eType="#//ScilabInteger"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="state" eType="#//ScilabDouble"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="dstate" eType="#//ScilabDouble"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="odstate" upperBound="-1"
+        eType="#//ScilabType"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="rpar" eType="#//ScilabDouble"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="ipar" eType="#//ScilabInteger"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="opar" upperBound="-1" eType="#//ScilabType"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="blocktype" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="firing" eType="#//ScilabInteger"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="dep_ut" eType="#//ScilabBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="label" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="nzcross" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="nmode" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="equation" upperBound="-1"
+        eType="#//ScilabType"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Link">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="xx" eType="#//ScilabDouble"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="yy" eType="#//ScilabDouble"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="tick" eType="#//ScilabDouble"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="ct" eType="#//ScilabDouble"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="from" eType="#//ScilabDouble"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="to" eType="#//ScilabDouble"/>
+  </eClassifiers>
+</ecore:EPackage>
