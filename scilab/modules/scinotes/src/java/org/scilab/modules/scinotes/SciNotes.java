@@ -2594,7 +2594,11 @@ public class SciNotes extends SwingScilabDockablePanel {
         Charset charset = null;
         try {
             charset = ScilabEditorKit.tryToGuessEncoding(new File(fileName));
-        } catch (CharacterCodingException e) {
+        }
+        catch (FileNotFoundException e) {
+            throw e;
+        }
+        catch (CharacterCodingException e) {
             throw new IOException(SciNotesMessages.CANNOT_GUESS_ENCODING + ": " + fileName);
         }
 

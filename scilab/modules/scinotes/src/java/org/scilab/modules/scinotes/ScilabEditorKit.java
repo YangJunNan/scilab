@@ -19,6 +19,7 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.FileNotFoundException;
 import java.io.InputStreamReader;
 import java.io.Reader;
 import java.nio.CharBuffer;
@@ -162,7 +163,11 @@ public class ScilabEditorKit extends DefaultEditorKit {
                 ;
             }
             return true;
-        } catch (Exception e) {
+        }
+        catch (FileNotFoundException e) {
+            throw e;
+        }
+        catch (Exception e) {
             e.printStackTrace();
         }
 
