@@ -1,0 +1,27 @@
+//
+// Scilab ( http://www.scilab.org/ ) - This file is part of Scilab
+// Copyright (C) 2021-2022 - Stephane MOTTELET
+//
+// This file is hereby licensed under the terms of the GNU GPL v3.0,
+// For more information, see the COPYING file which you should have received
+//
+//--------------------------------------------------------------------------
+
+#ifndef _KINSOLBRIDGE_HXX_
+#define _KINSOLBRIDGE_HXX_
+
+void KINSOLIntCb(const char *module, const char *function, char *msg, void *pManager);
+int KINSOLFun(N_Vector N_VectorY, N_Vector N_VectorF, void *pManager);
+int KINSOLJac(N_Vector N_VectorY, N_Vector N_VectorF, SUNMatrix SUNMat_J, void *pManager, N_Vector tmp1, N_Vector tmp2);
+int KINSOLColPackJac(N_Vector N_VectorY, N_Vector N_VectorF, SUNMatrix SUNMat_J, void *pManager, N_Vector tmp1, N_Vector tmp2);
+int SUNDIALSColPackJac(realtype t, realtype c, N_Vector N_VectorY, N_Vector N_VectorYp, N_Vector N_VectorR,
+                   SUNMatrix SUNMat_J, void *pManager, N_Vector tmp1, N_Vector tmp2, N_Vector tmp3);
+
+typedef int (*KIN_DynFun)(N_Vector y, N_Vector ydot, void *pManager);
+typedef int (*KIN_DynJacFun)(N_Vector y, N_Vector fy, SUNMatrix J, void *user_data, N_Vector tmp1, N_Vector tmp2);
+typedef int (*KIN_DynCallback)(int iFlag, N_Vector y, double *);
+void KINSOLErrHandler(int error_code, const char *module, const char *function, char *msg, void *pManager);
+
+static std::map<int, std::wstring> wstrCbState = {{-1,L"init"}, {0,L"step"}, {1,L"done"}};
+
+#endif

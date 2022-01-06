@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE module SYSTEM "../../functions/xml/gateway.dtd">
+<!--
+/*
+ *  Scilab ( http://www.scilab.org/ ) - This file is part of Scilab
+ *  Copyright (C) 2022 - Stéphane MOTTELET
+ * For more information, see the COPYING file which you should have received
+ * along with this program.
+ *
+ */
+ Scilab Interface description. In this file, we define the list of the function which
+ will be available into Scilab and the link to the "native" function.
+
+ Don't touch if you do not know what you are doing
+-->
+<module name="sundials">
+    <gateway name="sci_cvode"                       function="cvode"                type="3" />
+    <gateway name="sci_ida"                         function="ida"                  type="3" />
+    <gateway name="sci_arkode"                      function="arkode"               type="3" />
+    <gateway name="sci_kinsol"                      function="kinsol"               type="3" />
+    <gateway name="sci_percent_odeSolution_clear"   function="%_odeSolution_clear"  type="1" />
+    <gateway name="sci_percent_odeSolution_e"       function="%_odeSolution_e"      type="1" />
+</module>

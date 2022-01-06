@@ -51,6 +51,7 @@ begin
     ModulesXmlFileLines[i] := '<module name="api_scilab" activate="yes"/>'; i := i + 1;
     ModulesXmlFileLines[i] := '<module name="ast" activate="yes"/>'; i := i + 1;
     ModulesXmlFileLines[i] := '<module name="differential_equations" activate="yes"/>'; i := i + 1;
+    ModulesXmlFileLines[i] := '<module name="sundials" activate="yes"/>'; i := i + 1;
     ModulesXmlFileLines[i] := '<module name="elementary_functions" activate="yes"/>'; i := i + 1;
     ModulesXmlFileLines[i] := '<module name="functions" activate="yes"/>'; i := i + 1;
     ModulesXmlFileLines[i] := '<module name="fileio" activate="yes"/>'; i := i + 1;

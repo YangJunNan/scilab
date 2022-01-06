@@ -1,5 +1,6 @@
 core
 differential_equations
+sundials
 elementary_functions
 linear_algebra
 interpolation

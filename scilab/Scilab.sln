@@ -473,6 +473,10 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "webtools", "modules\webtool
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "WScilex-cli", "modules\windows_tools\src\c\WScilex\WScilex-cli.vcxproj", "{1633D502-8B08-442B-923F-F83F3213EEF3}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "sundials", "modules\sundials\sundials.vcxproj", "{E43D63B7-285A-44A8-A7D9-2E70C706CAA2}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "sundials_gw", "modules\sundials\sci_gateway\sundials_gw.vcxproj", "{7260BB15-0F35-40D4-AD94-0F7CF9576E78}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -1665,6 +1669,22 @@ Global
 		{1633D502-8B08-442B-923F-F83F3213EEF3}.Release|Win32.Build.0 = Release|Win32
 		{1633D502-8B08-442B-923F-F83F3213EEF3}.Release|x64.ActiveCfg = Release|x64
 		{1633D502-8B08-442B-923F-F83F3213EEF3}.Release|x64.Build.0 = Release|x64
+		{E43D63B7-285A-44A8-A7D9-2E70C706CAA2}.Debug|Win32.ActiveCfg = Debug|Win32
+		{E43D63B7-285A-44A8-A7D9-2E70C706CAA2}.Debug|Win32.Build.0 = Debug|Win32
+		{E43D63B7-285A-44A8-A7D9-2E70C706CAA2}.Debug|x64.ActiveCfg = Debug|x64
+		{E43D63B7-285A-44A8-A7D9-2E70C706CAA2}.Debug|x64.Build.0 = Debug|x64
+		{E43D63B7-285A-44A8-A7D9-2E70C706CAA2}.Release|Win32.ActiveCfg = Release|Win32
+		{E43D63B7-285A-44A8-A7D9-2E70C706CAA2}.Release|Win32.Build.0 = Release|Win32
+		{E43D63B7-285A-44A8-A7D9-2E70C706CAA2}.Release|x64.ActiveCfg = Release|x64
+		{E43D63B7-285A-44A8-A7D9-2E70C706CAA2}.Release|x64.Build.0 = Release|x64
+		{7260BB15-0F35-40D4-AD94-0F7CF9576E78}.Debug|Win32.ActiveCfg = Debug|Win32
+		{7260BB15-0F35-40D4-AD94-0F7CF9576E78}.Debug|Win32.Build.0 = Debug|Win32
+		{7260BB15-0F35-40D4-AD94-0F7CF9576E78}.Debug|x64.ActiveCfg = Debug|x64
+		{7260BB15-0F35-40D4-AD94-0F7CF9576E78}.Debug|x64.Build.0 = Debug|x64
+		{7260BB15-0F35-40D4-AD94-0F7CF9576E78}.Release|Win32.ActiveCfg = Release|Win32
+		{7260BB15-0F35-40D4-AD94-0F7CF9576E78}.Release|Win32.Build.0 = Release|Win32
+		{7260BB15-0F35-40D4-AD94-0F7CF9576E78}.Release|x64.ActiveCfg = Release|x64
+		{7260BB15-0F35-40D4-AD94-0F7CF9576E78}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

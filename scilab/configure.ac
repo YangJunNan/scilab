@@ -1606,6 +1606,22 @@ AM_CONDITIONAL(ARPACK_NG, test "$ARPACK_NG" != "no")
 
 
 #################
+## KLU
+#################
+
+AC_ARG_WITH(klu,
+    AS_HELP_STRING([--without-klu],[Disable the interface to the KLU library]))
+
+KLU_ENABLE=no
+if test "$with_klu" != no; then
+   AC_KLU([$BLAS_LIBS])
+   KLU_ENABLE=yes
+fi
+
+AC_SUBST(KLU_ENABLE)
+AM_CONDITIONAL(KLU, test "$with_klu" != no)
+
+#################
 ## UMFPACK
 #################
 
@@ -2050,6 +2066,7 @@ modules/functions_manager/Makefile
 modules/helptools/Makefile
 modules/data_structures/Makefile
 modules/differential_equations/Makefile
+modules/sundials/Makefile
 modules/optimization/Makefile
 modules/elementary_functions/Makefile
 modules/special_functions/Makefile
@@ -2116,6 +2133,7 @@ modules/modules_manager/Makefile
 modules/history_browser/Makefile
 modules/preferences/Makefile
 modules/xml/Makefile
+modules/colpack/Makefile
 modules/external_objects/Makefile
 modules/external_objects_java/Makefile
 modules/slint/Makefile
