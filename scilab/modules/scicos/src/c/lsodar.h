@@ -16,10 +16,12 @@
 #ifndef _LSODAR_H
 #define _LSODAR_H
 
-#include "sundials_extension.h"
+//#include "sundials_extension.h"
 #include "sundials/sundials_types.h" // Definition of types 'realtype' and 'booleantype'
 #include "nvector/nvector_serial.h"  // Type 'N_Vector'
-#include "../scicos_sundials/src/cvode/cvode_impl.h" // Error handling
+#include "../src/cvode/cvode_impl.h" // Error handling
+
+#define MSGCV_BAD_INPUT      "One of the arguments is illegal."
 
 #ifndef max
 #define max(A,B) ((A>B) ? A:B)  // 'max()' function

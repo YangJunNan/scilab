@@ -58,6 +58,7 @@
 <module name="spreadsheet" activate="yes"/>
 <module name="call_scilab" activate="yes"/>
 <!-- comments -->
+<module name="sundials" activate="yes"/>
 <module name="scicos" activate="@XCOS_ENABLE@"/>
 <module name="scicos_blocks" activate="@XCOS_ENABLE@"/>
 <!-- comments -->
