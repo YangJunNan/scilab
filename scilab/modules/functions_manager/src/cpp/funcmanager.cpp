@@ -369,6 +369,7 @@ bool FuncManager::CreateModuleList(void)
     m_ModuleMap[L"call_scilab"] = std::pair<GW_MOD, GW_MOD>(&CallScilabModule::Load, &CallScilabModule::Unload);
     m_ModuleMap[L"completion"] = std::pair<GW_MOD, GW_MOD>(&CompletionModule::Load, &CompletionModule::Unload);
     m_ModuleMap[L"xml"] = std::pair<GW_MOD, GW_MOD>(&XmlModule::Load, &XmlModule::Unload);
+    m_ModuleMap[L"colpack"] = std::pair<GW_MOD, GW_MOD>(&ColpackModule::Load, &ColpackModule::Unload);
     m_ModuleMap[L"scicos"] = std::pair<GW_MOD, GW_MOD>(&ScicosModule::Load, &ScicosModule::Unload);
     m_ModuleMap[L"xcos"] = std::pair<GW_MOD, GW_MOD>(&XcosModule::Load, &XcosModule::Unload);
     m_ModuleMap[L"fftw"] = std::pair<GW_MOD, GW_MOD>(&FFTWModule::Load, &FFTWModule::Unload);

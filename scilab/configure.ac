@@ -2116,6 +2116,7 @@ modules/modules_manager/Makefile
 modules/history_browser/Makefile
 modules/preferences/Makefile
 modules/xml/Makefile
+modules/colpack/Makefile
 modules/external_objects/Makefile
 modules/external_objects_java/Makefile
 modules/slint/Makefile

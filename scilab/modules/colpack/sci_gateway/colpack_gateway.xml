@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE module SYSTEM "../../functions/xml/gateway.dtd">
+<!--
+/*
+ *  Scilab ( http://www.scilab.org/ ) - This file is part of Scilab
+ *  Copyright (C) 2022 - Stéphane MOTTELET
+ * For more information, see the COPYING file which you should have received
+ * along with this program.
+ *
+ */
+ Scilab Interface description. In this file, we define the list of the function which
+ will be available into Scilab and the link to the "native" function.
+
+ Don't touch if you do not know what you are doing
+-->
+<module name="colpack">
+    <gateway name="sci_spCompJacobian"              function="spCompJacobian"         type="3" />
+    <gateway name="sci_spCompHessian"               function="spCompHessian"          type="3" />
+    <gateway name="sci_percent_spCompGeneric_clear" function="%_spCompGeneric_clear"  type="1" />
+    <gateway name="sci_percent_spCompGeneric_e"     function="%_spCompJacobian_e"     type="1" />
+    <gateway name="sci_percent_spCompGeneric_e"     function="%_spCompHessian_e"      type="1" />
+</module>
+
