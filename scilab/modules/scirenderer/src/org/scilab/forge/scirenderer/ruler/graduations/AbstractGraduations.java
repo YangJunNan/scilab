@@ -154,7 +154,7 @@ public abstract class AbstractGraduations implements Graduations {
         if (value == 0 || Math.abs(value / (upperBound - lowerBound)) <= PRECISION) {
             return isLowerBoundIncluded;
         }
-        if (Math.abs(value - (upperBound - lowerBound)) <= PRECISION || Math.abs(1 - value / (upperBound - lowerBound)) <= PRECISION) {
+        if (Math.abs(1 - value / (upperBound - lowerBound)) <= PRECISION) {
             return isUpperBoundIncluded;
         }
         return (0 < value) && (value < upperBound - lowerBound);
