@@ -329,6 +329,7 @@ Bug Fixes
 * [#16653](https://bugzilla.scilab.org/16653): fromJSON() crashed with a non existing file.
 * [#16717](https://bugzilla.scilab.org/16717): An error occured in findobj when no objects existed.
 * [#16734](https://bugzilla.scilab.org/16734): `findobj()` was slower than before.
+* [#16755](https://bugzilla.scilab.org/16755): plot3d polygon facets rendering may be wrong when exactly in horizontal or vertical plane
 * [#16841](https://bugzilla.scilab.org/16841): Zoom on multiaxes could desynchronize axes.
 * [#16849](https://bugzilla.scilab.org/16849): toJSON("\\") must return "\\\\" instead of "\\\".
 
