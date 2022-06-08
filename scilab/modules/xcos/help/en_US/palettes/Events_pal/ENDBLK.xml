@@ -28,7 +28,7 @@
         xmlns:scilab="http://www.scilab.org" xml:id="ENDBLK" xml:lang="en_US">
     <refnamediv>
         <refname>ENDBLK</refname>
-        <refpurpose>END block</refpurpose>
+        <refpurpose>specifies a shortened simulation duration</refpurpose>
     </refnamediv>
     <refsection>
         <title>Block Screenshot</title>
@@ -65,18 +65,18 @@
 
     <refsection id="Description_ENDBLK">
         <title>Description</title>
-        <para>That block can be used to set the final time of the simulation. When
-            that block is truly parametrized then the simulator will jump to the
-            'final integration time' defined in the Setup item of the simulate Menu
-            from the time defined by the parameter 'Final simulation time' of the
-            dialog box. That parameter can be a numerical value or a symbolic variable
-            defined in the scicos context.
+        <para>
+            This block can be used to plan a simulation duration shorter than specified
+            in the diagram Simulation => Setup ('final integration time').
+            When the duration specified here is reached, the simulation directly jumps to the setup
+            value. The parameter can be specified as a literal value, or through the name of a
+            variable defined in the Simulation => Set context.
         </para>
-        <note>
-            The 'Final simulation time' item (on diagram settings) always end the simulation at the
-            specified time. This block should be configured to end the simulation before this setting.
-        </note>
-		<para/>
+        <warning>
+            This block can't be used to extend the simulation beyond the duration specified in
+            the simulation setup. In that case, the extra duration is just ignored.
+        </warning>
+        <para/>
     </refsection>
     <refsection id="Dialogbox_ENDBLK">
         <title>Parameters</title>
@@ -89,16 +89,12 @@
         <itemizedlist>
             <listitem>
                 <para>
-                    <emphasis role="bold">Final simulation time</emphasis>
-                </para>
-                <para>Set the final time of the simulation.</para>
-                <para>When simulator reaches that value then the current time will
-                    jump to the final integration time.
+                    <emphasis role="bold">Shortened simulation duration</emphasis>
                 </para>
                 <para>Properties : Type 'vec' of size 1.</para>
             </listitem>
         </itemizedlist>
-		<para/>
+        <para/>
     </refsection>
     <refsection id="Defaultproperties_ENDBLK">
         <title>Default properties</title>
@@ -155,15 +151,15 @@
                 </para>
             </listitem>
         </itemizedlist>
-		<para/>
+        <para/>
     </refsection>
 
     <refsection id="Example_ENDBLK">
         <title>Example</title>
-        <link type="scilab" linkend="scilab.xcos/xcos/examples/sinks_pal/ENDBLK_Example.zcos">
+        <link type="scilab" linkend="scilab.xcos/xcos/examples/events_pal/ENDBLK_Example.zcos">
             <inlinemediaobject>
                 <imageobject>
-                    <imagedata fileref="../../../../examples/sinks_pal/ENDBLK_Example.zcos" align="center"/>
+                    <imagedata fileref="../../../../examples/events_pal/ENDBLK_Example.zcos" align="center"/>
                 </imageobject>
             </inlinemediaobject>
         </link>
@@ -173,10 +169,10 @@
         <title>Interfacing function</title>
         <itemizedlist>
             <listitem>
-                <para>SCI/modules/scicos_blocks/macros/Misc/ENDBLK.sci</para>
+                <para>SCI/modules/scicos_blocks/macros/Events/ENDBLK.sci</para>
             </listitem>
         </itemizedlist>
-		<para/>
+        <para/>
     </refsection>
 
     <refsection id="Seealso_ENDBLK" role="see also">
