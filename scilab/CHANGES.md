@@ -376,6 +376,7 @@ Bug Fixes
 * [#16826](https://gitlab.com/scilab/scilab/-/issues/16826): `file()` or `file(fid)` could yield outdated relative paths.
 * [#16841](https://gitlab.com/scilab/scilab/-/issues/16841): Zoom on multiaxes could desynchronize axes.
 * [#16849](https://gitlab.com/scilab/scilab/-/issues/16849): toJSON("\\") must return "\\\\" instead of "\\\".
+* [#16859](https://gitlab.com/scilab/scilab/-/issues/16859): TKSCALE example had a flash duration. END_c and ENDBLK blocks were in the Sinks and/or Misc palettes instead of in Events.
 * [#16865](https://gitlab.com/scilab/scilab/-/issues/16865): Vector extraction with single hypermatrix index yielded a vector.
 * [#16593](https://gitlab.com/scilab/scilab/-/issues/16593): After L = list(1,2); , for o = L(3:$), o, end crashes Scilab.
 * [#16029](https://bugzilla.scilab.org/16029): tick marks were extending out of range for small scale plots 

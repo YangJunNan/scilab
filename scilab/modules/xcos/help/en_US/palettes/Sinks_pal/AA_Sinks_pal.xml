@@ -150,24 +150,6 @@
             </inlinemediaobject>
             </link>.
 
-            <link linkend="ENDBLK">
-            <inlinemediaobject>
-                <imageobject>
-                    <imagedata fileref="../../../../images/palettes/ENDBLK.png"
-                     style="width:100px; padding: 10px;  border-style: solid; border-width: 1px; border-color: #1e90ff;"/>
-                </imageobject>
-            </inlinemediaobject>
-            </link>.
-
-            <link linkend="END_c">
-            <inlinemediaobject>
-                <imageobject>
-                    <imagedata fileref="../../../../images/palettes/END_c.png"
-                     style="width:100px; padding: 10px;  border-style: solid; border-width: 1px; border-color: #1e90ff;"/>
-                </imageobject>
-            </inlinemediaobject>
-            </link>.
-
             <link linkend="HALT_f">
             <inlinemediaobject>
                 <imageobject>
@@ -285,12 +267,6 @@
             </member>
             <member>
                 <link linkend="CSCOPXY3D">CSCOPXY3D</link>
-            </member>
-            <member>
-                <link linkend="ENDBLK">ENDBLK</link>
-            </member>
-            <member>
-                <link linkend="END_c">END_c</link>
             </member>
             <member>
                 <link linkend="HALT_f">HALT_f</link>
