@@ -331,6 +331,7 @@ Bug Fixes
 * [#16734](https://bugzilla.scilab.org/16734): `findobj()` was slower than before.
 * [#16841](https://bugzilla.scilab.org/16841): Zoom on multiaxes could desynchronize axes.
 * [#16849](https://bugzilla.scilab.org/16849): toJSON("\\") must return "\\\\" instead of "\\\".
+* [#16865](https://bugzilla.scilab.org/16865): vector extraction with single hypermatrix index yielded a vector.
 
 
 ### Bugs fixed in 6.1.1:
