@@ -12019,13 +12019,6 @@ fi
 	if test "$OCAMLC" = no; then
 		as_fn_error $? "ocamlc not found. Mandatory to build the Scicos modelica compiler (Use --without-modelica to disable the Modelica compiler)." "$LINENO" 5
 	fi
-	# since ocaml 4.06, unsafe string is no more the default parameter ; enforce it
-        "$OCAMLC" -unsafe-string
-	if test "$?" -ne "0"; then
-		{ $as_echo "$as_me:${as_lineno-$LINENO}: WARNING: ocamlc does not support \"-unsafe-string\". Needed to build the Scicos modelica compiler (Use --without-modelica to disable the Modelica compiler)." >&5
-$as_echo "$as_me: WARNING: ocamlc does not support \"-unsafe-string\". Needed to build the Scicos modelica compiler (Use --without-modelica to disable the Modelica compiler)." >&2;}
-	fi
-        OCAMLCFLAGS="$OCAMLCFLAGS -unsafe-string"
 	# Extract the first word of "ocamlopt", so it can be a program name with args.
 set dummy ocamlopt; ac_word=$2
 { $as_echo "$as_me:${as_lineno-$LINENO}: checking for $ac_word" >&5
@@ -12067,13 +12060,6 @@ fi
 	if test "$OCAMLOPT" = no; then
 		as_fn_error $? "ocamlopt not found. Mandatory to build the Scicos modelica compiler." "$LINENO" 5
 	fi
-	# since ocaml 4.06, unsafe string is no more the default parameter ; enforce it
-        "$OCAMLOPT" -unsafe-string
-	if test "$?" -ne "0"; then
-		{ $as_echo "$as_me:${as_lineno-$LINENO}: WARNING: ocamlc does not support \"-unsafe-string\". Needed to build the Scicos modelica compiler (Use --without-modelica to disable the Modelica compiler)." >&5
-$as_echo "$as_me: WARNING: ocamlc does not support \"-unsafe-string\". Needed to build the Scicos modelica compiler (Use --without-modelica to disable the Modelica compiler)." >&2;}
-	fi
-        OCAMLOPTFLAGS="$OCAMLOPTFLAGS -unsafe-string"
 	# Extract the first word of "ocamldep", so it can be a program name with args.
 set dummy ocamldep; ac_word=$2
 { $as_echo "$as_me:${as_lineno-$LINENO}: checking for $ac_word" >&5
