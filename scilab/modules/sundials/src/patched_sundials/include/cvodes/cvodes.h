@@ -35,11 +35,6 @@ extern "C" {
 /* lmm */
 #define CV_ADAMS          1
 #define CV_BDF            2
-/* SUNDIALS EXTENSION */
-#define CV_DOPRI 3
-#define CV_ExpRK 4
-#define CV_ImpRK 5
-#define CV_CRANI 6
 
 /* itask */
 #define CV_NORMAL         1
@@ -63,8 +58,6 @@ extern "C" {
 #define CV_SUCCESS               0
 #define CV_TSTOP_RETURN          1
 #define CV_ROOT_RETURN           2
-    /* SUNDIALS EXTENSION */
-#define CV_ZERO_DETACH_RETURN    3
 
 #define CV_WARNING              99
 
@@ -331,6 +324,7 @@ SUNDIALS_EXPORT int CVodeGetNonlinSolvStats(void *cvode_mem, long int *nniters,
                                             long int *nnfails);
 SUNDIALS_EXPORT int CVodeGetNumStepSolveFails(void *cvode_mem,
                                               long int *nncfails);
+SUNDIALS_EXPORT int CVodeGetUserData(void *cvode_mem, void **user_data);
 SUNDIALS_EXPORT int CVodePrintAllStats(void *cvode_mem, FILE *outfile,
                                        SUNOutputFormat fmt);
 SUNDIALS_EXPORT char *CVodeGetReturnFlagName(long int flag);

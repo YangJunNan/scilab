@@ -341,6 +341,15 @@
                     <td>KVAERNO_4_2_3</td> <td>implicit</td>  <td align="center">3</td>
                 </tr>
                 <tr>
+                    <td>ESDIRK324L2SA_4_2_3</td> <td>implicit</td>  <td align="center">3</td>
+                </tr>
+                <tr>
+                    <td>ESDIRK325L2SA_5_2_3</td> <td>implicit</td>  <td align="center">3</td>
+                </tr>
+                <tr>
+                    <td>ESDIRK32I5L2SA_5_2_3</td> <td>implicit</td>  <td align="center">3</td>
+                </tr>
+                <tr>
                     <td>ARK324L2SA_DIRK_4_2_3</td> <td>implicit</td>  <td align="center">3</td> <td>DIRK_3</td>
                 </tr>
                 <tr>
@@ -368,13 +377,31 @@
                     <td>ARK437L2SA_DIRK_7_3_4</td> <td>implicit</td>  <td align="center">4</td>
                 </tr>
                 <tr>
+                    <td>ESDIRK436L2SA_6_3_4</td> <td>implicit</td>  <td align="center">4</td>
+                </tr>
+                <tr>
+                    <td>ESDIRK43I6L2SA_6_3_4</td> <td>implicit</td>  <td align="center">4</td>
+                </tr>
+                <tr>
+                    <td>QESDIRK436L2SA_6_3_4</td> <td>implicit</td>  <td align="center">4</td>
+                </tr>
+                <tr>
+                    <td>ESDIRK437L2SA_7_3_4</td> <td>implicit</td>  <td align="center">4</td>
+                </tr>
+                <tr>
                     <td>KVAERNO_7_4_5</td> <td>implicit</td>  <td align="center">5</td>
                 </tr>
                 <tr>
                     <td>ARK548L2SA_DIRK_8_4_5</td> <td>implicit</td>  <td align="center">5</td>  <td>DIRK_5</td>
                 </tr>
                 <tr>
-                    <td>ARK548L2SAb_DIRK_8_4_5</td> <td>implicit</td>  <td align="center">5</td>  
+                    <td>ARK548L2SAb_DIRK_8_4_5</td> <td>implicit</td>  <td align="center">5</td>
+                </tr>
+                <tr>
+                    <td>ESDIRK547L2SA_7_4_5</td> <td>implicit</td>  <td align="center">5</td>
+                </tr>
+                <tr>
+                    <td>ESDIRK547L2SA2_7_4_5</td> <td>implicit</td>  <td align="center">5</td>
                 </tr>
                 <tr><td/><td/><td/><td/></tr>
                 <tr>

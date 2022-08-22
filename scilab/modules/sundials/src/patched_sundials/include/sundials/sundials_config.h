@@ -36,18 +36,21 @@
  * -----------------------------------------------------------------*/
 
 
-#define SUNDIALS_VERSION "6.2.0"
+#define SUNDIALS_VERSION "6.3.0"
 #define SUNDIALS_VERSION_MAJOR 6
-#define SUNDIALS_VERSION_MINOR 2
+#define SUNDIALS_VERSION_MINOR 3
 #define SUNDIALS_VERSION_PATCH 0
 #define SUNDIALS_VERSION_LABEL ""
-#define SUNDIALS_GIT_VERSION "v6.2.0"
+#define SUNDIALS_GIT_VERSION ""
 
 
 /* ------------------------------------------------------------------
  * SUNDIALS build information
  * -----------------------------------------------------------------*/
 
+#define SUNDIALS_C_COMPILER_HAS_MATH_PRECISIONS
+#define SUNDIALS_C_COMPILER_HAS_ISINF_ISNAN
+#define SUNDIALS_C_COMPILER_HAS_INLINE
 
 /* Define precision of SUNDIALS data type 'realtype'
  * Depending on the precision level, one of the following
@@ -71,11 +74,10 @@
  */
 #define SUNDIALS_INDEX_TYPE int64_t
 
-/* Use generic math functions
- * If it was decided that generic math functions can be used, then
- *     #define SUNDIALS_USE_GENERIC_MATH
+/* Use std-c math functions
+ * DEPRECATED SUNDIALS_USE_GENERIC_MATH
  */
-#define SUNDIALS_USE_GENERIC_MATH
+/* #undef SUNDIALS_USE_GENERIC_MATH */
 
 /* Use POSIX timers if available.
  *     #define SUNDIALS_HAVE_POSIX_TIMERS
@@ -98,9 +100,9 @@
 /* #undef SUNDIALS_LOGGING_ENABLE_MPI */
 
 /* Is snprintf available? */
-/* #undef SUNDIALS_COMPILER_HAS_SNPRINTF_AND_VA_COPY */
-#ifndef SUNDIALS_COMPILER_HAS_SNPRINTF_AND_VA_COPY
-#define SUNDIALS_MAX_SPRINTF_SIZE 5120
+#define SUNDIALS_C_COMPILER_HAS_SNPRINTF_AND_VA_COPY
+#ifndef SUNDIALS_SUNDIALS_C_COMPILER_HAS_SNPRINTF_AND_VA_COPY
+#define SUNDIALS_MAX_SPRINTF_SIZE 
 #endif
 
 /* ------------------------------------------------------------------
@@ -111,7 +113,7 @@
 /* #undef SUNDIALS_CALIPER_ENABLED */
 
 /* MAGMA backends */
-#define SUNDIALS_MAGMA_BACKENDS_CUDA
+/* #undef SUNDIALS_MAGMA_BACKENDS_CUDA */
 /* #undef SUNDIALS_MAGMA_BACKENDS_HIP */
 
 /* Set if SUNDIALS is built with MPI support, then
@@ -130,7 +132,7 @@
 /* #undef SUNDIALS_TRILINOS_HAVE_MPI */
 
 /* RAJA backends */
-#define SUNDIALS_RAJA_BACKENDS_CUDA
+/* #undef SUNDIALS_RAJA_BACKENDS_CUDA */
 /* #undef SUNDIALS_RAJA_BACKENDS_HIP */
 /* #undef SUNDIALS_RAJA_BACKENDS_SYCL */
 
@@ -204,10 +206,10 @@
 #endif
 
 #ifndef SUNDIALS_C_INLINE
-#ifndef __STDC_VERSION__ /* must be c89 or c90 */
-#define SUNDIALS_C_INLINE
-#else
+#ifdef SUNDIALS_C_COMPILER_HAS_INLINE
 #define SUNDIALS_C_INLINE inline
+#else
+#define SUNDIALS_C_INLINE
 #endif
 #endif
 

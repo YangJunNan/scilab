@@ -31,7 +31,7 @@
 #include <sundials/sundials_nvector.h>
 #include <sunmatrix/sunmatrix_sparse.h>
 #ifndef _KLU_H
-#include <suitesparse/klu.h>
+#include <klu.h>
 #endif
 
 #ifdef __cplusplus  /* wrapper to enable C++ usage */
