@@ -252,7 +252,7 @@ void OdeManager::parseOptions(types::optional_list &opt)
         m_odeIsExtension ? prevManager->m_wstrLinSolver : getDefaultLinSolver(), getAvailableLinSolvers());
 
     // iterative solvers
-    if (m_wstrLinSolver == L"PCG" || 
+    if (m_wstrLinSolver == L"CG" || 
         m_wstrLinSolver == L"BCGS" || 
         m_wstrLinSolver == L"FGMR" || 
         m_wstrLinSolver == L"GMR" || 

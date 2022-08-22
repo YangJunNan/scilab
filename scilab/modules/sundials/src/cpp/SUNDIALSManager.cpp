@@ -438,7 +438,7 @@ std::wstring SUNDIALSManager::setLinearSolver(functionKind what, N_Vector NV_wor
     else
     {
         // iterative linear solvers
-        if (m_wstrLinSolver==L"PCG")
+        if (m_wstrLinSolver==L"CG")
         {
             //Preconditioned Conjugate Gradient (symmetric Jacobian is a must !)
             SUN_LS = SUNLinSol_PCG(NV_work, m_iPrecondType[m_wstrPrecondType], m_iLinSolMaxIters, m_sunctx);

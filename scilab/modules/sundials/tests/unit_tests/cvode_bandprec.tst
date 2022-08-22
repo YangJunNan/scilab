@@ -32,7 +32,7 @@ f = x>1/4 & x<1/3;
 v0=zeros(N-1,1);
 tspan=0:1000// vecteur des temps
 
-[ts,vs] = cvode(list(f_chaleur,dx,lambda,c,rhoLin,f),tspan,v0,linearSolver="CG",method="BDF");
+[ts,vs] = cvode(list(f_chaleur,dx,lambda,c,rhoLin,f),tspan,v0,linearSolver="CG",method="BDF",precband=[1 1]);
 
 
 
