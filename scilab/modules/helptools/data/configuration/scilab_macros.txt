@@ -1696,7 +1696,6 @@ pixDist
 setStringPosition
 %dir_p
 dir
-dirname
 dispfiles
 fullfile
 get_file_path

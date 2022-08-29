@@ -47,7 +47,7 @@
             variable système <literal>TMPDIR</literal>.
         </para>
         <note>
-          <literal>dirname(TMPDIR)</literal> peut être utilisé comme dossier temporaire général,
+          <literal>TMPDIR</literal> peut être utilisé comme dossier temporaire général,
           toutes sessions Scilab confondues.
         </note>
     </refsection>

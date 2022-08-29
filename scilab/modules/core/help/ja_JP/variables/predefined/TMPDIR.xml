@@ -48,7 +48,7 @@
             選択することができます.
         </para>
         <note>
-          <literal>dirname(TMPDIR)</literal> can be used as a general temporary directory,
+          <literal>TMPDIR</literal> can be used as a general temporary directory,
           without respect to any Scilab session.
         </note>
     </refsection>
