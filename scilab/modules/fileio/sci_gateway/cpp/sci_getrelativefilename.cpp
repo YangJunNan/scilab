@@ -19,6 +19,7 @@
 #include "function.hxx"
 #include "string.hxx"
 #include "filemanager.hxx"
+#include <filesystem>
 
 extern "C"
 {
@@ -96,13 +97,13 @@ types::Function::ReturnValue sci_getrelativefilename(types::typed_list &in, int 
             return types::Function::Error;
         }
 
-        wcsResult = getrelativefilenameW(wcsAbsDir, wcsAbsFile);
+        std::filesystem::path pathAbsDir = std::filesystem::path(wcsAbsDir);
+        std::filesystem::path pathAbsFile = std::filesystem::path(wcsAbsFile);
+
+        pStrOut->set(i, std::filesystem::relative(pathAbsFile,pathAbsDir).wstring().c_str());
 
         FREE(wcsAbsDir);
         FREE(wcsAbsFile);
-
-        pStrOut->set(i, wcsResult);
-        FREE(wcsResult);
     }
 
     out.push_back(pStrOut);

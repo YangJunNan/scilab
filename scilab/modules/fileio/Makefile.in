@@ -195,7 +195,6 @@ am__objects_1 = src/c/libscifileio_algo_la-FileExist.lo \
 	src/c/libscifileio_algo_la-cluni0.lo \
 	src/c/libscifileio_algo_la-scicurdir.lo \
 	src/c/libscifileio_algo_la-fileinfo.lo \
-	src/c/libscifileio_algo_la-getrelativefilename.lo \
 	src/c/libscifileio_algo_la-splitpath.lo \
 	src/c/libscifileio_algo_la-movefile.lo \
 	src/c/libscifileio_algo_la-basename.lo \
@@ -377,7 +376,6 @@ am__depfiles_remade =  \
 	src/c/$(DEPDIR)/libscifileio_algo_la-getFullFilename.Plo \
 	src/c/$(DEPDIR)/libscifileio_algo_la-getdrives.Plo \
 	src/c/$(DEPDIR)/libscifileio_algo_la-getlongpathname.Plo \
-	src/c/$(DEPDIR)/libscifileio_algo_la-getrelativefilename.Plo \
 	src/c/$(DEPDIR)/libscifileio_algo_la-getshortpathname.Plo \
 	src/c/$(DEPDIR)/libscifileio_algo_la-isDrive.Plo \
 	src/c/$(DEPDIR)/libscifileio_algo_la-isdir.Plo \
@@ -791,7 +789,6 @@ FILEIO_C_SOURCES = \
     src/c/cluni0.c \
     src/c/scicurdir.c \
     src/c/fileinfo.c \
-    src/c/getrelativefilename.c \
     src/c/splitpath.c \
     src/c/movefile.c \
     src/c/basename.c \
@@ -1135,8 +1132,6 @@ src/c/libscifileio_algo_la-scicurdir.lo: src/c/$(am__dirstamp) \
 	src/c/$(DEPDIR)/$(am__dirstamp)
 src/c/libscifileio_algo_la-fileinfo.lo: src/c/$(am__dirstamp) \
 	src/c/$(DEPDIR)/$(am__dirstamp)
-src/c/libscifileio_algo_la-getrelativefilename.lo:  \
-	src/c/$(am__dirstamp) src/c/$(DEPDIR)/$(am__dirstamp)
 src/c/libscifileio_algo_la-splitpath.lo: src/c/$(am__dirstamp) \
 	src/c/$(DEPDIR)/$(am__dirstamp)
 src/c/libscifileio_algo_la-movefile.lo: src/c/$(am__dirstamp) \
@@ -1452,7 +1447,6 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@src/c/$(DEPDIR)/libscifileio_algo_la-getFullFilename.Plo@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@src/c/$(DEPDIR)/libscifileio_algo_la-getdrives.Plo@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@src/c/$(DEPDIR)/libscifileio_algo_la-getlongpathname.Plo@am__quote@ # am--include-marker
-@AMDEP_TRUE@@am__include@ @am__quote@src/c/$(DEPDIR)/libscifileio_algo_la-getrelativefilename.Plo@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@src/c/$(DEPDIR)/libscifileio_algo_la-getshortpathname.Plo@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@src/c/$(DEPDIR)/libscifileio_algo_la-isDrive.Plo@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@src/c/$(DEPDIR)/libscifileio_algo_la-isdir.Plo@am__quote@ # am--include-marker
@@ -1639,13 +1633,6 @@ src/c/libscifileio_algo_la-fileinfo.lo: src/c/fileinfo.c
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='src/c/fileinfo.c' object='src/c/libscifileio_algo_la-fileinfo.lo' libtool=yes @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libscifileio_algo_la_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o src/c/libscifileio_algo_la-fileinfo.lo `test -f 'src/c/fileinfo.c' || echo '$(srcdir)/'`src/c/fileinfo.c
-
-src/c/libscifileio_algo_la-getrelativefilename.lo: src/c/getrelativefilename.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libscifileio_algo_la_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT src/c/libscifileio_algo_la-getrelativefilename.lo -MD -MP -MF src/c/$(DEPDIR)/libscifileio_algo_la-getrelativefilename.Tpo -c -o src/c/libscifileio_algo_la-getrelativefilename.lo `test -f 'src/c/getrelativefilename.c' || echo '$(srcdir)/'`src/c/getrelativefilename.c
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) src/c/$(DEPDIR)/libscifileio_algo_la-getrelativefilename.Tpo src/c/$(DEPDIR)/libscifileio_algo_la-getrelativefilename.Plo
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='src/c/getrelativefilename.c' object='src/c/libscifileio_algo_la-getrelativefilename.lo' libtool=yes @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libscifileio_algo_la_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o src/c/libscifileio_algo_la-getrelativefilename.lo `test -f 'src/c/getrelativefilename.c' || echo '$(srcdir)/'`src/c/getrelativefilename.c
 
 src/c/libscifileio_algo_la-splitpath.lo: src/c/splitpath.c
 @am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libscifileio_algo_la_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT src/c/libscifileio_algo_la-splitpath.lo -MD -MP -MF src/c/$(DEPDIR)/libscifileio_algo_la-splitpath.Tpo -c -o src/c/libscifileio_algo_la-splitpath.lo `test -f 'src/c/splitpath.c' || echo '$(srcdir)/'`src/c/splitpath.c
@@ -2509,7 +2496,6 @@ distclean: distclean-am
 	-rm -f src/c/$(DEPDIR)/libscifileio_algo_la-getFullFilename.Plo
 	-rm -f src/c/$(DEPDIR)/libscifileio_algo_la-getdrives.Plo
 	-rm -f src/c/$(DEPDIR)/libscifileio_algo_la-getlongpathname.Plo
-	-rm -f src/c/$(DEPDIR)/libscifileio_algo_la-getrelativefilename.Plo
 	-rm -f src/c/$(DEPDIR)/libscifileio_algo_la-getshortpathname.Plo
 	-rm -f src/c/$(DEPDIR)/libscifileio_algo_la-isDrive.Plo
 	-rm -f src/c/$(DEPDIR)/libscifileio_algo_la-isdir.Plo
@@ -2655,7 +2641,6 @@ maintainer-clean: maintainer-clean-am
 	-rm -f src/c/$(DEPDIR)/libscifileio_algo_la-getFullFilename.Plo
 	-rm -f src/c/$(DEPDIR)/libscifileio_algo_la-getdrives.Plo
 	-rm -f src/c/$(DEPDIR)/libscifileio_algo_la-getlongpathname.Plo
-	-rm -f src/c/$(DEPDIR)/libscifileio_algo_la-getrelativefilename.Plo
 	-rm -f src/c/$(DEPDIR)/libscifileio_algo_la-getshortpathname.Plo
 	-rm -f src/c/$(DEPDIR)/libscifileio_algo_la-isDrive.Plo
 	-rm -f src/c/$(DEPDIR)/libscifileio_algo_la-isdir.Plo
