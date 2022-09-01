@@ -32,7 +32,6 @@ extern "C"
 #include "sci_malloc.h"
 #include "Scierror.h"
 #include "localization.h"
-#include "getrelativefilename.h"
 }
 
 /*--------------------------------------------------------------------------*/
