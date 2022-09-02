@@ -1,0 +1,33 @@
+prebuild windows x64:
+  stage: prebuild
+  tags:
+    - windows x64
+  cache:
+    key: prerequirements-windows-x64
+    paths:
+      - scilab/Visual-Studio-settings/
+      - scilab/bin/
+      - scilab/java/
+      - scilab/libs/
+      - scilab/modules/
+      - scilab/thirdparty/
+      - scilab/tools/
+    policy: push
+  script:
+    - svn export --force --username anonymous --password Scilab svn://svn.scilab.org/scilab/trunk/Dev-Tools/SE/Prerequirements/Windows_x64/ scilab
+  
+prebuild linux x86_64:
+  stage: prebuild
+  tags:
+    - linux
+  cache:
+    key: prerequirements-linux-x86_64
+    paths:
+      - scilab/java/
+      - scilab/lib/
+      - scilab/modules/
+      - scilab/thirdparty/
+      - scilab/usr/
+    policy: push
+  script:
+    - svn export --force --username anonymous --password Scilab svn://svn.scilab.org/scilab/trunk/Dev-Tools/SE/Prerequirements/linux_x64/ scilab

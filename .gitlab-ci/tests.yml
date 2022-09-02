@@ -1,0 +1,3 @@
+test windows x64:
+  stage: tests
+  

@@ -1,0 +1,45 @@
+stages:
+  # fetch prebuild libraries maintained in different repository
+  - prebuild
+  # build scilab
+  - build
+  # create a binary installer
+  - archive
+  # run the tests
+  - tests
+  # publish and make it available to the community
+  - deploy
+
+
+variables:
+  # speedup cloning
+  GIT_DEPTH: "1"
+
+
+# only run on merge request or default branch push
+workflow:
+  rules:
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+
+
+include:
+  - local: '.gitlab-ci/prebuild.yml'
+
+
+include:
+  - local: '.gitlab-ci/build.yml'
+
+
+# execute tests on merge
+include:
+  - local: '.gitlab-ci/tests.yml'
+    rules:
+      - if: $CI_PIPELINE_SOURCE == "push"
+
+
+# deploy a binary on merge
+include:
+  - local: '.gitlab-ci/deploy.yml'
+    rules:
+      - if: $CI_PIPELINE_SOURCE == "push"
