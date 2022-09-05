@@ -1,0 +1,5 @@
+deploy new release:
+  stage: deploy
+  script:
+    - echo "nothing to deploy"
+  when: manual

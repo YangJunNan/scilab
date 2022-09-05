@@ -12,7 +12,6 @@ build windows x64:
   script:
     - cd scilab
     - devenv Scilab.sln /Build Release /Project WScilex /ProjectConfig 'Release|x64'
-    - C:\Program Files (x86)\Inno Setup 6\iscc.exe 
 
 build linux x86_64:
   stage: build

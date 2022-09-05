@@ -24,22 +24,15 @@ workflow:
 
 
 include:
-  - local: '.gitlab-ci/prebuild.yml'
-
-
-include:
-  - local: '.gitlab-ci/build.yml'
-
-
-# execute tests on merge
-include:
-  - local: '.gitlab-ci/tests.yml'
+  # retrieve dependencies
+  - local: /.gitlab-ci/prebuild.yml
+  # build
+  - local: /.gitlab-ci/build.yml
+  # execute tests on merge
+  - local: /.gitlab-ci/tests.yml
     rules:
       - if: $CI_PIPELINE_SOURCE == "push"
-
-
-# deploy a binary on merge
-include:
-  - local: '.gitlab-ci/deploy.yml'
+  # deploy a binary on merge
+  - local: /.gitlab-ci/deploy.yml
     rules:
       - if: $CI_PIPELINE_SOURCE == "push"
