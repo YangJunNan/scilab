@@ -28,6 +28,6 @@ build linux x86_64:
     - ./configure --prefix=''
     - make -j
     - make install DESTDIR=scilab-branch-${CI_COMMIT_REF_NAME}-${CI_COMMIT_TIMESTAMP}
-  artefacts:
+  artifacts:
     paths:
       - scilab-branch-${CI_COMMIT_REF_NAME}-${CI_COMMIT_TIMESTAMP}
