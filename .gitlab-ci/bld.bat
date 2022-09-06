@@ -11,8 +11,11 @@ setx SCILAB_JDK64 %JAVA_HOME%
 env
 
 REM build with Visual Studio and Intel compilers
-devenv Scilab.sln /Build Release /Project WScilex /ProjectConfig Release|x64 /out build.log
+devenv Scilab.sln /Build Release /Project WScilex /ProjectConfig "Release|x64" /out build.log
+if errorlevel 1 exit 1
 
 REM Package with innosetups
 call bin\scilab.bat -f tools\innosetup\Create_ISS.sce
+if errorlevel 1 exit 1
 "C:\Program Files (x86)\Inno Setup 6\iscc.exe" tools\innosetup\Scilab.iss
+if errorlevel 1 exit 1

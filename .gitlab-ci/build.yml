@@ -28,7 +28,7 @@ build linux x86_64:
     policy: pull
   variables:
       GIT_CLEAN_FLAGS: none
-  script: .gitlab-ci/bld.sh
+  script: .gitlab-ci/build.sh
   artifacts:
     paths:
       - scilab-branch-${CI_COMMIT_REF_NAME}-${CI_COMMIT_TIMESTAMP}
@@ -44,7 +44,7 @@ build docker:
     policy: pull
   variables:
       GIT_CLEAN_FLAGS: none
-  script: .gitlab-ci/bld.sh
+  script: .gitlab-ci/build.sh
   artifacts:
     paths:
       - scilab-branch-${CI_COMMIT_REF_NAME}-${CI_COMMIT_TIMESTAMP}
