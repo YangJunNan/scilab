@@ -1,4 +1,4 @@
-deploy new release:
+release:
   stage: deploy
   script:
     - echo "nothing to deploy"

@@ -31,3 +31,19 @@ build linux x86_64:
   artifacts:
     paths:
       - scilab-branch-${CI_COMMIT_REF_NAME}-${CI_COMMIT_TIMESTAMP}
+
+build docker:
+  stage: build
+  image: ubuntu:18.10
+  
+  cache:
+    key: prerequirements-linux-x86_64
+    policy: pull
+  script:
+    - cd scilab
+    - ./configure --prefix=''
+    - make -j
+    - make install DESTDIR=scilab-branch-${CI_COMMIT_REF_NAME}-${CI_COMMIT_TIMESTAMP}
+  artifacts:
+    paths:
+      - scilab-branch-${CI_COMMIT_REF_NAME}-${CI_COMMIT_TIMESTAMP}
