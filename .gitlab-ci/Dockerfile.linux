@@ -1,0 +1,19 @@
+FROM ubuntu:18.04
+
+LABEL description="Scilab builder image used by CI/CD runners"
+
+RUN apt-get update && apt-get install -y \
+        subversion gcc-8 g++-8 gfortran-8 \
+        openjdk-8-jdk ocaml \
+        libcurl4-openssl-dev libgl1-mesa-dev pkg-config
+
+# add a scilab build user and the Gitlab build dir
+RUN mkdir -p /builds
+RUN useradd scilab
+RUN chown scilab: /builds
+USER scilab
+
+# specify compilers version
+ENV CC=gcc-8
+ENV CXX=g++-8
+ENV F77=gfortran-8

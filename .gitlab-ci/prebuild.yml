@@ -14,7 +14,7 @@ prebuild windows x64:
       - scilab/tools/
     policy: push
   script:
-    - svn export --force --username anonymous --password Scilab svn://svn.scilab.org/scilab/trunk/Dev-Tools/SE/Prerequirements/Windows_x64/ scilab
+    - svn checkout --force --username anonymous --password Scilab svn://svn.scilab.org/scilab/trunk/Dev-Tools/SE/Prerequirements/Windows_x64/ scilab
   
 prebuild linux x86_64:
   stage: prebuild
@@ -30,4 +30,4 @@ prebuild linux x86_64:
       - scilab/usr/
     policy: push
   script:
-    - svn export --force --username anonymous --password Scilab svn://svn.scilab.org/scilab/trunk/Dev-Tools/SE/Prerequirements/linux_x64/ scilab
+    - svn checkout --force --username anonymous --password Scilab svn://svn.scilab.org/scilab/trunk/Dev-Tools/SE/Prerequirements/linux_x64/ scilab

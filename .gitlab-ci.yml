@@ -16,7 +16,7 @@ variables:
   GIT_DEPTH: "1"
 
 
-# only run on merge request or default branch push
+# only run on merge request or default branch push or initial-ci
 workflow:
   rules:
     - if: $CI_PIPELINE_SOURCE == "merge_request_event"
@@ -24,8 +24,17 @@ workflow:
     - if: $CI_COMMIT_BRANCH == "initial-ci"
 
 
+# create docker images for builders 
+before_script:
+  - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
+  - docker build -t $CI_REGISTRY/scilab/scilab:builder_linux - < /.gitlab-ci/Dockerfile.linux
+  - docker push $CI_REGISTRY/scilab/scilab:builder_linux
+# Docker windows not supported yet
+#  - docker build -t $CI_REGISTRY/scilab/scilab:builder_windows - < /.gitlab-ci/Dockerfile.windows
+#  - docker push $CI_REGISTRY/scilab/scilab:builder_windows
+
 include:
-  # dependencies
+  # dependencies cache
   - local: /.gitlab-ci/prebuild.yml
   # build
   - local: /.gitlab-ci/build.yml
