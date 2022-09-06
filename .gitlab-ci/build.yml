@@ -13,11 +13,13 @@ build windows x64:
   variables:
       GIT_CLEAN_FLAGS: none
   script:
-    - cd scilab
+    # likely cached
     - svn checkout --username anonymous --password Scilab svn://svn.scilab.org/scilab/trunk/Dev-Tools/SE/Prerequirements/Windows_x64/ scilab
-    - '"C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\vcvarsall.bat" x64'
+    # use devenv for intel oneAPI support 
+    - cd scilab
+    - call "C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\vcvarsall.bat" x64
     - 'devenv Scilab.sln /Build Release /Project WScilex /ProjectConfig Release|x64'
-    - 'bin\scilab -f tools\innosetup\Create_ISS.sce'
+    - call bin\scilab.bat -f tools\innosetup\Create_ISS.sce
     - '"C:\Program Files (x86)\Inno Setup 6\iscc.exe" tools\innosetup\Scilab.iss'
 
 # build scilab using a linux runner
@@ -34,9 +36,10 @@ build linux x86_64:
   variables:
       GIT_CLEAN_FLAGS: none
   script:
-    - cd scilab
     # likely cached
     - svn checkout --username anonymous --password Scilab svn://svn.scilab.org/scilab/trunk/Dev-Tools/SE/Prerequirements/linux_x64/ scilab
+    # configure & make
+    - cd scilab
     - ./configure --prefix=''
     - make -j
     - make install DESTDIR=scilab-branch-${CI_COMMIT_REF_NAME}-${CI_COMMIT_TIMESTAMP}
@@ -54,9 +57,10 @@ build docker:
   variables:
       GIT_CLEAN_FLAGS: none
   script:
-    - cd scilab
     # likely cached
     - svn checkout --username anonymous --password Scilab svn://svn.scilab.org/scilab/trunk/Dev-Tools/SE/Prerequirements/linux_x64/ scilab
+    # configure & make
+    - cd scilab
     - ./configure --prefix=''
     - make -j
     - make install DESTDIR=scilab-branch-${CI_COMMIT_REF_NAME}-${CI_COMMIT_TIMESTAMP}
