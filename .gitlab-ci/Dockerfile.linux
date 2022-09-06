@@ -5,7 +5,8 @@ LABEL description="Scilab builder image used by CI/CD runners"
 RUN apt-get update && apt-get install -y \
         subversion gcc-8 g++-8 gfortran-8 \
         openjdk-8-jdk ocaml \
-        libcurl4-openssl-dev libgl1-mesa-dev pkg-config
+        libcurl4-openssl-dev libgl1-mesa-dev pkg-config \
+    && apt-get clean
 
 # add a scilab build user and the Gitlab build dir
 RUN mkdir -p /builds

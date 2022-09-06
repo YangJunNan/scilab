@@ -16,8 +16,8 @@ build windows x64:
     - cd scilab
     - svn checkout --username anonymous --password Scilab svn://svn.scilab.org/scilab/trunk/Dev-Tools/SE/Prerequirements/Windows_x64/ scilab
     - '"C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\vcvarsall.bat" x64'
-    - devenv Scilab.sln /Build Release /Project WScilex /ProjectConfig 'Release|x64'
-    - '"bin\scilab" -f tools\innosetup\Create_ISS.sce'
+    - 'devenv Scilab.sln /Build Release /Project WScilex /ProjectConfig Release|x64'
+    - 'bin\scilab -f tools\innosetup\Create_ISS.sce'
     - '"C:\Program Files (x86)\Inno Setup 6\iscc.exe" tools\innosetup\Scilab.iss'
 
 # build scilab using a linux runner

@@ -16,6 +16,7 @@ prebuild windows x64:
     policy: push
   script:
     - svn checkout --force --username anonymous --password Scilab svn://svn.scilab.org/scilab/trunk/Dev-Tools/SE/Prerequirements/Windows_x64/ scilab
+  when: manual
 
 # get prerequirements from svn
 prebuild linux x86_64:
@@ -33,6 +34,7 @@ prebuild linux x86_64:
     policy: push
   script:
     - svn checkout --force --username anonymous --password Scilab svn://svn.scilab.org/scilab/trunk/Dev-Tools/SE/Prerequirements/linux_x64/ scilab
+  when: manual
 
 
 # create docker images for builders 
@@ -49,4 +51,4 @@ create docker images:
   only:
     changes:
       - /.gitlab-ci.yml
-      - /.gitlab-ci/*
+      - /.gitlab-ci/Dockerfile*
