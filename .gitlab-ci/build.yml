@@ -1,3 +1,4 @@
+# build scilab using a windows runner
 build windows x64:
   stage: build
   tags:
@@ -14,7 +15,10 @@ build windows x64:
     - svn update
     - 'C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\vcvarsall.bat x64'
     - devenv Scilab.sln /Build Release /Project WScilex /ProjectConfig 'Release|x64'
+    - 'bin\scilab -f tools\innosetup\Create_ISS.sce'
+    - 'C:\Program Files (x86)\Inno Setup 6\iscc.exe tools\innosetup\Scilab.iss'
 
+# build scilab using a linux runner
 build linux x86_64:
   stage: build
   tags:
@@ -36,6 +40,7 @@ build linux x86_64:
     paths:
       - scilab-branch-${CI_COMMIT_REF_NAME}-${CI_COMMIT_TIMESTAMP}
 
+# build scilab using the docker image
 build docker:
   stage: build
   image: $CI_REGISTRY/scilab/scilab:builder_linux

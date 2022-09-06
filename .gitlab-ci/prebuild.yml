@@ -1,3 +1,4 @@
+# get prerequirements from svn
 prebuild windows x64:
   stage: prebuild
   tags:
@@ -15,7 +16,8 @@ prebuild windows x64:
     policy: push
   script:
     - svn checkout --force --username anonymous --password Scilab svn://svn.scilab.org/scilab/trunk/Dev-Tools/SE/Prerequirements/Windows_x64/ scilab
-  
+
+# get prerequirements from svn
 prebuild linux x86_64:
   stage: prebuild
   tags:
@@ -31,3 +33,20 @@ prebuild linux x86_64:
     policy: push
   script:
     - svn checkout --force --username anonymous --password Scilab svn://svn.scilab.org/scilab/trunk/Dev-Tools/SE/Prerequirements/linux_x64/ scilab
+
+
+# create docker images for builders 
+create docker images:
+  stage: prebuild
+  image: docker
+  script:
+    - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
+    - docker build -t $CI_REGISTRY/scilab/scilab:builder_linux - < /.gitlab-ci/Dockerfile.linux
+    - docker push $CI_REGISTRY/scilab/scilab:builder_linux
+# Docker windows not supported yet
+#  - docker build -t $CI_REGISTRY/scilab/scilab:builder_windows - < /.gitlab-ci/Dockerfile.windows
+#  - docker push $CI_REGISTRY/scilab/scilab:builder_windows
+  only:
+    changes:
+      - /.gitlab-ci.yml
+      - /.gitlab-ci/*
