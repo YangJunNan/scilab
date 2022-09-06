@@ -21,13 +21,16 @@ workflow:
   rules:
     - if: $CI_PIPELINE_SOURCE == "merge_request_event"
     - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+    - if: $CI_COMMIT_BRANCH == "initial-ci"
 
 
 include:
-  # retrieve dependencies
+  # dependencies
   - local: /.gitlab-ci/prebuild.yml
   # build
   - local: /.gitlab-ci/build.yml
+  # patches
+  - local: /.gitlab-ci/postbuild.yml
   # execute tests on merge
   - local: /.gitlab-ci/tests.yml
     rules:
