@@ -4,7 +4,7 @@ LABEL description="Scilab builder image used by CI/CD runners"
 
 RUN apt-get update && apt-get install -y \
         subversion gcc-8 g++-8 gfortran-8 \
-        openjdk-8-jdk ocaml \
+        openjdk-8-jdk ocaml gettext \
         libcurl4-openssl-dev libgl1-mesa-dev pkg-config \
     && apt-get clean
 
