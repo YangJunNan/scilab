@@ -12,17 +12,17 @@ build windows x64:
     policy: pull
   variables:
       GIT_CLEAN_FLAGS: none
-  script: |
+  script:
     # likely cached
-    svn checkout --username anonymous --password Scilab svn://svn.scilab.org/scilab/trunk/Dev-Tools/SE/Prerequirements/Windows_x64/ scilab
+    - svn checkout --username anonymous --password Scilab svn://svn.scilab.org/scilab/trunk/Dev-Tools/SE/Prerequirements/Windows_x64/ scilab
     # use devenv for intel oneAPI support 
-    cd scilab
-    call "%VS2017INSTALLDIR%\VC\Auxiliary\Build\vcvarsall.bat" x64
-    setx SCILAB_JDK64 %JAVA_HOME%
-    env
-    devenv Scilab.sln /Build Release /Project WScilex /ProjectConfig Release|x64 /out build.log
-    call bin\scilab.bat -f tools\innosetup\Create_ISS.sce
-    "C:\Program Files (x86)\Inno Setup 6\iscc.exe" tools\innosetup\Scilab.iss
+    - cd scilab
+    - call "%VS2017INSTALLDIR%\VC\Auxiliary\Build\vcvarsall.bat" x64
+    - setx SCILAB_JDK64 %JAVA_HOME%
+    - env
+    - devenv Scilab.sln /Build Release /Project WScilex /ProjectConfig '"Release|x64"' /out build.log
+    - call bin\scilab.bat -f tools\innosetup\Create_ISS.sce
+    - '"C:\Program Files (x86)\Inno Setup 6\iscc.exe" tools\innosetup\Scilab.iss'
 
 # build scilab using a linux runner
 build linux x86_64:
