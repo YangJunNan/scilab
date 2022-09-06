@@ -3,8 +3,8 @@ stages:
   - prebuild
   # build scilab
   - build
-  # create a binary installer
-  - archive
+  # create a binary installer and binary patch
+  - postbuild
   # run the tests
   - tests
   # publish and make it available to the community

@@ -1,7 +1,7 @@
 prebuild windows x64:
   stage: prebuild
   tags:
-    - windows x64
+    - windows
   cache:
     key: prerequirements-windows-x64
     paths:

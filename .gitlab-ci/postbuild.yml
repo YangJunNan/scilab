@@ -1,0 +1,14 @@
+postbuild windows:
+  stage: postbuild
+  tags:
+    - windows
+  script:
+    - echo "nothing to postbuild"
+
+
+postbuild linux:
+  stage: postbuild
+  tags:
+    - linux
+  script:
+    - echo "nothing to postbuild"
