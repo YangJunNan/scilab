@@ -1,11 +1,13 @@
-FROM ubuntu:18.04
+FROM ubuntu:20.04
 
 LABEL description="Scilab builder image used by CI/CD runners"
 
+ENV DEBIAN_FRONTEND noninteractive
 RUN apt-get update && apt-get install -y \
-        subversion gcc-8 g++-8 gfortran-8 \
-        openjdk-8-jdk ocaml gettext \
-        libcurl4-openssl-dev libgl1-mesa-dev pkg-config \
+        subversion make gcc g++ gfortran \
+        openjdk-8-jdk ocaml libnum-ocaml-dev \
+        libcurl4-openssl-dev libgl1-mesa-dev \
+        pkg-config gettext \
     && apt-get clean
 
 # add a scilab build user and the Gitlab build dir
@@ -15,9 +17,5 @@ RUN chown scilab: /builds
 USER scilab
 
 # Scilab source code is in English with UTF-8 encoding
-ENV LANG=en_US.UTF-8
+ENV LANG en_US.UTF-8
 
-# specify compilers version
-ENV CC=gcc-8
-ENV CXX=g++-8
-ENV F77=gfortran-8

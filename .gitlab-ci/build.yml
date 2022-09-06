@@ -18,7 +18,7 @@ build windows x64:
     # use devenv for intel oneAPI support 
     - cd scilab
     - call "C:\Program Files (x86)\Microsoft Visual Studio\2017\Professional\VC\Auxiliary\Build\vcvarsall.bat" x64
-    - devenv Scilab.sln /Build Release /Project WScilex /ProjectConfig "Release|x64"
+    - devenv Scilab.sln /Build Release /Project WScilex /ProjectConfig "Release|x64" /out build.log
     - call bin\scilab.bat -f tools\innosetup\Create_ISS.sce
     - '"C:\Program Files (x86)\Inno Setup 6\iscc.exe" tools\innosetup\Scilab.iss'
 
