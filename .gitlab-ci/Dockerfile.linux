@@ -14,6 +14,9 @@ RUN useradd scilab
 RUN chown scilab: /builds
 USER scilab
 
+# Scilab source code is in English with UTF-8 encoding
+ENV LANG=en_US.UTF-8
+
 # specify compilers version
 ENV CC=gcc-8
 ENV CXX=g++-8

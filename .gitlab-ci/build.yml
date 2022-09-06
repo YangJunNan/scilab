@@ -17,7 +17,7 @@ build windows x64:
     - svn checkout --username anonymous --password Scilab svn://svn.scilab.org/scilab/trunk/Dev-Tools/SE/Prerequirements/Windows_x64/ scilab
     # use devenv for intel oneAPI support 
     - cd scilab
-    - call "C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\vcvarsall.bat" x64
+    - call "C:\Program Files (x86)\Microsoft Visual Studio\2017\Professional\VC\Auxiliary\Build\vcvarsall.bat" x64
     - devenv Scilab.sln /Build Release /Project WScilex /ProjectConfig "Release|x64"
     - call bin\scilab.bat -f tools\innosetup\Create_ISS.sce
     - '"C:\Program Files (x86)\Inno Setup 6\iscc.exe" tools\innosetup\Scilab.iss'
@@ -51,6 +51,8 @@ build linux x86_64:
 build docker:
   stage: build
   image: $CI_REGISTRY/scilab/scilab:builder_linux
+  tags:
+    - docker
   cache:
     key: prerequirements-linux-x86_64
     policy: pull
