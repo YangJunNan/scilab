@@ -1,5 +1,7 @@
 REM Builder script for building Scilab on Windows
 
+echo on
+
 svn checkout --username anonymous --password Scilab svn://svn.scilab.org/scilab/trunk/Dev-Tools/SE/Prerequirements/Windows_x64/ scilab >log.txt
 if errorlevel 1 exit 1
 
