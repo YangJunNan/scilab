@@ -12,8 +12,7 @@ build windows x64:
     policy: pull
   variables:
       GIT_CLEAN_FLAGS: none
-  script:
-    - call .gitlab-ci\bld.bat
+  script: call .gitlab-ci\bld.bat
 
 # build scilab using a linux runner
 build linux x86_64:
@@ -28,7 +27,7 @@ build linux x86_64:
     policy: pull
   variables:
       GIT_CLEAN_FLAGS: none
-  script: .gitlab-ci/build.sh
+  script: bash -x -e .gitlab-ci/build.sh
   artifacts:
     paths:
       - scilab-branch-${CI_COMMIT_REF_NAME}-${CI_COMMIT_TIMESTAMP}
@@ -44,7 +43,7 @@ build docker:
     policy: pull
   variables:
       GIT_CLEAN_FLAGS: none
-  script: .gitlab-ci/build.sh
+  script: bash -x -e .gitlab-ci/build.sh
   artifacts:
     paths:
       - scilab-branch-${CI_COMMIT_REF_NAME}-${CI_COMMIT_TIMESTAMP}
