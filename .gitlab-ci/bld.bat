@@ -16,7 +16,7 @@ env
 
 REM build with Visual Studio and Intel compilers
 echo on
-devenv.com Scilab.sln /Build Release /Project WScilex /ProjectConfig Release^|x64 /out ..\log.txt
+devenv.com Scilab.sln /Build Release /Project WScilex /ProjectConfig Release^^|x64 /out ..\log.txt
 if errorlevel 1 exit 1
 
 REM Package with innosetups
