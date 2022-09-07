@@ -7,6 +7,7 @@ cd scilab
 
 REM Define environment variables
 call "%VS2017INSTALLDIR%\VC\Auxiliary\Build\vcvarsall.bat" x64
+call "%ONEAPI_ROOT%\setvars.bat" intel64 vs2017
 setx SCILAB_JDK64 %JAVA_HOME%
 env
 
