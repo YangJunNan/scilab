@@ -215,6 +215,7 @@ function  [cor,corinv,links_table,cur_fictitious,sco_mat,ok, IN, OUT, EIN, EOUT]
                     for kk=ki
                         kc=ip(kk)
                         //**  a link is connected to the same sblock on both ends
+                        disp(path, port_type,ip, length(scs_m.objs))
                         if scs_m.objs(kc).to(1)==scs_m.objs(kc).from(1) then
                             //** regular input port
                             if port_type=="pin" then

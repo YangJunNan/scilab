@@ -21,6 +21,8 @@
 #include <unordered_map>
 #include <vector>
 
+#include <double.hxx>
+
 typedef std::vector<unsigned int> link_indices_t;
 template<typename K, typename T>
 using partials_map_t = std::unordered_map<K, T>;
@@ -82,15 +84,101 @@ inline std::string to_string(const partials_links_t& links)
  * Partial information used on GraphicsAdapter
  */
 
-struct partial_port_t
+class partial_port_t
 {
-    typedef std::vector<int> value_type;
+  public:
+    types::Double* pin;
+    types::Double* pout;
+    types::Double* pein;
+    types::Double* peout;
 
-    value_type pin;
-    value_type pout;
-    value_type pein;
-    value_type peout;
-};
+    partial_port_t(types::Double* _pin, types::Double* _pout, types::Double* _pein, types::Double* _peout) : 
+        pin(_pin), pout(_pout), pein(_pein), peout(_peout)
+    {
+        pin->IncreaseRef();
+        pout->IncreaseRef();
+        pein->IncreaseRef();
+        peout->IncreaseRef();
+    };
+
+    partial_port_t() : partial_port_t(types::Double::Empty(), types::Double::Empty(), types::Double::Empty(), types::Double::Empty()) {};
+    partial_port_t(const partial_port_t& other) : partial_port_t(other.pin, other.pout, other.pein, other.peout) {};
+    
+    ~partial_port_t()
+    {
+        pin->DecreaseRef();
+        pin->killMe();
+        pout->DecreaseRef();
+		pout->killMe();
+        pein->DecreaseRef();
+        pein->killMe();
+        peout->DecreaseRef();
+        peout->killMe();
+    };
+
+    partial_port_t(const partial_port_t&& other) noexcept
+    {
+        pin = other.pin;
+        pin->IncreaseRef();
+        pout = other.pout;
+        pout->IncreaseRef();
+        pein = other.pein;
+        pein->IncreaseRef();
+        peout = other.peout;
+        peout->IncreaseRef();
+    };
+
+    partial_port_t& operator=(const partial_port_t& other)
+    {
+        pin->DecreaseRef();
+        pin->killMe();
+        pin = other.pin;
+        pin->IncreaseRef();
+
+        pout->DecreaseRef();
+        pout->killMe();
+        pout = other.pout;
+        pout->IncreaseRef();
+                
+        pein->DecreaseRef();
+		pein->killMe();
+        pein = other.pein;
+        pein->IncreaseRef();
+                
+        peout->DecreaseRef();
+		peout->killMe();
+        peout = other.peout;
+        peout->IncreaseRef();
+		
+		return *this;
+	};
+
+    partial_port_t& operator=(partial_port_t&& other) noexcept
+    {
+        pin->DecreaseRef();
+        pin->killMe();
+        pin = other.pin;
+        pin->IncreaseRef();
+
+        pout->DecreaseRef();
+        pout->killMe();
+        pout = other.pout;
+        pout->IncreaseRef();
+
+        pein->DecreaseRef();
+        pein->killMe();
+        pein = other.pein;
+        pein->IncreaseRef();
+
+        peout->DecreaseRef();
+        peout->killMe();
+        peout = other.peout;
+        peout->IncreaseRef();
+		
+        return *this;
+	};
+}
+;
 
 typedef partials_map_t<ScicosID, partial_port_t> partials_ports_t;
 
@@ -109,6 +197,26 @@ inline std::string to_string(const std::vector<int>& v)
     inner = inner.substr(0, inner.size() - 2);
 
     return "[ " + inner + " ]";
+};
+
+inline std::string to_string(const types::Double* value)
+{
+    int len = value->getSize();
+    double* data = value->get();
+
+    std::string str;
+
+    str += "[";
+    if (len > 0)
+        str += std::to_string((int)*data);
+    for (int i = 1; i < len; ++i)
+    {
+        str += ", ";
+        str += std::to_string((int)data[i]);
+    }
+    str += "]";
+
+    return str;
 };
 
 inline std::string to_string(const partial_port_t& ports)

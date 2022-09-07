@@ -20,6 +20,7 @@
 #include <vector>
 
 #include "internal.hxx"
+#include "double.hxx"
 
 #include "BaseAdapter.hxx"
 #include "adapters_utilities.hxx"

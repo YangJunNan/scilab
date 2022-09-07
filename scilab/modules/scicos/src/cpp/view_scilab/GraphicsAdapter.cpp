@@ -43,6 +43,11 @@ extern "C" {
 #include "sci_malloc.h"
 }
 
+
+
+// shared informations for relinking across adapters hierarchy
+partials_ports_t partial_ports;
+
 namespace org_scilab_modules_scicos
 {
 namespace view_scilab
@@ -61,9 +66,6 @@ const std::wstring paramv(L"paramv");
 const std::wstring pprop(L"pprop");
 const std::wstring nameF(L"nameF");
 const std::wstring funtxt(L"funtxt");
-
-// shared informations for relinking across adapters hierarchy
-partials_ports_t partial_ports;
 
 struct orig
 {
@@ -198,7 +200,7 @@ struct exprs
     }
 };
 
-void cached_ports_init(partial_port_t::value_type& cache, model::Block* adaptee, const object_properties_t port_kind, const Controller& controller)
+void cached_ports_init(types::Double* cache, model::Block* adaptee, const object_properties_t port_kind, const Controller& controller)
 {
     std::vector<ScicosID> ids;
     controller.getObjectProperty(adaptee, port_kind, ids);
@@ -220,7 +222,7 @@ void cached_ports_init(partial_port_t::value_type& cache, model::Block* adaptee,
         controller.getObjectProperty(parentBlock, BLOCK, CHILDREN, children);
     }
 
-    cache.resize(ids.size());
+    cache->resize(1, ids.size());
     // foreach ports, resolve it or discard
     int i = 0;
     for (std::vector<ScicosID>::iterator it = ids.begin(); it != ids.end(); ++it, ++i)
@@ -251,57 +253,54 @@ void cached_ports_init(partial_port_t::value_type& cache, model::Block* adaptee,
 
 types::InternalType* cached_ports_get(const GraphicsAdapter& adaptor, const object_properties_t port_kind, const Controller& controller)
 {
-    auto it = partial_ports.find(adaptor.getAdaptee()->id());
+    types::Double* ports;
+    
+    auto& it = partial_ports.find(adaptor.getAdaptee()->id());
     if (it == partial_ports.end())
     {
-        return get_ports_property<GraphicsAdapter, CONNECTED_SIGNALS>(adaptor, port_kind, controller);
+        // recreate cache if non existant
+        partial_port_t cache(
+            get_ports_property<GraphicsAdapter, CONNECTED_SIGNALS>(adaptor, INPUTS, controller)->getAs<types::Double>(),
+            get_ports_property<GraphicsAdapter, CONNECTED_SIGNALS>(adaptor, OUTPUTS, controller)->getAs<types::Double>(),
+            get_ports_property<GraphicsAdapter, CONNECTED_SIGNALS>(adaptor, EVENT_INPUTS, controller)->getAs<types::Double>(),
+            get_ports_property<GraphicsAdapter, CONNECTED_SIGNALS>(adaptor, EVENT_OUTPUTS, controller)->getAs<types::Double>());
+        it = partial_ports.insert(it, {adaptor.getAdaptee()->id(), std::move(cache)});
     }
 
-    std::vector<int>* pPorts;
     switch (port_kind)
     {
         case INPUTS:
-            pPorts = &it->second.pin;
+            ports = it->second.pin;
             break;
         case OUTPUTS:
-            pPorts = &it->second.pout;
+            ports = it->second.pout;
             break;
         case EVENT_INPUTS:
-            pPorts = &it->second.pein;
+            ports = it->second.pein;
             break;
         case EVENT_OUTPUTS:
-            pPorts = &it->second.peout;
+            ports = it->second.peout;
             break;
         default:
             return nullptr;
     }
-    std::vector<int> const& ports = *pPorts;
 
-    double* data;
-    types::Double* ret = new types::Double(static_cast<int>(ports.size()), 1, &data);
-
-    std::transform(ports.begin(), ports.end(), data, [](int p)
-    {
-        return p;
-    });
-
-    return ret;
+    return ports;
 }
+
 bool cached_ports_set(GraphicsAdapter& adaptor, const object_properties_t port_kind, Controller& controller, types::InternalType* v)
 {
-    auto it = partial_ports.find(adaptor.getAdaptee()->id());
+    auto& it = partial_ports.find(adaptor.getAdaptee()->id());
     if (it == partial_ports.end())
     {
-        bool status = update_ports_property<GraphicsAdapter, CONNECTED_SIGNALS>(adaptor, port_kind, controller, v);
-        if (status)
-        {
-            return status;
-        }
-        else
-        {
-            // allocate partial information and continue
-            it = partial_ports.insert({adaptor.getAdaptee()->id(), {}}).first;
-        }
+        // allocate partial information and continue
+        // recreate cache if non existant
+        partial_port_t cache(
+            get_ports_property<GraphicsAdapter, CONNECTED_SIGNALS>(adaptor, INPUTS, controller)->getAs<types::Double>(),
+            get_ports_property<GraphicsAdapter, CONNECTED_SIGNALS>(adaptor, INPUTS, controller)->getAs<types::Double>(),
+            get_ports_property<GraphicsAdapter, CONNECTED_SIGNALS>(adaptor, INPUTS, controller)->getAs<types::Double>(),
+            get_ports_property<GraphicsAdapter, CONNECTED_SIGNALS>(adaptor, INPUTS, controller)->getAs<types::Double>());
+        it = partial_ports.insert(it, {adaptor.getAdaptee()->id(), std::move(cache)});
     }
 
     if (v->getType() != types::InternalType::ScilabDouble)
@@ -309,84 +308,35 @@ bool cached_ports_set(GraphicsAdapter& adaptor, const object_properties_t port_k
         return false;
     }
     types::Double* value = v->getAs<types::Double>();
-    std::vector<int>* pPorts;
+    types::Double** ports = nullptr;
     switch (port_kind)
     {
         case INPUTS:
-            pPorts = &it->second.pin;
+            ports = &it->second.pin;
             break;
         case OUTPUTS:
-            pPorts = &it->second.pout;
+            ports = &it->second.pout;
             break;
         case EVENT_INPUTS:
-            pPorts = &it->second.pein;
+            ports = &it->second.pein;
             break;
         case EVENT_OUTPUTS:
-            pPorts = &it->second.peout;
+            ports = &it->second.peout;
             break;
         default:
             return false;
     }
-    std::vector<int>& ports = *pPorts;
 
     // store the updated value locally
     {
-        ports.resize(value->getSize());
-        for (int i = 0; i < value->getSize(); ++i)
-        {
-            ports[i] = static_cast<int>(value->get(i));
-        }
+        (*ports)->DecreaseRef();
+        (*ports)->killMe();
+        *ports = value;
+        (*ports)->IncreaseRef();
     }
 
     // enforce the same number of port on the Model
-    {
-        std::vector<ScicosID> objects;
-        controller.getObjectProperty(adaptor.getAdaptee(), port_kind, objects);
-
-        if (ports.size() < objects.size())
-        {
-            // remove existing ports
-            for (size_t i = ports.size(); i < objects.size(); ++i)
-            {
-                ScicosID p = objects[i];
-
-                ScicosID signal;
-                controller.getObjectProperty(p, PORT, CONNECTED_SIGNALS, signal);
-                if (signal != ScicosID())
-                {
-                    model::Link* link = controller.getBaseObject<model::Link>(signal);
-                    ScicosID opposite;
-                    controller.getObjectProperty(link, DESTINATION_PORT, opposite);
-                    if (opposite == p)
-                    {
-                        controller.setObjectProperty(link, DESTINATION_PORT, ScicosID());
-                    }
-                    controller.getObjectProperty(link, SOURCE_PORT, opposite);
-                    if (opposite == p)
-                    {
-                        controller.setObjectProperty(link, SOURCE_PORT, ScicosID());
-                    }
-                }
-                controller.deleteObject(p);
-            }
-            objects.resize(ports.size());
-        }
-        else
-        {
-            // add missing ports
-            for (size_t i = objects.size(); i < ports.size(); ++i)
-            {
-                model::Port* p = controller.createBaseObject<model::Port>(PORT);
-
-                controller.setObjectProperty(p, SOURCE_BLOCK, adaptor.getAdaptee()->id());
-                controller.setObjectProperty(p, PORT_KIND, port_from_property(port_kind));
-
-                objects.push_back(p->id());
-            }
-        }
-        controller.setObjectProperty(adaptor.getAdaptee(), port_kind, objects);
-    }
-    return true;
+    return update_ports_property<GraphicsAdapter, CONNECTED_SIGNALS>(adaptor, port_kind, controller, value);
 }
 
 struct pin
@@ -730,21 +680,21 @@ void GraphicsAdapter::setGrIContent(types::InternalType* v)
     temp->killMe();
 }
 
-static void relink_cached(Controller& controller, model::BaseObject* adaptee, const std::vector<ScicosID>& children, partial_port_t::value_type& cached_information, object_properties_t p, const partials_ports_t::iterator& it)
+static void relink_cached(Controller& controller, model::BaseObject* adaptee, const std::vector<ScicosID>& children, types::Double* cached_information, object_properties_t p, const partials_ports_t::iterator& it)
 {
     std::vector<ScicosID> ports;
     controller.getObjectProperty(adaptee, p, ports);
 
-    if (cached_information.size() != ports.size())
+    if (cached_information->getSize() != ports.size())
     {
         // defensive programming: unable to relink as something goes wrong on the adapters
         return;
     }
 
-    for (size_t i = 0; i < cached_information.size(); ++i)
+    for (size_t i = 0; i < cached_information->getSize(); ++i)
     {
         // relink
-        int index = cached_information[i];
+        int index = static_cast<int>(cached_information->get(i));
         if (0 < index && index <= children.size())
         {
             // common case: relink to a pre-connected block
@@ -826,14 +776,16 @@ void GraphicsAdapter::relink(Controller& controller, model::Block* adaptee, cons
 }
 
 static bool incorrectly_connected(Controller& controller, model::Port* port,
-                                  partial_port_t::value_type& graphics_port,
+                                  types::Double* graphics_port,
                                   const std::vector<ScicosID>& children)
 {
     ScicosID signal;
     controller.getObjectProperty(port, CONNECTED_SIGNALS,
                                  signal);
-    for (int idx : graphics_port)
+    for (int i = 0; i < graphics_port->getSize(); ++i)
     {
+        int idx = (int) graphics_port->get(i);
+
         if (0 > idx || idx >= children.size())
         {
             return true;
@@ -923,9 +875,9 @@ void GraphicsAdapter::reverse_relink(Controller& controller, model::Link* adapte
             std::vector<ScicosID> ports;
             controller.getObjectProperty(source_parent, BLOCK, EVENT_OUTPUTS, ports);
             int port_index = (int)std::distance(ports.begin(), std::find(ports.begin(), ports.end(), source));
-            if (port_index < source_it->second.peout.size())
+            if (port_index < source_it->second.peout->getSize())
             {
-                source_it->second.peout[port_index] = index + 1;
+                source_it->second.peout->set(port_index, index + 1);
             }
         }
         else // model::regular || model::implicit
@@ -933,14 +885,14 @@ void GraphicsAdapter::reverse_relink(Controller& controller, model::Link* adapte
             std::vector<ScicosID> ports;
             controller.getObjectProperty(source_parent, BLOCK, OUTPUTS, ports);
             int port_index = (int)std::distance(ports.begin(), std::find(ports.begin(), ports.end(), source));
-            if (port_index < source_it->second.pout.size()) // regular indexing
+            if (port_index < source_it->second.pout->getSize()) // regular indexing
             {
-                source_it->second.pout[port_index] = index + 1;
+                source_it->second.pout->set(port_index, index + 1);
             }
             else if (linkType == model::implicit &&
-                     port_index < source_it->second.pin.size()) // second try for implicit reversed link
+                     port_index < source_it->second.pin->getSize()) // second try for implicit reversed link
             {
-                source_it->second.pin[port_index] = index + 1;
+                source_it->second.pin->set(port_index, index + 1);
             }
         }
     }
@@ -953,9 +905,9 @@ void GraphicsAdapter::reverse_relink(Controller& controller, model::Link* adapte
             std::vector<ScicosID> ports;
             controller.getObjectProperty(destination_parent, BLOCK, EVENT_INPUTS, ports);
             int port_index = (int)std::distance(ports.begin(), std::find(ports.begin(), ports.end(), destination));
-            if (port_index < destination_it->second.pein.size())
+            if (port_index < destination_it->second.pein->getSize())
             {
-                destination_it->second.pein[port_index] = index + 1;
+                destination_it->second.pein->set(port_index, index + 1);
             }
         }
         else // model::regular || model::implicit
@@ -963,14 +915,14 @@ void GraphicsAdapter::reverse_relink(Controller& controller, model::Link* adapte
             std::vector<ScicosID> ports;
             controller.getObjectProperty(destination_parent, BLOCK, INPUTS, ports);
             int port_index = (int)std::distance(ports.begin(), std::find(ports.begin(), ports.end(), destination));
-            if (port_index < destination_it->second.pin.size()) // regular indexing
+            if (port_index < destination_it->second.pin->getSize()) // regular indexing
             {
-                destination_it->second.pin[port_index] = index + 1;
+                destination_it->second.pin->set(port_index, index + 1);
             }
             else if (linkType == model::implicit &&
-                     port_index < destination_it->second.pout.size()) // second try for implicit reversed link
+                     port_index < destination_it->second.pout->getSize()) // second try for implicit reversed link
             {
-                destination_it->second.pout[port_index] = index + 1;
+                destination_it->second.pout->set(port_index, index + 1);
             }
         }
     }
@@ -986,24 +938,24 @@ inline std::ptrdiff_t indexof(const std::vector<int>& vec, int value)
     return std::distance(vec.begin(), std::find(vec.begin(), vec.end(), value));
 }
 
-static void resolve_ports(Controller& controller, model::Block* block, const object_properties_t port_kind, std::vector<int>& resolved, const std::vector<ScicosID>& children)
+static void resolve_ports(Controller& controller, model::Block* block, const object_properties_t port_kind, types::Double* resolved, const std::vector<ScicosID>& children)
 {
     std::vector<ScicosID> ports;
     controller.getObjectProperty(block, port_kind, ports);
 
-    resolved.resize(ports.size());
+    resolved->resize(1, ports.size());
     for (size_t i = 0; i < ports.size(); ++i)
     {
         ScicosID link;
         controller.getObjectProperty(ports[i], PORT, CONNECTED_SIGNALS, link);
         if (link == ScicosID())
         {
-            resolved[i] = 0;
+            resolved->set(i, 0);
         }
         else
         {
             auto found = std::find(children.begin(), children.end(), link);
-            resolved[i] = std::distance(children.begin(), found) + 1;
+            resolved->set(i, std::distance(children.begin(), found) + 1);
         }
     }
 }
@@ -1013,7 +965,8 @@ void GraphicsAdapter::add_partial_links_information(Controller& controller, Scic
     auto it = partial_ports.find(original);
     if (it != partial_ports.end())
     {
-        partial_ports.insert(std::make_pair(cloned, it->second));
+        partial_port_t cache(it->second);
+        partial_ports.insert({cloned, std::move(cache)});
     }
     else
     {
@@ -1042,36 +995,40 @@ void GraphicsAdapter::add_partial_links_information(Controller& controller, Scic
         resolve_ports(controller, block, EVENT_INPUTS, removed_interface.pein, children);
         resolve_ports(controller, block, EVENT_OUTPUTS, removed_interface.peout, children);
 
-        partial_ports.insert(std::make_pair(cloned, removed_interface));
+        partial_ports.insert({cloned, std::move(removed_interface)});
     }
 }
 
 static bool connected(const partial_port_t& p)
 {
-    for (int idx : p.pin)
+    types::Double* ports = p.pin;
+    for (int i = 0; i < ports->getSize(); i++)
     {
-        if (idx == 0)
+        if (ports->get(i) == 0)
         {
             return false;
         }
     }
-    for (int idx : p.pout)
+    ports = p.pout;
+    for (int i = 0; i < ports->getSize(); i++)
     {
-        if (idx == 0)
+        if (ports->get(i) == 0)
         {
             return false;
         }
     }
-    for (int idx : p.pein)
+    ports = p.pein;
+    for (int i = 0; i < ports->getSize(); i++)
     {
-        if (idx == 0)
+        if (ports->get(i) == 0)
         {
             return false;
         }
     }
-    for (int idx : p.peout)
+    ports = p.peout;
+    for (int i = 0; i < ports->getSize(); i++)
     {
-        if (idx == 0)
+        if (ports->get(i) == 0)
         {
             return false;
         }
@@ -1082,10 +1039,10 @@ static bool connected(const partial_port_t& p)
 
 static bool compatible(const partial_port_t& added, const partial_port_t& removed)
 {
-    return added.pin.size() == removed.pin.size() &&
-           added.pout.size() == removed.pout.size() &&
-           added.pein.size() == removed.pein.size() &&
-           added.peout.size() == removed.peout.size();
+    return added.pin->getSize() == removed.pin->getSize() &&
+           added.pout->getSize() == removed.pout->getSize() &&
+           added.pein->getSize() == removed.pein->getSize() &&
+           added.peout->getSize() == removed.peout->getSize();
 }
 
 // manage partial information before a model delete

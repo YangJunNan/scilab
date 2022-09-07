@@ -595,7 +595,7 @@ bool update_ports_property(const Adaptor& adaptor, const object_properties_t por
         // Adding to a superblock
         controller.getObjectProperty(parentBlock, BLOCK, CHILDREN, children);
     }
-    else
+    else if (parentDiagram != ScicosID())
     {
         // Adding to a diagram
         controller.getObjectProperty(parentDiagram, DIAGRAM, CHILDREN, children);
