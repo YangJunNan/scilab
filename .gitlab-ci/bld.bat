@@ -1,6 +1,6 @@
 REM Builder script for building Scilab on Windows
 
-svn checkout --username anonymous --password Scilab svn://svn.scilab.org/scilab/trunk/Dev-Tools/SE/Prerequirements/Windows_x64/ scilab
+svn checkout --username anonymous --password Scilab svn://svn.scilab.org/scilab/trunk/Dev-Tools/SE/Prerequirements/Windows_x64/ scilab >log.txt
 if errorlevel 1 exit 1
 
 cd scilab
@@ -11,7 +11,7 @@ setx SCILAB_JDK64 %JAVA_HOME%
 env
 
 REM build with Visual Studio and Intel compilers
-devenv Scilab.sln /Build Release /Project WScilex /ProjectConfig "Release|x64" /out build.log
+devenv.com Scilab.sln /Build Release /Project WScilex /ProjectConfig "Release|x64" /out log.txt
 if errorlevel 1 exit 1
 
 REM Package with innosetups
