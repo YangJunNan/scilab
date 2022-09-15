@@ -16,9 +16,7 @@
     <refsynopsisdiv>
         <title>Syntax</title>
         <synopsis>
-            <synopsis>
                 ... = solver( ... , linearSolver = linSol, precType = side, precBand = [mu,ml])
-            </synopsis>
         </synopsis>
     </refsynopsisdiv>
     <refsection role="description">
@@ -44,13 +42,13 @@
                         <td>linearSolver</td>
                         <td>    
                             <para>The linear solver given as a string:
-                                <ul>
-                                    <li>"CG" : Conjugate Gradient (system matrix must be symmetric)</li>
-                                    <li>"BCGS" : Stabilized Bi-Conjugate Gradient</li>
-                                    <li>"FGMR" : Flexible Generalized Minimum Residual</li>
-                                    <li>"GMR" : Generalized Minimum Residual</li>
-                                    <li>"TFQMR" : Transpose-Free Qusi-Minimum Residual</li>
-                                </ul>
+                                <itemizedlist>
+                                    <listitem>"CG" : Conjugate Gradient (system matrix must be symmetric)</listitem>
+                                    <listitem>"BCGS" : Stabilized Bi-Conjugate Gradient</listitem>
+                                    <listitem>"FGMR" : Flexible Generalized Minimum Residual</listitem>
+                                    <listitem>"GMR" : Generalized Minimum Residual</listitem>
+                                    <listitem>"TFQMR" : Transpose-Free Qusi-Minimum Residual</listitem>
+                                </itemizedlist>
                             </para>
                         </td>
                     </tr>
@@ -74,7 +72,7 @@
                     </tr>
                 </tbody>
             </informaltable>
-        <para>
+        </para>
     </refsection>
 
     <refsection role="example">

@@ -282,7 +282,7 @@
             If splitting of the right hand side is necessary and the stiff component is given with the <literal>stiffRhs</literal> option, the default method is a combined order 4 implicit/explicit method (ARK436L2SA_DIRK_6_3_4 and ARK436L2SA_ERK_6_3_4) with identifier ARK or ARK_4.
         </para>
         <para>
-            If you need an custom ERK, DIRK or ARK method see the next section.
+            If you need a custom ERK, DIRK or ARK method see the next section.
         </para>
         <para>
             <informaltable border='1'>
@@ -440,6 +440,16 @@
                     \hline q &amp; b \\
                     \hline p &amp; d
                     \end{array}\right)</latex>
+                    <!-- <latex style="display">\left(\begin{array}{c|ccccc}
+                        \\
+                        \\
+                        c &amp; &amp; &amp; A &amp; &amp;\\
+                        \\
+                        \\
+                        \hline q &amp; &amp; &amp; b &amp; &amp;\\
+                               p &amp; &amp; &amp; d &amp; &amp;
+                        \end{array}\right)</latex>
+                     -->
         </para>
         <para>
             A is a matrix of size (s,s), c a column vector of length s, b and d are row vectors of length s, the coefficients of the main and the embedded method, 
