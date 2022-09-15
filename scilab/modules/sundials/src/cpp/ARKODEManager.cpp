@@ -112,6 +112,11 @@ void ARKODEManager::parseMethodAndOrder(types::optional_list &opt)
             m_odeIsExtension ? m_prevManager->m_iNonZeros[MASS] : -1, {0, m_iNbEq*m_iNbEq});
     }
 
+    // Parse fixed step option. 0 falls back to adaptive stepsize
+    // Fixed step allows to use RK method without embedded methods hence without error control
+    getDoubleInPlist(m_wstrCaller.c_str(), opt, L"fixedStep", &m_dblFixedStep,
+        m_odeIsExtension ? m_prevManager->m_dblFixedStep : 0, {0, std::numeric_limits<double>::infinity()});
+
     // User Butcher tableau
     if (m_odeIsExtension)
     {
@@ -133,9 +138,14 @@ void ARKODEManager::parseMethodAndOrder(types::optional_list &opt)
                 sprintf(errorMsg, _("arkode: both ERKButcherTableau and DIRKButcherTableau must be set in imEx mode.\n"));
                 throw ast::InternalError(errorMsg);
             }
-            ARKodeButcherTable_CheckARKOrder(m_DIRKButcherTable, m_ERKButcherTable, &m_iMethodOrder , &m_iEmbeddedMethodOrder, NULL);
+            ARKodeButcherTable_CheckARKOrder(m_DIRKButcherTable, m_ERKButcherTable, &m_iEmbeddedMethodOrder, &m_iMethodOrder, NULL);
             std::wstringstream wss;
-            wss << L"USER_ARK_" << m_ERKButcherTable->stages << L"_" << m_iMethodOrder << L"_" << m_iEmbeddedMethodOrder;
+            wss << L"USER_ARK_" << m_ERKButcherTable->stages;
+            if (m_iEmbeddedMethodOrder > 0)
+            {
+                wss << L"_" << m_iEmbeddedMethodOrder;
+            } 
+            wss << L"_" << m_iMethodOrder;
             m_wstrMethod.assign(wss.str()); 
         }
         else if (m_ERKButcherTable != NULL && m_DIRKButcherTable != NULL)
@@ -146,13 +156,23 @@ void ARKODEManager::parseMethodAndOrder(types::optional_list &opt)
         std::wstringstream wss;
         if (m_ERKButcherTable != NULL)
         {
-            wss << L"USER_ERK_" << m_ERKButcherTable->stages << L"_" << m_ERKButcherTable->p << L"_" << m_ERKButcherTable->q;
+            wss << L"USER_ERK_" << m_ERKButcherTable->stages;
+            if (m_ERKButcherTable->p > 0)
+            {
+                wss << L"_" << m_ERKButcherTable->p;
+            }
+            wss  << L"_" << m_ERKButcherTable->q;
             m_iMethodOrder = m_ERKButcherTable->q;
             m_iEmbeddedMethodOrder = m_ERKButcherTable->p;
         }
         if (m_DIRKButcherTable != NULL)
         {
-            wss << L"USER_DIRK_" << m_DIRKButcherTable->stages << L"_" << m_DIRKButcherTable->p << L"_" << m_DIRKButcherTable->q;            
+            wss << L"USER_DIRK_" << m_DIRKButcherTable->stages;
+            if (m_DIRKButcherTable->p > 0)
+            {
+                wss << L"_" << m_DIRKButcherTable->p;
+            }
+            wss << L"_" << m_DIRKButcherTable->p << L"_" << m_DIRKButcherTable->q;            
             m_iMethodOrder = m_DIRKButcherTable->q;
             m_iEmbeddedMethodOrder = m_DIRKButcherTable->p;
         }
@@ -219,29 +239,42 @@ void ARKODEManager::getButcherTableInPlist(const wchar_t * _pwstCaller, types::o
 
         int iStages = pDbl->getCols()-1;
         // Check if table size is these of a Butcher table with embedded method
-        if (iStages < 1 || pDbl->getRows() != iStages+2)
+        if (iStages < 1 || (pDbl->getRows() != iStages+2 && pDbl->getRows() != iStages+1))
         {
-            sprintf(errorMsg, _("%ls: wrong size for parameter \"%ls\": size should be (s+2,s+1), where s is the number of stages.\n"), _pwstCaller, _pwstLabel);
+            sprintf(errorMsg, _("%ls: wrong size for parameter \"%ls\": size should be (s+2,s+1) or (s+1,s+1), where s is the number of method stages.\n"), _pwstCaller, _pwstLabel);
             throw ast::InternalError(errorMsg);
         }
+
+        if (m_dblFixedStep == 0 && pDbl->getRows() == iStages+1)
+        {
+            sprintf(errorMsg, _("%ls: wrong size (%d,%d) for parameter \"%ls\". Whitout an embedded method ""fixedStep"" option must be set with a positive value.\n"), _pwstCaller, pDbl->getRows(), pDbl->getCols(), _pwstLabel);
+            throw ast::InternalError(errorMsg);            
+        }
+        
         double *pdblA = new double[iStages*iStages];
         double *pdblb = new double[iStages];
         double *pdblc = new double[iStages];
-        double *pdbld = new double[iStages];
-        int q,p;
+        // pdbld is NULL if no embedded method
+        double *pdbld = pDbl->getRows() == iStages+2 ? new double[iStages] : NULL;
+        int q;
+        int p;
 
         for (int i=0; i<iStages; i++)
         {
             pdblc[i] = pDbl->get(i,0);
             pdblb[i] = pDbl->get(iStages,i+1);
-            pdbld[i] = pDbl->get(iStages+1,i+1);
+            if (pdbld != NULL)
+            {
+                pdbld[i] = pDbl->get(iStages+1,i+1);
+            }
             for (int j=0; j<iStages; j++)
             {
                 pdblA[j+i*iStages] = pDbl->get(i,j+1);
             }
         }
         q = pDbl->get(iStages,0);
-        p = pDbl->get(iStages+1,0);
+        // p is 0 if no embedded method
+        p = pdbld != NULL ? pDbl->get(iStages+1,0) : 0;
         butcherTable = ARKodeButcherTable_Create(iStages, q, p, pdblc, pdblA, pdblb, pdbld);
         if (butcherTable == NULL)
         {
@@ -265,7 +298,10 @@ void ARKODEManager::getButcherTableInPlist(const wchar_t * _pwstCaller, types::o
         delete[] pdblA;
         delete[] pdblb;
         delete[] pdblc;
-        delete[] pdbld;
+        if (pdbld != NULL)
+        {
+            delete[] pdbld;
+        }
     }
     else
     {
@@ -280,6 +316,11 @@ void ARKODEManager::getButcherTableInPlist(const wchar_t * _pwstCaller, types::o
 
 bool ARKODEManager::initialize(char *errorMsg)
 {
+    if (ARKStepSetFixedStep(m_prob_mem, m_dblFixedStep) != ARK_SUCCESS)
+    {
+        sprintf(errorMsg, "ARKStepSetFixedStep error");
+        return true;                
+    };
     if (ARKStepSetTables(m_prob_mem, m_iMethodOrder, m_iEmbeddedMethodOrder, m_DIRKButcherTable, m_ERKButcherTable) != ARK_SUCCESS)
     {
         sprintf(errorMsg, "ARKStepSetTables error");

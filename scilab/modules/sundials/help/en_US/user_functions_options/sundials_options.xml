@@ -301,7 +301,15 @@
                     <tr>
                         <td>ERKButcherTableau, DIRKButcherTableau</td>
                         <td>    
-                            <para>A matrix of size (s+1,s+2) where s is the number of stages of the method. See the paragraph about custom tableaux in the <link linkend="arkode_custom_tableaux">arkode help page</link>.</para>
+                            <para>A matrix of size (s+2,s+1) or (s+1,s+1) where s is the number of stages of the method. See the paragraph about custom tableaux in the <link linkend="arkode_custom_tableaux">arkode help page</link>.</para>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>fixedStep</td>
+                        <td>    
+                            <para>A positive number giving the fixed step value when adaptive stepping is to be disabled. Be warned that
+                                with a fixed step no error control occurs hence the computed solution may be very inaccurate.
+                            </para>
                         </td>
                     </tr>
                     <tr>

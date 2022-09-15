@@ -431,7 +431,7 @@
     <refsection role="description" xml:id="arkode_custom_tableaux">
         <title>Using custom Butcher tableaux</title>
         <para>
-            The ERKButcherTableau and/or DIRKButcherTableau options allow to specify custom Butcher tableaux, under the form of a matrix of size (s+1,s+2) 
+            The ERKButcherTableau and/or DIRKButcherTableau options allow to specify custom Butcher tableaux, under the form of a matrix of size (s+1,s+2) or (s+1,s+1)
             where s is the number of stages of the method :
         </para>
         <para>
@@ -439,26 +439,34 @@
                     c &amp; A \\
                     \hline q &amp; b \\
                     \hline p &amp; d
+                    \end{array}\right) \quad \mbox{or} \quad\left(\begin{array}{c|c}
+                    c &amp; A \\
+                    \hline q &amp; b
                     \end{array}\right)</latex>
-                    <!-- <latex style="display">\left(\begin{array}{c|ccccc}
-                        \\
-                        \\
-                        c &amp; &amp; &amp; A &amp; &amp;\\
-                        \\
-                        \\
-                        \hline q &amp; &amp; &amp; b &amp; &amp;\\
-                               p &amp; &amp; &amp; d &amp; &amp;
-                        \end{array}\right)</latex>
-                     -->
         </para>
         <para>
             A is a matrix of size (s,s), c a column vector of length s, b and d are row vectors of length s, the coefficients of the main and the embedded method, 
-            of respective orders q and p. The claimed orders and the structure of A are checked before initialization of the solver: only explicit 
+            of respective orders q and p. When there is no embedded method (above matrix on the right) the overall matrix has size (s+1,s+1) and
+            adaptive stepping is disabled, hence the option <literal>fixedStep</literal> must be set to the value of the chosen fixed step. Please note that 
+            with a fixed step no error control occurs hence the computed solution may be very inaccurate.
+        </para>
+        <para>
+            The claimed orders and the structure of A are checked before initialization of the solver: only explicit 
             or diagonally implicit methods are accepted (although the order check allows fully implicit methods). Both options can be used to build a custom additive imEx method, 
             in that case the overall method order can be less than individual ERK/DIRK methods and can be checked in the the arkode solution output.
         </para>
         <para>
-             For example, the embedded explicit Heun-Euler method can be specified like this:
+             The explicit Euler and implicit Euler method with fixed step (mandatory in that case) can be specified by:
+        </para>
+        <para>
+        <programlisting role="example"><![CDATA[
+            s1 = arkode(%SUN_vdp1,[0 1],[2;1],ERKButcherTableau=[0 0;1 1],fixedStep=0.01);
+            s2 = arkode(%SUN_vdp1,[0 1],[2;1],DIRKButcherTableau=[1 1;1 1],fixedStep=0.01);
+            ]]>
+        </programlisting>
+        </para>
+        <para>
+             The embedded explicit Heun-Euler method can be specified like this,
         </para>
         <para>
         <programlisting role="example"><![CDATA[
@@ -468,12 +476,12 @@
             d = [1 0];
             q = 2;
             p = 1;
-            s = arkode(%SUN_vdp1,1:10,[2;1],ERKButcherTableau=[c A;q b;p d]);
+            s = arkode(%SUN_vdp1,[0 10],[2;1],ERKButcherTableau=[c A;q b;p d]);
             ]]>
         </programlisting>
         </para>
         <para>
-             For example, the implicit trapezoidal rule with implicit Euler embedding can be specified like this:
+             and the implicit trapezoidal rule with implicit Euler embedding has the following tableau
         </para>
         <para>
             <programlisting role="example"><![CDATA[
@@ -483,7 +491,7 @@
                 d = [1 0];
                 q = 2;
                 p = 1;
-                s = arkode(%SUN_vdp1,1:10,[2;1],DIRKButcherTableau=[c A;q b;p d]);
+                s = arkode(%SUN_vdp1,[0 10],[2;1],DIRKButcherTableau=[c A;q b;p d]);
                 ]]>
             </programlisting>
         </para>
@@ -493,9 +501,9 @@
         </para>
         <para>
             <programlisting role="example"><![CDATA[
-                s1 = arkode(%SUN_vdp1,1:10,[2;1],ERKButcherTableau = %SUN_Tsitouras5());
-                s2 = arkode(%SUN_vdp1,1:10,[2;1],ERKButcherTableau = %SUN_DormandPrince6());
-                s3 = arkode(%SUN_vdp1,1:10,[2;1],ERKButcherTableau = %SUN_DormandPrince8());
+                s1 = arkode(%SUN_vdp1,[0 10],[2;1],ERKButcherTableau = %SUN_Tsitouras5());
+                s2 = arkode(%SUN_vdp1,[0 10],[2;1],ERKButcherTableau = %SUN_DormandPrince6());
+                s3 = arkode(%SUN_vdp1,[0 10],[2;1],ERKButcherTableau = %SUN_DormandPrince8());
                 ]]>
             </programlisting>
         </para>
