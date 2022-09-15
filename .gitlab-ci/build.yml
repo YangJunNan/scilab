@@ -15,6 +15,7 @@ build windows x64:
   script: call .gitlab-ci\bld.bat
   artifacts:
     paths:
+      - scilab-branch-${CI_COMMIT_BRANCH}-${CI_COMMIT_TIMESTAMP}.exe
       - scilab\log.txt
 
 
@@ -34,7 +35,7 @@ build linux x86_64:
   script: bash -x -e .gitlab-ci/build.sh
   artifacts:
     paths:
-      - scilab-branch-${CI_COMMIT_REF_NAME}-${CI_COMMIT_TIMESTAMP}
+      - scilab-branch-${CI_COMMIT_BRANCH}-${CI_COMMIT_TIMESTAMP}.tar.gz
       - scilab/log.txt
 
 
