@@ -282,6 +282,9 @@
             If splitting of the right hand side is necessary and the stiff component is given with the <literal>stiffRhs</literal> option, the default method is a combined order 4 implicit/explicit method (ARK436L2SA_DIRK_6_3_4 and ARK436L2SA_ERK_6_3_4) with identifier ARK or ARK_4.
         </para>
         <para>
+            If you need an custom ERK, DIRK or ARK method see the next section.
+        </para>
+        <para>
             <informaltable border='1'>
               <tbody>
                   <tr>
@@ -425,6 +428,69 @@
         </para>
     </refsection>
 
+    <refsection role="description" xml:id="arkode_custom_tableaux">
+        <title>Using custom Butcher tableaux</title>
+        <para>
+            The ERKButcherTableau and/or DIRKButcherTableau options allow to specify custom Butcher tableaux, under the form of a matrix of size (s+1,s+2) 
+            where s is the number of stages of the method :
+        </para>
+        <para>
+                <latex style="display">\left(\begin{array}{c|c}
+                    c &amp; A \\
+                    \hline q &amp; b \\
+                    \hline p &amp; d
+                    \end{array}\right)</latex>
+        </para>
+        <para>
+            A is a matrix of size (s,s), c a column vector of length s, b and d are row vectors of length s, the coefficients of the main and the embedded method, 
+            of respective orders q and p. The claimed orders and the structure of A are checked before initialization of the solver: only explicit 
+            or diagonally implicit methods are accepted (although the order check allows fully implicit methods). Both options can be used to build a custom additive imEx method, 
+            in that case the overall method order can be less than individual ERK/DIRK methods and can be checked in the the arkode solution output.
+        </para>
+        <para>
+             For example, the embedded explicit Heun-Euler method can be specified like this:
+        </para>
+        <para>
+        <programlisting role="example"><![CDATA[
+            A = [0 0; 1 0];
+            c = [0; 1];
+            b = [0.5 0.5];
+            d = [1 0];
+            q = 2;
+            p = 1;
+            s = arkode(%SUN_vdp1,1:10,[2;1],ERKButcherTableau=[c A;q b;p d]);
+            ]]>
+        </programlisting>
+        </para>
+        <para>
+             For example, the implicit trapezoidal rule with implicit Euler embedding can be specified like this:
+        </para>
+        <para>
+            <programlisting role="example"><![CDATA[
+                A = [1 0; -1 1];
+                c = [1; 0];
+                b = [0.5 0.5];
+                d = [1 0];
+                q = 2;
+                p = 1;
+                s = arkode(%SUN_vdp1,1:10,[2;1],DIRKButcherTableau=[c A;q b;p d]);
+                ]]>
+            </programlisting>
+        </para>
+        <para>
+            The SUNDIALS module also provides functions <literal>%SUN_Tsitouras5</literal>,
+            <literal>%SUN_DormandPrince6</literal> and <literal>%SUN_DormandPrince8</literal> yielding classical tableaux (see references below):
+        </para>
+        <para>
+            <programlisting role="example"><![CDATA[
+                s1 = arkode(%SUN_vdp1,1:10,[2;1],ERKButcherTableau = %SUN_Tsitouras5());
+                s2 = arkode(%SUN_vdp1,1:10,[2;1],ERKButcherTableau = %SUN_DormandPrince6());
+                s3 = arkode(%SUN_vdp1,1:10,[2;1],ERKButcherTableau = %SUN_DormandPrince8());
+                ]]>
+            </programlisting>
+        </para>
+    </refsection>
+
     <refsection role="see also">
         <title>See also</title>
         <simplelist type="inline">
@@ -449,6 +515,18 @@
 A. C. Hindmarsh, P. N. Brown, K. E. Grant, S. L. Lee, R. Serban, D. E. Shumaker, and C. S. Woodward, "SUNDIALS: Suite of Nonlinear and Differential/Algebraic Equation Solvers," ACM Transactions on Mathematical Software, 31(3), pp. 363-396, 2005. Also available as LLNL technical report UCRL-JP-200037.
  </para>
  <para>Daniel R. Reynolds and David J. Gardner and Carol S. Woodward and Cody J. Balos, "User Documentation for ARKODE", 2021, v5.1.1, available online at <ulink url="https://sundials.readthedocs.io/en/latest/arkode/index.html">https://sundials.readthedocs.io/en/latest/arkode</ulink>.
+ </para>
+ <para>
+     P.J. Prince and J. R. Dormand, High order embedded Runge-Kutta formulae,
+     Journal of Computational and Applied Mathematics, 7 (1981), pp. 67-75. </para>
+ <para>
+     Ch. Tsitouras, Runge–Kutta pairs of order 5(4) satisfying only the first column simplifying assumption,
+     Computers &amp; Mathematics with Applications,
+     Volume 62, Issue 2,
+     2011,
+     Pages 770-775,
+     ISSN 0898-1221,
+     https://doi.org/10.1016/j.camwa.2011.06.002.
  </para>
     </refsection>
 </refentry>

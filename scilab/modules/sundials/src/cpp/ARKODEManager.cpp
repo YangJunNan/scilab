@@ -28,11 +28,11 @@ bool ARKODEManager::create()
     {
         m_prob_mem = ARKStepCreate(SUNDIALSFun, SUNDIALSFunStiff, m_dblT0, m_N_VectorY, m_sunctx);
     }
-    else if (ARKODEMethods[m_wstrMethod].erkID >= ARKODE_MIN_ERK_NUM) // pure explicit
+    else if (m_ERKButcherTable != NULL) // pure explicit
     {
         m_prob_mem = ARKStepCreate(SUNDIALSFun, NULL, m_dblT0, m_N_VectorY, m_sunctx);
     }
-    else if (ARKODEMethods[m_wstrMethod].dirkID >= ARKODE_MIN_DIRK_NUM) // pure implicit
+    else if (m_DIRKButcherTable != NULL) // pure implicit
     {
         m_prob_mem = ARKStepCreate(NULL, SUNDIALSFun, m_dblT0, m_N_VectorY, m_sunctx);
     }
@@ -50,19 +50,19 @@ bool ARKODEManager::create()
 std::wstring ARKODEManager::getDefaultNonLinSolver()
 {
     // default is Newton when method is ImEx or fully implicit
-    // and fixedPoint when method is fully explicit.
-    return ARKODEMethods[m_wstrMethod].dirkID >= ARKODE_MIN_DIRK_NUM ? L"Newton" : L"fixedPoint";
+    // and NONE when method is fully explicit.
+    return m_DIRKButcherTable != NULL ? L"Newton" : L"NONE";
 }
 
 std::vector<std::wstring> ARKODEManager::getAvailableNonLinSolvers()
 {
     // fixedPoint and Newton are available when method is ImEx or fully implicit
-    if (ARKODEMethods[m_wstrMethod].dirkID >= ARKODE_MIN_DIRK_NUM)
+    if (m_DIRKButcherTable != NULL)
     {
         return {L"fixedPoint",L"Newton"};
     }
-    // Only fixedPoint is available when method is fully explicit
-    return {L"fixedPoint"};
+    // Only NONE is available when method is fully explicit
+    return {L"NONE"};
 }
 
 void ARKODEManager::parseMethodAndOrder(types::optional_list &opt)
@@ -112,12 +112,72 @@ void ARKODEManager::parseMethodAndOrder(types::optional_list &opt)
             m_odeIsExtension ? m_prevManager->m_iNonZeros[MASS] : -1, {0, m_iNbEq*m_iNbEq});
     }
 
-    // method
-    std::wstring wStrDefaultMethod = m_odeIsExtension ? m_prevManager->m_wstrMethod : (m_odeIsImEx ? L"ARK" : hasJacobian() ? L"DIRK" : L"ERK");
-    getStringInPlist(m_wstrCaller.c_str(), opt, L"method", m_wstrMethod, wStrDefaultMethod, getAvailableMethods());
+    // User Butcher tableau
+    if (m_odeIsExtension)
+    {
+        m_ERKButcherTable = m_prevManager->m_ERKButcherTable; // can be NULL
+        m_DIRKButcherTable = m_prevManager->m_DIRKButcherTable; // can be NULL
+    }
+    else
+    {
+        getButcherTableInPlist(m_wstrCaller.c_str(), opt, L"ERKButcherTableau", m_ERKButcherTable);
+        getButcherTableInPlist(m_wstrCaller.c_str(), opt, L"DIRKButcherTableau", m_DIRKButcherTable);
+    }
+
+    if (m_ERKButcherTable != NULL || m_DIRKButcherTable != NULL)
+    {
+        if (m_odeIsImEx)
+        {
+            if (m_ERKButcherTable == NULL || m_DIRKButcherTable == NULL)
+            {
+                sprintf(errorMsg, _("arkode: both ERKButcherTableau and DIRKButcherTableau must be set in imEx mode.\n"));
+                throw ast::InternalError(errorMsg);
+            }
+            ARKodeButcherTable_CheckARKOrder(m_DIRKButcherTable, m_ERKButcherTable, &m_iMethodOrder , &m_iEmbeddedMethodOrder, NULL);
+            std::wstringstream wss;
+            wss << L"USER_ARK_" << m_ERKButcherTable->stages << L"_" << m_iMethodOrder << L"_" << m_iEmbeddedMethodOrder;
+            m_wstrMethod.assign(wss.str()); 
+        }
+        else if (m_ERKButcherTable != NULL && m_DIRKButcherTable != NULL)
+        {
+            sprintf(errorMsg, _("%arkode: ""stiffRhs"" must be set in imEx mode.\n"));
+            throw ast::InternalError(errorMsg);
+        }
+        std::wstringstream wss;
+        if (m_ERKButcherTable != NULL)
+        {
+            wss << L"USER_ERK_" << m_ERKButcherTable->stages << L"_" << m_ERKButcherTable->p << L"_" << m_ERKButcherTable->q;
+            m_iMethodOrder = m_ERKButcherTable->q;
+            m_iEmbeddedMethodOrder = m_ERKButcherTable->p;
+        }
+        if (m_DIRKButcherTable != NULL)
+        {
+            wss << L"USER_DIRK_" << m_DIRKButcherTable->stages << L"_" << m_DIRKButcherTable->p << L"_" << m_DIRKButcherTable->q;            
+            m_iMethodOrder = m_DIRKButcherTable->q;
+            m_iEmbeddedMethodOrder = m_DIRKButcherTable->p;
+        }
+        m_wstrMethod = wss.str();
+    }
+    else
+    {
+        // parse eventual "method" option
+        std::wstring wStrDefaultMethod = m_odeIsExtension ? m_prevManager->m_wstrMethod : (m_odeIsImEx ? L"ARK" : hasJacobian() ? L"DIRK" : L"ERK");
+        getStringInPlist(m_wstrCaller.c_str(), opt, L"method", m_wstrMethod, wStrDefaultMethod, getAvailableMethods());        
+        m_iMethodOrder = ARKODEMethods[m_wstrMethod].order;
+        m_iEmbeddedMethodOrder = ARKODEMethods[m_wstrMethod].embeddedOrder;
+        // get standard SUNDIALS tableaux
+        if (ARKODEMethods[m_wstrMethod].dirkID >= ARKODE_MIN_DIRK_NUM)
+        {
+            m_DIRKButcherTable = ARKodeButcherTable_LoadDIRK(ARKODEMethods[m_wstrMethod].dirkID);            
+        }
+        if (ARKODEMethods[m_wstrMethod].erkID >= ARKODE_MIN_ERK_NUM)
+        {
+            m_ERKButcherTable = ARKodeButcherTable_LoadERK(ARKODEMethods[m_wstrMethod].erkID);                
+        }        
+    }
 
     // linearity of implicit part
-    if (ARKODEMethods[m_wstrMethod].dirkID >= ARKODE_MIN_DIRK_NUM) // implicit or ImEx
+    if (m_DIRKButcherTable != NULL) // implicit or ImEx
     {
         std::wstring wStrDefaultLinear = m_odeIsExtension ? m_prevManager->m_wstrIsLinear : L"no";
         getStringInPlist(m_wstrCaller.c_str(), opt, L"linear", m_wstrIsLinear, wStrDefaultLinear, {L"no",L"constant",L"timeDepend"});
@@ -143,16 +203,90 @@ void ARKODEManager::parseMethodAndOrder(types::optional_list &opt)
         m_odeIsExtension ? m_prevManager->m_dblVecRAtol : defaultRAtolVect, {1e-15, std::numeric_limits<double>::infinity()}, m_iNbEq);
 }
 
-bool ARKODEManager::initialize(char *errorMsg)
+void ARKODEManager::getButcherTableInPlist(const wchar_t * _pwstCaller, types::optional_list &opt, const wchar_t * _pwstLabel, ARKodeButcherTable &butcherTable)
 {
-    if (ARKStepSetTableNum(m_prob_mem, ARKODEMethods[m_wstrMethod].dirkID, ARKODEMethods[m_wstrMethod].erkID) != ARK_SUCCESS)
+    char errorMsg[1024];
+    types::InternalType *pI = NULL;
+    if (opt.find(_pwstLabel) != opt.end())
     {
-        sprintf(errorMsg, "ARKStepSetTableNum error");
-        return true;
+        pI = opt[_pwstLabel];
+        if (pI->isDouble() == false)
+        {
+            sprintf(errorMsg, _("%ls: wrong value type for parameter \"%ls\": %s expected.\n"), _pwstCaller, _pwstLabel, "double");
+            throw ast::InternalError(errorMsg);
+        }
+        types::Double *pDbl = pI->getAs<types::Double>();
+
+        int iStages = pDbl->getCols()-1;
+        // Check if table size is these of a Butcher table with embedded method
+        if (iStages < 1 || pDbl->getRows() != iStages+2)
+        {
+            sprintf(errorMsg, _("%ls: wrong size for parameter \"%ls\": size should be (s+2,s+1), where s is the number of stages.\n"), _pwstCaller, _pwstLabel);
+            throw ast::InternalError(errorMsg);
+        }
+        double *pdblA = new double[iStages*iStages];
+        double *pdblb = new double[iStages];
+        double *pdblc = new double[iStages];
+        double *pdbld = new double[iStages];
+        int q,p;
+
+        for (int i=0; i<iStages; i++)
+        {
+            pdblc[i] = pDbl->get(i,0);
+            pdblb[i] = pDbl->get(iStages,i+1);
+            pdbld[i] = pDbl->get(iStages+1,i+1);
+            for (int j=0; j<iStages; j++)
+            {
+                pdblA[j+i*iStages] = pDbl->get(i,j+1);
+            }
+        }
+        q = pDbl->get(iStages,0);
+        p = pDbl->get(iStages+1,0);
+        butcherTable = ARKodeButcherTable_Create(iStages, q, p, pdblc, pdblA, pdblb, pdbld);
+        if (butcherTable == NULL)
+        {
+            sprintf(errorMsg, _("%ls: wrong value for parameter \"%ls\": incoherent tableau.\n"), _pwstCaller, _pwstLabel);
+            throw ast::InternalError(errorMsg);
+        }
+        int iRes = ARKodeButcherTable_CheckOrder(butcherTable, &q, &p, NULL);
+        if (iRes != 0)
+        {
+            if ((butcherTable->q >= 6 && q==6) || (butcherTable->p >= 6 && p==6))
+            {
+                sciprint(_("%ls: parameter \"%ls\": sufficient conditions not met for order > 6\n"), _pwstCaller, _pwstLabel);                
+            }
+            else
+            {
+                sprintf(errorMsg, _("%ls: wrong value for parameter \"%ls\": claimed orders are (%d,%d) while computed orders are (%d,%d)\n"),
+                 _pwstCaller, _pwstLabel,butcherTable->q,butcherTable->p,q,p);            
+                throw ast::InternalError(errorMsg);                
+            }
+        }
+        delete[] pdblA;
+        delete[] pdblb;
+        delete[] pdblc;
+        delete[] pdbld;
+    }
+    else
+    {
+        butcherTable = NULL;
+        return;
     }
 
+    pI->DecreaseRef();
+    pI->killMe();
+    opt.erase(_pwstLabel);
+}
+
+bool ARKODEManager::initialize(char *errorMsg)
+{
+    if (ARKStepSetTables(m_prob_mem, m_iMethodOrder, m_iEmbeddedMethodOrder, m_DIRKButcherTable, m_ERKButcherTable) != ARK_SUCCESS)
+    {
+        sprintf(errorMsg, "ARKStepSetTables error");
+        return true;                
+    };
+
     // interpolant type and degree
-    m_iMethodOrder = ARKODEMethods[m_wstrMethod].order;
     m_iInterpolationDegree = std::min(m_iMethodOrder-1,m_iInterpolationDegree);
     ARKStepSetInterpolantType(m_prob_mem, m_iInterpolationMethod);
     ARKStepSetInterpolantDegree(m_prob_mem, m_iInterpolationDegree);
@@ -204,7 +338,14 @@ bool ARKODEManager::setSolverAndJacobian(char *errorMsg)
     }
 
     // if method is purely explicit, exit
-    if (ARKODEMethods[m_wstrMethod].dirkID == ARKODE_DIRK_NONE)
+    if (m_ERKButcherTable != NULL || m_DIRKButcherTable != NULL)
+    {
+        if (m_DIRKButcherTable == NULL)
+        {
+            return false;
+        }
+    }
+    else if (ARKODEMethods[m_wstrMethod].dirkID == ARKODE_DIRK_NONE)
     {
         return false;
     }

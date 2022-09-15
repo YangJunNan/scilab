@@ -299,6 +299,12 @@
                         </td>
                     </tr>
                     <tr>
+                        <td>ERKButcherTableau, DIRKButcherTableau</td>
+                        <td>    
+                            <para>A matrix of size (s+1,s+2) where s is the number of stages of the method. See the paragraph about custom tableaux in the <link linkend="arkode_custom_tableaux">arkode help page</link>.</para>
+                        </td>
+                    </tr>
+                    <tr>
                         <td>mass</td>
                         <td>    
                             <para>A Scilab function, a list, a string or a matrix (dense or sparse).</para>
