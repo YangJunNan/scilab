@@ -39,18 +39,19 @@ build linux x86_64:
 
 
 # build scilab using the docker image
-build docker:
-  stage: build
-  image: $CI_REGISTRY/scilab/scilab:builder_linux
-  tags:
-    - docker
-  cache:
-    key: prerequirements-linux-x86_64
-    policy: pull
-  variables:
-      GIT_CLEAN_FLAGS: none
-  script: bash -x -e .gitlab-ci/build.sh
-  artifacts:
-    paths:
-      - scilab-branch-${CI_COMMIT_REF_NAME}-${CI_COMMIT_TIMESTAMP}
-      - scilab/log.txt
+# TOO SLOW FOR US
+# build docker:
+#   stage: build
+#   image: $CI_REGISTRY/scilab/scilab:builder_linux
+#   tags:
+#     - docker
+#   cache:
+#     key: prerequirements-linux-x86_64
+#     policy: pull
+#   variables:
+#       GIT_CLEAN_FLAGS: none
+#   script: bash -x -e .gitlab-ci/build.sh
+#   artifacts:
+#     paths:
+#       - scilab-branch-${CI_COMMIT_REF_NAME}-${CI_COMMIT_TIMESTAMP}
+#       - scilab/log.txt
