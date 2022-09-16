@@ -6,7 +6,7 @@ echo on
 svn checkout --username anonymous --password Scilab svn://svn.scilab.org/scilab/trunk/Dev-Tools/SE/Prerequirements/Windows_x64/ scilab >log.txt
 if errorlevel 1 tail.exe --lines=100 log.txt & exit 1
 REM display svn revision
-tail.exe -n 1 ..\log.txt
+tail.exe -n 1 log.txt
 
 REM Define environment variables
 call "%VS2017INSTALLDIR%\VC\Auxiliary\Build\vcvarsall.bat" x64

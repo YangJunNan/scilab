@@ -8,6 +8,8 @@ svn checkout \
     --username anonymous --password Scilab \
     "svn://svn.scilab.org/scilab/${PREREQUIREMENTS_BRANCH}/Dev-Tools/SE/Prerequirements/linux_x64/" scilab \
     >log.txt ||(tail --lines=100 log.txt; exit 1)
+# display svn revision
+tail -n 1 log.txt
 
 # patch version numbers
 date +"%s" >timestamp
