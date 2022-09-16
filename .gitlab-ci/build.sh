@@ -1,6 +1,6 @@
 #!/bin/env bash
 
-# NOTE: log all commands to to avoid hitting Gitlab log limit
+# NOTE: log all commands to log.txt to avoid hitting Gitlab log limit
 # NOTE: nproc is used to limit memory usage
 
 # Remove install dir older than 3 days and TMPDIRs older than 1 day
@@ -17,7 +17,7 @@ done
 svn checkout \
     --username anonymous --password Scilab \
     "svn://svn.scilab.org/scilab/${PREREQUIREMENTS_BRANCH}/Dev-Tools/SE/Prerequirements/linux_x64/" scilab \
-    |tee -a log.txt |tail --lines=1
+    >log.txt ||(tail --lines=100 log.txt; exit 1)
 
 # patch version numbers
 date +"%s" >timestamp
@@ -34,14 +34,14 @@ LD_LIBRARY_PATH=$(pwd)/usr/lib/ && export LD_LIBRARY_PATH
 DISPLAY=:0.0 && export DISPLAY
 
 # configure
-cd scilab ||exit
+cd scilab ||exit 1
 ./configure --prefix='' |tee -a ../log.txt
 
 # make 
-make --jobs="$(nproc)" |tee -a ../log.txt |tail --lines=50
+make --jobs="$(nproc)" &>>../log.txt ||(tail --lines=100 ../log.txt; exit 1)
 
 # install to tmpdir
-make install DESTDIR="/tmp/scilab-branch-${CI_COMMIT_BRANCH}-${CI_COMMIT_TIMESTAMP}" |tee -a ../log.txt |tail --lines=10
+make install DESTDIR="/tmp/scilab-branch-${CI_COMMIT_BRANCH}-${CI_COMMIT_TIMESTAMP}" &>>../log.txt ||(tail --lines=100 ../log.txt; exit 1)
 
 # copy thirdparties
 cp -a lib/thirdparty "/tmp/scilab-branch-${CI_COMMIT_BRANCH}-${CI_COMMIT_TIMESTAMP}/lib/"
