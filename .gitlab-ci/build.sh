@@ -21,7 +21,7 @@ sed -i \
  -e "s/SCI_VERSION_WIDE_STRING .*/SCI_VERSION_WIDE_STRING L\"scilab-branch-${CI_COMMIT_BRANCH}\"/" \
  -e "s/SCI_VERSION_REVISION .*/SCI_VERSION_REVISION \"${CI_COMMIT_SHA}\"/" \
  -e "s/SCI_VERSION_TIMESTAMP .*/SCI_VERSION_TIMESTAMP ${NOW}/" \
- modules/core/includes/version.h.in
+ scilab/modules/core/includes/version.h.in
 
 # predefined env
 LD_LIBRARY_PATH=$(pwd)/usr/lib/ && export LD_LIBRARY_PATH
