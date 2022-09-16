@@ -86,9 +86,8 @@ clean linux:
     - g++
     - gfortran
     - openjdk 8
-  script:
-    - cd scilab; make distclean
-  allow_failure: true
+  variables:
+      GIT_CLEAN_FLAGS: -fxd
   when: manual
 clean windows:
   stage: prebuild
@@ -98,8 +97,7 @@ clean windows:
     - intel oneAPI
     - openjdk 8
     - innosetup 6
-  script:
-    - devenv scilab\Scilab.sln /clean "Release|x64"
-  allow_failure: true
+  variables:
+      GIT_CLEAN_FLAGS: -fxd
   when: manual
 
