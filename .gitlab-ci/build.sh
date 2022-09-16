@@ -10,6 +10,8 @@ svn checkout \
     >log.txt ||(tail --lines=100 log.txt; exit 1)
 # display svn revision
 tail -n 1 log.txt
+# revert local modification
+svn revert -R scilab >>log.txt
 
 # patch version numbers
 date +"%s" >timestamp
