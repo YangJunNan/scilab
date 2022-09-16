@@ -65,11 +65,13 @@ cleanup old linux builds:
     - openjdk 8
   script:
     # Remove install dir older than 3 days and TMPDIRs older than 1 day
+    - set -e -x
     - |
       find /tmp -maxdepth 1 -mtime +2 -name "scilab-*" -type d -print0 |\
       while IFS= read -r -d '' i ; do
         chmod -R +w "$i" && rm -rf "$i";
       done
+    - |
       find /tmp -maxdepth 1 -mtime +0 -name "SCI_TMP*" -type d -print0 |\
       while IFS= read -r -d '' i ; do
         [ -w "$i" ] && rm -rf "$i";
