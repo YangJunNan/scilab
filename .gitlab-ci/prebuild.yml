@@ -88,6 +88,7 @@ clean linux:
     - openjdk 8
   script:
     - cd scilab; make distclean
+  allow_failure: true
   when: manual
 clean windows:
   stage: prebuild
@@ -99,5 +100,6 @@ clean windows:
     - innosetup 6
   script:
     - devenv scilab\Scilab.sln /clean "Release|x64"
+  allow_failure: true
   when: manual
 
