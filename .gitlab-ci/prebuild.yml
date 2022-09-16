@@ -88,6 +88,7 @@ clean linux:
     - openjdk 8
   variables:
       GIT_CLEAN_FLAGS: -fxd
+  script: echo "git clean succeeded"
   when: manual
 clean windows:
   stage: prebuild
@@ -99,5 +100,6 @@ clean windows:
     - innosetup 6
   variables:
       GIT_CLEAN_FLAGS: -fxd
+  script: echo "git clean succeeded"
   when: manual
 
