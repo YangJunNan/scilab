@@ -18,6 +18,7 @@ prebuild windows x64:
     - svn checkout --force --username anonymous --password Scilab svn://svn.scilab.org/scilab/trunk/Dev-Tools/SE/Prerequirements/Windows_x64/ scilab
   when: manual
 
+
 # get prerequirements from svn
 prebuild linux x86_64:
   stage: prebuild
@@ -53,6 +54,7 @@ create docker images:
       - /.gitlab-ci.yml
       - /.gitlab-ci/Dockerfile*
 
+
 # cleanup old builds from runners
 cleanup old linux builds:
   stage: prebuild
@@ -63,14 +65,16 @@ cleanup old linux builds:
     - openjdk 8
   script:
     # Remove install dir older than 3 days and TMPDIRs older than 1 day
-    - find "/tmp/scilab-branch*" -maxdepth 1 -mtime +2 -print0 |\
-    - while IFS= read -r -d '' i ; do
-    -   chmod -R +w "$i" && rm -rf "$i";
-    - done
-    - find /tmp -maxdepth 1 -mtime +0 -name "SCI_TMP*" -type d |\
-    - while IFS= read -r -d '' i ; do
-    -   [ -w "$i" ] && rm -rf "$i";
-    - done
+    - |
+      find "/tmp/scilab-branch*" -maxdepth 1 -mtime +2 -print0 |\
+      while IFS= read -r -d '' i ; do
+        chmod -R +w "$i" && rm -rf "$i";
+      done
+      find /tmp -maxdepth 1 -mtime +0 -name "SCI_TMP*" -type d |\
+      while IFS= read -r -d '' i ; do
+        [ -w "$i" ] && rm -rf "$i";
+      done
+
 
 # manuel clean
 clean linux:
@@ -94,3 +98,4 @@ clean windows:
   script:
     - devenv scilab\Scilab.sln /clean "Release|x64"
   when: manual
+
