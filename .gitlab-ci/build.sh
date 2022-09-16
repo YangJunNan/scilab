@@ -32,7 +32,7 @@ cd scilab ||exit 1
 ./configure --prefix='' |tee -a ../log.txt
 
 # make 
-make --jobs="$(nproc)" &>>../log.txt ||(tail --lines=100 ../log.txt; exit 1)
+make --jobs="$(nproc)" all &>>../log.txt ||(tail --lines=100 ../log.txt; exit 1)
 
 # install to tmpdir
 make install DESTDIR="/tmp/scilab-branch-${CI_COMMIT_BRANCH}-${CI_COMMIT_TIMESTAMP}" &>>../log.txt ||(tail --lines=100 ../log.txt; exit 1)
