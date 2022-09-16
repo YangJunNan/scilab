@@ -66,11 +66,11 @@ cleanup old linux builds:
   script:
     # Remove install dir older than 3 days and TMPDIRs older than 1 day
     - |
-      find "/tmp/scilab-branch*" -maxdepth 1 -mtime +2 -print0 |\
+      find /tmp -maxdepth 1 -mtime +2 -name "scilab-*" -type d -print0 |\
       while IFS= read -r -d '' i ; do
         chmod -R +w "$i" && rm -rf "$i";
       done
-      find /tmp -maxdepth 1 -mtime +0 -name "SCI_TMP*" -type d |\
+      find /tmp -maxdepth 1 -mtime +0 -name "SCI_TMP*" -type d -print0 |\
       while IFS= read -r -d '' i ; do
         [ -w "$i" ] && rm -rf "$i";
       done
