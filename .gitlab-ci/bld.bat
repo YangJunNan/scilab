@@ -4,7 +4,7 @@ REM NOTE: log all commands to log.txt to avoid hitting Gitlab log limit
 
 echo on
 svn checkout --username anonymous --password Scilab svn://svn.scilab.org/scilab/trunk/Dev-Tools/SE/Prerequirements/Windows_x64/ scilab >log.txt
-if errorlevel 1 tail.exe --lines=100 ..\log.txt & exit 1
+if errorlevel 1 tail.exe --lines=100 log.txt & exit 1
 REM display svn revision
 tail.exe -n 1 ..\log.txt
 
@@ -13,10 +13,7 @@ call "%VS2017INSTALLDIR%\VC\Auxiliary\Build\vcvarsall.bat" x64
 echo on
 call "%ONEAPI_ROOT%\setvars.bat" intel64 vs2017
 echo on
-if not defined "%SCILAB_JDK64%" (
-    REM will setx SCILAB_JDK64
-    call scilab\java\set_scilab_jdk64.bat
-)
+if "%SCILAB_JDK64%" == "" call scilab\java\set_scilab_jdk64.bat
 set JAVA_HOME "%SCILAB_JDK64%"
 
 cd scilab

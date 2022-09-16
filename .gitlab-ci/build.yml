@@ -15,8 +15,9 @@ build windows x64:
   script: call .gitlab-ci\bld.bat
   artifacts:
     paths:
+      - log.txt
       - scilab-branch-${CI_COMMIT_BRANCH}-${CI_COMMIT_TIMESTAMP}.exe
-      - scilab\log.txt
+    when: always
 
 
 # build scilab using a linux runner
@@ -35,8 +36,9 @@ build linux x86_64:
   script: bash -x -e .gitlab-ci/build.sh
   artifacts:
     paths:
+      - log.txt
       - scilab-branch-${CI_COMMIT_BRANCH}-${CI_COMMIT_TIMESTAMP}.tar.gz
-      - scilab/log.txt
+    when: always
 
 
 # build scilab using the docker image
