@@ -9,12 +9,11 @@ call "%VS2017INSTALLDIR%\VC\Auxiliary\Build\vcvarsall.bat" x64
 echo on
 call "%ONEAPI_ROOT%\setvars.bat" intel64 vs2017
 echo on
-if not exist "%JAVA_HOME%" (
+if not defined "%SCILAB_JDK64%" (
+    REM will setx SCILAB_JDK64
     call scilab\java\set_scilab_jdk64.bat
 )
-if not exist "%SCILAB_JDK64%" (
-    set SCILAB_JDK64 "%JAVA_HOME%"
-)
+set JAVA_HOME "%SCILAB_JDK64%"
 
 cd scilab
 
