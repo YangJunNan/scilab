@@ -25,20 +25,20 @@
           <tbody>
             <tr>
               <td><term>f</term></td>
-              <td>    <para>a function, a string or a list, the right hand side of the nonlinear system.
+              <td>    <para>a function, a string or a list, the right hand side of the nonlinear system
                     </para>
                 </td>
             </tr>
             <tr>
                 <td><term>y0</term></td>
                 <td>
-                    <para>a double array: initial guess.</para>
+                    <para>a double array: initial guess</para>
                 </td>
             </tr>
             <tr>
                 <td><term>options</term></td>
                 <td>
-                    <para>a sequence of optional named arguments (see the <link linkend="sundials_kinsol_options">solvers options</link>)</para>
+                    <para>a sequence of optional named arguments, see the <link linkend="sundials_kinsol_options">solvers options</link></para>
                 </td>
             </tr>
             <tr>
@@ -51,14 +51,14 @@
             <tr>
               <td><term>info</term></td>
               <td>
-                  <para>an integer, the solver exit code, see the related section below.
+                  <para>an integer, the solver exit code, see the related section below
                   </para>
                 </td>
             </tr>
             <tr>
               <td><term>extra</term></td>
               <td>
-                  <para>a MList containing solver information and statistics, see the related section below.</para> 
+                  <para>a MList containing solver information and statistics, see the related section below</para> 
                 </td>
             </tr>
         </tbody>

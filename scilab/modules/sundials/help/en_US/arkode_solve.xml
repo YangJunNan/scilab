@@ -17,7 +17,9 @@
         <title>Syntax</title>
         <synopsis>
             [t,y] = arkode(f,tspan,y0,options)
+            [t,y,info] = arkode(f,tspan,y0,options)
             [t,y,te,ye,ie] = arkode(f,tspan,y0,options)
+            [t,y,te,ye,ie,info] = arkode(f,tspan,y0,options)
             sol = arkode(...)
             solext = arkode(sol,tfinal,options)
             arkode(...)
@@ -30,31 +32,31 @@
             <tr>
               <td><term>f</term></td>
               <td>    
-                  <para>a function, a string or a list, the right hand side of the differential equation.</para>
+                  <para>a function, a string or a list, the right hand side of the differential equation</para>
                 </td>
             </tr>
             <tr>
                <td><term>tspan</term></td>
                 <td>
-                    <para>double vector, time interval or time points.</para>
+                    <para>double vector, time interval or time points</para>
                 </td>
             </tr>
             <tr>
                 <td><term>y0</term></td>
                 <td>
-                    <para>a double array: initial state of the ode.</para>
+                    <para>a double array: initial state of the ode</para>
                 </td>
             </tr>
             <tr>
                 <td><term>options</term></td>
                 <td>
-                    <para>a sequence of optional named arguments (see the <link linkend="sundials_options">solvers options</link>)</para>
+                    <para>a sequence of optional named arguments, see the <link linkend="sundials_options">solvers options</link></para>
                 </td>
             </tr>
             <tr>
                <td><term>t</term></td>
                 <td>
-                    <para>vector of time points used by the solver.</para>
+                    <para>vector of time points used by the solver</para>
                 </td>
             </tr>
             <tr>
@@ -66,13 +68,20 @@
             <tr>
                 <td><term>te,ye,ie</term></td>
                 <td>
-                    <para>time of event, solution and index of event.</para>
+                    <para>time of event, solution and index of event</para>
                 </td>
             </tr>
             <tr>
                 <td><term>sol, solext</term></td>
                 <td>
-                    <para>MList of <literal>_odeSolution</literal> type</para>
+                    <para>MList of <literal>_odeSolution</literal> type, see the
+                <link linkend="sundials_solution">solution output</link> help page</para>
+                </td>
+            </tr>
+            <tr>
+                <td><term>info</term></td>
+                <td>
+                    <para>MList of <literal>_odeSolution</literal> type with only solver info and statistics</para>
                 </td>
             </tr>
             <tr>
@@ -431,17 +440,25 @@
     <refsection role="description" xml:id="arkode_custom_tableaux">
         <title>Using custom Butcher tableaux</title>
         <para>
-            The ERKButcherTableau and/or DIRKButcherTableau options allow to specify custom Butcher tableaux, under the form of a matrix of size (s+1,s+2) or (s+1,s+1)
+            The ERKButcherTab and/or DIRKButcherTab options allow to specify custom Butcher tableaux, under the form of a matrix of size (s+2,s+1) or (s+1,s+1)
             where s is the number of stages of the method :
         </para>
         <para>
-                <latex style="display">\left(\begin{array}{c|c}
-                    c &amp; A \\
-                    \hline q &amp; b \\
-                    \hline p &amp; d
-                    \end{array}\right) \quad \mbox{or} \quad\left(\begin{array}{c|c}
-                    c &amp; A \\
-                    \hline q &amp; b
+                <latex style="display">\left(\begin{array}{c|ccc}
+                    \mbox{} &amp; \mbox{} &amp; \mbox{} &amp; \mbox{}\\
+                    \mbox{} &amp; \mbox{} &amp; \mbox{} &amp; \mbox{}\\
+                    c &amp; \mbox{} &amp; A &amp; \mbox{}\\
+                    \mbox{} &amp; \mbox{} &amp; \mbox{} &amp; \mbox{}\\
+                    \mbox{} &amp; \mbox{} &amp; \mbox{} &amp; \mbox{}\\
+                    \hline q &amp;\mbox{} &amp; b &amp; \mbox{}\\
+                    \hline p &amp; \mbox{} &amp; d  &amp; \mbox{}
+                    \end{array}\right) \quad \mbox{or} \quad\left(\begin{array}{c|ccc}
+                    \mbox{} &amp; \mbox{} &amp; \mbox{} &amp; \mbox{}\\
+                    \mbox{} &amp; \mbox{} &amp; \mbox{} &amp; \mbox{}\\
+                    c &amp; \mbox{} &amp; A &amp; \mbox{}\\
+                    \mbox{} &amp; \mbox{} &amp; \mbox{} &amp; \mbox{}\\
+                    \mbox{} &amp; \mbox{} &amp; \mbox{} &amp; \mbox{}\\
+                    \hline q &amp;\mbox{} &amp; b &amp; \mbox{}
                     \end{array}\right)</latex>
         </para>
         <para>
@@ -460,8 +477,8 @@
         </para>
         <para>
         <programlisting role="example"><![CDATA[
-            s1 = arkode(%SUN_vdp1,[0 1],[2;1],ERKButcherTableau=[0 0;1 1],fixedStep=0.01);
-            s2 = arkode(%SUN_vdp1,[0 1],[2;1],DIRKButcherTableau=[1 1;1 1],fixedStep=0.01);
+            s1 = arkode(%SUN_vdp1,[0 1],[2;1],ERKButcherTab=[0 0;1 1],fixedStep=0.01);
+            s2 = arkode(%SUN_vdp1,[0 1],[2;1],DIRKButcherTab=[1 1;1 1],fixedStep=0.01);
             ]]>
         </programlisting>
         </para>
@@ -476,7 +493,7 @@
             d = [1 0];
             q = 2;
             p = 1;
-            s = arkode(%SUN_vdp1,[0 10],[2;1],ERKButcherTableau=[c A;q b;p d]);
+            s = arkode(%SUN_vdp1,[0 10],[2;1],ERKButcherTab=[c A;q b;p d]);
             ]]>
         </programlisting>
         </para>
@@ -491,7 +508,7 @@
                 d = [1 0];
                 q = 2;
                 p = 1;
-                s = arkode(%SUN_vdp1,[0 10],[2;1],DIRKButcherTableau=[c A;q b;p d]);
+                s = arkode(%SUN_vdp1,[0 10],[2;1],DIRKButcherTab=[c A;q b;p d]);
                 ]]>
             </programlisting>
         </para>
@@ -501,9 +518,9 @@
         </para>
         <para>
             <programlisting role="example"><![CDATA[
-                s1 = arkode(%SUN_vdp1,[0 10],[2;1],ERKButcherTableau = %SUN_Tsitouras5());
-                s2 = arkode(%SUN_vdp1,[0 10],[2;1],ERKButcherTableau = %SUN_DormandPrince6());
-                s3 = arkode(%SUN_vdp1,[0 10],[2;1],ERKButcherTableau = %SUN_DormandPrince8());
+                s1 = arkode(%SUN_vdp1,[0 10],[2;1],ERKButcherTab = %SUN_Tsitouras5());
+                s2 = arkode(%SUN_vdp1,[0 10],[2;1],ERKButcherTab = %SUN_DormandPrince6());
+                s3 = arkode(%SUN_vdp1,[0 10],[2;1],ERKButcherTab = %SUN_DormandPrince8());
                 ]]>
             </programlisting>
         </para>

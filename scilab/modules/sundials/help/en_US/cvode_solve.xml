@@ -16,9 +16,10 @@
     <refsynopsisdiv>
         <title>Syntax</title>
         <synopsis>
-            cvode(f,tspan,y0,options)
             [t,y] = cvode(f,tspan,y0,options)
+            [t,y,info] = cvode(f,tspan,y0,options)
             [t,y,te,ye,ie] = cvode(f,tspan,y0,options)
+            [t,y,te,ye,ie,info] = cvode(f,tspan,y0,options)
             sol = cvode(...)
             solext = cvode(sol,tfinal,options)
             cvode(...)
@@ -31,32 +32,32 @@
                 <tr>
                     <td><term>f</term></td>
                     <td>
-                        <para>a function, a string or a list, the right hand side of the differential equation.
+                        <para>a function, a string or a list, the right hand side of the differential equation
                     </para>
                 </td>
             </tr>
             <tr>
                 <td><term>tspan</term></td>
                 <td>
-                    <para>double vector, time interval or time points.</para>
+                    <para>double vector, time interval or time points</para>
                 </td>
             </tr>
             <tr>
                 <td><term>y0</term></td>
                 <td>
-                    <para>a double array: initial state of the ode.</para>
+                    <para>a double array: initial state of the ode</para>
                 </td>
             </tr>
             <tr>
                 <td><term>options</term></td>
                 <td>
-                    <para>a sequence of optional named arguments (see the <link linkend="sundials_options">solvers options</link>)</para>
+                    <para>a sequence of optional named arguments, see the <link linkend="sundials_options">solvers options</link></para>
                 </td>
             </tr>
             <tr>
                 <td><term>t</term></td>
                 <td>
-                    <para>vector of time points used by the solver.</para>
+                    <para>vector of time points used by the solver</para>
                 </td>
             </tr>
             <tr>
@@ -68,13 +69,20 @@
             <tr>
                 <td><term>te,ye,ie</term></td>
                 <td>
-                    <para>time of event, solution and index of event.</para>
+                    <para>time of event, solution and index of event</para>
                 </td>
             </tr>
             <tr>
                 <td><term>sol, solext</term></td>
                 <td>
-                    <para>MList of <literal>_odeSolution</literal> type</para>
+                    <para>MList of <literal>_odeSolution</literal> type, see the 
+                <link linkend="sundials_solution">solution output</link> help page</para>
+                </td>
+            </tr>
+            <tr>
+                <td><term>info</term></td>
+                <td>
+                    <para>MList of <literal>_odeSolution</literal> type with only solver info and statistics</para>
                 </td>
             </tr>
             <tr>

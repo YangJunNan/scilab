@@ -125,8 +125,8 @@ void ARKODEManager::parseMethodAndOrder(types::optional_list &opt)
     }
     else
     {
-        getButcherTableInPlist(m_wstrCaller.c_str(), opt, L"ERKButcherTableau", m_ERKButcherTable);
-        getButcherTableInPlist(m_wstrCaller.c_str(), opt, L"DIRKButcherTableau", m_DIRKButcherTable);
+        getButcherTabInPlist(m_wstrCaller.c_str(), opt, L"ERKButcherTab", m_ERKButcherTable);
+        getButcherTabInPlist(m_wstrCaller.c_str(), opt, L"DIRKButcherTab", m_DIRKButcherTable);
     }
 
     if (m_ERKButcherTable != NULL || m_DIRKButcherTable != NULL)
@@ -135,7 +135,7 @@ void ARKODEManager::parseMethodAndOrder(types::optional_list &opt)
         {
             if (m_ERKButcherTable == NULL || m_DIRKButcherTable == NULL)
             {
-                sprintf(errorMsg, _("arkode: both ERKButcherTableau and DIRKButcherTableau must be set in imEx mode.\n"));
+                sprintf(errorMsg, _("arkode: both ERKButcherTab and DIRKButcherTab must be set in imEx mode.\n"));
                 throw ast::InternalError(errorMsg);
             }
             ARKodeButcherTable_CheckARKOrder(m_DIRKButcherTable, m_ERKButcherTable, &m_iEmbeddedMethodOrder, &m_iMethodOrder, NULL);
@@ -223,7 +223,7 @@ void ARKODEManager::parseMethodAndOrder(types::optional_list &opt)
         m_odeIsExtension ? m_prevManager->m_dblVecRAtol : defaultRAtolVect, {1e-15, std::numeric_limits<double>::infinity()}, m_iNbEq);
 }
 
-void ARKODEManager::getButcherTableInPlist(const wchar_t * _pwstCaller, types::optional_list &opt, const wchar_t * _pwstLabel, ARKodeButcherTable &butcherTable)
+void ARKODEManager::getButcherTabInPlist(const wchar_t * _pwstCaller, types::optional_list &opt, const wchar_t * _pwstLabel, ARKodeButcherTable &ButcherTab)
 {
     char errorMsg[1024];
     types::InternalType *pI = NULL;
@@ -275,23 +275,23 @@ void ARKODEManager::getButcherTableInPlist(const wchar_t * _pwstCaller, types::o
         q = pDbl->get(iStages,0);
         // p is 0 if no embedded method
         p = pdbld != NULL ? pDbl->get(iStages+1,0) : 0;
-        butcherTable = ARKodeButcherTable_Create(iStages, q, p, pdblc, pdblA, pdblb, pdbld);
-        if (butcherTable == NULL)
+        ButcherTab = ARKodeButcherTable_Create(iStages, q, p, pdblc, pdblA, pdblb, pdbld);
+        if (ButcherTab == NULL)
         {
             sprintf(errorMsg, _("%ls: wrong value for parameter \"%ls\": incoherent tableau.\n"), _pwstCaller, _pwstLabel);
             throw ast::InternalError(errorMsg);
         }
-        int iRes = ARKodeButcherTable_CheckOrder(butcherTable, &q, &p, NULL);
+        int iRes = ARKodeButcherTable_CheckOrder(ButcherTab, &q, &p, NULL);
         if (iRes != 0)
         {
-            if ((butcherTable->q >= 6 && q==6) || (butcherTable->p >= 6 && p==6))
+            if ((ButcherTab->q >= 6 && q==6) || (ButcherTab->p >= 6 && p==6))
             {
                 sciprint(_("%ls: parameter \"%ls\": sufficient conditions not met for order > 6\n"), _pwstCaller, _pwstLabel);                
             }
             else
             {
                 sprintf(errorMsg, _("%ls: wrong value for parameter \"%ls\": claimed orders are (%d,%d) while computed orders are (%d,%d)\n"),
-                 _pwstCaller, _pwstLabel,butcherTable->q,butcherTable->p,q,p);            
+                 _pwstCaller, _pwstLabel,ButcherTab->q,ButcherTab->p,q,p);            
                 throw ast::InternalError(errorMsg);                
             }
         }
@@ -305,7 +305,7 @@ void ARKODEManager::getButcherTableInPlist(const wchar_t * _pwstCaller, types::o
     }
     else
     {
-        butcherTable = NULL;
+        ButcherTab = NULL;
         return;
     }
 

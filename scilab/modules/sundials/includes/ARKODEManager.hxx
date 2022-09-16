@@ -120,7 +120,7 @@ public :
     solverReturnCode doStep(double dblFinalTime, double *pdblTime, solverTaskCode iKind);
     void saveInterpBasisVectors();
     void getInterpVectors(double *pdblNS, int iOrderPlusOne, int iIndex, double dblt0, double dblTUser, double dblStep, double *pdblVect, double *pdblVectd);
-    void getButcherTableInPlist(const wchar_t * _pwstCaller, types::optional_list &opt, const wchar_t * _pwstLabel, ARKodeButcherTable &butcherTable);
+    void getButcherTabInPlist(const wchar_t * _pwstCaller, types::optional_list &opt, const wchar_t * _pwstLabel, ARKodeButcherTable &ButcherTab);
 
     int DQJtimes(realtype tt, N_Vector yy, N_Vector yp, N_Vector rr,
                       N_Vector v, N_Vector Jv, realtype c_j,
@@ -255,6 +255,7 @@ private :
     int m_iInterpolationDegree = 0;
     int m_iInterpolationMethod = 0;
     long int m_incStat[10] = {0, 0, 0, 0, 0, 0, 0, 0, 0};
+    double m_dblFixedStep = 0;
     ARKodeButcherTable m_ERKButcherTable = NULL;
     ARKodeButcherTable m_DIRKButcherTable = NULL;
 };
