@@ -3,16 +3,6 @@
 # NOTE: log all commands to log.txt to avoid hitting Gitlab log limit
 # NOTE: nproc is used to limit memory usage
 
-# Remove install dir older than 3 days and TMPDIRs older than 1 day
-find "/tmp/scilab-branch*" -maxdepth 1 -mtime +2 -print0 |\
-while IFS= read -r -d '' i ; do
-  chmod -R +w "$i" && rm -rf "$i";
-done
-find /tmp -maxdepth 1 -mtime +0 -name "SCI_TMP*" -type d |\
-while IFS= read -r -d '' i ; do
-  [ -w "$i" ] && rm -rf "$i";
-done
-
 # checkout pre-requirements
 svn checkout \
     --username anonymous --password Scilab \

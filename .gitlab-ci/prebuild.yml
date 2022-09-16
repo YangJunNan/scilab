@@ -52,3 +52,45 @@ create docker images:
     changes:
       - /.gitlab-ci.yml
       - /.gitlab-ci/Dockerfile*
+
+# cleanup old builds from runners
+cleanup old linux builds:
+  stage: prebuild
+  tags:
+    - linux x86_64
+    - g++
+    - gfortran
+    - openjdk 8
+  script:
+    # Remove install dir older than 3 days and TMPDIRs older than 1 day
+    - find "/tmp/scilab-branch*" -maxdepth 1 -mtime +2 -print0 |\
+    - while IFS= read -r -d '' i ; do
+    -   chmod -R +w "$i" && rm -rf "$i";
+    - done
+    - find /tmp -maxdepth 1 -mtime +0 -name "SCI_TMP*" -type d |\
+    - while IFS= read -r -d '' i ; do
+    -   [ -w "$i" ] && rm -rf "$i";
+    - done
+
+# manuel clean
+clean linux:
+  stage: prebuild
+  tags:
+    - linux x86_64
+    - g++
+    - gfortran
+    - openjdk 8
+  script:
+    - cd scilab; make distclean
+  when: manual
+clean windows:
+  stage: prebuild
+  tags:
+    - windows x64
+    - visual studio 2017
+    - intel oneAPI
+    - openjdk 8
+    - innosetup 6
+  script:
+    - devenv scilab\Scilab.sln /clean "Release|x64"
+  when: manual
