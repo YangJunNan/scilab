@@ -41,7 +41,7 @@ if errorlevel 1 tail.exe --lines=100 ..\log.txt & exit 1
 
 REM Package with Inno Setup 6
 echo on
-call bin\scilab.bat -nwni -f tools\innosetup\Create_ISS.sce
+call bin\scilab.bat -nw -f tools\innosetup\Create_ISS.sce
 if errorlevel 1 exit 1
 "C:\Program Files (x86)\Inno Setup 6\iscc.exe" tools\innosetup\Scilab.iss
 REM TODO: how to sign ? was:
