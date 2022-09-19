@@ -67,4 +67,5 @@ readelf -d bin/scilab-bin |awk '/NEEDED/{gsub(/\[/,""); gsub(/\]/,""); print "pa
 cd "${CI_PROJECT_DIR}" ||exit
 
 # package as a tar gz file
-tar -xzf "scilab-branch-${CI_COMMIT_BRANCH}-${NOW}.tar.gz" -C /tmp "scilab-branch-${CI_COMMIT_BRANCH}-${NOW}"
+tar -czf "scilab-branch-${CI_COMMIT_BRANCH}-${NOW}.tar.gz" -C /tmp "scilab-branch-${CI_COMMIT_BRANCH}-${NOW}"
+rm -fr "/tmp/scilab-branch-${CI_COMMIT_BRANCH}-${NOW}"

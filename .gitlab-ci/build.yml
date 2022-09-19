@@ -53,6 +53,7 @@ build docker:
     policy: pull
   variables:
       GIT_CLEAN_FLAGS: none
+  when: manual
   script: bash -x -e .gitlab-ci/build.sh
   artifacts:
     paths:
