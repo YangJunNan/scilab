@@ -41,9 +41,10 @@ if errorlevel 1 tail.exe --lines=100 ..\log.txt & exit 1
 
 REM Package with Inno Setup 6
 echo on
-call bin\scilab.bat -nw -f tools\innosetup\Create_ISS.sce
+call bin\scilab.bat -nw -quit -e "exec tools\innosetup\Create_ISS.sce" >>..\log.txt
 if errorlevel 1 exit 1
 "C:\Program Files (x86)\Inno Setup 6\iscc.exe" tools\innosetup\Scilab.iss
+if errorlevel 1 tail.exe --lines=100 ..\log.txt & exit 1
 REM TODO: how to sign ? was:
 REM call d:\signtool_password.bat
 REM "C:\Program Files (x86)\Windows Kits\8.1\bin\x64\signtool.exe" sign /f D:\\ESIGroupCERT.pfx /p "%SIGNPASS%" /t http://timestamp.sectigo.com /v .\Output\scilab-branch-6.1_x64.exe

@@ -27,8 +27,15 @@ sed -i \
 LD_LIBRARY_PATH=$(pwd)/usr/lib/ && export LD_LIBRARY_PATH
 DISPLAY=:0.0 && export DISPLAY
 
-# configure
+# FIXME: workaround to only have minimal dependencies set
+# otherwise, libcurl will require libopenssl which will likely be system dependent
+export SCILIBS_LDFLAGS="-Wl,--allow-shlib-undefined"
+
+# configure (with reconfigure for up to date info)
 cd scilab ||exit 1
+aclocal >>../log.txt
+autoconf >>../log.txt
+automake >>../log.txt
 ./configure --prefix='' |tee -a ../log.txt
 
 # make 
