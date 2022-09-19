@@ -47,6 +47,7 @@ make install DESTDIR="/tmp/scilab-branch-${CI_COMMIT_BRANCH}-${NOW}" &>>../log.t
 # copy thirdparties
 cp -a lib/thirdparty "/tmp/scilab-branch-${CI_COMMIT_BRANCH}-${NOW}/lib/"
 cp -a thirdparty "/tmp/scilab-branch-${CI_COMMIT_BRANCH}-${NOW}/"
+mkdir --parents "/tmp/scilab-branch-${CI_COMMIT_BRANCH}-${NOW}/thirdparty/java/"
 cp -a java/jre "/tmp/scilab-branch-${CI_COMMIT_BRANCH}-${NOW}/thirdparty/java/"
 cp -a lib/thirdparty/libgluegen2-rt.so "/tmp/scilab-branch-${CI_COMMIT_BRANCH}-${NOW}/bin/"
 cp -a lib/thirdparty/libnativewindow_awt.so "/tmp/scilab-branch-${CI_COMMIT_BRANCH}-${NOW}/bin/"

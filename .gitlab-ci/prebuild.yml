@@ -77,6 +77,19 @@ cleanup old linux builds:
         [ -w "$i" ] && rm -rf "$i";
       done
 
+# cleanup old builds from runners
+cleanup old windows builds:
+  stage: prebuild
+  tags:
+    - windows x64
+    - visual studio 2017
+    - intel oneAPI
+    - openjdk 8
+    - innosetup 6
+  script:
+    # Remove TMPDIRs older than 1 day
+    - forfiles -p "%temp%" -m "SCI_TMP*" -d -1 -c "cmd /c IF @isdir == TRUE rd /S /Q @path"
+
 
 # manuel clean
 clean linux:
