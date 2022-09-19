@@ -42,22 +42,22 @@ automake >>../log.txt
 make --jobs="$(nproc)" all &>>../log.txt ||(tail --lines=100 ../log.txt; exit 1)
 
 # install to tmpdir
-make install DESTDIR="/tmp/scilab-branch-${CI_COMMIT_BRANCH}-${CI_COMMIT_TIMESTAMP}" &>>../log.txt ||(tail --lines=100 ../log.txt; exit 1)
+make install DESTDIR="/tmp/scilab-branch-${CI_COMMIT_BRANCH}-${NOW}" &>>../log.txt ||(tail --lines=100 ../log.txt; exit 1)
 
 # copy thirdparties
-cp -a lib/thirdparty "/tmp/scilab-branch-${CI_COMMIT_BRANCH}-${CI_COMMIT_TIMESTAMP}/lib/"
-cp -a thirdparty "/tmp/scilab-branch-${CI_COMMIT_BRANCH}-${CI_COMMIT_TIMESTAMP}/"
-cp -a java/jre "/tmp/scilab-branch-${CI_COMMIT_BRANCH}-${CI_COMMIT_TIMESTAMP}/thirdparty/java/"
-cp -a lib/thirdparty/libgluegen2-rt.so "/tmp/scilab-branch-${CI_COMMIT_BRANCH}-${CI_COMMIT_TIMESTAMP}/bin/"
-cp -a lib/thirdparty/libnativewindow_awt.so "/tmp/scilab-branch-${CI_COMMIT_BRANCH}-${CI_COMMIT_TIMESTAMP}/bin/"
-cp -a lib/thirdparty/libnativewindow_x11.so "/tmp/scilab-branch-${CI_COMMIT_BRANCH}-${CI_COMMIT_TIMESTAMP}/bin/"
-cp -a lib/thirdparty/libnativewindow_x11.so "/tmp/scilab-branch-${CI_COMMIT_BRANCH}-${CI_COMMIT_TIMESTAMP}/bin/"
+cp -a lib/thirdparty "/tmp/scilab-branch-${CI_COMMIT_BRANCH}-${NOW}/lib/"
+cp -a thirdparty "/tmp/scilab-branch-${CI_COMMIT_BRANCH}-${NOW}/"
+cp -a java/jre "/tmp/scilab-branch-${CI_COMMIT_BRANCH}-${NOW}/thirdparty/java/"
+cp -a lib/thirdparty/libgluegen2-rt.so "/tmp/scilab-branch-${CI_COMMIT_BRANCH}-${NOW}/bin/"
+cp -a lib/thirdparty/libnativewindow_awt.so "/tmp/scilab-branch-${CI_COMMIT_BRANCH}-${NOW}/bin/"
+cp -a lib/thirdparty/libnativewindow_x11.so "/tmp/scilab-branch-${CI_COMMIT_BRANCH}-${NOW}/bin/"
+cp -a lib/thirdparty/libnativewindow_x11.so "/tmp/scilab-branch-${CI_COMMIT_BRANCH}-${NOW}/bin/"
 
 # Update the classpath
-sed -i "s#$(pwd)#\$SCILAB/../../#g" "/tmp/scilab-branch-${CI_COMMIT_BRANCH}-${CI_COMMIT_TIMESTAMP}/share/scilab/etc/classpath.xml"
+sed -i "s#$(pwd)#\$SCILAB/../../#g" "/tmp/scilab-branch-${CI_COMMIT_BRANCH}-${NOW}/share/scilab/etc/classpath.xml"
 
 # Update the rpath and ELF NEEDED
-cd "/tmp/scilab-branch-${CI_COMMIT_BRANCH}-${CI_COMMIT_TIMESTAMP}/" ||exit
+cd "/tmp/scilab-branch-${CI_COMMIT_BRANCH}-${NOW}/" ||exit
 patchelf --set-rpath '$ORIGIN:$ORIGIN/../lib/scilab:$ORIGIN/../lib/thirdparty:$ORIGIN/../lib/thirdparty/redist' \
 					bin/scilab-cli-bin bin/scilab-bin
 find lib/scilab/*.so* -type f -exec patchelf --set-rpath '$ORIGIN:$ORIGIN/../thirdparty:$ORIGIN/../thirdparty/redist' {} \;
@@ -66,4 +66,4 @@ readelf -d bin/scilab-bin |awk '/NEEDED/{gsub(/\[/,""); gsub(/\]/,""); print "pa
 cd "${CI_PROJECT_DIR}" ||exit
 
 # package as a tar gz file
-tar -xzf "scilab-branch-${CI_COMMIT_BRANCH}-${CI_COMMIT_TIMESTAMP}.tar.gz" -C /tmp "scilab-branch-${CI_COMMIT_BRANCH}-${CI_COMMIT_TIMESTAMP}"
+tar -xzf "scilab-branch-${CI_COMMIT_BRANCH}-${NOW}.tar.gz" -C /tmp "scilab-branch-${CI_COMMIT_BRANCH}-${NOW}"
