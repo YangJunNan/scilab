@@ -95,7 +95,8 @@ cleanup old windows builds:
       GIT_CLEAN_FLAGS: none
   script:
     # Remove install dir older than 3 days
-    - del /f /q /s scilab-*.exe scilab-*/
+    - del /f /q /s scilab-*.exe |cmd /c ""
+    - del /f /q /s scilab-*\ |cmd /c ""
     # Remove TMPDIRs older than 1 day
     - forfiles -p "%temp%" -m "SCI_TMP*" -d -1 -c "cmd /c IF @isdir == TRUE rd /S /Q @path" |cmd /c ""
 
