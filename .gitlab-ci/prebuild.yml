@@ -66,13 +66,16 @@ cleanup old linux builds:
   variables:
       GIT_CLEAN_FLAGS: none
   script:
-    # Remove install dir older than 3 days and TMPDIRs older than 1 day
     - set -e -x
+    # Remove any previous tarball
+    - rm -fr scilab-branch-*.tar.gz
+    # Remove install dir older than 3 days
     - |
       find /tmp -maxdepth 1 -mtime +2 -name "scilab-*" -type d -print0 |\
       while IFS= read -r -d '' i ; do
         chmod -R +w "$i" && rm -rf "$i";
       done
+    # Remove TMPDIRs older than 1 day
     - |
       find /tmp -maxdepth 1 -mtime +0 -name "SCI_TMP*" -type d -print0 |\
       while IFS= read -r -d '' i ; do
@@ -91,6 +94,8 @@ cleanup old windows builds:
   variables:
       GIT_CLEAN_FLAGS: none
   script:
+    # Remove install dir older than 3 days
+    - del /f /q /s 
     # Remove TMPDIRs older than 1 day
     - forfiles -p "%temp%" -m "SCI_TMP*" -d -1 -c "cmd /c IF @isdir == TRUE rd /S /Q @path"
     - echo "TMPDIR cleaned"

@@ -48,5 +48,5 @@ if errorlevel 1 tail.exe --lines=100 ..\log.txt & exit 1
 REM TODO: how to sign ? was:
 REM call d:\signtool_password.bat
 REM "C:\Program Files (x86)\Windows Kits\8.1\bin\x64\signtool.exe" sign /f D:\\ESIGroupCERT.pfx /p "%SIGNPASS%" /t http://timestamp.sectigo.com /v .\Output\scilab-branch-6.1_x64.exe
-move .\Output\scilab-branch-6.1_x64.exe scilab-branch-%CI_COMMIT_BRANCH%-%CI_COMMIT_TIMESTAMP%.exe
+move .\Output\scilab-branch-6.1_x64.exe %CI_PROJECT_DIR%\scilab-branch-%CI_COMMIT_BRANCH%-%NOW%.exe
 if errorlevel 1 exit 1

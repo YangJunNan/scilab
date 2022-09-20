@@ -17,7 +17,7 @@ build windows x64:
     paths:
       - log.txt
       - scilab\tools\innosetup\Scilab.iss
-      - scilab-branch-${CI_COMMIT_BRANCH}-${CI_COMMIT_TIMESTAMP}.exe
+      - scilab-branch-${CI_COMMIT_BRANCH}-*.exe
     when: always
 
 
@@ -38,7 +38,7 @@ build linux x86_64:
   artifacts:
     paths:
       - log.txt
-      - scilab-branch-${CI_COMMIT_BRANCH}-${CI_COMMIT_TIMESTAMP}.tar.gz
+      - scilab-branch-${CI_COMMIT_BRANCH}-*.tar.gz
     when: always
 
 
@@ -57,5 +57,5 @@ build docker:
   script: bash -x -e .gitlab-ci/build.sh
   artifacts:
     paths:
-      - scilab-branch-${CI_COMMIT_REF_NAME}-${CI_COMMIT_TIMESTAMP}
-      - scilab/log.txt
+      - log.txt
+      - scilab-branch-${CI_COMMIT_BRANCH}-*.tar.gz
