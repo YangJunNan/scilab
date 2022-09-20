@@ -60,9 +60,7 @@ cleanup old linux builds:
   stage: prebuild
   tags:
     - linux x86_64
-    - g++
-    - gfortran
-    - openjdk 8
+    - scilab
   variables:
       GIT_CLEAN_FLAGS: none
   script:
@@ -87,10 +85,7 @@ cleanup old windows builds:
   stage: prebuild
   tags:
     - windows x64
-    - visual studio 2017
-    - intel oneAPI
-    - openjdk 8
-    - innosetup 6
+    - scilab
   variables:
       GIT_CLEAN_FLAGS: none
   script:
@@ -106,9 +101,7 @@ clean linux:
   stage: prebuild
   tags:
     - linux x86_64
-    - g++
-    - gfortran
-    - openjdk 8
+    - scilab
   variables:
       GIT_CLEAN_FLAGS: -fxd
   script: echo "git clean succeeded"
@@ -117,10 +110,7 @@ clean windows:
   stage: prebuild
   tags:
     - windows x64
-    - visual studio 2017
-    - intel oneAPI
-    - openjdk 8
-    - innosetup 6
+    - scilab
   variables:
       GIT_CLEAN_FLAGS: -fxd
   script: echo "git clean succeeded"
