@@ -1,12 +1,10 @@
 # build scilab using a windows runner
 build windows x64:
   stage: build
+  needs: ["cleanup old windows builds"]
   tags:
     - windows x64
-    - visual studio 2017
-    - intel oneAPI
-    - openjdk 8
-    - innosetup 6
+    - scilab
   cache:
     key: prerequirements-windows-x64
     policy: pull
@@ -24,11 +22,10 @@ build windows x64:
 # build scilab using a linux runner
 build linux x86_64:
   stage: build
+  needs: ["cleanup old linux builds"]
   tags:
     - linux x86_64
-    - g++
-    - gfortran
-    - openjdk 8
+    - scilab
   cache:
     key: prerequirements-linux-x86_64
     policy: pull
@@ -48,6 +45,7 @@ build docker:
   image: $CI_REGISTRY/scilab/scilab:builder_linux
   tags:
     - docker
+    - scilab
   cache:
     key: prerequirements-linux-x86_64
     policy: pull
