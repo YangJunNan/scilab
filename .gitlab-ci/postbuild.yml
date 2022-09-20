@@ -12,3 +12,26 @@ postbuild linux:
     - linux
   script:
     - echo "nothing to postbuild"
+
+
+# build javadoc
+postbuild javadoc:
+  stage: postbuild
+  tags: docker
+  image: docker.io/openjdk:8-jdk-alpine
+  script:
+    - |
+      MASK="modules/*/src/java/";
+      MODULES=`ls -d $MASK`;
+      for M in $MODULES; do
+        LISTMODULES="$M:$LISTMODULES";
+        MODULE=$$(echo $M|cut -d/ -f3);
+        LISTPKG="$LISTPKG org.scilab.modules.$MODULE";
+      done; \
+      $(JAVADOC) \
+      -d public \
+      -sourcepath $LISTMODULES \
+      $LISTPKG
+  artifacts:
+    paths:
+      - public

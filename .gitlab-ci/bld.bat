@@ -3,12 +3,12 @@ REM Builder script for building Scilab on Windows
 REM NOTE: log all commands to log.txt to avoid hitting Gitlab log limit
 
 echo on
-svn checkout --username anonymous --password Scilab svn://svn.scilab.org/scilab/%PREREQUIREMENTS_BRANCH%/Dev-Tools/SE/Prerequirements/Windows_x64/ scilab >log.txt
-if errorlevel 1 tail.exe --lines=100 log.txt & exit 1
+svn checkout --username anonymous --password Scilab svn://svn.scilab.org/scilab/%PREREQUIREMENTS_BRANCH%/Dev-Tools/SE/Prerequirements/Windows_x64/ scilab >log_svn.txt
+if errorlevel 1 tail.exe --lines=100 log_svn.txt & exit 1
 REM display svn revision
-tail.exe -n 1 log.txt
+tail.exe -n 1 log_svn.txt
 REM revert local modification
-svn revert -R scilab >>log.txt
+svn revert -R scilab >>log_svn.txt
 
 REM Define environment variables
 call "%VS2017INSTALLDIR%\VC\Auxiliary\Build\vcvarsall.bat" x64
@@ -34,10 +34,8 @@ REM build with Visual Studio and Intel compilers
 echo on
 devenv.com Scilab.sln /build "Release|x64" >>..\log.txt
 if errorlevel 1 tail.exe --lines=100 ..\log.txt & exit 1
-devenv.com Scilab.sln /build "Release|x64" /project buildhelp >>..\log_buildhelp.txt
+devenv.com Scilab.sln /build "Release|x64" /project buildhelp >>..\log_buildhelp.txt |cmd /c ""
 if errorlevel 1 tail.exe --lines=100 ..\log_buildhelp.txt & exit 1
-devenv.com Scilab.sln /build "Release|x64" /project buildjavadoc >>..\log_buildjavadoc.txt
-if errorlevel 1 tail.exe --lines=100 ..\log_buildjavadoc.txt & exit 1
 
 REM Package with Inno Setup 6
 echo on

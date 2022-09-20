@@ -7,11 +7,11 @@
 svn checkout \
     --username anonymous --password Scilab \
     "svn://svn.scilab.org/scilab/${PREREQUIREMENTS_BRANCH}/Dev-Tools/SE/Prerequirements/linux_x64/" scilab \
-    >log.txt ||(tail --lines=100 log.txt; exit 1)
+    >log_svn.txt ||(tail --lines=100 log_svn.txt; exit 1)
 # display svn revision
-tail -n 1 log.txt
+tail -n 1 log_svn.txt
 # revert local modification
-svn revert -R scilab >>log.txt
+svn revert -R scilab >>log_svn.txt
 
 # patch version numbers
 date +"%s" >timestamp
@@ -40,9 +40,10 @@ automake >>../log.txt
 
 # make 
 make --jobs="$(nproc)" all &>>../log.txt ||(tail --lines=100 ../log.txt; exit 1)
+make doc &>>../log_doc.txt ||(tail --lines=100 ../log_doc.txt; exit 1)
 
 # install to tmpdir
-make install DESTDIR="${CI_PROJECT_DIR}/scilab-branch-${CI_COMMIT_BRANCH}-${NOW}" &>>../log.txt ||(tail --lines=100 ../log.txt; exit 1)
+make install DESTDIR="${CI_PROJECT_DIR}/scilab-branch-${CI_COMMIT_BRANCH}-${NOW}" &>>../log_install.txt ||(tail --lines=100 ../log_install.txt; exit 1)
 
 # copy thirdparties
 cp -a lib/thirdparty "${CI_PROJECT_DIR}/scilab-branch-${CI_COMMIT_BRANCH}-${NOW}/lib/"
