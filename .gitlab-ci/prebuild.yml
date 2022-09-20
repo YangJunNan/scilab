@@ -97,7 +97,7 @@ cleanup old windows builds:
     # Remove install dir older than 3 days
     - del /f /q /s scilab-*.exe
     # Remove TMPDIRs older than 1 day
-    - forfiles -p "%temp%" -m "SCI_TMP*" -d -1 -c "cmd /c IF @isdir == TRUE rd /S /Q @path"
+    - forfiles -p "%temp%" -m "SCI_TMP*" -d -1 -c "cmd /c IF @isdir == TRUE rd /S /Q @path" |cmd /c ""
     - echo "TMPDIR cleaned"
 
 
