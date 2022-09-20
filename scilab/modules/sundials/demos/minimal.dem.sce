@@ -56,7 +56,9 @@ function sundials_minimal()
     cnd = fBnd(bdy);
 
     // band Jacobian is approximated with finite differences
-    [f,val,info,s3]=kinsol(list(fun,bdy,cnd),0.5*ones(n*n,1),jacBand=[n+1 n+1],jacUpdateFreq=1,display="iter",callback=cb);
+    [f,val,info,s3]=kinsol(list(fun,bdy,cnd),0.5*ones(n*n,1),...
+    jacPattern=lapy+lapx+gradx*grady,...
+    jacUpdateFreq=1,display="iter",callback=cb);
 
 
     demo_viewCode("minimal.dem.sce")

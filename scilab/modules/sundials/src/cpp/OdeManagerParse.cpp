@@ -195,6 +195,10 @@ void OdeManager::parseOptions(types::optional_list &opt)
             // call will set m_typeOfOutput[JACY] or m_typeOfOutput[JACYYP]
             types::typed_list in;
             callOpening(whatJAC, in, m_dblT0);
+            if (whatJAC == JACYYP)
+            {
+                in.push_back(new types::Double(1.0));
+            }
             computeMatrix(in, whatJAC, NULL);
         }
         else if (m_functionAPI[whatJAC] == SUNDIALS_DLL)
@@ -403,7 +407,11 @@ void OdeManager::parseOptions(types::optional_list &opt)
         if (isDAE())
         {
             getStringInPlist(m_wstrCaller.c_str(), opt, L"calcIc", m_wstrCalcIc, L"", {L"y0",L"y0yp0"});
-            getIntVectorInPlist(m_wstrCaller.c_str(), opt, L"yIsAlgebric", m_iVecIsAlgebric, {}, {1,m_iNbEq}, {1,m_iNbEq});
+            getIntVectorInPlist(m_wstrCaller.c_str(), opt, L"yIsAlgebraic", m_iVecIsAlgebraic, {}, {1,m_iNbEq}, {1,m_iNbEq});
+            if (m_iVecIsAlgebraic.size() > 0)
+            {
+                getBooleanInPlist(m_wstrCaller.c_str(), opt, L"suppressAlg", &m_bSuppressAlg, false);                
+            }
         }
     }
 

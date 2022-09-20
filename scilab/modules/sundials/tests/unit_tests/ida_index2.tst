@@ -9,17 +9,22 @@
 // are also available at
 // https://www.gnu.org/licenses/gpl-3.0.txt
 
-function subdemolist = demo_gateway()
-    demopath = get_absolute_file_path("sundials.dem.gateway.sce");
-    add_demo("SUNDIALS", demopath + "sundials.dem.gateway.sce");
+// <-- CLI SHELL MODE -->
+// <-- NO CHECK REF -->
 
-    subdemolist = [_("Minimal surface"), "minimal.dem.sce"
-                  [_("Lorenz attractor"), "lorenz.dem.sce"]
-                  [_("Spherical pendulum"), "pend3d1.dem.sce"]
-                  ]
-
-    subdemolist(:,2) = demopath + subdemolist(:,2);
+function out=res(t,y,yd)
+    x=y(1:2);
+    xd=yd(1:2);
+    u=y(3:4);
+    ud=yd(3:4);
+    lambda=y(5);
+    out=[xd-u
+         ud+x*lambda+[0;1]
+         x'*u];
 endfunction
 
-subdemolist = demo_gateway();
-clear demo_gateway;
+tspan = [7.4162987092054876];
+y0=[1;0;0;0;0];
+yd0=[0;0;0;-1;0];
+
+[t,y]=ida(res,tspan,y0,yd0,t0=0,yIsAlgebraic=5,suppressAlg=%t);

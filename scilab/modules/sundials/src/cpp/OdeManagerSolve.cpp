@@ -34,7 +34,7 @@ void OdeManager::solve()
         SUNDIALSIntCb(dblTime, -1, m_N_VectorY, m_N_VectorYp, (void *)this);
     }
 
-    if ((m_pDblTSpan->getSize() == 2 && std::isnan(m_dblOptT0)) || m_iRetCount <= 1) 
+    if ((m_pDblTSpan->getSize() == 2 && std::isnan(m_dblOptT0)) || m_iRetCount == 1) 
     {
         // Case where we compute solution only at method steps guided only by precision (RTOL, ATOL) requirements.
         // This occurs when tspan is of the kind [t0 t1] or in the case of sol = method() syntax, i.e. when we yield

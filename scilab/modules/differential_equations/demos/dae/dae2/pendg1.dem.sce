@@ -30,17 +30,18 @@ function demo_pendg1()
     atol = [0.0001;0.0001;0.0001;0.0001;0.0001;0.0001;0.001];
     rtol = atol;
 
-    sol  = dassl([y0,yd0],t0,T,rtol,atol,pendg,info);
+
+    [T,y,yd]  = ida(pendg,T,y0,yd0,yIsAlgebric=7);
 
     H    = build_sliding_pendulum ()
     draw_sliding_pendulum(H,y0(1:3))
 
     //visualization of the result
     realtimeinit(0.05);realtime(0)
-    for i=1:size(sol,2)
+    for i=1:length(T)
         realtime(i);
         if is_handle_valid(H) then
-            draw_sliding_pendulum(H,sol(2:4,i))
+            draw_sliding_pendulum(H,y(1:3,i))
         end
     end
 

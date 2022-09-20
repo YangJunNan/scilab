@@ -172,7 +172,7 @@ void ARKODEManager::parseMethodAndOrder(types::optional_list &opt)
             {
                 wss << L"_" << m_DIRKButcherTable->p;
             }
-            wss << L"_" << m_DIRKButcherTable->p << L"_" << m_DIRKButcherTable->q;            
+            wss << L"_" << m_DIRKButcherTable->q;            
             m_iMethodOrder = m_DIRKButcherTable->q;
             m_iEmbeddedMethodOrder = m_DIRKButcherTable->p;
         }

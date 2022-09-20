@@ -219,7 +219,7 @@ class SUNDIALS_EXPORT OdeManager : public SUNDIALSManager
  
     std::vector<int> m_iVecEventIsTerminal;
     std::vector<int> m_iVecEventDirection;
-    std::vector<int> m_iVecIsAlgebric;
+    std::vector<int> m_iVecIsAlgebraic;
 
     std::vector<int> m_iVecSensParIndex;
 
@@ -235,6 +235,7 @@ class SUNDIALS_EXPORT OdeManager : public SUNDIALSManager
     std::list<std::vector<double>> interpBasisVectorList;
     types::Double *m_pDblInterpBasisVectors = NULL;
  
+    bool m_bSuppressAlg = false;
     bool m_odeIsExtension = false;
     bool m_odeIsImEx = false;
     bool m_bErrProj = false;

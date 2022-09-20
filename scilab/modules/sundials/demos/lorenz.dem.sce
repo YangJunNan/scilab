@@ -33,8 +33,8 @@ function sundials_lorenz()
             a.data_bounds=[-30 30 -30 30 0 60]
             a.rotation_angles=[60 130];
             a.box="off";
-            b = uicontrol("string","Stop","Callback_Type",10,...
-            "callback","delete(gcf().children(1));abort");
+            b = uicontrol("string","Stop","Callback_Type",10,"tag","stop",...
+            "callback","delete(findobj(""tag"",""stop""));abort");
             drawnow
         else
             a= gca();
@@ -53,8 +53,9 @@ function sundials_lorenz()
     X0=X0./s2([1 1 1],:)*30;
     X0(3,:)=X0(3,:)+30;
     
-    arkode(lorenz,[0 20] ,X0,callback=cb,method="ERK_8");
- 
+    arkode(lorenz,[0 20] ,X0, callback=cb, method="ERK_8");
+
+    delete(findobj("tag","stop"))
 end
 
 sundials_lorenz()

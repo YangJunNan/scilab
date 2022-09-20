@@ -105,7 +105,8 @@
         <para>It is an interface to the IDA solver of Sundials library using BDF method. The simplest call of IDA is when <literal>tspan</literal> is a two component vector:
         </para>
         <para><programlisting role="no-scilab-exec"><![CDATA[[t,y,yp] = ida(F,[t0 tf],y0,yp0)]]>
-        </programlisting></para>
+        </programlisting>
+        </para>
         <para>
             where F(t,y,y') is the right hand side usually called "residual" of the DAE,  <literal>t0, tf</literal> are the initial and final time, <literal>y</literal> is the
             array of solutions <literal>[y(t(1)),y(t(2)),...]</literal> at time values in t, <literal>yp</literal> is the
@@ -119,7 +120,7 @@ function res = F(t,y,yp)
 end]]>
         </programlisting></para>
             </para>       
-            <para>See the <link linkend="sundials_user_functions">User functions</link> hel ppage to learn how to pass extra parameters and/or use DLL entrypoints. When <literal>t</literal> has more than two components:
+            <para>See the <link linkend="sundials_user_functions">User functions</link> help page to learn how to pass extra parameters and/or use DLL entrypoints. When <literal>t</literal> has more than two components:
         </para>
         <para><programlisting role="no-scilab-exec"><![CDATA[[t,y,yp] = ida(F,[t0 t1 ... tf],y0,yp0)]]>
         </programlisting></para>
@@ -198,10 +199,43 @@ end]]>
                 ]]></programlisting>            
         </para>
         <para>
-            This option also allows to compute purely algebraic states by using the <literal>yIsAlgebric = idx</literal> option, where <literal>idx</literal> is a vector with 
+            When the DAE is semi-explicit and of index one, this option also allows to compute purely algebraic states
+            by using the <literal>yIsAlgebraic = idx</literal> option, where <literal>idx</literal> is a vector with 
             the indexes of such states. When y'(0) is known but y(0) is not, use <literal>calcIc</literal> option with value <literal>"y0"</literal>.
+            When the DAE of index two or more these options should not be used and coherent initial conditions must be given for all states, and
+            setting the option <literal>suppressAlg</literal> is recommended (see below).
         </para>
     </refsection>
+    <refsection role="example" xml:id="ida_high_index">
+        <title>DAE with high index</title>
+        <para>
+            When the DAE is of high index, the <literal>suppressAlg</literal> option can help the solver effort.
+            If <literal>suppressAlg = %T</literal> then the algebraic variables (given with the <literal>yIsAlgebraic</literal> option)
+            are excluded from the local error test. The use of this option (with %T value) is discouraged when solving DAE systems of index one
+            whereas is often the only way to obtain a solution for systems ofindex two or more. See the following example belo (a circular pendulum DAE of index two).
+        </para>
+        <para>
+            <programlisting role="example"><![CDATA[
+            function out=res(t,y,yd)
+                x=y(1:2);
+                xd=yd(1:2);
+                u=y(3:4);
+                ud=yd(3:4);
+                lambda=y(5);
+                out=[xd-u
+                     ud+x*lambda+[0;1]
+                     x'*u];
+            end
+
+            // One period
+            T = 7.4162987092054876;
+            y0=[1;0;0;0;0];
+            yd0=[0;0;0;-1;0];
+            [t,y]=ida(res,T,y0,yd0,t0=0,yIsAlgebraic=5,suppressAlg=%t)
+            ]]></programlisting>
+        </para>
+    </refsection>
+    
     <refsection role="see also">
         <title>See also</title>
         <simplelist type="inline">

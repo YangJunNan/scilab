@@ -63,26 +63,31 @@ bool IDAManager::initialize(char *errorMsg)
 
 bool IDAManager::computeIC(char *errorMsg)
 {
+    // setting algebraic components ids can be necessary
+    // independently of calcIC option value
+    N_Vector id = N_VNew_Serial(m_iNbRealEq, m_sunctx);
+    std::fill(NV_DATA_S(id), NV_DATA_S(id)+m_iNbRealEq, 1);
+    for (auto index : m_iVecIsAlgebraic)
+    {
+        NV_DATA_S(id)[index-1] = 0; // 0 means algebraic state
+        if (m_odeIsComplex)
+        {
+            NV_DATA_S(id)[index-1+m_iNbEq] = 0; // 0 means algebraic state
+        }
+    }        
+    if  (IDASetId(m_prob_mem, id) != IDA_SUCCESS)
+    {
+        sprintf(errorMsg,"IDASetId error\n");
+        return true;
+    }
+    if (m_iVecIsAlgebraic.size() > 0)
+    {
+        IDASetSuppressAlg(m_prob_mem, m_bSuppressAlg);
+    }
     // compute initial condition, if applicable
     if (m_wstrCalcIc == L"y0yp0")
     {
-        // Compute yp0 and algebric components of y0 given differential components of y0
-        N_Vector id = N_VNew_Serial(m_iNbRealEq, m_sunctx);
-        std::fill(NV_DATA_S(id), NV_DATA_S(id)+m_iNbRealEq, 1);
-        for (auto index : m_iVecIsAlgebric)
-        {
-            NV_DATA_S(id)[index-1] = 0; // 0 means algebric state
-            if (m_odeIsComplex)
-            {
-                NV_DATA_S(id)[index-1+m_iNbEq] = 0; // 0 means algebric state
-            }
-        }
-        if  (IDASetId(m_prob_mem, id) != IDA_SUCCESS)
-        {
-            sprintf(errorMsg,"IDASetId error\n");
-            return true;
-        }
-
+        // Compute yp0 and algebraic components of y0 given differential components of y0
         long int iFlag = IDACalcIC(m_prob_mem, IDA_YA_YDP_INIT, m_pDblTSpan->get(m_pDblTSpan->getSize()-1));
 
         if (iFlag != IDA_SUCCESS)

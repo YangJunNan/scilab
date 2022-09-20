@@ -227,7 +227,7 @@
 
     <refsection role="description">
         <title>IDA options</title>
-        <para>IDA accepts options that only make sense for differential-algebric implicit equations:
+        <para>IDA accepts options that only make sense for differential-algebraic implicit equations:
         </para>
         <para>
             <informaltable border='1'>
@@ -235,14 +235,24 @@
                     <tr>
                         <td>calcIC</td>
                         <td>    
-                            <para>A string specifying the type of initial condition to compute if <literal>y0,yp0</literal> vectors in the <literal>ida</literal> do not verify the equation.
-                            This string can be "yp0y0", in this case y'(0) and the algebric (non-differential) states of y0 are computed, knowing the differential states of y0. The algebric states are specified with the <literal>yIsAlgebric</literal> option. It can also be "y0" and in that case y(0) is computed knowing y'(0). The provided <literal>y0,yp0</literal> vectors in the <literal>ida</literal> call are used as inital guesses.</para>
+                            <para>A string specifying the type of initial condition to compute if <literal>y0,yp0</literal> vectors do not verify the equation.
+                            This string can be "yp0y0", in this case y'(0) and the algebraic (non-differential) states of y0 are computed, knowing the differential states of y0. 
+                            The algebraic states are specified with the <literal>yIsAlgebraic</literal> option. It can also be "y0" and in that case y(0) is computed knowing y'(0).
+                            The provided <literal>y0,yp0</literal> vectors in the <literal>ida</literal> call are used as inital guesses.</para>
                         </td>
                     </tr>
                     <tr>
-                        <td>yIsAlgebric</td>
+                        <td>yIsAlgebraic</td>
                         <td>    
-                            <para>A vector of integer indices of non-differential states.</para>
+                            <para>A vector of integer indices of algebraic states.</para>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>supressAlg</td>
+                        <td>    
+                            <para>A boolean. If suppressAlg = %T, then the algebraic variables are excluded from the local error test. See the dedicated section
+                                in the <link linkend="ida_high_index">ida</link> help page.
+                            </para>
                         </td>
                     </tr>
                 </tbody>
@@ -299,7 +309,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <td>ERKButcherTableau, DIRKButcherTableau</td>
+                        <td>ERKButcherTab, DIRKButcherTab</td>
                         <td>    
                             <para>A matrix of size (s+2,s+1) or (s+1,s+1) where s is the number of stages of the method. See the paragraph about custom tableaux in the <link linkend="arkode_custom_tableaux">arkode help page</link>.</para>
                         </td>

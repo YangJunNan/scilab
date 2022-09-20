@@ -55,7 +55,7 @@ assert_checkalmostequal(sol2(sol2.t),sol2.y)
 [t,y,yp] = ida(list(sir,bet,gam,N),[0,400],y0,yp0,rtol=1e-14);
 y0=[N-1;1;0];
 yp0 = [0;0;0];
-[tt,yy,yyp]= ida(list(sir,bet,gam,N),[0 400],y0,yp0,rtol=1e-14,calcIc="y0yp0",yIsAlgebric=3);
+[tt,yy,yyp]= ida(list(sir,bet,gam,N),[0 400],y0,yp0,rtol=1e-14,calcIc="y0yp0",yIsAlgebraic=3);
 assert_checkalmostequal(yy(:,$),y(:,$),1e-6);
 
 // Robertson problem
@@ -70,10 +70,10 @@ yp0 = [-0.0400; 0.0400; 0];
 tspan = [0 4e6];
 [t,y,yp] = ida(robertsidae,tspan,y0,yp0,h0=1e-6);
 solr = ida(robertsidae,tspan,y0,yp0,h0=1e-6);
-// compute initial condition of algebric state
+// compute initial condition of algebraic state
 y0 = [1-1e-3; 0; 0];
 yp0 = [-0.0400; 0.0400; 0];
-[t,y,yp] = ida(robertsidae,tspan,y0,yp0,h0=1e-6,calcIc="y0yp0",yIsAlgebric=3);
+[t,y,yp] = ida(robertsidae,tspan,y0,yp0,h0=1e-6,calcIc="y0yp0",yIsAlgebraic=3);
 
 // Linear DAE
 function out = res(t,y,yp,A,B)
