@@ -63,6 +63,8 @@ cleanup old linux builds:
     - g++
     - gfortran
     - openjdk 8
+  variables:
+      GIT_CLEAN_FLAGS: none
   script:
     # Remove install dir older than 3 days and TMPDIRs older than 1 day
     - set -e -x
@@ -86,9 +88,12 @@ cleanup old windows builds:
     - intel oneAPI
     - openjdk 8
     - innosetup 6
+  variables:
+      GIT_CLEAN_FLAGS: none
   script:
     # Remove TMPDIRs older than 1 day
     - forfiles -p "%temp%" -m "SCI_TMP*" -d -1 -c "cmd /c IF @isdir == TRUE rd /S /Q @path"
+    - echo "TMPDIR cleaned"
 
 
 # manuel clean
