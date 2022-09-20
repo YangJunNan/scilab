@@ -44,14 +44,13 @@ create docker images:
   image: docker
   script:
     - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
-    - docker build -t $CI_REGISTRY/scilab/scilab:builder_linux - < /.gitlab-ci/Dockerfile.linux
-    - docker push $CI_REGISTRY/scilab/scilab:builder_linux
+    - docker build -t $CI_REGISTRY/scilab/linux_runner:$CI_COMMIT_REF_SLUG - < /.gitlab-ci/Dockerfile.linux
+    - docker push $CI_REGISTRY/scilab/linux_runner:$CI_COMMIT_REF_SLUG
 # Docker windows not supported yet
 #  - docker build -t $CI_REGISTRY/scilab/scilab:builder_windows - < /.gitlab-ci/Dockerfile.windows
 #  - docker push $CI_REGISTRY/scilab/scilab:builder_windows
   only:
     changes:
-      - /.gitlab-ci.yml
       - /.gitlab-ci/Dockerfile*
 
 

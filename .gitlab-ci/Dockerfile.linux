@@ -7,11 +7,14 @@ RUN apt-get update && apt-get install -y \
         make gcc-8 g++-8 gfortran-8 \
         openjdk-8-jdk ant ocaml gettext curl \
         libcurl4-openssl-dev libgl1-mesa-dev pkg-config \
+        dumb-init \
     && apt-get clean
 
-# download gitlab-runner binary to connect as Gitlab runner
-curl -L --output /usr/local/bin/gitlab-runner \
+# download gitlab-runner official binary
+RUN curl -L --output /usr/local/bin/gitlab-runner \
     "https://gitlab-runner-downloads.s3.amazonaws.com/latest/binaries/gitlab-runner-linux-amd64"
+RUN chmod +x /usr/local/bin/gitlab-runner
+RUN mkdir /etc/gitlab-runner
 
 # generate en_US locale
 RUN sed -i 's/^# *\(en_US.UTF-8\)/\1/' /etc/locale.gen \
@@ -21,7 +24,6 @@ RUN sed -i 's/^# *\(en_US.UTF-8\)/\1/' /etc/locale.gen \
 RUN mkdir -p /builds
 RUN useradd scilab
 RUN chown scilab: /builds
-USER scilab
 
 # Scilab source code is in English with UTF-8 encoding
 ENV LC_ALL=en_US.UTF-8
@@ -32,3 +34,9 @@ ENV LANGUAGE=en_US.UTF-8
 ENV CC=gcc-8
 ENV CXX=g++-8
 ENV F77=gfortran-8
+
+# share volumes
+VOLUME ["/etc/gitlab-runner", "/builds"]
+# launch 
+ENTRYPOINT ["/usr/bin/dumb-init", "/usr/local/bin/gitlab-runner"]
+CMD ["run", "--user=scilab", "--working-directory=/builds"]
