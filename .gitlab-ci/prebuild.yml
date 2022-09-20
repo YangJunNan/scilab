@@ -39,7 +39,7 @@ prebuild linux x86_64:
 
 
 # create docker images for builders 
-create docker images:
+create docker image:
   stage: prebuild
   image: docker
   script:
@@ -49,9 +49,10 @@ create docker images:
 # Docker windows not supported yet
 #  - docker build -t $CI_REGISTRY/scilab/scilab:builder_windows - < /.gitlab-ci/Dockerfile.windows
 #  - docker push $CI_REGISTRY/scilab/scilab:builder_windows
-  only:
-    changes:
-      - /.gitlab-ci/Dockerfile*
+  rules:
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+      changes:
+        - Dockerfile
 
 
 # cleanup old builds from runners
