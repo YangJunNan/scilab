@@ -68,7 +68,7 @@ cleanup old linux builds:
   script:
     - set -e -x
     # Remove any previous tarball
-    - rm -fr scilab-branch-*.tar.gz
+    - rm -fr scilab-*.tar.gz
     # Remove install dir older than 3 days
     - |
       find /tmp -maxdepth 1 -mtime +2 -name "scilab-*" -type d -print0 |\
@@ -95,7 +95,7 @@ cleanup old windows builds:
       GIT_CLEAN_FLAGS: none
   script:
     # Remove install dir older than 3 days
-    - del /f /q /s 
+    - del /f /q /s scilab-*.exe
     # Remove TMPDIRs older than 1 day
     - forfiles -p "%temp%" -m "SCI_TMP*" -d -1 -c "cmd /c IF @isdir == TRUE rd /S /Q @path"
     - echo "TMPDIR cleaned"
