@@ -15,7 +15,7 @@ build windows x64:
   script: call .gitlab-ci\bld.bat
   artifacts:
     paths:
-      - log.txt
+      - log*.txt
       - scilab\tools\innosetup\Scilab.iss
       - scilab-branch-${CI_COMMIT_BRANCH}-*.exe
     when: always
@@ -37,7 +37,7 @@ build linux x86_64:
   script: bash -x -e .gitlab-ci/build.sh
   artifacts:
     paths:
-      - log.txt
+      - log*.txt
       - scilab-branch-${CI_COMMIT_BRANCH}-*.tar.gz
     when: always
 
@@ -57,5 +57,5 @@ build docker:
   script: bash -x -e .gitlab-ci/build.sh
   artifacts:
     paths:
-      - log.txt
+      - log*.txt
       - scilab-branch-${CI_COMMIT_BRANCH}-*.tar.gz
