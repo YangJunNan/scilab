@@ -5,9 +5,13 @@ LABEL description="Scilab builder image used by CI/CD runners"
 RUN apt-get update && apt-get install -y \
         locales subversion git \
         make gcc-8 g++-8 gfortran-8 \
-        openjdk-8-jdk ant ocaml gettext \
+        openjdk-8-jdk ant ocaml gettext curl \
         libcurl4-openssl-dev libgl1-mesa-dev pkg-config \
     && apt-get clean
+
+# download gitlab-runner binary to connect as Gitlab runner
+curl -L --output /usr/local/bin/gitlab-runner \
+    "https://gitlab-runner-downloads.s3.amazonaws.com/latest/binaries/gitlab-runner-linux-amd64"
 
 # generate en_US locale
 RUN sed -i 's/^# *\(en_US.UTF-8\)/\1/' /etc/locale.gen \
