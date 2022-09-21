@@ -52,7 +52,7 @@ create docker image:
   rules:
     - if: $CI_PIPELINE_SOURCE == "merge_request_event"
       changes:
-        - Dockerfile
+        - Dockerfile*
 
 
 # cleanup old builds from runners
