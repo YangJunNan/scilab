@@ -14,8 +14,7 @@ build windows x64:
   artifacts:
     paths:
       - log*.txt
-      - scilab\tools\innosetup\Scilab.iss
-      - scilab-branch-${CI_COMMIT_BRANCH}-*.exe
+      - scilab-*.exe
     when: always
 
 
@@ -35,7 +34,7 @@ build linux x86_64:
   artifacts:
     paths:
       - log*.txt
-      - scilab-branch-${CI_COMMIT_BRANCH}-*.tar.gz
+      - scilab-*.tar.gz
     when: always
 
 
@@ -56,4 +55,4 @@ build docker:
   artifacts:
     paths:
       - log*.txt
-      - scilab-branch-${CI_COMMIT_BRANCH}-*.tar.gz
+      - scilab-*.tar.gz

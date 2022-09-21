@@ -17,7 +17,7 @@ tail -n 1 log_svn.txt
 svn revert -R scilab >>log_svn.txt
 
 # define NOW as Gitlab display ISO 8601 timestamp
-date -d "${CI_COMMIT_TIMESTAMP}" +"%s" >timestamp
+date +"%s" >timestamp
 NOW=$(cat timestamp)
 # patch version numbers
 sed -i \
@@ -56,9 +56,9 @@ cp -a COPYING "${CI_PROJECT_DIR}/scilab-branch-${CI_COMMIT_BRANCH}-${NOW}/"
 cp -a README.md "${CI_PROJECT_DIR}/scilab-branch-${CI_COMMIT_BRANCH}-${NOW}/"
 
 # copy thirdparties
-cp -aL lib/thirdparty "${CI_PROJECT_DIR}/scilab-branch-${CI_COMMIT_BRANCH}-${NOW}/lib/"
-cp -aL thirdparty "${CI_PROJECT_DIR}/scilab-branch-${CI_COMMIT_BRANCH}-${NOW}/"
-cp -aL java/jre "${CI_PROJECT_DIR}/scilab-branch-${CI_COMMIT_BRANCH}-${NOW}/thirdparty/java"
+cp -a lib/thirdparty "${CI_PROJECT_DIR}/scilab-branch-${CI_COMMIT_BRANCH}-${NOW}/lib/"
+cp -a thirdparty "${CI_PROJECT_DIR}/scilab-branch-${CI_COMMIT_BRANCH}-${NOW}/"
+cp -a java/jdk*-jre "${CI_PROJECT_DIR}/scilab-branch-${CI_COMMIT_BRANCH}-${NOW}/thirdparty/java"
 
 # Update the classpath
 sed -i "s#$(pwd)#\$SCILAB/../../#g" "${CI_PROJECT_DIR}/scilab-branch-${CI_COMMIT_BRANCH}-${NOW}/share/scilab/etc/classpath.xml"

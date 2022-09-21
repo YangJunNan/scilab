@@ -21,7 +21,7 @@ set JAVA_HOME="%SCILAB_JDK64%"
 cd scilab
 
 REM define NOW as Gitlab display ISO 8601 timestamp
-"c:\Program Files\ds_shell\code\bin\ds_shell\date.exe" -d "%CI_COMMIT_TIMESTAMP%" +"%%s" >timestamp
+"c:\Program Files\ds_shell\code\bin\ds_shell\date.exe" +"%%s" >timestamp
 set /p NOW=<timestamp
 REM patch version numbers
 sed -i ^
