@@ -25,10 +25,10 @@ postbuild javadoc:
       MODULES=`ls -d $MASK`;
       for M in $MODULES; do
         LISTMODULES="$M:$LISTMODULES";
-        MODULE=$$(echo $M|cut -d/ -f4);
+        MODULE=$(echo $M|cut -d/ -f4);
         LISTPKG="$LISTPKG org.scilab.modules.$MODULE";
       done;
-      $(JAVADOC) -d public -sourcepath $LISTMODULES $LISTPKG
+    - javadoc -d public -sourcepath $LISTMODULES $LISTPKG
   artifacts:
     paths:
       - public
