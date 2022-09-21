@@ -37,6 +37,8 @@ devenv.com Scilab.sln /build "Release|x64" >..\log.txt
 if errorlevel 1 tail.exe --lines=100 ..\log.txt & exit 1
 devenv.com Scilab.sln /build "Release|x64" /project buildhelp >..\log_buildhelp.txt |cmd /c ""
 if errorlevel 1 tail.exe --lines=100 ..\log_buildhelp.txt & exit 1
+devenv.com Scilab.sln /build "Release|x64" /project buildjavadoc >..\log_buildjavadoc.txt |cmd /c ""
+if errorlevel 1 tail.exe --lines=100 ..\log_buildjavadoc.txt & exit 1
 
 REM Package with Inno Setup 6
 echo on
