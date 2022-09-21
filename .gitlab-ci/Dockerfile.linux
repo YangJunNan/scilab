@@ -40,4 +40,5 @@ ENV F77=gfortran-8
 VOLUME ["/etc/gitlab-runner", "/builds"]
 # launch 
 ENTRYPOINT ["/usr/bin/dumb-init", "/usr/local/bin/gitlab-runner"]
-CMD ["run", "--user=scilab", "--working-directory=/builds"]
+# working-directory always have an extra /builds, remove it
+CMD ["run", "--user=scilab", "--working-directory=/"]
