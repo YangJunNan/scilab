@@ -3,6 +3,9 @@
 # NOTE: log all commands to log.txt to avoid hitting Gitlab log limit
 # NOTE: nproc is used to limit memory usage
 
+# get current build machine architecture
+ARCH=$(cc -dumpmachine)
+
 # checkout pre-requirements
 svn checkout \
     --username anonymous --password Scilab \
@@ -13,9 +16,10 @@ tail -n 1 log_svn.txt
 # revert local modification
 svn revert -R scilab >>log_svn.txt
 
-# patch version numbers
-date +"%s" >timestamp
+# define NOW as Gitlab display ISO 8601 timestamp
+date -d "${CI_COMMIT_TIMESTAMP}" +"%s" >timestamp
 NOW=$(cat timestamp)
+# patch version numbers
 sed -i \
  -e "s/SCI_VERSION_STRING .*/SCI_VERSION_STRING \"scilab-branch-${CI_COMMIT_BRANCH}\"/" \
  -e "s/SCI_VERSION_WIDE_STRING .*/SCI_VERSION_WIDE_STRING L\"scilab-branch-${CI_COMMIT_BRANCH}\"/" \
@@ -33,14 +37,14 @@ export SCILIBS_LDFLAGS="-Wl,--allow-shlib-undefined"
 
 # configure (with reconfigure for up to date info)
 cd scilab ||exit 1
-aclocal >>../log.txt
+aclocal >../log.txt
 autoconf >>../log.txt
 automake >>../log.txt
 ./configure --prefix='' |tee -a ../log.txt
 
 # make 
 make --jobs="$(nproc)" all &>>../log.txt ||(tail --lines=100 ../log.txt; exit 1)
-make doc &>>../log_doc.txt ||(tail --lines=100 ../log_doc.txt; exit 1)
+make doc &>../log_doc.txt ||(tail --lines=100 ../log_doc.txt; exit 1)
 
 # install to tmpdir
 make install DESTDIR="${CI_PROJECT_DIR}/scilab-branch-${CI_COMMIT_BRANCH}-${NOW}" &>>../log_install.txt ||(tail --lines=100 ../log_install.txt; exit 1)
@@ -52,14 +56,9 @@ cp -a COPYING "${CI_PROJECT_DIR}/scilab-branch-${CI_COMMIT_BRANCH}-${NOW}/"
 cp -a README.md "${CI_PROJECT_DIR}/scilab-branch-${CI_COMMIT_BRANCH}-${NOW}/"
 
 # copy thirdparties
-cp -a lib/thirdparty "${CI_PROJECT_DIR}/scilab-branch-${CI_COMMIT_BRANCH}-${NOW}/lib/"
-cp -a thirdparty "${CI_PROJECT_DIR}/scilab-branch-${CI_COMMIT_BRANCH}-${NOW}/"
-mkdir --parents "${CI_PROJECT_DIR}/scilab-branch-${CI_COMMIT_BRANCH}-${NOW}/thirdparty/java/"
-cp -a java/jre "${CI_PROJECT_DIR}/scilab-branch-${CI_COMMIT_BRANCH}-${NOW}/thirdparty/java/"
-cp -a lib/thirdparty/libgluegen2-rt.so "${CI_PROJECT_DIR}/scilab-branch-${CI_COMMIT_BRANCH}-${NOW}/bin/"
-cp -a lib/thirdparty/libnativewindow_awt.so "${CI_PROJECT_DIR}/scilab-branch-${CI_COMMIT_BRANCH}-${NOW}/bin/"
-cp -a lib/thirdparty/libnativewindow_x11.so "${CI_PROJECT_DIR}/scilab-branch-${CI_COMMIT_BRANCH}-${NOW}/bin/"
-cp -a lib/thirdparty/libnativewindow_x11.so "${CI_PROJECT_DIR}/scilab-branch-${CI_COMMIT_BRANCH}-${NOW}/bin/"
+cp -aL lib/thirdparty "${CI_PROJECT_DIR}/scilab-branch-${CI_COMMIT_BRANCH}-${NOW}/lib/"
+cp -aL thirdparty "${CI_PROJECT_DIR}/scilab-branch-${CI_COMMIT_BRANCH}-${NOW}/"
+cp -aL java/jre "${CI_PROJECT_DIR}/scilab-branch-${CI_COMMIT_BRANCH}-${NOW}/thirdparty/java"
 
 # Update the classpath
 sed -i "s#$(pwd)#\$SCILAB/../../#g" "${CI_PROJECT_DIR}/scilab-branch-${CI_COMMIT_BRANCH}-${NOW}/share/scilab/etc/classpath.xml"
@@ -74,5 +73,5 @@ readelf -d bin/scilab-bin |awk '/NEEDED/{gsub(/\[/,""); gsub(/\]/,""); print "pa
 cd "${CI_PROJECT_DIR}" ||exit
 
 # package as a tar gz file
-tar -czf "scilab-branch-${CI_COMMIT_BRANCH}-${NOW}.tar.gz" -C "${CI_PROJECT_DIR}" "scilab-branch-${CI_COMMIT_BRANCH}-${NOW}"
+tar -czf "scilab-branch-${CI_COMMIT_BRANCH}-${NOW}.bin.${ARCH}.tar.gz" -C "${CI_PROJECT_DIR}" "scilab-branch-${CI_COMMIT_BRANCH}-${NOW}"
 rm -fr "${CI_PROJECT_DIR}/scilab-branch-${CI_COMMIT_BRANCH}-${NOW}"

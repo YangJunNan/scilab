@@ -20,9 +20,10 @@ set JAVA_HOME="%SCILAB_JDK64%"
 
 cd scilab
 
-REM patch version numbers
-"c:\Program Files\ds_shell\code\bin\ds_shell\date.exe" +"%%s" >timestamp
+REM define NOW as Gitlab display ISO 8601 timestamp
+"c:\Program Files\ds_shell\code\bin\ds_shell\date.exe" -d "%CI_COMMIT_TIMESTAMP%" +"%%s" >timestamp
 set /p NOW=<timestamp
+REM patch version numbers
 sed -i ^
  -e 's/SCI_VERSION_STRING .*/SCI_VERSION_STRING ^"scilab-branch-%CI_COMMIT_BRANCH%^"/' ^
  -e 's/SCI_VERSION_WIDE_STRING .*/SCI_VERSION_WIDE_STRING L^"scilab-branch-%CI_COMMIT_BRANCH%^"/' ^
@@ -32,20 +33,19 @@ sed -i ^
 
 REM build with Visual Studio and Intel compilers
 echo on
-devenv.com Scilab.sln /build "Release|x64" >>..\log.txt
+devenv.com Scilab.sln /build "Release|x64" >..\log.txt
 if errorlevel 1 tail.exe --lines=100 ..\log.txt & exit 1
-devenv.com Scilab.sln /build "Release|x64" /project buildhelp >>..\log_buildhelp.txt |cmd /c ""
+devenv.com Scilab.sln /build "Release|x64" /project buildhelp >..\log_buildhelp.txt |cmd /c ""
 if errorlevel 1 tail.exe --lines=100 ..\log_buildhelp.txt & exit 1
 
 REM Package with Inno Setup 6
 echo on
-start /wait bin\WScilex-cli.exe -e "exec tools\innosetup\Create_ISS.sce" >>..\log_iss.txt
+bin\WScilex-cli.exe -nb -f "tools\innosetup\Create_ISS.sce" >..\log_iss.txt
 if errorlevel 1 tail.exe --lines=100 ..\log_iss.txt & exit 1
-type tools\innosetup\Scilab.iss
-"C:\Program Files (x86)\Inno Setup 6\iscc.exe" tools\innosetup\Scilab.iss
+"C:\Program Files (x86)\Inno Setup 6\iscc.exe" Scilab.iss >>..\log_iss.txt
 if errorlevel 1 tail.exe --lines=100 ..\log_iss.txt & exit 1
 REM TODO: how to sign ? was:
 REM call d:\signtool_password.bat
 REM "C:\Program Files (x86)\Windows Kits\8.1\bin\x64\signtool.exe" sign /f D:\\ESIGroupCERT.pfx /p "%SIGNPASS%" /t http://timestamp.sectigo.com /v .\Output\scilab-branch-6.1_x64.exe
-move .\Output\scilab-branch-6.1_x64.exe %CI_PROJECT_DIR%\scilab-branch-%CI_COMMIT_BRANCH%-%NOW%.exe
+move .\Output\scilab-branch-*_x64.exe %CI_PROJECT_DIR%\scilab-branch-%CI_COMMIT_BRANCH%-%NOW%.exe
 if errorlevel 1 exit 1
