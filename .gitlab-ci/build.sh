@@ -45,6 +45,12 @@ make doc &>>../log_doc.txt ||(tail --lines=100 ../log_doc.txt; exit 1)
 # install to tmpdir
 make install DESTDIR="${CI_PROJECT_DIR}/scilab-branch-${CI_COMMIT_BRANCH}-${NOW}" &>>../log_install.txt ||(tail --lines=100 ../log_install.txt; exit 1)
 
+# copy extra files
+cp -a ACKNOWLEDGEMENTS "${CI_PROJECT_DIR}/scilab-branch-${CI_COMMIT_BRANCH}-${NOW}/"
+cp -a CHANGES.md "${CI_PROJECT_DIR}/scilab-branch-${CI_COMMIT_BRANCH}-${NOW}/"
+cp -a COPYING "${CI_PROJECT_DIR}/scilab-branch-${CI_COMMIT_BRANCH}-${NOW}/"
+cp -a README.md "${CI_PROJECT_DIR}/scilab-branch-${CI_COMMIT_BRANCH}-${NOW}/"
+
 # copy thirdparties
 cp -a lib/thirdparty "${CI_PROJECT_DIR}/scilab-branch-${CI_COMMIT_BRANCH}-${NOW}/lib/"
 cp -a thirdparty "${CI_PROJECT_DIR}/scilab-branch-${CI_COMMIT_BRANCH}-${NOW}/"

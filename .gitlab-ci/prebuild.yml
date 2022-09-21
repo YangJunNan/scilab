@@ -47,8 +47,8 @@ create docker image:
     - docker build -t $CI_REGISTRY/scilab/linux_runner:$CI_COMMIT_REF_SLUG - < /.gitlab-ci/Dockerfile.linux
     - docker push $CI_REGISTRY/scilab/linux_runner:$CI_COMMIT_REF_SLUG
 # Docker windows not supported yet
-#  - docker build -t $CI_REGISTRY/scilab/scilab:builder_windows - < /.gitlab-ci/Dockerfile.windows
-#  - docker push $CI_REGISTRY/scilab/scilab:builder_windows
+#  - docker build -t $CI_REGISTRY/scilab/windows_runner:$CI_COMMIT_REF_SLUG - < /.gitlab-ci/Dockerfile.windows
+#  - docker push $CI_REGISTRY/scilab/windows_runner:$CI_COMMIT_REF_SLUG
   rules:
     - if: $CI_PIPELINE_SOURCE == "merge_request_event"
       changes:

@@ -8,7 +8,7 @@ RUN apt-get update && apt-get install -y \
         gcc-8 g++-8 gfortran-8 \
         openjdk-8-jdk ant ocaml gettext curl \
         libcurl4-openssl-dev libgl1-mesa-dev pkg-config \
-        dumb-init \
+        dumb-init patchelf elfutils \
     && apt-get clean
 
 # download gitlab-runner official binary
