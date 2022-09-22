@@ -52,3 +52,7 @@ REM call d:\signtool_password.bat
 REM "C:\Program Files (x86)\Windows Kits\8.1\bin\x64\signtool.exe" sign /f D:\\ESIGroupCERT.pfx /p "%SIGNPASS%" /t http://timestamp.sectigo.com /v .\Output\scilab-branch-6.1_x64.exe
 move .\Output\scilab-branch-*_x64.exe %CI_PROJECT_DIR%\%SCI_VERSION_STRING%.exe
 if errorlevel 1 exit 1
+
+REM export useful variables
+echo SCI_VERSION_STRING="%SCI_VERSION_STRING%"  >build.env
+echo SCI_VERSION_TIMESTAMP="%NOW%"             >>build.env

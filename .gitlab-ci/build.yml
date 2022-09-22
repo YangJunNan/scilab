@@ -12,6 +12,8 @@
     paths:
       - log*.txt
       - scilab-*.exe
+    reports:
+      dotenv: build.env
     when: always
 
 # build an intermediate version
@@ -49,6 +51,8 @@ build_windows_x64_release:
     paths:
       - log*.txt
       - scilab-*.tar.gz
+    reports:
+      dotenv: build.env
     when: always
 
 # build an intermediate version
@@ -72,17 +76,17 @@ build_linux_x86_64_release:
 
 
 # build scilab using the docker image
-.build_docker:
-  stage: build
-  image: $CI_REGISTRY/scilab/scilab:builder_linux
-  tags:
-    - docker
-    - scilab
-  variables:
-      GIT_CLEAN_FLAGS: none
-      SCI_VERSION_STRING: scilab-branch-$CI_COMMIT_BRANCH
-  script: bash -x -e .gitlab-ci/build.sh
-  artifacts:
-    paths:
-      - log*.txt
-      - $SCI_VERSION_STRING.tar.gz
+#build_docker:
+#  stage: build
+#  image: $CI_REGISTRY/scilab/scilab:builder_linux
+#  tags:
+#    - docker
+#    - scilab
+#  variables:
+#      GIT_CLEAN_FLAGS: none
+#      SCI_VERSION_STRING: scilab-branch-$CI_COMMIT_BRANCH
+#  script: bash -x -e .gitlab-ci/build.sh
+#  artifacts:
+#    paths:
+#      - log*.txt
+#      - $SCI_VERSION_STRING.tar.gz
