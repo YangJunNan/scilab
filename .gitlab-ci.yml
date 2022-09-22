@@ -31,7 +31,7 @@ variables:
 
 
 include:
-  # dependencies cache
+  # updating files and runner states
   - local: /.gitlab-ci/prebuild.yml
   # build
   - local: /.gitlab-ci/build.yml

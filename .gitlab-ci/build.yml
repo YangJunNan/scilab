@@ -52,8 +52,8 @@ build_windows_x64_release:
     when: always
 
 # build an intermediate version
-build_linux_x64_branch:
-  extends: .build_linux_x64
+build_linux_x86_64_branch:
+  extends: .build_linux_x86_64
   variables:
       SCI_VERSION_STRING: scilab-branch-$CI_COMMIT_BRANCH
   rules:
@@ -61,8 +61,8 @@ build_linux_x64_branch:
     - if: $CI_COMMIT_REF_PROTECTED
 
 # build a release
-build_linux_x64_release:
-  extends: .build_linux_x64
+build_linux_x86_64_release:
+  extends: .build_linux_x86_64
   needs:
     - prepare_release_files
   variables:
@@ -78,9 +78,6 @@ build_docker:
   tags:
     - docker
     - scilab
-  cache:
-    key: prerequirements-linux-x86_64
-    policy: pull
   variables:
       GIT_CLEAN_FLAGS: none
       SCI_VERSION_STRING: scilab-branch-$CI_COMMIT_BRANCH
