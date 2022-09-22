@@ -3,6 +3,8 @@ test_windows_x64:
   tags:
     - windows x64
     - scilab
+  variables:
+      GIT_CLEAN_FLAGS: none
   needs:
     - build_windows_x64_branch
   script:
@@ -29,9 +31,12 @@ test_linux_x86_64:
   tags:
     - linux x86_64
     - scilab
+  variables:
+      GIT_CLEAN_FLAGS: none
   needs:
     - build_linux_x86_64_branch
   script:
+    - env
     - if [ ! -d "$SCI_VERSION_STRING" ]; then tar -xzf $SCI_VERSION_STRING.*.tar.gz; fi
     - $SCI_VERSION_STRING/bin/scilab -nwni -quit -e 'test_run("'$TEST'",[],[],"'$TEST.xml'")'
   artifacts:
