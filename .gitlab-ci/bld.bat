@@ -2,8 +2,6 @@ REM Builder script for building Scilab on Windows
 
 REM NOTE: log all commands to log.txt to avoid hitting Gitlab log limit
 
-if CI_COMMIT_TAG
-
 
 echo on
 svn checkout --username anonymous --password Scilab svn://svn.scilab.org/scilab/%PREREQUIREMENTS_BRANCH%/Dev-Tools/SE/Prerequirements/Windows_x64/ scilab >log_svn.txt
