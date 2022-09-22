@@ -72,7 +72,7 @@ build_linux_x86_64_release:
 
 
 # build scilab using the docker image
-build_docker:
+.build_docker:
   stage: build
   image: $CI_REGISTRY/scilab/scilab:builder_linux
   tags:
@@ -81,7 +81,6 @@ build_docker:
   variables:
       GIT_CLEAN_FLAGS: none
       SCI_VERSION_STRING: scilab-branch-$CI_COMMIT_BRANCH
-  when: manual
   script: bash -x -e .gitlab-ci/build.sh
   artifacts:
     paths:
