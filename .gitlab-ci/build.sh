@@ -21,8 +21,8 @@ date +"%s" >timestamp
 NOW=$(cat timestamp)
 # patch version numbers
 sed -i \
- -e "s/SCI_VERSION_STRING .*/SCI_VERSION_STRING \"scilab-branch-${CI_COMMIT_BRANCH}\"/" \
- -e "s/SCI_VERSION_WIDE_STRING .*/SCI_VERSION_WIDE_STRING L\"scilab-branch-${CI_COMMIT_BRANCH}\"/" \
+ -e "s/SCI_VERSION_STRING .*/SCI_VERSION_STRING \"${SCI_VERSION_STRING}\"/" \
+ -e "s/SCI_VERSION_WIDE_STRING .*/SCI_VERSION_WIDE_STRING L\"${SCI_VERSION_STRING}\"/" \
  -e "s/SCI_VERSION_REVISION .*/SCI_VERSION_REVISION \"${CI_COMMIT_SHA}\"/" \
  -e "s/SCI_VERSION_TIMESTAMP .*/SCI_VERSION_TIMESTAMP ${NOW}/" \
  scilab/modules/core/includes/version.h.in
@@ -47,24 +47,24 @@ make --jobs="$(nproc)" all &>>../log.txt ||(tail --lines=100 ../log.txt; exit 1)
 make doc &>../log_doc.txt ||(tail --lines=100 ../log_doc.txt; exit 1)
 
 # install to tmpdir
-make install DESTDIR="${CI_PROJECT_DIR}/scilab-branch-${CI_COMMIT_BRANCH}-${NOW}" &>>../log_install.txt ||(tail --lines=100 ../log_install.txt; exit 1)
+make install DESTDIR="${CI_PROJECT_DIR}/${SCI_VERSION_STRING}" &>>../log_install.txt ||(tail --lines=100 ../log_install.txt; exit 1)
 
 # copy extra files
-cp -a ACKNOWLEDGEMENTS "${CI_PROJECT_DIR}/scilab-branch-${CI_COMMIT_BRANCH}-${NOW}/"
-cp -a CHANGES.md "${CI_PROJECT_DIR}/scilab-branch-${CI_COMMIT_BRANCH}-${NOW}/"
-cp -a COPYING "${CI_PROJECT_DIR}/scilab-branch-${CI_COMMIT_BRANCH}-${NOW}/"
-cp -a README.md "${CI_PROJECT_DIR}/scilab-branch-${CI_COMMIT_BRANCH}-${NOW}/"
+cp -a ACKNOWLEDGEMENTS "${CI_PROJECT_DIR}/${SCI_VERSION_STRING}/"
+cp -a CHANGES.md "${CI_PROJECT_DIR}/${SCI_VERSION_STRING}/"
+cp -a COPYING "${CI_PROJECT_DIR}/${SCI_VERSION_STRING}/"
+cp -a README.md "${CI_PROJECT_DIR}/${SCI_VERSION_STRING}/"
 
 # copy thirdparties
-cp -a lib/thirdparty "${CI_PROJECT_DIR}/scilab-branch-${CI_COMMIT_BRANCH}-${NOW}/lib/"
-cp -a thirdparty "${CI_PROJECT_DIR}/scilab-branch-${CI_COMMIT_BRANCH}-${NOW}/"
-cp -a java/jdk*-jre "${CI_PROJECT_DIR}/scilab-branch-${CI_COMMIT_BRANCH}-${NOW}/thirdparty/java"
+cp -a lib/thirdparty "${CI_PROJECT_DIR}/${SCI_VERSION_STRING}/lib/"
+cp -a thirdparty "${CI_PROJECT_DIR}/${SCI_VERSION_STRING}/"
+cp -a java/jdk*-jre "${CI_PROJECT_DIR}/${SCI_VERSION_STRING}/thirdparty/java"
 
 # Update the classpath
-sed -i "s#$(pwd)#\$SCILAB/../../#g" "${CI_PROJECT_DIR}/scilab-branch-${CI_COMMIT_BRANCH}-${NOW}/share/scilab/etc/classpath.xml"
+sed -i "s#$(pwd)#\$SCILAB/../../#g" "${CI_PROJECT_DIR}/${SCI_VERSION_STRING}/share/scilab/etc/classpath.xml"
 
 # Update the rpath and ELF NEEDED
-cd "${CI_PROJECT_DIR}/scilab-branch-${CI_COMMIT_BRANCH}-${NOW}/" ||exit
+cd "${CI_PROJECT_DIR}/${SCI_VERSION_STRING}/" ||exit
 patchelf --set-rpath '$ORIGIN:$ORIGIN/../lib/scilab:$ORIGIN/../lib/thirdparty:$ORIGIN/../lib/thirdparty/redist' \
 					bin/scilab-cli-bin bin/scilab-bin
 find lib/scilab/*.so* -type f -exec patchelf --set-rpath '$ORIGIN:$ORIGIN/../thirdparty:$ORIGIN/../thirdparty/redist' {} \;
@@ -73,5 +73,5 @@ readelf -d bin/scilab-bin |awk '/NEEDED/{gsub(/\[/,""); gsub(/\]/,""); print "pa
 cd "${CI_PROJECT_DIR}" ||exit
 
 # package as a tar gz file
-tar -czf "scilab-branch-${CI_COMMIT_BRANCH}-${NOW}.bin.${ARCH}.tar.gz" -C "${CI_PROJECT_DIR}" "scilab-branch-${CI_COMMIT_BRANCH}-${NOW}"
-rm -fr "${CI_PROJECT_DIR}/scilab-branch-${CI_COMMIT_BRANCH}-${NOW}"
+tar -czf "${SCI_VERSION_STRING}.bin.${ARCH}.tar.gz" -C "${CI_PROJECT_DIR}" "${SCI_VERSION_STRING}"
+rm -fr "${CI_PROJECT_DIR}/${SCI_VERSION_STRING:?}"

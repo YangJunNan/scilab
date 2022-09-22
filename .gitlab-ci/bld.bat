@@ -2,6 +2,9 @@ REM Builder script for building Scilab on Windows
 
 REM NOTE: log all commands to log.txt to avoid hitting Gitlab log limit
 
+if CI_COMMIT_TAG
+
+
 echo on
 svn checkout --username anonymous --password Scilab svn://svn.scilab.org/scilab/%PREREQUIREMENTS_BRANCH%/Dev-Tools/SE/Prerequirements/Windows_x64/ scilab >log_svn.txt
 if errorlevel 1 tail.exe --lines=100 log_svn.txt & exit 1
@@ -25,8 +28,8 @@ REM define NOW as Gitlab display ISO 8601 timestamp
 set /p NOW=<timestamp
 REM patch version numbers
 sed -i ^
- -e 's/SCI_VERSION_STRING .*/SCI_VERSION_STRING ^"scilab-branch-%CI_COMMIT_BRANCH%^"/' ^
- -e 's/SCI_VERSION_WIDE_STRING .*/SCI_VERSION_WIDE_STRING L^"scilab-branch-%CI_COMMIT_BRANCH%^"/' ^
+ -e 's/SCI_VERSION_STRING .*/SCI_VERSION_STRING ^"%SCI_VERSION_STRING%^"/' ^
+ -e 's/SCI_VERSION_WIDE_STRING .*/SCI_VERSION_WIDE_STRING L^"%SCI_VERSION_STRING%^"/' ^
  -e 's/SCI_VERSION_REVISION .*/SCI_VERSION_REVISION ^"%CI_COMMIT_SHA%^"/' ^
  -e 's/SCI_VERSION_TIMESTAMP .*/SCI_VERSION_TIMESTAMP %NOW%/' ^
  modules\core\includes\version.h.vc
@@ -49,5 +52,5 @@ if errorlevel 1 tail.exe --lines=100 ..\log_iss.txt & exit 1
 REM TODO: how to sign ? was:
 REM call d:\signtool_password.bat
 REM "C:\Program Files (x86)\Windows Kits\8.1\bin\x64\signtool.exe" sign /f D:\\ESIGroupCERT.pfx /p "%SIGNPASS%" /t http://timestamp.sectigo.com /v .\Output\scilab-branch-6.1_x64.exe
-move .\Output\scilab-branch-*_x64.exe %CI_PROJECT_DIR%\scilab-branch-%CI_COMMIT_BRANCH%-%NOW%.exe
+move .\Output\scilab-branch-*_x64.exe %CI_PROJECT_DIR%\%SCI_VERSION_STRING%.exe
 if errorlevel 1 exit 1

@@ -20,9 +20,9 @@ postbuild javadoc:
   tags: ["docker"]
   image: docker.io/openjdk:8-jdk-alpine
   script:
+    - MASK="scilab/modules/*/src/java/";
+    - MODULES=`ls -d $MASK`;
     - |
-      MASK="scilab/modules/*/src/java/";
-      MODULES=`ls -d $MASK`;
       for M in $MODULES; do
         LISTMODULES="$M:$LISTMODULES";
         MODULE=$(echo $M|cut -d/ -f4);

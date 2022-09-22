@@ -1,5 +1,5 @@
 # build scilab using a windows runner
-build windows x64:
+.build windows x64:
   stage: build
   needs: ["cleanup old windows builds"]
   tags:
@@ -17,9 +17,27 @@ build windows x64:
       - scilab-*.exe
     when: always
 
+# build an intermediate version
+build windows x64 branch:
+  extends: .build windows x64
+  variables:
+      SCI_VERSION_STRING: scilab-branch-$CI_COMMIT_BRANCH
+  rules:
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+    - if: $CI_COMMIT_REF_PROTECTED
+
+# build a release
+build windows x64 release:
+  extends: .build windows x64
+  variables:
+      SCI_VERSION_STRING: scilab-$CI_COMMIT_TAG
+  rules:
+    - if: $CI_COMMIT_TAG
+
+
 
 # build scilab using a linux runner
-build linux x86_64:
+.build linux x86_64:
   stage: build
   needs: ["cleanup old linux builds"]
   tags:
@@ -37,6 +55,23 @@ build linux x86_64:
       - scilab-*.tar.gz
     when: always
 
+# build an intermediate version
+build linux x64 branch:
+  extends: .build linux x64
+  variables:
+      SCI_VERSION_STRING: scilab-branch-$CI_COMMIT_BRANCH
+  rules:
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+    - if: $CI_COMMIT_REF_PROTECTED
+
+# build a release
+build linux x64 release:
+  extends: .build linux x64
+  variables:
+      SCI_VERSION_STRING: scilab-$CI_COMMIT_TAG
+  rules:
+    - if: $CI_COMMIT_TAG
+
 
 # build scilab using the docker image
 build docker:
@@ -50,6 +85,7 @@ build docker:
     policy: pull
   variables:
       GIT_CLEAN_FLAGS: none
+      SCI_VERSION_STRING: scilab-branch-$CI_COMMIT_BRANCH
   when: manual
   script: bash -x -e .gitlab-ci/build.sh
   artifacts:

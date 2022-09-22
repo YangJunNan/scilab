@@ -52,7 +52,7 @@ create docker image:
   rules:
     - if: $CI_PIPELINE_SOURCE == "merge_request_event"
       changes:
-        - Dockerfile*
+        - /.gitlab-ci/Dockerfile*
 
 
 # cleanup old builds from runners
@@ -79,6 +79,7 @@ cleanup old linux builds:
       while IFS= read -r -d '' i ; do
         [ -w "$i" ] && rm -rf "$i";
       done
+
 
 # cleanup old builds from runners
 cleanup old windows builds:
@@ -115,3 +116,15 @@ clean windows:
   script: echo "git clean succeeded"
   when: manual
 
+# patch, copy, modify files before building a release
+prepare release files:
+  stage: prebuild
+  tags:
+    - linux
+  rules:
+    - if: $CI_COMMIT_TAG
+  script:
+    - echo "not yet implemented, should patch version numbers against tag"
+  artifacts:
+    - scilab/modules/core/includes/version.h.vc
+    - scilab/modules/core/includes/version.h.in

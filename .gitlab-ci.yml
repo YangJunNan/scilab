@@ -11,19 +11,23 @@ stages:
   - deploy
 
 
-variables:
-  # speedup cloning
-  GIT_DEPTH: "1"
-  # Scilab prerequirements branch or trunk
-  PREREQUIREMENTS_BRANCH: "branches/6.1"
-
-
-# only run on merge request or default branch push or initial-ci
+# only run on merge request
 workflow:
   rules:
     - if: $CI_PIPELINE_SOURCE == "merge_request_event"
-    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+    - if: $CI_COMMIT_REF_PROTECTED
+    - if: $CI_COMMIT_TAG
+    - if: $CI_COMMIT_REF_PROTECTED
     - if: $CI_COMMIT_BRANCH == "initial-ci"
+
+
+variables:
+  GIT_DEPTH:
+    value: "1"
+    description: "speedup cloning, only fetch the latest commit"
+  PREREQUIREMENTS_BRANCH: 
+    value: "branches/6.1"
+    description: "Scilab prerequirements branch name or trunk"
 
 
 include:
