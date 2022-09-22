@@ -1,13 +1,10 @@
 # build scilab using a windows runner
-.build windows x64:
+.build_windows_x64:
   stage: build
-  needs: ["cleanup old windows builds"]
+  needs: [cleanup_old_windows_builds]
   tags:
     - windows x64
     - scilab
-  cache:
-    key: prerequirements-windows-x64
-    policy: pull
   variables:
       GIT_CLEAN_FLAGS: none
   script: call .gitlab-ci\bld.bat
@@ -18,8 +15,8 @@
     when: always
 
 # build an intermediate version
-build windows x64 branch:
-  extends: .build windows x64
+build_windows_x64_branch:
+  extends: .build_windows_x64
   variables:
       SCI_VERSION_STRING: scilab-branch-$CI_COMMIT_BRANCH
   rules:
@@ -27,8 +24,10 @@ build windows x64 branch:
     - if: $CI_COMMIT_REF_PROTECTED
 
 # build a release
-build windows x64 release:
-  extends: .build windows x64
+build_windows_x64_release:
+  extends: .build_windows_x64
+  needs:
+    - prepare_release_files
   variables:
       SCI_VERSION_STRING: scilab-$CI_COMMIT_TAG
   rules:
@@ -37,15 +36,12 @@ build windows x64 release:
 
 
 # build scilab using a linux runner
-.build linux x86_64:
+.build_linux_x86_64:
   stage: build
-  needs: ["cleanup old linux builds"]
+  needs: [cleanup_old_linux_builds]
   tags:
     - linux x86_64
     - scilab
-  cache:
-    key: prerequirements-linux-x86_64
-    policy: pull
   variables:
       GIT_CLEAN_FLAGS: none
   script: bash -x -e .gitlab-ci/build.sh
@@ -56,8 +52,8 @@ build windows x64 release:
     when: always
 
 # build an intermediate version
-build linux x64 branch:
-  extends: .build linux x64
+build_linux_x64_branch:
+  extends: .build_linux_x64
   variables:
       SCI_VERSION_STRING: scilab-branch-$CI_COMMIT_BRANCH
   rules:
@@ -65,8 +61,10 @@ build linux x64 branch:
     - if: $CI_COMMIT_REF_PROTECTED
 
 # build a release
-build linux x64 release:
-  extends: .build linux x64
+build_linux_x64_release:
+  extends: .build_linux_x64
+  needs:
+    - prepare_release_files
   variables:
       SCI_VERSION_STRING: scilab-$CI_COMMIT_TAG
   rules:
@@ -74,7 +72,7 @@ build linux x64 release:
 
 
 # build scilab using the docker image
-build docker:
+build_docker:
   stage: build
   image: $CI_REGISTRY/scilab/scilab:builder_linux
   tags:

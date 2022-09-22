@@ -1,4 +1,4 @@
-postbuild windows:
+postbuild_windows:
   stage: postbuild
   tags:
     - windows
@@ -6,7 +6,7 @@ postbuild windows:
     - echo "nothing to postbuild"
 
 
-postbuild linux:
+postbuild_linux:
   stage: postbuild
   tags:
     - linux
@@ -15,7 +15,7 @@ postbuild linux:
 
 
 # build javadoc
-postbuild javadoc:
+build_javadoc:
   stage: postbuild
   tags: ["docker"]
   image: docker.io/openjdk:8-jdk-alpine

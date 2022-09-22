@@ -1,4 +1,4 @@
-test windows x64:
+test_windows_x64:
   stage: tests
   tags:
     - windows
@@ -6,7 +6,7 @@ test windows x64:
     - echo "This job runs the test stage within windows".
 
   
-test linux x86_64:
+test_linux_x86_64:
   stage: tests
   tags:
     - linux
