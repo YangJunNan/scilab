@@ -6,7 +6,7 @@ stages:
   # create a binary installer and binary patch
   - postbuild
   # run the tests
-  - tests
+  - test
   # publish and make it available to the community
   - deploy
 
@@ -38,7 +38,7 @@ include:
   # patches
   - local: /.gitlab-ci/postbuild.yml
   # execute tests on merge
-  - local: /.gitlab-ci/tests.yml
+  - local: /.gitlab-ci/test.yml
     rules:
       - if: $CI_PIPELINE_SOURCE == "push"
   # sign/deploy a binary on merge
