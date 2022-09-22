@@ -86,5 +86,6 @@ prepare_release_files:
   script:
     - echo "not yet implemented, should patch version numbers against tag"
   artifacts:
-    - scilab/modules/core/includes/version.h.vc
-    - scilab/modules/core/includes/version.h.in
+    paths:
+      - scilab/modules/core/includes/version.h.vc
+      - scilab/modules/core/includes/version.h.in
