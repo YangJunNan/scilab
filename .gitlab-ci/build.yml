@@ -18,7 +18,7 @@
 build_windows_x64_branch:
   extends: .build_windows_x64
   variables:
-      SCI_VERSION_STRING: scilab-branch-$CI_COMMIT_BRANCH
+      SCI_VERSION_STRING: scilab-branch-$CI_COMMIT_BRANCH-$CI_COMMIT_SHORT_SHA
   rules:
     - if: $CI_PIPELINE_SOURCE == "merge_request_event"
     - if: $CI_COMMIT_REF_PROTECTED
@@ -55,7 +55,7 @@ build_windows_x64_release:
 build_linux_x86_64_branch:
   extends: .build_linux_x86_64
   variables:
-      SCI_VERSION_STRING: scilab-branch-$CI_COMMIT_BRANCH
+      SCI_VERSION_STRING: scilab-branch-$CI_COMMIT_BRANCH-$CI_COMMIT_SHORT_SHA
   rules:
     - if: $CI_PIPELINE_SOURCE == "merge_request_event"
     - if: $CI_COMMIT_REF_PROTECTED
@@ -85,4 +85,4 @@ build_linux_x86_64_release:
   artifacts:
     paths:
       - log*.txt
-      - scilab-*.tar.gz
+      - $SCI_VERSION_STRING.tar.gz

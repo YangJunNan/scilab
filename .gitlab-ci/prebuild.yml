@@ -29,7 +29,7 @@ cleanup_old_linux_builds:
     - rm -fr scilab-*.tar.gz
     # Remove install dir older than 3 days
     - |
-      find /tmp -maxdepth 1 -mtime +2 -name "scilab-*" -type d -print0 |\
+      find . -maxdepth 1 -mtime +2 -name "scilab-*" -type d -print0 |\
       while IFS= read -r -d '' i ; do
         chmod -R +w "$i" && rm -rf "$i";
       done
@@ -52,6 +52,8 @@ cleanup_old_windows_builds:
   script:
     # Remove any previous installer
     - del /f /q /s scilab-*.exe |cmd /c ""
+    # Remove install dir older than 3 day
+    - forfiles -p "." -m "scilab-*" -d -3 -c "cmd /c IF @isdir == TRUE rd /S /Q @path" |cmd /c ""
     # Remove TMPDIRs older than 1 day
     - forfiles -p "%temp%" -m "SCI_TMP*" -d -1 -c "cmd /c IF @isdir == TRUE rd /S /Q @path" |cmd /c ""
 

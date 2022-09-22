@@ -1,14 +1,51 @@
 test_windows_x64:
-  stage: tests
+  stage: test
   tags:
-    - windows
+    - windows x64
+    - scilab
+  needs:
+    - build_windows_x64_branch
   script:
-    - echo "This job runs the test stage within windows".
+    - if not exist "%SCI_VERSION_STRING%\" .\%SCI_VERSION_STRING%.exe /SUPPRESSMSGBOXES /SILENT /SP- /DIR=%SCI_VERSION_STRING%
+    - .\%SCI_VERSION_STRING%\bin\scilab -nwni -quit -e 'test_run("'$TEST'",[],[],"'$TEST.xml'")'
+  artifacts:
+    when: always
+    paths:
+      - $TEST.xml
+    reports:
+      junit: $TEST.xml
+  parallel:
+    matrix:
+      - TEST:
+        - ast
+        - core
+        - fileio
+        - functions
+        - jvm
+        - time
 
-  
 test_linux_x86_64:
-  stage: tests
+  stage: test
   tags:
-    - linux
+    - linux x86_64
+    - scilab
+  needs:
+    - build_linux_x86_64_branch
   script:
-    - echo "This job runs the test stage within linux".
+    - if [ ! -d "$SCI_VERSION_STRING" ]; then tar -xzf $SCI_VERSION_STRING.*.tar.gz; fi
+    - $SCI_VERSION_STRING/bin/scilab -nwni -quit -e 'test_run("'$TEST'",[],[],"'$TEST.xml'")'
+  artifacts:
+    when: always
+    paths:
+      - $TEST.xml
+    reports:
+      junit: $TEST.xml
+  parallel:
+    matrix:
+      - TEST:
+        - ast
+        - core
+        - fileio
+        - functions
+        - jvm
+        - time

@@ -13,10 +13,11 @@ build_javadoc:
         MODULE=$(echo $M|cut -d/ -f3);
         LISTPKG="$LISTPKG org.scilab.modules.$MODULE";
       done;
-    - javadoc -d public/javadoc -sourcepath $LISTMODULES $LISTPKG |true
+    - javadoc -d public/javadoc -sourcepath $LISTMODULES $LISTPKG
   artifacts:
     paths:
       - public
+    
   when: manual
 
 
@@ -28,9 +29,10 @@ build_doxygen:
   script:
     - cd scilab
     - mkdir reports
-    - doxygen scilab/modules/development_tools/etc/doxyfile >/dev/null
+    - doxygen modules/development_tools/etc/doxyfile >/dev/null
     - mv reports/html $CI_PROJECT_DIR/public/doxygen
   artifacts:
+    when: always
     paths:
       - public
   when: manual
