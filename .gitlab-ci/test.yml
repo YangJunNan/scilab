@@ -4,7 +4,7 @@ test_windows_x64:
     - windows_x64
     - scilab
   variables:
-      GIT_STRATEGY: none
+      GIT_CLEAN_FLAGS:: none
   needs:
     - build_windows_x64_branch
   script: .gitlab-ci/test.bat
@@ -30,7 +30,7 @@ test_x86_64-linux-gnu:
     - x86_64-linux-gnu
     - scilab
   variables:
-      GIT_STRATEGY: none
+      GIT_CLEAN_FLAGS:: none
   needs:
     - build_x86_64-linux-gnu_branch
   script: bash -e -x .gitlab-ci/test.sh
