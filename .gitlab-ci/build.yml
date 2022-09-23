@@ -1,7 +1,7 @@
 # build scilab using a windows runner
 .build_windows_x64:
   stage: build
-  needs: [cleanup_old_windows_builds, with_changes_modification]
+  needs: [cleanup_old_windows_builds]
   tags:
     - windows_x64
     - scilab
