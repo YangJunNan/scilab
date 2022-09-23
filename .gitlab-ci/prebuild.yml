@@ -87,8 +87,8 @@ set_x64_windows_env:
   variables:
       GIT_STRATEGY: none
       ARCH:
-        value: x64
-        description: current build machine architecture
+        value: "x64"
+        description: "current build machine architecture"
   script:
     - date.exe +"%%s" >timestamp
     - set /p NOW=<timestamp 
