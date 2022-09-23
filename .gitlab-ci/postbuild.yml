@@ -67,11 +67,16 @@ publish_help_jar:
   variables:
       GIT_STRATEGY: none
   script:
-    - tar --wildcards --strip-components 6 -xzf ${SCI_VERSION_STRING}.bin.${ARCH}.tar.gz ${SCI_VERSION_STRING}/share/scilab/modules/helptools/jar/scilab_*_help.jar ${SCI_VERSION_STRING}/share/scilab/modules/helptools/jar/scilab_images.jar
     - mkdir public
     - cd public
-    - for f in ../*.jar; unzip $f; done
-    - sed -i -e "s#jarsci:./#../#g" */*.html
+    - tar --wildcards --strip-components 6 -xzf ../${SCI_VERSION_STRING}.bin.${ARCH}.tar.gz ${SCI_VERSION_STRING}/share/scilab/modules/helptools/jar/scilab_*_help.jar
+    - for f in *.jar; do unzip $f; done
+    - rm *.jar
+    - tar --strip-components 6 -xzf ../${SCI_VERSION_STRING}.bin.${ARCH}.tar.gz ${SCI_VERSION_STRING}/share/scilab/modules/helptools/jar/scilab_images.jar
+    - mkdir images
+    - unzip scilab_images.jar -d images/
+    - rm scilab_images.jar
+    - sed -i -e "s#jarsci:./#../images/#g" */*.html
   artifacts:
     paths:
       - public
