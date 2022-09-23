@@ -1,7 +1,7 @@
 # build scilab using a windows runner
 .build_x64_windows:
   stage: build
-  needs: [cleanup_old_windows_builds]
+  needs: [cleanup_old_windows_builds, set_x64_windows_env]
   tags:
     - x64_windows
     - scilab
@@ -36,7 +36,7 @@ build_x64_windows_release:
 # build scilab using a linux runner
 .build_x86_64-linux-gnu:
   stage: build
-  needs: [cleanup_old_linux_builds]
+  needs: [cleanup_old_linux_builds, set_x86_64-linux-gnu_env]
   tags:
     - x86_64-linux-gnu
     - scilab
