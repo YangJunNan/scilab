@@ -93,7 +93,7 @@ prepare_release_files:
       - scilab/modules/core/includes/version.h.in
 
 # ensure MR has modified CHANGES.md
-with_changes_modification:
+.with_changes_modification:
   stage: prebuild
   script:
     - echo CHANGES.md edited
