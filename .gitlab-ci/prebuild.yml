@@ -91,3 +91,11 @@ prepare_release_files:
     paths:
       - scilab/modules/core/includes/version.h.vc
       - scilab/modules/core/includes/version.h.in
+
+# ensure MR has modified CHANGES.md
+with_changes_modification:
+  stage: prebuild
+  rules:
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+    - changes:
+      - scilab/CHANGES.md

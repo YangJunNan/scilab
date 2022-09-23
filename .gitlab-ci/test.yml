@@ -6,7 +6,8 @@ test_windows_x64:
   variables:
       GIT_CLEAN_FLAGS:: none
   needs:
-    - build_windows_x64_branch
+    - job: build_windows_x64_branch
+      artifacts: false
   script: .gitlab-ci/test.bat
   artifacts:
     when: always
@@ -32,7 +33,8 @@ test_x86_64-linux-gnu:
   variables:
       GIT_CLEAN_FLAGS:: none
   needs:
-    - build_x86_64-linux-gnu_branch
+    - job: build_x86_64-linux-gnu_branch
+      artifacts: false
   script: bash -e -x .gitlab-ci/test.sh
   artifacts:
     when: always
