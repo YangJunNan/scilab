@@ -1,14 +1,14 @@
-test_windows_x64:
+test_x64_windows:
   stage: test
   tags:
-    - windows_x64
+    - x64_windows
     - scilab
   variables:
       GIT_CLEAN_FLAGS: none
   needs:
-    - job: build_windows_x64_branch
+    - job: build_x64_windows_branch
       artifacts: false
-  script: .gitlab-ci/test.bat
+  script: call .gitlab-ci\test.bat
   artifacts:
     when: always
     paths:

@@ -2,17 +2,8 @@ REM Builder script for building Scilab on Windows
 REM
 REM NOTE: log all commands to log.txt to avoid hitting Gitlab log limit
 
-REM define NOW as Gitlab display ISO 8601 timestamp
-"c:\Program Files\ds_shell\code\bin\ds_shell\date.exe" +"%%s" >timestamp
-set /p NOW=<timestamp
-
-REM export useful variables
-echo ARCH="%ARCH%"                              >build.env
-echo SCI_VERSION_STRING="%SCI_VERSION_STRING%" >>build.env
-echo SCI_VERSION_TIMESTAMP="%NOW%"             >>build.env
-
 echo on
-svn checkout --username anonymous --password Scilab svn://svn.scilab.org/scilab/%PREREQUIREMENTS_BRANCH%/Dev-Tools/SE/Prerequirements/Windows_x64/ scilab >log_svn.txt
+svn checkout --username anonymous --password Scilab svn://svn.scilab.org/scilab/%PREREQUIREMENTS_BRANCH%/Dev-Tools/SE/Prerequirements/x64_windows/ scilab >log_svn.txt
 if errorlevel 1 tail.exe --lines=100 log_svn.txt & exit 1
 REM display svn revision
 tail.exe -n 1 log_svn.txt
@@ -34,7 +25,7 @@ sed -i ^
  -e 's/SCI_VERSION_STRING .*/SCI_VERSION_STRING ^"%SCI_VERSION_STRING%^"/' ^
  -e 's/SCI_VERSION_WIDE_STRING .*/SCI_VERSION_WIDE_STRING L^"%SCI_VERSION_STRING%^"/' ^
  -e 's/SCI_VERSION_REVISION .*/SCI_VERSION_REVISION ^"%CI_COMMIT_SHA%^"/' ^
- -e 's/SCI_VERSION_TIMESTAMP .*/SCI_VERSION_TIMESTAMP %NOW%/' ^
+ -e 's/SCI_VERSION_TIMESTAMP .*/SCI_VERSION_TIMESTAMP %SCI_VERSION_TIMESTAMP%/' ^
  modules\core\includes\version.h.vc
 
 REM build with Visual Studio and Intel compilers
