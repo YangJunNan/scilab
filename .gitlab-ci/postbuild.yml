@@ -42,7 +42,7 @@ build_doxygen:
 build_help_web:
   stage: postbuild
   tags:
-    - linux x86_64
+    - x86_64-linux-gnu
     - scilab
   variables:
       GIT_CLEAN_FLAGS: none

@@ -3,10 +3,11 @@
   stage: build
   needs: [cleanup_old_windows_builds]
   tags:
-    - windows x64
+    - windows_x64
     - scilab
   variables:
       GIT_CLEAN_FLAGS: none
+      ARCH: x64
   script: call .gitlab-ci\bld.bat
   artifacts:
     paths:
@@ -38,11 +39,11 @@ build_windows_x64_release:
 
 
 # build scilab using a linux runner
-.build_linux_x86_64:
+.build_x86_64-linux-gnu:
   stage: build
   needs: [cleanup_old_linux_builds]
   tags:
-    - linux x86_64
+    - x86_64-linux-gnu
     - scilab
   variables:
       GIT_CLEAN_FLAGS: none
@@ -56,8 +57,8 @@ build_windows_x64_release:
     when: always
 
 # build an intermediate version
-build_linux_x86_64_branch:
-  extends: .build_linux_x86_64
+build_x86_64-linux-gnu_branch:
+  extends: .build_x86_64-linux-gnu
   variables:
       SCI_VERSION_STRING: scilab-branch-$CI_COMMIT_BRANCH-$CI_COMMIT_SHORT_SHA
   rules:
@@ -65,8 +66,8 @@ build_linux_x86_64_branch:
     - if: $CI_COMMIT_REF_PROTECTED
 
 # build a release
-build_linux_x86_64_release:
-  extends: .build_linux_x86_64
+build_x86_64-linux-gnu_release:
+  extends: .build_x86_64-linux-gnu
   needs:
     - prepare_release_files
   variables:

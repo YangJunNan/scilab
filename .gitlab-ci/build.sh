@@ -77,5 +77,6 @@ tar -czf "${SCI_VERSION_STRING}.bin.${ARCH}.tar.gz" -C "${CI_PROJECT_DIR}" "${SC
 rm -fr "${CI_PROJECT_DIR}/${SCI_VERSION_STRING:?}"
 
 # export useful variables
-echo SCI_VERSION_STRING="$SCI_VERSION_STRING"  >build.env
+echo ARCH="$ARCH"                              >build.env
+echo SCI_VERSION_STRING="$SCI_VERSION_STRING" >>build.env
 echo SCI_VERSION_TIMESTAMP="$NOW"             >>build.env

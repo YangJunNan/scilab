@@ -19,7 +19,7 @@ create_docker_image:
 cleanup_old_linux_builds:
   stage: prebuild
   tags:
-    - linux x86_64
+    - x86_64-linux-gnu
     - scilab
   variables:
       GIT_CLEAN_FLAGS: none
@@ -45,7 +45,7 @@ cleanup_old_linux_builds:
 cleanup_old_windows_builds:
   stage: prebuild
   tags:
-    - windows x64
+    - windows_x64
     - scilab
   variables:
       GIT_CLEAN_FLAGS: none
@@ -62,7 +62,7 @@ cleanup_old_windows_builds:
 clean_linux:
   stage: prebuild
   tags:
-    - linux x86_64
+    - x86_64-linux-gnu
     - scilab
   variables:
       GIT_CLEAN_FLAGS: -fxd
@@ -71,7 +71,7 @@ clean_linux:
 clean_windows:
   stage: prebuild
   tags:
-    - windows x64
+    - windows_x64
     - scilab
   variables:
       GIT_CLEAN_FLAGS: -fxd

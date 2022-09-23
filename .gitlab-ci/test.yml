@@ -1,15 +1,14 @@
 test_windows_x64:
   stage: test
   tags:
-    - windows x64
+    - windows_x64
     - scilab
   variables:
       GIT_CLEAN_FLAGS: none
   needs:
     - build_windows_x64_branch
-  script:
-    - if not exist "%SCI_VERSION_STRING%\" .\%SCI_VERSION_STRING%.exe /SUPPRESSMSGBOXES /SILENT /SP- /DIR=%SCI_VERSION_STRING%
-    - .\%SCI_VERSION_STRING%\bin\scilab -nwni -quit -e 'test_run("'$TEST'",[],[],"'$TEST.xml'")'
+  script: .gitlab-ci/test.bat
+  dependencies: []
   artifacts:
     when: always
     paths:
@@ -26,18 +25,17 @@ test_windows_x64:
         - jvm
         - time
 
-test_linux_x86_64:
+test_x86_64-linux-gnu:
   stage: test
   tags:
-    - linux x86_64
+    - x86_64-linux-gnu
     - scilab
   variables:
       GIT_CLEAN_FLAGS: none
   needs:
-    - build_linux_x86_64_branch
-  script:
-    - if [ ! -d "$SCI_VERSION_STRING" ]; then tar -xzf $SCI_VERSION_STRING.*.tar.gz; fi
-    - $SCI_VERSION_STRING/bin/scilab -nwni -quit -e 'test_run("'$TEST'",[],[],"'$TEST.xml'")'
+    - build_x86_64-linux-gnu_branch
+  script: .gitlab-ci/test.sh
+  dependencies: []
   artifacts:
     when: always
     paths:
