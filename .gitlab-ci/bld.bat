@@ -53,5 +53,5 @@ move .\Output\scilab-*.exe %CI_PROJECT_DIR%\%SCI_VERSION_STRING%_%ARCH%.exe
 if errorlevel 1 exit 1
 
 REM export useful variables
-echo SCI_VERSION_STRING="%SCI_VERSION_STRING%"  >build.env
-echo SCI_VERSION_TIMESTAMP="%NOW%"             >>build.env
+echo SCI_VERSION_STRING="%SCI_VERSION_STRING%"  >..\build.env
+echo SCI_VERSION_TIMESTAMP="%NOW%"             >>..\build.env

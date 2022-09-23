@@ -26,6 +26,8 @@ build_doxygen:
   stage: postbuild
   tags: ["docker"]
   image: docker.io/tsgkadot/docker-doxygen
+  variables:
+      GIT_STRATEGY: none
   script:
     - cd scilab
     - mkdir reports
@@ -55,3 +57,20 @@ build_help_web:
       - public
   when: manual
 
+
+# extract jar content to web
+publish_help_jar:
+  stage: postbuild
+  tags:
+    - x86_64-linux-gnu
+    - scilab
+  variables:
+      GIT_STRATEGY: none
+  script:
+    - cd scilab
+    - make doc-web
+    - mv modules/helptools/web $CI_PROJECT_DIR/public/docs
+  artifacts:
+    paths:
+      - public
+  when: manual

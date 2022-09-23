@@ -22,7 +22,7 @@ cleanup_old_linux_builds:
     - x86_64-linux-gnu
     - scilab
   variables:
-      GIT_CLEAN_FLAGS: none
+      GIT_STRATEGY: none
   script:
     - set -e -x
     # Remove any previous tarball
@@ -48,7 +48,7 @@ cleanup_old_windows_builds:
     - windows_x64
     - scilab
   variables:
-      GIT_CLEAN_FLAGS: none
+      GIT_STRATEGY: none
   script:
     # Remove any previous installer
     - del /f /q /s scilab-*.exe |cmd /c ""
