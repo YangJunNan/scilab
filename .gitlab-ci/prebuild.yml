@@ -88,12 +88,14 @@ set_x64_windows_env:
       GIT_STRATEGY: none
       ARCH: x64
   script:
-    - date.exe +"%%s" >timestamp
-    - set /p NOW=<timestamp 
+    - |
+      date.exe +"%%s" >timestamp
+      set /p NOW=<timestamp 
     # export
-    - echo ARCH="%ARCH%"                              >build.env
-    - echo SCI_VERSION_STRING="%SCI_VERSION_STRING%" >>build.env
-    - echo SCI_VERSION_TIMESTAMP="%NOW%"             >>build.env
+    - |
+      echo ARCH="%ARCH%"                              >build.env
+      echo SCI_VERSION_STRING="%SCI_VERSION_STRING%" >>build.env
+      echo SCI_VERSION_TIMESTAMP="%NOW%"             >>build.env
   artifacts:
     reports:
       dotenv: build.env
