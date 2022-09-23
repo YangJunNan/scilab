@@ -34,7 +34,7 @@ test_x86_64-linux-gnu:
       GIT_STRATEGY: none
   needs:
     - build_x86_64-linux-gnu_branch
-  script: .gitlab-ci/test.sh
+  script: bash -e -x .gitlab-ci/test.sh
   dependencies: []
   artifacts:
     when: always
