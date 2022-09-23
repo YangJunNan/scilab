@@ -16,6 +16,7 @@ function subdemolist = demo_gateway()
     subdemolist = [_("Minimal surface"), "minimal.dem.sce"
                   [_("Lorenz attractor"), "lorenz.dem.sce"]
                   [_("Spherical pendulum"), "pend3d1.dem.sce"]
+                  [_("Lagrangian DAE"), "lagrangian.dem.gateway.sce"]
                   ]
 
     subdemolist(:,2) = demopath + subdemolist(:,2);
