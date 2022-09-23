@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/env bash
 # Execute module tests for a module name ${TEST}, download and install latest build if needed
 
 # Download if needed, install if needed

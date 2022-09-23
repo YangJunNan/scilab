@@ -8,7 +8,6 @@ test_windows_x64:
   needs:
     - build_windows_x64_branch
   script: .gitlab-ci/test.bat
-  dependencies: []
   artifacts:
     when: always
     paths:
@@ -35,7 +34,6 @@ test_x86_64-linux-gnu:
   needs:
     - build_x86_64-linux-gnu_branch
   script: bash -e -x .gitlab-ci/test.sh
-  dependencies: []
   artifacts:
     when: always
     paths:
