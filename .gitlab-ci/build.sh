@@ -1,10 +1,20 @@
 #!/bin/env bash
-
+# Builder script for building linux version
+#
 # NOTE: log all commands to log.txt to avoid hitting Gitlab log limit
 # NOTE: nproc is used to limit memory usage
 
 # get current build machine architecture
 ARCH=$(cc -dumpmachine)
+
+# define NOW as Gitlab display ISO 8601 timestamp
+date +"%s" >timestamp
+NOW=$(cat timestamp)
+
+# export useful variables
+echo ARCH="$ARCH"                              >build.env
+echo SCI_VERSION_STRING="$SCI_VERSION_STRING" >>build.env
+echo SCI_VERSION_TIMESTAMP="$NOW"             >>build.env
 
 # checkout pre-requirements
 svn checkout \
@@ -16,9 +26,6 @@ tail -n 1 log_svn.txt
 # revert local modification
 svn revert -R scilab >>log_svn.txt
 
-# define NOW as Gitlab display ISO 8601 timestamp
-date +"%s" >timestamp
-NOW=$(cat timestamp)
 # patch version numbers
 sed -i \
  -e "s/SCI_VERSION_STRING .*/SCI_VERSION_STRING \"${SCI_VERSION_STRING}\"/" \
@@ -75,8 +82,3 @@ cd "${CI_PROJECT_DIR}" ||exit
 # package as a tar gz file
 tar -czf "${SCI_VERSION_STRING}.bin.${ARCH}.tar.gz" -C "${CI_PROJECT_DIR}" "${SCI_VERSION_STRING}"
 rm -fr "${CI_PROJECT_DIR}/${SCI_VERSION_STRING:?}"
-
-# export useful variables
-echo ARCH="$ARCH"                              >build.env
-echo SCI_VERSION_STRING="$SCI_VERSION_STRING" >>build.env
-echo SCI_VERSION_TIMESTAMP="$NOW"             >>build.env
