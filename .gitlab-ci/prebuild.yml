@@ -95,6 +95,8 @@ prepare_release_files:
 # ensure MR has modified CHANGES.md
 with_changes_modification:
   stage: prebuild
+  script:
+    - echo CHANGES.md edited
   rules:
     - if: $CI_PIPELINE_SOURCE == "merge_request_event"
     - changes:
