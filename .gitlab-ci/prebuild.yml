@@ -86,9 +86,7 @@ set_x64_windows_env:
     - scilab
   variables:
       GIT_STRATEGY: none
-      ARCH:
-        value: "x64"
-        description: "current build machine architecture"
+      ARCH: x64
   script:
     - date.exe +"%%s" >timestamp
     - set /p NOW=<timestamp 
