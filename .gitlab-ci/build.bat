@@ -3,7 +3,7 @@ REM
 REM NOTE: log all commands to log.txt to avoid hitting Gitlab log limit
 
 echo on
-svn checkout --username anonymous --password Scilab svn://svn.scilab.org/scilab/%PREREQUIREMENTS_BRANCH%/Dev-Tools/SE/Prerequirements/windows_x64/ scilab >log_svn.txt
+svn checkout --username anonymous --password Scilab svn://svn.scilab.org/scilab/%PREREQUIREMENTS_BRANCH%/Dev-Tools/SE/Prerequirements/Windows_x64/ scilab >log_svn.txt
 if errorlevel 1 tail.exe --lines=100 log_svn.txt & exit 1
 REM display svn revision
 tail.exe -n 1 log_svn.txt
