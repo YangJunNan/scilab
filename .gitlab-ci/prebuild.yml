@@ -16,7 +16,7 @@ create_docker_image:
 
 
 # cleanup old builds from runners
-cleanup_old_linux_builds:
+cleanup_x86_64-linux-gnu_builds:
   stage: prebuild
   tags:
     - x86_64-linux-gnu
@@ -42,7 +42,7 @@ cleanup_old_linux_builds:
 
 
 # cleanup old builds from runners
-cleanup_old_windows_builds:
+cleanup_x64_windows_builds:
   stage: prebuild
   tags:
     - x64_windows
@@ -76,6 +76,7 @@ set_x86_64-linux-gnu_env:
     - echo SCI_VERSION_STRING="$SCI_VERSION_STRING" >>build.env
     - echo SCI_VERSION_TIMESTAMP="$NOW"             >>build.env
   artifacts:
+    paths: build.env
     reports:
       dotenv: build.env
 # cleanup old builds from runners
@@ -97,6 +98,7 @@ set_x64_windows_env:
       echo SCI_VERSION_STRING="%SCI_VERSION_STRING%" >>build.env
       echo SCI_VERSION_TIMESTAMP="%NOW%"             >>build.env
   artifacts:
+    paths: build.env
     reports:
       dotenv: build.env
 

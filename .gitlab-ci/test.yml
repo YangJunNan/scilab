@@ -8,6 +8,8 @@ test_x64_windows:
   needs:
     - job: build_x64_windows_branch
       artifacts: false
+    - job: set_x64_windows_env
+      artifacts: true
   script: call .gitlab-ci\test.bat
   artifacts:
     when: always
@@ -35,6 +37,8 @@ test_x86_64-linux-gnu:
   needs:
     - job: build_x86_64-linux-gnu_branch
       artifacts: false
+    - job: set_x86_64-linux-gnu_env
+      artifacts: true
   script: bash -e -x .gitlab-ci/test.sh
   artifacts:
     when: always
