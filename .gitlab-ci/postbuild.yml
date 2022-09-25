@@ -68,7 +68,7 @@ publish_help_jar:
     - scilab
   variables:
       GIT_STRATEGY: none
-  dependencies: [build_x86_64-linux-gnu_branch]
+  dependencies: [x86_64-linux-gnu_build_branch]
   script:
     - "[ ! -d public ] && mkdir public"
     - "[ ! -d public/docs ] && mkdir public/docs"

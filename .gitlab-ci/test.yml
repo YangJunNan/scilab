@@ -1,4 +1,4 @@
-test_x64_windows:
+x64_windows_test:
   stage: test
   tags:
     - x64_windows
@@ -6,9 +6,9 @@ test_x64_windows:
   variables:
       GIT_CLEAN_FLAGS: none
   needs:
-    - job: build_x64_windows_branch
+    - job: x64_windows_build_branch
       artifacts: false
-    - job: set_x64_windows_env
+    - job: x64_windows_set_branch_env
       artifacts: true
   script: call .gitlab-ci\test.bat
   artifacts:
@@ -27,7 +27,7 @@ test_x64_windows:
         - jvm
         - time
 
-test_x86_64-linux-gnu:
+x86_64-linux-gnu_test:
   stage: test
   tags:
     - x86_64-linux-gnu
@@ -35,9 +35,9 @@ test_x86_64-linux-gnu:
   variables:
       GIT_CLEAN_FLAGS: none
   needs:
-    - job: build_x86_64-linux-gnu_branch
+    - job: x86_64-linux-gnu_build_branch
       artifacts: false
-    - job: set_x86_64-linux-gnu_env
+    - job: x86_64-linux-gnu_set_branch_env
       artifacts: true
   script: bash -e -x .gitlab-ci/test.sh
   artifacts:

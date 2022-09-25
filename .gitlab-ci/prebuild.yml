@@ -16,7 +16,7 @@ create_docker_image:
 
 
 # cleanup old builds from runners
-cleanup_x86_64-linux-gnu_builds:
+x86_64-linux-gnu_cleanup_builds:
   stage: prebuild
   tags:
     - x86_64-linux-gnu
@@ -42,7 +42,7 @@ cleanup_x86_64-linux-gnu_builds:
 
 
 # cleanup old builds from runners
-cleanup_x64_windows_builds:
+x64_windows_cleanup_builds:
   stage: prebuild
   tags:
     - x64_windows
@@ -58,7 +58,7 @@ cleanup_x64_windows_builds:
     - forfiles -p "%temp%" -m "SCI_TMP*" -d -1 -c "cmd /c IF @isdir == TRUE rd /S /Q @path" |cmd /c ""
 
 # define x86_64-linux-gnu env variables
-set_x86_64-linux-gnu_env:
+.x86_64-linux-gnu_set_env:
   stage: prebuild
   tags:
     - x86_64-linux-gnu
@@ -79,8 +79,24 @@ set_x86_64-linux-gnu_env:
     paths: ["build.env"]
     reports:
       dotenv: build.env
-# cleanup old builds from runners
-set_x64_windows_env:
+# build a release version
+x86_64-linux-gnu_set_release_env:
+  extends: .x86_64-linux-gnu_set_env
+  variables:
+      SCI_VERSION_STRING: scilab-$CI_COMMIT_TAG
+  rules:
+    - if: $CI_COMMIT_TAG
+# build an intermediate version
+x86_64-linux-gnu_set_branch_env:
+  extends: .x86_64-linux-gnu_set_env
+  variables:
+      SCI_VERSION_STRING: scilab-branch-$CI_COMMIT_BRANCH-$CI_COMMIT_SHORT_SHA
+  rules:
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+    - if: $CI_COMMIT_REF_PROTECTED
+
+# define x64 windows env
+.x64_windows_set_env:
   stage: prebuild
   tags:
     - x64_windows
@@ -101,26 +117,38 @@ set_x64_windows_env:
     paths: ["build.env"]
     reports:
       dotenv: build.env
+# build a release version
+x64_windows_set_release_env:
+  extends: .x64_windows_set_env
+  variables:
+      SCI_VERSION_STRING: scilab-$CI_COMMIT_TAG
+  rules:
+    - if: $CI_COMMIT_TAG
+# build an intermediate version
+x64_windows_set_branch_env:
+  extends: .x64_windows_set_env
+  variables:
+      SCI_VERSION_STRING: scilab-branch-$CI_COMMIT_BRANCH-$CI_COMMIT_SHORT_SHA
+  rules:
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+    - if: $CI_COMMIT_REF_PROTECTED
 
-# manuel clean
-clean_linux:
+
+# manual clean
+.git_clean:
   stage: prebuild
+  tags:
+    - scilab
+  variables:
+      GIT_CLEAN_FLAGS: -fxd
+  script: echo "git clean succeeded"
+  when: manual
+x86_64-linux-gnu_clean:
+  extends: .git_clean
   tags:
     - x86_64-linux-gnu
-    - scilab
-  variables:
-      GIT_CLEAN_FLAGS: -fxd
-  script: echo "git clean succeeded"
-  when: manual
-clean_windows:
-  stage: prebuild
-  tags:
+x64_windows_clean:
     - x64_windows
-    - scilab
-  variables:
-      GIT_CLEAN_FLAGS: -fxd
-  script: echo "git clean succeeded"
-  when: manual
 
 # patch, copy, modify files before building a release
 prepare_release_files:

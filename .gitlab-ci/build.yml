@@ -1,7 +1,8 @@
 # build scilab using a windows runner
-.build_x64_windows:
+.x64_windows_build:
   stage: build
-  needs: [cleanup_x64_windows_builds, set_x64_windows_env]
+  needs: 
+    - x64_windows_cleanup_builds
   tags:
     - x64_windows
     - scilab
@@ -13,30 +14,24 @@
       - log*.txt
       - scilab-*.exe
     when: always
-
 # build an intermediate version
-build_x64_windows_branch:
-  extends: .build_x64_windows
-  variables:
-      SCI_VERSION_STRING: scilab-branch-$CI_COMMIT_BRANCH-$CI_COMMIT_SHORT_SHA
-  rules:
-    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
-    - if: $CI_COMMIT_REF_PROTECTED
-
-# build a release
-build_x64_windows_release:
-  extends: .build_x64_windows
+x64_windows_build_branch:
+  extends: .x64_windows_build
   needs:
+    - x64_windows_set_branch_env
+# build a release version
+x64_windows_build_release:
+  extends: .x64_windows_build
+  needs:
+    - x64_windows_set_release_env
     - prepare_release_files
-  variables:
-      SCI_VERSION_STRING: scilab-$CI_COMMIT_TAG
-  rules:
-    - if: $CI_COMMIT_TAG
+
 
 # build scilab using a linux runner
-.build_x86_64-linux-gnu:
+.x86_64-linux-gnu_build:
   stage: build
-  needs: [cleanup_x86_64-linux-gnu_builds, set_x86_64-linux-gnu_env]
+  needs:
+    - x86_64-linux-gnu_cleanup_builds
   tags:
     - x86_64-linux-gnu
     - scilab
@@ -48,22 +43,14 @@ build_x64_windows_release:
       - log*.txt
       - scilab-*.tar.gz
     when: always
-
 # build an intermediate version
-build_x86_64-linux-gnu_branch:
-  extends: .build_x86_64-linux-gnu
-  variables:
-      SCI_VERSION_STRING: scilab-branch-$CI_COMMIT_BRANCH-$CI_COMMIT_SHORT_SHA
-  rules:
-    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
-    - if: $CI_COMMIT_REF_PROTECTED
-
-# build a release
-build_x86_64-linux-gnu_release:
-  extends: .build_x86_64-linux-gnu
+x86_64-linux-gnu_build_branch:
+  extends: .x86_64-linux-gnu_build
   needs:
+      - x86_64-linux-gnu_set_branch_env
+# build a release
+x86_64-linux-gnu_build_release:
+  extends: .x86_64-linux-gnu_build
+  needs:
+    - x86_64-linux-gnu_set_release_env
     - prepare_release_files
-  variables:
-      SCI_VERSION_STRING: scilab-$CI_COMMIT_TAG
-  rules:
-    - if: $CI_COMMIT_TAG
