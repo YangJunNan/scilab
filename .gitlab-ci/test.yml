@@ -11,6 +11,9 @@ x64_windows_test:
     - job: x64_windows_set_branch_env
       artifacts: true
   script: call .gitlab-ci\test.bat
+#  rules:
+#    - changes:
+#      - scilab/modules/$TESTS/**/*
   artifacts:
     when: always
     paths:
@@ -40,6 +43,9 @@ x86_64-linux-gnu_test:
     - job: x86_64-linux-gnu_set_branch_env
       artifacts: true
   script: bash -e -x .gitlab-ci/test.sh
+#  rules:
+#    - changes:
+#      - scilab/modules/$TESTS/**/*
   artifacts:
     when: always
     paths:
