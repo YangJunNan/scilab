@@ -10,4 +10,9 @@ if [ ! -d "${SCI_VERSION_STRING}" ]; then
     tar -xzf "${SCI_VERSION_STRING}.bin.${ARCH}.tar.gz"
 fi
 
+SCIHOME=$(mktemp --tmpdir -d SCI_TMP_HOME_XXXXXXX)
+export SCIHOME
+
 "${SCI_VERSION_STRING}/bin/scilab" -nwni -quit -e 'test_run("'"${TEST}"'",[],[],"'"${TEST}.xml"'")'
+
+rm -fr "${SCIHOME}"
