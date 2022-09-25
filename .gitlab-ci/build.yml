@@ -19,12 +19,17 @@ x64_windows_build_branch:
   extends: .x64_windows_build
   needs:
     - x64_windows_set_branch_env
+  rules:
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+    - if: $CI_COMMIT_REF_PROTECTED
 # build a release version
 x64_windows_build_release:
   extends: .x64_windows_build
   needs:
     - x64_windows_set_release_env
     - prepare_release_files
+  rules:
+    - if: $CI_COMMIT_TAG
 
 
 # build scilab using a linux runner
@@ -48,9 +53,14 @@ x86_64-linux-gnu_build_branch:
   extends: .x86_64-linux-gnu_build
   needs:
       - x86_64-linux-gnu_set_branch_env
+  rules:
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+    - if: $CI_COMMIT_REF_PROTECTED
 # build a release
 x86_64-linux-gnu_build_release:
   extends: .x86_64-linux-gnu_build
   needs:
     - x86_64-linux-gnu_set_release_env
     - prepare_release_files
+  rules:
+    - if: $CI_COMMIT_TAG
