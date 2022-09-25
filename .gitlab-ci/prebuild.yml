@@ -148,6 +148,8 @@ x86_64-linux-gnu_clean:
   tags:
     - x86_64-linux-gnu
 x64_windows_clean:
+  extends: .git_clean
+  tags:
     - x64_windows
 
 # patch, copy, modify files before building a release
