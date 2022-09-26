@@ -32,16 +32,16 @@ variables:
 
 include:
   # updating files and runner states
-  - local: /.gitlab-ci/prebuild.yml
+  - local: .gitlab-ci/prebuild.yml
   # build
-  - local: /.gitlab-ci/build.yml
+  - local: .gitlab-ci/build.yml
   # patches
-  - local: /.gitlab-ci/postbuild.yml
+  - local: .gitlab-ci/postbuild.yml
   # execute tests on merge
-  - local: /.gitlab-ci/test.yml
+  - local: .gitlab-ci/test.yml
     rules:
       - if: $CI_PIPELINE_SOURCE == "push"
   # sign/deploy a binary on merge
-  - local: /.gitlab-ci/deploy.yml
+  - local: .gitlab-ci/deploy.yml
     rules:
       - if: $CI_PIPELINE_SOURCE == "push"

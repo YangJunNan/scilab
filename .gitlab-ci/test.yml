@@ -1,13 +1,16 @@
-x64_windows_test:
+x64_windows_test_branch:
   stage: test
   tags:
     - x64_windows
     - scilab
   variables:
+      # enforce download and install on each test
       GIT_CLEAN_FLAGS: -fxd scilab-*
   needs:
+    # build artifacts will be download by the script only if needed
     - job: x64_windows_build_branch
       artifacts: false
+    # get env information used to build scilab
     - job: x64_windows_set_branch_env
       artifacts: true
   script: call .gitlab-ci\test.bat
@@ -30,16 +33,19 @@ x64_windows_test:
         - jvm
         - time
 
-x86_64-linux-gnu_test:
+x86_64-linux-gnu_test_branch:
   stage: test
   tags:
     - x86_64-linux-gnu
     - scilab
   variables:
+      # enforce download and install on each test
       GIT_CLEAN_FLAGS: -fxd scilab-*
   needs:
+    # build artifacts will be download by the script only if needed
     - job: x86_64-linux-gnu_build_branch
       artifacts: false
+    # get env information used to build scilab
     - job: x86_64-linux-gnu_set_branch_env
       artifacts: true
   script: bash -e -x .gitlab-ci/test.sh

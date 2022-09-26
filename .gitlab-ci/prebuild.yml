@@ -4,10 +4,10 @@ create_docker_image:
   image: docker
   script:
     - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
-    - docker build -t $CI_REGISTRY/scilab/linux_runner:$CI_COMMIT_REF_SLUG - < /.gitlab-ci/Dockerfile.linux
+    - docker build -t $CI_REGISTRY/scilab/linux_runner:$CI_COMMIT_REF_SLUG - < .gitlab-ci/Dockerfile.linux
     - docker push $CI_REGISTRY/scilab/linux_runner:$CI_COMMIT_REF_SLUG
 # Docker windows not supported yet
-#  - docker build -t $CI_REGISTRY/scilab/windows_runner:$CI_COMMIT_REF_SLUG - < /.gitlab-ci/Dockerfile.windows
+#  - docker build -t $CI_REGISTRY/scilab/windows_runner:$CI_COMMIT_REF_SLUG - < .gitlab-ci/Dockerfile.windows
 #  - docker push $CI_REGISTRY/scilab/windows_runner:$CI_COMMIT_REF_SLUG
   rules:
     - if: $CI_PIPELINE_SOURCE == "merge_request_event"

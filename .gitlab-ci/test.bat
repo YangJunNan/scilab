@@ -6,8 +6,8 @@ if exist "%SCI_VERSION_STRING%"\ goto :test
 if exist "%SCI_VERSION_STRING%_%ARCH%.exe" goto :install
 
 :download
-curl --output "%SCI_VERSION_STRING%_%ARCH%.exe" --header "JOB-TOKEN: $CI_JOB_TOKEN" \
-            "https://gitlab.com/${CI_PROJECT_NAMESPACE}/${CI_PROJECT_NAME}/builds/artifacts/${CI_COMMIT_REF_NAME}/raw/%SCI_VERSION_STRING%_%ARCH%.exe?job=build_%ARCH%_windows_branch";
+curl --output "%SCI_VERSION_STRING%_%ARCH%.exe" --location --header "JOB-TOKEN: $CI_JOB_TOKEN" \
+            "https://gitlab.com/%CI_PROJECT_NAMESPACE%/%CI_PROJECT_NAME%/jobs/artifacts/%CI_COMMIT_REF_NAME%/raw/%SCI_VERSION_STRING%_%ARCH%.exe?job=%ARCH%_build_windows_branch";
 
 :install
 @echo on
