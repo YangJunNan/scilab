@@ -77,11 +77,11 @@ publish_help_jar:
     - "[ ! -d public/docs ] && mkdir public/docs"
     - cd public/docs
     - tar --wildcards --strip-components 6 -xzf ../../${SCI_VERSION_STRING}.bin.${ARCH}.tar.gz ${SCI_VERSION_STRING}/share/scilab/modules/helptools/jar/scilab_*_help.jar
-    - for f in *.jar; do unzip $f; done
+    - for f in *.jar; do jar xf $f; done
     - rm *.jar
     - tar --strip-components 6 -xzf ../../${SCI_VERSION_STRING}.bin.${ARCH}.tar.gz ${SCI_VERSION_STRING}/share/scilab/modules/helptools/jar/scilab_images.jar
     - "[ ! -d images ] && mkdir images"
-    - unzip scilab_images.jar -d images/
+    - jar xf scilab_images.jar -d images/
     - rm scilab_images.jar
     - sed -i -e "s#jarsci:./#../images/#g" */*.html
   artifacts:
