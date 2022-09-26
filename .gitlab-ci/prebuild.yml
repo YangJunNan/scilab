@@ -72,9 +72,9 @@ x64_windows_cleanup_builds:
     - date +"%s" >timestamp
     - NOW=$(cat timestamp)
     # export useful variables
-    - echo ARCH="$ARCH"                              >build.env
-    - echo SCI_VERSION_STRING="$SCI_VERSION_STRING" >>build.env
-    - echo SCI_VERSION_TIMESTAMP="$NOW"             >>build.env
+    - echo ARCH=$ARCH                              >build.env
+    - echo SCI_VERSION_STRING=$SCI_VERSION_STRING >>build.env
+    - echo SCI_VERSION_TIMESTAMP=$NOW             >>build.env
   artifacts:
     paths: ["build.env"]
     reports:
@@ -105,14 +105,15 @@ x86_64-linux-gnu_set_branch_env:
       GIT_STRATEGY: none
       ARCH: x64
   script:
+    - echo on
     - |
-      date.exe +"%%s" >timestamp
+      "C:\Program Files\ds_shell\code\bin\ds_shell\date.exe" +"%s" >timestamp
       set /p NOW=<timestamp 
     # export
     - |
-      echo ARCH="%ARCH%"                              >build.env
-      echo SCI_VERSION_STRING="%SCI_VERSION_STRING%" >>build.env
-      echo SCI_VERSION_TIMESTAMP="%NOW%"             >>build.env
+      echo ARCH=%ARCH%                              >build.env
+      echo SCI_VERSION_STRING=%SCI_VERSION_STRING% >>build.env
+      echo SCI_VERSION_TIMESTAMP=%NOW%             >>build.env
   artifacts:
     paths: ["build.env"]
     reports:
