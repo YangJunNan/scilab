@@ -87,3 +87,22 @@ publish_help_jar:
   artifacts:
     paths:
       - public
+
+sign_tool:
+  stage: postbuild
+  tags:
+    - x64_windows
+    - scilab
+  variables:
+      GIT_STRATEGY: none
+  script:
+    - REM TODO how to sign ? was
+    - REM call d:\signtool_password.bat
+    - REM "C:\Program Files (x86)\Windows Kits\8.1\bin\x64\signtool.exe" sign /f D:\\ESIGroupCERT.pfx /p "%SIGNPASS%" /t http://timestamp.sectigo.com /v %SCI_VERSION_STRING%_%ARCH%.exe
+  needs:
+    - x64_windows_build_branch
+    - x64_windows_set_branch_env
+  artifacts:
+    paths:
+      - scilab-*.exe
+  when: manual

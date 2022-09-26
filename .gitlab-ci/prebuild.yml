@@ -108,7 +108,7 @@ x86_64-linux-gnu_set_branch_env:
   script:
     - echo on
     - |
-      "C:\Program Files\ds_shell\code\bin\ds_shell\date.exe" +"%s" >timestamp
+      "C:\Program Files\ds_shell\code\bin\ds_shell\date.exe" +"%%s" >timestamp
       set /p NOW=<timestamp 
     # export
     - |
