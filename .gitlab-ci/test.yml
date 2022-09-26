@@ -4,7 +4,7 @@ x64_windows_test:
     - x64_windows
     - scilab
   variables:
-      GIT_CLEAN_FLAGS: none
+      GIT_CLEAN_FLAGS: -fxd scilab-*
   needs:
     - job: x64_windows_build_branch
       artifacts: false
@@ -36,7 +36,7 @@ x86_64-linux-gnu_test:
     - x86_64-linux-gnu
     - scilab
   variables:
-      GIT_CLEAN_FLAGS: none
+      GIT_CLEAN_FLAGS: -fxd scilab-*
   needs:
     - job: x86_64-linux-gnu_build_branch
       artifacts: false

@@ -10,9 +10,19 @@ curl --output "%SCI_VERSION_STRING%_%ARCH%.exe" --header "JOB-TOKEN: $CI_JOB_TOK
             "https://gitlab.com/${CI_PROJECT_NAMESPACE}/${CI_PROJECT_NAME}/builds/artifacts/${CI_COMMIT_REF_NAME}/raw/%SCI_VERSION_STRING%_%ARCH%.exe?job=build_%ARCH%_windows_branch";
 
 :install
-echo on
+@echo on
 .\%SCI_VERSION_STRING%_%ARCH%.exe /SUPPRESSMSGBOXES /SILENT /SP- /DIR=%SCI_VERSION_STRING%
 
 :test
-echo on
-call .\%SCI_VERSION_STRING%\bin\scilab.bat -nwni -quit -e 'test_run("'%TEST%'",[],[],"'%TEST%.xml'")'
+@echo on
+setlocal EnableExtensions
+
+rem get unique SCIHOME 
+:uniqLoop
+set "SCIHOME=%tmp%\SCI_TMP_HOME~%RANDOM%"
+if exist -d "%SCIHOME%\" goto :uniqLoop
+mkdir "%SCIHOME%"
+
+call .\%SCI_VERSION_STRING%\bin\scilab.bat -nwni -scihome "%SCIHOME%" -quit -e 'test_run("'%TEST%'",[],[],"'%TEST%.xml'")'
+
+rmdir /s /q "%SCIHOME%"

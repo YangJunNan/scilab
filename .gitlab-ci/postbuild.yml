@@ -68,8 +68,11 @@ publish_help_jar:
     - scilab
   variables:
       GIT_STRATEGY: none
-  dependencies: [x86_64-linux-gnu_build_branch]
+  needs:
+    - x86_64-linux-gnu_build_branch
+    - x86_64-linux-gnu_set_branch_env
   script:
+    - echo "help from ${SCI_VERSION_STRING} ${ARCH}"
     - "[ ! -d public ] && mkdir public"
     - "[ ! -d public/docs ] && mkdir public/docs"
     - cd public/docs
