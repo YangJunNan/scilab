@@ -66,6 +66,8 @@ x64_windows_cleanup_builds:
   variables:
       GIT_STRATEGY: none
   script:
+    - set -e
+    - set -x
     # get current build machine architecture
     - ARCH=$(cc -dumpmachine)
     # define NOW as Gitlab display ISO 8601 timestamp
@@ -76,7 +78,6 @@ x64_windows_cleanup_builds:
     - echo SCI_VERSION_STRING=$SCI_VERSION_STRING >>build.env
     - echo SCI_VERSION_TIMESTAMP=$NOW             >>build.env
   artifacts:
-    paths: ["build.env"]
     reports:
       dotenv: build.env
 # build a release version
@@ -115,7 +116,6 @@ x86_64-linux-gnu_set_branch_env:
       echo SCI_VERSION_STRING=%SCI_VERSION_STRING% >>build.env
       echo SCI_VERSION_TIMESTAMP=%NOW%             >>build.env
   artifacts:
-    paths: ["build.env"]
     reports:
       dotenv: build.env
 # build a release version
