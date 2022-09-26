@@ -1,19 +1,9 @@
 REM Execute module test for a module named %TEST%, download and install latest build if needed
 
 echo on
-REM Download if needed, install if needed
-if exist "%SCI_VERSION_STRING%"\ goto :test
-if exist "%SCI_VERSION_STRING%_%ARCH%.exe" goto :install
-
-:download
-curl --output "%SCI_VERSION_STRING%_%ARCH%.exe" --location --header "JOB-TOKEN: $CI_JOB_TOKEN" \
-            "https://gitlab.com/%CI_PROJECT_NAMESPACE%/%CI_PROJECT_NAME%/jobs/artifacts/%CI_COMMIT_REF_NAME%/raw/%SCI_VERSION_STRING%_%ARCH%.exe?job=%ARCH%_build_windows_branch";
-
-:install
-@echo on
+REM Always install
 .\%SCI_VERSION_STRING%_%ARCH%.exe /SUPPRESSMSGBOXES /SILENT /SP- /DIR=%SCI_VERSION_STRING%
 
-:test
 @echo on
 setlocal EnableExtensions
 

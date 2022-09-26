@@ -39,9 +39,5 @@ include:
   - local: .gitlab-ci/postbuild.yml
   # execute tests on merge
   - local: .gitlab-ci/test.yml
-    rules:
-      - if: $CI_PIPELINE_SOURCE == "push"
   # sign/deploy a binary on merge
   - local: .gitlab-ci/deploy.yml
-    rules:
-      - if: $CI_PIPELINE_SOURCE == "push"

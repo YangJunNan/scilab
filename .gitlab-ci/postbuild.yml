@@ -104,5 +104,5 @@ sign_tool:
     - x64_windows_set_branch_env
   artifacts:
     paths:
-      - scilab-*.exe
+      - $SCI_VERSION_STRING_$ARCH.exe
   when: manual

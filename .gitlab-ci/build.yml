@@ -12,7 +12,7 @@
   artifacts:
     paths:
       - log*.txt
-      - scilab-*.exe
+      - $SCI_VERSION_STRING_$ARCH.exe
     when: always
 # build an intermediate version
 x64_windows_build_branch:
@@ -46,7 +46,7 @@ x64_windows_build_release:
   artifacts:
     paths:
       - log*.txt
-      - scilab-*.tar.gz
+      - $SCI_VERSION_STRING.bin.$ARCH.tar.gz"
     when: always
 # build an intermediate version
 x86_64-linux-gnu_build_branch:
