@@ -14,7 +14,7 @@
       - log*.txt
       - Scilab.iss
       - scilab/modules/core/includes/version.h
-      - "$SCI_VERSION_STRING_$ARCH.exe"
+      - "%SCI_VERSION_STRING%_%ARCH%.exe"
     when: always
 # build an intermediate version
 x64_windows_build_branch:
