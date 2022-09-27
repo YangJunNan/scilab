@@ -112,8 +112,8 @@ x86_64-linux-gnu_set_branch_env:
       ARCH: x64
   script:
     - echo on
-    - echo $CI_COMMIT_BRANCH
-    - echo $CI_MERGE_REQUEST_TARGET_BRANCH_NAME
+    - echo %CI_COMMIT_BRANCH%
+    - echo %CI_MERGE_REQUEST_TARGET_BRANCH_NAME%
     - |
       "C:\Program Files\ds_shell\code\bin\ds_shell\date.exe" +"%%s" >timestamp
       set /p NOW=<timestamp
