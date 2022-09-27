@@ -57,7 +57,7 @@ Compilation
 
 * Linux and macOS builds require a C++17 compiler. Toolboxes might also want to use this standard by specifying `-std=c++17` as a `CFLAGS`
 
-* Migration to Microsoft Visual Studio 2017 and Intel Composer 2018
+* Migration to Microsoft Visual Studio 2017 and Intel® oneAPI HPC Toolkit 2022.
 
 
 Dependencies

@@ -19,6 +19,7 @@ x64_windows_build_branch:
   extends: .x64_windows_build
   needs:
     - x64_windows_set_branch_env
+    - contains_changes_modification
   rules:
     - if: $CI_PIPELINE_SOURCE == "merge_request_event"
     - if: $CI_COMMIT_REF_PROTECTED
@@ -52,7 +53,8 @@ x64_windows_build_release:
 x86_64-linux-gnu_build_branch:
   extends: .x86_64-linux-gnu_build
   needs:
-      - x86_64-linux-gnu_set_branch_env
+    - x86_64-linux-gnu_set_branch_env
+    - contains_changes_modification
   rules:
     - if: $CI_PIPELINE_SOURCE == "merge_request_event"
     - if: $CI_COMMIT_REF_PROTECTED

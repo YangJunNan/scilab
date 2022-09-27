@@ -152,7 +152,8 @@ x64_windows_set_branch_env:
   variables:
       GIT_CLEAN_FLAGS: -fxd
   script: echo "git clean succeeded"
-  when: manual
+  when:
+    - manual
 x86_64-linux-gnu_clean:
   extends: .git_clean
   tags:
@@ -177,7 +178,7 @@ prepare_release_files:
       - scilab/modules/core/includes/version.h.in
 
 # ensure MR has modified CHANGES.md
-.with_changes_modification:
+contains_changes_modification:
   stage: prebuild
   script:
     - echo CHANGES.md edited
