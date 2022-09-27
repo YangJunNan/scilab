@@ -44,5 +44,5 @@ if errorlevel 1 tail.exe --lines=100 ..\log_iss.txt & exit 1
 "C:\Program Files (x86)\Inno Setup 6\iscc.exe" Scilab.iss >>..\log_iss.txt
 if errorlevel 1 tail.exe --lines=100 ..\log_iss.txt & exit 1
 
-move .\Output\scilab-*.exe %CI_PROJECT_DIR%\%SCI_VERSION_STRING%_%ARCH%.exe
+move ".\Output\scilab-*.exe" "%CI_PROJECT_DIR%\%SCI_VERSION_STRING%_%ARCH%.exe"
 if errorlevel 1 exit 1
