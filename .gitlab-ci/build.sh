@@ -70,3 +70,6 @@ cd "${CI_PROJECT_DIR}" ||exit
 # package as a tar gz file
 tar -czf "${SCI_VERSION_STRING}.bin.${ARCH}.tar.gz" -C "${CI_PROJECT_DIR}" "${SCI_VERSION_STRING}"
 rm -fr "${CI_PROJECT_DIR}/${SCI_VERSION_STRING:?}"
+
+# error if artifact does not exist
+du -h "${SCI_VERSION_STRING}.bin.${ARCH}.tar.gz"

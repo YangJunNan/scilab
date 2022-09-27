@@ -46,3 +46,6 @@ if errorlevel 1 tail.exe --lines=100 ..\log_iss.txt & exit 1
 
 move ".\Output\scilab-*.exe" "%CI_PROJECT_DIR%\%SCI_VERSION_STRING%_%ARCH%.exe"
 if errorlevel 1 exit 1
+
+REM error if artifact does not exist
+dir /s "%CI_PROJECT_DIR%\%SCI_VERSION_STRING%_%ARCH%.exe"
