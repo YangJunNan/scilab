@@ -70,6 +70,8 @@ x64_windows_cleanup_builds:
   script:
     - set -e
     - set -x
+    - echo $CI_COMMIT_BRANCH
+    - echo $CI_MERGE_REQUEST_TARGET_BRANCH_NAME
     # get current build machine architecture
     - ARCH=$(cc -dumpmachine)
     # define NOW as Gitlab display ISO 8601 timestamp
@@ -110,6 +112,8 @@ x86_64-linux-gnu_set_branch_env:
       ARCH: x64
   script:
     - echo on
+    - echo $CI_COMMIT_BRANCH
+    - echo $CI_MERGE_REQUEST_TARGET_BRANCH_NAME
     - |
       "C:\Program Files\ds_shell\code\bin\ds_shell\date.exe" +"%%s" >timestamp
       set /p NOW=<timestamp
