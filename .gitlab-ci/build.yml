@@ -12,7 +12,7 @@
   artifacts:
     paths:
       - log*.txt
-      - Scilab.iss
+      - scilab/Scilab.iss
       - scilab/modules/core/includes/version.h
       - "%SCI_VERSION_STRING%_%ARCH%.exe"
     when: always
