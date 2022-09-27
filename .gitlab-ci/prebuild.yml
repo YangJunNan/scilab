@@ -1,5 +1,5 @@
 # create docker images for builders 
-create_docker_image:
+.create_docker_image:
   stage: prebuild
   image: docker:20.10.16
   services:
