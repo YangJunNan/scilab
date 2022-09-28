@@ -1,9 +1,20 @@
 REM Execute module test for a module named %TEST%, download and install latest build if needed
 
-echo on
+@echo on
 REM Always install
-"%CI_PROJECT_DIR%\%SCI_VERSION_STRING%_%ARCH%.exe" /SUPPRESSMSGBOXES /SILENT /SP- /DIR="%CI_PROJECT_DIR%\%SCI_VERSION_STRING%"
+"%CI_PROJECT_DIR%\%SCI_VERSION_STRING%_%ARCH%.exe" /CURRENTUSER /SUPPRESSMSGBOXES /SILENT /SP- /DIR="%CI_PROJECT_DIR%\%SCI_VERSION_STRING%"
 dir "%CI_PROJECT_DIR%\%SCI_VERSION_STRING%"
+
+@echo on
+REM FIXME copy intel redistribuables as thirdparties are not up to date
+robocopy /e /copy:DAT "%IFORT_COMPILER22%\redist\intel64_win\compiler\1033" "%CI_PROJECT_DIR%\%SCI_VERSION_STRING%\bin\1033"
+robocopy /e /copy:DAT "%IFORT_COMPILER22%\redist\intel64_win\compiler" "%CI_PROJECT_DIR%\%SCI_VERSION_STRING%\bin" ^
+libifcoremd.dll ^
+libifcorert.dll ^
+libifcorertd.dll ^
+libiomp5md.dll ^
+libmmd.dll ^
+svml_dispmd.dll
 
 @echo on
 setlocal EnableExtensions

@@ -32,12 +32,10 @@ REM FIXME copy intel redistribuables as thirdparties are not up to date
 robocopy /e /copy:DAT "%IFORT_COMPILER22%\redist\intel64_win\compiler\1033" "%CI_PROJECT_DIR%\scilab\bin\1033"
 robocopy /e /copy:DAT "%IFORT_COMPILER22%\redist\intel64_win\compiler" "%CI_PROJECT_DIR%\scilab\bin" ^
 libifcoremd.dll ^
-libifcoremdd.dll ^
 libifcorert.dll ^
 libifcorertd.dll ^
 libiomp5md.dll ^
 libmmd.dll ^
-libmmdd.dll ^
 svml_dispmd.dll
 
 REM build with Visual Studio and Intel compilers

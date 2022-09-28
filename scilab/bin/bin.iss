@@ -44,15 +44,11 @@ Source: bin\msvcp100.DLL; DestDir: {app}\bin; Components: {#COMPN_SCILAB}
 
 
 ;MKL
-Source: bin\1033\*.dll; DestDir: {app}\bin\1033; Components: {#COMPN_SCILAB} and not ({#COMPN_MKL_CPU_LIBRARY} or {#COMPN_FFTW_MKL_LIBRARY})
-Source: bin\libifcoremd.dll; DestDir: {app}\bin; Components: {#COMPN_SCILAB} and not ({#COMPN_MKL_CPU_LIBRARY} or {#COMPN_FFTW_MKL_LIBRARY})
-Source: bin\libifcoremdd.dll; DestDir: {app}\bin; Components: {#COMPN_SCILAB} and not ({#COMPN_MKL_CPU_LIBRARY} or {#COMPN_FFTW_MKL_LIBRARY})
-Source: bin\libifcorert.dll; DestDir: {app}\bin; Components: {#COMPN_SCILAB} and not ({#COMPN_MKL_CPU_LIBRARY} or {#COMPN_FFTW_MKL_LIBRARY})
-Source: bin\libifcorertd.dll; DestDir: {app}\bin; Components: {#COMPN_SCILAB} and not ({#COMPN_MKL_CPU_LIBRARY} or {#COMPN_FFTW_MKL_LIBRARY})
-Source: bin\libiomp5md.dll; DestDir: {app}\bin; Components: {#COMPN_SCILAB} and not ({#COMPN_MKL_CPU_LIBRARY} or {#COMPN_FFTW_MKL_LIBRARY})
 Source: bin\libmmd.dll; DestDir: {app}\bin; Components: {#COMPN_SCILAB} and not ({#COMPN_MKL_CPU_LIBRARY} or {#COMPN_FFTW_MKL_LIBRARY})
-Source: bin\libmmdd.dll; DestDir: {app}\bin; Components: {#COMPN_SCILAB} and not ({#COMPN_MKL_CPU_LIBRARY} or {#COMPN_FFTW_MKL_LIBRARY})
-Source: bin\svml_dispmd.dll; DestDir: {app}\bin; Components: {#COMPN_SCILAB} and not ({#COMPN_MKL_CPU_LIBRARY} or {#COMPN_FFTW_MKL_LIBRARY})
+Source: bin\libifcoremd.dll; DestDir: {app}\bin; Components: {#COMPN_SCILAB} and not ({#COMPN_MKL_CPU_LIBRARY} or {#COMPN_FFTW_MKL_LIBRARY})
+Source: bin\libiomp5md.dll; DestDir: {app}\bin; Components: {#COMPN_SCILAB} and not ({#COMPN_MKL_CPU_LIBRARY} or {#COMPN_FFTW_MKL_LIBRARY})
+Source: bin\libifcorertd.dll; DestDir: {app}\bin; Components: {#COMPN_SCILAB}
+Source: bin\svml_dispmd.dll; DestDir: {app}\bin; Components: {#COMPN_SCILAB}
 ;
 ; used for localization
 Source: bin\libintl.dll; DestDir: {app}\bin; Components: {#COMPN_SCILAB}
