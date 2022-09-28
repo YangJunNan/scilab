@@ -11,12 +11,6 @@ RUN apt-get update && apt-get install -y \
         dumb-init patchelf elfutils \
     && apt-get clean
 
-# download gitlab-runner official binary
-RUN curl -L --output /usr/local/bin/gitlab-runner \
-    "https://gitlab-runner-downloads.s3.amazonaws.com/latest/binaries/gitlab-runner-linux-amd64"
-RUN chmod +x /usr/local/bin/gitlab-runner
-RUN mkdir /etc/gitlab-runner
-
 # generate en_US locale
 RUN sed -i 's/^# *\(en_US.UTF-8\)/\1/' /etc/locale.gen \
     && locale-gen
@@ -41,9 +35,4 @@ ENV F77=gfortran-8
 
 # exit properly on ^C
 STOPSIGNAL SIGQUIT
-# share volumes
-VOLUME ["/etc/gitlab-runner", "/builds"]
-# launch 
-ENTRYPOINT ["/usr/bin/dumb-init", "/usr/local/bin/gitlab-runner"]
-# working-directory always have an extra /builds, remove it
-CMD ["run", "--user=scilab", "--working-directory=/"]
+

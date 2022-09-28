@@ -39,7 +39,7 @@ x64_windows_build_release:
   stage: build
   needs:
     - x86_64-linux-gnu_cleanup_builds
-  tags: [x86_64-linux-gnu, scilab]
+  tags: [x86_64-linux-gnu, docker]
   variables:
       GIT_CLEAN_FLAGS: none
   script: bash -x -e .gitlab-ci/build.sh
@@ -53,7 +53,7 @@ x64_windows_build_release:
 # build an intermediate version
 x86_64-linux-gnu_build_branch:
   extends: .x86_64-linux-gnu_build
-  image: $CI_REGISTRY/$CI_PROJECT_PATH/linux-runner:latest
+  image: $CI_REGISTRY/$CI_PROJECT_PATH/linux-builder:latest
   needs:
     - x86_64-linux-gnu_set_branch_env
     - contains_changes_modification
