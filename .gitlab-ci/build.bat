@@ -29,8 +29,8 @@ sed -i ^
  modules\core\includes\version.h.vc
 
 REM FIXME copy intel redistribuables as thirdparties are not up to date
-robocopy /s /copy:DAT "%IFORT_COMPILER22%\redist\intel64_win\compiler" "%CI_PROJECT_DIR%\scilab\bin" ^
-1033\*.dll ^
+robocopy /e /copy:DAT "%IFORT_COMPILER22%\redist\intel64_win\compiler" "%CI_PROJECT_DIR%\scilab\bin" ^
+1033\ ^
 libifcoremd.dll ^
 libifcoremdd.dll ^
 libifcorert.dll ^
