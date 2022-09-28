@@ -22,14 +22,14 @@ cd scilab
 
 REM patch version numbers
 sed -i ^
- -e 's/SCI_VERSION_STRING .*/SCI_VERSION_STRING ^"%SCI_VERSION_STRING%^"/' ^
- -e 's/SCI_VERSION_WIDE_STRING .*/SCI_VERSION_WIDE_STRING L^"%SCI_VERSION_STRING%^"/' ^
- -e 's/SCI_VERSION_REVISION .*/SCI_VERSION_REVISION ^"%CI_COMMIT_SHA%^"/' ^
- -e 's/SCI_VERSION_TIMESTAMP .*/SCI_VERSION_TIMESTAMP %SCI_VERSION_TIMESTAMP%/' ^
+ -e "s/SCI_VERSION_STRING .*/SCI_VERSION_STRING ^"%SCI_VERSION_STRING%^"/" ^
+ -e "s/SCI_VERSION_WIDE_STRING .*/SCI_VERSION_WIDE_STRING L^"%SCI_VERSION_STRING%^"/" ^
+ -e "s/SCI_VERSION_REVISION .*/SCI_VERSION_REVISION ^"%CI_COMMIT_SHA%^"/" ^
+ -e "s/SCI_VERSION_TIMESTAMP .*/SCI_VERSION_TIMESTAMP %SCI_VERSION_TIMESTAMP%/" ^
  modules\core\includes\version.h.vc
 
 REM FIXME copy intel redistribuables as thirdparties are not up to date
-robocopy /e /copy:DAT "%IFORT_COMPILER22%\redist\intel64_win\compiler" "%CI_PROJECT_DIR%\scilab\bin" ^
+robocopy /s /copy:DAT "%IFORT_COMPILER22%\redist\intel64_win\compiler" "%CI_PROJECT_DIR%\scilab\bin" ^
 1033 ^
 libifcoremd.dll ^
 libifcoremdd.dll ^
