@@ -3,9 +3,7 @@
   stage: build
   needs: 
     - x64_windows_cleanup_builds
-  tags:
-    - x64_windows
-    - scilab
+  tags: [x64_windows, scilab]
   variables:
       GIT_CLEAN_FLAGS: none
   script: call .gitlab-ci\build.bat
@@ -41,9 +39,7 @@ x64_windows_build_release:
   stage: build
   needs:
     - x86_64-linux-gnu_cleanup_builds
-  tags:
-    - x86_64-linux-gnu
-    - docker
+  tags: [x86_64-linux-gnu, scilab]
   variables:
       GIT_CLEAN_FLAGS: none
   script: bash -x -e .gitlab-ci/build.sh
