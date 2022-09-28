@@ -1,12 +1,12 @@
 release:
-  stage: deploy
+  stage: publish
   script:
     - echo "nothing to deploy"
   when: manual
 
 
 index_gitlab_pages:
-  stage: deploy
+  stage: publish
   script:
     -|
      find public -type d -print0 | while IFS= read -r -d '' d; do
