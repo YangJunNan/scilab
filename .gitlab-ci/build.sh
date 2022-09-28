@@ -3,7 +3,7 @@
 #
 # NOTE: log all commands to log.txt to avoid hitting Gitlab log limit
 # NOTE: nproc is used to limit memory usage
-
+echo env | grep SCILAB
 # checkout pre-requirements
 svn checkout \
     --username anonymous --password Scilab \
