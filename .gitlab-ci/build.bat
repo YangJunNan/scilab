@@ -28,6 +28,18 @@ sed -i ^
  -e 's/SCI_VERSION_TIMESTAMP .*/SCI_VERSION_TIMESTAMP %SCI_VERSION_TIMESTAMP%/' ^
  modules\core\includes\version.h.vc
 
+REM FIXME copy intel redistribuables as thirdparties are not up to date
+robocopy /e /copy:DAT "%IFORT_COMPILER22%\redist\intel64_win\compiler" "%CI_PROJECT_DIR%\bin" ^
+1033 ^
+libifcoremd.dll ^
+libifcoremdd.dll ^
+libifcorert.dll ^
+libifcorertd.dll ^
+libiomp5md.dll ^
+libmmd.dll ^
+libmmdd.dll ^
+svml_dispmd.dll
+
 REM build with Visual Studio and Intel compilers
 echo on
 devenv.com Scilab.sln /build "Release|x64" >..\log.txt
