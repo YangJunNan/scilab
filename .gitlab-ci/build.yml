@@ -43,7 +43,7 @@ x64_windows_build_release:
     - x86_64-linux-gnu_cleanup_builds
   tags:
     - x86_64-linux-gnu
-    - scilab
+    - docker
   variables:
       GIT_CLEAN_FLAGS: none
   script: bash -x -e .gitlab-ci/build.sh
