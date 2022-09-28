@@ -14,6 +14,7 @@ demopath = get_absolute_file_path("lagrangian.dem.gateway.sce");
 subdemolist = ["Single pendulum" ,"lagrangian/demo_single_pendulum.sce"
                "Double pendulum","lagrangian/demo_double_pendulum.sce"
                "Cardioid sliding pendulum","lagrangian/demo_cardioid_pendulum.sce"
+               "User spline sliding pendulum","lagrangian/demo_spline_pendulum.sce"
                "N-pendulum","lagrangian/demo_npend.sce"
                "Collapsing chain","lagrangian/demo_chain.sce"]
 

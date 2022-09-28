@@ -95,6 +95,11 @@ bool IDAManager::computeIC(char *errorMsg)
             sprintf(errorMsg,"IDACalcIC error : %s\n", IDAGetReturnFlagName(iFlag));
             return true;
         }
+        if (IDAGetConsistentIC(m_prob_mem, m_N_VectorY, m_N_VectorYp) != IDA_SUCCESS)
+        {
+            sprintf(errorMsg,"IDAGetConsistentIC error\n");
+            return true;
+        }
     }
     else if (m_wstrCalcIc == L"y0")
     {
@@ -105,12 +110,13 @@ bool IDAManager::computeIC(char *errorMsg)
             sprintf(errorMsg,"IDACalcIC error : %s\n", IDAGetReturnFlagName(iFlag));
             return true;
         }
+        if (IDAGetConsistentIC(m_prob_mem, m_N_VectorY, m_N_VectorYp) != IDA_SUCCESS)
+        {
+            sprintf(errorMsg,"IDAGetConsistentIC error\n");
+            return true;
+        }
     }
-    if (IDAGetConsistentIC(m_prob_mem, m_N_VectorY, m_N_VectorYp) != IDA_SUCCESS)
-    {
-        sprintf(errorMsg,"IDAGetConsistentIC error\n");
-        return true;
-    }
+
     return false;
 }
 

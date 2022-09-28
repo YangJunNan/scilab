@@ -92,22 +92,21 @@ function varargout = compute(sim,tspan,x0,u0,mass,p1,p2,p3,p4,p5,p6,p7,p8)
     // get number of constraints:
     nc = size(Fd0,1);
 
-    // compute initial value of lagrange multipliers:
-    // 1: estimate Hessian of constraints functions with complex step
+    // compute initial value of lagrange multipliers by second total
+    // derivative of the constraints:
+    // Fd*ud + sum_{k=1}^nc u*Fdd_k*u where Fdd_k is the Hessian of f_k
+    // then write ud according to second block of residual
+    // 1: estimate Fdd_k*u, k=1..nc with a complex step
     // 2: solve linear system
+
     rhs = Fd0*((Vd0+Dd0)'./Mass);
-    Fdd0 = zeros(n,n,nc);
-    e=zeros(n,1);
-    h=1e-200;
-    for i=1:n
-        e(i)=h;
-        [?,?,Fd] = sim(tspan(1),x0+imult(e),u0,mass,par(:));
-        Fdd0(i,:,:) = (imag(Fd)/h)';
-        e(i)=0;
-    end
-    for i = 1:nc
-        rhs(i) = rhs(i)-u0'*Fdd0(:,:,i)*u0;
-    end
+    // note: evaluating directional derivative of Fd in direction u0
+    // yields a matrix
+    h = 1e-200;
+    [?,?,Fd] = sim(tspan(1),x0+imult(h*u0),u0,mass,par(:));
+    Fdd0 = imag(Fd)/h;
+    rhs = rhs-Fdd0*u0;
+
     λ0 = (Fd0*(Fd0'./Mass(:,ones(1,nc))))\rhs;
 
     // compute initial accelerations:
