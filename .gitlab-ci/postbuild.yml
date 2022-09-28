@@ -24,7 +24,6 @@ build_javadoc:
 # build Doxygen
 build_doxygen:
   stage: postbuild
-  tags: ["docker"]
   image: docker.io/tsgkadot/docker-doxygen
   variables:
       GIT_STRATEGY: none
