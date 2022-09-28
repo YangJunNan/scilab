@@ -188,3 +188,13 @@ contains_changes_modification:
     - changes:
       - scilab/CHANGES.md
   allow_failure: true
+
+# ced test
+ced_test:
+  stage: prebuild
+  tags:
+    - tag-to-debug
+  script:
+    - cat /etc/lsb-release
+  when: manual
+  allow_failure: true
