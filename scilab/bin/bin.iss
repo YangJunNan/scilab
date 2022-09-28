@@ -44,7 +44,7 @@ Source: bin\msvcp100.DLL; DestDir: {app}\bin; Components: {#COMPN_SCILAB}
 
 
 ;MKL
-Source: bin\1033; DestDir: {app}\bin; Flags: recursesubdirs; Components: {#COMPN_SCILAB} and not ({#COMPN_MKL_CPU_LIBRARY} or {#COMPN_FFTW_MKL_LIBRARY})
+Source: bin\1033\*.dll; DestDir: {app}\bin\1033; Components: {#COMPN_SCILAB} and not ({#COMPN_MKL_CPU_LIBRARY} or {#COMPN_FFTW_MKL_LIBRARY})
 Source: bin\libifcoremd.dll; DestDir: {app}\bin; Components: {#COMPN_SCILAB} and not ({#COMPN_MKL_CPU_LIBRARY} or {#COMPN_FFTW_MKL_LIBRARY})
 Source: bin\libifcoremdd.dll; DestDir: {app}\bin; Components: {#COMPN_SCILAB} and not ({#COMPN_MKL_CPU_LIBRARY} or {#COMPN_FFTW_MKL_LIBRARY})
 Source: bin\libifcorert.dll; DestDir: {app}\bin; Components: {#COMPN_SCILAB} and not ({#COMPN_MKL_CPU_LIBRARY} or {#COMPN_FFTW_MKL_LIBRARY})
