@@ -55,17 +55,15 @@ x64_windows_build_release:
       - "$SCI_VERSION_STRING.bin.$ARCH.tar.gz"
     when: always
 # build an intermediate version
-.x86_64-linux-gnu_build_branch:
+x86_64-linux-gnu_build_branch:
   extends: .x86_64-linux-gnu_build
+  image: $CI_REGISTRY/$CI_PROJECT_PATH/linux-runner:latest
   needs:
     - x86_64-linux-gnu_set_branch_env
     - contains_changes_modification
   rules:
     - if: $CI_PIPELINE_SOURCE == "merge_request_event"
     - if: $CI_COMMIT_REF_PROTECTED
-x86_64-linux-gnu_build_branch_indocker:
-  extends: .x86_64-linux-gnu_build
-  image: $CI_REGISTRY/$CI_PROJECT_PATH/linux-runner:latest
 # build a release
 x86_64-linux-gnu_build_release:
   extends: .x86_64-linux-gnu_build
