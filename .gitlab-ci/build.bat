@@ -30,7 +30,7 @@ sed -i ^
 
 REM FIXME copy intel redistribuables as thirdparties are not up to date
 robocopy /s /copy:DAT "%IFORT_COMPILER22%\redist\intel64_win\compiler" "%CI_PROJECT_DIR%\scilab\bin" ^
-1033 ^
+1033\*.dll ^
 libifcoremd.dll ^
 libifcoremdd.dll ^
 libifcorert.dll ^
