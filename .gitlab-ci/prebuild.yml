@@ -22,7 +22,7 @@ create_docker_image:
 # cleanup old builds from runners
 x86_64-linux-gnu_cleanup_builds:
   stage: prebuild
-  tags: [x86_64-linux-gnu, scilab]
+  tags: [x86_64-linux-gnu, docker]
   variables:
       GIT_STRATEGY: none
   script:
@@ -60,7 +60,7 @@ x64_windows_cleanup_builds:
 # define x86_64-linux-gnu env variables
 .x86_64-linux-gnu_set_env:
   stage: prebuild
-  tags: [x86_64-linux-gnu, scilab]
+  tags: [x86_64-linux-gnu, docker]
   variables:
       GIT_STRATEGY: none
   script:
@@ -157,7 +157,7 @@ x64_windows_clean:
 # patch, copy, modify files before building a release
 prepare_release_files:
   stage: prebuild
-  tags: [linux]
+  tags: [x86_64-linux-gnu]
   rules:
     - if: $CI_COMMIT_TAG
   script:
@@ -170,6 +170,7 @@ prepare_release_files:
 # check MR has modified CHANGES.md
 contains_changes_modification:
   stage: prebuild
+  tags: [x86_64-linux-gnu]
   script:
     - echo CHANGES.md edited
   rules:

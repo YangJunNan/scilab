@@ -42,7 +42,7 @@ build_doxygen:
 # build preview of help.scilab.org
 build_help_web:
   stage: postbuild
-  tags: [x86_64-linux-gnu, scilab]
+  tags: [x86_64-linux-gnu, docker]
   variables:
       GIT_CLEAN_FLAGS: none
   script:
@@ -59,7 +59,7 @@ build_help_web:
 # extract jar content to web
 publish_help_jar:
   stage: postbuild
-  tags: [x86_64-linux-gnu, scilab]
+  tags: [x86_64-linux-gnu, docker]
   variables:
       GIT_STRATEGY: none
   needs:
