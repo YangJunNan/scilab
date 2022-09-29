@@ -12,9 +12,9 @@ x64_windows_test_branch:
     - job: x64_windows_set_branch_env
       artifacts: true
   script: call .gitlab-ci\test.bat
-#  rules:
-#    - changes:
-#      - scilab/modules/$TESTS/**/*
+  rules:
+    - changes:
+      - scilab/modules/$TESTS/**/*
   artifacts:
     when: always
     paths:
@@ -23,13 +23,73 @@ x64_windows_test_branch:
       junit: $TEST.xml
   parallel:
     matrix:
-      - TEST:
+      - &TEST_ANCHOR TEST: 
+        - api_scilab
+        - arnoldi
         - ast
+        - atoms
+        - boolean
+        - cacsd
+        - completion
+        - console
         - core
+        - coverage
+        - data_structures
+        - demo_tools
+        - development_tools
+        - differential_equations
+        - dynamic_link
+        - elementary_functions
+        - external_objects_java
+        - fftw
         - fileio
         - functions
+        - graphic_export
+        - graphic_objects
+        - graphics
+        - gui
+        - hdf5
+        - helptools
+        - history_manager
+        - integer
+        - interpolation
+        - io
         - jvm
+        - linear_algebra
+        - localization
+        - m2sci
+        - matio
+        - mexlib
+        - modules_manager
+        - mpi
+        - optimization
+        - output_stream
+        - overloading
+        - parallel
+        - parameters
+        - polynomials
+        - randlib
+        - renderer
+        - scicos
+        - scicos_blocks
+        - scinotes
+        - signal_processing
+        - slint
+        - sound
+        - sparse
+        - special_functions
+        - spreadsheet
+        - statistics
+        - string
+        - tclsci
         - time
+        - ui_data
+        - umfpack
+        - webtools
+        - windows_tools
+        - xcos
+        - xml
+
 
 x86_64-linux-gnu_test_branch:
   stage: test
@@ -45,9 +105,9 @@ x86_64-linux-gnu_test_branch:
     - job: x86_64-linux-gnu_set_branch_env
       artifacts: true
   script: bash -e -x .gitlab-ci/test.sh
-#  rules:
-#    - changes:
-#      - scilab/modules/$TESTS/**/*
+  rules:
+    - changes:
+      - scilab/modules/$TESTS/**/*
   artifacts:
     when: always
     paths:
@@ -56,10 +116,4 @@ x86_64-linux-gnu_test_branch:
       junit: $TEST.xml
   parallel:
     matrix:
-      - TEST:
-        - ast
-        - core
-        - fileio
-        - functions
-        - jvm
-        - time
+      - *TEST_ANCHOR
