@@ -28,7 +28,7 @@ x86_64-linux-gnu_cleanup_builds:
   script:
     - set -e -x
     # Remove any previous tarball
-    - rm -fr scilab-*tar.xz
+    - rm -fr scilab-*.tar.xz
     # Remove install dir older than 3 days
     - |
       find . -maxdepth 1 -mtime +2 -name "scilab-*" -type d -print0 |\

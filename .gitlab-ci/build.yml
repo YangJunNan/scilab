@@ -45,7 +45,7 @@ x64_windows_build_release:
     paths:
       - log*.txt
       - scilab/modules/core/includes/version.h
-      - "$SCI_VERSION_STRING.bin.$ARCHtar.xz"
+      - "$SCI_VERSION_STRING.bin.$ARCH.tar.xz"
     when: always
 # build an intermediate version
 x86_64-linux-gnu_build_branch:

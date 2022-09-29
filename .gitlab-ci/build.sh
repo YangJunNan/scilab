@@ -5,6 +5,7 @@
 # NOTE: nproc is used to limit memory usage
 
 # checkout pre-requirements
+echo -e "\e[0Ksection_start:$(date +%s):prerequirements\r\e[0KGetting prerequirements"
 svn checkout \
     --username anonymous --password Scilab \
     "svn://svn.scilab.org/scilab/${PREREQUIREMENTS_BRANCH}/Dev-Tools/SE/Prerequirements/linux_x64/" scilab \
@@ -13,6 +14,7 @@ svn checkout \
 tail -n 1 log_svn.txt
 # revert local modification
 svn revert -R scilab >>log_svn.txt
+echo -e "\e[0Ksection_end:$(date +%s):prerequirements\r\e[0K"
 
 # patch version numbers
 sed -i \
@@ -31,19 +33,26 @@ DISPLAY=:0.0 && export DISPLAY
 export SCILIBS_LDFLAGS="-Wl,--allow-shlib-undefined"
 
 # configure (with reconfigure for up to date info)
+echo -e "\e[0Ksection_start:$(date +%s):configure\r\e[0KConfigure"
 cd scilab ||exit 1
 aclocal >../log.txt
 autoconf >>../log.txt
 automake >>../log.txt
 ./configure --prefix='' |tee -a ../log.txt
+echo -e "\e[0Ksection_end:$(date +%s):configure\r\e[0K"
 
 # make 
+echo -e "\e[0Ksection_start:$(date +%s):make\r\e[0KMake"
 make --jobs="$(nproc)" all &>>../log.txt ||(tail --lines=100 ../log.txt; exit 1)
 make doc &>../log_doc.txt ||(tail --lines=100 ../log_doc.txt; exit 1)
+echo -e "\e[0Ksection_end:$(date +%s):make\r\e[0K"
 
 # install to tmpdir
+echo -e "\e[0Ksection_start:$(date +%s):install\r\e[0KInstall"
 make install DESTDIR="${CI_PROJECT_DIR}/${SCI_VERSION_STRING}" &>>../log_install.txt ||(tail --lines=100 ../log_install.txt; exit 1)
+echo -e "\e[0Ksection_end:$(date +%s):install\r\e[0K"
 
+echo -e "\e[0Ksection_start:$(date +%s):patch\r\e[0KPatch binary"
 # copy extra files
 cp -a ACKNOWLEDGEMENTS "${CI_PROJECT_DIR}/${SCI_VERSION_STRING}/"
 cp -a CHANGES.md "${CI_PROJECT_DIR}/${SCI_VERSION_STRING}/"
@@ -67,9 +76,13 @@ readelf -d bin/scilab-cli-bin |awk '/NEEDED/{gsub(/\[/,""); gsub(/\]/,""); print
 readelf -d bin/scilab-bin |awk '/NEEDED/{gsub(/\[/,""); gsub(/\]/,""); print "patchelf --add-needed "$NF" lib/scilab/libscilab.so"}' |sh -
 cd "${CI_PROJECT_DIR}" ||exit
 
+echo -e "\e[0Ksection_end:$(date +%s):patch\r\e[0K"
+
 # package as a tar gz file
-tar -czf "${SCI_VERSION_STRING}.bin.${ARCH}tar.xz" -C "${CI_PROJECT_DIR}" "${SCI_VERSION_STRING}"
+echo -e "\e[0Ksection_start:$(date +%s):package\r\e[0KPackage"
+tar -czf "${SCI_VERSION_STRING}.bin.${ARCH}.tar.xz" -C "${CI_PROJECT_DIR}" "${SCI_VERSION_STRING}"
 rm -fr "${CI_PROJECT_DIR}/${SCI_VERSION_STRING:?}"
+echo -e "\e[0Ksection_end:$(date +%s):package\r\e[0K"
 
 # error if artifact does not exist
-du -h "${SCI_VERSION_STRING}.bin.${ARCH}tar.xz"
+du -h "${SCI_VERSION_STRING}.bin.${ARCH}.tar.xz"
