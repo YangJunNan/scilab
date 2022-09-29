@@ -29,8 +29,8 @@
 x64_windows_test_branch_good:
   extends: .x64_windows_test_branch
   parallel:
-    matrix:
-      - &GOOD_TEST_ANCHOR TEST:
+    matrix: &GOOD_TEST_ANCHOR
+      - TEST:
         - api_scilab
         - arnoldi
         - ast
@@ -51,8 +51,8 @@ x64_windows_test_branch_good:
 x64_windows_test_branch_bad:
   extends: .x64_windows_test_branch
   parallel:
-    matrix:
-      - &BAD_TEST_ANCHOR TEST:
+    matrix: &BAD_TEST_ANCHOR
+      - TEST:
         - demo_tools
         - development_tools
         - differential_equations
@@ -103,8 +103,8 @@ x64_windows_test_branch_bad:
 x64_windows_test_branch_ugly:
   extends: .x64_windows_test_branch
   parallel:
-    matrix:
-      - &UGLY_TEST_ANCHOR TEST:
+    matrix: &UGLY_TEST_ANCHOR
+      - TEST:
         - windows_tools
         - xcos
         - xml
@@ -135,21 +135,15 @@ x64_windows_test_branch_ugly:
 x86_64-linux-gnu_test_branch_good:
   extends: .x86_64-linux-gnu_test_branch
   parallel:
-    matrix:
-      - TEST:
-        - core
+    matrix: *GOOD_TEST_ANCHOR
 
 x86_64-linux-gnu_test_branch_bad:
   extends: .x86_64-linux-gnu_test_branch
   parallel:
-    matrix:
-      - TEST:
-        - demo_tools
+    matrix: *BAD_TEST_ANCHOR
 
 x86_64-linux-gnu_test_branch_ugly:
   extends: .x86_64-linux-gnu_test_branch
   parallel:
-    matrix:
-      - TEST:
-        - xcos
+    matrix: *UGLY_TEST_ANCHOR
 

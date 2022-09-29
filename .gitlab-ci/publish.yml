@@ -18,7 +18,7 @@ index_gitlab_pages:
      find public -type d -print0 | while IFS= read -r -d '' d; do
        cd $CI_PROJECT_DIR/$d;
        echo '<html><body>' >index.html;
-       find -name *.html -printf '<a href="%p">%p</a>\n' >>index.html;
+       find . -name '*.html' -printf '<a href="%p">%p</a>\n' >>index.html;
        echo '</body></html>' >>index.html;
      done;
   artifacts:
