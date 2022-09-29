@@ -1,6 +1,7 @@
 # build javadoc
 build_javadoc:
   stage: postbuild
+  tags: [x86_64-linux-gnu, docker, scilab]
   image: docker.io/openjdk:8-jdk-alpine
   dependencies: []
   script:
@@ -23,6 +24,7 @@ build_javadoc:
 # build Doxygen
 build_doxygen:
   stage: postbuild
+  tags: [x86_64-linux-gnu, docker, scilab]
   image: docker.io/tsgkadot/docker-doxygen
   variables:
       GIT_STRATEGY: none
@@ -42,7 +44,7 @@ build_doxygen:
 # build preview of help.scilab.org
 build_help_web:
   stage: postbuild
-  tags: [x86_64-linux-gnu, docker]
+  tags: [x86_64-linux-gnu, docker, scilab]
   variables:
       GIT_CLEAN_FLAGS: none
   script:
@@ -59,7 +61,7 @@ build_help_web:
 # extract jar content to web
 publish_help_jar:
   stage: postbuild
-  tags: [x86_64-linux-gnu, docker]
+  tags: [x86_64-linux-gnu, docker, scilab]
   variables:
       GIT_STRATEGY: none
   needs:

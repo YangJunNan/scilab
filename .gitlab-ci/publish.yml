@@ -1,5 +1,6 @@
 release:
   stage: publish
+  tags: [x86_64-linux-gnu, docker, scilab]
   script:
     - echo "nothing to deploy"
   when: manual
@@ -7,6 +8,7 @@ release:
 
 index_gitlab_pages:
   stage: publish
+  tags: [x86_64-linux-gnu, docker, scilab]
   script:
     -|
      find public -type d -print0 | while IFS= read -r -d '' d; do

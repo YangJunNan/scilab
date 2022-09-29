@@ -37,7 +37,7 @@ x64_windows_build_release:
   stage: build
   needs:
     - x86_64-linux-gnu_cleanup_builds
-  tags: [x86_64-linux-gnu, docker]
+  tags: [x86_64-linux-gnu, docker, scilab]
   variables:
       GIT_CLEAN_FLAGS: none
   script: bash -x -e .gitlab-ci/build.sh
