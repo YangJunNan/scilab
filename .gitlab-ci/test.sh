@@ -2,7 +2,7 @@
 # Execute module tests for a module name ${TEST}, download and install latest build if needed
 
 # always install
-tar -xzf "${SCI_VERSION_STRING}.bin.${ARCH}.tar.gz"
+tar -xJf "${SCI_VERSION_STRING}.bin.${ARCH}tar.xz"
 
 SCIHOME=$(mktemp --tmpdir -d SCI_TMP_HOME_XXXXXXX)
 
