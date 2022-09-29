@@ -12,13 +12,6 @@
     - job: x64_windows_set_branch_env
       artifacts: true
   script: call .gitlab-ci\test.bat
-  rules: &RULES
-    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
-      when: manual
-      allow_failure: true
-    - if: $CI_COMMIT_REF_PROTECTED
-    - changes:
-      - scilab/modules/$TESTS/**/*
   artifacts:
     when: always
     paths:
@@ -28,13 +21,22 @@
 
 x64_windows_test_branch_good:
   extends: .x64_windows_test_branch
+  rules: &GOOD_RULES
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+      changes:
+      - scilab/modules/$TESTS/**/*
+      allow_failure: false
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+      when: manual
+      allow_failure: false
+    - if: $CI_COMMIT_REF_PROTECTED
+      allow_failure: false
   parallel:
     matrix: &GOOD_TEST_ANCHOR
       - TEST:
         - api_scilab
         - arnoldi
         - ast
-        - atoms
         - boolean
         - cacsd
         - completion
@@ -42,14 +44,31 @@ x64_windows_test_branch_good:
         - core
         - coverage
         - data_structures
-        - integer
+        - fftw
         - fileio
         - functions
-        - webtools
+        - history_manager
+        - integer
+        - parameters
+        - polynomials
+        - special_functions
+        - spreadsheet
         - string
+        - webtools
+        - xml
 
 x64_windows_test_branch_bad:
   extends: .x64_windows_test_branch
+  rules: &BAD_RULES
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+      changes:
+      - scilab/modules/$TESTS/**/*
+      allow_failure: true
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+      when: manual
+      allow_failure: true
+    - if: $CI_COMMIT_REF_PROTECTED
+      allow_failure: true
   parallel:
     matrix: &BAD_TEST_ANCHOR
       - TEST:
@@ -59,14 +78,12 @@ x64_windows_test_branch_bad:
         - dynamic_link
         - elementary_functions
         - external_objects_java
-        - fftw
         - graphic_export
         - graphic_objects
         - graphics
         - gui
         - hdf5
         - helptools
-        - history_manager
         - interpolation
         - io
         - jvm
@@ -76,13 +93,10 @@ x64_windows_test_branch_bad:
         - matio
         - mexlib
         - modules_manager
-        - mpi
         - optimization
         - output_stream
         - overloading
         - parallel
-        - parameters
-        - polynomials
         - randlib
         - renderer
         - scicos
@@ -92,8 +106,6 @@ x64_windows_test_branch_bad:
         - slint
         - sound
         - sparse
-        - special_functions
-        - spreadsheet
         - statistics
         - tclsci
         - time
@@ -102,12 +114,23 @@ x64_windows_test_branch_bad:
 
 x64_windows_test_branch_ugly:
   extends: .x64_windows_test_branch
+  rules: &UGLY_RULES
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+      changes:
+      - scilab/modules/$TESTS/**/*
+      allow_failure: true
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+      when: manual
+      allow_failure: true
+    - if: $CI_COMMIT_REF_PROTECTED
+      allow_failure: true
   parallel:
     matrix: &UGLY_TEST_ANCHOR
       - TEST:
+        - atoms
+        - mpi
         - windows_tools
         - xcos
-        - xml
 
 
 .x86_64-linux-gnu_test_branch:
@@ -134,16 +157,19 @@ x64_windows_test_branch_ugly:
 
 x86_64-linux-gnu_test_branch_good:
   extends: .x86_64-linux-gnu_test_branch
+  rules: *GOOD_RULES
   parallel:
     matrix: *GOOD_TEST_ANCHOR
 
 x86_64-linux-gnu_test_branch_bad:
   extends: .x86_64-linux-gnu_test_branch
+  rules: *BAD_RULES
   parallel:
     matrix: *BAD_TEST_ANCHOR
 
 x86_64-linux-gnu_test_branch_ugly:
   extends: .x86_64-linux-gnu_test_branch
+  rules: *UGLY_RULES
   parallel:
     matrix: *UGLY_TEST_ANCHOR
 
