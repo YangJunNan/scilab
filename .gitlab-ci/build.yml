@@ -10,9 +10,7 @@
   artifacts:
     paths:
       - log*.txt
-      - scilab/Scilab.iss
       - scilab/modules/core/includes/version.h
-      - scilab/modules/core/includes/version.h.vc
       - "%SCI_VERSION_STRING%_%ARCH%.exe"
     when: always
 # build an intermediate version
@@ -47,7 +45,6 @@ x64_windows_build_release:
     paths:
       - log*.txt
       - scilab/modules/core/includes/version.h
-      - scilab/modules/core/includes/version.h.vc
       - "$SCI_VERSION_STRING.bin.$ARCH.tar.gz"
     when: always
 # build an intermediate version

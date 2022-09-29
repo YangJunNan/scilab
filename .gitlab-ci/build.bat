@@ -49,7 +49,7 @@ if errorlevel 1 tail.exe --lines=100 ..\log_buildjavadoc.txt & exit 1
 
 REM Package with Inno Setup 6
 echo on
-bin\WScilex-cli.exe -nb -f "tools\innosetup\Create_ISS.sce" >..\log_iss.txt
+call  bin\scilab.bat -nb -f "tools\innosetup\Create_ISS.sce" >..\log_iss.txt
 if errorlevel 1 tail.exe --lines=100 ..\log_iss.txt & exit 1
 "C:\Program Files (x86)\Inno Setup 6\iscc.exe" Scilab.iss >>..\log_iss.txt
 if errorlevel 1 tail.exe --lines=100 ..\log_iss.txt & exit 1

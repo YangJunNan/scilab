@@ -24,8 +24,9 @@ rem get unique SCIHOME
 set "SCIHOME=%tmp%\SCI_TMP_HOME~%RANDOM%"
 if exist -d "%SCIHOME%\" goto :uniqLoop
 mkdir "%SCIHOME%"
+if errorlevel 1  goto :uniqLoop
 
 @echo on
-call "%CI_PROJECT_DIR%\%SCI_VERSION_STRING%\bin\scilab.bat" -nwni -scihome "%SCIHOME%" -quit -e "test_run('%TEST%',[],[],'%TEST%.xml')"
+call "%SCI_VERSION_STRING%\bin\scilab.bat" -nwni -scihome "%SCIHOME%" -quit -e "test_run('%TEST%',[],[],'%TEST%.xml')"
 
 rmdir /s /q "%SCIHOME%"
