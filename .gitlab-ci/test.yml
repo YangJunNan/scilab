@@ -23,12 +23,12 @@ x64_windows_test_branch_good:
   extends: .x64_windows_test_branch
   rules: &GOOD_RULES
     - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+      when: always
       changes:
       - scilab/modules/$TESTS/**/*
       allow_failure: false
     - if: $CI_PIPELINE_SOURCE == "merge_request_event"
       when: manual
-      allow_failure: false
     - if: $CI_COMMIT_REF_PROTECTED
       allow_failure: false
   parallel:
@@ -61,12 +61,12 @@ x64_windows_test_branch_bad:
   extends: .x64_windows_test_branch
   rules: &BAD_RULES
     - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+      when: always
       changes:
       - scilab/modules/$TESTS/**/*
       allow_failure: true
     - if: $CI_PIPELINE_SOURCE == "merge_request_event"
       when: manual
-      allow_failure: true
     - if: $CI_COMMIT_REF_PROTECTED
       allow_failure: true
   parallel:
@@ -121,7 +121,6 @@ x64_windows_test_branch_ugly:
       allow_failure: true
     - if: $CI_PIPELINE_SOURCE == "merge_request_event"
       when: manual
-      allow_failure: true
     - if: $CI_COMMIT_REF_PROTECTED
       allow_failure: true
   parallel:
