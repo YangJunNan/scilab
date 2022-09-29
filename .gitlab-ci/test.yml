@@ -1,4 +1,4 @@
-x64_windows_test_branch:
+.x64_windows_test_branch:
   stage: test
   tags: [x64_windows, scilab]
   variables:
@@ -12,7 +12,11 @@ x64_windows_test_branch:
     - job: x64_windows_set_branch_env
       artifacts: true
   script: call .gitlab-ci\test.bat
-  rules:
+  rules: &RULES
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+      when: manual
+      allow_failure: true
+    - if: $CI_COMMIT_REF_PROTECTED
     - changes:
       - scilab/modules/$TESTS/**/*
   artifacts:
@@ -21,9 +25,12 @@ x64_windows_test_branch:
       - $TEST.xml
     reports:
       junit: $TEST.xml
+
+x64_windows_test_branch_good:
+  extends: .x64_windows_test_branch
   parallel:
     matrix:
-      - &TEST_ANCHOR TEST: 
+      - &GOOD_TEST_ANCHOR TEST: 
         - api_scilab
         - arnoldi
         - ast
@@ -35,6 +42,17 @@ x64_windows_test_branch:
         - core
         - coverage
         - data_structures
+        - integer
+        - fileio
+        - functions
+        - webtools
+        - string
+
+x64_windows_test_branch_bad:
+  extends: .x64_windows_test_branch
+  parallel:
+    matrix:
+      - &BAD_TEST_ANCHOR TEST: 
         - demo_tools
         - development_tools
         - differential_equations
@@ -42,8 +60,6 @@ x64_windows_test_branch:
         - elementary_functions
         - external_objects_java
         - fftw
-        - fileio
-        - functions
         - graphic_export
         - graphic_objects
         - graphics
@@ -51,7 +67,6 @@ x64_windows_test_branch:
         - hdf5
         - helptools
         - history_manager
-        - integer
         - interpolation
         - io
         - jvm
@@ -80,18 +95,22 @@ x64_windows_test_branch:
         - special_functions
         - spreadsheet
         - statistics
-        - string
         - tclsci
         - time
         - ui_data
         - umfpack
-        - webtools
+
+x64_windows_test_branch_ugly:
+  extends: .x64_windows_test_branch
+  parallel:
+    matrix:
+      - &UGLY_TEST_ANCHOR TEST: 
         - windows_tools
         - xcos
         - xml
 
 
-x86_64-linux-gnu_test_branch:
+.x86_64-linux-gnu_test_branch:
   stage: test
   tags: [x86_64-linux-gnu, docker, $PICKED_RUNNER]
   variables:
@@ -105,15 +124,29 @@ x86_64-linux-gnu_test_branch:
     - job: x86_64-linux-gnu_set_branch_env
       artifacts: true
   script: bash -e -x .gitlab-ci/test.sh
-  rules:
-    - changes:
-      - scilab/modules/$TESTS/**/*
+  rules: *RULES
   artifacts:
     when: always
     paths:
       - $TEST.xml
     reports:
       junit: $TEST.xml
+
+x86_64-linux-gnu_test_branch_good:
+  extends: .x86_64-linux-gnu_test_branch
   parallel:
     matrix:
-      - *TEST_ANCHOR
+      - *GOOD_TEST_ANCHOR
+
+x86_64-linux-gnu_test_branch_bad:
+  extends: .x86_64-linux-gnu_test_branch
+  parallel:
+    matrix:
+      - *BAD_TEST_ANCHOR
+
+x86_64-linux-gnu_test_branch_ugly:
+  extends: .x86_64-linux-gnu_test_branch
+  parallel:
+    matrix:
+      - *UGLY_TEST_ANCHOR
+
