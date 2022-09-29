@@ -50,7 +50,6 @@ x64_windows_build_release:
 # build an intermediate version
 x86_64-linux-gnu_build_branch:
   extends: .x86_64-linux-gnu_build
-  image: $CI_REGISTRY/$CI_PROJECT_PATH/linux-builder:latest
   needs:
     - x86_64-linux-gnu_set_branch_env
     - contains_changes_modification
@@ -60,7 +59,6 @@ x86_64-linux-gnu_build_branch:
 # build a release
 x86_64-linux-gnu_build_release:
   extends: .x86_64-linux-gnu_build
-  image: $CI_REGISTRY/$CI_PROJECT_PATH/linux-builder:latest
   needs:
     - x86_64-linux-gnu_set_release_env
     - prepare_release_files
