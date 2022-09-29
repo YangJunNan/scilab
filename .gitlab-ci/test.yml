@@ -147,7 +147,6 @@ x64_windows_test_branch_ugly:
     - job: x86_64-linux-gnu_set_branch_env
       artifacts: true
   script: bash -e -x .gitlab-ci/test.sh
-  rules: *RULES
   artifacts:
     when: always
     paths:
