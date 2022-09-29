@@ -136,17 +136,20 @@ x86_64-linux-gnu_test_branch_good:
   extends: .x86_64-linux-gnu_test_branch
   parallel:
     matrix:
-      - *GOOD_TEST_ANCHOR
+      - TEST:
+        - core
 
 x86_64-linux-gnu_test_branch_bad:
   extends: .x86_64-linux-gnu_test_branch
   parallel:
     matrix:
-      - *BAD_TEST_ANCHOR
+      - TEST:
+        - demo_tools
 
 x86_64-linux-gnu_test_branch_ugly:
   extends: .x86_64-linux-gnu_test_branch
   parallel:
     matrix:
-      - *UGLY_TEST_ANCHOR
+      - TEST:
+        - xcos
 
