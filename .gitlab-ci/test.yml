@@ -30,7 +30,7 @@ x64_windows_test_branch_good:
   extends: .x64_windows_test_branch
   parallel:
     matrix:
-      - &GOOD_TEST_ANCHOR TEST: 
+      - &GOOD_TEST_ANCHOR TEST:
         - api_scilab
         - arnoldi
         - ast
@@ -52,7 +52,7 @@ x64_windows_test_branch_bad:
   extends: .x64_windows_test_branch
   parallel:
     matrix:
-      - &BAD_TEST_ANCHOR TEST: 
+      - &BAD_TEST_ANCHOR TEST:
         - demo_tools
         - development_tools
         - differential_equations
@@ -104,7 +104,7 @@ x64_windows_test_branch_ugly:
   extends: .x64_windows_test_branch
   parallel:
     matrix:
-      - &UGLY_TEST_ANCHOR TEST: 
+      - &UGLY_TEST_ANCHOR TEST:
         - windows_tools
         - xcos
         - xml
@@ -112,7 +112,7 @@ x64_windows_test_branch_ugly:
 
 .x86_64-linux-gnu_test_branch:
   stage: test
-  tags: [x86_64-linux-gnu, docker, $PICKED_RUNNER]
+  tags: [x86_64-linux-gnu, docker]
   variables:
       # enforce download and install on each test
       GIT_CLEAN_FLAGS: -fxd scilab-*
