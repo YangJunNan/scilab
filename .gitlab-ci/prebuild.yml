@@ -182,8 +182,11 @@ contains_changes_modification:
 # check MR has modified CHANGES.md
 check_user_runner:
   stage: prebuild
-  tags: [x86_64-linux-gnu, docker, $GITLAB_USER_ID]
+  tags: 
+    - [x86_64-linux-gnu, docker]
+    - [x86_64-linux-gnu, $GITLAB_USER_ID]
   script:
     - echo $GITLAB_USER_ID
   allow_failure: true
-
+  when:
+    - manual
