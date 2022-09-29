@@ -80,7 +80,7 @@ echo -e "\e[0Ksection_end:$(date +%s):patch\r\e[0K"
 
 # package as a tar gz file
 echo -e "\e[0Ksection_start:$(date +%s):package\r\e[0KPackage"
-tar -czf "${SCI_VERSION_STRING}.bin.${ARCH}.tar.xz" -C "${CI_PROJECT_DIR}" "${SCI_VERSION_STRING}"
+tar -cJf "${SCI_VERSION_STRING}.bin.${ARCH}.tar.xz" -C "${CI_PROJECT_DIR}" "${SCI_VERSION_STRING}"
 rm -fr "${CI_PROJECT_DIR}/${SCI_VERSION_STRING:?}"
 echo -e "\e[0Ksection_end:$(date +%s):package\r\e[0K"
 
