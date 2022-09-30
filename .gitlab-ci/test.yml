@@ -35,7 +35,7 @@ x64_windows_test_branch_good:
     - if: $CI_COMMIT_REF_PROTECTED
       allow_failure: false
     - if: $CI_PIPELINE_SOURCE == "merge_request_event"
-      allow_failure: false
+      allow_failure: true
   when: manual
   parallel:
     matrix: &GOOD_TEST_ANCHOR
