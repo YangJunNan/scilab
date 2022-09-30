@@ -8,12 +8,18 @@
 
 
 release:
-  stage: publish
+  stage: publish_branch
   tags: [x86_64-linux-gnu, docker, scilab]
   variables:
       GIT_CLEAN_FLAGS: none
+  needs:
+    # build artifacts
+    - x64_windows_build_branch
+    - x86_64-linux-gnu_build_branch
+    # get env information used to build scilab
+    - x86_64-linux-gnu_set_branch_env
   script:
-    - echo "nothing to deploy"
+    - echo "FIXME nothing to deploy"
   when: manual
 
 # generate index.html files for each directory in public/
@@ -22,6 +28,11 @@ index_gitlab_pages:
   tags: [x86_64-linux-gnu, docker, scilab]
   variables:
       GIT_CLEAN_FLAGS: none
+  needs: 
+    - publish_help_jar
+    - build_doxygen
+    - build_help_web
+    - build_javadoc
   script:
     - |
       find public -type d -print0 | while IFS= read -r -d '' d; do
