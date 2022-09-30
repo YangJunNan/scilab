@@ -22,10 +22,6 @@
 x64_windows_test_branch_good:
   extends: .x64_windows_test_branch
   rules: &GOOD_RULES
-    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
-      changes:
-      - scilab/modules/$TESTS/**/*
-      allow_failure: false
     - if: $CI_COMMIT_REF_PROTECTED
       allow_failure: false
     - if: $CI_PIPELINE_SOURCE == "merge_request_event"
@@ -59,10 +55,6 @@ x64_windows_test_branch_good:
 x64_windows_test_branch_bad:
   extends: .x64_windows_test_branch
   rules: &BAD_RULES
-    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
-      changes:
-      - scilab/modules/$TESTS/**/*
-      allow_failure: true
     - if: $CI_COMMIT_REF_PROTECTED
       allow_failure: true
     - if: $CI_PIPELINE_SOURCE == "merge_request_event"
@@ -113,10 +105,6 @@ x64_windows_test_branch_bad:
 x64_windows_test_branch_ugly:
   extends: .x64_windows_test_branch
   rules: &UGLY_RULES
-    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
-      changes:
-      - scilab/modules/$TESTS/**/*
-      allow_failure: true
     - if: $CI_COMMIT_REF_PROTECTED
       allow_failure: true
     - if: $CI_PIPELINE_SOURCE == "merge_request_event"
@@ -128,6 +116,36 @@ x64_windows_test_branch_ugly:
         - mpi
         - windows_tools
         - xcos
+
+x64_windows_test_branch_good_impacted:
+  extends: .x64_windows_test_branch
+  only:
+    refs:
+      - merge_requests
+    changes:
+      - scilab/modules/$TESTS/**/*
+  parallel:
+    matrix: *GOOD_TEST_ANCHOR
+
+x64_windows_test_branch_bad_impacted:
+  extends: .x64_windows_test_branch
+  only:
+    refs:
+      - merge_requests
+    changes:
+      - scilab/modules/$TESTS/**/*
+  parallel:
+    matrix: *GOOD_BAD_ANCHOR
+
+x64_windows_test_branch_ugly_impacted:
+  extends: .x64_windows_test_branch
+  only:
+    refs:
+      - merge_requests
+    changes:
+      - scilab/modules/$TESTS/**/*
+  parallel:
+    matrix: *UGLY_BAD_ANCHOR
 
 
 .x86_64-linux-gnu_test_branch:
@@ -168,4 +186,34 @@ x86_64-linux-gnu_test_branch_ugly:
   rules: *UGLY_RULES
   parallel:
     matrix: *UGLY_TEST_ANCHOR
+
+x86_64-linux-gnu_test_branch_good_impacted:
+  extends: .x86_64-linux-gnu_test_branch
+  only:
+    refs:
+      - merge_requests
+    changes:
+      - scilab/modules/$TESTS/**/*
+  parallel:
+    matrix: *GOOD_TEST_ANCHOR
+
+x86_64-linux-gnu_test_branch_bad_impacted:
+  extends: .x86_64-linux-gnu_test_branch
+  only:
+    refs:
+      - merge_requests
+    changes:
+      - scilab/modules/$TESTS/**/*
+  parallel:
+    matrix: *GOOD_BAD_ANCHOR
+
+x86_64-linux-gnu_test_branch_ugly_impacted:
+  extends: .x86_64-linux-gnu_test_branch
+  only:
+    refs:
+      - merge_requests
+    changes:
+      - scilab/modules/$TESTS/**/*
+  parallel:
+    matrix: *UGLY_BAD_ANCHOR
 
