@@ -25,9 +25,9 @@
   artifacts:
     when: always
     paths:
-      - $TEST.xml
+      - $SCI_VERSION_STRING_$ARCH_$TEST.xml
     reports:
-      junit: $TEST.xml
+      junit: $SCI_VERSION_STRING_$ARCH_$TEST.xml
 
 x64_windows_test_branch_good:
   extends: .x64_windows_test_branch
@@ -170,9 +170,9 @@ x64_windows_test_branch_ugly_impacted:
   artifacts:
     when: always
     paths:
-      - $TEST.xml
+      - $SCI_VERSION_STRING_$ARCH_$TEST.xml
     reports:
-      junit: $TEST.xml
+      junit: $SCI_VERSION_STRING_$ARCH_$TEST.xml
 
 x86_64-linux-gnu_test_branch_good:
   extends: .x86_64-linux-gnu_test_branch

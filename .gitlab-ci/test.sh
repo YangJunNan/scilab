@@ -18,7 +18,7 @@ echo -e "\e[0Ksection_end:$(date +%s):install\r\e[0K"
 SCIHOME=$(mktemp --tmpdir -d SCI_TMP_HOME_XXXXXXX)
 
 echo -e "\e[0Ksection_start:$(date +%s):test\r\e[0KTesting $TEST"
-"${SCI_VERSION_STRING}/bin/scilab" -nwni -scihome "$SCIHOME" -quit -e 'test_run("'"${TEST}"'",[],[],"'"${TEST}.xml"'")'
+"${SCI_VERSION_STRING}/bin/scilab" -nwni -scihome "$SCIHOME" -quit -e 'test_run("'"${TEST}"'",[],[],"'"${SCI_VERSION_STRING}_${ARCH}_${TEST}.xml"'")'
 echo -e "\e[0Ksection_end:$(date +%s):test\r\e[0K"
 
 rm -fr "${SCIHOME}"
