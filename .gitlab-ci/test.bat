@@ -2,7 +2,7 @@ REM Execute module test for a module named %TEST%, download and install latest b
 
 @echo on
 REM Always install
-START /W "%CI_PROJECT_DIR%\%SCI_VERSION_STRING%_%ARCH%.exe" /CURRENTUSER /SUPPRESSMSGBOXES /SILENT /SP- /DIR="%CI_PROJECT_DIR%\%SCI_VERSION_STRING%"
+start /W "%CI_PROJECT_DIR%\%SCI_VERSION_STRING%_%ARCH%.exe" /SUPPRESSMSGBOXES /SILENT /SP- /DIR="%CI_PROJECT_DIR%\%SCI_VERSION_STRING%"
 if not exist "%CI_PROJECT_DIR%\%SCI_VERSION_STRING%\" exit 1
 
 @echo on
