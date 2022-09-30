@@ -1,3 +1,6 @@
+REM Scilab ( http://www.scilab.org/ ) - This file is part of Scilab
+REM Copyright (C) Dassault Systemes - 2022 - Clement DAVID
+REM
 REM Builder script for building Scilab on Windows
 REM
 REM NOTE: log all commands to log.txt to avoid hitting Gitlab log limit

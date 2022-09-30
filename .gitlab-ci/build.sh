@@ -1,5 +1,10 @@
-#!/bin/env bash
-# Builder script for building linux version
+#!/usr/bin/env bash
+#
+# Scilab ( http://www.scilab.org/ ) - This file is part of Scilab
+# Copyright (C) Dassault Systemes - 2022 - Clement DAVID
+#
+#
+# Builder script for building linux version.
 #
 # NOTE: log all commands to log.txt to avoid hitting Gitlab log limit
 # NOTE: nproc is used to limit memory usage

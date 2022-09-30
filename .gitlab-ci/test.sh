@@ -1,5 +1,12 @@
-#!/bin/env bash
-# Execute module tests for a module name ${TEST}, download and install latest build if needed
+#!/usr/bin/env bash
+#
+# Scilab ( http://www.scilab.org/ ) - This file is part of Scilab
+# Copyright (C) Dassault Systemes - 2022 - Clement DAVID
+#
+#
+# Execute module tests for a module name ${TEST}, download and install
+# latest build if needed.
+#
 
 # install if not exist
 echo -e "\e[0Ksection_start:$(date +%s):install\r\e[0KInstall Scilab binary"

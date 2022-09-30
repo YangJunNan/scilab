@@ -1,3 +1,13 @@
+# Scilab ( http://www.scilab.org/ ) - This file is part of Scilab
+# Copyright (C) Dassault Systemes - 2022 - Clement DAVID
+#
+#
+# This YAML file describe the test stage of the CI. Tests run are defined
+# per platform and split in good, bad and ugly sets. Special rules named 
+# impacted are added for modules modified by Merge Request.  
+#
+
+
 .x64_windows_test_branch:
   stage: test
   tags: [x64_windows, scilab]
@@ -25,7 +35,8 @@ x64_windows_test_branch_good:
     - if: $CI_COMMIT_REF_PROTECTED
       allow_failure: false
     - if: $CI_PIPELINE_SOURCE == "merge_request_event"
-      when: manual
+      allow_failure: false
+  when: manual
   parallel:
     matrix: &GOOD_TEST_ANCHOR
       - TEST:
@@ -58,7 +69,8 @@ x64_windows_test_branch_bad:
     - if: $CI_COMMIT_REF_PROTECTED
       allow_failure: true
     - if: $CI_PIPELINE_SOURCE == "merge_request_event"
-      when: manual
+      allow_failure: true
+  when: manual
   parallel:
     matrix: &BAD_TEST_ANCHOR
       - TEST:
@@ -108,7 +120,8 @@ x64_windows_test_branch_ugly:
     - if: $CI_COMMIT_REF_PROTECTED
       allow_failure: true
     - if: $CI_PIPELINE_SOURCE == "merge_request_event"
-      when: manual
+      allow_failure: true
+  when: manual
   parallel:
     matrix: &UGLY_TEST_ANCHOR
       - TEST:
@@ -122,7 +135,8 @@ x64_windows_test_branch_good_impacted:
   rules: &IMPACTED_RULES
     - if: $CI_PIPELINE_SOURCE == "merge_request_event"
       changes:
-        - scilab/modules/$TESTS/**/*
+        - scilab/modules/$TEST/**/*
+      when: always
   parallel:
     matrix: *GOOD_TEST_ANCHOR
 
@@ -163,18 +177,21 @@ x64_windows_test_branch_ugly_impacted:
 x86_64-linux-gnu_test_branch_good:
   extends: .x86_64-linux-gnu_test_branch
   rules: *GOOD_RULES
+  when: manual
   parallel:
     matrix: *GOOD_TEST_ANCHOR
 
 x86_64-linux-gnu_test_branch_bad:
   extends: .x86_64-linux-gnu_test_branch
   rules: *BAD_RULES
+  when: manual
   parallel:
     matrix: *BAD_TEST_ANCHOR
 
 x86_64-linux-gnu_test_branch_ugly:
   extends: .x86_64-linux-gnu_test_branch
   rules: *UGLY_RULES
+  when: manual
   parallel:
     matrix: *UGLY_TEST_ANCHOR
 
