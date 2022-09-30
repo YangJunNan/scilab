@@ -23,14 +23,13 @@ x64_windows_test_branch_good:
   extends: .x64_windows_test_branch
   rules: &GOOD_RULES
     - if: $CI_PIPELINE_SOURCE == "merge_request_event"
-      when: always
       changes:
       - scilab/modules/$TESTS/**/*
       allow_failure: false
-    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
-      when: manual
     - if: $CI_COMMIT_REF_PROTECTED
       allow_failure: false
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+      when: manual
   parallel:
     matrix: &GOOD_TEST_ANCHOR
       - TEST:
@@ -61,14 +60,13 @@ x64_windows_test_branch_bad:
   extends: .x64_windows_test_branch
   rules: &BAD_RULES
     - if: $CI_PIPELINE_SOURCE == "merge_request_event"
-      when: always
       changes:
       - scilab/modules/$TESTS/**/*
       allow_failure: true
-    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
-      when: manual
     - if: $CI_COMMIT_REF_PROTECTED
       allow_failure: true
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+      when: manual
   parallel:
     matrix: &BAD_TEST_ANCHOR
       - TEST:
@@ -119,10 +117,10 @@ x64_windows_test_branch_ugly:
       changes:
       - scilab/modules/$TESTS/**/*
       allow_failure: true
-    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
-      when: manual
     - if: $CI_COMMIT_REF_PROTECTED
       allow_failure: true
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+      when: manual
   parallel:
     matrix: &UGLY_TEST_ANCHOR
       - TEST:
