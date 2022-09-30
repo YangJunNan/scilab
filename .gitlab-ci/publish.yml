@@ -8,7 +8,7 @@
 
 
 release:
-  stage: publish_branch
+  stage: publish
   tags: [x86_64-linux-gnu, docker, scilab]
   variables:
       GIT_CLEAN_FLAGS: none
