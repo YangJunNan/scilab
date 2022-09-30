@@ -135,7 +135,7 @@ x64_windows_test_branch_bad_impacted:
     changes:
       - scilab/modules/$TESTS/**/*
   parallel:
-    matrix: *GOOD_BAD_ANCHOR
+    matrix: *BAD_TEST_ANCHOR
 
 x64_windows_test_branch_ugly_impacted:
   extends: .x64_windows_test_branch
@@ -145,7 +145,7 @@ x64_windows_test_branch_ugly_impacted:
     changes:
       - scilab/modules/$TESTS/**/*
   parallel:
-    matrix: *UGLY_BAD_ANCHOR
+    matrix: *UGLY_TEST_ANCHOR
 
 
 .x86_64-linux-gnu_test_branch:
@@ -205,7 +205,7 @@ x86_64-linux-gnu_test_branch_bad_impacted:
     changes:
       - scilab/modules/$TESTS/**/*
   parallel:
-    matrix: *GOOD_BAD_ANCHOR
+    matrix: *BAD_TEST_ANCHOR
 
 x86_64-linux-gnu_test_branch_ugly_impacted:
   extends: .x86_64-linux-gnu_test_branch
@@ -215,5 +215,5 @@ x86_64-linux-gnu_test_branch_ugly_impacted:
     changes:
       - scilab/modules/$TESTS/**/*
   parallel:
-    matrix: *UGLY_BAD_ANCHOR
+    matrix: *UGLY_TEST_ANCHOR
 
