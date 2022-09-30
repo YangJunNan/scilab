@@ -1,9 +1,12 @@
 REM Execute module test for a module named %TEST%, download and install latest build if needed
 
 @echo on
-REM Always install
-start /W "%CI_PROJECT_DIR%\%SCI_VERSION_STRING%_%ARCH%.exe" /SUPPRESSMSGBOXES /SILENT /SP- /DIR="%CI_PROJECT_DIR%\%SCI_VERSION_STRING%"
-if not exist "%CI_PROJECT_DIR%\%SCI_VERSION_STRING%\" exit 1
+REM Install if not exist
+if not exist "%SCI_VERSION_STRING%\" ^
+    start /W "%SCI_VERSION_STRING%_%ARCH%.exe" ^
+              /SUPPRESSMSGBOXES /SILENT /SP- ^
+              /DIR="%CI_PROJECT_DIR%\%SCI_VERSION_STRING%"
+if not exist "%SCI_VERSION_STRING%\" exit 1
 
 @echo on
 REM FIXME copy intel redistribuables as thirdparties are not up to date
