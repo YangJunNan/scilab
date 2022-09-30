@@ -119,31 +119,22 @@ x64_windows_test_branch_ugly:
 
 x64_windows_test_branch_good_impacted:
   extends: .x64_windows_test_branch
-  only:
-    refs:
-      - merge_requests
-    changes:
-      - scilab/modules/$TESTS/**/*
+  rules: &IMPACTED_RULES
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+      changes:
+        - scilab/modules/$TESTS/**/*
   parallel:
     matrix: *GOOD_TEST_ANCHOR
 
 x64_windows_test_branch_bad_impacted:
   extends: .x64_windows_test_branch
-  only:
-    refs:
-      - merge_requests
-    changes:
-      - scilab/modules/$TESTS/**/*
+  rules: *IMPACTED_RULES
   parallel:
     matrix: *BAD_TEST_ANCHOR
 
 x64_windows_test_branch_ugly_impacted:
   extends: .x64_windows_test_branch
-  only:
-    refs:
-      - merge_requests
-    changes:
-      - scilab/modules/$TESTS/**/*
+  rules: *IMPACTED_RULES
   parallel:
     matrix: *UGLY_TEST_ANCHOR
 
@@ -189,31 +180,19 @@ x86_64-linux-gnu_test_branch_ugly:
 
 x86_64-linux-gnu_test_branch_good_impacted:
   extends: .x86_64-linux-gnu_test_branch
-  only:
-    refs:
-      - merge_requests
-    changes:
-      - scilab/modules/$TESTS/**/*
+  rules: *IMPACTED_RULES
   parallel:
     matrix: *GOOD_TEST_ANCHOR
 
 x86_64-linux-gnu_test_branch_bad_impacted:
   extends: .x86_64-linux-gnu_test_branch
-  only:
-    refs:
-      - merge_requests
-    changes:
-      - scilab/modules/$TESTS/**/*
+  rules: *IMPACTED_RULES
   parallel:
     matrix: *BAD_TEST_ANCHOR
 
 x86_64-linux-gnu_test_branch_ugly_impacted:
   extends: .x86_64-linux-gnu_test_branch
-  only:
-    refs:
-      - merge_requests
-    changes:
-      - scilab/modules/$TESTS/**/*
+  rules: *IMPACTED_RULES
   parallel:
     matrix: *UGLY_TEST_ANCHOR
 
