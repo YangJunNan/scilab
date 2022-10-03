@@ -11,6 +11,9 @@
 .x64_windows_test_branch:
   stage: test
   tags: [x64_windows, scilab]
+  variables:
+      # reuse download and install on each test
+      GIT_CLEAN_FLAGS: none
   needs:
     # build artifacts will be download by the script only if needed
     - job: x64_windows_build_branch
@@ -153,6 +156,9 @@ impacted_x64_windows_test_branch_ugly:
 .x86_64-linux-gnu_test_branch:
   stage: test
   tags: [x86_64-linux-gnu, docker, scilab]
+  variables:
+      # reuse download and install on each test
+      GIT_CLEAN_FLAGS: none
   needs:
     # build artifacts will be download by the script only if needed
     - job: x86_64-linux-gnu_build_branch

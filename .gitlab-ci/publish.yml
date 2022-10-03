@@ -11,7 +11,7 @@ release:
   stage: publish
   tags: [x86_64-linux-gnu, docker, scilab]
   variables:
-      GIT_STRATEGY: none
+      GIT_CLEAN_FLAGS: none
   needs:
     # build artifacts
     - x64_windows_build_branch
