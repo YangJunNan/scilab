@@ -130,7 +130,7 @@ x64_windows_test_branch_ugly:
         - windows_tools
         - xcos
 
-x64_windows_test_branch_good_impacted:
+impacted_x64_windows_test_branch_good:
   extends: .x64_windows_test_branch
   rules: &IMPACTED_RULES
     - if: $CI_PIPELINE_SOURCE == "merge_request_event"
@@ -140,13 +140,13 @@ x64_windows_test_branch_good_impacted:
   parallel:
     matrix: *GOOD_TEST_ANCHOR
 
-x64_windows_test_branch_bad_impacted:
+impacted_x64_windows_test_branch_bad:
   extends: .x64_windows_test_branch
   rules: *IMPACTED_RULES
   parallel:
     matrix: *BAD_TEST_ANCHOR
 
-x64_windows_test_branch_ugly_impacted:
+impacted_x64_windows_test_branch_ugly:
   extends: .x64_windows_test_branch
   rules: *IMPACTED_RULES
   parallel:
@@ -195,19 +195,19 @@ x86_64-linux-gnu_test_branch_ugly:
   parallel:
     matrix: *UGLY_TEST_ANCHOR
 
-x86_64-linux-gnu_test_branch_good_impacted:
+impacted_x86_64-linux-gnu_test_branch_good:
   extends: .x86_64-linux-gnu_test_branch
   rules: *IMPACTED_RULES
   parallel:
     matrix: *GOOD_TEST_ANCHOR
 
-x86_64-linux-gnu_test_branch_bad_impacted:
+impacted_x86_64-linux-gnu_test_branch_bad:
   extends: .x86_64-linux-gnu_test_branch
   rules: *IMPACTED_RULES
   parallel:
     matrix: *BAD_TEST_ANCHOR
 
-x86_64-linux-gnu_test_branch_ugly_impacted:
+impacted_x86_64-linux-gnu_test_branch_ugly:
   extends: .x86_64-linux-gnu_test_branch
   rules: *IMPACTED_RULES
   parallel:
