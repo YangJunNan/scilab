@@ -12,6 +12,8 @@ build_javadoc:
   stage: postbuild
   tags: [x86_64-linux-gnu, docker, scilab]
   image: docker.io/openjdk:8-jdk-alpine
+  variables:
+      GIT_CLEAN_FLAGS: none
   dependencies: []
   script:
     - MASK="scilab/modules/*/src/java/";
@@ -36,7 +38,7 @@ build_doxygen:
   tags: [x86_64-linux-gnu, docker, scilab]
   image: docker.io/tsgkadot/docker-doxygen
   variables:
-      GIT_STRATEGY: none
+      GIT_CLEAN_FLAGS: none
   dependencies: []
   script:
     - cd scilab
