@@ -335,7 +335,7 @@ bool ARKODEManager::initialize(char *errorMsg)
     // Absolute residual tolerance (used by ARKODE only)
     if (m_dblVecRAtol.size() > 0)
     {
-        m_N_VectorRAtol = N_VNew_Serial(m_iNbRealEq, m_sunctx);
+        m_N_VectorRAtol = N_VClone(m_N_VectorY);
         if (m_odeIsComplex)
         {
             m_dblVecRAtol.resize(m_iNbRealEq);
@@ -344,7 +344,7 @@ bool ARKODEManager::initialize(char *errorMsg)
                 m_dblVecRAtol[i+m_iNbEq] = m_dblVecRAtol[i];
             }
         }
-        std::copy(m_dblVecRAtol.begin(), m_dblVecRAtol.end(), NV_DATA_S(m_N_VectorRAtol));
+        std::copy(m_dblVecRAtol.begin(), m_dblVecRAtol.end(), N_VGetArrayPointer(m_N_VectorRAtol));
     }
     if (ARKStepResVtolerance(m_prob_mem, m_N_VectorRAtol) < 0)
     {
@@ -535,18 +535,18 @@ void ARKODEManager::saveInterpBasisVectors()
     if (m_iInterpolationMethod == ARK_INTERP_HERMITE)
     {
         std::vector<double> basisVector (m_iNbRealEq);
-        basisVector.assign(NV_DATA_S(HINT_YOLD(interp)), NV_DATA_S(HINT_YOLD(interp)) + m_iNbRealEq);
+        basisVector.assign(N_VGetArrayPointer(HINT_YOLD(interp)), N_VGetArrayPointer(HINT_YOLD(interp)) + m_iNbRealEq);
         interpBasisVectorList.push_back(basisVector);
-        basisVector.assign(NV_DATA_S(HINT_YNEW(interp)), NV_DATA_S(HINT_YNEW(interp)) + m_iNbRealEq);
+        basisVector.assign(N_VGetArrayPointer(HINT_YNEW(interp)), N_VGetArrayPointer(HINT_YNEW(interp)) + m_iNbRealEq);
         interpBasisVectorList.push_back(basisVector);
         if (m_iInterpolationDegree > 1)
         {
-            basisVector.assign(NV_DATA_S(HINT_FNEW(interp)), NV_DATA_S(HINT_FNEW(interp)) + m_iNbRealEq);
+            basisVector.assign(N_VGetArrayPointer(HINT_FNEW(interp)), N_VGetArrayPointer(HINT_FNEW(interp)) + m_iNbRealEq);
             interpBasisVectorList.push_back(basisVector);
         }
         if (m_iInterpolationDegree > 2)
         {
-            basisVector.assign(NV_DATA_S(HINT_FOLD(interp)), NV_DATA_S(HINT_FOLD(interp)) + m_iNbRealEq);
+            basisVector.assign(N_VGetArrayPointer(HINT_FOLD(interp)), N_VGetArrayPointer(HINT_FOLD(interp)) + m_iNbRealEq);
             interpBasisVectorList.push_back(basisVector);
         }
         if (m_iInterpolationDegree > 3)
@@ -554,12 +554,12 @@ void ARKODEManager::saveInterpBasisVectors()
             // the call below just aims ensure that FA and FB exist
             arkInterpEvaluate(ark_mem, ark_mem->interp, 0.0, 0, ARK_INTERP_MAX_DEGREE, m_N_VectorYTemp);
 
-            basisVector.assign(NV_DATA_S(HINT_FA(interp)), NV_DATA_S(HINT_FA(interp)) + m_iNbRealEq);
+            basisVector.assign(N_VGetArrayPointer(HINT_FA(interp)), N_VGetArrayPointer(HINT_FA(interp)) + m_iNbRealEq);
             interpBasisVectorList.push_back(basisVector);
         }
         if (m_iInterpolationDegree > 4)
         {
-            basisVector.assign(NV_DATA_S(HINT_FB(interp)), NV_DATA_S(HINT_FB(interp)) + m_iNbRealEq);
+            basisVector.assign(N_VGetArrayPointer(HINT_FB(interp)), N_VGetArrayPointer(HINT_FB(interp)) + m_iNbRealEq);
             interpBasisVectorList.push_back(basisVector);
         }
     }

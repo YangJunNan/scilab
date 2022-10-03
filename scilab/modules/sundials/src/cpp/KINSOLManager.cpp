@@ -214,9 +214,8 @@ void KINSOLManager::init()
     }
     // Load Y0 into N_Serial vector
     // When ODE is complex m_N_VectorY has interlaced real and imaginary part of user Y (equivalent to std::complex)
-    m_N_VectorY = N_VNew_Serial(m_iNbRealEq, m_sunctx);
   
-    copyRealImgToComplexVector(m_pDblY0->get(), m_pDblY0->getImg(), NV_DATA_S(m_N_VectorY), m_iNbEq, m_odeIsComplex);
+    copyRealImgToComplexVector(m_pDblY0->get(), m_pDblY0->getImg(), N_VGetArrayPointer(m_N_VectorY), m_iNbEq, m_odeIsComplex);
 
     if (m_wstrNonLinSolver == L"fixedPoint" || m_wstrNonLinSolver == L"Picard")
     {
@@ -242,22 +241,23 @@ void KINSOLManager::init()
         m_iVecNegative.size() > 0     ||
         m_iVecNonNegative.size() > 0)
     {
-        N_Vector NVConstr = N_VNew_Serial(m_iNbRealEq, m_sunctx);
+        N_Vector NVConstr = N_VClone(m_N_VectorY);
+        double *pdblConstr = N_VGetArrayPointer(NVConstr);
         for (const auto &it : m_iVecPositive)
         {
-            NV_Ith_S(NVConstr,it-1) = 2;
+           pdblConstr[it-1] = 2;
         }
         for (const auto &it : m_iVecNonNegative)
         {
-            NV_Ith_S(NVConstr,it-1) = 1;
+            pdblConstr[it-1] = 1;
         }
         for (const auto &it : m_iVecNonPositive)
         {
-            NV_Ith_S(NVConstr,it-1) = -1;
+            pdblConstr[it-1] = -1;
         }
         for (const auto &it : m_iVecNegative)
         {
-            NV_Ith_S(NVConstr,it-1) = -2;
+            pdblConstr[it-1] = -2;
         }
         if (KINSetConstraints(m_prob_mem, NVConstr) < 0)
         {
@@ -302,22 +302,23 @@ void KINSOLManager::init()
     }
 
     // Scaling vectors
-    m_N_VectorTypicalX = N_VNew_Serial(m_iNbRealEq, m_sunctx);
+    m_N_VectorTypicalX = N_VClone(m_N_VectorY);
+    double *pdblTypicalX = N_VGetArrayPointer(m_N_VectorTypicalX);
     if (m_dblVecTypicalX.size() > 0)
     {
         if (m_odeIsComplex)
         {
             for (int i=0; i<m_iNbEq; i++)
             {
-                NV_Ith_S(m_N_VectorTypicalX,2*i) = 1.0/m_dblVecTypicalX[i];
-                NV_Ith_S(m_N_VectorTypicalX,2*i+1) = 1.0/m_dblVecTypicalX[i];                
+                pdblTypicalX[2*i] = 1.0/m_dblVecTypicalX[i];
+                pdblTypicalX[2*i+1] = 1.0/m_dblVecTypicalX[i];                
             }
         }
         else
         {
             for (int i=0; i<m_iNbEq; i++)
             {
-                NV_Ith_S(m_N_VectorTypicalX,i) = 1.0/m_dblVecTypicalX[i];
+                pdblTypicalX[i] = 1.0/m_dblVecTypicalX[i];
             }
         }
     }
@@ -326,22 +327,23 @@ void KINSOLManager::init()
         N_VConst(1,m_N_VectorTypicalX);
     }
 
-    m_N_VectorTypicalF = N_VNew_Serial(m_iNbRealEq, m_sunctx);
+    m_N_VectorTypicalF = N_VClone(m_N_VectorY);
+    double *pdblTypicalF = N_VGetArrayPointer(m_N_VectorTypicalF);
     if (m_dblVecTypicalF.size() > 0)
     {
         if (m_odeIsComplex)
         {
             for (int i=0; i<m_iNbEq; i++)
             {
-                NV_Ith_S(m_N_VectorTypicalF,2*i) = 1./m_dblVecTypicalF[i];
-                NV_Ith_S(m_N_VectorTypicalF,2*i+1) = 1./m_dblVecTypicalF[i];                
+                pdblTypicalF[2*i] = 1./m_dblVecTypicalF[i];
+               pdblTypicalF[2*i+1] = 1./m_dblVecTypicalF[i];                
             }
         }
         else
         {
             for (int i=0; i<m_iNbEq; i++)
             {
-                NV_Ith_S(m_N_VectorTypicalF,i) = 1./m_dblVecTypicalF[i];
+               pdblTypicalF[i] = 1./m_dblVecTypicalF[i];
             }
         }
     }

@@ -18,9 +18,6 @@
 #include <cvodes/cvodes_direct.h>    /* prototypes for various DlsMat operations */
 #include <cvodes/cvodes_proj.h>
 #include <cvodes/cvodes_bandpre.h>
-#include <nvector/nvector_serial.h>    /* access to serial N_Vector       */
-#include <sunmatrix/sunmatrix_dense.h> /* access to dense SUNmatrix       */
-#include <sunlinsol/sunlinsol_dense.h> /* access to dense SUNLinearSolver */
 
 extern "C"
 {
@@ -99,7 +96,7 @@ public :
         {
             for (int i=0; i<getNbSensPar(); i++)
             {
-                N_VDestroy_Serial(m_NVArraySens[i]);
+                N_VDestroy(m_NVArraySens[i]);
             }
             //N_VDestroyVectorArray_Serial(m_NVArraySens, getNbSensPar());
             m_NVArraySens = NULL;

@@ -73,7 +73,7 @@ void KINSOLIntCb(const char *module, const char *function, char *msg, void *pMan
         types::typed_list in;
         types::typed_list out;
         bool bTerm;
-        manager->callOpening(what, in, NV_DATA_S(U));
+        manager->callOpening(what, in, N_VGetArrayPointer(U));
         in.push_back(new types::String(manager->getState().c_str()));
         in.push_back(manager->getStats());        
         manager->callClosing(what, in, {1}, out);
@@ -109,20 +109,20 @@ int KINSOLFun(N_Vector N_VectorY, N_Vector N_VectorF, void *pManager)
     KINSOLManager *manager = static_cast<KINSOLManager *>(pManager);
     KINSOLManager::functionKind what = KINSOLManager::RHS;
     KINSOLManager::functionAPI fAPI = manager->getFunctionAPI(what);
-    double *pdbl =  NV_DATA_S(N_VectorF);
+    double *pdbl =  N_VGetArrayPointer(N_VectorF);
     
     if (fAPI == KINSOLManager::SCILAB_CALLABLE)
     {
         types::typed_list in;
-        manager->callOpening(what, in, NV_DATA_S(N_VectorY));
-        manager->computeFunction(in, what, NV_DATA_S(N_VectorF));            
+        manager->callOpening(what, in, N_VGetArrayPointer(N_VectorY));
+        manager->computeFunction(in, what, N_VGetArrayPointer(N_VectorF));            
     }
     else if (fAPI == KINSOLManager::SUNDIALS_DLL)
     {
         dynlibFunPtr pFunc = manager->getEntryPointFunction(KINSOLManager::RHS);
         return ((KIN_DynFun)pFunc)(N_VectorY, N_VectorF, (void *)manager->getPdblSinglePar(what));
     }
-    for (int k = 0; k < NV_LENGTH_S(N_VectorF); k++, pdbl++)
+    for (int k = 0; k < N_VGetLength(N_VectorF); k++, pdbl++)
     {
         if (!std::isfinite(*pdbl))
         {
@@ -143,7 +143,7 @@ int KINSOLJac(N_Vector N_VectorY, N_Vector N_VectorF, SUNMatrix SUNMat_J, void *
     if (fAPI == KINSOLManager::SCILAB_CALLABLE)
     {
         types::typed_list in;
-        manager->callOpening(what, in, NV_DATA_S(N_VectorY));
+        manager->callOpening(what, in, N_VGetArrayPointer(N_VectorY));
         manager->computeMatrix(in, what, SUNMat_J);
     }
     else if (fAPI == KINSOLManager::SUNDIALS_DLL)

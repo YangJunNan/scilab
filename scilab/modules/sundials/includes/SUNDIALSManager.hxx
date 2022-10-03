@@ -36,6 +36,7 @@ extern "C"
 
 /* Sundials includes */
 #include <nvector/nvector_serial.h>   /* serial N_Vector types, fcts., and macros */
+//#include <nvector/nvector_pthreads.h>   /* serial N_Vector types, fcts., and macros */
 #include <sundials/sundials_context.h>  /* prototypes for SUNDIALS context (since 6.0) */
 #include <sundials/sundials_dense.h>  /* prototypes for various DlsMat operations */
 #include <sundials/sundials_direct.h> /* definitions of DlsMat and DENSE_ELEM */
@@ -89,11 +90,11 @@ class SUNDIALS_EXPORT SUNDIALSManager
     ~SUNDIALSManager()
     {
         if (m_N_VectorY != NULL)
-            N_VDestroy_Serial(m_N_VectorY);
+            N_VDestroy(m_N_VectorY);
         if (m_N_VectorAtol != NULL)
-            N_VDestroy_Serial(m_N_VectorAtol);
+            N_VDestroy(m_N_VectorAtol);
         if (m_N_VectorRAtol != NULL)
-            N_VDestroy_Serial(m_N_VectorRAtol);
+            N_VDestroy(m_N_VectorRAtol);
         if (m_A != NULL)
             SUNMatDestroy(m_A);
         if (m_SUNMat_pattern != NULL)

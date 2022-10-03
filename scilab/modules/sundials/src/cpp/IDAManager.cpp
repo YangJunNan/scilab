@@ -17,7 +17,7 @@
 bool IDAManager::create()
 {
     m_prob_mem = IDACreate(m_sunctx);
-    m_N_VectorYp = N_VNew_Serial(m_iNbRealEq, m_sunctx);
+    m_N_VectorYp = N_VClone(m_N_VectorY);
 
     return m_prob_mem == NULL;
 }
@@ -52,7 +52,7 @@ void IDAManager::parseMethodAndOrder(types::optional_list &opt)
 bool IDAManager::initialize(char *errorMsg)
 {
     // Load Yp0 if DAE solver (Y0 is loaded in  OdeManager::init)
-    copyRealImgToComplexVector(m_pDblYp0->get(), m_pDblYp0->getImg(), NV_DATA_S(m_N_VectorYp), m_iNbEq, m_odeIsComplex);
+    copyRealImgToComplexVector(m_pDblYp0->get(), m_pDblYp0->getImg(), N_VGetArrayPointer(m_N_VectorYp), m_iNbEq, m_odeIsComplex);
 
     if (IDAInit(m_prob_mem, SUNDIALSRes, m_dblT0, m_N_VectorY, m_N_VectorYp) != IDA_SUCCESS)
     {
@@ -65,14 +65,14 @@ bool IDAManager::computeIC(char *errorMsg)
 {
     // setting algebraic components ids can be necessary
     // independently of calcIC option value
-    N_Vector id = N_VNew_Serial(m_iNbRealEq, m_sunctx);
-    std::fill(NV_DATA_S(id), NV_DATA_S(id)+m_iNbRealEq, 1);
+    N_Vector id = N_VClone(m_N_VectorY);
+    std::fill(N_VGetArrayPointer(id), N_VGetArrayPointer(id)+m_iNbRealEq, 1);
     for (auto index : m_iVecIsAlgebraic)
     {
-        NV_DATA_S(id)[index-1] = 0; // 0 means algebraic state
+        N_VGetArrayPointer(id)[index-1] = 0; // 0 means algebraic state
         if (m_odeIsComplex)
         {
-            NV_DATA_S(id)[index-1+m_iNbEq] = 0; // 0 means algebraic state
+            N_VGetArrayPointer(id)[index-1+m_iNbEq] = 0; // 0 means algebraic state
         }
     }        
     if  (IDASetId(m_prob_mem, id) != IDA_SUCCESS)
@@ -200,7 +200,7 @@ void IDAManager::saveAdditionalStates()
     {
         if (m_dblT0 == m_pDblTSpan->get(0) || m_iRetCount == 1)
         {
-            m_vecYpOut.push_back(std::vector<double>(NV_DATA_S(m_N_VectorYp),NV_DATA_S(m_N_VectorYp) + m_iNbRealEq));
+            m_vecYpOut.push_back(std::vector<double>(N_VGetArrayPointer(m_N_VectorYp),N_VGetArrayPointer(m_N_VectorYp) + m_iNbRealEq));
         }
     }
     else
@@ -214,13 +214,13 @@ void IDAManager::saveAdditionalStates()
 void IDAManager::saveAdditionalStates(double dblTime)
 {
     IDAGetDky(m_prob_mem, dblTime, 1, m_N_VectorYTemp);
-    m_vecYpOut.push_back(std::vector<double>(NV_DATA_S(m_N_VectorYTemp), NV_DATA_S(m_N_VectorYTemp) + m_iNbRealEq));
+    m_vecYpOut.push_back(std::vector<double>(N_VGetArrayPointer(m_N_VectorYTemp), N_VGetArrayPointer(m_N_VectorYTemp) + m_iNbRealEq));
 }
 
 void IDAManager::saveAdditionalEventStates(double dblTime)
 {
     IDAGetDky(m_prob_mem, dblTime, 1, m_N_VectorYTemp);
-    m_dblVecYpEvent.push_back(std::vector<double>(NV_DATA_S(m_N_VectorYTemp), NV_DATA_S(m_N_VectorYTemp) + m_iNbRealEq));
+    m_dblVecYpEvent.push_back(std::vector<double>(N_VGetArrayPointer(m_N_VectorYTemp), N_VGetArrayPointer(m_N_VectorYTemp) + m_iNbRealEq));
 }
 
 
@@ -245,7 +245,7 @@ void IDAManager::saveInterpBasisVectors()
 
     for (int i=0; i<m_iVecOrder.back()+1; i++)
     {
-        std::vector<double> vdblPhiVector (NV_DATA_S(ida_mem->ida_phi[i]), NV_DATA_S(ida_mem->ida_phi[i]) + m_iNbRealEq);
+        std::vector<double> vdblPhiVector (N_VGetArrayPointer(ida_mem->ida_phi[i]), N_VGetArrayPointer(ida_mem->ida_phi[i]) + m_iNbRealEq);
         // add scalar psi[i] at the end of vector phi[i]
         vdblPhiVector.push_back(ida_mem->ida_psi[i]);
         interpBasisVectorList.push_back(vdblPhiVector);

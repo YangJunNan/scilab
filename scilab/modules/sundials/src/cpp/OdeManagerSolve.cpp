@@ -56,7 +56,7 @@ void OdeManager::solve()
         m_dblVecCurrTime.push_back(m_dblT0);
         if (m_dblT0 == m_pDblTSpan->get(0) || m_iRetCount == 1)
         {
-            m_vecYOut.push_back(std::vector<double>(NV_DATA_S(m_N_VectorY),NV_DATA_S(m_N_VectorY) + m_iNbRealEq));
+            m_vecYOut.push_back(std::vector<double>(N_VGetArrayPointer(m_N_VectorY),N_VGetArrayPointer(m_N_VectorY) + m_iNbRealEq));
             m_dblVecTOut.push_back(m_dblT0);
             iStep = 1;
         }
@@ -112,7 +112,7 @@ void OdeManager::solve()
                 for (int i=0; i<m_iNRefine+1; i++)
                 {
                     getDky(m_prob_mem, dblRefTime, 0, m_N_VectorYTemp);
-                    m_vecYOut.push_back(std::vector<double>(NV_DATA_S(m_N_VectorYTemp), NV_DATA_S(m_N_VectorYTemp) + m_iNbRealEq));
+                    m_vecYOut.push_back(std::vector<double>(N_VGetArrayPointer(m_N_VectorYTemp), N_VGetArrayPointer(m_N_VectorYTemp) + m_iNbRealEq));
                     m_dblVecTOut.push_back(dblRefTime);
                     saveAdditionalStates(dblRefTime);
                     dblRefTime += dblStepRef;
@@ -140,7 +140,7 @@ void OdeManager::solve()
                 {
                     m_dblVecIndexEvent.push_back(newIndex);                        
                     m_dblVecEventTime.push_back(dblTime);
-                    m_dblVecYEvent.push_back(std::vector<double>(NV_DATA_S(m_N_VectorY), NV_DATA_S(m_N_VectorY) + m_iNbRealEq));
+                    m_dblVecYEvent.push_back(std::vector<double>(N_VGetArrayPointer(m_N_VectorY), N_VGetArrayPointer(m_N_VectorY) + m_iNbRealEq));
                     saveAdditionalEventStates(dblTime);
                 }
             }

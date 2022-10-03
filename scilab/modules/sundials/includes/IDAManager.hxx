@@ -16,10 +16,6 @@
 #include <ida/ida_ls_impl.h>
 #include <ida/ida.h>            /* prototypes for IDA fcts. and consts. */
 #include <ida/ida_direct.h>    /* prototypes for various DlsMat operations */
-#include <nvector/nvector_serial.h>    /* access to serial N_Vector       */
-#include <sunmatrix/sunmatrix_dense.h> /* access to dense SUNmatrix       */
-#include <sunlinsol/sunlinsol_dense.h> /* access to dense SUNLinearSolver */
-#include <sunnonlinsol/sunnonlinsol_newton.h> /* access to Newton SUNNonlinearSolver  */
 
 extern "C"
 {

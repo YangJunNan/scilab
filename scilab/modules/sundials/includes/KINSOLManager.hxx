@@ -59,14 +59,14 @@ public :
     types::Double *getYOut()
     {
         types::Double *pDblYOut = m_pDblY0->clone();
-        copyComplexVectorToDouble(NV_DATA_S(m_N_VectorY), pDblYOut->get(), pDblYOut->getImg(), m_iNbEq, m_odeIsComplex);
+        copyComplexVectorToDouble(N_VGetArrayPointer(m_N_VectorY), pDblYOut->get(), pDblYOut->getImg(), m_iNbEq, m_odeIsComplex);
         return pDblYOut;
     }
 
     types::Double *getFOut()
     {
         types::Double *pDblFOut = m_pDblY0->clone();
-        copyComplexVectorToDouble(NV_DATA_S(getMem()->kin_fval), pDblFOut->get(), pDblFOut->getImg(), m_iNbEq, m_odeIsComplex);
+        copyComplexVectorToDouble(N_VGetArrayPointer(getMem()->kin_fval), pDblFOut->get(), pDblFOut->getImg(), m_iNbEq, m_odeIsComplex);
         return pDblFOut;
     }
 

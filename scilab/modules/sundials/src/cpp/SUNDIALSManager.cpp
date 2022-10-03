@@ -397,9 +397,10 @@ std::wstring SUNDIALSManager::setLinearSolver(functionKind what, N_Vector NV_wor
             m_N_Vector_seeds  = N_VCloneVectorArray(m_spJacEngine->getNbSeeds(), m_N_VectorY);
             for (int j=0; j < m_spJacEngine->getNbSeeds(); j++)
             {
+                double *pdblSeed = N_VGetArrayPointer(m_N_Vector_seeds[j]);
                 for (int i=0; i<getNRealEq();i++)
                 {
-                    NV_Ith_S(m_N_Vector_seeds[j],i) = m_spJacEngine->getSeeds()[i][j];
+                    pdblSeed[i] = m_spJacEngine->getSeeds()[i][j];
                 }
             }
             // copy sparse pattern to SUNMatrix m_SUNMat_pattern template for later reuse in bridge function computing Jacobian

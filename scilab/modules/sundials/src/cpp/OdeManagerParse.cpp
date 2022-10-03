@@ -150,7 +150,7 @@ types::Double *OdeManager::parseInitialCondition(types::typed_list &in, bool bIs
         // by default, extend solution with Y0 resp. Yp0 = final value of previous Y resp. Yp
         int iNbEq = prevManager->m_iNbEq;
      
-        pdblPrevYFinal = bIsDerivative ? NV_DATA_S(prevManager->m_N_VectorYp) : NV_DATA_S(prevManager->m_N_VectorY);
+        pdblPrevYFinal = bIsDerivative ? N_VGetArrayPointer(prevManager->m_N_VectorYp) : N_VGetArrayPointer(prevManager->m_N_VectorY);
 
         pDblY = prevManager->m_pDblY0->clone(); // Just for the size and dimensions
         pDblY->setComplex(prevManager->m_odeIsComplex);

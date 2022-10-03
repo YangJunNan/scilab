@@ -26,7 +26,7 @@ class SUNDIALS_EXPORT OdeManager : public SUNDIALSManager
     }
 
     ~OdeManager() {
-        if (m_N_VectorYp != NULL) N_VDestroy_Serial(m_N_VectorYp);
+        if (m_N_VectorYp != NULL) N_VDestroy(m_N_VectorYp);
         if (m_MASS != NULL) SUNMatDestroy(m_MASS);
         if (m_MASS_LS != NULL) SUNLinSolFree(m_MASS_LS);
         if (m_TempSUNMat != NULL) SUNMatDestroy(m_TempSUNMat);

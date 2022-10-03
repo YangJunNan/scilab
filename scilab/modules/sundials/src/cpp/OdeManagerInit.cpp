@@ -8,7 +8,6 @@
 //--------------------------------------------------------------------------
 
 #include "OdeManager.hxx"
-#include "odeparameters.hxx"
 #include "complexHelpers.hxx"
 
 void OdeManager::init()
@@ -37,12 +36,12 @@ void OdeManager::init()
     m_iNbRealEq = m_odeIsComplex ? 2*m_iNbEq : m_iNbEq;
 
     m_N_VectorY = N_VNew_Serial(m_iNbRealEq, m_sunctx);
-    m_N_VectorYTemp = N_VNew_Serial(m_iNbRealEq, m_sunctx);
+    m_N_VectorYTemp = N_VClone(m_N_VectorY);
 
     // Load Y0 into N_Serial vector
     // When ODE is complex m_N_VectorY has interlaced real and imaginary part of user Y (equivalent to std::complex)
   
-    copyRealImgToComplexVector(m_pDblY0->get(), m_pDblY0->getImg(), NV_DATA_S(m_N_VectorY), m_iNbEq, m_odeIsComplex);
+    copyRealImgToComplexVector(m_pDblY0->get(), m_pDblY0->getImg(), N_VGetArrayPointer(m_N_VectorY), m_iNbEq, m_odeIsComplex);
 
     if (create())
     {
@@ -68,22 +67,23 @@ void OdeManager::init()
         m_iVecNegative.size() > 0    ||
         m_iVecNonNegative.size() > 0)
     {
-        N_Vector NVConstr = N_VNew_Serial(m_iNbRealEq, m_sunctx);
+        N_Vector NVConstr = N_VClone(m_N_VectorY);
+        double *pdblConstr = N_VGetArrayPointer(NVConstr);
         for (const auto &it : m_iVecPositive)
         {
-            NV_Ith_S(NVConstr,it-1) = 2;
+           pdblConstr[it-1] = 2;
         }
         for (const auto &it : m_iVecNonNegative)
         {
-            NV_Ith_S(NVConstr,it-1) = 1;
+            pdblConstr[it-1] = 1;
         }
         for (const auto &it : m_iVecNonPositive)
         {
-            NV_Ith_S(NVConstr,it-1) = -1;
+            pdblConstr[it-1] = -1;
         }
         for (const auto &it : m_iVecNegative)
         {
-            NV_Ith_S(NVConstr,it-1) = -2;
+            pdblConstr[it-1] = -2;
         }
         if (setConstraints(m_prob_mem, NVConstr) < 0)
         {
@@ -123,7 +123,7 @@ void OdeManager::init()
         throw ast::InternalError(errorMsg);
     }
     // absolute (a vector) and relative tolerance
-    m_N_VectorAtol = N_VNew_Serial(m_iNbRealEq, m_sunctx);
+    m_N_VectorAtol = N_VClone(m_N_VectorY);
     if (m_odeIsComplex)
     {
         m_dblVecAtol.resize(m_iNbRealEq);
@@ -132,7 +132,7 @@ void OdeManager::init()
             m_dblVecAtol[i+m_iNbEq] = m_dblVecAtol[i];
         }
     }
-    std::copy(m_dblVecAtol.begin(), m_dblVecAtol.end(), NV_DATA_S(m_N_VectorAtol));
+    std::copy(m_dblVecAtol.begin(), m_dblVecAtol.end(), N_VGetArrayPointer(m_N_VectorAtol));
 
     if (setVTolerances(m_prob_mem, m_dblRtol, m_N_VectorAtol) < 0)
     {

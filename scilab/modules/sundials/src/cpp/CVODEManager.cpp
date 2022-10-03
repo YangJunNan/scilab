@@ -153,7 +153,7 @@ bool CVODEManager::initialize(char *errorMsg)
         for (int j=0; j<getNbSensPar(); j++)
         {
             copyRealImgToComplexVector(m_pDblSens0->get()+j*m_iNbEq, m_pDblSens0->getImg()+j*m_iNbEq, 
-                NV_DATA_S(m_NVArraySens[j]), m_iNbEq, m_odeIsComplex);
+                N_VGetArrayPointer(m_NVArraySens[j]), m_iNbEq, m_odeIsComplex);
         }
         // initialize solver Sensitivity mode with user provided sensitivity rhs or finite difference mode :
         if (CVodeSensInit(m_prob_mem, getNbSensPar(), 
@@ -333,7 +333,7 @@ void CVODEManager::saveAdditionalStates()
         {
             for (int j=0; j<getNbSensPar(); j++)
             {
-                m_vecSOut.push_back(std::vector<double>(NV_DATA_S(m_NVArraySens[j]),NV_DATA_S(m_NVArraySens[j]) + m_iNbRealEq));
+                m_vecSOut.push_back(std::vector<double>(N_VGetArrayPointer(m_NVArraySens[j]),N_VGetArrayPointer(m_NVArraySens[j]) + m_iNbRealEq));
             }
         }
     }
@@ -352,7 +352,7 @@ void CVODEManager::saveAdditionalStates(double dblTime)
         CVodeGetSensDky(m_prob_mem, dblTime, 0, m_NVArraySens);
         for (int j=0; j<getNbSensPar(); j++)
         {
-            m_vecSOut.push_back(std::vector<double>(NV_DATA_S(m_NVArraySens[j]),NV_DATA_S(m_NVArraySens[j]) + m_iNbRealEq));
+            m_vecSOut.push_back(std::vector<double>(N_VGetArrayPointer(m_NVArraySens[j]),N_VGetArrayPointer(m_NVArraySens[j]) + m_iNbRealEq));
         }        
     }
 }
@@ -364,7 +364,7 @@ void CVODEManager::saveAdditionalEventStates(double dblTime)
         CVodeGetSensDky(m_prob_mem, dblTime, 0, m_NVArraySens);
         for (int j=0; j<getNbSensPar(); j++)
         {
-            m_dblVecSEvent.push_back(std::vector<double>(NV_DATA_S(m_NVArraySens[j]),NV_DATA_S(m_NVArraySens[j]) + m_iNbRealEq));
+            m_dblVecSEvent.push_back(std::vector<double>(N_VGetArrayPointer(m_NVArraySens[j]),N_VGetArrayPointer(m_NVArraySens[j]) + m_iNbRealEq));
         }        
     }
 }
@@ -404,7 +404,7 @@ void CVODEManager::saveInterpBasisVectors()
 
     for (int i=0; i<m_iVecOrder.back()+1; i++)
     {
-        std::vector<double> vdblNordsieckVector (NV_DATA_S(cv_mem->cv_zn[i]), NV_DATA_S(cv_mem->cv_zn[i]) + m_iNbRealEq);
+        std::vector<double> vdblNordsieckVector (N_VGetArrayPointer(cv_mem->cv_zn[i]), N_VGetArrayPointer(cv_mem->cv_zn[i]) + m_iNbRealEq);
         interpBasisVectorList.push_back(vdblNordsieckVector);
     }
 }

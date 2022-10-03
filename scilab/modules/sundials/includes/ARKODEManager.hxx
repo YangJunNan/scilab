@@ -19,9 +19,6 @@
 #include <arkode/arkode_butcher_dirk.h>
 #include <arkode/arkode_arkstep.h>
 #include <arkode/arkode_bandpre.h>
-#include <nvector/nvector_serial.h>    /* access to serial N_Vector       */
-#include <sunmatrix/sunmatrix_dense.h> /* access to dense SUNmatrix       */
-#include <sunlinsol/sunlinsol_dense.h> /* access to dense SUNLinearSolver */
 
 extern "C"
 {

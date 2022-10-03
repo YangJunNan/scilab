@@ -22,7 +22,7 @@ int SUNDIALSEvent(realtype t, N_Vector N_VectorY, realtype *pdblOut, void *pMana
     if (fAPI == OdeManager::SCILAB_CALLABLE)
     {
         types::typed_list in;
-        manager->callOpening(what, in, t, NV_DATA_S(N_VectorY));
+        manager->callOpening(what, in, t, N_VGetArrayPointer(N_VectorY));
         manager->computeFunction(in, what, pdblOut);
     }
     else if (fAPI == OdeManager::SUNDIALS_DLL)
@@ -42,7 +42,7 @@ int SUNDIALSImplEvent(realtype t, N_Vector N_VectorY, N_Vector N_VectorYp, realt
     if (fAPI == OdeManager::SCILAB_CALLABLE)
     {
         types::typed_list in;
-        manager->callOpening(what, in, t, NV_DATA_S(N_VectorY), NV_DATA_S(N_VectorYp));
+        manager->callOpening(what, in, t, N_VGetArrayPointer(N_VectorY), N_VGetArrayPointer(N_VectorYp));
         manager->computeFunction(in, what, pdblOut);
     }
     else  if (fAPI == OdeManager::SUNDIALS_DLL)
@@ -66,7 +66,7 @@ int SUNDIALSIntCb(realtype t, int iFlag, N_Vector N_VectorY, N_Vector N_VectorYp
         types::typed_list out;
         bool bTerm;
      
-        manager->callOpening(what, in, t, NV_DATA_S(N_VectorY), manager->isDAE() ? NV_DATA_S(N_VectorYp) : NULL);
+        manager->callOpening(what, in, t, N_VGetArrayPointer(N_VectorY), manager->isDAE() ? N_VGetArrayPointer(N_VectorYp) : NULL);
         in.push_back(new types::String(wstrCbState[iFlag].c_str()));
         in.push_back(manager->getStats());        
         manager->callClosing(what, in, {1}, out);
@@ -118,20 +118,20 @@ int SUNDIALSRhsHelper(OdeManager::functionKind what, realtype t, N_Vector N_Vect
     char errorMsg[256];
     OdeManager *manager = static_cast<OdeManager *>(pManager);
     OdeManager::functionAPI fAPI = manager->getFunctionAPI(what);
-    double *pdbl = NV_DATA_S(N_VectorYDot);
+    double *pdbl = N_VGetArrayPointer(N_VectorYDot);
 
     if (fAPI == OdeManager::SCILAB_CALLABLE)
     {
         types::typed_list in;
-        manager->callOpening(what, in, t, NV_DATA_S(N_VectorY));
-        manager->computeFunction(in, what, NV_DATA_S(N_VectorYDot));
+        manager->callOpening(what, in, t, N_VGetArrayPointer(N_VectorY));
+        manager->computeFunction(in, what, N_VGetArrayPointer(N_VectorYDot));
     }
     else if (fAPI == OdeManager::SUNDIALS_DLL)
     {
         dynlibFunPtr pFunc = manager->getEntryPointFunction(what);
         return ((SUN_DynFun)pFunc)(t, N_VectorY, N_VectorYDot, (void *)manager->getPdblSinglePar(what));
     }
-    for (int k = 0; k < NV_LENGTH_S(N_VectorYDot); k++, pdbl++)
+    for (int k = 0; k < N_VGetLength(N_VectorYDot); k++, pdbl++)
     {
         if (!std::isfinite(*pdbl))
         {
@@ -147,17 +147,17 @@ int SUNDIALSProj(realtype t, N_Vector N_VectorY, N_Vector N_VectorCorr, realtype
     OdeManager *manager = static_cast<OdeManager *>(pManager);
     OdeManager::functionKind what = OdeManager::PROJ;
     OdeManager::functionAPI fAPI = manager->getFunctionAPI(what);
-    double *pdblErr =  N_VectorErr == NULL ? NULL : NV_DATA_S(N_VectorErr);
+    double *pdblErr =  N_VectorErr == NULL ? NULL : N_VGetArrayPointer(N_VectorErr);
     
     if (fAPI == OdeManager::SCILAB_CALLABLE)
     {
         types::typed_list in;
-        manager->callOpening(what, in, t, NV_DATA_S(N_VectorY), pdblErr);
+        manager->callOpening(what, in, t, N_VGetArrayPointer(N_VectorY), pdblErr);
         if (pdblErr == NULL)
         {
             in.push_back(types::Double::Empty());
         }
-        manager->computeFunction(in, what, NV_DATA_S(N_VectorCorr), pdblErr);
+        manager->computeFunction(in, what, N_VGetArrayPointer(N_VectorCorr), pdblErr);
     }
     else if (fAPI == OdeManager::SUNDIALS_DLL)
     {
@@ -176,7 +176,7 @@ int SUNDIALSJac(realtype t, N_Vector N_VectorY, N_Vector N_VectorFy, SUNMatrix S
     if (fAPI == OdeManager::SCILAB_CALLABLE)
     {
         types::typed_list in;
-        manager->callOpening(what, in, t, NV_DATA_S(N_VectorY));
+        manager->callOpening(what, in, t, N_VGetArrayPointer(N_VectorY));
         manager->computeMatrix(in, what, SUNMat_J);        
     }
     else if (fAPI == OdeManager::SUNDIALS_DLL)
@@ -220,20 +220,20 @@ int SUNDIALSRes(realtype t, N_Vector N_VectorY, N_Vector N_VectorYp, N_Vector N_
     OdeManager *manager = static_cast<OdeManager *>(pManager);
     OdeManager::functionKind what = OdeManager::RES;
     OdeManager::functionAPI fAPI = manager->getFunctionAPI(what);
-    double *pdbl = NV_DATA_S(N_VectorRes);
+    double *pdbl = N_VGetArrayPointer(N_VectorRes);
 
     if (fAPI == OdeManager::SCILAB_CALLABLE)
     {
         types::typed_list in;
-        manager->callOpening(what, in, t, NV_DATA_S(N_VectorY), NV_DATA_S(N_VectorYp));
-        manager->computeFunction(in, what, NV_DATA_S(N_VectorRes));
+        manager->callOpening(what, in, t, N_VGetArrayPointer(N_VectorY), N_VGetArrayPointer(N_VectorYp));
+        manager->computeFunction(in, what, N_VGetArrayPointer(N_VectorRes));
     }
     else if (fAPI == OdeManager::SUNDIALS_DLL)
     {
         dynlibFunPtr pFunc = manager->getEntryPointFunction(what);
         return ((SUN_DynRes)pFunc)(t, N_VectorY, N_VectorYp, N_VectorRes, manager->getPdblSinglePar(what));
     }
-    for (int k = 0; k < NV_LENGTH_S(N_VectorRes); k++, pdbl++)
+    for (int k = 0; k < N_VGetLength(N_VectorRes); k++, pdbl++)
     {
         if (!std::isfinite(*pdbl))
         {
@@ -254,7 +254,7 @@ int SUNDIALSJacRes(realtype t, realtype c, N_Vector N_VectorY, N_Vector N_Vector
     if (fAPI == OdeManager::SCILAB_CALLABLE)
     {
         types::typed_list in;
-        manager->callOpening(what, in, t, NV_DATA_S(N_VectorY), NV_DATA_S(N_VectorYp));
+        manager->callOpening(what, in, t, N_VGetArrayPointer(N_VectorY), N_VGetArrayPointer(N_VectorYp));
         in.push_back(new types::Double(c));
         manager->computeMatrix(in, what, SUNMat_J);
     }
@@ -291,13 +291,13 @@ int SUNDIALSSensRhs(int Ns, realtype t, N_Vector N_VectorY, N_Vector N_VectorYp,
         types::typed_list in;
         types::typed_list out;
 
-        manager->callOpening(what, in, t, NV_DATA_S(N_VectorY));
+        manager->callOpening(what, in, t, N_VGetArrayPointer(N_VectorY));
         // copy each ySdot[j] in column j of S matrix, j=0...getNbSensPar()-1
         types::Double *pDblS = new types::Double(iNbEq,manager->getNbSensPar(),manager->isComplex());
         for (int j=0; j<manager->getNbSensPar(); j++)
         {
             // pDblS->getImg()+j*m_iNbEq with pDblS->getImg()==NULL is not used when m_odeIsComplex == false !
-            copyComplexVectorToDouble(NV_DATA_S(yS[j]), pDblS->get()+j*iNbEq, pDblS->getImg()+j*iNbEq, iNbEq, manager->isComplex());            
+            copyComplexVectorToDouble(N_VGetArrayPointer(yS[j]), pDblS->get()+j*iNbEq, pDblS->getImg()+j*iNbEq, iNbEq, manager->isComplex());            
         }
         in.push_back(pDblS);
         manager->callClosing(what, in, {1}, out);
@@ -316,7 +316,7 @@ int SUNDIALSSensRhs(int Ns, realtype t, N_Vector N_VectorY, N_Vector N_VectorYp,
         // copy each column of S matrix in ySdot[j], j=0...getNbSensPar()-1
         for (int j=0; j<manager->getNbSensPar(); j++)
         {
-            copyRealImgToComplexVector(pDblOut->get()+j*iNbEq, pDblOut->getImg()+j*iNbEq, NV_DATA_S(ySdot[j]), iNbEq, manager->isComplex());
+            copyRealImgToComplexVector(pDblOut->get()+j*iNbEq, pDblOut->getImg()+j*iNbEq, N_VGetArrayPointer(ySdot[j]), iNbEq, manager->isComplex());
         }
         out[0]->DecreaseRef();
         out[0]->killMe();
@@ -343,9 +343,10 @@ int SUNDIALSColPackJac(realtype t, realtype c, N_Vector N_VectorY, N_Vector N_Ve
         // Does Jac(Y)*seed[j] -> tmp1 using internal SUNDIALS kinsol engine
         manager->DQJtimes(t, N_VectorY, N_VectorYp, N_VectorR, manager->getNVectorSeeds()[j], tmp1, c, tmp2, tmp3);
         // copy tmp1 in ppdblProd ColPack array (array of pointers on lines)
+        double *pdblTmp1 = N_VGetArrayPointer(tmp1);
         for (int i=0; i<manager->getNRealEq(); i++)
         {
-           ppdblProd[i][j] =  NV_Ith_S(tmp1,i); 
+           ppdblProd[i][j] =  pdblTmp1[i]; 
         }
     }
 
