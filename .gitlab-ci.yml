@@ -33,9 +33,6 @@ variables:
   PREREQUIREMENTS_BRANCH: 
     value: "branches/6.1"
     description: "Scilab prerequirements branch name or trunk"
-  PICKED_RUINNER:
-    value: "$CI_RUNNER_ID"
-    description: "Set the picked runner to execute jobs in that runner"
 
 
 include:
