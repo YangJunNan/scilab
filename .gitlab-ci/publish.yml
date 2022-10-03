@@ -33,6 +33,7 @@ index_gitlab_pages:
     - build_doxygen
     - build_help_web
     - build_javadoc
+  when: always
   script:
     - |
       find public -type d -print0 | while IFS= read -r -d '' d; do
