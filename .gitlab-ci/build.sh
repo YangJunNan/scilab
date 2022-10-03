@@ -38,7 +38,7 @@ DISPLAY=:0.0 && export DISPLAY
 export SCILIBS_LDFLAGS="-Wl,--allow-shlib-undefined"
 
 # configure (with reconfigure for up to date info)
-echo -e "\e[0Ksection_start:$(date +%s):configure\r\e[0KConfigure"
+echo -e "\e[0Ksection_start:$(date +%s):configure[collapsed=true]\r\e[0KConfigure"
 cd scilab ||exit 1
 aclocal >../log.txt
 autoconf >>../log.txt
@@ -57,7 +57,7 @@ echo -e "\e[0Ksection_start:$(date +%s):install\r\e[0KInstall"
 make install DESTDIR="${CI_PROJECT_DIR}/${SCI_VERSION_STRING}" &>>../log_install.txt ||(tail --lines=100 ../log_install.txt; exit 1)
 echo -e "\e[0Ksection_end:$(date +%s):install\r\e[0K"
 
-echo -e "\e[0Ksection_start:$(date +%s):patch\r\e[0KPatch binary"
+echo -e "\e[0Ksection_start:$(date +%s):patch[collapsed=true]\r\e[0KPatch binary"
 # copy extra files
 cp -a ACKNOWLEDGEMENTS "${CI_PROJECT_DIR}/${SCI_VERSION_STRING}/"
 cp -a CHANGES.md "${CI_PROJECT_DIR}/${SCI_VERSION_STRING}/"
