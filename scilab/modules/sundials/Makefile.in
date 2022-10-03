@@ -245,6 +245,7 @@ am__objects_3 = src/patched_sundials/src/cvodes/libscisundials_algo_la-cvodes.lo
 	src/patched_sundials/src/kinsol/libscisundials_algo_la-kinsol_io.lo \
 	src/patched_sundials/src/kinsol/libscisundials_algo_la-kinsol_ls.lo \
 	src/patched_sundials/src/nvector/serial/libscisundials_algo_la-nvector_serial.lo \
+	src/patched_sundials/src/nvector/openmp/libscisundials_algo_la-nvector_openmp.lo \
 	src/patched_sundials/src/sunmatrix/dense/libscisundials_algo_la-sunmatrix_dense.lo \
 	src/patched_sundials/src/sunmatrix/band/libscisundials_algo_la-sunmatrix_band.lo \
 	src/patched_sundials/src/sunmatrix/sparse/libscisundials_algo_la-sunmatrix_sparse.lo \
@@ -282,7 +283,8 @@ libscisundials_algo_la_LINK = $(LIBTOOL) $(AM_V_lt) --tag=CXX \
 	$(LDFLAGS) -o $@
 am__DEPENDENCIES_1 =
 libscisundials_la_DEPENDENCIES = libscisundials-algo.la \
-	$(am__DEPENDENCIES_1) $(am__DEPENDENCIES_1)
+	$(am__DEPENDENCIES_1) $(am__DEPENDENCIES_1) \
+	$(am__DEPENDENCIES_1)
 am__objects_4 = sci_gateway/cpp/libscisundials_la-sci_cvode.lo \
 	sci_gateway/cpp/libscisundials_la-sci_ida.lo \
 	sci_gateway/cpp/libscisundials_la-sci_arkode.lo \
@@ -363,6 +365,7 @@ am__depfiles_remade =  \
 	src/patched_sundials/src/kinsol/$(DEPDIR)/libscisundials_algo_la-kinsol_direct.Plo \
 	src/patched_sundials/src/kinsol/$(DEPDIR)/libscisundials_algo_la-kinsol_io.Plo \
 	src/patched_sundials/src/kinsol/$(DEPDIR)/libscisundials_algo_la-kinsol_ls.Plo \
+	src/patched_sundials/src/nvector/openmp/$(DEPDIR)/libscisundials_algo_la-nvector_openmp.Plo \
 	src/patched_sundials/src/nvector/serial/$(DEPDIR)/libscisundials_algo_la-nvector_serial.Plo \
 	src/patched_sundials/src/sundials/$(DEPDIR)/libscisundials_algo_la-sundials_band.Plo \
 	src/patched_sundials/src/sundials/$(DEPDIR)/libscisundials_algo_la-sundials_context.Plo \
@@ -822,6 +825,7 @@ libscisundials_la_CPPFLAGS = \
     -I$(top_srcdir)/modules/elementary_functions/includes/ \
     $(KLU_CFLAGS) \
     $(EIGEN_CPPFLAGS) \
+    $(OPENMP_CXXFLAGS) \
     $(AM_CPPFLAGS)
 
 SUNDIALS_SOURCES = src/patched_sundials/src/cvodes/cvodes.c \
@@ -858,6 +862,7 @@ SUNDIALS_SOURCES = src/patched_sundials/src/cvodes/cvodes.c \
     src/patched_sundials/src/kinsol/kinsol_io.c \
     src/patched_sundials/src/kinsol/kinsol_ls.c \
     src/patched_sundials/src/nvector/serial/nvector_serial.c \
+    src/patched_sundials/src/nvector/openmp/nvector_openmp.c \
     src/patched_sundials/src/sunmatrix/dense/sunmatrix_dense.c \
     src/patched_sundials/src/sunmatrix/band/sunmatrix_band.c \
     src/patched_sundials/src/sunmatrix/sparse/sunmatrix_sparse.c \
@@ -896,7 +901,9 @@ libscisundials_la_CFLAGS = -I$(top_srcdir)/modules/sundials/src/patched_sundials
     -I$(top_srcdir)/modules/sundials/src/patched_sundials/src/cvode \
     -I$(top_srcdir)/modules/sundials/src/patched_sundials/src/ida \
     -I$(top_srcdir)/modules/sundials/src/patched_sundials/src/arkode \
-    -I$(top_srcdir)/modules/sundials/src/patched_sundials/src/kinsol
+    -I$(top_srcdir)/modules/sundials/src/patched_sundials/src/kinsol \
+    $(OPENMP_CFLAGS) \
+    $(KLU_CFLAGS)
 
 pkglib_LTLIBRARIES = libscisundials.la
 noinst_LTLIBRARIES = libscisundials-algo.la
@@ -909,9 +916,9 @@ libscisundials_algo_la_CPPFLAGS = $(libscisundials_la_CPPFLAGS)
 # For the code check (splint)
 CHECK_SRC = $(SUNDIALS_CPP_SOURCES)
 INCLUDE_FLAGS = $(libscisundials_la_CPPFLAGS)
+libscisundials_la_LIBADD = libscisundials-algo.la \
+        $(FLIBS) $(KLU_LIB) $(OPENMP_LIBS)
 
-# Needed for klu
-libscisundials_la_LIBADD = libscisundials-algo.la $(FLIBS) $(KLU_LIB)
 
 #### Target ######
 modulename = sundials
@@ -1341,6 +1348,15 @@ src/patched_sundials/src/nvector/serial/$(DEPDIR)/$(am__dirstamp):
 src/patched_sundials/src/nvector/serial/libscisundials_algo_la-nvector_serial.lo:  \
 	src/patched_sundials/src/nvector/serial/$(am__dirstamp) \
 	src/patched_sundials/src/nvector/serial/$(DEPDIR)/$(am__dirstamp)
+src/patched_sundials/src/nvector/openmp/$(am__dirstamp):
+	@$(MKDIR_P) src/patched_sundials/src/nvector/openmp
+	@: > src/patched_sundials/src/nvector/openmp/$(am__dirstamp)
+src/patched_sundials/src/nvector/openmp/$(DEPDIR)/$(am__dirstamp):
+	@$(MKDIR_P) src/patched_sundials/src/nvector/openmp/$(DEPDIR)
+	@: > src/patched_sundials/src/nvector/openmp/$(DEPDIR)/$(am__dirstamp)
+src/patched_sundials/src/nvector/openmp/libscisundials_algo_la-nvector_openmp.lo:  \
+	src/patched_sundials/src/nvector/openmp/$(am__dirstamp) \
+	src/patched_sundials/src/nvector/openmp/$(DEPDIR)/$(am__dirstamp)
 src/patched_sundials/src/sunmatrix/dense/$(am__dirstamp):
 	@$(MKDIR_P) src/patched_sundials/src/sunmatrix/dense
 	@: > src/patched_sundials/src/sunmatrix/dense/$(am__dirstamp)
@@ -1521,6 +1537,8 @@ mostlyclean-compile:
 	-rm -f src/patched_sundials/src/ida/*.lo
 	-rm -f src/patched_sundials/src/kinsol/*.$(OBJEXT)
 	-rm -f src/patched_sundials/src/kinsol/*.lo
+	-rm -f src/patched_sundials/src/nvector/openmp/*.$(OBJEXT)
+	-rm -f src/patched_sundials/src/nvector/openmp/*.lo
 	-rm -f src/patched_sundials/src/nvector/serial/*.$(OBJEXT)
 	-rm -f src/patched_sundials/src/nvector/serial/*.lo
 	-rm -f src/patched_sundials/src/sundials/*.$(OBJEXT)
@@ -1602,6 +1620,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@src/patched_sundials/src/kinsol/$(DEPDIR)/libscisundials_algo_la-kinsol_direct.Plo@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@src/patched_sundials/src/kinsol/$(DEPDIR)/libscisundials_algo_la-kinsol_io.Plo@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@src/patched_sundials/src/kinsol/$(DEPDIR)/libscisundials_algo_la-kinsol_ls.Plo@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@src/patched_sundials/src/nvector/openmp/$(DEPDIR)/libscisundials_algo_la-nvector_openmp.Plo@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@src/patched_sundials/src/nvector/serial/$(DEPDIR)/libscisundials_algo_la-nvector_serial.Plo@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@src/patched_sundials/src/sundials/$(DEPDIR)/libscisundials_algo_la-sundials_band.Plo@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@src/patched_sundials/src/sundials/$(DEPDIR)/libscisundials_algo_la-sundials_context.Plo@am__quote@ # am--include-marker
@@ -1902,6 +1921,13 @@ src/patched_sundials/src/nvector/serial/libscisundials_algo_la-nvector_serial.lo
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='src/patched_sundials/src/nvector/serial/nvector_serial.c' object='src/patched_sundials/src/nvector/serial/libscisundials_algo_la-nvector_serial.lo' libtool=yes @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libscisundials_algo_la_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o src/patched_sundials/src/nvector/serial/libscisundials_algo_la-nvector_serial.lo `test -f 'src/patched_sundials/src/nvector/serial/nvector_serial.c' || echo '$(srcdir)/'`src/patched_sundials/src/nvector/serial/nvector_serial.c
+
+src/patched_sundials/src/nvector/openmp/libscisundials_algo_la-nvector_openmp.lo: src/patched_sundials/src/nvector/openmp/nvector_openmp.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libscisundials_algo_la_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT src/patched_sundials/src/nvector/openmp/libscisundials_algo_la-nvector_openmp.lo -MD -MP -MF src/patched_sundials/src/nvector/openmp/$(DEPDIR)/libscisundials_algo_la-nvector_openmp.Tpo -c -o src/patched_sundials/src/nvector/openmp/libscisundials_algo_la-nvector_openmp.lo `test -f 'src/patched_sundials/src/nvector/openmp/nvector_openmp.c' || echo '$(srcdir)/'`src/patched_sundials/src/nvector/openmp/nvector_openmp.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) src/patched_sundials/src/nvector/openmp/$(DEPDIR)/libscisundials_algo_la-nvector_openmp.Tpo src/patched_sundials/src/nvector/openmp/$(DEPDIR)/libscisundials_algo_la-nvector_openmp.Plo
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='src/patched_sundials/src/nvector/openmp/nvector_openmp.c' object='src/patched_sundials/src/nvector/openmp/libscisundials_algo_la-nvector_openmp.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libscisundials_algo_la_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o src/patched_sundials/src/nvector/openmp/libscisundials_algo_la-nvector_openmp.lo `test -f 'src/patched_sundials/src/nvector/openmp/nvector_openmp.c' || echo '$(srcdir)/'`src/patched_sundials/src/nvector/openmp/nvector_openmp.c
 
 src/patched_sundials/src/sunmatrix/dense/libscisundials_algo_la-sunmatrix_dense.lo: src/patched_sundials/src/sunmatrix/dense/sunmatrix_dense.c
 @am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libscisundials_algo_la_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT src/patched_sundials/src/sunmatrix/dense/libscisundials_algo_la-sunmatrix_dense.lo -MD -MP -MF src/patched_sundials/src/sunmatrix/dense/$(DEPDIR)/libscisundials_algo_la-sunmatrix_dense.Tpo -c -o src/patched_sundials/src/sunmatrix/dense/libscisundials_algo_la-sunmatrix_dense.lo `test -f 'src/patched_sundials/src/sunmatrix/dense/sunmatrix_dense.c' || echo '$(srcdir)/'`src/patched_sundials/src/sunmatrix/dense/sunmatrix_dense.c
@@ -2240,6 +2266,7 @@ clean-libtool:
 	-rm -rf src/patched_sundials/src/cvodes/.libs src/patched_sundials/src/cvodes/_libs
 	-rm -rf src/patched_sundials/src/ida/.libs src/patched_sundials/src/ida/_libs
 	-rm -rf src/patched_sundials/src/kinsol/.libs src/patched_sundials/src/kinsol/_libs
+	-rm -rf src/patched_sundials/src/nvector/openmp/.libs src/patched_sundials/src/nvector/openmp/_libs
 	-rm -rf src/patched_sundials/src/nvector/serial/.libs src/patched_sundials/src/nvector/serial/_libs
 	-rm -rf src/patched_sundials/src/sundials/.libs src/patched_sundials/src/sundials/_libs
 	-rm -rf src/patched_sundials/src/sunlinsol/band/.libs src/patched_sundials/src/sunlinsol/band/_libs
@@ -2638,6 +2665,8 @@ distclean-generic:
 	-rm -f src/patched_sundials/src/ida/$(am__dirstamp)
 	-rm -f src/patched_sundials/src/kinsol/$(DEPDIR)/$(am__dirstamp)
 	-rm -f src/patched_sundials/src/kinsol/$(am__dirstamp)
+	-rm -f src/patched_sundials/src/nvector/openmp/$(DEPDIR)/$(am__dirstamp)
+	-rm -f src/patched_sundials/src/nvector/openmp/$(am__dirstamp)
 	-rm -f src/patched_sundials/src/nvector/serial/$(DEPDIR)/$(am__dirstamp)
 	-rm -f src/patched_sundials/src/nvector/serial/$(am__dirstamp)
 	-rm -f src/patched_sundials/src/sundials/$(DEPDIR)/$(am__dirstamp)
@@ -2725,6 +2754,7 @@ distclean: distclean-am
 	-rm -f src/patched_sundials/src/kinsol/$(DEPDIR)/libscisundials_algo_la-kinsol_direct.Plo
 	-rm -f src/patched_sundials/src/kinsol/$(DEPDIR)/libscisundials_algo_la-kinsol_io.Plo
 	-rm -f src/patched_sundials/src/kinsol/$(DEPDIR)/libscisundials_algo_la-kinsol_ls.Plo
+	-rm -f src/patched_sundials/src/nvector/openmp/$(DEPDIR)/libscisundials_algo_la-nvector_openmp.Plo
 	-rm -f src/patched_sundials/src/nvector/serial/$(DEPDIR)/libscisundials_algo_la-nvector_serial.Plo
 	-rm -f src/patched_sundials/src/sundials/$(DEPDIR)/libscisundials_algo_la-sundials_band.Plo
 	-rm -f src/patched_sundials/src/sundials/$(DEPDIR)/libscisundials_algo_la-sundials_context.Plo
@@ -2860,6 +2890,7 @@ maintainer-clean: maintainer-clean-am
 	-rm -f src/patched_sundials/src/kinsol/$(DEPDIR)/libscisundials_algo_la-kinsol_direct.Plo
 	-rm -f src/patched_sundials/src/kinsol/$(DEPDIR)/libscisundials_algo_la-kinsol_io.Plo
 	-rm -f src/patched_sundials/src/kinsol/$(DEPDIR)/libscisundials_algo_la-kinsol_ls.Plo
+	-rm -f src/patched_sundials/src/nvector/openmp/$(DEPDIR)/libscisundials_algo_la-nvector_openmp.Plo
 	-rm -f src/patched_sundials/src/nvector/serial/$(DEPDIR)/libscisundials_algo_la-nvector_serial.Plo
 	-rm -f src/patched_sundials/src/sundials/$(DEPDIR)/libscisundials_algo_la-sundials_band.Plo
 	-rm -f src/patched_sundials/src/sundials/$(DEPDIR)/libscisundials_algo_la-sundials_context.Plo

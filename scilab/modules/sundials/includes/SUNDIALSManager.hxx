@@ -36,7 +36,9 @@ extern "C"
 
 /* Sundials includes */
 #include <nvector/nvector_serial.h>   /* serial N_Vector types, fcts., and macros */
-//#include <nvector/nvector_pthreads.h>   /* serial N_Vector types, fcts., and macros */
+#ifdef _OPENMP
+#include <nvector/nvector_openmp.h>   /* OpenMP N_Vector types, fcts., and macros */
+#endif
 #include <sundials/sundials_context.h>  /* prototypes for SUNDIALS context (since 6.0) */
 #include <sundials/sundials_dense.h>  /* prototypes for various DlsMat operations */
 #include <sundials/sundials_direct.h> /* definitions of DlsMat and DENSE_ELEM */
@@ -444,6 +446,7 @@ class SUNDIALS_EXPORT SUNDIALSManager
     int m_iNonLinSolAccel;
     int m_iLinSolMaxIters;
     int m_iNonLinSolMaxIters;
+    int m_iNbThreads;
 
     void* m_prob_mem = NULL;
 };

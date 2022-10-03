@@ -113,9 +113,6 @@
             <link linkend="kinsol">KINSOL solver</link>
         </member>
         <member>
-            <link linkend="kinsol">KINSOL solver</link>
-        </member>
-        <member>
             <link linkend="sundials_sensitivity">Sensitivity</link>
         </member>
     </simplelist>

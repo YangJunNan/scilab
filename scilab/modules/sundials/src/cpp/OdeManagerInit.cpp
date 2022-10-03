@@ -35,7 +35,20 @@ void OdeManager::init()
     // hence the number of *real* equations is twice the number of complex equatioms
     m_iNbRealEq = m_odeIsComplex ? 2*m_iNbEq : m_iNbEq;
 
+    // Threads or no threads
+#ifndef _OPENMP
     m_N_VectorY = N_VNew_Serial(m_iNbRealEq, m_sunctx);
+#else
+    if (m_iNbThreads > 0)
+    {
+        m_N_VectorY = N_VNew_OpenMP(m_iNbRealEq, m_iNbThreads, m_sunctx);
+        N_VEnableFusedOps_OpenMP(m_N_VectorY, SUNTRUE);
+    }
+    else
+    {
+        m_N_VectorY = N_VNew_Serial(m_iNbRealEq, m_sunctx);
+    }
+#endif
     m_N_VectorYTemp = N_VClone(m_N_VectorY);
 
     // Load Y0 into N_Serial vector

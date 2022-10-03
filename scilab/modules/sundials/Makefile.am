@@ -62,6 +62,7 @@ libscisundials_la_CPPFLAGS= \
     -I$(top_srcdir)/modules/elementary_functions/includes/ \
     $(KLU_CFLAGS) \
     $(EIGEN_CPPFLAGS) \
+    $(OPENMP_CXXFLAGS) \
     $(AM_CPPFLAGS)
     
 SUNDIALS_SOURCES = src/patched_sundials/src/cvodes/cvodes.c \
@@ -100,6 +101,7 @@ SUNDIALS_SOURCES = src/patched_sundials/src/cvodes/cvodes.c \
     src/patched_sundials/src/kinsol/kinsol_io.c \
     src/patched_sundials/src/kinsol/kinsol_ls.c \
     src/patched_sundials/src/nvector/serial/nvector_serial.c \
+    src/patched_sundials/src/nvector/openmp/nvector_openmp.c \
     src/patched_sundials/src/sunmatrix/dense/sunmatrix_dense.c \
     src/patched_sundials/src/sunmatrix/band/sunmatrix_band.c \
     src/patched_sundials/src/sunmatrix/sparse/sunmatrix_sparse.c \
@@ -143,7 +145,9 @@ libscisundials_la_CFLAGS = -I$(top_srcdir)/modules/sundials/src/patched_sundials
     -I$(top_srcdir)/modules/sundials/src/patched_sundials/src/cvode \
     -I$(top_srcdir)/modules/sundials/src/patched_sundials/src/ida \
     -I$(top_srcdir)/modules/sundials/src/patched_sundials/src/arkode \
-    -I$(top_srcdir)/modules/sundials/src/patched_sundials/src/kinsol
+    -I$(top_srcdir)/modules/sundials/src/patched_sundials/src/kinsol \
+    $(OPENMP_CFLAGS) \
+    $(KLU_CFLAGS)
 
 pkglib_LTLIBRARIES = libscisundials.la
 noinst_LTLIBRARIES = libscisundials-algo.la
@@ -160,10 +164,7 @@ CHECK_SRC= $(SUNDIALS_CPP_SOURCES)
 INCLUDE_FLAGS = $(libscisundials_la_CPPFLAGS)
 
 libscisundials_la_LIBADD = libscisundials-algo.la \
-        $(FLIBS)
-
-# Needed for klu
-libscisundials_la_LIBADD += $(KLU_LIB)
+        $(FLIBS) $(KLU_LIB) $(OPENMP_LIBS)
 
 #### Target ######
 modulename=sundials

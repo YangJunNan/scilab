@@ -215,7 +215,12 @@ void OdeManager::parseOptions(types::optional_list &opt)
     }
     // Parse specific stuff (the method below is overriden for each solver)
     parseMethodAndOrder(opt);
-     
+
+#ifdef _OPENMP
+    // Thread or no threads
+    getIntInPlist(m_wstrCaller.c_str(), opt, L"nbThreads", &m_iNbThreads,
+        m_odeIsExtension ? prevManager->m_iNbThreads : 0, {0, INT_MAX});
+#endif
     // Common options
     getDoubleInPlist(m_wstrCaller.c_str(), opt, L"rtol", &m_dblRtol,
         m_odeIsExtension ? prevManager->m_dblRtol : m_dblDefaultRtol, {1e-15, 1});
@@ -241,7 +246,6 @@ void OdeManager::parseOptions(types::optional_list &opt)
         m_odeIsExtension ? prevManager->m_iVecNonNegative : emptyVect, {1,m_iNbEq}, {1,m_iNbEq});
     getIntVectorInPlist(m_wstrCaller.c_str(), opt, L"nonPositive", m_iVecNonPositive,
         m_odeIsExtension ? prevManager->m_iVecNonPositive : emptyVect, {1,m_iNbEq}, {1,m_iNbEq});
-
 
     // non linear solver
     getStringInPlist(m_wstrCaller.c_str(), opt, L"nonLinSol", m_wstrNonLinSolver,

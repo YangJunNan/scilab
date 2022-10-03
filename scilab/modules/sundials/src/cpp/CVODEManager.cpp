@@ -58,7 +58,7 @@ void CVODEManager::parseMethodAndOrder(types::optional_list &opt)
  
     // order
     iDefaultMaxOrder = m_odeIsExtension ? m_prevManager->m_iMaxOrder : getMaxMethodOrder(m_wstrMethod);
-    getIntInPlist(m_wstrCaller.c_str(), opt, L"maxorder", &m_iMaxOrder, iDefaultMaxOrder, {1, getMaxMethodOrder(m_wstrMethod)});
+    getIntInPlist(m_wstrCaller.c_str(), opt, L"maxOrder", &m_iMaxOrder, iDefaultMaxOrder, {1, getMaxMethodOrder(m_wstrMethod)});
  
     // sensitivity
     if (opt.find(L"sensPar") != opt.end())

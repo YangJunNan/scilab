@@ -53,6 +53,10 @@ void KINSOLManager::parseOptions(types::optional_list &opt)
     std::vector<double> defaultAtolVect = {m_dblDefaultAtol};
     double dblEps = std::numeric_limits<double>::epsilon();
 
+#ifdef _OPENMP
+    // Threads or no threads
+    getIntInPlist(m_wstrCaller.c_str(), opt, L"nbThreads", &m_iNbThreads, 0, {0, INT_MAX});
+#endif
     // nonlinear solver
     getStringInPlist(m_wstrCaller.c_str(), opt, L"method", m_wstrNonLinSolver, getDefaultNonLinSolver(), getAvailableNonLinSolvers());
 
@@ -205,8 +209,6 @@ void KINSOLManager::init()
     // hence the number of *real* equations is twice the number of complex equatioms
     m_iNbRealEq = m_odeIsComplex ? 2*m_iNbEq : m_iNbEq;
 
-    m_N_VectorY = N_VNew_Serial(m_iNbRealEq, m_sunctx);
-
     if (create())
     {
         sprintf(errorMsg,"Solver create error\n");
@@ -215,6 +217,19 @@ void KINSOLManager::init()
     // Load Y0 into N_Serial vector
     // When ODE is complex m_N_VectorY has interlaced real and imaginary part of user Y (equivalent to std::complex)
   
+#ifndef _OPENMP
+    m_N_VectorY = N_VNew_Serial(m_iNbRealEq, m_sunctx);
+#else
+    if (m_iNbThreads > 0)
+    {
+        m_N_VectorY = N_VNew_OpenMP(m_iNbRealEq, m_iNbThreads, m_sunctx);
+        N_VEnableFusedOps_OpenMP(m_N_VectorY, SUNTRUE);
+    }
+    else
+    {
+        m_N_VectorY = N_VNew_Serial(m_iNbRealEq, m_sunctx);
+    }
+#endif
     copyRealImgToComplexVector(m_pDblY0->get(), m_pDblY0->getImg(), N_VGetArrayPointer(m_N_VectorY), m_iNbEq, m_odeIsComplex);
 
     if (m_wstrNonLinSolver == L"fixedPoint" || m_wstrNonLinSolver == L"Picard")
@@ -401,7 +416,6 @@ void KINSOLManager::init()
         }
         KINSetPrintLevel(m_prob_mem, 1);
     }
-   
 }
 
 void KINSOLManager::solve()

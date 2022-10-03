@@ -43,7 +43,7 @@ void IDAManager::parseMethodAndOrder(types::optional_list &opt)
     getStringInPlist(m_wstrCaller.c_str(), opt, L"method", m_wstrMethod, wstrDefaultMethod, getAvailableMethods());
     // order
     iDefaultMaxOrder = m_odeIsExtension ? m_prevManager->m_iMaxOrder : getMaxMethodOrder(m_wstrMethod);
-    getIntInPlist(m_wstrCaller.c_str(), opt, L"maxorder", &m_iMaxOrder, iDefaultMaxOrder, {1, getMaxMethodOrder(m_wstrMethod)});
+    getIntInPlist(m_wstrCaller.c_str(), opt, L"maxOrder", &m_iMaxOrder, iDefaultMaxOrder, {1, getMaxMethodOrder(m_wstrMethod)});
     // non linear solver
     wstrDefaultNonLinSolver = m_odeIsExtension ? m_prevManager->m_wstrNonLinSolver : (m_wstrMethod == L"Adams" ? L"fixedPoint" : L"Newton");
     getStringInPlist(m_wstrCaller.c_str(), opt, L"nonLinSol", m_wstrMethod, wstrDefaultMethod, {L"fixedPoint",L"Newton"});

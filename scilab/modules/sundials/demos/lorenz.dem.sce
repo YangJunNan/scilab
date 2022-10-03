@@ -36,10 +36,13 @@ function sundials_lorenz()
             b = uicontrol("string","Stop","Callback_Type",10,"tag","stop",...
             "callback","delete(findobj(""tag"",""stop""));abort");
             drawnow
+            realtimeinit(1)
+            realtime(0)
         else
             a= gca();
             a.children.data=X';
             a.title.text=msprintf("t=%5.2f",t)
+            realtime(t)
         end
         out=%f
     endfunction
@@ -48,12 +51,12 @@ function sundials_lorenz()
     rho=28;
     bet=8/3;
     
-    X0=rand(3,30000,"normal");
+    X0=rand(3,6000,"normal");
     s2=sqrt(sum(X0.*X0,1));
     X0=X0./s2([1 1 1],:)*30;
     X0(3,:)=X0(3,:)+30;
     
-    arkode(lorenz,[0 20] ,X0, callback=cb, method="ERK_8");
+    arkode(lorenz,[0:1/100:20],X0,callback=cb,method="ERK_8");
 
     delete(findobj("tag","stop"))
 end
