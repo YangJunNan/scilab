@@ -41,6 +41,7 @@ build_doxygen:
       GIT_CLEAN_FLAGS: none
   dependencies: []
   script:
+    - rm -fr $CI_PROJECT_DIR/public
     - cd scilab
     - mkdir reports
     - doxygen modules/development_tools/etc/doxyfile >/dev/null
@@ -59,10 +60,11 @@ build_help_web:
   variables:
       GIT_CLEAN_FLAGS: none
   script:
+    - rm -fr $CI_PROJECT_DIR/public
     - cd scilab
     - make doc-web
     - "[ ! -d public ] && mkdir public"
-    - mv modules/helptools/web $CI_PROJECT_DIR/public/docs
+    - mv modules/helptools/web $CI_PROJECT_DIR/public/webdocs
   artifacts:
     paths:
       - public
@@ -80,6 +82,7 @@ publish_help_jar:
     - x86_64-linux-gnu_set_branch_env
   script:
     - echo "help from ${SCI_VERSION_STRING} ${ARCH}"
+    - rm -fr $CI_PROJECT_DIR/public
     - "[ ! -d public ] && mkdir public"
     - "[ ! -d public/docs ] && mkdir public/docs"
     - cd public/docs

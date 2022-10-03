@@ -182,7 +182,6 @@ contains_changes_modification:
   tags: [x86_64-linux-gnu]
   variables:
       GIT_STRATEGY: none
-      GIT_CLEAN_FLAGS: none
   script:
     - id
     - env
