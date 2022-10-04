@@ -12,12 +12,19 @@ release:
   tags: [x86_64-linux-gnu, docker, scilab]
   variables:
       GIT_CLEAN_FLAGS: none
+  dependencies: []
   needs:
     # build artifacts
-    - x64_windows_build_branch
-    - x86_64-linux-gnu_build_branch
+    - sign_tool
+    - job: x86_64-linux-gnu_build_nightly
+      optional: true
+    - job: x86_64-linux-gnu_build_release
+      optional: true
     # get env information used to build scilab
-    - x86_64-linux-gnu_set_branch_env
+    - job: x86_64-linux-gnu_set_release_env
+      optional: true
+    - job: x86_64-linux-gnu_set_branch_env
+      optional: true
   script:
     - echo "FIXME nothing to deploy"
   when: manual
@@ -28,6 +35,7 @@ index_gitlab_pages:
   tags: [x86_64-linux-gnu, docker, scilab]
   variables:
       GIT_CLEAN_FLAGS: none
+  dependencies: []
   needs: 
     - publish_help_jar
     - build_doxygen

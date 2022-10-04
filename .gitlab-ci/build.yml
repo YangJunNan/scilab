@@ -4,7 +4,7 @@
 #
 # This YAML file describe the build stage of the CI. This stage delegates the
 # build action to shell scripts, it creates job per platform and handle Merge 
-# Request as well as release build.
+# Request as well as nightly/release build.
 #
 
 
@@ -31,11 +31,19 @@ x64_windows_build_branch:
     - contains_changes_modification
   rules:
     - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+# build a nightly
+x64_windows_build_nightly:
+  extends: .x64_windows_build
+  needs:
+    - x64_windows_clean
+    - x64_windows_set_branch_env
+  rules:
     - if: $CI_COMMIT_REF_PROTECTED
 # build a release version
 x64_windows_build_release:
   extends: .x64_windows_build
   needs:
+    - x64_windows_clean
     - x64_windows_set_release_env
     - prepare_release_files
   rules:
@@ -48,8 +56,6 @@ x64_windows_build_release:
   needs:
     - x86_64-linux-gnu_cleanup_builds
   tags: [x86_64-linux-gnu, docker, scilab]
-  variables:
-      GIT_CLEAN_FLAGS: none
   script: bash -x -e .gitlab-ci/build.sh
   artifacts:
     paths:
@@ -60,15 +66,28 @@ x64_windows_build_release:
 # build an intermediate version
 x86_64-linux-gnu_build_branch:
   extends: .x86_64-linux-gnu_build
+  variables:
+      GIT_CLEAN_FLAGS: none
   needs:
     - x86_64-linux-gnu_set_branch_env
     - contains_changes_modification
   rules:
     - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+# build a nightly
+x86_64-linux-gnu_build_nightly:
+  extends: .x86_64-linux-gnu_build
+  variables:
+      GIT_CLEAN_FLAGS: -ffxd
+  needs:
+    - x86_64-linux-gnu_clean
+    - x86_64-linux-gnu_set_branch_env
+  rules:
     - if: $CI_COMMIT_REF_PROTECTED
 # build a release
 x86_64-linux-gnu_build_release:
   extends: .x86_64-linux-gnu_build
+  variables:
+      GIT_CLEAN_FLAGS: -ffxd
   needs:
     - x86_64-linux-gnu_set_release_env
     - prepare_release_files

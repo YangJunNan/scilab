@@ -8,19 +8,31 @@
 #
 
 
-.x64_windows_test_branch:
+.x64_windows_test:
   stage: test
   tags: [x64_windows, scilab]
   variables:
       # reuse download and install on each test
       GIT_CLEAN_FLAGS: none
+  dependencies: []
   needs:
     # build artifacts will be download by the script only if needed
     - job: x64_windows_build_branch
       artifacts: true
+      optional: true
+    - job: x64_windows_build_nightly
+      artifacts: true
+      optional: true
+    - job: x64_windows_build_release
+      artifacts: true
+      optional: true
     # get env information used to build scilab
     - job: x64_windows_set_branch_env
       artifacts: true
+      optional: true
+    - job: x64_windows_set_release_env
+      artifacts: true
+      optional: true
   script: call .gitlab-ci\test.bat
   artifacts:
     when: always
@@ -29,8 +41,8 @@
     reports:
       junit: $SCI_VERSION_STRING_$ARCH_$TEST.xml
 
-x64_windows_test_branch_good:
-  extends: .x64_windows_test_branch
+x64_windows_test_good:
+  extends: .x64_windows_test
   rules: &GOOD_RULES
     - if: $CI_COMMIT_REF_PROTECTED
       allow_failure: true
@@ -63,8 +75,8 @@ x64_windows_test_branch_good:
         - webtools
         - xml
 
-x64_windows_test_branch_bad:
-  extends: .x64_windows_test_branch
+x64_windows_test_bad:
+  extends: .x64_windows_test
   rules: &BAD_RULES
     - if: $CI_COMMIT_REF_PROTECTED
       allow_failure: true
@@ -114,8 +126,8 @@ x64_windows_test_branch_bad:
         - ui_data
         - umfpack
 
-x64_windows_test_branch_ugly:
-  extends: .x64_windows_test_branch
+x64_windows_test_ugly:
+  extends: .x64_windows_test
   rules: &UGLY_RULES
     - if: $CI_COMMIT_REF_PROTECTED
       allow_failure: true
@@ -130,8 +142,8 @@ x64_windows_test_branch_ugly:
         - windows_tools
         - xcos
 
-impacted_x64_windows_test_branch_good:
-  extends: .x64_windows_test_branch
+impacted_x64_windows_test_good:
+  extends: .x64_windows_test
   rules: &IMPACTED_RULES
     - if: $CI_PIPELINE_SOURCE == "merge_request_event"
       changes:
@@ -140,32 +152,44 @@ impacted_x64_windows_test_branch_good:
   parallel:
     matrix: *GOOD_TEST_ANCHOR
 
-impacted_x64_windows_test_branch_bad:
-  extends: .x64_windows_test_branch
+impacted_x64_windows_test_bad:
+  extends: .x64_windows_test
   rules: *IMPACTED_RULES
   parallel:
     matrix: *BAD_TEST_ANCHOR
 
-impacted_x64_windows_test_branch_ugly:
-  extends: .x64_windows_test_branch
+impacted_x64_windows_test_ugly:
+  extends: .x64_windows_test
   rules: *IMPACTED_RULES
   parallel:
     matrix: *UGLY_TEST_ANCHOR
 
 
-.x86_64-linux-gnu_test_branch:
+.x86_64-linux-gnu_test:
   stage: test
   tags: [x86_64-linux-gnu, docker, scilab]
   variables:
       # reuse download and install on each test
       GIT_CLEAN_FLAGS: none
+  dependencies: []
   needs:
     # build artifacts will be download by the script only if needed
     - job: x86_64-linux-gnu_build_branch
       artifacts: true
+      optional: true
+    - job: x86_64-linux-gnu_build_nightly
+      artifacts: true
+      optional: true
+    - job: x86_64-linux-gnu_build_release
+      artifacts: true
+      optional: true
     # get env information used to build scilab
     - job: x86_64-linux-gnu_set_branch_env
       artifacts: true
+      optional: true
+    - job: x86_64-linux-gnu_set_release_env
+      artifacts: true
+      optional: true
   script: bash -e -x .gitlab-ci/test.sh
   artifacts:
     when: always
@@ -174,41 +198,41 @@ impacted_x64_windows_test_branch_ugly:
     reports:
       junit: $SCI_VERSION_STRING_$ARCH_$TEST.xml
 
-x86_64-linux-gnu_test_branch_good:
-  extends: .x86_64-linux-gnu_test_branch
+x86_64-linux-gnu_test_good:
+  extends: .x86_64-linux-gnu_test
   rules: *GOOD_RULES
   when: manual
   parallel:
     matrix: *GOOD_TEST_ANCHOR
 
-x86_64-linux-gnu_test_branch_bad:
-  extends: .x86_64-linux-gnu_test_branch
+x86_64-linux-gnu_test_bad:
+  extends: .x86_64-linux-gnu_test
   rules: *BAD_RULES
   when: manual
   parallel:
     matrix: *BAD_TEST_ANCHOR
 
-x86_64-linux-gnu_test_branch_ugly:
-  extends: .x86_64-linux-gnu_test_branch
+x86_64-linux-gnu_test_ugly:
+  extends: .x86_64-linux-gnu_test
   rules: *UGLY_RULES
   when: manual
   parallel:
     matrix: *UGLY_TEST_ANCHOR
 
-impacted_x86_64-linux-gnu_test_branch_good:
-  extends: .x86_64-linux-gnu_test_branch
+impacted_x86_64-linux-gnu_test_good:
+  extends: .x86_64-linux-gnu_test
   rules: *IMPACTED_RULES
   parallel:
     matrix: *GOOD_TEST_ANCHOR
 
-impacted_x86_64-linux-gnu_test_branch_bad:
-  extends: .x86_64-linux-gnu_test_branch
+impacted_x86_64-linux-gnu_test_bad:
+  extends: .x86_64-linux-gnu_test
   rules: *IMPACTED_RULES
   parallel:
     matrix: *BAD_TEST_ANCHOR
 
-impacted_x86_64-linux-gnu_test_branch_ugly:
-  extends: .x86_64-linux-gnu_test_branch
+impacted_x86_64-linux-gnu_test_ugly:
+  extends: .x86_64-linux-gnu_test
   rules: *IMPACTED_RULES
   parallel:
     matrix: *UGLY_TEST_ANCHOR
