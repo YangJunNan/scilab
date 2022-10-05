@@ -13,7 +13,6 @@
   variables:
     # reuse download and install on each test
     GIT_CLEAN_FLAGS: none
-  dependencies: []
   script: call .gitlab-ci\test.bat
   artifacts:
     when: always
@@ -214,7 +213,6 @@ impacted_x64_windows_test_ugly:
   variables:
     # reuse download and install on each test
     GIT_CLEAN_FLAGS: none
-  dependencies: []
   script: bash -e -x .gitlab-ci/test.sh
   artifacts:
     when: always
@@ -322,7 +320,6 @@ impacted_x86_64-linux-gnu_test_good:
     - if: $CI_PIPELINE_SOURCE == 'merge_request_event'
       changes:
         - scilab/modules/$TEST/**/*
-      when: always
   parallel:
     matrix: *GOOD_TEST_ANCHOR
 

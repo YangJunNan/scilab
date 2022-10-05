@@ -11,12 +11,12 @@
   tags: [x86_64-linux-gnu, docker, scilab]
   variables:
     GIT_CLEAN_FLAGS: none
-  dependencies: []
   script:
     - echo "nothing to deploy"
 publish_branch:
   extends: .publish_job
   needs:
+    - x64_windows_build_branch
     - x86_64-linux-gnu_build_branch
     - x86_64-linux-gnu_set_branch_env
   rules:
@@ -44,7 +44,6 @@ index_gitlab_pages:
   tags: [x86_64-linux-gnu, docker, scilab]
   variables:
     GIT_CLEAN_FLAGS: none
-  dependencies: []
   needs:
     - job: publish_help_jar
       optional: true
