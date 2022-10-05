@@ -101,7 +101,8 @@ publish_help_jar:
   variables:
     GIT_STRATEGY: none
   needs:
-    - job: x86_64-linux-gnu_build_branch
+    - x86_64-linux-gnu_build_branch
+    - x86_64-linux-gnu_set_branch_env
   script:
     - echo "help from ${SCI_VERSION_STRING} ${ARCH}"
     - "[ ! -d public ] && mkdir public"
