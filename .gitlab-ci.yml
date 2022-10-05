@@ -25,6 +25,9 @@ workflow:
 # configure docker default image 
 image: registry.gitlab.com/scilab/scilab/linux-builder:latest
 
+default:
+  artifacts:
+    expire_in: 1 day
 
 variables:
   GIT_DEPTH:
