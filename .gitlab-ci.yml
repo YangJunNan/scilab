@@ -6,10 +6,10 @@ stages:
   - prebuild
   # build scilab
   - build
-  # create a binary installer and binary patch
-  - postbuild
   # run the tests
   - test
+  # extract some content
+  - postbuild
   # publish and make it available to the community
   - publish
 
@@ -40,9 +40,9 @@ include:
   - local: .gitlab-ci/prebuild.yml
   # build
   - local: .gitlab-ci/build.yml
-  # patches
-  - local: .gitlab-ci/postbuild.yml
-  # execute tests on merge
+  # execute tests
   - local: .gitlab-ci/test.yml
-  # sign/deploy/publish a binary on merge
+  # sign and extract useful content
+  - local: .gitlab-ci/postbuild.yml
+  # deploy/publish a binary
   - local: .gitlab-ci/publish.yml
