@@ -10,7 +10,6 @@
 # build scilab using a windows runner
 .x64_windows_build:
   stage: build
-  dependencies: []
   needs:
     - x64_windows_cleanup_builds
   tags: [x64_windows, scilab]
@@ -51,7 +50,6 @@ x64_windows_build_release:
 # build scilab using a linux runner
 .x86_64-linux-gnu_build:
   stage: build
-  dependencies: []
   needs:
     - x86_64-linux-gnu_cleanup_builds
   tags: [x86_64-linux-gnu, docker, scilab]
