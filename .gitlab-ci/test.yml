@@ -228,6 +228,7 @@ x86_64-linux-gnu_test_branch_good:
     - x86_64-linux-gnu_set_branch_env
   rules:
     - if: $CI_PIPELINE_SOURCE == 'merge_request_event'
+  when: manual
   parallel:
     matrix: *GOOD_TEST_ANCHOR
 
@@ -238,6 +239,7 @@ x86_64-linux-gnu_test_branch_bad:
     - x86_64-linux-gnu_set_branch_env
   rules:
     - if: $CI_PIPELINE_SOURCE == 'merge_request_event'
+  when: manual
   parallel:
     matrix: *BAD_TEST_ANCHOR
 
@@ -248,6 +250,7 @@ x86_64-linux-gnu_test_branch_ugly:
     - x86_64-linux-gnu_set_branch_env
   rules:
     - if: $CI_PIPELINE_SOURCE == 'merge_request_event'
+  when: manual
   parallel:
     matrix: *UGLY_TEST_ANCHOR
 
