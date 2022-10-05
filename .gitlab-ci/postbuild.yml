@@ -7,29 +7,33 @@
 #
 
 # sign the windows binary
-sign_tool:
+.x64_windows_sign:
   stage: postbuild
   tags: [x64_windows, scilab]
   variables:
-      GIT_STRATEGY: none
+    GIT_STRATEGY: none
   script:
     - REM TODO how to sign ? was
     - REM call d:\signtool_password.bat
     - REM "C:\Program Files (x86)\Windows Kits\8.1\bin\x64\signtool.exe" sign /f D:\\ESIGroupCERT.pfx /p "%SIGNPASS%" /t http://timestamp.sectigo.com /v %SCI_VERSION_STRING%_%ARCH%.exe
   dependencies: []
-  needs:
-    - job: x64_windows_build_nightly
-      optional: true
-    - job: x64_windows_build_release
-      optional: true
-    - job: x64_windows_set_release_env
-      optional: true
-    - job: x64_windows_set_branch_env
-      optional: true
   artifacts:
     paths:
       - $SCI_VERSION_STRING_$ARCH.exe
-  when: manual
+x64_windows_sign_nightly:
+  extends: .x64_windows_sign
+  needs:
+    - x64_windows_build_nightly
+    - x64_windows_set_nightly_env
+  rules:
+    - if: $CI_PIPELINE_SOURCE == 'schedule'
+x64_windows_sign_release:
+  extends: .x64_windows_sign
+  needs:
+    - x64_windows_build_release
+    - x64_windows_set_release_env
+  rules:
+    - if: $CI_COMMIT_TAG
 
 # build javadoc
 build_javadoc:
@@ -37,7 +41,7 @@ build_javadoc:
   tags: [x86_64-linux-gnu, docker, scilab]
   image: docker.io/openjdk:8-jdk-alpine
   variables:
-      GIT_CLEAN_FLAGS: none
+    GIT_CLEAN_FLAGS: none
   dependencies: []
   script:
     - MASK="scilab/modules/*/src/java/";
@@ -55,14 +59,13 @@ build_javadoc:
       - public
   when: manual
 
-
 # build Doxygen
 build_doxygen:
   stage: postbuild
   tags: [x86_64-linux-gnu, docker, scilab]
   image: docker.io/tsgkadot/docker-doxygen
   variables:
-      GIT_CLEAN_FLAGS: none
+    GIT_CLEAN_FLAGS: none
   dependencies: []
   script:
     - cd scilab
@@ -75,13 +78,12 @@ build_doxygen:
       - public
   when: manual
 
-
 # build preview of help.scilab.org
 build_help_web:
   stage: postbuild
   tags: [x86_64-linux-gnu, docker, scilab]
   variables:
-      GIT_CLEAN_FLAGS: none
+    GIT_CLEAN_FLAGS: none
   dependencies: []
   script:
     - cd scilab
@@ -93,21 +95,15 @@ build_help_web:
       - public
   when: manual
 
-
 # extract jar content to web
 publish_help_jar:
   stage: postbuild
   tags: [x86_64-linux-gnu, docker, scilab]
   variables:
-      GIT_STRATEGY: none
+    GIT_STRATEGY: none
   dependencies: []
   needs:
     - job: x86_64-linux-gnu_build_branch
-      optional: true
-    - job: x86_64-linux-gnu_build_nightly
-      optional: true
-    - job: x86_64-linux-gnu_set_branch_env
-      optional: true
   script:
     - echo "help from ${SCI_VERSION_STRING} ${ARCH}"
     - "[ ! -d public ] && mkdir public"
@@ -121,6 +117,8 @@ publish_help_jar:
     - jar xf scilab_images.jar -d images/
     - rm scilab_images.jar
     - sed -i -e "s#jarsci:./#../images/#g" */*.html
+  rules:
+    - if: $CI_PIPELINE_SOURCE == 'merge_request_event'
   artifacts:
     paths:
       - public

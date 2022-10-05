@@ -2,12 +2,11 @@
 # Copyright (C) Dassault Systemes - 2022 - Clement DAVID
 #
 #
-# This YAML file describe the prebuild stage of the CI. This stage is used to 
+# This YAML file describe the prebuild stage of the CI. This stage is used to
 # cleanup runners and set them ready to build.
 #
 
-
-# create docker images for builders 
+# create docker images for builders
 create_docker_image:
   stage: prebuild
   image: docker:20.10.16
@@ -17,23 +16,22 @@ create_docker_image:
     - docker login -u $CI_REGISTRY_USER -p $CI_JOB_TOKEN $CI_REGISTRY
     - docker build -t $CI_REGISTRY/$CI_PROJECT_PATH/linux-builder:latest - <.gitlab-ci/Dockerfile.linux
     - docker push $CI_REGISTRY/$CI_PROJECT_PATH/linux-builder
-# Docker windows not supported yet
-#  - docker build -t $CI_REGISTRY/$CI_PROJECT_PATH/windows-runner:$CI_COMMIT_REF_SLUG - < .gitlab-ci/Dockerfile.windows
-#  - docker push $CI_REGISTRY/$CI_PROJECT_PATH/windows-runner
+  # Docker windows not supported yet
+  #  - docker build -t $CI_REGISTRY/$CI_PROJECT_PATH/windows-runner:$CI_COMMIT_REF_SLUG - < .gitlab-ci/Dockerfile.windows
+  #  - docker push $CI_REGISTRY/$CI_PROJECT_PATH/windows-runner
   rules:
-    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+    - if: $CI_PIPELINE_SOURCE == 'merge_request_event'
       changes:
         - .gitlab-ci/Dockerfile*
-  # update on-demand
+  # update on-demand as it will override "latest" images
   when: manual
-
 
 # cleanup old builds from runners
 x86_64-linux-gnu_cleanup_builds:
   stage: prebuild
   tags: [x86_64-linux-gnu, docker, scilab]
   variables:
-      GIT_STRATEGY: none
+    GIT_STRATEGY: none
   script:
     - set -e -x
     # Remove any previous tarball
@@ -51,13 +49,12 @@ x86_64-linux-gnu_cleanup_builds:
         [ -w "$i" ] && rm -rf "$i";
       done
 
-
 # cleanup old builds from runners
 x64_windows_cleanup_builds:
   stage: prebuild
   tags: [x64_windows, scilab]
   variables:
-      GIT_STRATEGY: none
+    GIT_STRATEGY: none
   script:
     # Remove any previous installer
     - del /f /q /s scilab-*.exe |cmd /c ""
@@ -71,10 +68,11 @@ x64_windows_cleanup_builds:
   stage: prebuild
   tags: [x86_64-linux-gnu, docker, scilab]
   variables:
-      GIT_STRATEGY: none
+    GIT_STRATEGY: none
   script:
     - set -e
     - set -x
+    - echo $CI_COMMIT_TAG
     - echo $CI_COMMIT_BRANCH
     - echo $CI_MERGE_REQUEST_TARGET_BRANCH_NAME
     # get current build machine architecture
@@ -89,32 +87,40 @@ x64_windows_cleanup_builds:
   artifacts:
     reports:
       dotenv: build.env
+# build a preview/branched version
+x86_64-linux-gnu_set_branch_env:
+  extends: .x86_64-linux-gnu_set_env
+  variables:
+    # use CI_MERGE_REQUEST_TARGET_BRANCH_NAME
+    SCI_VERSION_STRING: "scilab-branch-${CI_MERGE_REQUEST_TARGET_BRANCH_NAME}-${CI_COMMIT_SHORT_SHA}"
+  rules:
+    - if: $CI_PIPELINE_SOURCE == 'merge_request_event'
+# build a nightly version
+x86_64-linux-gnu_set_nightly_env:
+  extends: .x86_64-linux-gnu_set_env
+  variables:
+    # use CI_COMMIT_BRANCH
+    SCI_VERSION_STRING: "scilab-branch-${CI_COMMIT_BRANCH}-${CI_COMMIT_SHORT_SHA}"
+  rules:
+    - if: $CI_PIPELINE_SOURCE == 'schedule'
 # build a release version
 x86_64-linux-gnu_set_release_env:
   extends: .x86_64-linux-gnu_set_env
   variables:
-      SCI_VERSION_STRING: "scilab-${CI_COMMIT_TAG}"
+    SCI_VERSION_STRING: "scilab-${CI_COMMIT_TAG}"
   rules:
     - if: $CI_COMMIT_TAG
-# build an intermediate version
-x86_64-linux-gnu_set_branch_env:
-  extends: .x86_64-linux-gnu_set_env
-  variables:
-      # use either CI_COMMIT_BRANCH or CI_MERGE_REQUEST_TARGET_BRANCH_NAME 
-      SCI_VERSION_STRING: "scilab-branch-${CI_COMMIT_BRANCH}${CI_MERGE_REQUEST_TARGET_BRANCH_NAME}-${CI_COMMIT_SHORT_SHA}"
-  rules:
-    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
-    - if: $CI_COMMIT_REF_PROTECTED
 
 # define x64 windows env
 .x64_windows_set_env:
   stage: prebuild
   tags: [x64_windows, scilab]
   variables:
-      GIT_STRATEGY: none
-      ARCH: x64
+    GIT_STRATEGY: none
+    ARCH: x64
   script:
     - echo on
+    - echo %CI_COMMIT_TAG%
     - echo %CI_COMMIT_BRANCH%
     - echo %CI_MERGE_REQUEST_TARGET_BRANCH_NAME%
     - |
@@ -128,31 +134,35 @@ x86_64-linux-gnu_set_branch_env:
   artifacts:
     reports:
       dotenv: build.env
+# build a preview/branched version
+x64_windows_set_branch_env:
+  extends: .x64_windows_set_env
+  variables:
+    # use CI_MERGE_REQUEST_TARGET_BRANCH_NAME for the name
+    SCI_VERSION_STRING: "scilab-branch-${CI_MERGE_REQUEST_TARGET_BRANCH_NAME}-${CI_COMMIT_SHORT_SHA}"
+  rules:
+    - if: $CI_PIPELINE_SOURCE == 'merge_request_event'
+# build a nightly version
+x64_windows_set_nightly_env:
+  extends: .x64_windows_set_env
+  variables:
+    SCI_VERSION_STRING: "scilab-branch-${CI_COMMIT_BRANCH}-${CI_COMMIT_SHORT_SHA}"
+  rules:
+    - if: $CI_PIPELINE_SOURCE == 'schedule'
 # build a release version
 x64_windows_set_release_env:
   extends: .x64_windows_set_env
   variables:
-      SCI_VERSION_STRING: "scilab-${CI_COMMIT_TAG}"
+    SCI_VERSION_STRING: "scilab-${CI_COMMIT_TAG}"
   rules:
     - if: $CI_COMMIT_TAG
-# build an intermediate version
-x64_windows_set_branch_env:
-  extends: .x64_windows_set_env
-  variables:
-      # use either CI_COMMIT_BRANCH or CI_MERGE_REQUEST_TARGET_BRANCH_NAME 
-      SCI_VERSION_STRING: "scilab-branch-${CI_COMMIT_BRANCH}${CI_MERGE_REQUEST_TARGET_BRANCH_NAME}-${CI_COMMIT_SHORT_SHA}"
-  rules:
-    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
-    - if: $CI_COMMIT_REF_PROTECTED
-
-
 
 # manual clean
 .git_clean:
   stage: prebuild
   tags: [scilab]
   variables:
-      GIT_CLEAN_FLAGS: -fxd
+    GIT_CLEAN_FLAGS: -fxd
   script: echo "git clean succeeded"
   when:
     - manual
@@ -181,14 +191,13 @@ contains_changes_modification:
   stage: prebuild
   tags: [x86_64-linux-gnu]
   variables:
-      GIT_STRATEGY: none
-      GIT_CLEAN_FLAGS: none
+    GIT_STRATEGY: none
+    GIT_CLEAN_FLAGS: none
   script:
     - id
     - env
   rules:
-    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
-    - if: $CI_COMMIT_REF_PROTECTED
+    - if: $CI_PIPELINE_SOURCE == 'merge_request_event'
     - changes:
-      - scilab/CHANGES.md
+        - scilab/CHANGES.md
   allow_failure: true
