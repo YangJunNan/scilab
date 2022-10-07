@@ -39,3 +39,5 @@ RUN ln -s /usr/bin/ccache /usr/local/bin/gcc-8 && \
 ENV CC=gcc-8
 ENV CXX=g++-8
 ENV F77=gfortran-8
+
+#USER scilab
