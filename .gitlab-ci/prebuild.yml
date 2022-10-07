@@ -18,9 +18,11 @@ create_docker_image:
   # Docker windows not supported yet
   #  - docker build -t $CI_REGISTRY/$CI_PROJECT_PATH/windows-runner:$CI_COMMIT_REF_SLUG - < .gitlab-ci/Dockerfile.windows
   #  - docker push $CI_REGISTRY/$CI_PROJECT_PATH/windows-runner
-  only:
-    changes:
-      - .gitlab-ci/Dockerfile*
+  # only:
+  #   changes:
+  #     - .gitlab-ci/Dockerfile*
+  # update on-demand as it will override "latest" images
+  when: manual
 
 # cleanup old builds from runners
 x86_64-linux-gnu_cleanup_builds:
