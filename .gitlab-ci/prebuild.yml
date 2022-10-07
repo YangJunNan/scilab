@@ -8,7 +8,7 @@
 
 # create docker images for builders
 create_docker_image:
-  stage: prebuild
+  stage: .pre
   image: docker:20.10.16
   tags: [x86_64-linux-gnu, docker, scilab]
   script:
@@ -21,8 +21,6 @@ create_docker_image:
   only:
     changes:
       - .gitlab-ci/Dockerfile*
-  # update on-demand as it will override "latest" images
-  when: manual
 
 # cleanup old builds from runners
 x86_64-linux-gnu_cleanup_builds:
