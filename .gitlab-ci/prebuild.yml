@@ -8,7 +8,7 @@
 
 # create docker images for builders
 .create_docker_image:
-  stage: .pre
+  stage: prebuild
   image: docker:20.10.16
 
 create_docker_image_linux:
