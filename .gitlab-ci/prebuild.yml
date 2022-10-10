@@ -23,9 +23,9 @@ create_docker_image_linux:
       - changes
     changes:
       - .gitlab-ci/Dockerfile.linux
-  # except schedules pipeline: nightly build
-  except:
-    - schedules
+  # # except schedules pipeline: nightly build
+  # except:
+  #   - schedules
 
 # cleanup old builds from runners
 x86_64-linux-gnu_cleanup_builds:
