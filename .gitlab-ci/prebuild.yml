@@ -18,12 +18,11 @@ create_docker_image_linux:
     - docker login -u $CI_REGISTRY_USER -p $CI_JOB_TOKEN $CI_REGISTRY
     - docker build -t $CI_REGISTRY_IMAGE/linux-builder:latest - <.gitlab-ci/Dockerfile.linux
     - docker push $CI_REGISTRY_IMAGE/linux-builder
-  # Docker windows not supported yet
-  #  - docker build -t $CI_REGISTRY/$CI_PROJECT_PATH/windows-runner:$CI_COMMIT_REF_SLUG - < .gitlab-ci/Dockerfile.windows
-  #  - docker push $CI_REGISTRY/$CI_PROJECT_PATH/windows-runner
-  rules:
-    - changes:
-        - .gitlab-ci/Dockerfile.linux
+  only:
+    refs:
+      - merge_requests
+    changes:
+      - .gitlab-ci/Dockerfile.linux
 
 # cleanup old builds from runners
 x86_64-linux-gnu_cleanup_builds:
