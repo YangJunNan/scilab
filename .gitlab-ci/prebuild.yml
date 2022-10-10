@@ -19,6 +19,8 @@ create_docker_image_linux:
     - docker build -t $CI_REGISTRY_IMAGE/linux-builder:latest - <.gitlab-ci/Dockerfile.linux
     - docker push $CI_REGISTRY_IMAGE/linux-builder
   only:
+    refs:
+      - merge_requests
     changes:
       - .gitlab-ci/Dockerfile.linux
 
