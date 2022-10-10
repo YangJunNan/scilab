@@ -11,7 +11,6 @@
 #define __COLPACK_GW_HXX__
 
 #include "cpp_gateway_prototype.hxx"
-
 #include "dynlib_colpack_gw.h"
 
 CPP_OPT_GATEWAY_PROTOTYPE_EXPORT(sci_spCompJacobian, COLPACK_GW_IMPEXP);

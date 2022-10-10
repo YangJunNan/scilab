@@ -528,14 +528,15 @@ int XmlModule::Load()
 
 int ColpackModule::Load()
 {
-    const std::wstring wstModuleName = L"colpack";
-    const wchar_t*  wstLibName = wstModuleName.c_str();
+    std::wstring wstPath = L"colpack";
 #ifdef _MSC_VER
-    wchar_t* pwstLibName = buildModuleDynLibraryNameW(wstLibName, DYNLIB_NAME_FORMAT_2);
+    std::wstring wstModuleName = L"colpack_gw";
+    wchar_t* pwstLibName = buildModuleDynLibraryNameW(wstModuleName.c_str(), DYNLIB_NAME_FORMAT_1);
 #else
-    wchar_t* pwstLibName = buildModuleDynLibraryNameW(wstLibName, DYNLIB_NAME_FORMAT_3);
+    std::wstring wstModuleName = L"colpack";
+    wchar_t* pwstLibName = buildModuleDynLibraryNameW(wstModuleName.c_str(), DYNLIB_NAME_FORMAT_3);
 #endif
-    vectGateway vect = loadGatewaysName(wstModuleName);
+    vectGateway vect = loadGatewaysName(wstPath);
 
     for (int i = 0 ; i < (int)vect.size() ; i++)
     {

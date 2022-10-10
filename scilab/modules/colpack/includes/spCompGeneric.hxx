@@ -10,15 +10,12 @@
 #ifndef __SPCOMPGENERIC_HXX__
 #define __SPCOMPGENERIC_HXX__
 
+#include <map>
+
 #include "dynlib_colpack.h"
 #include "function.hxx"
 #include "double.hxx"
-#include "struct.hxx"
 #include "sparse.hxx"
-#include <Eigen/Sparse>
-#include "string.hxx"
-#include "configvariable.hxx"
-#include "commentexp.hxx"
 
 extern "C"
 {

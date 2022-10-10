@@ -74,7 +74,7 @@ types::Function::ReturnValue sci_spCompJacobian(types::typed_list &in, types::op
     vector<int> viColors;
     spcjEngine->getColumnColors(viColors);
 
-    types::Double *pDblCol = new types::Double(viColors.size(),1);
+    types::Double *pDblCol = new types::Double((int)viColors.size(),1);
     for (int i=0; i<pDblCol->getSize(); i++)
     {
         pDblCol->set(i,1+viColors[i]);

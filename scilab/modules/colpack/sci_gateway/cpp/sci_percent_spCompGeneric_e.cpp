@@ -25,7 +25,6 @@ extern "C"
 types::Function::ReturnValue sci_percent_spCompGeneric_e(types::typed_list &in, int _iRetCount, types::typed_list &out)
 {
     spCompGeneric *spgEngine = NULL;
-    char errorMsg[256];
 
     if (in.size() >= 2)
     {
