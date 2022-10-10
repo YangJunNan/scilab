@@ -19,8 +19,8 @@ create_docker_image_linux:
     - docker build -t $CI_REGISTRY_IMAGE/linux-builder:latest - <.gitlab-ci/Dockerfile.linux
     - docker push $CI_REGISTRY_IMAGE/linux-builder
   rules:
-    if: $CI_PIPELINE_SOURCE == 'merge_request_event'
-    changes:
+    - if: $CI_PIPELINE_SOURCE == 'merge_request_event'
+      changes:
       - .gitlab-ci/Dockerfile.linux
   # # except schedules pipeline: nightly build
   # except:
