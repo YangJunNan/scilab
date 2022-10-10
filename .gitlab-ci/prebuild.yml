@@ -20,9 +20,11 @@ create_docker_image_linux:
     - docker push $CI_REGISTRY_IMAGE/linux-builder
   only:
     refs:
-      - merge_requests
+      - changes
     changes:
       - .gitlab-ci/Dockerfile.linux
+  # except schedules pipeline: nightly build
+  except: schedules
 
 # cleanup old builds from runners
 x86_64-linux-gnu_cleanup_builds:
