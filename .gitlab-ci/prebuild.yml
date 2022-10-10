@@ -7,9 +7,12 @@
 #
 
 # create docker images for builders
-create_docker_image:
+.create_docker_image:
   stage: .pre
   image: docker:20.10.16
+
+create_docker_image_linux:
+  extends: .create_docker_image
   tags: [x86_64-linux-gnu, docker, scilab]
   script:
     - docker login -u $CI_REGISTRY_USER -p $CI_JOB_TOKEN $CI_REGISTRY
@@ -18,9 +21,9 @@ create_docker_image:
   # Docker windows not supported yet
   #  - docker build -t $CI_REGISTRY/$CI_PROJECT_PATH/windows-runner:$CI_COMMIT_REF_SLUG - < .gitlab-ci/Dockerfile.windows
   #  - docker push $CI_REGISTRY/$CI_PROJECT_PATH/windows-runner
-  rules:
+  only:
     changes:
-      - .gitlab-ci/Dockerfile*
+      - .gitlab-ci/Dockerfile.linux
   # update on-demand as it will override "latest" images
   # when: manual
 
