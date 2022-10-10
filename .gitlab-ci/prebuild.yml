@@ -24,8 +24,6 @@ create_docker_image_linux:
   rules:
     - changes:
         - .gitlab-ci/Dockerfile.linux
-  # update on-demand as it will override "latest" images
-  # when: manual
 
 # cleanup old builds from runners
 x86_64-linux-gnu_cleanup_builds:
