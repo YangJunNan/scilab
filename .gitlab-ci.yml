@@ -20,9 +20,6 @@ workflow:
     - if: $CI_COMMIT_REF_PROTECTED
     - if: $CI_COMMIT_TAG
 
-# configure docker default image
-image: $CI_REGISTRY_IMAGE/linux-builder:latest
-
 default:
   artifacts:
     expire_in: 1 day
@@ -40,9 +37,9 @@ include:
   - local: .gitlab-ci/prebuild.yml
   # build
   - local: .gitlab-ci/build.yml
-  # execute tests
-  - local: .gitlab-ci/test.yml
-  # sign and extract useful content
-  - local: .gitlab-ci/postbuild.yml
-  # deploy/publish a binary
-  - local: .gitlab-ci/publish.yml
+  # # execute tests
+  # - local: .gitlab-ci/test.yml
+  # # sign and extract useful content
+  # - local: .gitlab-ci/postbuild.yml
+  # # deploy/publish a binary
+  # - local: .gitlab-ci/publish.yml

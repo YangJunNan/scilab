@@ -24,8 +24,29 @@ create_docker_image_linux:
         paths:
           - .gitlab-ci/Dockerfile.linux
 
+create_docker_image_windows:
+  extends: .create_docker_image
+  tags: [x64_windows, docker, scilab]
+  script:
+    - docker login -u $CI_REGISTRY_USER -p $CI_JOB_TOKEN $CI_REGISTRY
+    - docker build -t $CI_REGISTRY_IMAGE/windows-builder:latest - <.gitlab-ci/Dockerfile.windows
+    - docker push $CI_REGISTRY_IMAGE/windows-builder
+  rules:
+    - if: $CI_PIPELINE_SOURCE == 'merge_request_event'
+      changes:
+        paths:
+          - .gitlab-ci/Dockerfile.windows
+
+# Use Linux docker image
+.docker-image-linux:
+  image: $CI_REGISTRY_IMAGE/linux-builder:latest
+
+.docker-image-windows:
+  image: $CI_REGISTRY_IMAGE/windows-builder:latest
+
 # cleanup old builds from runners
 x86_64-linux-gnu_cleanup_builds:
+  extends: .docker-image-linux
   stage: prebuild
   tags: [x86_64-linux-gnu, docker, scilab]
   variables:
@@ -49,8 +70,9 @@ x86_64-linux-gnu_cleanup_builds:
 
 # cleanup old builds from runners
 x64_windows_cleanup_builds:
+  extends: .docker-image-windows
   stage: prebuild
-  tags: [x64_windows, scilab]
+  tags: [x64_windows, docker, scilab]
   variables:
     GIT_STRATEGY: none
   script:
@@ -63,6 +85,7 @@ x64_windows_cleanup_builds:
 
 # define x86_64-linux-gnu env variables
 .x86_64-linux-gnu_set_env:
+  extends: .docker-image-linux
   stage: prebuild
   tags: [x86_64-linux-gnu, docker, scilab]
   variables:
@@ -111,8 +134,9 @@ x86_64-linux-gnu_set_release_env:
 
 # define x64 windows env
 .x64_windows_set_env:
+  extends: .docker-image-windows
   stage: prebuild
-  tags: [x64_windows, scilab]
+  tags: [x64_windows, docker, scilab]
   variables:
     GIT_STRATEGY: none
     ARCH: x64
@@ -173,6 +197,7 @@ x64_windows_clean:
 
 # patch, copy, modify files before building a release
 prepare_release_files:
+  extends: .docker-image-linux
   stage: prebuild
   tags: [x86_64-linux-gnu]
   rules:
@@ -186,6 +211,7 @@ prepare_release_files:
 
 # check MR has modified CHANGES.md
 contains_changes_modification:
+  extends: .docker-image-linux
   stage: prebuild
   tags: [x86_64-linux-gnu]
   variables:
