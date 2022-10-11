@@ -40,8 +40,5 @@ ENV CC=gcc-8
 ENV CXX=g++-8
 ENV F77=gfortran-8
 
-
-
-
 # start docker using scilab user
 # USER scilab

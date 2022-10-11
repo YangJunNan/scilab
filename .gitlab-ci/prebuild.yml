@@ -21,7 +21,7 @@ create_docker_image_linux:
   rules:
     - if: $CI_PIPELINE_SOURCE == 'merge_request_event'
       changes:
-      - .gitlab-ci/Dockerfile.linux
+        - .gitlab-ci/Dockerfile.linux
   # # except schedules pipeline: nightly build
   # except:
   #   - schedules
