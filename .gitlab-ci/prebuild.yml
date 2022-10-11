@@ -16,7 +16,7 @@ create_docker_image_linux:
   tags: [x86_64-linux-gnu, docker, scilab]
   script:
     - docker login -u $CI_REGISTRY_USER -p $CI_JOB_TOKEN $CI_REGISTRY
-    - docker build --file .gitlab-ci/Dockerfile.linux -t $CI_REGISTRY_IMAGE/linux-builder:latest
+    - docker build --file .gitlab-ci/Dockerfile.linux -t $CI_REGISTRY_IMAGE/linux-builder:latest .
     - docker push $CI_REGISTRY_IMAGE/linux-builder
   rules:
     - if: $CI_PIPELINE_SOURCE == 'merge_request_event'
@@ -29,7 +29,7 @@ create_docker_image_windows:
   tags: [x64_windows, shell, scilab]
   script:
     - docker login -u $CI_REGISTRY_USER -p $CI_JOB_TOKEN $CI_REGISTRY
-    - docker build --memory 4GB --file .gitlab-ci/Dockerfile.windows -t $CI_REGISTRY_IMAGE/windows-builder:latest
+    - docker build --memory 4GB --file .gitlab-ci/Dockerfile.windows -t $CI_REGISTRY_IMAGE/windows-builder:latest .
     - docker push $CI_REGISTRY_IMAGE/windows-builder
   rules:
     - if: $CI_PIPELINE_SOURCE == 'merge_request_event'
