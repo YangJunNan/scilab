@@ -21,6 +21,7 @@ create_docker_image_linux:
     - echo $CI_MERGE_REQUEST_SOURCE_PROJECT_PATH
     - echo $CI_MERGE_REQUEST_SOURCE_PROJECT_URL
     - echo $CI_MERGE_REQUEST_REF_PATH
+    - echo $CI_COMMIT_BEFORE_SHA
 
     # - docker login -u $CI_REGISTRY_USER -p $CI_JOB_TOKEN $CI_REGISTRY
     # - docker build -t $CI_REGISTRY_IMAGE/linux-builder:latest - <.gitlab-ci/Dockerfile.linux
@@ -30,7 +31,7 @@ create_docker_image_linux:
       changes:
         paths:
           - .gitlab-ci/Dockerfile.linux
-        # compare_to: $CI_MERGE_REQUEST_REF_PATH
+        compare_to: $CI_COMMIT_BEFORE_SHA
     - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
 
 # cleanup old builds from runners
