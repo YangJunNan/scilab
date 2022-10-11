@@ -30,6 +30,8 @@ create_docker_image_linux:
       changes:
         paths:
           - .gitlab-ci/Dockerfile.linux
+        # compare_to: $CI_MERGE_REQUEST_REF_PATH
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
 
 # cleanup old builds from runners
 x86_64-linux-gnu_cleanup_builds:
