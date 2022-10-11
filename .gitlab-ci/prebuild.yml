@@ -26,7 +26,7 @@ create_docker_image_linux:
 
 create_docker_image_windows:
   extends: .create_docker_image
-  tags: [x64_windows, docker, scilab]
+  tags: [x64_windows, shell, scilab]
   script:
     - docker login -u $CI_REGISTRY_USER -p $CI_JOB_TOKEN $CI_REGISTRY
     - docker build -t $CI_REGISTRY_IMAGE/windows-builder:latest - <.gitlab-ci/Dockerfile.windows
