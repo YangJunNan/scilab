@@ -29,3 +29,7 @@ Source: modules\{#COLPACK}\macros\*.sci; DestDir: {app}\modules\{#COLPACK}\macro
 Source: modules\{#COLPACK}\macros\*.bin; DestDir: {app}\modules\{#COLPACK}\macros; Components: {#COMPN_SCILAB}
 
 Source: modules\{#COLPACK}\demos\*.*; DestDir: {app}\modules\{#COLPACK}\demos; Flags: recursesubdirs;  Components: {#COMPN_SCILAB}
+
+Source: modules\{#COLPACK}\tests\*.*; DestDir: {app}\modules\{#COLPACK}\tests; Flags: recursesubdirs;  Components: {#COMPN_SCILAB}
+
+
