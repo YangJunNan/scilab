@@ -399,7 +399,13 @@ bool spCompGeneric::setComputeParameters(types::typed_list& in, types::optional_
     }
 
     //allocate vectors
-    m_pdblStep = new double[m_iNbVars];
+    m_pdblStep = new double[std::max(m_iNbVars,m_iNbRows)];
+    if (m_iNbRows > m_iNbVars)
+    {
+        // eventual extra terms (ones) in m_pdblStep are used only to allow the same row/col rescaling
+        // after ColPack recovery for Hessian or Jacobian
+        std::fill(m_pdblStep+m_iNbVars,m_pdblStep+m_iNbRows,1.0);
+    }
     m_pdblValues = new double[m_iNonZeros];
 
     setPattern(in[1]);
@@ -683,8 +689,9 @@ bool spCompGeneric::computeDerivatives(types::typed_list& in)
     } // if (m_bVectorized)
 
     // Computing the derivative approximations (rescaling is done after jacobian recovery)
-    // We post mutiply by m_pdblStep[i] in order to finaly recover the symmetric matrix D*f'(x)*D
-    // which is a must for the Hessian case
+    // We post mutiply by m_pdblStep[i] in order to finaly recover a symmetric matrix diag(m_pdblStep)*f'(x)*diag(m_pdblStep) in the Hessian case
+    // In the Jacobian case we recover diag(m_pdblStep[1...m_iNbRows])*f'(x)*diag(m_pdblStep[1...m_iNbVars])
+    // The rescaling is done the same way in both cases. 
 
     if (m_scheme == CENTERED)
     {
