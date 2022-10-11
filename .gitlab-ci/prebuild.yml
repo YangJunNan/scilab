@@ -32,7 +32,7 @@ create_docker_image_linux:
         paths:
           - .gitlab-ci/Dockerfile.linux
         compare_to: $CI_COMMIT_BEFORE_SHA
-    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+    # - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
 
 # cleanup old builds from runners
 x86_64-linux-gnu_cleanup_builds:
