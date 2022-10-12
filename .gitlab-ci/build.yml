@@ -47,47 +47,46 @@ x64_windows_build_release:
     - prepare_release_files
   rules:
     - if: $CI_COMMIT_TAG
-
-# build scilab using a linux runner
-.x86_64-linux-gnu_build:
-  stage: build
-  needs:
-    - x86_64-linux-gnu_cleanup_builds
-  tags: [x86_64-linux-gnu, docker, scilab]
-  script: bash -x -e .gitlab-ci/build.sh
-  artifacts:
-    paths:
-      - log*.txt
-      - scilab/modules/core/includes/version.h
-      - "$SCI_VERSION_STRING.bin.$ARCH.tar.xz"
-    when: always
-# build an preview/branched version
-x86_64-linux-gnu_build_branch:
-  extends: .x86_64-linux-gnu_build
-  variables:
-    GIT_CLEAN_FLAGS: none
-  needs:
-    - x86_64-linux-gnu_set_branch_env
-    - contains_changes_modification
-  rules:
-    - if: $CI_PIPELINE_SOURCE == 'merge_request_event'
-# build a nightly
-x86_64-linux-gnu_build_nightly:
-  extends: .x86_64-linux-gnu_build
-  variables:
-    GIT_CLEAN_FLAGS: -ffxd
-  needs:
-    - x86_64-linux-gnu_clean
-    - x86_64-linux-gnu_set_branch_env
-  rules:
-    - if: $CI_PIPELINE_SOURCE == 'schedule'
-# build a release
-x86_64-linux-gnu_build_release:
-  extends: .x86_64-linux-gnu_build
-  variables:
-    GIT_CLEAN_FLAGS: -ffxd
-  needs:
-    - x86_64-linux-gnu_set_release_env
-    - prepare_release_files
-  rules:
-    - if: $CI_COMMIT_TAG
+# # build scilab using a linux runner
+# .x86_64-linux-gnu_build:
+#   stage: build
+#   needs:
+#     - x86_64-linux-gnu_cleanup_builds
+#   tags: [x86_64-linux-gnu, docker, scilab]
+#   script: bash -x -e .gitlab-ci/build.sh
+#   artifacts:
+#     paths:
+#       - log*.txt
+#       - scilab/modules/core/includes/version.h
+#       - "$SCI_VERSION_STRING.bin.$ARCH.tar.xz"
+#     when: always
+# # build an preview/branched version
+# x86_64-linux-gnu_build_branch:
+#   extends: .x86_64-linux-gnu_build
+#   variables:
+#     GIT_CLEAN_FLAGS: none
+#   needs:
+#     - x86_64-linux-gnu_set_branch_env
+#     - contains_changes_modification
+#   rules:
+#     - if: $CI_PIPELINE_SOURCE == 'merge_request_event'
+# # build a nightly
+# x86_64-linux-gnu_build_nightly:
+#   extends: .x86_64-linux-gnu_build
+#   variables:
+#     GIT_CLEAN_FLAGS: -ffxd
+#   needs:
+#     - x86_64-linux-gnu_clean
+#     - x86_64-linux-gnu_set_branch_env
+#   rules:
+#     - if: $CI_PIPELINE_SOURCE == 'schedule'
+# # build a release
+# x86_64-linux-gnu_build_release:
+#   extends: .x86_64-linux-gnu_build
+#   variables:
+#     GIT_CLEAN_FLAGS: -ffxd
+#   needs:
+#     - x86_64-linux-gnu_set_release_env
+#     - prepare_release_files
+#   rules:
+#     - if: $CI_COMMIT_TAG

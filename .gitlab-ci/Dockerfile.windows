@@ -27,6 +27,9 @@ RUN (start /w vs_buildtools.exe --quiet --wait --norestart --nocache `
 # Cleanup
 RUN del /q vs_buildtools.exe
 
+RUN curl -SL --output Tortoise.msi https://osdn.net/frs/redir.php?m=rwthaachen&f=%2Fstorage%2Fg%2Ft%2Fto%2Ftortoisesvn%2F1.14.5%2FApplication%2FTortoiseSVN-1.14.5.29465-x64-svn-1.14.2.msi
+RUN msiexec.exe /i Tortoise.msi /qn /norestart
+
 # Install Intel oneAPI HPC
 #RUN start /w w_HPCKit.exe --action install --eula accept --silent --components intel.oneapi.win.ifort-compiler
 
