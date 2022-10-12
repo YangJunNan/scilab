@@ -11,7 +11,7 @@ RUN curl -SL --output vs_buildtools.exe https://aka.ms/vs/15/release/vs_buildtoo
 RUN curl -SL --output w_HPCKit.exe https://registrationcenter-download.intel.com/akdlm/IRC_NAS/18680/w_HPCKit_p_2022.2.0.173_offline.exe
 
 # Download and install pwsh
-RUN curl -SL --output w_HPCKit.exe https://github.com/PowerShell/PowerShell/releases/download/v7.1.0/PowerShell-7.1.0-win-x64.msi
+RUN curl -SL --output PowerShell-7.0.3-win-x64.msi https://github.com/PowerShell/PowerShell/releases/download/v7.1.0/PowerShell-7.1.0-win-x64.msi
 RUN msiexec.exe /package PowerShell-7.0.3-win-x64.msi /quiet REGISTER_MANIFEST=1
 
 # Install Build Tools with the C++ workload.
