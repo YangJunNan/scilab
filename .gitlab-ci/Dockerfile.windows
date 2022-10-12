@@ -27,8 +27,9 @@ RUN (start /w vs_buildtools.exe --quiet --wait --norestart --nocache `
 # Cleanup
 RUN del /q vs_buildtools.exe
 
-RUN curl -SL --output Tortoise.msi https://ftp.halifax.rwth-aachen.de/osdn/storage/g/t/to/tortoisesvn/1.14.5/Application/TortoiseSVN-1.14.5.29465-x64-svn-1.14.2.msi
-RUN msiexec.exe /package Tortoise.msi /quiet REGISTER_MANIFEST=1
+RUN curl -SL --output TortoiseSVN.msi https://ftp.halifax.rwth-aachen.de/osdn/storage/g/t/to/tortoisesvn/1.14.5/Application/TortoiseSVN-1.14.5.29465-x64-svn-1.14.2.msi
+RUN Msiexec /i "TortoiseSVN.msi" /qn ADDLOCAL="F_OVL,DefaultFeature,MoreIcons,CLI,CrashReporter,UDiffAssoc,DictionaryENGB,DictionaryENUS"
+
 
 # Install Intel oneAPI HPC
 #RUN start /w w_HPCKit.exe --action install --eula accept --silent --components intel.oneapi.win.ifort-compiler
