@@ -16,7 +16,7 @@
   tags: [x64_windows, scilab]
   variables:
     GIT_CLEAN_FLAGS: none
-  script: call .gitlab-ci\build.bat
+  script: Start-Process .gitlab-ci\build.bat
   artifacts:
     paths:
       - log*.txt
