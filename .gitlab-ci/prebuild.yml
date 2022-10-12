@@ -135,23 +135,17 @@ x86_64-linux-gnu_set_release_env:
     GIT_STRATEGY: none
     ARCH: x64
   script:
-    - ls C:\builds\scilab\
-    - ls C:\builds\scilab\scilab
-    - echo on
     - echo $env:CI_COMMIT_TAG
     - echo $env:CI_COMMIT_BRANCH
     - echo $env:CI_MERGE_REQUEST_TARGET_BRANCH_NAME
-    # - |
-    #   "C:\Program Files\ds_shell\code\bin\ds_shell\date.exe" +"%%s" > timestamp
-    #   set /p NOW=<timestamp
-    # export
     - |
-      echo ARCH=$env:ARCH                             >build.env
-      echo SCI_VERSION_STRING=$env:SCI_VERSION_STRING >>build.env
-      # echo SCI_VERSION_TIMESTAMP=$env:NOW             >>build.env
+      [System.Environment]::SetEnvironmentVariable('NOW', [int](Get-Date(Get-Date).ToUniversalTime() -uformat '%s'))
+    - Add-Content -Path build.env -Value "ARCH=$env:ARCH"
+    - Add-Content -Path build.env -Value "SCI_VERSION_STRING=$env:SCI_VERSION_STRING"
+    - Add-Content -Path build.env -Value "SCI_VERSION_TIMESTAMP=$env:NOW"
   artifacts:
     reports:
-      dotenv: build.env
+      dotenv: build.ps1
 # build a preview/branched version
 x64_windows_set_branch_env:
   extends: .x64_windows_set_env
