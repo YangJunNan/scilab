@@ -34,9 +34,9 @@ RUN del /q vs_buildtools.exe
 #RUN del /q w_HPCKit.exe
 
 # Create Windows user in the container
-RUN net user /add scilab
+# RUN net user /add scilab
 # Set it for subsequent commands
-USER scilab
+# USER scilab
 
 # This entry point starts the developer command prompt and launches the PowerShell shell.
 ENTRYPOINT ["powershell.exe", "-NoLogo", "-ExecutionPolicy", "Bypass"]

@@ -42,8 +42,8 @@ variables:
 include:
   # updating files and runner states
   - local: .gitlab-ci/prebuild.yml
-  # build
-  - local: .gitlab-ci/build.yml
+  # # build
+  # - local: .gitlab-ci/build.yml
   # # execute tests
   # - local: .gitlab-ci/test.yml
   # # sign and extract useful content
