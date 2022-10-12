@@ -135,21 +135,22 @@ x86_64-linux-gnu_set_release_env:
     GIT_STRATEGY: none
     ARCH: x64
   script:
+    - mkdir C:\env
     - echo on
     - echo $env:CI_COMMIT_TAG
     - echo $env:CI_COMMIT_BRANCH
     - echo $env:CI_MERGE_REQUEST_TARGET_BRANCH_NAME
     - |
-      "C:\Program Files\ds_shell\code\bin\ds_shell\date.exe" +"%%s" >timestamp
-      set /p NOW=<timestamp
+      "C:\Program Files\ds_shell\code\bin\ds_shell\date.exe" +"%%s" > C:\env\timestamp
+      set /p NOW=<C:\env\TMP\timestamp
     # export
     - |
-      echo ARCH=$env:ARCH                             >$env:TMP\build.env
-      echo SCI_VERSION_STRING=$env:SCI_VERSION_STRING >>$env:TMP\build.env
-      echo SCI_VERSION_TIMESTAMP=$env:NOW             >>$env:TMP\build.env
+      echo ARCH=$env:ARCH                             >C:\env\build.env
+      echo SCI_VERSION_STRING=$env:SCI_VERSION_STRING >>C:\env\build.env
+      echo SCI_VERSION_TIMESTAMP=$env:NOW             >>C:\env\build.env
   artifacts:
     reports:
-      dotenv: $env:TMP\build.env
+      dotenv: C:\env\build.env
 # build a preview/branched version
 x64_windows_set_branch_env:
   extends: .x64_windows_set_env
