@@ -13,10 +13,10 @@
   stage: build
   needs:
     - x64_windows_cleanup_builds
-  tags: [x64_windows, scilab]
+  tags: [x64_windows, scilab, docker]
   variables:
     GIT_CLEAN_FLAGS: none
-  script: Start-Process .gitlab-ci\build.bat
+  script: Start-Process .gitlab-ci\build.bat -wait
   artifacts:
     paths:
       - log*.txt
