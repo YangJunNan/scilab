@@ -81,7 +81,7 @@ x64_windows_cleanup_builds:
     # Remove install dir older than 3 day
     - forfiles -p "." -m "scilab-*" -d -3 -c "cmd /c IF @isdir == TRUE rd /S /Q @path" |cmd /c ""
     # Remove TMPDIRs older than 1 day
-    - forfiles -p "%temp%" -m "SCI_TMP*" -d -1 -c "cmd /c IF @isdir == TRUE rd /S /Q @path" |cmd /c ""
+    - forfiles -p "$env:TMP" -m "SCI_TMP*" -d -1 -c "cmd /c IF @isdir == TRUE rd /S /Q @path" |cmd /c ""
 
 # define x86_64-linux-gnu env variables
 .x86_64-linux-gnu_set_env:
@@ -142,20 +142,20 @@ x86_64-linux-gnu_set_release_env:
     ARCH: x64
   script:
     - echo on
-    - echo %CI_COMMIT_TAG%
-    - echo %CI_COMMIT_BRANCH%
-    - echo %CI_MERGE_REQUEST_TARGET_BRANCH_NAME%
+    - echo $env:CI_COMMIT_TAG
+    - echo $env:CI_COMMIT_BRANCH
+    - echo $env:CI_MERGE_REQUEST_TARGET_BRANCH_NAME
     - |
       "C:\Program Files\ds_shell\code\bin\ds_shell\date.exe" +"%%s" >timestamp
       set /p NOW=<timestamp
     # export
     - |
-      echo ARCH=%ARCH%                              >build.env
-      echo SCI_VERSION_STRING=%SCI_VERSION_STRING% >>build.env
-      echo SCI_VERSION_TIMESTAMP=%NOW%             >>build.env
+      echo ARCH=$env:ARCH                             >$env:TMP\build.env
+      echo SCI_VERSION_STRING=$env:SCI_VERSION_STRING >>$env:TMP\build.env
+      echo SCI_VERSION_TIMESTAMP=$env:NOW             >>$env:TMP\build.env
   artifacts:
     reports:
-      dotenv: build.env
+      dotenv: $env:TMP\build.env
 # build a preview/branched version
 x64_windows_set_branch_env:
   extends: .x64_windows_set_env
