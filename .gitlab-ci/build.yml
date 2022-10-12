@@ -9,6 +9,7 @@
 
 # build scilab using a windows runner
 .x64_windows_build:
+  extends: .docker-image-windows
   stage: build
   needs:
     - x64_windows_cleanup_builds

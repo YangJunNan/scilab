@@ -38,13 +38,6 @@ create_docker_image_windows:
         paths:
           - .gitlab-ci/Dockerfile.windows
 
-# Use Linux docker image
-.docker-image-linux:
-  image: $CI_REGISTRY_IMAGE/linux-builder:latest
-
-.docker-image-windows:
-  image: $CI_REGISTRY_IMAGE/windows-builder:latest
-
 # cleanup old builds from runners
 x86_64-linux-gnu_cleanup_builds:
   extends: .docker-image-linux
