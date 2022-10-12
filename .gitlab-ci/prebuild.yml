@@ -145,7 +145,7 @@ x86_64-linux-gnu_set_release_env:
     - Add-Content -Path build.env -Value "SCI_VERSION_TIMESTAMP=$env:NOW"
   artifacts:
     reports:
-      dotenv: build.ps1
+      dotenv: build.env
 # build a preview/branched version
 x64_windows_set_branch_env:
   extends: .x64_windows_set_env
