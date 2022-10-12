@@ -16,7 +16,7 @@
   tags: [x64_windows, scilab, docker]
   variables:
     GIT_CLEAN_FLAGS: none
-  script: Start-Process .gitlab-ci\build.bat -Wait
+  script: Start-Process "cmd.exe" "/c .gitlab-ci\build.bat"
   artifacts:
     paths:
       - log*.txt
