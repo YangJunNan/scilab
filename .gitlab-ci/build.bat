@@ -44,7 +44,7 @@ sed -i ^
 
 REM build with Visual Studio and Intel compilers
 echo on
-msbuild.exe Scilab.sln /t:Build/p:Configuration=Release;Platform=x64 > ..\log.txt
+msbuild.exe Scilab.sln /t:Build/p:Configuration=Release;Platform=x64 > ..\log_build.txt
 REM if errorlevel 1 tail.exe --lines=100 ..\log.txt & exit 1
 devenv.com Scilab.sln /build "Release|x64" /project buildhelp >..\log_buildhelp.txt |cmd /c ""
 REM if errorlevel 1 tail.exe --lines=100 ..\log_buildhelp.txt & exit 1
