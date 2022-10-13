@@ -28,6 +28,7 @@ RUN curl -SL --output vs_buildtools.exe https://aka.ms/vs/15/release/vs_buildtoo
 RUN (start /w vs_buildtools.exe --quiet --wait --norestart --nocache `
     --add Microsoft.VisualStudio.Workload.VCTools `
     --add Microsoft.VisualStudio.Workload.MSBuildTools `
+	--add Microsoft.VisualStudio.Component.Windows81SDK `
     --remove Microsoft.VisualStudio.Component.Windows10SDK.10240 `
     --remove Microsoft.VisualStudio.Component.Windows10SDK.10586 `
     --remove Microsoft.VisualStudio.Component.Windows10SDK.14393 `
@@ -38,7 +39,7 @@ RUN del /q vs_buildtools.exe
 # Download and Install Intel oneAPI HPC
 RUN curl -SL --output w_HPCKit.exe https://registrationcenter-download.intel.com/akdlm/irc_nas/18857/w_HPCKit_p_2022.3.0.9564_offline.exe
 RUN start /b /wait w_HPCKit.exe -s -x -f oneapi_extracted --log extract.log
-RUN oneapi_extracted\bootstrapper.exe -s --action install --components=intel.oneapi.win.ifort-compiler --eula=accept -p=NEED_VS2022_INTEGRATION=0 -p=NEED_VS2019_INTEGRATION=0
+RUN oneapi_extracted\bootstrapper.exe -s --action install --components=intel.oneapi.win.ifort-compiler --eula=accept
 RUN del /q w_HPCKit.exe
 RUN rd /s/q oneapi_extracted
 
