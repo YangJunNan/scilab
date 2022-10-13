@@ -31,12 +31,18 @@ RUN del /q vs_buildtools.exe
 RUN curl -SL --output TortoiseSVN.msi https://ftp.halifax.rwth-aachen.de/osdn/storage/g/t/to/tortoisesvn/1.14.1/Application/TortoiseSVN-1.14.1.29085-x64-svn-1.14.1.msi
 RUN msiexec /i TortoiseSVN.msi ADDLOCAL=CLI
 
+RUN curl -SL --output OpenJDK.msi https://github.com/AdoptOpenJDK/openjdk8-binaries/releases/download/jdk8u292-b10/OpenJDK8U-jdk_x64_windows_hotspot_8u292b10.msi
+RUN msiexec /i OpenJDK.msi /q
+
+ADD https://unxutils.sourceforge.net/UnxUpdates.zip C:\unxutils\
+RUN tar -xf UnxUpdates.zip
+RUN set PATH=C:\unxutils\;%PATH%
 
 # Install Intel oneAPI HPC
 #RUN start /w w_HPCKit.exe --action install --eula accept --silent --components intel.oneapi.win.ifort-compiler
 
 # Cleanup
-#RUN del /q w_HPCKit.exe
+RUN del /q w_HPCKit.exe
 
 # Create Windows user in the container
 # RUN net user /add scilab

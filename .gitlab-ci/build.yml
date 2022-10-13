@@ -16,11 +16,10 @@
   tags: [x64_windows, scilab, docker]
   variables:
     GIT_CLEAN_FLAGS: none
-  script: Start-Process -FilePath ".gitlab-ci\build.bat" -Wait -RedirectStandardOutput log.txt -RedirectStandardError  error.txt
+  script: Start-Process -FilePath ".gitlab-ci\build.bat" -Wait -RedirectStandardOutput log.txt
   artifacts:
     paths:
       - log*.txt
-      - error.txt
       - scilab/modules/core/includes/version.h
       - "%SCI_VERSION_STRING%_%ARCH%.exe"
     when: always
