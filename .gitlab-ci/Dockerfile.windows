@@ -39,8 +39,8 @@ RUN (start /w vs_buildtools.exe --quiet --wait --norestart --nocache `
 RUN del /q vs_buildtools.exe
 
 # Install Intel oneAPI HPC
-RUN start /w w_HPCKit.exe --action install --eula accept --silent --components intel.oneapi.win.ifort-compiler
-RUN del /q w_HPCKit.exe
+# RUN start /w w_HPCKit.exe --action install --eula accept --silent --components intel.oneapi.win.ifort-compiler
+# RUN del /q w_HPCKit.exe
 
 # Create Windows user in the container
 # RUN net user /add scilab
