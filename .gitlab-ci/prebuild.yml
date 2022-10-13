@@ -20,43 +20,43 @@
 #         paths:
 #           - .gitlab-ci/Dockerfile.linux
 
-create_docker_image_windows:
-  stage: .pre
-  tags: [x64_windows, shell, scilab]
-  script:
-    - docker login -u $CI_REGISTRY_USER -p $CI_JOB_TOKEN $CI_REGISTRY
-    - docker build --memory 4GB --file .gitlab-ci/Dockerfile.windows -t $CI_REGISTRY_IMAGE/windows-builder:latest .
-    - docker push $CI_REGISTRY_IMAGE/windows-builder
-    - docker logout $CI_REGISTRY
-  rules:
-    - if: $CI_PIPELINE_SOURCE == 'merge_request_event'
-      changes:
-        paths:
-          - .gitlab-ci/Dockerfile.windows
+# create_docker_image_windows:
+#   stage: .pre
+#   tags: [x64_windows, shell, scilab]
+#   script:
+#     - docker login -u $CI_REGISTRY_USER -p $CI_JOB_TOKEN $CI_REGISTRY
+#     - docker build --memory 4GB --file .gitlab-ci/Dockerfile.windows -t $CI_REGISTRY_IMAGE/windows-builder:latest .
+#     - docker push $CI_REGISTRY_IMAGE/windows-builder
+#     - docker logout $CI_REGISTRY
+#   rules:
+#     - if: $CI_PIPELINE_SOURCE == 'merge_request_event'
+#       changes:
+#         paths:
+#           - .gitlab-ci/Dockerfile.windows
 
-# cleanup old builds from runners
-x86_64-linux-gnu_cleanup_builds:
-  extends: .docker-image-linux
-  stage: prebuild
-  tags: [x86_64-linux-gnu, docker, scilab]
-  variables:
-    GIT_STRATEGY: none
-  script:
-    - set -e -x
-    # Remove any previous tarball
-    - rm -fr scilab-*.tar.xz
-    # Remove install dir older than 3 days
-    - |
-      find . -maxdepth 1 -mtime +2 -name "scilab-*" -type d -print0 |\
-      while IFS= read -r -d '' i ; do
-        chmod -R +w "$i" && rm -rf "$i";
-      done
-    # Remove TMPDIRs older than 1 day
-    - |
-      find /tmp -maxdepth 1 -mtime +0 -name "SCI_TMP*" -type d -print0 |\
-      while IFS= read -r -d '' i ; do
-        [ -w "$i" ] && rm -rf "$i";
-      done
+# # cleanup old builds from runners
+# x86_64-linux-gnu_cleanup_builds:
+#   extends: .docker-image-linux
+#   stage: prebuild
+#   tags: [x86_64-linux-gnu, docker, scilab]
+#   variables:
+#     GIT_STRATEGY: none
+#   script:
+#     - set -e -x
+#     # Remove any previous tarball
+#     - rm -fr scilab-*.tar.xz
+#     # Remove install dir older than 3 days
+#     - |
+#       find . -maxdepth 1 -mtime +2 -name "scilab-*" -type d -print0 |\
+#       while IFS= read -r -d '' i ; do
+#         chmod -R +w "$i" && rm -rf "$i";
+#       done
+#     # Remove TMPDIRs older than 1 day
+#     - |
+#       find /tmp -maxdepth 1 -mtime +0 -name "SCI_TMP*" -type d -print0 |\
+#       while IFS= read -r -d '' i ; do
+#         [ -w "$i" ] && rm -rf "$i";
+#       done
 
 # # cleanup old builds from runners
 # x64_windows_cleanup_builds:
@@ -73,54 +73,54 @@ x86_64-linux-gnu_cleanup_builds:
 #     # Remove TMPDIRs older than 1 day
 #     - forfiles -p "$env:TMP" -m "SCI_TMP*" -d -1 -c "cmd /c IF @isdir == TRUE rd /S /Q @path" |cmd /c ""
 
-# define x86_64-linux-gnu env variables
-.x86_64-linux-gnu_set_env:
-  extends: .docker-image-linux
-  stage: prebuild
-  tags: [x86_64-linux-gnu, docker, scilab]
-  variables:
-    GIT_STRATEGY: none
-  script:
-    - set -e
-    - set -x
-    - echo $CI_COMMIT_TAG
-    - echo $CI_COMMIT_BRANCH
-    - echo $CI_MERGE_REQUEST_TARGET_BRANCH_NAME
-    # get current build machine architecture
-    - ARCH=$(cc -dumpmachine)
-    # define NOW as Gitlab display ISO 8601 timestamp
-    - date +"%s" >timestamp
-    - NOW=$(cat timestamp)
-    # export useful variables
-    - echo ARCH=$ARCH                              >build.env
-    - echo SCI_VERSION_STRING=$SCI_VERSION_STRING >>build.env
-    - echo SCI_VERSION_TIMESTAMP=$NOW             >>build.env
-  artifacts:
-    reports:
-      dotenv: build.env
-# build a preview/branched version
-x86_64-linux-gnu_set_branch_env:
-  extends: .x86_64-linux-gnu_set_env
-  variables:
-    # use CI_MERGE_REQUEST_TARGET_BRANCH_NAME
-    SCI_VERSION_STRING: "scilab-branch-${CI_MERGE_REQUEST_TARGET_BRANCH_NAME}-${CI_COMMIT_SHORT_SHA}"
-  rules:
-    - if: $CI_PIPELINE_SOURCE == 'merge_request_event'
-# build a nightly version
-x86_64-linux-gnu_set_nightly_env:
-  extends: .x86_64-linux-gnu_set_env
-  variables:
-    # use CI_COMMIT_BRANCH
-    SCI_VERSION_STRING: "scilab-branch-${CI_COMMIT_BRANCH}-${CI_COMMIT_SHORT_SHA}"
-  rules:
-    - if: $CI_PIPELINE_SOURCE == 'schedule'
-# build a release version
-x86_64-linux-gnu_set_release_env:
-  extends: .x86_64-linux-gnu_set_env
-  variables:
-    SCI_VERSION_STRING: "scilab-${CI_COMMIT_TAG}"
-  rules:
-    - if: $CI_COMMIT_TAG
+# # define x86_64-linux-gnu env variables
+# .x86_64-linux-gnu_set_env:
+#   extends: .docker-image-linux
+#   stage: prebuild
+#   tags: [x86_64-linux-gnu, docker, scilab]
+#   variables:
+#     GIT_STRATEGY: none
+#   script:
+#     - set -e
+#     - set -x
+#     - echo $CI_COMMIT_TAG
+#     - echo $CI_COMMIT_BRANCH
+#     - echo $CI_MERGE_REQUEST_TARGET_BRANCH_NAME
+#     # get current build machine architecture
+#     - ARCH=$(cc -dumpmachine)
+#     # define NOW as Gitlab display ISO 8601 timestamp
+#     - date +"%s" >timestamp
+#     - NOW=$(cat timestamp)
+#     # export useful variables
+#     - echo ARCH=$ARCH                              >build.env
+#     - echo SCI_VERSION_STRING=$SCI_VERSION_STRING >>build.env
+#     - echo SCI_VERSION_TIMESTAMP=$NOW             >>build.env
+#   artifacts:
+#     reports:
+#       dotenv: build.env
+# # build a preview/branched version
+# x86_64-linux-gnu_set_branch_env:
+#   extends: .x86_64-linux-gnu_set_env
+#   variables:
+#     # use CI_MERGE_REQUEST_TARGET_BRANCH_NAME
+#     SCI_VERSION_STRING: "scilab-branch-${CI_MERGE_REQUEST_TARGET_BRANCH_NAME}-${CI_COMMIT_SHORT_SHA}"
+#   rules:
+#     - if: $CI_PIPELINE_SOURCE == 'merge_request_event'
+# # build a nightly version
+# x86_64-linux-gnu_set_nightly_env:
+#   extends: .x86_64-linux-gnu_set_env
+#   variables:
+#     # use CI_COMMIT_BRANCH
+#     SCI_VERSION_STRING: "scilab-branch-${CI_COMMIT_BRANCH}-${CI_COMMIT_SHORT_SHA}"
+#   rules:
+#     - if: $CI_PIPELINE_SOURCE == 'schedule'
+# # build a release version
+# x86_64-linux-gnu_set_release_env:
+#   extends: .x86_64-linux-gnu_set_env
+#   variables:
+#     SCI_VERSION_STRING: "scilab-${CI_COMMIT_TAG}"
+#   rules:
+#     - if: $CI_COMMIT_TAG
 
 # define x64 windows env
 .x64_windows_set_env:
@@ -164,50 +164,49 @@ x64_windows_set_release_env:
     SCI_VERSION_STRING: "scilab-${CI_COMMIT_TAG}"
   rules:
     - if: $CI_COMMIT_TAG
+# # manual clean
+# .git_clean:
+#   stage: prebuild
+#   tags: [scilab]
+#   variables:
+#     GIT_CLEAN_FLAGS: -fxd
+#   script: echo "git clean succeeded"
+#   when:
+#     - manual
+# x86_64-linux-gnu_clean:
+#   extends: .git_clean
+#   tags: [x86_64-linux-gnu]
+# x64_windows_clean:
+#   extends: .git_clean
+#   tags: [x64_windows]
 
-# manual clean
-.git_clean:
-  stage: prebuild
-  tags: [scilab]
-  variables:
-    GIT_CLEAN_FLAGS: -fxd
-  script: echo "git clean succeeded"
-  when:
-    - manual
-x86_64-linux-gnu_clean:
-  extends: .git_clean
-  tags: [x86_64-linux-gnu]
-x64_windows_clean:
-  extends: .git_clean
-  tags: [x64_windows]
+# # patch, copy, modify files before building a release
+# prepare_release_files:
+#   extends: .docker-image-linux
+#   stage: prebuild
+#   tags: [x86_64-linux-gnu]
+#   rules:
+#     - if: $CI_COMMIT_TAG
+#   script:
+#     - echo "FIXME should patch version numbers against tag"
+#   artifacts:
+#     paths:
+#       - scilab/modules/core/includes/version.h.vc
+#       - scilab/modules/core/includes/version.h.in
 
-# patch, copy, modify files before building a release
-prepare_release_files:
-  extends: .docker-image-linux
-  stage: prebuild
-  tags: [x86_64-linux-gnu]
-  rules:
-    - if: $CI_COMMIT_TAG
-  script:
-    - echo "FIXME should patch version numbers against tag"
-  artifacts:
-    paths:
-      - scilab/modules/core/includes/version.h.vc
-      - scilab/modules/core/includes/version.h.in
-
-# check MR has modified CHANGES.md
-contains_changes_modification:
-  extends: .docker-image-linux
-  stage: prebuild
-  tags: [x86_64-linux-gnu]
-  variables:
-    GIT_STRATEGY: none
-    GIT_CLEAN_FLAGS: none
-  script:
-    - id
-    - env
-  rules:
-    - if: $CI_PIPELINE_SOURCE == 'merge_request_event'
-    - changes:
-        - scilab/CHANGES.md
-  allow_failure: true
+# # check MR has modified CHANGES.md
+# contains_changes_modification:
+#   extends: .docker-image-linux
+#   stage: prebuild
+#   tags: [x86_64-linux-gnu]
+#   variables:
+#     GIT_STRATEGY: none
+#     GIT_CLEAN_FLAGS: none
+#   script:
+#     - id
+#     - env
+#   rules:
+#     - if: $CI_PIPELINE_SOURCE == 'merge_request_event'
+#     - changes:
+#         - scilab/CHANGES.md
+#   allow_failure: true
