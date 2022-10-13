@@ -5,7 +5,6 @@ REM Builder script for building Scilab on Windows
 REM
 REM NOTE: log all commands to log.txt to avoid hitting Gitlab log limit
 
-echo on
 svn checkout --username anonymous --password Scilab svn://svn.scilab.org/scilab/%PREREQUIREMENTS_BRANCH%/Dev-Tools/SE/Prerequirements/Windows_x64/ scilab >log_svn.txt
 REM if errorlevel 1 tail.exe --lines=100 log_svn.txt & exit 1
 REM display svn revision
@@ -15,9 +14,7 @@ svn revert -R scilab >>log_svn.txt
 
 REM Define environment variables
 call "C:\Program Files (x86)\Microsoft Visual Studio\2017\BuildTools\VC\Auxiliary\Build\vcvarsall.bat" x64
-echo on
 REM call "%ONEAPI_ROOT%\setvars.bat" intel64 vs2017
-echo on
 @REM if not defined SCILAB_JDK64 call scilab\java\set_scilab_jdk64.bat
 set SCILAB_JDK64="%SCILAB_HOME%"
 
@@ -43,16 +40,14 @@ sed -i ^
 @REM svml_dispmd.dll
 
 REM build with Visual Studio and Intel compilers
-echo on
 msbuild.exe Scilab.sln /t:Build /p:Configuration=Release /p:Platform=x64 > ..\log_build.txt
-if errorlevel 1 tail --lines=100 ..\log_build.txt & exit 1
+if errorlevel 1 tail --lines=100 ..\log_build.txt 2>&1 & exit 1
 devenv.com Scilab.sln /build "Release|x64" /project buildhelp >..\log_buildhelp.txt |cmd /c ""
 REM if errorlevel 1 tail.exe --lines=100 ..\log_buildhelp.txt & exit 1
 devenv.com Scilab.sln /build "Release|x64" /project buildjavadoc >..\log_buildjavadoc.txt |cmd /c ""
 REM if errorlevel 1 tail.exe --lines=100 ..\log_buildjavadoc.txt & exit 1
 
 REM Package with Inno Setup 6
-echo on
 bin\WScilex.exe -nb -f "tools\innosetup\Create_ISS.sce" >..\log_iss.txt
 REM if errorlevel 1 tail.exe --lines=100 ..\log_iss.txt & exit 1
 "C:\Program Files (x86)\Inno Setup 6\iscc.exe" Scilab.iss >>..\log_iss.txt

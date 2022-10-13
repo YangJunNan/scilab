@@ -6,13 +6,14 @@ FROM mcr.microsoft.com/windows/servercore:ltsc2019
 # Restore the default Windows shell for correct batch processing.
 SHELL ["cmd", "/S", "/C"]
 
-# Download the Build Tools bootstrapper & Intel oneAPI.
-RUN curl -SL --output vs_buildtools.exe https://aka.ms/vs/15/release/vs_buildtools.exe
-RUN curl -SL --output w_HPCKit.exe https://registrationcenter-download.intel.com/akdlm/IRC_NAS/18680/w_HPCKit_p_2022.2.0.173_offline.exe
-
 # Download and install pwsh
 RUN curl -SL --output PowerShell.msi https://github.com/PowerShell/PowerShell/releases/download/v7.1.0/PowerShell-7.1.0-win-x64.msi
 RUN msiexec.exe /package PowerShell.msi /quiet REGISTER_MANIFEST=1
+
+# Download and install UnxUtils for tools like: sed, tail, ect...
+ADD https://unxutils.sourceforge.net/UnxUpdates.zip C:\unxutils\
+RUN tar -C C:\unxutils\ -xf C:\unxutils\UnxUpdates.zip
+RUN setx path "C:\unxutils\;%PATH%"
 
 # Download and install svn
 RUN curl -SL --output TortoiseSVN.msi https://ftp.halifax.rwth-aachen.de/osdn/storage/g/t/to/tortoisesvn/1.14.1/Application/TortoiseSVN-1.14.1.29085-x64-svn-1.14.1.msi
@@ -22,12 +23,8 @@ RUN msiexec /i TortoiseSVN.msi ADDLOCAL=CLI
 RUN curl -SL --output OpenJDK.msi https://github.com/AdoptOpenJDK/openjdk8-binaries/releases/download/jdk8u292-b10/OpenJDK8U-jdk_x64_windows_hotspot_8u292b10.msi
 RUN msiexec /i OpenJDK.msi /q ADDLOCAL=FeatureMain,FeatureEnvironment,FeatureJavaHome
 
-# Download and install UnxUtils for tools like: sed, tail, ect...
-ADD https://unxutils.sourceforge.net/UnxUpdates.zip C:\unxutils\
-RUN tar -C C:\unxutils\ -xf C:\unxutils\UnxUpdates.zip
-RUN setx path "C:\unxutils\;%PATH%"
-
-# Install Build Tools with the C++ workload.
+# Download  and install the Build Tools
+RUN curl -SL --output vs_buildtools.exe https://aka.ms/vs/15/release/vs_buildtools.exe
 RUN (start /w vs_buildtools.exe --quiet --wait --norestart --nocache `
     --add Microsoft.VisualStudio.Workload.VCTools `
     --add Microsoft.VisualStudio.Workload.MSBuildTools `
@@ -38,9 +35,12 @@ RUN (start /w vs_buildtools.exe --quiet --wait --norestart --nocache `
 
 RUN del /q vs_buildtools.exe
 
-# Install Intel oneAPI HPC
-# RUN start /w w_HPCKit.exe --action install --eula accept --silent --components intel.oneapi.win.ifort-compiler
-# RUN del /q w_HPCKit.exe
+# Download and Install Intel oneAPI HPC
+RUN curl -SL --output w_HPCKit.exe https://registrationcenter-download.intel.com/akdlm/irc_nas/18857/w_HPCKit_p_2022.3.0.9564_offline.exe
+RUN start /b /wait w_HPCKit.exe -s -x -f oneapi_extracted --log extract.log
+RUN oneapi_extracted\bootstrapper.exe -s --action install --components=intel.oneapi.win.ifort-compiler --eula=accept -p=NEED_VS2022_INTEGRATION=0 -p=NEED_VS2019_INTEGRATION=0
+RUN del /q w_HPCKit.exe
+RUN rd /s/q oneapi_extracted
 
 # Create Windows user in the container
 # RUN net user /add scilab
