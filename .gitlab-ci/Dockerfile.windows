@@ -1,4 +1,9 @@
 # escape=`
+# This changes the Dockerfile escape character to backtick (`).
+#  The default escape character is backslash (\).
+#  By changing the escape character, we don't have to escape the path separator
+#  in Windows paths, and by changing it to backtick, our RUN commands look like
+#  PowerShell commands (where backtick is the escape character).
 
 # Use the Windows Server Core 2019 image.
 FROM mcr.microsoft.com/windows/servercore:ltsc2019
@@ -24,14 +29,9 @@ RUN curl -SL --output OpenJDK.msi https://github.com/AdoptOpenJDK/openjdk8-binar
 RUN msiexec /i OpenJDK.msi /q ADDLOCAL=FeatureMain,FeatureEnvironment,FeatureJavaHome
 
 # Download  and install the Build Tools
-RUN curl -SL --output vs_buildtools.exe https://aka.ms/vs/15/release/vs_buildtools.exe
-RUN (start /w vs_buildtools.exe --quiet --wait --norestart --nocache `
-    --add Microsoft.VisualStudio.Workload.VCTools `
-    --add Microsoft.VisualStudio.Workload.MSBuildTools `
-	--add Microsoft.VisualStudio.Component.Windows81SDK `
-    --remove Microsoft.VisualStudio.Component.Windows10SDK.10240 `
-    --remove Microsoft.VisualStudio.Component.Windows10SDK.10586 `
-    --remove Microsoft.VisualStudio.Component.Windows10SDK.14393 `
+RUN curl -SL --output vs.exe https://aka.ms/vs/15/release/vs_community.exe
+RUN (start /w vs.exe --quiet --wait --norestart --nocache `
+    --add Microsoft.VisualStudio.Workload.NativeDesktop `
     || IF "%ERRORLEVEL%"=="3010" EXIT 0)
 
 RUN del /q vs_buildtools.exe
