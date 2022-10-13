@@ -32,19 +32,19 @@ sed -i ^
  -e "s/SCI_VERSION_TIMESTAMP .*/SCI_VERSION_TIMESTAMP %SCI_VERSION_TIMESTAMP%/" ^
  modules\core\includes\version.h.vc
 
-REM FIXME copy intel redistribuables as thirdparties are not up to date
-robocopy /e /copy:DAT "%IFORT_COMPILER22%\redist\intel64_win\compiler\1033" "%CI_PROJECT_DIR%\scilab\bin\1033"
-robocopy /e /copy:DAT "%IFORT_COMPILER22%\redist\intel64_win\compiler" "%CI_PROJECT_DIR%\scilab\bin" ^
-libifcoremd.dll ^
-libifcorert.dll ^
-libifcorertd.dll ^
-libiomp5md.dll ^
-libmmd.dll ^
-svml_dispmd.dll
+@REM REM FIXME copy intel redistribuables as thirdparties are not up to date
+@REM robocopy /e /copy:DAT "%IFORT_COMPILER22%\redist\intel64_win\compiler\1033" "%CI_PROJECT_DIR%\scilab\bin\1033"
+@REM robocopy /e /copy:DAT "%IFORT_COMPILER22%\redist\intel64_win\compiler" "%CI_PROJECT_DIR%\scilab\bin" ^
+@REM libifcoremd.dll ^
+@REM libifcorert.dll ^
+@REM libifcorertd.dll ^
+@REM libiomp5md.dll ^
+@REM libmmd.dll ^
+@REM svml_dispmd.dll
 
 REM build with Visual Studio and Intel compilers
 echo on
-devenv.com Scilab.sln /build "Release|x64" >..\log.txt
+msbuild.exe Scilab.sln /t:Build/p:Configuration=Release;Platform=x64 > ..\log.txt
 REM if errorlevel 1 tail.exe --lines=100 ..\log.txt & exit 1
 devenv.com Scilab.sln /build "Release|x64" /project buildhelp >..\log_buildhelp.txt |cmd /c ""
 REM if errorlevel 1 tail.exe --lines=100 ..\log_buildhelp.txt & exit 1
