@@ -6,11 +6,10 @@ REM
 REM NOTE: log all commands to log.txt to avoid hitting Gitlab log limit
 
 echo on
-svn --version
 svn checkout --username anonymous --password Scilab svn://svn.scilab.org/scilab/%PREREQUIREMENTS_BRANCH%/Dev-Tools/SE/Prerequirements/Windows_x64/ scilab >log_svn.txt
-if errorlevel 1 tail.exe --lines=100 log_svn.txt & exit 1
+REM if errorlevel 1 tail.exe --lines=100 log_svn.txt & exit 1
 REM display svn revision
-tail.exe -n 1 log_svn.txt
+REM tail.exe -n 1 log_svn.txt
 REM revert local modification
 svn revert -R scilab >>log_svn.txt
 
@@ -45,18 +44,18 @@ svml_dispmd.dll
 REM build with Visual Studio and Intel compilers
 echo on
 devenv.com Scilab.sln /build "Release|x64" >..\log.txt
-if errorlevel 1 tail.exe --lines=100 ..\log.txt & exit 1
+REM if errorlevel 1 tail.exe --lines=100 ..\log.txt & exit 1
 devenv.com Scilab.sln /build "Release|x64" /project buildhelp >..\log_buildhelp.txt |cmd /c ""
-if errorlevel 1 tail.exe --lines=100 ..\log_buildhelp.txt & exit 1
+REM if errorlevel 1 tail.exe --lines=100 ..\log_buildhelp.txt & exit 1
 devenv.com Scilab.sln /build "Release|x64" /project buildjavadoc >..\log_buildjavadoc.txt |cmd /c ""
-if errorlevel 1 tail.exe --lines=100 ..\log_buildjavadoc.txt & exit 1
+REM if errorlevel 1 tail.exe --lines=100 ..\log_buildjavadoc.txt & exit 1
 
 REM Package with Inno Setup 6
 echo on
 bin\WScilex.exe -nb -f "tools\innosetup\Create_ISS.sce" >..\log_iss.txt
-if errorlevel 1 tail.exe --lines=100 ..\log_iss.txt & exit 1
+REM if errorlevel 1 tail.exe --lines=100 ..\log_iss.txt & exit 1
 "C:\Program Files (x86)\Inno Setup 6\iscc.exe" Scilab.iss >>..\log_iss.txt
-if errorlevel 1 tail.exe --lines=100 ..\log_iss.txt & exit 1
+REM if errorlevel 1 tail.exe --lines=100 ..\log_iss.txt & exit 1
 
 move ".\Output\%SCI_VERSION_STRING%_%ARCH%.exe" "%CI_PROJECT_DIR%\%SCI_VERSION_STRING%_%ARCH%.exe"
 if errorlevel 1 exit 1
