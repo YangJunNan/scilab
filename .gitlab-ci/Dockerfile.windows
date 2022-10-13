@@ -30,9 +30,9 @@ RUN msiexec /i OpenJDK.msi /q ADDLOCAL=FeatureMain,FeatureEnvironment,FeatureJav
 
 # Download  and install the Build Tools
 RUN curl -SL --output vs.exe https://aka.ms/vs/15/release/vs_community.exe
-RUN (start /w vs.exe --quiet --wait --norestart --nocache `
+RUN start /w vs.exe --quiet --wait --norestart --nocache `
     --add Microsoft.VisualStudio.Workload.NativeDesktop `
-    || IF "%ERRORLEVEL%"=="3010" EXIT 0)
+    || IF "%ERRORLEVEL%"=="3010" EXIT 0
 
 RUN del /q vs_buildtools.exe
 
@@ -50,4 +50,3 @@ RUN rd /s/q oneapi_extracted
 
 # This entry point starts the developer command prompt and launches the PowerShell shell.
 ENTRYPOINT ["powershell.exe", "-NoLogo", "-ExecutionPolicy", "Bypass"]
-# ENTRYPOINT ["C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\BuildTools\\Common7\\Tools\\VsDevCmd.bat", "&&", "powershell.exe", "-NoLogo", "-ExecutionPolicy", "Bypass"]

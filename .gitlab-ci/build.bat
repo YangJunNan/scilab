@@ -13,7 +13,7 @@ REM revert local modification
 svn revert -R scilab >>log_svn.txt
 
 REM Define environment variables
-call "C:\Program Files (x86)\Microsoft Visual Studio\2017\BuildTools\VC\Auxiliary\Build\vcvarsall.bat" x64
+call "%VS2017INSTALLDIR%\VC\Auxiliary\Build\vcvarsall.bat" x64
 REM call "%ONEAPI_ROOT%\setvars.bat" intel64 vs2017
 @REM if not defined SCILAB_JDK64 call scilab\java\set_scilab_jdk64.bat
 set SCILAB_JDK64="%SCILAB_HOME%"
@@ -40,12 +40,12 @@ sed -i ^
 @REM svml_dispmd.dll
 
 REM build with Visual Studio and Intel compilers
-msbuild.exe Scilab.sln /t:Build /p:Configuration=Release /p:Platform=x64 > ..\log_build.txt
+devenv Scilab.sln /build "Release|x64" > ..\log_build.txt
 if errorlevel 1 tail --lines=100 ..\log_build.txt 1>&2 & exit 1
-devenv.com Scilab.sln /build "Release|x64" /project buildhelp >..\log_buildhelp.txt |cmd /c ""
-REM if errorlevel 1 tail.exe --lines=100 ..\log_buildhelp.txt & exit 1
-devenv.com Scilab.sln /build "Release|x64" /project buildjavadoc >..\log_buildjavadoc.txt |cmd /c ""
-REM if errorlevel 1 tail.exe --lines=100 ..\log_buildjavadoc.txt & exit 1
+devenv Scilab.sln /build "Release|x64" /project buildhelp >..\log_buildhelp.txt |cmd /c ""
+if errorlevel 1 tail --lines=100 ..\log_buildhelp.txt 1>&2 & exit 1
+devenv Scilab.sln /build "Release|x64" /project buildjavadoc >..\log_buildjavadoc.txt |cmd /c ""
+if errorlevel 1 tail --lines=100 ..\log_buildjavadoc.txt 1>&2 & exit 1
 
 REM Package with Inno Setup 6
 bin\WScilex.exe -nb -f "tools\innosetup\Create_ISS.sce" >..\log_iss.txt
