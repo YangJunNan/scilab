@@ -21,6 +21,7 @@
     paths:
       - log*.txt
       - scilab/modules/core/includes/version.h
+      - C:\builds\scilab\scilab\scilab\UpgradeLog.htm
       - "%SCI_VERSION_STRING%_%ARCH%.exe"
     when: always
 # build an preview/branched version
