@@ -15,7 +15,7 @@ svn revert -R scilab >>log_svn.txt
 REM Define environment variables
 call "%VS2017INSTALLDIR%\Common7\Tools\VsDevCmd.bat"
 
-set SCILAB_JDK64="%JAVA_HOME%"
+set SCILAB_JDK64=%JAVA_HOME%
 
 cd scilab
 del /q modules\core\includes\version.h
