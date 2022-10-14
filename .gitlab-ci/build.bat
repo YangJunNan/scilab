@@ -13,7 +13,7 @@ REM revert local modification
 svn revert -R scilab >>log_svn.txt
 
 REM Define environment variables
-call "%VS2017INSTALLDIR%\VC\Auxiliary\Build\vcvarsall.bat" x64
+call "%VS2017INSTALLDIR%\Common7\Tools\VsDevCmd.bat"
 REM call "%ONEAPI_ROOT%\setvars.bat" intel64 vs2017
 @REM if not defined SCILAB_JDK64 call scilab\java\set_scilab_jdk64.bat
 set SCILAB_JDK64="%SCILAB_HOME%"
