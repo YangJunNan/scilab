@@ -6,16 +6,15 @@ REM
 REM NOTE: log all commands to log.txt to avoid hitting Gitlab log limit
 
 svn checkout --username anonymous --password Scilab svn://svn.scilab.org/scilab/%PREREQUIREMENTS_BRANCH%/Dev-Tools/SE/Prerequirements/Windows_x64/ scilab >log_svn.txt
-REM if errorlevel 1 tail.exe --lines=100 log_svn.txt & exit 1
+if errorlevel 1 (tail --lines=100 ..\log_svn.txt 1>&2 & exit 1)
 REM display svn revision
-REM tail.exe -n 1 log_svn.txt
+tail -n 1 log_svn.txt
 REM revert local modification
 svn revert -R scilab >>log_svn.txt
 
 REM Define environment variables
 call "%VS2017INSTALLDIR%\Common7\Tools\VsDevCmd.bat"
-REM call "%ONEAPI_ROOT%\setvars.bat" intel64 vs2017
-@REM if not defined SCILAB_JDK64 call scilab\java\set_scilab_jdk64.bat
+
 set SCILAB_JDK64="%SCILAB_HOME%"
 
 cd scilab
@@ -41,17 +40,17 @@ sed -i ^
 
 REM build with Visual Studio and Intel compilers
 devenv Scilab.sln /build "Release|x64" > ..\log_build.txt
-if "%ERRORLEVEL%" NEQ 0 tail --lines=100 ..\log_build.txt 1>&2 & exit "%ERRORLEVEL%"
+if errorlevel 1 (tail --lines=100 ..\log_build.txt 1>&2 & exit 1)
 devenv Scilab.sln /build "Release|x64" /project buildhelp >..\log_buildhelp.txt |cmd /c ""
-if "%ERRORLEVEL%" NEQ 0 tail --lines=100 ..\log_buildhelp.txt 1>&2 & exit "%ERRORLEVEL%"
+if errorlevel 1 (tail --lines=100 ..\log_buildhelp.txt 1>&2 & exit 1)
 devenv Scilab.sln /build "Release|x64" /project buildjavadoc >..\log_buildjavadoc.txt |cmd /c ""
-if "%ERRORLEVEL%" NEQ 0 tail --lines=100 ..\log_buildjavadoc.txt 1>&2 & exit "%ERRORLEVEL%"
+if errorlevel 1 (tail --lines=100 ..\log_buildjavadoc.txt 1>&2 & exit 1)
 
 REM Package with Inno Setup 6
 bin\WScilex.exe -nb -f "tools\innosetup\Create_ISS.sce" >..\log_iss.txt
-if "%ERRORLEVEL%" NEQ 0 tail --lines=100 ..\log_iss.txt 1>&2 & exit 1
+if errorlevel 1 (tail --lines=100 ..\log_iss.txt 1>&2 & exit 1)
 "C:\Program Files (x86)\Inno Setup 6\iscc.exe" Scilab.iss >>..\log_iss.txt
-if"%ERRORLEVEL%" NEQ 0 tail --lines=100 ..\log_iss.txt 1>&2 & exit 1
+if errorlevel 1 (tail --lines=100 ..\log_iss.txt 1>&2 & exit 1)
 
 move ".\Output\%SCI_VERSION_STRING%_%ARCH%.exe" "%CI_PROJECT_DIR%\%SCI_VERSION_STRING%_%ARCH%.exe"
 if "%ERRORLEVEL%" NEQ 0 exit 1
