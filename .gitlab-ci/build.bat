@@ -40,7 +40,7 @@ sed -i ^
 
 REM build with Visual Studio and Intel compilers
 devenv Scilab.sln /build "Release|x64" > ..\log_build.txt
-if errorlevel 1 (tail --lines=100 ..\log_build.txt 1>&2 & exit 1)
+if errorlevel 1 tail --lines=100 ..\log_build.txt 1>&2 & exit 1
 devenv Scilab.sln /build "Release|x64" /project buildhelp >..\log_buildhelp.txt |cmd /c ""
 if errorlevel 1 (tail --lines=100 ..\log_buildhelp.txt 1>&2 & exit 1)
 devenv Scilab.sln /build "Release|x64" /project buildjavadoc >..\log_buildjavadoc.txt |cmd /c ""
