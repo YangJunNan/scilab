@@ -32,6 +32,8 @@ RUN msiexec /i OpenJDK.msi /q ADDLOCAL=FeatureMain,FeatureEnvironment,FeatureJav
 RUN curl -SL --output vs.exe https://aka.ms/vs/15/release/vs_community.exe
 RUN start /w vs.exe --quiet --wait --norestart --nocache `
     --add Microsoft.VisualStudio.Workload.NativeDesktop `
+    --add Microsoft.VisualStudio.Component.VC.Tools.x86.x64 `
+    --add Microsoft.VisualStudio.Component.Windows81SDK `
     || IF "%ERRORLEVEL%"=="3010" EXIT 0
 
 RUN del /q vs_buildtools.exe
