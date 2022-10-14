@@ -41,20 +41,20 @@ sed -i ^
 
 REM build with Visual Studio and Intel compilers
 devenv Scilab.sln /build "Release|x64" > ..\log_build.txt
-if %errorlevel% 1 tail --lines=100 ..\log_build.txt 1>&2 & exit 1
+if %ERRORLEVEL% 1 tail --lines=100 ..\log_build.txt 1>&2 & exit 1
 devenv Scilab.sln /build "Release|x64" /project buildhelp >..\log_buildhelp.txt |cmd /c ""
-if %errorlevel% 1 tail --lines=100 ..\log_buildhelp.txt 1>&2 & exit 1
+if %ERRORLEVEL% 1 tail --lines=100 ..\log_buildhelp.txt 1>&2 & exit 1
 devenv Scilab.sln /build "Release|x64" /project buildjavadoc >..\log_buildjavadoc.txt |cmd /c ""
-if %errorlevel% 1 tail --lines=100 ..\log_buildjavadoc.txt 1>&2 & exit 1
+if %ERRORLEVEL% 1 tail --lines=100 ..\log_buildjavadoc.txt 1>&2 & exit 1
 
 REM Package with Inno Setup 6
 bin\WScilex.exe -nb -f "tools\innosetup\Create_ISS.sce" >..\log_iss.txt
-REM if errorlevel 1 tail.exe --lines=100 ..\log_iss.txt & exit 1
+if %ERRORLEVEL% 1 tail --lines=100 ..\log_iss.txt 1>&2 & exit 1
 "C:\Program Files (x86)\Inno Setup 6\iscc.exe" Scilab.iss >>..\log_iss.txt
-REM if errorlevel 1 tail.exe --lines=100 ..\log_iss.txt & exit 1
+if %ERRORLEVEL% 1 tail --lines=100 ..\log_iss.txt 1>&2 & exit 1
 
 move ".\Output\%SCI_VERSION_STRING%_%ARCH%.exe" "%CI_PROJECT_DIR%\%SCI_VERSION_STRING%_%ARCH%.exe"
-if errorlevel 1 exit 1
+if %ERRORLEVEL% 1 exit 1
 
 REM error if artifact does not exist
 dir /s "%CI_PROJECT_DIR%\%SCI_VERSION_STRING%_%ARCH%.exe"
