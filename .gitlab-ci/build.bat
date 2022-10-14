@@ -18,7 +18,7 @@ call "%VS2017INSTALLDIR%\Common7\Tools\VsDevCmd.bat"
 set SCILAB_JDK64=%JAVA_HOME%
 
 cd scilab
-del /q modules\core\includes\version.h
+@REM del /q modules\core\includes\version.h
 
 REM patch version numbers
 sed -i ^
@@ -26,7 +26,7 @@ sed -i ^
  -e "s/SCI_VERSION_WIDE_STRING .*/SCI_VERSION_WIDE_STRING L\"%SCI_VERSION_STRING%\"/" ^
  -e "s/SCI_VERSION_REVISION .*/SCI_VERSION_REVISION \"%CI_COMMIT_SHA%\"/" ^
  -e "s/SCI_VERSION_TIMESTAMP .*/SCI_VERSION_TIMESTAMP %SCI_VERSION_TIMESTAMP%/" ^
- modules\core\includes\version.h.vc
+ modules\core\includes\version.h.vc modules\core\includes\version.h
 
 @REM REM FIXME copy intel redistribuables as thirdparties are not up to date
 @REM robocopy /e /copy:DAT "%IFORT_COMPILER22%\redist\intel64_win\compiler\1033" "%CI_PROJECT_DIR%\scilab\bin\1033"
