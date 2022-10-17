@@ -16,7 +16,7 @@
   tags: [x64_windows, scilab, docker]
   variables:
     GIT_CLEAN_FLAGS: none
-  script: Start-Process -FilePath ".gitlab-ci\build.bat" -Wait -PassThru -RedirectStandardOutput log.txt
+  script: Start-Process -FilePath ".gitlab-ci\build.bat" -Wait -RedirectStandardOutput log.txt
   artifacts:
     paths:
       - log*.txt
