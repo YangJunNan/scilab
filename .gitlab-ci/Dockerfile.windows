@@ -42,7 +42,7 @@ RUN start /b /wait w_HPCKit.exe -s -x -f oneapi_extracted --log extract.log
 RUN oneapi_extracted\bootstrapper.exe -s --action install --components=intel.oneapi.win.ifort-compiler -p=NEED_VS2017_INTEGRATION=0 --eula=accept
 
 # Download  and install the Build Tools
-RUN curl -SL --output vs.exe https://aka.ms/vs/15/release/vs_community.exe
+RUN curl -SL --output vs.exe https://aka.ms/vs/15/release/vs_professional.exe
 RUN (start /w vs.exe --quiet --wait --norestart --nocache `
     --add Microsoft.VisualStudio.Workload.NativeDesktop `
     --add Microsoft.VisualStudio.Component.VC.Tools.x86.x64 `
