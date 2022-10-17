@@ -43,13 +43,16 @@ RUN oneapi_extracted\bootstrapper.exe -s --action install --components=intel.one
 
 # Download  and install the Build Tools
 RUN curl -SL --output vs.exe https://aka.ms/vs/15/release/vs_professional.exe
+# RUN (start /w vs.exe --quiet --wait --norestart --nocache `
+#     --add Microsoft.VisualStudio.Workload.NativeDesktop `
+#     --add Microsoft.VisualStudio.Component.VC.Tools.x86.x64 `
+#     --add Microsoft.VisualStudio.Component.Windows81SDK `
+#     --add Microsoft.Component.VC.Runtime.UCRTSDK `
+#     || IF "%ERRORLEVEL%"=="3010" EXIT 0)
 RUN (start /w vs.exe --quiet --wait --norestart --nocache `
-    --add Microsoft.VisualStudio.Workload.NativeDesktop `
-    --add Microsoft.VisualStudio.Component.VC.Tools.x86.x64 `
-    --add Microsoft.VisualStudio.Component.Windows81SDK `
-    --add Microsoft.Component.VC.Runtime.UCRTSDK `
-    || IF "%ERRORLEVEL%"=="3010" EXIT 0)
-
+    --config "C:\builds\scilab\.gitlab-ci\.vsconfig"
+    --installPath "c:\VS"
+     || IF "%ERRORLEVEL%"=="3010" EXIT 0)
 RUN del /q vs.exe
 
 # Repair Install Intel oneAPI HPC with VS Integration
