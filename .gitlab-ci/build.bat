@@ -49,7 +49,7 @@ devenv Scilab.sln /build "Release|x64" /project buildjavadoc >..\log_buildjavado
 if errorlevel 1 tail --lines=100 ..\log_buildjavadoc.txt 1>&2 & exit 1
 
 REM Delete previous builds
-del scilab*.exe >nul 2>&1
+del "%CI_PROJECT_DIR%\scilab*.exe" >nul 2>&1
 
 REM Package with Inno Setup 6
 bin\WScilex.exe -nb -f "tools\innosetup\Create_ISS.sce" >..\log_iss.txt
