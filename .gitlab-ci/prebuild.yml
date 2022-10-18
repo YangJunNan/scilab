@@ -20,19 +20,19 @@
 #         paths:
 #           - .gitlab-ci/Dockerfile.linux
 
-create_docker_image_windows:
-  stage: .pre
-  tags: [x64_windows, shell, scilab]
-  script:
-    - docker login -u $CI_REGISTRY_USER -p $CI_JOB_TOKEN $CI_REGISTRY
-    - docker build --memory 4GB --file .gitlab-ci/Dockerfile.windows -t $CI_REGISTRY_IMAGE/windows-builder:latest .
-    - docker push $CI_REGISTRY_IMAGE/windows-builder
-    - docker logout $CI_REGISTRY
-  rules:
-    - if: $CI_PIPELINE_SOURCE == 'merge_request_event'
-      changes:
-        paths:
-          - .gitlab-ci/Dockerfile.windows
+# create_docker_image_windows:
+#   stage: .pre
+#   tags: [x64_windows, shell, scilab]
+#   script:
+#     - docker login -u $CI_REGISTRY_USER -p $CI_JOB_TOKEN $CI_REGISTRY
+#     - docker build --memory 4GB --file .gitlab-ci/Dockerfile.windows -t $CI_REGISTRY_IMAGE/windows-builder:latest .
+#     - docker push $CI_REGISTRY_IMAGE/windows-builder
+#     - docker logout $CI_REGISTRY
+#   rules:
+#     - if: $CI_PIPELINE_SOURCE == 'merge_request_event'
+#       changes:
+#         paths:
+#           - .gitlab-ci/Dockerfile.windows
 
 # # cleanup old builds from runners
 # x86_64-linux-gnu_cleanup_builds:
@@ -126,9 +126,9 @@ create_docker_image_windows:
 .x64_windows_set_env:
   extends: .docker-image-windows
   stage: prebuild
-  tags: [x64_windows, docker, scilab]
+  tags: [x64_windows, shell, scilab]
   variables:
-    GIT_STRATEGY: none
+    GIT_STRATEGY: fetch
     ARCH: x64
   script:
     - echo $env:CI_COMMIT_TAG
