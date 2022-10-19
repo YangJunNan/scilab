@@ -17,6 +17,8 @@ call "%VS2017INSTALLDIR%\Common7\Tools\VsDevCmd.bat"
 
 REM Define environment variables
 set SCILAB_JDK64=%JAVA_HOME%
+@REM cd builds/scilab/scilab/
+@REM devenv Scilab.sln /upgrade
 
 cd scilab
 @REM del /q modules\core\includes\version.h
