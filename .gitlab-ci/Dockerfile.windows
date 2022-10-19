@@ -11,11 +11,6 @@ FROM mcr.microsoft.com/windows/servercore:ltsc2019
 # Restore the default Windows shell for correct batch processing.
 SHELL ["cmd", "/S", "/C"]
 
-# Download and install pwsh
-RUN curl -SL --output PowerShell.msi https://github.com/PowerShell/PowerShell/releases/download/v7.1.0/PowerShell-7.1.0-win-x64.msi
-RUN msiexec.exe /package PowerShell.msi /quiet REGISTER_MANIFEST=1
-RUN del /q PowerShell.msi
-
 # Download and install UnxUtils for tools like: sed, tail, ect...
 ADD https://unxutils.sourceforge.net/UnxUpdates.zip C:\unxutils\
 RUN tar -C C:\unxutils\ -xf C:\unxutils\UnxUpdates.zip
@@ -38,26 +33,15 @@ RUN del /q Innosetup.exe
 
 # Download and Install Intel oneAPI HPC
 RUN curl -SL --output w_HPCKit.exe https://registrationcenter-download.intel.com/akdlm/irc_nas/18857/w_HPCKit_p_2022.3.0.9564_offline.exe
-RUN start /b /wait w_HPCKit.exe -s -x -f oneapi_extracted --log extract.log
-RUN oneapi_extracted\bootstrapper.exe -s --action install --components=intel.oneapi.win.ifort-compiler -p=NEED_VS2017_INTEGRATION=0 --eula=accept
+RUN start /b /w w_HPCKit.exe -s -x -f oneapi_extracted --log extract.log
 
-# Download  and install the Build Tools
+# Download  and install visual studio
 RUN curl -SL --output vs.exe https://aka.ms/vs/15/release/vs_professional.exe
-# RUN (start /w vs.exe --quiet --wait --norestart --nocache `
-#     --add Microsoft.VisualStudio.Workload.NativeDesktop `
-#     --add Microsoft.VisualStudio.Component.VC.Tools.x86.x64 `
-#     --add Microsoft.VisualStudio.Component.Windows81SDK `
-#     --add Microsoft.Component.VC.Runtime.UCRTSDK `
-#     || IF "%ERRORLEVEL%"=="3010" EXIT 0)
+RUN start /b /wait vs.exe --quiet --wait --nocache --norestart --installPath "c:\VS" --add Microsoft.VisualStudio.Workload.NativeDesktop  --add Microsoft.VisualStudio.Component.VC.Tools.x86.x64  --add Microsoft.VisualStudio.Component.Windows81SDK  --add Microsoft.Component.VC.Runtime.UCRTSDK
+RUN setx VS2017INSTALLDIR "C:\VS"
 
-RUN (start /w vs.exe --quiet --wait --norestart --nocache `
-    --config "C:\builds\scilab\.gitlab-ci\.vsconfig" `
-    --installPath "c:\VS" `
-     || IF "%ERRORLEVEL%"=="3010" EXIT 0)
-RUN del /q vs.exe
-
-# Repair Install Intel oneAPI HPC with VS Integration
-RUN oneapi_extracted\bootstrapper.exe -s --action repair --components=intel.oneapi.win.ifort-compiler -p=NEED_VS2017_INTEGRATION=1 --eula=accept
+# Install Intel oneAPI HPC with VS Integration
+RUN start /b /w oneapi_extracted\bootstrapper.exe -s --action install --components=intel.oneapi.win.ifort-compiler:intel.oneapi.win.cpp-compiler -p=NEED_VS2017_INTEGRATION=1 --eula=accept
 RUN del /q w_HPCKit.exe
 RUN rd /s/q oneapi_extracted
 
