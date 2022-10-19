@@ -22,10 +22,13 @@ extern "C"
 {
 #include "loadOnUseClassPath.h"
 #include "Scierror.h"
-
+}
     //XML API
 #include <libxml/xpath.h>
 #include <libxml/xmlreader.h>
+
+extern "C"
+{
 #include "sci_malloc.h"
 #include "configvariable_interface.h"
 }

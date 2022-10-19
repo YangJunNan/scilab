@@ -26,9 +26,9 @@ extern "C"
 #include "fullpath.h"
 #include "PATH_MAX.h"
 #include "pathconvert.h"
+}
 #include <libxml/xpath.h>
 #include <libxml/xmlreader.h>
-}
 
 #define DEFAULT_ENCODING "UTF-8"
 

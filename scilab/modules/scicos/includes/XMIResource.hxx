@@ -22,10 +22,8 @@
 #include <string>
 #include <vector>
 
-extern "C" {
 #include <libxml/xmlwriter.h>
 #include <libxml/xmlreader.h>
-}
 
 namespace org_scilab_modules_scicos
 {
