@@ -173,8 +173,7 @@ x64_windows_set_release_env:
   variables:
     GIT_CLEAN_FLAGS: -fxd
   script: echo "git clean succeeded"
-  when:
-    - manual
+  when: manual
 x86_64-linux-gnu_clean:
   extends: .git_clean
   tags: [x86_64-linux-gnu]
