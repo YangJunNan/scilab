@@ -13,7 +13,9 @@
   variables:
     # reuse download and install on each test
     GIT_CLEAN_FLAGS: none
-  script: call .gitlab-ci\test.bat
+  script:
+    - $process = Start-Process -Wait -PassThru -FilePath ".gitlab-ci\test.bat"
+    - exit $process.ExitCode
   artifacts:
     when: always
     paths:
