@@ -131,14 +131,13 @@ x86_64-linux-gnu_set_release_env:
   tags: [x64_windows, shell, scilab]
   variables:
     GIT_STRATEGY: none
-    ARCH: x64
   script:
     - echo $env:CI_COMMIT_TAG
     - echo $env:CI_COMMIT_BRANCH
     - echo $env:CI_MERGE_REQUEST_TARGET_BRANCH_NAME
     - |
       [System.Environment]::SetEnvironmentVariable('NOW', [int](Get-Date(Get-Date).ToUniversalTime() -uformat '%s'))
-    - Add-Content -Path build.env -Value "ARCH=$env:ARCH"
+    - Add-Content -Path build.env -Value "ARCH=x64"
     - Add-Content -Path build.env -Value "SCI_VERSION_STRING=$env:SCI_VERSION_STRING"
     - Add-Content -Path build.env -Value "SCI_VERSION_TIMESTAMP=$env:NOW"
   artifacts:
