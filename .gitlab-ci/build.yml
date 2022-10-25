@@ -18,7 +18,7 @@
   variables:
     GIT_CLEAN_FLAGS: none
   script:
-    - $process = Start-Process -FilePath ".gitlab-ci\build.bat" -Wait -PassThru -RedirectStandardOutput log.txt
+    - $process = Start-Process -Wait -PassThru -FilePath ".gitlab-ci\build.bat" -RedirectStandardOutput log.txt
     - exit $process.ExitCode
   artifacts:
     paths:
