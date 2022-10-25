@@ -1,5 +1,6 @@
 REM Scilab ( http://www.scilab.org/ ) - This file is part of Scilab
 REM Copyright (C) Dassault Systemes - 2022 - Clement DAVID
+REM Copyright (C) Dassault Systemes - 2022 - Cedric DELAMARRE
 REM
 REM Builder script for building Scilab on Windows
 REM
@@ -17,11 +18,8 @@ call "%VS2017INSTALLDIR%\Common7\Tools\VsDevCmd.bat"
 
 REM Define environment variables
 set SCILAB_JDK64=%JAVA_HOME%
-@REM cd builds/scilab/scilab/
-@REM devenv Scilab.sln /upgrade
 
 cd scilab
-@REM del /q modules\core\includes\version.h
 
 REM patch version numbers
 sed -i ^
@@ -59,7 +57,9 @@ if errorlevel 1 tail --lines=20 ..\log_iss.txt 1>&2 & exit 1
 if errorlevel 1 tail --lines=20 ..\log_iss.txt 1>&2 & exit 1
 
 move ".\Output\%SCI_VERSION_STRING%_%ARCH%.exe" "%CI_PROJECT_DIR%\%SCI_VERSION_STRING%_%ARCH%.exe"
-if "%ERRORLEVEL%" NEQ 0 exit 1
+if errorlevel 1 exit 1
 
 REM error if artifact does not exist
 dir /s "%CI_PROJECT_DIR%\%SCI_VERSION_STRING%_%ARCH%.exe"
+
+exit 0
