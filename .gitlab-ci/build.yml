@@ -1,5 +1,6 @@
 # Scilab ( http://www.scilab.org/ ) - This file is part of Scilab
 # Copyright (C) Dassault Systemes - 2022 - Clement DAVID
+# Copyright (C) Dassault Systemes - 2022 - Cedric DELAMARRE
 #
 #
 # This YAML file describe the build stage of the CI. This stage delegates the
@@ -9,11 +10,11 @@
 
 # build scilab using a windows runner
 .x64_windows_build:
-  extends: .docker-image-windows
+  # extends: .docker-image-windows
   stage: build
   # needs:
   # - x64_windows_cleanup_builds
-  tags: [x64_windows, scilab, docker]
+  tags: [x64_windows, scilab, shell]
   variables:
     GIT_CLEAN_FLAGS: none
   script:

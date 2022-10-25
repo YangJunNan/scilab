@@ -1,5 +1,6 @@
 # Scilab ( http://www.scilab.org/ ) - This file is part of Scilab
 # Copyright (C) Dassault Systemes - 2022 - Clement DAVID
+# Copyright (C) Dassault Systemes - 2022 - Cedric DELAMARRE
 
 stages:
   # fetch prebuild libraries maintained in different repository
@@ -24,8 +25,8 @@ workflow:
 .docker-image-linux:
   image: $CI_REGISTRY_IMAGE/linux-builder:latest
 
-.docker-image-windows:
-  image: $CI_REGISTRY_IMAGE/windows-builder:latest
+# .docker-image-windows:
+#   image: $CI_REGISTRY_IMAGE/windows-builder:latest
 
 default:
   artifacts:
@@ -44,9 +45,9 @@ include:
   - local: .gitlab-ci/prebuild.yml
   # build
   - local: .gitlab-ci/build.yml
-  # # execute tests
-  # - local: .gitlab-ci/test.yml
-  # # sign and extract useful content
-  # - local: .gitlab-ci/postbuild.yml
-  # # deploy/publish a binary
-  # - local: .gitlab-ci/publish.yml
+  # execute tests
+  - local: .gitlab-ci/test.yml
+  # sign and extract useful content
+  - local: .gitlab-ci/postbuild.yml
+  # deploy/publish a binary
+  - local: .gitlab-ci/publish.yml
