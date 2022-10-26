@@ -24,7 +24,7 @@
     paths:
       - logs_$CI_COMMIT_SHORT_SHA
       - scilab/modules/core/includes/version.h
-      - scilab*.exe
+      - $SCI_VERSION_STRING_$ARCH.exe
     when: always
 # build an preview/branched version
 x64_windows_build_branch:
