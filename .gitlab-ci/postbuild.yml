@@ -63,14 +63,14 @@ x64_windows_sign_nightly:
   extends: .x64_windows_sign
   needs:
     - x64_windows_build_nightly
-    - x64_windows_set_nightly_env
+    - x64_windows_set_env
   rules:
     - if: $CI_PIPELINE_SOURCE == 'schedule'
 x64_windows_sign_release:
   extends: .x64_windows_sign
   needs:
     - x64_windows_build_release
-    - x64_windows_set_release_env
+    - x64_windows_set_env
   rules:
     - if: $CI_COMMIT_TAG
 
