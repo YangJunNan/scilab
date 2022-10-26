@@ -18,11 +18,11 @@
   variables:
     GIT_CLEAN_FLAGS: none
   script:
-    - $process = Start-Process -Wait -PassThru -FilePath ".gitlab-ci\build.bat" -RedirectStandardOutput log.txt
+    - $process = Start-Process -Wait -PassThru -FilePath ".gitlab-ci\build.bat"
     - exit $process.ExitCode
   artifacts:
     paths:
-      - log*.txt
+      - logs_$CI_COMMIT_SHORT_SHA
       - scilab/modules/core/includes/version.h
       - scilab*.exe
     when: always

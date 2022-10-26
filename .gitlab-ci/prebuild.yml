@@ -35,46 +35,6 @@ create_docker_image_linux:
 #         paths:
 #           - .gitlab-ci/Dockerfile.windows
 
-# TODO: move cleanup in .post
-# # cleanup old builds from runners
-# x86_64-linux-gnu_cleanup_builds:
-#   extends: .docker-image-linux
-#   stage: prebuild
-#   tags: [x86_64-linux-gnu, docker, scilab]
-#   variables:
-#     GIT_STRATEGY: none
-#   script:
-#     - set -e -x
-#     # Remove any previous tarball
-#     - rm -fr scilab-*.tar.xz
-#     # Remove install dir older than 3 days
-#     - |
-#       find . -maxdepth 1 -mtime +2 -name "scilab-*" -type d -print0 |\
-#       while IFS= read -r -d '' i ; do
-#         chmod -R +w "$i" && rm -rf "$i";
-#       done
-#     # Remove TMPDIRs older than 1 day
-#     - |
-#       find /tmp -maxdepth 1 -mtime +0 -name "SCI_TMP*" -type d -print0 |\
-#       while IFS= read -r -d '' i ; do
-#         [ -w "$i" ] && rm -rf "$i";
-#       done
-
-# # cleanup old builds from runners
-# x64_windows_cleanup_builds:
-#   # extends: .docker-image-windows
-#   stage: prebuild
-#   tags: [x64_windows, shell, scilab]
-#   variables:
-#     GIT_STRATEGY: none
-#   script:
-#     # Remove any previous installer
-#     - del /f /q /s scilab-*.exe |cmd /c ""
-#     # Remove install dir older than 3 day
-#     - forfiles -p "." -m "scilab-*" -d -3 -c "cmd /c IF @isdir == TRUE rd /S /Q @path" |cmd /c ""
-#     # Remove TMPDIRs older than 1 day
-#     - forfiles -p "$env:TMP" -m "SCI_TMP*" -d -1 -c "cmd /c IF @isdir == TRUE rd /S /Q @path" |cmd /c ""
-
 # define x86_64-linux-gnu env variables
 .x86_64-linux-gnu_set_env:
   extends: .docker-image-linux
