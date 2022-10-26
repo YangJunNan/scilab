@@ -575,6 +575,17 @@ function status = test_single(_module, _testPath, _testName)
         altreffile  = [ _testPath + _testName + ".unix.dia.ref" ];
     end
 
+    //scilab path
+    if (getos() <> "Windows") & ~isfile(SCI+"/bin/scilab") then
+        // match a string wich finished by /share/scilab/ or /share/scilab
+        SCI_BIN = strsubst(SCI,"|/share/scilab/?$|","","r");
+    else
+        SCI_BIN = SCI;
+    end
+
+    //scilab build type
+    without_gui_build = getos() <> "Windows" & ~isfile(fullfile(SCI_BIN,"scilab-bin"));
+
     for i=1:size(altreffile,"*")
         if isfile(altreffile(i)) then
             path_dia_ref = altreffile(i);
@@ -647,7 +658,7 @@ function status = test_single(_module, _testPath, _testName)
     end
 
     if ~isempty(grep(sciFile, "<-- TEST WITH GRAPHIC -->")) then
-        if or(_module.wanted_mode == "NWNI") then
+        if or(_module.wanted_mode == "NWNI") | without_gui_build then
             status.id = 10;
             status.message = "skipped: Test with graphic";
             return;
@@ -658,7 +669,7 @@ function status = test_single(_module, _testPath, _testName)
         execMode = "NW";
     end
 
-    if or(_module.wanted_mode == "NWNI") & isempty(grep(sciFile, "<-- CLI SHELL MODE -->")) then
+    if (or(_module.wanted_mode == "NWNI") | without_gui_build) & isempty(grep(sciFile, "<-- CLI SHELL MODE -->")) then
         status.id = 10;
         status.message = "skipped: not CLI SHELL MODE test";
         return;
@@ -689,7 +700,7 @@ function status = test_single(_module, _testPath, _testName)
     clear MPITestPos
 
     if ~isempty(grep(sciFile, "<-- XCOS TEST -->")) then
-        if or(_module.wanted_mode == "NWNI") then
+        if or(_module.wanted_mode == "NWNI") | without_gui_build then
             status.id = 10;
             status.message = "skipped: Test with xcos";
             return;
@@ -803,16 +814,7 @@ function status = test_single(_module, _testPath, _testName)
     //Build final test
     sciFile = [head ; sciFile ; tail];
 
-
     //Build command to execute
-
-    //scilab path
-    if (getos() <> "Windows") & ~isfile(SCI+"/bin/scilab") then
-        // match a string wich finished by /share/scilab/ or /share/scilab
-        SCI_BIN = strsubst(SCI,"|/share/scilab/?$|","","r");
-    else
-        SCI_BIN = SCI;
-    end
 
     //mode
     valgrind_opt = "";
@@ -1403,3 +1405,4 @@ function exportToXUnitFormat(exportToFile, testsuites)
 
     xmlWrite(doc);
 endfunction
+
