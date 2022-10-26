@@ -8,10 +8,10 @@ REM NOTE: log all commands to log files to avoid hitting Gitlab log limit
 
 REM Create log folder
 set LOG_PATH=logs_%CI_COMMIT_SHORT_SHA%
-mkdir "%LOG_PATH%"
+mkdir %LOG_PATH%
 
-svn checkout --username anonymous --password Scilab svn://svn.scilab.org/scilab/%PREREQUIREMENTS_BRANCH%/Dev-Tools/SE/Prerequirements/Windows_x64/ scilab > "%LOG_PATH%\log_svn.txt"
-if errorlevel 1 tail --lines=20 "%LOG_PATH%\log_svn.txt" 1>&2 & exit 1
+svn checkout --username anonymous --password Scilab svn://svn.scilab.org/scilab/%PREREQUIREMENTS_BRANCH%/Dev-Tools/SE/Prerequirements/Windows_x64/ scilab > %LOG_PATH%\log_svn.txt
+if errorlevel 1 tail --lines=20 %LOG_PATH%\log_svn.txt 1>&2 & exit 1
 REM display svn revision
 tail -n 1 %LOG_PATH%\log_svn.txt
 REM revert local modification
