@@ -6,6 +6,9 @@ REM Builder script for building Scilab on Windows
 REM
 REM NOTE: log all commands to log files to avoid hitting Gitlab log limit
 
+call "%VS2017INSTALLDIR%\Common7\Tools\VsDevCmd.bat"
+@REM call "C:\Program Files (x86)\Microsoft Visual Studio\2017\Professional\Common7\Tools\VsDevCmd.bat"
+
 REM Create log folder
 set LOG_PATH=logs_%CI_COMMIT_SHORT_SHA%
 mkdir %LOG_PATH%
@@ -16,9 +19,6 @@ REM display svn revision
 tail -n 1 %LOG_PATH%\log_svn.txt
 REM revert local modification
 svn revert -R scilab >> %LOG_PATH%\log_svn.txt
-
-call "%VS2017INSTALLDIR%\Common7\Tools\VsDevCmd.bat"
-@REM call "C:\Program Files (x86)\Microsoft Visual Studio\2017\Professional\Common7\Tools\VsDevCmd.bat"
 
 REM Define environment variables
 set SCILAB_JDK64=%JAVA_HOME%
@@ -58,10 +58,10 @@ if errorlevel 1 tail --lines=20 %LOG_PATH%\..\log_iss.txt 1>&2 & exit 1
 if errorlevel 1 tail --lines=20 %LOG_PATH%\..\log_iss.txt 1>&2 & exit 1
 if errorlevel 1 tail --lines=20 %LOG_PATH%\..\log_iss.txt 1>&2 & exit 1
 
-move ".\Output\%SCI_VERSION_STRING%_%ARCH%.exe" "%CI_PROJECT_DIR%\%SCI_VERSION_STRING%_%ARCH%.exe"
+move ".\Output\%SCI_VERSION_STRING%-%ARCH%.exe" "%CI_PROJECT_DIR%\%SCI_VERSION_STRING%-%ARCH%.exe"
 if errorlevel 1 exit 1
 
 REM error if artifact does not exist
-dir /s "%CI_PROJECT_DIR%\%SCI_VERSION_STRING%_%ARCH%.exe"
+dir /s "%CI_PROJECT_DIR%\%SCI_VERSION_STRING%-%ARCH%.exe"
 
 exit 0

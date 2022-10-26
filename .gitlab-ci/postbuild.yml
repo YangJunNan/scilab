@@ -31,20 +31,22 @@
 #         [ -w "$i" ] && rm -rf "$i";
 #       done
 
-# # cleanup old builds from runners
-# x64_windows_cleanup_builds:
-#   # extends: .docker-image-windows
-#   stage: .post
-#   tags: [x64_windows, shell, scilab]
-#   variables:
-#     GIT_STRATEGY: none
-#   script:
-#     # Remove installer
-#     - Remove-Item "$env:SCI_VERSION_STRING*"
-#     # Remove install dir
-#     - forfiles -p "." -m "scilab-*" -d -3 -c "cmd /c IF @isdir == TRUE rd /S /Q @path" |cmd /c ""
-#     # Remove TMPDIRs older than 1 day
-#     - forfiles -p "$env:TMP" -m "SCI_TMP*" -d -1 -c "cmd /c IF @isdir == TRUE rd /S /Q @path" |cmd /c ""
+# cleanup old builds from runners
+x64_windows_cleanup_builds:
+  # extends: .docker-image-windows
+  stage: .post
+  tags: [x64_windows, shell, scilab]
+  variables:
+    GIT_STRATEGY: none
+  script:
+    # Remove installer
+    - Remove-Item "$env:SCI_VERSION_STRING-$env:ARCH.exe"
+    # Remove install dir
+    - Remove-Item "$env:SCI_VERSION_STRING-$env:ARCH*"
+    # Remove logs
+    - Remove-Item "logs_$env:CI_COMMIT_SHORT_SHA"
+    # Remove TMPDIRs older than 1 day
+    # - forfiles -p "$env:TMP" -m "SCI_TMP*" -d -1 -c "cmd /c IF @isdir == TRUE rd /S /Q @path" |cmd /c ""
 
 # sign the windows binary
 .x64_windows_sign:
