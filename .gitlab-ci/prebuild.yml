@@ -85,7 +85,7 @@ x86_64-linux-gnu_set_release_env:
     - if: $CI_COMMIT_TAG
 
 # define x64 windows env
-.x64_windows_set_env:
+x64_windows_set_env:
   # extends: .docker-image-windows
   stage: prebuild
   tags: [x64_windows, shell, scilab]

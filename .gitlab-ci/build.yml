@@ -30,7 +30,7 @@
 x64_windows_build_branch:
   extends: .x64_windows_build
   needs:
-    - x64_windows_set_branch_env
+    - x64_windows_set_env
     - contains_changes_modification
   rules:
     - if: $CI_PIPELINE_SOURCE == 'merge_request_event'
