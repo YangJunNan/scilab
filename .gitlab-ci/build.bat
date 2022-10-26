@@ -44,21 +44,21 @@ sed -i ^
 @REM svml_dispmd.dll
 
 REM build with Visual Studio and Intel compilers
-devenv Scilab.sln /build "Release|x64" > %LOG_PATH%\..\log_build.txt
-if errorlevel 1 tail --lines=20 %LOG_PATH%\..\log_build.txt 1>&2 & exit 1
-devenv Scilab.sln /build "Release|x64" /project buildhelp > %LOG_PATH%\..\log_buildhelp.txt
-if errorlevel 1 tail --lines=20 %LOG_PATH%\..\log_buildhelp.txt 1>&2 & exit 1
-devenv Scilab.sln /build "Release|x64" /project buildjavadoc > %LOG_PATH%\..\log_buildjavadoc.txt
-if errorlevel 1 tail --lines=20 %LOG_PATH%\..\log_buildjavadoc.txt 1>&2 & exit 1
+devenv Scilab.sln /build "Release|x64" > ..\%LOG_PATH%\log_build.txt
+if errorlevel 1 tail --lines=20 ..\%LOG_PATH%\log_build.txt 1>&2 & exit 1
+devenv Scilab.sln /build "Release|x64" /project buildhelp > ..\%LOG_PATH%\log_buildhelp.txt
+if errorlevel 1 tail --lines=20 ..\%LOG_PATH%\log_buildhelp.txt 1>&2 & exit 1
+devenv Scilab.sln /build "Release|x64" /project buildjavadoc > ..\%LOG_PATH%\log_buildjavadoc.txt
+if errorlevel 1 tail --lines=20 ..\%LOG_PATH%\log_buildjavadoc.txt 1>&2 & exit 1
 
 REM Package with Inno Setup 6
-bin\WScilex.exe -nb -f "tools\innosetup\Create_ISS.sce" > %LOG_PATH%\..\log_iss.txt
-if errorlevel 1 tail --lines=20 %LOG_PATH%\..\log_iss.txt 1>&2 & exit 1
-"C:\Program Files (x86)\Inno Setup 6\iscc.exe" Scilab.iss >> %LOG_PATH%\..\log_iss.txt
-if errorlevel 1 tail --lines=20 %LOG_PATH%\..\log_iss.txt 1>&2 & exit 1
-if errorlevel 1 tail --lines=20 %LOG_PATH%\..\log_iss.txt 1>&2 & exit 1
+bin\WScilex.exe -nb -f "tools\innosetup\Create_ISS.sce" > ..\%LOG_PATH%\log_iss.txt
+if errorlevel 1 tail --lines=20 ..\%LOG_PATH%\log_iss.txt 1>&2 & exit 1
+"C:\Program Files (x86)\Inno Setup 6\iscc.exe" Scilab.iss >> ..\%LOG_PATH%\log_iss.txt
+if errorlevel 1 tail --lines=20 ..\%LOG_PATH%\log_iss.txt 1>&2 & exit 1
+if errorlevel 1 tail --lines=20 ..\%LOG_PATH%\log_iss.txt 1>&2 & exit 1
 
-move ".\Output\%SCI_VERSION_STRING%-%ARCH%.exe" "%CI_PROJECT_DIR%\%SCI_VERSION_STRING%-%ARCH%.exe"
+move ".\Output\%SCI_VERSION_STRING%_%ARCH%.exe" "%CI_PROJECT_DIR%\%SCI_VERSION_STRING%-%ARCH%.exe"
 if errorlevel 1 exit 1
 
 REM error if artifact does not exist
