@@ -9,7 +9,7 @@
 
 # # cleanup old builds from runners
 # x86_64-linux-gnu_cleanup_builds:
-#   extends: .docker-image-linux
+#   image: $DOCKER_LINUX_BUILDER
 #   stage: .post
 #   tags: [x86_64-linux-gnu, docker, scilab]
 #   variables:
@@ -32,19 +32,24 @@
 #       done
 
 # cleanup old builds from runners
+# Note: may not work with concurrent jobs > 1
 x64_windows_cleanup:
   # extends: .docker-image-windows
   stage: .post
   tags: [x64_windows, shell, scilab]
+  # dont download artifacts
+  dependencies: []
   variables:
     GIT_STRATEGY: none
   script:
     # Remove installer
     - Remove-Item "$env:SCI_VERSION_STRING-$env:ARCH.exe"
     # Remove install dir
-    - Remove-Item "$env:SCI_VERSION_STRING-$env:ARCH"
+    - Remove-Item "$env:SCI_VERSION_STRING"
     # Remove logs
     - Remove-Item "logs_$env:CI_COMMIT_SHORT_SHA"
+    # Remove public
+    - Remove-Item "public"
     # Remove TMPDIRs older than 1 day
     # - forfiles -p "$env:TMP" -m "SCI_TMP*" -d -1 -c "cmd /c IF @isdir == TRUE rd /S /Q @path" |cmd /c ""
 
@@ -123,6 +128,7 @@ build_doxygen:
 build_help_web:
   stage: postbuild
   tags: [x86_64-linux-gnu, docker, scilab]
+  image: $DOCKER_LINUX_BUILDER
   variables:
     GIT_CLEAN_FLAGS: none
   dependencies: []
@@ -140,6 +146,7 @@ build_help_web:
 publish_help_jar:
   stage: postbuild
   tags: [x86_64-linux-gnu, docker, scilab]
+  image: $DOCKER_LINUX_BUILDER
   variables:
     GIT_STRATEGY: none
   needs:

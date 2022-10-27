@@ -212,6 +212,7 @@ impacted_x64_windows_test_ugly:
 .x86_64-linux-gnu_test:
   stage: test
   tags: [x86_64-linux-gnu, docker, scilab]
+  image: $DOCKER_LINUX_BUILDER
   variables:
     # reuse download and install on each test
     GIT_CLEAN_FLAGS: none
