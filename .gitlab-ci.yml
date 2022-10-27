@@ -62,6 +62,7 @@ include:
   # deploy/publish a binary
   - local: .gitlab-ci/publish.yml
 
+## .pre stuff
 # Manage Docker build
 create_docker_image_linux:
   stage: .pre
@@ -89,3 +90,27 @@ create_docker_image_linux:
 #       changes: *DOCKER_CHANGES
 #     - if: $CI_PIPELINE_SOURCE == 'merge_request_event'
 #       changes: *DOCKER_CHANGES
+
+## .post stuff
+
+# cleanup old builds from runners
+# Note: may not work with concurrent jobs > 1
+x64_windows_cleanup:
+  # extends: .docker-image-windows
+  stage: .post
+  tags: [x64_windows, shell, scilab]
+  # dont download artifacts
+  dependencies: []
+  variables:
+    GIT_STRATEGY: none
+  script:
+    # Remove installer
+    - Remove-Item "$env:SCI_VERSION_STRING-$env:ARCH.exe"
+    # Remove install dir
+    - Remove-Item "$env:SCI_VERSION_STRING"
+    # Remove logs
+    - Remove-Item "logs_$env:CI_COMMIT_SHORT_SHA"
+    # Remove public
+    - Remove-Item "public"
+    # Remove TMPDIRs older than 1 day
+    # - forfiles -p "$env:TMP" -m "SCI_TMP*" -d -1 -c "cmd /c IF @isdir == TRUE rd /S /Q @path" |cmd /c ""
