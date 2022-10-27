@@ -29,10 +29,10 @@ workflow:
     - if: $CI_PIPELINE_SOURCE == "merge_request_event"
       changes: &DOCKER_CHANGES
         paths:
-          # - .gitlab-ci/Dockerfile*
-          - scilab/contrib/loader.sce
+          - .gitlab-ci/Dockerfile*
       variables:
         DOCKER_LINUX_BUILDER: "$CI_REGISTRY_IMAGE/linux-builder:$CI_MERGE_REQUEST_ID"
+        SCI_VERSION_STRING: "scilab-branch-${CI_MERGE_REQUEST_TARGET_BRANCH_NAME}-${CI_COMMIT_SHORT_SHA}"
     - if: $CI_PIPELINE_SOURCE == "merge_request_event"
       variables:
         # use CI_MERGE_REQUEST_TARGET_BRANCH_NAME for the name
@@ -54,14 +54,14 @@ default:
 include:
   # updating files and runner states
   - local: .gitlab-ci/prebuild.yml
-  # # build
-  # - local: .gitlab-ci/build.yml
-  # # execute tests
-  # - local: .gitlab-ci/test.yml
-  # # sign and extract useful content
-  # - local: .gitlab-ci/postbuild.yml
-  # # deploy/publish a binary
-  # - local: .gitlab-ci/publish.yml
+  # build
+  - local: .gitlab-ci/build.yml
+  # execute tests
+  - local: .gitlab-ci/test.yml
+  # sign and extract useful content
+  - local: .gitlab-ci/postbuild.yml
+  # deploy/publish a binary
+  - local: .gitlab-ci/publish.yml
 
 ## .pre stuff
 # Manage Docker build
