@@ -27,15 +27,15 @@ variables:
 workflow:
   rules:
     - if: $CI_PIPELINE_SOURCE == "merge_request_event"
-      variables:
-        # use CI_MERGE_REQUEST_TARGET_BRANCH_NAME for the name
-        SCI_VERSION_STRING: "scilab-branch-${CI_MERGE_REQUEST_TARGET_BRANCH_NAME}-${CI_COMMIT_SHORT_SHA}"
-    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
       changes: &DOCKER_CHANGES
         paths:
           - .gitlab-ci/Dockerfile*
       variables:
         DOCKER_LINUX_BUILDER: "$CI_REGISTRY_IMAGE/linux-builder:$CI_MERGE_REQUEST_ID"
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+      variables:
+        # use CI_MERGE_REQUEST_TARGET_BRANCH_NAME for the name
+        SCI_VERSION_STRING: "scilab-branch-${CI_MERGE_REQUEST_TARGET_BRANCH_NAME}-${CI_COMMIT_SHORT_SHA}"
     - if: $CI_PIPELINE_SOURCE == 'schedule'
       variables:
         SCI_VERSION_STRING: "scilab-branch-${CI_COMMIT_BRANCH}-${CI_COMMIT_SHORT_SHA}"
@@ -69,6 +69,9 @@ create_docker_image_linux:
   image: docker:20.10.16
   tags: [x86_64-linux-gnu, docker, scilab]
   script:
+    - echo $DOCKER_LINUX_BUILDER
+    - echo $SCI_VERSION_STRING
+    - echo "$CI_REGISTRY_IMAGE/linux-builder:$CI_MERGE_REQUEST_ID"
     - docker login -u $CI_REGISTRY_USER -p $CI_JOB_TOKEN $CI_REGISTRY
     - docker build --file .gitlab-ci/Dockerfile.linux -t $DOCKER_LINUX_BUILDER .
     - docker push $DOCKER_LINUX_BUILDER
