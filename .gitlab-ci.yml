@@ -72,7 +72,7 @@ create_docker_image_linux:
     - docker build --file .gitlab-ci/Dockerfile.linux -t $DOCKER_LINUX_BUILDER .
     - docker push $DOCKER_LINUX_BUILDER
   rules:
-    - if: CI_MERGE_REQUEST_APPROVED
+    - if: $CI_MERGE_REQUEST_APPROVED
       changes: *DOCKER_CHANGES
     - if: $CI_PIPELINE_SOURCE == 'merge_request_event'
       changes: *DOCKER_CHANGES
