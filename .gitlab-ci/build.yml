@@ -10,7 +10,6 @@
 
 # build scilab using a windows runner
 .x64_windows_build:
-  # extends: .docker-image-windows
   stage: build
   tags: [x64_windows, scilab, shell]
   script:
@@ -49,6 +48,7 @@ x64_windows_build_release:
 # build scilab using a linux runner
 .x86_64-linux-gnu_build:
   stage: build
+  image: $DOCKER_LINUX_BUILDER
   tags: [x86_64-linux-gnu, docker, scilab]
   script: bash -x -e .gitlab-ci/build.sh
   artifacts:
