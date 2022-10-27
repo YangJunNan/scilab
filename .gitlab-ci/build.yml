@@ -48,7 +48,7 @@ x64_windows_build_release:
 .x86_64-linux-gnu_build:
   stage: build
   needs:
-    - x86_64-linux-gnu_cleanup_builds
+    - x86_64-linux-gnu_set_env
   tags: [x86_64-linux-gnu, docker, scilab]
   script: bash -x -e .gitlab-ci/build.sh
   artifacts:
@@ -61,23 +61,18 @@ x64_windows_build_release:
 x86_64-linux-gnu_build_branch:
   extends: .x86_64-linux-gnu_build
   needs:
-    - x86_64-linux-gnu_set_env
     - contains_changes_modification
   rules:
     - if: $CI_PIPELINE_SOURCE == 'merge_request_event'
 # build a nightly
 x86_64-linux-gnu_build_nightly:
   extends: .x86_64-linux-gnu_build
-  needs:
-    - x86_64-linux-gnu_clean
-    - x86_64-linux-gnu_set_env
   rules:
     - if: $CI_PIPELINE_SOURCE == 'schedule'
 # build a release
 x86_64-linux-gnu_build_release:
   extends: .x86_64-linux-gnu_build
   needs:
-    - x86_64-linux-gnu_set_env
     - prepare_release_files
   rules:
     - if: $CI_COMMIT_TAG
