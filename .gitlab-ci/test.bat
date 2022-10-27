@@ -3,7 +3,7 @@ REM Execute module test for a module named %TEST%, download and install latest b
 @echo on
 REM Install if not exist
 if exist "%SCI_VERSION_STRING%\" goto :installed
-call "%SCI_VERSION_STRING%-%ARCH%.exe" /SUPPRESSMSGBOXES /SILENT /SP-^
+call "%SCI_VERSION_STRING%-%ARCH%.exe" /TASKS=!desktopicon /SUPPRESSMSGBOXES /SILENT /SP-^
   /DIR="%CI_PROJECT_DIR%\%SCI_VERSION_STRING%"
 if not exist "%SCI_VERSION_STRING%\" exit 1
 

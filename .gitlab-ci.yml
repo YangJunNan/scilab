@@ -98,13 +98,19 @@ create_docker_image_linux:
 ## .post stuff
 
 # cleanup old builds from runners
-# Note: may not work with concurrent jobs > 1
-x64_windows_cleanup:
+# Note: will not work with concurrent jobs > 1
+# use parallel matrix to launch the job on multiple runners and concurrent jobs
+# to clean .../runner_tag/concurrent_id/ folders
+windows_cleanup_shell:
   # extends: .docker-image-windows
   stage: .post
+  # parallel:
+  #   matrix:
+  #     - NODE:
   tags: [x64_windows, shell, scilab]
   # dont download artifacts
-  dependencies: []
+  dependencies:
+    - x64_windows_set_env
   variables:
     GIT_STRATEGY: none
   script:
@@ -118,3 +124,21 @@ x64_windows_cleanup:
     - Remove-Item "public"
     # Remove TMPDIRs older than 1 day
     # - forfiles -p "$env:TMP" -m "SCI_TMP*" -d -1 -c "cmd /c IF @isdir == TRUE rd /S /Q @path" |cmd /c ""
+
+linux_cleanup_docker:
+  stage: .post
+  image: docker:20.10.16
+  tags: [x86_64-linux-gnu, docker, scilab]
+  dependencies: []
+  variables:
+    GIT_STRATEGY: none
+  script:
+    - echo $DOCKER_LINUX_BUILDER
+    # untag the dedicated image for this MR
+    - docker rmi $DOCKER_LINUX_BUILDER
+    # remove all dangling image
+    - docker image prune
+  rules:
+    # cleanup temporary image after MR approuved
+    - if: $CI_MERGE_REQUEST_APPROVED
+      changes: *DOCKER_CHANGES
