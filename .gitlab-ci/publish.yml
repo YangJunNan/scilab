@@ -32,8 +32,7 @@ index_gitlab_pages:
   stage: publish
   tags: [x86_64-linux-gnu, docker, scilab]
   dependencies:
-    - job: publish_help_jar
-      optional: true
+    - publish_help_jar
     - build_doxygen
     - build_help_web
     - build_javadoc
