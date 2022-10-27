@@ -7,34 +7,6 @@
 # cleanup runners and set them ready to build.
 #
 
-create_docker_image_linux:
-  stage: .pre
-  image: docker:20.10.16
-  tags: [x86_64-linux-gnu, docker, scilab]
-  script:
-    - docker login -u $CI_REGISTRY_USER -p $CI_JOB_TOKEN $CI_REGISTRY
-    - docker build --file .gitlab-ci/Dockerfile.linux -t $DOCKER_LINUX_BUILDER .
-    - docker push $DOCKER_LINUX_BUILDER
-  rules:
-    - if: CI_MERGE_REQUEST_APPROVED
-      changes: *DOCKER_CHANGES
-    - if: $CI_PIPELINE_SOURCE == 'merge_request_event'
-      changes: *DOCKER_CHANGES
-
-# create_docker_image_windows:
-#   stage: .pre
-#   tags: [x64_windows, shell, scilab]
-#   script:
-#     - docker login -u $CI_REGISTRY_USER -p $CI_JOB_TOKEN $CI_REGISTRY
-#     - docker build --memory 4GB --file .gitlab-ci/Dockerfile.windows -t $CI_REGISTRY_IMAGE/windows-builder:latest .
-#     - docker push $CI_REGISTRY_IMAGE/windows-builder
-#     - docker logout $CI_REGISTRY
-#   rules:
-#     - if: $CI_PIPELINE_SOURCE == 'merge_request_event'
-#       changes:
-#         paths:
-#           - .gitlab-ci/Dockerfile.windows
-
 # define x86_64-linux-gnu env variables
 .x86_64-linux-gnu_set_env:
   image: $DOCKER_LINUX_BUILDER
