@@ -13,26 +13,17 @@
     - echo "nothing to deploy"
 publish_branch:
   extends: .publish_job
-  needs:
-    - x64_windows_build_branch
-    - x86_64-linux-gnu_build_branch
-    - x86_64-linux-gnu_set_env
+  dependencies: []
   rules:
     - if: $CI_PIPELINE_SOURCE == 'merge_request_event'
 publish_nightly:
   extends: .publish_job
-  needs:
-    - x64_windows_sign_nightly
-    - x86_64-linux-gnu_build_nightly
-    - x86_64-linux-gnu_set_env
+  dependencies: []
   rules:
     - if: $CI_PIPELINE_SOURCE == 'schedule'
 publish_release:
   extends: .publish_job
-  needs:
-    - x64_windows_sign_release
-    - x86_64-linux-gnu_build_release
-    - x86_64-linux-gnu_set_env
+  dependencies: []
   rules:
     - if: $CI_COMMIT_TAG
 
@@ -40,7 +31,7 @@ publish_release:
 index_gitlab_pages:
   stage: publish
   tags: [x86_64-linux-gnu, docker, scilab]
-  needs:
+  dependencies:
     - job: publish_help_jar
       optional: true
     - build_doxygen
