@@ -228,7 +228,7 @@ x86_64-linux-gnu_test_branch_good:
   extends: .x86_64-linux-gnu_test
   needs:
     - x86_64-linux-gnu_build_branch
-    - x86_64-linux-gnu_set_branch_env
+    - x86_64-linux-gnu_set_env
   rules:
     - if: $CI_PIPELINE_SOURCE == 'merge_request_event'
   when: manual
@@ -239,7 +239,7 @@ x86_64-linux-gnu_test_branch_bad:
   extends: .x86_64-linux-gnu_test
   needs:
     - x86_64-linux-gnu_build_branch
-    - x86_64-linux-gnu_set_branch_env
+    - x86_64-linux-gnu_set_env
   rules:
     - if: $CI_PIPELINE_SOURCE == 'merge_request_event'
   when: manual
@@ -250,7 +250,7 @@ x86_64-linux-gnu_test_branch_ugly:
   extends: .x86_64-linux-gnu_test
   needs:
     - x86_64-linux-gnu_build_branch
-    - x86_64-linux-gnu_set_branch_env
+    - x86_64-linux-gnu_set_env
   rules:
     - if: $CI_PIPELINE_SOURCE == 'merge_request_event'
   when: manual
@@ -261,7 +261,7 @@ x86_64-linux-gnu_test_nightly_good:
   extends: .x86_64-linux-gnu_test
   needs:
     - x86_64-linux-gnu_build_nightly
-    - x86_64-linux-gnu_set_nightly_env
+    - x86_64-linux-gnu_set_env
   rules:
     - if: $CI_PIPELINE_SOURCE == 'schedule'
   parallel:
@@ -271,7 +271,7 @@ x86_64-linux-gnu_test_nightly_bad:
   extends: .x86_64-linux-gnu_test
   needs:
     - x86_64-linux-gnu_build_nightly
-    - x86_64-linux-gnu_set_nightly_env
+    - x86_64-linux-gnu_set_env
   rules:
     - if: $CI_PIPELINE_SOURCE == 'schedule'
   parallel:
@@ -281,7 +281,7 @@ x86_64-linux-gnu_test_nightly_ugly:
   extends: .x86_64-linux-gnu_test
   needs:
     - x86_64-linux-gnu_build_nightly
-    - x86_64-linux-gnu_set_nightly_env
+    - x86_64-linux-gnu_set_env
   rules:
     - if: $CI_PIPELINE_SOURCE == 'schedule'
   parallel:
@@ -291,7 +291,7 @@ x86_64-linux-gnu_test_release_good:
   extends: .x86_64-linux-gnu_test
   needs:
     - x86_64-linux-gnu_build_release
-    - x86_64-linux-gnu_set_release_env
+    - x86_64-linux-gnu_set_env
   rules:
     - if: $CI_COMMIT_TAG
   parallel:
@@ -301,7 +301,7 @@ x86_64-linux-gnu_test_release_bad:
   extends: .x86_64-linux-gnu_test
   needs:
     - x86_64-linux-gnu_build_release
-    - x86_64-linux-gnu_set_release_env
+    - x86_64-linux-gnu_set_env
   rules:
     - if: $CI_COMMIT_TAG
   parallel:
@@ -311,7 +311,7 @@ x86_64-linux-gnu_test_release_ugly:
   extends: .x86_64-linux-gnu_test
   needs:
     - x86_64-linux-gnu_build_release
-    - x86_64-linux-gnu_set_release_env
+    - x86_64-linux-gnu_set_env
   rules:
     - if: $CI_COMMIT_TAG
   parallel:
@@ -321,7 +321,7 @@ impacted_x86_64-linux-gnu_test_good:
   extends: .x86_64-linux-gnu_test
   needs:
     - x86_64-linux-gnu_build_branch
-    - x86_64-linux-gnu_set_branch_env
+    - x86_64-linux-gnu_set_env
   rules: &IMPACTED_RULES
     - if: $CI_PIPELINE_SOURCE == 'merge_request_event'
       changes:
@@ -333,7 +333,7 @@ impacted_x86_64-linux-gnu_test_bad:
   extends: .x86_64-linux-gnu_test
   needs:
     - x86_64-linux-gnu_build_branch
-    - x86_64-linux-gnu_set_branch_env
+    - x86_64-linux-gnu_set_env
   rules: *IMPACTED_RULES
   parallel:
     matrix: *BAD_TEST_ANCHOR
@@ -342,7 +342,7 @@ impacted_x86_64-linux-gnu_test_ugly:
   extends: .x86_64-linux-gnu_test
   needs:
     - x86_64-linux-gnu_build_branch
-    - x86_64-linux-gnu_set_branch_env
+    - x86_64-linux-gnu_set_env
   rules: *IMPACTED_RULES
   parallel:
     matrix: *UGLY_TEST_ANCHOR
