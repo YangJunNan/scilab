@@ -53,21 +53,6 @@ x64_windows_set_env:
     reports:
       dotenv: build.env
 
-# manual clean
-.git_clean:
-  stage: prebuild
-  tags: [scilab]
-  variables:
-    GIT_CLEAN_FLAGS: -fxd
-  script: echo "git clean succeeded"
-  when: manual
-x86_64-linux-gnu_clean:
-  extends: .git_clean
-  tags: [x86_64-linux-gnu]
-x64_windows_clean:
-  extends: .git_clean
-  tags: [x64_windows]
-
 # patch, copy, modify files before building a release
 prepare_release_files:
   image: $DOCKER_LINUX_BUILDER
@@ -87,9 +72,6 @@ contains_changes_modification:
   image: $DOCKER_LINUX_BUILDER
   stage: prebuild
   tags: [x86_64-linux-gnu]
-  variables:
-    GIT_STRATEGY: none
-    GIT_CLEAN_FLAGS: none
   script:
     - id
     - env

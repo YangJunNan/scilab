@@ -9,8 +9,6 @@
 .publish_job:
   stage: publish
   tags: [x86_64-linux-gnu, docker, scilab]
-  variables:
-    GIT_CLEAN_FLAGS: none
   script:
     - echo "nothing to deploy"
 publish_branch:
@@ -42,8 +40,6 @@ publish_release:
 index_gitlab_pages:
   stage: publish
   tags: [x86_64-linux-gnu, docker, scilab]
-  variables:
-    GIT_CLEAN_FLAGS: none
   needs:
     - job: publish_help_jar
       optional: true

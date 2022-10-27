@@ -10,9 +10,6 @@
 .x64_windows_test:
   stage: test
   tags: [x64_windows, scilab]
-  variables:
-    # reuse download and install on each test
-    GIT_CLEAN_FLAGS: none
   script:
     - $process = Start-Process -Wait -PassThru -FilePath ".gitlab-ci\test.bat"
     - exit $process.ExitCode
@@ -213,9 +210,6 @@ impacted_x64_windows_test_ugly:
   stage: test
   tags: [x86_64-linux-gnu, docker, scilab]
   image: $DOCKER_LINUX_BUILDER
-  variables:
-    # reuse download and install on each test
-    GIT_CLEAN_FLAGS: none
   script: bash -e -x .gitlab-ci/test.sh
   artifacts:
     when: always
