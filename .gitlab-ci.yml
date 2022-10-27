@@ -29,7 +29,8 @@ workflow:
     - if: $CI_PIPELINE_SOURCE == "merge_request_event"
       changes: &DOCKER_CHANGES
         paths:
-          - .gitlab-ci/Dockerfile*
+          # - .gitlab-ci/Dockerfile*
+          - scilab/contrib/loader.sce
       variables:
         DOCKER_LINUX_BUILDER: "$CI_REGISTRY_IMAGE/linux-builder:$CI_MERGE_REQUEST_ID"
     - if: $CI_PIPELINE_SOURCE == "merge_request_event"
