@@ -76,19 +76,19 @@ include:
 
 # # .pre: started before everything but only if a pipeline is scheduled
 # Manage Docker build
-create_docker_image_linux:
-  stage: .pre
-  image: docker:20.10.16
-  tags: [x86_64-linux-gnu, docker, scilab]
-  script:
-    - docker login -u $CI_REGISTRY_USER -p $CI_JOB_TOKEN $CI_REGISTRY
-    - docker build --file .gitlab-ci/Dockerfile.linux -t $DOCKER_LINUX_BUILDER .
-    - docker push $DOCKER_LINUX_BUILDER
-  rules:
-    - if: $CI_MERGE_REQUEST_APPROVED
-      changes: *DOCKER_CHANGES
-    - if: $CI_PIPELINE_SOURCE == 'merge_request_event'
-      changes: *DOCKER_CHANGES
+# create_docker_image_linux:
+#   stage: .pre
+#   image: docker:20.10.16
+#   tags: [x86_64-linux-gnu, docker, scilab]
+#   script:
+#     - docker login -u $CI_REGISTRY_USER -p $CI_JOB_TOKEN $CI_REGISTRY
+#     - docker build --file .gitlab-ci/Dockerfile.linux -t $DOCKER_LINUX_BUILDER .
+#     - docker push $DOCKER_LINUX_BUILDER
+#   rules:
+#     - if: $CI_MERGE_REQUEST_APPROVED
+#       changes: *DOCKER_CHANGES
+#     - if: $CI_PIPELINE_SOURCE == 'merge_request_event'
+#       changes: *DOCKER_CHANGES
 # create_docker_image_windows:
 #   stage: .pre
 #   tags: [x64_windows, shell, scilab]
@@ -123,8 +123,9 @@ windows_cleanup:
   variables:
     GIT_STRATEGY: none
   script:
-    - echo "$CI_PROJECT_DIR\"
-    - echo "Concurrent id $CI_CONCURRENT_ID"
+    - echo "cleaning $CI_PROJECT_DIR"
+    # Wait all concurrent jobs
+    - Start-Sleep -Seconds 5
     # Remove TMPDIRs older than 1 day
     - Get-ChildItem -Path "$env:TMP\SCI_TMP*" | Where-Object {($_.LastWriteTime -lt (Get-Date).AddDays(-1))} | Remove-Item -Recurse
     # Remove logs dir
@@ -148,8 +149,7 @@ linux_cleanup:
   variables:
     GIT_STRATEGY: none
   script:
-    - echo "Concurrent id $CI_CONCURRENT_ID"
-    - echo "$CI_PROJECT_DIR"
+    - echo "cleaning $CI_PROJECT_DIR"
     # Remove logs
     - rm -rf "logs_$CI_COMMIT_SHORT_SHA"
     # Remove installer
