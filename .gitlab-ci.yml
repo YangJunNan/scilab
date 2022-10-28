@@ -138,10 +138,10 @@ linux_cleanup:
   stage: .post
   parallel:
     matrix:
-      - RUNNER: [x86_64-linux-gnu, docker, scilab]
+      - RUNNER: [vdevredcclindsy]
         CONCURRENT: [1, 2, 3, 4]
   tags:
-    - $RUNNER-$CONCURRENT
+    - [x86_64-linux-gnu, docker, scilab]
   # tags: [x86_64-linux-gnu, docker, scilab]
   image: $DOCKER_LINUX_BUILDER
   # dont download artifacts but env var
