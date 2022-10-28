@@ -125,14 +125,15 @@ windows_cleanup_shell:
   variables:
     GIT_STRATEGY: none
   script:
-    # Remove installer
-    - Remove-Item "$env:SCI_VERSION_STRING.bin.$env:ARCH.exe"
-    # Remove install dir
-    - Remove-Item -Recurse "$env:SCI_VERSION_STRING"
-    # Remove logs
-    - Remove-Item -Recurse "logs_$env:CI_COMMIT_SHORT_SHA"
     # Remove TMPDIRs older than 1 day
     - Get-ChildItem -Path "$env:TMP\SCI_TMP*" | Where-Object {($_.LastWriteTime -lt (Get-Date).AddDays(-1))} | Remove-Item -Recurse
+    # Remove logs
+    - Remove-Item -Recurse "logs_$env:CI_COMMIT_SHORT_SHA"
+    # Remove install dir
+    - Remove-Item -Recurse "$env:SCI_VERSION_STRING"
+    # Remove installer
+    - Remove-Item "$env:SCI_VERSION_STRING.bin.$env:ARCH.exe"
+  when: always
 
 # clean linux docker images
 linux_cleanup_docker:

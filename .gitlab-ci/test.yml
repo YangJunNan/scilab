@@ -184,7 +184,6 @@ impacted_x64_windows_test_good:
     - if: $CI_PIPELINE_SOURCE == 'merge_request_event'
       changes:
         - scilab/modules/$TEST/**/*
-      when: always
   parallel:
     matrix: *GOOD_TEST_ANCHOR
 
