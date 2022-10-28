@@ -65,14 +65,14 @@ default:
 include:
   # updating files and runner states
   - local: .gitlab-ci/prebuild.yml
-  # build
-  - local: .gitlab-ci/build.yml
-  # execute tests
-  - local: .gitlab-ci/test.yml
-  # sign and extract useful content
-  - local: .gitlab-ci/postbuild.yml
-  # deploy/publish a binary
-  - local: .gitlab-ci/publish.yml
+  # # build
+  # - local: .gitlab-ci/build.yml
+  # # execute tests
+  # - local: .gitlab-ci/test.yml
+  # # sign and extract useful content
+  # - local: .gitlab-ci/postbuild.yml
+  # # deploy/publish a binary
+  # - local: .gitlab-ci/publish.yml
 
 # # .pre: started before everything but only if a pipeline is scheduled
 # Manage Docker build
@@ -115,20 +115,22 @@ windows_cleanup:
     matrix:
       - RUNNER: [vdevredccwindsy]
         CONCURRENT: [1, 2, 3, 4]
-  tags: [x64_windows, shell, scilab]
+  tags: [x64_windows, shell, scilab, $RUNNER]
   dependencies:
     - x64_windows_set_env
   variables:
     GIT_STRATEGY: none
   script:
+    - echo $CI_BUILDS_DIR $CI_CONCURRENT_ID
+    - echo $CI_NODE_INDEX / $CI_NODE_TOTAL
     # Remove TMPDIRs older than 1 day
     - Get-ChildItem -Path "$env:TMP\SCI_TMP*" | Where-Object {($_.LastWriteTime -lt (Get-Date).AddDays(-1))} | Remove-Item -Recurse
-    # Remove logs
+    # Remove logs dir
     - Get-ChildItem -Path "logs_$env:CI_COMMIT_SHORT_SHA" | Remove-Item -Recurse
     # Remove install dir
     - Get-ChildItem -Path "$env:SCI_VERSION_STRING" | Remove-Item -Recurse
-    # Remove installer
-    - Get-ChildItem -Path "$env:SCI_VERSION_STRING.bin.$env:ARCH.exe" | Remove-Item
+    # Remove installer | *: used to avoid error if file doesn't exists
+    - Get-ChildItem -Path "$env:SCI_VERSION_STRING.bin.$env:ARCH.exe*" | Remove-Item
   when: always
 
 linux_cleanup:
@@ -137,13 +139,15 @@ linux_cleanup:
     matrix:
       - RUNNER: [vdevredcclindsy]
         CONCURRENT: [1, 2, 3, 4]
-  tags: [x86_64-linux-gnu, docker, scilab]
+  tags: [x86_64-linux-gnu, docker, scilab, $RUNNER]
   image: $DOCKER_LINUX_BUILDER
   dependencies:
     - x86_64-linux-gnu_set_env
   variables:
     GIT_STRATEGY: none
   script:
+    - echo $CI_BUILDS_DIR $CI_CONCURRENT_ID
+    - echo $CI_NODE_INDEX / $CI_NODE_TOTAL
     # Remove logs
     - rm -rf "logs_$CI_COMMIT_SHORT_SHA"
     # Remove installer
