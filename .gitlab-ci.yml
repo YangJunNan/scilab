@@ -140,8 +140,7 @@ linux_cleanup:
     matrix:
       - RUNNER: [vdevredcclindsy]
         CONCURRENT: [1, 2, 3, 4]
-  tags:
-    - [x86_64-linux-gnu, docker, scilab]
+  tags: [x86_64-linux-gnu, docker, scilab]
   # tags: [x86_64-linux-gnu, docker, scilab]
   image: $DOCKER_LINUX_BUILDER
   # dont download artifacts but env var
