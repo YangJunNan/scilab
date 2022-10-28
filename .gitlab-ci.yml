@@ -109,27 +109,29 @@ create_docker_image_linux:
 # Note: Use parallel matrix to launch jobs on multiple runners and concurrent jobs
 # to clean .../runner_tag/concurrent_id/ folders.
 # Create as many jobs as runner * concurrency
+
+# * in paths is used to avoid error if file doesn't exists
 windows_cleanup:
   stage: .post
   parallel:
     matrix:
       - RUNNER: [vdevredccwindsy]
-        CONCURRENT: [1, 2, 3, 4]
+        CONCURRENT: [0, 1, 2, 3]
   tags: [x64_windows, shell, scilab, $RUNNER]
   dependencies:
     - x64_windows_set_env
   variables:
     GIT_STRATEGY: none
   script:
-    - echo $CI_BUILDS_DIR $CI_CONCURRENT_ID
-    - echo $CI_NODE_INDEX / $CI_NODE_TOTAL
+    - echo "$CI_BUILDS_DIR/$CI_RUNNER_ID/$CI_CONCURRENT_ID/$CI_PROJECT_NAME/$CI_PROJECT_NAMESPACE"
+    - echo "$CI_NODE_INDEX / $CI_NODE_TOTAL"
     # Remove TMPDIRs older than 1 day
     - Get-ChildItem -Path "$env:TMP\SCI_TMP*" | Where-Object {($_.LastWriteTime -lt (Get-Date).AddDays(-1))} | Remove-Item -Recurse
     # Remove logs dir
-    - Get-ChildItem -Path "logs_$env:CI_COMMIT_SHORT_SHA" | Remove-Item -Recurse
+    - Get-ChildItem -Path "logs_$env:CI_COMMIT_SHORT_SHA*" | Remove-Item -Recurse
     # Remove install dir
-    - Get-ChildItem -Path "$env:SCI_VERSION_STRING" | Remove-Item -Recurse
-    # Remove installer | *: used to avoid error if file doesn't exists
+    - Get-ChildItem -Path "$env:SCI_VERSION_STRING*" | Remove-Item -Recurse
+    # Remove installer
     - Get-ChildItem -Path "$env:SCI_VERSION_STRING.bin.$env:ARCH.exe*" | Remove-Item
   when: always
 
@@ -138,7 +140,7 @@ linux_cleanup:
   parallel:
     matrix:
       - RUNNER: [vdevredcclindsy]
-        CONCURRENT: [1, 2, 3, 4]
+        CONCURRENT: [0, 1, 2, 3]
   tags: [x86_64-linux-gnu, docker, scilab, $RUNNER]
   image: $DOCKER_LINUX_BUILDER
   dependencies:
@@ -146,8 +148,6 @@ linux_cleanup:
   variables:
     GIT_STRATEGY: none
   script:
-    - echo $CI_BUILDS_DIR $CI_CONCURRENT_ID
-    - echo $CI_NODE_INDEX / $CI_NODE_TOTAL
     # Remove logs
     - rm -rf "logs_$CI_COMMIT_SHORT_SHA"
     # Remove installer
