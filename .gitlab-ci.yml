@@ -125,7 +125,9 @@ windows_cleanup:
   script:
     - echo "cleaning $CI_PROJECT_DIR"
     # Wait all concurrent jobs
-    - Start-Sleep -Seconds 30/($CI_NODE_INDEX+1)
+    - $wait = 30/($CI_NODE_INDEX+1)
+    - echo "waiting for $wait sec"
+    - Start-Sleep -Seconds $wait
     # Remove TMPDIRs older than 1 day
     - Get-ChildItem -Path "$env:TMP\SCI_TMP*" | Where-Object {($_.LastWriteTime -lt (Get-Date).AddDays(-1))} | Remove-Item -Recurse
     # Remove logs dir
