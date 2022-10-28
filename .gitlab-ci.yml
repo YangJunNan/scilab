@@ -62,9 +62,9 @@ default:
   artifacts:
     expire_in: 1 day
 
-# include:
-#   # updating files and runner states
-#   - local: .gitlab-ci/prebuild.yml
+include:
+  # updating files and runner states
+  - local: .gitlab-ci/prebuild.yml
 #   # build
 #   - local: .gitlab-ci/build.yml
 #   # execute tests
@@ -135,8 +135,7 @@ windows_cleanup:
   when: always
 
 linux_cleanup:
-  # stage: .post
-  stage: cleanup
+  stage: .post
   parallel:
     matrix:
       - RUNNER: [x86_64-linux-gnu, docker, scilab]
