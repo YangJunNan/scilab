@@ -123,8 +123,8 @@ windows_cleanup:
   variables:
     GIT_STRATEGY: none
   script:
-    - echo "$CI_BUILDS_DIR/$CI_RUNNER_ID/$CI_CONCURRENT_ID/$CI_PROJECT_NAME/$CI_PROJECT_NAMESPACE"
-    - echo "$CI_NODE_INDEX / $CI_NODE_TOTAL"
+    - echo "$CI_PROJECT_DIR\"
+    - echo "Concurrent id $CI_CONCURRENT_ID"
     # Remove TMPDIRs older than 1 day
     - Get-ChildItem -Path "$env:TMP\SCI_TMP*" | Where-Object {($_.LastWriteTime -lt (Get-Date).AddDays(-1))} | Remove-Item -Recurse
     # Remove logs dir
@@ -148,6 +148,8 @@ linux_cleanup:
   variables:
     GIT_STRATEGY: none
   script:
+    - echo "Concurrent id $CI_CONCURRENT_ID"
+    - echo "$CI_PROJECT_DIR"
     # Remove logs
     - rm -rf "logs_$CI_COMMIT_SHORT_SHA"
     # Remove installer
