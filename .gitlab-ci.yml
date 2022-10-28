@@ -65,14 +65,14 @@ default:
 include:
   # updating files and runner states
   - local: .gitlab-ci/prebuild.yml
-#   # build
-#   - local: .gitlab-ci/build.yml
-#   # execute tests
-#   - local: .gitlab-ci/test.yml
-#   # sign and extract useful content
-#   - local: .gitlab-ci/postbuild.yml
-#   # deploy/publish a binary
-#   - local: .gitlab-ci/publish.yml
+  # build
+  - local: .gitlab-ci/build.yml
+  # execute tests
+  - local: .gitlab-ci/test.yml
+  # sign and extract useful content
+  - local: .gitlab-ci/postbuild.yml
+  # deploy/publish a binary
+  - local: .gitlab-ci/publish.yml
 
 # # .pre: started before everything but only if a pipeline is scheduled
 # Manage Docker build
@@ -106,19 +106,16 @@ create_docker_image_linux:
 ## .post: started after everything but only if a pipeline is scheduled
 
 # cleanup windows runners
-# Note: will not work with concurrent jobs > 1 and more than one runner
-# use parallel matrix to launch the job on multiple runners and concurrent jobs
-# to clean .../runner_tag/concurrent_id/ folders
-# parallel:
-#   matrix:
-#     - RUNNER: xxx
-#       CONCURRENT: [1, 2, 3, 4]
-#   tags:
-#     - $RUNNER-$CONCURRENT
+# Note: Use parallel matrix to launch jobs on multiple runners and concurrent jobs
+# to clean .../runner_tag/concurrent_id/ folders.
+# Create as many jobs as runner * concurrency
 windows_cleanup:
   stage: .post
+  parallel:
+    matrix:
+      - RUNNER: [vdevredccwindsy]
+        CONCURRENT: [1, 2, 3, 4]
   tags: [x64_windows, shell, scilab]
-  # dont download artifacts but env var
   dependencies:
     - x64_windows_set_env
   variables:
@@ -141,9 +138,7 @@ linux_cleanup:
       - RUNNER: [vdevredcclindsy]
         CONCURRENT: [1, 2, 3, 4]
   tags: [x86_64-linux-gnu, docker, scilab]
-  # tags: [x86_64-linux-gnu, docker, scilab]
   image: $DOCKER_LINUX_BUILDER
-  # dont download artifacts but env var
   dependencies:
     - x86_64-linux-gnu_set_env
   variables:
@@ -152,7 +147,7 @@ linux_cleanup:
     # Remove logs
     - rm -rf "logs_$CI_COMMIT_SHORT_SHA"
     # Remove installer
-    - rm "$SCI_VERSION_STRING.bin.$ARCH.tar.xz"
+    - rm -f "$SCI_VERSION_STRING.bin.$ARCH.tar.xz"
   when: always
 
 # clean linux docker images
