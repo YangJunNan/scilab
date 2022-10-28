@@ -38,7 +38,6 @@ workflow:
     # run on merge request
     - if: $CI_PIPELINE_SOURCE == "merge_request_event"
       variables:
-        # use CI_MERGE_REQUEST_TARGET_BRANCH_NAME for the name
         SCI_VERSION_STRING: "scilab-branch-${CI_MERGE_REQUEST_TARGET_BRANCH_NAME}-${CI_COMMIT_SHORT_SHA}"
         GIT_STRATEGY: fetch
         GIT_CLEAN_FLAGS: none
@@ -63,17 +62,17 @@ default:
   artifacts:
     expire_in: 1 day
 
-include:
-  # updating files and runner states
-  - local: .gitlab-ci/prebuild.yml
-  # build
-  - local: .gitlab-ci/build.yml
-  # execute tests
-  - local: .gitlab-ci/test.yml
-  # sign and extract useful content
-  - local: .gitlab-ci/postbuild.yml
-  # deploy/publish a binary
-  - local: .gitlab-ci/publish.yml
+# include:
+#   # updating files and runner states
+#   - local: .gitlab-ci/prebuild.yml
+#   # build
+#   - local: .gitlab-ci/build.yml
+#   # execute tests
+#   - local: .gitlab-ci/test.yml
+#   # sign and extract useful content
+#   - local: .gitlab-ci/postbuild.yml
+#   # deploy/publish a binary
+#   - local: .gitlab-ci/publish.yml
 
 # # .pre: started before everything but only if a pipeline is scheduled
 # Manage Docker build
@@ -116,7 +115,7 @@ create_docker_image_linux:
 #       CONCURRENT: [1, 2, 3, 4]
 #   tags:
 #     - $RUNNER-$CONCURRENT
-windows_cleanup_shell:
+windows_cleanup:
   stage: .post
   tags: [x64_windows, shell, scilab]
   # dont download artifacts but env var
@@ -135,9 +134,16 @@ windows_cleanup_shell:
     - Remove-Item "$env:SCI_VERSION_STRING.bin.$env:ARCH.exe"
   when: always
 
-linux_cleanup_shell:
-  stage: .post
-  tags: [x86_64-linux-gnu, docker, scilab]
+linux_cleanup:
+  # stage: .post
+  stage: cleanup
+  parallel:
+    matrix:
+      - RUNNER: [x86_64-linux-gnu, docker, scilab]
+        CONCURRENT: [1, 2, 3, 4]
+  tags:
+    - $RUNNER-$CONCURRENT
+  # tags: [x86_64-linux-gnu, docker, scilab]
   image: $DOCKER_LINUX_BUILDER
   # dont download artifacts but env var
   dependencies:
