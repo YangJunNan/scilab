@@ -125,7 +125,7 @@ windows_cleanup:
   script:
     - echo "cleaning $CI_PROJECT_DIR"
     # Wait all concurrent jobs
-    - Start-Sleep -Seconds 30
+    - Start-Sleep -Seconds 30/($CI_NODE_INDEX+1)
     # Remove TMPDIRs older than 1 day
     - Get-ChildItem -Path "$env:TMP\SCI_TMP*" | Where-Object {($_.LastWriteTime -lt (Get-Date).AddDays(-1))} | Remove-Item -Recurse
     # Remove logs dir
