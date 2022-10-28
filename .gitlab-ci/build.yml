@@ -53,7 +53,7 @@ x64_windows_build_release:
   script: bash -x -e .gitlab-ci/build.sh
   artifacts:
     paths:
-      - /logs_$CI_COMMIT_SHORT_SHA
+      - /logs
       - scilab/modules/core/includes/version.h
       - /$SCI_VERSION_STRING.bin.$ARCH.tar.xz
     when: always

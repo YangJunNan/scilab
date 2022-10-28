@@ -9,8 +9,7 @@
 # NOTE: log all commands to log.txt to avoid hitting Gitlab log limit
 # NOTE: nproc is used to limit memory usage
 
-set LOG_PATH=/logs_$CI_COMMIT_SHORT_SHA
-mkdir $LOG_PATH
+LOG_PATH=/logs
 
 # checkout pre-requirements
 echo -e "\e[0Ksection_start:$(date +%s):prerequirements\r\e[0KGetting prerequirements"
