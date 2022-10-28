@@ -9,7 +9,7 @@
 # NOTE: log all commands to log.txt to avoid hitting Gitlab log limit
 # NOTE: nproc is used to limit memory usage
 
-LOG_PATH=/logs
+LOG_PATH=logs_$CI_COMMIT_SHORT_SHA
 mkdir $LOG_PATH
 
 # checkout pre-requirements
@@ -42,54 +42,54 @@ export SCILIBS_LDFLAGS="-Wl,--allow-shlib-undefined"
 
 # configure (with reconfigure for up to date info)
 echo -e "\e[0Ksection_start:$(date +%s):configure[collapsed=true]\r\e[0KConfigure"
-cd scilab || exit 1
-aclocal  >  $LOG_PATH/log.txt
-autoconf >> $LOG_PATH/log.txt
-automake >> $LOG_PATH/log.txt
-./configure --prefix='' | tee -a $LOG_PATH/log.txt
+cd scilab ||exit 1
+aclocal  >  ../$LOG_PATH/log.txt
+autoconf >> ../$LOG_PATH/log.txt
+automake >> ../$LOG_PATH/log.txt
+./configure --prefix='' |tee -a ../$LOG_PATH/log.txt
 echo -e "\e[0Ksection_end:$(date +%s):configure\r\e[0K"
 
 # make 
 echo -e "\e[0Ksection_start:$(date +%s):make\r\e[0KMake"
-make --jobs="$(nproc)" all &>> $LOG_PATH/log.txt || (tail --lines=100 $LOG_PATH/log.txt; exit 1)
-make doc &> $LOG_PATH/log_doc.txt || (tail --lines=100 $LOG_PATH/log_doc.txt; exit 1)
+make --jobs="$(nproc)" all &>>../$LOG_PATH/log.txt ||(tail --lines=100 ../$LOG_PATH/log.txt; exit 1)
+make doc &>../$LOG_PATH/log_doc.txt ||(tail --lines=100 ../$LOG_PATH/log_doc.txt; exit 1)
 echo -e "\e[0Ksection_end:$(date +%s):make\r\e[0K"
 
 # install to tmpdir
-INSTALLDIR=/scilab_install
 echo -e "\e[0Ksection_start:$(date +%s):install\r\e[0KInstall"
-make install DESTDIR="$INSTALLDIR" &>> $LOG_PATH/log_install.txt || (tail --lines=100 $LOG_PATH/log_install.txt; exit 1)
+make install DESTDIR="/${SCI_VERSION_STRING}" &>>../$LOG_PATH/log_install.txt ||(tail --lines=100 ../$LOG_PATH/log_install.txt; exit 1)
 echo -e "\e[0Ksection_end:$(date +%s):install\r\e[0K"
 
 echo -e "\e[0Ksection_start:$(date +%s):patch[collapsed=true]\r\e[0KPatch binary"
 # copy extra files
-cp -a ACKNOWLEDGEMENTS "$INSTALLDIR/"
-cp -a CHANGES.md "$INSTALLDIR/"
-cp -a COPYING "$INSTALLDIR/"
-cp -a README.md "$INSTALLDIR/"
+cp -a ACKNOWLEDGEMENTS "/${SCI_VERSION_STRING}/"
+cp -a CHANGES.md "/${SCI_VERSION_STRING}/"
+cp -a COPYING "/${SCI_VERSION_STRING}/"
+cp -a README.md "/${SCI_VERSION_STRING}/"
 
 # copy thirdparties
-cp -a lib/thirdparty "$INSTALLDIR/lib/"
-cp -a thirdparty "$INSTALLDIR/"
-cp -a java/jdk*-jre "$INSTALLDIR/thirdparty/java"
+cp -a lib/thirdparty "/${SCI_VERSION_STRING}/lib/"
+cp -a thirdparty "/${SCI_VERSION_STRING}/"
+cp -a java/jdk*-jre "/${SCI_VERSION_STRING}/thirdparty/java"
 
 # Update the classpath
-sed -i "s#$(pwd)#\$SCILAB/../../#g" "$INSTALLDIR/share/scilab/etc/classpath.xml"
+sed -i "s#$(pwd)#\$SCILAB/../../#g" "/${SCI_VERSION_STRING}/share/scilab/etc/classpath.xml"
 
 # Update the rpath and ELF NEEDED
-cd "$INSTALLDIR/" || exit
+cd "/${SCI_VERSION_STRING}/" ||exit
 patchelf --set-rpath '$ORIGIN:$ORIGIN/../lib/scilab:$ORIGIN/../lib/thirdparty:$ORIGIN/../lib/thirdparty/redist' \
 					bin/scilab-cli-bin bin/scilab-bin
 find lib/scilab/*.so* -type f -exec patchelf --set-rpath '$ORIGIN:$ORIGIN/../thirdparty:$ORIGIN/../thirdparty/redist' {} \;
-readelf -d bin/scilab-cli-bin | awk '/NEEDED/{gsub(/\[/,""); gsub(/\]/,""); print "patchelf --add-needed "$NF" lib/scilab/libscilab-cli.so"}' | sh -
-readelf -d bin/scilab-bin | awk '/NEEDED/{gsub(/\[/,""); gsub(/\]/,""); print "patchelf --add-needed "$NF" lib/scilab/libscilab.so"}' | sh -
+readelf -d bin/scilab-cli-bin |awk '/NEEDED/{gsub(/\[/,""); gsub(/\]/,""); print "patchelf --add-needed "$NF" lib/scilab/libscilab-cli.so"}' |sh -
+readelf -d bin/scilab-bin |awk '/NEEDED/{gsub(/\[/,""); gsub(/\]/,""); print "patchelf --add-needed "$NF" lib/scilab/libscilab.so"}' |sh -
+cd "${CI_PROJECT_DIR}" ||exit
+
 echo -e "\e[0Ksection_end:$(date +%s):patch\r\e[0K"
 
 # package as a tar gz file
 echo -e "\e[0Ksection_start:$(date +%s):package\r\e[0KPackage"
-cd "/" || exit
-tar -cJf "${SCI_VERSION_STRING}.bin.${ARCH}.tar.xz" -C "${CI_PROJECT_DIR}" "${INSTALLDIR}"
+tar -cJf "${SCI_VERSION_STRING}.bin.${ARCH}.tar.xz" -C "/" "${SCI_VERSION_STRING}"
 echo -e "\e[0Ksection_end:$(date +%s):package\r\e[0K"
 
 # error if artifact does not exist
-du -h "/${SCI_VERSION_STRING}.bin.${ARCH}.tar.xz"
+du -h "${SCI_VERSION_STRING}.bin.${ARCH}.tar.xz"
