@@ -126,7 +126,7 @@ windows_cleanup:
     - echo "cleaning $CI_PROJECT_DIR"
     # Wait all concurrent jobs
     - $wait = 30/($CI_NODE_INDEX+1)
-    - echo "waiting for $wait sec"
+    - echo "waiting for $CI_NODE_INDEX $wait sec"
     - Start-Sleep -Seconds $wait
     # Remove TMPDIRs older than 1 day
     - Get-ChildItem -Path "$env:TMP\SCI_TMP*" | Where-Object {($_.LastWriteTime -lt (Get-Date).AddDays(-1))} | Remove-Item -Recurse
