@@ -9,16 +9,19 @@
 # NOTE: log all commands to log.txt to avoid hitting Gitlab log limit
 # NOTE: nproc is used to limit memory usage
 
+set LOG_PATH=/logs_$CI_COMMIT_SHORT_SHA
+mkdir $LOG_PATH
+
 # checkout pre-requirements
 echo -e "\e[0Ksection_start:$(date +%s):prerequirements\r\e[0KGetting prerequirements"
 svn checkout \
     --username anonymous --password Scilab \
     "svn://svn.scilab.org/scilab/${PREREQUIREMENTS_BRANCH}/Dev-Tools/SE/Prerequirements/linux_x64/" scilab \
-    >log_svn.txt ||(tail --lines=100 log_svn.txt; exit 1)
+    > $LOG_PATH/log_svn.txt || (tail --lines=100 $LOG_PATH/log_svn.txt; exit 1)
 # display svn revision
-tail -n 1 log_svn.txt
+tail -n 1 $LOG_PATH/log_svn.txt
 # revert local modification
-svn revert -R scilab >>log_svn.txt
+svn revert -R scilab >> $LOG_PATH/log_svn.txt
 echo -e "\e[0Ksection_end:$(date +%s):prerequirements\r\e[0K"
 
 # patch version numbers
@@ -39,55 +42,54 @@ export SCILIBS_LDFLAGS="-Wl,--allow-shlib-undefined"
 
 # configure (with reconfigure for up to date info)
 echo -e "\e[0Ksection_start:$(date +%s):configure[collapsed=true]\r\e[0KConfigure"
-cd scilab ||exit 1
-aclocal >../log.txt
-autoconf >>../log.txt
-automake >>../log.txt
-./configure --prefix='' |tee -a ../log.txt
+cd scilab || exit 1
+aclocal  >  $LOG_PATH/log.txt
+autoconf >> $LOG_PATH/log.txt
+automake >> $LOG_PATH/log.txt
+./configure --prefix='' | tee -a $LOG_PATH/log.txt
 echo -e "\e[0Ksection_end:$(date +%s):configure\r\e[0K"
 
 # make 
 echo -e "\e[0Ksection_start:$(date +%s):make\r\e[0KMake"
-make --jobs="$(nproc)" all &>>../log.txt ||(tail --lines=100 ../log.txt; exit 1)
-make doc &>../log_doc.txt ||(tail --lines=100 ../log_doc.txt; exit 1)
+make --jobs="$(nproc)" all &>> $LOG_PATH/log.txt || (tail --lines=100 $LOG_PATH/log.txt; exit 1)
+make doc &> $LOG_PATH/log_doc.txt || (tail --lines=100 $LOG_PATH/log_doc.txt; exit 1)
 echo -e "\e[0Ksection_end:$(date +%s):make\r\e[0K"
 
 # install to tmpdir
+INSTALLDIR=/scilab_install
 echo -e "\e[0Ksection_start:$(date +%s):install\r\e[0KInstall"
-make install DESTDIR="${CI_PROJECT_DIR}/${SCI_VERSION_STRING}" &>>../log_install.txt ||(tail --lines=100 ../log_install.txt; exit 1)
+make install DESTDIR="$INSTALLDIR" &>> $LOG_PATH/log_install.txt || (tail --lines=100 $LOG_PATH/log_install.txt; exit 1)
 echo -e "\e[0Ksection_end:$(date +%s):install\r\e[0K"
 
 echo -e "\e[0Ksection_start:$(date +%s):patch[collapsed=true]\r\e[0KPatch binary"
 # copy extra files
-cp -a ACKNOWLEDGEMENTS "${CI_PROJECT_DIR}/${SCI_VERSION_STRING}/"
-cp -a CHANGES.md "${CI_PROJECT_DIR}/${SCI_VERSION_STRING}/"
-cp -a COPYING "${CI_PROJECT_DIR}/${SCI_VERSION_STRING}/"
-cp -a README.md "${CI_PROJECT_DIR}/${SCI_VERSION_STRING}/"
+cp -a ACKNOWLEDGEMENTS "$INSTALLDIR/"
+cp -a CHANGES.md "$INSTALLDIR/"
+cp -a COPYING "$INSTALLDIR/"
+cp -a README.md "$INSTALLDIR/"
 
 # copy thirdparties
-cp -a lib/thirdparty "${CI_PROJECT_DIR}/${SCI_VERSION_STRING}/lib/"
-cp -a thirdparty "${CI_PROJECT_DIR}/${SCI_VERSION_STRING}/"
-cp -a java/jdk*-jre "${CI_PROJECT_DIR}/${SCI_VERSION_STRING}/thirdparty/java"
+cp -a lib/thirdparty "$INSTALLDIR/lib/"
+cp -a thirdparty "$INSTALLDIR/"
+cp -a java/jdk*-jre "$INSTALLDIR/thirdparty/java"
 
 # Update the classpath
-sed -i "s#$(pwd)#\$SCILAB/../../#g" "${CI_PROJECT_DIR}/${SCI_VERSION_STRING}/share/scilab/etc/classpath.xml"
+sed -i "s#$(pwd)#\$SCILAB/../../#g" "$INSTALLDIR/share/scilab/etc/classpath.xml"
 
 # Update the rpath and ELF NEEDED
-cd "${CI_PROJECT_DIR}/${SCI_VERSION_STRING}/" ||exit
+cd "$INSTALLDIR/" || exit
 patchelf --set-rpath '$ORIGIN:$ORIGIN/../lib/scilab:$ORIGIN/../lib/thirdparty:$ORIGIN/../lib/thirdparty/redist' \
 					bin/scilab-cli-bin bin/scilab-bin
 find lib/scilab/*.so* -type f -exec patchelf --set-rpath '$ORIGIN:$ORIGIN/../thirdparty:$ORIGIN/../thirdparty/redist' {} \;
-readelf -d bin/scilab-cli-bin |awk '/NEEDED/{gsub(/\[/,""); gsub(/\]/,""); print "patchelf --add-needed "$NF" lib/scilab/libscilab-cli.so"}' |sh -
-readelf -d bin/scilab-bin |awk '/NEEDED/{gsub(/\[/,""); gsub(/\]/,""); print "patchelf --add-needed "$NF" lib/scilab/libscilab.so"}' |sh -
-cd "${CI_PROJECT_DIR}" ||exit
-
+readelf -d bin/scilab-cli-bin | awk '/NEEDED/{gsub(/\[/,""); gsub(/\]/,""); print "patchelf --add-needed "$NF" lib/scilab/libscilab-cli.so"}' | sh -
+readelf -d bin/scilab-bin | awk '/NEEDED/{gsub(/\[/,""); gsub(/\]/,""); print "patchelf --add-needed "$NF" lib/scilab/libscilab.so"}' | sh -
 echo -e "\e[0Ksection_end:$(date +%s):patch\r\e[0K"
 
 # package as a tar gz file
 echo -e "\e[0Ksection_start:$(date +%s):package\r\e[0KPackage"
-tar -cJf "${SCI_VERSION_STRING}.bin.${ARCH}.tar.xz" -C "${CI_PROJECT_DIR}" "${SCI_VERSION_STRING}"
-rm -fr "${CI_PROJECT_DIR}/${SCI_VERSION_STRING:?}"
+cd "/" || exit
+tar -cJf "${SCI_VERSION_STRING}.bin.${ARCH}.tar.xz" -C "${CI_PROJECT_DIR}" "${INSTALLDIR}"
 echo -e "\e[0Ksection_end:$(date +%s):package\r\e[0K"
 
 # error if artifact does not exist
-du -h "${SCI_VERSION_STRING}.bin.${ARCH}.tar.xz"
+du -h "/${SCI_VERSION_STRING}.bin.${ARCH}.tar.xz"

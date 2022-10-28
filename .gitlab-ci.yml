@@ -23,9 +23,9 @@ variables:
     description: "Scilab prerequirements branch name or trunk"
   DOCKER_LINUX_BUILDER: "$CI_REGISTRY_IMAGE/linux-builder:latest"
 
-# only run on merge request
 workflow:
   rules:
+    # run on merge request and set spécify docker image tag
     - if: $CI_PIPELINE_SOURCE == "merge_request_event"
       changes: &DOCKER_CHANGES
         paths:
@@ -35,21 +35,25 @@ workflow:
         SCI_VERSION_STRING: "scilab-branch-${CI_MERGE_REQUEST_TARGET_BRANCH_NAME}-${CI_COMMIT_SHORT_SHA}"
         GIT_STRATEGY: fetch
         GIT_CLEAN_FLAGS: none
+    # run on merge request
     - if: $CI_PIPELINE_SOURCE == "merge_request_event"
       variables:
         # use CI_MERGE_REQUEST_TARGET_BRANCH_NAME for the name
         SCI_VERSION_STRING: "scilab-branch-${CI_MERGE_REQUEST_TARGET_BRANCH_NAME}-${CI_COMMIT_SHORT_SHA}"
         GIT_STRATEGY: fetch
         GIT_CLEAN_FLAGS: none
+    # Scheduled pipeline
     - if: $CI_PIPELINE_SOURCE == 'schedule'
       variables:
         SCI_VERSION_STRING: "scilab-branch-${CI_COMMIT_BRANCH}-${CI_COMMIT_SHORT_SHA}"
         GIT_STRATEGY: clone
+    # Release
     - if: $CI_COMMIT_REF_PROTECTED
     - if: $CI_COMMIT_TAG
       variables:
         SCI_VERSION_STRING: "scilab-${CI_COMMIT_TAG}"
         GIT_STRATEGY: clone
+    # Run when merge request is accepted and default Docker image needs to be updated
     - if: $CI_MERGE_REQUEST_APPROVED
       changes: *DOCKER_CHANGES
       variables:
@@ -101,6 +105,7 @@ create_docker_image_linux:
 #       changes: *DOCKER_CHANGES
 
 ## .post: started after everything but only if a pipeline is scheduled
+
 # cleanup windows runners
 # Note: will not work with concurrent jobs > 1 and more than one runner
 # use parallel matrix to launch the job on multiple runners and concurrent jobs
@@ -111,7 +116,6 @@ create_docker_image_linux:
 #       CONCURRENT: [1, 2, 3, 4]
 #   tags:
 #     - $RUNNER-$CONCURRENT
-
 windows_cleanup_shell:
   stage: .post
   tags: [x64_windows, shell, scilab]
@@ -122,7 +126,7 @@ windows_cleanup_shell:
     GIT_STRATEGY: none
   script:
     # Remove installer
-    - Remove-Item "$env:SCI_VERSION_STRING-$env:ARCH.exe"
+    - Remove-Item "$env:SCI_VERSION_STRING.bin.$env:ARCH.exe"
     # Remove install dir
     - Remove-Item -Recurse "$env:SCI_VERSION_STRING"
     # Remove logs
@@ -130,6 +134,7 @@ windows_cleanup_shell:
     # Remove TMPDIRs older than 1 day
     - Get-ChildItem -Path "$env:TMP\SCI_TMP*" | Where-Object {($_.LastWriteTime -lt (Get-Date).AddDays(-1))} | Remove-Item -Recurse
 
+# clean linux docker images
 linux_cleanup_docker:
   stage: .post
   image: docker:20.10.16

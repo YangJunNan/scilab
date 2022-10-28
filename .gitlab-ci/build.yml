@@ -19,7 +19,7 @@
     paths:
       - logs_$CI_COMMIT_SHORT_SHA
       - scilab/modules/core/includes/version.h
-      - $SCI_VERSION_STRING-$ARCH.exe
+      - $SCI_VERSION_STRING.bin.$ARCH.exe
     when: always
 # build an preview/branched version
 x64_windows_build_branch:
@@ -53,9 +53,9 @@ x64_windows_build_release:
   script: bash -x -e .gitlab-ci/build.sh
   artifacts:
     paths:
-      - log*.txt
+      - /logs_$CI_COMMIT_SHORT_SHA
       - scilab/modules/core/includes/version.h
-      - "$SCI_VERSION_STRING.bin.$ARCH.tar.xz"
+      - /$SCI_VERSION_STRING.bin.$ARCH.tar.xz
     when: always
 # build an preview/branched version
 x86_64-linux-gnu_build_branch:
