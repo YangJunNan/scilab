@@ -135,6 +135,22 @@ windows_cleanup_shell:
     - Remove-Item "$env:SCI_VERSION_STRING.bin.$env:ARCH.exe"
   when: always
 
+linux_cleanup_shell:
+  stage: .post
+  tags: [x86_64-linux-gnu, docker, scilab]
+  image: $DOCKER_LINUX_BUILDER
+  # dont download artifacts but env var
+  dependencies:
+    - x86_64-linux-gnu_set_env
+  variables:
+    GIT_STRATEGY: none
+  script:
+    # Remove logs
+    - rm -rf "logs_$CI_COMMIT_SHORT_SHA"
+    # Remove installer
+    - rm "$SCI_VERSION_STRING.bin.$ARCH.tar.xz"
+  when: always
+
 # clean linux docker images
 linux_cleanup_docker:
   stage: .post
