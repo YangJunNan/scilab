@@ -23,9 +23,9 @@
 
 #include "dynlib_xml_scilab.h"
 
+#include "xml.h"
 extern "C"
 {
-#include "xml.h"
 #ifndef XML_XPATH_CHECKNS
 #define XML_XPATH_CHECKNS
 #endif
