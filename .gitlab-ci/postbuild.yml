@@ -1,0 +1,144 @@
+# Scilab ( http://www.scilab.org/ ) - This file is part of Scilab
+# Copyright (C) Dassault Systemes - 2022 - Clement DAVID
+# Copyright (C) Dassault Systemes - 2022 - Cedric DELAMARRE
+#
+#
+# This YAML file describe the postbuild stage of the CI. This stage is mostly
+# optional and generate/build extra documentation from Scilab build.
+#
+
+# # cleanup old builds from runners
+# x86_64-linux-gnu_cleanup_builds:
+#   image: $DOCKER_LINUX_BUILDER
+#   stage: .post
+#   tags: [x86_64-linux-gnu, docker, scilab]
+#   variables:
+#     GIT_STRATEGY: none
+#   script:
+#     - set -e -x
+#     # Remove any previous tarball
+#     - rm -fr scilab-*.tar.xz
+#     # Remove install dir older than 3 days
+#     - |
+#       find . -maxdepth 1 -mtime +2 -name "scilab-*" -type d -print0 |\
+#       while IFS= read -r -d '' i ; do
+#         chmod -R +w "$i" && rm -rf "$i";
+#       done
+#     # Remove TMPDIRs older than 1 day
+#     - |
+#       find /tmp -maxdepth 1 -mtime +0 -name "SCI_TMP*" -type d -print0 |\
+#       while IFS= read -r -d '' i ; do
+#         [ -w "$i" ] && rm -rf "$i";
+#       done
+
+# sign the windows binary
+.x64_windows_sign:
+  stage: postbuild
+  tags: [x64_windows, scilab]
+  variables:
+    GIT_STRATEGY: none
+  script:
+    - REM TODO how to sign ? was
+    - REM call d:\signtool_password.bat
+    - REM "C:\Program Files (x86)\Windows Kits\8.1\bin\x64\signtool.exe" sign /f D:\\ESIGroupCERT.pfx /p "%SIGNPASS%" /t http://timestamp.sectigo.com /v %SCI_VERSION_STRING%.bin.%ARCH%.exe
+  artifacts:
+    paths:
+      - $SCI_VERSION_STRING.bin.$ARCH.exe
+x64_windows_sign_nightly:
+  extends: .x64_windows_sign
+  needs:
+    - x64_windows_build_nightly
+    - x64_windows_set_env
+  rules:
+    - if: $CI_PIPELINE_SOURCE == 'schedule'
+x64_windows_sign_release:
+  extends: .x64_windows_sign
+  needs:
+    - x64_windows_build_release
+    - x64_windows_set_env
+  rules:
+    - if: $CI_COMMIT_TAG
+
+# build javadoc
+build_javadoc:
+  stage: postbuild
+  tags: [x86_64-linux-gnu, docker, scilab]
+  image: docker.io/openjdk:8-jdk-alpine
+  dependencies: []
+  script:
+    - MASK="scilab/modules/*/src/java/";
+    - MODULES=`ls -d $MASK`;
+    - |
+      LISTPKG="";
+      for M in $MODULES; do
+        LISTMODULES="$M:$LISTMODULES";
+        MODULE=$(echo $M|cut -d/ -f3);
+        LISTPKG="$LISTPKG org.scilab.modules.$MODULE";
+      done;
+    - javadoc -d public/javadoc -sourcepath $LISTMODULES $LISTPKG
+  artifacts:
+    paths:
+      - public
+  when: manual
+
+# build Doxygen
+build_doxygen:
+  stage: postbuild
+  tags: [x86_64-linux-gnu, docker, scilab]
+  image: docker.io/tsgkadot/docker-doxygen
+  dependencies: []
+  script:
+    - cd scilab
+    - mkdir reports
+    - doxygen modules/development_tools/etc/doxyfile >/dev/null
+    - mv reports/html $CI_PROJECT_DIR/public/doxygen
+  artifacts:
+    when: always
+    paths:
+      - public
+  when: manual
+
+# build preview of help.scilab.org
+build_help_web:
+  stage: postbuild
+  tags: [x86_64-linux-gnu, docker, scilab]
+  image: $DOCKER_LINUX_BUILDER
+  dependencies: []
+  script:
+    - cd scilab
+    - make doc-web
+    - "[ ! -d public ] && mkdir public"
+    - mv modules/helptools/web $CI_PROJECT_DIR/public/docs
+  artifacts:
+    paths:
+      - public
+  when: manual
+
+# extract jar content to web
+publish_help_jar:
+  stage: postbuild
+  tags: [x86_64-linux-gnu, docker, scilab]
+  image: $DOCKER_LINUX_BUILDER
+  variables:
+    GIT_STRATEGY: none
+  needs:
+    - x86_64-linux-gnu_build_branch
+    - x86_64-linux-gnu_set_env
+  script:
+    - echo "help from ${SCI_VERSION_STRING} ${ARCH}"
+    - "[ ! -d public ] && mkdir public"
+    - "[ ! -d public/docs ] && mkdir public/docs"
+    - cd public/docs
+    - tar --wildcards --strip-components 6 -xJf ../../${SCI_VERSION_STRING}.bin.${ARCH}.tar.xz ${SCI_VERSION_STRING}/share/scilab/modules/helptools/jar/scilab_*_help.jar
+    - for f in *.jar; do jar xf $f; done
+    - rm *.jar
+    - tar --strip-components 6 -xJf ../../${SCI_VERSION_STRING}.bin.${ARCH}.tar.xz ${SCI_VERSION_STRING}/share/scilab/modules/helptools/jar/scilab_images.jar
+    - "[ ! -d images ] && mkdir images"
+    - jar xf scilab_images.jar -d images/
+    - rm scilab_images.jar
+    - sed -i -e "s#jarsci:./#../images/#g" */*.html
+  rules:
+    - if: $CI_PIPELINE_SOURCE == 'merge_request_event'
+  artifacts:
+    paths:
+      - public

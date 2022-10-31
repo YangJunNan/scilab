@@ -1,0 +1,82 @@
+# Scilab ( http://www.scilab.org/ ) - This file is part of Scilab
+# Copyright (C) Dassault Systemes - 2022 - Clement DAVID
+# Copyright (C) Dassault Systemes - 2022 - Cedric DELAMARRE
+#
+#
+# This YAML file describe the prebuild stage of the CI. This stage is used to
+# cleanup runners and set them ready to build.
+#
+
+# define x86_64-linux-gnu env variables
+x86_64-linux-gnu_set_env:
+  image: $DOCKER_LINUX_BUILDER
+  stage: prebuild
+  tags: [x86_64-linux-gnu, docker, scilab]
+  variables:
+    GIT_STRATEGY: none
+  script:
+    - set -e
+    - set -x
+    - echo $CI_COMMIT_TAG
+    - echo $CI_COMMIT_BRANCH
+    - echo $CI_MERGE_REQUEST_TARGET_BRANCH_NAME
+    # get current build machine architecture
+    - ARCH=$(cc -dumpmachine)
+    # define NOW as Gitlab display ISO 8601 timestamp
+    - date +"%s" >timestamp
+    - NOW=$(cat timestamp)
+    # export useful variables
+    - echo ARCH=$ARCH                              >build.env
+    - echo SCI_VERSION_STRING=$SCI_VERSION_STRING >>build.env
+    - echo SCI_VERSION_TIMESTAMP=$NOW             >>build.env
+  artifacts:
+    reports:
+      dotenv: build.env
+
+# define x64 windows env
+x64_windows_set_env:
+  # extends: .docker-image-windows
+  stage: prebuild
+  tags: [x64_windows, shell, scilab]
+  variables:
+    GIT_STRATEGY: none
+  script:
+    - echo $env:CI_COMMIT_TAG
+    - echo $env:CI_COMMIT_BRANCH
+    - echo $env:CI_MERGE_REQUEST_TARGET_BRANCH_NAME
+    - |
+      [System.Environment]::SetEnvironmentVariable('NOW', [int](Get-Date(Get-Date).ToUniversalTime() -uformat '%s'))
+    - Add-Content -Path build.env -Value "ARCH=x64"
+    - Add-Content -Path build.env -Value "SCI_VERSION_STRING=$env:SCI_VERSION_STRING"
+    - Add-Content -Path build.env -Value "SCI_VERSION_TIMESTAMP=$env:NOW"
+  artifacts:
+    reports:
+      dotenv: build.env
+
+# patch, copy, modify files before building a release
+prepare_release_files:
+  image: $DOCKER_LINUX_BUILDER
+  stage: prebuild
+  tags: [x86_64-linux-gnu]
+  rules:
+    - if: $CI_COMMIT_TAG
+  script:
+    - echo "FIXME should patch version numbers against tag"
+  artifacts:
+    paths:
+      - scilab/modules/core/includes/version.h.vc
+      - scilab/modules/core/includes/version.h.in
+
+# check MR has modified CHANGES.md
+contains_changes_modification:
+  image: $DOCKER_LINUX_BUILDER
+  stage: prebuild
+  tags: [x86_64-linux-gnu]
+  script:
+    - id
+    - env
+  rules:
+    - if: $CI_PIPELINE_SOURCE == 'merge_request_event'
+    - changes:
+        - scilab/CHANGES.md
+  allow_failure: true

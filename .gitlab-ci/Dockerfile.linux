@@ -1,0 +1,44 @@
+# Scilab ( http://www.scilab.org/ ) - This file is part of Scilab
+# Copyright (C) Dassault Systemes - 2022 - Clement DAVID
+#
+#
+# This Dockerfile describe the configuration of a linux-builder for the CI.
+#
+
+FROM ubuntu:18.04
+
+LABEL description="Scilab builder image used by CI/CD runners"
+
+RUN apt-get update && apt-get install -y \
+        locales subversion git \
+        autoconf automake make ccache \
+        gcc-8 g++-8 gfortran-8 \
+        openjdk-8-jdk ant ocaml gettext curl \
+        libcurl4-openssl-dev libgl1-mesa-dev pkg-config \
+        dumb-init patchelf elfutils \
+    && apt-get clean
+
+# generate en_US locale
+RUN sed -i 's/^# *\(en_US.UTF-8\)/\1/' /etc/locale.gen \
+    && locale-gen
+
+# add a scilab build user and the Gitlab build dir
+RUN mkdir -p /builds
+RUN useradd scilab
+RUN chown scilab: /builds
+
+# Scilab source code is in English with UTF-8 encoding
+ENV LC_ALL=en_US.UTF-8
+ENV LANG=en_US.UTF-8
+ENV LANGUAGE=en_US.UTF-8
+
+# specify compilers version and ccache
+ENV CCACHE_DIR /tmp/ccache
+RUN ln -s /usr/bin/ccache /usr/local/bin/gcc-8 && \
+    ln -s /usr/bin/ccache /usr/local/bin/g++-8
+ENV CC=gcc-8
+ENV CXX=g++-8
+ENV F77=gfortran-8
+
+# start docker using scilab user
+# USER scilab
