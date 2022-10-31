@@ -323,12 +323,7 @@ detect_macos_vm() {
 
 set_macosx_java_vm () {
     # For Mac OS X we have to detect the CPU
-    if test -z "$DEVENV"; then
-        # this method supposes no fat binary
-        export ARCH=$(echo $(lipo -archs "$SCI/../../bin/$SCILABBIN"))
-    else
-        export ARCH=$(echo $(lipo -archs "$SCI/.libs/scilab-bin"))
-    fi
+    export ARCH=x86_64
     if test -z "$JAVA_HOME"; then
         JAVA_HOME=$(detect_macos_vm)
         if test -z "$JAVA_HOME"; then
@@ -779,7 +774,7 @@ dialog_try_or_exit()
 
 fail_macosx_version()
 {
-    dialog_try_or_exit "This version of Scilab may fail on this system ($macosxVersion): Scilab is currently supported from 10.13 (High Sierra) to 11 (Big Sur)."
+    dialog_try_or_exit "This version of Scilab may fail on this system ($macosxVersion): Scilab is currently supported from 10.13 (High Sierra) to 13 (Ventura)."
 }
 check_macosx_version()
 {
@@ -793,7 +788,7 @@ check_macosx_version()
                     ;;
             esac
             ;;
-        11)
+        11|12|13)
             ;;
         *)
             fail_macosx_version
