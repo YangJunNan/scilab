@@ -57,7 +57,7 @@ Compilation
 
 * Linux and macOS builds require a C++17 compiler. Toolboxes might also want to use this standard by specifying `-std=c++17` as a `CFLAGS`
 
-* Migration to Microsoft Visual Studio 2017 and Intel Composer 2018
+* Migration to Microsoft Visual Studio 2017 and Intel® oneAPI HPC Toolkit 2022.
 
 
 Dependencies
@@ -329,6 +329,7 @@ Bug Fixes
 * [#16653](https://bugzilla.scilab.org/16653): fromJSON() crashed with a non existing file.
 * [#16717](https://bugzilla.scilab.org/16717): An error occured in findobj when no objects existed.
 * [#16734](https://bugzilla.scilab.org/16734): `findobj()` was slower than before.
+* [#16748](https://bugzilla.scilab.org/16748): Build failed with OCaml 4.11 or newer build without unsafe-strings
 * [#16841](https://bugzilla.scilab.org/16841): Zoom on multiaxes could desynchronize axes.
 * [#16849](https://bugzilla.scilab.org/16849): toJSON("\\") must return "\\\\" instead of "\\\".
 

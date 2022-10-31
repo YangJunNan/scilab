@@ -1,0 +1,82 @@
+# Scilab ( http://www.scilab.org/ ) - This file is part of Scilab
+# Copyright (C) Dassault Systemes - 2022 - Clement DAVID
+# Copyright (C) Dassault Systemes - 2022 - Cedric DELAMARRE
+#
+#
+# This YAML file describe the build stage of the CI. This stage delegates the
+# build action to shell scripts, it creates job per platform and handle Merge
+# Request as well as nightly/release build.
+#
+
+# build scilab using a windows runner
+.x64_windows_build:
+  stage: build
+  tags: [x64_windows, scilab, shell]
+  script:
+    - $process = Start-Process -Wait -PassThru -FilePath ".gitlab-ci\build.bat"
+    - exit $process.ExitCode
+  artifacts:
+    paths:
+      - logs_$CI_COMMIT_SHORT_SHA
+      - scilab/modules/core/includes/version.h
+      - $SCI_VERSION_STRING.bin.$ARCH.exe
+    when: always
+# build an preview/branched version
+x64_windows_build_branch:
+  extends: .x64_windows_build
+  needs:
+    - contains_changes_modification
+    - x64_windows_set_env
+  rules:
+    - if: $CI_PIPELINE_SOURCE == 'merge_request_event'
+# build a nightly version
+x64_windows_build_nightly:
+  extends: .x64_windows_build
+  needs:
+    - x64_windows_set_env
+  rules:
+    - if: $CI_PIPELINE_SOURCE == 'schedule'
+# build a release version
+x64_windows_build_release:
+  extends: .x64_windows_build
+  needs:
+    - prepare_release_files
+    - x64_windows_set_env
+  rules:
+    - if: $CI_COMMIT_TAG
+
+# build scilab using a linux runner
+.x86_64-linux-gnu_build:
+  stage: build
+  image: $DOCKER_LINUX_BUILDER
+  tags: [x86_64-linux-gnu, docker, scilab]
+  script: bash -x -e .gitlab-ci/build.sh
+  artifacts:
+    paths:
+      - logs_$CI_COMMIT_SHORT_SHA
+      - scilab/modules/core/includes/version.h
+      - $SCI_VERSION_STRING.bin.$ARCH.tar.xz
+    when: always
+# build an preview/branched version
+x86_64-linux-gnu_build_branch:
+  extends: .x86_64-linux-gnu_build
+  needs:
+    - contains_changes_modification
+    - x86_64-linux-gnu_set_env
+  rules:
+    - if: $CI_PIPELINE_SOURCE == 'merge_request_event'
+# build a nightly
+x86_64-linux-gnu_build_nightly:
+  extends: .x86_64-linux-gnu_build
+  needs:
+    - x86_64-linux-gnu_set_env
+  rules:
+    - if: $CI_PIPELINE_SOURCE == 'schedule'
+# build a release
+x86_64-linux-gnu_build_release:
+  extends: .x86_64-linux-gnu_build
+  needs:
+    - prepare_release_files
+    - x86_64-linux-gnu_set_env
+  rules:
+    - if: $CI_COMMIT_TAG

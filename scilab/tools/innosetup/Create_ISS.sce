@@ -236,5 +236,5 @@ else
     printf("Error: name of this file isn""t ""Create_ISS.sce"" but %s\n",(filename+extension));
     printf("Please rename this file\n");
 end
-exit
+exit(0)
 //------------------------------------------------------------------------------

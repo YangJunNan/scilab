@@ -1,0 +1,52 @@
+# Scilab ( http://www.scilab.org/ ) - This file is part of Scilab
+# Copyright (C) Dassault Systemes - 2022 - Clement DAVID
+#
+#
+# This YAML file describe the publish stage of the CI. This stage is used to
+# extract artifacts and publish them to other websites.
+#
+
+.publish_job:
+  stage: publish
+  tags: [x86_64-linux-gnu, docker, scilab]
+  script:
+    - echo "nothing to deploy"
+publish_branch:
+  extends: .publish_job
+  dependencies: []
+  rules:
+    - if: $CI_PIPELINE_SOURCE == 'merge_request_event'
+publish_nightly:
+  extends: .publish_job
+  dependencies: []
+  rules:
+    - if: $CI_PIPELINE_SOURCE == 'schedule'
+publish_release:
+  extends: .publish_job
+  dependencies: []
+  rules:
+    - if: $CI_COMMIT_TAG
+
+# generate index.html files for each directory in public/
+index_gitlab_pages:
+  stage: publish
+  tags: [x86_64-linux-gnu, docker, scilab]
+  image: $DOCKER_LINUX_BUILDER
+  dependencies:
+    - publish_help_jar
+    - build_doxygen
+    - build_help_web
+    - build_javadoc
+  script:
+    - mkdir public ||true
+    - |
+      find public -type d -print0 | while IFS= read -r -d '' d; do
+        cd $CI_PROJECT_DIR/$d;
+        echo '<html><body>' >index.html;
+        find . -name '*.html' -printf '<a href="%p">%p</a><br/>\n' >>index.html;
+        echo '</body></html>' >>index.html;
+      done;
+  artifacts:
+    paths:
+      - public
+  when: always
