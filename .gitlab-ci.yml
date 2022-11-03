@@ -27,6 +27,7 @@ workflow:
   rules:
     # run on merge request and set spécify docker image tag
     - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+    - if: $CI_PIPELINE_SOURCE == "push"
       changes: &DOCKER_CHANGES
         paths:
           - .gitlab-ci/Dockerfile*
@@ -37,6 +38,7 @@ workflow:
         GIT_CLEAN_FLAGS: none
     # run on merge request
     - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+    - if: $CI_PIPELINE_SOURCE == "push"
       variables:
         SCI_VERSION_STRING: "scilab-branch-${CI_MERGE_REQUEST_TARGET_BRANCH_NAME}-${CI_COMMIT_SHORT_SHA}"
         GIT_STRATEGY: fetch
