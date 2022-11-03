@@ -111,46 +111,46 @@ create_docker_image_linux:
 # Create as many jobs as runner * concurrency
 
 # * in -Paths is used to avoid error if file doesn't exists
-windows_cleanup:
-  stage: .post
-  parallel:
-    matrix:
-      - RUNNER: [vdevredccwindsy]
-        CONCURRENT: [0, 1, 2, 3]
-  tags: [x64_windows, shell, scilab, $RUNNER]
-  dependencies: []
-  variables:
-    GIT_STRATEGY: none
-  script:
-    - echo "cleaning $CI_PROJECT_DIR"
-    # Wait all concurrent jobs
-    - Start-Sleep -Seconds 30
-    # Remove TMPDIRs older than 1 day
-    - Get-ChildItem -Path "$env:TMP\SCI_TMP*" | Where-Object {($_.LastWriteTime -lt (Get-Date).AddDays(-1))} | Remove-Item -Recurse
-    # Remove logs dir
-    - Get-ChildItem -Path "logs_*" | Remove-Item -Recurse
-    # Remove installer and install dir
-    - Get-ChildItem -Path "scilab-*" | Remove-Item -Recurse
-  when: always
+# windows_cleanup:
+#   stage: .post
+#   parallel:
+#     matrix:
+#       - RUNNER: [vdevredccwindsy]
+#         CONCURRENT: [0, 1, 2, 3]
+#   tags: [x64_windows, shell, scilab, $RUNNER]
+#   dependencies: []
+#   variables:
+#     GIT_STRATEGY: none
+#   script:
+#     - echo "cleaning $CI_PROJECT_DIR"
+#     # Wait all concurrent jobs
+#     - Start-Sleep -Seconds 30
+#     # Remove TMPDIRs older than 1 day
+#     - Get-ChildItem -Path "$env:TMP\SCI_TMP*" | Where-Object {($_.LastWriteTime -lt (Get-Date).AddDays(-1))} | Remove-Item -Recurse
+#     # Remove logs dir
+#     - Get-ChildItem -Path "logs_*" | Remove-Item -Recurse
+#     # Remove installer and install dir
+#     - Get-ChildItem -Path "scilab-*" | Remove-Item -Recurse
+#   when: always
 
-linux_cleanup:
-  stage: .post
-  parallel:
-    matrix:
-      - RUNNER: [vdevredcclindsy]
-        CONCURRENT: [0, 1, 2, 3]
-  tags: [x86_64-linux-gnu, docker, scilab, $RUNNER]
-  image: $DOCKER_LINUX_BUILDER
-  dependencies: []
-  variables:
-    GIT_STRATEGY: none
-  script:
-    - echo "cleaning $CI_PROJECT_DIR"
-    # Remove logs
-    - rm -rf "logs_*"
-    # Remove installer
-    - rm -f "scilab-*"
-  when: always
+# linux_cleanup:
+#   stage: .post
+#   parallel:
+#     matrix:
+#       - RUNNER: [vdevredcclindsy]
+#         CONCURRENT: [0, 1, 2, 3]
+#   tags: [x86_64-linux-gnu, docker, scilab, $RUNNER]
+#   image: $DOCKER_LINUX_BUILDER
+#   dependencies: []
+#   variables:
+#     GIT_STRATEGY: none
+#   script:
+#     - echo "cleaning $CI_PROJECT_DIR"
+#     # Remove logs
+#     - rm -rf "logs_*"
+#     # Remove installer
+#     - rm -f "scilab-*"
+#   when: always
 
 # clean linux docker images
 linux_cleanup_docker:
