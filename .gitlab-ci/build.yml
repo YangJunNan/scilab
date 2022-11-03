@@ -12,6 +12,14 @@
 .x64_windows_build:
   stage: build
   tags: [x64_windows, scilab, shell]
+  before_script:
+    - echo "cleaning $CI_PROJECT_DIR"
+    # Remove TMPDIRs older than 1 day
+    - Get-ChildItem -Path "$env:TMP\SCI_TMP*" | Where-Object {($_.LastWriteTime -lt (Get-Date).AddDays(-1))} | Remove-Item -Recurse
+    # Remove logs dir older than 3 day
+    - Get-ChildItem -Path "logs_*" | Where-Object {($_.LastWriteTime -lt (Get-Date).AddDays(-3))} | Remove-Item -Recurse
+    # Remove installer and install dir older than 3 day
+    - Get-ChildItem -Path "scilab-*" | Where-Object {($_.LastWriteTime -lt (Get-Date).AddDays(-3))} | Remove-Item -Recurse
   script:
     - $process = Start-Process -Wait -PassThru -FilePath ".gitlab-ci\build.bat"
     - exit $process.ExitCode
@@ -50,6 +58,12 @@ x64_windows_build_release:
   stage: build
   image: $DOCKER_LINUX_BUILDER
   tags: [x86_64-linux-gnu, docker, scilab]
+  before_script:
+    - echo "cleaning $CI_PROJECT_DIR"
+    # Remove logs older than 3 days
+    - find logs_*   -mtime +3 -delete || true
+    # Remove installer older than 3 days
+    - find scilab-* -mtime +3 -delete || true
   script: bash -x -e .gitlab-ci/build.sh
   artifacts:
     paths:
