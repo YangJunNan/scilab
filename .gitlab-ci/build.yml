@@ -54,7 +54,7 @@ x64_windows_build_release:
     - if: $CI_COMMIT_TAG
 
 # build scilab using a linux runner
-x86_64-linux-gnu_build:
+.x86_64-linux-gnu_build:
   stage: build
   image: $DOCKER_LINUX_BUILDER
   tags: [x86_64-linux-gnu, docker, scilab]
@@ -72,25 +72,25 @@ x86_64-linux-gnu_build:
       - $SCI_VERSION_STRING.bin.$ARCH.tar.xz
     when: always
 # build an preview/branched version
-# x86_64-linux-gnu_build_branch:
-#   extends: .x86_64-linux-gnu_build
-#   needs:
-#     - contains_changes_modification
-#     - x86_64-linux-gnu_set_env
-#   rules:
-#     - if: $CI_PIPELINE_SOURCE == 'merge_request_event'
-# # build a nightly
-# x86_64-linux-gnu_build_nightly:
-#   extends: .x86_64-linux-gnu_build
-#   needs:
-#     - x86_64-linux-gnu_set_env
-#   rules:
-#     - if: $CI_PIPELINE_SOURCE == 'schedule'
-# # build a release
-# x86_64-linux-gnu_build_release:
-#   extends: .x86_64-linux-gnu_build
-#   needs:
-#     - prepare_release_files
-#     - x86_64-linux-gnu_set_env
-#   rules:
-#     - if: $CI_COMMIT_TAG
+x86_64-linux-gnu_build_branch:
+  extends: .x86_64-linux-gnu_build
+  needs:
+    - contains_changes_modification
+    - x86_64-linux-gnu_set_env
+  # rules:
+  #   - if: $CI_PIPELINE_SOURCE == 'merge_request_event'
+# build a nightly
+x86_64-linux-gnu_build_nightly:
+  extends: .x86_64-linux-gnu_build
+  needs:
+    - x86_64-linux-gnu_set_env
+  rules:
+    - if: $CI_PIPELINE_SOURCE == 'schedule'
+# build a release
+x86_64-linux-gnu_build_release:
+  extends: .x86_64-linux-gnu_build
+  needs:
+    - prepare_release_files
+    - x86_64-linux-gnu_set_env
+  rules:
+    - if: $CI_COMMIT_TAG
