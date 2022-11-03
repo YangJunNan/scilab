@@ -1,7 +1,7 @@
 /*
-* Scilab ( http://www.scilab.org/ ) - This file is part of Scilab
-* Copyright (C) 2010 - DIGITEO - Allan CORNET
-*
+ * Scilab ( http://www.scilab.org/ ) - This file is part of Scilab
+ * Copyright (C) 2010 - DIGITEO - Allan CORNET
+ *
  * Copyright (C) 2012 - 2016 - Scilab Enterprises
  *
  * This file is hereby licensed under the terms of the GNU GPL v2.0,
@@ -13,6 +13,9 @@
 *
 */
 /*--------------------------------------------------------------------------*/
+#ifdef _MSC_VER
+#include <Windows.h>
+#endif
 #include <string.h>
 #include <stdio.h>
 #include "getversion.h"
@@ -27,6 +30,7 @@
 #include "sci_malloc.h"
 #include "../../../io/includes/getenvc.h"
 #include "charEncoding.h"
+#include "localization.h"
 
 /*--------------------------------------------------------------------------*/
 /*wide char*/
@@ -47,6 +51,28 @@
 #define DEFAULT_VERSION_ARRAY_SIZE 4
 #define SCILAB_STRING L"scilab"
 /*--------------------------------------------------------------------------*/
+void disp_scilab_version(void)
+{
+    if ((getScilabMode() == SCILAB_NWNI) || (getScilabMode() == SCILAB_NW) || (getScilabMode() == SCILAB_API))
+    {
+        printf(_("Scilab version \"%d.%d.%d.%d\"\n"), SCI_VERSION_MAJOR, SCI_VERSION_MINOR, SCI_VERSION_MAINTENANCE, SCI_VERSION_TIMESTAMP);
+        printf("%s\n\n", SCI_VERSION_STRING);
+    }
+    else
+    {
+#ifdef _MSC_VER
+        {
+            char msg[1024];
+            wsprintf(msg, gettext("Scilab version \"%d.%d.%d.%d\"\n%s\n"), SCI_VERSION_MAJOR, SCI_VERSION_MINOR, SCI_VERSION_MAINTENANCE, SCI_VERSION_TIMESTAMP, SCI_VERSION_STRING);
+            MessageBox(NULL, msg, gettext("Scilab Version Info."), MB_ICONINFORMATION);
+        }
+#else
+        printf(_("Scilab version \"%d.%d.%d.%d\"\n"), SCI_VERSION_MAJOR, SCI_VERSION_MINOR, SCI_VERSION_MAINTENANCE, SCI_VERSION_TIMESTAMP);
+        printf("%s\n\n", SCI_VERSION_STRING);
+#endif
+    }
+}
+/*--------------------------------------------------------------------------*/
 int *getScilabVersion(int *sizeArrayReturned)
 {
     int *returnedArray = (int *)MALLOC(sizeof(int) * DEFAULT_VERSION_ARRAY_SIZE);
@@ -65,7 +91,7 @@ int *getScilabVersion(int *sizeArrayReturned)
 /*--------------------------------------------------------------------------*/
 char* getScilabVersionAsString(void)
 {
-    return os_strdup(SCI_VERSION);
+    return os_strdup(SCI_VERSION_STRING);
 }
 /*--------------------------------------------------------------------------*/
 wchar_t *getScilabVersionAsWideString(void)

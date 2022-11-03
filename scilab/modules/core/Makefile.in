@@ -206,7 +206,6 @@ am__objects_1 = src/c/libscicore_algo_la-csignal.lo \
 	src/c/libscicore_algo_la-isanan.lo \
 	src/c/libscicore_algo_la-returnanan.lo \
 	src/c/libscicore_algo_la-loadversion.lo \
-	src/c/libscicore_algo_la-version.lo \
 	src/c/libscicore_algo_la-GetXmlFileEncoding.lo \
 	src/c/libscicore_algo_la-islittleendian.lo \
 	src/c/libscicore_algo_la-getcommandlineargs.lo \
@@ -488,7 +487,6 @@ am__depfiles_remade =  \
 	src/c/$(DEPDIR)/libscicore_algo_la-signal_mgmt.Plo \
 	src/c/$(DEPDIR)/libscicore_algo_la-suspendProcess.Plo \
 	src/c/$(DEPDIR)/libscicore_algo_la-transposeMatrix.Plo \
-	src/c/$(DEPDIR)/libscicore_algo_la-version.Plo \
 	src/c/hashtable/$(DEPDIR)/libscicore_algo_la-hashtable.Plo \
 	src/c/hashtable/$(DEPDIR)/libscicore_algo_la-hashtable_utility.Plo \
 	src/cpp/$(DEPDIR)/libscicore_algo_la-InitScilab.Plo \
@@ -899,7 +897,6 @@ CORE_C_SOURCES = \
     src/c/isanan.c \
     src/c/returnanan.c \
     src/c/loadversion.c \
-    src/c/version.c \
     src/c/GetXmlFileEncoding.c \
     src/c/islittleendian.c \
     src/c/getcommandlineargs.c \
@@ -1264,8 +1261,6 @@ src/c/libscicore_algo_la-isanan.lo: src/c/$(am__dirstamp) \
 src/c/libscicore_algo_la-returnanan.lo: src/c/$(am__dirstamp) \
 	src/c/$(DEPDIR)/$(am__dirstamp)
 src/c/libscicore_algo_la-loadversion.lo: src/c/$(am__dirstamp) \
-	src/c/$(DEPDIR)/$(am__dirstamp)
-src/c/libscicore_algo_la-version.lo: src/c/$(am__dirstamp) \
 	src/c/$(DEPDIR)/$(am__dirstamp)
 src/c/libscicore_algo_la-GetXmlFileEncoding.lo: src/c/$(am__dirstamp) \
 	src/c/$(DEPDIR)/$(am__dirstamp)
@@ -1716,7 +1711,6 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@src/c/$(DEPDIR)/libscicore_algo_la-signal_mgmt.Plo@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@src/c/$(DEPDIR)/libscicore_algo_la-suspendProcess.Plo@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@src/c/$(DEPDIR)/libscicore_algo_la-transposeMatrix.Plo@am__quote@ # am--include-marker
-@AMDEP_TRUE@@am__include@ @am__quote@src/c/$(DEPDIR)/libscicore_algo_la-version.Plo@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@src/c/hashtable/$(DEPDIR)/libscicore_algo_la-hashtable.Plo@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@src/c/hashtable/$(DEPDIR)/libscicore_algo_la-hashtable_utility.Plo@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@src/cpp/$(DEPDIR)/libscicore_algo_la-InitScilab.Plo@am__quote@ # am--include-marker
@@ -1818,13 +1812,6 @@ src/c/libscicore_algo_la-loadversion.lo: src/c/loadversion.c
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='src/c/loadversion.c' object='src/c/libscicore_algo_la-loadversion.lo' libtool=yes @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libscicore_algo_la_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o src/c/libscicore_algo_la-loadversion.lo `test -f 'src/c/loadversion.c' || echo '$(srcdir)/'`src/c/loadversion.c
-
-src/c/libscicore_algo_la-version.lo: src/c/version.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libscicore_algo_la_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT src/c/libscicore_algo_la-version.lo -MD -MP -MF src/c/$(DEPDIR)/libscicore_algo_la-version.Tpo -c -o src/c/libscicore_algo_la-version.lo `test -f 'src/c/version.c' || echo '$(srcdir)/'`src/c/version.c
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) src/c/$(DEPDIR)/libscicore_algo_la-version.Tpo src/c/$(DEPDIR)/libscicore_algo_la-version.Plo
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='src/c/version.c' object='src/c/libscicore_algo_la-version.lo' libtool=yes @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libscicore_algo_la_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o src/c/libscicore_algo_la-version.lo `test -f 'src/c/version.c' || echo '$(srcdir)/'`src/c/version.c
 
 src/c/libscicore_algo_la-GetXmlFileEncoding.lo: src/c/GetXmlFileEncoding.c
 @am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libscicore_algo_la_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT src/c/libscicore_algo_la-GetXmlFileEncoding.lo -MD -MP -MF src/c/$(DEPDIR)/libscicore_algo_la-GetXmlFileEncoding.Tpo -c -o src/c/libscicore_algo_la-GetXmlFileEncoding.lo `test -f 'src/c/GetXmlFileEncoding.c' || echo '$(srcdir)/'`src/c/GetXmlFileEncoding.c
@@ -2924,7 +2911,6 @@ distclean: distclean-am
 	-rm -f src/c/$(DEPDIR)/libscicore_algo_la-signal_mgmt.Plo
 	-rm -f src/c/$(DEPDIR)/libscicore_algo_la-suspendProcess.Plo
 	-rm -f src/c/$(DEPDIR)/libscicore_algo_la-transposeMatrix.Plo
-	-rm -f src/c/$(DEPDIR)/libscicore_algo_la-version.Plo
 	-rm -f src/c/hashtable/$(DEPDIR)/libscicore_algo_la-hashtable.Plo
 	-rm -f src/c/hashtable/$(DEPDIR)/libscicore_algo_la-hashtable_utility.Plo
 	-rm -f src/cpp/$(DEPDIR)/libscicore_algo_la-InitScilab.Plo
@@ -3084,7 +3070,6 @@ maintainer-clean: maintainer-clean-am
 	-rm -f src/c/$(DEPDIR)/libscicore_algo_la-signal_mgmt.Plo
 	-rm -f src/c/$(DEPDIR)/libscicore_algo_la-suspendProcess.Plo
 	-rm -f src/c/$(DEPDIR)/libscicore_algo_la-transposeMatrix.Plo
-	-rm -f src/c/$(DEPDIR)/libscicore_algo_la-version.Plo
 	-rm -f src/c/hashtable/$(DEPDIR)/libscicore_algo_la-hashtable.Plo
 	-rm -f src/c/hashtable/$(DEPDIR)/libscicore_algo_la-hashtable_utility.Plo
 	-rm -f src/cpp/$(DEPDIR)/libscicore_algo_la-InitScilab.Plo

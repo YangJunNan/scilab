@@ -23,7 +23,6 @@
 #include <windows.h>
 #include <Winuser.h>
 #include <shlwapi.h>
-#include "version.h"
 #include "FilesAssociations.h"
 #include "sci_malloc.h"
 #include "FindScilab.h"

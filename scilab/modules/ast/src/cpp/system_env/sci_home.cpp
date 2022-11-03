@@ -27,7 +27,7 @@ extern "C"
 #include "charEncoding.h"
 #include "PATH_MAX.h"
 #include "machine.h"
-#include "version.h"
+#include "getversion.h"
 #include "setenvc.h"
 #include "getenvc.h"
 #include "setenvvar.h"
@@ -169,7 +169,9 @@ static char* computeSCIHOME(const char* path)
     }
     else
     {
-        os_sprintf(SCIHOMEPATH, "%s%s%s", USERPATHSCILAB, DIR_SEPARATOR, SCI_VERSION_STRING);
+        char *scilabVersionString = getScilabVersionAsString();
+        os_sprintf(SCIHOMEPATH, "%s%s%s", USERPATHSCILAB, DIR_SEPARATOR, scilabVersionString);
+        free(scilabVersionString);
     }
 
     /* creates directory if it does not exist */
@@ -219,7 +221,9 @@ static char* computeSCIHOME(const char* path)
     }
     else
     {
-        sprintf(SCIHOMEPATH, "%s%s%s", USERPATHSCILAB, DIR_SEPARATOR, SCI_VERSION_STRING);
+        char *scilabVersionString = getScilabVersionAsString();
+        sprintf(SCIHOMEPATH, "%s%s%s", USERPATHSCILAB, DIR_SEPARATOR, scilabVersionString);
+        free(scilabVersionString);
     }
 
     /* creates directory if it does not exist */

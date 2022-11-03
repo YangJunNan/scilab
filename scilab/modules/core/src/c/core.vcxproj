@@ -289,7 +289,6 @@ cd ..
     <ClCompile Include="saveCWDInPreferences.c" />
     <ClCompile Include="setPrecisionFPU.c" />
     <ClCompile Include="transposeMatrix.c" />
-    <ClCompile Include="version.c" />
     <ClCompile Include="win_mem_alloc.c" />
   </ItemGroup>
   <ItemGroup>
