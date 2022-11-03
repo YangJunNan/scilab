@@ -77,8 +77,8 @@ x86_64-linux-gnu_build_branch:
   needs:
     - contains_changes_modification
     - x86_64-linux-gnu_set_env
-  # rules:
-  #   - if: $CI_PIPELINE_SOURCE == 'merge_request_event'
+  rules:
+    - if: $CI_PIPELINE_SOURCE == 'merge_request_event'
 # build a nightly
 x86_64-linux-gnu_build_nightly:
   extends: .x86_64-linux-gnu_build
