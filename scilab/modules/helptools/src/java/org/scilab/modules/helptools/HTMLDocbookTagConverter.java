@@ -406,15 +406,23 @@ public class HTMLDocbookTagConverter extends DocbookTagConverter implements Temp
      * {@inheritDoc}
      */
     public String makeSubtitle(final String id) {
-        return fileSubtitle;
+        if (refname.length() > 0) {
+            return fileSubtitle;
+        }
+
+        return "";
     }
 
     /**
      * {@inheritDoc}
      */
     public String makeOrigin(final String id) {
-        int urlProtocolLength = currentFileName.lastIndexOf(SCI);
-        return currentFileName.substring(urlProtocolLength + SCI.length());
+        if (refname.length() > 0) {
+            int urlProtocolLength = currentFileName.lastIndexOf(SCI);
+            return currentFileName.substring(urlProtocolLength + SCI.length());
+        }
+        
+        return "";
     }
 
     /**
