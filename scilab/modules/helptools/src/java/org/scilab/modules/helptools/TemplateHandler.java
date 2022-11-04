@@ -66,6 +66,8 @@ public class TemplateHandler {
                         str = filler.makeTitle(id);
                     } else if (array[i + 1].equals("subtitle")) {
                         str = filler.makeSubtitle(id);
+                    } else if (array[i + 1].equals("origin")) {
+                        str = filler.makeOrigin(id);
                     } else if (array[i + 1].equals("toclist")) {
                         str = filler.makeTocList(id);
                     } else if (array[i + 1].equals("lastmodified")) {
