@@ -412,6 +412,14 @@ public class HTMLDocbookTagConverter extends DocbookTagConverter implements Temp
     /**
      * {@inheritDoc}
      */
+    public String makeOrigin(final String id) {
+        int urlProtocolLength = currentFileName.lastIndexOf(SCI);
+        return currentFileName.substring(urlProtocolLength + SCI.length());
+    }
+
+    /**
+     * {@inheritDoc}
+     */
     public String makePrevious(final String id) {
         buffer.setLength(0);
         buffer.append("<span class=\"previous\">");
@@ -591,7 +599,7 @@ public class HTMLDocbookTagConverter extends DocbookTagConverter implements Temp
         buffer.setLength(0);
         buffer.append("<span class=\"generationdate\">");
         buffer.append(new Date(System.currentTimeMillis()).toString());
-        buffer.append("</span>\n");
+        buffer.append("</span>");
 
         return buffer.toString();
     }
