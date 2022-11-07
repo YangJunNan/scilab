@@ -1314,7 +1314,7 @@ public class HTMLDocbookTagConverter extends DocbookTagConverter implements Temp
                 }
             } else {
                 warnings++;
-                System.err.println("Warning (should be fixed): invalid internal link to " + link + " in " + currentFileName + "\nat line " + locator.getLineNumber());
+                System.err.println("Warning (should be fixed): invalid internal link to " + link + " in " + currentFileName + String.format(":%d:%d", getDocumentLocator().getLineNumber(), getDocumentLocator().getColumnNumber()));
                 return null;
             }
         }
@@ -1424,7 +1424,7 @@ public class HTMLDocbookTagConverter extends DocbookTagConverter implements Temp
         String id = mapId.get(link);
         if (id == null) {
             warnings++;
-            System.err.println("Warning (should be fixed): invalid internal link to " + link + " in " + currentFileName + "\nat line " + locator.getLineNumber());
+            System.err.println("Warning (should be fixed): invalid internal link to " + link + " in " + currentFileName + String.format(":%d:%d", getDocumentLocator().getLineNumber(), getDocumentLocator().getColumnNumber()));
             return null;
         }
 
