@@ -861,6 +861,9 @@ public class HTMLDocbookTagConverter extends DocbookTagConverter implements Temp
     public String handleTitle(final Map<String, String> attributes, final String contents) throws SAXException {
         String clazz = "title";
         String parent = getParentTagName();
+        int lineNumber = getDocumentLocator().getLineNumber();
+        String[] attrs =  new String[] {"class", clazz, "id", "#L"+Integer.toString(lineNumber)};
+
         if (parent.equals("chapter")) {
             chapterTitle = contents;
         } else if (parent.equals("part")) {
@@ -871,15 +874,15 @@ public class HTMLDocbookTagConverter extends DocbookTagConverter implements Temp
             sectionTitle = contents;
         } else if (parent.equals("refsection") && Pattern.matches("^[ \\t]*ex[ea]mpl[eo].*", contents.toLowerCase())) {
             hasExamples = true;
-            return encloseContents("h3", clazz, contents);
+            return encloseContents("h3", attrs, contents);
         } else if (parent.equals("refsect1")) {
-            return encloseContents("h3", clazz, contents);
+            return encloseContents("h3", attrs, contents);
         } else if (parent.equals("refsect2")) {
-            return encloseContents("h4", clazz, contents);
+            return encloseContents("h4", attrs, contents);
         } else if (parent.equals("refsect3")) {
-            return encloseContents("h5", clazz, contents);
+            return encloseContents("h5", attrs, contents);
         } else {
-            return encloseContents("h3", clazz, contents);
+            return encloseContents("h3", attrs, contents);
         }
 
         return null;
