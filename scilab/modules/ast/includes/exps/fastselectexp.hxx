@@ -17,6 +17,7 @@
 #define __FAST_SELECT_EXP_HXX__
 
 #include "internal.hxx"
+#include "selectexp.hxx"
 
 namespace ast
 {

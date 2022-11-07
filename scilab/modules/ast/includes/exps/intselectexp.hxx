@@ -17,6 +17,7 @@
 #define __INT_SELECT_EXP_HXX__
 
 #include "internal.hxx"
+#include "fastselectexp.hxx"
 #include <stdint.h>
 
 namespace ast
