@@ -23,7 +23,7 @@
 
 #include "location.hxx"
 #include "visitor.hxx"
-#include "Decorator.hxx"
+//#include "Decorator.hxx"
 
 namespace ast
 {
@@ -36,7 +36,7 @@ class Ast
 public:
     /** \brief Construct an Ast node.
     ** \param location scanner position informations */
-    Ast (const Location& location) : decorator(), coverId(0), _location (location), m_dblElapsedTime(0)
+  Ast(const Location& location) : /* decorator(),*/ coverId(0), _location(location), m_dblElapsedTime(0)
     {
         nodeNumber = globalNodeNumber++;
     }
@@ -99,7 +99,7 @@ public:
     {
         nodeNumber = _nodeNumber;
     }
-
+    /*
     const analysis::Decorator & getDecorator() const
     {
         return decorator;
@@ -109,7 +109,7 @@ public:
     {
         return decorator;
     }
-
+    */
     inline void setCoverId(const uint64_t id)
     {
         coverId = id;
@@ -126,7 +126,7 @@ public:
     }
 
 private:
-    analysis::Decorator decorator;
+    //analysis::Decorator decorator;
     uint64_t coverId;
     /** \brief Construct an Ast by copy. */
     Ast (const Ast&);

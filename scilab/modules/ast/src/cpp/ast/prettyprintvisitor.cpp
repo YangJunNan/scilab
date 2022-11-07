@@ -233,16 +233,7 @@ void PrettyPrintVisitor::print(const TermColor& c, const std::wstring & str, con
     std::wstring expType;
     expType = e.getTypeString();
 
-    if (printDecoration)
-    {
-        std::wostringstream wos;
-        wos << L"Deco(" << e.getDecorator() << L")";
-        print(BOLD, expType, e.getLocation(), c, str, NORMAL, wos.str());
-    }
-    else
-    {
-        print(BOLD, expType, e.getLocation(), c, str, NORMAL, L"");
-    }
+    print(BOLD, expType, e.getLocation(), c, str, NORMAL, L"");
 }
 
 void PrettyPrintVisitor::print(const Exp & e)
@@ -371,23 +362,6 @@ void PrettyPrintVisitor::visit(const SimpleVar & e)
     START_NODE(e);
     std::wstring str;
     str = e.getSymbol().getName();
-    if (printDecoration)
-    {
-        std::wstring ty;
-        analysis::TIType type = e.getDecorator().getResult().getType();
-        if (type.type != analysis::TIType::UNKNOWN)
-        {
-            if (type.isscalar())
-            {
-                ty = L" (" + analysis::TIType::toString(type.type) + L")";
-            }
-            else
-            {
-                ty = L" (" + analysis::TIType::toString(type.type) + L"*)";
-            }
-        }
-        str += ty;
-    }
     print(RED, str, e);
 
     END_NODE();
