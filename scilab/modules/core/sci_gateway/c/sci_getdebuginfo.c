@@ -16,7 +16,6 @@
 #include <stdio.h>
 #include "gw_core.h"
 #include "api_scilab.h"
-#include "version.h"
 #include "sci_malloc.h"
 #include "freeArrayOfString.h"
 #ifdef _MSC_VER

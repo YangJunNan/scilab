@@ -21,7 +21,10 @@
 #include "deserializervisitor.hxx"
 #include "timer.hxx"
 #include "charEncoding.h"
-#include "version.h"
+extern "C"
+{
+#include "getversion.h"
+}
 
 #define FAGMENT_SIZE 65536
 
@@ -50,9 +53,9 @@ private :
 
     void set_version()
     {
-        set_byte(4, (unsigned char)SCI_VERSION_MAJOR);
-        set_byte(5, (unsigned char)SCI_VERSION_MINOR);
-        set_byte(6, (unsigned char)SCI_VERSION_MAINTENANCE);
+        set_byte(4, (unsigned char)getScilabVersionMajor());
+        set_byte(5, (unsigned char)getScilabVersionMinor());
+        set_byte(6, (unsigned char)getScilabVersionMaintenance());
         set_byte(7, (unsigned char)0);
     }
 

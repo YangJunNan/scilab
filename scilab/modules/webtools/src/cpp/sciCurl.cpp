@@ -21,7 +21,7 @@ extern "C"
     #include "getScilabPreference.h"
     #include "freeArrayOfString.h"
     #include "getos.h"
-    #include "version.h"
+    #include "getversion.h"
 }
 
 SciCurl* SciCurl::me = nullptr;
@@ -185,7 +185,7 @@ void SciCurl::setCommonHeaders(CURL* curl)
     char* Release = getOSRelease();
 
     // Scilab version
-    std::string pcUserAgent = "Scilab/" + std::to_string(SCI_VERSION_MAJOR)+"."+ std::to_string(SCI_VERSION_MINOR)+"."+ std::to_string(SCI_VERSION_MAINTENANCE);
+    std::string pcUserAgent = "Scilab/" + std::to_string(getScilabVersionMajor()) + "." + std::to_string(getScilabVersionMinor()) + "." + std::to_string(getScilabVersionMaintenance());
     // OS name
     pcUserAgent += " (" + std::string(OperatingSystem) + " " + std::string(Release) + ")";
     // set user agent header

@@ -24,7 +24,6 @@
 #include "sci_malloc.h"
 #include "getstaticDebugInfo_Windows.h"
 #include "localization.h"
-#include "version.h"
 #include "getversion.h"
 #include "..\..\..\..\libs\pcre\pcre.h"
 #include "getBlasType.h"
@@ -42,7 +41,9 @@ char **getStaticDebugInfo_Windows(int *sizeArray)
     str_info = (char*)MALLOC(sizeof(char) * BUFFER_LEN);
     if (str_info)
     {
-        sprintf(str_info, "Version: %s", SCI_VERSION_STRING);
+        char *scilabVersionString = getScilabVersionAsString();
+        sprintf(str_info, "Version: %s", scilabVersionString);
+        free(scilabVersionString);
         outputDynamicList = appendStringStaticDebugInfo(outputDynamicList, &nb_info, str_info);
     }
 
