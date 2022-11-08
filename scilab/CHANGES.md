@@ -333,6 +333,7 @@ Bug Fixes
 * [#16826](https://bugzilla.scilab.org/16826): `file()` or `file(fid)` could yield outdated relative paths.
 * [#16841](https://bugzilla.scilab.org/16841): Zoom on multiaxes could desynchronize axes.
 * [#16849](https://bugzilla.scilab.org/16849): toJSON("\\") must return "\\\\" instead of "\\\".
+* [#16900](https://bugzilla.scilab.org/16900): no-gui build of Scilab raised an error at startup.
 
 
 ### Bugs fixed in 6.1.1:
