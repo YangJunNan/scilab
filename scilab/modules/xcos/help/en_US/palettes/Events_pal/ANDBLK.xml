@@ -59,7 +59,7 @@
     <refsection id="Description_ANDBLK">
         <title>Description</title>
         <para>
-            The ANDBLK is a logical AND operator applied to signals. It will generate an event of both inputs are synchronuous ; have events at the same time and coming from the same source block.
+            The ANDBLK is a logical AND operator applied to signals. It will generate an event if both inputs are synchronuous ; have events at the same time and coming from the same source block.
         </para>
     </refsection>
     <refsection id="Defaultproperties_ANDBLK">
