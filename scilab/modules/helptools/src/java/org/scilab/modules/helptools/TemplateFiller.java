@@ -78,6 +78,14 @@ public interface TemplateFiller {
     public String makeTitle(String id);
 
     /**
+     * Make the origin - the original source of a document
+     * @param current id
+     * @return the corresponding html
+     * @see https://doc.ohreally.nl/metatag-origin
+     */
+    public String makeOrigin(String id);
+
+    /**
      * Make the generation date
      * @param current id
      * @return the corresponding html

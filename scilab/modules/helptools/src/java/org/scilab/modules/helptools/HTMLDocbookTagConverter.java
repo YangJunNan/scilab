@@ -406,7 +406,23 @@ public class HTMLDocbookTagConverter extends DocbookTagConverter implements Temp
      * {@inheritDoc}
      */
     public String makeSubtitle(final String id) {
-        return fileSubtitle;
+        if (refname.length() > 0) {
+            return fileSubtitle;
+        }
+
+        return "";
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public String makeOrigin(final String id) {
+        if (refname.length() > 0) {
+            int urlProtocolLength = currentFileName.lastIndexOf(SCI);
+            return currentFileName.substring(urlProtocolLength + SCI.length());
+        }
+        
+        return "";
     }
 
     /**
@@ -591,7 +607,7 @@ public class HTMLDocbookTagConverter extends DocbookTagConverter implements Temp
         buffer.setLength(0);
         buffer.append("<span class=\"generationdate\">");
         buffer.append(new Date(System.currentTimeMillis()).toString());
-        buffer.append("</span>\n");
+        buffer.append("</span>");
 
         return buffer.toString();
     }
@@ -845,6 +861,9 @@ public class HTMLDocbookTagConverter extends DocbookTagConverter implements Temp
     public String handleTitle(final Map<String, String> attributes, final String contents) throws SAXException {
         String clazz = "title";
         String parent = getParentTagName();
+        int lineNumber = getDocumentLocator().getLineNumber();
+        String[] attrs =  new String[] {"class", clazz, "id", "#L"+Integer.toString(lineNumber)};
+
         if (parent.equals("chapter")) {
             chapterTitle = contents;
         } else if (parent.equals("part")) {
@@ -855,15 +874,15 @@ public class HTMLDocbookTagConverter extends DocbookTagConverter implements Temp
             sectionTitle = contents;
         } else if (parent.equals("refsection") && Pattern.matches("^[ \\t]*ex[ea]mpl[eo].*", contents.toLowerCase())) {
             hasExamples = true;
-            return encloseContents("h3", clazz, contents);
+            return encloseContents("h3", attrs, contents);
         } else if (parent.equals("refsect1")) {
-            return encloseContents("h3", clazz, contents);
+            return encloseContents("h3", attrs, contents);
         } else if (parent.equals("refsect2")) {
-            return encloseContents("h4", clazz, contents);
+            return encloseContents("h4", attrs, contents);
         } else if (parent.equals("refsect3")) {
-            return encloseContents("h5", clazz, contents);
+            return encloseContents("h5", attrs, contents);
         } else {
-            return encloseContents("h3", clazz, contents);
+            return encloseContents("h3", attrs, contents);
         }
 
         return null;
@@ -1153,6 +1172,11 @@ public class HTMLDocbookTagConverter extends DocbookTagConverter implements Temp
     public String handleProgramlisting(final Map<String, String> attributes, final String contents) throws SAXException {
         String id = attributes.get("id");
         String role = attributes.get("role");
+
+        int lineNumber = getDocumentLocator().getLineNumber();
+        String[] programListingAttrs =  new String[] {"class", "programlisting", "id", "#L"+Integer.toString(lineNumber)};
+
+
         String str;
         if (role == null) {
             String code = encloseContents("pre", "scilabcode", scilabLexer.convert(HTMLScilabCodeHandler.getInstance(refname, currentFileName), contents));
@@ -1162,16 +1186,16 @@ public class HTMLDocbookTagConverter extends DocbookTagConverter implements Temp
             if (appendToProgramListing != null) {
                 code += appendToProgramListing;
             }
-            str = encloseContents("div", "programlisting", code);
+            str = encloseContents("div", programListingAttrs, code);
         } else {
             if (role.equals("xml")) {
-                str = encloseContents("div", "programlisting", encloseContents("pre", "xmlcode", xmlLexer.convert(HTMLXMLCodeHandler.getInstance(), contents)));
+                str = encloseContents("div", programListingAttrs, encloseContents("pre", "xmlcode", xmlLexer.convert(HTMLXMLCodeHandler.getInstance(), contents)));
             } else if (role.equals("c") || role.equals("cpp") || role.equals("code_gateway")) {
                 hasExamples = true;
-                str = encloseContents("div", "programlisting", encloseContents("pre", "ccode", cLexer.convert(HTMLCCodeHandler.getInstance(), contents)));
+                str = encloseContents("div", programListingAttrs, encloseContents("pre", "ccode", cLexer.convert(HTMLCCodeHandler.getInstance(), contents)));
             } else if (role.equals("java")) {
                 hasExamples = true;
-                str = encloseContents("div", "programlisting", encloseContents("pre", "ccode", javaLexer.convert(HTMLCCodeHandler.getInstance(), contents)));
+                str = encloseContents("div", programListingAttrs, encloseContents("pre", "ccode", javaLexer.convert(HTMLCCodeHandler.getInstance(), contents)));
             } else if (role.equals("exec")) {
                 String code = encloseContents("pre", "scilabcode", scilabLexer.convert(HTMLScilabCodeHandler.getInstance(refname, currentFileName), contents));
                 if (prependToProgramListing != null) {
@@ -1180,11 +1204,11 @@ public class HTMLDocbookTagConverter extends DocbookTagConverter implements Temp
                 if (appendForExecToProgramListing != null) {
                     code += appendForExecToProgramListing;
                 }
-                str = encloseContents("div", "programlisting", code);
+                str = encloseContents("div", programListingAttrs, code);
             } else if (role.equals("no-scilab-exec")) {
                 hasExamples = true;
                 String code = encloseContents("pre", "scilabcode", scilabLexer.convert(HTMLScilabCodeHandler.getInstance(refname, currentFileName), contents));
-                str = encloseContents("div", "programlisting", code);
+                str = encloseContents("div", programListingAttrs, code);
             } else {
                 String code = encloseContents("pre", "scilabcode", scilabLexer.convert(HTMLScilabCodeHandler.getInstance(refname, currentFileName), contents));
                 if (prependToProgramListing != null) {
@@ -1193,7 +1217,7 @@ public class HTMLDocbookTagConverter extends DocbookTagConverter implements Temp
                 if (appendToProgramListing != null) {
                     code += appendToProgramListing;
                 }
-                str = encloseContents("div", "programlisting", code);
+                str = encloseContents("div", programListingAttrs, code);
             }
         }
         if (id != null) {
@@ -1295,7 +1319,7 @@ public class HTMLDocbookTagConverter extends DocbookTagConverter implements Temp
                 }
             } else {
                 warnings++;
-                System.err.println("Warning (should be fixed): invalid internal link to " + link + " in " + currentFileName + "\nat line " + locator.getLineNumber());
+                System.err.println("Warning (should be fixed): invalid internal link to " + link + " in " + currentFileName + String.format(":%d:%d", getDocumentLocator().getLineNumber(), getDocumentLocator().getColumnNumber()));
                 return null;
             }
         }
@@ -1405,7 +1429,7 @@ public class HTMLDocbookTagConverter extends DocbookTagConverter implements Temp
         String id = mapId.get(link);
         if (id == null) {
             warnings++;
-            System.err.println("Warning (should be fixed): invalid internal link to " + link + " in " + currentFileName + "\nat line " + locator.getLineNumber());
+            System.err.println("Warning (should be fixed): invalid internal link to " + link + " in " + currentFileName + String.format(":%d:%d", getDocumentLocator().getLineNumber(), getDocumentLocator().getColumnNumber()));
             return null;
         }
 
