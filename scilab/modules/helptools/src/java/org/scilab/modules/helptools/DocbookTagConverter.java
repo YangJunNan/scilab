@@ -19,6 +19,7 @@ import java.io.File;
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.net.MalformedURLException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -52,7 +53,7 @@ public abstract class DocbookTagConverter extends DefaultHandler implements Conv
 
     private static final String DOCBOOKURI = "http://docbook.org/ns/docbook";
     private static final Class<?>[] argsType = new Class[] {Map.class, String.class};
-    protected static final String SCI = ScilabConstants.SCI.getPath();
+    protected static final String SCI = ScilabConstants.SCI.toURI().getPath();
 
     private Map<String, Method> mapMeth = new HashMap<String, Method>();
     private Map<String, ExternalXMLHandler> externalHandlers = new HashMap<String, ExternalXMLHandler>();
