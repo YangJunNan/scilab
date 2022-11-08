@@ -23,11 +23,7 @@
 extern "C" {
 #endif
 
-#include "version.h"
-
-#if SCI_VERSION_MAJOR > 5
 #define __SCILAB_INT64__
-#endif
 
 /**********************/
 /*   list functions   */

@@ -16,3 +16,7 @@ checkCommand
 parseFile
 checkFile
 pause_interpreter
+getScilabVersionMajor
+getScilabVersionMinor
+getScilabVersionMaintenance
+getScilabVersionAsString

@@ -19,7 +19,6 @@ CORE_C_SOURCES = \
     src/c/isanan.c \
     src/c/returnanan.c \
     src/c/loadversion.c \
-    src/c/version.c \
     src/c/GetXmlFileEncoding.c \
     src/c/islittleendian.c \
     src/c/getcommandlineargs.c \

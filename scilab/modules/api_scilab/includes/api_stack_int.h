@@ -38,10 +38,7 @@ extern "C" {
 #define SCI_UINT32	14
 #define SCI_UINT64	18
 
-#include "version.h"
-#if SCI_VERSION_MAJOR > 5
 #define __SCILAB_INT64__
-#endif
 
 /********************************/
 /*   integer matrix functions   */

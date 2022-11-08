@@ -20,6 +20,11 @@
 #include "BOOL.h"
 
 /**
+* display Scilab version
+*/
+void disp_scilab_version(void);
+
+/**
 * get Scilab Version as a int array
 * @param[out] size of returned array
 * @return int array ver

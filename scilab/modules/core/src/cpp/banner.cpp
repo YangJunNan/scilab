@@ -21,7 +21,7 @@ extern "C"
 {
 #include <string.h>
 #include <math.h>
-#include "version.h"
+#include "getversion.h"
 #include "charEncoding.h"
 }
 /*--------------------------------------------------------------------------*/
@@ -34,7 +34,9 @@ void banner(void)
     scilabForcedWriteW(line);
     scilabForcedWriteW(L"\n");
 
-    centerPrint(SCI_VERSION_WIDE_STRING);
+    wchar_t* scilabVersionWideString = getScilabVersionAsWideString();
+    centerPrint(scilabVersionWideString);
+    free(scilabVersionWideString);
     scilabForcedWriteW(L"\n\n");
 
     centerPrint(_W("ESI Group\n").c_str());

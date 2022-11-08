@@ -19,8 +19,6 @@
 #include <stdio.h>
 #include <string.h>
 
-#include "version.h"
-
 /**
  * When Scilab is started with arguments ... defines if it is a scilab
  * script or a scilab code
