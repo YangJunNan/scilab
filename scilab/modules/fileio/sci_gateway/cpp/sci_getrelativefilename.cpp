@@ -99,7 +99,18 @@ types::Function::ReturnValue sci_getrelativefilename(types::typed_list &in, int 
         std::filesystem::path pathAbsDir = std::filesystem::path(wcsAbsDir);
         std::filesystem::path pathAbsFile = std::filesystem::path(wcsAbsFile);
 
-        pStrOut->set(i, std::filesystem::relative(pathAbsFile,pathAbsDir).wstring().c_str());
+        try
+        {
+            pStrOut->set(i, std::filesystem::relative(pathAbsFile, pathAbsDir).wstring().c_str());
+        }
+        catch(const std::filesystem::filesystem_error& error)
+        {
+            Scierror(999, _("%s: %s.\n"), "getrelativefilename", error.what());
+            FREE(wcsAbsDir);
+            FREE(wcsAbsFile);
+            delete pStrOut;
+            return types::Function::Error;
+        }
 
         FREE(wcsAbsDir);
         FREE(wcsAbsFile);
