@@ -576,15 +576,26 @@ function status = test_single(_module, _testPath, _testName)
     end
 
     //scilab path
-    if (getos() <> "Windows") & ~isfile(SCI+"/bin/scilab") then
-        // match a string wich finished by /share/scilab/ or /share/scilab
-        SCI_BIN = strsubst(SCI,"|/share/scilab/?$|","","r");
-    else
-        SCI_BIN = SCI;
+    if (getos() <> "Windows") then
+        if ~isfile(SCI+"/bin/scilab") then
+            // match a string wich finished by /share/scilab/ or /share/scilab
+            SCI_BIN = strsubst(SCI,"|/share/scilab/?$|","","r");
+        else
+            SCI_BIN = SCI
+        end
     end
 
     //scilab build type
-    without_gui_build = getos() <> "Windows" & ~isfile(fullfile(SCI_BIN,"scilab-bin"));
+    without_gui_build = getos() <> "Windows";
+    if without_gui_build then
+        for bin = ["/", "/bin/", "/.libs/"]
+            // depending on the configure options, only scilab-cli-bin may exist
+            if isfile(SCI_BIN+bin+"scilab-bin") & isfile(SCI_BIN+bin+"scilab-cli-bin") then
+                without_gui_build = %f
+                break;
+            end
+        end
+    end
 
     for i=1:size(altreffile,"*")
         if isfile(altreffile(i)) then
