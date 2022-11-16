@@ -98,6 +98,9 @@
     <ClCompile Include="src\c\getHandleProperty\get_auto_scale_property.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\c\getHandleProperty\get_auto_stretch_property.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="src\c\getHandleProperty\get_auto_margins_property.c">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -711,6 +714,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\c\getHandleProperty\set_auto_scale_property.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\c\getHandleProperty\set_auto_stretch_property.c">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\c\getHandleProperty\set_auto_margins_property.c">
