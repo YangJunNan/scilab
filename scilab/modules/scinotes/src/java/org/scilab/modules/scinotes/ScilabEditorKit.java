@@ -162,11 +162,9 @@ public class ScilabEditorKit extends DefaultEditorKit {
                 ;
             }
             return true;
-        }
-        catch (IOException e) {
+        } catch (IOException e) {
             throw e;
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
 
