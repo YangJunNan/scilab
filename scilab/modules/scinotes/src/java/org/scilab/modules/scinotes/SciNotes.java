@@ -545,9 +545,9 @@ public class SciNotes extends SwingScilabDockablePanel {
             try {
                 hasAction = executeAction(filePath, options);
             } catch (FileNotFoundException e) {
-                throw new Exception(String.format(SciNotesMessages.INVALID_FILE, filePath));
+                throw new RuntimeException(String.format(SciNotesMessages.INVALID_FILE, filePath));
             } catch (IOException e) {
-                throw new Exception(String.format(SciNotesMessages.IO_EXCEPTION, e.getLocalizedMessage()));
+                throw new RuntimeException(String.format(SciNotesMessages.IO_EXCEPTION, e.getLocalizedMessage()));
             }
         }
 
@@ -2595,9 +2595,6 @@ public class SciNotes extends SwingScilabDockablePanel {
         try {
             charset = ScilabEditorKit.tryToGuessEncoding(new File(fileName));
         }
-        catch (FileNotFoundException e) {
-            throw e;
-        }
         catch (CharacterCodingException e) {
             throw new IOException(SciNotesMessages.CANNOT_GUESS_ENCODING + ": " + fileName);
         }
@@ -2634,27 +2631,27 @@ public class SciNotes extends SwingScilabDockablePanel {
      * @param actionsName the actions as an array
      */
     public static boolean executeAction(String fileName, final String[] actionsName) throws IOException {
-        final boolean[] hasAction = new boolean[] { false };
-        ActionOnDocument action = new ActionOnDocument() {
-            public void actionOn(ScilabDocument doc) throws IOException {
-                for (String act : actionsName) {
-                    if (act.equalsIgnoreCase("indent")) {
-                        hasAction[0] = true;
-                        org.scilab.modules.scinotes.actions.IndentAction.getActionOnDocument().actionOn(doc);
-                    } else if (act.equalsIgnoreCase("trailing")) {
-                        hasAction[0] = true;
-                        org.scilab.modules.scinotes.actions.RemoveTrailingWhiteAction.getActionOnDocument().actionOn(doc);
-                    } else if (act.equalsIgnoreCase("quote")) {
-                        hasAction[0] = true;
-                        org.scilab.modules.scinotes.actions.DoubleQuoteStringAction.getActionOnDocument().actionOn(doc);
-                    }
-                }
+        final ArrayList<ActionOnDocument> actions = new ArrayList<>();
+        for (String act : actionsName) {
+            if (act.equalsIgnoreCase("indent")) {
+                actions.add(org.scilab.modules.scinotes.actions.IndentAction.getActionOnDocument());
+            } else if (act.equalsIgnoreCase("trailing")) {
+                actions.add(org.scilab.modules.scinotes.actions.RemoveTrailingWhiteAction.getActionOnDocument());
+            } else if (act.equalsIgnoreCase("quote")) {
+                actions.add(org.scilab.modules.scinotes.actions.DoubleQuoteStringAction.getActionOnDocument());
             }
-        };
+        }
 
-        executeAction(fileName, action);
+        if (actions.size() > 0) {
+            executeAction(fileName, new ActionOnDocument() {
+                public void actionOn(ScilabDocument doc) throws IOException {
+                    for (ActionOnDocument act : actions)
+                        act.actionOn(doc);
+                };
+            });
+        }
 
-        return hasAction[0];
+        return actions.size() > 0;
     }
 
     /**
