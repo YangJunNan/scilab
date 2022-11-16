@@ -48,6 +48,7 @@ function demo_anim3()
     curAxe.box = "off";
     curAxe.axes_visible = "on";
     curAxe.grid= [12,12,12];
+    curAxe.auto_stretch = "off";
     drawnow()
 
     //Set the evolution of the view angle  Alpha

@@ -31,6 +31,7 @@ function demo_anim4()
     contour(x,y,Z,10,35,45,"X@Y@Z",[0,2,4])
     title("rotation of a 3d contour","fontsize",3)
     curAxe = gca();
+    curAxe.auto_stretch = "off";
     //Set the evolution of the view angle  Alpha
     //---------------------------------------------------
     A=35:80;
