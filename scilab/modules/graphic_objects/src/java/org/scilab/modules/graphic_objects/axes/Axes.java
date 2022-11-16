@@ -72,7 +72,7 @@ import static org.scilab.modules.graphic_objects.graphicObject.GraphicObjectProp
 import static org.scilab.modules.graphic_objects.graphicObject.GraphicObjectProperties.__GO_X_AXIS_TICKS_LABELS__;
 import static org.scilab.modules.graphic_objects.graphicObject.GraphicObjectProperties.__GO_X_AXIS_TICKS_LOCATIONS__;
 import static org.scilab.modules.graphic_objects.graphicObject.GraphicObjectProperties.__GO_X_AXIS_TICKS__;
-import static org.scilab.modules.graphic_objects.graphicObject.GraphicObjectProperties.__GO_X_AXIS_VISIBLE__;§
+import static org.scilab.modules.graphic_objects.graphicObject.GraphicObjectProperties.__GO_X_AXIS_VISIBLE__;
 import static org.scilab.modules.graphic_objects.graphicObject.GraphicObjectProperties.__GO_X_TIGHT_LIMITS__;
 import static org.scilab.modules.graphic_objects.graphicObject.GraphicObjectProperties.__GO_Y_AXIS_AUTO_TICKS__;
 import static org.scilab.modules.graphic_objects.graphicObject.GraphicObjectProperties.__GO_Y_AXIS_FORMAT__;
@@ -2544,7 +2544,7 @@ public class Axes extends GraphicObject {
      * @param autoStretch the autostretch to set
      */
     public UpdateStatus setAutoStretch(Boolean autoStretch) {
-        return box.setAutoStretch(autoSstretch);
+        return box.setAutoStretch(autoStretch);
     }
 
     /**
