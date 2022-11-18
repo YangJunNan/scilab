@@ -29,7 +29,7 @@ class COLPACK_IMPEXP spCompGeneric
     public :
     
     spCompGeneric(const std::wstring& callerName);
-    ~spCompGeneric();
+    virtual ~spCompGeneric() = 0;
 
     enum approximationType {FORWARD,CENTERED,COMPLEXSTEP};
     enum coloringType {DISTANCE_TWO,ACYCLIC_FOR_INDIRECT_RECOVERY,STAR,RESTRICTED_STAR,COLUMN_PARTIAL_DISTANCE_TWO,INVALID_COLORING};    
