@@ -69,12 +69,7 @@ prepare_release_files:
 
 # check MR has modified CHANGES.md
 contains_changes_modification:
-  image: $DOCKER_LINUX_BUILDER
   stage: prebuild
-  tags: [x86_64-linux-gnu]
-  script:
-    - id
-    - env
   rules:
     - if: $CI_PIPELINE_SOURCE == 'merge_request_event'
     - changes:
