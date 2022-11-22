@@ -25,7 +25,7 @@ variables:
 
 workflow:
   rules:
-    # run on merge request and set spécify docker image tag
+    # run on merge request and set specific docker image tag
     - if: $CI_PIPELINE_SOURCE == "merge_request_event"
       changes: &DOCKER_CHANGES
         paths:
@@ -57,6 +57,8 @@ workflow:
       changes: *DOCKER_CHANGES
       variables:
         GIT_STRATEGY: fetch
+    # Run on contributor's fork
+    - if: $CI_PROJECT_PATH !~ /scilab\/scilab/
 
 default:
   artifacts:
