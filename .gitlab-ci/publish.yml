@@ -15,7 +15,7 @@ publish_branch:
   extends: .publish_job
   dependencies: []
   rules:
-    - if: $CI_PIPELINE_SOURCE == 'merge_request_event'
+    - if: $CI_PIPELINE_SOURCE == 'merge_request_event' || $CI_PIPELINE_SOURCE == 'push'
 publish_nightly:
   extends: .publish_job
   dependencies: []

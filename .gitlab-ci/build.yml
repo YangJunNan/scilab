@@ -36,7 +36,7 @@ x64_windows_build_branch:
     - contains_changes_modification
     - x64_windows_set_env
   rules:
-    - if: $CI_PIPELINE_SOURCE == 'merge_request_event'
+    - if: $CI_PIPELINE_SOURCE == 'merge_request_event' || $CI_PIPELINE_SOURCE == 'push'
 # build a nightly version
 x64_windows_build_nightly:
   extends: .x64_windows_build
@@ -78,7 +78,7 @@ x86_64-linux-gnu_build_branch:
     - contains_changes_modification
     - x86_64-linux-gnu_set_env
   rules:
-    - if: $CI_PIPELINE_SOURCE == 'merge_request_event'
+    - if: $CI_PIPELINE_SOURCE == 'merge_request_event' || $CI_PIPELINE_SOURCE == 'push'
 # build a nightly
 x86_64-linux-gnu_build_nightly:
   extends: .x86_64-linux-gnu_build

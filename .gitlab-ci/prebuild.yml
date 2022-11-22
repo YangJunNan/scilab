@@ -71,7 +71,7 @@ prepare_release_files:
 contains_changes_modification:
   stage: prebuild
   rules:
-    - if: $CI_PIPELINE_SOURCE == 'merge_request_event'
+    - if: $CI_PIPELINE_SOURCE == 'merge_request_event' || $CI_PIPELINE_SOURCE == 'push'
     - changes:
         - scilab/CHANGES.md
   script:
