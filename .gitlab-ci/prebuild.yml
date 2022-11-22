@@ -74,4 +74,5 @@ contains_changes_modification:
     - if: $CI_PIPELINE_SOURCE == 'merge_request_event'
     - changes:
         - scilab/CHANGES.md
+  script:
   allow_failure: true
