@@ -21,7 +21,7 @@ variables:
   PREREQUIREMENTS_BRANCH:
     value: "branches/6.1"
     description: "Scilab prerequirements branch name or trunk"
-  DOCKER_LINUX_BUILDER: "$CI_REGISTRY_IMAGE/linux-builder:latest"
+  DOCKER_LINUX_BUILDER: "registry.gitlab.com/scilab/scilab/linux-builder:latest"
 
 workflow:
   rules:
@@ -31,7 +31,7 @@ workflow:
         paths:
           - .gitlab-ci/Dockerfile*
       variables:
-        DOCKER_LINUX_BUILDER: "$CI_REGISTRY_IMAGE/linux-builder:$CI_MERGE_REQUEST_ID"
+        DOCKER_LINUX_BUILDER: "registry.gitlab.com/scilab/scilab/linux-builder:$CI_MERGE_REQUEST_ID"
         SCI_VERSION_STRING: "scilab-branch-${CI_MERGE_REQUEST_TARGET_BRANCH_NAME}-${CI_COMMIT_SHORT_SHA}"
         GIT_STRATEGY: fetch
         GIT_CLEAN_FLAGS: none
@@ -52,6 +52,7 @@ workflow:
       variables:
         SCI_VERSION_STRING: "scilab-${CI_COMMIT_TAG}"
         GIT_STRATEGY: clone
+        GIT_CLEAN_FLAGS: -fxd
     # Run when merge request is accepted and default Docker image needs to be updated
     - if: $CI_MERGE_REQUEST_APPROVED
       changes: *DOCKER_CHANGES
