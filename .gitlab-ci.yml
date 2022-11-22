@@ -59,6 +59,11 @@ workflow:
         GIT_STRATEGY: fetch
     # Run on contributor's fork
     - if: $CI_PROJECT_PATH !~ /scilab\/scilab/
+      variables:
+        DOCKER_LINUX_BUILDER: "registry.gitlab.com/scilab/scilab/linux-builder:latest"
+        SCI_VERSION_STRING: "scilab-branch-${CI_COMMIT_BRANCH}-${CI_COMMIT_SHORT_SHA}"
+        GIT_STRATEGY: fetch
+        GIT_CLEAN_FLAGS: none
 
 default:
   artifacts:
