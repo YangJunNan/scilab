@@ -70,7 +70,7 @@ prepare_release_files:
 # check MR has modified CHANGES.md
 contains_changes_modification:
   stage: prebuild
-  tags: scilab
+  tags: [scilab]
   rules:
     - if: $CI_PIPELINE_SOURCE == 'merge_request_event' || $CI_PIPELINE_SOURCE == 'push'
     - changes:
