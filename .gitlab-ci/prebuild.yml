@@ -75,4 +75,5 @@ contains_changes_modification:
     - changes:
         - scilab/CHANGES.md
   script:
+    - echo "pass"
   allow_failure: true
