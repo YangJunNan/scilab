@@ -704,6 +704,12 @@ gcc-* | gcc | ccache*gcc | ccache*gcc-* )
         DEBUG_CFLAGS="-DNDEBUG -g1 -O2"
     fi
     COMPILER_CFLAGS="$COMPILER_CFLAGS -fno-stack-protector " # bug 3131
+    # prevent dll optimizations in the final binary
+    case "$host_os" in
+        *Darwin* | *darwin*)
+            LDFLAGS="${LDFLAGS//-Wl,-dead_strip_dylibs/}"
+            ;;            
+    esac    
     ;;  #  end of the clang case on the $CC
    
 *)
