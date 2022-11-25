@@ -29,6 +29,7 @@ x86_64-linux-gnu_set_env:
     - echo ARCH=$ARCH                             >build.env
     - echo SCI_VERSION_TIMESTAMP=$NOW             >>build.env
     - cat build.env
+    - echo $SCI_VERSION_STRING
   artifacts:
     reports:
       dotenv: build.env
@@ -49,6 +50,7 @@ x64_windows_set_env:
     - Add-Content -Path build.env -Value "ARCH=x64"
     - Add-Content -Path build.env -Value "SCI_VERSION_TIMESTAMP=$env:NOW"
     - cat build.env
+    - echo $env:SCI_VERSION_STRING
   artifacts:
     reports:
       dotenv: build.env
