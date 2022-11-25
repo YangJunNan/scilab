@@ -556,10 +556,11 @@ case "$CXX" in
         else
             DEBUG_CXXFLAGS="-DNDEBUG -g1 -O2"
         fi
-        COMPILER_CXXFLAGS="$COMPILER_CXXFLAGS -fno-stack-protector " # bug 3131
-        VER=$($CXX --version | grep g++ | awk '{print $NF}' | awk -F\. '{print $1}')
-        if [[ "$VER" -lt "9" ]]; then
-            LDFLAGS="$LDFLAGS -lstdc++fs" 
+        # bug 3131
+        COMPILER_CXXFLAGS="$COMPILER_CXXFLAGS -fno-stack-protector "
+        # add the extra filesystem library if needed
+        if test "$($CXX -dumpversion)" -lt "9"; then
+            COMPILER_LDFLAGS="$COMPILER_LDFLAGS -lstdc++fs" 
         fi
     ;;
 
