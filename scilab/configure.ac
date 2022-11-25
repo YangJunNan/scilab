@@ -559,7 +559,7 @@ case "$CXX" in
         # bug 3131
         COMPILER_CXXFLAGS="$COMPILER_CXXFLAGS -fno-stack-protector "
         # add the extra filesystem library if needed
-        if test "$($CXX -dumpversion)" -lt "9"; then
+        if test "$($CXX -dumpversion |cut -d\. -f1)" -lt "9" ; then
             COMPILER_LDFLAGS="$COMPILER_LDFLAGS -lstdc++fs" 
         fi
     ;;
