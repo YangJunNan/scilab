@@ -24,7 +24,7 @@ x86_64-linux-gnu_set_env:
     - ARCH=$(cc -dumpmachine)
     # define NOW as Gitlab display ISO 8601 timestamp
     - date +"%s" >timestamp
-    - echo NOW=$(cat timestamp)                    >build.env
+    - NOW=$(cat timestamp)
     # export useful variables
     - echo ARCH=$ARCH                             >build.env
     - echo SCI_VERSION_TIMESTAMP=$NOW             >>build.env
