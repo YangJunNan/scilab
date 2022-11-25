@@ -24,11 +24,11 @@ x86_64-linux-gnu_set_env:
     - ARCH=$(cc -dumpmachine)
     # define NOW as Gitlab display ISO 8601 timestamp
     - date +"%s" >timestamp
-    - NOW=$(cat timestamp)
+    - echo NOW=$(cat timestamp)                    >build.env
     # export useful variables
-    - echo ARCH=$ARCH                              >build.env
-    - echo SCI_VERSION_STRING=$SCI_VERSION_STRING >>build.env
+    - echo ARCH=$ARCH                             >build.env
     - echo SCI_VERSION_TIMESTAMP=$NOW             >>build.env
+    - cat build.env
   artifacts:
     reports:
       dotenv: build.env
@@ -47,8 +47,8 @@ x64_windows_set_env:
     - |
       [System.Environment]::SetEnvironmentVariable('NOW', [int](Get-Date(Get-Date).ToUniversalTime() -uformat '%s'))
     - Add-Content -Path build.env -Value "ARCH=x64"
-    - Add-Content -Path build.env -Value "SCI_VERSION_STRING=$env:SCI_VERSION_STRING"
     - Add-Content -Path build.env -Value "SCI_VERSION_TIMESTAMP=$env:NOW"
+    - cat build.env
   artifacts:
     reports:
       dotenv: build.env
