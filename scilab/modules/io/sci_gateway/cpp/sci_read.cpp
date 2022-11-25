@@ -32,15 +32,15 @@ extern "C"
     extern int C2F(clunit)(int*, char const*, int*, int);
 
     extern int C2F(readdoublefile)(int* ID, double* dat, int* m, int* n, int* err);
-    extern int C2F(readdoublefileform)(int* ID, char* form, double* dat, int* m, int* n, int* err, int);
+    extern int C2F(readdoublefileform)(int* ID, char* form, double* dat, int* m, int* n, int* err, size_t);
     extern int C2F(readdoublelinefile)(int* ID, double* dat, int* n, int* err);
-    extern int C2F(readdoublelinefileform)(int* ID, char* form, double* dat, int* n, int* err, int);
+    extern int C2F(readdoublelinefileform)(int* ID, char* form, double* dat, int* n, int* err, size_t);
 
-    extern int C2F(readintfileform)(int* ID, char* form, int* dat, int* m, int* n, int* err, int);
-    extern int C2F(readintlinefileform)(int* ID, char* form, int* dat, int* n, int* err, int);
+    extern int C2F(readintfileform)(int* ID, char* form, int* dat, int* m, int* n, int* err, size_t);
+    extern int C2F(readintlinefileform)(int* ID, char* form, int* dat, int* n, int* err, size_t);
 
-    extern int C2F(readstringfile)(int* ID, char* form, char* dat, int* siz, int* err, int);
-    extern int C2F(readstring)(char* form, char* dat, int* siz, int* err, int);
+    extern int C2F(readstringfile)(int* ID, char* form, char* dat, int* siz, int* err, size_t);
+    extern int C2F(readstring)(char* form, char* dat, int* siz, int* err, size_t);
 
 }
 
@@ -81,7 +81,7 @@ types::Function::ReturnValue sci_read(types::typed_list &in, int _iRetCount, typ
 
         int piMode[2] = { -1, 0};
         char* pstFilename = wide_string_to_UTF8(pSPath->get(0));
-        int iErr = C2F(clunit)(&iID, pstFilename, piMode, (int)strlen(pstFilename));
+        int iErr = C2F(clunit)(&iID, pstFilename, piMode, strlen(pstFilename));
 
         if (iErr == 240)
         {
@@ -251,7 +251,7 @@ types::Function::ReturnValue sci_read(types::typed_list &in, int _iRetCount, typ
                         double* pdData = new double[iCols];
                         while (error == 0)
                         {
-                            C2F(readdoublelinefileform)(&iID, pstFormat, pdData, &iCols, &error, (int)strlen(pstFormat));
+                            C2F(readdoublelinefileform)(&iID, pstFormat, pdData, &iCols, &error, strlen(pstFormat));
                             if (error == 0)
                             {
                                 pD->resize(iRows, iCols);
@@ -282,7 +282,7 @@ types::Function::ReturnValue sci_read(types::typed_list &in, int _iRetCount, typ
                     int* piData = new int[iCols];
                     while (error == 0)
                     {
-                        C2F(readintlinefileform)(&iID, pstFormat, piData, &iCols, &error, (int)strlen(pstFormat));
+                        C2F(readintlinefileform)(&iID, pstFormat, piData, &iCols, &error, strlen(pstFormat));
                         if (error == 0)
                         {
                             pI->resize(iRows, iCols);
@@ -327,7 +327,7 @@ types::Function::ReturnValue sci_read(types::typed_list &in, int _iRetCount, typ
                         while (error == 0)
                         {
                             int siz = 0;
-                            C2F(readstringfile)(&iID, pstFormat, pCt, &siz, &error, (int)strlen(pstFormat));
+                            C2F(readstringfile)(&iID, pstFormat, pCt, &siz, &error, strlen(pstFormat));
                             pCt[siz] = '\0';
 
                             if (error == 0)
@@ -386,7 +386,7 @@ types::Function::ReturnValue sci_read(types::typed_list &in, int _iRetCount, typ
                     while (error != 2)
                     {
                         int siz = 0;
-                        C2F(readstring)(pstString, pCt, &siz, &error, (int)strlen(pstString));
+                        C2F(readstring)(pstString, pCt, &siz, &error, strlen(pstString));
                         pCt[siz] = '\0';
 
                         if ((siz == 1) && (pCt[0] == ' '))
@@ -481,7 +481,7 @@ types::Function::ReturnValue sci_read(types::typed_list &in, int _iRetCount, typ
                         for (; bEndWrite == false; iRows++)
                         {
                             int siz = 0;
-                            C2F(readstring)(pstFormat, pCt, &siz, &error, (int)strlen(pstFormat));
+                            C2F(readstring)(pstFormat, pCt, &siz, &error, strlen(pstFormat));
                             pCt[siz] = '\0';
 
                             if ((siz == 1) && (pCt[0] == ' '))
@@ -528,7 +528,7 @@ types::Function::ReturnValue sci_read(types::typed_list &in, int _iRetCount, typ
                     }
                     else
                     {
-                        C2F(readdoublefileform)(&iID, pstFormat, pd, &iRows, &iCols, &error, (int)strlen(pstFormat));
+                        C2F(readdoublefileform)(&iID, pstFormat, pd, &iRows, &iCols, &error, strlen(pstFormat));
                     }
 
                     if (error == 0)
@@ -546,7 +546,7 @@ types::Function::ReturnValue sci_read(types::typed_list &in, int _iRetCount, typ
                     types::Int32* pI = new types::Int32(iRows, iCols);
                     int* pi = pI->get();
 
-                    C2F(readintfileform)(&iID, pstFormat, pi, &iRows, &iCols, &error, (int)strlen(pstFormat));
+                    C2F(readintfileform)(&iID, pstFormat, pi, &iRows, &iCols, &error, strlen(pstFormat));
 
                     if (error == 0)
                     {
@@ -565,7 +565,7 @@ types::Function::ReturnValue sci_read(types::typed_list &in, int _iRetCount, typ
                     for (int i = 0; i < iCols * iRows; ++i)
                     {
                         int siz = 0;
-                        C2F(readstringfile)(&iID, pstFormat, pCt, &siz, &error, (int)strlen(pstFormat));
+                        C2F(readstringfile)(&iID, pstFormat, pCt, &siz, &error, strlen(pstFormat));
                         pCt[siz] = '\0';
                         pS->set(i, pCt);
                     }
@@ -621,7 +621,7 @@ types::Function::ReturnValue sci_read(types::typed_list &in, int _iRetCount, typ
                     for (int i = 0; i < iRows && error == 0; ++i)
                     {
                         int siz = 0;
-                        C2F(readstring)(pstString, pCt, &siz, &error, (int)strlen(pstString));
+                        C2F(readstring)(pstString, pCt, &siz, &error, strlen(pstString));
                         pCt[siz] = '\0';
 
                         char* pch;
@@ -690,7 +690,7 @@ types::Function::ReturnValue sci_read(types::typed_list &in, int _iRetCount, typ
                         for (int i = 0; i < (iRows); i++)
                         {
                             int siz = 0;
-                            C2F(readstring)(pstFormat, pCt, &siz, &error, (int)strlen(pstFormat));
+                            C2F(readstring)(pstFormat, pCt, &siz, &error, strlen(pstFormat));
                             pCt[siz] = '\0';
                             pS->set(i, pCt);
                         }
