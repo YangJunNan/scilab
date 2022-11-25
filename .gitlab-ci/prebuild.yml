@@ -26,10 +26,11 @@ x86_64-linux-gnu_set_env:
     - date +"%s" >timestamp
     - NOW=$(cat timestamp)
     # export useful variables
-    - echo ARCH=$ARCH                             >build.env
-    - echo SCI_VERSION_TIMESTAMP=$NOW             >>build.env
-    - cat build.env
-    - echo $SCI_VERSION_STRING
+    - |
+      echo ARCH=$ARCH                             >build.env
+      echo SCI_VERSION_TIMESTAMP=$NOW             >>build.env
+      cat build.env
+    - echo SCI_VERSION_STRING=$SCI_VERSION_STRING
   artifacts:
     reports:
       dotenv: build.env
@@ -47,9 +48,8 @@ x64_windows_set_env:
     - echo $env:CI_MERGE_REQUEST_TARGET_BRANCH_NAME
     - |
       [System.Environment]::SetEnvironmentVariable('NOW', [int](Get-Date(Get-Date).ToUniversalTime() -uformat '%s'))
-    - Add-Content -Path build.env -Value "ARCH=x64"
-    - Add-Content -Path build.env -Value "SCI_VERSION_TIMESTAMP=$env:NOW"
-    - cat build.env
+      Set-Content -Path build.env -Value "ARCH=x64","SCI_VERSION_TIMESTAMP=$env:NOW"
+      cat build.env
     - echo $env:SCI_VERSION_STRING
   artifacts:
     reports:
