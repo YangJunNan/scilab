@@ -31,6 +31,7 @@ x86_64-linux-gnu_set_env:
       echo SCI_VERSION_TIMESTAMP=$NOW             >>build.env
       cat build.env
     - echo SCI_VERSION_STRING=$SCI_VERSION_STRING
+    - env
   artifacts:
     reports:
       dotenv: build.env
