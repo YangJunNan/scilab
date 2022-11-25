@@ -25,6 +25,12 @@ variables:
 
 workflow:
   rules:
+    # Run on contributor's fork
+    - if: $CI_PROJECT_PATH !~ /scilab\/scilab/
+      variables:
+        SCI_VERSION_STRING: "$CI_PROJECT_PATH-branch-${CI_COMMIT_BRANCH}-${CI_COMMIT_SHORT_SHA}"
+        GIT_STRATEGY: fetch
+        GIT_CLEAN_FLAGS: none
     # run on merge request and set specific docker image tag
     - if: $CI_PIPELINE_SOURCE == "merge_request_event"
       changes: &DOCKER_CHANGES
@@ -47,7 +53,6 @@ workflow:
         SCI_VERSION_STRING: "scilab-branch-${CI_COMMIT_BRANCH}-${CI_COMMIT_SHORT_SHA}"
         GIT_STRATEGY: clone
     # Release
-    - if: $CI_COMMIT_REF_PROTECTED
     - if: $CI_COMMIT_TAG
       variables:
         SCI_VERSION_STRING: "scilab-${CI_COMMIT_TAG}"
@@ -59,12 +64,6 @@ workflow:
       variables:
         DOCKER_LINUX_BUILDER: "$CI_REGISTRY_IMAGE/linux-builder:$CI_MERGE_REQUEST_ID"
         GIT_STRATEGY: fetch
-    # Run on contributor's fork
-    - if: $CI_PROJECT_PATH !~ /scilab\/scilab/
-      variables:
-        SCI_VERSION_STRING: "$CI_PROJECT_PATH-branch-${CI_COMMIT_BRANCH}-${CI_COMMIT_SHORT_SHA}"
-        GIT_STRATEGY: fetch
-        GIT_CLEAN_FLAGS: none
 
 default:
   artifacts:
