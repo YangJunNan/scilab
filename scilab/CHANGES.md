@@ -338,6 +338,7 @@ Bug Fixes
 * [#16865](https://bugzilla.scilab.org/16865): Vector extraction with single hypermatrix index yielded a vector.
 * [#16900](https://bugzilla.scilab.org/16900): no-gui build of Scilab raised an error at startup.
 * [#16905](https://gitlab.com/scilab/scilab/-/issues/16905): Unitary and non-regression tests using graphics did run although scilab compiled `--without-gui`.
+* [#16909](https://gitlab.com/scilab/scilab/-/issues/16909): `read()` may crash when building Scilab with gfortran >= 11.
 
 
 ### Bugs fixed in 6.1.1:
