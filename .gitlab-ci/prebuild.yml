@@ -50,7 +50,8 @@ x64_windows_set_env:
       [System.Environment]::SetEnvironmentVariable('NOW', [int](Get-Date(Get-Date).ToUniversalTime() -uformat '%s'))
       Set-Content -Path build.env -Value "ARCH=x64","SCI_VERSION_TIMESTAMP=$env:NOW"
       cat build.env
-    - echo $env:SCI_VERSION_STRING
+    - echo SCI_VERSION_STRING=$env:SCI_VERSION_STRING
+    - env
   artifacts:
     reports:
       dotenv: build.env
