@@ -62,7 +62,7 @@ workflow:
     # Run on contributor's fork
     - if: $CI_PROJECT_PATH !~ /scilab\/scilab/
       variables:
-        SCI_VERSION_STRING: "scilab-branch-${CI_COMMIT_BRANCH}-${CI_COMMIT_SHORT_SHA}"
+        SCI_VERSION_STRING: "$CI_PROJECT_PATH-branch-${CI_COMMIT_BRANCH}-${CI_COMMIT_SHORT_SHA}"
         GIT_STRATEGY: fetch
         GIT_CLEAN_FLAGS: none
 
