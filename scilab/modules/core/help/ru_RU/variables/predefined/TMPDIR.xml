@@ -43,7 +43,7 @@
             <literal>TMPDIR</literal>.
         </para>
         <note>
-          <literal>dirname(TMPDIR)</literal> может использоваться как общая временная директория без
+          <literal>TMPDIR</literal> может использоваться как общая временная директория без
           привязки к какой-либо Scilab-сессии.
         </note>
     </refsection>
