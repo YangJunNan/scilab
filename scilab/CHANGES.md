@@ -316,6 +316,7 @@ Removed Functions
 * `fac3d1` was obsolete since Scilab 4 and has been removed. Please use `plot3d1` instead.
 * `xinfo` was obsolete and has been removed. Please use `gcf().info_message` instead.
 * `with_tk` was obsolete and has been removed. Please use `with_module('tclsci')` instead.
+* `dirname` was obsolete and has been removed. Please use `fileparts` instead.
 
 
 Known issues
