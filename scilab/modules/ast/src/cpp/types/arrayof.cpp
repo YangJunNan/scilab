@@ -1349,7 +1349,7 @@ GenericType* ArrayOf<T>::extract(typed_list* _pArgs)
         else
         {
             int *i_piDims = pArg[0]->getAs<GenericType>()->getDimsArray();
-            if (!isScalar() && isVector() && pArg[0]->getAs<GenericType>()->isVector())
+            if (!isScalar() && isVector() && (i_piDims[0] == 1 || i_piDims[1] == 1))
             {
                 //vector with vector subscript
                 int piRealDim[2] = { 1, 1 };
