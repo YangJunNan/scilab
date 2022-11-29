@@ -938,7 +938,17 @@ void TreeVisitor::visit(const TransposeExp  &e)
     //operator
     ext->append(ope);
     ope->killMe();
-    ext->append(new types::String(L"'"));
+    switch(e.getConjugate())
+    {
+        case ast::TransposeExp::_Conjugate_:
+            ext->append(new types::String(L"'"));
+            break;
+        case ast::TransposeExp::_NonConjugate_:
+            ext->append(new types::String(L".'"));
+            break;
+        default:
+            break;    
+    }
     l = ext;
 }
 
