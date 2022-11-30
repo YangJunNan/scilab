@@ -340,8 +340,8 @@ Bug Fixes
 * [#16867](https://gitlab.com/scilab/scilab/-/issues/16867): macr2tree() encoded .' (transpose) as ' (conjugate transpose).
 * [#16900](https://bugzilla.scilab.org/16900): no-gui build of Scilab raised an error at startup.
 * [#16905](https://gitlab.com/scilab/scilab/-/issues/16905): Unitary and non-regression tests using graphics did run although scilab compiled `--without-gui`.
-* [#16909](https://gitlab.com/scilab/scilab/-/issues/16909): `read()` may crash when building Scilab with gfortran >= 11.
 * [#16907](https://gitlab.com/scilab/scilab/-/issues/16907): Logical OR operation on false sparse matrices could lead to Scilab crash.
+* [#16909](https://gitlab.com/scilab/scilab/-/issues/16909): `read()` may crash when building Scilab with gfortran >= 11.
 
 
 ### Bugs fixed in 6.1.1:
