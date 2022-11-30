@@ -70,11 +70,18 @@ prepare_release_files:
 # check MR has modified CHANGES.md
 contains_changes_modification:
   stage: prebuild
-  tags: [scilab]
+  tags: [x86_64-linux-gnu, docker, scilab]
   rules:
     - if: $CI_PIPELINE_SOURCE == 'merge_request_event' || $CI_PIPELINE_SOURCE == 'push'
-    - changes:
+      changes:
         - scilab/CHANGES.md
+      variables:
+        STATUS: 0
+    - if: $CI_PIPELINE_SOURCE == 'merge_request_event' || $CI_PIPELINE_SOURCE == 'push'
+      variables:
+        STATUS: 1
+    - variables:
+        STATUS: 0
   script:
-    - echo "pass"
+    - exit $STATUS
   allow_failure: true
