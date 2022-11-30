@@ -576,13 +576,10 @@ function status = test_single(_module, _testPath, _testName)
     end
 
     //scilab path
-    if (getos() <> "Windows") then
-        if ~isfile(SCI+"/bin/scilab") then
-            // match a string wich finished by /share/scilab/ or /share/scilab
-            SCI_BIN = strsubst(SCI,"|/share/scilab/?$|","","r");
-        else
-            SCI_BIN = SCI
-        end
+    SCI_BIN = SCI
+    if (getos() <> "Windows") && ~isfile(SCI+"/bin/scilab") then
+        // match a string wich finished by /share/scilab/ or /share/scilab
+        SCI_BIN = strsubst(SCI,"|/share/scilab/?$|","","r");
     end
 
     //scilab build type
