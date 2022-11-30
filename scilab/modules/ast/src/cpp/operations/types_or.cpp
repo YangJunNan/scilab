@@ -755,7 +755,10 @@ InternalType* or_M_M<SparseBool, Bool, SparseBool>(SparseBool* _pL, Bool* _pR)
 {
     SparseBool* pR = new SparseBool(*_pR);
     InternalType* pOut = or_M_M<SparseBool, SparseBool, SparseBool>(_pL, pR);
-    delete pR;
+    if (pOut != pR)
+    {
+        delete pR;
+    }
     return pOut;
 }
 
@@ -764,7 +767,10 @@ InternalType* or_M_M<Bool, SparseBool, SparseBool>(Bool* _pL, SparseBool* _pR)
 {
     SparseBool* pL = new SparseBool(*_pL);
     InternalType* pOut = or_M_M<SparseBool, SparseBool, SparseBool>(pL, _pR);
-    delete pL;
+    if (pOut != pL)
+    {
+        delete pL;
+    }
     return pOut;
 }
 
