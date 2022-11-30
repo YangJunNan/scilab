@@ -6,7 +6,6 @@
 #
 
 FROM ubuntu:18.04
-
 LABEL description="Scilab builder image used by CI/CD runners"
 
 RUN apt-get update && apt-get install -y \

@@ -59,11 +59,12 @@ x64_windows_build_release:
   image: $DOCKER_LINUX_BUILDER
   tags: [x86_64-linux-gnu, docker, scilab]
   before_script:
-    - echo "cleaning $CI_PROJECT_DIR"
+    - echo -e "\e[0Ksection_start:$(date +%s):cleanup\r\e[0KCleaning $CI_PROJECT_DIR"
     # Remove logs older than 3 days
     - find logs_*   -mtime +3 -delete || true
     # Remove installer older than 3 days
     - find scilab-* -mtime +3 -delete || true
+    - echo -e "\e[0Ksection_end:$(date +%s):cleanup\r\e[0K"
   script: bash -x -e .gitlab-ci/build.sh
   artifacts:
     paths:
