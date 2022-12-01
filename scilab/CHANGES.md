@@ -342,6 +342,7 @@ Bug Fixes
 * [#16905](https://gitlab.com/scilab/scilab/-/issues/16905): Unitary and non-regression tests using graphics did run although scilab compiled `--without-gui`.
 * [#16907](https://gitlab.com/scilab/scilab/-/issues/16907): Logical OR operation on false sparse matrices could lead to Scilab crash.
 * [#16909](https://gitlab.com/scilab/scilab/-/issues/16909): `read()` may crash when building Scilab with gfortran >= 11.
+* [#16911](https://gitlab.com/scilab/scilab/-/issues/16911): Wrong line number in callstack.
 
 
 ### Bugs fixed in 6.1.1:
@@ -758,4 +759,3 @@ Bug Fixes
 * [#16463](https://bugzilla.scilab.org/16463): `matrix(sparse([]),[0 0])` yielded `[]` instead of `sparse([])`.
 * [#16483](https://bugzilla.scilab.org/16483): Substraction of complex polynomial matrices was broken (Scilab 6 regression).
 * [#16498](https://bugzilla.scilab.org/16498): After `esb=sparse([%t %f]); esb(1,:)=[];` , `size(esb)` answered `[0 2]` instead of `[0 0]` .
-* [#16911](https://gitlab.com/scilab/scilab/-/issues/16911): Wrong line number in callstack.
