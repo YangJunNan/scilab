@@ -76,7 +76,8 @@ contains_changes_modification:
         - scilab/CHANGES.md
       variables:
         STATUS: 0
-    - variables:
+    - allow_failure: true
+      variables:
         STATUS: 1
   script:
     - exit $STATUS
