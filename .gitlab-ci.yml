@@ -3,7 +3,9 @@
 # Copyright (C) Dassault Systemes - 2022 - Cedric DELAMARRE
 
 stages:
-  # fetch prebuild libraries maintained in different repository
+  # refresh the Docker image
+  - .pre
+  # define common env variables used to build and tests
   - prebuild
   # build scilab
   - build
@@ -13,6 +15,8 @@ stages:
   - postbuild
   # publish and make it available to the community
   - publish
+  # update gitlab Docker image
+  - .post
 
 variables:
   GIT_STRATEGY:

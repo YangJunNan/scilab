@@ -71,6 +71,8 @@ prepare_release_files:
 contains_changes_modification:
   stage: prebuild
   tags: [x86_64-linux-gnu, docker, scilab]
+  variables:
+    STATUS: 0
   rules:
     - if: $CI_PIPELINE_SOURCE == 'merge_request_event'
       changes:
@@ -80,7 +82,5 @@ contains_changes_modification:
     - if: $CI_PIPELINE_SOURCE == 'merge_request_event'
       variables:
         STATUS: 1
-    - variables:
-        STATUS: 0
   script:
     - exit $STATUS
