@@ -72,15 +72,11 @@ contains_changes_modification:
   stage: prebuild
   tags: [x86_64-linux-gnu, docker, scilab]
   rules:
-    - if: $CI_PIPELINE_SOURCE == 'merge_request_event'
-      changes:
+    - changes:
         - scilab/CHANGES.md
       variables:
         STATUS: 0
-    - if: $CI_PIPELINE_SOURCE == 'merge_request_event'
-      variables:
-        STATUS: 1
     - variables:
-        STATUS: 0
+        STATUS: 1
   script:
     - exit $STATUS
