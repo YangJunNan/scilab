@@ -280,11 +280,14 @@ types::Function::ReturnValue sci_exec(types::typed_list &in, int _iRetCount, typ
         return types::Function::Error;
     }
 
+    int iFirstLine = 1;
     if (pMacro)
     {
-        //store the line number where is stored this macro in file.
-        ConfigVariable::macroFirstLine_begin(pMacro->getFirstLine());
+        // store the line number where is stored this macro in file.
+        iFirstLine = pMacro->getFirstLine();
     }
+
+    ConfigVariable::macroFirstLine_begin(iFirstLine);
 
     //save current prompt mode
     int oldVal = ConfigVariable::getPromptMode();
@@ -331,6 +334,7 @@ types::Function::ReturnValue sci_exec(types::typed_list &in, int _iRetCount, typ
     catch (const ast::InternalAbort& ia)
     {
         closeFile(file, iID, wstFile, pExp);
+        ConfigVariable::macroFirstLine_end();
         ConfigVariable::setPromptMode(oldVal);
         ConfigVariable::setSilentError(bSilentError);
         throw ia;
@@ -345,6 +349,7 @@ types::Function::ReturnValue sci_exec(types::typed_list &in, int _iRetCount, typ
         if (bErrCatch == false)
         {
             closeFile(file, iID, wstFile, pExp);
+            ConfigVariable::macroFirstLine_end();
             ConfigVariable::setPromptMode(oldVal);
             ConfigVariable::setExecutedFile(L"");
             ConfigVariable::setSilentError(bSilentError);
@@ -356,6 +361,7 @@ types::Function::ReturnValue sci_exec(types::typed_list &in, int _iRetCount, typ
     }
 
     //restore previous prompt mode
+    ConfigVariable::macroFirstLine_end();
     ConfigVariable::setPromptMode(oldVal);
     ConfigVariable::setSilentError(bSilentError);
     if (bErrCatch)
