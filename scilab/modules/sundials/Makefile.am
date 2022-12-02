@@ -223,7 +223,8 @@ src/patched_sundials/include/kinsol/kinsol_spils.h
 
 libscisundials_nvector_la_includedir=$(pkgincludedir)/nvector/
 libscisundials_nvector_la_include_HEADERS = \
-src/patched_sundials/include/nvector/nvector_serial.h
+src/patched_sundials/include/nvector/nvector_serial.h \
+src/patched_sundials/include/nvector/nvector_openmp.h
 
 libscisundials_sundials_la_includedir=$(pkgincludedir)/sundials/
 libscisundials_sundials_la_include_HEADERS = \

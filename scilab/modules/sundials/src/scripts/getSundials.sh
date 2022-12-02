@@ -3,7 +3,7 @@ SUNDIALS_VERSION=6.3.0
 SUNDIALS_DIR=patched_sundials
 rm -rf $SUNDIALS_DIR
 rm -f sundials-$SUNDIALS_VERSION.tar.gz
-wget https://github.com/LLNL/sundials/releases/download/v$SUNDIALS_VERSION/sundials-$SUNDIALS_VERSION.tar.gz
+curl -LO  https://github.com/LLNL/sundials/releases/download/v$SUNDIALS_VERSION/sundials-$SUNDIALS_VERSION.tar.gz
 CMD="s/sundials-$SUNDIALS_VERSION/$SUNDIALS_DIR/"
 tar --transform $CMD -xzf sundials-$SUNDIALS_VERSION.tar.gz
 echo copy sundials_extension.h in $SUNDIALS_DIR/include/sundials/
