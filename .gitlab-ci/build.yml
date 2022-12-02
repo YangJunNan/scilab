@@ -21,8 +21,7 @@
     # Remove installer and install dir older than 3 day
     - Get-ChildItem -Path "scilab-*" | Where-Object {($_.LastWriteTime -lt (Get-Date).AddDays(-3))} | Remove-Item -Recurse
   script:
-    - $process = Start-Process -NoNewWindow -Wait -PassThru -FilePath ".gitlab-ci\build.bat"
-    - exit $process.ExitCode
+    - cmd /C "call .gitlab-ci\build.bat"
   artifacts:
     paths:
       - logs_$CI_COMMIT_SHORT_SHA
