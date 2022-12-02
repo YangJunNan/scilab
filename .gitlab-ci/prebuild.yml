@@ -68,7 +68,7 @@ prepare_release_files:
       - scilab/modules/core/includes/version.h.in
 
 # check MR has modified CHANGES.md
-CHANGES_edit:
+CHANGES_has_no_edit:
   stage: prebuild
   tags: [x86_64-linux-gnu, docker, scilab]
   rules:

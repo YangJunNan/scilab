@@ -33,7 +33,7 @@
 x64_windows_build_branch:
   extends: .x64_windows_build
   needs:
-    - CHANGES_edit
+    - CHANGES_has_no_edit
     - x64_windows_set_env
   rules:
     - if: $CI_PIPELINE_SOURCE == 'merge_request_event' || $CI_PIPELINE_SOURCE == 'push'
@@ -76,7 +76,7 @@ x64_windows_build_release:
 x86_64-linux-gnu_build_branch:
   extends: .x86_64-linux-gnu_build
   needs:
-    - CHANGES_edit
+    - CHANGES_has_no_edit
     - x86_64-linux-gnu_set_env
   rules:
     - if: $CI_PIPELINE_SOURCE == 'merge_request_event' || $CI_PIPELINE_SOURCE == 'push'
