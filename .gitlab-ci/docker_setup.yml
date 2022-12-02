@@ -6,7 +6,6 @@
 # This stage is used to cleanup runners and set them ready to build.
 #
 
-
 # Create/refresh Docker build
 create_docker_image_linux:
   stage: docker_create
