@@ -47,8 +47,8 @@ workflow:
           - .gitlab-ci/Dockerfile*
       variables:
         SCI_VERSION_STRING: "$CI_PROJECT_PATH_SLUG-branch-${CI_COMMIT_BRANCH}-${CI_COMMIT_SHORT_SHA}"
-        DOCKER_LINUX_BUILDER: "$CI_REGISTRY_IMAGE/linux-builder:$CI_MERGE_REQUEST_ID"
-        DOCKER_WINDOWS_BUILDER: "$CI_REGISTRY_IMAGE/windows-builder:$CI_MERGE_REQUEST_ID"
+        DOCKER_LINUX_BUILDER: "$CI_REGISTRY_IMAGE/linux-builder:$CI_COMMIT_BRANCH"
+        DOCKER_WINDOWS_BUILDER: "$CI_REGISTRY_IMAGE/windows-builder:$CI_COMMIT_BRANCH"
     - if: $CI_PROJECT_PATH_SLUG !~ /scilab-scilab/
       variables:
         SCI_VERSION_STRING: "$CI_PROJECT_PATH_SLUG-branch-${CI_COMMIT_BRANCH}-${CI_COMMIT_SHORT_SHA}"
