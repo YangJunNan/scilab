@@ -89,7 +89,7 @@ class SUNDIALS_EXPORT SUNDIALSManager
         SUNContext_Create(NULL, &m_sunctx); /* Create the SUNDIALS context */
     }
 
-    ~SUNDIALSManager()
+    virtual ~SUNDIALSManager()
     {
         if (m_N_VectorY != NULL)
             N_VDestroy(m_N_VectorY);
