@@ -10,6 +10,7 @@ call "%VS2017INSTALLDIR%\Common7\Tools\VsDevCmd.bat"
 @REM call "C:\Program Files (x86)\Microsoft Visual Studio\2017\Professional\Common7\Tools\VsDevCmd.bat"
 echo on
 
+
 REM Create log folder
 set LOG_PATH=logs_%CI_COMMIT_SHORT_SHA%
 mkdir %LOG_PATH%
