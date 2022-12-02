@@ -4,7 +4,7 @@
 
 stages:
   # refresh the Docker image
-  - .pre
+  - docker_create
   # define common env variables used to build and tests
   - prebuild
   # build scilab
@@ -15,8 +15,8 @@ stages:
   - postbuild
   # publish and make it available to the community
   - publish
-  # update gitlab Docker image
-  - .post
+  # update/cleanup Docker image
+  - docker_cleanup
 
 variables:
   GIT_STRATEGY:
@@ -87,6 +87,8 @@ default:
     expire_in: 1 day
 
 include:
+  # Setup Docker
+  - local: .gitlab-ci/docker_setup.yml
   # updating files and runner states
   - local: .gitlab-ci/prebuild.yml
   # build
@@ -97,62 +99,3 @@ include:
   - local: .gitlab-ci/postbuild.yml
   # deploy/publish a binary
   - local: .gitlab-ci/publish.yml
-
-# Create/refresh Docker build
-create_docker_image_linux:
-  stage: .pre
-  image: docker:20.10.16
-  tags: [x86_64-linux-gnu, docker, scilab]
-  script:
-    - docker login -u $CI_REGISTRY_USER -p $CI_JOB_TOKEN $CI_REGISTRY
-    - docker build --file .gitlab-ci/Dockerfile.linux -t $DOCKER_LINUX_BUILDER .
-    - docker push $DOCKER_LINUX_BUILDER
-  rules:
-    - changes: *DOCKER_CHANGES
-# create_docker_image_windows:
-#   stage: .pre
-#   tags: [x64_windows, shell, scilab]
-#   script:
-#     - docker login -u $CI_REGISTRY_USER -p $CI_JOB_TOKEN $CI_REGISTRY
-#     - docker build --memory 4GB --file .gitlab-ci/Dockerfile.windows -t $DOCKER_WINDOWS_BUILDER .
-#     - docker push $DOCKER_WINDOWS_BUILDER
-#     - docker logout $CI_REGISTRY
-#   rules:
-#     - changes: *DOCKER_CHANGES
-
-# cleanup intermediate Docker image after the build
-linux_cleanup_docker:
-  stage: .post
-  image: docker:20.10.16
-  tags: [x86_64-linux-gnu, docker, scilab]
-  dependencies: []
-  variables:
-    GIT_STRATEGY: none
-  script:
-    - echo $DOCKER_LINUX_BUILDER
-    # untag the dedicated image for this MR
-    - docker rmi $DOCKER_LINUX_BUILDER
-    # remove all dangling image
-    - docker image prune
-  rules:
-    - if: $CI_PROJECT_PATH_SLUG !~ /scilab-scilab/
-      changes: *DOCKER_CHANGES
-    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
-      changes: *DOCKER_CHANGES
-# windows_cleanup_docker:
-#   stage: .post
-#   tags: [x64_windows, shell, scilab]
-#   dependencies: []
-#   variables:
-#     GIT_STRATEGY: none
-#   script:
-#     - echo $env:DOCKER_LINUX_BUILDER
-#     # untag the dedicated image for this MR
-#     - docker rmi $env:DOCKER_LINUX_BUILDER
-#     # remove all dangling image
-#     - docker image prune
-#   rules:
-#     - if: $CI_PROJECT_PATH_SLUG !~ /scilab-scilab/
-#       changes: *DOCKER_CHANGES
-#     - if: $CI_PIPELINE_SOURCE == "merge_request_event"
-#       changes: *DOCKER_CHANGES
