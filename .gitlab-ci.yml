@@ -87,15 +87,15 @@ default:
     expire_in: 1 day
 
 include:
-  # setup Docker
-  - local: /.gitlab-ci/docker_setup.yml
+  # Setup Docker
+  - local: .gitlab-ci/docker_setup.yml
   # updating files and runner states
-  - local: /.gitlab-ci/prebuild.yml
+  - local: .gitlab-ci/prebuild.yml
   # build
-  - local: /.gitlab-ci/build.yml
+  - local: .gitlab-ci/build.yml
   # execute tests
-  - local: /.gitlab-ci/test.yml
+  - local: .gitlab-ci/test.yml
   # sign and extract useful content
-  - local: /.gitlab-ci/postbuild.yml
+  - local: .gitlab-ci/postbuild.yml
   # deploy/publish a binary
-  - local: /.gitlab-ci/publish.yml
+  - local: .gitlab-ci/publish.yml
