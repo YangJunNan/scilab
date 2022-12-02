@@ -16,7 +16,9 @@ create_docker_image_linux:
     - docker build --file .gitlab-ci/Dockerfile.linux -t $DOCKER_LINUX_BUILDER .
     - docker push $DOCKER_LINUX_BUILDER
   rules:
-    - changes: *DOCKER_CHANGES
+    - changes: &DOCKER_CHANGES
+        paths:
+          - .gitlab-ci/Dockerfile*
 # create_docker_image_windows:
 #   stage: docker_create
 #   tags: [x64_windows, shell, scilab]
