@@ -13,8 +13,10 @@ patch -p1 < ../sundials_extension.patch
 patch -p1 < ../lapack.patch
 mkdir build
 cd build
-cmake ..
-cd ../..
-cp $SUNDIALS_DIR/build/include/sundials/*.h $SUNDIALS_DIR/include/sundials
-rm -rf $SUNDIALS_DIR/build/
-cp -a patched_sundials ..
+cmake -DENABLE_OPENMP=ON ..
+cd ..
+cp build/include/sundials/*.h include/sundials
+patch -p1 < ../sundials_export.h.patch
+#rm -rf build
+cd ..
+cp -a $SUNDIALS_DIR ..
