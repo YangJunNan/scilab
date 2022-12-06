@@ -1,0 +1,15 @@
+--- patched_sundials/include/sundials/sundials_config.h	2022-12-06 10:39:09.000000000 +0100
++++ patched_sundials/include/sundials/sundials_config.h.new	2022-12-06 13:00:15.000000000 +0100
+@@ -20,8 +20,12 @@
+ #include "sundials/sundials_export.h"
+ 
+ #ifndef SUNDIALS_DEPRECATED_MSG
++#ifdef _MSC_VER
++#  define SUNDIALS_DEPRECATED_MSG(msg)
++#else
+ #  define SUNDIALS_DEPRECATED_MSG(msg) __attribute__ ((__deprecated__(msg)))
+ #endif
++#endif
+ 
+ #ifndef SUNDIALS_DEPRECATED_EXPORT_MSG
+ #  define SUNDIALS_DEPRECATED_EXPORT_MSG(msg) SUNDIALS_EXPORT SUNDIALS_DEPRECATED_MSG(msg)
