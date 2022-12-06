@@ -43,16 +43,23 @@
     <ClCompile Include="src\patched_sundials\src\arkode\arkode_butcher_dirk.c" />
     <ClCompile Include="src\patched_sundials\src\arkode\arkode_butcher_erk.c" />
     <ClCompile Include="src\patched_sundials\src\arkode\arkode_interp.c" />
+    <ClCompile Include="src\patched_sundials\src\arkode\arkode_mri_tables.c" />
+    <ClCompile Include="src\patched_sundials\src\arkode\arkode_mristep.c" />
+    <ClCompile Include="src\patched_sundials\src\arkode\arkode_mristep_io.c" />
+    <ClCompile Include="src\patched_sundials\src\arkode\arkode_mristep_nls.c" />
     <ClCompile Include="src\patched_sundials\src\arkode\arkode_io.c" />
     <ClCompile Include="src\patched_sundials\src\arkode\arkode_ls.c" />
     <ClCompile Include="src\patched_sundials\src\arkode\arkode_root.c" />
+    <ClCompile Include="src\patched_sundials\src\arkode\arkode_bandpre.c" />
     <ClCompile Include="src\patched_sundials\src\cvodes\cvodea.c" />
     <ClCompile Include="src\patched_sundials\src\cvodes\cvodea_io.c" />
     <ClCompile Include="src\patched_sundials\src\cvodes\cvodes.c" />
     <ClCompile Include="src\patched_sundials\src\cvodes\cvodes_direct.c" />
     <ClCompile Include="src\patched_sundials\src\cvodes\cvodes_io.c" />
+    <ClCompile Include="src\patched_sundials\src\cvodes\cvodes_bandpre.c" />
     <ClCompile Include="src\patched_sundials\src\cvodes\cvodes_ls.c" />
     <ClCompile Include="src\patched_sundials\src\cvodes\cvodes_nls.c" />
+    <ClCompile Include="src\patched_sundials\src\cvodes\cvodes_proj.c" />
     <ClCompile Include="src\patched_sundials\src\cvodes\cvodes_nls_sim.c" />
     <ClCompile Include="src\patched_sundials\src\cvodes\cvodes_nls_stg.c" />
     <ClCompile Include="src\patched_sundials\src\cvodes\cvodes_nls_stg1.c" />
@@ -67,33 +74,43 @@
     <ClCompile Include="src\patched_sundials\src\kinsol\kinsol_direct.c" />
     <ClCompile Include="src\patched_sundials\src\kinsol\kinsol_io.c" />
     <ClCompile Include="src\patched_sundials\src\kinsol\kinsol_ls.c" />
-    <ClCompile Include="src\patched_sundials\src\nvec_ser\nvector_serial.c" />
-    <ClCompile Include="src\patched_sundials\src\sundials\sundials_band.c" />
+    <ClCompile Include="src\patched_sundials\src\nvector\serial\nvector_serial.c" />
+    <ClCompile Include="src\patched_sundials\src\sundials\sundials_context.c" />
+    <ClCompile Include="src\patched_sundials\src\sundials\sundials_logger.c" />
     <ClCompile Include="src\patched_sundials\src\sundials\sundials_dense.c" />
     <ClCompile Include="src\patched_sundials\src\sundials\sundials_direct.c" />
     <ClCompile Include="src\patched_sundials\src\sundials\sundials_extension.c" />
     <ClCompile Include="src\patched_sundials\src\sundials\sundials_iterative.c" />
     <ClCompile Include="src\patched_sundials\src\sundials\sundials_linearsolver.c" />
+    <ClCompile Include="src\patched_sundials\src\sundials\sundials_band.c" />
     <ClCompile Include="src\patched_sundials\src\sundials\sundials_math.c" />
     <ClCompile Include="src\patched_sundials\src\sundials\sundials_matrix.c" />
     <ClCompile Include="src\patched_sundials\src\sundials\sundials_memory.c" />
     <ClCompile Include="src\patched_sundials\src\sundials\sundials_nonlinearsolver.c" />
     <ClCompile Include="src\patched_sundials\src\sundials\sundials_nvector.c" />
     <ClCompile Include="src\patched_sundials\src\sundials\sundials_nvector_senswrapper.c" />
-    <ClCompile Include="src\patched_sundials\src\sunlinsol\sunlinsol_band.c" />
-    <ClCompile Include="src\patched_sundials\src\sunlinsol\sunlinsol_dense.c" />
-    <ClCompile Include="src\patched_sundials\src\sunlinsol\sunlinsol_klu.c" />
-    <ClCompile Include="src\patched_sundials\src\sunlinsol\sunlinsol_lapackband.c" />
-    <ClCompile Include="src\patched_sundials\src\sunlinsol\sunlinsol_lapackdense.c" />
-    <ClCompile Include="src\patched_sundials\src\sunmatrix\sunmatrix_band.c" />
-    <ClCompile Include="src\patched_sundials\src\sunmatrix\sunmatrix_dense.c" />
-    <ClCompile Include="src\patched_sundials\src\sunmatrix\sunmatrix_sparse.c" />
-    <ClCompile Include="src\patched_sundials\src\sunnonlinsol\sunnonlinsol_fixedpoint.c" />
-    <ClCompile Include="src\patched_sundials\src\sunnonlinsol\sunnonlinsol_newton.c" />
+    <ClCompile Include="src\patched_sundials\src\sunlinsol\klu\sunlinsol_klu.c" />
+    <ClCompile Include="src\patched_sundials\src\sunlinsol\dense\sunlinsol_dense.c" />
+    <ClCompile Include="src\patched_sundials\src\sunlinsol\band\sunlinsol_band.c" />
+    <ClCompile Include="src\patched_sundials\src\sunlinsol\lapackband\sunlinsol_lapackband.c" />
+    <ClCompile Include="src\patched_sundials\src\sunlinsol\lapackdense\sunlinsol_lapackdense.c" />
+    <ClCompile Include="src\patched_sundials\src\sunmatrix\band\sunmatrix_band.c" />
+    <ClCompile Include="src\patched_sundials\src\sunmatrix\dense\sunmatrix_dense.c" />
+    <ClCompile Include="src\patched_sundials\src\sunmatrix\sparse\sunmatrix_sparse.c" />
+    <ClCompile Include="src\patched_sundials\src\sunnonlinsol\fixedpoint\sunnonlinsol_fixedpoint.c" />
+    <ClCompile Include="src\patched_sundials\src\sunnonlinsol\newton\sunnonlinsol_newton.c" />
+    <ClCompile Include="src\patched_sundials\src\sunlinsol\pcg\sunlinsol_pcg.c"/> 
+    <ClCompile Include="src\patched_sundials\src\sunlinsol\spbcgs\sunlinsol_spbcgs.c"/>
+    <ClCompile Include="src\patched_sundials\src\sunlinsol\spgmr\sunlinsol_spgmr.c"/> 
+    <ClCompile Include="src\patched_sundials\src\sunlinsol\spfgmr\sunlinsol_spfgmr.c"/> 
+    <ClCompile Include="src\patched_sundials\src\sunlinsol\sptfqmr\sunlinsol_sptfqmr.c"/>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ast\ast.vcxproj">
       <Project>{0d3fa25b-8116-44ec-a45e-260789daa3d9}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\colpack\colpack.vcxproj">
+      <Project>{5a13aa38-a9fe-4336-91dd-f9917825e34b}</Project>
     </ProjectReference>
     <ProjectReference Include="..\core\src\c\core.vcxproj">
       <Project>{c6e2bc17-34d8-46e4-85f3-6293cb21adcd}</Project>
@@ -116,6 +133,9 @@
     <Library Include="..\..\bin\suitesparseconfig.lib" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\colpack\includes\spCompGeneric.hxx" />
+    <ClInclude Include="..\colpack\includes\spCompHessian.hxx" />
+    <ClInclude Include="..\colpack\includes\spCompJacobian.hxx" />
     <ClInclude Include="includes\ARKODEManager.hxx" />
     <ClInclude Include="includes\complexHelpers.hxx" />
     <ClInclude Include="includes\CVODEManager.hxx" />
@@ -213,7 +233,14 @@
       <ConformanceMode>false</ConformanceMode>
       <PrecompiledHeaderFile>
       </PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>./includes;./src/c;./src/cpp;./src/patched_sundials/include;./src/patched_sundials/src;./src/patched_sundials/src/sundials;../../libs/intl;../../libs/Eigen/includes;../../libs/umfpack/includes;../ast/includes/ast;../ast/includes/exps;../ast/includes/operations;../ast/includes/parse;../ast/includes/symbol;../ast/includes/system_env;../ast/includes/types;../ast/includes/analysis;../api_scilab/includes;../localization/includes;../core/includes;../string/includes;../output_stream/includes;../dynamic_link/includes;../console/includes;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>./includes;./src/c;./src/cpp;./src/patched_sundials/include;./src/patched_sundials/src;./src/patched_sundials/src/sundials;../../libs/intl;../../libs/Eigen/includes;../../libs/umfpack/includes;../ast/includes/ast;../ast/includes/exps;../ast/includes/operations;../ast/includes/parse;../ast/includes/symbol;../ast/includes/system_env;../ast/includes/types;../ast/includes/analysis;../api_scilab/includes;../localization/includes;../core/includes;../string/includes;../output_stream/includes;../dynamic_link/includes;../console/includes;../colpack/includes;../../libs/UMFPACK/includes/suitesparse;
+    ../colpack/src/ColPack/include;
+    ../colpack/src/ColPack/src/Utilities;
+    ../colpack/src/ColPack/src/Recovery;
+    ../colpack/src/ColPack/src/GeneralGraphColoring;
+    ../colpack/src/ColPack/src/BipartiteGraphPartialColoring;
+    ../colpack/src/ColPack/src/BipartiteGraphBicoloring;
+    %(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
     <Link>
@@ -240,7 +267,7 @@
       <ConformanceMode>false</ConformanceMode>
       <PrecompiledHeaderFile>
       </PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>./includes;./src/c;./src/cpp;./src/patched_sundials/include;./src/patched_sundials/src;./src/patched_sundials/src/sundials;../../libs/intl;../../libs/Eigen/includes;../../libs/umfpack/includes;../ast/includes/ast;../ast/includes/exps;../ast/includes/operations;../ast/includes/parse;../ast/includes/symbol;../ast/includes/system_env;../ast/includes/types;../ast/includes/analysis;../api_scilab/includes;../localization/includes;../core/includes;../string/includes;../output_stream/includes;../dynamic_link/includes;../console/includes;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>./includes;./src/c;./src/cpp;./src/patched_sundials/include;./src/patched_sundials/src;./src/patched_sundials/src/sundials;../../libs/intl;../../libs/Eigen/includes;../../libs/umfpack/includes;../ast/includes/ast;../ast/includes/exps;../ast/includes/operations;../ast/includes/parse;../ast/includes/symbol;../ast/includes/system_env;../ast/includes/types;../ast/includes/analysis;../api_scilab/includes;../localization/includes;../core/includes;../string/includes;../output_stream/includes;../dynamic_link/includes;../console/includes;../colpack/includes;../../libs/UMFPACK/includes/suitesparse;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <SupportJustMyCode>false</SupportJustMyCode>
     </ClCompile>
@@ -266,7 +293,7 @@
       <ConformanceMode>false</ConformanceMode>
       <PrecompiledHeaderFile>
       </PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>./includes;./src/c;./src/cpp;./src/patched_sundials/include;./src/patched_sundials/src;./src/patched_sundials/src/sundials;../../libs/intl;../../libs/Eigen/includes;../../libs/umfpack/includes;../ast/includes/ast;../ast/includes/exps;../ast/includes/operations;../ast/includes/parse;../ast/includes/symbol;../ast/includes/system_env;../ast/includes/types;../ast/includes/analysis;../api_scilab/includes;../localization/includes;../core/includes;../string/includes;../output_stream/includes;../dynamic_link/includes;../console/includes;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>./includes;./src/c;./src/cpp;./src/patched_sundials/include;./src/patched_sundials/src;./src/patched_sundials/src/sundials;../../libs/intl;../../libs/Eigen/includes;../../libs/umfpack/includes;../ast/includes/ast;../ast/includes/exps;../ast/includes/operations;../ast/includes/parse;../ast/includes/symbol;../ast/includes/system_env;../ast/includes/types;../ast/includes/analysis;../api_scilab/includes;../localization/includes;../core/includes;../string/includes;../output_stream/includes;../dynamic_link/includes;../console/includes;../colpack/includes;../../libs/UMFPACK/includes/suitesparse;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <SupportJustMyCode>false</SupportJustMyCode>
     </ClCompile>
@@ -294,7 +321,7 @@
       <ConformanceMode>false</ConformanceMode>
       <PrecompiledHeaderFile>
       </PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>./includes;./src/c;./src/cpp;./src/patched_sundials/include;./src/patched_sundials/src;./src/patched_sundials/src/sundials;../../libs/intl;../../libs/Eigen/includes;../../libs/umfpack/includes;../ast/includes/ast;../ast/includes/exps;../ast/includes/operations;../ast/includes/parse;../ast/includes/symbol;../ast/includes/system_env;../ast/includes/types;../ast/includes/analysis;../api_scilab/includes;../localization/includes;../core/includes;../string/includes;../output_stream/includes;../dynamic_link/includes;../console/includes;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>./includes;./src/c;./src/cpp;./src/patched_sundials/include;./src/patched_sundials/src;./src/patched_sundials/src/sundials;../../libs/intl;../../libs/Eigen/includes;../../libs/umfpack/includes;../ast/includes/ast;../ast/includes/exps;../ast/includes/operations;../ast/includes/parse;../ast/includes/symbol;../ast/includes/system_env;../ast/includes/types;../ast/includes/analysis;../api_scilab/includes;../localization/includes;../core/includes;../string/includes;../output_stream/includes;../dynamic_link/includes;../console/includes;../colpack/includes;../../libs/UMFPACK/includes/suitesparse;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
     <Link>

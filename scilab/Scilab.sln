@@ -279,8 +279,6 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "graphic_export", "modules\g
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "nographic_export", "modules\graphic_export\src\nographic_export\nographic_export.vcxproj", "{3411652C-2879-48D0-B5C1-18D546E0A683}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "scicos_sundials", "modules\scicos\src\scicos_sundials\scicos_sundials.vcxproj", "{C781737A-7C97-4CF9-ACBC-F68C2BBF0FFA}"
-EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Modelicac", "modules\scicos\src\modelica_compiler\Modelicac.vcxproj", "{BB476641-07F4-488E-AA87-21795FFA8F4A}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "scicos_blocks", "modules\scicos_blocks\src\c\scicos_blocks.vcxproj", "{70F677F1-B535-4D0F-A16F-5093B799A540}"
@@ -474,6 +472,9 @@ EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "WScilex-cli", "modules\windows_tools\src\c\WScilex\WScilex-cli.vcxproj", "{1633D502-8B08-442B-923F-F83F3213EEF3}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "sundials", "modules\sundials\sundials.vcxproj", "{E43D63B7-285A-44A8-A7D9-2E70C706CAA2}"
+	ProjectSection(ProjectDependencies) = postProject
+		{5A13AA38-A9FE-4336-91DD-F9917825E34B} = {5A13AA38-A9FE-4336-91DD-F9917825E34B}
+	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "sundials_gw", "modules\sundials\sci_gateway\sundials_gw.vcxproj", "{7260BB15-0F35-40D4-AD94-0F7CF9576E78}"
 EndProject
@@ -1109,14 +1110,6 @@ Global
 		{3411652C-2879-48D0-B5C1-18D546E0A683}.Release|Win32.Build.0 = Release|Win32
 		{3411652C-2879-48D0-B5C1-18D546E0A683}.Release|x64.ActiveCfg = Release|x64
 		{3411652C-2879-48D0-B5C1-18D546E0A683}.Release|x64.Build.0 = Release|x64
-		{C781737A-7C97-4CF9-ACBC-F68C2BBF0FFA}.Debug|Win32.ActiveCfg = Debug|Win32
-		{C781737A-7C97-4CF9-ACBC-F68C2BBF0FFA}.Debug|Win32.Build.0 = Debug|Win32
-		{C781737A-7C97-4CF9-ACBC-F68C2BBF0FFA}.Debug|x64.ActiveCfg = Debug|x64
-		{C781737A-7C97-4CF9-ACBC-F68C2BBF0FFA}.Debug|x64.Build.0 = Debug|x64
-		{C781737A-7C97-4CF9-ACBC-F68C2BBF0FFA}.Release|Win32.ActiveCfg = Release|Win32
-		{C781737A-7C97-4CF9-ACBC-F68C2BBF0FFA}.Release|Win32.Build.0 = Release|Win32
-		{C781737A-7C97-4CF9-ACBC-F68C2BBF0FFA}.Release|x64.ActiveCfg = Release|x64
-		{C781737A-7C97-4CF9-ACBC-F68C2BBF0FFA}.Release|x64.Build.0 = Release|x64
 		{BB476641-07F4-488E-AA87-21795FFA8F4A}.Debug|Win32.ActiveCfg = Debug|Win32
 		{BB476641-07F4-488E-AA87-21795FFA8F4A}.Debug|x64.ActiveCfg = Debug|x64
 		{BB476641-07F4-488E-AA87-21795FFA8F4A}.Release|Win32.ActiveCfg = Release|Win32

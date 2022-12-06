@@ -270,5 +270,14 @@
     <ClInclude Include="includes\SUNDIALSManager.hxx">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\colpack\includes\spCompHessian.hxx">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\colpack\includes\spCompJacobian.hxx">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\colpack\includes\spCompGeneric.hxx">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
