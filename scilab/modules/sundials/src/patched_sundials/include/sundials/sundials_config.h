@@ -20,7 +20,7 @@
 #include "sundials/sundials_export.h"
 
 #ifndef SUNDIALS_DEPRECATED_MSG
-#  define SUNDIALS_DEPRECATED_MSG(msg) __attribute__ ((__deprecated__(msg)))
+#  define SUNDIALS_DEPRECATED_MSG(msg)
 #endif
 
 #ifndef SUNDIALS_DEPRECATED_EXPORT_MSG
