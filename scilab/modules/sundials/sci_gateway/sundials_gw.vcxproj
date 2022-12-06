@@ -103,7 +103,16 @@
       <ConformanceMode>false</ConformanceMode>
       <PrecompiledHeaderFile>
       </PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>../includes;../src/c;../src/cpp;../src/patched_sundials/include;../src/patched_sundials/src;../src/patched_sundials/src/sundials;../../../libs/intl;../../../libs/Eigen/includes;../../../libs/umfpack/includes;../../ast/includes/ast;../../ast/includes/exps;../../ast/includes/operations;../../ast/includes/parse;../../ast/includes/symbol;../../ast/includes/system_env;../../ast/includes/types;../../ast/includes/analysis;../../api_scilab/includes;../../localization/includes;../../core/includes;../../string/includes;../../output_stream/includes;../../dynamic_link/includes;../../console/includes;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../includes;../src/c;../src/cpp;../src/patched_sundials/include;../src/patched_sundials/src;../src/patched_sundials/src/sundials;../../../libs/intl;../../../libs/Eigen/includes;../../../libs/umfpack/includes;../../ast/includes/ast;../../ast/includes/exps;../../ast/includes/operations;../../ast/includes/parse;../../ast/includes/symbol;../../ast/includes/system_env;../../ast/includes/types;../../ast/includes/analysis;../../api_scilab/includes;../../localization/includes;../../core/includes;../../string/includes;../../output_stream/includes;../../dynamic_link/includes;../../console/includes;
+      ../../colpack/src/ColPack/include;
+      ../../colpack/src/ColPack/src/Utilities;
+      ../../colpack/src/ColPack/src/Recovery;
+      ../../colpack/src/ColPack/src/GeneralGraphColoring;
+      ../../colpack/src/ColPack/src/BipartiteGraphPartialColoring;
+      ../../colpack/src/ColPack/src/BipartiteGraphBicoloring;
+      ../../colpack/includes;
+      ../../../libs/UMFPACK/includes/suitesparse;
+	      %(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
     <Link>
@@ -126,7 +135,7 @@
       <ConformanceMode>false</ConformanceMode>
       <PrecompiledHeaderFile>
       </PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>../includes;../src/c;../src/cpp;../src/patched_sundials/include;../src/patched_sundials/src;../src/patched_sundials/src/sundials;../../../libs/intl;../../../libs/Eigen/includes;../../../libs/umfpack/includes;../../ast/includes/ast;../../ast/includes/exps;../../ast/includes/operations;../../ast/includes/parse;../../ast/includes/symbol;../../ast/includes/system_env;../../ast/includes/types;../../ast/includes/analysis;../../api_scilab/includes;../../localization/includes;../../core/includes;../../string/includes;../../output_stream/includes;../../dynamic_link/includes;../../console/includes;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../includes;../src/c;../src/cpp;../src/patched_sundials/include;../src/patched_sundials/src;../src/patched_sundials/src/sundials;../../../libs/intl;../../../libs/Eigen/includes;../../../libs/umfpack/includes;../../ast/includes/ast;../../ast/includes/exps;../../ast/includes/operations;../../ast/includes/parse;../../ast/includes/symbol;../../ast/includes/system_env;../../ast/includes/types;../../ast/includes/analysis;../../api_scilab/includes;../../localization/includes;../../core/includes;../../string/includes;../../output_stream/includes;../../dynamic_link/includes;../../console/includes;../../colpack/includes;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
     </ClCompile>
     <Link>
@@ -147,7 +156,7 @@
       <ConformanceMode>false</ConformanceMode>
       <PrecompiledHeaderFile>
       </PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>../includes;../src/c;../src/cpp;../src/patched_sundials/include;../src/patched_sundials/src;../src/patched_sundials/src/sundials;../../../libs/intl;../../../libs/Eigen/includes;../../../libs/umfpack/includes;../../ast/includes/ast;../../ast/includes/exps;../../ast/includes/operations;../../ast/includes/parse;../../ast/includes/symbol;../../ast/includes/system_env;../../ast/includes/types;../../ast/includes/analysis;../../api_scilab/includes;../../localization/includes;../../core/includes;../../string/includes;../../output_stream/includes;../../dynamic_link/includes;../../console/includes;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../includes;../src/c;../src/cpp;../src/patched_sundials/include;../src/patched_sundials/src;../src/patched_sundials/src/sundials;../../../libs/intl;../../../libs/Eigen/includes;../../../libs/umfpack/includes;../../ast/includes/ast;../../ast/includes/exps;../../ast/includes/operations;../../ast/includes/parse;../../ast/includes/symbol;../../ast/includes/system_env;../../ast/includes/types;../../ast/includes/analysis;../../api_scilab/includes;../../localization/includes;../../core/includes;../../string/includes;../../output_stream/includes;../../dynamic_link/includes;../../console/includes;../../colpack/includes;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
     </ClCompile>
     <Link>
@@ -170,7 +179,7 @@
       <ConformanceMode>false</ConformanceMode>
       <PrecompiledHeaderFile>
       </PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>../includes;../src/c;../src/cpp;../src/patched_sundials/include;../src/patched_sundials/src;../src/patched_sundials/src/sundials;../../../libs/intl;../../../libs/Eigen/includes;../../../libs/umfpack/includes;../../ast/includes/ast;../../ast/includes/exps;../../ast/includes/operations;../../ast/includes/parse;../../ast/includes/symbol;../../ast/includes/system_env;../../ast/includes/types;../../ast/includes/analysis;../../api_scilab/includes;../../localization/includes;../../core/includes;../../string/includes;../../output_stream/includes;../../dynamic_link/includes;../../console/includes;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../includes;../src/c;../src/cpp;../src/patched_sundials/include;../src/patched_sundials/src;../src/patched_sundials/src/sundials;../../../libs/intl;../../../libs/Eigen/includes;../../../libs/umfpack/includes;../../ast/includes/ast;../../ast/includes/exps;../../ast/includes/operations;../../ast/includes/parse;../../ast/includes/symbol;../../ast/includes/system_env;../../ast/includes/types;../../ast/includes/analysis;../../api_scilab/includes;../../localization/includes;../../core/includes;../../string/includes;../../output_stream/includes;../../dynamic_link/includes;../../console/includes;../../colpack/includes;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
     <Link>
@@ -192,6 +201,9 @@
   <ItemGroup>
     <ProjectReference Include="..\..\ast\ast.vcxproj">
       <Project>{0d3fa25b-8116-44ec-a45e-260789daa3d9}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\colpack\colpack.vcxproj">
+      <Project>{5a13aa38-a9fe-4336-91dd-f9917825e34b}</Project>
     </ProjectReference>
     <ProjectReference Include="..\..\core\src\c\core.vcxproj">
       <Project>{c6e2bc17-34d8-46e4-85f3-6293cb21adcd}</Project>
