@@ -17,6 +17,7 @@ cmake -DENABLE_OPENMP=ON ..
 cd ..
 cp build/include/sundials/*.h include/sundials
 patch -p1 < ../sundials_export.h.patch
+patch -p1 < ../sundials_config.h.patch
 #rm -rf build
 cd ..
 cp -a $SUNDIALS_DIR ..
