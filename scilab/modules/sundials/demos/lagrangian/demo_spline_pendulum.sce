@@ -183,6 +183,7 @@ function start()
     b.callback="gcf().user_data.term=%t;b=gcbo();b.string=""Start""";
     b.callback_type=10;
     b.string="Stop";
+    b.position(3)=60;
 
     compute(list(spline_pend,9.81,xs,ys,u.sp),[0:1/100:20],x0,u0,mass,callback=list(cbFn,hp))
 

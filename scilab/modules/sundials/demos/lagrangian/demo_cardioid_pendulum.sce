@@ -68,6 +68,7 @@ function demo_cardioid_pendulum()
     title("")
     b = uicontrol("string","Stop","Callback_Type",10,"tag","stop",...
             "callback","delete(findobj(""tag"",""stop""));abort");
+    b.position(3) = 60;
     realtimeinit(1)
     realtime(0)
 

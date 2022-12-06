@@ -35,6 +35,7 @@ function sundials_lorenz()
             a.box="off";
             b = uicontrol("string","Stop","Callback_Type",10,"tag","stop",...
             "callback","delete(findobj(""tag"",""stop""));abort");
+	    b.position(3) = 60;
             drawnow
             realtimeinit(1)
             realtime(0)
