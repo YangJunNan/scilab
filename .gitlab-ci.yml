@@ -78,9 +78,6 @@ workflow:
     # Update default Docker image on merge
     - if: $CI_MERGE_REQUEST_APPROVED
       changes: *DOCKER_CHANGES
-      variables:
-        DOCKER_LINUX_BUILDER: "$CI_REGISTRY_IMAGE/linux-builder:latest"
-        DOCKER_WINDOWS_BUILDER: "$CI_REGISTRY_IMAGE/windows-builder:latest"
 
 default:
   artifacts:
