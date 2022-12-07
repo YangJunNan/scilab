@@ -91,6 +91,7 @@ ui_data \
 history_browser \
 preferences \
 xml \
+colpack \
 external_objects \
 slint \
 coverage \
@@ -205,6 +206,7 @@ ENGINE_LIBS =	$(top_builddir)/modules/fileio/libscifileio.la \
 	$(top_builddir)/modules/ast/libsciast.la \
 	$(top_builddir)/modules/functions_manager/libscifunctions_manager.la \
 	$(top_builddir)/modules/xml/libscixml.la \
+	$(top_builddir)/modules/colpack/libscicolpack.la \
 	$(top_builddir)/modules/external_objects/libsciexternal_objects.la \
 	$(top_builddir)/modules/slint/libscislint.la \
 	$(top_builddir)/modules/coverage/libscicoverage.la

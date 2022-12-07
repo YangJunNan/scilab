@@ -529,6 +529,27 @@ int XmlModule::Load()
     return 1;
 }
 
+int ColpackModule::Load()
+{
+    std::wstring wstPath = L"colpack";
+#ifdef _MSC_VER
+    std::wstring wstModuleName = L"colpack_gw";
+    wchar_t* pwstLibName = buildModuleDynLibraryNameW(wstModuleName.c_str(), DYNLIB_NAME_FORMAT_1);
+#else
+    std::wstring wstModuleName = L"colpack";
+    wchar_t* pwstLibName = buildModuleDynLibraryNameW(wstModuleName.c_str(), DYNLIB_NAME_FORMAT_3);
+#endif
+    vectGateway vect = loadGatewaysName(wstPath);
+
+    for (int i = 0 ; i < (int)vect.size() ; i++)
+    {
+        symbol::Context::getInstance()->addFunction(types::Function::createFunction(vect[i].wstFunction, vect[i].wstName, pwstLibName, vect[i].iType, NULL, wstModuleName));
+    }
+
+    FREE(pwstLibName);
+    return 1;
+}
+
 int ScicosModule::Load()
 {
     std::wstring wstModuleName = L"scicos";

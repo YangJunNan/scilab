@@ -473,6 +473,10 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "webtools", "modules\webtool
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "WScilex-cli", "modules\windows_tools\src\c\WScilex\WScilex-cli.vcxproj", "{1633D502-8B08-442B-923F-F83F3213EEF3}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "colpack", "modules\colpack\colpack.vcxproj", "{5A13AA38-A9FE-4336-91DD-F9917825E34B}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "colpack_gw", "modules\colpack\sci_gateway\cpp\colpack_gw.vcxproj", "{934B15A6-60CC-446B-ABEA-CC3DF3CAD192}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -1665,6 +1669,22 @@ Global
 		{1633D502-8B08-442B-923F-F83F3213EEF3}.Release|Win32.Build.0 = Release|Win32
 		{1633D502-8B08-442B-923F-F83F3213EEF3}.Release|x64.ActiveCfg = Release|x64
 		{1633D502-8B08-442B-923F-F83F3213EEF3}.Release|x64.Build.0 = Release|x64
+		{5A13AA38-A9FE-4336-91DD-F9917825E34B}.Debug|Win32.ActiveCfg = Debug|Win32
+		{5A13AA38-A9FE-4336-91DD-F9917825E34B}.Debug|Win32.Build.0 = Debug|Win32
+		{5A13AA38-A9FE-4336-91DD-F9917825E34B}.Debug|x64.ActiveCfg = Debug|x64
+		{5A13AA38-A9FE-4336-91DD-F9917825E34B}.Debug|x64.Build.0 = Debug|x64
+		{5A13AA38-A9FE-4336-91DD-F9917825E34B}.Release|Win32.ActiveCfg = Release|Win32
+		{5A13AA38-A9FE-4336-91DD-F9917825E34B}.Release|Win32.Build.0 = Release|Win32
+		{5A13AA38-A9FE-4336-91DD-F9917825E34B}.Release|x64.ActiveCfg = Release|x64
+		{5A13AA38-A9FE-4336-91DD-F9917825E34B}.Release|x64.Build.0 = Release|x64
+		{934B15A6-60CC-446B-ABEA-CC3DF3CAD192}.Debug|Win32.ActiveCfg = Debug|Win32
+		{934B15A6-60CC-446B-ABEA-CC3DF3CAD192}.Debug|Win32.Build.0 = Debug|Win32
+		{934B15A6-60CC-446B-ABEA-CC3DF3CAD192}.Debug|x64.ActiveCfg = Debug|x64
+		{934B15A6-60CC-446B-ABEA-CC3DF3CAD192}.Debug|x64.Build.0 = Debug|x64
+		{934B15A6-60CC-446B-ABEA-CC3DF3CAD192}.Release|Win32.ActiveCfg = Release|Win32
+		{934B15A6-60CC-446B-ABEA-CC3DF3CAD192}.Release|Win32.Build.0 = Release|Win32
+		{934B15A6-60CC-446B-ABEA-CC3DF3CAD192}.Release|x64.ActiveCfg = Release|x64
+		{934B15A6-60CC-446B-ABEA-CC3DF3CAD192}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
