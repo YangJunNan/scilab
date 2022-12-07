@@ -8,6 +8,8 @@ REM NOTE: log all commands to log files to avoid hitting Gitlab log limit
 
 call "%VS2017INSTALLDIR%\Common7\Tools\VsDevCmd.bat"
 @REM call "C:\Program Files (x86)\Microsoft Visual Studio\2017\Professional\Common7\Tools\VsDevCmd.bat"
+echo on
+
 
 REM Create log folder
 set LOG_PATH=logs_%CI_COMMIT_SHORT_SHA%
@@ -37,9 +39,7 @@ REM build with Visual Studio and Intel compilers
 devenv Scilab.sln /build "Release|x64" > ..\%LOG_PATH%\log_build.txt
 if errorlevel 1 tail --lines=20 ..\%LOG_PATH%\log_build.txt 1>&2 & exit 1
 devenv Scilab.sln /build "Release|x64" /project buildhelp > ..\%LOG_PATH%\log_buildhelp.txt
-if errorlevel 1 tail --lines=20 ..\%LOG_PATH%\log_buildhelp.txt 1>&2 & exit 1
 devenv Scilab.sln /build "Release|x64" /project buildjavadoc > ..\%LOG_PATH%\log_buildjavadoc.txt
-if errorlevel 1 tail --lines=20 ..\%LOG_PATH%\log_buildjavadoc.txt 1>&2 & exit 1
 
 REM Package with Inno Setup 6
 bin\WScilex.exe -nb -f "tools\innosetup\Create_ISS.sce" > ..\%LOG_PATH%\log_iss.txt
