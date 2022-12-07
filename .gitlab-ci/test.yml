@@ -310,7 +310,7 @@ impacted_x64_windows_test_ugly:
   parallel:
     matrix: *UGLY_TEST_ANCHOR
 
-impacted_x86_64-linux-gnu_test_good:
+.impacted_x86_64-linux-gnu_test_good:
   extends: .x86_64-linux-gnu_test
   needs:
     - x86_64-linux-gnu_build_branch
@@ -322,7 +322,7 @@ impacted_x86_64-linux-gnu_test_good:
   parallel:
     matrix: *GOOD_TEST_ANCHOR
 
-impacted_x86_64-linux-gnu_test_bad:
+.impacted_x86_64-linux-gnu_test_bad:
   extends: .x86_64-linux-gnu_test
   needs:
     - x86_64-linux-gnu_build_branch
@@ -331,7 +331,7 @@ impacted_x86_64-linux-gnu_test_bad:
   parallel:
     matrix: *BAD_TEST_ANCHOR
 
-impacted_x86_64-linux-gnu_test_ugly:
+.impacted_x86_64-linux-gnu_test_ugly:
   extends: .x86_64-linux-gnu_test
   needs:
     - x86_64-linux-gnu_build_branch
