@@ -14,14 +14,16 @@ mkdir $LOG_PATH
 
 # checkout pre-requirements
 echo -e "\e[0Ksection_start:$(date +%s):prerequirements\r\e[0KGetting prerequirements"
-svn checkout \
-    --username anonymous --password Scilab \
-    "svn://svn.scilab.org/scilab/${PREREQUIREMENTS_BRANCH}/Dev-Tools/SE/Prerequirements/linux_x64/" scilab \
-    > $LOG_PATH/log_svn.txt || (tail --lines=100 $LOG_PATH/log_svn.txt; exit 1)
-# display svn revision
-tail -n 1 $LOG_PATH/log_svn.txt
-# revert local modification
-svn revert -R scilab >> $LOG_PATH/log_svn.txt
+wget -O prereq.zip https://oos.eu-west-2.outscale.com/scilab-releases-dev/prerequirements/prerequirements-scilab-branch-6.1-windows_x64.zip
+unzip prereq.zip -d scilab
+# svn checkout \
+#     --username anonymous --password Scilab \
+#     "svn://svn.scilab.org/scilab/${PREREQUIREMENTS_BRANCH}/Dev-Tools/SE/Prerequirements/linux_x64/" scilab \
+#     > $LOG_PATH/log_svn.txt || (tail --lines=100 $LOG_PATH/log_svn.txt; exit 1)
+# # display svn revision
+# tail -n 1 $LOG_PATH/log_svn.txt
+# # revert local modification
+# svn revert -R scilab >> $LOG_PATH/log_svn.txt
 echo -e "\e[0Ksection_end:$(date +%s):prerequirements\r\e[0K"
 
 # patch version numbers
