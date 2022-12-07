@@ -171,6 +171,12 @@ public :
     static int Load();
 };
 
+class SundialsModule : public GenericModule
+{
+public :
+    static int Load();
+};
+
 class ScicosModule : public GenericModule
 {
 public :

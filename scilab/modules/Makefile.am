@@ -101,7 +101,7 @@ SUBDIRS += external_objects_java
 endif
 
 if XCOS
-SUBDIRS += scicos_blocks scicos xcos
+SUBDIRS += scicos_blocks sundials scicos xcos
 else
 SUBDIRS += xcos
 endif
@@ -183,6 +183,7 @@ ENGINE_LIBS =	$(top_builddir)/modules/fileio/libscifileio.la \
 	$(top_builddir)/modules/api_scilab/libsciapi_scilab.la \
 	$(top_builddir)/modules/data_structures/libscidata_structures.la \
 	$(top_builddir)/modules/differential_equations/libscidifferential_equations.la \
+	$(top_builddir)/modules/sundials/libscisundials.la \
 	$(top_builddir)/modules/elementary_functions/libscielementary_functions.la \
 	$(top_builddir)/modules/integer/libsciinteger.la \
 	$(top_builddir)/modules/io/libsciio.la \

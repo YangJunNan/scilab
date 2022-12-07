@@ -1,0 +1,75 @@
+--- patched_sundials_new/include/sundials/sundials_export.h	2022-12-06 09:59:58.000000000 +0100
++++ patched_sundials/include/sundials/sundials_export.h	2022-12-06 10:03:35.000000000 +0100
+@@ -1,42 +1,49 @@
+-
+ #ifndef SUNDIALS_EXPORT_H
+ #define SUNDIALS_EXPORT_H
+ 
+-#ifdef SUNDIALS_STATIC_DEFINE
+-#  define SUNDIALS_EXPORT
+-#  define SUNDIALS_NO_EXPORT
++//added to export symbols for Windows
++#ifdef _MSC_VER
++#ifdef SUNDIALS_EXPORTS
++#define SUNDIALS_EXPORT __declspec(dllexport)
++#define SUNDIALS_NO_EXPORT __declspec(dllexport)
++#define SUNDIALS_DEPRECATED
++#else
++#define SUNDIALS_EXPORT __declspec(dllimport)
++#define SUNDIALS_NO_EXPORT __declspec(dllimport)
++#define SUNDIALS_DEPRECATED
++#endif
+ #else
+-#  ifndef SUNDIALS_EXPORT
+-#    ifdef sundials_generic_EXPORTS
+-        /* We are building this library */
+-#      define SUNDIALS_EXPORT __attribute__((visibility("default")))
+-#    else
+-        /* We are using this library */
+-#      define SUNDIALS_EXPORT __attribute__((visibility("default")))
+-#    endif
+-#  endif
+-
+-#  ifndef SUNDIALS_NO_EXPORT
+-#    define SUNDIALS_NO_EXPORT __attribute__((visibility("hidden")))
+-#  endif
++#ifndef SUNDIALS_EXPORT
++#ifdef sundials_generic_EXPORTS
++/* We are building this library */
++#define SUNDIALS_EXPORT __attribute__((visibility("default")))
++#else
++/* We are using this library */
++#define SUNDIALS_EXPORT __attribute__((visibility("default")))
++#endif
++#endif
++
++#ifndef SUNDIALS_NO_EXPORT
++#define SUNDIALS_NO_EXPORT __attribute__((visibility("hidden")))
++#endif
+ #endif
+ 
+ #ifndef SUNDIALS_DEPRECATED
+-#  define SUNDIALS_DEPRECATED __attribute__ ((__deprecated__))
++#define SUNDIALS_DEPRECATED __attribute__((__deprecated__))
+ #endif
+ 
+ #ifndef SUNDIALS_DEPRECATED_EXPORT
+-#  define SUNDIALS_DEPRECATED_EXPORT SUNDIALS_EXPORT SUNDIALS_DEPRECATED
++#define SUNDIALS_DEPRECATED_EXPORT SUNDIALS_EXPORT SUNDIALS_DEPRECATED
+ #endif
+ 
+ #ifndef SUNDIALS_DEPRECATED_NO_EXPORT
+-#  define SUNDIALS_DEPRECATED_NO_EXPORT SUNDIALS_NO_EXPORT SUNDIALS_DEPRECATED
++#define SUNDIALS_DEPRECATED_NO_EXPORT SUNDIALS_NO_EXPORT SUNDIALS_DEPRECATED
+ #endif
+ 
+ #if 0 /* DEFINE_NO_DEPRECATED */
+-#  ifndef SUNDIALS_NO_DEPRECATED
+-#    define SUNDIALS_NO_DEPRECATED
+-#  endif
++#ifndef SUNDIALS_NO_DEPRECATED
++#define SUNDIALS_NO_DEPRECATED
++#endif
+ #endif
+ 
+ #endif /* SUNDIALS_EXPORT_H */

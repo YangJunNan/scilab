@@ -76,6 +76,7 @@
 #include BinariesSourcePath + "\modules\fftw\fftw.iss"
 #include BinariesSourcePath + "\modules\spreadsheet\spreadsheet.iss"
 #include BinariesSourcePath + "\modules\differential_equations\differential_equations.iss"
+#include BinariesSourcePath + "\modules\sundials\sundials.iss"
 #include BinariesSourcePath + "\modules\development_tools\development_tools.iss"
 #include BinariesSourcePath + "\modules\parameters\parameters.iss"
 #include BinariesSourcePath + "\modules\matio\matio.iss"

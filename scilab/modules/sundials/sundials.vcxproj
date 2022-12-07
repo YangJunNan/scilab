@@ -1,0 +1,343 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\cpp\ARKODEManager.cpp" />
+    <ClCompile Include="src\cpp\complexHelpers.cpp" />
+    <ClCompile Include="src\cpp\CVODEManager.cpp" />
+    <ClCompile Include="src\cpp\IDAManager.cpp" />
+    <ClCompile Include="src\cpp\KINSOLBridge.cpp" />
+    <ClCompile Include="src\cpp\KINSOLManager.cpp" />
+    <ClCompile Include="src\cpp\OdeManagerCompute.cpp" />
+    <ClCompile Include="src\cpp\OdeManagerHelpers.cpp" />
+    <ClCompile Include="src\cpp\OdeManagerInit.cpp" />
+    <ClCompile Include="src\cpp\OdeManagerParse.cpp" />
+    <ClCompile Include="src\cpp\OdeManagerSolve.cpp" />
+    <ClCompile Include="src\cpp\odeparameters.cpp" />
+    <ClCompile Include="src\cpp\SUNDIALSBridge.cpp" />
+    <ClCompile Include="src\cpp\SUNDIALSManager.cpp" />
+    <ClCompile Include="src\c\externals_for_tests.c" />
+    <ClCompile Include="src\patched_sundials\src\arkode\arkode.c" />
+    <ClCompile Include="src\patched_sundials\src\arkode\arkode_adapt.c" />
+    <ClCompile Include="src\patched_sundials\src\arkode\arkode_arkstep.c" />
+    <ClCompile Include="src\patched_sundials\src\arkode\arkode_arkstep_io.c" />
+    <ClCompile Include="src\patched_sundials\src\arkode\arkode_arkstep_nls.c" />
+    <ClCompile Include="src\patched_sundials\src\arkode\arkode_butcher.c" />
+    <ClCompile Include="src\patched_sundials\src\arkode\arkode_butcher_dirk.c" />
+    <ClCompile Include="src\patched_sundials\src\arkode\arkode_butcher_erk.c" />
+    <ClCompile Include="src\patched_sundials\src\arkode\arkode_interp.c" />
+    <ClCompile Include="src\patched_sundials\src\arkode\arkode_mri_tables.c" />
+    <ClCompile Include="src\patched_sundials\src\arkode\arkode_mristep.c" />
+    <ClCompile Include="src\patched_sundials\src\arkode\arkode_mristep_io.c" />
+    <ClCompile Include="src\patched_sundials\src\arkode\arkode_mristep_nls.c" />
+    <ClCompile Include="src\patched_sundials\src\arkode\arkode_io.c" />
+    <ClCompile Include="src\patched_sundials\src\arkode\arkode_ls.c" />
+    <ClCompile Include="src\patched_sundials\src\arkode\arkode_root.c" />
+    <ClCompile Include="src\patched_sundials\src\arkode\arkode_bandpre.c" />
+    <ClCompile Include="src\patched_sundials\src\cvodes\cvodea.c" />
+    <ClCompile Include="src\patched_sundials\src\cvodes\cvodea_io.c" />
+    <ClCompile Include="src\patched_sundials\src\cvodes\cvodes.c" />
+    <ClCompile Include="src\patched_sundials\src\cvodes\cvodes_direct.c" />
+    <ClCompile Include="src\patched_sundials\src\cvodes\cvodes_io.c" />
+    <ClCompile Include="src\patched_sundials\src\cvodes\cvodes_bandpre.c" />
+    <ClCompile Include="src\patched_sundials\src\cvodes\cvodes_ls.c" />
+    <ClCompile Include="src\patched_sundials\src\cvodes\cvodes_nls.c" />
+    <ClCompile Include="src\patched_sundials\src\cvodes\cvodes_proj.c" />
+    <ClCompile Include="src\patched_sundials\src\cvodes\cvodes_nls_sim.c" />
+    <ClCompile Include="src\patched_sundials\src\cvodes\cvodes_nls_stg.c" />
+    <ClCompile Include="src\patched_sundials\src\cvodes\cvodes_nls_stg1.c" />
+    <ClCompile Include="src\patched_sundials\src\ida\ida.c" />
+    <ClCompile Include="src\patched_sundials\src\ida\ida_direct.c" />
+    <ClCompile Include="src\patched_sundials\src\ida\ida_ic.c" />
+    <ClCompile Include="src\patched_sundials\src\ida\ida_io.c" />
+    <ClCompile Include="src\patched_sundials\src\ida\ida_ls.c" />
+    <ClCompile Include="src\patched_sundials\src\ida\ida_nls.c" />
+    <ClCompile Include="src\patched_sundials\src\ida\ida_spils.c" />
+    <ClCompile Include="src\patched_sundials\src\kinsol\kinsol.c" />
+    <ClCompile Include="src\patched_sundials\src\kinsol\kinsol_direct.c" />
+    <ClCompile Include="src\patched_sundials\src\kinsol\kinsol_io.c" />
+    <ClCompile Include="src\patched_sundials\src\kinsol\kinsol_ls.c" />
+    <ClCompile Include="src\patched_sundials\src\nvector\serial\nvector_serial.c" />
+    <ClCompile Include="src\patched_sundials\src\sundials\sundials_context.c" />
+    <ClCompile Include="src\patched_sundials\src\sundials\sundials_logger.c" />
+    <ClCompile Include="src\patched_sundials\src\sundials\sundials_dense.c" />
+    <ClCompile Include="src\patched_sundials\src\sundials\sundials_direct.c" />
+    <ClCompile Include="src\patched_sundials\src\sundials\sundials_extension.c" />
+    <ClCompile Include="src\patched_sundials\src\sundials\sundials_iterative.c" />
+    <ClCompile Include="src\patched_sundials\src\sundials\sundials_linearsolver.c" />
+    <ClCompile Include="src\patched_sundials\src\sundials\sundials_band.c" />
+    <ClCompile Include="src\patched_sundials\src\sundials\sundials_math.c" />
+    <ClCompile Include="src\patched_sundials\src\sundials\sundials_matrix.c" />
+    <ClCompile Include="src\patched_sundials\src\sundials\sundials_memory.c" />
+    <ClCompile Include="src\patched_sundials\src\sundials\sundials_nonlinearsolver.c" />
+    <ClCompile Include="src\patched_sundials\src\sundials\sundials_nvector.c" />
+    <ClCompile Include="src\patched_sundials\src\sundials\sundials_nvector_senswrapper.c" />
+    <ClCompile Include="src\patched_sundials\src\sunlinsol\klu\sunlinsol_klu.c" />
+    <ClCompile Include="src\patched_sundials\src\sunlinsol\dense\sunlinsol_dense.c" />
+    <ClCompile Include="src\patched_sundials\src\sunlinsol\band\sunlinsol_band.c" />
+    <ClCompile Include="src\patched_sundials\src\sunlinsol\lapackband\sunlinsol_lapackband.c" />
+    <ClCompile Include="src\patched_sundials\src\sunlinsol\lapackdense\sunlinsol_lapackdense.c" />
+    <ClCompile Include="src\patched_sundials\src\sunmatrix\band\sunmatrix_band.c" />
+    <ClCompile Include="src\patched_sundials\src\sunmatrix\dense\sunmatrix_dense.c" />
+    <ClCompile Include="src\patched_sundials\src\sunmatrix\sparse\sunmatrix_sparse.c" />
+    <ClCompile Include="src\patched_sundials\src\sunnonlinsol\fixedpoint\sunnonlinsol_fixedpoint.c" />
+    <ClCompile Include="src\patched_sundials\src\sunnonlinsol\newton\sunnonlinsol_newton.c" />
+    <ClCompile Include="src\patched_sundials\src\sunlinsol\pcg\sunlinsol_pcg.c"/> 
+    <ClCompile Include="src\patched_sundials\src\sunlinsol\spbcgs\sunlinsol_spbcgs.c"/>
+    <ClCompile Include="src\patched_sundials\src\sunlinsol\spgmr\sunlinsol_spgmr.c"/> 
+    <ClCompile Include="src\patched_sundials\src\sunlinsol\spfgmr\sunlinsol_spfgmr.c"/> 
+    <ClCompile Include="src\patched_sundials\src\sunlinsol\sptfqmr\sunlinsol_sptfqmr.c"/>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ast\ast.vcxproj">
+      <Project>{0d3fa25b-8116-44ec-a45e-260789daa3d9}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\colpack\colpack.vcxproj">
+      <Project>{5a13aa38-a9fe-4336-91dd-f9917825e34b}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\core\src\c\core.vcxproj">
+      <Project>{c6e2bc17-34d8-46e4-85f3-6293cb21adcd}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\localization\src\localization.vcxproj">
+      <Project>{ecffeb0c-1eda-45ee-9a10-b18143852e17}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\output_stream\src\c\output_stream.vcxproj">
+      <Project>{a5911cd7-f8e8-440c-a23e-4843a0636f3a}</Project>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Library Include="..\..\bin\blasplus.lib" />
+    <Library Include="..\..\bin\lapack.lib" />
+    <Library Include="..\..\bin\libamd.lib" />
+    <Library Include="..\..\bin\libbtf.lib" />
+    <Library Include="..\..\bin\libcolamd.lib" />
+    <Library Include="..\..\bin\libintl.lib" />
+    <Library Include="..\..\bin\libklu.lib" />
+    <Library Include="..\..\bin\suitesparseconfig.lib" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\colpack\includes\spCompGeneric.hxx" />
+    <ClInclude Include="..\colpack\includes\spCompHessian.hxx" />
+    <ClInclude Include="..\colpack\includes\spCompJacobian.hxx" />
+    <ClInclude Include="includes\ARKODEManager.hxx" />
+    <ClInclude Include="includes\complexHelpers.hxx" />
+    <ClInclude Include="includes\CVODEManager.hxx" />
+    <ClInclude Include="includes\IDAManager.hxx" />
+    <ClInclude Include="includes\KINSOLBridge.hxx" />
+    <ClInclude Include="includes\KINSOLManager.hxx" />
+    <ClInclude Include="includes\OdeManager.hxx" />
+    <ClInclude Include="includes\odeparameters.hxx" />
+    <ClInclude Include="includes\SUNDIALSBridge.hxx" />
+    <ClInclude Include="includes\SUNDIALSManager.hxx" />
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>15.0</VCProjectVersion>
+    <ProjectGuid>{E43D63B7-285A-44A8-A7D9-2E70C706CAA2}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>sundials</RootNamespace>
+    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
+    <ProjectName>sundials</ProjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <LinkIncremental>false</LinkIncremental>
+    <OutDir>$(SolutionDir)bin\</OutDir>
+    <IntDir>$(ProjectDir)$(Configuration)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+    <OutDir>$(SolutionDir)bin\</OutDir>
+    <IntDir>$(ProjectDir)$(Configuration)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <LinkIncremental>true</LinkIncremental>
+    <OutDir>$(SolutionDir)bin\</OutDir>
+    <IntDir>$(ProjectDir)$(Configuration)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+    <OutDir>$(SolutionDir)bin\</OutDir>
+    <IntDir>$(ProjectDir)$(Configuration)\</IntDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>
+      </SDLCheck>
+      <PreprocessorDefinitions>NDEBUG;SUNDIALS_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>false</ConformanceMode>
+      <PrecompiledHeaderFile>
+      </PrecompiledHeaderFile>
+      <AdditionalIncludeDirectories>./includes;./src/c;./src/cpp;./src/patched_sundials/include;./src/patched_sundials/src;./src/patched_sundials/src/sundials;../../libs/intl;../../libs/Eigen/includes;../../libs/umfpack/includes;../ast/includes/ast;../ast/includes/exps;../ast/includes/operations;../ast/includes/parse;../ast/includes/symbol;../ast/includes/system_env;../ast/includes/types;../ast/includes/analysis;../api_scilab/includes;../localization/includes;../core/includes;../string/includes;../output_stream/includes;../dynamic_link/includes;../console/includes;../colpack/includes;../../libs/UMFPACK/includes/suitesparse;
+    ../colpack/src/ColPack/include;
+    ../colpack/src/ColPack/src/Utilities;
+    ../colpack/src/ColPack/src/Recovery;
+    ../colpack/src/ColPack/src/GeneralGraphColoring;
+    ../colpack/src/ColPack/src/BipartiteGraphPartialColoring;
+    ../colpack/src/ColPack/src/BipartiteGraphBicoloring;
+    %(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableUAC>false</EnableUAC>
+      <OutputFile>$(SolutionDir)bin\$(ProjectName).dll</OutputFile>
+      <AdditionalDependencies>elementary_functions_f.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+    <PreLinkEvent>
+      <Command>lib /DEF:"$(ProjectDir)elementary_functions_f_import.def" /SUBSYSTEM:WINDOWS /MACHINE:$(Platform) /OUT:"$(ProjectDir)elementary_functions_f.lib" 1&gt;NUL 2&gt;NUL</Command>
+    </PreLinkEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <SDLCheck>
+      </SDLCheck>
+      <PreprocessorDefinitions>WIN32;_DEBUG;SUNDIALS_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>false</ConformanceMode>
+      <PrecompiledHeaderFile>
+      </PrecompiledHeaderFile>
+      <AdditionalIncludeDirectories>./includes;./src/c;./src/cpp;./src/patched_sundials/include;./src/patched_sundials/src;./src/patched_sundials/src/sundials;../../libs/intl;../../libs/Eigen/includes;../../libs/umfpack/includes;../ast/includes/ast;../ast/includes/exps;../ast/includes/operations;../ast/includes/parse;../ast/includes/symbol;../ast/includes/system_env;../ast/includes/types;../ast/includes/analysis;../api_scilab/includes;../localization/includes;../core/includes;../string/includes;../output_stream/includes;../dynamic_link/includes;../console/includes;../colpack/includes;../../libs/UMFPACK/includes/suitesparse;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <SupportJustMyCode>false</SupportJustMyCode>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableUAC>false</EnableUAC>
+      <OutputFile>$(SolutionDir)bin\$(ProjectName).dll</OutputFile>
+      <AdditionalDependencies>elementary_functions_f.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+    <PreLinkEvent>
+      <Command>lib /DEF:"$(ProjectDir)elementary_functions_f_import.def" /SUBSYSTEM:WINDOWS /MACHINE:$(Platform) /OUT:"$(ProjectDir)elementary_functions_f.lib" 1&gt;NUL 2&gt;NUL</Command>
+    </PreLinkEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <SDLCheck>
+      </SDLCheck>
+      <PreprocessorDefinitions>_DEBUG;SUNDIALS_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>false</ConformanceMode>
+      <PrecompiledHeaderFile>
+      </PrecompiledHeaderFile>
+      <AdditionalIncludeDirectories>./includes;./src/c;./src/cpp;./src/patched_sundials/include;./src/patched_sundials/src;./src/patched_sundials/src/sundials;../../libs/intl;../../libs/Eigen/includes;../../libs/umfpack/includes;../ast/includes/ast;../ast/includes/exps;../ast/includes/operations;../ast/includes/parse;../ast/includes/symbol;../ast/includes/system_env;../ast/includes/types;../ast/includes/analysis;../api_scilab/includes;../localization/includes;../core/includes;../string/includes;../output_stream/includes;../dynamic_link/includes;../console/includes;../colpack/includes;../../libs/UMFPACK/includes/suitesparse;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <SupportJustMyCode>false</SupportJustMyCode>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableUAC>false</EnableUAC>
+      <OutputFile>$(SolutionDir)bin\$(ProjectName).dll</OutputFile>
+      <AdditionalDependencies>elementary_functions_f.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+    <PreLinkEvent>
+      <Command>lib /DEF:"$(ProjectDir)elementary_functions_f_import.def" /SUBSYSTEM:WINDOWS /MACHINE:$(Platform) /OUT:"$(ProjectDir)elementary_functions_f.lib" 1&gt;NUL 2&gt;NUL</Command>
+    </PreLinkEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>
+      </SDLCheck>
+      <PreprocessorDefinitions>WIN32;NDEBUG;SUNDIALS_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>false</ConformanceMode>
+      <PrecompiledHeaderFile>
+      </PrecompiledHeaderFile>
+      <AdditionalIncludeDirectories>./includes;./src/c;./src/cpp;./src/patched_sundials/include;./src/patched_sundials/src;./src/patched_sundials/src/sundials;../../libs/intl;../../libs/Eigen/includes;../../libs/umfpack/includes;../ast/includes/ast;../ast/includes/exps;../ast/includes/operations;../ast/includes/parse;../ast/includes/symbol;../ast/includes/system_env;../ast/includes/types;../ast/includes/analysis;../api_scilab/includes;../localization/includes;../core/includes;../string/includes;../output_stream/includes;../dynamic_link/includes;../console/includes;../colpack/includes;../../libs/UMFPACK/includes/suitesparse;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableUAC>false</EnableUAC>
+      <OutputFile>$(SolutionDir)bin\$(ProjectName).dll</OutputFile>
+      <AdditionalDependencies>elementary_functions_f.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+    <PreLinkEvent>
+      <Command>lib /DEF:"$(ProjectDir)elementary_functions_f_import.def" /SUBSYSTEM:WINDOWS /MACHINE:$(Platform) /OUT:"$(ProjectDir)elementary_functions_f.lib" 1&gt;NUL 2&gt;NUL</Command>
+    </PreLinkEvent>
+  </ItemDefinitionGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
