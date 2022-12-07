@@ -16,7 +16,7 @@ set LOG_PATH=logs_%CI_COMMIT_SHORT_SHA%
 mkdir %LOG_PATH%
 
 curl -k -o prereq.zip https://oos.eu-west-2.outscale.com/scilab-releases-dev/prerequirements/prerequirements-scilab-branch-6.1-windows_x64.zip
-unzip prereq.zip -d scilab
+unzip -o prereq.zip -d scilab > %LOG_PATH%\log_prereq.txt
 @REM svn checkout --username anonymous --password Scilab svn://svn.scilab.org/scilab/%PREREQUIREMENTS_BRANCH%/Dev-Tools/SE/Prerequirements/Windows_x64/ scilab > %LOG_PATH%\log_svn.txt
 @REM if errorlevel 1 tail --lines=20 %LOG_PATH%\log_svn.txt 1>&2 & exit 1
 @REM REM display svn revision
