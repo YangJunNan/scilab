@@ -556,7 +556,12 @@ case "$CXX" in
         else
             DEBUG_CXXFLAGS="-DNDEBUG -g1 -O2"
         fi
-        COMPILER_CXXFLAGS="$COMPILER_CXXFLAGS -fno-stack-protector " # bug 3131
+        # bug 3131
+        COMPILER_CXXFLAGS="$COMPILER_CXXFLAGS -fno-stack-protector "
+        # add the extra filesystem library if needed
+        if test "$($CXX -dumpversion |cut -d\. -f1)" -lt "9" ; then
+            COMPILER_LDFLAGS="$COMPILER_LDFLAGS -lstdc++fs" 
+        fi
     ;;
 
 esac
