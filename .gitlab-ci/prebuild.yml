@@ -80,4 +80,5 @@ CHANGES_has_no_edit:
       variables:
         STATUS: 1
   script:
+    - echo $STATUS
     - exit $STATUS
