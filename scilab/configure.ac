@@ -537,33 +537,58 @@ if test -z "$CXX"; then
 fi
 
 case "$CXX" in
-    g++-* | g++ | ccache*g++ | ccache*g++-* )
-        ## With GNU C++ Compiler
+g++-* | g++ | ccache*g++ | ccache*g++-* )
+    ## With GNU C++ Compiler
 
-        # enable the code coverage
-        if test "$enable_code_coverage" = yes; then
-            CODECOVERAGE_CXXFLAGS="-fprofile-arcs -ftest-coverage"
-        fi
+    # enable the code coverage
+    if test "$enable_code_coverage" = yes; then
+        CODECOVERAGE_CXXFLAGS="-fprofile-arcs -ftest-coverage"
+    fi
 
-        if test "$enable_debug_CXX" = yes; then
-            DEBUG_CXXFLAGS="-Wall -Wextra -O0 -g3"
-            case "$host" in
-                *-linux-gnu )
-                    # Only doing that under Linux
-                    DEBUG_CXXFLAGS="$DEBUG_CXXFLAGS -fdiagnostics-show-option -Werror=format-security"
-                ;;
-            esac
-        else
-            DEBUG_CXXFLAGS="-DNDEBUG -g1 -O2"
-        fi
-        # bug 3131
-        COMPILER_CXXFLAGS="$COMPILER_CXXFLAGS -fno-stack-protector "
-        # add the extra filesystem library if needed
-        if test "$($CXX -dumpversion |cut -d\. -f1)" -lt "9" ; then
-            COMPILER_LDFLAGS="$COMPILER_LDFLAGS -lstdc++fs" 
-        fi
+    if test "$enable_debug_CXX" = yes; then
+        DEBUG_CXXFLAGS="-Wall -Wextra -O0 -g3"
+        case "$host" in
+        *-linux-gnu )
+            # Only doing that under Linux
+            DEBUG_CXXFLAGS="$DEBUG_CXXFLAGS -fdiagnostics-show-option -Werror=format-security"
+            ;;
+        esac
+    else
+        DEBUG_CXXFLAGS="-DNDEBUG -g1 -O2"
+    fi
+    COMPILER_CXXFLAGS="$COMPILER_CXXFLAGS -fno-stack-protector " # bug 3131
+    # add the extra filesystem library if needed
+    if test "$($CXX -dumpversion |cut -d\. -f1)" -lt "9" ; then
+        COMPILER_LDFLAGS="$COMPILER_LDFLAGS -lstdc++fs" 
+    fi
     ;;
 
+*clang++ | clang++*)
+    # enable the code coverage
+    if test "$enable_code_coverage" = yes; then
+        CODECOVERAGE_CXXFLAGS="-fprofile-arcs -ftest-coverage"
+    fi
+    if test "$enable_debug_CXX" = yes; then
+        DEBUG_CXXFLAGS="-Wall -Wextra -O0 -g3"
+    else
+        DEBUG_CXXFLAGS="-DNDEBUG -g1 -O2"
+    fi
+    COMPILER_CXXFLAGS="$COMPILER_CXXFLAGS -fno-stack-protector " # bug 3131
+    # allow to compile under macOS < Catalina with c++17 enabled clang
+    case "$host_os" in
+         *Darwin* | *darwin*)
+           macosx_version=`sw_vers -productVersion`
+           case $macosx_version in
+               10.*)
+                   macosx_version_minor=`echo $macosx_version | awk -F\. {'print $2'}`
+                   if [[ $macosx_version_minor -lt 15 ]]; then
+                       COMPILER_CXXFLAGS="$COMPILER_CXXFLAGS -D_LIBCPP_DISABLE_AVAILABILITY"
+                   fi
+               ;;
+           esac
+           ;;
+    esac    
+    ;;
 esac
 
 #### 64 bits detection
@@ -577,139 +602,158 @@ esac
 ##########"
 
 case "$CC" in
-     gcc-* | gcc | ccache*gcc | ccache*gcc-* )
-   ## With GNU Compiler
+gcc-* | gcc | ccache*gcc | ccache*gcc-* )
+    ## With GNU Compiler
 
-   # enable the code coverage
-   if test "$enable_code_coverage" = yes; then
-    CODECOVERAGE_CFLAGS="-fprofile-arcs -ftest-coverage"
-   fi
+    # enable the code coverage
+    if test "$enable_code_coverage" = yes; then
+        CODECOVERAGE_CFLAGS="-fprofile-arcs -ftest-coverage"
+    fi
 
-   if test "$enable_debug_C" = yes; then
-      DEBUG_CFLAGS="-Wall -Wextra -O0 -g3"
-      # used to be -O0
-      case "$host" in
-      *-linux-gnu )
-      # Only doing that under Linux
-        if test "$enable_debug_linker" = yes; then
-            LDFLAGS="$LDFLAGS -Wl,--warn-common,-x"
-        fi
-          DEBUG_CFLAGS="$DEBUG_CFLAGS -fdiagnostics-show-option -Werror=format-security"
-          ;;
-          esac
-   else
-      DEBUG_CFLAGS="-DNDEBUG -g1 -O2"
-   fi
+    if test "$enable_debug_C" = yes; then
+        DEBUG_CFLAGS="-Wall -Wextra -O0 -g3"
+        # used to be -O0
+        case "$host" in
+        *-linux-gnu )
+            # Only doing that under Linux
+            if test "$enable_debug_linker" = yes; then
+                LDFLAGS="$LDFLAGS -Wl,--warn-common,-x"
+            fi
+            DEBUG_CFLAGS="$DEBUG_CFLAGS -fdiagnostics-show-option -Werror=format-security"
+            ;;
+        esac
+    else
+        DEBUG_CFLAGS="-DNDEBUG -g1 -O2"
+    fi
 
-   COMPILER_CFLAGS="$COMPILER_CFLAGS -fno-stack-protector " # bug 3131
-   # Explictly disable the as needed. It was disable by default but Ubuntu
-   # activated it by default since release 11.04. See bug #8961.
-   # Once all cyclic dependencies have been dropped, this line could be removed.
-   # Check if linker supports --as-needed and --no-as-needed options
-   if $LD --help 2>/dev/null | grep no-as-needed > /dev/null; then
-      LDFLAGS="$LDFLAGS -Wl,--no-as-needed"
-   fi
+    COMPILER_CFLAGS="$COMPILER_CFLAGS -fno-stack-protector " # bug 3131
+    # Explictly disable the as needed. It was disable by default but Ubuntu
+    # activated it by default since release 11.04. See bug #8961.
+    # Once all cyclic dependencies have been dropped, this line could be removed.
+    # Check if linker supports --as-needed and --no-as-needed options
+    if $LD --help 2>/dev/null | grep no-as-needed > /dev/null; then
+        LDFLAGS="$LDFLAGS -Wl,--no-as-needed"
+    fi
 
-
-   case "$host" in
-     x86_64-*-linux-gnu | x86_64-linux-gnu)
+    case "$host" in
+    x86_64-*-linux-gnu | x86_64-linux-gnu)
         ARCH_CFLAGS="-m64"
-    ;;
-     alpha-*-linux-gnu)
+        ;;
+    alpha-*-linux-gnu)
         ARCH_CFLAGS="-mieee-with-inexact"
         ARCH_LDFLAGS="-mieee-with-inexact"
-    ;;
-     powerpc-*-linux-gnu)
+        ;;
+    powerpc-*-linux-gnu)
         ARCH_CFLAGS="-D_GNU_SOURCE"
-    ;;
-     *-*-solaris*)
+        ;;
+    *-*-solaris*)
         ARCH_CFLAGS="-DSVR4 -DSYSV -Dsolaris"
-    ;;
-   *-*-freebsd*)
-     ARCH_CFLAGS="-Dfreebsd"
-     ARCH_LDFLAGS="-lm"
-     ;;
+        ;;
+    *-*-freebsd*)
+        ARCH_CFLAGS="-Dfreebsd"
+        ARCH_LDFLAGS="-lm"
+        ;;
 
-  alpha-*-netbsd*)
-    ARCH_CFLAGS="-Dnetbsd -mieee"
-    ARCH_FFLAGS="-Dnetbsd -mieee"
-    ;;
+    alpha-*-netbsd*)
+        ARCH_CFLAGS="-Dnetbsd -mieee"
+        ARCH_FFLAGS="-Dnetbsd -mieee"
+        ;;
 
-  *-*-netbsd*)
-    ARCH_CFLAGS="-Dnetbsd"
-    ;;
+    *-*-netbsd*)
+        ARCH_CFLAGS="-Dnetbsd"
+        ;;
 
-  *-*-darwin*)
-    # Flag no more added since :
-    #  - No more supported in recent gcc versions (> 4.6)
-    #  - only needed when compiling with flag -mmacosx-min-version=10.5
-    #ARCH_CFLAGS="$ARCH_CFLAGS -no_compact_linkedit"
-    #ARCH_CXXFLAGS="$ARCH_CXXFLAGS -no_compact_linkedit"
-    #ARCH_LDFLAGS="$ARCH_LDFLAGS -no_compact_linkedit"
-    # We need this to be passed to all linker commands
-    #LDFLAGS="$LDFLAGS -no_compact_linkedit"
+    *-*-darwin*)
+        # Flag no more added since :
+        #  - No more supported in recent gcc versions (> 4.6)
+        #  - only needed when compiling with flag -mmacosx-min-version=10.5
+        #ARCH_CFLAGS="$ARCH_CFLAGS -no_compact_linkedit"
+        #ARCH_CXXFLAGS="$ARCH_CXXFLAGS -no_compact_linkedit"
+        #ARCH_LDFLAGS="$ARCH_LDFLAGS -no_compact_linkedit"
+        # We need this to be passed to all linker commands
+        #LDFLAGS="$LDFLAGS -no_compact_linkedit"
 
-    case "$F77" in
-         gfortran-*|gfortran)
-             # Extract from gfortran -v the version it has been built for
-               MAC_DETECTED_ARCH="`$F77 -v 2>&1|grep "Target:"|sed -e "s/Target: \([[a-z0-9A-Z_]]*\).*/\1/g"`"
-               if test "$MAC_DETECTED_ARCH" == "aarch64"; then
-                   MAC_DETECTED_ARCH=arm64
-               fi
-         ;;
-         *)
-        AC_MSG_WARN([gfortran not used. Could not detect the architecture. Switch to the default case: x86_64])
-        MAC_DETECTED_ARCH="x86_64"
-         ;;
-    esac
-    CC="$CC -arch $MAC_DETECTED_ARCH"
-    CXX="$CXX -arch $MAC_DETECTED_ARCH"
-    ;;
-esac
-;; # end of the gcc case on the $CC
-   *)
+        case "$F77" in
+        gfortran-*|gfortran)
+            # Extract from gfortran -v the version it has been built for
+            MAC_DETECTED_ARCH="`$F77 -v 2>&1|grep "Target:"|sed -e "s/Target: \([[a-z0-9A-Z_]]*\).*/\1/g"`"
+            if test "$MAC_DETECTED_ARCH" == "aarch64"; then
+                MAC_DETECTED_ARCH=arm64
+            fi
+            ;;
+        *)
+            AC_MSG_WARN([gfortran not used. Could not detect the architecture. Switch to the default case: x86_64])
+            MAC_DETECTED_ARCH="x86_64"
+            ;;
+        esac
+        CC="$CC -arch $MAC_DETECTED_ARCH"
+        CXX="$CXX -arch $MAC_DETECTED_ARCH"
+        ;;
+    esac # end of case "$host"
+    ;; # end of the gcc case on the $CC
 
-        ## CC compiler (not GCC)
-        if test "$enable_debug_C" != yes; then
-             ARCH_CFLAGS="-DNDEBUG"
-        fi
-
-case "$host" in
-# Dec Alpha OSF 4
-  alpha*-dec-osf4.*)
-      ARCH_CFLAGS="-std -ieee_with_inexact"
-      ARCH_LDFLAGS="-ieee_with_inexact"
-      ;;
-  alpha*-dec-osf*)
-      ARCH_CFLAGS="-ieee_with_inexact"
-      ARCH_LDFLAGS="-ieee_with_inexact"
-      ;;
-  rs6000-*-*) # IBM AIX RS 6000 (NO LONGER SUPPORTED)
-    ARCH_CFLAGS="-Daix -DSYSV"
-  ;;
-  mips-sgi-irix*) # SGI
-    ARCH_CFLAGS="-DSYSV -DSVR4"
-  ;;
-  *-*-hpux9.*)
-    ARCH_CFLAGS="-DSYSV -Dhpux"
-  ;;
-  *-*-hpux10.*) # HP 10
-    if test "$enable_debug_C" = yes; then
-      ARCH_CFLAGS="-DSYSV -Dhpux"
-    else
-      ARCH_CFLAGS="-DSYSV -Dhpux +Z +DAportable"
+*clang | clang*)
+    # enable the code coverage
+    if test "$enable_code_coverage" = yes; then
+        CODECOVERAGE_CFLAGS="-fprofile-arcs -ftest-coverage"
     fi
-  ;;
+    if test "$enable_debug_C" = yes; then
+        DEBUG_CFLAGS="-Wall -Wextra -O0 -g3"
+        # used to be -O0
+    else
+        DEBUG_CFLAGS="-DNDEBUG -g1 -O2"
+    fi
+    COMPILER_CFLAGS="$COMPILER_CFLAGS -fno-stack-protector " # bug 3131
+    # prevent dll optimizations in the final binary
+    case "$host_os" in
+        *Darwin* | *darwin*)
+            LDFLAGS="${LDFLAGS//-Wl,-dead_strip_dylibs/}"
+            ;;            
+    esac    
+    ;;  #  end of the clang case on the $CC
+   
+*)
+    ## CC compiler (not GCC)
+    if test "$enable_debug_C" != yes; then
+        DEBUG_CFLAGS="-DNDEBUG"
+    fi
 
-  *-*-hpux11.*) # HP 11
-    ARCH_CFLAGS="-DSYSV -Dhpux -Dhppa +Z +DAportable"
-  ;;
-  *-*-solaris*) # SUN SOLARIS
-    ARCH_CFLAGS="-DSVR4 -DSYSV -Dsolaris -I/usr/local/include/"
-    ARCH_LDFLAGS="-L/usr/local/lib/"
-  ;;
-esac
-;; # end of not a gcc compiler
+    case "$host" in
+        # Dec Alpha OSF 4
+    alpha*-dec-osf4.*)
+        ARCH_CFLAGS="-std -ieee_with_inexact"
+        ARCH_LDFLAGS="-ieee_with_inexact"
+        ;;
+    alpha*-dec-osf*)
+        ARCH_CFLAGS="-ieee_with_inexact"
+        ARCH_LDFLAGS="-ieee_with_inexact"
+        ;;
+        rs6000-*-*) # IBM AIX RS 6000 (NO LONGER SUPPORTED)
+        ARCH_CFLAGS="-Daix -DSYSV"
+        ;;
+        mips-sgi-irix*) # SGI
+        ARCH_CFLAGS="-DSYSV -DSVR4"
+        ;;
+    *-*-hpux9.*)
+        ARCH_CFLAGS="-DSYSV -Dhpux"
+        ;;
+        *-*-hpux10.*) # HP 10
+        if test "$enable_debug_C" = yes; then
+            ARCH_CFLAGS="-DSYSV -Dhpux"
+        else
+            ARCH_CFLAGS="-DSYSV -Dhpux +Z +DAportable"
+        fi
+        ;;
+
+        *-*-hpux11.*) # HP 11
+        ARCH_CFLAGS="-DSYSV -Dhpux -Dhppa +Z +DAportable"
+        ;;
+        *-*-solaris*) # SUN SOLARIS
+        ARCH_CFLAGS="-DSVR4 -DSYSV -Dsolaris -I/usr/local/include/"
+        ARCH_LDFLAGS="-L/usr/local/lib/"
+        ;;
+    esac
+    ;; # end of not a gcc compiler
 esac
 
 
