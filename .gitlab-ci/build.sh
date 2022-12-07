@@ -15,7 +15,7 @@ mkdir $LOG_PATH
 # checkout pre-requirements
 echo -e "\e[0Ksection_start:$(date +%s):prerequirements\r\e[0KGetting prerequirements"
 curl -k -o prereq.tar.xz https://oos.eu-west-2.outscale.com/scilab-releases-dev/prerequirements/prerequirements-scilab-branch-6.1-linux_x64.tar.xz
-tar -cJf prereq.tar.xz -C scilab > $LOG_PATH/log_prereq.txt
+tar -xvf prereq.tar.xz -C scilab > $LOG_PATH/log_prereq.txt
 # svn checkout \
 #     --username anonymous --password Scilab \
 #     "svn://svn.scilab.org/scilab/${PREREQUIREMENTS_BRANCH}/Dev-Tools/SE/Prerequirements/linux_x64/" scilab \
