@@ -14,8 +14,8 @@ mkdir $LOG_PATH
 
 # checkout pre-requirements
 echo -e "\e[0Ksection_start:$(date +%s):prerequirements\r\e[0KGetting prerequirements"
-curl -k -o prereq.tar.gz https://oos.eu-west-2.outscale.com/scilab-releases-dev/prerequirements/prerequirements-scilab-branch-6.1-linux_x64.tar.gz
-tar -xvzf prereq.tar.gz -C scilab
+curl -k -o prereq.tar.xz https://oos.eu-west-2.outscale.com/scilab-releases-dev/prerequirements/prerequirements-scilab-branch-6.1-linux_x64.tar.xz
+tar -cJf prereq.tar.xz -C scilab > $LOG_PATH/log_prereq.txt
 # svn checkout \
 #     --username anonymous --password Scilab \
 #     "svn://svn.scilab.org/scilab/${PREREQUIREMENTS_BRANCH}/Dev-Tools/SE/Prerequirements/linux_x64/" scilab \
@@ -88,7 +88,7 @@ cd "${CI_PROJECT_DIR}" ||exit
 
 echo -e "\e[0Ksection_end:$(date +%s):patch\r\e[0K"
 
-# package as a tar gz file
+# package as a tar xz file
 echo -e "\e[0Ksection_start:$(date +%s):package\r\e[0KPackage"
 tar -cJf "${SCI_VERSION_STRING}.bin.${ARCH}.tar.xz" -C "/" "${SCI_VERSION_STRING}"
 echo -e "\e[0Ksection_end:$(date +%s):package\r\e[0K"
