@@ -1,0 +1,68 @@
+# Scilab ( http://www.scilab.org/ ) - This file is part of Scilab
+# Copyright (C) Dassault Systemes - 2022 - Clement DAVID
+#
+#
+# This YAML file describe the creation/destruction of Docker image.
+# This stage is used to cleanup runners and set them ready to build.
+#
+
+# Create/refresh Docker build
+create_docker_image_linux:
+  stage: docker_create
+  image: docker:20.10.16
+  tags: [x86_64-linux-gnu, docker, scilab]
+  script:
+    - docker login -u $CI_REGISTRY_USER -p $CI_JOB_TOKEN $CI_REGISTRY
+    - docker build --file .gitlab-ci/Dockerfile.linux -t $DOCKER_LINUX_BUILDER .
+    - docker push $DOCKER_LINUX_BUILDER
+  rules:
+    - changes: &DOCKER_CHANGES
+        paths:
+          - .gitlab-ci/Dockerfile*
+# create_docker_image_windows:
+#   stage: docker_create
+#   tags: [x64_windows, shell, scilab]
+#   script:
+#     - docker login -u $CI_REGISTRY_USER -p $CI_JOB_TOKEN $CI_REGISTRY
+#     - docker build --memory 4GB --file .gitlab-ci/Dockerfile.windows -t $DOCKER_WINDOWS_BUILDER .
+#     - docker push $DOCKER_WINDOWS_BUILDER
+#     - docker logout $CI_REGISTRY
+#   rules:
+#     - changes: *DOCKER_CHANGES
+
+# cleanup intermediate Docker image after the build
+linux_cleanup_docker:
+  stage: docker_cleanup
+  image: docker:20.10.16
+  tags: [x86_64-linux-gnu, docker, scilab]
+  dependencies: []
+  variables:
+    GIT_STRATEGY: none
+  script:
+    - echo $DOCKER_LINUX_BUILDER
+    # untag the dedicated image for this MR
+    - docker rmi $DOCKER_LINUX_BUILDER
+    # remove all dangling image
+    - docker image prune
+  rules:
+    - if: $CI_PROJECT_PATH_SLUG !~ /scilab-scilab/
+      changes: *DOCKER_CHANGES
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+      changes: *DOCKER_CHANGES
+# windows_cleanup_docker:
+#   stage: docker_cleanup
+#   tags: [x64_windows, shell, scilab]
+#   dependencies: []
+#   variables:
+#     GIT_STRATEGY: none
+#   script:
+#     - echo $env:DOCKER_LINUX_BUILDER
+#     # untag the dedicated image for this MR
+#     - docker rmi $env:DOCKER_LINUX_BUILDER
+#     # remove all dangling image
+#     - docker image prune
+#   rules:
+#     - if: $CI_PROJECT_PATH_SLUG !~ /scilab-scilab/
+#       changes: *DOCKER_CHANGES
+#     - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+#       changes: *DOCKER_CHANGES

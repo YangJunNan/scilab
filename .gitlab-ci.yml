@@ -3,7 +3,9 @@
 # Copyright (C) Dassault Systemes - 2022 - Cedric DELAMARRE
 
 stages:
-  # fetch prebuild libraries maintained in different repository
+  # refresh the Docker image
+  - docker_create
+  # define common env variables used to build and tests
   - prebuild
   # build scilab
   - build
@@ -13,56 +15,77 @@ stages:
   - postbuild
   # publish and make it available to the community
   - publish
+  # update/cleanup Docker image
+  - docker_cleanup
 
 variables:
+  GIT_STRATEGY:
+    value: "fetch"
+    description: "fastest strategy as it re-uses the local working copy"
+  GIT_CLEAN_FLAGS:
+    value: "none"
+    description: "do clean build, each job should clean previous artifacts at startup"
   GIT_DEPTH:
     value: "1"
     description: "speedup cloning, only fetch the latest commit"
   PREREQUIREMENTS_BRANCH:
     value: "branches/6.1"
     description: "Scilab prerequirements branch name or trunk"
-  DOCKER_LINUX_BUILDER: "$CI_REGISTRY_IMAGE/linux-builder:latest"
+  DOCKER_LINUX_BUILDER:
+    value: "registry.gitlab.com/scilab/scilab/linux-builder"
+    description: "Docker image used to build Scilab on Linux"
+  DOCKER_WINDOWS_BUILDER:
+    value: "registry.gitlab.com/scilab/scilab/windows-builder"
+    description: "Docker image used to build Scilab on Windows"
 
 workflow:
   rules:
-    # run on merge request and set spécify docker image tag
-    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+    # Run on contributor's fork
+    - if: $CI_PROJECT_PATH_SLUG !~ /scilab-scilab/
       changes: &DOCKER_CHANGES
         paths:
           - .gitlab-ci/Dockerfile*
       variables:
-        DOCKER_LINUX_BUILDER: "$CI_REGISTRY_IMAGE/linux-builder:$CI_MERGE_REQUEST_ID"
+        SCI_VERSION_STRING: "$CI_PROJECT_PATH_SLUG-branch-${CI_COMMIT_BRANCH}-${CI_COMMIT_SHORT_SHA}"
+        DOCKER_LINUX_BUILDER: "$CI_REGISTRY_IMAGE/linux-builder:$CI_COMMIT_BRANCH"
+        DOCKER_WINDOWS_BUILDER: "$CI_REGISTRY_IMAGE/windows-builder:$CI_COMMIT_BRANCH"
+    - if: $CI_PROJECT_PATH_SLUG !~ /scilab-scilab/
+      variables:
+        SCI_VERSION_STRING: "$CI_PROJECT_PATH_SLUG-branch-${CI_COMMIT_BRANCH}-${CI_COMMIT_SHORT_SHA}"
+    # run on merge request and set specific docker image tag
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+      changes: *DOCKER_CHANGES
+      variables:
         SCI_VERSION_STRING: "scilab-branch-${CI_MERGE_REQUEST_TARGET_BRANCH_NAME}-${CI_COMMIT_SHORT_SHA}"
-        GIT_STRATEGY: fetch
-        GIT_CLEAN_FLAGS: none
+        DOCKER_LINUX_BUILDER: "$CI_REGISTRY_IMAGE/linux-builder:$CI_MERGE_REQUEST_ID"
+        DOCKER_WINDOWS_BUILDER: "$CI_REGISTRY_IMAGE/windows-builder:$CI_MERGE_REQUEST_ID"
     # run on merge request
     - if: $CI_PIPELINE_SOURCE == "merge_request_event"
       variables:
         SCI_VERSION_STRING: "scilab-branch-${CI_MERGE_REQUEST_TARGET_BRANCH_NAME}-${CI_COMMIT_SHORT_SHA}"
-        GIT_STRATEGY: fetch
-        GIT_CLEAN_FLAGS: none
     # Scheduled pipeline
     - if: $CI_PIPELINE_SOURCE == 'schedule'
       variables:
         SCI_VERSION_STRING: "scilab-branch-${CI_COMMIT_BRANCH}-${CI_COMMIT_SHORT_SHA}"
         GIT_STRATEGY: clone
+        GIT_CLEAN_FLAGS: -fxd
     # Release
-    - if: $CI_COMMIT_REF_PROTECTED
     - if: $CI_COMMIT_TAG
       variables:
         SCI_VERSION_STRING: "scilab-${CI_COMMIT_TAG}"
         GIT_STRATEGY: clone
-    # Run when merge request is accepted and default Docker image needs to be updated
+        GIT_CLEAN_FLAGS: -fxd
+    # Update default Docker image on merge
     - if: $CI_MERGE_REQUEST_APPROVED
       changes: *DOCKER_CHANGES
-      variables:
-        GIT_STRATEGY: fetch
 
 default:
   artifacts:
     expire_in: 1 day
 
 include:
+  # Setup Docker
+  - local: .gitlab-ci/docker_setup.yml
   # updating files and runner states
   - local: .gitlab-ci/prebuild.yml
   # build
@@ -73,53 +96,3 @@ include:
   - local: .gitlab-ci/postbuild.yml
   # deploy/publish a binary
   - local: .gitlab-ci/publish.yml
-
-# # .pre: started before everything but only if a pipeline is scheduled
-# Manage Docker build
-create_docker_image_linux:
-  stage: .pre
-  image: docker:20.10.16
-  tags: [x86_64-linux-gnu, docker, scilab]
-  script:
-    - docker login -u $CI_REGISTRY_USER -p $CI_JOB_TOKEN $CI_REGISTRY
-    - docker build --file .gitlab-ci/Dockerfile.linux -t $DOCKER_LINUX_BUILDER .
-    - docker push $DOCKER_LINUX_BUILDER
-  rules:
-    - if: $CI_MERGE_REQUEST_APPROVED
-      changes: *DOCKER_CHANGES
-    - if: $CI_PIPELINE_SOURCE == 'merge_request_event'
-      changes: *DOCKER_CHANGES
-# create_docker_image_windows:
-#   stage: .pre
-#   tags: [x64_windows, shell, scilab]
-#   script:
-#     - docker login -u $CI_REGISTRY_USER -p $CI_JOB_TOKEN $CI_REGISTRY
-#     - docker build --memory 4GB --file .gitlab-ci/Dockerfile.windows -t $CI_REGISTRY_IMAGE/windows-builder:latest .
-#     - docker push $CI_REGISTRY_IMAGE/windows-builder
-#     - docker logout $CI_REGISTRY
-#   rules:
-#     - if: $CI_MERGE_REQUEST_APPROVED
-#       changes: *DOCKER_CHANGES
-#     - if: $CI_PIPELINE_SOURCE == 'merge_request_event'
-#       changes: *DOCKER_CHANGES
-
-## .post: started after everything but only if a pipeline is scheduled
-
-# clean linux docker images
-linux_cleanup_docker:
-  stage: .post
-  image: docker:20.10.16
-  tags: [x86_64-linux-gnu, docker, scilab]
-  dependencies: []
-  variables:
-    GIT_STRATEGY: none
-  script:
-    - echo $DOCKER_LINUX_BUILDER
-    # untag the dedicated image for this MR
-    - docker rmi $DOCKER_LINUX_BUILDER
-    # remove all dangling image
-    - docker image prune
-  rules:
-    # cleanup temporary image after MR approuved
-    - if: $CI_MERGE_REQUEST_APPROVED
-      changes: *DOCKER_CHANGES

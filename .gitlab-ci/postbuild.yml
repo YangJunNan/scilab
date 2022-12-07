@@ -138,7 +138,7 @@ publish_help_jar:
     - rm scilab_images.jar
     - sed -i -e "s#jarsci:./#../images/#g" */*.html
   rules:
-    - if: $CI_PIPELINE_SOURCE == 'merge_request_event'
+    - if: $CI_PIPELINE_SOURCE == 'merge_request_event' || $CI_PIPELINE_SOURCE == 'push'
   artifacts:
     paths:
       - public
