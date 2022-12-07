@@ -8,7 +8,7 @@
 #
 
 # define x86_64-linux-gnu env variables
-x86_64-linux-gnu_set_env:
+.x86_64-linux-gnu_set_env:
   image: $DOCKER_LINUX_BUILDER
   stage: prebuild
   tags: [x86_64-linux-gnu, docker, scilab]
