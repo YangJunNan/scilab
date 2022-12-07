@@ -70,7 +70,7 @@ prepare_release_files:
 # check MR has modified CHANGES.md
 CHANGES_has_no_edit:
   stage: prebuild
-  tags: [x86_64-linux-gnu, docker, scilab]
+  tags: [scilab]
   rules:
     - changes:
         - scilab/CHANGES.md
