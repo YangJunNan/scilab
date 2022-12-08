@@ -85,6 +85,7 @@ GRAPHICS_IMPEXP void* get_text_box_property(void* _pvCtx, int iObjUID);
 GRAPHICS_IMPEXP void* get_text_property(void* _pvCtx, int iObjUID);
 GRAPHICS_IMPEXP void* get_auto_clear_property(void* _pvCtx, int iObjUID);
 GRAPHICS_IMPEXP void* get_auto_scale_property(void* _pvCtx, int iObjUID);
+GRAPHICS_IMPEXP void* get_auto_stretch_property(void* _pvCtx, int iObjUID);
 GRAPHICS_IMPEXP void* get_zoom_box_property(void* _pvCtx, int iObjUID);
 GRAPHICS_IMPEXP void* get_zoom_state_property(void* _pvCtx, int iObjUID);
 GRAPHICS_IMPEXP void* get_clip_box_property(void* _pvCtx, int iObjUID);
