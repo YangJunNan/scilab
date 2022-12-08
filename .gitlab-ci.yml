@@ -84,7 +84,6 @@ create_docker_image_linux:
     - docker login -u $CI_REGISTRY_USER -p $CI_JOB_TOKEN $CI_REGISTRY
     - docker build --file .gitlab-ci/Dockerfile.linux -t $DOCKER_LINUX_BUILDER .
     - docker push $DOCKER_LINUX_BUILDER
-  allow_failure: true
   rules:
     - if: $CI_MERGE_REQUEST_APPROVED
       changes: *DOCKER_CHANGES
@@ -120,7 +119,6 @@ linux_cleanup_docker:
     - docker rmi $DOCKER_LINUX_BUILDER
     # remove all dangling image
     - docker image prune
-  allow_failure: true
   rules:
     # cleanup temporary image after MR approuved
     - if: $CI_MERGE_REQUEST_APPROVED
