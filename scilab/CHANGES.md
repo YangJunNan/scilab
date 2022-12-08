@@ -316,6 +316,7 @@ Removed Functions
 * `fac3d1` was obsolete since Scilab 4 and has been removed. Please use `plot3d1` instead.
 * `xinfo` was obsolete and has been removed. Please use `gcf().info_message` instead.
 * `with_tk` was obsolete and has been removed. Please use `with_module('tclsci')` instead.
+* `dirname` was obsolete and has been removed. Please use `fileparts` instead.
 
 
 Known issues
@@ -326,12 +327,25 @@ Bug Fixes
 ---------
 
 ### Bugs fixed in 6.1.2:
+
 * [#16653](https://bugzilla.scilab.org/16653): fromJSON() crashed with a non existing file.
+* [#16713](https://bugzilla.scilab.org/16713): Automatic stretching of Axes box in 3d view was not configurable.
 * [#16717](https://bugzilla.scilab.org/16717): An error occured in findobj when no objects existed.
 * [#16734](https://bugzilla.scilab.org/16734): `findobj()` was slower than before.
 * [#16748](https://bugzilla.scilab.org/16748): Build failed with OCaml 4.11 or newer build without unsafe-strings
+* [#16798](https://bugzilla.scilab.org/16798): `scinotes()` with option and non existing file crashed scilab.
+* [#16826](https://bugzilla.scilab.org/16826): `file()` or `file(fid)` could yield outdated relative paths.
+* [#16822](https://bugzilla.scilab.org/16822): `getrelativefilename()` returned incorrect value in case of same beginning of directory names.
 * [#16841](https://bugzilla.scilab.org/16841): Zoom on multiaxes could desynchronize axes.
 * [#16849](https://bugzilla.scilab.org/16849): toJSON("\\") must return "\\\\" instead of "\\\".
+* [#16865](https://bugzilla.scilab.org/16865): Vector extraction with single hypermatrix index yielded a vector.
+* [#16867](https://gitlab.com/scilab/scilab/-/issues/16867): macr2tree() encoded .' (transpose) as ' (conjugate transpose).
+* [#16899](https://bugzilla.scilab.org/16899): configure script did not detect clang.
+* [#16900](https://bugzilla.scilab.org/16900): no-gui build of Scilab raised an error at startup.
+* [#16905](https://gitlab.com/scilab/scilab/-/issues/16905): Unitary and non-regression tests using graphics did run although scilab compiled `--without-gui`.
+* [#16907](https://gitlab.com/scilab/scilab/-/issues/16907): Logical OR operation on false sparse matrices could lead to Scilab crash.
+* [#16909](https://gitlab.com/scilab/scilab/-/issues/16909): `read()` may crash when building Scilab with gfortran >= 11.
+* [#16911](https://gitlab.com/scilab/scilab/-/issues/16911): Wrong line number in callstack.
 
 
 ### Bugs fixed in 6.1.1:

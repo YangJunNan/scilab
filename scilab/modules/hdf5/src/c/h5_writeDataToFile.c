@@ -21,7 +21,7 @@
 #include <string.h>
 #include <stdlib.h>
 #include "sci_types.h"
-#include "version.h"
+#include "getversion.h"
 #include "core_math.h"
 #include "h5_writeDataToFile.h"
 #include "h5_readDataFromFile.h"
@@ -221,18 +221,20 @@ int updateScilabVersion(hid_t _iFile)
         }
     }
 
-    if (strstr(SCI_VERSION_STRING, "branch"))
+    char *scilabVersionString = getScilabVersionAsString();
+    if (strstr(scilabVersionString, "branch"))
     {
         //compiled by user
         char pstVersion[64];
-        sprintf(pstVersion, "%s %d.%d.%d", SCI_VERSION_STRING, SCI_VERSION_MAJOR, SCI_VERSION_MINOR, SCI_VERSION_MAINTENANCE);
+        sprintf(pstVersion, "%s %d.%d.%d", scilabVersionString, getScilabVersionMajor(), getScilabVersionMinor(), getScilabVersionMaintenance());
         status = addAttribute(_iFile, g_SCILAB_CLASS_SCI_VERSION, pstVersion);
     }
     else
     {
         //compiled by compilation chain
-        status = addAttribute(_iFile, g_SCILAB_CLASS_SCI_VERSION, SCI_VERSION_STRING);
+        status = addAttribute(_iFile, g_SCILAB_CLASS_SCI_VERSION, scilabVersionString);
     }
+    free(scilabVersionString);
 
     return status;
 }

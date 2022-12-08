@@ -26,7 +26,7 @@ x64_windows_test_branch_good:
     - x64_windows_build_branch
     - x64_windows_set_env
   rules:
-    - if: $CI_PIPELINE_SOURCE == 'merge_request_event'
+    - if: $CI_PIPELINE_SOURCE == 'merge_request_event' || $CI_PIPELINE_SOURCE == 'push'
   when: manual
   parallel:
     matrix: &GOOD_TEST_ANCHOR
@@ -57,7 +57,7 @@ x64_windows_test_branch_good:
 x64_windows_test_branch_bad:
   extends: .x64_windows_test
   rules:
-    - if: $CI_PIPELINE_SOURCE == 'merge_request_event'
+    - if: $CI_PIPELINE_SOURCE == 'merge_request_event' || $CI_PIPELINE_SOURCE == 'push'
   when: manual
   parallel:
     matrix: &BAD_TEST_ANCHOR
@@ -105,7 +105,7 @@ x64_windows_test_branch_bad:
 x64_windows_test_branch_ugly:
   extends: .x64_windows_test
   rules:
-    - if: $CI_PIPELINE_SOURCE == 'merge_request_event'
+    - if: $CI_PIPELINE_SOURCE == 'merge_request_event' || $CI_PIPELINE_SOURCE == 'push'
   when: manual
   parallel:
     matrix: &UGLY_TEST_ANCHOR
@@ -181,7 +181,7 @@ impacted_x64_windows_test_good:
     - x64_windows_build_branch
     - x64_windows_set_env
   rules: &IMPACTED_RULES
-    - if: $CI_PIPELINE_SOURCE == 'merge_request_event'
+    - if: $CI_PIPELINE_SOURCE == 'merge_request_event' || $CI_PIPELINE_SOURCE == 'push'
       changes:
         - scilab/modules/$TEST/**/*
   parallel:
@@ -217,40 +217,40 @@ impacted_x64_windows_test_ugly:
     reports:
       junit: "${ARCH}_${TEST}.xml"
 
-x86_64-linux-gnu_test_branch_good:
+.x86_64-linux-gnu_test_branch_good:
   extends: .x86_64-linux-gnu_test
   needs:
     - x86_64-linux-gnu_build_branch
     - x86_64-linux-gnu_set_env
   rules:
-    - if: $CI_PIPELINE_SOURCE == 'merge_request_event'
+    - if: $CI_PIPELINE_SOURCE == 'merge_request_event' || $CI_PIPELINE_SOURCE == 'push'
   when: manual
   parallel:
     matrix: *GOOD_TEST_ANCHOR
 
-x86_64-linux-gnu_test_branch_bad:
+.x86_64-linux-gnu_test_branch_bad:
   extends: .x86_64-linux-gnu_test
   needs:
     - x86_64-linux-gnu_build_branch
     - x86_64-linux-gnu_set_env
   rules:
-    - if: $CI_PIPELINE_SOURCE == 'merge_request_event'
+    - if: $CI_PIPELINE_SOURCE == 'merge_request_event' || $CI_PIPELINE_SOURCE == 'push'
   when: manual
   parallel:
     matrix: *BAD_TEST_ANCHOR
 
-x86_64-linux-gnu_test_branch_ugly:
+.x86_64-linux-gnu_test_branch_ugly:
   extends: .x86_64-linux-gnu_test
   needs:
     - x86_64-linux-gnu_build_branch
     - x86_64-linux-gnu_set_env
   rules:
-    - if: $CI_PIPELINE_SOURCE == 'merge_request_event'
+    - if: $CI_PIPELINE_SOURCE == 'merge_request_event' || $CI_PIPELINE_SOURCE == 'push'
   when: manual
   parallel:
     matrix: *UGLY_TEST_ANCHOR
 
-x86_64-linux-gnu_test_nightly_good:
+.x86_64-linux-gnu_test_nightly_good:
   extends: .x86_64-linux-gnu_test
   needs:
     - x86_64-linux-gnu_build_nightly
@@ -260,7 +260,7 @@ x86_64-linux-gnu_test_nightly_good:
   parallel:
     matrix: *GOOD_TEST_ANCHOR
 
-x86_64-linux-gnu_test_nightly_bad:
+.x86_64-linux-gnu_test_nightly_bad:
   extends: .x86_64-linux-gnu_test
   needs:
     - x86_64-linux-gnu_build_nightly
@@ -270,7 +270,7 @@ x86_64-linux-gnu_test_nightly_bad:
   parallel:
     matrix: *BAD_TEST_ANCHOR
 
-x86_64-linux-gnu_test_nightly_ugly:
+.x86_64-linux-gnu_test_nightly_ugly:
   extends: .x86_64-linux-gnu_test
   needs:
     - x86_64-linux-gnu_build_nightly
@@ -280,7 +280,7 @@ x86_64-linux-gnu_test_nightly_ugly:
   parallel:
     matrix: *UGLY_TEST_ANCHOR
 
-x86_64-linux-gnu_test_release_good:
+.x86_64-linux-gnu_test_release_good:
   extends: .x86_64-linux-gnu_test
   needs:
     - x86_64-linux-gnu_build_release
@@ -290,7 +290,7 @@ x86_64-linux-gnu_test_release_good:
   parallel:
     matrix: *GOOD_TEST_ANCHOR
 
-x86_64-linux-gnu_test_release_bad:
+.x86_64-linux-gnu_test_release_bad:
   extends: .x86_64-linux-gnu_test
   needs:
     - x86_64-linux-gnu_build_release
@@ -300,7 +300,7 @@ x86_64-linux-gnu_test_release_bad:
   parallel:
     matrix: *BAD_TEST_ANCHOR
 
-x86_64-linux-gnu_test_release_ugly:
+.x86_64-linux-gnu_test_release_ugly:
   extends: .x86_64-linux-gnu_test
   needs:
     - x86_64-linux-gnu_build_release
@@ -310,19 +310,19 @@ x86_64-linux-gnu_test_release_ugly:
   parallel:
     matrix: *UGLY_TEST_ANCHOR
 
-impacted_x86_64-linux-gnu_test_good:
+.impacted_x86_64-linux-gnu_test_good:
   extends: .x86_64-linux-gnu_test
   needs:
     - x86_64-linux-gnu_build_branch
     - x86_64-linux-gnu_set_env
   rules: &IMPACTED_RULES
-    - if: $CI_PIPELINE_SOURCE == 'merge_request_event'
+    - if: $CI_PIPELINE_SOURCE == 'merge_request_event' || $CI_PIPELINE_SOURCE == 'push'
       changes:
         - scilab/modules/$TEST/**/*
   parallel:
     matrix: *GOOD_TEST_ANCHOR
 
-impacted_x86_64-linux-gnu_test_bad:
+.impacted_x86_64-linux-gnu_test_bad:
   extends: .x86_64-linux-gnu_test
   needs:
     - x86_64-linux-gnu_build_branch
@@ -331,7 +331,7 @@ impacted_x86_64-linux-gnu_test_bad:
   parallel:
     matrix: *BAD_TEST_ANCHOR
 
-impacted_x86_64-linux-gnu_test_ugly:
+.impacted_x86_64-linux-gnu_test_ugly:
   extends: .x86_64-linux-gnu_test
   needs:
     - x86_64-linux-gnu_build_branch

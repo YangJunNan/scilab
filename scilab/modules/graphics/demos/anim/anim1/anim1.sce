@@ -34,6 +34,7 @@ function demo_anim1()
     s.color_flag=1; //assign facet color according to Z value
     title("rotation of a 3d surface","fontsize",3);
     curAxe = gca(); //handle on the currents axes
+    curAxe.auto_stretch = "off";
 
     //Set the evolution of the view angles Theta and Alpha
     //---------------------------------------------------

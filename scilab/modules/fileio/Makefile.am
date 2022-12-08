@@ -23,7 +23,6 @@ FILEIO_C_SOURCES = \
     src/c/cluni0.c \
     src/c/scicurdir.c \
     src/c/fileinfo.c \
-    src/c/getrelativefilename.c \
     src/c/splitpath.c \
     src/c/movefile.c \
     src/c/basename.c \

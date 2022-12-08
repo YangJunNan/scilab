@@ -89,6 +89,7 @@ GRAPHICS_C_SOURCES = \
     src/c/getHandleProperty/get_auto_ticks_property.c \
     src/c/getHandleProperty/get_x_label_property.c \
     src/c/getHandleProperty/get_auto_scale_property.c \
+    src/c/getHandleProperty/get_auto_stretch_property.c \
     src/c/getHandleProperty/get_auto_dimensionning_property.c \
     src/c/getHandleProperty/get_text_box_property.c \
     src/c/getHandleProperty/get_clip_box_property.c \
@@ -206,6 +207,7 @@ GRAPHICS_C_SOURCES = \
     src/c/getHandleProperty/set_mark_stride_property.c \
     src/c/getHandleProperty/set_y_shift_property.c \
     src/c/getHandleProperty/set_auto_scale_property.c \
+    src/c/getHandleProperty/set_auto_stretch_property.c \
     src/c/getHandleProperty/set_auto_dimensionning_property.c \
     src/c/getHandleProperty/set_text_box_property.c \
     src/c/getHandleProperty/set_text_property.c \

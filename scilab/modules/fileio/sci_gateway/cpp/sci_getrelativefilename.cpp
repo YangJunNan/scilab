@@ -19,6 +19,7 @@
 #include "function.hxx"
 #include "string.hxx"
 #include "filemanager.hxx"
+#include <filesystem>
 
 extern "C"
 {
@@ -31,7 +32,6 @@ extern "C"
 #include "sci_malloc.h"
 #include "Scierror.h"
 #include "localization.h"
-#include "getrelativefilename.h"
 }
 
 /*--------------------------------------------------------------------------*/
@@ -96,13 +96,24 @@ types::Function::ReturnValue sci_getrelativefilename(types::typed_list &in, int 
             return types::Function::Error;
         }
 
-        wcsResult = getrelativefilenameW(wcsAbsDir, wcsAbsFile);
+        std::filesystem::path pathAbsDir = std::filesystem::path(wcsAbsDir);
+        std::filesystem::path pathAbsFile = std::filesystem::path(wcsAbsFile);
+
+        try
+        {
+            pStrOut->set(i, std::filesystem::relative(pathAbsFile, pathAbsDir).wstring().c_str());
+        }
+        catch(const std::filesystem::filesystem_error& error)
+        {
+            Scierror(999, _("%s: %s.\n"), "getrelativefilename", error.what());
+            FREE(wcsAbsDir);
+            FREE(wcsAbsFile);
+            delete pStrOut;
+            return types::Function::Error;
+        }
 
         FREE(wcsAbsDir);
         FREE(wcsAbsFile);
-
-        pStrOut->set(i, wcsResult);
-        FREE(wcsResult);
     }
 
     out.push_back(pStrOut);

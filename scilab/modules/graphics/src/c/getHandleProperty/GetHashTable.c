@@ -112,6 +112,7 @@ static getHashTableCouple propertyGetTable[] =
     {"text", get_text_property},
     {"auto_clear", get_auto_clear_property},
     {"auto_scale", get_auto_scale_property},
+    {"auto_stretch", get_auto_stretch_property},
     {"zoom_box", get_zoom_box_property},
     {"zoom_state", get_zoom_state_property},
     {"clip_box", get_clip_box_property},

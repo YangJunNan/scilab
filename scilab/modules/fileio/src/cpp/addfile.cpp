@@ -21,6 +21,7 @@ extern "C"
 #include "addfile.h"
 #include "charEncoding.h"
 #include "sci_malloc.h"
+#include "fullpath.h"
 }
 
 /*--------------------------------------------------------------------------*/
@@ -29,7 +30,7 @@ void C2F(addfile)(int *fd, FILE *fa, int *swap2, int *type, int *mode, char *fil
     wchar_t* wcsFilename = to_wide_string(filename);
     types::File* pFile = new types::File();
 
-    pFile->setFilename(std::wstring(wcsFilename));
+    pFile->setFilename(std::wstring(get_full_pathW(wcsFilename)));
 
     if (*type == 2)
     {

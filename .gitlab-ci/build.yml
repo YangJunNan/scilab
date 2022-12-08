@@ -21,8 +21,7 @@
     # Remove installer and install dir older than 3 day
     - Get-ChildItem -Path "scilab-*" | Where-Object {($_.LastWriteTime -lt (Get-Date).AddDays(-3))} | Remove-Item -Recurse
   script:
-    - $process = Start-Process -Wait -PassThru -FilePath ".gitlab-ci\build.bat"
-    - exit $process.ExitCode
+    - cmd /C "call .gitlab-ci\build.bat"
   artifacts:
     paths:
       - logs_$CI_COMMIT_SHORT_SHA
@@ -33,10 +32,10 @@
 x64_windows_build_branch:
   extends: .x64_windows_build
   needs:
-    - contains_changes_modification
+    - CHANGES_has_no_edit
     - x64_windows_set_env
   rules:
-    - if: $CI_PIPELINE_SOURCE == 'merge_request_event'
+    - if: $CI_PIPELINE_SOURCE == 'merge_request_event' || $CI_PIPELINE_SOURCE == 'push'
 # build a nightly version
 x64_windows_build_nightly:
   extends: .x64_windows_build
@@ -59,11 +58,12 @@ x64_windows_build_release:
   image: $DOCKER_LINUX_BUILDER
   tags: [x86_64-linux-gnu, docker, scilab]
   before_script:
-    - echo "cleaning $CI_PROJECT_DIR"
+    - echo -e "\e[0Ksection_start:$(date +%s):cleanup\r\e[0KCleaning $CI_PROJECT_DIR"
     # Remove logs older than 3 days
     - find logs_*   -mtime +3 -delete || true
     # Remove installer older than 3 days
     - find scilab-* -mtime +3 -delete || true
+    - echo -e "\e[0Ksection_end:$(date +%s):cleanup\r\e[0K"
   script: bash -x -e .gitlab-ci/build.sh
   artifacts:
     paths:
@@ -72,22 +72,22 @@ x64_windows_build_release:
       - $SCI_VERSION_STRING.bin.$ARCH.tar.xz
     when: always
 # build an preview/branched version
-x86_64-linux-gnu_build_branch:
+.x86_64-linux-gnu_build_branch:
   extends: .x86_64-linux-gnu_build
   needs:
-    - contains_changes_modification
+    - CHANGES_has_no_edit
     - x86_64-linux-gnu_set_env
   rules:
-    - if: $CI_PIPELINE_SOURCE == 'merge_request_event'
+    - if: $CI_PIPELINE_SOURCE == 'merge_request_event' || $CI_PIPELINE_SOURCE == 'push'
 # build a nightly
-x86_64-linux-gnu_build_nightly:
+.x86_64-linux-gnu_build_nightly:
   extends: .x86_64-linux-gnu_build
   needs:
     - x86_64-linux-gnu_set_env
   rules:
     - if: $CI_PIPELINE_SOURCE == 'schedule'
 # build a release
-x86_64-linux-gnu_build_release:
+.x86_64-linux-gnu_build_release:
   extends: .x86_64-linux-gnu_build
   needs:
     - prepare_release_files

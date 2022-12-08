@@ -29,6 +29,7 @@ extern "C"
 #include "isdir.h"
 #include "localization.h"
 #include "os_wfopen.h"
+#include "fullpath.h"
 }
 /*--------------------------------------------------------------------------*/
 int mopen(const wchar_t* _pstFilename, const wchar_t* _pstMode, int _iSwap, int* _piID)
@@ -107,10 +108,12 @@ int mopen(const wchar_t* _pstFilename, const wchar_t* _pstMode, int _iSwap, int*
         return MOPEN_CAN_NOT_OPEN_FILE;
     }
 
+
+
     //Create File object and fill it
     types::File* pFile = new types::File();
     pFile->setFileDesc(pF);
-    pFile->setFilename(_pstFilename);
+    pFile->setFilename(get_full_pathW(_pstFilename));
     pFile->setFileType(2); //hard coded value for file opened by C/C++ fopen functions
     pFile->setFileMode(_pstFinalMode);
     pFile->setFileSwap(_iSwap);

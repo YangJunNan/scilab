@@ -202,3 +202,8 @@ modules/pvm/
 # call_scilab examples
 call_scilab_*
 
+#
+# Ignore all localization files
+#
+locale/*/*/*.mo
+locale/*/*/*.po

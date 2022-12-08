@@ -194,6 +194,7 @@ struct AxesHandle
         m.emplace_back("axes_bounds", std::vector<int>({SAVE_LOAD, __GO_AXES_BOUNDS__, jni_double_vector, -1, -4}));
         m.emplace_back("auto_clear", std::vector<int>({SAVE_LOAD, __GO_AUTO_CLEAR__, jni_bool}));
         m.emplace_back("auto_scale", std::vector<int>({SAVE_LOAD, __GO_AUTO_SCALE__, jni_bool}));
+        m.emplace_back("auto_stretch", std::vector<int>({SAVE_LOAD, __GO_AUTO_STRETCH__, jni_bool}));
         m.emplace_back("hidden_axis_color", std::vector<int>({SAVE_LOAD, __GO_HIDDEN_AXIS_COLOR__, jni_int}));
         m.emplace_back("arc_drawing_method", std::vector<int>({SAVE_LOAD, __GO_ARC_DRAWING_METHOD__, jni_int}));
         m.emplace_back("hiddencolor", std::vector<int>({SAVE_LOAD, __GO_HIDDEN_COLOR__, jni_int}));

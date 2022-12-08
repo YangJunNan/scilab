@@ -243,7 +243,6 @@ lib /DEF:"$(ProjectDir)preferences_Import.def" /SUBSYSTEM:WINDOWS /MACHINE:$(Pla
     <ClCompile Include="src\c\getdrives.c" />
     <ClCompile Include="src\c\getFullFilename.c" />
     <ClCompile Include="src\c\getlongpathname.c" />
-    <ClCompile Include="src\c\getrelativefilename.c" />
     <ClCompile Include="src\c\getshortpathname.c" />
     <ClCompile Include="src\c\isdir.c" />
     <ClCompile Include="src\c\isDrive.c" />

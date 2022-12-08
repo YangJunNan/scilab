@@ -86,6 +86,7 @@ int set_text_box_property(void* _pvCtx, int iObj, void* _pvData, int valueType, 
 int set_text_property(void* _pvCtx, int iObj, void* _pvData, int valueType, int nbRow, int nbCol);
 int set_auto_clear_property(void* _pvCtx, int iObj, void* _pvData, int valueType, int nbRow, int nbCol);
 int set_auto_scale_property(void* _pvCtx, int iObj, void* _pvData, int valueType, int nbRow, int nbCol);
+int set_auto_stretch_property(void* _pvCtx, int iObj, void* _pvData, int valueType, int nbRow, int nbCol);
 int set_zoom_box_property(void* _pvCtx, int iObj, void* _pvData, int valueType, int nbRow, int nbCol);
 int set_zoom_state_property(void* _pvCtx, int iObj, void* _pvData, int valueType, int nbRow, int nbCol);
 int set_clip_box_property(void* _pvCtx, int iObj, void* _pvData, int valueType, int nbRow, int nbCol);
