@@ -119,6 +119,7 @@ static setHashTableCouple propertySetTable[] =
     {"text", set_text_property},
     {"auto_clear", set_auto_clear_property},
     {"auto_scale", set_auto_scale_property},
+    {"auto_stretch", set_auto_stretch_property},
     {"zoom_box", set_zoom_box_property},
     {"zoom_state", set_zoom_state_property},
     {"clip_box", set_clip_box_property},

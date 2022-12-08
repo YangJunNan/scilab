@@ -327,7 +327,9 @@ Bug Fixes
 ---------
 
 ### Bugs fixed in 6.1.2:
+
 * [#16653](https://bugzilla.scilab.org/16653): fromJSON() crashed with a non existing file.
+* [#16713](https://bugzilla.scilab.org/16713): Automatic stretching of Axes box in 3d view was not configurable.
 * [#16717](https://bugzilla.scilab.org/16717): An error occured in findobj when no objects existed.
 * [#16734](https://bugzilla.scilab.org/16734): `findobj()` was slower than before.
 * [#16748](https://bugzilla.scilab.org/16748): Build failed with OCaml 4.11 or newer build without unsafe-strings

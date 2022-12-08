@@ -847,6 +847,17 @@
                                 </para>
                             </listitem>
                         </varlistentry>
+                        <varlistentry>
+                            <term>auto_stretch: </term>
+                            <listitem>
+                                <para>
+                                    Property disabling axis box filling when 3D properties.
+                                    <literal>"on"</literal>: Default, each new 3D plot maximize the box according to boundaries
+                                    of added data.
+                                    <literal>"off"</literal>: Keep 3D box size from a previous computation.
+                                </para>
+                            </listitem>
+                        </varlistentry>
                     </variablelist>
                 </listitem>
             </varlistentry>
