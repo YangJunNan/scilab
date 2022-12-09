@@ -23,3 +23,6 @@ if errorlevel 1  goto :uniqLoop
 call "%SCI_VERSION_STRING%\bin\scilab.bat" -nwni -scihome "%SCIHOME%" -quit -e "test_run('%TEST%',[],[],'%ARCH%_%TEST%.xml')"
 
 rmdir /s /q "%SCIHOME%"
+
+rem fail without xml report
+if not exist "%ARCH%_%TEST%.xml" exit 1
