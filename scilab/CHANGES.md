@@ -346,6 +346,7 @@ Bug Fixes
 * [#16907](https://gitlab.com/scilab/scilab/-/issues/16907): Logical OR operation on false sparse matrices could lead to Scilab crash.
 * [#16909](https://gitlab.com/scilab/scilab/-/issues/16909): `read()` may crash when building Scilab with gfortran >= 11.
 * [#16911](https://gitlab.com/scilab/scilab/-/issues/16911): Wrong line number in callstack.
+* [#16913](https://gitlab.com/scilab/scilab/-/issues/16913): InnoSetup files was not updated after MKL upgrade.
 
 
 ### Bugs fixed in 6.1.1:
