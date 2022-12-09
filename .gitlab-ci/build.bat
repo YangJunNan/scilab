@@ -44,8 +44,10 @@ devenv Scilab.sln /build "Release|x64" /project buildhelp > ..\%LOG_PATH%\log_bu
 devenv Scilab.sln /build "Release|x64" /project buildjavadoc > ..\%LOG_PATH%\log_buildjavadoc.txt
 
 REM Package with Inno Setup 6
+if exist "Scilab.iss" del /f "Scilab.iss"
 bin\WScilex.exe -nb -f "tools\innosetup\Create_ISS.sce" > ..\%LOG_PATH%\log_iss.txt
 if errorlevel 1 tail --lines=20 ..\%LOG_PATH%\log_iss.txt 1>&2 & exit 1
+if not exist "Scilab.iss" exit 1
 "C:\Program Files (x86)\Inno Setup 6\iscc.exe" Scilab.iss >> ..\%LOG_PATH%\log_iss.txt
 if errorlevel 1 tail --lines=20 ..\%LOG_PATH%\log_iss.txt 1>&2 & exit 1
 
