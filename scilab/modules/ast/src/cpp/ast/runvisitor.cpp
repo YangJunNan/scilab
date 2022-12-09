@@ -2042,6 +2042,8 @@ void RunVisitorT<T>::visitprivate(const TryCatchExp  &e)
         ConfigVariable::setLastErrorCall();
         // reset call stack filled when error occurred
         ConfigVariable::resetWhereError();
+        // reset error flag
+        ConfigVariable::resetError();
         try
         {
             const_cast<Exp*>(&e.getCatch())->setReturnable();
