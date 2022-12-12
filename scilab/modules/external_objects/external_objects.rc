@@ -66,12 +66,12 @@ BEGIN
         BLOCK "040c04b0"
         BEGIN
             VALUE "FileDescription", "external_objects module"
-            VALUE "FileVersion", "6, 1, 2, 0"
+            VALUE "FileVersion", "6, 1, 1, 0"
             VALUE "InternalName", "external_objects module"
             VALUE "LegalCopyright", "Copyright (C) 2022"
             VALUE "OriginalFilename", "external_objects.dll"
             VALUE "ProductName", " external_objects"
-            VALUE "ProductVersion", "6, 1, 2, 0"
+            VALUE "ProductVersion", "6, 1, 1, 0"
         END
     END
     BLOCK "VarFileInfo"

@@ -66,12 +66,12 @@ BEGIN
         BEGIN
             VALUE "CompanyName", "Scilab"
             VALUE "FileDescription", "sound module"
-            VALUE "FileVersion", "6, 1, 2, 0"
+            VALUE "FileVersion", "6, 1, 1, 0"
             VALUE "InternalName", "sound"
             VALUE "LegalCopyright", "Copyright (C) 2022"
             VALUE "OriginalFilename", "sound.rc"
             VALUE "ProductName", " sound"
-            VALUE "ProductVersion", "6, 1, 2, 0"
+            VALUE "ProductVersion", "6, 1, 1, 0"
         END
     END
     BLOCK "VarFileInfo"

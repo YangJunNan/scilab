@@ -65,12 +65,12 @@ BEGIN
         BLOCK "040c04b0"
         BEGIN
             VALUE "FileDescription", "api_scilab module"
-            VALUE "FileVersion", "6, 1, 2, 0"
+            VALUE "FileVersion", "6, 1, 1, 0"
             VALUE "InternalName", "api_scilab module"
             VALUE "LegalCopyright", "Copyright (C) 2022"
             VALUE "OriginalFilename", "api_scilab.dll"
             VALUE "ProductName", "api_scilab module"
-            VALUE "ProductVersion", "6, 1, 2, 0"
+            VALUE "ProductVersion", "6, 1, 1, 0"
         END
     END
     BLOCK "VarFileInfo"
