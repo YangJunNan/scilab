@@ -9,6 +9,10 @@ if not exist "%SCI_VERSION_STRING%\" exit 1
 
 :installed
 
+REM Create log folder
+set LOG_PATH=logs_%CI_COMMIT_SHORT_SHA%
+if not exist %LOG_PATH% mkdir %LOG_PATH%
+
 @echo on
 setlocal EnableExtensions
 
@@ -20,7 +24,7 @@ mkdir "%SCIHOME%"
 if errorlevel 1  goto :uniqLoop
 
 @echo on
-call "%SCI_VERSION_STRING%\bin\scilab.bat" -nwni -scihome "%SCIHOME%" -quit -e "test_run('%TEST%',[],[],'%ARCH%_%TEST%.xml')"
+call "%SCI_VERSION_STRING%\bin\scilab.bat" -nwni -scihome "%SCIHOME%" -quit -e "test_run('%TEST%',[],[],'%LOG_PATH%\%ARCH%_%TEST%.xml')"
 
 rmdir /s /q "%SCIHOME%"
 

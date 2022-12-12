@@ -16,10 +16,13 @@ fi
 [ ! -d "${SCI_VERSION_STRING}" ] && exit 1
 echo -e "\e[0Ksection_end:$(date +%s):install\r\e[0K"
 
+LOG_PATH=logs_$CI_COMMIT_SHORT_SHA
+[ ! -d "$LOG_PATH" ] && mkdir "$LOG_PATH"
+
 SCIHOME=$(mktemp --tmpdir -d SCI_TMP_HOME_XXXXXXX)
 
 echo -e "\e[0Ksection_start:$(date +%s):test\r\e[0KTesting $TEST"
-"${SCI_VERSION_STRING}/bin/scilab" -nwni -scihome "$SCIHOME" -quit -e 'test_run("'"${TEST}"'",[],[],"'"${ARCH}_${TEST}.xml"'")'
+"${SCI_VERSION_STRING}/bin/scilab" -nwni -scihome "$SCIHOME" -quit -e 'test_run("'"${TEST}"'",[],[],"'"${LOG_PATH}/${ARCH}_${TEST}.xml"'")'
 echo -e "\e[0Ksection_end:$(date +%s):test\r\e[0K"
 
 rm -fr "${SCIHOME}"

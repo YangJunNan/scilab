@@ -13,7 +13,7 @@ echo on
 
 REM Create log folder
 set LOG_PATH=logs_%CI_COMMIT_SHORT_SHA%
-mkdir %LOG_PATH%
+if not exist %LOG_PATH% mkdir %LOG_PATH%
 
 curl -k -o prereq.zip https://oos.eu-west-2.outscale.com/scilab-releases-dev/prerequirements/prerequirements-scilab-branch-6.1-windows_x64.zip
 unzip -o prereq.zip -d scilab > %LOG_PATH%\log_prereq.txt
