@@ -11,8 +11,7 @@
   stage: test
   tags: [x64_windows, scilab]
   script:
-    - $process = Start-Process -Wait -PassThru -FilePath ".gitlab-ci\test.bat"
-    - exit $process.ExitCode
+    - cmd /C "call .gitlab-ci\test.bat"
   artifacts:
     when: always
     paths:
