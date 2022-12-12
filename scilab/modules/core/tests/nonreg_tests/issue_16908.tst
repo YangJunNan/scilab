@@ -5,25 +5,25 @@
 //  This file is distributed under the same license as the Scilab package.
 // =============================================================================
 //
-// <-- Non-regression test for issue 16911 -->
-//
 // <-- CLI SHELL MODE -->
 // <-- NO CHECK REF -->
 //
+// <-- Non-regression test for issue 16908-->
+//
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/16908
+//
 // <-- Short Description -->
-// Wrong line number in callstack
+// Segmentation fault in macr2tree when members of an object are called as a function
+//
 
-// test scrit
-script=["[linn, mac] = where();", ...
-        "assert_checkequal(linn, [1; 2; 47]);", ...
-        "assert_checkequal(mac, [""exec""; ""issue_16911""; ""exec""]);"];
+function f(a)
+  a.member // ok
+  a.func_member // ok
+  a.func_member() // segfaults
+  a.func_member(42) // segfaults
+  a.func_member('foo') // segfaults
+endfunction
 
-// create a script file
-mputl(script, TMPDIR+"/issue_16911_script.sce");
+macr2tree(f)
 
-// execute it
-function issue_16911()
-    exec(TMPDIR+"/issue_16911_script.sce");
-end
-
-issue_16911();
