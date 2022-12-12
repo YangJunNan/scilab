@@ -3,7 +3,8 @@ REM Execute module test for a module named %TEST%, download and install latest b
 @echo on
 REM Install if not exist
 if exist "%SCI_VERSION_STRING%\" goto :installed
-call "%SCI_VERSION_STRING%.bin.%ARCH%.exe" /TASKS=!desktopicon /SUPPRESSMSGBOXES /SILENT /SP-^
+call "%SCI_VERSION_STRING%.bin.%ARCH%.exe" /TASKS=!desktopicon,!AssociateSCESCI,!AssociateTSTDEM,!AssociateSCICOS,!AssociateSOD ^
+  /NOICONS /SUPPRESSMSGBOXES /SILENT /SP- ^
   /DIR="%CI_PROJECT_DIR%\%SCI_VERSION_STRING%"
 if not exist "%SCI_VERSION_STRING%\" exit 1
 
@@ -29,4 +30,4 @@ call "%SCI_VERSION_STRING%\bin\scilab.bat" -nwni -scihome "%SCIHOME%" -quit -e "
 rmdir /s /q "%SCIHOME%"
 
 rem fail without xml report
-if not exist "%ARCH%_%TEST%.xml" exit 1
+if not exist "%LOG_PATH%\%ARCH%_%TEST%.xml" exit 1

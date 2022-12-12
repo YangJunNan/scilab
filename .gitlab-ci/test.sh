@@ -28,4 +28,4 @@ echo -e "\e[0Ksection_end:$(date +%s):test\r\e[0K"
 rm -fr "${SCIHOME}"
 
 # fail without xml report
-[ ! -f "${ARCH}_${TEST}.xml" ] && exit 1
+[ ! -f "${LOG_PATH}/${ARCH}_${TEST}.xml" ] && exit 1
