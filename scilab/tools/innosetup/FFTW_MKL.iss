@@ -19,4 +19,3 @@
 ;-------------------------------------------------------------------------------
 ;
 Source: bin\mkl\libfftw3-3.dll; DestDir: {app}\bin\fftw; Components: {#COMPN_FFTW_MKL_LIBRARY}
-Source: bin\mkl\fftw-readme.txt; DestDir: {app}\bin\fftw; Components: {#COMPN_FFTW_MKL_LIBRARY}

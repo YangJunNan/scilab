@@ -11,14 +11,13 @@
   stage: test
   tags: [x64_windows, scilab]
   script:
-    - $process = Start-Process -Wait -PassThru -FilePath ".gitlab-ci\test.bat"
-    - exit $process.ExitCode
+    - cmd /C "call .gitlab-ci\test.bat"
   artifacts:
     when: always
     paths:
-      - "%ARCH%_%TEST%.xml"
+      - "logs_${CI_COMMIT_SHORT_SHA}/${ARCH}_${TEST}.xml"
     reports:
-      junit: "%ARCH%_%TEST%.xml"
+      junit: "logs_${CI_COMMIT_SHORT_SHA}/${ARCH}_${TEST}.xml"
 
 x64_windows_test_branch_good:
   extends: .x64_windows_test
@@ -213,9 +212,9 @@ impacted_x64_windows_test_ugly:
   artifacts:
     when: always
     paths:
-      - "${ARCH}_${TEST}.xml"
+      - "logs_${CI_COMMIT_SHORT_SHA}/${ARCH}_${TEST}.xml"
     reports:
-      junit: "${ARCH}_${TEST}.xml"
+      junit: "logs_${CI_COMMIT_SHORT_SHA}/${ARCH}_${TEST}.xml"
 
 .x86_64-linux-gnu_test_branch_good:
   extends: .x86_64-linux-gnu_test

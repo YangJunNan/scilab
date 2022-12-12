@@ -10,7 +10,7 @@
 # NOTE: nproc is used to limit memory usage
 
 LOG_PATH=logs_$CI_COMMIT_SHORT_SHA
-mkdir $LOG_PATH
+[ ! -d "$LOG_PATH" ] && mkdir "$LOG_PATH"
 
 # checkout pre-requirements
 echo -e "\e[0Ksection_start:$(date +%s):prerequirements\r\e[0KGetting prerequirements"

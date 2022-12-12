@@ -19,6 +19,7 @@
     # Remove logs dir older than 3 day
     - Get-ChildItem -Path "logs_*" | Where-Object {($_.LastWriteTime -lt (Get-Date).AddDays(-3))} | Remove-Item -Recurse
     # Remove installer and install dir older than 3 day
+    - Get-ChildItem -Path "scilab-*/unins000.exe" | Where-Object {($_.LastWriteTime -lt (Get-Date).AddDays(-3))} | foreach { Start-Process $_ -ArgumentList /SILENT,/SP- -NoNewWindow -Wait }
     - Get-ChildItem -Path "scilab-*" | Where-Object {($_.LastWriteTime -lt (Get-Date).AddDays(-3))} | Remove-Item -Recurse
   script:
     - cmd /C "call .gitlab-ci\build.bat"
