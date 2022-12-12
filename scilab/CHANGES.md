@@ -506,7 +506,7 @@ Bug Fixes
 * [#16708](https://bugzilla.scilab.org/16708): `mgetl` could not read from stdin.
 * [#16711](https://bugzilla.scilab.org/16711): `prettyprint` export to html failed under Linux and macOS.
 * [#16714](https://bugzilla.scilab.org/16714): `fullpath` failed to resolve the path depending on pwd.
-
+* [#16908](https://gitlab.com/scilab/scilab/-/issues/16908): Segmentation fault in macr2tree when members of an object are called as a function.
 
 ### Bugs fixed in 6.1.0:
 * [#2694](https://bugzilla.scilab.org/2694): `bitget` did not accept positive integers of types int8, int16 or int32.
