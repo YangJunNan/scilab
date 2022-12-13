@@ -75,12 +75,12 @@ BEGIN
         BEGIN
             VALUE "CompanyName", "Scilab Enterprises"
             VALUE "FileDescription", "Scilab 6.1.1 (Advanced Console)"
-            VALUE "FileVersion", "6, 1, 1, 0"
+            VALUE "FileVersion", "6, 1, 2, 0"
             VALUE "InternalName", "WScilex-cli"
             VALUE "LegalCopyright", "Copyright (C) 2022"
             VALUE "OriginalFilename", "WScilex-cli.exe"
             VALUE "ProductName", "Scilab 6.1.1 Application"
-            VALUE "ProductVersion", "6, 1, 1, 0"
+            VALUE "ProductVersion", "6, 1, 2, 0"
         END
     END
     BLOCK "VarFileInfo"
