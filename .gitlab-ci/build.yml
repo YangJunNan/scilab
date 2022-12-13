@@ -15,12 +15,12 @@
   before_script:
     - echo "cleaning $CI_PROJECT_DIR"
     # Remove TMPDIRs older than 1 day
-    - Get-ChildItem -Path "$env:TMP\SCI_TMP*" | Where-Object {($_.LastWriteTime -lt (Get-Date).AddDays(-1))} | Remove-Item -Recurse
+    - Get-ChildItem -Path "../../SCI_TMP*" | Where-Object {($_.LastWriteTime -lt (Get-Date).AddDays(-1))} | Remove-Item -Recurse
     # Remove logs dir older than 3 day
     - Get-ChildItem -Path "logs_*" | Where-Object {($_.LastWriteTime -lt (Get-Date).AddDays(-3))} | Remove-Item -Recurse
     # Remove installer and install dir older than 3 day
-    - Get-ChildItem -Path "scilab-*/unins000.exe" | Where-Object {($_.LastWriteTime -lt (Get-Date).AddDays(-3))} | foreach { Start-Process $_ -ArgumentList /SILENT,/SP- -NoNewWindow -Wait }
-    - Get-ChildItem -Path "scilab-*" | Where-Object {($_.LastWriteTime -lt (Get-Date).AddDays(-3))} | Remove-Item -Recurse
+    - Get-ChildItem -Path "../../scilab-*/unins000.exe" | Where-Object {($_.LastWriteTime -lt (Get-Date).AddDays(-3))} | foreach { Start-Process $_ -ArgumentList /SILENT,/SP- -NoNewWindow -Wait }
+    - Get-ChildItem -Path "../../scilab-*" | Where-Object {($_.LastWriteTime -lt (Get-Date).AddDays(-3))} | Remove-Item -Recurse
   script:
     - cmd /C "call .gitlab-ci\build.bat"
   artifacts:
@@ -61,9 +61,9 @@ x64_windows_build_release:
   before_script:
     - echo -e "\e[0Ksection_start:$(date +%s):cleanup\r\e[0KCleaning $CI_PROJECT_DIR"
     # Remove logs older than 3 days
-    - find logs_*   -mtime +3 -delete || true
+    - find logs_*  -mtime +3 -delete || true
     # Remove installer older than 3 days
-    - find scilab-* -mtime +3 -delete || true
+    - find ../../scilab-* -mtime +3 -delete || true
     - echo -e "\e[0Ksection_end:$(date +%s):cleanup\r\e[0K"
   script: bash -x -e .gitlab-ci/build.sh
   artifacts:

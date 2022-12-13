@@ -35,7 +35,7 @@ sed -i ^
  -e "s/SCI_VERSION_WIDE_STRING .*/SCI_VERSION_WIDE_STRING L\"%SCI_VERSION_STRING%\"/" ^
  -e "s/SCI_VERSION_REVISION .*/SCI_VERSION_REVISION \"%CI_COMMIT_SHA%\"/" ^
  -e "s/SCI_VERSION_TIMESTAMP .*/SCI_VERSION_TIMESTAMP %SCI_VERSION_TIMESTAMP%/" ^
- modules\core\includes\version.h.vc modules\core\includes\version.h
+ modules\core\includes\version.h.vc
 
 REM build with Visual Studio and Intel compilers
 devenv Scilab.sln /build "Release|x64" > ..\%LOG_PATH%\log_build.txt
