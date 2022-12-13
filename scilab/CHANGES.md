@@ -247,6 +247,11 @@ Feature changes and additions on 6.1.1
 * `m2sci` Matlab-to-Scilab code converter upgraded for better code conversion.
 
 
+Feature changes and additions on 6.1.2
+--------------------------------------
+
+* completion field names output can now be overloaed.
+
 User Interface improvements
 ---------------------------
 
