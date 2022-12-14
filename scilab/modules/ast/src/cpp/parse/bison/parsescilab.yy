@@ -37,7 +37,7 @@
 #include "charEncoding.h"
 #include "sci_malloc.h"
 
-//#define DEBUG_RULES
+// #define DEBUG_RULES
 #ifdef DEBUG_RULES
     #include <iomanip>
 #endif
@@ -476,6 +476,11 @@ recursiveExpression expression expressionLineBreak    {
                               }
                               delete $3;
                             }
+| recursiveExpression expressionLineBreak {
+                              print_rules("recursiveExpression", "recursiveExpression expressionLineBreak");
+                              $$ = $1;
+                              delete $2;
+                            }
 | recursiveExpression expression COMMENT expressionLineBreak {
                               print_rules("recursiveExpression", "recursiveExpression expression COMMENT expressionLineBreak");
                               $2->setVerbose($4->bVerbose);
@@ -514,12 +519,9 @@ recursiveExpression expression expressionLineBreak    {
 */
 /* Fake Rule : How can we be sure this is the end of an instruction. */
 expressionLineBreak :
-SEMI                            { $$ = new LineBreakStr(); $$->bVerbose = false; $$->iNbBreaker = @1.last_column;print_rules("expressionLineBreak", "SEMI"); }
-| COMMA                         { $$ = new LineBreakStr(); $$->bVerbose = true; $$->iNbBreaker = @1.last_column;print_rules("expressionLineBreak", "COMMA"); }
-| EOL                           { $$ = new LineBreakStr(); $$->bVerbose = true; $$->iNbBreaker = 0;print_rules("expressionLineBreak", "expressionLineBreak SEMI"); }
-| expressionLineBreak SEMI      { $$ = $1; $$->bVerbose = false || $1->bVerbose; $$->iNbBreaker = @2.last_column;print_rules("expressionLineBreak", "SEMI"); }
-| expressionLineBreak COMMA     { $$ = $1; $$->iNbBreaker = @2.last_column;print_rules("expressionLineBreak", "expressionLineBreak COMMA"); }
-| expressionLineBreak EOL       { $$ = $1;print_rules("expressionLineBreak", "expressionLineBreak EOL"); }
+SEMI                            { $$ = new LineBreakStr(); $$->bVerbose = false; $$->iNbBreaker = @1.last_column; print_rules("expressionLineBreak", "SEMI"); }
+| COMMA                         { $$ = new LineBreakStr(); $$->bVerbose = true;  $$->iNbBreaker = @1.last_column; print_rules("expressionLineBreak", "COMMA"); }
+| EOL                           { $$ = new LineBreakStr(); $$->bVerbose = true;  $$->iNbBreaker = 0; print_rules("expressionLineBreak", "EOL");}
 ;
 
 /*
