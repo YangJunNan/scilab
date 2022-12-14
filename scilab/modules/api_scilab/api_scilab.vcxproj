@@ -98,7 +98,7 @@ lib /DEF:"$(ProjectDir)elementary_functions_f_Import.def" /SUBSYSTEM:WINDOWS /MA
 lib /DEF:"$(ProjectDir)linpack_f_Import.def" /SUBSYSTEM:WINDOWS /MACHINE:$(Platform) /OUT:"$(ProjectDir)linpack_f.lib" 1&gt;NUL 2&gt;NUL
 
 cd $(IntDir) &gt;nul
-for %%f in (*.obj) do  ..\..\..\bin\dumpexts -o %%~nf.def -n api_scilab.dll %%f &gt;nul
+for %%f in (*.obj) do  ..\..\..\bin\dumpexts.exe -o %%~nf.def -n api_scilab.dll %%f &gt;nul
 copy *.def api_scilabtmp.def &gt;nul
 copy ..\api_scilab_header.def+api_scilabtmp.def  ..\api_scilab_export.def &gt;nul
 del *.def &gt;nul
@@ -148,7 +148,7 @@ lib /DEF:"$(ProjectDir)elementary_functions_f_Import.def" /SUBSYSTEM:WINDOWS /MA
 lib /DEF:"$(ProjectDir)linpack_f_Import.def" /SUBSYSTEM:WINDOWS /MACHINE:$(Platform) /OUT:"$(ProjectDir)linpack_f.lib" 1&gt;NUL 2&gt;NUL
 
 cd $(IntDir) &gt;nul
-for %%f in (*.obj) do  ..\..\..\bin\dumpexts -o %%~nf.def -n api_scilab.dll %%f &gt;nul
+for %%f in (*.obj) do  ..\..\..\bin\dumpexts.exe -o %%~nf.def -n api_scilab.dll %%f &gt;nul
 copy *.def api_scilabtmp.def &gt;nul
 copy ..\api_scilab_header.def+api_scilabtmp.def  ..\api_scilab_export.def &gt;nul
 del *.def &gt;nul
@@ -203,7 +203,7 @@ lib /DEF:"$(ProjectDir)elementary_functions_f_Import.def" /SUBSYSTEM:WINDOWS /MA
 lib /DEF:"$(ProjectDir)linpack_f_Import.def" /SUBSYSTEM:WINDOWS /MACHINE:$(Platform) /OUT:"$(ProjectDir)linpack_f.lib" 1&gt;NUL 2&gt;NUL
 
 cd $(IntDir) &gt;nul
-for %%f in (*.obj) do  ..\..\..\bin\dumpexts -o %%~nf.def -n api_scilab.dll %%f &gt;nul
+for %%f in (*.obj) do  ..\..\..\bin\dumpexts.exe -o %%~nf.def -n api_scilab.dll %%f &gt;nul
 copy *.def api_scilabtmp.def &gt;nul
 copy ..\api_scilab_header.def+api_scilabtmp.def  ..\api_scilab_export.def &gt;nul
 del *.def &gt;nul
@@ -264,7 +264,7 @@ lib /DEF:"$(ProjectDir)elementary_functions_f_Import.def" /SUBSYSTEM:WINDOWS /MA
 lib /DEF:"$(ProjectDir)linpack_f_Import.def" /SUBSYSTEM:WINDOWS /MACHINE:$(Platform) /OUT:"$(ProjectDir)linpack_f.lib" 1&gt;NUL 2&gt;NUL
 
 cd $(IntDir) &gt;nul
-for %%f in (*.obj) do  ..\..\..\bin\dumpexts -o %%~nf.def -n api_scilab.dll %%f &gt;nul
+for %%f in (*.obj) do  ..\..\..\bin\dumpexts.exe -o %%~nf.def -n api_scilab.dll %%f &gt;nul
 copy *.def api_scilabtmp.def &gt;nul
 copy ..\api_scilab_header.def+api_scilabtmp.def  ..\api_scilab_export.def &gt;nul
 del *.def &gt;nul
