@@ -72,13 +72,18 @@ CHANGES_has_no_edit:
   stage: prebuild
   tags: [scilab]
   rules:
-    - changes:
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+      changes:
         - scilab/CHANGES.md
       variables:
         STATUS: 0
-    - allow_failure: true
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+      allow_failure: true
       variables:
         STATUS: 1
+# on forks, always trigger a warning as we have no source branch to compare to
+    - variables:
+        STATUS: 1
   script:
-    - echo $STATUS
+    - echo "$STATUS"
     - exit $STATUS
