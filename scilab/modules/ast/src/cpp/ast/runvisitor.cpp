@@ -473,9 +473,7 @@ void RunVisitorT<T>::visitprivate(const FieldExp &e)
             CoverageInstance::stopChrono((void*)&e);
 
             wchar_t wcstrError[512];
-            char* strFuncName = wide_string_to_UTF8(wstrFuncName.c_str());
-            os_swprintf(wcstrError, 512, _W("%s: Extraction must have at least one output.\n").c_str(), strFuncName);
-            FREE(strFuncName);
+            os_swprintf(wcstrError, 512, _W("%ls: Extraction must have at least one output.\n").c_str(), wstrFuncName.c_str());
 
             throw InternalError(wcstrError, 999, e.getLocation());
         }
