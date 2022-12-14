@@ -82,7 +82,8 @@ CHANGES_has_no_edit:
       variables:
         STATUS: 1
 # on forks, always trigger a warning as we have no source branch to compare to
-    - variables:
+    - allow_failure: true
+      variables:
         STATUS: 1
   script:
     - echo "$STATUS"
