@@ -14,7 +14,7 @@ LOG_PATH=logs_$CI_COMMIT_SHORT_SHA
 
 # checkout pre-requirements
 echo -e "\e[0Ksection_start:$(date +%s):prerequirements\r\e[0KGetting prerequirements"
-curl -k -o prereq.tar.xz https://oos.eu-west-2.outscale.com/scilab-releases-dev/prerequirements/prerequirements-scilab-branch-6.1-linux_x64.tar.xz
+curl -k -z prereq.tar.xz -o prereq.tar.xz https://oos.eu-west-2.outscale.com/scilab-releases-dev/prerequirements/prerequirements-scilab-branch-6.1-linux_x64.tar.xz
 tar -xvf prereq.tar.xz -C scilab > $LOG_PATH/log_prereq.txt
 # svn checkout \
 #     --username anonymous --password Scilab \

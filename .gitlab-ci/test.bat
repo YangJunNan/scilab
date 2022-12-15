@@ -5,8 +5,8 @@ REM Install if not exist
 if exist "%SCI_VERSION_STRING%\" goto :installed
 call "%SCI_VERSION_STRING%.bin.%ARCH%.exe" /TASKS=!desktopicon,!AssociateSCESCI,!AssociateTSTDEM,!AssociateSCICOS,!AssociateSOD ^
   /NOICONS /SUPPRESSMSGBOXES /SILENT /SP- ^
-  /DIR="%CI_PROJECT_DIR%\%SCI_VERSION_STRING%"
-if not exist "%SCI_VERSION_STRING%\" exit 1
+  /DIR="%CI_PROJECT_DIR%\..\..\%SCI_VERSION_STRING%"
+if not exist "..\..\%SCI_VERSION_STRING%\" exit 1
 
 :installed
 
@@ -19,13 +19,13 @@ setlocal EnableExtensions
 
 rem get unique SCIHOME 
 :uniqLoop
-set "SCIHOME=%tmp%\SCI_TMP_HOME~%RANDOM%"
+set "SCIHOME=%CI_PROJECT_DIR%\..\..\SCI_TMP_HOME~%RANDOM%"
 if exist -d "%SCIHOME%\" goto :uniqLoop
 mkdir "%SCIHOME%"
 if errorlevel 1  goto :uniqLoop
 
 @echo on
-call "%SCI_VERSION_STRING%\bin\scilab.bat" -nwni -scihome "%SCIHOME%" -quit -e "test_run('%TEST%',[],[],'%LOG_PATH%\%ARCH%_%TEST%.xml')"
+call "..\..\%SCI_VERSION_STRING%\bin\scilab.bat" -nwni -scihome "%SCIHOME%" -quit -e "test_run('%TEST%',[],[],'%LOG_PATH%\%ARCH%_%TEST%.xml')"
 
 rmdir /s /q "%SCIHOME%"
 
