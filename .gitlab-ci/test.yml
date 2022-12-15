@@ -34,11 +34,8 @@ x64_windows_test_branch_good:
           - arnoldi
           - ast
           - boolean
-          - cacsd
           - completion
-          - console
           - core
-          - coverage
           - data_structures
           - fftw
           - fileio
@@ -61,6 +58,9 @@ x64_windows_test_branch_bad:
   parallel:
     matrix: &BAD_TEST_ANCHOR
       - TEST:
+          - cacsd
+          - console
+          - coverage
           - demo_tools
           - development_tools
           - differential_equations
