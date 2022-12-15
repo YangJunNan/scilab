@@ -94,6 +94,7 @@ CHANGES_has_no_edit:
   stage: prebuild
   tags: [x86_64-linux-gnu, docker, scilab]
   when: manual
+  allow_failure: true
   variables:
     GIT_STRATEGY: none
   needs: [x86_64-linux-gnu_set_env]
@@ -121,6 +122,7 @@ x64_windows_manual_clean_build:
   stage: prebuild
   tags: [x64_windows, shell, scilab]
   when: manual
+  allow_failure: true
   variables:
     GIT_STRATEGY: none
   needs: [x64_windows_set_env]
