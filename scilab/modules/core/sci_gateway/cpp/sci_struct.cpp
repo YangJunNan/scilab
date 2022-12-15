@@ -59,7 +59,7 @@ types::Function::ReturnValue sci_struct_gw(types::typed_list &in, int _piRetCoun
     /* Second check if dimensions of data are good*/
     for (itInput = in.begin() + 1; itInput != in.end() ; ((itInput + 1) != in.end()) ? itInput += 2 : itInput += 1)
     {
-        if ((*itInput)->isCell() && (*itInput)->getAs<types::Cell>()->isScalar() == false)
+        if ((*itInput)->isCell() && (*itInput)->getAs<types::Cell>()->getSize() > 1)
         {
             types::Cell* pCell = (*itInput)->getAs<types::Cell>();
             if (piDimsRef == NULL)
@@ -115,7 +115,14 @@ types::Function::ReturnValue sci_struct_gw(types::typed_list &in, int _piRetCoun
         {
             //non scalar cell dispatch cell data in each SingleStruct
             types::Cell* pCell = pData->getAs<types::Cell>();
-            if (pCell->isScalar())
+            if (pCell->isEmpty())
+            {
+                for (int i = 0; i < pOut->getSize(); i++)
+                {
+                    pOut->get(i)->set(wstField, pCell);
+                }
+            }
+            else if (pCell->isScalar())
             {
                 for (int i = 0 ; i < pOut->getSize() ; i++)
                 {
