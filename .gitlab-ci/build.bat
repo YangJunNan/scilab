@@ -15,7 +15,7 @@ REM Create log folder
 set LOG_PATH=logs_%CI_COMMIT_SHORT_SHA%
 if not exist %LOG_PATH% mkdir %LOG_PATH%
 
-curl -k -o prereq.zip https://oos.eu-west-2.outscale.com/scilab-releases-dev/prerequirements/prerequirements-scilab-branch-6.1-windows_x64.zip
+curl -k -z prereq.zip -o prereq.zip https://oos.eu-west-2.outscale.com/scilab-releases-dev/prerequirements/prerequirements-scilab-branch-6.1-windows_x64.zip
 unzip -o prereq.zip -d scilab > %LOG_PATH%\log_prereq.txt
 @REM svn checkout --username anonymous --password Scilab svn://svn.scilab.org/scilab/%PREREQUIREMENTS_BRANCH%/Dev-Tools/SE/Prerequirements/Windows_x64/ scilab > %LOG_PATH%\log_svn.txt
 @REM if errorlevel 1 tail --lines=20 %LOG_PATH%\log_svn.txt 1>&2 & exit 1
@@ -36,6 +36,12 @@ sed -i ^
  -e "s/SCI_VERSION_REVISION .*/SCI_VERSION_REVISION \"%CI_COMMIT_SHA%\"/" ^
  -e "s/SCI_VERSION_TIMESTAMP .*/SCI_VERSION_TIMESTAMP %SCI_VERSION_TIMESTAMP%/" ^
  modules\core\includes\version.h.vc
+if exist modules\core\includes\version.h sed -i ^
+ -e "s/SCI_VERSION_STRING .*/SCI_VERSION_STRING \"%SCI_VERSION_STRING%\"/" ^
+ -e "s/SCI_VERSION_WIDE_STRING .*/SCI_VERSION_WIDE_STRING L\"%SCI_VERSION_STRING%\"/" ^
+ -e "s/SCI_VERSION_REVISION .*/SCI_VERSION_REVISION \"%CI_COMMIT_SHA%\"/" ^
+ -e "s/SCI_VERSION_TIMESTAMP .*/SCI_VERSION_TIMESTAMP %SCI_VERSION_TIMESTAMP%/" ^
+ modules\core\includes\version.h
 
 REM build with Visual Studio and Intel compilers
 devenv Scilab.sln /build "Release|x64" > ..\%LOG_PATH%\log_build.txt
