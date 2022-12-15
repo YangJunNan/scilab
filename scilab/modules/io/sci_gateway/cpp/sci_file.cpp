@@ -231,23 +231,25 @@ types::Function::ReturnValue sci_file(types::typed_list &in, int _iRetCount, typ
                         Scierror(iErr, _("%s: Can not open File \"%s\"\n"), "file", pstFilename);
                 }
 
+                FREE(pstFilename);
                 return types::Function::Error;
             }
             else
             {
+                FREE(pstFilename);
                 out.push_back(types::Double::Empty());
                 out.push_back(new types::Double((double)iErr));
                 return types::Function::OK;
             }
         }
 
+        FREE(pstFilename);
+
         out.push_back(new types::Double((double)lunit));
         if (_iRetCount == 2)
         {
             out.push_back(new types::Double(0.0));
         }
-
-        FREE(pstFilename);
     }
     else if (wcscmp(pSAction->get(0), L"close") == 0 ||
              wcscmp(pSAction->get(0), L"rewind") == 0 ||

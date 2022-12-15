@@ -29,8 +29,9 @@ void C2F(addfile)(int *fd, FILE *fa, int *swap2, int *type, int *mode, char *fil
 {
     wchar_t* wcsFilename = to_wide_string(filename);
     types::File* pFile = new types::File();
-
-    pFile->setFilename(std::wstring(get_full_pathW(wcsFilename)));
+    wchar_t* wcsFullPath = get_full_pathW(wcsFilename);
+    pFile->setFilename(wcsFullPath);
+    FREE(wcsFullPath);
 
     if (*type == 2)
     {
