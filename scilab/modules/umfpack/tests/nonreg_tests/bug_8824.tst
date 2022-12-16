@@ -6,6 +6,7 @@
 // =============================================================================
 //
 // <-- CLI SHELL MODE -->
+// <-- ENGLISH IMPOSED -->
 //
 // <-- Non-regression test for bug 8824 -->
 //
@@ -28,7 +29,6 @@ j = [1:N-1 1:N 2:N ]';
 ij = [i j];
 T = sparse(ij,s);
 I = speye(N,N);
-warning("off"); // Avoid display of warning about sparse matrix size > 2147483647
 A = I .*. T + T .*. I;
 
 assert_checktrue(execstr("hchol=taucs_chfact(A)","errcatch")==0);
