@@ -10,7 +10,14 @@
 				<Tool Name="VFResourceCompilerTool"/>
 				<Tool Name="VFMidlTool" SuppressStartupBanner="true" HeaderFileName="$(InputName).h" TypeLibraryName="$(IntDir)/$(InputName).tlb"/>
 				<Tool Name="VFCustomBuildTool"/>
-				<Tool Name="VFPreLinkEventTool" CommandLine="setlocal EnableDelayedExpansion&#xA;cd $(ConfigurationName)&#xA;set LIST_OBJ=&#xA;for %%f in (*.obj) do set LIST_OBJ=!LIST_OBJ! %%f&#xA;&quot;$(SolutionDir)bin\dumpexts&quot; -o $(ProjectName).def $(ProjectName).dll %LIST_OBJ%&#xA;copy $(ProjectName).def ..\$(ProjectName).def &gt;nul&#xA;del *.def &gt;nul&#xA;cd .." Description="Build $(ProjectName).def"/>
+				<Tool Name="VFPreLinkEventTool" CommandLine="setlocal EnableDelayedExpansion
+cd $(ConfigurationName)
+set LIST_OBJ=
+for %%f in (*.obj) do set LIST_OBJ=!LIST_OBJ! %%f
+&quot;$(SolutionDir)bin\dumpexts&quot; -o $(ProjectName).def $(ProjectName).dll %LIST_OBJ%
+copy $(ProjectName).def ..\$(ProjectName).def &gt;nul
+del *.def &gt;nul
+cd .." Description="Build $(ProjectName).def"/>
 				<Tool Name="VFPreBuildEventTool"/>
 				<Tool Name="VFPostBuildEventTool"/>
 				<Tool Name="VFManifestTool" SuppressStartupBanner="true"/></Configuration>
@@ -20,7 +27,14 @@
 				<Tool Name="VFResourceCompilerTool"/>
 				<Tool Name="VFMidlTool" SuppressStartupBanner="true" HeaderFileName="$(InputName).h" TypeLibraryName="$(IntDir)/$(InputName).tlb"/>
 				<Tool Name="VFCustomBuildTool"/>
-				<Tool Name="VFPreLinkEventTool" CommandLine="setlocal EnableDelayedExpansion&#xA;cd $(ConfigurationName)&#xA;set LIST_OBJ=&#xA;for %%f in (*.obj) do set LIST_OBJ=!LIST_OBJ! %%f&#xA;&quot;$(SolutionDir)bin\dumpexts&quot; -o $(ProjectName).def $(ProjectName).dll %LIST_OBJ%&#xA;copy $(ProjectName).def ..\$(ProjectName).def &gt;nul&#xA;del *.def &gt;nul&#xA;cd .." Description="Build $(ProjectName).def"/>
+				<Tool Name="VFPreLinkEventTool" CommandLine="setlocal EnableDelayedExpansion
+cd $(ConfigurationName)
+set LIST_OBJ=
+for %%f in (*.obj) do set LIST_OBJ=!LIST_OBJ! %%f
+&quot;$(SolutionDir)bin\dumpexts&quot; -o $(ProjectName).def $(ProjectName).dll %LIST_OBJ%
+copy $(ProjectName).def ..\$(ProjectName).def &gt;nul
+del *.def &gt;nul
+cd .." Description="Build $(ProjectName).def"/>
 				<Tool Name="VFPreBuildEventTool"/>
 				<Tool Name="VFPostBuildEventTool"/>
 				<Tool Name="VFManifestTool" SuppressStartupBanner="true"/></Configuration>
@@ -30,7 +44,14 @@
 				<Tool Name="VFResourceCompilerTool"/>
 				<Tool Name="VFMidlTool" SuppressStartupBanner="true" HeaderFileName="$(InputName).h" TypeLibraryName="$(IntDir)/$(InputName).tlb"/>
 				<Tool Name="VFCustomBuildTool"/>
-				<Tool Name="VFPreLinkEventTool" CommandLine="setlocal EnableDelayedExpansion&#xA;cd $(ConfigurationName)&#xA;set LIST_OBJ=&#xA;for %%f in (*.obj) do set LIST_OBJ=!LIST_OBJ! %%f&#xA;&quot;$(SolutionDir)bin\dumpexts&quot; -o $(ProjectName).def $(ProjectName).dll %LIST_OBJ%&#xA;copy $(ProjectName).def ..\$(ProjectName).def &gt;nul&#xA;del *.def &gt;nul&#xA;cd .." Description="Build $(ProjectName).def"/>
+				<Tool Name="VFPreLinkEventTool" CommandLine="setlocal EnableDelayedExpansion
+cd $(ConfigurationName)
+set LIST_OBJ=
+for %%f in (*.obj) do set LIST_OBJ=!LIST_OBJ! %%f
+&quot;$(SolutionDir)bin\dumpexts&quot; -o $(ProjectName).def $(ProjectName).dll %LIST_OBJ%
+copy $(ProjectName).def ..\$(ProjectName).def &gt;nul
+del *.def &gt;nul
+cd .." Description="Build $(ProjectName).def"/>
 				<Tool Name="VFPreBuildEventTool"/>
 				<Tool Name="VFPostBuildEventTool"/>
 				<Tool Name="VFManifestTool" SuppressStartupBanner="true"/></Configuration>
@@ -40,7 +61,14 @@
 				<Tool Name="VFResourceCompilerTool"/>
 				<Tool Name="VFMidlTool" SuppressStartupBanner="true" HeaderFileName="$(InputName).h" TypeLibraryName="$(IntDir)/$(InputName).tlb"/>
 				<Tool Name="VFCustomBuildTool"/>
-				<Tool Name="VFPreLinkEventTool" CommandLine="setlocal EnableDelayedExpansion&#xA;cd $(ConfigurationName)&#xA;set LIST_OBJ=&#xA;for %%f in (*.obj) do set LIST_OBJ=!LIST_OBJ! %%f&#xA;&quot;$(SolutionDir)bin\dumpexts&quot; -o $(ProjectName).def $(ProjectName).dll %LIST_OBJ%&#xA;copy $(ProjectName).def ..\$(ProjectName).def &gt;nul&#xA;del *.def &gt;nul&#xA;cd .." Description="Build $(ProjectName).def"/>
+				<Tool Name="VFPreLinkEventTool" CommandLine="setlocal EnableDelayedExpansion
+cd $(ConfigurationName)
+set LIST_OBJ=
+for %%f in (*.obj) do set LIST_OBJ=!LIST_OBJ! %%f
+&quot;$(SolutionDir)bin\dumpexts&quot; -o $(ProjectName).def $(ProjectName).dll %LIST_OBJ%
+copy $(ProjectName).def ..\$(ProjectName).def &gt;nul
+del *.def &gt;nul
+cd .." Description="Build $(ProjectName).def"/>
 				<Tool Name="VFPreBuildEventTool"/>
 				<Tool Name="VFPostBuildEventTool"/>
 				<Tool Name="VFManifestTool" SuppressStartupBanner="true"/></Configuration></Configurations>
