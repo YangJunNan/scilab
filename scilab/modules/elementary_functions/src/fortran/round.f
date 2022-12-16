@@ -14,7 +14,6 @@ c
 c
       double precision x1,x,y,z,e,h
       data h/1.0d+9/
-
 c
       x=x1
       if (x.eq.0d0) then 
