@@ -44,6 +44,7 @@ if exist modules\core\includes\version.h sed -i ^
  modules\core\includes\version.h
 
 REM build with Visual Studio and Intel compilers
+devenv Scilab.sln /build "Release|x64" /project dumpexts > ..\%LOG_PATH%\log_dumpexts_%CI_COMMIT_SHORT_SHA%.txt
 devenv Scilab.sln /build "Release|x64" > ..\%LOG_PATH%\log_build_%CI_COMMIT_SHORT_SHA%.txt
 if errorlevel 1 tail --lines=20 ..\%LOG_PATH%\log_build_%CI_COMMIT_SHORT_SHA%.txt 1>&2 & exit 1
 devenv Scilab.sln /build "Release|x64" /project buildhelp > ..\%LOG_PATH%\log_buildhelp_%CI_COMMIT_SHORT_SHA%.txt
