@@ -51,7 +51,6 @@ workflow:
         DOCKER_WINDOWS_BUILDER: "$CI_REGISTRY_IMAGE/windows-builder:$CI_COMMIT_BRANCH"
     - if: $CI_PROJECT_PATH_SLUG !~ /scilab-scilab/
       variables:
-        GIT_CLEAN_FLAGS: -fxd
         SCI_VERSION_STRING: "$CI_PROJECT_PATH_SLUG-${CI_COMMIT_SHORT_SHA}"
     # run on merge request and set specific docker image tag
     - if: $CI_PIPELINE_SOURCE == "merge_request_event"
