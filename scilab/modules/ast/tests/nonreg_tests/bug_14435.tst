@@ -48,6 +48,6 @@ assert_checkerror("m.z",message);
 assert_checkerror("t(""z"")",message);
 assert_checkerror("m(""z"")",message);
 
-msg = msprintf(_("%s: Extraction must have at least one output.\n"), "%user_e");
+msg = msprintf(_("%ls: Extraction must have at least one output.\n"), "%user_e");
 assert_checkerror("t.no_output", msg);
 assert_checkerror("t(""no_output"")", msg);
