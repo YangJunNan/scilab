@@ -17,6 +17,7 @@ function ret = issue_7196()
         error("issue 7196 error")
         ret=0;
     catch
+        // failed to display ret if this is the unique statement here
         ret=1;
     end
 endfunction
