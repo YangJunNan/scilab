@@ -15,15 +15,15 @@ LOG_PATH=logs_$CI_COMMIT_SHORT_SHA
 # checkout pre-requirements
 echo -e "\e[0Ksection_start:$(date +%s):prerequirements\r\e[0KGetting prerequirements"
 curl -k -z prereq.tar.xz -o prereq.tar.xz https://oos.eu-west-2.outscale.com/scilab-releases-dev/prerequirements/prerequirements-scilab-branch-6.1-linux_x64.tar.xz
-tar -xvf prereq.tar.xz -C scilab > $LOG_PATH/log_prereq.txt
+tar -xvf prereq.tar.xz -C scilab > ${LOG_PATH}/log_prereq_${CI_COMMIT_SHORT_SHA}.txt
 # svn checkout \
 #     --username anonymous --password Scilab \
 #     "svn://svn.scilab.org/scilab/${PREREQUIREMENTS_BRANCH}/Dev-Tools/SE/Prerequirements/linux_x64/" scilab \
-#     > $LOG_PATH/log_svn.txt || (tail --lines=100 $LOG_PATH/log_svn.txt; exit 1)
+#     > ${LOG_PATH}/log_svn_${CI_COMMIT_SHORT_SHA}.txt || (tail --lines=100 $LOG_PATH/log_svn_${CI_COMMIT_SHORT_SHA}.txt; exit 1)
 # # display svn revision
-# tail -n 1 $LOG_PATH/log_svn.txt
+# tail -n 1 ${LOG_PATH}/log_svn_${CI_COMMIT_SHORT_SHA}.txt
 # # revert local modification
-# svn revert -R scilab >> $LOG_PATH/log_svn.txt
+# svn revert -R scilab >> ${LOG_PATH}/log_svn_${CI_COMMIT_SHORT_SHA}.txt
 echo -e "\e[0Ksection_end:$(date +%s):prerequirements\r\e[0K"
 
 # patch version numbers
@@ -45,21 +45,21 @@ export SCILIBS_LDFLAGS="-Wl,--allow-shlib-undefined"
 # configure (with reconfigure for up to date info)
 echo -e "\e[0Ksection_start:$(date +%s):configure[collapsed=true]\r\e[0KConfigure"
 cd scilab ||exit 1
-aclocal  >  ../$LOG_PATH/log.txt
-autoconf >> ../$LOG_PATH/log.txt
-automake >> ../$LOG_PATH/log.txt
-./configure --prefix='' |tee -a ../$LOG_PATH/log.txt
+aclocal  >  ../${LOG_PATH}/log_autoreconf_${CI_COMMIT_SHORT_SHA}.txt
+autoconf >> ../${LOG_PATH}/log_autoreconf_${CI_COMMIT_SHORT_SHA}.txt
+automake >> ../${LOG_PATH}/log_autoreconf_${CI_COMMIT_SHORT_SHA}.txt
+./configure --prefix='' |tee -a ../${LOG_PATH}/log_configure_${CI_COMMIT_SHORT_SHA}.txt
 echo -e "\e[0Ksection_end:$(date +%s):configure\r\e[0K"
 
 # make 
 echo -e "\e[0Ksection_start:$(date +%s):make\r\e[0KMake"
-make --jobs="$(nproc)" all &>>../$LOG_PATH/log.txt ||(tail --lines=100 ../$LOG_PATH/log.txt; exit 1)
-make doc &>../$LOG_PATH/log_doc.txt ||(tail --lines=100 ../$LOG_PATH/log_doc.txt; exit 1)
+make --jobs="$(nproc)" all &>>../${LOG_PATH}/log_build_${CI_COMMIT_SHORT_SHA}.txt ||(tail --lines=100 ../${LOG_PATH}/log_build_${CI_COMMIT_SHORT_SHA}.txt; exit 1)
+make doc &>../${LOG_PATH}/log_doc_${CI_COMMIT_SHORT_SHA}.txt ||(tail --lines=100 ../$LOG_PATH/log_doc_${CI_COMMIT_SHORT_SHA}.txt; exit 1)
 echo -e "\e[0Ksection_end:$(date +%s):make\r\e[0K"
 
 # install to tmpdir
 echo -e "\e[0Ksection_start:$(date +%s):install\r\e[0KInstall"
-make install DESTDIR="/${SCI_VERSION_STRING}" &>>../$LOG_PATH/log_install.txt ||(tail --lines=100 ../$LOG_PATH/log_install.txt; exit 1)
+make install DESTDIR="/${SCI_VERSION_STRING}" &>>../${LOG_PATH}/log_install_${CI_COMMIT_SHORT_SHA}.txt ||(tail --lines=100 ../$LOG_PATH/log_install_${CI_COMMIT_SHORT_SHA}.txt; exit 1)
 echo -e "\e[0Ksection_end:$(date +%s):install\r\e[0K"
 
 echo -e "\e[0Ksection_start:$(date +%s):patch[collapsed=true]\r\e[0KPatch binary"
