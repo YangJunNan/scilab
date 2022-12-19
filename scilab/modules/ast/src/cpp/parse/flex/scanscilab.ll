@@ -364,7 +364,7 @@ assign			"="
 }
 
 <BEGINID>
-{
+ {
     {id}                        {
         wchar_t *pwText = to_wide_string(yytext);
         if (yytext != NULL && pwText == NULL)
@@ -742,7 +742,7 @@ assign			"="
 
 
 <MATRIX>
-{
+ {
   {lparen} {
     ++paren_levels.top();
     return scan_throw(LPAREN);
@@ -990,7 +990,7 @@ assign			"="
 }
 
 <LINEBREAK>
-{
+ {
   {newline}				{
     yylloc.last_line += 1;
     yylloc.last_column = 1;
@@ -1047,7 +1047,7 @@ assign			"="
 
 
 <LINECOMMENT>
-{
+ {
   {newline}	{
     //yylloc.last_line += 1;
     //yylloc.last_column = 1;
@@ -1118,7 +1118,7 @@ assign			"="
 
 
 <REGIONCOMMENT>
-{
+ {
   {endblockcomment}				{
     --comment_level;
     if (comment_level == 0) {
@@ -1157,7 +1157,7 @@ assign			"="
 
 
 <SIMPLESTRING>
-{
+ {
   {dquote}{dquote}				{
     pstBuffer += "\"";
   }
@@ -1228,7 +1228,7 @@ assign			"="
 
 
 <DOUBLESTRING>
-{
+ {
   {dquote}{dquote}				{
     pstBuffer += "\"";
   }
@@ -1299,7 +1299,7 @@ assign			"="
 
 
 <SHELLMODE>
-{
+ {
     {spaces}                    {
         if (last_token == ID)
         {

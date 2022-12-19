@@ -2422,7 +2422,6 @@ std::string printExp(std::ifstream& _File, ast::Exp* _pExp, const std::string& _
     //bypass previous lines
     for (int i = *_piLine; i < loc.first_line - 1; i++)
     {
-
         (*_piLine)++;
         if ((*_piLine) != (loc.first_line - 1))
         {
