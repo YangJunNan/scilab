@@ -17,10 +17,13 @@
 // plot2d([1 2]*1e-14): Y-axis extending out of its range for small Y values
 
 t=linspace(1e-200,1e-30,100);
+scf(1)
 plot(t,sin(t))
-xs2gif(0,"bug_16029_1.gif")
+xs2gif(1,"bug_16029_1.gif")
+scf(2)
+plot(t,sin(t))
 gca().tight_limits="on"
-xs2gif(0,"bug_16029_2.gif")
+xs2gif(2,"bug_16029_2.gif")
 
 fp = mopen("bug_16029_1.gif");
 hash1 = hash(fp,"sha256")
