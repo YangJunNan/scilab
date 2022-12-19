@@ -330,6 +330,7 @@ Bug Fixes
 
 * [#16049](https://gitlab.com/scilab/scilab/-/issues/16049): struct("v", cell()) crashes Scilab.
 * [#7196](https://gitlab.com/scilab/scilab/-/issues/7196): try/catch: returned value assigned in `catch` is not displayed.
+* [#16029](https://bugzilla.scilab.org/16029): tick marks were extending out of range for small scale plots 
 * [#16653](https://bugzilla.scilab.org/16653): fromJSON() crashed with a non existing file.
 * [#16713](https://bugzilla.scilab.org/16713): Automatic stretching of Axes box in 3d view was not configurable.
 * [#16717](https://bugzilla.scilab.org/16717): An error occured in findobj when no objects existed.
