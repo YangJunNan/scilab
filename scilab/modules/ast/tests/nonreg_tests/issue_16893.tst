@@ -17,6 +17,8 @@
 // "exec" instruction crashes Scilab.
 //
 
+fname = fullfile(TMPDIR, "issue_19893.sce");
 txt = [ "1;//"; ";"; ";"];
-mputl(txt, TMPDIR+"/issue_19893.sce");
-exec(TMPDIR+"/issue_19893.sce")
+mputl(txt, fname);
+exec(fname, -1)
+deletefile(fname)
