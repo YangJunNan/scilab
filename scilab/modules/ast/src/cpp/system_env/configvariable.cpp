@@ -1338,7 +1338,6 @@ void ConfigVariable::whereErrorToString(std::wostringstream& ostr)
 
 void ConfigVariable::fillWhereError(int _iErrorLine)
 {
-
     if (m_WhereError.empty())
     {
         int iTmp = 0;

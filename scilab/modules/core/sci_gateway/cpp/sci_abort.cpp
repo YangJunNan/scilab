@@ -41,5 +41,4 @@ types::Function::ReturnValue sci_abort(types::typed_list &in, int _iRetCount, ty
     }
 
     throw ast::InternalAbort();
-    return types::Function::OK;
 }

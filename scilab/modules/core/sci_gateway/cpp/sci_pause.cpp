@@ -46,8 +46,18 @@ types::Function::ReturnValue sci_pause(types::typed_list &in, int _iRetCount, ty
     // or when the "where()" function is called.
     ConfigVariable::macroFirstLine_begin(2);
 
-    // do pause
-    pause_interpreter();
+    try
+    {
+        // do pause
+        pause_interpreter();
+    }
+    catch (const ast::InternalAbort& ia)
+    {
+        ConfigVariable::macroFirstLine_end();
+        throw ia;
+    }
+
+    ConfigVariable::macroFirstLine_end();
 
     return types::Function::OK;
 }

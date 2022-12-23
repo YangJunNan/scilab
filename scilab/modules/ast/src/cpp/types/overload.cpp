@@ -165,6 +165,13 @@ types::Function::ReturnValue Overload::call(const std::wstring& _stOverloadingFu
 
         throw ie;
     }
+    catch (const ast::InternalAbort& ia)
+    {
+        ConfigVariable::where_end();
+        ConfigVariable::setLastErrorFunction(_stOverloadingFunctionName);
+        ConfigVariable::decreaseRecursion();
+        throw ia;
+    }
 }
 
 std::wstring Overload::getNameFromOper(const int _oper)
