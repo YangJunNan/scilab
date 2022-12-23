@@ -26,7 +26,8 @@ function hole3d1()
 
     my_handle                   = scf(100001);
     clf(my_handle,"reset");
-    my_axe                      = my_handle.children;
+    my_handle.color_map = jetcolormap(128);
+    my_axe = my_handle.children;
 
     demo_viewCode("hole3d1.sce");
 

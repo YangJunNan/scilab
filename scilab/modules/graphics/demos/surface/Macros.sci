@@ -53,9 +53,11 @@ function cplxmap(z,w,varargin)
     [X,Y,U]=nf3d(x,y,u);
     [X,Y,V]=nf3d(x,y,v);
     Colors = sum(V,"r");
+    ncol = size(gcf().color_map,1);
     Colors = Colors - min(Colors);
-    Colors = 32*Colors/max(Colors);
-    plot3d1(X,Y,list(U,Colors),varargin(:))
+    Colors = 1+(ncol-1)*Colors/max(Colors);
+    plot3d1(X,Y,list(U,Colors),varargin(:));
+    
 endfunction
 
 function cplxroot(n,m,varargin)
