@@ -30,7 +30,7 @@ is=fft(imag(S),-1);
 assert_checkalmostequal(real(rs), real(fft(CC,-1)), [], 100*%eps);
 
 rs2=fft(real(S),-1,dim=100,incr=1); // dim + incr forced
-assert_checkequal(real(rs), real(rs2));
+assert_checkalmostequal(real(rs), real(rs2), [], 100*%eps);
 
 assert_checkalmostequal(imag(is), imag(fft(CS,-1)), [], 100*%eps);
 
@@ -43,7 +43,7 @@ is=fft(imag(S),-1);
 assert_checkalmostequal(real(rs), real(fft(CC,-1)), [], 100*%eps);
 
 rs2=fft(real(S),-1,dim=100,incr=1); // dim + incr forced
-assert_checkequal(real(rs), real(rs2));
+assert_checkalmostequal(real(rs), real(rs2), [], 100*%eps);
 
 assert_checkalmostequal(imag(is), imag(fft(CS,-1)), [], 100*%eps);
 
@@ -55,7 +55,7 @@ is=fft(imag(S),-1);
 assert_checkalmostequal(real(rs), real(fft(CC,-1)), [], 100*%eps);
 
 rs2=fft(real(S),-1,dim=100,incr=1); // dim + incr forced
-assert_checkequal(real(rs), real(rs2));
+assert_checkalmostequal(real(rs), real(rs2), [], 100*%eps);
 
 assert_checkalmostequal(imag(is), imag(fft(CS,-1)), [], 100*%eps);
 
