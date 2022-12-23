@@ -188,7 +188,7 @@ bool TList::invoke(typed_list & in, optional_list & /*opt*/, int _iRetCount, typ
 
     try
     {
-        ret = Overload::call(wstrFuncName, in, _iRetCount, out, false, false);
+        ret = Overload::call(wstrFuncName, in, _iRetCount, out, false, false, e.getLocation());
         if(ret == types::Callable::OK_NoResult)
         {
             // overload not defined, try with the short name.
@@ -205,7 +205,7 @@ bool TList::invoke(typed_list & in, optional_list & /*opt*/, int _iRetCount, typ
         if (ConfigVariable::getLastErrorFunction().empty())
         {
             wstrFuncName = L"%l_e";
-            ret = Overload::call(wstrFuncName, in, _iRetCount, out);
+            ret = Overload::call(wstrFuncName, in, _iRetCount, out, false, true, e.getLocation());
         }
         else
         {

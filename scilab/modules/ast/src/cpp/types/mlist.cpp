@@ -119,7 +119,7 @@ bool MList::invoke(typed_list & in, optional_list & /*opt*/, int _iRetCount, typ
 
     try
     {
-        ret = Overload::call(wstrFuncName, in, _iRetCount, out);
+        ret = Overload::call(wstrFuncName, in, _iRetCount, out, false, true, e.getLocation());
     }
     catch (const ast::InternalError& ie)
     {
@@ -128,7 +128,7 @@ bool MList::invoke(typed_list & in, optional_list & /*opt*/, int _iRetCount, typ
         if (ConfigVariable::getLastErrorFunction().empty())
         {
             wstrFuncName = L"%l_e";
-            ret = Overload::call(wstrFuncName, in, _iRetCount, out);
+            ret = Overload::call(wstrFuncName, in, _iRetCount, out, false, true, e.getLocation());
         }
         else
         {

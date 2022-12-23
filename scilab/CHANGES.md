@@ -352,7 +352,7 @@ Bug Fixes
 * [#16909](https://gitlab.com/scilab/scilab/-/issues/16909): `read()` may crash when building Scilab with gfortran >= 11.
 * [#16911](https://gitlab.com/scilab/scilab/-/issues/16911): Wrong line number in callstack.
 * [#16913](https://gitlab.com/scilab/scilab/-/issues/16913): InnoSetup files was not updated after MKL upgrade.
-
+* [#16914](https://gitlab.com/scilab/scilab/-/issues/16914): Wrong line number with t/mlist extraction overload.
 
 ### Bugs fixed in 6.1.1:
 * [#3188](https://bugzilla.scilab.org/3188): `part()` was slower than in Scilab 4.1.2.
