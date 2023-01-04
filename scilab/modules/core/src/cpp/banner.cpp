@@ -40,7 +40,7 @@ void banner(void)
     scilabForcedWriteW(L"\n\n");
 
     centerPrint(_W("ESI Group\n").c_str());
-    centerPrint(_W("Copyright (c) 2017-2022 (ESI Group)\n").c_str());
+    centerPrint(_W("Copyright (c) 2017-2023 (ESI Group)\n").c_str());
     centerPrint(_W("Copyright (c) 2011-2017 (Scilab Enterprises)\n").c_str());
     centerPrint(_W("Copyright (c) 1989-2012 (INRIA)\n").c_str());
     centerPrint(_W("Copyright (c) 1989-2007 (ENPC)\n").c_str());
