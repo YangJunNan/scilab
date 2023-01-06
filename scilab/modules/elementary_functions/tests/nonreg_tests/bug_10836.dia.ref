@@ -8,8 +8,8 @@
 // <-- CLI SHELL MODE -->
 // <-- Non-regression test for bug 10836 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=10836
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/10836
 //
 // <-- Short Description -->
 // resize_matrix with boolean failed.

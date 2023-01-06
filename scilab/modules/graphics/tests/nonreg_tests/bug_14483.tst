@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 14483 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=14483
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/14483
 //
 // <-- Short Description -->
 // figure("Name" ...) should be an alias to figure("Figure_name" ...)

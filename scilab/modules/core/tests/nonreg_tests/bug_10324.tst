@@ -10,8 +10,8 @@
 // <-- CLI SHELL MODE -->
 //
 // 
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=10324
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/10324
 //
 // <-- Short Description -->
 // format(m) where m is a vector did not work but the documentation states it can be used.

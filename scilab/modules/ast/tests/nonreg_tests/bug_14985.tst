@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 14985 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/14985
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/14985
 //
 // <-- Short Description -->
 // scilab crashes if a .bin file was not found

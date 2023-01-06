@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 4499 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=4499
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/4499
 //
 // <-- Short Description -->
 // basename() strips directory and suffix from filenames

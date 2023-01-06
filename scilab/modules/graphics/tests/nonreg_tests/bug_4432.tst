@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 4432 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=4432
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/4432
 //
 // <-- Short Description -->
 // When the variation of f of a data set is too small, plot hangs

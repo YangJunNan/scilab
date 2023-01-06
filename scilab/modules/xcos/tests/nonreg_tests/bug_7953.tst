@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 7953 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=7953
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/7953
 //
 // <-- Short Description -->
 // No error message were printed when the diagram is invalid.

@@ -7,8 +7,8 @@
 // <-- TEST WITH GRAPHIC -->
 // <-- Non-regression test for bug 1257 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=1257
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/1257
 //
 // <-- Short Description -->
 // When rotation_style is set to multiple, all axes does not

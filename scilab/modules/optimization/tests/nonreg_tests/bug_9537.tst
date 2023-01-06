@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 9537 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=9537
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/9537
 //
 // <-- Short Description -->
 // optimbase_configure() only allowed row vector as initial value.

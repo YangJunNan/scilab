@@ -10,8 +10,8 @@
 
 // <-- Non-regression test for bug 3348 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=3348
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/3348
 //
 // <-- Short Description -->
 //    Missing tests in lsqrsolve

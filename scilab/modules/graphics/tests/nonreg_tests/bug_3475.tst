@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 3475 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=3475
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/3475
 //
 // <-- Short Description -->
 // After open and close a graphic window, scilab is crashing if a new window is opened.

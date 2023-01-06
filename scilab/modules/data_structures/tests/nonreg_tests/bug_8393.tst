@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 8393 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/8393
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/8393
 //
 // <-- Short Description -->
 // definedfields() reported void fields as existing

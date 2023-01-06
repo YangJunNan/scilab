@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 6861 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=6861
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/6861
 //
 // <-- Short Description -->
 // yulewalk example failed on Windows

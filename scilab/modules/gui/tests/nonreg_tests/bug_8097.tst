@@ -8,8 +8,8 @@
 // <-- Non-regression test for bug 8097 -->
 // <-- TEST WITH GRAPHIC -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=8097
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/8097
 //
 // <-- Short Description -->
 // Scilab crashed when plotting on a figure with "Units" property set to "pixels".

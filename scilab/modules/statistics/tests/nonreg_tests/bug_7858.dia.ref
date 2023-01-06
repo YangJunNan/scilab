@@ -11,8 +11,8 @@
 //
 // <-- Non-regression test for bug 7858 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=7858
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/7858
 //
 // <-- Short Description -->
 // variance and variancef can take now take the a priori mean as input, and it can be a scalar.

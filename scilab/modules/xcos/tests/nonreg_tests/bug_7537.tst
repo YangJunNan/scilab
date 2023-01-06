@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 7537 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=7537
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/7537
 //
 // <-- Short Description -->
 // block instance may contains superblocks with wrong versions. Check that

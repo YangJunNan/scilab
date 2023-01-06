@@ -7,8 +7,8 @@
 // <-- CLI SHELL MODE -->
 // <-- Non-regression test for bug 14461 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=14461
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/14461
 //
 // <-- Short Description -->
 //    Calling grand(n, "markov", P, x0) did not return all outputs.

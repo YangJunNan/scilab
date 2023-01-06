@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 14223 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=14223
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/14223
 //
 // <-- Short Description -->
 //    det returned an error when it is used with a singular matrix.

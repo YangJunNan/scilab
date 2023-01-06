@@ -38,7 +38,7 @@ colorbar(1,7,-1)  // [1 7] graduations covered by colors #[1 7].
 // 1.2)
 clf
 Matplot([1 2 3;4 5 7]);
-colorbar(,,-1,"%6.1f")                // http://bugzilla.scilab.org/14790
+colorbar(,,-1,"%6.1f")                // https://gitlab.com/scilab/scilab/-/issues/14790
 assert_checkequal(gcf().children(1).ticks_format(2), "%6.1f");
 // Same as above
 
@@ -206,7 +206,7 @@ clf
 gcf().color_map = jetcolormap(50);
 champ(x, x, fx, fy)
 gce().colored = "on";
-colorbar  // http://bugzilla.scilab.org/16445 :
+colorbar  // https://gitlab.com/scilab/scilab/-/issues/16445 :
           //   umin >= 0 & umax <= sqrt(0.5)=0.71 should have been guessed
           //   without error (min and max lengths of vectors)
 

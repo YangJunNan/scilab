@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 2639 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=2639
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/2639
 //
 // <-- Short Description -->
 //    'ls' function is crashing when trying to list in an empty directory

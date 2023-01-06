@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 4414 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/4414
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/4414
 //
 // <-- Short Description -->
 // Complex grayplots are not saved correctly in scilab 5.1

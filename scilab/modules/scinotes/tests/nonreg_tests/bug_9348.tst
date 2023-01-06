@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 9348 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/9348
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/9348
 //
 // <-- Short Description -->
 // Miscolorization of a transposed field

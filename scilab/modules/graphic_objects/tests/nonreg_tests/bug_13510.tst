@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 13510 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/13510
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/13510
 //
 // <-- Short Description -->
 // Datatip callback cleared 'd'

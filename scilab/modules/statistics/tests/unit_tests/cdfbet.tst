@@ -51,7 +51,7 @@ B1 = cdfbet('B',p,q,x,y,A);
 assert_checkalmostequal(B1(2:$-1), B(2:$-1));
 
 // IEEE support
-// See http://bugzilla.scilab.org/show_bug.cgi?id=7296
+// See https://gitlab.com/scilab/scilab/-/issues/7296
 X        = 0;
 Y        = 1;
 A        = 1;

@@ -7,8 +7,8 @@
 // =============================================================================
 // <-- Non-regression test for bug 2611 (part 1) -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=2611
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/2611
 //
 // <-- Short Description -->
 // for loop variable not removed when an error arises within a for called in try context

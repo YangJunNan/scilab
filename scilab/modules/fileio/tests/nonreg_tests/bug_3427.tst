@@ -15,8 +15,8 @@
 //The second input argument should be an integer scalar.
 //Nothing else.
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=3427
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/3427
 //
 
 ierr = execstr("mgetl(''SCI/etc/scilab.start'',''r'');","errcatch");

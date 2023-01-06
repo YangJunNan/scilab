@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 15239 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/15239
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/15239
 //
 // <-- Short Description -->
 // The console's properties .tag and .userdata were not displayed

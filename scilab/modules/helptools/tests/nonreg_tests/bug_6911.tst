@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 6911 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/6911
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/6911
 //
 // <-- Short Description -->
 // Numerical HTML entities like "&#123;" were not supported in .sci heading comments

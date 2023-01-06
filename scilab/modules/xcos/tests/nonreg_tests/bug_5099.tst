@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 5099 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=5099
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/5099
 //
 // <-- Short Description -->
 // Some diagrams are not wholly visible after "Fit diagramm to view".

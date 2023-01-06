@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 14824 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=14824
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/14824
 //
 // <-- Short Description -->
 // Incorrect error message with mfprintf(fd, "%d", [])

@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 8938 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/8938
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/8938
 //
 // <-- Short Description -->
 // Some distributive insertions in boolean sparse matrices failed

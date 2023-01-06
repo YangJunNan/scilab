@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 1871 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=1871
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/1871
 //
 // <-- Short Description -->
 // plot3d1: facet lines are erroneously drawn, if matrix datapoint is out of boundary box 

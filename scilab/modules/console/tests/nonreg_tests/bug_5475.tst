@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 5475 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=5475
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/5475
 //
 // <-- Short Description -->
 // drag & drop .xcos file on console did not open xcos diagram

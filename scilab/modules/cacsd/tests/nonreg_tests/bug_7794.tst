@@ -9,8 +9,8 @@
 // <-- NO CHECK REF -->
 // <-- Non-regression test for bug 7794 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=7794
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/7794
 //
 // <-- Short Description -->
 //  Example of findABCD help page failed.

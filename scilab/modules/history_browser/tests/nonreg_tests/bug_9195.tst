@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 9195 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/9195
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/9195
 //
 // <-- Short Description -->
 // Empty lines entered in Scilab console were displayed in the history browser.

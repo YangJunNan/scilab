@@ -10,8 +10,8 @@
 //
 // <-- ENGLISH IMPOSED -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=1742
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/1742
 //
 // <-- Short Description -->
 //    function [m]=stdev(x,orien)

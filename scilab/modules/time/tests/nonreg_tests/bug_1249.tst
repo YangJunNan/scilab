@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 1249 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=1249
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/1249
 //
 // <-- Short Description -->
 //    When using the command

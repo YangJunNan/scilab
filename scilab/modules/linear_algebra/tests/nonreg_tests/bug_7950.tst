@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 7950 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=7950
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/7950
 //
 // <-- Short Description -->
 // spec function crashed on Windows

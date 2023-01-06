@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 13838 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/13838
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/13838
 //
 // <-- Short Description -->
 // Sparse and complexe substraction made Scilab crash.

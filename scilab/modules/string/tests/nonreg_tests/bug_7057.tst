@@ -7,8 +7,8 @@
 // <-- CLI SHELL MODE -->
 // <-- Non-regression test for bug 7057 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=7057
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/7057
 //
 // <-- Short Description -->
 // isdigit & isalphanum crashed with a matrix of string as input argument.

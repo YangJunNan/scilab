@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 1815 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=1815
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/1815
 //
 // <-- Short Description -->
 //    strindex('aaba','aa') return [1 4] instead of [1]

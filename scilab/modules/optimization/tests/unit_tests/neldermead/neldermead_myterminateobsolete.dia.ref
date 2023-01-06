@@ -17,7 +17,7 @@
 // This is why we do not check the ref.
 // Checking the ref file under Linux fails, because
 // <-- ENGLISH IMPOSED --> has no effect there.
-// See : http://bugzilla.scilab.org/show_bug.cgi?id=9284
+// See : https://gitlab.com/scilab/scilab/-/issues/9284
 function [ y , index ] = rosenbrock ( x , index )
   y = 100*(x(2)-x(1)^2)^2 + (1-x(1))^2;
 endfunction

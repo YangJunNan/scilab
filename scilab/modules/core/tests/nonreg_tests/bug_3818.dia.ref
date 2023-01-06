@@ -7,8 +7,8 @@
 // =============================================================================
 // <-- Non-regression test for bug 3818 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=3818
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/3818
 //
 // <-- Short Description -->
 // Incorrect syntax error management in control instructions under  execstr( 'errcatch')

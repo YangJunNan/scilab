@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 2708 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=2708
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/2708
 //
 // <-- Short Description -->
 // It is no more possible to fill the user_data field of a graphic object with lists

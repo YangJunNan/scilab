@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 11081 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=11081
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/11081
 //
 // <-- Short Description -->
 // movefile, copyfile did not support '~', 'TMPDIR', ... shortcuts in filenames

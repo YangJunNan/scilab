@@ -12,8 +12,8 @@
 //
 // <-- Non-regression test for bug 979 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=979
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/979
 //
 // <-- Short Description -->
 //    Matlab comments like %blabla are translated to

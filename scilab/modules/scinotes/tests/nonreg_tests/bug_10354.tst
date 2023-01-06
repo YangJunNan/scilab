@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 10354 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/10354
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/10354
 //
 // <-- Short Description -->
 // Bad caret position after action on selection

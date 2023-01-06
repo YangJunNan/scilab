@@ -10,8 +10,8 @@
 
 // <-- Non-regression test for bug 3288 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=3288
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/3288
 //
 // <-- Short Description -->
 // strcat with 3 parameters crashs on windows release mode

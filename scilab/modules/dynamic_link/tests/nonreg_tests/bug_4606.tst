@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 4606 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=4606
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/4606
 //
 // <-- Short Description -->
 // example of link does not work on windows

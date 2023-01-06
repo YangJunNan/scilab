@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 4433 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=4433
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/4433
 //
 // <-- Short Description -->
 // problem using optim. On some examples, the optim function makes scilab hangs.

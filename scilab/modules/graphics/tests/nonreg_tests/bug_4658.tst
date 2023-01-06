@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 4658 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=4658
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/4658
 //
 // <-- Short Description -->
 //   Use the standard messages for graphics macros.

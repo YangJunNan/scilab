@@ -10,8 +10,8 @@
 // <-- CLI SHELL MODE -->
 // <-- NO CHECK REF -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/15762
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/15762
 //
 // <-- Short Description -->
 // error() refuses multiline error messages (regression)

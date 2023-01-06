@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 4141 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=4141
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/4141
 //
 // Short description:
 // ascii doesn't support extended ascii values in the range of [128-255].

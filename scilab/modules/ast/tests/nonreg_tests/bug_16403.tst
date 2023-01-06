@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 16144 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/16403
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/16403
 //
 // <-- Short Description -->
 // 1D extraction of matrix with implicit index has wrong dimensions

@@ -9,8 +9,8 @@
 //
 // <-- CLI SHELL MODE -->
 // 
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=9328
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/9328
 //
 // <-- Short Description -->
 // Scilab randomly crached at startup under Mac OS X when calling

@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 10560 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=10560
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/10560
 //
 // <-- Short Description -->
 // genetic algorithms demos failed

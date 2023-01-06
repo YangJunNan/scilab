@@ -7,8 +7,8 @@
 // =============================================================================
 // <-- Non-regression test for bug 13608 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=13608
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/13608
 //
 // <-- Short Description -->
 // There was an error with complex values.

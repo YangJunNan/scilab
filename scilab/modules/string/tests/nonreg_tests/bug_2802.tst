@@ -12,8 +12,8 @@
 
 // <-- Non-regression test for bug 2802 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=2802
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/2802
 //
 // <-- Short Description -->
 //    convstr() doesn't work if the string contains accented characters.

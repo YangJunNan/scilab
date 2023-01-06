@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 1041 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=1041
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/1041
 //
 // <-- Short Description -->
 // An error inside a loop is reported as if it occurred on the "end" line

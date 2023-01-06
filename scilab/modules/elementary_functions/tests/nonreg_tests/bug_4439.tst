@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 4439 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=4439
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/4439
 //
 // <-- Short Description -->
 //    Unexpected complex conjugates when using cat

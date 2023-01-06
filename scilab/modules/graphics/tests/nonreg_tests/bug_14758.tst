@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 14758 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/14758
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/14758
 //
 // <-- Short Description -->
 // xstringb creates a figure when no exists.

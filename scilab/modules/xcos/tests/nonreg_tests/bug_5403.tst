@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 5403 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=5403
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/5403
 //
 // <-- Short Description -->
 // When running a diagram which doesn't request any graphic window, Xcos creates a blank graphic window.

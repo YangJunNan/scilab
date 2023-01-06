@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 11331 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=11331
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/11331
 //
 // <-- Short Description -->
 // graypolarplot() returned an error about an unknown property.

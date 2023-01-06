@@ -13,8 +13,8 @@
 // <-- Short Description -->
 // diary() removes whitespaces characters from the output of mprintf()
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=4676
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/4676
 //
 
 diary_file = pathconvert(TMPDIR+'/bug_diary_4676.txt',%F);

@@ -11,8 +11,8 @@
 //
 // <-- Non-regression test for bug 13674 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=13674
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/13674
 //
 // <-- Short Description -->
 // atomsSystemUpdate() failed if USER has it's own wgetrc config file

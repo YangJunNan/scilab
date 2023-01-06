@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 10864 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=10864
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/10864
 //
 // <-- Short Description -->
 // atomsRemove required a network connection to remove a package.

@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 4878 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=4878
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/4878
 //
 // <-- Short Description -->
 // If a line starts with a comment, "Menu→Edit→Comment Selection" uncomment it.

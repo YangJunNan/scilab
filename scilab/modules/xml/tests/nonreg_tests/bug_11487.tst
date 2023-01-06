@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 11487 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/11487
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/11487
 //
 // <-- Short Description -->
 // Infinite loop when a list was inserted into itself.

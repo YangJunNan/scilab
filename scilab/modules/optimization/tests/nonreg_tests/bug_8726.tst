@@ -8,8 +8,8 @@
 // <-- ENGLISH IMPOSED -->
 // <-- Non-regression test for bug 8726 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=8726
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/8726
 //
 // <-- Short Description -->
 // The karmarkar function may produce a division-by-zero error.

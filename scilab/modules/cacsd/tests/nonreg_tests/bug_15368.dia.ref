@@ -11,8 +11,8 @@
 //
 // <-- Non-regression test for bug 15368 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/15368
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/15368
 //
 // <-- Short Description -->
 // For some continuous time systems, freson() wrongly returned []

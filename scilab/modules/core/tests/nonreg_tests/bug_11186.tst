@@ -9,8 +9,8 @@
 //
 // <-- CLI SHELL MODE -->
 // 
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=11186
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/11186
 //
 // <-- Short Description -->
 // 

@@ -7,8 +7,8 @@
 // <-- TEST WITH GRAPHIC -->
 // <-- Non-regression test for bug 3991-->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=3991
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/3991
 //
 // <-- Short Description -->
 // It is not possible to set a font_style greater than 10 even if one has added a new font using xlfont.

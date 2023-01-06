@@ -7,8 +7,8 @@
 // <-- CLI SHELL MODE -->
 // <-- Non-regression test for bug 3714 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=3714
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/3714
 //
 // <-- Short Description -->
 // fprintfMat and fscanfMat cannot cope with directories with accented characters

@@ -10,8 +10,8 @@
 
 // <-- Non-regression test for bug 15670 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/15670
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/15670
 //
 // <-- Short Description -->
 // set(H, prop1, val1, prop2, val2,..) : setting multiple properties for a

@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 3500 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=3500
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/3500
 //
 // Short description:
 // strindex cannot return all occurrences in regexp mode

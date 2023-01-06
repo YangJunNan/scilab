@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 13111 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=13111
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/13111
 //
 // <-- Short Description -->
 // sqrt returned different results when imaginary part was -0 versus 0.

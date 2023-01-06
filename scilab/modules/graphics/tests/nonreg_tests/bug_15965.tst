@@ -10,8 +10,8 @@
 
 // <-- Non-regression test for bug 15965 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/15965
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/15965
 //
 // <-- Short Description -->
 // plot(x,y) did not support y as encoded integers

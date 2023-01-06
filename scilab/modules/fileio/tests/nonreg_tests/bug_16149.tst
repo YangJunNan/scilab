@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 16149 -->
 //
-// <-- Bugzilla URL -->
-// https://bugzilla.scilab.org/show_bug.cgi?id=16149
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/16149
 //
 // <-- Short Description -->
 // fullpath does not support symbolic links

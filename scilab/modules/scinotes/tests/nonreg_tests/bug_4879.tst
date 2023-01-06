@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 4879 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=4879
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/4879
 //
 // <-- Short Description -->
 // Even if no text is selected, if the edition zone is focused, "Menu→Edit→Comment Region" should comment

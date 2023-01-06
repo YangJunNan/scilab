@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 3470-->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=3470
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/3470
 //
 // <-- Short Description -->
 // plot2d(), followed by legends produce an unexpected error.

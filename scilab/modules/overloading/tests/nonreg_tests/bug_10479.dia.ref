@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 10479 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=10479
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/10479
 //
 // <-- Short Description -->
 //The max and min functions where incorrect for N-D array

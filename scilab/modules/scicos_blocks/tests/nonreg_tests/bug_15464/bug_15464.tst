@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 15464 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/15464
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/15464
 //
 // <-- Short Description -->
 // Xcos C-blocks could not link dlls on Windows

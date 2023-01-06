@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 13321 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/13321
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/13321
 //
 // <-- Short Description -->
 // scf() did not create an invisible figure when the gdf.visible property was set to "off".

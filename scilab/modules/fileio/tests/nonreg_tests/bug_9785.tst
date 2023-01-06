@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 9785 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=9785
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/9785
 //
 // <-- Short Description -->
 // fscanfMat failed on this file

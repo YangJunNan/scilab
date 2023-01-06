@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 13872 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=13872
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/13872
 //
 // <-- Short Description -->
 //    The indices returned by unique were wrong.

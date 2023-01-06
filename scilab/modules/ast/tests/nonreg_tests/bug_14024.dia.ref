@@ -8,8 +8,8 @@
 //
 // <-- Non-regression test for bug 14024 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/14082
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/14082
 //
 // <-- Short Description -->
 // print of macrofile display a debug message instead of macro prototype.

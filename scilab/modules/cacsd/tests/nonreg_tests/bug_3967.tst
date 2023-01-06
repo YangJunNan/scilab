@@ -7,8 +7,8 @@
 
 // <-- Non-regression test for bug 3967 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=3967
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/3967
 //
 // <-- Short Description -->
 //    when called with a transfer function, pfss returns a set of state-space systems as a result. 

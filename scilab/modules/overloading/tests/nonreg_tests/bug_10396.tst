@@ -8,8 +8,8 @@
 
 // <-- Non-regression test for bug 10396 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=10396
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/10396
 //
 // <-- Short Description -->
 // Display of a structure with large matrix took a long time.

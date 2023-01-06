@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 12147 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/12147
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/12147
 //
 // <-- Short Description -->
 //  1) .mat files ending with "end" closing the "function" statement

@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 6420 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=6420
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/6420
 //
 // <-- Short Description -->
 // It was not possible to use ax.{x, y, z}_ticks with LaTex commands.

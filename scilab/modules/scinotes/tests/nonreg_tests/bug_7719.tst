@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 7719 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=7719
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/7719
 //
 // <-- Short Description -->
 // There was not the possibility to open several files at the same time.

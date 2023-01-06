@@ -8,8 +8,8 @@
 // <-- Non-regression test for bug 11096 -->
 // <-- TEST WITH GRAPHIC -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/11096
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/11096
 //
 // <-- Short Description -->
 // Issue when using units other than default points for uicontrols.

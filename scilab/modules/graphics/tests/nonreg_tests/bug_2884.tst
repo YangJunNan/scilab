@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 2884 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=2884
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/2884
 //
 // <-- Short Description -->
 // Sometime, with the default window size the X label is half hidden by the bottom canvas border.

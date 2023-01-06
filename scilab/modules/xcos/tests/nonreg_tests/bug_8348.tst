@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 8348 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=8348
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/8348
 //
 // <-- Short Description -->
 // Opening a block parameters without modifying them should not re-position 

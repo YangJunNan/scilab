@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 4871 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=4871
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/4871
 //
 // <-- Short Description -->
 //    If SciNotes edition zone is not focused (just after starting SciNotes for example), "Menu->Edit->Paste" pastes

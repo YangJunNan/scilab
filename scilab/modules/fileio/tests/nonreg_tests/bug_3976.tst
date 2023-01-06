@@ -7,8 +7,8 @@
 
 // <-- Non-regression test for bug 3976 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=3976
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/3976
 //
 // <-- Short Description -->
 // Free error on Scilab exit

@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 7269 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=7269
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/7269
 //
 // <-- Short Description -->
 // When adding a non-existing user-custom block on a diagram, an exception is

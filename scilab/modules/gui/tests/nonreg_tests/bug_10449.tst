@@ -8,8 +8,8 @@
 // <-- Non-regression test for bug 10449 -->
 // <-- INTERACTIVE TEST -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/10449
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/10449
 //
 // <-- Short Description -->
 // On restoration, empty tabs could appear if the previous session was not

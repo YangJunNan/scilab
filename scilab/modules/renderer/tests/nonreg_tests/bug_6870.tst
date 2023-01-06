@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 6870 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=6870
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/6870
 //
 // <-- Short Description -->
 // Arrow with infinite value was not plotted even if it was possible.

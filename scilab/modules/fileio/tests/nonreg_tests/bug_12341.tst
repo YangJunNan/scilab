@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 12341 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/12341
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/12341
 //
 // <-- Short Description -->
 // rmdir() could delete a branch in which pwd() is

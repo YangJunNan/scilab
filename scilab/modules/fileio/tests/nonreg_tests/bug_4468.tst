@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 4468 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=4468
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/4468
 //
 // <-- Short Description -->
 // If <path> represents the path of a directory and has a trailing separator, pathconvert(<path>,%F) should remove this trailing separator.

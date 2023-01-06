@@ -8,8 +8,8 @@
 // <-- Non-regression test for bug 8154 -->
 // <-- INTERACTIVE TEST -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/8154
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/8154
 //
 // <-- Short Description -->
 // It was not possible to cancel a messagebox with ESC key.

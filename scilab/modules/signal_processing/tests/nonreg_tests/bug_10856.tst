@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 10856 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=10856
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/10856
 //
 // <-- Short Description -->
 // analpf did not return the right result.

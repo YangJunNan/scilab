@@ -8,8 +8,8 @@
 // <-- ENGLISH IMPOSED -->
 // <-- Non-regression test for bug 2341 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=2341
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/2341
 //
 // <-- Short Description -->
 //    unhandled matlab syntax for lhs (Matlab accepts lhs calling sequence without commas

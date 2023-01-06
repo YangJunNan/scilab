@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 9917 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=16826
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/16826
 //
 // <-- Short Description -->
 //file() or file(fid) could yield outdated relative paths

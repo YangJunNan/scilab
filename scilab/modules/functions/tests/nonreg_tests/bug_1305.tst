@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 1305 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=1305
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/1305
 // tree2code doesn't indent the body of the function code in beautify mode; moreover, it adds a blank line before endfunction
 
 function b=bobo(); a=7; if a>1 then; b=5; end; endfunction

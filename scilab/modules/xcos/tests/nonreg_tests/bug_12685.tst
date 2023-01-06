@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 12685 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=12685
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/12685
 //
 // <-- Short Description -->
 // The lincos and steadycos functions did not load

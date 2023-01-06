@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 12229 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=12229
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/12229
 //
 // <-- Short Description -->
 // Slight numerical difference between sum(x(:,...),"c") and sum(x(1,...),"c") ?

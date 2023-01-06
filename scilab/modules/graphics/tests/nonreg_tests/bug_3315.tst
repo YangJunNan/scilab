@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 3315 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=3315
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/3315
 //
 // <-- Short Description -->
 // The font of axes title is not properly displayed. If I move the title, the font is properly drawn

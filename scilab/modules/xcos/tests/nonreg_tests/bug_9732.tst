@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 9732 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=9732
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/9732
 //
 // <-- Short Description -->
 // try to compile and link a superblock

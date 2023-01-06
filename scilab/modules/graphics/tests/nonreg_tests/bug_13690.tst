@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 13690 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/13690
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/13690
 //
 // <-- Short Description -->
 // tight_limits property could not manage X, Y and Z axis separately.

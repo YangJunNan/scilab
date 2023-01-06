@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 15106 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/15106
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/15106
 //
 // <-- Short Description -->
 // Operation with null operand crashs Scilab

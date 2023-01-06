@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 7244 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=7244
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/7244
 //
 // <-- Short Description -->
 // Extraction from a struct array with a boolean vector had a strange behavior.

@@ -8,8 +8,8 @@
 // <-- NO CHECK REF -->
 // <-- Non-regression test for bug 14099 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/14099
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/14099
 //
 // <-- Short Description -->
 // string(polynomial) and string(rational) had badly formatted outputs

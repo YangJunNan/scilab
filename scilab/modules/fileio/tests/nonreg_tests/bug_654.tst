@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 654 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=654
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/654
 //
 // <-- Short Description -->
 //    listfiles(getenv('SCI')+"/tcl") gives wrong result. 

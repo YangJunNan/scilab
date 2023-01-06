@@ -9,8 +9,8 @@
 // <-- NO CHECK REF -->
 // <-- CLI SHELL MODE -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=15034
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/15034
 //
 // <-- Short Description -->
 // Unable to create a structure using mlist.

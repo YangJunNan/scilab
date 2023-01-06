@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 10320 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=10320
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/10320
 //
 // <-- Short Description -->
 // libname argument of ilib_for_link did not work

@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 12138 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=12138
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/12138
 //
 // <-- Short Description -->
 //    eigs(A,B) returns incorrect eigenvectors for dense matrices

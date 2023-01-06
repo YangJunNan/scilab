@@ -10,8 +10,8 @@
 
 // <-- Non-regression test for bug 13733 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=13733
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/13733
 //
 // <-- Short Description -->
 // Optional arguments did not work properly. e.g colorbar(1,10,fmt="%d").

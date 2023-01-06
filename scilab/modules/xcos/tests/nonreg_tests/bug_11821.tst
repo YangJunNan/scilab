@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 11821 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=11821
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/11821
 //
 // <-- Short Description -->
 // Running XcosPalAdd example from help led to deadlock

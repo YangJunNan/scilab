@@ -7,8 +7,8 @@
 // =============================================================================
 // <-- Non-regression test for bug 2670 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=2670
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/2670
 //
 // <-- Short Description -->
 //    getlanguage() returns an empty string (occurs both under Linux and Windows).

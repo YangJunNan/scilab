@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 3898 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=3898
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/3898
 //
 // <-- Short Description -->
 // There is no way to check if mputl() has done his job :

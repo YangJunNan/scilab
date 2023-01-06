@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 10168 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=10168
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/10168
 //
 // <-- Short Description -->
 // kron() produces a segfault in some cases

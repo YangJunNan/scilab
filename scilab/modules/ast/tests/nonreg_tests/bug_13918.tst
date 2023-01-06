@@ -8,8 +8,8 @@
 //
 // <-- Non-regression test for bug 13918 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=13918
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/13918
 //
 // <-- Short Description -->
 // invalid operation on hypermatrix must call overload functions

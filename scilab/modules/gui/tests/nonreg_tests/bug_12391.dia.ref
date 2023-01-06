@@ -8,8 +8,8 @@
 // <-- Non-regression test for bug 12391 -->
 // <-- TEST WITH GRAPHIC -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/12391
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/12391
 //
 // <-- Short Description -->
 // findobj could change current figure returned by gcf();

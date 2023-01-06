@@ -10,8 +10,8 @@
 
 // <-- Non-regression test for bug 683 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=683
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/683
 //
 // <-- Short Description -->
 //    problem with makecell : when a makecell input is an input of

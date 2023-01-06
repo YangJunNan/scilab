@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 2332 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=2332
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/2332
 //
 
 ierr = execstr("mprintf(""a: %2.0f\tb: %3.4f"",10)","errcatch");

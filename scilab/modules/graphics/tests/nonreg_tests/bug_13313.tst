@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 13313 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/13313
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/13313
 //
 // <-- Short Description -->
 // Set orientation did not disabled auto_orientation

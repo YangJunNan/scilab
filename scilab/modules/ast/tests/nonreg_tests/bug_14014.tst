@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 14014 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/14014
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/14014
 //
 // <-- Short Description -->
 // "end" could be directly followed by an inline instruction

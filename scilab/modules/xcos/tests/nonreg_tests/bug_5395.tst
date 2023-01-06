@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 5395 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=5395
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/5395
 //
 // <-- Short Description -->
 // The xcos block AFFICH_m do not bother with the max number of digits.

@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 2399 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=2399
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/2399
 //
 // <-- Short Description -->
 //    msscanf crashes scilab when scanning a vector of strings for float 

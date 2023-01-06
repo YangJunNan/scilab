@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 9570 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=9570
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/9570
 //
 // <-- Short Description -->
 // fprintfMat did not use the good format argument with nan and inf in a matrix

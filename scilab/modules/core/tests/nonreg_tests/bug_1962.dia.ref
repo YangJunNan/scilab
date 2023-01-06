@@ -7,8 +7,8 @@
 // =============================================================================
 // <-- Non-regression test for bug 1962 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=1962
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/1962
 //
 // <-- Short Description -->
 // primitive commands does not work as expected when overloaded by a macro

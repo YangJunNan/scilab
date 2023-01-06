@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 1224 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=1224
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/1224
 //
 // <-- Short Description -->
 //    Product of 2x2 matrices produces wrong result.

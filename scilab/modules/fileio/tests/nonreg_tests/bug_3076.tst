@@ -12,8 +12,8 @@
 //    getrelativefilename() doesn't return error message when input arguments 
 //    havn't the right size.
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=3076
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/3076
 //
 
 A = [ "/usr/local/scilab/bin"];

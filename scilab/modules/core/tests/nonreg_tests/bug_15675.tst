@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 15675 -->
 //
-// <-- Bugzilla URL -->
-// https://bugzilla.scilab.org/show_bug.cgi?id=15675
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/15675
 //
 // <-- Short Description -->
 // Wrong output of whos ( size and bytes )

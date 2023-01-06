@@ -7,8 +7,8 @@
 // <-- TEST WITH GRAPHIC -->
 // <-- Non-regression test for bug 4539 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=4539
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/4539
 //
 // <-- Short Description -->
 // Some optional parameters were not set in some case

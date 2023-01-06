@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 3372 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=3372
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/3372
 //
 // <-- Short Description -->
 //    Pb with diag when called with an expression

@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 8842 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/8842
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/8842
 //
 // <-- Short Description -->
 // Assigning the pointer of a built-in function to a new structure failed

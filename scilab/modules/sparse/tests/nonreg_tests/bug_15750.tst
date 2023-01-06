@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 15750 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=15750
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/15750
 //
 // <-- Short Description -->
 // sparse(0,0) crashes Scilab 6

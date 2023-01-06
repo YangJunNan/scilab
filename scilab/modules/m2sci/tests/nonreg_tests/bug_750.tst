@@ -13,8 +13,8 @@
 //
 // <-- Non-regression test for bug 750 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/750
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/750
 //
 // <-- Short Description -->
 //    I try to translate to Scilab the benchmark m-file of matlab.

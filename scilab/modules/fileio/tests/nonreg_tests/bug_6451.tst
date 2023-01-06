@@ -9,8 +9,8 @@
 //
 // <-- CLI SHELL MODE -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=6451
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/6451
 //
 // <-- Short Description -->
 // length() does not support properly ANSI-encoded strings

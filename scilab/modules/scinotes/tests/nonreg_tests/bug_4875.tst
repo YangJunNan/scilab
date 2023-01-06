@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 4875 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=4875
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/4875
 //
 // <-- Short Description -->
 //    Replace All in Scilab editor should preserve caret position

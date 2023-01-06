@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 4761 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=4761
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/4761
 //
 // Short description:
 // memory leak in grep with regexp crashes scilab

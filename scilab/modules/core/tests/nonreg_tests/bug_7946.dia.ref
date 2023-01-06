@@ -9,8 +9,8 @@
 //
 // <-- CLI SHELL MODE -->
 // 
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=7946
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/7946
 //
 // <-- Short Description -->
 // error(0, "bye") crashed Scilab

@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 4874 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=4874
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/4874
 //
 // <-- Short Description -->
 //    "query-replace" insert unwanted spaces in the middle of lines that have nothing to do with the searched pattern.

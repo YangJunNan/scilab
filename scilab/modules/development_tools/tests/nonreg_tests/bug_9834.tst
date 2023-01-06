@@ -10,8 +10,8 @@
 
 // <-- Non-regression test for bug 9834 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=9834
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/9834
 //
 // <-- Short Description -->
 // external modules was not managed by test_run

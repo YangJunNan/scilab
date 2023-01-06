@@ -7,8 +7,8 @@
 // =============================================================================
 // <-- Non-regression test for bug 1595 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=1595
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/1595
 //
 // <-- Short Description -->
 //    When using the ode solver with a computation at mesh points (itask =2) in a

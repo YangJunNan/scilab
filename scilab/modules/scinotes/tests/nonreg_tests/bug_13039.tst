@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 13039 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/13039
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/13039
 //
 // <-- Short Description -->
 // The "File => Save as in" action opened the file browser in the parent directory of the targeted one.

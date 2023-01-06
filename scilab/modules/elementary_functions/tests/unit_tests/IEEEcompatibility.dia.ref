@@ -9,7 +9,7 @@
 // =============================================================================
 //
 // <-- CLI SHELL MODE -->
-// <-- Bugzilla URL -->
+// <-- GitLab URL -->
 //
 // Bibliography :
 // "IEEE Standard for Floating-Point Arithmetic"
@@ -72,7 +72,7 @@ expecteddiv = [
 -0 	-1 	-%inf 	%inf 	1 	0 	%nan
 %nan 	-%inf 	-%inf 	%inf 	%inf 	%nan 	%nan
 %nan 	%nan 	%nan 	%nan 	%nan 	%nan 	%nan];
-// See http://bugzilla.scilab.org/show_bug.cgi?id=2409
+// See https://gitlab.com/scilab/scilab/-/issues/2409
 // We must use imult(%inf) to get the mathematical number i * inf
 // since %i * %inf produces imult(%inf), as expected by the
 // intermediate multiplication 0*%inf = %nan.

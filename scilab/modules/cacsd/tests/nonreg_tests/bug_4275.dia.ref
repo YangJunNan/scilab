@@ -7,8 +7,8 @@
 // =============================================================================
 // <-- Non-regression test for bug 4275 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=4275
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/4275
 //
 // <-- Short Description -->
 //   g_margin function does not work properly

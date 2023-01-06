@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 13881 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/14042
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/14042
 //
 // <-- Short Description -->
 // Crash cause by reference to an unset handle

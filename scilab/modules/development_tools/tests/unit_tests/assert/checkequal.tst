@@ -165,7 +165,7 @@ assert_checkequal(s, s);
 assert_checkequal({}, {});
 o = {1, %f, %z ; "abc" %nan list(,3)};
 assert_checkequal(o, o);
-assert_checkequal({%nan}, {%nan});  // http://bugzilla.scilab.org/16274
+assert_checkequal({%nan}, {%nan});  // https://gitlab.com/scilab/scilab/-/issues/16274
 //
 // Polynomial
 // ----------

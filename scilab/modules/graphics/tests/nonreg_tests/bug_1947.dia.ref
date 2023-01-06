@@ -7,8 +7,8 @@
 // <-- TEST WITH GRAPHIC -->
 // <-- Non-regression test for bug 1947 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=1947
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/1947
 //
 // <-- Short Description -->
 // Data bounds approximation may be wrong and contour may not fit right

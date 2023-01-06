@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 5183 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=5183
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/5183
 //
 // <-- Short Description -->
 // On a superblock diagram, start a simulation is not applicable.

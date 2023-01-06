@@ -8,8 +8,8 @@
 //
 // <-- Non-regression test for bug 7249 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=7249
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/7249
 //
 // <-- Short Description -->
 // 'string' function did not work with a macro as input argument.

@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 16263 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/16263
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/16263
 //
 // <-- Short Description -->
 // Polynomial insertion is broken for complex case

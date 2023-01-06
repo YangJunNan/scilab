@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 8133 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/8133
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/8133
 //
 // <-- Short Description -->
 // Ticks disappeared in planar 3D view

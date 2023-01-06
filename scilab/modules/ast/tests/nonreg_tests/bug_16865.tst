@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 16865 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/16865
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/16865
 //
 // <-- Short Description -->
 // When m is a non-scalar vector, m(hypermat_of_indices) has not the size of hypermat_of_indices

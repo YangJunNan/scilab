@@ -95,7 +95,7 @@ for k = 1 : nt
 end
 
 // IEEE support
-// See http://bugzilla.scilab.org/show_bug.cgi?id=7296
+// See https://gitlab.com/scilab/scilab/-/issues/7296
 Xlam = 0;
 Std = 1;
 

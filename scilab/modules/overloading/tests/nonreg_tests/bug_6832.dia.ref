@@ -8,8 +8,8 @@
 //
 // <-- Non-regression test for bug 6832 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=6832
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/6832
 //
 // <-- Short Description -->
 // Matrices of rationals can now be transposed via the " .' " operator.

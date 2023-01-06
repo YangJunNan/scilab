@@ -10,8 +10,8 @@
 
 // <-- Non-regression test for bug 9498 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=9498
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/9498
 //
 // <-- Short Description -->
 // By default history file was not limited

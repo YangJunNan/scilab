@@ -7,8 +7,8 @@
 //
 // <-- Non-regression test for bug 5222 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=5222
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/5222
 //
 // <-- Short Description -->
 // help command can generate a "critical exception".

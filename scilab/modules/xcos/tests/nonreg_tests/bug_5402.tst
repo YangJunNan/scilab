@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 5402 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=5402
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/5402
 //
 // <-- Short Description -->
 // When "Save as" is canceled, status bar still displays "Saving diagram ...".

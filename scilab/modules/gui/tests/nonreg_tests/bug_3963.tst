@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 3963 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=3963
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/3963
 //
 // <-- Short Description -->
 // Destroying wait bars or progression bars crashes Scilab.

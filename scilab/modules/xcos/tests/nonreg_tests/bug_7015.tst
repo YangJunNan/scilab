@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 7015 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=7015
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/7015
 //
 // <-- Short Description -->
 // The palette must be always visible when an empty diagram is created. When 

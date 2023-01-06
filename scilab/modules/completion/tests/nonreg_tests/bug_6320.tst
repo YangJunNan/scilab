@@ -7,8 +7,8 @@
 
 // <-- Non-regression test for bug 6320 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=6320
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/6320
 //
 // <-- Short Description -->
 // completion should be case insensitive

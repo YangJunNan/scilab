@@ -7,8 +7,8 @@
 
 // <-- Non-regression test for bug 6895 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=6895
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/6895
 //
 // <-- Short Description -->
 // completion crashed in -NW mode on some linux.

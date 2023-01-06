@@ -8,8 +8,8 @@
 //
 // <-- Non-regression test for bug 14082 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/14082
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/14082
 //
 // <-- Short Description -->
 // m=1; m()=1; makes Scilab crash.

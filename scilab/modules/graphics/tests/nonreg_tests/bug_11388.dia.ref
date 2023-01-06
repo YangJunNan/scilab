@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 11388 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=11388
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/11388
 //
 // <-- Short Description -->
 // Calling xsetech(frect=[0,0,100,100]) failed.

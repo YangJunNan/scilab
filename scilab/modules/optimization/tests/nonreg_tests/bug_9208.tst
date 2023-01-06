@@ -11,8 +11,8 @@
 //
 // <-- Non-regression test for bug 9208 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=9208
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/9208
 //
 // <-- Short Description -->
 // Added three optional output arguments to optim(), to retrieve #iterations,

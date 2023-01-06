@@ -7,8 +7,8 @@
 // <-- TEST WITH GRAPHIC -->
 // <-- Non-regression test for bug 2749 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=2749
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/2749
 //
 // <-- Short Description -->
 // graphics demo eats memory at will

@@ -11,8 +11,8 @@
 //
 // <-- INTERACTIVE TEST -->
 // 
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/9599
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/9599
 //
 // <-- Short Description -->
 // The error message "at line ... of function ... called by" was printed directly

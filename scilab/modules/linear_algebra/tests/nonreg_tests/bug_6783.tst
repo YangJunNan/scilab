@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 6783 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=6783
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/6783
 //
 // <-- Short Description -->
 // Solving a system of linear equation by backslash ("\") will cause a crash to Scilab 5.2.1, when using complex numbers.

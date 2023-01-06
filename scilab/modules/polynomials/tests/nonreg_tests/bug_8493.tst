@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 8493 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/8493
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/8493
 //
 // <-- Short Description -->
 // Dividing p1./p2 with p1 or/and p2 complex-encoded polynomials with null

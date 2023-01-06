@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 2200 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=2200
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/2200
 //
 // <-- Short Description -->
 // When is resized in "drawlater mode", then the window is cleared.

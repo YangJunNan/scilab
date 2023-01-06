@@ -8,8 +8,8 @@
 //
 // <-- Non-regression test for bug 9699 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/9699
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/9699
 //
 // <-- Short Description -->
 // A single $ as text in a text ui led to a segfault

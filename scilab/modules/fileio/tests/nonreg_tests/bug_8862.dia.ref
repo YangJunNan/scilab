@@ -7,8 +7,8 @@
 // =============================================================================
 // <-- Non-regression test for bug 8862 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=8862
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/8862
 //
 // <-- Short Description -->
 // Trying to read binary file by mget function. 

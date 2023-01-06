@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 12198 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/12198
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/12198
 //
 // <-- Short Description -->
 // control keywords could be overloaded as regular variables.

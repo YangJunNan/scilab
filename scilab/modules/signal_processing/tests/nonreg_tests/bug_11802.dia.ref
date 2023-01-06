@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 11802 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=11802
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/11802
 //
 // <-- Short Description -->
 // mrfit function redefines the diff function (making nyquist function fail when called just after).

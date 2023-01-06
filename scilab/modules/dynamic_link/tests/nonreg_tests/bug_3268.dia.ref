@@ -8,8 +8,8 @@
 // <-- CLI SHELL MODE -->
 // <-- Non-regression test for bug 3268 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=3268
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/3268
 // link try to load a non existing file
 warning('off');
 ierr = execstr('link(''NOEXISTLIBNAME'',''foo'')','errcatch');

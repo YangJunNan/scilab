@@ -8,8 +8,8 @@
 // <-- Non-regression test for bug 7855 -->
 // <-- INTERACTIVE TEST -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=7855
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/7855
 //
 // <-- Short Description -->
 // Can't change the event function while the event handler is set to on.

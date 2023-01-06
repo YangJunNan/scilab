@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 13468 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=13468
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/13468
 //
 // <-- Short Description -->
 // Scilab hanged when incorrect format was used for file reading using mfscanf.

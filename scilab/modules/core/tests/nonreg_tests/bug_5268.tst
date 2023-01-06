@@ -9,8 +9,8 @@
 //
 // <-- CLI SHELL MODE -->
 // 
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=5268
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/5268
 //
 // <-- Short Description -->
 // bugs about format function

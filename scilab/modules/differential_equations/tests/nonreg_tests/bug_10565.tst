@@ -9,8 +9,8 @@
 //
 // <-- TEST WITH GRAPHIC -->
 //
-// <-- Bugzilla URL -->
-//http://bugzilla.scilab.org/show_bug.cgi?id=10565
+// <-- GitLab URL -->
+//https://gitlab.com/scilab/scilab/-/issues/10565
 //
 // <-- Short Description -->
 // demo simulation --> bicycle simulation --> unstable trajectory failed

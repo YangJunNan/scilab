@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 16067 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/16067
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/16067
 //
 // <-- Short Description -->
 //The display of matrices of signed integers is misaligned (int8 int16 int32 int64)(regression of 6.0.0 vs 5.5.2)

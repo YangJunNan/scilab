@@ -9,8 +9,8 @@
 // <-- NOT FIXED --> 6.0.0
 // <-- Non-regression test for bug 3688 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=3688
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/3688
 //
 // <-- Short Description -->
 // The assignment using ":" subscript for a dimension that does not exist

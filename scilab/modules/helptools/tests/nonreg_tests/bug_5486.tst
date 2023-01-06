@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 5486 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/5486
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/5486
 //
 // <-- Short Description -->
 // help_from_sci function didn't handle text in link

@@ -7,8 +7,8 @@
 // =============================================================================
 // <-- Non-regression test for bug 2964 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=2964
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/2964
 //
 // <-- Short Description -->
 //    the function grand with option 'mul' does not accept probability one as an argument. 

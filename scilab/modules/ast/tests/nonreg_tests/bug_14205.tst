@@ -8,8 +8,8 @@
 //
 // <-- Non-regression test for bug 14205 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/14205
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/14205
 //
 // <-- Short Description -->
 // Console crash when assigning uint32 numbers to double matrix

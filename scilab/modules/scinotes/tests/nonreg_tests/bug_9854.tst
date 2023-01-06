@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 9854 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/9854
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/9854
 //
 // <-- Short Description -->
 // Miscolorization when a string contains several dots

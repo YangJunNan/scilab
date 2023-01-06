@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 4504 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=4504
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/4504
 //
 // <-- Short Description -->
 // Function sskf does not act as the documentation says:

@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 14606 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=14606
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/14606
 //
 // <-- Short Description -->
 // "who" doesn"t return memory size

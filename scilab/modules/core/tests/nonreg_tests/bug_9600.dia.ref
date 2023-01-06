@@ -9,8 +9,8 @@
 //
 // <-- CLI SHELL MODE -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=9600
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/9600
 //
 // <-- Short Description -->
 // Can not assign empty matrix in a list or cell

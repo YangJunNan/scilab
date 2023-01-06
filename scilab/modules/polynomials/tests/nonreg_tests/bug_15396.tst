@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 15396 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/15396
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/15396
 //
 // <-- Short Description -->
 // [m,n,p] = size(hr) yielded an error for an hypermatrix hr of rationals

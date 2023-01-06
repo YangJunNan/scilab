@@ -8,8 +8,8 @@
 //
 // <-- Non-regression test for bug 10831 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=10831
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/10831
 //
 // <-- Short Description -->
 // set("auto_clear", ...) returns an error.

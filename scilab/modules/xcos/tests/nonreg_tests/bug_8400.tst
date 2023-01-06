@@ -11,8 +11,8 @@
 //
 // <-- Non-regression test for bug 8400 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=8400
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/8400
 //
 // <-- Short Description -->
 // start demos from Xcos menu (? --> Xcos demos) did not work

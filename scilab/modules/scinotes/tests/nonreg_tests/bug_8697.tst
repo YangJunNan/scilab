@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 8697 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/8697
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/8697
 //
 // <-- Short Description -->
 // An exception was thrown when an empty document was reload.

@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 9673 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/9673
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/9673
 //
 // <-- Short Description -->
 // Priority of colon : operator is too low

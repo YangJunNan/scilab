@@ -11,8 +11,8 @@
 
 // <-- Non-regression test for bug 1751 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/1751
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/1751
 //
 // <-- Short Description -->
 // Margins were not computed according to contents

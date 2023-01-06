@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 8822 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=8822
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/8822
 //
 // <-- Short Description -->
 // Implicit links connected with split blocks might not be removed cleanly.

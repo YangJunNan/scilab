@@ -10,8 +10,8 @@
 
 // <-- Non-regression test for bug 15737 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/15737
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/15737
 //
 // <-- Short Description -->
 // setdiff() was wrong for complex numbers.

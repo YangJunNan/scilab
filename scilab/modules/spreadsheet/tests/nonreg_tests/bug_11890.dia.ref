@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 11890 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=11890
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/11890
 //
 // <-- Short Description -->
 // Wrong parsing with empty char at the end of the line

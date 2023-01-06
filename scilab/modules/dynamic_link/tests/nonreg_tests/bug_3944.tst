@@ -10,8 +10,8 @@
 
 // <-- Non-regression test for bug 3944 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=3944
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/3944
 //
 // <-- Short Description -->
 // ilib_mex_build() wasn't using the content of the 

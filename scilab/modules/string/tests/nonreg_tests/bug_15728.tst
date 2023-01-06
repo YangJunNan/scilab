@@ -10,8 +10,8 @@
 
 // <-- Non-regression test for bug 15728 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/15728
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/15728
 //
 // <-- Short Description -->
 // evstr("k") evstr("tmp") evstr("comm") evstr("lhs") evstr("rhs") ...

@@ -11,8 +11,8 @@
 
 // <-- Non-regression test for bug 15263 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/15263
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/15263
 //
 // <-- Short Description -->
 // Assignments in a structures array often overwrote some untargeted elements

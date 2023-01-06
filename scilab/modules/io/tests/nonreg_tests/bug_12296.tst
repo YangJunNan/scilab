@@ -8,8 +8,8 @@
 //
 // <-- Non-regression test for bug 12296 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=12296
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/12296
 //
 // <-- Short Description -->
 // call to getenv with an big environment variable leads to memory corruption

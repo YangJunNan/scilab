@@ -9,8 +9,8 @@
 // <-- NO CHECK REF -->
 // <-- Non-regression test for bug 13306 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/13306
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/13306
 //
 // <-- Short Description -->
 // Evaluating a function set as a structure field could fail.

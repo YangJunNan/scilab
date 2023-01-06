@@ -9,7 +9,7 @@
 
 // <-- Non-regression test for bug 2987 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=2987
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/2987
 
 head_comments("sinc")

@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 16511 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/16512
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/16512
 //
 // <-- Short Description -->
 // 1 ./ uint8(0) crashes Scilab

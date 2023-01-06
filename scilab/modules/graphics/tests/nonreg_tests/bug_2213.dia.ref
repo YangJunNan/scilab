@@ -7,8 +7,8 @@
 // <-- TEST WITH GRAPHIC -->
 // <-- Non-regression test for bug 2213-->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=2213
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/2213
 //
 // <-- Short Description -->
 // legend misplaced in log plots

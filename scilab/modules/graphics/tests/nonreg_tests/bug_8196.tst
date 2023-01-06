@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 8196 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=8196
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/8196
 //
 // <-- Short Description -->
 // Some error message are still not standard.

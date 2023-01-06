@@ -7,8 +7,8 @@
 
 // <-- Non-regression test for bug 4421 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=4421
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/4421
 //
 // <-- Short Description -->
 // bug with the completion

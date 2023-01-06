@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 7681 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=7681
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/7681
 //
 // <-- Short Description -->
 // help_from_sci function failed to process tabulated .sci files.

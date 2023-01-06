@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 13208 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=13208
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/13208
 //
 // <-- Short Description -->
 // reglin returned NaNs when y contained NaNs.

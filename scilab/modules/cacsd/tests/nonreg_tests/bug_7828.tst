@@ -9,8 +9,8 @@
 //
 // <-- TEST WITH GRAPHIC -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=7828
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/7828
 //
 // <-- Short Description -->
 // slight improvements in nicholschart.

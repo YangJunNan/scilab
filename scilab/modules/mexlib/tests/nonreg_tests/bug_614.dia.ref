@@ -10,8 +10,8 @@
 // =============================================================================
 // <-- Non-regression test for bug 614 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=614
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/614
 //
 // <-- Short Description -->
 //    mxGetDimensions() from mex.h and mexlib.c do not work

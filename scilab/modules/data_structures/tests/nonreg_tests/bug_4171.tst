@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 4171 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/4171
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/4171
 //
 // <-- Short Description -->
 // A list including some structures was wrongly displayed

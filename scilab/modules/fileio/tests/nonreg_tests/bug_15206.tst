@@ -11,8 +11,8 @@
 //
 // <-- Non-regression test for bug 15206 -->
 //
-// <-- Bugzilla URL -->
-// https://bugzilla.scilab.org/show_bug.cgi?id=15206
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/15206
 //
 // <-- Short Description -->
 // wrong writing with mput

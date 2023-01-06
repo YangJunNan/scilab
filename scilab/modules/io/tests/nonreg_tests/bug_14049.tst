@@ -8,8 +8,8 @@
 // <-- CLI SHELL MODE -->
 // <-- Non-regression test for bug 14049 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=14049
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/14049
 //
 // <-- Short Description -->
 // genlib  hangs if an unexpected endfunction occurs

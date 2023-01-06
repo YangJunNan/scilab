@@ -7,8 +7,8 @@
 // =============================================================================
 // <-- Non-regression test for bug 4120 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=4120
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/4120
 //
 // <-- Short Description -->
 //  IIR filter desing demo fails under Windows 64 (XP and Vista).

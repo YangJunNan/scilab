@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 8162 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=8162
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/8162
 //
 // <-- Short Description -->
 // Area of stability in continuous is wrong

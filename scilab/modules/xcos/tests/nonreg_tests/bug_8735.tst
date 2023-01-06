@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 8735 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=8735
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/8735
 //
 // <-- Short Description -->
 // Mixed (Implicit-Explicit) superblocks I/O blocks produced warnings

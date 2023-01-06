@@ -12,8 +12,8 @@
 //
 // <-- Non-regression test for bug 13549 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/13549
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/13549
 //
 // <-- Short Description -->
 // Slider uicontrol triggers 3 callbacks instead of one

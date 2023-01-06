@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 16144 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/16@^$
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/16@^$
 //
 // <-- Short Description -->
 // Unexpected iterator assigment in empty for loop

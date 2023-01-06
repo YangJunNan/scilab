@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 14181 -->
 //
-// <-- Bugzilla URL -->
-//http://bugzilla.scilab.org/show_bug.cgi?id=14181
+// <-- GitLab URL -->
+//https://gitlab.com/scilab/scilab/-/issues/14181
 //
 // <-- Short Description -->
 // Calling intg (or integrate) in a function that is being integrated failed

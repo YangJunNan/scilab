@@ -7,8 +7,8 @@
 // =============================================================================
 // <-- Non-regression test for bug 8856 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=8856
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/8856
 //
 // <-- Short Description -->
 // [k,l,m,...]=find(a==5) works if a is a matrix (not an hypermat)

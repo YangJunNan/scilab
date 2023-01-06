@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 5290 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=5290
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/5290
 //
 // <-- Short Description -->
 //    Having two functions in Scilab for the editor is useless: editorHighlightLine & editor

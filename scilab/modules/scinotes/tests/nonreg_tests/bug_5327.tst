@@ -11,8 +11,8 @@
 //
 // <-- Non-regression test for bug 5327 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=5327
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/5327
 //
 // <-- Short Description -->
 // When indenting a block, the selection area is shifted one line down with respect to the previously selected one.

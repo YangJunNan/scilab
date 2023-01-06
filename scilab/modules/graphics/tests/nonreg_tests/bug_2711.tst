@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 2711 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=2708
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/2708
 //
 // <-- Short Description -->
 // The plot obtained with "champ" function is bad

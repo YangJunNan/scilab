@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 16612 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/16612
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/16612
 //
 // <-- Short Description -->
 // kron() did not map .*. for sparse numeric argins

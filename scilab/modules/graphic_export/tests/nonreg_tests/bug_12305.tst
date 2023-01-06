@@ -12,8 +12,8 @@
 //
 // <-- Non-regression test for bug 12305 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=12305
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/12305
 //
 // <-- Short Description -->
 //  Legends could not be loaded from SOD file.

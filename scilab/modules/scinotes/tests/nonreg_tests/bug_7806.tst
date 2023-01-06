@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 7806 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/7806
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/7806
 //
 // <-- Short Description -->
 // Blocks elseif...end and else...end were not highlighted.

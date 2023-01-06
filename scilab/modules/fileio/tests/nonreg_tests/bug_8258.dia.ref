@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 8258 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=8258
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/8258
 //
 // <-- Short Description -->
 // fscanfMat did not read matrix file not formatted by fprintfMat.

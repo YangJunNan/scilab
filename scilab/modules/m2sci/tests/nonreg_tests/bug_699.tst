@@ -13,8 +13,8 @@
 //
 // <-- Non-regression test for bug 699 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=699
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/699
 //
 // <-- Short Description -->
 //    m2sci crashes for a very simple input file

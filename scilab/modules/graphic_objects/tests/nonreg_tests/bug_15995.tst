@@ -10,8 +10,8 @@
 
 // <-- Non-regression test for bug 15995 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=15995
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/15995
 //
 // <-- Short Description -->
 // Missing patch in surface plot (regression)

@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 8032 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=8032
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/8032
 //
 // <-- Short Description -->
 // cdfnor was able to fail silently

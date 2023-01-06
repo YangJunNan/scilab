@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 4217 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=4217
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/4217
 //
 // <-- Short Description -->
 //  gsort sort complex by magnitude only with 'g' and not support 'r', 'c', 'lr', 'lc'

@@ -10,8 +10,8 @@
 
 // <-- Non-regression test for bug 15359 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/15359
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/15359
 //
 // <-- Short Description -->
 // twinkle() was unable to blink several independent objects

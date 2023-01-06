@@ -10,8 +10,8 @@
 
 // <-- Non-regression test for bug 15418 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/15418
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/15418
 //
 // <-- Short Description -->
 // With colordef("black") and colordef("none"), titles and axes labels were

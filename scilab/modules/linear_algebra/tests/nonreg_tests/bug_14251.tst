@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 14251 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=14251
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/14251
 //
 // <-- Short Description -->
 // spec leaks memory

@@ -8,8 +8,8 @@
 // <-- Non-regression test for bug 7821 -->
 // <-- INTERACTIVE TEST -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=7821
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/7821
 //
 // <-- Short Description -->
 // In a messagebox, an exception was thrown when clicking on a mal-formed url.

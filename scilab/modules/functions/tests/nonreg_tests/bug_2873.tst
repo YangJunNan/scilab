@@ -10,8 +10,8 @@
 
 // <-- Non-regression test for bug 2873 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=2873
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/2873
 //
 // <-- Short Description -->
 //    Use of getd() on the command line for a directory which contains a function named the same 

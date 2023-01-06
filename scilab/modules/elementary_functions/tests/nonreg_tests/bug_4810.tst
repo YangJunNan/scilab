@@ -8,8 +8,8 @@
 // <-- NO CHECK REF -->
 // <-- Non-regression test for bug 4810 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/4810
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/4810
 //
 // <-- Short Description -->
 // gsort does not manage sparse vector as sort

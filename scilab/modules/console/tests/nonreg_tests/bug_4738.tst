@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 4738 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/4738
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/4738
 //
 // <-- Short Description -->
 // The number of columns in the console was badly calculated.

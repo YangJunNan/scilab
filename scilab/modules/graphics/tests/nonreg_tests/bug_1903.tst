@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 1903 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=1903
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/1903
 //
 // <-- Short Description -->
 // Under windows only, the surf function "eats" some facets

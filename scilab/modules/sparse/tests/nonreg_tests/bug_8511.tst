@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 8511 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=8511
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/8511
 //
 // <-- Short Description -->
 // sprand uses rand and grand functions, and internal state of the random number

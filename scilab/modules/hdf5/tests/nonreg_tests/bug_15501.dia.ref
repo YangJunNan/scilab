@@ -8,8 +8,8 @@
 //
 // <-- Non-regression test for bug 15501 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/15501
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/15501
 //
 // <-- Short Description -->
 // listvarinfile() crashes Scilab when listing a cell array (regression)

@@ -11,8 +11,8 @@
 // <-- Non-regression test for bug 14573 -->
 //
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/14573
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/14573
 //
 // <-- Short Description -->
 // varargout misworked when it was used in addition to fixed output arguments.

@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 15248 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/15248
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/15248
 //
 // <-- Short Description -->
 // lsq() is leaking memory

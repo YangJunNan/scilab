@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 15183 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/15183
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/15183
 //
 // <-- Short Description -->
 //  Contrarily to meshgrid(x) with y=x, ndgrid(x) was not accepted

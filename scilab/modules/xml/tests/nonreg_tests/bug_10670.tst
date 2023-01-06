@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 10670 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/10670
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/10670
 //
 // <-- Short Description -->
 // There was a crash with xmlRead when argument had a bad dimension.

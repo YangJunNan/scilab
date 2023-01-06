@@ -7,8 +7,8 @@
 // =============================================================================
 // <-- Non-regression test for bug 8399 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/8399
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/8399
 //
 // <-- Short Description -->
 // setlanguage didn't work when only fr_FR.UTF-8 was available.

@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 15580 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/15580
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/15580
 //
 // <-- Short Description -->
 // [det([]) was wrong and ] det(sparse([],[]) yielded an error

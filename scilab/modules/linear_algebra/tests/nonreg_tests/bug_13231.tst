@@ -10,8 +10,8 @@
 
 // <-- Non-regression test for bug 13231 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/13231
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/13231
 //
 // <-- Short Description -->
 // spec() yielded a segfault

@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 4604 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=4604
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/4604
 //
 // <-- Short Description -->
 //  rmdir(<dir>,"s") doesn't work if it contains a hidden file (starting with a dot).

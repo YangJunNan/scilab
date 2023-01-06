@@ -12,8 +12,8 @@
 //
 // <-- Non-regression test for bug 1662 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/1662
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/1662
 //
 // <-- Short Description -->
 //    when converting Matlab switch case statements to Scilab select case

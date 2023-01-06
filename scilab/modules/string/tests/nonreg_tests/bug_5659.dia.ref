@@ -7,8 +7,8 @@
 // <-- CLI SHELL MODE -->
 // <-- Non-regression test for bug 5659 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=5659
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/5659
 //
 // <-- Short Description -->
 // emptystr changed the value of an input variable.

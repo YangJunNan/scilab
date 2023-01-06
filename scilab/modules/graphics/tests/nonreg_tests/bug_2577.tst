@@ -10,8 +10,8 @@
 
 // <-- Non-regression test for bug 2577 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=2577
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/2577
 //
 // <-- Short Description -->
 // reference (for immediate display on the shell) to an invalid graphic handle

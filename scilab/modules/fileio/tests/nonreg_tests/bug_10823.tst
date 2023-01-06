@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 10823 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=10823
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/10823
 //
 // <-- Short Description -->
 // fullpath returns different results on Windows and Linux for non-existent file

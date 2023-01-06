@@ -9,8 +9,8 @@
 //
 // <-- INTERACTIVE TEST -->
 // 
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=8177
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/8177
 //
 // <-- Short Description -->
 // format mode was modified by some macros and not restored

@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 8329 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=8329
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/8329
 //
 // <-- Short Description -->
 // fscanfMat crashed with file attached.

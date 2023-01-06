@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 11076 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=11076
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/11076
 //
 // <-- Short Description -->
 // mlist('r'), tlist('r') returned a wrong error message

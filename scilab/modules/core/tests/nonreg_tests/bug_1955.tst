@@ -8,8 +8,8 @@
 
 // <-- Non-regression test for bug 1955 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=1955
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/1955
 //
 // <-- Short Description -->
 //    Reshaping global hypermatrices is problematic, as demonstrated by the 

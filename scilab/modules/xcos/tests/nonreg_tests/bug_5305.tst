@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 5305 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=5305
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/5305
 //
 // <-- Short Description -->
 //  display of filenames used by xcos is wrong on windows

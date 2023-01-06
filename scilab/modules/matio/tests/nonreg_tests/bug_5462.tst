@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 5462 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=5462
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/5462
 //
 // <-- Short Description -->
 // Can not save correctly a sparse matrix in a MAT-file using savematfile.

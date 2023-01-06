@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 8569 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=8569
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/8569
 //
 // <-- Short Description -->
 // Link destruction algorithm is not the right one

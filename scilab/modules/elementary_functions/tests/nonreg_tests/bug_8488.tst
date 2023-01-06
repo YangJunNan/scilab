@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 8488 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=8488
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/8488
 //
 // <-- Short Description -->
 // The min and max function inconsistently propagate NaN inputs

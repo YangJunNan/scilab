@@ -8,8 +8,8 @@
 // <-- Non-regression test for bug 11420 -->
 // <-- INTERACTIVE TEST -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=11420
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/11420
 //
 // <-- Short Description -->
 // When using the event_handler of the default figure, events are not trapped.

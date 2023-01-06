@@ -11,8 +11,8 @@
 //
 // <-- CLI SHELL MODE -->
 // 
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=9686
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/9686
 //
 // <-- Short Description -->
 // user initialization scripts (scilab.ini, .scilab) did not work.

@@ -6,8 +6,8 @@
 // =============================================================================
 // <-- Non-regression test for bug 14821 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/14821
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/14821
 //
 // <-- Short Description -->
 // getio function has been added.

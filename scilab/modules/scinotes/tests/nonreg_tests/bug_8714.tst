@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 8714 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/8714
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/8714
 //
 // <-- Short Description -->
 // Problem with Incremental Search bar when Code Navigator is docked

@@ -10,8 +10,8 @@
 
 // <-- Non-regression test for bug 2814-->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=2814
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/2814
 //
 // <-- Short Description -->
 //

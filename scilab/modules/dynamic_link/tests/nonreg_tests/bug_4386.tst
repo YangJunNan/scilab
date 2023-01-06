@@ -11,8 +11,8 @@
 
 // <-- Non-regression test for bug 4386 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=4386
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/4386
 //
 // <-- Short Description -->
 // link('show') with only one symbol writes 'librairies' and not 'library'.

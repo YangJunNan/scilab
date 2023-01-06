@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 1829 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=1829
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/1829
 //
 // <-- Short Description -->
 // The clipping doesn't work with the strings of characters

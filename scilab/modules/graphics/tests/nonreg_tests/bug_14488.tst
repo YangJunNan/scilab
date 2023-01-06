@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 14488 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/14488
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/14488
 //
 // <-- Short Description -->
 // plot2d(..,frameflag=9) was no longer accepted

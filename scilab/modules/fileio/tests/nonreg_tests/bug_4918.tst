@@ -10,8 +10,8 @@
 
 // <-- Non-regression test for bug 4918 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=4918
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/4918
 //
 // message returned by 'get_absolute_file_path' is wrong
 

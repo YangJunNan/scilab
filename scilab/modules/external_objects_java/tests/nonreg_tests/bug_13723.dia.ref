@@ -8,8 +8,8 @@
 //
 // <-- JVM MANDATORY -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/13723
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/13723
 //
 // <-- Short Description -->
 // No way to insert a single double in double[][]

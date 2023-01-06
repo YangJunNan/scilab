@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 11583 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/11583
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/11583
 //
 // <-- Short Description -->
 // In Scinotes preferences, when the default header is erased, available variables

@@ -10,8 +10,8 @@
 
 // <-- Non-regression test for bug 862 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=862
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/862
 //
 // <-- Short Description -->
 //    Conversion si bad for instructions such as:

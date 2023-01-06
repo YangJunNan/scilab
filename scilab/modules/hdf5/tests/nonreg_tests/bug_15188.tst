@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 15188 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/15188
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/15188
 //
 // <-- Short Description -->
 // hdf5_is_file failed to load

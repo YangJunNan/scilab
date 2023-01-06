@@ -11,8 +11,8 @@
 //
 // <-- Non-regression test for bug 12559 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=12559
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/12559
 //
 // <-- Short Description -->
 // Some variables were not freed and generated important memory leaks.

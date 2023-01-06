@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 16275 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/16275
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/16275
 //
 // <-- Short Description -->
 // fsolve(x0, fun, tol) no longer took tol into account

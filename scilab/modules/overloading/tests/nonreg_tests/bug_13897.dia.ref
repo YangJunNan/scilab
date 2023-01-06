@@ -8,8 +8,8 @@
 //
 // <-- Non-regression test for bug 13897 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=13897
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/13897
 //
 // <-- Short Description -->
 // 2 arrays of structures with same fields but in different order

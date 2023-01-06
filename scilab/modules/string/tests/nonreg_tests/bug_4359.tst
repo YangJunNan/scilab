@@ -7,8 +7,8 @@
 // <-- CLI SHELL MODE -->
 // <-- Non-regression test for bug 4359 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=4359
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/4359
 //
 // <-- Short Description -->
 // M(:,:)='anything' produces erroneous result.

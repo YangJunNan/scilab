@@ -7,8 +7,8 @@
 
 // <-- Non-regression test for bug 5330 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=5330
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/5330
 //
 // <-- Short Description -->
 // "help toto tata" returns a error

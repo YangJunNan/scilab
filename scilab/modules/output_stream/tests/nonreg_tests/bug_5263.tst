@@ -11,8 +11,8 @@
 // <-- Short Description -->
 // [id, filenames]=diary() returns incorrect paths for automatically numbered filenames
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=5263
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/5263
 //
 
 cd TMPDIR;

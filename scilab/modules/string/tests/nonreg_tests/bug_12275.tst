@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 12275 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/12275
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/12275
 //
 // msprintf("%s",ascii(97*ones(1,4097))) yielded "An error occurred: Buffer too small."
 

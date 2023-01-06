@@ -9,8 +9,8 @@
 //
 // <-- CLI SHELL MODE -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/10279
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/10279
 //
 // <-- Short Description -->
 // Execute a function with a comma between the last argument and the parenthese closed.

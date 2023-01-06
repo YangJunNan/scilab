@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 9052 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/9052
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/9052
 //
 // <-- Short Description -->
 // All demos in graphics/animations are automatically closed at the end of each one

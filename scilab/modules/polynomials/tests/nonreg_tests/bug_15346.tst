@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 15346 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/15346
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/15346
 //
 // <-- Short Description -->
 // Rationals Arrays could not be addressed with linearized indices

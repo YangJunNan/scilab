@@ -7,8 +7,8 @@
 
 // <-- Non-regression test for bug 3702 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=3702
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/3702
 //
 // <-- Short Description -->
 // When I start Scilex (on Windows) in a windows console, the windows lost the focus. I must hit <alt>+<tab> to gain the focus.

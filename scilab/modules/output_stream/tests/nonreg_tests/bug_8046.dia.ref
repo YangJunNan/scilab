@@ -12,8 +12,8 @@
 // <-- Short Description -->
 // msprintf did not manage tabulation as format
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=8046
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/8046
 //
 s = "a" + ascii(9) + "b";
 [nbOuts, k, l] = msscanf(s, "%s\t%s");

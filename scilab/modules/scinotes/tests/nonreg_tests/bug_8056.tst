@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 8056 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=8056
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/8056
 //
 // <-- Short Description -->
 // Bad colorization of the comments after a command without parenthesis.

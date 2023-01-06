@@ -8,8 +8,8 @@
 
 // <-- Non-regression test for bug 4618 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=4618
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/4618
 //
 // <-- Short Description -->
 // buttmag produces a warning because of redefining symbol sample.

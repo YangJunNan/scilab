@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 14191 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/14191
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/14191
 //
 // <-- Short Description -->
 // plot(logflag,..) new option

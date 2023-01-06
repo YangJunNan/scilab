@@ -6,8 +6,8 @@
 // =============================================================================
 // <-- Non-regression test for bug 6549 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=6549
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/6549
 //
 // <-- Short Description -->
 // genlib function had a behavior which was not consistent with the load function.

@@ -8,8 +8,8 @@
 
 // <-- Non-regression test for bug 608 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=608
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/608
 //
 // <-- Short Description -->
 //    the integer types (tested with uint8 and uint16) operators

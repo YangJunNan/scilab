@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 14500 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/14500
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/14500
 //
 // <-- Short Description -->
 // Operator ".^" was broken for sparse matrices.

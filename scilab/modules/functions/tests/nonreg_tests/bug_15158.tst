@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 15158 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/15158
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/15158
 //
 // <-- Short Description -->
 // ver()(1,2) in a macro made macr2tree() crashing on it.

@@ -8,8 +8,8 @@
 //
 // <-- Non-regression test for bug 10662 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=10662
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/10662
 //
 // <-- Short Description -->
 // xload / load_user_data() does not support tlist

@@ -8,8 +8,8 @@
 
 // <-- Non-regression test for bug 2133 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=2133
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/2133
 //
 // <-- Short Description -->
 // parsing [/decimal number/no space/dot operator ..] can fail  

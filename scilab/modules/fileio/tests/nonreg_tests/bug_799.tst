@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 799 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=799
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/799
 //
 // <-- Short Description -->
 //    Reload large matrix file from disk with "fscanfMat" command

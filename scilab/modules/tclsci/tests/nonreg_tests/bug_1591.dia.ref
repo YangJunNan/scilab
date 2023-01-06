@@ -6,8 +6,8 @@
 // =============================================================================
 // <-- Non-regression test for bug 1591 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=1591
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/1591
 //
 // <-- Short Description -->
 //    Function TCL_GetVar has strange behaviour with matrixes

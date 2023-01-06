@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 9358 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/9358
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/9358
 //
 // <-- Short Description -->
 // A simple quoted string was not always correctly convert into double quoted one.

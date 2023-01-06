@@ -11,8 +11,8 @@
 //
 // <-- Non-regression test for bug 8415 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=8415
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/8415
 //
 // <-- Short Description -->
 // optim_moga(), optim_nsga() and optim_nsga2() can now take list as arguments, as announced in the doc.

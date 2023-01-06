@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 10564 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=10564
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/10564
 //
 // <-- Short Description -->
 // linspace was too agressive on input argument checks

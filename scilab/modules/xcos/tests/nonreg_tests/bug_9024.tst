@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 9024 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=9024
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/9024
 //
 // <-- Short Description -->
 // Opening a non-existing file lead to problems when closing Xcos.

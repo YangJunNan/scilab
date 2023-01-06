@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 16152 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/16152
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/16152
 //
 // <-- Short Description -->
 //after s = spzeros(2,3), s([]) returns [] instead of sparse([])

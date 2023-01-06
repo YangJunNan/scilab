@@ -8,8 +8,8 @@
 //
 // <-- Non-regression test for bug 9958-->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/9958
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/9958
 //
 // <-- Short Description -->
 // mprintf("%d\r", 12345) printed " 345"

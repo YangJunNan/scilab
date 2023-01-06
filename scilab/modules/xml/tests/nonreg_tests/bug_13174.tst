@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 13174 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/13174
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/13174
 //
 // <-- Short Description -->
 // Crash after element removal.

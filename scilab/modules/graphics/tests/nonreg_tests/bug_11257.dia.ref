@@ -7,8 +7,8 @@
 // <-- TEST WITH GRAPHIC -->
 // <-- Non-regression test for bug 11257 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=11257
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/11257
 //
 // <-- Short Description -->
 // Memory leaks in Scilab graphics.

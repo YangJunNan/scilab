@@ -8,8 +8,8 @@
 //
 // <-- CLI SHELL MODE -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=6452
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/6452
 //
 // <-- Short Description -->
 // part() does not support properly ANSI-encoded chars

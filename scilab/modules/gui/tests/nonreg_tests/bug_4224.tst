@@ -8,8 +8,8 @@
 // <-- Non-regression test for bug 4224 -->
 // <-- INTERACTIVE TEST -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=4224
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/4224
 //
 // <-- Short Description -->
 // uigetfile masks were case insensitive on Windows.

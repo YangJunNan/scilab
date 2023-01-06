@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 15753 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/15753
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/15753
 //
 // <-- Short Description -->
 // issparse(sparseBoolean) returned %F instead of %T

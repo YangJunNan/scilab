@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 3244 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=3244
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/3244
 //
 // <-- Short Description -->
 //    Bad outputs for the qpsolve/qp_solve functions

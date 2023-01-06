@@ -9,8 +9,8 @@
 // <-- XCOS TEST -->
 // <-- Non-regression test for bug 7761 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=7716
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/7716
 //
 // <-- Short Description -->
 // Block inter-functions were not loaded after using the xcosPal API and then

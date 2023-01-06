@@ -12,8 +12,8 @@
 // <-- Short Description -->
 // file returns a wrong error message when file does not exist.
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=3478
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/3478
 //
 
 ierr = execstr("file(''open'', ''my file which does not exist'', ''old'');", "errcatch");

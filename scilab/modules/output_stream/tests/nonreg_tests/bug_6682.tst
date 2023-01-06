@@ -11,8 +11,8 @@
 // <-- Short Description -->
 // printf functions do not manage octal %o format
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=6682
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/6682
 //
 
 printf('%o',8);

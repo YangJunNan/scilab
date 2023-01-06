@@ -12,8 +12,8 @@
 //
 // <-- Non-regression test for bug 1149 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=1149
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/1149
 //
 // <-- Short Description -->
 //    m2sci doesn't cope with constructs like a=[1,2,3,] or

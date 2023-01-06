@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 16118 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/16118
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/16118
 //
 // <-- Short Description -->
 // polynomials: %z <> (1+%z) returns %F (same with ~=) (6.0.0 regression)

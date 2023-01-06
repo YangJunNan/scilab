@@ -10,8 +10,8 @@
 
 // <-- Non-regression test for bug 1902 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=1902
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/1902
 //
 // <-- Short Description -->
 //    in drawlater mode the bounding box of strings may be wrong

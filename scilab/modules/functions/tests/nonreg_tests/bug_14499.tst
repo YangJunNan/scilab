@@ -7,8 +7,8 @@
 // <-- CLI SHELL MODE -->
 // <-- Non-regression test for bug 14499 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/14499
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/14499
 //
 // <-- Short Description -->
 // getd() did not update functions already defined

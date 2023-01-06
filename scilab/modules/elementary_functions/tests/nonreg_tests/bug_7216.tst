@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 7216 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=7216
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/7216
 //
 // <-- Short Description -->
 //    The result returned by modulo(x,0) and pmodulo(x,0) depends on the ieee()

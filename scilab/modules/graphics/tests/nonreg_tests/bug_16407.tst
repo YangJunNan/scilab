@@ -10,8 +10,8 @@
 
 // <-- Non-regression test for bug 16407 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=16407
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/16407
 //
 // <-- Short Description -->
 // Fec rendering is incorrect

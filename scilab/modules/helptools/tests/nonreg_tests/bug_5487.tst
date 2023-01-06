@@ -8,8 +8,8 @@
 
 // <-- Non-regression test for bug 5487 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=5487
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/5487
 //
 // <-- Short Description -->
 // Missing space in a macro was causing the first message to be included

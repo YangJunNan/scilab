@@ -8,8 +8,8 @@
 //
 // <-- Non-regression test for bug 8383 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=8383
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/8383
 //
 // <-- Short Description -->
 // export and import "void" and "undefined" fields in {m,l}list

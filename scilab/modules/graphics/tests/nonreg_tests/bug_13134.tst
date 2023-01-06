@@ -11,8 +11,8 @@
 
 // <-- Non-regression test for bug 13134 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/13134
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/13134
 //
 // <-- Short Description -->
 // User defined ticks in log scale were invisible

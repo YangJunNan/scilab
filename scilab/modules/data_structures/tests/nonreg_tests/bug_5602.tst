@@ -10,8 +10,8 @@
 
 // <-- Non-regression test for bug 5602 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/5602
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/5602
 //
 // <-- Short Description -->
 // Changing a component of a list in a cells array replaced the whole list with

@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 15653 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=15653
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/15653
 //
 // <-- Short Description -->
 // sparse - complex substraction is corrupted

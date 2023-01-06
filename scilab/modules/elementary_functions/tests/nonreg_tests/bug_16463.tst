@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 16463 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/16463
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/16463
 //
 // <-- Short Description -->
 // matrix(sparse([]), [0 0]) returns [] instead of sparse([])

@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 7315 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=7315
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/7315
 //
 // <-- Short Description -->
 // The Affich block doesn't refresh values.

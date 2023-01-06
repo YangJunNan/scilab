@@ -8,8 +8,8 @@
 
 // <-- Non-regression test for bug 9280 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=9280
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/9280
 //
 // <-- Short Description -->
 // wavread failed to read PCM 32 bit float file format.

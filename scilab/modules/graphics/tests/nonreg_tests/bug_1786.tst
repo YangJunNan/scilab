@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 1786 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=1786
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/1786
 //
 // <-- Short Description -->
 //    Scilab 4.0-RC1

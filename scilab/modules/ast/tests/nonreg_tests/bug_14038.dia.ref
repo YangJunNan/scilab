@@ -8,8 +8,8 @@
 //
 // <-- Non-regression test for bug 14038 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/14038
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/14038
 //
 // <-- Short Description -->
 // Encoded integers are no longer accepted for list extraction

@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 11426 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=11426
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/11426
 //
 // <-- Short Description -->
 // Save function showed warning message in case of "save environment".

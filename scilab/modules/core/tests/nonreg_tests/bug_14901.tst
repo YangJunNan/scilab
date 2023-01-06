@@ -11,8 +11,8 @@
 // <-- NO CHECK REF -->
 //
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=14901
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/14901
 //
 // <-- Short Description -->
 

@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 14487 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/14487
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/14487
 //
 // <-- Short Description -->
 // Matrix indexing is not coherent with MATLAB convention

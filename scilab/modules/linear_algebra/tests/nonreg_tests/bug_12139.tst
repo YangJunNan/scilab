@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 12139 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=12139
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/12139
 //
 // <-- Short Description -->
 //    eigs run out of memory for sparse matrices.

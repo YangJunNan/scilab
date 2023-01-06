@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 4903 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=4903
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/4903
 //
 // <-- Short Description -->
 //    In SciNotes, closing the last tab + another closing tab action generates an exception in the console.

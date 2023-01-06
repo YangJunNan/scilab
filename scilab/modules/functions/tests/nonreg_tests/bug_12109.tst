@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 12109 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/12109
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/12109
 //
 // <-- Short Description -->
 // execstr() of a function including a return(var) before assigning the argout

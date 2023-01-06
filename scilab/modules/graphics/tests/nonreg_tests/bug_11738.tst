@@ -10,8 +10,8 @@
 
 // <-- Non-regression test for bug 11738 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=11738
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/11738
 //
 // <-- Short Description -->
 // xsave + xload : bad and very slow rendering

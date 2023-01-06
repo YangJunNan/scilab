@@ -10,8 +10,8 @@
 // <-- CLI SHELL MODE -->
 // <-- NO CHECK REF -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/15535
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/15535
 //
 // <-- Short Description -->
 // sign(int8(0)) returned 1 instead of 0

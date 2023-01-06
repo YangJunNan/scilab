@@ -9,8 +9,8 @@
 //
 // <-- TEST WITH GRAPHIC -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=8793
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/8793
 //
 // <-- Short Description -->
 // 'waitbar' function crashes when the handle is not initialized.

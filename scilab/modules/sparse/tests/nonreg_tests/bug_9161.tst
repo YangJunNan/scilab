@@ -8,8 +8,8 @@
 // <-- CLI SHELL MODE -->
 // <-- Non-regression test for bug 9161 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/9161
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/9161
 //
 // <-- Short Description -->
 //  Wrong insertions in sparse when repeated index

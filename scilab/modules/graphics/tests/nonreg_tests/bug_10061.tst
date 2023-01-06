@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 10061 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=10061
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/10061
 //
 // <-- Short Description -->
 // datatipCreate draws the tip in the current axes instead of curve parent axes

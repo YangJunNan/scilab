@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 14245 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/14245
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/14245
 //
 // <-- Short Description -->
 // Problem in recursive extraction using list with struct

@@ -11,8 +11,8 @@
 //
 // <-- Non-regression test for bug 2682-->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=2682
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/2682
 //
 // <-- Short Description -->
 // chart() is inconsistent in the second argument, angle. It might be treated as degrees or radian.

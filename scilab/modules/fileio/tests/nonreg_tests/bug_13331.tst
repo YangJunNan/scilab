@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 13331 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=13331
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/13331
 //
 // <-- Short Description -->
 // Users are no longer able to write inconsistent options to mopen,

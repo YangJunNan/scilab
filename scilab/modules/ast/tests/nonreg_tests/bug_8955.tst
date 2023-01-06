@@ -7,8 +7,8 @@
 //
 // <-- Non-regression test for bug 8955 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=8955
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/8955
 //
 // <-- Short Description -->
 // Spaces within matrix should be processed a special way.

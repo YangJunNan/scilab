@@ -11,8 +11,8 @@
 // <-- NO CHECK REF -->
 // <-- ENGLISH IMPOSED -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/7083
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/7083
 //
 // <-- Short Description -->
 // Setting uicontrol.backgroundcolor=[10 10 10] with RGB values > 1

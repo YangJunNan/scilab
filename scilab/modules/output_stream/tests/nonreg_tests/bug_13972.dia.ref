@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 13972 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=13972
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/13972
 //
 // <-- Short Description -->
 // use of wildcard '*' in printf expressions was not managed

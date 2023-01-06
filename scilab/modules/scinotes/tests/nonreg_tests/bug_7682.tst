@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 7682 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=7682
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/7682
 //
 // <-- Short Description -->
 // The knob of the vertical scrollbar moved badly on resize.

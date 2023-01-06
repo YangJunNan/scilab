@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 6434 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/6434
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/6434
 //
 // <-- Short Description -->
 // Calls like libname.Macro() worked only with one input argument.

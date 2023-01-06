@@ -7,8 +7,8 @@
 // =============================================================================
 // <-- Non-regression test for bug 6437 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=6437
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/6437
 //
 // <-- Short Description -->
 // fileext('plop') crashed Scilab on linux

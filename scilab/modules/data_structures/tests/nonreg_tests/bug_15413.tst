@@ -10,8 +10,8 @@
 
 // <-- Non-regression test for bug 15413 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/15413
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/15413
 //
 // <-- Short Description -->
 // Deletion of ranges of a structures array failed: s(3,4).r = 1;  s(:,2) = []  

@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 10305 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=10305
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/10305
 //
 // <-- Short Description -->
 // Compare lists with empty items is impossible

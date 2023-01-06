@@ -243,7 +243,7 @@ Hexpected(:, :, 2) = H2;
 [Jcomputed, Hcomputed] = numderivative(myexample, x, [], [], "hypermat");
 assert_checkalmostequal ( Jcomputed , Jexpected , 1.e-9 );
 assert_checkequal ( size(Hcomputed) , [3 3 2] );
-// This is a limitation of assert (http://bugzilla.scilab.org/show_bug.cgi?id=9461)
+// This is a limitation of assert (https://gitlab.com/scilab/scilab/-/issues/9461)
 // assert_checkalmostequal ( Hcomputed , Hexpected , 1.e-6 );
 assert_checkalmostequal ( Hexpected(:, :, 1) , Hexpected(:, :, 1) , 1.e-6);
 assert_checkalmostequal ( Hexpected(:, :, 2) , Hexpected(:, :, 2) , 1.e-6);

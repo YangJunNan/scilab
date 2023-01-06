@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 7210 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=7210
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/7210
 // <-- Short Description -->
 //
 // 'call' was broken on Windows 64 bits (master)

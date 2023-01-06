@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 5112 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=5112
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/5112
 //
 // <-- Short Description -->
 // When opening several diagrams at the same time :

@@ -9,8 +9,8 @@
 // <-- INTERACTIVE TEST -->
 // <-- TEST WITH GRAPHIC -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/11318
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/11318
 //
 // <-- Short Description -->
 // Order of uimenus in a figure changed when adding submenus.

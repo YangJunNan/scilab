@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 12993 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=12993
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/12993
 //
 // <-- Short Description -->
 // stdev with no input arguments gave an erroneous result.

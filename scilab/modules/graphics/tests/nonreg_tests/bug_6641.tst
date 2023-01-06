@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 6641 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=6641
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/6641
 //
 // <-- Short Description -->
 // bar3d did not handle correctly optionals arguments.

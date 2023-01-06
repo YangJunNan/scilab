@@ -12,8 +12,8 @@
 //
 // <-- Non-regression test for bug 13543 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/13543
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/13543
 //
 // <-- Short Description -->
 // In a gui, scrollbar does not work with the mouse wheel

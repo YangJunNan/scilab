@@ -10,8 +10,8 @@
 
 // <-- Non-regression test for bug 4216 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/4216
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/4216
 //
 // <-- Short Description -->
 //  csim returned error "!--error 27  Division by zero..."

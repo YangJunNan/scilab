@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 14903 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/14903
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/14903
 //
 // <-- Short Description -->
 // plot2d crashed if the figure has no axes.

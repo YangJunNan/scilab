@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 12059 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/12059
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/12059
 //
 // <-- Short Description -->
 // Index returned by gsort of sparse are wrong.

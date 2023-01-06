@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 8836 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=8836
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/8836
 //
 // <-- Short Description -->
 // fileparts crashed scilab when matrix of strings was passed as input argument.

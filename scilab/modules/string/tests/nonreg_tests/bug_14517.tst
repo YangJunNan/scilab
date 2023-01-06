@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 14517 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=14517
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/14517
 //
 // <-- Short Description -->
 //    The second argument of part function must not contain of 0.

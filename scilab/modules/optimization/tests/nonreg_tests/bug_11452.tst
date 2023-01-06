@@ -8,8 +8,8 @@
 //
 // <-- Non-regression test for bug 11452 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=11452
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/11452
 //
 // <-- Short Description -->
 // diag optional argument in lsqrsolve cannot be used

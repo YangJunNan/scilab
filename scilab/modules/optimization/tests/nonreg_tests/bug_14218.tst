@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 14218 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=14218
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/14218
 
 A     = [-3 -1;1 -1;2 -1];
 b     = [-3;0;2];

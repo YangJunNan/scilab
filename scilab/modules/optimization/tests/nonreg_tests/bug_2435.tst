@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 2435 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=2435
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/2435
 //
 // <-- Short Description -->
 //    The following "optim based" function mades scilab hangs

@@ -7,8 +7,8 @@
 //
 // <-- Non-regression test for bug 3587 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=3587
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/3587
 //
 // <-- Short Description -->
 // gsort is not stable: It does not preserve the relative order of equal values

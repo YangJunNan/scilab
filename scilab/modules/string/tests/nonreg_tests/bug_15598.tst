@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 15598 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/15598
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/15598
 //
 // <-- Short Description -->
 // string(handle) returns "" instead of calling %h_string()  (regression)

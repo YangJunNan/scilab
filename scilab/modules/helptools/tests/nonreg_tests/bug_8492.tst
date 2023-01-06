@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 8492 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/8492
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/8492
 //
 // <-- Short Description -->
 // When the documentation was generated, error messages were not displayed in the console.

@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 7766 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/7766
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/7766
 //
 // <-- Short Description -->
 // cdff, cdffnc, ... functions did not display %inf in error messages

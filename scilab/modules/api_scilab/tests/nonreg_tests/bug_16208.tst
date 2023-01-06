@@ -11,8 +11,8 @@
 //
 // <-- Non-regression test for bug 16208 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/16208
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/16208
 //
 // <-- Short Description -->
 // Using 3D string matrix with old C-api gateways may crash Scilab

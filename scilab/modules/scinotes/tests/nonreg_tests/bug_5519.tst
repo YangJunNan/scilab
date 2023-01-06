@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 5519 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=5519
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/5519
 //
 // <-- Short Description -->
 // added a message asking the user if he wants to exit the 

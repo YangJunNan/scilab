@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 1944 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=1944
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/1944
 //
 // <-- Short Description -->
 // Y ticks labels are displaced when the graphic window is copied

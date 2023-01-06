@@ -7,8 +7,8 @@
 
 // <-- Non-regression test for bug 12784 -->
 //
-// <-- Bugzilla Ua rL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=12784
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/12784
 //
 // <-- Short Description -->
 //    Misleading error message in many functions when passing an integer 

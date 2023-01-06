@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 7695 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/7695
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/7695
 //
 // <-- Short Description -->
 // Only the first selected line was deleted in command history browser

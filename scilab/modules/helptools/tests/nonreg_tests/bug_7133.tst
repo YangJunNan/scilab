@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 7133 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=7133
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/7133
 //
 // <-- Short Description -->
 // help_from_sci() with no input now runs a full demo

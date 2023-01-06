@@ -10,8 +10,8 @@
 // <-- CLI SHELL MODE -->
 // <-- NO CHECK REF -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/15119
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/15119
 //
 // <-- Short Description -->
 // Inequality comparisons between complex-encoded real numbers failed

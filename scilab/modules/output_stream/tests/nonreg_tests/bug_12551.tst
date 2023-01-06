@@ -11,8 +11,8 @@
 //
 // <-- Non-regression test for bug 12551 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=12551
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/12551
 //
 // <-- Short Description -->
 // Stack problem with diary([],"pause") and diary([],"resume")

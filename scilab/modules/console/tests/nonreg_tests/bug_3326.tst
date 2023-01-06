@@ -7,8 +7,8 @@
 
 // <-- Non-regression test for bug 3326 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=3326
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/3326
 //
 // <-- Short Description -->
 // ESC key clears the command line in the console. 

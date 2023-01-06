@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 5508 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=5508
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/5508
 //
 // <-- Short Description -->
 // When loading a xcos project, hdf5 files are stored into /tmp/

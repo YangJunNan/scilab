@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 6306 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=6306
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/6306
 //
 // <-- Short Description -->
 // It was not possible to retrieve the data computed by histplot.

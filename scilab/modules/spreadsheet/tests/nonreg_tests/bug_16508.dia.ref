@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 16508 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=16508
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/16508
 //
 // <-- Short Description -->
 // csvTextScan and csvRead did not handle well complex data.

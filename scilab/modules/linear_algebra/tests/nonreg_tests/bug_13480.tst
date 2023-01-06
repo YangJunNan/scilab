@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug  -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/13480
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/13480
 //
 // <-- Short Description -->
 // eigs(A) failed for full A with size(A,1)<8

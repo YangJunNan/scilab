@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 7298 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=7298
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/7298
 //
 // <-- Short Description -->
 // Creating a superblock diagram using the region to superblock action

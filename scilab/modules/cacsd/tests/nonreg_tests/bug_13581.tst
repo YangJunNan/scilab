@@ -10,8 +10,8 @@
 
 // <-- Non-regression test for bug 13581 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/13581
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/13581
 //
 // <-- Short Description -->
 // The example of inistate help page did not work on Windows 64bit

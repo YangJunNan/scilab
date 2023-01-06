@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 9688 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=9688
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/9688
 //
 // <-- Short Description -->
 // optim could crash when "iprint" option was < 0

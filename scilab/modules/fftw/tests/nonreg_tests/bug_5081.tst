@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 5081 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=5081
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/5081
 //
 // <-- Short Description -->
 //

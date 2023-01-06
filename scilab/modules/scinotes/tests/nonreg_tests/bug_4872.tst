@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 4872 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=4872
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/4872
 //
 // <-- Short Description -->
 //    editor(<binary file>) opens a blank file without any warning.

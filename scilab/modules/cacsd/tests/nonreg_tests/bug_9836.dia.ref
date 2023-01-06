@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 9836 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=9836 
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/9836 
 //
 // <-- Short Description -->
 // repfreq failed due to "singular problem

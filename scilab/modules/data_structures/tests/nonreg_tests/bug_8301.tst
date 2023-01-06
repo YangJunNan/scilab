@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 8301 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/8301
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/8301
 
 //
 // <-- Short Description -->

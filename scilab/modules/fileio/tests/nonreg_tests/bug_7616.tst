@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 7616 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=7616
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/7616
 //
 // <-- Short Description -->
 // fullfile did not work with only one input argument.

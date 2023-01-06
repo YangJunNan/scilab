@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 8840 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=8840
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/8840
 //
 // <-- Short Description -->
 // fileparts does not manage matrx of strings

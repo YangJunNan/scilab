@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 8368 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/8368
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/8368
 //
 // <-- Short Description -->
 // Incremental search did not highlight correctly the pattern under Windows.

@@ -7,8 +7,8 @@
 // =============================================================================
 // <-- Non-regression test for bug 2523 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=2523
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/2523
 //
 // <-- Short Description -->
 // slash and backslash matrix divisions involving vectors with %inf or %nan entries

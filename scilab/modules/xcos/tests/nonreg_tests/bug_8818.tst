@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 8818 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=8818
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/8818
 //
 // <-- Short Description -->
 // Modelica exponential format was wrong.

@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 11422 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=11422
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/11422
 //
 // <-- Short Description -->
 // datatips do not work when the figure contains uicontrols.

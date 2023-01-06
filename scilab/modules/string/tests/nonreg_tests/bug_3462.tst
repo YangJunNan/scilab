@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 3462 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=3462
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/3462
 //
 
 // <-- Short Description -->

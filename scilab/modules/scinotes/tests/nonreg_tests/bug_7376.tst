@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 7376 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=7376
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/7376
 //
 // <-- Short Description -->
 // The toolbar is not present when launching with a filename argument

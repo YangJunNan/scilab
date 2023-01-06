@@ -8,8 +8,8 @@
 
 // <-- Non-regression test for bug 4027 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=4027
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/4027
 //
 // <-- Short Description -->
 // Impossible to create hypermatrices under Linux x64 (actually a bug with int32 values).

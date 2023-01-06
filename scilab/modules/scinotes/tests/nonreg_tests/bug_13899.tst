@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 13899 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/13899
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/13899
 //
 // <-- Short Description -->
 // Syntax coloring was off in scinotes

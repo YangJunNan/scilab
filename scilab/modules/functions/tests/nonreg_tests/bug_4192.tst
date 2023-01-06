@@ -10,8 +10,8 @@
 
 // <-- Non-regression test for bug 4192 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=4192
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/4192
 //
 // <-- Short Description -->
 //    When I do a getd in a directory where there are no .sci files, getd prints

@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 10298 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=10298
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/10298
 //
 // <-- Short Description -->
 // Example of datatipSetDisplay generates an error

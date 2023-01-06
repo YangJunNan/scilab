@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 3684 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=3684
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/3684
 //
 // <-- Short Description -->
 // mget() skips binary data.

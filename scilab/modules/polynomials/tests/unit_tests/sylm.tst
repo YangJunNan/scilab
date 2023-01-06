@@ -11,7 +11,7 @@
 // unit tests for sylm()
 // =====================
 // https://en.wikipedia.org/wiki/Sylvester_matrix
-// http://bugzilla.scilab.org/15744
+// https://gitlab.com/scilab/scilab/-/issues/15744
 
 assert_checkequal(sylm(0*%s, 0*%s), []);
 assert_checkequal(sylm(1+0*%s, 0*%s), []);

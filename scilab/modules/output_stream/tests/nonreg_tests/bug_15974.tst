@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 15974 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/15974
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/15974
 //
 // <-- Short Description -->
 // msprintf(*, %nan) doesn't return Nan

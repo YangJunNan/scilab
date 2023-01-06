@@ -7,8 +7,8 @@
 // <-- XCOS TEST -->
 // <-- Non-regression test for bug 8223 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=8223
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/8223
 //
 // <-- Short Description -->
 // Loading an Xcos file after building the doc did not work

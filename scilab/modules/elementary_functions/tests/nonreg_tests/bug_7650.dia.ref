@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 7650 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=7650
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/7650
 //
 // <-- Short Description -->
 // isempty(tlist(...)) always returned %f, ewen when all defined fields were empty.

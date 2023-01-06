@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 6829 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/6829
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/6829
 //
 // <-- Short Description -->
 //  kpure fails to compute  gains when applied to an high degree system

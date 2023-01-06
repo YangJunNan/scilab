@@ -10,8 +10,8 @@
 //
 
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=3851
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/3851
 //
 // <-- Short Description -->
 // root_properties: get(0, <property>) works only for

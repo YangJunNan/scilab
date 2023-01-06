@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 1322 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=1322
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/1322
 //
 // <-- Short Description -->
 //if on call a function stored in tlist to produce more than one output

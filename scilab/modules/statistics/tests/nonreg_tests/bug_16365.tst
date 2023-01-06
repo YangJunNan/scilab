@@ -9,8 +9,8 @@
 // <-- NO CHECK REF -->
 // <-- Non-regression test for bug 16365 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/16365
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/16365
 //
 // <-- Short Description -->
 // median(m,"r") and median(m,"c") were wrong

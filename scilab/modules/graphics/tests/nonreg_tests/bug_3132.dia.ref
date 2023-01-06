@@ -8,8 +8,8 @@
 //
 // <-- Non-regression test for bug 3132 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=3132
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/3132
 //
 // <-- Short Description -->
 // Wrong colors with plot3d1 with holes. If some value are set to infinity,

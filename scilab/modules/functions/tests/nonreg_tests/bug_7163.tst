@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 7163 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/7163
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/7163
 //
 // <-- Short Description -->
 // tree2code wrongly replaced every (:) occurence in a function definition with (eye()).

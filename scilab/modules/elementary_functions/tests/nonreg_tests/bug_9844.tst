@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 9844 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=9844
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/9844
 //
 // <-- Short Description -->
 // sum returns wrong values

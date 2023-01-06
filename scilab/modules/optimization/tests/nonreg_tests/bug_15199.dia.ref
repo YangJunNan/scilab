@@ -8,8 +8,8 @@
 //
 // <-- Non-regression test for bug 15199 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=15199
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/15199
 //
 // <-- Short Description -->
 // Scilab crash when using fsolve for functions containing other functions

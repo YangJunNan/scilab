@@ -10,8 +10,8 @@
 
 // <-- Non-regression test for bug 5606 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=5606
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/5606
 //
 // <-- Short Description -->
 // User-defined ticks labels are misaligned for a bottom-positioned x-axis

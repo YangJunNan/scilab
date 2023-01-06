@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 3118 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=3118
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/3118
 //
 // <-- Short Description -->
 // The edit/current axes properties menu of the graphic window fails

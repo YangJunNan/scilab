@@ -10,8 +10,8 @@
 
 // <-- Non-regression test for bug 15246 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/15246
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/15246
 //
 // <-- Short Description -->
 //    chsolve() called a missing blkslv() macro, that called a missing blkslvi() builtin

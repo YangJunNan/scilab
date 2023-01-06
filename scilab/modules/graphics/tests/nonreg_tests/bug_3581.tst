@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 3581 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=3581
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/3581
 //
 // <-- Short Description -->
 // Legends do not appear correctly when axes are plotted in log scale.

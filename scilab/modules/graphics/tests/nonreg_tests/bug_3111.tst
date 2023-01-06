@@ -7,8 +7,8 @@
 // <-- TEST WITH GRAPHIC -->
 // <-- Non-regression test for bug 3111 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=3111
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/3111
 //
 // <-- Short Description -->
 // Switch the "visible" figure property ("on" => "off"  or "off" => "on") has no effect on the display.

@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 1635 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=1635
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/1635
 //
 // <-- Short Description -->
 // iir filter frequency response may be wrong

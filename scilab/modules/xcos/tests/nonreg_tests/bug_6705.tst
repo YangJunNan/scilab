@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 6705 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=6705
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/6705
 //
 // <-- Short Description -->
 // When drag-and-dropping, port alignment is not right

@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 2677 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=2677
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/2677
 
 
 if grep(["at";"cat"],'/[hc]+at/','r')	 <>  2 then pause,end

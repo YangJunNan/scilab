@@ -10,8 +10,8 @@
 // <-- MACOSX ONLY -->//
 // <-- Non-regression test for bug 15938 -->
 //
-// <-- Bugzilla URL -->
-// https://bugzilla.scilab.org/show_bug.cgi?id=15938
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/15938
 //
 // <-- Short Description -->
 // fullpath() is broken on OSX

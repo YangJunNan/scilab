@@ -11,8 +11,8 @@
 //
 // <-- Non-regression test for bug 4834 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=4834
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/4834
 //
 // <-- Short Description -->
 // When called with more than 11 items displaytree did not open a window and Scilab reported a java exception.

@@ -10,8 +10,8 @@
 // // <-- INTERACTIVE TEST -->
 // <-- Non-regression test for bug 13725 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/13725
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/13725
 //
 // <-- Short Description -->
 // Polyline is not correctly filled with big values

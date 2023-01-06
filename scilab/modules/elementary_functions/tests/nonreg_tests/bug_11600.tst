@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 11600 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/11600
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/11600
 //
 // <-- Short Description -->
 // rand("foo") runs silently without returning an error

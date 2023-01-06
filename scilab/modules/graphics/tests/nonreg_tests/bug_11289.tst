@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 11289 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=11289
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/11289
 //
 // <-- Short Description -->
 // swap_handle function modify the properties.

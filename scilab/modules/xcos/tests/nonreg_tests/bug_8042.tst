@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 8042 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=8042
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/8042
 //
 // <-- Short Description -->
 // Port ordering is not the good one when using "Region to superblock"

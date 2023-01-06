@@ -12,8 +12,8 @@
 //
 // <-- Non-regression test for bug 12945 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/12945
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/12945
 //
 // <-- Short Description -->
 // Datatips could not correctly dragged in zoomed axes

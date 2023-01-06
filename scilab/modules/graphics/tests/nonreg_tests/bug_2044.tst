@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 2044 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=2044
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/2044
 //
 // <-- Short Description -->
 // Bug with XOR mode, nothing drawn till the window is resized or exposed

@@ -10,8 +10,8 @@
 
 // <-- Non-regression test for bug 3532 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=3532
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/3532
 //
 // <-- Short Description -->
 // link does not manage column vector as scilab 4.x

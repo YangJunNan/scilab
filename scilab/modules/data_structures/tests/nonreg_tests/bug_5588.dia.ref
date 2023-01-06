@@ -7,8 +7,8 @@
 // <-- CLI SHELL MODE -->
 // <-- Non-regression test for bug 5588 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=5588
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/5588
 //
 // <-- Short Description -->
 // null() of a tlist() field shifts all remaining values with respect to

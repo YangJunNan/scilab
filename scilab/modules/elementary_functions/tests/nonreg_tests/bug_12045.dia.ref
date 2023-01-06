@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 12045 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=12045
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/12045
 //
 // <-- Short Description -->
 // repmat function returns wrong result if numbers of input matrix are not double

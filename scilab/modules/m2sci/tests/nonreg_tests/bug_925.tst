@@ -11,8 +11,8 @@
 
 // <-- Non-regression test for bug 925 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=925
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/925
 //
 // <-- Short Description -->
 //    Bad insertion conversion

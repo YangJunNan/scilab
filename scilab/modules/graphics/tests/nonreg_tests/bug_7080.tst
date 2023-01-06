@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 7080 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/7080
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/7080
 //
 // <-- Short Description -->
 // Some graphics macros do not use standard error messages

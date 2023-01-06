@@ -8,8 +8,8 @@
 
 // <-- Non-regression test for bug 3784 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=3784
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/3784
 //
 // <-- Short Description -->
 //    When Scilab is launched in French, bad read of the values

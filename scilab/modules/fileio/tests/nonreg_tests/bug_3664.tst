@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 3664 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=3664
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/3664
 //
 // <-- Short Description -->
 //  an error occurs when a change directory operation implies a directory name with french accent letter ('é' for example).

@@ -7,8 +7,8 @@
 //
 // <-- Non-regression test for bug 11136 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=11136
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/11136
 //
 // <-- Short Description -->
 // A graphic export was crashing when using legends

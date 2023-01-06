@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 2003 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=2003
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/2003
 //
 // <-- Short Description -->
 //lusolve crashes scilab when handle has been freed

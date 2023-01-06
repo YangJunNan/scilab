@@ -8,8 +8,8 @@
 //
 // <-- Non-regression test for bug 12875 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=12875
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/12875
 //
 // <-- Short Description -->
 // phasemag returns an error for vector containing zero.

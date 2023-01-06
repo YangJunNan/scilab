@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 13435 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/13435
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/13435
 //
 // <-- Short Description -->
 // Crash under Windows when xmlRemove on the first child

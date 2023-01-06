@@ -7,8 +7,8 @@
 // =============================================================================
 // <-- Non-regression test for bug 3121 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=3121
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/3121
 //
 // <-- Short Description -->
 //The error message returned by zeros() when input arguments are not integers is not clear :

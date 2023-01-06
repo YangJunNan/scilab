@@ -9,8 +9,8 @@
 // <-- Non-regression test for bug 3646 -->
 // <-- NO CHECK REF -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=3646
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/3646
 //
 // <-- Short Description -->
 // Scilab 5.0.2 does not start after installation

@@ -7,8 +7,8 @@
 // <-- TEST WITH GRAPHIC -->
 // <-- Non-regression test for bug 7079 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=7079
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/7079
 //
 // <-- Short Description -->
 // "mtlb_get" used a "h" global variable instead of the given "H" parameter.

@@ -10,8 +10,8 @@
 
 // <-- Non-regression test for bug 4919 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=4919
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/4919
 // <-- Short Description -->
 // If the source file was stored in TMPDIR, the dynamic link
 //  was removing the content of this file.

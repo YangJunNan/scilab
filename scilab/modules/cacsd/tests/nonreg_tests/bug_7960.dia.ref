@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 7960 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=7960
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/7960
 //
 // <-- Short Description -->
 // plzr can not produce a pole zero plot of many simple transfer functions

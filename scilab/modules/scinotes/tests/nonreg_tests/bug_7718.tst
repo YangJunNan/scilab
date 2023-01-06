@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 7718 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=7718
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/7718
 //
 // <-- Short Description -->
 // There was a bad detection of a function when the list of args was broken.

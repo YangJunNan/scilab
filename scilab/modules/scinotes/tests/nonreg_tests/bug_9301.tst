@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 9301 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/9301
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/9301
 //
 // <-- Short Description -->
 // Exception when one tryed to paste a column to replace a column selection

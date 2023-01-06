@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 1454 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=1454
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/1454
 //
 f0 = 50;
 fs = 128;

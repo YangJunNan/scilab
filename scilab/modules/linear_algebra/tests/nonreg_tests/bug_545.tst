@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 545 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=545
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/545
 //
 // <-- Short Description -->
 //    Bug Report Id: 031202003109134720

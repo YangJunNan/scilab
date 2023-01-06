@@ -11,8 +11,8 @@
 // <-- CLI SHELL MODE -->
 // <-- NO CHECK REF -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/16227
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/16227
 //
 // <-- Short Description -->
 // WSCI was not available among environment variables

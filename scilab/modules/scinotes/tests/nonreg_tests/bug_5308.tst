@@ -11,8 +11,8 @@
 //
 // <-- Non-regression test for bug 5308 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=5308
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/5308
 //
 // <-- Short Description -->
 // editor does not check input arguments type

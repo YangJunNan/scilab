@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 3061 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=3061
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/3061
 //
 // <-- Short Description -->
 // The title position is incorrect when the graphic window is splitted

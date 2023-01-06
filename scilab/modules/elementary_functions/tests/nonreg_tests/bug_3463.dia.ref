@@ -7,8 +7,8 @@
 // <-- CLI SHELL MODE -->
 // <-- Non-regression test for bug 3463 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=3463
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/3463
 //
 // <-- Short Description -->
 //    acosh(%nan) returns 0, it should return %NaN.

@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 13619 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=13619
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/13619
 //
 // <-- Short Description -->
 // xstringl returned wrong coordinates for upper-left point.

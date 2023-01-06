@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 8229 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/8229
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/8229
 //
 // <-- Short Description -->
 // Problem of selection after an indentation

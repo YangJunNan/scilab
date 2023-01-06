@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 8326 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=8326
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/8326
 //
 // <-- Short Description -->
 // Creating a superblock with OUT_f block did not work

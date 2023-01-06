@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 8912 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=8912
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/8912
 //
 // <-- Short Description -->
 // fullpath did not return same result on Windows and Linux.

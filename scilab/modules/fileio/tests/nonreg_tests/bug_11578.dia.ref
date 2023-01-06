@@ -11,8 +11,8 @@
 //
 // <-- Non-regression test for bug 11578 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=11578
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/11578
 //
 // <-- Short Description -->
 // dir function under windows taking into account the case to sort the results.

@@ -11,8 +11,8 @@
 //
 // <-- Non-regression test for bug 15484 -->
 //
-// <-- Bugzilla URL -->
-// https://bugzilla.scilab.org/15484
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/15484
 //
 // <-- Short Description -->
 // isdir("w:"), isdir("w:\"), and  isdir("w:/") returned %T whenever the w:

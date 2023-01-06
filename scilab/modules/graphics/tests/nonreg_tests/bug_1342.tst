@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 1342 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=1342
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/1342
 //
 // <-- Short Description -->
 // The representation of an Arc in 3d does not work .

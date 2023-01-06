@@ -7,8 +7,8 @@
 //
 // <-- Non-regression test for bug 13358-->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/13358
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/13358
 //
 // <-- Short Description -->
 // intersect and unique are slower due to gsort behaving in o(n^2) on sorted arrays

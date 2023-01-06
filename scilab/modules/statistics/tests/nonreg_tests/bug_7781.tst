@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 7781 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=7781
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/7781
 //
 // <-- Short Description -->
 //     The second parameter of iqr function had no effect.

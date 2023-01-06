@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 4728 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=4728
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/4728
 //
 // <-- Short Description -->
 // Different result between Scilab 4.1.2 and Scilab master for strcat function

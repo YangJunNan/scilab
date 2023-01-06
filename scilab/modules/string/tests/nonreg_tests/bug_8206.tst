@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 8206 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=8206
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/8206
 //
 // <-- Short Description -->
 // isnum did not manage blanks

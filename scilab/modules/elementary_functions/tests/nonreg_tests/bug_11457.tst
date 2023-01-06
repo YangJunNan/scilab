@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 11457 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=11457
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/11457
 //
 // <-- Short Description -->
 // gsort crashed when get string data from stack after big stacksize.

@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 10519 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=10519
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/10519
 //
 // <-- Short Description -->
 // Wrong error message in spec function when input arguments were not square.

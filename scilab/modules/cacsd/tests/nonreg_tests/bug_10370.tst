@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 10370 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=10370
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/10370
 //
 // <-- Short Description -->
 // ss2tf returned a wrong value on Windows 64 bit

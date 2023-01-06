@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 13936 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/16397
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/16397
 //
 // <-- Short Description -->
 // display of long real vectors in the console is slow

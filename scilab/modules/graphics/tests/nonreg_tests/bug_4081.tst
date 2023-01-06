@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 4081 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=4081
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/4081
 //
 // <-- Short Description -->
 // Colormap is sometime not updated when using new interpoated colors.

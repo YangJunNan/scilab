@@ -10,8 +10,8 @@
 // <-- CLI SHELL MODE -->
 // <-- NO CHECK REF -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/16111
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/16111
 //
 // <-- Short Description -->
 // isglobal does not support non-scalar array of string as input

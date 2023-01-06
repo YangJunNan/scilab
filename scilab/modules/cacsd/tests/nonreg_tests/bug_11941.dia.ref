@@ -7,8 +7,8 @@
 //
 // <-- Non-regression test for bug 11941 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=11941
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/11941
 //
 // <-- Short Description -->
 // show_margins() fails in 'nyquist' mode if the system is in state-space form. It

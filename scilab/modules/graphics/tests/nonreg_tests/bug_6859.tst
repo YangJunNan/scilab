@@ -11,8 +11,8 @@
 
 // <-- Non-regression test for bug 6859 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/6859
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/6859
 //
 // <-- Short Description -->
 // xlabel and xtitle could overlapped

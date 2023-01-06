@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 9876 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/9876
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/9876
 //
 // <-- Short Description -->
 // Struct creation by element insertion failed.

@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 595 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=595
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/595
 
 
 function m=saisieParBandes(lig,col,titre)

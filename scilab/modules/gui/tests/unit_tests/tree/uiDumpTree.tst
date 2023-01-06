@@ -49,7 +49,7 @@ uiDumpTree(treeRoot,%F);
 uiDumpTree(treeRoot,%T);
 
 
-// % "\n" "\r" "\t" in contents (http://bugzilla.scilab.org/16129)
+// % "\n" "\r" "\t" in contents (https://gitlab.com/scilab/scilab/-/issues/16129)
 // ----------------------------
 node1 = uiCreateNode("c:\nine %", "c:\nine\ic%on", "\nine\callback%d");
 leaf11 = uiCreateNode("c:\ni#ne\return", "c:\nine\return\icon", "c:\nine\return\callback");

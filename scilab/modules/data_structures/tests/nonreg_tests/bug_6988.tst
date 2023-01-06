@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 6988 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=6988
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/6988
 //
 // <-- Short Description -->
 // Error messages in modules/data_structures/src/c/hmops.c are not standard.

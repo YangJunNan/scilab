@@ -7,8 +7,8 @@
 // <-- TEST WITH GRAPHIC -->
 // <-- Non-regression test for bug 3056 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=3056
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/3056
 //
 // <-- Short Description -->
 // scilab crash with the following test and the nd algorithm.

@@ -8,8 +8,8 @@
 
 // <-- Non-regression test for bug 4297 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=4297
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/4297
 //
 // <-- Short Description -->
 //     A spelling mistake was causing in some cases with the pfss function

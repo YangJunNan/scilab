@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 367 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=367
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/367
 //
 // <-- Short Description -->
 // Apparently an error is raised in a script.

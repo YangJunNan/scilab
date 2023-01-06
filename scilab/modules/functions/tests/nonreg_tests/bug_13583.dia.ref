@@ -7,8 +7,8 @@
 //<-- CLI SHELL MODE -->
 // <-- Non-regression test for bug 13583 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/13583
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/13583
 //
 // <-- Short Description -->
 // getd loading a script containing clear yielded an error

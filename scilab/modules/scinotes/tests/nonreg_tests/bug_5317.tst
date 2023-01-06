@@ -11,8 +11,8 @@
 //
 // <-- Non-regression test for bug 5317 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=5317
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/5317
 //
 // <-- Short Description -->
 // Inserting a tab inside a line tabifies the whole line instead of only its queue.

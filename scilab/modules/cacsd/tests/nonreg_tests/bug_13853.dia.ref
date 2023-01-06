@@ -7,8 +7,8 @@
 // <-- TEST WITH GRAPHIC -->
 // <-- Non-regression test for bug 13853 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/13853
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/13853
 //
 // <-- Short Description -->
 // plzr() thinks discrete-time systems with a numeric time step are continuous-time systems

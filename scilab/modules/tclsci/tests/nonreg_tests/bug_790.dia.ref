@@ -7,8 +7,8 @@
 // =============================================================================
 // <-- Non-regression test for bug 790 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=790
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/790
 //
 // <-- Short Description -->
 //    Scilab crashes when you enter findobj().

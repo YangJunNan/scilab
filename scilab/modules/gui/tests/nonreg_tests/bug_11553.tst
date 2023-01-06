@@ -9,8 +9,8 @@
 // <-- TEST WITH GRAPHIC -->
 // <-- INTERACTIVE TEST -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/11553
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/11553
 //
 // <-- Short Description -->
 // The uicontextmenu handles (and their children) were not destroyed at the end of execution.

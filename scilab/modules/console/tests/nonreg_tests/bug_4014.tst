@@ -7,8 +7,8 @@
 
 // <-- Non-regression test for bug 4014 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=4014
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/4014
 //
 // <-- Short Description -->
 // ESC key clears the command line in the console. 

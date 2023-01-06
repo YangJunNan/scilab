@@ -11,8 +11,8 @@
 //
 // <-- Non-regression test for bug 11975 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=12975
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/12975
 //
 // <-- Short Description -->
 // Some demos did not compile.

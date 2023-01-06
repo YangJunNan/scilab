@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 6596 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=6596
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/6596
 //
 // <-- Short Description -->
 // When the ATOMS GUI opens, the list of already installed modules could be

@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 14278 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/14278
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/14278
 //
 // <-- Short Description -->
 // ltitr returned an incorrect xf output value.

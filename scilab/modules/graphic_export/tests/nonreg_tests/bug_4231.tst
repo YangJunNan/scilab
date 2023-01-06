@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 4231 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=4231
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/4231
 //
 // <-- Short Description -->
 // plot();xs2png(0,TMPDIR+filesep()+'toto.png') crashs !!!

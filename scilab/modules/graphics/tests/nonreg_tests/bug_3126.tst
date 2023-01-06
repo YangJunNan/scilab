@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 3124 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=3124
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/3124
 //
 // <-- Short Description -->
 // The arrow sizes are in scilab 5 given by absolute value.

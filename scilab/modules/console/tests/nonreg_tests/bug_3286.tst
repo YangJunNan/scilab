@@ -7,8 +7,8 @@
 
 // <-- Non-regression test for bug 3286 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=3286
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/3286
 //
 // <-- Short Description -->
 

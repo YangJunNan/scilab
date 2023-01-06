@@ -9,8 +9,8 @@
 // <-- XCOS TEST -->
 // <-- Non-regression test for bug 7214 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=7214
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/7214
 
 xcos();
 // put a SUPER_f block (User defined palette)

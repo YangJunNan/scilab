@@ -9,8 +9,8 @@
 // 
 // <-- Non-regression test for bug 1590 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=1590
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/1590
 //
 // <-- Short Description -->
 //    clipboard function crashes scilab when called from a script

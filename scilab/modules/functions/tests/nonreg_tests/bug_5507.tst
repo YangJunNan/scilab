@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 5507 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=5507
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/5507
 //
 // <-- Short Description -->
 // whereis(bin2dec) returned a error

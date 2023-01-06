@@ -8,8 +8,8 @@
 //
 // <-- Non-regression test for bug 4811 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=4811
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/4811
 //
 // <-- Short Description -->
 //   for some figures, it is not possible to save and load the handle of the figure.

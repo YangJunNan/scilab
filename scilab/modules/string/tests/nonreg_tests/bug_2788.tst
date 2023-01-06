@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 2788 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=2788
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/2788
 //
 // <-- Short Description -->
 // strsubst() function return weird strings. (only under Linux)

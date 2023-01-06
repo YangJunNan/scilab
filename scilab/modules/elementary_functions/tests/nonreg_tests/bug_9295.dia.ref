@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 9295 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=9295
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/9295
 //
 // <-- Short Description -->
 // 'base2dec' ignored the fractional part of 'base' input argument.

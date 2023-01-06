@@ -8,8 +8,8 @@
 // <-- CLI SHELL MODE -->
 // <-- Non-regression test for bug 14116 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/14116
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/14116
 //
 // <-- Short Description -->
 // Invalid exponent in case of complex exponents especially(0*%i)

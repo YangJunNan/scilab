@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 5355 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=5355
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/5355
 //
 // <-- Short Description -->
 //    There is no automatic indentation in the editor when commands such as "try" or "catch" are entered.

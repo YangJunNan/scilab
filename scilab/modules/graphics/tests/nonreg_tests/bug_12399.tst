@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 12399 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=12399
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/12399
 //
 // <-- Short Description -->
 // Using plot2d with log scale and limits values may freeze Scilab

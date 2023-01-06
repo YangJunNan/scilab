@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 16120 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/16120
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/16120
 //
 // <-- Short Description -->
 // tree_show() was broken for containers including some cells

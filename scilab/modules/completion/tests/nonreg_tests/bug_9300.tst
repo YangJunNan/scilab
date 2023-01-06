@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 9300 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/9300
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/9300
 //
 // <-- Short Description -->
 // Crash when try to complete a mlist without fields

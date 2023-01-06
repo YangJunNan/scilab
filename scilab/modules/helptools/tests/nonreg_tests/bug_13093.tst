@@ -11,8 +11,8 @@
 //
 // <-- Non-regression test for bug 13093 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=13093
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/13093
 //
 // <-- Short Description -->
 // head_comments displayed a trailing "\n" when the argument had no head comments.

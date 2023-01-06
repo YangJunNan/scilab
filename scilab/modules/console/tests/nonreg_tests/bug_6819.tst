@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 6819 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/6819
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/6819
 //
 // <-- Short Description -->
 // prompt() interpreted '<...>' as html

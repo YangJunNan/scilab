@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 13053 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/13053
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/13053
 //
 // <-- Short Description -->
 // datatipCreate did not return datatip handle.

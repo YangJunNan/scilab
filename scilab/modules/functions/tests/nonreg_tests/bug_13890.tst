@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 13890 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=13890
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/13890
 //
 // <-- Short Description -->
 // Bug when use getd with a ".sci" file with more than one function

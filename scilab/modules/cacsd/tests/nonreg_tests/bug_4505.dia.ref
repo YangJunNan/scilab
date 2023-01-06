@@ -8,8 +8,8 @@
 //
 // <-- ENGLISH IMPOSED -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=4505
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/4505
 //
 // <-- Short Description -->
 //  A red vertical bar appeared  for some bode plots of continuous time systems.

@@ -11,8 +11,8 @@
 //
 // <-- Non-regression test for bug 10366 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=10366
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/10366
 //
 // <-- Short Description -->
 // a warning about fun2string redefinition was displayed when we used 

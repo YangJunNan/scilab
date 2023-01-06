@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 12076 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=12076
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/12076
 //
 // <-- Short Description -->
 // csvRead does not ignore blank lines

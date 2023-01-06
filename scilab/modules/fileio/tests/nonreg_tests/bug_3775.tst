@@ -15,8 +15,8 @@
 //=> It should return an error instead of just printing a message.
 
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=3775
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/3775
 //
 
 a=mopen(TMPDIR+filesep()+"test.sce","wt");

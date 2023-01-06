@@ -7,8 +7,8 @@
 // <-- TEST WITH GRAPHIC -->
 // <-- Non-regression test for bug 12496 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/12496
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/12496
 //
 // <-- Short Description -->
 // zoom_rect could lead to a crash in log scale

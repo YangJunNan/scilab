@@ -9,8 +9,8 @@
 //
 // <-- CLI SHELL MODE -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=4583
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/4583
 //
 // <-- Short Description -->
 // Default value for string array assignment was " " instead of an empty string

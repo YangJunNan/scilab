@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 11398 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=11398
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/11398
 //
 // <-- Short Description -->
 // newest() produces an incomprehensible error message when called with a string vector as second input argument.

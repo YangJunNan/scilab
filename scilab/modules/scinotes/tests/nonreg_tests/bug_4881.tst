@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 4881 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=4881
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/4881
 //
 // <-- Short Description -->
 //    In the "Menu→Search→find/replace" dialog window, check the radio box "Selected lines" has no effect : The whole file is always processed.

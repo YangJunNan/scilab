@@ -10,8 +10,8 @@
 
 // <-- Non-regression test for bug 6971 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=6971
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/6971
 //
 // <-- Short Description -->
 // after launching a toolbox by loader.sce, variable v was predefined.

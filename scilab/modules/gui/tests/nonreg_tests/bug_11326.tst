@@ -10,8 +10,8 @@
 // <-- TEST WITH GRAPHIC -->
 // <-- INTERACTIVE TEST -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/11326
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/11326
 //
 // <-- Short Description -->
 // set(h, "enable", "off") and set(h, "visible", "off") after menu creation had no effect

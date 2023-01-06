@@ -8,8 +8,8 @@
 //
 // <-- Non-regression test for bug 2479 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=2479
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/2479
 //
 // <-- Short Description -->
 // Graphic editor could not be used when format was not format("v",18).

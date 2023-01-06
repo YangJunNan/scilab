@@ -7,8 +7,8 @@
 // <-- TEST WITH GRAPHIC -->
 // <-- Non-regression test for bug 7188 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=7188
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/7188
 //
 // <-- Short Description -->
 // Deleting a Label causes Scilab to crash

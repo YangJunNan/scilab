@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 8828 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=8828
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/8828
 //
 // <-- Short Description -->
 // "savematfile" could no more save a structure.

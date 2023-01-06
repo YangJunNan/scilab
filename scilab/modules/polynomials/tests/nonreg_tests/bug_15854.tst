@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 15854 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/15854
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/15854
 //
 // <-- Short Description -->
 // horner(1:$, 4) yielded an error. Extractions from cblock were impacted.

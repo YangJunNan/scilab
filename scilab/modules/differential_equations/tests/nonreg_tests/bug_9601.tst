@@ -8,8 +8,8 @@
 // <-- INTERACTIVE TEST -->
 // <-- Non-regression test for bug 9601 -->
 //
-// <-- Bugzilla URL -->
-//http://bugzilla.scilab.org/show_bug.cgi?id=9601
+// <-- GitLab URL -->
+//https://gitlab.com/scilab/scilab/-/issues/9601
 //
 // <-- Short Description -->
 // Cylinder demo fails with a bad value

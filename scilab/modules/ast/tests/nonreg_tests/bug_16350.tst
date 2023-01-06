@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 16350 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/16350
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/16350
 //
 // <-- Short Description -->
 // In if/while conditions, the empty sparse boolean is considered as TRUE.

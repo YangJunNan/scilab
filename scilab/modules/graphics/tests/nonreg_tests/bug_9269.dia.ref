@@ -8,8 +8,8 @@
 // <-- ENGLISH IMPOSED -->
 // <-- Non-regression test for bug 9269 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=9269
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/9269
 //
 // <-- Short Description -->
 // Specified graphic entities for legend() are drawn in reverse order.

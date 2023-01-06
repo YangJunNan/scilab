@@ -10,8 +10,8 @@
 
 // <-- Non-regression test for bug 15736 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/15736
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/15736
 //
 // <-- Short Description -->
 // unique failed with complex numbers.

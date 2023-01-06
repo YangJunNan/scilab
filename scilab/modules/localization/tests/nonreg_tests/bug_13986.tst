@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 13986 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=13986
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/13986
 //
 // <-- Short Description -->
 // setdefaultlanguage does not set correctly in Windows registry

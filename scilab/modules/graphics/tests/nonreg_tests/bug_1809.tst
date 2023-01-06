@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 1809 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=1809
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/1809
 //
 // <-- Short Description -->
 //   Add warning message (figure_size) after a invalid graphical script

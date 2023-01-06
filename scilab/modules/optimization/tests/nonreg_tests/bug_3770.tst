@@ -10,8 +10,8 @@
 
 // <-- Non-regression test for bug 3770 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=3770
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/3770
 //
 // <-- Short Description -->
 //    "qld" returns a error with scilab 5.0.2 and not with scilab 4.1.2

@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 9253 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=9253
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/9253
 //
 // <-- Short Description -->
 // fscanfMat failed to read a file with some lines of text at the end

@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 7558 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=7558
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/7558
 //
 // <-- Short Description -->
 // Global variables were reached before local ones.

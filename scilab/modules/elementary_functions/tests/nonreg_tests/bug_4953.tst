@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 4953 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/4953
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/4953
 //
 // <-- Short Description -->
 // The clean function does not work when the matrix contains the %inf value.

@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 14578 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/14578
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/14578
 //
 // <-- Short Description -->
 // LaTeX string used for text uicontrol was not updated.

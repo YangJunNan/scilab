@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 13780 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=13780
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/13780
 //
 // <-- Short Description -->
 //    size with two input and output arguments did not return an error.

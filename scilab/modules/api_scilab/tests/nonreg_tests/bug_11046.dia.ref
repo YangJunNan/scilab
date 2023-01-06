@@ -11,8 +11,8 @@
 //
 // <-- Non-regression test for bug 11046 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/11046
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/11046
 //
 // <-- Short Description -->
 // Sometimes, OverLoad(0) did not call %_xxx but %x_xxx overload

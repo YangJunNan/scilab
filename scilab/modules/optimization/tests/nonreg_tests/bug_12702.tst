@@ -11,8 +11,8 @@
 // <-- NO CHECK REF -->
 // <-- Non-regression test for bug 12702 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=12702
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/12702
 //
 // <-- Short Description -->
 // When no extra parameters are needed in the cost function, NDcost does not work:

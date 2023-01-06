@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 9963 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=9963
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/9963
 //
 // <-- Short Description -->
 // The assert_computedigits function is not vectorized.

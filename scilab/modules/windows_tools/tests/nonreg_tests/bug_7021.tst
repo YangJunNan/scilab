@@ -7,8 +7,8 @@
 
 // <-- Non-regression test for bug 7021 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=7021
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/7021
 //
 // <-- Short Description -->
 // Scilab did not start and returned a error system (193) on Windows

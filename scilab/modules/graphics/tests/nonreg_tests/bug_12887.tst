@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 12887 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/12887
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/12887
 //
 // <-- Short Description -->
 // Scilab hung with auto_clear set to on and log_flags set to true.

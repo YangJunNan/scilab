@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 14221 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/14221
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/14221
 //
 // <-- Short Description -->
 // mprintf("%.1f %% \n", (0:9)') returns only the first output and not the whole list

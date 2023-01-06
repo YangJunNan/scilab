@@ -8,8 +8,8 @@
 // <-- Non-regression test for bug 3490 (interactive part) -->
 //
 // <-- CLI SHELL MODE -->
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=3490
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/3490
 //
 // <-- INTERACTIVE TEST -->
 // <-- Short Description -->

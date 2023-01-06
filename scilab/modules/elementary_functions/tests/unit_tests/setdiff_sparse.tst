@@ -12,7 +12,7 @@
 // <-- Short Description -->
 // Unit tests for setdiff() with boolean sparse or numerical sparse matrices
 
-// See also : http://bugzilla.scilab.org/15867
+// See also : https://gitlab.com/scilab/scilab/-/issues/15867
 
 eb = sparse(%t); eb(1) = [];
 

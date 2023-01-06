@@ -6,8 +6,8 @@
 // =============================================================================
 // <-- Non-regression test for bug 1969 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=1969
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/1969
 //
 // <-- Short Description -->
 // Bad exec was causing a seg fault of Scilab

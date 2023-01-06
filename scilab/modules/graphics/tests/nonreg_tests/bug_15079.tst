@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 15079 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/15079
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/15079
 //
 // <-- Short Description -->
 // When all children of a graphic handle have not the same number of sub-children,

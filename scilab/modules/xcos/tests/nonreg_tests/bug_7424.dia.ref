@@ -8,8 +8,8 @@
 //
 // <-- Non-regression test for bug 7424 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=7424
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/7424
 //
 // <-- Short Description -->
 // Integer codec can produce a NuulPointerException

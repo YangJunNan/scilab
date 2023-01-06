@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 14610 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/14610
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/14610
 //
 // <-- Short Description -->
 // x = riccati(h,e) yielded an error

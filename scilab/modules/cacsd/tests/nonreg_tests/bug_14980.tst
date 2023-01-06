@@ -10,8 +10,8 @@
 
 // <-- Non-regression test for bug 14980 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=14980
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/14980
 //
 // <-- Short Description -->
 // The datatip display of the root locus arcs is broken

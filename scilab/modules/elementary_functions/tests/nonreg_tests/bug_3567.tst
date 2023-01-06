@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 3567 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=3567
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/3567
 //
 // <-- Short Description -->
 // gsort called with a complex array

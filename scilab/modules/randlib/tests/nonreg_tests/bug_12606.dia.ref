@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 12606 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=12606
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/12606
 //
 // <-- Short Description -->
 // overloads names for grand() are not standard: %#_Rand() instead of %#_grand()

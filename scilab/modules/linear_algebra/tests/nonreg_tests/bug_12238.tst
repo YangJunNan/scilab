@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 12238 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=12238
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/12238
 //
 // <-- Short Description -->
 //    [d v] = eigs(A) is broken for sparse matrices

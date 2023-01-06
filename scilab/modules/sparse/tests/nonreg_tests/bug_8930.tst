@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 8930 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/8930
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/8930
 //
 // <-- Short Description -->
 // Some assignments in boolean sparse matrices failed

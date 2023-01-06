@@ -10,8 +10,8 @@
 // <-- NO CHECK REF -->
 // <-- Non-regression test for bug 3572 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=3572
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/3572
 //
 // <-- Short Description -->
 // When using grayplot, you cannot have different dimensions in entry.

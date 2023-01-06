@@ -10,8 +10,8 @@
 
 // <-- Non-regression test for bug 16631 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/16631
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/16631
 //
 // <-- Short Description -->
 // read-only handle properties are considered as unknown

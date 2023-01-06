@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 1456 -->
 // NOT FIXED
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=1456
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/1456
 //
 // <-- Short Description -->
 //  Detailed description of the problem

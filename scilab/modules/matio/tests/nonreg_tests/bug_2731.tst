@@ -7,8 +7,8 @@
 
 // <-- Non-regression test for bug 2731 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=2731
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/2731
 //
 // <-- Short Description -->
 //    On 64bit linux, the loadmatfile function does not work with v4 MAT files,

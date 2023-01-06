@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 4883 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=4883
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/4883
 //
 // <-- Short Description -->
 // "Menu→Document→Auto Indent" preference is not saved.

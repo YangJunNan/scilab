@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 15609 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=15609
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/15609
 //
 // <-- Short Description -->
 // (1:1):2 crashes Scilab (regression)

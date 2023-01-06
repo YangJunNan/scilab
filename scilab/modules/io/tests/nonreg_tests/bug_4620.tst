@@ -12,8 +12,8 @@
 // <-- Short Description -->
 // the setenv function makes scilab hangs
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=4620
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/4620
 //
 
 A = 1:100000;

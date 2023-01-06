@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 16474 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/16474
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/16474
 //
 // <-- Short Description -->
 // imult(%z) crashes Scilab 

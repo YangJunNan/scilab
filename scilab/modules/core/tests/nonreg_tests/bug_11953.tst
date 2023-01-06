@@ -9,8 +9,8 @@
 //
 // <-- CLI SHELL MODE -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=11953
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/11953
 //
 // <-- Short Description -->
 // Scilab crashes when global("") is entered.

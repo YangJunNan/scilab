@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 13217 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=13217
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/13217
 //
 // <-- Short Description -->
 // augment() yielded a wrong result when flag2="i".

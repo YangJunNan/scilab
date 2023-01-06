@@ -11,8 +11,8 @@
 
 // <-- Non-regression test for bug 2405 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=2405
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/2405
 //
 // <-- Short Description -->
 // xsetech() creates an empty (covering white) axes frame, which shouldn't be, when

@@ -9,8 +9,8 @@
 // <-- Non-regression test for bug 13683 -->
 // <-- NO CHECK REF -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/13683
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/13683
 //
 // <-- Short Description -->
 // Stack error using unsetmenu for a dockable="off" figure

@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 13119 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=13119
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/13119
 //
 // <-- Short Description -->
 // mget and mgetl accepted decimal values as number of lines.

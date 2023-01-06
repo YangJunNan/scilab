@@ -8,8 +8,8 @@
 
 // <-- Non-regression test for bug 623 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=623
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/623
 //
 // <-- Short Description -->
 //    Even after applying the patch corresponding to bug report

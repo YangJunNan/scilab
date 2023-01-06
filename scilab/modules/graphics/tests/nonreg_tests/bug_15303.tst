@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 15303 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/15303
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/15303
 //
 // <-- Short Description -->
 // Some properties written in capital letter in set function crashed Scilab.

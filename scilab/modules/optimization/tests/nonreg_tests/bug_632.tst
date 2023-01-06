@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 632 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=632
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/632
 //
 // <-- Short Description -->
 //    The function "lsqrsolve" makes the whole Scilab crash.

@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 8529 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=8529
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/8529
 //
 // <-- Short Description -->
 // mkdir did not create in the same instruction one folder and one subfolder.

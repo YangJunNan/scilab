@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 14648 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/14648
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/14648
 //
 // <-- Short Description -->
 //  isinf(complex(%inf,%inf)) and isinf(complex(%nan,%inf)) returned %F

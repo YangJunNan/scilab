@@ -8,8 +8,8 @@
 //
 // <-- Non-regression test for bug 11511 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/11511
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/11511
 //
 // <-- Short Description -->
 // Error does not accept string matrix

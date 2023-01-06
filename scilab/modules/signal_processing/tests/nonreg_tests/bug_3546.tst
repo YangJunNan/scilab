@@ -8,8 +8,8 @@
 
 // <-- Non-regression test for bug 3546 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=3546
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/3546
 //
 // <-- Short Description -->
 // frmag broken in scilab 5.0

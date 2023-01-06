@@ -8,8 +8,8 @@
 //
 // <-- Non-regression test for bug 14326 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/14326
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/14326
 //
 // <-- Short Description -->
 // deletion of a element in a structure was impossible

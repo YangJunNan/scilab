@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 16667 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/16667
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/16667
 //
 // <-- Short Description -->
 // ./ is broken for a RHS having 0 (recent regression. 6.1.0 was OK)

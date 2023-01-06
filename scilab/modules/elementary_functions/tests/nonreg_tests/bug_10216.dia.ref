@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 10216 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=10216
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/10216
 //
 // <-- Short Description -->
 // Invalid syntaxes for zeros, ones, eye, rand like zeros(2,:)

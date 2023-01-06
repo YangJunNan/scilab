@@ -8,8 +8,8 @@
 
 // <-- Non-regression test for bug 3880 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=3880
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/3880
 //
 // <-- Short Description -->
 //    division by zero occurs in g_margin with Scilab v5.0.3

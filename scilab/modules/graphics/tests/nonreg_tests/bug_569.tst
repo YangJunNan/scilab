@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 569 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=569
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/569
 //
 // <-- Short Description -->
 //    contour2d does not work for me; however, contour works as

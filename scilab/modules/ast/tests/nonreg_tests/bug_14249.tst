@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 14249 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/14249
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/14249
 //
 // <-- Short Description -->
 // ctrl-c can be used to stop writing control expression

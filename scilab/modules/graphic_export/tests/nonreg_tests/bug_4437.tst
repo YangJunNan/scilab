@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 4437 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=4437
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/4437
 //
 // <-- Short Description -->
 // Exporting an empty figure crashes Scilab

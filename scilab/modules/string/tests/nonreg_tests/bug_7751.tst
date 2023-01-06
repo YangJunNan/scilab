@@ -8,8 +8,8 @@
 // <-- CLI SHELL MODE -->
 // <-- Non-regression test for bug 7751 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=7751
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/7751
 //
 // <-- Short Description -->
 // justify() did not work correctly with strings embedded leading or trailing spaces.

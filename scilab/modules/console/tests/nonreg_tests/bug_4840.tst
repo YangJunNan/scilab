@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 4840 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/4840
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/4840
 //
 // <-- Short Description -->
 // There is a performance problem with the console.

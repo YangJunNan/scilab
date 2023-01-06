@@ -7,8 +7,8 @@
 // <-- TEST WITH GRAPHIC -->
 // <-- Non-regression test for bug 8000 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/8000
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/8000
 //
 // <-- Short Description -->
 // get(gcf(), "%s %s") crashed Scilab

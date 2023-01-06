@@ -9,8 +9,8 @@
 //
 // <-- CLI SHELL MODE -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/14113
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/14113
 //
 // <-- Short Description -->
 // infinite loop is not detected

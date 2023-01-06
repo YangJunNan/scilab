@@ -9,8 +9,8 @@
 // <-- NO CHECK REF -->
 // <-- Non-regression test for bug 16679 -->
 //
-// <-- Bugzilla URL -->
-// https://bugzilla.scilab.org/16679
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/16679
 //
 // <-- Short Description -->
 // get_function_path("acosh") yielded an error (Scilab 6.0.0 regression)

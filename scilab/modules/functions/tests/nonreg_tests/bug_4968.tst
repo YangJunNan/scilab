@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 4968 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=4968
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/4968
 //
 // <-- Short Description -->
 // part() or strsubst() problem with UTF-8 when exec ???

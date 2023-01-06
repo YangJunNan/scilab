@@ -10,8 +10,8 @@
 
 // <-- Non-regression test for bug 2190 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/2190
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/2190
 //
 // <-- Short Description -->
 // Scilab crashes when trying to plot2d huge amounts of data.

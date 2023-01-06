@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 9838 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/9838
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/9838
 //
 // <-- Short Description -->
 // evstr() poorly supported comments in expressions

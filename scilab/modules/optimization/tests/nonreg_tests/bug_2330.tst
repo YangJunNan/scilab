@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 2330 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=2330
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/2330
 //
 // <-- Short Description -->
 //    datafit does not work equivalently on WinXP and Linux. With a given dataset and

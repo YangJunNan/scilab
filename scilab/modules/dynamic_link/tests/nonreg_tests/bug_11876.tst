@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 11876 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=11876
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/11876
 //
 // <-- Short Description -->
 // ilib_include_flag returns a column vector of string when called

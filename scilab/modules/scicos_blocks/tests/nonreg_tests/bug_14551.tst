@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 14551 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/14551
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/14551
 //
 // <-- Short Description -->
 // In the icon of CLR and DLR blocks, multichar exponents were badly rendered

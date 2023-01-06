@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 9045 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/9045
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/9045
 //
 // <-- Short Description -->
 // plot2d did not support overloading

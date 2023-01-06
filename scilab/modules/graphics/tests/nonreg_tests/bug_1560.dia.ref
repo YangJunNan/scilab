@@ -7,8 +7,8 @@
 // <-- TEST WITH GRAPHIC -->
 // <-- Non-regression test for bug 1560 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=1560
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/1560
 //
 // <-- Short Description -->
 //    (Following of bug 1558)

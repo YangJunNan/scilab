@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 10081 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=10081
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/10081
 //
 // <-- Short Description -->
 // Xcos palette is not cleared on Scilab restart after loading an external

@@ -7,8 +7,8 @@
 // =============================================================================
 // <-- Non-regression test for bug 2074 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=2074
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/2074
 //
 // <-- Short Description -->
 // incompatible LHS in assignment submatrix=function result

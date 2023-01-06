@@ -8,8 +8,8 @@
 
 // <-- Non-regression test for bug 9833 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=9833
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/9833
 //
 // <-- Short Description -->
 // percent was bad formatted with Scierror function

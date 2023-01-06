@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 12085 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=12085
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/12085
 //
 // <-- Short Description -->
 // On Windows csvWrite wrote wrong EOL.

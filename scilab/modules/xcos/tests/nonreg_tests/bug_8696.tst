@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 8696 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=8696
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/8696
 //
 // <-- Short Description -->
 // Exception is thrown while linking and deleting the source block

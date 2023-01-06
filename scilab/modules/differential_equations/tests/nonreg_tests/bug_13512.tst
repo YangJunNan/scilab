@@ -11,8 +11,8 @@
 //
 // <-- Non-regression test for bug 13512 -->
 //
-// <-- Bugzilla URL -->
-//http://bugzilla.scilab.org/show_bug.cgi?id=13512
+// <-- GitLab URL -->
+//https://gitlab.com/scilab/scilab/-/issues/13512
 //
 // <-- Short Description -->
 // dae crashed if the evaluation function had wrong prototype

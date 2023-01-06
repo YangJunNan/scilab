@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 12592 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/12592
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/12592
 //
 // <-- Short Description -->
 // Scilab hung with plot(-0)

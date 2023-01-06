@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 4891 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=4891
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/4891
 //
 // <-- Short Description -->
 //    Warn when we would be saving on a file that has been modified on disk

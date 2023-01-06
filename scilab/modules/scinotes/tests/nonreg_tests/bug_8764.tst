@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 8764 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/8764
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/8764
 //
 // <-- Short Description -->
 // File permissions were not checked 

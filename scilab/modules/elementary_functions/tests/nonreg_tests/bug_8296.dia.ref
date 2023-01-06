@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 8296 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=8296
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/8296
 //
 // <-- Short Description -->
 // size( M,3) crashed scilab 5.3.0-beta-4.

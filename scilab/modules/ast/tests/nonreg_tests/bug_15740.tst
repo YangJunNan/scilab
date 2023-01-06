@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 15740 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/15740
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/15740
 //
 // <-- Short Description -->
 // %s == %z now returns %T and %s ~= %z returns %F  (Regressions)

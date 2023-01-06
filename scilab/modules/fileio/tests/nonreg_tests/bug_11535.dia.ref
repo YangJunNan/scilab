@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 11535 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=11535
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/11535
 //
 // <-- Short Description -->
 // listfiles must return absolute filenames if first argument is not a single string

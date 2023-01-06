@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 15589 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/15589
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/15589
 //
 // <-- Short Description -->
 // inv([%s+0*%i 0 ; 0 1]) failed

@@ -7,8 +7,8 @@
 // <-- TEST WITH GRAPHIC -->
 // <-- Non-regression test for bug 3405 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=3405
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/3405
 //
 // <-- Short Description -->
 // Scilab hangs but does not crash

@@ -11,8 +11,8 @@
 // getscilabkeywords() was broken
 
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=5586
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/5586
 //
 
 ierr = execstr("getscilabkeywords()","errcatch");

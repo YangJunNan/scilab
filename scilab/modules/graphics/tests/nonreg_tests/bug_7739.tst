@@ -11,8 +11,8 @@
 //
 // <-- Non-regression test for bug 7739 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/7739
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/7739
 //
 // <-- Short Description -->
 // Invalid axis position in log modes

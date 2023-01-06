@@ -7,8 +7,8 @@
 
 // <-- Non-regression test for bug 6541 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=6797
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/6797
 //
 // <-- Short Description -->
 // Calling importXcosDiagram without loading Scicos libs must not fail.

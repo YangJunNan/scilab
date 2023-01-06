@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 14375 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=14375
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/14375
 //
 // <-- Short Description -->
 //    Calling input function with a argument of 64 characters or more crashed Scilab.

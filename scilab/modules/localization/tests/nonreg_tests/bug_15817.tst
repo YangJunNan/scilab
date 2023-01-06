@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 15817 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=15817
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/15817
 //
 // <-- Short Description -->
 // ascii(c); with c>=128 crashes on OSX

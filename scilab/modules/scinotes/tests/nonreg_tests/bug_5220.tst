@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 5220 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=5220
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/5220
 //
 // <-- Short Description -->
 //    In editor, "Colorize" action in "Document" menu should be implemented as check box.

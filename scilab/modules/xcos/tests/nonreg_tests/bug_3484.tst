@@ -10,8 +10,8 @@
 
 // <-- Non-regression test for bug 3484 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=3484
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/3484
 //
 // <-- Short Description -->
 // Scilab crashes on Scicos startup.

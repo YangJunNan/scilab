@@ -7,8 +7,8 @@
 // <-- TEST WITH GRAPHIC -->
 // <-- Non-regression test for bug 13966 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/13966
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/13966
 //
 // <-- Short Description -->
 // twinkle() and twinkle(n) were not available

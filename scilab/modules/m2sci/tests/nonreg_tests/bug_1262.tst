@@ -13,8 +13,8 @@
 //
 // <-- Non-regression test for bug 1262 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/1262
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/1262
 //
 // <-- Short Description -->
 //    Four errors of mfile2sci are reported

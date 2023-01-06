@@ -11,8 +11,8 @@
 //
 // <-- Non-regression test for bug 12097 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=12097
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/12097
 //
 // <-- Short Description -->
 // Scilab wrongly detected DLL platform information.

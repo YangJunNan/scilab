@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 16841 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/16841
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/16841
 //
 // <-- Short Description -->
 // In multiaxes, when the user zooms in a non common data area

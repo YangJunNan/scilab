@@ -10,8 +10,8 @@
 // <-- CLI SHELL MODE -->
 // <-- NO CHECK REF -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/7641
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/7641
 //
 // <-- Short Description -->
 // `uint8(1):uint16(4)` produced an error instead of being parsed as

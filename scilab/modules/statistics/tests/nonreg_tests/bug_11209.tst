@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 11209 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=11209
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/11209
 //
 // <-- Short Description -->
 //     variance returned wrong results for complex arguments.

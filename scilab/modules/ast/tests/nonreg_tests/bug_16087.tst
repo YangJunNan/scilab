@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 16087 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/16087
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/16087
 //
 // <-- Short Description -->
 // Insertion of struct() in a non-empty struct crashes Scilab

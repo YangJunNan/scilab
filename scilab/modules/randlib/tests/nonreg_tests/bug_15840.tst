@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 15840 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/15840
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/15840
 //
 // <-- Short Description -->
 // grand(1,"prm",m) yields an unsqueezed size([size(m) 1]) hypermatrix (Regression)

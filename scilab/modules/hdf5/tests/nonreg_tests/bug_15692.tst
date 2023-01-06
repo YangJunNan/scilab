@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 15692 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/15692
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/15692
 //
 // <-- Short Description -->
 // listvarinfile() crashes when listing a boolean sparse matrix (regression)

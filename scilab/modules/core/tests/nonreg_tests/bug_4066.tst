@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 4066 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=4066
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/4066
 //
 // <-- Short Description -->
 //    clear may erase protected variables

@@ -12,8 +12,8 @@
 //
 // <-- Non-regression test for bug 15243 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=15243
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/15243
 //
 // <-- Short Description -->
 // grand() crashed with wrong number of arguments

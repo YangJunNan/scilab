@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 14609 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=14609
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/14609
 //
 // <-- Short Description -->
 // "msscanf" crashes Scilab when 'niter' parameter is out of range

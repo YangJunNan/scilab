@@ -13,8 +13,8 @@
 //
 // <-- Non-regression test for bug 859 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/859
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/859
 //
 // <-- Short Description -->
 //    M2SCI convert Matlab expression such as a(n,:)=b(m,:) (with

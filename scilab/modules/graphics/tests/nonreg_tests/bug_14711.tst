@@ -9,8 +9,8 @@
 // <-- INTERACTIVE TEST -->
 // <-- Non-regression test for bug 14711 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/14711
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/14711
 //
 // <-- Short Description -->
 // When targetting an uicontrol frame, colorbar() dis not display anything

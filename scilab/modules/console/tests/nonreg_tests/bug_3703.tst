@@ -7,8 +7,8 @@
 
 // <-- Non-regression test for bug 3703 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=3703
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/3703
 //
 // <-- Short Description -->
 // cursor blinks too slowly (on Windows scilex).

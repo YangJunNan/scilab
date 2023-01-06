@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 7242 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=7242
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/7242
 //
 // <-- Short Description -->
 //  API was unable to retrieve named variable address

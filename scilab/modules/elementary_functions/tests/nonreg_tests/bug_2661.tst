@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 2661 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=2661
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/2661
 //
 // <-- Short Description -->
 //   gsort() doesn't process int32 value anymore.

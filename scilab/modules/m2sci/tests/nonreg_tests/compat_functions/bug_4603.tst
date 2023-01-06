@@ -11,8 +11,8 @@
 //
 // <-- Non-regression test for bug 4603 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=4603
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/4603
 //
 // <-- Short Description -->
 // Unknown function lst2tree called by function mtlb_eval.

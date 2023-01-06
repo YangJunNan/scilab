@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 15886 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/15886
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/15886
 //
 // <-- Short Description -->
 // display of polynomials is broken

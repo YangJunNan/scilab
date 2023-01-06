@@ -8,8 +8,8 @@
 
 // <-- Non-regression test for bug 5413 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=5413
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/5413
 //
 // <-- Short Description -->
 // Bad syntax is the export

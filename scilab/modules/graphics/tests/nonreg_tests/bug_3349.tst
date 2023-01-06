@@ -10,8 +10,8 @@
 
 // <-- Non-regression test for bug 3349 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=3349
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/3349
 //
 // <-- Short Description -->
 // getcolor() freezes Scilab.

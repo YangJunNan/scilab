@@ -10,8 +10,8 @@
 
 // <-- Non-regression test for bug 16019 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/16019
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/16019
 //
 // <-- Short Description -->
 // polarplot(x,Z) yielded an error when x is a vector and Z is a matrix.

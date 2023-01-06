@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 16280 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=15280
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/15280
 //
 // <-- Short Description -->
 // mode()=-1 in overloads prevents  choosing compact/not compact display mode

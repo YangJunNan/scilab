@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 8468 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=8468
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/8468
 //
 // <-- Short Description -->
 // size with 2 input arguments did not work for hypermatrix.

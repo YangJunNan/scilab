@@ -8,8 +8,8 @@
 
 // <-- Non-regression test for bug 3624 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=3624
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/3624
 //
 // <-- Short Description -->
 // Nan returned when multiplying large zero vector by its transpose.

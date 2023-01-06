@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 11199 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=11199
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/11199
 //
 // <-- Short Description -->
 // atomsSystemUpdate returned an error.

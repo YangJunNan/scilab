@@ -8,8 +8,8 @@
 //
 // <-- Non-regression test for bug 14209 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/14209
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/14209
 //
 // <-- Short Description -->
 // 1:245 creates infinite loop

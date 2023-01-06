@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 7924 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=7924
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/7924
 //
 // <-- Short Description -->
 //  pathconvert failed conversion to cygwin format.

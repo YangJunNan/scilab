@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 4938 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=4938
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/4938
 //
 // <-- Short Description -->
 // The output of check_xml.pl is eating some characters.

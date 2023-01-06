@@ -11,8 +11,8 @@
 //
 // <-- Non-regression test for bug 12118 -->
 //
-// <-- Bugzilla URL -->
-//http://bugzilla.scilab.org/show_bug.cgi?id=12118
+// <-- GitLab URL -->
+//https://gitlab.com/scilab/scilab/-/issues/12118
 //
 // <-- Short Description -->
 // ode() accepted complex internals

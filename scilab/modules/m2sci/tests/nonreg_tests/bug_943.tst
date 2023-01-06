@@ -11,8 +11,8 @@
 
 // <-- Non-regression test for bug 943 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=943
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/943
 //
 // <-- Short Description -->
 //    Conversion of (if, elseif, else) structure leads to

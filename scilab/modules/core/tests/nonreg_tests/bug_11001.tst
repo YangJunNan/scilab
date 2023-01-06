@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 11001 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=11001
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/11001
 //
 // <-- Short Description -->
 // exists and isdef did not recognize primitives.

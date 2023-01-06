@@ -9,8 +9,8 @@
 // <-- NO CHECK REF -->
 // <-- Non-regression test for bug 16305 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/16305
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/16305
 //
 // <-- Short Description -->
 // unwrap(,"unfold") failed unfolding straight segments

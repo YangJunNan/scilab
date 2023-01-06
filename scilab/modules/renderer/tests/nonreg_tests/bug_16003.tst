@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 16003 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/16003
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/16003
 //
 // <-- Short Description -->
 // Zoom with mouse scroll wheel is broken on simple surfaces

@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 768 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=768
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/768
 //
 // <-- Short Description -->
 //    as on Scilab 2.7.2, the "window" function still has a bug 

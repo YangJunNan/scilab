@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 15142 -->
 //
-// <-- Bugzilla URL -->
-// https://bugzilla.scilab.org/show_bug.cgi?id=15142
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/15142
 //
 // <-- Short Description -->
 // mopen(): wrong err value

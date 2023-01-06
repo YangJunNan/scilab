@@ -11,8 +11,8 @@
 //
 // <-- Non-regression test for bug 11124 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=11124
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/11124
 //
 // <-- Short Description -->
 // Incorrect rendering with filled curves in logarithmic coordinates.

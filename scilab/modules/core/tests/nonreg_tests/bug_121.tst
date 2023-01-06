@@ -8,8 +8,8 @@
 
 // <-- Non-regression test for bug 121 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=121
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/121
 //
 // <-- Short Description -->
 //    If I load my file and call function main1() I get a message: undefined variable : y at line 3 of function expcdf1 ... 

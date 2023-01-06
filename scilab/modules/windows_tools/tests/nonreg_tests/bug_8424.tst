@@ -11,8 +11,8 @@
 //
 // <-- Non-regression test for bug 8424 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=8424
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/8424
 //
 // <-- Short Description -->
 // [a, b] = dos("git 1>&2") returned a wrong error.

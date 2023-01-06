@@ -11,8 +11,8 @@
 //
 // <-- Non-regression test for bug 10271 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/10271
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/10271
 //
 // <-- Short Description -->
 // ordmmd now checks the consistency of the third input argument with the

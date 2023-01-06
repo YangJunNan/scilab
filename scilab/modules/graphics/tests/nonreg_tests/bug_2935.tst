@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 2935 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=2935
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/2935
 //
 // <-- Short Description -->
 // In the "Bezier surface test 2" demo, an axis is displayed, it should not.

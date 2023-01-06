@@ -8,8 +8,8 @@
 //<-- INTERACTIVE TEST -->
 // <-- Non-regression test for bug 14041 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/14041
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/14041
 //
 // <-- Short Description -->
 // genlib crashes if one file is a symbolic link created by emacs to lock currently edited file

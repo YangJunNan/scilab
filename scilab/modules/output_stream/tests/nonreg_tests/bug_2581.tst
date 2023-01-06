@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 2581 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=2581
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/2581
 //
 // <-- Short Description -->
 //    mprintf is broken

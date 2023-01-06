@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 4666 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=4666
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/4666
 //
 // <-- Short Description -->
 // SCIHOME is not well defined if scilab has been launched in another scilab session

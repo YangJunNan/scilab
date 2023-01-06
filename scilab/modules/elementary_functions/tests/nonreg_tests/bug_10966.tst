@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 10966 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=10966
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/10966
 //
 // <-- Short Description -->
 // Numerical error in linspace

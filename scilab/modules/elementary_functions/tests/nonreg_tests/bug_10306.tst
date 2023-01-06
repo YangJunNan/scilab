@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 10306 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=10306
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/10306
 //
 // <-- Short Description -->
 // 'isempty' could fail with empty elements in a list

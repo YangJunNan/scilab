@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 13215 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/13215
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/13215
 //
 // <-- Short Description -->
 // clf(1001) returned an error

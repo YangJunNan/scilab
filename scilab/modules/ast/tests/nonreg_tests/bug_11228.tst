@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 11228 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/11228
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/11228
 //
 // <-- Short Description -->
 // Some recursive extraction from a mlist was not done in the right

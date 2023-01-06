@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 2093 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=2093
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/2093
 //
 // <-- Short Description -->
 //    matrix(A,q) doesn't return a q*1 matrix when A is a 1*1*q matrix and q a scalar.

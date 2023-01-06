@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 8824 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=8824
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/8824
 //
 // <-- Short Description -->
 // taucs_chfact returns a segfault (not the case in mode nwni)

@@ -8,8 +8,8 @@
 // <-- Non-regression test for bug 4393 -->
 // <-- INTERACTIVE TEST -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=4393
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/4393
 //
 // <-- Short Description -->
 //  When launching Scilab from the puffin icon, it does not detect my Locale and switch to english.

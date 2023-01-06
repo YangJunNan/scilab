@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 5612 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=5612
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/5612
 //
 // <-- Short Description -->
 // There is no way for deleting a structure field.

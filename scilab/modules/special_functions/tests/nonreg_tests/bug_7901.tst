@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 7901 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=7901
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/7901
 //
 // besselh.tst failed on Windows
 

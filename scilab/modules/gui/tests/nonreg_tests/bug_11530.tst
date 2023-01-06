@@ -8,8 +8,8 @@
 // <-- Non-regression test for bug 11530 -->
 // <-- INTERACTIVE TEST -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/11530
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/11530
 //
 // <-- Short Description -->
 // Raised iconified windows when recall it

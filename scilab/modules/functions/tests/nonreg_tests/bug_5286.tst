@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 5286 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=5286
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/5286
 //
 // <-- Short Description -->
 // calling the 'lib' function with the wrong path makes scilab hangs on Mandriva 64

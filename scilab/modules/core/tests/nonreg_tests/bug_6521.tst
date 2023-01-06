@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 6521 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=6521
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/6521
 //
 // <-- Short Description -->
 // getmd5 crashed with a wrong second argument.

@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 10611 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=10611
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/10611
 //
 // <-- Short Description -->
 // poly() function gave different results on 64 and 32-bit Scilab on Windows.

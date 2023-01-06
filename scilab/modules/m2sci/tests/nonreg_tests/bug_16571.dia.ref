@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 16571 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/16571
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/16571
 //
 // <-- Short Description -->
 // 1) ~true(2,3) was converted into ~ones(2,3)==1 instead of ~(ones(2,3)==1)

@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 1491 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=1491
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/1491
 //
 // <-- Short Description -->
 //    Bug detected in 3.1.1 under Windows XP.

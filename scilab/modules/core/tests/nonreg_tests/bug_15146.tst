@@ -8,8 +8,8 @@
 // <-- NO CHECK REF -->
 // <-- Non-regression test for bug 15146 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=15146
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/15146
 //
 // <-- Short Description -->
 // lasterror() crashes Scilab when last error message is empty

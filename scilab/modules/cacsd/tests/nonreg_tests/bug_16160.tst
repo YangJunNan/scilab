@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 16160 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/16160
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/16160
 //
 // <-- Short Description -->
 // ppol changes values of third input variable

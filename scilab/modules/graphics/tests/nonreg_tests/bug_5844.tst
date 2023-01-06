@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 5844 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/5844
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/5844
 //
 // <-- Short Description -->
 // grayplot had not a logflag option

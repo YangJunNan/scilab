@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 148 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=148
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/148
 //
 // <-- Short Description -->
 //    plot() plots fullscreen despite the xsetech() restriction.

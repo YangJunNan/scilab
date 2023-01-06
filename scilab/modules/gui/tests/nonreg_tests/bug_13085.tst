@@ -12,8 +12,8 @@
 //
 // <-- Non-regression test for bug 13085 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/13085
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/13085
 //
 // <-- Short Description -->
 // A datatip cannot be moved on a circle.

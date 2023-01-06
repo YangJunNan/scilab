@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 407 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=407
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/407
 //
 // <-- Short Description -->
 // Polylines with thickness greater than 2 and with more than 1380

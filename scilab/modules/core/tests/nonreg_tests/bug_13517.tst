@@ -9,8 +9,8 @@
 //
 // <-- CLI SHELL MODE -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/13517
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/13517
 //
 // <-- Short Description -->
 // isdef fails with a vector of strings when she is used in a function and after

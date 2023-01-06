@@ -6,8 +6,8 @@
 // =============================================================================
 // <-- Non-regression test for bug 6550 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=6550
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/6550
 //
 // <-- Short Description -->
 // lib(".") used relative path in library variable created

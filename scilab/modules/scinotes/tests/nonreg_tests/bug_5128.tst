@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 5128 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=5128
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/5128
 //
 // <-- Short Description -->
 //   Modified file saved as the other file when there are 2 files loaded in the editor.

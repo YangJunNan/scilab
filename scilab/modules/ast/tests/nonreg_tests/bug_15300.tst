@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 15300 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/15300
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/15300
 //
 // <-- Short Description -->
 // Crash when the function name is forgotten!

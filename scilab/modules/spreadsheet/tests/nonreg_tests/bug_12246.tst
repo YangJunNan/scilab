@@ -13,8 +13,8 @@
 //
 // <-- Non-regression test for bug 12246 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=12246
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/12246
 //
 // <-- Short Description -->
 // Check that an error message is returned when

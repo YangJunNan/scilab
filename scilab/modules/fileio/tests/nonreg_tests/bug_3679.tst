@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 3679 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=3679
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/3679
 //
 // <-- Short Description -->
 // mfscanf() returns numbers with slight errors using 5.0.x on Windows.

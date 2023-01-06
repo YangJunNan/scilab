@@ -8,8 +8,8 @@
 //
 // <-- Non-regression test for bug 8777 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=8777
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/8777
 //
 // <-- Short Description -->
 // The neldermead function may fail to restart with bounds.

@@ -9,8 +9,8 @@
 //
 // <-- CLI SHELL MODE -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=10782
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/10782
 //
 // <-- Short Description -->
 // iconvert did not check input arguments

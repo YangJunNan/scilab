@@ -10,8 +10,8 @@
 
 // <-- Non-regression test for bug 16653 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=16653
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/16653
 //
 // <-- Short Description -->
 //    fromJOSN(path, "file") crash on non exiting file

@@ -8,8 +8,8 @@
 // <-- CLI SHELL MODE -->
 // <-- Non-regression test for bug 14399 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=14399
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/14399
 //
 // <-- Short Description -->
 // Whereami : wrong information (line numbers)

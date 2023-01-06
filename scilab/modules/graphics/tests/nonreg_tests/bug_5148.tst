@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 5148 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=5148
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/5148
 //
 // <-- Short Description -->
 //   Setting {x,y,z}_ticks with empty value hangs.

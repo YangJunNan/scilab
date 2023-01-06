@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 4425 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=4425
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/4425
 //
 // <-- Short Description -->
 //    After [U,S] = schur(A), U * S * U' is not equal to A
@@ -36,4 +36,5 @@ assert_checkalmostequal(Err(U*S*U'-A), 0, [], 200 * %eps);
 assert_checkalmostequal(Err(U*S*U'-Ac), 0, [], 200 * %eps);
 
 
-
+
+

@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 2700 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=2700
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/2700
 //
 // <-- Short Description -->
 //    Read 22 ( and plus ) columns matrix with fscanfMat crashes Scilab

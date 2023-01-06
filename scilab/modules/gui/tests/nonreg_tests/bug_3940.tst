@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 3940 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=3940
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/3940
 //
 // <-- Short Description -->
 // uigetdir returns a invalid value if you do "cancel"

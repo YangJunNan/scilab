@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 3404 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=3404
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/3404
 //
 // <-- Short Description -->
 // Some problems come when an axis is set in log scale.

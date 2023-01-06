@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 13537 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/13537
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/13537
 //
 // <-- Short Description -->
 // wavwrite(..) yielded EXCEPTION_ACCESS_VIOLATION error

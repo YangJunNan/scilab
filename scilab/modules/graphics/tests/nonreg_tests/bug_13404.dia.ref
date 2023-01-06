@@ -7,8 +7,8 @@
 // <-- TEST WITH GRAPHIC -->
 // <-- Non-regression test for bug 13404 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/13404
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/13404
 //
 // <-- Short Description -->
 // rect property was not taken into account in polarplot.

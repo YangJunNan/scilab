@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 15293 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/15293
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/15293
 //
 // <-- Short Description -->
 // Scilab had troubles when comparing 2 lists L==L with void components.

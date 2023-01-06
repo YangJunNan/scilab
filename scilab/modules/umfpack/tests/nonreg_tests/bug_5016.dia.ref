@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 5016 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=5016
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/5016
 //
 // <-- Short Description -->
 // condestsp could yield different results when repeated calls were performed.

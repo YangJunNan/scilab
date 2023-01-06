@@ -13,8 +13,8 @@
 // in previous version (compatibility) returns values
 // 
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=6399
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/6399
 //
 
 // Lhs == 2 no error only output

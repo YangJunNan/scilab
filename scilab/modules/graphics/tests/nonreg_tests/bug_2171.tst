@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 2171 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=2171
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/2171
 //
 // <-- Short Description -->
 // angled thickness 1 lines are transiently dash-dotted (X problem?)

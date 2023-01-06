@@ -7,8 +7,8 @@
 
 // <-- Non-regression test for bug 4551 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=4551
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/4551
 //
 // <-- Short Description -->
 // all menus returns a error in GUI mode (error 2 Invalid factor)

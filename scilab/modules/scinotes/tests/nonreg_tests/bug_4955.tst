@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 4955 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=4955
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/4955
 //
 // <-- Short Description -->
 //    Ctrl-i should indent

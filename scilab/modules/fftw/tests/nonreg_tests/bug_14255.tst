@@ -11,8 +11,8 @@
 //
 // <-- Non-regression test for bug 14255 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/14255
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/14255
 //
 // <-- Short Description -->
 // fftw without MKL leaks in withMKL function.

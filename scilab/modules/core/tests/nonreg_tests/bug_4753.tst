@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 4753 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=4753
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/4753
 //
 // <-- Short Description -->
 // 
@@ -21,6 +21,6 @@
 // launch scilab by scilab-cli
 // and check that you do NOT have error message as :
 // !--error 999 
-// Le module 'GUI' de Scilab n'est pas installé.
+// Le module 'GUI' de Scilab n'est pas installï¿½.
 
  

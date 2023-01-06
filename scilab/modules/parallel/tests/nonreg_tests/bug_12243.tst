@@ -11,8 +11,8 @@
 //
 // <-- Non-regression test for bug 12243 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=12243
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/12243
 //
 // <-- Short Description -->
 // parellel_run did not run all calculations on 8 core processors

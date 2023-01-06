@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 5073 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=5073
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/5073
 //
 // <-- Short Description -->
 // Optional argument added for decimal separator

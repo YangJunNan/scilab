@@ -7,8 +7,8 @@
 
 // <-- Non-regression test for bug 2959 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=2959
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/2959
 //
 // <-- Short Description -->
 // functions on F1, F2, F12 keys are not mapped as scilab 4.x

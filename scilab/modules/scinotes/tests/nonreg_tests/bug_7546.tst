@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 7546 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=7546
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/7546
 //
 // <-- Short Description -->
 // It was not possible to select easily a block.

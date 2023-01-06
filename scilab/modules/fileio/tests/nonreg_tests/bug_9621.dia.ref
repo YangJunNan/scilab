@@ -11,8 +11,8 @@
 //
 // <-- Non-regression test for bug 9621 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=9621
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/9621
 //
 // <-- Short Description -->
 // We could save a tlist with undefined fields.

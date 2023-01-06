@@ -9,8 +9,8 @@
 // <-- NO CHECK REF -->
 // <-- Non-regression test for bug 16000 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/16000
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/16000
 //
 // <-- Short Description -->
 // mfile2sci() and translatepaths() converted acoth() using atanh() and yielding

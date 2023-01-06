@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 14028 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=14028
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/14028
 //
 // <-- Short Description -->
 // force flag of genlib does not rebuild bin file.

@@ -10,8 +10,8 @@
 
 // <-- Non-regression test for bug 6874 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=6874
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/6874
 //
 // <-- Short Description -->
 // exit(23) kills caller app when we do :

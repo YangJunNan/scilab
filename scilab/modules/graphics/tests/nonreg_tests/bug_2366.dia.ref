@@ -7,8 +7,8 @@
 // <-- TEST WITH GRAPHIC -->
 // <-- Non-regression test for bug 2366 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=2366
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/2366
 //
 // <-- Short Description -->
 // If auto_ticks for a certain axis is turned off (e.g. [ "on","on","off" ]) and no

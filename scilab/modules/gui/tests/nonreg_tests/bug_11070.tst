@@ -9,8 +9,8 @@
 // <-- TEST WITH GRAPHIC -->
 // <-- INTERACTIVE TEST -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/11070
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/11070
 //
 // <-- Short Description -->
 // The "Visible"/"Enable"/"Position" properties of a frame uicontrol did not impact its children.

@@ -7,8 +7,8 @@
 // =============================================================================
 // <-- Non-regression test for bug 2083 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=2083
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/2083
 //
 // <-- Short Description -->
 //   the function trimmean (from the statistics module) has a bug and gives 

@@ -11,8 +11,8 @@
 //
 // <-- Non-regression test for bug 8321 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=8321
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/8321
 //
 // <-- Short Description -->
 // configure_msvc failed and returned a wrong error message

@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 13116 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=13116
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/13116
 //
 // <-- Short Description -->
 // qpsolve did not respect the constraints

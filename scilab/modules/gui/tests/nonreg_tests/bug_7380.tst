@@ -9,8 +9,8 @@
 //
 // <-- TEST WITH GRAPHIC -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=7380
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/7380
 //
 // <-- Short Description -->
 // Any input to u.value is rounded for uicontrols.

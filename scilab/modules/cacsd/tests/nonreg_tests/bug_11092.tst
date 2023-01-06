@@ -12,8 +12,8 @@
 //
 // <-- Non-regression test for bug 11092 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=11092 
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/11092 
 //
 // <-- Short Description -->
 //Incorrect argument check in h_inf

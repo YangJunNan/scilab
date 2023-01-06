@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 5638 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=5638
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/5638
 //
 // <-- Short Description -->
 // This test validates that the freq_div block can be simulated

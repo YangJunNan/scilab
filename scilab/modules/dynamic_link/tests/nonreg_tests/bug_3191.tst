@@ -10,8 +10,8 @@
 
 // <-- Non-regression test for bug 3191 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=3191
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/3191
 //
 
 ilib_verbose(0);

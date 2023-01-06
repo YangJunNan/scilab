@@ -6,8 +6,8 @@
 // =============================================================================
 // <-- Non-regression test for bug 7509 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=7509
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/7509
 //
 // <-- Short Description -->
 // the legend help page does not correspond any more with the function (pos argument)

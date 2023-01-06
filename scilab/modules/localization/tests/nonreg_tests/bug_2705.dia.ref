@@ -7,8 +7,8 @@
 // =============================================================================
 // <-- Non-regression test for bug 2705 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=2705
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/2705
 //
 // <-- Short Description -->
 //    getlanguage(), under Windows, returns "Frenc" or "Engli" instead of fr_FR or en_US.

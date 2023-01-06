@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 3907 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=3907
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/3907
 //
 // <-- Short Description -->
 // msprintf invalid format can kill scilab

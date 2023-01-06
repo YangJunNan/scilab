@@ -11,8 +11,8 @@
 //
 // <-- Non-regression test for bug 12083 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=12083
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/12083
 //
 // <-- Short Description -->
 // Load multiple variables could failed due to missing "clear" of previous variables.

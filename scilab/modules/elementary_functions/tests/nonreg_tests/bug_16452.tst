@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 16452 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/16452
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/16452
 //
 // <-- Short Description -->
 // setdiff(sparse([1 3 0 2]), sparse([3 7])) missed 0 and listed 3

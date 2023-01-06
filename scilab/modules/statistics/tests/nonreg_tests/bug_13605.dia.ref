@@ -7,8 +7,8 @@
 // =============================================================================
 // <-- Non-regression test for bug 13605 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=13605
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/13605
 //
 // <-- Short Description -->
 // There was an inverted result value with parameters "r" or "c".

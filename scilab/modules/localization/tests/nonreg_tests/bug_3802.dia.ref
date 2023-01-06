@@ -6,8 +6,8 @@
 // =============================================================================
 // <-- Non-regression test for bug 3802 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=3802
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/3802
 //
 // <-- Short Description -->
 //    When Scilab is launched in French, Tcl creates error (when it is working 

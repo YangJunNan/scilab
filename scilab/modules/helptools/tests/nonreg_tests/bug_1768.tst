@@ -10,8 +10,8 @@
 
 // <-- Non-regression test for bug 1768 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=1768
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/1768
 //
 // <-- Short Description -->
 //    I just downloaded Scilab-4.0rc1.

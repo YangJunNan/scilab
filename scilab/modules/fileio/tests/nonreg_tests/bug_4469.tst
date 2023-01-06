@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 4469 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=4469
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/4469
 //
 // <-- Short Description -->
 // If getmd5() or mopen is called with an existing directory as first input agument, scilab hangs with 100% CPU. It should return

@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 4460 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=4460
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/4460
 //
 // <-- Short Description -->
 //    Cat does not work with character strings

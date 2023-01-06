@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 16559 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/16559
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/16559
 //
 // <-- Short Description -->
 // A(:,:) is empty for sparse matrix of dimension 2^16 or larger

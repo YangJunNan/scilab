@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 7649 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/7649
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/7649
 //
 // <-- Short Description -->
 //  isempty() returned %F  on {}, list(,) struct() or struct without field

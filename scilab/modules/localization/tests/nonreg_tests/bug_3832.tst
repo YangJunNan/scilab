@@ -8,8 +8,8 @@
 // <-- Non-regression test for bug 3832 -->
 // <-- INTERACTIVE TEST -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=3832
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/3832
 //
 // <-- Short Description -->
 // setdefaultlanguage does nothing when preceded by setlanguage

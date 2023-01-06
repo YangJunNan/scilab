@@ -8,8 +8,8 @@
 // <-- Non-regression test for bug 5697 -->
 // <-- INTERACTIVE TEST -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=5697
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/5697
 //
 // <-- Short Description -->
 // In Help Browser, external hyperlinks were opened in it rather

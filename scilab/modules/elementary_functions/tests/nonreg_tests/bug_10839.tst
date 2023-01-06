@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 10839 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=10839
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/10839
 //
 // <-- Short Description -->
 // dec2hex function was limited to 32 bits

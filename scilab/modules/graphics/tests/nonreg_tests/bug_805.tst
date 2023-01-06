@@ -9,8 +9,8 @@
 // <-- INTERACTIVE TEST -->
 // <-- Non-regression test for bug 805 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=805
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/805
 //
 // <-- Short Description -->
 // creating a very large canvas used to fail

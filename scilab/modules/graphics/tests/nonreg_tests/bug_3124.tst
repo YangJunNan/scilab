@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 2914 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=2914
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/2914
 //
 // <-- Short Description -->
 // Its not possible to paint the background of axes if box property is set to off

@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 5482 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=5482
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/5482
 //
 // <-- Short Description -->
 // added a menu to choose EOL type when you save a file with editor

@@ -10,8 +10,8 @@
 
 // <-- Non-regression test for bug 16822 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=16822
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/16822
 //
 // <-- Short Description -->
 // getrelativefilename returns incorrect value in case of same beginning of directory names

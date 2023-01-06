@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 13191 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=13191
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/13191
 //
 // <-- Short Description -->
 // isempty(rational) returned an error message.

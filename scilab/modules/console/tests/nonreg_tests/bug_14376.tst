@@ -8,8 +8,8 @@
 // <-- INTERACTIVE TEST -->
 // <-- Non-regression test for bug 14376 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=14376
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/14376
 //
 // <-- Short Description -->
 // input() is broken: \n introduced before prompting; multiple prompts; missin assignment; "%" "\n" "\t" no longer supported in messages...

@@ -7,8 +7,8 @@
 // <-- TEST WITH GRAPHIC -->
 // <-- Non-regression test for bug 2162 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=2162
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/2162
 //
 // <-- Short Description -->
 //    When using plot3d with facets coordinates, it is impossible to draw a single facet.

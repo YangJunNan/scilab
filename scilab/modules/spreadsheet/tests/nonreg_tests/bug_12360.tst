@@ -8,8 +8,8 @@
 //
 // <-- Non-regression test for bug 12360 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=12360
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/12360
 //
 // <-- Short Description -->
 // Imaginary part of purely real complex is printed in CSV

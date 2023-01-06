@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 3287 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=3287
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/3287
 //
 // <-- Short Description -->
 // Synchro between Scilab and OpenGL

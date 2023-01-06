@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 13503 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/13503
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/13503
 //
 // <-- Short Description -->
 // Segfault with xarrows

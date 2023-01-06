@@ -10,8 +10,8 @@
 
 // <-- Non-regression test for bug 6831 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=6831
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/6831
 //
 // <-- Short Description -->
 // in cli (=nwni) mode, tbx_build_help failed.

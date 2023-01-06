@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 10645 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/10645
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/10645
 //
 // <-- Short Description -->
 // File encoding could not be given as argument in xmlRead.

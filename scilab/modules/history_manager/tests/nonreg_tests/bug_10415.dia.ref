@@ -8,8 +8,8 @@
 //
 // <-- Non-regression test for bug 10415 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=10415
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/10415
 //
 // <-- Short Description -->
 // The removal of an history session line does not remove

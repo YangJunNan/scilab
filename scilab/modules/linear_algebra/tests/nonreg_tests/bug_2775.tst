@@ -9,8 +9,8 @@
 // <-- Non-regression test for bug 2775 -->
 //
 // <-- CLI SHELL MODE -->
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=2775
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/2775
 //
 
 

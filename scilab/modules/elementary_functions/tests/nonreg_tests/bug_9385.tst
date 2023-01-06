@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 9385 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=9385
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/9385
 //
 // <-- Short Description -->
 //    The type checking in trigonometric functions has been added

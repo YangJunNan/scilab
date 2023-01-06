@@ -12,8 +12,8 @@
 
 // <-- Non-regression test for bug 3647 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=3769
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/3769
 //
 // <-- Short Description -->
 // Dynamic link doesn't detect intel fortran compiler version 11 on Windows

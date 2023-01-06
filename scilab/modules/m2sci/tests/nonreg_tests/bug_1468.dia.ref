@@ -8,8 +8,8 @@
 // <-- ENGLISH IMPOSED -->
 // <-- Non-regression test for bug 1468 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=1468
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/1468
 //
 // <-- Short Description -->
 //    1) 'macr2tree' function doesn't work correctly with the following script

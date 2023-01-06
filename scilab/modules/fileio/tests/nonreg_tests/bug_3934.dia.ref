@@ -7,8 +7,8 @@
 // <-- CLI SHELL MODE -->
 // <-- Non-regression test for bug 3934 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=3934
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/3934
 //
 // <-- Short Description -->
 // Online Help of findfiles() function crashes Scilab

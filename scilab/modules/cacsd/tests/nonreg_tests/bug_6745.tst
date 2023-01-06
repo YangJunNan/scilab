@@ -7,8 +7,8 @@
 
 // <-- Non-regression test for bug 6745 -->
 // <-- CLI SHELL MODE -->
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=6745
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/6745
 //
 // <-- Short Description -->
 //  g_margin() returned an erroneous result

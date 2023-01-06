@@ -8,8 +8,8 @@
 
 // <-- Non-regression test for bug 3687 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=3687
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/3687
 //
 // <-- Short Description -->
 // "format" doesn't check input value 

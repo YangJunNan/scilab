@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 6485 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=6485
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/6485
 //
 // <-- Short Description -->
 // We lost available memory from Scilab-5.2.0 to Scilab master nighty build.

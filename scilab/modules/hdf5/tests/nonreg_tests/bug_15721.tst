@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 15721 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/15721
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/15721
 //
 // <-- Short Description -->
 // An error while save(File, "-append", ..) deleted the existing file.

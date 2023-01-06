@@ -8,8 +8,8 @@
 
 // <-- Non-regression test for bug 132 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=132
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/132
 //
 // <-- Short Description -->
 //    bessely(0,1) produces convergence error

@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 11612 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=11612
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/11612
 //
 // <-- Short Description -->
 // index of the max value of a negative sparse was wrong

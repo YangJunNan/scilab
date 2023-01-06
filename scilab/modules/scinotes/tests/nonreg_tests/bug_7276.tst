@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 7276 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=7276
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/7276
 //
 // <-- Short Description -->
 // There was a problem of highlighting with default font.

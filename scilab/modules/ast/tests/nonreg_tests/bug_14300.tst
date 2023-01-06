@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 14300 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/14300
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/14300
 //
 // <-- Short Description -->
 // Crash when playing with structures.

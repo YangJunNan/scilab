@@ -11,8 +11,8 @@
 //
 // <-- Non-regression test for bug 7770 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=7770
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/7770
 //
 // <-- Short Description -->
 // It was not possible to compile a xcos diagram

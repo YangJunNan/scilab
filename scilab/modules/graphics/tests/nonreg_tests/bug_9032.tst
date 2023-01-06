@@ -11,8 +11,8 @@
 //
 // <-- Non-regression test for bug 9032 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=9032
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/9032
 //
 // <-- Short Description -->
 // The rectangular contour of 'Text' object doesn't fit for huge font size.

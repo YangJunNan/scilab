@@ -12,8 +12,8 @@
 //
 // <-- Non-regression test for bug 12725 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/12725
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/12725
 //
 // <-- Short Description -->
 // Datatips did not work in log_scale

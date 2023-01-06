@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 5416 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=5416
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/5416
 //
 // <-- Short Description -->
 // If one modifies a value inside a superblock, the change is not propagated

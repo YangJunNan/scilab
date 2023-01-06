@@ -8,8 +8,8 @@
 //
 // <-- Non-regression test for bug 13222 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/13222
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/13222
 //
 // <-- Short Description -->
 // ATOMS GUI is not showing any list module.

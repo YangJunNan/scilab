@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 10116 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/10116
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/10116
 //
 // <-- Short Description -->
 // for h = vector_of_handles, .., end  was not supported

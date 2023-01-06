@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 6848 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=6738
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/6738
 //
 // <-- Short Description -->
 // The patterns of the lines was poorly exported

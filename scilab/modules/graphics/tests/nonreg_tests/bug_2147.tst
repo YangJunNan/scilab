@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 2147 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=2147
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/2147
 //
 // <-- Short Description -->
 // errbar function do not work in log mode.

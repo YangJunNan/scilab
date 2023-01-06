@@ -8,8 +8,8 @@
 
 // <-- Non-regression test for bug 4767 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=4767
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/4767
 //
 // <-- Short Description -->
 // minreal.sci contains a couple of references to the variable 'T', which is not defined in the function

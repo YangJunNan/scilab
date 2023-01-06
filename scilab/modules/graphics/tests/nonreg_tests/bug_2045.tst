@@ -10,8 +10,8 @@
 
 // <-- Non-regression test for bug 2045 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=2045
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/2045
 //
 // <-- Short Description -->
 //    xpolys([],[],-1)

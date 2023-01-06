@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 4884 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=4884
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/4884
 //
 // <-- Short Description -->
 //    SciNotes should preserve end of line (\n \r\n or \n)

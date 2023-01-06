@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 3863 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=3863
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/3863
 //
 // <-- Short Description -->
 // expm broken on Windows (32 and 64 bits) with some values.

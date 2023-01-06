@@ -11,8 +11,8 @@
 //
 // <-- Non-regression test for bug 16013 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=16013
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/16013
 //
 // <-- Short Description -->
 // load environment fails

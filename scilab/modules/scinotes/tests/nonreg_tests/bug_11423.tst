@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 11423 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/11423
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/11423
 //
 // <-- Short Description -->
 // When select the variable "a" all the a are highlighted rather than only the

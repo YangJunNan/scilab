@@ -10,8 +10,8 @@
 
 // <-- Non-regression test for bug 15814 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/15814
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/15814
 //
 // <-- Short Description -->
 // Selecting graphic children with booleans failed

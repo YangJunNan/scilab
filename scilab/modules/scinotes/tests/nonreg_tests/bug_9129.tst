@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 9129 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/9129
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/9129
 //
 // <-- Short Description -->
 // Completion on field did not propose graphics handle fields by default.

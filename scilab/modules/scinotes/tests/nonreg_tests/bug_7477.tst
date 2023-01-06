@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 7477 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=7477
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/7477
 //
 // <-- Short Description -->
 // Bad detection of a function declaration when the line was

@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 8304 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/8304
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/8304
 //
 // <-- Short Description -->
 // A Java exception was thrown on Exit menu.

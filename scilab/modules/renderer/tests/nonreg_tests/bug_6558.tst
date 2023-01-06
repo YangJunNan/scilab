@@ -11,8 +11,8 @@
 //
 // <-- Non-regression test for bug 6558 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=6558
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/6558
 //
 // <-- Short Description -->
 // Infinite value was not plotted even if it was possible.

@@ -9,8 +9,8 @@
 // <-- TEST WITH GRAPHIC -->
 // <-- INTERACTIVE TEST -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/10346
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/10346
 //
 // <-- Short Description -->
 // An uicontrol is visible during few millisecs even if its property "Visible" is set to "off"

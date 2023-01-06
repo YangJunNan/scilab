@@ -10,8 +10,8 @@
 // <-- Short Description -->
 //    write(6,1) or write(6,[1 2;4 5]) crashs scilab
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=3453
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/3453
 //
 write(%io(2),'toto');
 toto

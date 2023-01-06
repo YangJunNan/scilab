@@ -8,8 +8,8 @@
 
 // <-- Non-regression test for bug 3772 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=3772
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/3772
 //
 // <-- Short Description -->
 // input argument in predef function not correctly checked

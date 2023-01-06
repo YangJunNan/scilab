@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 9869 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=9869
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/9869
 //
 // <-- Short Description -->
 // fscanf did not check number of input arguments

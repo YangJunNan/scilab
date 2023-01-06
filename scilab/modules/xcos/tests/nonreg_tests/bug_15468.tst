@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 15468 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=15468
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/15468
 //
 // <-- Short Description -->
 // Scilab 5.5.2 models loaded and saved back using Scilab 6 might contain non-utf8 characters.

@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 10393 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=12393
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/12393
 //
 // <-- Short Description -->
 // During completion replacment by common part of suggested words does not work

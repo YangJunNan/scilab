@@ -8,8 +8,8 @@
 
 // <-- Non-regression test for bug 1979 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=1979
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/1979
 //
 // <-- Short Description -->
 //    I think that something is forgotten in the integer treatment in Scilab :

@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 120 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=120
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/120
 //
 // <-- Short Description -->
 //  It seems that function bode doesn't work properly.

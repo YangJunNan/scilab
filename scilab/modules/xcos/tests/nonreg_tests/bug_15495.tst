@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 15495 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=15495
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/15495
 //
 // <-- Short Description -->
 // SampleCLK simple demo failed to simulate.

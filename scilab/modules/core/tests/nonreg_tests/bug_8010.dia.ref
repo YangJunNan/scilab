@@ -9,8 +9,8 @@
 //
 // <-- CLI SHELL MODE -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/8010
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/8010
 //
 // <-- Short Description -->
 // Permanent variables might be silently redefined, as with %i(1,1)=1

@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 8630 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=8630
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/8630
 //
 // <-- Short Description -->
 // Scilab crash when simulating scopes with the same window ids.

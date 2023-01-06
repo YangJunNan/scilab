@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 9183 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/9183
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/9183
 //
 // <-- Short Description -->
 // Display problem when code is selected

@@ -8,8 +8,8 @@
 //
 // <-- Non-regression test for bug 2726 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=2708
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/2708
 //
 // <-- Short Description -->
 // xrect hangs scilab with auto_clear mode "on"

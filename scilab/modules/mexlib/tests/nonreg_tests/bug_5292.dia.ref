@@ -10,8 +10,8 @@
 // =============================================================================
 // <-- Non-regression test for bug 5292 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=5292
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/5292
 //
 // <-- Short Description -->
 // There is a conflict between bool and scilab header mex.h

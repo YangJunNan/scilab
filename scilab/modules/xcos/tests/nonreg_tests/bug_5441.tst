@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 5441 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=5441
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/5441
 //
 // <-- Short Description -->
 //    xcos files contains the path where they've been first save

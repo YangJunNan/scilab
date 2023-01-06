@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 13121 -->
 //
-// <-- Bugzilla URL -->
-//http://bugzilla.scilab.org/show_bug.cgi?id=13121
+// <-- GitLab URL -->
+//https://gitlab.com/scilab/scilab/-/issues/13121
 //
 // <-- Short Description -->
 // ode "rk" option crashed Scilab when the user derivative function failed.

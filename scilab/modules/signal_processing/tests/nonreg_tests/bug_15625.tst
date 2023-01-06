@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 15625 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/15625
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/15625
 //
 // <-- Short Description -->
 // delip(1,1)=0, instead of Inf

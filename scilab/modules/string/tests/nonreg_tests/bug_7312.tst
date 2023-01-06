@@ -8,8 +8,8 @@
 // <-- CLI SHELL MODE -->
 // <-- Non-regression test for bug 7312 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=7312
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/7312
 //
 // <-- Short Description -->
 // isnum is broken when using some unusual parameters.

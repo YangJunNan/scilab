@@ -9,8 +9,8 @@
 // <-- Short Description -->
 //
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=4084
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/4084
 //
 // print() function produces bad file. This doesn't occur with scilab-5.0.3.
 s1 = -9.999999999;

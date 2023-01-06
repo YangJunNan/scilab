@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 5722 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=5722
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/5722
 //
 // <-- Short Description -->
 // tand() is buggy: tand(30) => error

@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 4615 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=4615
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/4615
 //
 // <-- Short Description -->
 // xs2jpg does not consider .jpeg as a valid extension for .jpg

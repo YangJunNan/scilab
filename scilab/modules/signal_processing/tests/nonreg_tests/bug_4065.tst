@@ -8,8 +8,8 @@
 
 // <-- Non-regression test for bug 4065 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=4065
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/4065
 //
 // <-- Short Description -->
 //   When filter is used with polynomials as arguments num and den, the degree 0 monomial is ignored.

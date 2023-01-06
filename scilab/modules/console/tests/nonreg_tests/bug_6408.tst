@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 6408 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/6408
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/6408
 //
 // <-- Short Description -->
 // prompt() removed trailing whites.

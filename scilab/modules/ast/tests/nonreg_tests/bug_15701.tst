@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 15701 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/15701
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/15701
 //
 // <-- Short Description -->
 // A\B is not faster when A is square and triangular

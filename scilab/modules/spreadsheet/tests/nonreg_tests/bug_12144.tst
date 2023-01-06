@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 12144 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=12144
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/12144
 //
 // <-- Short Description -->
 // csvRead triggers some errors about memory

@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 4885 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=4885
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/4885
 //
 // <-- Short Description -->
 // Undo / redo of comment line should be done in one step

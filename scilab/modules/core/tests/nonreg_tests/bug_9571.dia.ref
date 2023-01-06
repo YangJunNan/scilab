@@ -9,8 +9,8 @@
 //
 // <-- CLI SHELL MODE -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=9571
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/9571
 //
 // <-- Short Description -->
 // "error(144)" returned a wrong variable name.

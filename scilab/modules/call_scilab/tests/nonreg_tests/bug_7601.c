@@ -11,8 +11,8 @@
 //
 // <-- Non-regression test for bug 7601 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=7601
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/7601
 //
 // <-- Short Description -->
 // call_scilab C functions did not check if engine is started.

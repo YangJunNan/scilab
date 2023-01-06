@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 5411 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=5411
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/5411
 //
 // <-- Short Description -->
 // This test will check that a user-defined scicos block has a well defined

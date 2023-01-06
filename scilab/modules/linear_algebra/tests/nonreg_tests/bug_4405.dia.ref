@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 4405 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=4405
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/4405
 //
 // <-- Short Description -->
 // Syntax [Q,R,rk,E]=qr(A,"e") should return an error

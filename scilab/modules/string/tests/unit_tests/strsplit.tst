@@ -149,7 +149,7 @@ assert_checkequal(ref_2, r_2);
 assert_checkequal(r_1, r_3);
 assert_checkequal(r_2, r_4);
 //-------------------------------
-// http://bugzilla.scilab.org/16686
+// https://gitlab.com/scilab/scilab/-/issues/16686
 r = strsplit("c","c")
 assert_checkequal(r, ["";""]);
 r = strsplit("cd","cd")

@@ -7,8 +7,8 @@
 //
 // <-- Non-regression test for bug 13471 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=13471
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/13471
 //
 // <-- Short Description -->
 // Infinite loop in ilib_build_jar used on an empty dir

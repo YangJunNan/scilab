@@ -7,8 +7,8 @@
 //
 // <-- Non-regression test for bug  -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/13421
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/13421
 //
 // <-- Short Description -->
 // Callback functions for genetic algorithms were missing

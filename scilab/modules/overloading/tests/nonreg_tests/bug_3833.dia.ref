@@ -7,8 +7,8 @@
 // =============================================================================
 // <-- Non-regression test for bug 3833 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=3833
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/3833
 //
 // <-- Short Description -->
 // Assignment operator for cell structs storing matrices for indices greater than 1 overwrites all previous values and reinitialises the entries instead.

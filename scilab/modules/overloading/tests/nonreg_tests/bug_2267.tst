@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 2267 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=2267
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/2267
 //
 // <-- Short Description -->
 // Wrong error message when ticks locations and labels have not the same sizes

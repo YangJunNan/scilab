@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 7763 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=7763
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/7763
 //
 // <-- Short Description -->
 //    mtlb_max and mtlb_min cannot handle %i*0
@@ -33,4 +33,5 @@ assert_checkerror("[r,k] = mtlb_min(1 + %i * 0, 0)", refMsg);
 
 
 
-
+
+

@@ -10,8 +10,8 @@
 
 // <-- Non-regression test for bug 16408 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=16408
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/16408
 //
 // <-- Short Description -->
 //    toJSON(var, filename, indent) is wrong and crashed.

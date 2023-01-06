@@ -7,8 +7,8 @@
 // <-- CLI SHELL MODE -->
 // <-- Non-regression test for bug 7916 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=7916
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/7916
 //
 // <-- Short Description -->
 //    nansum([]) returned NaN value.

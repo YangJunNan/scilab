@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 15421 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/15421
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/15421
 //
 // <-- Short Description -->
 // The default grid_style value is now 7

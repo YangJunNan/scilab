@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 11167 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=11167
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/11167
 //
 // <-- Short Description -->
 // datatipRemoveAll example does not work

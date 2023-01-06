@@ -7,8 +7,8 @@
 //
 // <-- Non-regression test for bug 13150 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/13150
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/13150
 //
 // <-- Short Description -->
 // Vectorial export used too much memory for grayplot

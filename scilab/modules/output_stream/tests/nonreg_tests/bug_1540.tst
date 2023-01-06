@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 1540 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=1540
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/1540
 //
 x = %inf ;
 printf ("x = %d\nx = %f\nx = %e\nx = %g\n" ,x,x,x,x) ;

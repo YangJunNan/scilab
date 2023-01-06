@@ -8,8 +8,8 @@
 // <-- Non-regression test for bug 6535 -->
 // <-- INTERACTIVE TEST -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=6535
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/6535
 //
 // <-- Short Description -->
 // The property ListboxTop of the graphic user interface object listbox have no effect.

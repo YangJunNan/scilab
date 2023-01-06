@@ -8,8 +8,8 @@
 //
 // <-- Non-regression test for bug 7895 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=7895
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/7895
 //
 // <-- Short Description -->
 // fft2() was broken on Windows

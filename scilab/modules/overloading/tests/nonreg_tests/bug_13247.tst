@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 13247 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/13247
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/13247
 //
 // <-- Short Description -->
 // hypermatrix in structure definition did not work properly

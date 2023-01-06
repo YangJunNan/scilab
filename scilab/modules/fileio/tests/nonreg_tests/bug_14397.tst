@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 14397 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/14397
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/14397
 //
 // <-- Short Description -->
 // mgeti() did not read correctly uint64 or int64 integers > 2^52

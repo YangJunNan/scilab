@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 14192 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/14192
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/14192
 //
 // <-- Short Description -->
 // When the transfer function is just a double integrator 1/s^2, g_margin()

@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 8798 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=8798
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/8798
 //
 // <-- Short Description -->
 // The context parameter of scicos_simulate is not taken into account

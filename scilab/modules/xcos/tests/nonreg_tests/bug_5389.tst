@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 5389 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=5389
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/5389
 //
 // <-- Short Description -->
 // if there was no C compiler detected on Windows, xcos/scicos tried to call dynamic link functions.

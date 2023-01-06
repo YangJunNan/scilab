@@ -8,8 +8,8 @@
 
 // <-- Non-regression test for bug 9682 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=9682
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/9682
 //
 // <-- Short Description -->
 // 3D assignment into a 2D array of int issued an error

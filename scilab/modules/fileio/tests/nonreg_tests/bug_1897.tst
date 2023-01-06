@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 1897 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=1897
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/1897
 //
 // <-- Short Description -->
 //swap errors when wapping double precision numbers

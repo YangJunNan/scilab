@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 5270 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=5270
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/5270
 //
 // <-- Short Description -->
 //    In editor, change the shortcut for the line numbering (CTRL+L) and assign it to "Load into Scilab"

@@ -8,8 +8,8 @@
 
 // <-- Non-regression test for bug 6461 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=6461
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/6461
 //
 // <-- Short Description -->
 // Scilab External function executed by scifunction may make Scilab crash when they produce an error.

@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 8180 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/8180
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/8180
 //
 // <-- Short Description -->
 // Editing parameters of the EXPRESSION block changed the IEEE mode.

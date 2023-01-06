@@ -8,8 +8,8 @@
 //<-- CLI SHELL MODE -->
 // <-- Non-regression test for bug 7958 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=7958
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/7958
 //
 // <-- Short Description -->
 //  mrfit did not allow a fourth parameter as shown in the help page.

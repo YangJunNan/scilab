@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 539 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=539
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/539
 //
 // <-- Short Description -->
 //    Bug Report Id: 030612003103172113

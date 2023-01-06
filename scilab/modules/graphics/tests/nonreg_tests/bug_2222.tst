@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 2222 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=2222
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/2222
 //
 // <-- Short Description -->
 // Graphic is slow when lack drawlater/drawnow

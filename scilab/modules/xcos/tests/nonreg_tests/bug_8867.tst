@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 8867 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=8867
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/8867
 //
 // <-- Short Description -->
 // Exceptions are produced when deleting non-connected links.

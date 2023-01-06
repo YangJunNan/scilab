@@ -9,8 +9,8 @@
 // <-- TEST WITH GRAPHIC -->
 // <-- INTERACTIVE TEST -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/11686
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/11686
 //
 // <-- Short Description -->
 // An error occurred when clicking outside of an uicontextmenu area.

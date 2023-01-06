@@ -7,8 +7,8 @@
 // <-- CLI SHELL MODE -->
 // <-- Non-regression test for bug 5072 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=5072
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/5072
 //
 // <-- Short Description -->
 // strspn("aéio","éa") returns 3 instead of 2

@@ -8,8 +8,8 @@
 //
 // <-- Non-regression test for bug 9858 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=9858
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/9858
 //
 // <-- Short Description -->
 // length() could not be overloaded with mlist

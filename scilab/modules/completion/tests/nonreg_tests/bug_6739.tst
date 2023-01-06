@@ -7,8 +7,8 @@
 
 // <-- Non-regression test for bug 6739 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=6739
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/6739
 //
 // <-- Short Description -->
 // if a Scilab coded library function is redefined in a new library, completion

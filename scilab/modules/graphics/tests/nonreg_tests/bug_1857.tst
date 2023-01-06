@@ -10,8 +10,8 @@
 
 // <-- Non-regression test for bug 1857 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/1857
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/1857
 //
 // <-- Short Description -->
 // Problems with mtlb_semilogx, mtlb_semilogy and mtlb_loglog.

@@ -11,8 +11,8 @@
 //
 // <-- Non-regression test for bug 2463 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/2463
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/2463
 //
 // <-- Short Description -->
 // Named arguments were accepted in built-in functions

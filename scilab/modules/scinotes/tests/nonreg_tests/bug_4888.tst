@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 4888 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=4888
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/4888
 //
 // <-- Short Description -->
 //   SciNotes deletes selected lines when typing <tab>. It should add a tab at the beginning of each selected lines instead.

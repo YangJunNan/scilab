@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 3934 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=3439
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/3439
 //
 // <-- Short Description -->
 //   Online Help of ricc() function crashes Scilab

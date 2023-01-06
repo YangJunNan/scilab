@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 16051 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/16051
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/16051
 //
 // <-- Short Description -->
 // undefined list elements can be of 2 distinct typeof "void" or "listundefined" according to the way they are created

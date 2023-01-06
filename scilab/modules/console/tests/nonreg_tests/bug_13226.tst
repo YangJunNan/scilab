@@ -8,8 +8,8 @@
 //
 // <-- Non-regression test for bug 13226 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/13226
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/13226
 //
 // <-- Short Description -->
 // Completion with accentued chars could lead to a a crash

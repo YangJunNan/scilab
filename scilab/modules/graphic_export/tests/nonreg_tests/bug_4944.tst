@@ -10,8 +10,8 @@
 
 // <-- Non-regression test for bug 4944 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=4944
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/4944
 //
 // <-- Short Description -->
 // If the extension is not provided, some functions adds the extension, some others don't

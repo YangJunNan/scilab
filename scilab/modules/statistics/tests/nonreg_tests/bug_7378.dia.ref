@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 7378 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=7378
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/7378
 //
 // <-- Short Description -->
 // quart() failed when input argument only contained NaNs.

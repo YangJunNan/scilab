@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 12862 -->
 //
-// <-- Bugzilla URL -->
-//http://bugzilla.scilab.org/12862
+// <-- GitLab URL -->
+//https://gitlab.com/scilab/scilab/-/issues/12862
 //
 // <-- Short Description -->
 // intsplin() failed for complex ordinates

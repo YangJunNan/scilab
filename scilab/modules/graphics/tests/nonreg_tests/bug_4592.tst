@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 4592 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=4592
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/4592
 //
 // <-- Short Description -->
 //    The ged entity picker produces an error if a menu has been added to the graphic window

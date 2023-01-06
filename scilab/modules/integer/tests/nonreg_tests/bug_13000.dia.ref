@@ -9,8 +9,8 @@
 //
 // <-- CLI SHELL MODE -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=13000
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/13000
 //
 // <-- Short Description -->
 // Endless recursive call on []./int8(3) and on int8(3)./[]

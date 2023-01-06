@@ -8,8 +8,8 @@
 //
 // <-- Non-regression test for bug 14476 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/14476
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/14476
 //
 // <-- Short Description -->
 // Polynomial * complex always returned 0

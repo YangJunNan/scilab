@@ -10,8 +10,8 @@
 //
 // <-- ENGLISH IMPOSED -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=3980
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/3980
 //
 // <-- Short Description -->
 // Wrong line number in error message

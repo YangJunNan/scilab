@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 15668 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=15668
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/15668
 //
 // <-- Short Description -->
 // save(filename) saves all predefined Scilab constants %e %pi etc.. (regression)

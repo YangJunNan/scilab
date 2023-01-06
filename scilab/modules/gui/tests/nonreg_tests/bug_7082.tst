@@ -9,8 +9,8 @@
 //
 // <-- INTERACTIVE TEST -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=7082
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/7082
 //
 // <-- Short Description -->
 // Setting the "enable" property had no effect on "listbox" and "text" uicontrols.

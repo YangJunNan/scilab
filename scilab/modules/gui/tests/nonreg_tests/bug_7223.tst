@@ -8,8 +8,8 @@
 // <-- Non-regression test for bug 7223 -->
 // <-- TEST WITH GRAPHIC -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=7223
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/7223
 //
 // <-- Short Description -->
 // unsetmenu(gettext("&Applications"), 4) crashed Scilab

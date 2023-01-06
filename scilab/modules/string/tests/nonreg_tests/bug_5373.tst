@@ -7,8 +7,8 @@
 // <-- CLI SHELL MODE -->
 // <-- Non-regression test for bug 5373 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=5373
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/5373
 //
 // <-- Short Description -->
 // isalphanum() doesn't support non ascii chars

@@ -8,8 +8,8 @@
 //
 // <-- Non-regression test for bug 8483 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=8483
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/8483
 //
 // <-- Short Description -->
 // MATMUL did not work for vectors

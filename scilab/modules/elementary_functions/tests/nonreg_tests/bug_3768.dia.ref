@@ -7,8 +7,8 @@
 // <-- CLI SHELL MODE -->
 // <-- Non-regression test for bug 3768 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=3768
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/3768
 //
 // <-- Short Description -->
 //    Odd integers x between 2^52 and 2^53 in absolute value satisfy

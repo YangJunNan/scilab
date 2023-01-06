@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 1849 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=1849
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/1849
 //
 // <-- Short Description -->
 // The field line_mode of handle Legend does not work.

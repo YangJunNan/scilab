@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 3148 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=3148
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/3148
 //
 // <-- Short Description -->
 // It is no more possible to create two figures at the same time

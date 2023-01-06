@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 2721 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=2721
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/2721
 //
 
 // <-- Short Description -->

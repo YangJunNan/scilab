@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 13984 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/13984
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/13984
 //
 // <-- Short Description -->
 // plot(.., "color", colors)

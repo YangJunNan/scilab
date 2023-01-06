@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 3928 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=3928
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/3928
 //
 // <-- Short Description -->
 // Error when a matrix is flipped along the third dimension

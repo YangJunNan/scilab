@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 4531 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=4531
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/4531
 //
 // <-- Short Description -->
 // "legend" macros does show any error when no 'Polyline' exist.

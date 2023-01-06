@@ -11,8 +11,8 @@
 //
 // <-- Non-regression test for bug 4926 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=4926
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/4926
 //
 // <-- Short Description -->
 // Can not save a structure in a MAT-file using savematfile.

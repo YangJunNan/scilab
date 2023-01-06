@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 2154 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=2154
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/2154
 //
 // <-- Short Description -->
 // color_flag and cdata_mapping Fac3d propeties cannot be set

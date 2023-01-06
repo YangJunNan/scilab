@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 7737 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=7737
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/7737
 //
 // <-- Short Description -->
 // Apparently, a module to be installed is first downloaded without priorly

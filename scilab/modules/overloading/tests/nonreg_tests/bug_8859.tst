@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 8859 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=8859
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/8859
 //
 // <-- Short Description -->
 //Missing some comparison operators for hypermatrices compared to scalar

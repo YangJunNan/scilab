@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 11037 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=11037
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/11037
 //
 // <-- Short Description -->
 //    linspace() had floating point issues

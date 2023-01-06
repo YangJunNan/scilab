@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 4911 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=4911
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/4911
 //
 // <-- Short Description -->
 //    Update the title of the Scilab editor window when saving

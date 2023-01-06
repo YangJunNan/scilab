@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 10830 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=10830
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/10830
 //
 // <-- Short Description -->
 // Hypermatrix insertion with a negative (or null) index gives a wrong error message.

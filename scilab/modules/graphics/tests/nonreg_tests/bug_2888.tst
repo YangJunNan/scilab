@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 2888 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=2888
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/2888
 //
 // <-- Short Description -->
 // Set font_size with a big value freeze Scilab

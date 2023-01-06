@@ -8,8 +8,8 @@
 // <-- Non-regression test for bug 6504 -->
 // <-- INTERACTIVE TEST -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=6504
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/6504
 //
 // <-- Short Description -->
 // It is no more possible in Scilab 5.x to select the content of messageboxes (available in Scilab 4.x)

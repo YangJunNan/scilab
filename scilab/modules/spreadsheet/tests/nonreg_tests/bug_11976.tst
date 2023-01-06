@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 11976 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=11976
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/11976
 //
 // <-- Short Description -->
 // decimal parameter must be '.' or ','

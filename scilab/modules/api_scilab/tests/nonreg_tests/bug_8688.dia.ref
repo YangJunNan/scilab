@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 8688 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/8688
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/8688
 //
 // <-- Short Description -->
 // fillMatrixOfString did not check available memory on stack.

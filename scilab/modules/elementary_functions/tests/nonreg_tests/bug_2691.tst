@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 2691 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=2691
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/2691
 //
 // <-- Short Description -->
 //    bitand doesn't complain when it's called with only one argument.

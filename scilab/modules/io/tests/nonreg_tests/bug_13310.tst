@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 13310 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=13310
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/13310
 //
 // <-- Short Description -->
 // .scg files createad by Scilab 5.4.1 can no more be loaded (pixmap property removed).

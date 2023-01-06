@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 4930 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/4930
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/4930
 //
 // <-- Short Description -->
 // When the console was resized from 0-height to x-height, lines()

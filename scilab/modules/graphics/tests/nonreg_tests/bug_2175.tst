@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 2175-->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=2175
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/2175
 //
 // <-- Short Description -->
 // "contour2d" prints level numbers partially outside the rect.

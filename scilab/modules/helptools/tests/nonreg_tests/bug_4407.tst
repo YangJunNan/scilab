@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 4407 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=4407
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/4407
 //
 // <-- Short Description -->
 //  help file scilab_xx_XX_help.jar have another scilab_xx_XX_help.jar embedded

@@ -7,8 +7,8 @@
 // =============================================================================
 // <-- Non-regression test for bug 3962 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=3962
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/3962
 //
 // <-- Short Description -->
 // First lhs argument of pca no more contains a second column.

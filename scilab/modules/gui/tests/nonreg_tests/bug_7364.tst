@@ -8,8 +8,8 @@
 // <-- Non-regression test for bug 7364 -->
 // <-- INTERACTIVE TEST -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=7364
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/7364
 //
 // <-- Short Description -->
 // The "Checked" property misworked for uimenus and they could not have a callback.

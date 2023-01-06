@@ -9,8 +9,8 @@
 //
 // <-- CLI SHELL MODE -->
 // 
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=8077
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/8077
 //
 // <-- Short Description -->
 // browsevar, scinotes, xcos functions were not disabled in -nwni mode on Linux and MacOS X.

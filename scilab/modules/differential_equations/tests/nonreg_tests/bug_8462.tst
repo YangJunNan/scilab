@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 8462 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=8462
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/8462
 //
 // <-- Short Description -->
 // bvodeS crashed on Windows and did not return a error.

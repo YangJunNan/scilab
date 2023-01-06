@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 15698 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/15698
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/15698
 //
 // <-- Short Description -->
 // intg roundoff error with a trivial integra

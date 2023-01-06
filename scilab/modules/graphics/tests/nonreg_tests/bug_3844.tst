@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 3844 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=3844
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/3844
 //
 // <-- Short Description -->
 // axes with a very high y-bounds/x-bounds ratio do not appear

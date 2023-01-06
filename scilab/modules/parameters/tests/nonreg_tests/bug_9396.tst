@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 9396 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=9396
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/9396
 //
 // <-- Short Description -->
 // add_params() accepted duplicate keys.

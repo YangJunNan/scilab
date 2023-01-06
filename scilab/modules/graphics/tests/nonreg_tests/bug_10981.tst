@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 10981 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=10981
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/10981
 //
 // <-- Short Description -->
 // Avoid rotate 2d plot

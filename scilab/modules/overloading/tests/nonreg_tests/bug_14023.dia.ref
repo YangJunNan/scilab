@@ -6,8 +6,8 @@
 // =============================================================================
 // <-- Non-regression test for bug 14023 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=14023
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/14023
 //
 // <-- CLI SHELL MODE -->
 //

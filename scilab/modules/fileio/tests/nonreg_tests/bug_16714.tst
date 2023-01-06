@@ -10,8 +10,8 @@
 
 // <-- Non-regression test for bug 16714 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=16714
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/16714
 //
 // <-- Short Description -->
 // The fullpath of a file is on to the current directory rather than being on

@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 16476 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/16476
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/16476
 //
 // <-- Short Description -->
 // issquare(1/%z) answers %F. Same issue for any other square matrix of rationals

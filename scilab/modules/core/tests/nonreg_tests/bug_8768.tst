@@ -9,8 +9,8 @@
 //
 // <-- CLI SHELL MODE -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=8768
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/8768
 //
 // <-- Short Description -->
 // GetRhsVar(..., STRING_DATATYPE did not check size of input argument

@@ -11,8 +11,8 @@
 
 // <-- Non-regression test for bug 2395 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/2395
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/2395
 //
 // <-- Short Description -->
 //   mfile2sci() does not complete when converting the following function.

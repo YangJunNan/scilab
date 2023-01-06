@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 6441 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=6441
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/6441
 //
 // <-- Short Description -->
 // When I create a uimenu with the option 'checked' set, the callback of this menu is never called.

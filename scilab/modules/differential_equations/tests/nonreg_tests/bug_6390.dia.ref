@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 6390 -->
 //
-// <-- Bugzilla URL -->
-//http://bugzilla.scilab.org/show_bug.cgi?id=6390
+// <-- GitLab URL -->
+//https://gitlab.com/scilab/scilab/-/issues/6390
 //
 // <-- Short Description -->
 // The external argument of odecd() was not documented well and not tested.

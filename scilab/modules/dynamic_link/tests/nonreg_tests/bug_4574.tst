@@ -10,8 +10,8 @@
 
 // <-- Non-regression test for bug 4574 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=4574
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/4574
 //
 // <-- Short Description -->
 // ilib_build does not check if library is already loaded in scilab.

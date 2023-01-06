@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 566 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=566
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/566
 //
 // <-- Short Description -->
 //    a(2,3,2)='x' returns an empty matrix.

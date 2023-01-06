@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 3897 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=3897
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/3897
 //
 // <-- Short Description -->
 // macros perturbs the behavior of mfprintf().

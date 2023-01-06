@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 12783 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=12783
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/12783
 //
 // <-- Short Description -->
 // There are some inconsistent error messages in dsearch

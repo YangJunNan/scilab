@@ -8,8 +8,8 @@
 //
 // <-- Non-regression test for bug 3060 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=3060
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/3060
 //
 // <-- Short Description -->
 // When I play (ie moving everything quickly like a dumb guy) with the rotation (full screen), it crashes Scilab.

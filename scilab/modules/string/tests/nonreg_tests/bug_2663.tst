@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 2663 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=2663
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/2663
 //
 // <-- Short Description -->
 // length() change the value of the input argument. the input argument is replaced

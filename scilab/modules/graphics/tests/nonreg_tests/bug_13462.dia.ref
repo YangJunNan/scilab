@@ -7,8 +7,8 @@
 // <-- TEST WITH GRAPHIC -->
 // <-- Non-regression test for bug 13462 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/13462
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/13462
 //
 // <-- Short Description -->
 // Low levels functions modified bounds even with auto_scale="off"

@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 5179 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=5179
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/5179
 //
 // <-- Short Description -->
 // The accented letters used in text in Scicos diagram are not visible with xcos at least under Linux.

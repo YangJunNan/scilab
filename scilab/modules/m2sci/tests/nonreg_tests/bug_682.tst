@@ -12,8 +12,8 @@
 
 // <-- Non-regression test for bug 682 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=682
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/682
 //
 // <-- Short Description -->
 //    probleme with the logical or in tests.

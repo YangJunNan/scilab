@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 7715 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=7715
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/7715
 //
 // <-- Short Description -->
 // Performances of xcosDiagramToHDF5 degraded after several subsequent calls to this function.

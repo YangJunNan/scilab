@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 13185 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/13185
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/13185
 //
 // <-- Short Description -->
 //  When the "checked" option of an uimenu was set to "on" for

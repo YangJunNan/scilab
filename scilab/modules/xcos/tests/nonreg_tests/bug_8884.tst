@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 8884 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=8884
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/8884
 //
 // <-- Short Description -->
 // Region to superblock does not reconstruct 2 links

@@ -8,8 +8,8 @@
 //
 // <-- Non-regression test for bug 9783 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=9783
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/9783
 //
 // <-- Short Description -->
 // Insertion overloading does not seem to work with mlist

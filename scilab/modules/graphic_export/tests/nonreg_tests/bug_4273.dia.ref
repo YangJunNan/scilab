@@ -7,8 +7,8 @@
 // <-- TEST WITH GRAPHIC -->
 // <-- Non-regression test for bug 4273 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=4273
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/4273
 //
 // <-- Short Description -->
 // xs2file crashs

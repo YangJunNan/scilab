@@ -11,8 +11,8 @@
 
 // <-- Non-regression test for bug 1628 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/1628
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/1628
 //
 // <-- Short Description -->
 // long programs (several hours) I get a negative value for timer()

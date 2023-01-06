@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 12673 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/12673
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/12673
 //
 // <-- Short Description -->
 // Ticks were drawn outside of axes area

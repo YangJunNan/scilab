@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 12639 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=12639
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/12639
 //
 // <-- Short Description -->
 // justify([], position) returns an error instead of ""

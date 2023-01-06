@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 12219 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=12219
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/12219
 //
 // <-- Short Description -->
 // delete('all') delete current axes and does not create a new one

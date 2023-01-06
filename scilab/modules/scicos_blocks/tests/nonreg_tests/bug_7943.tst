@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 7943 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=7943
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/7943
 //
 // <-- Short Description -->
 // On a linux binary version, it was not possible to use the fortran_block block.

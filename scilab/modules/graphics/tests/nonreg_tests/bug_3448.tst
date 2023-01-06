@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 3448 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=3448
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/3448
 //
 // <-- Short Description -->
 // getting data property of polylines fails if the polyline is empty.

@@ -11,8 +11,8 @@
 //
 // <-- INTERACTIVE TEST -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/14348
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/14348
 //
 // <-- Short Description -->
 // Scilab does not open sce/sci file in scilab correctly when calling by windows explorer ( double click on file )

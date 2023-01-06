@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 15758 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=15758
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/15758
 //
 // <-- Short Description -->
 // sparse([0 0],1) crashes scilab (regression)

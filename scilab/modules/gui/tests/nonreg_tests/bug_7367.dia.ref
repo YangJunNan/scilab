@@ -8,8 +8,8 @@
 // <-- Non-regression test for bug 7367 -->
 // <-- TEST WITH GRPAHIC -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=7367
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/7367
 //
 // <-- Short Description -->
 // uimenu properties display was not consistent.

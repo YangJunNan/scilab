@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 13114 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/13114
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/13114
 //
 // <-- Short Description -->
 // Saving and loading handles before and after the removal of "pixmap"

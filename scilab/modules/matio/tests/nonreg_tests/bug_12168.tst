@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 12168 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=12168
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/12168
 //
 // <-- Short Description -->
 // Segfault when listing a closed matfile.

@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 2414 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=2414
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/2414
 //
 // <-- Short Description -->
 //    assignment of empty string an empty variable has disastrous results. Probably a

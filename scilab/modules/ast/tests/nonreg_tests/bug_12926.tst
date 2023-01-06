@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 12926 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/12926
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/12926
 //
 // <-- Short Description -->
 // "~" had a priority lower than < <= => > == and ~=

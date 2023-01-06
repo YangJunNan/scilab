@@ -7,8 +7,8 @@
 //
 // <-- Non-regression test for bug 3604 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=3604
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/3604
 //
 // <-- Short Description -->
 //    The small script attached to this bug make Scilab crash.

@@ -8,8 +8,8 @@
 // <-- Non-regression test for bug 8181 -->
 // <-- JVM MANDATORY -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/8181
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/8181
 //
 // <-- Short Description -->
 // uicontrol did not handle color where composants are outside the range 0-1.

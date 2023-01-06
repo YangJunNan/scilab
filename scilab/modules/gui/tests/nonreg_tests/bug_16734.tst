@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 16734 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=16734
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/16734
 //
 // <-- Short Description -->
 // findobj severely degrades run time performance in Scilab 6.1.1

@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 1802 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=1802
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/1802
 //
 // <-- Short Description -->
 //    The sci2exp function is very very slow for large matrices

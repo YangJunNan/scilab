@@ -9,8 +9,8 @@
 //
 // <-- CLI SHELL MODE --> 
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=6447
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/6447
 //
 // <-- Short Description -->
 // unix_g() does not support properly neither UTF8 nor ANSI encoded output

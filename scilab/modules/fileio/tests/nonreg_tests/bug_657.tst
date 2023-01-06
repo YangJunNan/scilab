@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 657 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=657
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/657
 //
 // <-- Short Description -->
 //    Strange result given with a combined command (max and int8 )

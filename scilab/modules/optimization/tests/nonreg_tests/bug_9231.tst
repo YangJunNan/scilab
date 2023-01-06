@@ -10,8 +10,8 @@
 
 // <-- Non-regression test for bug 9231 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/9231
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/9231
 //
 // <-- Short Description -->
 // fsolve() produces wrong info for certain initial values

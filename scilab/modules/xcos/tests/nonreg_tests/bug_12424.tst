@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 12424 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=12424
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/12424
 //
 // <-- Short Description -->
 // Calling lincos on a Derivative block makes scilab crash

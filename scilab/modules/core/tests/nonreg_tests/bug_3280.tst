@@ -8,8 +8,8 @@
 
 // <-- Non-regression test for bug 3280 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=3280
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/3280
 //
 // <-- Short Description -->
 //A permanent variable   'L' is defined when launching scilab with the '-l' option.

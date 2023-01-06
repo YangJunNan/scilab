@@ -7,8 +7,8 @@
 //
 // <-- Non-regression test for bug 12828 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=12828
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/12828
 //
 // <-- Short Description -->
 // routh_t() function with two input argument (routh_t(h,kp)) gives a wrong table for the special case

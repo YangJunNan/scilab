@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 16661 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/16661
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/16661
 //
 // <-- Short Description -->
 // x=spzeros(1e10,1e10) yields an incorrect error message

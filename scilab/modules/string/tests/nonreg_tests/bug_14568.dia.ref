@@ -6,8 +6,8 @@
 // =============================================================================
 // <-- Non-regression test for bug 14568 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/14568
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/14568
 //
 // <-- Short Description -->
 // strtod() fails in some locale conditions

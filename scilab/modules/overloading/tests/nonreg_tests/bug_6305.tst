@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 6305 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=6305
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/6305
 //
 // <-- Short Description -->
 // dsearch does not work with integers, hypermatrices and strings

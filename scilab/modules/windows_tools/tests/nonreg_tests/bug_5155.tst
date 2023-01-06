@@ -8,8 +8,8 @@
 // <-- Non-regression test for bug 5155 -->
 // <-- INTERACTIVE TEST -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=5155
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/5155
 //
 // <-- Short Description -->
 // Scilab windows 32 bits version requires CPU SSE 2 instructions.

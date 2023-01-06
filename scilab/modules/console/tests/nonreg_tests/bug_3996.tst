@@ -7,8 +7,8 @@
 
 // <-- Non-regression test for bug 3996 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=3996
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/3996
 //
 // <-- Short Description -->
 // tabulation included in a paste string may make scilab crash in -nw or -nwni mode

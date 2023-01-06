@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 793 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=793
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/793
 //
 // <-- Short Description -->
 //    Getdate crashes scilab with negative arguments

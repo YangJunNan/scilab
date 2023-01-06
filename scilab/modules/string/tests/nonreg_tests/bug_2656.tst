@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 2656 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=2656
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/2656
 //
 // <-- Short Description -->
 //    M2sci doesn't convert "carriage return" inside a loop.

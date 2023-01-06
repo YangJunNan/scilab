@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 4995 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=4995
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/4995
 //
 // <-- Short Description -->
 //    The "Cancel" (Annuler) box which appears when closing the Editor after the file has been modified does not work.

@@ -9,8 +9,8 @@
 //
 // <-- CLI SHELL MODE -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id= 7042
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/7042
 //
 // <-- Short Description -->
 // insertion of an empty matrix into a struct (to remove a row or column)

@@ -7,8 +7,8 @@
 //
 // <-- Non-regression test for bug 7646 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=7646
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/7646
 //
 // <-- Short Description -->
 // matrix extraction on a transposed matrix was not possible

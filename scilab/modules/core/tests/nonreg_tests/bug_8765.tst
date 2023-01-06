@@ -9,8 +9,8 @@
 //
 // <-- CLI SHELL MODE -->
 // 
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=8765
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/8765
 //
 // <-- Short Description -->
 // A(1:N,j)=[] returns bullshit if N>size(A,1)

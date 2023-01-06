@@ -8,8 +8,8 @@
 //
 // <-- Non-regression test for bug 14808 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/14808
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/14808
 //
 // <-- Short Description -->
 // E=[ 'A' 'B' 'C' 'D' 'E']  ,  E(0:0) Crash Scilab Console

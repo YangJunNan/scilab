@@ -9,8 +9,8 @@
 // <-- NO CHECK REF -->
 // <-- CLI SHELL MODE -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=15092
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/15092
 //
 // <-- Short Description -->
 // New or scalar variable is resized as a column vector instead of row vector

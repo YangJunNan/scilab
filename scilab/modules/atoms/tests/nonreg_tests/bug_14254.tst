@@ -10,8 +10,8 @@
 
 // <-- Non-regression test for bug 14254 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/14254
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/14254
 //
 // <-- Short Description -->
 // When installing an ATOMS module that is not locally registered and available,

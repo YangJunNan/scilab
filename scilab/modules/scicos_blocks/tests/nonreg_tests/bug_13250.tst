@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 13250 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=13250
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/13250
 //
 // <-- Short Description -->
 // When D was a scalar, it was set to ones(C*B),

@@ -8,8 +8,8 @@
 
 // <-- Non-regression test for bug 2131 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=2131
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/2131
 //
 // <-- Short Description -->
 //Inconsistent results from functions median() with given argument of [].

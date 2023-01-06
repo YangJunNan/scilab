@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 7731 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=7731
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/7731
 //
 // <-- Short Description -->
 // In Find/Replace window, the buttons were not updated when an item was

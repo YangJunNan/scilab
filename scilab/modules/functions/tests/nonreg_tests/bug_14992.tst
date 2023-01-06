@@ -10,8 +10,8 @@
 // <-- CLI SHELL MODE -->
 // <-- NO CHECK REF -->
 
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/14992
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/14992
 
 // <-- Short Description -->
 // readgateway function was removeed, use whereis instead

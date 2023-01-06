@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 16323 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/16323
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/16323
 //
 // <-- Short Description -->
 // conj(sparse(x)) is complex even when x is real

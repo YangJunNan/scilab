@@ -9,8 +9,8 @@
 //
 // <-- CLI SHELL MODE -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/13613
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/13613
 //
 // <-- Short Description -->
 // isdef(name, 'l') produced wrong output.

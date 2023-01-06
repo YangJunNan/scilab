@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 2391 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=2391
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/2391
 //
 // <-- Short Description -->
 //     pol2str produces empty output (instead of '0') for null polynomials

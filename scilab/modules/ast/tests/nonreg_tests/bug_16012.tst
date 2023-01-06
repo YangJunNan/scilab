@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 16012 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/16012
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/16012
 //
 // <-- Short Description -->
 //  [struct() struct()] crashes scilab

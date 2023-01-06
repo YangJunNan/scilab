@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 9461 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=9461
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/9461
 //
 // <-- Short Description -->
 // The assert_checkalmostequal function does not manage sparse matrices.

@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 13893 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/13893
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/13893
 //
 // <-- Short Description -->
 // simp() function does not set a rational denominator at 1 when numerator is equal to zero

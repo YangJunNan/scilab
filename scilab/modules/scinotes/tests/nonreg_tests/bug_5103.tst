@@ -11,8 +11,8 @@
 //
 // <-- Non-regression test for bug 5103 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=5103
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/5103
 //
 // <-- Short Description -->
 // 

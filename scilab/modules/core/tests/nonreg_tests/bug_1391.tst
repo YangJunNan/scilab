@@ -7,8 +7,8 @@
 
 // <-- Non-regression test for bug 1391 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=1391
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/1391
 //
 // exec SCI/modules/core/tests/nonreg_tests/bug_1391.tst
 

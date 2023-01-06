@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 6986 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=6986
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/6986
 //
 // <-- Short Description -->
 // edit('toto.sce') created a file toto.sce.sci containing a function named

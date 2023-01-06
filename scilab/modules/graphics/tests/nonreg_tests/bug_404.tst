@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 2796 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=2796
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/2796
 //
 // <-- Short Description -->
 // Rescaling a subplot alos modify other subplots scales.

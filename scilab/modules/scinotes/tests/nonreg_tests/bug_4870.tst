@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 4870 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=4870
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/4870
 //
 // <-- Short Description -->
 // In my mind, the comment/uncomment shortcut should be changed.

@@ -8,8 +8,8 @@
 //
 // <-- Non-regression test for bug 14135 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/14135
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/14135
 //
 // <-- Short Description -->
 // crash when running "Graphics -> Matplot -> Java Image" demonstration.

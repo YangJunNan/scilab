@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 15621 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=15621
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/15621
 //
 // <-- Short Description -->
 // polynomial exponentiation silently truncates exponent (regression)

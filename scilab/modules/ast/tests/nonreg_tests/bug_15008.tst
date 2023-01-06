@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 15008 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=15008
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/15008
 //
 // <-- Short Description -->
 // scilab crash in using operator AND (&, &&) or OR (| ||) with a string.

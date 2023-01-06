@@ -8,8 +8,8 @@
 
 // <-- Non-regression test for bug 3607 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=3607
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/3607
 //
 // <-- Short Description -->
 // wrong value <option value="-Xmx1024m"/>

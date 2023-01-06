@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 12174 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/12174
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/12174
 //
 // <-- Short Description -->
 // The function routh_t gives incorrect output for all denominators that include

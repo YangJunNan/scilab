@@ -8,8 +8,8 @@
 
 // <-- Non-regression test for bug 3260 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=3260
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/3260
 //
 // <-- Short Description -->
 // X1=1;X2=7;x1=int8(X1);x2=int8(X2); x1\x2

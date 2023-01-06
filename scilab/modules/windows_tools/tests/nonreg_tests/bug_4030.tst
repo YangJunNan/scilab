@@ -8,8 +8,8 @@
 // <-- Non-regression test for bug 4030 -->
 //
 // <-- INTERACTIVE TEST -->
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=4030
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/4030
 //
 // <-- Short Description -->
 // unix_w('dir /s') displays strange matrix 

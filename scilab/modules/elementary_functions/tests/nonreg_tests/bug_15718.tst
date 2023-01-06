@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 15718 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/15718
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/15718
 //
 // <-- Short Description -->
 // bitwise functions bitand, bitor, and bitxor misworked with uint64(%inf)

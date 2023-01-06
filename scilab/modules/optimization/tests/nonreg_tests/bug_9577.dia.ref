@@ -11,8 +11,8 @@
 //
 // <-- Non-regression test for bug 9577 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=9577
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/9577
 //
 // <-- Short Description -->
 // neldermead_configure(): if -x0 is set, -numberofvariables is now optional.

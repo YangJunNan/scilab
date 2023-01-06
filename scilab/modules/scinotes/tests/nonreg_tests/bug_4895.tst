@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 4895 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=4895
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/4895
 //
 // <-- Short Description -->
 //   Options set in "File"->"Page Setup..." are reset when opening de "Page Setup..." dialog (previously set options are lost).

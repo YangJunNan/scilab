@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 871 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=871
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/871
 //
 // <-- Short Description -->
 //    The Semicolon operator does not work on functions called

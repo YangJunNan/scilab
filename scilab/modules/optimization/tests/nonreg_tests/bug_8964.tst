@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 8964 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=8964
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/8964
 //
 // <-- Short Description -->
 // The optim_* function may not create pop_init.

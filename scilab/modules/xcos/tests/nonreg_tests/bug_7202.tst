@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 7202 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/7202
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/7202
 //
 // <-- Short Description -->
 // It's not possible to send string parameters via the opar structure of an xcos

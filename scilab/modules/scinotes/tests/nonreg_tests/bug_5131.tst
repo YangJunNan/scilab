@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 5131 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=5131
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/5131
 //
 // <-- Short Description -->
 //   editor('') opens a non-existing file which name is the current directory base-name.

@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 15907 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/15907
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/15907
 //
 // <-- Short Description -->
 // filter is corrupting its input state array (Scilab 6 regression)

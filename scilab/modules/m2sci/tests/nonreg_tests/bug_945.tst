@@ -11,8 +11,8 @@
 
 // <-- Non-regression test for bug 945 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=945
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/945
 //
 // <-- Short Description -->
 //    mfile2sci fails in case of non pre-sized vectors (all 

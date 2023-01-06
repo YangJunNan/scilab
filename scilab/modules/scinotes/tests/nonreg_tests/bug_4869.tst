@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 4869 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=4869
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/4869
 //
 // <-- Short Description -->
 //  "Save As" windows is titled "Save"

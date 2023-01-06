@@ -8,8 +8,8 @@
 
 // <-- Non-regression test for bug 4832 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=4832
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/4832
 //
 // <-- Short Description -->
 // waveread can not detect RIFF with smpl chunck

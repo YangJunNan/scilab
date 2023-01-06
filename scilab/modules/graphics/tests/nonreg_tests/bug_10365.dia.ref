@@ -7,8 +7,8 @@
 // <-- TEST WITH GRAPHIC -->
 // <-- Non-regression test for bug 10365 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=10365
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/10365
 //
 // <-- Short Description -->
 //    copy crashs on entity, target must be an axe

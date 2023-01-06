@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 15796 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/15796
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/15796
 //
 // <-- Short Description -->
 // Display after mprintf("") msprintf("") crashes Scilab (was OK in 6.0.1)

@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 4132 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=4132
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/4132
 //
 // <-- Short Description -->
 // fullpath crashs and returns a exception message on windows

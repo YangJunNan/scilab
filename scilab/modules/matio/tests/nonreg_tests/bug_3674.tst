@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 3674 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=3674
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/3674
 //
 // <-- Short Description -->
 // Scilab 5.0.2 has issues with the new "MAT-file Format" (functions "savematfile" and "loadmatfile") : 

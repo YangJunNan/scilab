@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 15502 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/15502
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/15502
 //
 // <-- Short Description -->
 // listvarinfile() misses listing arrays of struct, and then locks the file.

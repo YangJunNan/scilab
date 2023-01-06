@@ -11,8 +11,8 @@
 //
 // <-- Non-regression test for bug 15635 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/15635
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/15635
 //
 // <-- Short Description -->
 // delip(1,4) terminates with neither output nor error (regression)

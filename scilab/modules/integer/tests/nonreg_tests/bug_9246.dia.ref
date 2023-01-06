@@ -9,8 +9,8 @@
 //
 // <-- CLI SHELL MODE -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=9246
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/9246
 //
 // <-- Short Description -->
 //It is not possible to insert an integer in an integer array with a 

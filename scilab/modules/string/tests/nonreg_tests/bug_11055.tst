@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 11055 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=11055
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/11055
 //
 // <-- Short Description -->
 // 'string' function did not manage implicit size type

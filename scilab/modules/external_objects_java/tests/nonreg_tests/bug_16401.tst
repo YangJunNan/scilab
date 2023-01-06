@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 16401 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=16401
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/16401
 //
 // <-- Short Description -->
 // Scilab crash at exit after declaring a global klass variable

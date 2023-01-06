@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 7849 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=7849
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/7849
 //
 // <-- Short Description -->
 // eqfir crashs Scilab on MacOS platform

@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 9357 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=9357
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/9357
 //
 // <-- Short Description -->
 //stdevf returns zero for row vector arguments

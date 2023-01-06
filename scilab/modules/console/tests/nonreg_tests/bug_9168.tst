@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 9168 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/9168
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/9168
 //
 // <-- Short Description -->
 // Bad command line width when completion window was shew at the console bottom.

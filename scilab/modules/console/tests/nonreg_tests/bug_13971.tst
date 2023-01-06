@@ -7,8 +7,8 @@
 // <-- CLI SHELL MODE -->
 // <-- Non-regression test for bug 13971 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=13971
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/13971
 //
 // <-- Short Description -->
 // add a space between prompt and cursor

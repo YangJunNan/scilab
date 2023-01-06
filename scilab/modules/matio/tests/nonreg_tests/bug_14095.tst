@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 14095 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/14095
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/14095
 //
 // <-- Short Description -->
 // Load a fig file with loadmatfile makes Scilab crash

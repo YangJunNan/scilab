@@ -11,8 +11,8 @@
 
 // <-- Non-regression test for bug 1004 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=1004
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/1004
 //
 // <-- Short Description -->
 //    disp added during translation of Matlab for loop

@@ -11,8 +11,8 @@
 //
 // <-- Non-regression test for bug 5013 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=5013
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/5013
 //
 // <-- Short Description -->
 // Text editor - Find/Replace dialog box : Buttons are resized after the search.

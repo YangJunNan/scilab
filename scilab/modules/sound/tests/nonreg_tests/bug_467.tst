@@ -8,8 +8,8 @@
 
 // <-- Non-regression test for bug 467 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=467
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/467
 //
 // <-- Short Description -->
 //    Bug Report Id: 12022200362265140

@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 15249 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/15249
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/15249
 //
 // <-- Short Description -->
 // findobj("toto") yielded an error instead of returning []

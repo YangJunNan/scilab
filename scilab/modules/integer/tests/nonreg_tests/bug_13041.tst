@@ -9,8 +9,8 @@
 //
 // <-- CLI SHELL MODE -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/13041
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/13041
 //
 // <-- Short Description -->
 // Invalid result with int minus vect_int

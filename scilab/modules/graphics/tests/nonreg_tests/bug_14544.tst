@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 14544 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/14544
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/14544
 //
 // <-- Short Description -->
 // scatter and scatter3 canceled any upstream drawlater instruction

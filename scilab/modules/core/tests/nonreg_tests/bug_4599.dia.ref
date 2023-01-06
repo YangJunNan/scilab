@@ -11,8 +11,8 @@
 //
 // <-- Non-regression test for bug 4599 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=4599
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/4599
 //
 // <-- Short Description -->
 // It is possible create many different variables with the same name in the same scope!!

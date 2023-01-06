@@ -10,8 +10,8 @@
 
 // <-- Non-regression test for bug 16178 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/16178
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/16178
 //
 // <-- Short Description -->
 // sci2exp() yielded an error for any input macro without argout

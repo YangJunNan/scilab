@@ -11,8 +11,8 @@
 //
 // <-- Non-regression test for bug 11363 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/11363
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/11363
 //
 // <-- Short Description -->
 // figure.visible = "on" de-iconify window

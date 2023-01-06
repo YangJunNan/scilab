@@ -9,8 +9,8 @@
 //
 // <-- CLI SHELL MODE -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=5686
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/5686
 //
 // <-- Short Description -->
 // Complex number manipulation could crash Scilab.

@@ -9,8 +9,8 @@
 // <-- NO CHECK REF -->
 // <-- Non-regression test for bug 16114 -->
 //
-// <-- Bugzilla URL -->
-// https://bugzilla.scilab.org/show_bug.cgi?id=16114
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/16114
 //
 // <-- Short Description -->
 // libraryinfo() yields 0x0 matrix of strings for lib without macro

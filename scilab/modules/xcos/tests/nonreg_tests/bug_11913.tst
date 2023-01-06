@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 11913 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=11913
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/11913
 //
 // <-- Short Description -->
 // csslti4 crash Scilab when used without input or output

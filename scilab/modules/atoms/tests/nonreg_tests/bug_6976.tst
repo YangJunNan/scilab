@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 6976 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=6976
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/6976
 //
 // <-- Short Description -->
 // Improve connection from the GUI to the related ATOMS webpages.

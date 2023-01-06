@@ -7,8 +7,8 @@
 // <-- CLI SHELL MODE -->
 // <-- Non-regression test for bug 7101 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=7101
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/7101
 //
 // <-- Short Description -->
 // The roots / Jenkins-Traub algorithm does not produce the roots, sometimes.

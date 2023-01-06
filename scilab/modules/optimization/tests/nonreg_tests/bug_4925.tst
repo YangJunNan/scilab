@@ -10,8 +10,8 @@
 
 // <-- Non-regression test for bug 4925 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=4925
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/4925
 //
 // <-- Short Description -->
 // this example with optim crashs 'optim' on windows (release mode)

@@ -11,8 +11,8 @@
 // No relevant console output to be tested:
 // <-- NO CHECK REF -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/13651
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/13651
 //
 // <-- Short Description -->
 //    copying an axes in a uicontrol frame was not possible

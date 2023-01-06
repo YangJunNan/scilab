@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 4229 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=4229
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/4229
 //
 // <-- Short Description -->
 // delip does not return an error message if one element of first input

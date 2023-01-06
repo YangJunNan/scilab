@@ -10,8 +10,8 @@
 
 // <-- Non-regression test for bug 14501 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/14501
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/14501
 //
 // <-- Short Description -->
 // strsubst crashed on consecutive occurrences.

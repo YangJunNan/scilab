@@ -8,8 +8,8 @@
 // <-- NO CHECK ERROR OUTPUT -->
 // <-- Non-regression test for bug 2953 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=2953
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/2953
 //
 // <-- Short Description -->
 // we lost axes with plot3d and box = 2

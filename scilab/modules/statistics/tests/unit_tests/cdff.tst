@@ -28,7 +28,7 @@ if norm(dfn1-dfn) > prec then pause,end
 if norm(dfd1-dfd) > prec then pause,end
 
 // IEEE support
-// See http://bugzilla.scilab.org/show_bug.cgi?id=7296
+// See https://gitlab.com/scilab/scilab/-/issues/7296
 dfn      = 1;
 dfd      = 2;
 

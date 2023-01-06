@@ -13,8 +13,8 @@
 // <-- Short Description -->
 // lib(path) corrupts the first on error
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=13981
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/13981
 //
 path = "SCI/test";
 refMsg = msprintf(_("%s: %s is not a valid lib path.\n"), "lib", path);

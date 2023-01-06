@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 12163 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=12163
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/12163
 //
 // <-- Short Description -->
 //   unzoom does not work with an input argument

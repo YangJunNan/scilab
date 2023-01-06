@@ -7,8 +7,8 @@
 //
 // <-- Non-regression test for bug 8669 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/8669
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/8669
 //
 // <-- Short Description -->
 // Some insertions as an hypermatrix page failed

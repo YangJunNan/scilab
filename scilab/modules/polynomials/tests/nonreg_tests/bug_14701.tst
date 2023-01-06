@@ -10,8 +10,8 @@
 
 // <-- Non-regression test for bug 14701 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/14701
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/14701
 //
 // <-- Short Description -->
 //  poly(c,v,'coeff') does not ignore null high order coefficient

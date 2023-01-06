@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 11065 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=11065
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/11065
 //
 // <-- Short Description -->
 //    The second output argument of unique function contained the wrong position.

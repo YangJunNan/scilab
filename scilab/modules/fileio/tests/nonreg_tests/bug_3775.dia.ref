@@ -13,8 +13,8 @@
 //if the input argument is not an opened file, the current directory is returned.
 //=> It should return an error instead of just printing a message.
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=3775
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/3775
 //
 a=mopen(TMPDIR+filesep()+"test.sce","wt");
 path_returned = get_absolute_file_path("test.sce");

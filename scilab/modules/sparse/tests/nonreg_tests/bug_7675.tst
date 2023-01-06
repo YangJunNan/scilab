@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 7675 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=7675
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/7675
 //
 // <-- Short Description -->
 // sparse() got a wrong result, when creation with many values in same position

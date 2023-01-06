@@ -10,8 +10,8 @@
 
 // <-- Non-regression test for bug 8129 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=8129
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/8129
 //
 // <-- Short Description -->
 // a error message was obscure in tbx_builder_src

@@ -13,8 +13,8 @@
 //
 // <-- Non-regression test for bug 8756 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/8756
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/8756
 //
 // <-- Short Description -->
 // The file id was expected only in refentry

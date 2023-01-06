@@ -8,8 +8,8 @@
 //
 // <-- Non-regression test for bug 13919 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/14082
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/14082
 //
 // <-- Short Description -->
 // hidden was a reserved keyword but it is not used.

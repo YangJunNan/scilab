@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 3039 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=3039
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/3039
 //
 a = emptystr([ %F %F ; %T %T]);
 if size(a)<>[2 2] then pause,end

@@ -10,8 +10,8 @@
 //<-- CLI SHELL MODE -->
 //<-- NO CHECK REF -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=4596
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/4596
 //
 // <-- Short Description -->
 //   g_margin fails to return the gain margins in some cases.

@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 15302 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/15302
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/15302
 //
 // <-- Short Description -->
 // Wrong load() calling sequence can crash Scilab!

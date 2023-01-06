@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 14432 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=14432
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/14432
 //
 // <-- Short Description -->
 // Mysterious anomaly makes Scilab crash

@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 12613 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=12613
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/12613
 //
 // <-- Short Description -->
 // gsort does not return correct results with %nan

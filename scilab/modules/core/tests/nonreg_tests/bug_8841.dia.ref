@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 8841 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=8841
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/8841
 //
 // <-- Short Description -->
 // Error in struct extraction. Now, s.a is equal to s(1).a

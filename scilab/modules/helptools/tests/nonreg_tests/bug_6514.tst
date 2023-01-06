@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 6514 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=6514
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/6514
 //
 // <-- Short Description -->
 // "help %k" pointed to the symbols help page.

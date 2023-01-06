@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 16303 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/16303
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/16303
 //
 // <-- Short Description -->
 // log10(x) has wrong dimensions when x is an hypermatrix

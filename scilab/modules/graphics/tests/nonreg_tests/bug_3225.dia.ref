@@ -7,8 +7,8 @@
 // <-- TEST WITH GRAPHIC -->
 // <-- Non-regression test for bug 3225 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=3225
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/3225
 //
 // <-- Short Description -->
 // The "symbol" font (number 1) is broken

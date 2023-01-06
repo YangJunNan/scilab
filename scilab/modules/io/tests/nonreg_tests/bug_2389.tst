@@ -7,8 +7,8 @@
 
 // <-- Non-regression test for bug 2389 -->
 // <-- CLI SHELL MODE -->
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=2389
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/2389
 //
 // <-- Short Description -->
 //   handle objects cannot be saved

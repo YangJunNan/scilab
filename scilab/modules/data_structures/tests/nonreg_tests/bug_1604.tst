@@ -8,8 +8,8 @@
 //
 // <-- Non-regression test for bug 1604 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=1604
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/1604
 //
 // <-- Short Description -->
 //Bug in parser while manipulating tlist inside list.

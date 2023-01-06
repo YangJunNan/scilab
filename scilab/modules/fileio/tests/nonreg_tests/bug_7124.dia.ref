@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 7124 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=7124
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/7124
 //
 // <-- Short Description -->
 // mputl returned a wrong error message if file does not exist.

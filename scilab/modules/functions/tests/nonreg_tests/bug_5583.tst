@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 5583 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=5583
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/5583
 //
 // <-- Short Description -->
 // 'exec' did not manage correctly UTF-8 and ANSI files encoded.

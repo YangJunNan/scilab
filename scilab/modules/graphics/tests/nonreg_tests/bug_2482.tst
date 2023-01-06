@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 2482 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=2482
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/2482
 //
 // <-- Short Description -->
 // Assigning a polyline_style of 6 or 7 can cause Scilab 4.1.1 to crash.

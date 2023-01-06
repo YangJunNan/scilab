@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 4818 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=4818
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/4818
 //
 // <-- Short Description -->
 // It was not possible to export a figure with a lot of circle marks.

@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 7286 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=7286
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/7286
 //
 // <-- Short Description -->
 // For some platform eps export of NaN values was buggy.

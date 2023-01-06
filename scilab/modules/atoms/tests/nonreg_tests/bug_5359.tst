@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 5359 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=5359
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/5359
 //
 // <-- Short Description -->
 // When an atoms module cannot be loaded at startup, fileseps in the path

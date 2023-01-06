@@ -10,8 +10,8 @@
 
 // <-- Non-regression test for bug 5433 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=5433
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/5433
 // <-- Short Description -->
 // LCC-Win32 does not work with scicos
 

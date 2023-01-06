@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 15539 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/15539
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/15539
 //
 // <-- Short Description -->
 // Zero step in integer implicit list crashes scilab

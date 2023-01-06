@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 7722 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=7722
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/7722
 //
 // <-- Short Description -->
 // Several FindReplace windows could be opened.

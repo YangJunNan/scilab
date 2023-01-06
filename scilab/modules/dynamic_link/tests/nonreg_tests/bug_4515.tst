@@ -8,8 +8,8 @@
 // <-- CLI SHELL MODE -->
 // <-- Non-regression test for bug 4515 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=4515
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/4515
 //
 // <-- Short Description -->
 // linking and loading some external functions already used crashs scilab

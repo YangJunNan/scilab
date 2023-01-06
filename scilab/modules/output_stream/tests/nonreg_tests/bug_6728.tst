@@ -12,8 +12,8 @@
 // The function lib didn't print the same thing when it was entered several times...
 
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=6728
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/6728
 //
 
 cd(TMPDIR);

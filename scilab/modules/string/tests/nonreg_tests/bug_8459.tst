@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 8459 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=8459
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/8459
 //
 // <-- Short Description -->
 // strsplit failed when second input argument was a "/"

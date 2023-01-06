@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 7260 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=7260
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/7260
 //
 // <-- Short Description -->
 // read a malformed .csv file with fscanfMat crashed Scilab.

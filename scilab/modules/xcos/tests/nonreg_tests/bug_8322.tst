@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 8322 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=8322
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/8322
 //
 // <-- Short Description -->
 // Rotated block had 2 different bounds (icons and port)

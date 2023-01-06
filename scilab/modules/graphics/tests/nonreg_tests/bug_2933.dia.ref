@@ -7,8 +7,8 @@
 // <-- TEST WITH GRAPHIC -->
 // <-- Non-regression test for bug 2933 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=2933
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/2933
 //
 // <-- Short Description -->
 // The black rectangle can disappear when you resize graphics window

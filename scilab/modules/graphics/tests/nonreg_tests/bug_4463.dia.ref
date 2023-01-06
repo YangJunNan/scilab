@@ -7,8 +7,8 @@
 // <-- TEST WITH GRAPHIC -->
 // <-- Non-regression test for bug 4463 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=4463
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/4463
 //
 // <-- Short Description -->
 // Creating an one-colored Sgrayplot generate some exceptions and does not plot anything.

@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 16089 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/16089
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/16089
 //
 // <-- Short Description -->
 // x=1:1e10 freeze Scilab

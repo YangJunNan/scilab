@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 4245 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=4245
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/4245
 //
 // <-- Short Description -->
 // The icon of the progressionbar is a java icon. It should it be a Scilab one instead.

@@ -8,8 +8,8 @@
 //
 // <-- Non-regression test for bug 13862 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/13862
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/13862
 //
 // <-- Short Description -->
 // There is no lazy of 'or' operands in 'if' test

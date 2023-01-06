@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 1371 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=1371
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/1371
 //
 // <-- Short Description -->
 // Incorrect output representation of floating numbers with exponent larger than 100 or smaller than -100.

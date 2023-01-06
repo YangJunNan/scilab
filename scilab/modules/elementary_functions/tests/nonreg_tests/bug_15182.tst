@@ -10,8 +10,8 @@
 
 // <-- Non-regression test for bug 15182 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/15182
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/15182
 //
 // <-- Short Description -->
 // a .*. b or kron(a,b) returned floats instead of encoded integers when a or b

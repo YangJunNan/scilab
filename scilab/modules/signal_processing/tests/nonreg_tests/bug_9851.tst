@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 9851 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/9851
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/9851
 //
 // <-- Short Description -->
 // Error message occurs because of a cut-off frequency of 0.25Hz with irr

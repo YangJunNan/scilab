@@ -9,8 +9,8 @@
 //
 // <-- CLI SHELL MODE -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/12928
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/12928
 //
 // <-- Short Description -->
 // int32, int16 and int8 with %nan and %inf

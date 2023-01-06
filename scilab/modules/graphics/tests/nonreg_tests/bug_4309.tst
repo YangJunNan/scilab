@@ -10,8 +10,8 @@
 
 // <-- Non-regression test for bug 4309 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=4309
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/4309
 //
 // <-- Short Description -->
 // Under Scilab5 the dashed lines are not well displayed. They are reinitialized for each segment.

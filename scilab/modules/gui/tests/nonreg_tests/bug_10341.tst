@@ -8,8 +8,8 @@
 // <-- Non-regression test for bug 10341 -->
 // <-- INTERACTIVE TEST -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/10341
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/10341
 //
 // <-- Short Description -->
 // font in help was bold when the font of a text uicontrol was set to bold.

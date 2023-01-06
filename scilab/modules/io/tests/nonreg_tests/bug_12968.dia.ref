@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 12968 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=12968
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/12968
 //
 // <-- Short Description -->
 //  Cannot save variable with name "temp"

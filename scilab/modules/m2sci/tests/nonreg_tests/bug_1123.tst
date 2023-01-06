@@ -10,8 +10,8 @@
 
 // <-- Non-regression test for bug 1123 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=1123
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/1123
 //
 // <-- Short Description -->
 //    I think this bug is related to other ones but the matlab

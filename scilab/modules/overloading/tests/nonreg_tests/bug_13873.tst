@@ -7,8 +7,8 @@
 // <-- CLI SHELL MODE -->
 // <-- Non-regression test for bug 13873 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/13873
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/13873
 //
 // <-- Short Description -->
 // %hm_stdev(H,idim>2) returned zeros(H)

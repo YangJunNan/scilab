@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 11714 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=11714
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/11714
 //
 // <-- Short Description -->
 // help_from_sci sometimes failed when function had "<imagedata>" comments.

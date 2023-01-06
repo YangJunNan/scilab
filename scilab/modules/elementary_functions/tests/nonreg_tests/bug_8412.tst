@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 8412 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/8412
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/8412
 //
 // <-- Short Description -->
 // find did not return correct values with big vector

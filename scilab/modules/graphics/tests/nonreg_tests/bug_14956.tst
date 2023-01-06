@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 14956 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/14956
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/14956
 //
 // <-- Short Description -->
 // clf('reset') forgets resetting immediate_drawing, resize, resizefcn,

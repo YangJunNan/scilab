@@ -11,8 +11,8 @@
 
 // <-- Non-regression test for bug 4083 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=4083
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/4083
 //
 // <-- Short Description -->
 //    The numderivative function is created, which replaces both derivative and

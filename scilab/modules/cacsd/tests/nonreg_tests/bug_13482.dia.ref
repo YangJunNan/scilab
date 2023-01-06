@@ -7,8 +7,8 @@
 //
 // <-- Non-regression test for bug 13482 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/13482
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/13482
 //
 // <-- Short Description -->
 // pfss changed the variable of the rational fractions

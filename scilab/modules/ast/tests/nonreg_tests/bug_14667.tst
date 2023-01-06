@@ -8,8 +8,8 @@
 // <-- CLI SHELL MODE -->
 // <-- Non-regression test for bug 14667 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=14667
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/14667
 //
 // <-- Short Description -->
 // Multi line string in a matrix without line feed generated a non terminal parser state

@@ -7,8 +7,8 @@
 // =============================================================================
 // <-- Non-regression test for bug 11139 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=11139
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/11139
 //
 // <-- Short Description -->
 // conj is not defined for sparse matrices

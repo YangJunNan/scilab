@@ -11,8 +11,8 @@
 
 // <-- Non-regression test for bug 9196 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=9196
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/9196
 //
 // <-- Short Description -->
 //    The threshold level for conditioning in backslash is too small.

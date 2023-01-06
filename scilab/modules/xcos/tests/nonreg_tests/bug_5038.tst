@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 5038 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=5038
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/5038
 //
 // <-- Short Description -->
 // Transform link to straight one doesn't work

@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 16209 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/16209
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/16209
 //
 // <-- Short Description -->
 // grand() causes a freeze after several consecutive calls when using default base generator.

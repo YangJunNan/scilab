@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 11767 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/11767
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/11767
 //
 // <-- Short Description -->
 // execstr("A. 1","errcatch") failed to catch the error

@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 4481 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=4481
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/4481
 //
 // <-- Short Description -->
 // iir should be able to handle a scalar for frq

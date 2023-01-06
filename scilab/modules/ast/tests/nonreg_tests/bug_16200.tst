@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 16200 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/16200
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/16200
 //
 // <-- Short Description -->
 // Concatenation of transposed cells crashes Scilab

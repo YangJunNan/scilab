@@ -220,7 +220,7 @@ b = [%T ; %F];
 for f = ["d" "i" "u" "o" "x" "X" "g" "G"]
     assert_checkequal(msprintf("%"+f+"\n", b), ["1" ; "0"]);
     assert_checkequal(msprintf("%"+f+" %d\n", b, n), ["1 3" ; "0 2"]);
-    if and(f <> ["u" "o" "x" "X"])  // http://bugzilla.scilab.org/16563
+    if and(f <> ["u" "o" "x" "X"])  // https://gitlab.com/scilab/scilab/-/issues/16563
         assert_checkequal(msprintf("%2$"+f+" %1$d\n", n, b), ["1 3" ; "0 2"]);
     end
 end

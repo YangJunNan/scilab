@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 13515 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/13515
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/13515
 //
 // <-- Short Description -->
 // there were wrong results for matrix/hypermatrix with bitset function

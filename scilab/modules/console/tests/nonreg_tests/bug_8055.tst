@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 8055 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=8055
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/8055
 //
 // <-- Short Description -->
 // lines() was updated when the console got the focus.

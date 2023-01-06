@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 4989 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=4989
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/4989
 //
 // <-- Short Description -->
 //   editor('myfolder/myfile.sci')

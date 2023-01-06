@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 16459 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/16459
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/16459
 //
 // <-- Short Description -->
 // The display of one column hypermatrix is wrong

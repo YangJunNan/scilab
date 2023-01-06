@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 7236 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=7236
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/7236
 //
 // <-- Short Description -->
 // sci2exp(-%inf) return a wrong value -nf and not -%inf,

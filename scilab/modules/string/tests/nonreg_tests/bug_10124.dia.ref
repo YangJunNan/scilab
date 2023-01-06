@@ -8,8 +8,8 @@
 //
 // <-- Non-regression test for bug 10124 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=10124
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/10124
 //
 // <-- Short Description -->
 // strsplit crashed with wrong input arguments

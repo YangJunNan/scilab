@@ -7,8 +7,8 @@
 //
 // <-- Non-regression test for bug 2345 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=2345
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/2345
 //
 // <-- Short Description -->
 // Parser bug: "=>" interpreted as "=" in comparisons (even with spacing)

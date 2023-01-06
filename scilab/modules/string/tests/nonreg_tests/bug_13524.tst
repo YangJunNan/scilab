@@ -6,8 +6,8 @@
 // =============================================================================
 // <-- Non-regression test for bug 13524 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/13524
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/13524
 //
 // <-- Short Description -->
 // strtod did not ignore the tabs and CR

@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 16522 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/16522
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/16522
 //
 // <-- Short Description -->
 // bitget(x,pos) and bitset(x,pos) results could be wrong when pos is an

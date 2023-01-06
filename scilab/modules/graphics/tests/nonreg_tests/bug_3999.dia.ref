@@ -7,8 +7,8 @@
 // <-- TEST WITH GRAPHIC -->
 // <-- Non-regression test for bug 3999 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=3999
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/3999
 //
 // <-- Short Description -->
 // xbasc() doesn't clear the current graphics window.

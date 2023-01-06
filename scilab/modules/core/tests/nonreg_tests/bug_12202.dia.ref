@@ -9,8 +9,8 @@
 //
 // <-- CLI SHELL MODE -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/12202
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/12202
 //
 // <-- Short Description -->
 // int8(50):2:152 has a different behavior between Scilab 5 & 6

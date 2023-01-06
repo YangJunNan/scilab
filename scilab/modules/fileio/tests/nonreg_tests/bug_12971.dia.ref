@@ -7,8 +7,8 @@
 // <-- CLI SHELL MODE -->
 // <-- Non-regression test for bug 12971 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=12971
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/12971
 //
 // <-- Short Description -->
 // getURL() downloaded file name is wrong

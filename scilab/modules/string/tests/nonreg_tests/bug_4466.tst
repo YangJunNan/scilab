@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 4466 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=4466
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/4466
 //
 // <-- Short Description -->
 //   The .' operator is undefined for character string and boolean data types.

@@ -8,8 +8,8 @@
 //
 // <-- Non-regression test for bug 7396 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=7396
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/7396
 //
 // <-- Short Description -->
 // On I/O blocks used in SuperBlocks, empty index throws a decoding exception.

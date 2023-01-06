@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 5516 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=5516
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/5516
 //
 // <-- Short Description -->
 // Encoding preference is not saved

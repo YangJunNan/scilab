@@ -10,8 +10,8 @@
 // <-- Short Description -->
 // prettyprint didn't handle %inf and %nan
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=8087
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/8087
 //
 if prettyprint(%inf) <> "${\infty}$" then bugmes();quit;end
 if prettyprint([%inf 0  1 -%inf]) <> "${\begin{pmatrix}{\infty}&0&1&{-\infty}\cr \end{pmatrix}}$" then bugmes();quit;end

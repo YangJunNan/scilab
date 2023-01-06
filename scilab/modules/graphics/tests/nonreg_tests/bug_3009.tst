@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 3009 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=3009
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/3009
 //
 // <-- Short Description -->
 // Default figure and axes handles "user_data" field is not taken into account when creating a new figure.

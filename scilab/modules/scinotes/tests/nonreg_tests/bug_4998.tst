@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 4998 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=4998
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/4998
 //
 // <-- Short Description -->
 // The size of the search and replace dialog of the scilab text editor is too big to fit on a EEEPC screen.

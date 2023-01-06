@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 2848 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/2848
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/2848
 //
 // <-- Short Description -->
 //    When using the TAB key for completion in the console, after using once a Scilab

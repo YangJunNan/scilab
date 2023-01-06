@@ -10,8 +10,8 @@
 
 // <-- Non-regression test for bug 16614 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/16614
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/16614
 //
 // <-- Short Description -->
 // replot() failed to reframe a figure with xstring contents when it is not the

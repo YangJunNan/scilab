@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 11618 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=11618
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/11618
 //
 // <-- Short Description -->
 //    if A is a complex sparse matrix, A(:) returned wrong values
@@ -29,4 +29,5 @@ assert_checkequal(full(A1(:)), A(:));
 
 A = [1 %i;%i 0];
 A1 = sparse(A);
-assert_checkequal(full(A1(:)), A(:));
+assert_checkequal(full(A1(:)), A(:));
+

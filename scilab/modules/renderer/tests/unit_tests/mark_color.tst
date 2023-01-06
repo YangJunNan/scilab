@@ -7,8 +7,8 @@
 //
 // <-- Unit-test for color in marks -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues
 //
 // <-- Short Description -->
 // Tests that the marks can be coloured in 2D plots with offset and stride set

@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 3964 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=3964
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/3964
 //
 // <-- Short Description -->
 // uigetfile() crashes Scilab if the description of the mask is specified.

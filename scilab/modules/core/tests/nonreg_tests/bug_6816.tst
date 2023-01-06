@@ -7,8 +7,8 @@
 // <-- NOT FIXED -->
 // <-- Non-regression test for bug6816 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=6816
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/6816
 //
 // <-- Short Description -->
 //incoherent extraction when there is no index M()

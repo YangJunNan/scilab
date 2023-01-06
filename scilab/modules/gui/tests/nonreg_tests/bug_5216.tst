@@ -8,8 +8,8 @@
 // <-- Non-regression test for bug 5216 -->
 // <-- INTERACTIVE TEST -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=5216
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/5216
 //
 // <-- Short Description -->
 // In ATOMS GUI, it would be nice to be able to click on link or at least to copy/paste the URL.

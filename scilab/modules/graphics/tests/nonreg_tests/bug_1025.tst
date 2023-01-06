@@ -10,8 +10,8 @@
 
 // <-- Non-regression test for bug 1025 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=1025
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/1025
 //
 // <-- Short Description -->
 //    winsid ne marche pas.

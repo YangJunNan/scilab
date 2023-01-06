@@ -6,8 +6,8 @@
 // =============================================================================
 // <-- Non-regression test for bug 1619 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=1619
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/1619
 //
 // <-- Short Description -->
 //    macr2tree doesn't like functions compiled for profiling. It hates them

@@ -10,8 +10,8 @@
 
 // <-- Non-regression test for bug 13238 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/13238
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/13238
 //
 // <-- Short Description -->
 // Wrong legends display

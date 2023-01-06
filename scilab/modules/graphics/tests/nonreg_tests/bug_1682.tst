@@ -10,8 +10,8 @@
 
 // <-- Non-regression test for bug 1682 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=1682
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/1682
 //
 // <-- Short Description -->
 //    Scilab 4.0 RC1 under Windows XP

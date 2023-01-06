@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 3454 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=3454
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/3454
 //
 // <-- Short Description -->
 // figure.axes_size and figure.figure_size might not be updated immediately.

@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 14980 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=15037
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/15037
 //
 // <-- Short Description -->
 // the residu function may crash Scilab

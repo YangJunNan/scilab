@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 2134-->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=2134
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/2134
 //
 // <-- Short Description -->
 // drawlater causes wrong placement of subplot titles for logarithmic plot2d

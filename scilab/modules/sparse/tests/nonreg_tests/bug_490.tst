@@ -11,7 +11,7 @@
 // <-- Non-regression test for bug 490 -->
 // Please note that it is store under the request feature of Scilab
 //
-// <-- Bugzilla URL -->
+// <-- GitLab URL -->
 // http://requestzilla.scilab.org/show_bug.cgi?id=490
 //
 // <-- Short Description -->

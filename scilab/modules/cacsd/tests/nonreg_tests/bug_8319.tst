@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 8319 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=8319
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/8319
 //
 // <-- Short Description -->
 // dbphi(hypermat) and phasemag(hypermat) return a matrix instead of hypermat

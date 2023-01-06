@@ -7,8 +7,8 @@
 // <-- CLI SHELL MODE -->
 // <-- Non-regression test for bug 13769 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/13769
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/13769
 //
 // <-- Short Description -->
 // t = "abc..//ghi" in console went to next line and expected the string being closed

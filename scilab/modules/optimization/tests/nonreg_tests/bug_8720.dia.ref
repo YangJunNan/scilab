@@ -8,8 +8,8 @@
 //
 // <-- Non-regression test for bug 8720 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=8720
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/8720
 //
 // <-- Short Description -->
 // The karmarkar function may stop too early in the iterations.

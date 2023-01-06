@@ -7,8 +7,8 @@
 
 // <-- Non-regression test for bug 3306 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=3306
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/3306
 //
 // <-- Short Description -->
 // Wildcards should not be interpreted as such in completion, but as literal text.

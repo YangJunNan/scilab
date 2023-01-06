@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 2540 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=2540
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/2540
 //
 // <-- Short Description -->
 // plot3d hangs scilab when plotting a matrix full with NaN

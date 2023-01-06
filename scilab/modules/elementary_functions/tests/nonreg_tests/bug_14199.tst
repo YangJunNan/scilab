@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 14199 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=14199
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/14199
 //
 // <-- Short Description -->
 //    sqrt does not manage matrix with more than 2 dims

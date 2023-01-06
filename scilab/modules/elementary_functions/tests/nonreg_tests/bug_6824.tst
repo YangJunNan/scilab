@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 6824 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=6824
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/6824
 //
 // <-- Short Description -->
 // resize_matrix did not handle hypermatrices

@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 1534 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=1534
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/1534
 //
 // <-- Short Description -->
 // the function nextpow2 is not compatible with the values %inf and %nan.   

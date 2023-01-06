@@ -7,8 +7,8 @@
 //
 // <-- Non-regression test for bug 12593 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=12593
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/12593
 //
 // <-- Short Description -->
 // Unrelated error message when running genlib on a sci file containing a scilab function

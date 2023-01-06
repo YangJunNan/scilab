@@ -8,8 +8,8 @@
 // <-- Non-regression test for bug 4075 -->
 // <-- INTERACTIVE TEST -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=4075
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/4075
 //
 // <-- Short Description -->
 // a basic uicontrol example crashed scilab 5.0.3

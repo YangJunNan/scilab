@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 15548 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/15548
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/15548
 //
 // <-- Short Description -->
 // [%t %t]./[%f %f] crashes Scilab

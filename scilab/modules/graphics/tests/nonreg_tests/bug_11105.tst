@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 11105 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=11105
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/11105
 //
 // <-- Short Description -->
 // Crash with color_flag 3

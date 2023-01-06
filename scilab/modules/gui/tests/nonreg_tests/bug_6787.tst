@@ -8,8 +8,8 @@
 // <-- Non-regression test for bug 6787 -->
 // <-- INTERACTIVE TEST -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=6787
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/6787
 //
 // <-- Short Description -->
 // toprint(filename) required only absolute path to filename.

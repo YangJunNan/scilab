@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 3931 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=3931
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/3931
 //
 // <-- Short Description -->
 // fileparts returns incorrect value with some special  description of the filename

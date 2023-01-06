@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 8684 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=8684
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/8684
 //
 // <-- Short Description -->
 // 'wfir' function produced an error message when used interactively.

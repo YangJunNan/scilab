@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 13980 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/13980
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/13980
 //
 // <-- Short Description -->
 //  When the working directory is changed in the file browser, a "T" is displayed.

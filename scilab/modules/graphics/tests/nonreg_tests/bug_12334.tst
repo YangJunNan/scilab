@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 12334 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/12334
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/12334
 //
 // <-- Short Description -->
 // Invalid mark color in legend

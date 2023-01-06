@@ -7,8 +7,8 @@
 //
 // <-- Non-regression test for bug 14422 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/14422
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/14422
 //
 // <-- INTERACTIVE TEST -->
 // after clc(); mprintf("abcd"); prints " abcd" with a leading blank.

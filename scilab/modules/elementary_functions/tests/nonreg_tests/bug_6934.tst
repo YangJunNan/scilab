@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 6934 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=6934
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/6934
 //
 // <-- Short Description -->
 // Denormalized floating point numbers are not present in Scilab's master.

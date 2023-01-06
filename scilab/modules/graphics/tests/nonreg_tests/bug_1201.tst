@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 1201-->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=3991
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/3991
 //
 // <-- Short Description -->
 // Legends are not updated when observed polylines are modified.

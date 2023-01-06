@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 9060 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/9060
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/9060
 //
 // <-- Short Description -->
 // It was not possible to create a new file

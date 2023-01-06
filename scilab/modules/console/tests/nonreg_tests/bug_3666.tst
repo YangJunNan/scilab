@@ -8,8 +8,8 @@
 // <-- NOT FIXED -->  6.0.0 -> 6.0.2
 // <-- Non-regression test for bug 3666 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=3666
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/3666
 //
 // <-- Short Description -->
 //    char encoding with length and input

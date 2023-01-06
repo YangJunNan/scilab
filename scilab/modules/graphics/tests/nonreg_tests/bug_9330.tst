@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 9330 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=9330
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/9330
 //
 // <-- Short Description -->
 // delete() called overloading instead of deleting the current graphic entity.

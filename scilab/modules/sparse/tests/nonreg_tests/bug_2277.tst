@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 2277 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=2277
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/2277
 //
 // <-- Short Description -->
 //    Scilab has a bug with the SPARSE command. When the "values vector" in the

@@ -11,8 +11,8 @@
 
 // <-- Non-regression test for bug 14839 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/14839
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/14839
 //
 // <-- Short Description -->
 // plot2d2 crashed Scilab.

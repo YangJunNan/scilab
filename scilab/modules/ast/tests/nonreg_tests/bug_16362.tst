@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 16362 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/16362
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/16362
 //
 // <-- Short Description -->
 // sparse([]) can no longer be concatenated

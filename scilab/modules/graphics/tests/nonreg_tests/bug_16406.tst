@@ -10,8 +10,8 @@
 
 // <-- Non-regression test for bug 16406 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/16406
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/16406
 //
 // <-- Short Description -->
 // edit_curv() yielded an error when reading data

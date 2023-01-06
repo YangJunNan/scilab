@@ -8,8 +8,8 @@
 // <-- Non-regression test for bug 8582 -->
 // <-- INTERACTIVE TEST -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/8582
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/8582
 //
 // <-- Short Description -->
 // Under Linux & Mac OS the waitbar window was too small and we could not see the bar inside it.

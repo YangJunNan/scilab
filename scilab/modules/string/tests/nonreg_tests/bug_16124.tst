@@ -8,8 +8,8 @@
 // <-- CLI SHELL MODE -->
 // <-- NO CHECK REF -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/16124
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/16124
 //
 // <-- Short Description -->
 // sci2exp({}) result could not be executed

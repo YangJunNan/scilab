@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 15024 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=15024
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/15024
 //
 // <-- Short Description -->
 // the labels were not preserved when reloading a block

@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 7779 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=7779
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/7779
 //
 // <-- Short Description -->
 // genlib did not check input arguments and did not use current path as default

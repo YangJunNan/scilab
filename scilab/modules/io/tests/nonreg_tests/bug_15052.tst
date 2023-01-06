@@ -8,8 +8,8 @@
 // <-- CLI SHELL MODE -->
 // <-- NO CHECK REF -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/15052
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/15052
 //
 // <-- Short Description -->
 // getpid wasn't available

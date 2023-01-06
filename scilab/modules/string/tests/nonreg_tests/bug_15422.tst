@@ -10,8 +10,8 @@
 
 // <-- Non-regression test for bug 15422 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/15422
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/15422
 //
 // <-- Short Description -->
 // strsubst("ab", "", "cd") crashed Scilab

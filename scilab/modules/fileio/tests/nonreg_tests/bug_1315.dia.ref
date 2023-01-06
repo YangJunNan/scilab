@@ -7,8 +7,8 @@
 // <-- CLI SHELL MODE -->
 // <-- Non-regression test for bug 1315 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=1315
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/1315
 //
 format('v',20)
 values = [38042.851388888900,    5586 ;

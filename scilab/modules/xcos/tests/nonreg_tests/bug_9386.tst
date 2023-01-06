@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 9386 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=9386
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/9386
 //
 // <-- Short Description -->
 // Diagram root cell might be invalid on hierarchical diagrams.

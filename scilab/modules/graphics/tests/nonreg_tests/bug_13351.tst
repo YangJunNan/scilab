@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 13351 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/13351
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/13351
 //
 // <-- Short Description -->
 // xstringb failed with LaTeX code

@@ -8,8 +8,8 @@
 //
 // <-- Non-regression test for bug 11538 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/11538
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/11538
 //
 // <-- Short Description -->
 // check failed of to_wide_string function in WideString functions

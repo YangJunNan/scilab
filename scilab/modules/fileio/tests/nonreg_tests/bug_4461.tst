@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 4461 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=4461
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/4461
 //
 // <-- Short Description -->
 // prompt('TEST Prompt->') not managed by a diary

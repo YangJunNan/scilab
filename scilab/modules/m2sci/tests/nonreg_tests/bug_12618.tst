@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 12618 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/12618
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/12618
 //
 // <-- Short Description -->
 // i_notation() failed when a comment is appended, as with

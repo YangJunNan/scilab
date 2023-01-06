@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 11227 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=11227
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/11227
 //
 // <-- Short Description -->
 // Scilab crashed when trying to use a structure with a non-existing field name containing "%"

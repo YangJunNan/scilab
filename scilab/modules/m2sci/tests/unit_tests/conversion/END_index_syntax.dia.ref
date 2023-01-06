@@ -9,8 +9,8 @@
 // <-- ENGLISH IMPOSED -->
 // <-- LONG TIME EXECUTION -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/16181
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/16181
 //
 // <-- Short Description -->
 // Unit tests for replacing the "end" index

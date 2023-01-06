@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 8532 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=8532
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/8532
 //
 // <-- Short Description -->
 // size of input arguments of read_csv was no verified.

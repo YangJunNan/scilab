@@ -11,8 +11,8 @@
 //
 // <-- Non-regression test for bug 15033 -->
 //
-// <-- Bugzilla URL -->
-// https://bugzilla.scilab.org/show_bug.cgi?id=15033
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/15033
 //
 // <-- Short Description -->
 // fileinfo returns wrong size on Windows ( size > 2^31 )

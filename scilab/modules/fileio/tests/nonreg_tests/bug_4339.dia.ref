@@ -7,8 +7,8 @@
 //
 // <-- Non-regression test for bug 4339 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=4339
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/4339
 //
 // <-- Short Description -->
 // listvarinfile does not manage graphic handles

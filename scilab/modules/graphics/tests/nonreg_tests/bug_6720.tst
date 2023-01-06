@@ -10,8 +10,8 @@
 
 // <-- Non-regression test for bug 6720 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=6720
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/6720
 //
 // <-- Short Description -->
 // For 'caption' function, scilab checked that

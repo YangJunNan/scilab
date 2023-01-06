@@ -77,7 +77,7 @@ assert_checkequal(v'*f, [0 g]);
 
 // With negative numbers
 // ---------------------
-// http://bugzilla.scilab.org/15058
+// https://gitlab.com/scilab/scilab/-/issues/15058
 v = v(:)';
 v(1) = -v(1);
 [g, f] = gcd(v);

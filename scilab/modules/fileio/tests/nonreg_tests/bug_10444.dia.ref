@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 10444 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=10444
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/10444
 //
 // <-- Short Description -->
 // Bug #10444 fixed - fullfile did not manage string matrix as last input argument.

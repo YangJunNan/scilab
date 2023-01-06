@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 16141 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/16141
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/16141
 //
 // <-- Short Description -->
 // extraction on implicit list crashes Scilab

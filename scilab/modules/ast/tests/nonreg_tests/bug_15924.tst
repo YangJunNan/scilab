@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 15924 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/15924
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/15924
 //
 // <-- Short Description -->
 // sparse inequality to 0 yields a wrong result

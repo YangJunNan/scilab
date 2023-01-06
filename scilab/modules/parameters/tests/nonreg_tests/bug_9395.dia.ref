@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 9395 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=9395
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/9395
 //
 // <-- Short Description -->
 // add_params() did not check its input arguments.

@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 13990 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=13990
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/13990
 //
 // <-- Short Description -->
 // Check that localization files are installed 

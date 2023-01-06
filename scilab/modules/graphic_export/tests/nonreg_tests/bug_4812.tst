@@ -10,8 +10,8 @@
 
 // <-- Non-regression test for bug 4812 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=4812
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/4812
 //
 // <-- Short Description -->
 // xs2... function doesn't work if the first argument is a handle

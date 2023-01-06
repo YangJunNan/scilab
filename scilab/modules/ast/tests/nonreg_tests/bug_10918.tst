@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 10918 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/10918
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/10918
 //
 // <-- Short Description -->
 // After a=5; a([%t %f]') returned [5 %eps]' instead of 5.

@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 8785 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=8785
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/8785
 //
 // <-- Short Description -->
 //    Check inputs arguments in the modulo and pmodulo functions

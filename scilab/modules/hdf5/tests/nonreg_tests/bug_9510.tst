@@ -8,8 +8,8 @@
 //
 // <-- Non-regression test for bug 9510 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=9510
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/9510
 //
 // <-- Short Description -->
 // export does not return %f when try to export unmanaged data types.

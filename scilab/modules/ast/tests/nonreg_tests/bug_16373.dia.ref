@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 16373 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/16373
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/16373
 //
 // <-- Short Description -->
 //fix issue of crashing in arm when displaying 0

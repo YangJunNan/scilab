@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 15964 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/15964
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/15964
 //
 // <-- Short Description -->
 // The complex empty sparse matrix must resume to the real one.

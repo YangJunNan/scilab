@@ -11,8 +11,8 @@
 //
 // <-- Non-regression test for bug 5386 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=5386
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/5386
 //
 // <-- Short Description -->
 // Wrong title for auto indent action in menu.

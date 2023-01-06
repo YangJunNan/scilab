@@ -7,8 +7,8 @@
 
 // <-- Non-regression test for bug 5456 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=5456
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/5456
 //
 // <-- Short Description -->
 // TCL_UpVar(source,alias) returns %T even if the TCL variable source did not exist and then aliasing had not been performed.

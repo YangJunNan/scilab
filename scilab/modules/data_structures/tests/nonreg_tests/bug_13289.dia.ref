@@ -7,8 +7,8 @@
 // <-- CLI SHELL MODE -->
 // <-- Non-regression test for bug 13289 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/13289
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/13289
 //
 // <-- Short Description -->
 // l=mlist(["A" "a"],1);l(rand(2,1))=0 lead to a segfault

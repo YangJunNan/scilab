@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 3241 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=3241
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/3241
 //
 // <-- Short Description -->
 // length function does not work anymore with polynomials, boolean, integers.

@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 9189 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/9189
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/9189
 //
 // <-- Short Description -->
 // Certains keywords were not helpable.

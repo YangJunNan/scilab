@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 3323 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/3323
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/3323
 //
 // <-- Short Description -->
 //   In ss2tf.sci, it is claimed that one may enter the second argument, rmax, as "b".

@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 7481 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=7481
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/7481
 // <-- Short Description -->
 // 6th input argument of ilib_for_link did not allow to set library name
 // on Windows

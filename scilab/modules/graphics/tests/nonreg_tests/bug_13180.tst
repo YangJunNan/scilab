@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 13180 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/13180
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/13180
 //
 // <-- Short Description -->
 // surf macro did not handle degenerate cases.

@@ -11,8 +11,8 @@
 //
 // <-- Non-regression test for bug 15733 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/15733
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/15733
 //
 // <-- Short Description -->
 // Failing unit and NR tests after deg(0*%s) = -%inf

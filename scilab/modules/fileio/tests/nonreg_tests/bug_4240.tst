@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 4240 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=4240
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/4240
 //
 // <-- Short Description -->
 // Some unexpected blank lines was displayed with the "dir" function.

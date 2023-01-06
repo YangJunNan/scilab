@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 3080 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=3080
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/3080
 //
 // <-- Short Description -->
 // When we click many times on a button of the Graphic window the instruction will be done as much times we have clicked.

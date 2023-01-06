@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 8101 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=8101
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/8101
 //
 // <-- Short Description -->
 //    The median function with a sparse as a first argument did not return the

@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 12080 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=12080
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/12080
 //
 // <-- Short Description -->
 // lsqrsolve always print messages

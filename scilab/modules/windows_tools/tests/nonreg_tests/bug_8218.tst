@@ -11,8 +11,8 @@
 //
 // <-- Non-regression test for bug 8218 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=8218
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/8218
 //
 // <-- Short Description -->
 // file association with filename accentued characters did not work

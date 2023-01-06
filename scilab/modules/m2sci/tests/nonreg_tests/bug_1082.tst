@@ -10,8 +10,8 @@
 
 // <-- Non-regression test for bug 1082 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=1082
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/1082
 //
 // <-- Short Description -->
 //    Error during conversion of a very simple file. Though the

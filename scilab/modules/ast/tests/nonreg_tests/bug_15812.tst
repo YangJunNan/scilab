@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 15812 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/15812
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/15812
 //
 // <-- Short Description -->
 // On assigning variables the source variable becomes corrupted (e.g. x=[3 4 5];y(1,:)=x;)

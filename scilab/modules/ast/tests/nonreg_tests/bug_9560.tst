@@ -7,8 +7,8 @@
 //
 // <-- Non-regression test for bug 9560 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=9560
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/9560
 //
 // <-- CLI SHELL MODE -->
 //

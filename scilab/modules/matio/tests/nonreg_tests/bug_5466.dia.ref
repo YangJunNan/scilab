@@ -8,8 +8,8 @@
 // <-- CLI SHELL MODE -->
 // <-- Non-regression test for bug 5466 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=5466
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/5466
 //
 // <-- Short Description -->
 // I met some problems while saving scilab variables in a Matlab data file. 

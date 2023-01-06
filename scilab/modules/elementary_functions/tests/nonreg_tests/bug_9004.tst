@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 9004 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=9004
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/9004
 //
 // <-- Short Description -->
 // bitcmp(uint8(99)) returns an error

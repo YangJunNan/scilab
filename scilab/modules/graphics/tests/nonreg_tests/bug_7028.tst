@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 7028 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=7028
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/7028
 //
 // <-- Short Description -->
 // When scilab printed an "axis" graphic handle, string array size for "tics_labels" were erroneous.

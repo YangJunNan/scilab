@@ -8,8 +8,8 @@
 //
 // <-- Non-regression test for bug 12057 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=12057
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/12057
 //
 // <-- Short Description -->
 // Scopes with big scope buffer size simulation was much more slower.

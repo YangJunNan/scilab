@@ -11,8 +11,8 @@
 //
 // <-- Non-regression test for bug 9432 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=9432
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/9432
 //
 // <-- Short Description -->
 // link a 64 bit dynamic library on a 32 bit platform returned a wrong error

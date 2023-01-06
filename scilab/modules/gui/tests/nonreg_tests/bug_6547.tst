@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 6547 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=6547
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/6547
 //
 // <-- Short Description -->
 // uigetdir crashed Scilab when returning some "root" path

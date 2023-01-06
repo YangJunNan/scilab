@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 16014 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/16014
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/16014
 //
 // <-- Short Description -->
 // After x.a=1; x(:)=[], x.a is an empty list

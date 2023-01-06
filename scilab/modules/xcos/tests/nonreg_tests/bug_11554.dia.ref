@@ -8,8 +8,8 @@
 //
 // <-- Non-regression test for bug 11554 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=11554
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/11554
 //
 // <-- Short Description -->
 // quit report an error after loading xcos_toolbox_skeleton.

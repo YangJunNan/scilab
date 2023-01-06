@@ -7,8 +7,8 @@
 //
 // <-- Non-regression test for bug 11115 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=11115
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/11115
 //
 // <-- Short Description -->
 // A graphic window was opened with two xend()

@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 4873 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=4873
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/4873
 //
 // <-- Short Description -->
 //    ""undo" doesn't work if the last action affects several lines.

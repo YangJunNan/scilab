@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 576 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=576
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/576
 //
 // <-- Short Description -->
 //    input() function of scilab cvs doesn't work like scilab 2.7.x

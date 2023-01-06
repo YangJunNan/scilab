@@ -7,8 +7,8 @@
 // <-- TEST WITH GRAPHIC -->
 // <-- Non-regression test for bug 3115 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=3115
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/3115
 //
 // <-- Short Description -->
 // In log mode the ticks locations properties are wrong in scilab5:

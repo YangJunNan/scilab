@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 7453 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=7453
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/7453
 //
 // <-- Short Description -->
 // after hashtable rewrite, it was not possible anymore to call newfun()

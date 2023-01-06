@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 16556 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/16556
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/16556
 //
 // <-- Short Description -->
 // Modifying nested lists/arrays in function changes variable in calling scope

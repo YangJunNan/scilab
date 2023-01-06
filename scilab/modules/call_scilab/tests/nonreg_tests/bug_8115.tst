@@ -11,8 +11,8 @@
 //
 // <-- Non-regression test for bug 8115 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=8115
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/8115
 //
 // <-- Short Description -->
 // DisableInteractiveMode did not work

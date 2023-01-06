@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 5003 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=5003
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/5003
 //
 // <-- Short Description -->
 //   When opening a non-existing file, MSG: "The file "xxx" doesn't exist. Do you want to create it. <Cancel> <No> <Yes>"

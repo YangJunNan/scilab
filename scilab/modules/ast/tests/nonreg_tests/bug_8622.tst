@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 8622 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=8622
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/8622
 //
 // <-- Short Description -->
 // Iserting counter in a cell should not create a reference but clone object.

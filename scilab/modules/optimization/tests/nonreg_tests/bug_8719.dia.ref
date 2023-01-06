@@ -8,8 +8,8 @@
 //
 // <-- Non-regression test for bug 8719 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=8719
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/8719
 //
 // <-- Short Description -->
 // The karmarkar function prints unwanted messages.

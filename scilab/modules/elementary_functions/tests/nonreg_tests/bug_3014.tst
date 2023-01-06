@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 3014 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=3014
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/3014
 //
 // <-- Short Description -->
 //    gsort may make scilab crash in particlaur circumstance

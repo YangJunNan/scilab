@@ -8,8 +8,8 @@
 // <-- Non-regression test for bug 8128 -->
 // <-- INTERACTIVE TEST -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=8128
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/8128
 //
 // <-- Short Description -->
 // A warning was displayed on Save action in a graphic window.

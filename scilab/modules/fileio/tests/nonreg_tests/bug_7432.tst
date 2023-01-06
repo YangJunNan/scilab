@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 7432 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=7432
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/7432
 //
 // <-- Short Description -->
 // fprintfMat with a non valid format as '%s' can create a wrong file

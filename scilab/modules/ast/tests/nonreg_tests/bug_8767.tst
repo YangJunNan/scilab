@@ -10,8 +10,8 @@
 
 // <-- Non-regression test for bug 8767 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/8767
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/8767
 //
 // <-- Short Description -->
 // %F & ~%F | %T & ~%F  was %F

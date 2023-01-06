@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 201 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=201
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/201
 //
 // <-- Short Description -->
 //     modulo function error

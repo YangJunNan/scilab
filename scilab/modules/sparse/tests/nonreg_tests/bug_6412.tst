@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 6412 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=6412
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/6412
 //
 // <-- Short Description -->
 // the function sp2adj was not working

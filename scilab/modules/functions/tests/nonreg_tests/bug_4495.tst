@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 4495 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=4495
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/4495
 //
 // <-- Short Description -->
 // exec does not check second and third input arguments.

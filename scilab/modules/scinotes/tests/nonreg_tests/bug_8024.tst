@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 8024 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=8024
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/8024
 //
 // <-- Short Description -->
 // The key INSERT had no effect

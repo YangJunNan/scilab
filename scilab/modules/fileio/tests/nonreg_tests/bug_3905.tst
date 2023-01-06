@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 3905 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=3905
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/3905
 //
 // <-- Short Description -->
 // regression fscanf

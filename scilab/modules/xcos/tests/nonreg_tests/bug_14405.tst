@@ -10,8 +10,8 @@
 // <-- XCOS TEST -->
 // <-- NO CHECK REF -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=14405
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/14405
 //
 // <-- Short Description -->
 // xcosPalAdd doesn't work

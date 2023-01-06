@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 16370 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=16370
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/16370
 //
 // <-- Short Description -->
 // msprintf() did not handle dollars to render LaTeX strings

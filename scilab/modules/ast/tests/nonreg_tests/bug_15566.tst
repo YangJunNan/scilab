@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 15566 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=15566
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/15566
 //
 // <-- Short Description -->
 // matrix insertion checked overall size but not individual dimensions

@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 8420 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=8420
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/8420
 //
 // <-- Short Description -->
 // 'lines' crashed scilab in some cases

@@ -7,8 +7,8 @@
 // <-- CLI SHELL MODE -->
 // <-- Non-regression test for bug 5071 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=5071
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/5071
 //
 // <-- Short Description -->
 // isletter("é") returns [%F %F] instead of %F

@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 13136 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=13136
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/13136
 //
 // <-- Short Description -->
 // exists() and isdef() failed for input arguments longer than 1

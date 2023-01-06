@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 16623 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/16623
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/16623
 //
 // <-- Short Description -->
 // rand(2,2,2) ^ 2  now yields a wrong result instead of trying to call the %s_p_s overload for input hypermatrices

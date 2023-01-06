@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 6517 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=6517
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/6517
 //
 // <-- Short Description -->
 // This test validates the (Xcos file loading, export to hdf5)(Java part) and

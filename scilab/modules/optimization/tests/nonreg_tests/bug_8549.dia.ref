@@ -8,8 +8,8 @@
 //
 // <-- Non-regression test for bug 8549 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=8549
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/8549
 //
 // <-- Short Description -->
 // The neldermead function does not help to debug the cost function.

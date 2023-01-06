@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 13791 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/14006
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/14006
 //
 // <-- Short Description -->
 //sident gives an unclear error when running example from the doc;

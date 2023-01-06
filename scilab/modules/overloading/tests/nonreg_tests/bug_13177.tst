@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 13177 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/13177
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/13177
 //
 // <-- Short Description -->
 // Error when changing x_ticks.locations on axe

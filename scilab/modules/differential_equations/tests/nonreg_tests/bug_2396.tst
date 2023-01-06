@@ -8,8 +8,8 @@
 
 // <-- Non-regression test for bug 2396 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=2396
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/2396
 //
 // <-- Short Description -->
 //    Scilab crashes on call to feval. I might have defined a weird function

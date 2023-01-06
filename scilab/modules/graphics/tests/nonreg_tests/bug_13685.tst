@@ -11,8 +11,8 @@
 
 // <-- Non-regression test for bug 13685 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/13685
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/13685
 //
 // <-- Short Description -->
 // LaTeX was not detected when specified in ticks_format.

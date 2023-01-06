@@ -7,8 +7,8 @@
 // =============================================================================
 // <-- Non-regression test for bug6730 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=6730
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/6730
 //
 // <-- Short Description -->
 //problem with function calls when seen has member of an mlist

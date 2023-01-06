@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 2517 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=2517
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/2517
 //
 // <-- Short Description -->
 //     "position" property format "x|y|w|h" not accepted by figure(), despite what said in help

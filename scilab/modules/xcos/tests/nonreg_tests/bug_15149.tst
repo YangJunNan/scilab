@@ -11,8 +11,8 @@
 //
 // <-- Non-regression test for bug 15149 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=15149
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/15149
 //
 // <-- Short Description -->
 // Some schema file were corrupted on save and reload

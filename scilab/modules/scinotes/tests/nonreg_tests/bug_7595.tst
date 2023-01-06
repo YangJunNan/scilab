@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 7595 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=7595
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/7595
 //
 // <-- Short Description -->
 // In SciNotes, a string was broken if '..' was encountered.

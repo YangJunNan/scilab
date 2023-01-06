@@ -7,8 +7,8 @@
 // <-- TEST WITH GRAPHIC -->
 // <-- Non-regression test for bug 2597 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=2597
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/2597
 //
 // <-- Short Description -->
 // After creating a plot, annotating it, saving it to a .scg file, and then later loading it back into a Scilab Graphic window, Scilab complains...

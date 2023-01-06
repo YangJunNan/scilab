@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 12556 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=12556
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/12556
 //
 // <-- Short Description -->
 // Fatal error happens when using wrong set instruction

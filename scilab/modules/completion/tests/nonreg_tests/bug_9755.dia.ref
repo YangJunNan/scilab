@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 9755 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/9755
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/9755
 //
 // <-- Short Description -->
 // Completion on paths was not case insensitive on Windows

@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 3106 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=3106
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/3106
 //
 // <-- Short Description -->
 //   Pushbutton is badly placed.

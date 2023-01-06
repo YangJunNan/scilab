@@ -10,8 +10,8 @@
 
 // <-- Non-regression test for bug 13603 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/13603
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/13603
 //
 // <-- Short Description -->
 // plot([0 1 2 3]', 10) failed

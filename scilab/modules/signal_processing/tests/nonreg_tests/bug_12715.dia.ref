@@ -7,8 +7,8 @@
 // <-- CLI SHELL MODE -->
 // <-- Non-regression test for bug 12715 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=12715
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/12715
 //
 // <-- Short Description -->
 // cross function is redefined when using systems.

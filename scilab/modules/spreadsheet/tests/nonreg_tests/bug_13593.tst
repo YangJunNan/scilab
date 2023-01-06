@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 13593 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/13593
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/13593
 //
 // <-- Short Description -->
 // csvRead() did not use the given range when the header input is provided.

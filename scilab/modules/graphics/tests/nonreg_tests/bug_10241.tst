@@ -8,8 +8,8 @@
 //
 // <-- Non-regression test for bug 10241 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=10241
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/10241
 //
 // <-- Short Description -->
 // Can not open a .scg file when a non-ascii character is in the legend.

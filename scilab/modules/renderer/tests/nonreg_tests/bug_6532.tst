@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 6532 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=6532
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/6532
 //
 // <-- Short Description -->
 // In some case text entity rendering order was wrong.

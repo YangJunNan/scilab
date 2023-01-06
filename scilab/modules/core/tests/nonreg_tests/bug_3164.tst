@@ -8,8 +8,8 @@
 
 // <-- Non-regression test for bug 3164 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=3164
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/3164
 //
 // <-- Short Description -->
 //If varargout is not a list, Scilab produces strange error messages or crashes

@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 10282 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=10282
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/10282
 //
 // <-- Short Description -->
 // repmat does not work for scalar input on dims greater than 2 neither for N-D arrays

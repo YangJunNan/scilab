@@ -8,8 +8,8 @@
 
 // <-- Non-regression test for bug 1057 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=1057
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/1057
 //
 // <-- Short Description -->
 //    Crash when entering the following in the command window:

@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 16473 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/16473
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/16473
 //
 // <-- Short Description -->
 // Deleting rows with [] insertion in a sparse matrix squares it with padding zeros or %F

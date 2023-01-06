@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 16122 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/16122
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/16122
 //
 // <-- Short Description -->
 // polynomials with different variables are concatenated without error

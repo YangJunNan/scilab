@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 13810 -->
 //
-// <-- Bugzilla URL -->
-//     http://bugzilla.scilab.org/13810
+// <-- GitLab URL -->
+//     https://gitlab.com/scilab/scilab/-/issues/13810
 //
 // <-- Short Description -->
 // householder(v, k*v) returned [%nan %nan %nan]'

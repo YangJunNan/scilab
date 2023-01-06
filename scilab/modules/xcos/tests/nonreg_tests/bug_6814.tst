@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 6814 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=6814
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/6814
 //
 // <-- Short Description -->
 // The exported links points (link.xx and link.yy) must be column vectors.

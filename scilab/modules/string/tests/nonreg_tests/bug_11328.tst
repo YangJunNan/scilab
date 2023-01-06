@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 11328 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=11328
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/11328
 //
 // <-- Short Description -->
 // Wrong error message returned by strsplit when second input argument contained wrong values

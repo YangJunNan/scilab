@@ -13,8 +13,8 @@
 //
 // <-- Non-regression test for bug 946 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=946
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/946
 //
 // <-- Short Description -->
 //    Code badly converted by mfile2sci when using particular

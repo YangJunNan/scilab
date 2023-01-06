@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 2042 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=2042
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/2042
 //
 // <-- Short Description -->
 // Bug copying entity have different behaviour.

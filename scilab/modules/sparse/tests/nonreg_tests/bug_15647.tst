@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 15647 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=15647
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/15647
 //
 // <-- Short Description -->
 // spzeros(-1,-1) yields a corrupted result

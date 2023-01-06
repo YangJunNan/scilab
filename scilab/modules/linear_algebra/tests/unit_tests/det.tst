@@ -124,7 +124,7 @@ assert_checkequal(det(a), 0);
 
 // Underflow and overflow management for sparse matrices. [e, m] = det(s)  syntax
 // -------------------------------------------------------------------------------
-// http://bugzilla.scilab.org/16636 :
+// https://gitlab.com/scilab/scilab/-/issues/16636 :
 // With a real matrix
 // ..................
 // Underflow:

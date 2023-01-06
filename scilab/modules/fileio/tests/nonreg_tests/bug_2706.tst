@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 2706 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=2706
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/2706
 //
 // <-- Short Description -->
 //    listfiles is giving wrong result under Linux on a file without extension

@@ -6,8 +6,8 @@
 // =============================================================================
 // <-- Non-regression test for bug 3171 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=3171
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/3171
 //
 // <-- Short Description -->
 // TCL_EvalFile crash with slave interp

@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 7421 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=7421
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/7421
 //
 // <-- Short Description -->
 // Could not open the source file of a selected keyword on the right click

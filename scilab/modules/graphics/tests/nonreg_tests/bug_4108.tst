@@ -10,8 +10,8 @@
 
 // <-- Non-regression test for bug 4108 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=4108
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/4108
 //
 // <-- Short Description -->
 // Argument location of function caption has no effect.

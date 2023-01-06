@@ -8,8 +8,8 @@
 //
 // <-- Non-regression test for bug 14746 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/14746
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/14746
 //
 // <-- Short Description -->
 // The display of tiny complex numbers displays 0

@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 6477 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=6477
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/6477
 //
 // <-- Short Description -->
 // in some case, schur returned wrong values on Windows.

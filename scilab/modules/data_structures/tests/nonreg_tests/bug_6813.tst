@@ -10,8 +10,8 @@
 
 // <-- Non-regression test for bug 6813 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/6813
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/6813
 //
 // <-- Short Description -->
 // When creating a N>2-D hyperarray of cells, makecell() yielded an error

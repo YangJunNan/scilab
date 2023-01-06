@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 7824 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=7824
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/7824
 //
 // <-- Short Description -->
 // The properties of the title function did not support an indexed color.

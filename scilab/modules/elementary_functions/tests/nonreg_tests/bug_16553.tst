@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 16553 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/16553
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/16553
 //
 // <-- Short Description -->
 // unique(["", "", "", "", ""]) returned [""  ""  ""  ""  ""] instead of ""

@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 14685 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=14685
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/14685
 //
 // <-- Short Description -->
 //    datavec produced an invalid index error.

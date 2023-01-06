@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 13192 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=13192
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/13192
 //
 // <-- Short Description -->
 // horner(rationals_column, rationals_row) sometimes failed

@@ -10,8 +10,8 @@
 
 // <-- Non-regression test for bug 2119 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=2119
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/2119
 //
 // <-- Short Description -->
 // There is problem in the scilab fortran interface provided by

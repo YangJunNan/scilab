@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 12140 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=12140
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/12140
 //
 // <-- Short Description -->
 // csvRead fails when comma is used as decimal mark

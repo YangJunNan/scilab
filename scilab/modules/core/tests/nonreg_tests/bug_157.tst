@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 157 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=157
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/157
 //
 // <-- Short Description -->
 //    Recursive extraction is not valid in this context

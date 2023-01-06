@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 1914 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=1914
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/1914
 //
 // <-- Short Description -->
 // Function grep does not implement regular expressions. Therefore either the  

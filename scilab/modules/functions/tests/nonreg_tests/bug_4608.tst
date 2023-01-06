@@ -10,8 +10,8 @@
 
 // <-- Non-regression test for bug 4608 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=4608
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/4608
 //
 // <-- Short Description -->
 // get_function_path returns a non-consistent path

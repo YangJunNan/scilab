@@ -10,8 +10,8 @@
 // <-- CLI SHELL MODE -->
 // <-- NO CHECK REF -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/16358
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/16358
 //
 // <-- Short Description -->
 // isdef([],..) yielded an error instead of returning []

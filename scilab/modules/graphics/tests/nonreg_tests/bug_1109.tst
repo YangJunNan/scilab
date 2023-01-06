@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 1109 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=1109
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/1109
 //
 // <-- Short Description -->
 // Argument axesflag=2 does not work with plot2d

@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 9669 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/9669
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/9669
 //
 // <-- Short Description -->
 // Referencing a struct from itself will segfault.

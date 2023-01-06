@@ -7,8 +7,8 @@
 
 // <-- Non-regression test for bug 7033 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=7033
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/7033
 //
 // <-- Short Description -->
 // Random crash (more often in 64 bits) in sci_newfun / getMatrixOfString

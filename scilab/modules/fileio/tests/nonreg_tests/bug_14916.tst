@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 14916 -->
 //
-// <-- Bugzilla URL -->
-// https://bugzilla.scilab.org/14916
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/14916
 //
 // <-- Short Description -->
 // read(%io(1), 1, 1, '(a)') + keyboard input + enter crashed Scilab

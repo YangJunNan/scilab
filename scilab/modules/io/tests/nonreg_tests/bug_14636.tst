@@ -8,8 +8,8 @@
 // <-- CLI SHELL MODE -->
 // <-- NO CHECK REF -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/14636
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/14636
 //
 // <-- Short Description -->
 // A crash occured after read()-ing an empty file

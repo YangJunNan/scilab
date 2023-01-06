@@ -10,8 +10,8 @@
 
 // <-- Non-regression test for bug 10269 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=10269
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/10269
 //
 // <-- Short Description -->
 //    qp_solve can now take up to 5 output arguments. The last one is an error flag,

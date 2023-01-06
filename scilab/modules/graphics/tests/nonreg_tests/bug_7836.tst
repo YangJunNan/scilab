@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 7836 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=7836
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/7836
 //
 // <-- Short Description -->
 // The sub_ticks property does not correctly track the number of

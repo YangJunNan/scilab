@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 3101 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=3101
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/3101
 //
 // <-- Short Description -->
 // plot3d() => seg fault, occurs rarely.

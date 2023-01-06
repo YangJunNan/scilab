@@ -10,8 +10,8 @@
 
 // <-- Non-regression test for bug 8163 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=8163
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/8163
 //
 // <-- Short Description -->
 // datatipToggle cannot be called without argument as stated in the help page

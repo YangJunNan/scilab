@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 2322 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=2322
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/2322
 //
 // <-- Short Description -->
 //    emptystr(0,1) returns an empty matrix of size 0 x 1 which is not coherent with

@@ -9,8 +9,8 @@
 // <-- XCOS TEST -->
 // <-- Non-regression test for bug NotReportedYet -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=8556
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/8556
 
 xcos();
 // put 2 SUM_f block

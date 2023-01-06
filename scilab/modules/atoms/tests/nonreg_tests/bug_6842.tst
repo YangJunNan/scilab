@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 6842 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=6842
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/6842
 //
 // <-- Short Description -->
 // When an ATOMS module has several versions and that, e.g. the oldest is

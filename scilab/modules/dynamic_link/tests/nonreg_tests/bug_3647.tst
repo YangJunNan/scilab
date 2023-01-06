@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 3647 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=3647
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/3647
 //
 // <-- Short Description -->
 // C functions having more than 23 characters are not usable with scilab

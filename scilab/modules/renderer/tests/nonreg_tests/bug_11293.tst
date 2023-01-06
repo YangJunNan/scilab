@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 11293 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/11293
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/11293
 //
 // <-- Short Description -->
 // Line style was not taken into account

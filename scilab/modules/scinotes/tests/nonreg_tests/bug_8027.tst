@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 8027 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=8027
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/8027
 //
 // <-- Short Description -->
 // In a splitted view, a frame was not informed of a change in the other frame.

@@ -11,8 +11,8 @@
 //
 // <-- Non-regression test for bug 7872 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=782
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/782
 //
 // <-- Short Description -->
 // Riemann Surface demo returned a error if window was closed by the cross button.

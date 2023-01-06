@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 16260 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=16260
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/16260
 //
 // <-- Short Description -->
 // nnz(): please reopen it to overloading (Regression), and extend it to dense boolean and polynomial arrays

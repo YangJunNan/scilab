@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 13059 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=13059
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/13059
 //
 // <-- Short Description -->
 // '%nan' propagated at startup fail the simulation

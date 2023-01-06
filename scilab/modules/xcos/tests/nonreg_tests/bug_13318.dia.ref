@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 13318 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=13318
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/13318
 //
 // <-- Short Description -->
 // Output of CONST block is a vector and not a matrix.

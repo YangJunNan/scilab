@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 1711 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=1711
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/1711
 //
 // <-- Short Description -->
 //    datenum() produces incorrect results. For example:

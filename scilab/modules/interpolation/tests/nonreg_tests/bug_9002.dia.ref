@@ -7,8 +7,8 @@
 // =============================================================================
 // <-- Non-regression test for bug 9002 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=9002
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/9002
 //
 // <-- Short Description -->
 // linear_interpn, splin2d/interp2d, ... functions ignored imaginary part of input arguments

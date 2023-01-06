@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 9218 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/9218
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/9218
 //
 // <-- Short Description -->
 // a("b") = 10 makes Scilab crash

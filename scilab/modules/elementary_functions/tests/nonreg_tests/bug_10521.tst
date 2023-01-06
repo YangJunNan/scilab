@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 10521 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/10521
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/10521
 //
 // <-- Short Description -->
 // [f,e] = log2(x) returned an error

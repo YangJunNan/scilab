@@ -7,8 +7,8 @@
 // <-- CLI SHELL MODE -->
 // <-- Non-regression test for bug 3747 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=3747
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/3747
 //
 // Short description:
 // string(eye()) tries to quit scilab

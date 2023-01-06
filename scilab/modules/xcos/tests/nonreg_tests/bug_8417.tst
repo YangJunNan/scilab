@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 8417 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=8417
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/8417
 //
 // <-- Short Description -->
 // A window appears when openning an h5 diagram file.

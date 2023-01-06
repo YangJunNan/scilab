@@ -6,8 +6,8 @@
 // =============================================================================
 // <-- Non-regression test for bug 3757 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=3757
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/3757
 //
 // <-- Short Description -->
 // Under Scilex, the completion of paths is incorrect

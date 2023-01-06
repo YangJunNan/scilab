@@ -11,8 +11,8 @@
 //
 // <-- Non-regression test for bug 10998 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=10998
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/10998
 //
 // <-- Short Description -->
 // matrix*hypermatrix operation failed.

@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 8031 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=8031
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/8031
 //
 // <-- Short Description -->
 // Fixed cdfgam error message about the bound of the result.

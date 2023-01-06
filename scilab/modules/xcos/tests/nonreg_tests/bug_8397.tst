@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 8397 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=8397
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/8397
 //
 // <-- Short Description -->
 // After detection of variable/equation difference, the error message should be

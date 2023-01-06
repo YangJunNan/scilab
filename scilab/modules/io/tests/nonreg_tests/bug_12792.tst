@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 12792 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/12792
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/12792
 //
 // <-- Short Description -->
 //  save(filename, "undefinedVariable") created an empty useless file

@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 10654 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/10654
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/10654
 //
 // <-- Short Description -->
 // gettext with "scilab" domain did not return same result than gettext

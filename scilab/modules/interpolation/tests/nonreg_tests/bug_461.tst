@@ -8,8 +8,8 @@
 // <-- NO CHECK REF -->
 // <-- Non-regression test for bug 461 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=461
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/461
 //
 // <-- Short Description -->
 //    Bug Report Id: 11985200361815216

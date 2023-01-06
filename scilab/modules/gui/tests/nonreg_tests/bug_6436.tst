@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 6436 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=6436
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/6436
 //
 // <-- Short Description -->
 // uigetfile(["*.bin";"*.sce";"*.cos"]); did not let me select either of those file extensions.

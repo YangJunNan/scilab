@@ -7,8 +7,8 @@
 
 // <-- Non-regression test for bug 3006 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=3006
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/3006
 //
 // <-- Short Description -->
 // submatrix assignment impossible when the matrix is indexed with a boolean array of falses  

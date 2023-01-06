@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 8232 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=8232
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/8232
 //
 // <-- Short Description -->
 // drag and drop of .scg files (on console) used "xload" and not "load"

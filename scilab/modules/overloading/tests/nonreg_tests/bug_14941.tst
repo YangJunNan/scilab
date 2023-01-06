@@ -8,8 +8,8 @@
 //
 // <-- Non-regression test for bug 14941 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/14941
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/14941
 //
 // <-- NO CHECK REF -->  // no reason to test the display
 //

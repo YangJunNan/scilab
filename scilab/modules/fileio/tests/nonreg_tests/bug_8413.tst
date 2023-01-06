@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 8413 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=8413
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/8413
 //
 // <-- Short Description -->
 // fscanfMat crashed when file included text lines at the beginning.

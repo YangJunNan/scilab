@@ -9,8 +9,8 @@
 // <-- NO CHECK REF -->
 // <-- Non-regression test for bug 14976 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/14976
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/14976
 //
 // <-- Short Description -->
 // asciimat(asciiNums) concatenated rows when asciiNums has only one column.

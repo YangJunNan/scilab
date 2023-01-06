@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 12373 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=12373
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/12373
 //
 // <-- Short Description -->
 // pmodulo(n,m<0) returned a negative result

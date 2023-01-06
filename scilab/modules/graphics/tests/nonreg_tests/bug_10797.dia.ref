@@ -8,8 +8,8 @@
 //
 // <-- Non-regression test for bug 10797 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=10797
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/10797
 //
 // <-- Short Description -->
 // contour, contour2d, contourf did not check input arguments

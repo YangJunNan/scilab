@@ -10,8 +10,8 @@
 //
 
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=3919
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/3919
 //
 // <-- Short Description -->
 // scilab x64 doesn't display graphics from a remote desktop

@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 9527 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/9527
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/9527
 //
 // <-- Short Description -->
 // Problem when text was exported in SVG in using the gui

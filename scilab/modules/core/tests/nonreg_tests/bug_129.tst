@@ -8,8 +8,8 @@
 
 // <-- Non-regression test for bug 129 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=129
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/129
 //
 // <-- Short Description -->
 //    Problem with extraction of long lists

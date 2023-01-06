@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 7125 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=7125
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/7125
 //
 // <-- Short Description -->
 // fscanfMat() did not read correctly %inf ,-%inf and %nan values respectively 

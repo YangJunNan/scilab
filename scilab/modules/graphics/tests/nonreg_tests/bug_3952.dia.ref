@@ -7,8 +7,8 @@
 // <-- TEST WITH GRAPHIC -->
 // <-- Non-regression test for bug 3952 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=3952
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/3952
 //
 // <-- Short Description -->
 // legend only works when the number of strings equals the number of polylines

@@ -11,8 +11,8 @@
 
 // <-- Non-regression test for bug 13494 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/13494
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/13494
 //
 // <-- Short Description -->
 // Wrong vertical range of plot3d and plot3d1

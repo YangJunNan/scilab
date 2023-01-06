@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 8227 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/8227
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/8227
 //
 // <-- Short Description -->
 // The commands evaluated with "Evaluate selection" were not stored in history.

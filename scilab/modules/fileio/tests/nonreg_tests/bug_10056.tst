@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 10056 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/10056
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/10056
 //
 // <-- Short Description -->
 // segfault with mgetl

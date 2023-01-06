@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 8435 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=8435
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/8435
 //
 // <-- Short Description -->
 // squarewave(t) fails for t<0

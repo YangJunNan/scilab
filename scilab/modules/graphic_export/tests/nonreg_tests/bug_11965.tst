@@ -7,8 +7,8 @@
 //
 // <-- Non-regression test for bug 11965 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/11965
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/11965
 //
 // <-- Short Description -->
 // Export to SVG converted texts in shapes.

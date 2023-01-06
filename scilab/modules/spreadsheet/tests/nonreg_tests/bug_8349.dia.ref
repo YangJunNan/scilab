@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 8349 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=8349
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/8349
 //
 // <-- Short Description -->
 // write_csv() failed to support writting complexes with %nan or %inf parts

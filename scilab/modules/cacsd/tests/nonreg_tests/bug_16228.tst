@@ -11,8 +11,8 @@
 //
 // <-- Non-regression test for bug 16228 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/16228
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/16228
 //
 // <-- Short Description -->
 // --> clf, bode, nyquist yielded an error

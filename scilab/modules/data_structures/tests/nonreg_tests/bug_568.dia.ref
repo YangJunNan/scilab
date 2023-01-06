@@ -7,8 +7,8 @@
 // =============================================================================
 // <-- Non-regression test for bug 568 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=568
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/568
 //
 // <-- Short Description -->
 //    when I have defined a variable like this :

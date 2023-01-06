@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 9250 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=9250
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/9250
 //
 // <-- Short Description -->
 // mkdir should fail if we give more than one directory

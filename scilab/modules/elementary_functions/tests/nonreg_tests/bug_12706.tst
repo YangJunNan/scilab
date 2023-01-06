@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 12706 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=12706
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/12706
 //
 // <-- Short Description -->
 // A wrong size matrix as input argument is not detected

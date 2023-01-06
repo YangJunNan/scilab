@@ -11,8 +11,8 @@
 //
 // <-- Non-regression test for bug 8390 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=8390
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/8390
 //
 // <-- Short Description -->
 // a "Warning : redefining function: mputl" displayed if you did not install fftw on Windows.

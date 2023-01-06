@@ -8,8 +8,8 @@
 //
 // <-- Non-regression test for bug 14379 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/14379
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/14379
 //
 // <-- Short Description -->
 // Problem with lists of functions having 2 arguments

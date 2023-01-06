@@ -6,8 +6,8 @@
 //
 // <-- Non-regression test for bug  -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/13420
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/13420
 //
 // <-- Short Description -->
 // mutation_ga_binary did not properly write mutliple mutations

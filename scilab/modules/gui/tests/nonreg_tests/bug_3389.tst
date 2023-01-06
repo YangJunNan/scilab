@@ -8,8 +8,8 @@
 //
 // <-- Non-regression test for bug 3389 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=3389
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/3389
 //
 // <-- Short Description -->
 //    if figure() is called with non-existing properties, Scilab crashes

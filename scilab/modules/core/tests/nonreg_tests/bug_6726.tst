@@ -10,8 +10,8 @@
 //
 // <-- CLI SHELL MODE -->
 // <-- NO CHECK REF -->
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/6726
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/6726
 //
 // <-- Short Description -->
 //Variables whose name starts by a $  cannot be retrieved in libraries

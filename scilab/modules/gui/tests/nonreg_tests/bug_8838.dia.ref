@@ -9,8 +9,8 @@
 //
 // <-- TEST WITH GRAPHIC -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=8838
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/8838
 //
 // <-- Short Description -->
 // uimenu without input argument crashed Scilab

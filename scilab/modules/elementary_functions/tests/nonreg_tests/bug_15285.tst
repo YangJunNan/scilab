@@ -10,8 +10,8 @@
 
 // <-- Non-regression test for bug 15285 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=15285
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/15285
 //
 // <-- Short Description -->
 //resize_matrix does not manage convertion to int64 and uint64

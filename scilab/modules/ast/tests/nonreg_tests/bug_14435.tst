@@ -10,8 +10,8 @@
 
 // <-- Non-regression test for bug 14435 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=14435
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/14435
 //
 // <-- Short Description -->
 // Errors not well handled in overloaded functions

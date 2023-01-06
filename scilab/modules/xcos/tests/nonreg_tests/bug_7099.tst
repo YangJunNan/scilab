@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 7099 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=7099
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/7099
 //
 // <-- Short Description -->
 // xml2modelica called ocamlrun (wrong dependency on Windows)

@@ -8,8 +8,8 @@
 //
 // <-- Non-regression test for bug 8805 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=8805
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/8805
 //
 // <-- Short Description -->
 // The neldermead function, algorithm box, wrongly used 

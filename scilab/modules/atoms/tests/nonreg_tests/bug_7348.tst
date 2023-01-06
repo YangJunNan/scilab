@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 7348 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=7348
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/7348
 //
 // <-- Short Description -->
 // there is the possibility to install 2 times same modules as 'user' and 'allusers'

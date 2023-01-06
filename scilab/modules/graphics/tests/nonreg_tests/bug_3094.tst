@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 3094 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=3094
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/3094
 //
 // <-- Short Description -->
 // There is a white background behind each charater of tics.

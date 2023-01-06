@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 13437 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/13437
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/13437
 //
 // <-- Short Description -->
 // axis drawn by drawxis use different font

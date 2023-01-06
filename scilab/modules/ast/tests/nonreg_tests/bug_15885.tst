@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 15885 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/15885
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/15885
 //
 // <-- Short Description -->
 // break in an else block is broken

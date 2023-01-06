@@ -11,8 +11,8 @@
 //
 // <-- Non-regression test for bug 15757 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/15757
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/15757
 //
 // <-- Short Description -->
 // xcosPalAddBlock() did not load scicos_scicoslib when required.

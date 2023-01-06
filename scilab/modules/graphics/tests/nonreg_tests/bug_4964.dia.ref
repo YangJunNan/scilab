@@ -8,8 +8,8 @@
 //
 // <-- Non-regression test for bug 4964 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=4964
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/4964
 //
 // <-- Short Description -->
 //   set or get 'format_n' property from an axes crash scilab.

@@ -8,8 +8,8 @@
 
 // <-- Non-regression test for bug 11138 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=11138
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/11138
 //
 // <-- Short Description -->
 //  a = list() crashed on Windows x64.

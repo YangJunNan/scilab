@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 12785 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/12785
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/12785
 //
 // <-- Short Description -->
 // plot did not allow int data as first argument

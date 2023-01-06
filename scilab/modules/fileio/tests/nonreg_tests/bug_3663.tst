@@ -12,8 +12,8 @@
 //
 // <-- Non-regression test for bug 3663 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=3663
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/3663
 //
 // <-- Short Description -->
 // getshortpathname & getlongpathname return '' and not a path with some special pathname

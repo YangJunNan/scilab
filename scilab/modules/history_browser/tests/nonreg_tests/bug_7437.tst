@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 7437 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=7437
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/7437
 //
 // <-- Short Description -->
 // if history file was invalid, history browser crashed.

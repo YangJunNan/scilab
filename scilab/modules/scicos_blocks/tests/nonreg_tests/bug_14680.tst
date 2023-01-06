@@ -11,9 +11,9 @@
 // <-- Non-regression test for bug 14629 -->
 // <-- Non-regression test for bug 14680 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/14629
-// http://bugzilla.scilab.org/14680
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/14629
+// https://gitlab.com/scilab/scilab/-/issues/14680
 //
 // <-- Short Description -->
 // "<" characters of the expression could truncate the rendering of the expressionn in the icon

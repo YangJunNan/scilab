@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 12835 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/12835
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/12835
 //
 // <-- Short Description -->
 // When in a function returning varargout varargout is set to an empty list(),

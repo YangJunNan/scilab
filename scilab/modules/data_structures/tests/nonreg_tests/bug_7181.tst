@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 7181 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=7181
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/7181
 //
 // <-- Short Description -->
 // The display of a struct having no fields does not work.

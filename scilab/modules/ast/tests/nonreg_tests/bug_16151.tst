@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 16151 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/16151
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/16151
 //
 // <-- Short Description -->
 // isequal(1:$, 2:$) returns %T

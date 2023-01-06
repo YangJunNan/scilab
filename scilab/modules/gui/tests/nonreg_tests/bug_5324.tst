@@ -9,8 +9,8 @@
 //
 // <-- INTERACTIVE TEST -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=5324
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/5324
 //
 // <-- Short Description -->
 // "File open" dialog box focused on parent directory of current directory, on Windows.

@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 15528 -->
 //
-// <-- Bugzilla URL -->
-// https://bugzilla.scilab.org/show_bug.cgi?id=15528
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/15528
 //
 // <-- Short Description -->
 // savewave  write null signal if 24 bits resolution and more than 2 channels

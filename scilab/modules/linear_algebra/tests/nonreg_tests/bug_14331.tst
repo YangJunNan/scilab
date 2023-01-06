@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 14331 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=14331
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/14331
 //
 // <-- Short Description -->
 // The third argument of lsq crashed Scilab.

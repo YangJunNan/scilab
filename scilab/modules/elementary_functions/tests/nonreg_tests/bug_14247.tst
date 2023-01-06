@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 14247-->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=14247
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/14247
 //
 // sqrt function did not work on hypermatrices.
 

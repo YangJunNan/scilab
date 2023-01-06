@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 7377 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=7377
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/7377
 //
 // <-- Short Description -->
 //    thrownan failed on empty matrix

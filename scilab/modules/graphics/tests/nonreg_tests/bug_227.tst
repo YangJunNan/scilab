@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 227 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=227
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/227
 //
 // <-- Short Description -->
 //     The plot3d plots an surface on an graphic window without a status bar on the bottom of the window.

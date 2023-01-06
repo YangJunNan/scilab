@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 5042 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=5042
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/5042
 //
 // <-- Short Description -->
 // (1|[1,0,1;1,1,0]) returns incorrect values.

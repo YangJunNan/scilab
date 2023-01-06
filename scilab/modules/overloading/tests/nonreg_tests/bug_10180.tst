@@ -8,8 +8,8 @@
 
 // <-- Non-regression test for bug 10180 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=10180
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/10180
 //
 // <-- Short Description -->
 // det is not defined for sparse matrix

@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 476 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/476
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/476
 //
 // <-- Short Description -->
 // find did not work when there are most lhs arguments than matrix dimensions

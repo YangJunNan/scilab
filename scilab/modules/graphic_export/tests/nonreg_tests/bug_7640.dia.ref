@@ -11,8 +11,8 @@
 //
 // <-- Non-regression test for bug 7640 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=7640
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/7640
 //
 // <-- Short Description -->
 // xs2pdf, xs2eps, xs2emf crashed if filename prefix had less three characters.

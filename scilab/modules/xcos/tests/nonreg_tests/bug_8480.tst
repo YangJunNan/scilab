@@ -12,8 +12,8 @@
 //
 // <-- Non-regression test for bug 8480 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=8480
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/8480
 //
 // <-- Short Description -->
 // The debug block did not have a valid function type.

@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 2654 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=2654
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/2654
 //
 // <-- Short Description -->
 // exec returned a wrong error if line had more than 4096 characters

@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 3830 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=3830
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/3830
 //
 // <-- Short Description -->
 // mputl fails to write some accents

@@ -16,8 +16,8 @@
 //
 // <-- Non-regression test for bug 16215 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/16215
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/16215
 //
 // <-- Short Description -->
 // `mfile2sci` badly converted the colon `:` into `mtlb(:)`

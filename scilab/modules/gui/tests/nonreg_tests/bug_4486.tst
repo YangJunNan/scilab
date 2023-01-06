@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 4486 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=4486
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/4486
 //
 // <-- Short Description -->
 // When a file has been opened for execution with "File/Execute..." menu, its pathname is lost.

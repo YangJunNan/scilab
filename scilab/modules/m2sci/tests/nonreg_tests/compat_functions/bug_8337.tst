@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 8337 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=8337
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/8337
 //
 // <-- Short Description -->
 // mtlb_rand() was affected by the seed of rand(), whereas it follow the uniform rule,

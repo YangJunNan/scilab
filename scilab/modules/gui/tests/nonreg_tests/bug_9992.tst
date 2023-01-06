@@ -8,8 +8,8 @@
 // <-- Non-regression test for bug 9992 -->
 // <-- INTERACTIVE TEST -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/9992
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/9992
 //
 // <-- Short Description -->
 // gcbo not initialized in callbacks for uimenus in console

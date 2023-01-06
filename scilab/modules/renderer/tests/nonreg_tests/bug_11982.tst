@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 11982 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/11982
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/11982
 //
 // <-- Short Description -->
 // Ticks computations was made asynchronously

@@ -8,8 +8,8 @@
 // <-- CLI SHELL MODE -->
 // <-- Non-regression test for bug 9600 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/9600
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/9600
 //
 // <-- Short Description -->
 // Can not assign empty matrix in a list or cell

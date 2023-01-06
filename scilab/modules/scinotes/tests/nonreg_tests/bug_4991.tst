@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 4991 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=4991
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/4991
 //
 // <-- Short Description -->
 //    No check if there is modification when doing "Execute Into Scilab" in the editor. 

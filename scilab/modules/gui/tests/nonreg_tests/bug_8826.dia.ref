@@ -9,8 +9,8 @@
 //
 // <-- TEST WITH GRAPHIC -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=8826
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/8826
 //
 // <-- Short Description -->
 // userdata property for a menu crashed Scilab

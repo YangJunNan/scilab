@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 12234 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/12234
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/12234
 //
 // <-- Short Description -->
 // Crash with invalid property

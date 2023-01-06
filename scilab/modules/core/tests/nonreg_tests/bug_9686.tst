@@ -11,8 +11,8 @@
 // <-- CLI SHELL MODE -->
 // <-- NO CHECK REF -->
 // 
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/9686
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/9686
 //
 // <-- Short Description -->
 // error in an if expression inside a try makes Scilab froze

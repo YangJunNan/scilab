@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 1859 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=1859
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/1859
 //
 // <-- Short Description -->
 //    I sent the following commands

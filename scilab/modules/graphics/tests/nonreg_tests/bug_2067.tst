@@ -8,8 +8,8 @@
 
 // <-- Non-regression test for bug 2067 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=2067
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/2067
 //
 // <-- Short Description -->
 //    Scilab dies when the Plot command is given a large numerical value.

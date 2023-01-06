@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 7688 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=7688
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/7688
 //
 // <-- Short Description -->
 // set("color_map", hsvcolormap(128)) produced a EXCEPTION_STACK_OVERFLOW 

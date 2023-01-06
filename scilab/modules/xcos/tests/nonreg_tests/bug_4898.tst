@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 4898 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=4898
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/4898
 //
 // <-- Short Description -->
 // Block scifunc_block_m stored some list in model.ipar instead of model.opar.

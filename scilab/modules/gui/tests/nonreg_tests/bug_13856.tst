@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 13856 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/13856
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/13856
 //
 // <-- Short Description -->
 // messagebox makes Scilab 5.5 family crashed under Windows.

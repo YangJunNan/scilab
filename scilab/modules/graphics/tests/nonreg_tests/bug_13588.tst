@@ -11,8 +11,8 @@
 
 // <-- Non-regression test for bug 13588 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/13588
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/13588
 //
 // <-- Short Description -->
 // default properties (git comm) of figures badly inherited.

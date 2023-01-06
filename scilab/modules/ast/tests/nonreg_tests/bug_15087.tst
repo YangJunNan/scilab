@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 15087 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/15087
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/15087
 //
 // <-- Short Description -->
 // Deleting rows or columns from a matrix is slow

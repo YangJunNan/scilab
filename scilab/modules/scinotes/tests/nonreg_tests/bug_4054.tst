@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 4054 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=4054
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/4054
 //
 // <-- Short Description -->
 // load into scilab a file with editor can crash scilab

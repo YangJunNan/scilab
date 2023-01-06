@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 8441 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=8441
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/8441
 //
 // <-- Short Description -->
 // Block with an empty gui string are translated to xcos_block one. These blocks 

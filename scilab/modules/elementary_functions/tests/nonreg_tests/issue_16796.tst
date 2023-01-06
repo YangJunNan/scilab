@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 16796 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/16796
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/16796
 //
 // <-- Short Description -->
 // isreal(complex(1,%nan),0) returns %T instead of %F (Scilab 6.0.0 regression)

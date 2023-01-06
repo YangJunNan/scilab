@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 7907 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=7907
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/7907
 // <-- Short Description -->
 // ilib_build, ilib_for_link, ... did not check 'files' input argument.
 // 

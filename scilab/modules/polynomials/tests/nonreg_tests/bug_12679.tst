@@ -10,8 +10,8 @@
 // <-- CLI SHELL MODE -->
 // <-- NO CHECK REF -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=12679
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/12679
 //
 // <-- Short Description -->
 // Checks on gcd() and lcm() arguments

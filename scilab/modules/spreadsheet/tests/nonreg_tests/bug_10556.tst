@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 10556 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=10556
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/10556
 //
 // <-- Short Description -->
 // readxls produced wrong results

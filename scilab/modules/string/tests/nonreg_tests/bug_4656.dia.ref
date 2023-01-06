@@ -7,8 +7,8 @@
 // <-- CLI SHELL MODE -->
 // <-- Non-regression test for bug 4656 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=4656
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/4656
 //
 // <-- Short Description -->
 // Change of behavior from 4.1.2 to 5.1.1 of the expression:

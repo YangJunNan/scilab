@@ -9,8 +9,8 @@
 //
 // <-- INTERACTIVE TEST -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=9044
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/9044
 //
 // <-- Short Description -->
 // Updating a LaTeXed label of uimenu() misworks

@@ -10,8 +10,8 @@
 
 // <-- Non-regression test for bug 4459 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=4459
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/4459
 //
 // <-- Short Description -->
 // grayplot does not always plot map containing %nan.

@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 9059 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=9059
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/9059
 //
 // <-- Short Description -->
 // tbx_build_macros and genlib do not stop on error

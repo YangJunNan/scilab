@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 9825 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=9825
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/9825
 //
 // <-- Short Description -->
 // The assert_computedigits function generously gives too large correct digits.

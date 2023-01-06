@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 15497 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/15497
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/15497
 //
 // <-- Short Description -->
 // Structures containing lists with 1 element : wrong type with syntax: structure("field")

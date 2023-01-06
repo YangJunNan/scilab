@@ -7,8 +7,8 @@
 // =============================================================================
 // <-- Non-regression test for bug 2081 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=2081
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/2081
 //
 // <-- Short Description -->
 //impossible matrix insertion into hypermatrix element of a tlist

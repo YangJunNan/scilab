@@ -8,8 +8,8 @@
 // <-- Non-regression test for bug 9141 -->
 // <-- INTERACTIVE TEST -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/9141
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/9141
 //
 // <-- Short Description -->
 // An extra empty line was present in the console

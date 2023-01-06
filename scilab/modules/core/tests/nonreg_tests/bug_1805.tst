@@ -12,8 +12,8 @@
 //
 // <-- Non-regression test for bug 1805 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/1805
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/1805
 //
 // <-- Short Description -->
 //    varargout must be a list. It is initialized to list() by default

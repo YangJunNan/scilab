@@ -9,8 +9,8 @@
 // <-- TEST WITH GRAPHIC -->
 // <-- INTERACTIVE TEST -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/8646
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/8646
 //
 // <-- Short Description -->
 // The datatips contextual menu opens a selection list which is not ergonomic

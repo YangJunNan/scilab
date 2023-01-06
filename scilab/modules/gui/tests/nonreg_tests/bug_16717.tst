@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 16717 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=16717
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/16717
 //
 // <-- Short Description -->
 // Error in findobj when no object exists

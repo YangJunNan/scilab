@@ -9,8 +9,8 @@
 //
 // <-- CLI SHELL MODE -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/14591
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/14591
 //
 // <-- Short Description -->
 // <= and >= operators comparing 2 hypermatrices of decimal numbers or encoded

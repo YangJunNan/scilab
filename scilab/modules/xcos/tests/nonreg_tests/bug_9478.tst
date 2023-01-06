@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 9478 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=9478
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/9478
 //
 // <-- Short Description -->
 // depends en u/t field works as a row or a column

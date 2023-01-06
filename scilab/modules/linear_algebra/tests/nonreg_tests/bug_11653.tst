@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 11653 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=11653
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/11653
 //
 // <-- Short Description -->
 //    Optional booleans in eigs were doubles and are now booleans.

@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 15301 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/15301
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/15301
 //
 // <-- Short Description -->
 // Sequence constructor ':' failed when a bound was an outputless funtion call

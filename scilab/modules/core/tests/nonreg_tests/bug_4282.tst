@@ -8,8 +8,8 @@
 
 // <-- Non-regression test for bug 4282 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=4282
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/4282
 //
 // <-- Short Description -->
 // If scilab is launched from a symbolic link, the current directory (in scilab) is always "SCI" instead of the

@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 2742 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=2742
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/2742
 //
 // <-- Short Description -->
 //    edit uicontrols do not support callbacks

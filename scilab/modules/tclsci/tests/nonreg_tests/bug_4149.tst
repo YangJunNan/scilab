@@ -7,8 +7,8 @@
 
 // <-- Non-regression test for bug 4149 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=4149
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/4149
 //
 // <-- Short Description -->
 // Mixing ScilabEval and Tcl_* commands crashes Scilab

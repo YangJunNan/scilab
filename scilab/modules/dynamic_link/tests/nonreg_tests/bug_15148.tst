@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 15148 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=15148
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/15148
 //
 // <-- Short Description -->
 // link() doesn't return any error for a wrong flag argument value

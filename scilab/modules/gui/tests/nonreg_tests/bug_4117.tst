@@ -10,8 +10,8 @@
 
 // <-- Non-regression test for bug 4117 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=4117
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/4117
 //
 // <-- Short Description -->
 // Closing a graphics figure (via the GUI) which has a non-existing

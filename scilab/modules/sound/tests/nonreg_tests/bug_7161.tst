@@ -8,8 +8,8 @@
 
 // <-- Non-regression test for bug 7161 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=7161
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/7161
 //
 // <-- Short Description -->
 // wavread failed to load some .wav files with error 44

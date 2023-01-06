@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 6665 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=6665
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/6665
 //
 // <-- Short Description -->
 //legend (caption) nor properly saved or loaded

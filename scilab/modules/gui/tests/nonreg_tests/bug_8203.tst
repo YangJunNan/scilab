@@ -8,8 +8,8 @@
 // <-- Non-regression test for bug 8203 -->
 // <-- INTERACTIVE TEST -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/8203
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/8203
 //
 // <-- Short Description -->
 // It was not possible to close a fontchooser or a colorchooser with ESC.

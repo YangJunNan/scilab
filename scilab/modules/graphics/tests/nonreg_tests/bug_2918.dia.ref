@@ -7,8 +7,8 @@
 // <-- TEST WITH GRAPHIC -->
 // <-- Non-regression test for bug 2918 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=2918
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/2918
 //
 // <-- Short Description -->
 // In the demo of contourf, some black points are drawn near the X-axis and Y-axis intersection.

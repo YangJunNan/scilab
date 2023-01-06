@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 15485 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=15485
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/15485
 //
 // <-- Short Description -->
 // savematfile crashes Scilab

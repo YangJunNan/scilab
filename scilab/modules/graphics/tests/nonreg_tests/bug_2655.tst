@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 2655 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=2655
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/2655
 //
 // <-- Short Description -->
 // plot2d produces an error when called with some functions

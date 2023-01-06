@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 575 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=575
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/575
 //
 // <-- Short Description -->
 //    [m(1),n(1)]=max([1,3,1]) is not possible. 

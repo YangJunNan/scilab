@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 8763 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=8763
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/8763
 //
 // <-- Short Description -->
 // ATOMS installation path was shared on Windows 64 with 32 bits

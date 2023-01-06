@@ -10,8 +10,8 @@
 // <-- CLI SHELL MODE -->
 // <-- NO CHECK REF -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=8086
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/8086
 //
 // <-- Short Description -->
 // Wrong error message was displayed when no input argument provided

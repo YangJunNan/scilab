@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 11110 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=11110
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/11110
 //
 // <-- Short Description -->
 // poly() result was wrong on windows x64

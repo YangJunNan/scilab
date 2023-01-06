@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 5267 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=5267
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/5267
 //
 // <-- Short Description -->
 // Xcos diagram causes Scilab to quit if Simulation/Setup is selected, then cancelled using the "x" on the upper right.

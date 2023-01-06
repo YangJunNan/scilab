@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 15629 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=15629
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/15629
 //
 // <-- Short Description -->
 // int(1e20) yields -9.223D+18  (regression)

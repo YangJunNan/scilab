@@ -7,8 +7,8 @@
 // =============================================================================
 // <-- Non-regression test for bug 4839 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=4839
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/4839
 //
 // <-- Short Description -->
 //    grand does not perform well with multivariate gaussian

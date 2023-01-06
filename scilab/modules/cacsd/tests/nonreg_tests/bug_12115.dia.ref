@@ -7,8 +7,8 @@
 //
 // <-- Non-regression test for bug 12115 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=12115
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/12115
 //
 // <-- Short Description -->
 // phaseplot(frq,db,phi) did not work.

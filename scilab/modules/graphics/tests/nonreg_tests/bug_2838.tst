@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 3184 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=3184
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/3184
 //
 // <-- Short Description -->
 // legends breaks isoview

@@ -10,8 +10,8 @@
 
 // <-- Non-regression test for bug 4176 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=4176
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/4176
 //
 // <-- Short Description -->
 // Plotting huge amount of data nothing is displayed and no errors are displayed.

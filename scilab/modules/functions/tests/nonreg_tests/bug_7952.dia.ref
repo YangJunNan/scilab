@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 7952 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=7952
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/7952
 //
 // <-- Short Description -->
 // libraryinfo did not check size of input argument.

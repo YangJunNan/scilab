@@ -9,8 +9,8 @@
 //
 // <-- CLI SHELL MODE -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/14306
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/14306
 //
 // <-- Short Description -->
 // Comparisons `>` and `>=` between integers of mismatching inttypes were not

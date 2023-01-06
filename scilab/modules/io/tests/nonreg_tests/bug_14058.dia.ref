@@ -7,8 +7,8 @@
 // =============================================================================
 // <-- Non-regression test for bug 14058 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/14058
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/14058
 //
 // <-- Short Description -->
 // Scilab crashes with 'file("close", file())' instruction

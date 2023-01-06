@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 14896 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/14896
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/14896
 //
 // <-- Short Description -->
 // Using 'set' with multiple properties, only first one is set.

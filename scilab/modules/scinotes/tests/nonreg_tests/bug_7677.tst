@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 7677 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=7677
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/7677
 //
 // <-- Short Description -->
 // User hadn't the possibilty to open files in his favorite directories.

@@ -11,8 +11,8 @@
 //
 // <-- Non-regression test for bug 16683 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/16683
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/16683
 
 // <-- Short Description -->
 // m2sci: series of fix and improvements

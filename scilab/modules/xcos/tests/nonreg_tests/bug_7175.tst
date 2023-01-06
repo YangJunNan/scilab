@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 7175 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=7175
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/7175
 //
 // <-- Short Description -->
 // demo bridge rectifier did not build on Windows.

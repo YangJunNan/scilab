@@ -8,8 +8,8 @@
 // <-- Non-regression test for bug 10343 -->
 // <-- TEST WITH GRAPHIC -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/10343
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/10343
 //
 // <-- Short Description -->
 // Crash when creating an uicontrol with an invalid parent.

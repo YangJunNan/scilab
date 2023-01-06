@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 3873 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=3873
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/3873
 //
 // <-- Short Description -->
 // While editing ticks'label on Axes, mouse click outside box or double clicks or using Tab key, program terminates.

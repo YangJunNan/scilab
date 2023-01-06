@@ -11,8 +11,8 @@
 
 // <-- Non-regression test for bug 13127 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/13127
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/13127
 //
 // <-- Short Description -->
 // There were no subticks with user defined ticks

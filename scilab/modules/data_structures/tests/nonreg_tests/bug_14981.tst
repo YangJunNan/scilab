@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 14981 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/14981
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/14981
 //
 // <-- Short Description -->
 // Some cells vertical concatenations and further cells extractions crash Scilab

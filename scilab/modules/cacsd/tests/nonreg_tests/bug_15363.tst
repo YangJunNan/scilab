@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 15363 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=15363
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/15363
 //
 // <-- Short Description -->
 // `h2norm()` could no longer be applied to undefined time domain systems, and 

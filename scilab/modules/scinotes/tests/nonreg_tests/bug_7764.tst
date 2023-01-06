@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 7764 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=7764
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/7764
 //
 // <-- Short Description -->
 // The CR in comments was removed when executing from SciNotes.

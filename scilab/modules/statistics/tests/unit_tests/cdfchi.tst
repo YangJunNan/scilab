@@ -34,7 +34,7 @@ if norm(x1-x)   > prec then pause,end
 if norm(df1-df) > prec then pause,end
 
 // IEEE support
-// See http://bugzilla.scilab.org/show_bug.cgi?id=7296
+// See https://gitlab.com/scilab/scilab/-/issues/7296
 Df       = 1;
 
 X        = %inf; // Inf

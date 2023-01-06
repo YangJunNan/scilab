@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 9211 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=9211
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/9211
 //
 // <-- Short Description -->
 // set("userdata", list()) crashed Scilab.

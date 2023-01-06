@@ -8,8 +8,8 @@
 //
 // <-- Non-regression test for bug 12475 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=12475
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/12475
 //
 // <-- Short Description -->
 // csvRead does not support double quotes

@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 5005 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=5005
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/5005
 //
 // <-- Short Description -->
 // xcos does not expand path name

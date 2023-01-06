@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 4640 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=4640
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/4640
 //
 // <-- Short Description -->
 // plot2d() puts CPU utilization at 100% on Windows.

@@ -7,8 +7,8 @@
 //
 // <-- Non-regression test for bug 5616 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=5616
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/5616
 //
 // <-- Short Description -->
 // typeof(uiCreateTree(...)) returns "Tree" instead of "uitree"

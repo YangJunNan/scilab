@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 4783 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=4783
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/4783
 //
 // <-- Short Description -->
 // comparison between sparse complex matrix and a full one is wrong when the sparse matrix contains a full zero row.

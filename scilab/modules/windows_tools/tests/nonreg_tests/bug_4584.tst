@@ -7,8 +7,8 @@
 
 // <-- Non-regression test for bug 4584 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=4584
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/4584
 //
 // <-- Short Description -->
 // home value is wrong on Windows

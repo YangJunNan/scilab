@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 2198 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=2198
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/2198
 //
 // <-- Short Description -->
 //    Many uicontrols are created with default properties, but return [] when inquired.

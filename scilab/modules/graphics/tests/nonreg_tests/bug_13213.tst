@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 13213 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/13213
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/13213
 //
 // <-- Short Description -->
 // User defined margins were reset by auto computation of the margins

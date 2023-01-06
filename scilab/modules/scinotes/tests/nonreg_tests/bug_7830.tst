@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 7830 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=7830
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/7830
 //
 // <-- Short Description -->
 // There was a problem when opening a file at a line number.

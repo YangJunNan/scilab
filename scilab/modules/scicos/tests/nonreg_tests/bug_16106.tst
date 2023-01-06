@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 16106 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=16106
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/16106
 //
 // <-- Short Description -->
 // block.opar and block.oz could not be used for block implemented in Scilab

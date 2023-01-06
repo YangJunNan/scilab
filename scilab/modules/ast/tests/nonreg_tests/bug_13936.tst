@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 13936 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/13936
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/13936
 //
 // <-- Short Description -->
 // The exponentiation of a matrix was very slow

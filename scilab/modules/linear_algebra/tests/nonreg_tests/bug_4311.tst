@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 4311 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=4311
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/4311
 //
 // <-- Short Description -->
 // rcond(eye()) returns eye() instead of 1.

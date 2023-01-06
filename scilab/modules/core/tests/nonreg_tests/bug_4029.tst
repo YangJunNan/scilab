@@ -7,8 +7,8 @@
 
 // <-- Non-regression test for bug 4029 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=4029
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/4029
 //
 // <-- Short Description -->
 // Windows Vista x64 detected as "Vista" with [a,b]=getos() and not as "Vista x64" by scilab x64

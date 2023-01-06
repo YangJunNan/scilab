@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 9186 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/9186
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/9186
 //
 // <-- Short Description -->
 // In code navigator, an exception was thrown when the textfield got the focus.

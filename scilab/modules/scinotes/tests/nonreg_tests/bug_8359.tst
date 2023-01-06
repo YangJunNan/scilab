@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 8359 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/8359
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/8359
 //
 // <-- Short Description -->
 // An execption was thrown on Save As action

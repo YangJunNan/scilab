@@ -8,8 +8,8 @@
 // <-- Non-regression test for bug 7078 -->
 // <-- TEST WITH GRAPHIC -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=7078
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/7078
 //
 // <-- Short Description -->
 // A wrong error message is displayed when setting the 'value' property of a 'edit' uicontrol.

@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 4752 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=4752
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/4752
 //
 // Short description:
 // sci2exp produces erroneous code when applied to boolean matrices (; are missing)

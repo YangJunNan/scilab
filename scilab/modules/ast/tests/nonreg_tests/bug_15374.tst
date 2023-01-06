@@ -11,8 +11,8 @@
 //
 // <-- Non-regression test for bug 15374 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/15374
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/15374
 //
 // <-- Short Description -->
 // Trivial infinite loop cannot be interrupted

@@ -8,8 +8,8 @@
 //
 // <-- CLI SHELL MODE -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=6449
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/6449
 //
 // <-- Short Description -->
 // regexp() does not support ANSI-encoded input strings 

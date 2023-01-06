@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 3822 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=3822
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/3822
 //
 // <-- Short Description -->
 // When a figure handle is saved and reloaded the figure_size as well as the viewport properties are not saved nor restored

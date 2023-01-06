@@ -10,8 +10,8 @@
 
 // <-- Non-regression test for bug 4173 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=4173
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/4173
 //
 // <-- Short Description -->
 // Graphic export : Style the text fonts is not respected when exporting to SVG.

@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 9804 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=9804
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/9804
 //
 // <-- Short Description -->
 // Starting Scilab with a external module emptied the demo list menu.

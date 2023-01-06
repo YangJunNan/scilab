@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 6541 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=6541
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/6541
 //
 // <-- Short Description -->
 // This test validate Copy/Cut-n-Paste operation

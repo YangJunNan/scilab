@@ -7,8 +7,8 @@
 
 // <-- Non-regression test for bug 13339 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=13339
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/13339
 //
 // <-- Short Description -->
 // Kronecker product does not work on hypermatrices

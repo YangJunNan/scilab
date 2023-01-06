@@ -8,8 +8,8 @@
 //
 // <-- Non-regression test for bug 10287 -->
 //
-// <-- Bugzilla URL -->
-//http://bugzilla.scilab.org/show_bug.cgi?id=10287
+// <-- GitLab URL -->
+//https://gitlab.com/scilab/scilab/-/issues/10287
 //
 // <-- Short Description -->
 // An error message added for complex expression with integrate function.

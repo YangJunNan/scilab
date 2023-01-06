@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 14886 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/14886
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/14886
 //
 // <-- Short Description -->
 // save/load matplot failed ( mistake between rwo/x and cols/y )

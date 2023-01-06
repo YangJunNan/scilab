@@ -8,8 +8,8 @@
 
 // <-- Non-regression test for bug 13507 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=13507
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/13507
 //
 // <-- Short Description -->
 // Imaginary part in result of a complex power was missing.

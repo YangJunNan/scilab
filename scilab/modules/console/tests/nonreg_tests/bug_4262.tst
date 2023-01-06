@@ -7,8 +7,8 @@
 
 // <-- Non-regression test for bug 4262 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=4262
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/4262
 //
 // <-- Short Description -->
 // lines() on master is broken

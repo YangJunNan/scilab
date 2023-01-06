@@ -12,8 +12,8 @@
 //
 // <-- Non-regression test for bug 13766 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/13766
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/13766
 //
 // <-- Short Description -->
 // Setting figure_size property lead to wrong display and figure properties values.

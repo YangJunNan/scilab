@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 9538 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=9538
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/9538
 //
 // <-- Short Description -->
 // optimbase_checkshape() only allowed row vectors as return from the cost function.

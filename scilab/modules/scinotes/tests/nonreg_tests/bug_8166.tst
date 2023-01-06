@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 8166 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=8166
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/8166
 //
 // <-- Short Description -->
 // All the checkboxes in SciNotes 'Preferences' menu were inefficient.

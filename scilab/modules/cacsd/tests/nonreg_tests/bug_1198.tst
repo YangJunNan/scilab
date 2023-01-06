@@ -8,8 +8,8 @@
 
 // <-- Non-regression test for bug 1198 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=1198
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/1198
 //
 // <-- Short Description -->
 //    For the latest version of Scilab scilab-3.0-u-20050128 on a

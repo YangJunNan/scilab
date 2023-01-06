@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 9584 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=9584
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/9584
 //
 // <-- Short Description -->
 // grand returns non-empty matrix for negative size argument

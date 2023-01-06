@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 3177 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=3177
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/3177
 //
 // <-- Short Description -->
 // nax subticks wrong

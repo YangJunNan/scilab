@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 8965 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=8965
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/8965
 //
 // <-- Short Description -->
 // 'copy' function for handles is broken.

@@ -11,8 +11,8 @@
 
 // <-- Non-regression test for bug 2983 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=2983
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/2983
 //
 // <-- Short Description -->
 // If figure_size property is modified more than one time, next changes have no effect on the figure.

@@ -7,8 +7,8 @@
 // =============================================================================
 // <-- Non-regression test for bug 743 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=743
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/743
 //
 // <-- Short Description -->
 //    Le code suivant tourne en scilab 2.7.2 mais pas en 3.0:

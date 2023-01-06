@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 7994 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=7994
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/7994
 //
 // <-- Short Description -->
 // xs2emf created empty files on Windows

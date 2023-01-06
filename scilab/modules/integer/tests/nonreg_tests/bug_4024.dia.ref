@@ -8,8 +8,8 @@
 //
 // <-- Non-regression test for bug 4024 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=4024
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/4024
 //
 // <-- Short Description -->
 //    The addition between empty matrix and and integer type array returns empty.

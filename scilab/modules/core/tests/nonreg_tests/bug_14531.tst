@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 14531 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=14531
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/14531
 //
 // <-- Short Description -->
 // Allow SCIHOME to be specified by user (at start-up)

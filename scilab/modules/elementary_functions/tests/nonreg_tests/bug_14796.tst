@@ -8,8 +8,8 @@
 //
 // <-- Non-regression test for bug 14796 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=14796
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/14796
 //
 // <-- Short Description -->
 //    ind2sub(dims, []) returns now [].

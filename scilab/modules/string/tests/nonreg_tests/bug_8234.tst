@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 8234 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=8234
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/8234
 //
 // <-- Short Description -->
 // strtod should return an empty matrix when input argument is an empty matrix

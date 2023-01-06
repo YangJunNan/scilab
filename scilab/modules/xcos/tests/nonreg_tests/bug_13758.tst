@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 13758 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=13758
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/13758
 //
 // <-- Short Description -->
 // x_mdialog interpreted 'F' and 'T' as boolean values

@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 12913 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=12913
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/12913
 //
 // <-- Short Description -->
 // linspace errored out if third argument was integer type

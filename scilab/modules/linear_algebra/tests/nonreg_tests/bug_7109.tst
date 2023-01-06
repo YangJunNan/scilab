@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 7109 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=7109
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/7109
 //
 // <-- Short Description -->
 // 'lu' function with some complex matrices crashed on Windows.

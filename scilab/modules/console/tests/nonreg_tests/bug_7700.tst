@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 7700 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/7700
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/7700
 //
 // <-- Short Description -->
 // Bad proposition in history

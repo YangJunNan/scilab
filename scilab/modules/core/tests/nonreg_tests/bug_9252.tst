@@ -11,8 +11,8 @@
 // 
 // <-- INTERACTIVE TEST -->
 // 
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=9252
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/9252
 //
 // <-- Short Description -->
 // Some error prototypes produce screwed display

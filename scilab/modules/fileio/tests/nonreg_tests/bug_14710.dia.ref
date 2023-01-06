@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 14710 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=14710
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/14710
 //
 // <-- Short Description -->
 // fullpath(TMPDIR+...) was bugged on MacOS

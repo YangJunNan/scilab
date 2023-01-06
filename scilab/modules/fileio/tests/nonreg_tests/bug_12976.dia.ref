@@ -7,8 +7,8 @@
 // <-- CLI SHELL MODE -->
 // <-- Non-regression test for bug 12976 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=12976
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/12976
 //
 // <-- Short Description -->
 // getURL() returns a file name instead of a file path

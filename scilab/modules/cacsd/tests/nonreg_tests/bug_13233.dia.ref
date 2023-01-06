@@ -7,8 +7,8 @@
 //
 // <-- Non-regression test for bug 13233 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=13233
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/13233
 //
 // <-- Short Description -->
 // There is an offset in the result of a step response for transfer function

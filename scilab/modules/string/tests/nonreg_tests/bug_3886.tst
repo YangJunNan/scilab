@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 3886 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=3886
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/3886
 //
 // Short description:
 // strsubst with regular expression was working only on the first element of the vector.

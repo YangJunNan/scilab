@@ -10,8 +10,8 @@
 //
 // <-- ENGLISH IMPOSED -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=8682
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/8682
 //
 // <-- Short Description -->
 // funcprot did not return the previous value when called with an argument.

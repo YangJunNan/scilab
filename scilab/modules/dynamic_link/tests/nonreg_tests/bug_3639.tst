@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 3639 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=3639
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/3639
 //
 // <-- Short Description -->
 // link without parameters can crash

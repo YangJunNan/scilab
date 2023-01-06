@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 8297 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/8297
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/8297
 //
 // <-- Short Description -->
 // After M = rand(m,m);

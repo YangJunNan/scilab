@@ -8,8 +8,8 @@
 // <-- Non-regression test for bug 6387 -->
 // <-- INTERACTIVE TEST -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=6387
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/6387
 //
 // <-- Short Description -->
 // 'dos' failed to execute very long command line and returns an msg error : line too long

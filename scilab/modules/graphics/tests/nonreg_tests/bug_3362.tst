@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 3362 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=3362
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/3362
 //
 // <-- Short Description -->
 //    problem with incorrect legend in plot2d

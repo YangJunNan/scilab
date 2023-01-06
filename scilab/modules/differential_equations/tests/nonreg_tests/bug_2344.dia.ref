@@ -1,8 +1,8 @@
 //<-- CLI SHELL MODE -->
 // <-- Non-regression test for bug 2344 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=2344
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/2344
 //
 // <-- Short Description -->
 //    dassl interface bug with the info parameter

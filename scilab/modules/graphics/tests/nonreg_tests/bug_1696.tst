@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 1696-->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=1696
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/1696
 //
 // <-- Short Description -->
 // zoom_box properties only applies on X and Y axis.

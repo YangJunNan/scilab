@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 14225 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/14225
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/14225
 //
 // <-- Short Description -->
 // command-line option "-quit" should set the processs Exit status

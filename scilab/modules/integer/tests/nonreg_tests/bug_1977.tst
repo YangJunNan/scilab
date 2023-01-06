@@ -10,8 +10,8 @@
 
 // <-- Non-regression test for bug 1977 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=1977
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/1977
 //
 // <-- Short Description -->
 //    inttype has stars in error message

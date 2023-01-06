@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 12439 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/12439
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/12439
 //
 // <-- Short Description -->
 // edit_error returned a wrong message when there was no last recorded error.

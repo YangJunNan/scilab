@@ -11,8 +11,8 @@
 
 // <-- Non-regression test for bug 857 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/857
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/857
 //
 // <-- Short Description -->
 //    Imaginary unit i and index loop i in an M-file are both

@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 584 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=584
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/584
 //
 // <-- Short Description -->
 //    logspace does not return good max value ! try this :

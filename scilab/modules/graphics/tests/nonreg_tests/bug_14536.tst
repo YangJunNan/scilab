@@ -11,8 +11,8 @@
 //
 // <-- Non-regression test for bug 14536 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/14536
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/14536
 //
 // <-- Short Description -->
 // With negative coordinates in logarithmic mode, xpoly() crashed Scilab

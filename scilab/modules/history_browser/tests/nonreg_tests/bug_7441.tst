@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 7441 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=7441
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/7441
 //
 // <-- Short Description -->
 // history browser crashed if language was changed by user.

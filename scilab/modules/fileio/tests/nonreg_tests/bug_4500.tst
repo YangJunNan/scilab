@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 4500 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=4500
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/4500
 //
 // <-- Short Description -->
 // basename('') returns an not very clear error message. and not return ''

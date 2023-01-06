@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 5269 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=5269
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/5269
 //
 // <-- Short Description -->
 //    Missing feature in the Text Editor: In Scipad, Ctrl-F1 opened Scilab's help

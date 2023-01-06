@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 4833 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=4833
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/4833
 //
 // <-- Short Description -->
 //  msprintf() interpreted "\n" as a carriage return even if "\n"

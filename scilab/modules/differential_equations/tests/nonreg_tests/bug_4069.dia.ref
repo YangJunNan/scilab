@@ -8,8 +8,8 @@
 // <-- Non-regression test for bug 4069 -->
 // 
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=4069
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/4069
 //
 // <-- Short Description -->
 // problem in dassl dasrt when the jacobian is given by a list

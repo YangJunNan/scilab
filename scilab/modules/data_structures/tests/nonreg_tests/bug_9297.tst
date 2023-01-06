@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 9297 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/9297
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/9297
 //
 // <-- Short Description -->
 // assigning a mlist() to a structure's field failed

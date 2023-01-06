@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 5436 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=5436
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/5436
 //
 // <-- Short Description -->
 // The export to svg does not work with bar graphs.

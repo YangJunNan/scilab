@@ -9,8 +9,8 @@
 // <-- TEST WITH GRAPHIC -->
 // <-- INTERACTIVE TEST -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/10840
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/10840
 //
 // <-- Short Description -->
 // Keyboard arrows were disabled on 'slider' uicontrols.

@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 14925 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/14925
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/14925
 //
 // <-- Short Description -->
 // jdeff(): invoke_lu() deleted/corrupted the called java method when an error occurred

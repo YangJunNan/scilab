@@ -7,8 +7,8 @@
 
 // <-- Non-regression test for bug 14692 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=14692
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/14692
 //
 // <-- Short Description -->
 //    isequal() was always returning True for built-in functions

@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 2889 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=2889
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/2889
 //
 
 mprintf(' %s\n', "%exxxx");

@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 4295 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=4295
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/4295
 //
 // <-- Short Description -->
 // The function mdelete no more works with "*.extension" as input, it works in previous versions (Scilab 4.1.2 for exemple).

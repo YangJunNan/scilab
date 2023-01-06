@@ -9,8 +9,8 @@
 // <-- NO CHECK REF -->
 // <-- Non-regression test for bug 16038 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=16038
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/16038
 //
 // <-- Short Description -->
 // cov(x,y) size checking of arguments is incorrect

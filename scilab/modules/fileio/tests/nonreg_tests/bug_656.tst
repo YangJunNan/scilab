@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 656 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=656
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/656
 //
 // <-- Short Description -->
 //    Not the same behaviour between Linux mode and Windows mode :

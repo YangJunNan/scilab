@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 4592 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=4887
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/4887
 //
 // <-- Short Description -->
 //    remove configuration.xml , make scinotes launch exception while trying to open file

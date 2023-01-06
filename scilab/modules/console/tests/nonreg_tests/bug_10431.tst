@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 10431 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/10431
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/10431
 //
 // <-- Short Description -->
 // Could not navigate in history in using ctrl+<p|n>.

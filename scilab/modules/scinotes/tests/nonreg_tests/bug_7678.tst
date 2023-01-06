@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 7678 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=7678
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/7678
 //
 // <-- Short Description -->
 // Help action didn't give help on selection

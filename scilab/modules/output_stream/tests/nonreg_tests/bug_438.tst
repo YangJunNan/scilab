@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 438 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=438
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/438
 //
 // <-- Short Description -->
 // dummy =sprintf('%e', 1000) buggy 

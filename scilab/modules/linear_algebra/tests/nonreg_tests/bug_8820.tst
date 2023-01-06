@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 8820 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=8820
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/8820
 //
 // <-- Short Description -->
 // squeeze function may return hypermatrix when expected results must be a regular 2D array

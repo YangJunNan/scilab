@@ -8,8 +8,8 @@
 // <-- NO CHECK REF -->
 // <-- Non-regression test for bug 15137 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=15137
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/15137
 //
 // <-- Short Description -->
 // ilib_build cannot build a library with more than 999 function entries in Scilab 6

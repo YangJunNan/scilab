@@ -7,8 +7,8 @@
 // <-- CLI SHELL MODE -->
 // <-- Non-regression test for bug 10082 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/10082
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/10082
 //
 // <-- Short Description -->
 // string(complex) did not remove the leading space replacing "+" for real()>0

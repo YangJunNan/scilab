@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 16708 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=16708
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/16708
 //
 // <-- Short Description -->
 // mgetl cannot read from stdin

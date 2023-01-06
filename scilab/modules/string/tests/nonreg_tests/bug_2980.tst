@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 2980 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=2980
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/2980
 //
 
 ierr = execstr('str=string(1)','errcatch');

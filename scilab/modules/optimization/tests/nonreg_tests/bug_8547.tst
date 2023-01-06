@@ -8,8 +8,8 @@
 //
 // <-- Non-regression test for bug 8547 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=8547
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/8547
 //
 // <-- Short Description -->
 // The neldermead function may call f outside the constraints.

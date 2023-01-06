@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 10139 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=10139
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/10139
 //
 // <-- Short Description -->
 // The atomsTest function did not manage a specific test name.

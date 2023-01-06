@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 14909 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=14909
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/14909
 //
 // <-- Short Description -->
 // getlongpathname and getshortpathname must return value with "\" instead of "/"

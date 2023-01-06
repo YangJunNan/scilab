@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 6964 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=6964
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/6964
 //
 // <-- Short Description -->
 // Scilab detected a wrong SCI path.

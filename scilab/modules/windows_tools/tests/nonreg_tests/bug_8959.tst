@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 8959 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=8959
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/8959
 //
 // <-- Short Description -->
 // winqueryreg returned an incorrect value if the value name was false.

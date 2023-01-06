@@ -8,8 +8,8 @@
 //
 // <-- Non-regression test for bug 14313 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/14313
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/14313
 //
 // <-- Short Description -->
 // Parser did not interpret a space before ... as a column separator in matrices

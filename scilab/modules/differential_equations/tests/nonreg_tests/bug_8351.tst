@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 8351 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=8351
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/8351
 //
 // <-- Short Description -->
 //    The integrate function does not manage the optional input arguments properly.

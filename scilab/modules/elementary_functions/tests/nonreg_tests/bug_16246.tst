@@ -10,8 +10,8 @@
 
 // <-- Non-regression test for bug 16246 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/16246
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/16246
 //
 // <-- Short Description -->
 // isvector(sparse([1 2])) returns %F  (6.0 Regression)

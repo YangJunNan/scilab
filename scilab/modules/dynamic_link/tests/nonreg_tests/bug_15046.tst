@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 15046 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=15046
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/15046
 //
 // <-- Short Description -->
 // call() couldn't mix inputs and outputs

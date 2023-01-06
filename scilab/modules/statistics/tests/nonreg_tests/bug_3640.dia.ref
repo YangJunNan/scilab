@@ -7,8 +7,8 @@
 // =============================================================================
 // <-- Non-regression test for bug 3640 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=3640
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/3640
 //
 // <-- Short Description -->
 // Calculating the mean value in the 3rd dimension "mean(A,3)", gives an error for input matrices of a certain size

@@ -11,8 +11,8 @@
 //
 // <-- Non-regression test for bug 7862 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=7862
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/7862
 //
 // <-- Short Description -->
 // "savematfile" only saved the first string in the vector (or matrix) when variable is a vector (or matrix) of strings.

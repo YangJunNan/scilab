@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 10707 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=10707
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/10707
 //
 // <-- Short Description -->
 // atomsInstall failed to use the path shortcut

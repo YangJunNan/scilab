@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 14097 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/14097
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/14097
 //
 // <-- Short Description -->
 //

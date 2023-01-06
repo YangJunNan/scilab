@@ -8,8 +8,8 @@
 //
 // <-- Non-regression test for bug 8727 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=8727
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/8727
 //
 // <-- Short Description -->
 // The karmarkar function requires the initial guess x0.

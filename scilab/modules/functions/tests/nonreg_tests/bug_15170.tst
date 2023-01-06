@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 15170 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/15170
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/15170
 //
 // <-- Short Description -->
 // getd() generated a variable k that could overwrite a loaded one.

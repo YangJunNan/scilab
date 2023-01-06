@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 6738 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=6738
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/6738
 //
 // <-- Short Description -->
 // The horizontal line of the square root symbol was not drawn when exported.

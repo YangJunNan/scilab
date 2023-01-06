@@ -9,8 +9,8 @@
 //
 // <-- CLI SHELL MODE -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=10278
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/10278
 //
 // <-- Short Description -->
 // clear(1) returned a wrong error message

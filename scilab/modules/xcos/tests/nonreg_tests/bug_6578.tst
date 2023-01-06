@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 6578 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=6578
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/6578
 //
 // <-- Short Description -->
 // This test validates that the 10001 simulation index (4.X.X blocks) is working

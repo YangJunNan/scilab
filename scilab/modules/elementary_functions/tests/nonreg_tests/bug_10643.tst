@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 10643 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=10643
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/10643
 //
 // <-- Short Description -->
 //    Bad result when using polynom

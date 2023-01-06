@@ -6,8 +6,8 @@
 // =============================================================================
 // <-- Non-regression test for bug 14437 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=14437
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/14437
 //
 // <-- Short Description -->
 // Problem with the affectation cmde "=" applied to a "list of struct"

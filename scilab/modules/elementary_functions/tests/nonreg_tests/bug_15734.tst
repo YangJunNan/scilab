@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 15734 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/15734
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/15734
 //
 // <-- Short Description -->
 // intersect() failed with complex numbers

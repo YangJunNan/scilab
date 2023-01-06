@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 4863 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=4863
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/4863
 //
 // <-- Short Description -->
 // If there is no more action to undo, Ctrl+Z delete lines after lines at end of the file.

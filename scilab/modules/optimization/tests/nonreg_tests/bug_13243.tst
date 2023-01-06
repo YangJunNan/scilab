@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 13243 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=13243
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/13243
 //
 // <-- Short Description -->
 // optim() with "gc" option failed when iprint<0.

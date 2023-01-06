@@ -11,8 +11,8 @@
 // 
 // <-- INTERACTIVE TEST -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=7803
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/7803
 //
 // <-- Short Description -->
 // edit edit failed

@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 14411 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/14411
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/14411
 //
 // <-- Short Description -->
 // abort crashes scilab in a loop while

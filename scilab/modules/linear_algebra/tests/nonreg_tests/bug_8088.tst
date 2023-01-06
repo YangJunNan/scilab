@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 8088 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/8088
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/8088
 //
 // <-- Short Description -->
 // norm() doesn't handle matrices containing %inf or %nan.

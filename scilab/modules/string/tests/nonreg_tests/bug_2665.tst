@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 2665 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=2665
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/2665
 //
 // <-- Short Description -->
 // The example provided with the on-line help of grep crashes Scilab

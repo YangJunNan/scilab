@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 12651 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=12651
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/12651
 //
 // <-- Short Description -->
 // The scicos_simulate's 'nw' flag did not works while re-using an Info

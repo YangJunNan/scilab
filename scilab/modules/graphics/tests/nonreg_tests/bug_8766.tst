@@ -11,8 +11,8 @@
 //
 // <-- Non-regression test for bug 8766 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=8766
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/8766
 //
 // <-- Short Description -->
 // Depending on its input matrix's dimensions (number of rows less than 3),

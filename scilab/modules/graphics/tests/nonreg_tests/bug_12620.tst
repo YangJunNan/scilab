@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 12620 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/12620
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/12620
 //
 // <-- Short Description -->
 // Size of uicontextmenu is not correct when we want to display all uimenu

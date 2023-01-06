@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 16333 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/16333
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/16333
 //
 // <-- Short Description -->
 // tree_show() was broken for Xcos blocks and diagrams

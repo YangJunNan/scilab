@@ -10,8 +10,8 @@
 
 // <-- Non-regression test for bug 15403 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/15403
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/15403
 //
 // <-- Short Description -->
 // In "stacked" mode, bar(..) did not start from y=0

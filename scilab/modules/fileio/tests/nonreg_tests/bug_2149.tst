@@ -10,8 +10,8 @@
 
 // <-- Non-regression test for bug 2149 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=2149
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/2149
 //
 // <-- Short Description -->
 //    Missing error message in fprintfMat

@@ -7,8 +7,8 @@
 // <-- CLI SHELL MODE -->
 // <-- Non-regression test for bug 14471 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/14471
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/14471
 //
 // <-- Short Description -->
 // strange([]) returned [] instead of %nan as all other stat. dispersion functions

@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 12772 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=12772
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/12772
 //
 // <-- Short Description -->
 //    eigs() failed when trying to solve a sparse matrix eigen value problem.

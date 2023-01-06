@@ -7,8 +7,8 @@
 // =============================================================================
 // <-- Non-regression test for bug 1200 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=1200
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/1200
 //
 // <-- Short Description -->
 //    Incoherence dans le format d'un nombre.

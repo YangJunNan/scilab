@@ -8,8 +8,8 @@
 //
 // <-- Non-regression test for bug 9590 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=9590
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/9590
 //
 // <-- Short Description -->
 // xcos examples were not embeded in binary version on Windows.

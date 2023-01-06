@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 15321 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/15321
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/15321
 //
 // <-- Short Description -->
 // lu() is leaking memory

@@ -7,8 +7,8 @@
 // <-- TEST WITH GRAPHIC -->
 // <-- Non-regression test for bug 12481 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/12481
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/12481
 //
 // <-- Short Description -->
 // xlabel could not be used with Scilab property names

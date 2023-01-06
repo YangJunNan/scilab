@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 15299 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/15299
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/15299
 //
 // <-- Short Description -->
 // plot() silently failed plotting polynomials or rationals

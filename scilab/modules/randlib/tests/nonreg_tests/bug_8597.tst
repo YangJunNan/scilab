@@ -11,8 +11,8 @@
 //
 // <-- Non-regression test for bug 8597 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=8597
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/8597
 //
 // <-- Short Description -->
 // Uncontrolled message of grand/clcg4 should be displayed as warning

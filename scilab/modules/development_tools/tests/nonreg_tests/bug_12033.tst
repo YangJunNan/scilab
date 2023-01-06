@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 12033 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=12033
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/12033
 //
 // <-- Short Description -->
 // assert_checkalmostequal was failing with two %inf values.

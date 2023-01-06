@@ -11,8 +11,8 @@
 
 // <-- Non-regression test for bug 15617 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/15617
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/15617
 //
 // <-- Short Description -->
 // * evstr(list(..)): the number and types of the list components were

@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 11244 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/11244
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/11244
 //
 // <-- Short Description -->
 // There was an error with browsevar when deleting a global var

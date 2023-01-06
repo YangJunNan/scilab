@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 3263 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=3263
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/3263
 //
 // <-- Short Description -->
 // ludel(h) fails @ rev. 25935

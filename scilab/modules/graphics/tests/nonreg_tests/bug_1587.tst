@@ -10,8 +10,8 @@
 
 // <-- Non-regression test for bug 1587 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=1587
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/1587
 //
 // <-- Short Description -->
 //    Changing the colormap with the graphic editor of a not selected figure do not

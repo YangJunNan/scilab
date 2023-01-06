@@ -7,8 +7,8 @@
 // <-- CLI SHELL MODE -->
 // <-- Non-regression test for bug 731 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=731
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/731
 //
 // <-- Short Description -->
 //    macr2tree cannot cope with nested function

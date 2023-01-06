@@ -61,19 +61,19 @@ spdv = sparse(dv);
 spdm = sparse(dm);
 // v4 save Scilab OK (Octave)  load Scilab crash    sparse([])=>[]  (savematfile)
 // v6,7,7.3: save OK. load OK in both sides.        sparse([])=>[]
-// -v4 load crash: http://bugzilla.scilab.org/15731
+// -v4 load crash: https://gitlab.com/scilab/scilab/-/issues/15731
 
 // Sparse complexes
 // ----------------
 spcs = sparse(cs);
 spcv = sparse(cv);
 spcm = sparse(cm);
-// v4,6,7,7.3: save OK: read from Octave. load crash // http://bugzilla.scilab.org/15731
+// v4,6,7,7.3: save OK: read from Octave. load crash // https://gitlab.com/scilab/scilab/-/issues/15731
 
 // Booleans
 // ========
 // Supported only in version 4
-// Versions 6, 7, 7.3: http://bugzilla.scilab.org/15568 (missing support)
+// Versions 6, 7, 7.3: https://gitlab.com/scilab/scilab/-/issues/15568 (missing support)
 bs = abs(ds)<25
 bv = abs(dv)<25
 bm = abs(dm)<25
@@ -138,12 +138,12 @@ tv = ["a" "bc" "def" "ghij"];
 tm = ["a" "bc" "def" ; "ghij" "klm" "no"];
 th = cat(3,tv,tv);
 // v4: row, matrix, hypermatrix => column (right-padded with spaces)
-// TODO: Add tests with UTF8 (after fixing http://bugzilla.scilab.org/15570 )
-// Issues for Text columns in v7: http://bugzilla.scilab.org/15569
+// TODO: Add tests with UTF8 (after fixing https://gitlab.com/scilab/scilab/-/issues/15570 )
+// Issues for Text columns in v7: https://gitlab.com/scilab/scilab/-/issues/15569
 
 // CELLS ARRAYS
 // ============
-// Bug: Booleans not accepted in cells: http://bugzilla.scilab.org/15727
+// Bug: Booleans not accepted in cells: https://gitlab.com/scilab/scilab/-/issues/15727
 EmptyC = {};
 ces = {rand(2,3)};
 cev = { "ABC", rand(1,3,2)};
@@ -157,15 +157,15 @@ ceWithSparse = {1.1, int8(-5); sprand(10,10,0.1), "abc"};
 // STRUCTURES
 // ==========
 // v4  not accepted
-// http://bugzilla.scilab.org/15730
+// https://gitlab.com/scilab/scilab/-/issues/15730
 s0 = struct();
 s0f.r = struct();
 ss.r = %pi;             // Scalar structure
 sv(1,2).r = rand(1,3);  // Vector of structures
 sm(2,3).r = %e;         // Matrix of structures
 struc = struct("age",30, "type","software");
-// TODO: add more complex cases after fixing http://bugzilla.scilab.org/15730
-// Case from http://bugzilla.scilab.org/6372 : only with v7.3
+// TODO: add more complex cases after fixing https://gitlab.com/scilab/scilab/-/issues/15730
+// Case from https://gitlab.com/scilab/scilab/-/issues/6372 : only with v7.3
 savgg_mes.x_values = struct("quantity", struct("label","Hz"), ..
                            "values", [], ..
                            "start_value", 1, ..
@@ -214,13 +214,13 @@ pbs = [ "EmptyStr" "-v7"
         "bm"       "-v4"      // recovered as 0|1 instead of booleans
         "bv"       "-v4"      // "
         "bs"       "-v4"      // "
-        "ceWithSparse" "*"    // loadmatfile bug http://bugzilla.scilab.org/15731
+        "ceWithSparse" "*"    // loadmatfile bug https://gitlab.com/scilab/scilab/-/issues/15731
         "ch"       "-v4"      // Only the first page is saved
         "dh"       "-v4"      // Only the first page is saved
         "int64m"   "*"
         "int64s"   "*"
         "int64v"   "*"
-        "structS"  "-v7"      // loadmatfile bug http://bugzilla.scilab.org/16256
+        "structS"  "-v7"      // loadmatfile bug https://gitlab.com/scilab/scilab/-/issues/16256
         "structS"  "-v7.3"    // "
         "th"       "-v7.3"
         "tm"       "-v7.3"
@@ -232,7 +232,7 @@ only = ["savgg_mes"  "-v7.3"
         "structRow" "-v7.3"
         "structCol" "-v7.3"
         "structMat" "-v7.3"
-        "bs"        "-v4"     // http://bugzilla.scilab.org/15568
+        "bs"        "-v4"     // https://gitlab.com/scilab/scilab/-/issues/15568
         "bv"        "-v4"     //  "
         "bm"        "-v4"     //  "
         "bh"        "-v4"     //  "

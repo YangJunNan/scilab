@@ -7,8 +7,8 @@
 // <-- CLI SHELL MODE -->
 // <-- Non-regression test for bug 14681 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=14681
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/14681
 //
 // <-- Short Description -->
 //    Short circuited AND operation was not possible with double matrices in if and while clauses

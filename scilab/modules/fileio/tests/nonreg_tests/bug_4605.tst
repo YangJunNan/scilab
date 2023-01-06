@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 4605 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=4605
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/4605
 //
 // <-- Short Description -->
 //  basename('') returns a error and not ''

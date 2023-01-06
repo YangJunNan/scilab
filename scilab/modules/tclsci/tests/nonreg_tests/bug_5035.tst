@@ -7,8 +7,8 @@
 
 // <-- Non-regression test for bug 5035 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=5035
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/5035
 //
 // <-- INTERACTIVE TEST -->
 //

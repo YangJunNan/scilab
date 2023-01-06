@@ -10,8 +10,8 @@
 
 // <-- Non-regression test for bug 3590 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=3590
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/3590
 //
 // <-- Short Description -->
 // Error message when we want to see a figure which has as userdata a structure (struct).

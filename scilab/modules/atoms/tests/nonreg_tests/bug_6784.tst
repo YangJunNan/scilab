@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 6784 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=6784
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/6784
 //
 // <-- Short Description -->
 // When a copy of Scilab is installed with its ATOMS modules just by

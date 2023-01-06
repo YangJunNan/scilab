@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 1625 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=1625
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/1625
 //
 // <-- Short Description -->
 //    This problem concerns th datenum function:

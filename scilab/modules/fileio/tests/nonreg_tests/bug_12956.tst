@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 12956 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=12956
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/12956
 //
 // <-- Short Description -->
 // splitURL with no protocol in URL provokes an access violation exception

@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 14022 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=14022
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/14022
 //
 // <-- Short Description -->
 // getscilabkeywords() is k.o

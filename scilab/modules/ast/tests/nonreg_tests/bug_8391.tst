@@ -8,8 +8,8 @@
 // <-- CLI SHELL MODE -->
 // <-- NO CHECK REF -->
 
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/8391
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/8391
 //
 // <-- Short Description -->
 // a(1:10, 3:$) = [] resized "a" instead of trimming it.

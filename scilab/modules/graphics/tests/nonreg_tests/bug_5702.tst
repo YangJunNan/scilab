@@ -10,8 +10,8 @@
 
 // <-- Non-regression test for bug 5702 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=5702
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/5702
 //
 // <-- Short Description -->
 // Calling legend disables any previous call to drawlater

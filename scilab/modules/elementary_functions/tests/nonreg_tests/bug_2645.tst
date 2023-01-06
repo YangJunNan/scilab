@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 2645 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=2645
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/2645
 //
 // <-- Short Description -->
 // integration of an expression reduced to the variable name

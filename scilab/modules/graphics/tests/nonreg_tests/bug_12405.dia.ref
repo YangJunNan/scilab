@@ -8,8 +8,8 @@
 // <-- TEST WITH GRAPHIC -->
 // <-- Non-regression test for bug 12405 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=12405
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/12405
 //
 // <-- Short Description -->
 // Floating point errors could lead to an infinite loop in ticks computation.

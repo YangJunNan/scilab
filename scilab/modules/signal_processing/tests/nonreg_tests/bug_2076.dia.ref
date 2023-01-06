@@ -7,8 +7,8 @@
 // <-- CLI SHELL MODE -->
 // <-- Non-regression test for bug 2076 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=2076
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/2076
 //
 // <-- Short Description -->
 // pspect does not use the last data window

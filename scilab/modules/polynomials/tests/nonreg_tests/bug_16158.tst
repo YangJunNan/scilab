@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 16158 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/16158
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/16158
 //
 // <-- Short Description -->
 // When a multicolumn array of rationals was displayed column per column,

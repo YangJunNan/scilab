@@ -12,8 +12,8 @@
 // <-- Short Description -->
 // read function crashed on Windows XP 64 bit platform
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=8789
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/8789
 //
 
 filetoread = SCI + "/modules/io/tests/nonreg_tests/bug_8789.txt";

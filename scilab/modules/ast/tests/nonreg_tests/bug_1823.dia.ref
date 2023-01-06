@@ -7,8 +7,8 @@
 //
 // <-- Non-regression test for bug 1823 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=1823
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/1823
 //
 // <-- Short Description -->
 // Having very long instruction make scilab parser crash.

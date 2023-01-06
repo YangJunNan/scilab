@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 13866 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/13866
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/13866
 //
 // <-- Short Description -->
 // weird behaviour of fft(real(S))

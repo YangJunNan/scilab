@@ -10,8 +10,8 @@
 // <-- NO CHECK REF -->
 // <-- Non-regression test for bug 480 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/480
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/480
 //
 // <-- Short Description -->
 //    Bug Report Id: 12070200362710754

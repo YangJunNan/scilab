@@ -11,8 +11,8 @@
 //
 // <-- Non-regression test for bug 15808 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/15808
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/15808
 //
 // <-- Short Description -->
 // [5i] is parsed as [5,i]

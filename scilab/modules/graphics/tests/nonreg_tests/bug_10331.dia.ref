@@ -8,8 +8,8 @@
 // <-- ENGLISH IMPOSED -->
 // <-- Non-regression test for bug 10331 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=10331
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/10331
 //
 // <-- Short Description -->
 // datatipCreate produces a warning and an error instead of a warning if the curve user_data is not a struct

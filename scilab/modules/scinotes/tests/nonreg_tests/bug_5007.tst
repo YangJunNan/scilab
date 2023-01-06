@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 5007 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=5007
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/5007
 //
 // <-- Short Description -->
 //    When opening a non-existing file, If you answer <yes> to the following dialog box :

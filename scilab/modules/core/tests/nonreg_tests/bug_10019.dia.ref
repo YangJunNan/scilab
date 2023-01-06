@@ -9,8 +9,8 @@
 //
 // <-- CLI SHELL MODE -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=10019
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/10019
 //
 // <-- Short Description -->
 // 'exec' crashed on the error 113

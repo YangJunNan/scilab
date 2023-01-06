@@ -12,8 +12,8 @@
 //
 // <-- Non-regression test for bug 7409 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/7409
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/7409
 //
 // <-- Short Description -->
 //

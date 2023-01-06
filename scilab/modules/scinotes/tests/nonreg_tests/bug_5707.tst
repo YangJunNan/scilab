@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 5707 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=5707
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/5707
 //
 // <-- Short Description -->
 // cmd-e executed the wrong editor file

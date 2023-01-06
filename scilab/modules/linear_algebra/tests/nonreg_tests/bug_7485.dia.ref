@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 7485 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=7485
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/7485
 //
 // <-- Short Description -->
 // Division of matrices of complex numbers crashed on Windows.

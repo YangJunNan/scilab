@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 15996 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/15996
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/15996
 //
 // <-- Short Description -->
 // Priority of closerequestfcn and callbacks with while loop

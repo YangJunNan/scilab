@@ -11,8 +11,8 @@
 // <-- NOT FIXED --> 6.0.0
 //
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=3281
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/3281
 //
 
 // <-- Short Description -->

@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 5465 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=5465
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/5465
 //
 // <-- Short Description -->
 //   "unmodified reference" was not change after saving a file

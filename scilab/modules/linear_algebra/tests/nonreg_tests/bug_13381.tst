@@ -7,8 +7,8 @@
 //
 // <-- Non-regression test for bug  -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/13381
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/13381
 //
 // <-- Short Description -->
 // eigs failed due to a typo on varargin

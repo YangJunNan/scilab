@@ -12,8 +12,8 @@
 //
 // <-- Non-regression test for bug 15981 -->
 //
-// <-- Bugzilla URL -->
-// https://bugzilla.scilab.org/15981
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/15981
 //
 // <-- Short Description -->
 // wavread()

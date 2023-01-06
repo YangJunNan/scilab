@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 15070 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/15070
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/15070
 //
 // <-- Short Description -->
 //    bitset() failed when the bit position was specified as an encoded integer

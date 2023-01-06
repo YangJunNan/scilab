@@ -10,8 +10,8 @@
 // <-- MACOSX ONLY -->//
 // <-- Non-regression test for bug 15937 -->
 //
-// <-- Bugzilla URL -->
-// https://bugzilla.scilab.org/show_bug.cgi?id=15937
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/15937
 //
 // <-- Short Description -->
 // Unresolved TMPDIR makes mkdir fail on OSX

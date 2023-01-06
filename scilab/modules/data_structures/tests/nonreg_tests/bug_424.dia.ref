@@ -7,8 +7,8 @@
 // =============================================================================
 // <-- Non-regression test for bug 424 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=424
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/424
 //
 // <-- Short Description -->
 //    hypermatrix insertion problem

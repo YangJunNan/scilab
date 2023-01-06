@@ -7,8 +7,8 @@
 //
 // <-- Non-regression test for bug 4607 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=4607
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/4607
 //
 // <-- Short Description -->
 //    clipboard does not empty

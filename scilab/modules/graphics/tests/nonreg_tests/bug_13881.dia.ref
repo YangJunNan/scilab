@@ -7,8 +7,8 @@
 // <-- TEST WITH GRAPHIC -->
 // <-- Non-regression test for bug 13881 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/13881
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/13881
 //
 // <-- Short Description -->
 // datatipRemoveAll does nothing

@@ -7,8 +7,8 @@
 //
 // <-- Non-regression test for bug 13676 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/13676
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/13676
 //
 // <-- Short Description -->
 // An invisible figure could not be exported.

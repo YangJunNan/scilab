@@ -10,8 +10,8 @@
 
 // <-- Non-regression test for bug 3036 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=3036
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/3036
 //
 // <-- Short Description -->
 // After a stacksize problem (lack of memory) during a surface plot, it is no longer possible to plot in the graphics window: nothing appears.

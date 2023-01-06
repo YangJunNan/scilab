@@ -11,8 +11,8 @@
 //
 // <-- Non-regression test for bug 16029 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/16029
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/16029
 //
 // <-- Short Description -->
 // plot2d([1 2]*1e-14): Y-axis extending out of its range for small Y values

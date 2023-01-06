@@ -154,7 +154,7 @@ end
 // Matrix property value (axes.data_bounds): rowed-wise assignments
 L = list(a , [1 1.5 0 0.5 ; 1.5 2.2 -0.5 1], [1 0 ; 1.5 0.5 ; 1.5 -0.5 ; 2.2 1], ..
          a', [1 1.5 0 0.5 ; 1.5 2.2 -0.5 1], [1 0 ; 1.5 0.5 ; 1.5 -0.5 ; 2.2 1], ..
-        );  // beware about http://bugzilla.scilab.org/15079 for vref
+        );  // beware about https://gitlab.com/scilab/scilab/-/issues/15079 for vref
 for i = 0:(size(L)/3-1)
     h = L(1+3*i);
     v = L(2+3*i);

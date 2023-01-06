@@ -8,8 +8,8 @@
 //
 // <-- Non-regression test for bug 8235 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=8235
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/8235
 //
 // <-- Short Description -->
 // Masked superblock has their parameters overriden by the context.

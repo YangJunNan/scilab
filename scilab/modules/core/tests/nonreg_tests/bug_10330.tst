@@ -9,8 +9,8 @@
 //
 // <-- CLI SHELL MODE -->
 // 
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=10330
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/10330
 //
 // <-- Short Description -->
 // error did not manage vector of strings as input argument

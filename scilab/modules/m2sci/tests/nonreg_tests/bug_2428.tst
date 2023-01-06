@@ -11,8 +11,8 @@
 //
 // <-- Non-regression test for bug 2428 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/2428
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/2428
 //
 // <-- Short Description -->
 //    I would like to convert to SciLab the package TBMLab 3.1 by Smets

@@ -9,8 +9,8 @@
 // <-- TEST WITH GRAPHIC -->
 // <-- INTERACTIVE TEST -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/11685
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/11685
 //
 // <-- Short Description -->
 // gcbo variable was not defined when executing functions set

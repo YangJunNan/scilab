@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 3681 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=3681
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/3681
 //
 // <-- Short Description -->
 // Disable automatic completion if there are only spaces in a line

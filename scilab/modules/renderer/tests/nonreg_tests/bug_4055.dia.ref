@@ -8,8 +8,8 @@
 // =============================================================================
 // <-- Non-regression test for bug 4055 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=4055
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/4055
 //
 // <-- Short Description -->
 // From time to time, when I plot a graphic, scilab displays a blank graphic windows.

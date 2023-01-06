@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 6671 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=6671
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/6671
 //
 // <-- Short Description -->
 // changing style of a block in a superBlockDiagram wasn't kept when reloading it

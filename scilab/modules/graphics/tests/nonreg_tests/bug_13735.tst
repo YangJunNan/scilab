@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 13735 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/13735
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/13735
 //
 // <-- Short Description -->
 // There was not check on frameflag value in plot2d.

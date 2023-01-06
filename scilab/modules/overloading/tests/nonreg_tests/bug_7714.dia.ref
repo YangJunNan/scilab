@@ -9,8 +9,8 @@
 //
 // <-- CLI SHELL MODE -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id= 7714
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/7714
 //
 // <-- Short Description -->
 // diag, triu, tril applyed to rational matrices may change the formal variable name

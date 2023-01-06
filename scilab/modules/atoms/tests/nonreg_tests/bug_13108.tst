@@ -11,8 +11,8 @@
 //
 // <-- Non-regression test for bug 13108 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=13108
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/13108
 //
 // <-- Short Description -->
 // The time between two updates can now be configured thanks to atomsSetConfig("updateTime", time)

@@ -10,8 +10,8 @@
 // <-- CLI SHELL MODE -->
 // <-- NO TRY CATCH -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=8051
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/8051
 //
 // <-- Short Description -->
 // execstr("[") was blocking!

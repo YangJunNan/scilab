@@ -13,8 +13,8 @@
 //
 // <-- Non-regression test for bug 12548 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=12548
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/12548
 //
 // <-- Short Description -->
 // Duplicated code in xmltoformat

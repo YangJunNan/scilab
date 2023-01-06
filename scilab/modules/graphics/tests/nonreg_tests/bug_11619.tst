@@ -11,8 +11,8 @@
 //
 // <-- Non-regression test for bug 11619 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=11619
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/11619
 //
 // <-- Short Description -->
 //titlepage("Text"): the font size is no longer maximized to fit the figure's sizes

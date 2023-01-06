@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 394 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=3954
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/3954
 //
 // <-- Short Description -->
 // Graphic demos launched using functions without arguments (such as plot3d()) may modify variables.

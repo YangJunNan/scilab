@@ -8,8 +8,8 @@
 //
 // <-- Non-regression test for bug 8775 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=8775
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/8775
 //
 // <-- Short Description -->
 // The karmarkar function might diverge toward a non-optimal point.

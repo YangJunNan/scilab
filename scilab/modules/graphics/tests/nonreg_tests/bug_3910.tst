@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 3910 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=3910
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/3910
 //
 // <-- Short Description -->
 // In Scilab 4 and in isoview mode, some lines don't superpose although they should.

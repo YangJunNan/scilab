@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 15072 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=15072
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/15072
 //
 // <-- Short Description -->
 // the context was wrongly set to the parent diagram

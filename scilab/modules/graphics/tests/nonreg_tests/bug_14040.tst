@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 14040 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/14040
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/14040
 //
 // <-- Short Description -->
 // graphic property setting fails when using array of handles

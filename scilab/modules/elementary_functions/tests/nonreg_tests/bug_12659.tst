@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 12659 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=12659
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/12659
 //
 // Crash on big modulo
 

@@ -8,8 +8,8 @@
 // <-- Non-regression test for bug 7365 -->
 // <-- INTERACTIVE TEST -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=7365
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/7365
 //
 // <-- Short Description -->
 // "delete" applied to a "Checked" uimenu destroyed the handle without updating the display.

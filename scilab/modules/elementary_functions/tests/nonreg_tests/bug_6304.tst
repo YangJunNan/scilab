@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 6304 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/6304
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/6304
 //
 // <-- Short Description -->
 // setdiff() returned %nan at the beginning

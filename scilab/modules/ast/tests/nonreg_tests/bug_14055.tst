@@ -8,8 +8,8 @@
 //
 // <-- Non-regression test for bug 14055 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/14055
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/14055
 //
 // <-- Short Description -->
 // overload on matrix concatenation failed with []

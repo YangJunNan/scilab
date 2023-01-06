@@ -10,8 +10,8 @@
 
 // <-- Non-regression test for bug 3102 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=3102
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/3102
 //
 // <-- Short Description -->
 // regexp returns a "Unknown error"

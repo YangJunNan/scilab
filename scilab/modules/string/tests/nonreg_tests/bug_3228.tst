@@ -10,8 +10,8 @@
 
 // <-- Non-regression test for bug 3228 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=3228
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/3228
 //
 // <-- Short Description -->
 // ascii('é') returns a incorrect value

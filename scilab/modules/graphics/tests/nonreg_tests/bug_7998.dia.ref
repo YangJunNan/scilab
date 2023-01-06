@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 7998 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=7998
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/7998
 //
 // <-- Short Description -->
 //%h_get failed on heterogeneous handle matrix

@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 7840 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=7840
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/7840
 //
 // <-- Short Description -->
 //  big lines were splitted by mgetl.

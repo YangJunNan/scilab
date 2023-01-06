@@ -7,8 +7,8 @@
 // =============================================================================
 // <-- Non-regression test for bug 4077 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=4077
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/4077
 //
 // <-- Short Description -->
 // problem with exec and try

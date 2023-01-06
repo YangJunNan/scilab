@@ -11,8 +11,8 @@
 //
 // <-- Non-regression test for bug 7845 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=7845
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/7845
 //
 // <-- Short Description -->
 // Code generation was broken

@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 13365 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/13365
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/13365
 //
 // <-- Short Description -->
 // Data bounds not correctly updated in 3D

@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 12990 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/12990
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/12990
 //
 // <-- Short Description -->
 // GED features conflict with figure events

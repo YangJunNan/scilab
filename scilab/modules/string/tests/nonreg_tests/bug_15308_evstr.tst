@@ -9,8 +9,8 @@
 // <-- NO CHECK REF -->
 // <-- Non-regression test for bug 15308 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/15308
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/15308
 //
 // <-- Short Description -->
 //  evstr(["1;2" "3;4"]) was refused, while evstr(["1 2" ; "3 4"]) is accepted

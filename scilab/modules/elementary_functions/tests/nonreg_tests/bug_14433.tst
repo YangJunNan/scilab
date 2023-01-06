@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 14433 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=14433
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/14433
 //
 // <-- Short Description -->
 //    acoth (which call atanh) crash scilab

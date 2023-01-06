@@ -9,8 +9,8 @@
 // <-- NO CHECK REF -->
 // <-- Non-regression test for bug 16297 -->
 //
-// <-- Bugzilla URL -->
-// https://bugzilla.scilab.org/show_bug.cgi?id=16297
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/16297
 //
 // <-- Short Description -->
 // After function test(), e={}, endfunction; macr2tree(test)  crashes Scilab

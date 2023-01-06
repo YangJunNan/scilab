@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 12869 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=12869
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/12869
 //
 // <-- Short Description -->
 // min and max used in the generated codes are not defined

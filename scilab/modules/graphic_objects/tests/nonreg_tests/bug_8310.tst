@@ -10,8 +10,8 @@
 
 // <-- Non-regression test for bug 8310 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/8310
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/8310
 //
 // <-- Short Description -->
 // plot3d was drawing weird triangles when ploting non-convex polygons

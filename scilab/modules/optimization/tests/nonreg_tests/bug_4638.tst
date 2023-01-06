@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 4638 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=4638
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/4638
 //
 // <-- Short Description -->
 // this example with optim freezes scilab

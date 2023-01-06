@@ -8,8 +8,8 @@
 
 // <-- Non-regression test for bug 6466 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=6466
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/6466
 //
 // <-- Short Description -->
 //  Example with vectorized input added in help pages of mprintf and msprintf

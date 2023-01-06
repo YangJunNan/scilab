@@ -12,8 +12,8 @@
 // <-- Short Description -->
 // input("message") did not restore the original prompt after the input job is done.
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=5513
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/5513
 //
 
 a = rand(2,2)

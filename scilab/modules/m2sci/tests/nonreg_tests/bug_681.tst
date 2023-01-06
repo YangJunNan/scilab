@@ -10,8 +10,8 @@
 
 // <-- Non-regression test for bug 681 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=681
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/681
 //
 // <-- Short Description -->
 //    m2sci doesn't translate "error" function.

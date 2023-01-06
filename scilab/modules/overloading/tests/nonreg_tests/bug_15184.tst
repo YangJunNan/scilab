@@ -12,8 +12,8 @@
 //
 // <-- Non-regression test for bug 15184 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=15184
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/15184
 //
 // <-- Short Description -->
 // comparisons of complex numbers: a = 1 + %i;  a<2  crashes Scilab

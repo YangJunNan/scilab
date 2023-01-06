@@ -8,8 +8,8 @@
 //
 // <-- Non-regression test for bug 3347 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=3347
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/3347
 //
 // <-- Short Description -->
 //    Missing figure existency check in unsetmenu (and other menu functions).

@@ -7,8 +7,8 @@
 
 // <-- Non-regression test for bug 14159 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/14159
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/14159
 //
 // <-- Short Description -->
 // Matplot crashes Scilab on boolean input

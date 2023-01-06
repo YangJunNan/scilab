@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 7411 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=7411
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/7411
 //
 // <-- Short Description -->
 // clf() forgets to turn off the event handler

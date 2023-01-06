@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 3529 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=3529
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/3529
 //
 // <-- Short Description -->
 // rmdir() change directory permissions instead of deleting them.

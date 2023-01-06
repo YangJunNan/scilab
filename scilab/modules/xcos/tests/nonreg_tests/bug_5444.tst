@@ -11,8 +11,8 @@
 //
 // <-- Non-regression test for bug 5444 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=5444
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/5444
 //
 // <-- Short Description -->
 // Error report on superblock diagram is not supported.

@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 11804 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/11804
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/11804
 //
 // <-- Short Description -->
 // Untranslated prompt messages

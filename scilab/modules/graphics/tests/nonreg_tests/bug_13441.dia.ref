@@ -7,8 +7,8 @@
 // <-- TEST WITH GRAPHIC -->
 // <-- Non-regression test for bug 13441 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/13441
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/13441
 //
 // <-- Short Description -->
 // Scilab crashes when giving a string for border property of the uicontrol

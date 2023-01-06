@@ -11,8 +11,8 @@
 
 // <-- Non-regression test for bug 13679 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/13679
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/13679
 //
 // <-- Short Description -->
 // Invalid subticks in log scale after copy

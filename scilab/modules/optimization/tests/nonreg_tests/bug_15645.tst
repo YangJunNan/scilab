@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 15645 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=15645
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/15645
 //
 // <-- Short Description -->
 // deff('y=f(x)','z=x^2'),fsolve(1,f) crashes scilab

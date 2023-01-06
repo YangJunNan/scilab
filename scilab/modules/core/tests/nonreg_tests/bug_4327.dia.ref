@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 4327 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/4327
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/4327
 //
 // <-- Short Description -->
 // overloading did not support type names longer than 8 characters

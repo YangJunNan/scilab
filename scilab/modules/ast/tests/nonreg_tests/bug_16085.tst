@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 16085 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/16085
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/16085
 //
 // <-- Short Description -->
 // insertion in an empty struct is broken (regression)

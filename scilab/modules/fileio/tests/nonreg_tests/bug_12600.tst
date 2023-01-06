@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 12600 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=12600
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/12600
 //
 // <-- Short Description -->
 // mput did not manage unsigned integer.

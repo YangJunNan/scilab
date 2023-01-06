@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 4277 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=4277
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/4277
 //
 // Short description:
 // strsubst returns strange results if accented characters and

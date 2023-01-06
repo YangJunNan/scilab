@@ -7,8 +7,8 @@
 // ============================================================================
 // <-- Non-regression test for bug 13681 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=13681
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/13681
 //
 // <-- Short Description -->
 // Calling cdfnor to get the "X" vector sometimes produced a vector with some NaN

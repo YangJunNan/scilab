@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 5695 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=5695
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/5695
 //
 // <-- Short Description -->
 // "uigetfile" fails when we use 'multiple selection' input 4th argument.

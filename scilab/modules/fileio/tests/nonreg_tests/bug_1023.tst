@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 1023 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=1023
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/1023
 //
 // <-- Short Description -->
 //    mfscanf cores dump scilab. 

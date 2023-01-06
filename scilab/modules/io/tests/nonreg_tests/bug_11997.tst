@@ -7,8 +7,8 @@
 //
 // <-- Non-regression test for bug 11997 -->
 // <-- CLI SHELL MODE -->
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=11997
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/11997
 //
 // <-- Short Description -->
 // save function show compatibility warning for non existing variable instead of error

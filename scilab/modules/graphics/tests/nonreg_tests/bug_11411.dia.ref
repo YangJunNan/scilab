@@ -8,8 +8,8 @@
 //
 // <-- Non-regression test for bug 11411 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=11411
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/11411
 //
 // <-- Short Description -->
 //  save function used unsigned char to store length of string, now it is an integer

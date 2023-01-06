@@ -10,8 +10,8 @@
 
 // <-- Non-regression test for bug 5149 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=5149
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/5149
 //
 // <-- Short Description -->
 // Calls to exec functions are no more logged by diary

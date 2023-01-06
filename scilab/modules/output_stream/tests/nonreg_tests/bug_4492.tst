@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug4492 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=4492
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/4492
 //
 // output_stream_gateway.xml was not include in windows binary.
 

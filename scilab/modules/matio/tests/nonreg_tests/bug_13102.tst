@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 13102 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=13102
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/13102
 //
 // <-- Short Description -->
 // savematfile did not support "-v7.3" option.

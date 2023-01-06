@@ -8,8 +8,8 @@
 // =============================================================================
 // <-- Non-regression test for bug 68 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=68
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/68
 //
 // <-- Short Description -->
 //Precision problem with the trzeros function,

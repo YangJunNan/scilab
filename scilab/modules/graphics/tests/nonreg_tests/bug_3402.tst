@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 3402 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=3402
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/3402
 //
 // <-- Short Description -->
 // Error messages when issuing a "plot3d()" after a "plot()".

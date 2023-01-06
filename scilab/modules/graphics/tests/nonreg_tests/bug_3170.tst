@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 3170 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=3170
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/3170
 //
 // <-- Short Description -->
 // Missing checks when setting data property of fac3d objects.

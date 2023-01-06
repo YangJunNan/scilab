@@ -8,8 +8,8 @@
 //
 // <-- Non-regression test for bug 14689 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=14689
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/14689
 //
 // <-- Short Description -->
 //    resize_matrix(mat,[0 3]) does not return []

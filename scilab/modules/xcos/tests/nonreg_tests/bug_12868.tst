@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 12868 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=12868
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/12868
 //
 // <-- Short Description -->
 // There were several problems with the PULSE_SC block.

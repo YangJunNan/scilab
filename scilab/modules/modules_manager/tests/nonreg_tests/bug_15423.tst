@@ -11,8 +11,8 @@
 
 // <-- Non-regression test for bug 15423 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/15423
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/15423
 //
 // <-- Short Description -->
 // tbx_make(toolbox_skeleton, section) executed the existing builder instead

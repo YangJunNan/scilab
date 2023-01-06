@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 4867 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=4867
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/4867
 //
 // <-- Short Description -->
 //    Close the last opened file should close SciNotes or create a blank file named "untitled xx".

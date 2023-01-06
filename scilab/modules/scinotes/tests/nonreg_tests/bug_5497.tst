@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 5497 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=5497
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/5497
 //
 // <-- Short Description -->
 // Can not drag region inside Scilab editor

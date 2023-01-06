@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 13166 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/13166
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/13166
 //
 // <-- Short Description -->
 // The "l" and "b" endian modes were sticky with mget and mgeti

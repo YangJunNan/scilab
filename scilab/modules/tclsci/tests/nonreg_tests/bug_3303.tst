@@ -7,8 +7,8 @@
 
 // <-- Non-regression test for bug 3303 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=3303
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/3303
 //
 // <-- Short Description -->
 // Shambolic error management or parsing in slave Tcl interpreters

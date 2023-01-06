@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 7003 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=7003
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/7003
 //
 // <-- Short Description -->
 //

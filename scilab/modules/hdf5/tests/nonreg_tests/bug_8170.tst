@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 8170 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=8170
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/8170
 //
 // <-- Short Description -->
 // Check format of HDF5 file

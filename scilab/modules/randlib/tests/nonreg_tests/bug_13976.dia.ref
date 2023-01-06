@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 13976 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=13976
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/13976
 //
 // <-- Short Description -->
 // grand("setsd",S) failed though S has a right values.

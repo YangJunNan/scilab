@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 14779 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/14779
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/14779
 //
 // <-- Short Description -->
 // When used in logarithmic mode using coordinates <=0, xsegs crashed Scilab.

@@ -8,8 +8,8 @@
 
 // <-- Non-regression test for bug 13829 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=13829
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/13829
 //
 // <-- Short Description -->
 // mean and sum functions returned wrong results for hypermatrices.

@@ -9,8 +9,8 @@
 //
 // <-- JVM MANDATORY -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/13047
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/13047
 //
 // <-- Short Description -->
 // jcompile did not allow class reloading

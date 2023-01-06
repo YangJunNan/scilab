@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 15746 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/15746
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/15746
 //
 // <-- Short Description -->
 // 1/[1 2 3] and [1 2 3]'\1 should raise an error

@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 6386 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=6386
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/6386
 //
 // <-- Short Description -->
 // The quit operation makes xcos hang when selected on a SuperBlockDiagram window.

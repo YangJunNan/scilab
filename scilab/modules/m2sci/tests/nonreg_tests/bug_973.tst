@@ -11,8 +11,8 @@
 
 // <-- Non-regression test for bug 973 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/973
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/973
 //
 // <-- Short Description -->
 //    matlab file conversion problem (apparently: Extraction of

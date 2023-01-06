@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 16449 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/16449
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/16449
 //
 // <-- Short Description -->
 // insertion of implicit vector in cell crashes Scilab

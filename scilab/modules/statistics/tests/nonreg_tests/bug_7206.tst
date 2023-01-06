@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 7206 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=7206
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/7206
 //
 // <-- Short Description -->
 //     If h is an hypermat, meanf(h,h) returned an error

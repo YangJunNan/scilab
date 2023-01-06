@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 5075 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=5075
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/5075
 //
 // <-- Short Description -->
 //    This scilab script is considerer as a binary file by the Scilab text editor.

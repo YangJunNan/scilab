@@ -7,8 +7,8 @@
 // <-- CLI SHELL MODE -->
 // <-- Non-regression test for bug 7763 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=7763
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/7763
 //
 // <-- Short Description -->
 //    mtlb_max and mtlb_min cannot handle %i*0

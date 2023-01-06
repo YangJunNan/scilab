@@ -10,8 +10,8 @@
 // <-- CLI SHELL MODE -->
 // <-- NOT FIXED --> 6.0.0
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=7974
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/7974
 //
 // <-- Short Description -->
 // xerbla.f did not return enough information.

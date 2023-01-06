@@ -10,8 +10,8 @@
 
 // <-- Non-regression test for bug 13796 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/13796
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/13796
 //
 // <-- Short Description -->
 // tbx_generate_pofile()

@@ -9,8 +9,8 @@
 //
 // <-- CLI SHELL MODE -->
 // 
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=8687
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/8687
 //
 // <-- Short Description -->
 // Typeof() function fails on uint8, depending on the format.

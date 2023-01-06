@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 16144 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/16144
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/16144
 //
 // <-- Short Description -->
 // Addition of sparse matrices gives incorrect results

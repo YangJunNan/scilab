@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 5000 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=5000
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/5000
 //
 // <-- Short Description -->
 // The size of the edit lines in the search and replace dialog is too small.

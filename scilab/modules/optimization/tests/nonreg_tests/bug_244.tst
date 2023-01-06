@@ -10,8 +10,8 @@
 
 // <-- Non-regression test for bug 244 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=244
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/244
 //
 // <-- Short Description -->
 //   recursion problems with fsolve

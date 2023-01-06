@@ -8,8 +8,8 @@
 
 // <-- Non-regression test for bug 1712 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=1712
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/1712
 //
 // <-- Short Description -->
 //    Logical binary operations &,| with hypermatrices fail, as shown in the

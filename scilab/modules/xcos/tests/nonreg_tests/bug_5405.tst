@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 5405 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=5405
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/5405
 //
 // <-- Short Description -->
 // If one modify a superblock, the main diagram is not updated while all the 

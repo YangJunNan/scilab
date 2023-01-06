@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 2492 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=2492
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/2492
 //
 // <-- Short Description -->
 // missing tests on formal variable name validity

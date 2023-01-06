@@ -11,8 +11,8 @@
 //
 // <-- Non-regression test for bug 9810 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=9810
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/9810
 //
 // <-- Short Description -->
 // Matrix inversion error message update

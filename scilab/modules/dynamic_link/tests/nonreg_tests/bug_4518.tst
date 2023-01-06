@@ -8,8 +8,8 @@
 // <-- CLI SHELL MODE -->
 // <-- Non-regression test for bug 4518 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=4518
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/4518
 //
 // <-- Short Description -->
 // ilib_build with a column vector of strings as filenames does not work on linux
@@ -17,7 +17,7 @@
 // <-- INTERACTIVE TEST -->
 
 // go to 
-// http://bugzilla.scilab.org/show_bug.cgi?id=4518
+// https://gitlab.com/scilab/scilab/-/issues/4518
 // download attachment
 // do "Steps to reproduce the bug"
 

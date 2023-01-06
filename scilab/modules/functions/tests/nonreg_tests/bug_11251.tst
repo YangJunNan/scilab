@@ -10,8 +10,8 @@
 // <-- ENGLISH IMPOSED -->
 //
 // <-- Non-regression test for bug 11251 -->
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/11251
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/11251
 //
 // <-- Short Description -->
 // execstr() could kill the stack

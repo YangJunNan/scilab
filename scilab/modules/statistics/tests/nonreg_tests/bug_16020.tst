@@ -9,8 +9,8 @@
 // <-- NO CHECK REF -->
 // <-- Non-regression test for bug 16020 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=16020
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/16020
 //
 // <-- Short Description -->
 // cov() was slow

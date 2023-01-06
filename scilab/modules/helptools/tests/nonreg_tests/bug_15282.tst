@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 15282 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/15282
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/15282
 //
 // <-- Short Description -->
 // When the function's name starts with "%", help_from_sci() wrongly used "%"

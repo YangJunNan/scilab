@@ -8,8 +8,8 @@
 // <-- Non-regression test for bug 9113 -->
 // <-- INTERACTIVE TEST -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/9113
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/9113
 //
 // <-- Short Description -->
 // setlookandfeel could lead to an exception

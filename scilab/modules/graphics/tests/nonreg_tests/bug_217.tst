@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 217 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=217
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/217
 //
 // <-- Short Description -->
 // Successive use of 2d zoom in a graphics window gives obscure results.

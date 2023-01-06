@@ -12,8 +12,8 @@
 //
 // <-- Non-regression test for bug 8448 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=8448
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/8448
 //
 // <-- Short Description -->
 //  'whereis' function with a string as input argument did not work on some ATOMS functions.

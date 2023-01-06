@@ -10,8 +10,8 @@
 //
 // <-- ENGLISH IMPOSED -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=2791
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/2791
 //
 // <-- Short Description -->
 // funptr miscomplains about a wrong argument

@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 5002 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=5002
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/5002
 //
 // <-- Short Description -->
 //   The dialog box when opening a non-existing file doesn't work.

@@ -8,8 +8,8 @@
 //
 // <-- Non-regression test for bug 14649 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=14649
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/14649
 //
 // <-- Short Description -->
 //  isnan(complex(%inf, %inf)) returned %F

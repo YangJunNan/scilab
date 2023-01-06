@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 2890 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=2890
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/2890
 //
 // <-- Short Description -->
 // In log mode the ticks and ticks labels are not drawn in scilab5

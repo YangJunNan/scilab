@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 8786 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=8786
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/8786
 //
 // <-- Short Description -->
 // When entering wrong input arguments in 'getcolor' function, the error message has no sense.

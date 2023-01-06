@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 13807 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/13807
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/13807
 //
 // <-- Short Description -->
 // Invalid margins when the visibility of figure was to off

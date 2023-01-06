@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 4006 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=4006
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/4006
 //
 // <-- Short Description -->
 // xlfont does not give fonts the right index.

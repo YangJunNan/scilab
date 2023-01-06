@@ -9,8 +9,8 @@
 //
 // <-- CLI SHELL MODE -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=9523
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/9523
 //
 // <-- Short Description -->
 // clearglobal did not clear all global variables.

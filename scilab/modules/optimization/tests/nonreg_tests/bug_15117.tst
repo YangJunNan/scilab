@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 15117 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=15117
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/15117
 //
 // <-- Short Description -->
 // Imbricated optim/leastsq/lsqrsolve/fsolve calls either crashed or returned errors

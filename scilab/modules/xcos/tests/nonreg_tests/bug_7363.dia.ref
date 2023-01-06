@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 7363 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=7363
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/7363
 //
 // <-- Short Description -->
 // CBLOCK block produce an error when opening parameters

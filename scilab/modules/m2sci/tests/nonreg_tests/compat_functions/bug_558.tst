@@ -8,8 +8,8 @@
 
 // <-- Non-regression test for bug 558 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=558
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/558
 //
 // <-- Short Description -->
 //    mtlb_save reports an unnecessary warning. This is due to

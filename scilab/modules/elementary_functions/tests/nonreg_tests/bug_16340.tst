@@ -10,8 +10,8 @@
 
 // <-- Non-regression test for bug 16340 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/16340
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/16340
 //
 // <-- Short Description -->
 // setdiff("", "") yielded "" instead of []

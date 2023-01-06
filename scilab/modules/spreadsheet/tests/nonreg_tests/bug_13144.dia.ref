@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 13146 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=13146
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/13146
 //
 // <-- Short Description -->
 // csvRead could not ignore header comments.

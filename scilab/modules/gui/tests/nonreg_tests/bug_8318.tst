@@ -8,8 +8,8 @@
 // <-- Non-regression test for bug 8318 -->
 // <-- INTERACTIVE TEST -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/8318
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/8318
 //
 // <-- Short Description -->
 // help window was not brought up to front when already opened.

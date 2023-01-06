@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 15024 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/15024
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/15024
 //
 // <-- Short Description -->
 // After A=10;  A{1}=2  corrupts A and silently fails

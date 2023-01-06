@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 15060 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/15060
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/15060
 //
 // <-- Short Description -->
 // fplot3d did not draw because of an addition with an empty matrix which now 

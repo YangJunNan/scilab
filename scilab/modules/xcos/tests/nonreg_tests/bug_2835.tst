@@ -13,8 +13,8 @@
 //
 // <-- Non-regression test for bug 2835 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=2835
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/2835
 //
 // <-- Short Description -->
 // On negative "initial event", EVTDLY_c took no notice of the input.

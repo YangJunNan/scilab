@@ -10,8 +10,8 @@
 // <-- CLI SHELL MODE -->
 // <-- Non-regression test for bug 4401 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=4401
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/4401
 //
 // <-- Short Description -->
 // isnum returns wrong values

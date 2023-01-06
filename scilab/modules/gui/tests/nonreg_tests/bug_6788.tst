@@ -8,8 +8,8 @@
 // <-- Non-regression test for bug 6788 -->
 // <-- INTERACTIVE TEST -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=6788
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/6788
 //
 // <-- Short Description -->
 // toprint(filename): UTF8 chars in the file were mis-printed.

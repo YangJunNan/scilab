@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 612 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/612
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/612
 //
 // <-- Short Description -->
 //    under unix the dimension of graphic window is limited to

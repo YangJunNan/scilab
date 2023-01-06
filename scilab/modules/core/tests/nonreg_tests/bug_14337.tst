@@ -11,8 +11,8 @@
 // <-- NO CHECK REF -->
 // <-- NOT FIXED --> 6.0.0
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/14337
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/14337
 //
 // <-- Short Description -->
 // piping one command using a shell pipepine ( "|" ) works, but scilab segfaults at exit

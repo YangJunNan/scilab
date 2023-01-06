@@ -9,8 +9,8 @@
 //
 // <-- CLI SHELL MODE -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=9935
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/9935
 //
 // <-- Short Description -->
 // clear() did not clear all variables

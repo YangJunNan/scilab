@@ -7,8 +7,8 @@
 // <-- CLI SHELL MODE -->
 // <-- Non-regression test for bug 6702 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=6702
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/6702
 //
 // <-- Short Description -->
 //    When we compute the maximum of the last column of an hypermatrix, the

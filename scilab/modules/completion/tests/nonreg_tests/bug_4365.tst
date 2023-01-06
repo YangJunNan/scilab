@@ -7,8 +7,8 @@
 
 // <-- Non-regression test for bug 4365 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=4365
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/4365
 //
 // <-- Short Description -->
 // completion fails and returns a bad value if we try to use it on a path that doesn't exist 

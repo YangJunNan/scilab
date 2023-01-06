@@ -11,8 +11,8 @@
 
 // <-- Non-regression test for bug 13640 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/13640
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/13640
 //
 // <-- Short Description -->
 // Graphics in isoview mode were too small when in subplots

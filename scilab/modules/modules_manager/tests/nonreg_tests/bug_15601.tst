@@ -12,8 +12,8 @@
 //
 // <-- Non-regression test for bug 15601 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/15601
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/15601
 //
 // <-- Short Description -->
 // tbx_generate_pofile(..) fails generating the file when the toolbox absolute path has some spaces, or when the toolbox has no XML files

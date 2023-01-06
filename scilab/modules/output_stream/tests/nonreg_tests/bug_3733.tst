@@ -7,8 +7,8 @@
 
 // <-- Non-regression test for bug 3733 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=3733
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/3733
 //
 // <-- Short Description -->
 //  Scilab gets stuck (endless loop) when entering:

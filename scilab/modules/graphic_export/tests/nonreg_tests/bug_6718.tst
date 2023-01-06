@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 6718 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=6718
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/6718
 //
 // <-- Short Description -->
 // If a text property in a graphic contains a "<" symbol

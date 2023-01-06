@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 12998 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=12998
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/12998
 //
 // <-- Short Description -->
 // 'ans' variable should be ignored while evaluating the context

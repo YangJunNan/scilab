@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 6582 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=6582
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/6582
 //
 // <-- Short Description -->
 // handle copy does not keep foreground property

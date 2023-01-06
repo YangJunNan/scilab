@@ -13,8 +13,8 @@
 //
 // <-- Non-regression test for bug 8299 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=8299
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/8299
 //
 // <-- Short Description -->
 // ilib_compile did not return enough feedback on Windows when compiling failed.

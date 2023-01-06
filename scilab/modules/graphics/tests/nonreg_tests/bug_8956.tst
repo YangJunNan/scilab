@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 8956 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/8956
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/8956
 //
 // <-- Short Description -->
 // Certains graphics functions did not update data_bounds

@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 7754 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=7754
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/7754
 //
 // <-- Short Description -->
 // umfpack did not work with Scilab 5.3.0-beta-2 on Windows.

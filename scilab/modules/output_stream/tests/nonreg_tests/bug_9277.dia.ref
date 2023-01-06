@@ -7,8 +7,8 @@
 // <-- CLI SHELL MODE -->
 // <-- Non-regression test for bug 9277 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=9277
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/9277
 //
 // <-- Short Description -->
 // escape character "\" did not work with msprintf.

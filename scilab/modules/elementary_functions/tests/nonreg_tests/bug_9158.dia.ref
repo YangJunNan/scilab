@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 9158 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=9158
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/9158
 //
 // <-- Short Description -->
 // zeros() called with a number greater than 2**31 returns an empty matrix

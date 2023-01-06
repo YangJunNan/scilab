@@ -8,8 +8,8 @@
 
 // <-- Non-regression test for bug 133 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=133
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/133
 //
 // <-- Short Description -->
 //    The man page for mtlb_fftshift...

@@ -11,8 +11,8 @@
 //
 // <-- Non-regression test for bug 9708 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/9708
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/9708
 //
 // <-- Short Description -->
 // createNamedXXX did not check length of variable name

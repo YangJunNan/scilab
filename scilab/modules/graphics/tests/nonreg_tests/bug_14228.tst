@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 14228 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/14228
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/14228
 //
 // <-- Short Description -->
 // Setting rotation_angles property to a matrix of any size does not return an error message 

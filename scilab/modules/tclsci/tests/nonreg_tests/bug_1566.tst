@@ -7,8 +7,8 @@
 
 // <-- Non-regression test for bug 1566 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=1566
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/1566
 //
 // <-- Short Description -->
 //    TCL_SetVar eats imaginary part

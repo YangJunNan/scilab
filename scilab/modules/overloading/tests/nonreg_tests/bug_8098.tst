@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 8098 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=8098
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/8098
 //
 // <-- Short Description -->
 //    cumsum() did not apply to rational matrices.

@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 6939 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=6939
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/6939
 //
 // <-- Short Description -->
 // nearfloat("succ",rand(2,2,2)) returns a (2,2) matrix with no error

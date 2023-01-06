@@ -11,8 +11,8 @@
 //
 // <-- INTERACTIVE TEST -->
 
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=12731
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/12731
 //
 // <-- Short Description -->
 // Code generation produces erroneous block

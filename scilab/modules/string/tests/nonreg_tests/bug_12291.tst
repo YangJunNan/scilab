@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 12291 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=12291
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/12291
 //
 // <-- Short Description -->
 // Unable to display a list of handle as a handle userData

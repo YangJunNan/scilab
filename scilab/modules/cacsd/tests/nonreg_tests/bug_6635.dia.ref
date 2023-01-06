@@ -7,8 +7,8 @@
 // =============================================================================
 // <-- Non-regression test for bug 6635 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=6635
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/6635
 //
 // <-- Short Description -->
 //  Incorrectly drawn Bode plots (calfrq bug).

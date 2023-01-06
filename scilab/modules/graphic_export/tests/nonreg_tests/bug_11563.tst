@@ -9,8 +9,8 @@
 //
 // <-- INTERACTIVE TEST -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=11563
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/11563
 //
 // <-- Short Description -->
 // Button was called "Open" instead of "Save" in the graphics export file selection GUI.

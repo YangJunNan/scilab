@@ -13,8 +13,8 @@
 //
 // <-- Non-regression test for bug 853 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=853
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/853
 //
 // <-- Short Description -->
 //    Error with the m2sci on personnal function :

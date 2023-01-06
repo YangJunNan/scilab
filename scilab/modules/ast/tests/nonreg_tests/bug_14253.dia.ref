@@ -8,8 +8,8 @@
 //
 // <-- Non-regression test for bug 14253 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/14253
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/14253
 //
 // <-- Short Description -->
 // Problem with the affectation cmde "=" applied to a "list of struct"

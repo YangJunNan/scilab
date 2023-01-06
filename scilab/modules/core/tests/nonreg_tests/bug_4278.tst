@@ -7,8 +7,8 @@
 
 // <-- Non-regression test for bug 4278 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=4278
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/4278
 //
 // <-- Short Description -->
 // typename() called with a wrong number of input arguments  returns incoherent errors.

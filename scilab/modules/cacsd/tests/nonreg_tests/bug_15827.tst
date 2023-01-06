@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 15827 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/15827
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/15827
 //
 // <-- Short Description -->
 // After bode(..,"rad")

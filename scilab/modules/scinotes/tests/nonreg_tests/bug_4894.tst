@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 4894 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=4894
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/4894
 //
 // <-- Short Description -->
 //    SciNotes should detect when the same file is opened twice.

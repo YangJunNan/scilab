@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 3467 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=3467
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/3467
 //
 // <-- Short Description -->
 // diag takes the first column of a matrix instead of the diagonal.

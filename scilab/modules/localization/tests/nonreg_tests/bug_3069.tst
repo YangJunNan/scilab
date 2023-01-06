@@ -10,8 +10,8 @@
 //
 // <-- ENGLISH IMPOSED -->"
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=3069
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/3069
 //
 // <-- Short Description -->
 //    bug 3069 fixed - In some cases, the function gettext was returning \"

@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 3839 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=3839
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/3839
 //
 // Short description:
 // strrev doesn't work correctly if the string to be reversed includes some accentuated characters.

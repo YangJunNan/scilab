@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 1505 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=1505
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/1505
 //
 // <-- Short Description -->
 //    datenum does not handle years correctly:

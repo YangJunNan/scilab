@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 3053 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=3053
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/3053
 //
 // <-- Short Description -->
 //  mprintf("%s\n","hell");

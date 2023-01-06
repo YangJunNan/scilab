@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 9920 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=9920
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/9920
 //
 // <-- Short Description -->
 // winqueryreg did not manage HKEY_CURRENT_CONFIG.

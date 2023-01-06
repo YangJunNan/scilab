@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 15624 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/15624
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/15624
 //
 // <-- Short Description -->
 // parser shoud not allow fun(,) or fun(x,) for internals

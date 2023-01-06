@@ -7,8 +7,8 @@
 // <-- TEST WITH GRAPHIC -->
 // <-- Non-regression test for bug 8168 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=8168
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/8168
 //
 // <-- Short Description -->
 // Adding a datatip in a figure that mix surface and curve may generate a zero divide error.

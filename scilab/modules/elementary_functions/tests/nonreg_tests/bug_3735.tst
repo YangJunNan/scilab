@@ -1,7 +1,7 @@
 // <-- Non-regression test for bug 3735 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=3735
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/3735
 //
 // <-- Short Description -->
 // cat() is broken when working with matrix of strings.

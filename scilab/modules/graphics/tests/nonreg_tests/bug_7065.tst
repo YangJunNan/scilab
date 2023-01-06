@@ -7,8 +7,8 @@
 
 // <-- Non-regression test for bug 7065 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=7065
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/7065
 //
 // <-- Short Description -->
 // "getColorIndex" used some global variable prohibiting user's calls.

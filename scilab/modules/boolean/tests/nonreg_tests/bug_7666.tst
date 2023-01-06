@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 7666 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/7666
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/7666
 //
 // <-- Short Description -->
 // Inconstencies between and/or and &/|

@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 14193 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/14193
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/14193
 //
 // <-- Short Description -->
 // Problem with matrix defined in a matrix of structs.

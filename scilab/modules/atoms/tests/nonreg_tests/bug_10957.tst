@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 10957 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=10957
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/10957
 //
 // <-- Short Description -->
 // atomsInstall required a network connection to install a local package.

@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 10171 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=10171
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/10171
 //
 // <-- Short Description -->
 // loadmatfile could not load cells

@@ -8,8 +8,8 @@
 
 // <-- Non-regression test for bug 1568 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=1568
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/1568
 //
 // <-- Short Description -->
 //    The random number generator grand() does not always produce the same 

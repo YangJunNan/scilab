@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 1409 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=1409
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/1409
 //
 // <-- Short Description -->
 // Clipping does not work in 3D.

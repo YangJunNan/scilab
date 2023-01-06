@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 6674 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=6674
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/6674
 //
 // <-- Short Description -->
 // modelica generic block did not work.

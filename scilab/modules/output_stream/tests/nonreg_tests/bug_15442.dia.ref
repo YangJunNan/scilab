@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 15442 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/15442
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/15442
 //
 // <-- Short Description -->
 // mprintf, msprintf cannot handle uint64 integers > 2^32-1

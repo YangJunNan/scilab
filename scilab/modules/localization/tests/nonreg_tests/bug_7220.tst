@@ -9,8 +9,8 @@
 // <-- INTERACTIVE TEST -->
 // <-- WINDOWS ONLY -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=7220
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/7220
 //
 // <-- Short Description -->
 //  On Windows, when you start Scilab with "WScilex -l ru_RU", some menus were disabled.

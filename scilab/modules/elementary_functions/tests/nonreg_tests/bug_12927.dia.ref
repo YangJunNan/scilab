@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 12927 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=12927
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/12927
 //
 // <-- Short Description -->
 // fix integer input in ones, rand, eye, zeros

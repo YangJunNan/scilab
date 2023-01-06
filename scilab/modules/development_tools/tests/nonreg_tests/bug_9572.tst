@@ -10,8 +10,8 @@
 
 // <-- Non-regression test for bug 9572 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=9572
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/9572
 //
 // <-- Short Description -->
 // assert_checkerror did not check multi lines errors

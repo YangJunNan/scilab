@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 15490 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/15940
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/15940
 //
 // <-- Short Description -->
 // Error message of grand function was incoherent

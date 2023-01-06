@@ -7,8 +7,8 @@
 // <-- CLI SHELL MODE -->
 // <-- Non-regression test for bug 7094 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=7094
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/7094
 //
 // <-- Short Description -->
 // If badly called, ode may makes Scilab crash

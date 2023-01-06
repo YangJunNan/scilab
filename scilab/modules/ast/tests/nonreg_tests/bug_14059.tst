@@ -8,8 +8,8 @@
 //
 // <-- Non-regression test for bug 14059 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/14059
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/14059
 //
 // <-- Short Description -->
 // Lack of performance on vector write operation

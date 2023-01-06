@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 10078 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/10078
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/10078
 //
 // <-- Short Description -->
 // isinf() was not reliable for polynomials

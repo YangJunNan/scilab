@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 4498 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=4498
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/4498
 //
 // <-- Short Description -->
 //  merror() returns weird strings if called before opening files.

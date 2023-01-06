@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 4684 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=4684
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/4684
 // printf() does not properly deal with -%inf.
 
 ref = 'Value is: -Inf';

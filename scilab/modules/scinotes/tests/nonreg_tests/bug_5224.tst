@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 5224 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=5224
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/5224
 //
 // <-- Short Description -->
 //    Maj+Tab modify the text selection

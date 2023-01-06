@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 12348 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/12348
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/12348
 //
 // <-- Short Description -->
 // surf() disable lines(n) if there is no input variable.

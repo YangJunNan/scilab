@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 2085 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=2085
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/2085
 //
 // <-- Short Description -->
 // this example fails on some pc ???

@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 2573 1949 and 2101 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=2573
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/2573
 //
 // <-- Short Description -->
 //qld gives erroneous answer

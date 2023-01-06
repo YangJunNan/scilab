@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 15261 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/15261
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/15261
 //
 // <-- Short Description -->
 // Wrong default inserted in struct

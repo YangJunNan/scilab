@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 3912 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=3912
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/3912
 //
 // Short description:
 // strsubst used with regular expression may return very stange result.

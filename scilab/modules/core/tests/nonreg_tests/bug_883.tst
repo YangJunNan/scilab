@@ -7,8 +7,8 @@
 // <-- NOT FIXED --> 6.0.0
 // <-- Non-regression test for bug 883 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=883
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/883
 //
 // <-- Short Description -->
 //    format() output oddities

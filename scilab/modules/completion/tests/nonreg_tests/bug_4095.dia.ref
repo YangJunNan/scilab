@@ -6,8 +6,8 @@
 // =============================================================================
 // <-- Non-regression test for bug 4095 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=4095
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/4095
 //
 // <-- Short Description -->
 // Completion delete some characters of the string we are typing (With NW mode).

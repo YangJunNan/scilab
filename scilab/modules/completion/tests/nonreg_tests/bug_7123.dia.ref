@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 7123 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=7123
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/7123
 //
 // <-- Short Description -->
 // No completion was possible if the name of a variable is preceded by ~ or @ or < or >

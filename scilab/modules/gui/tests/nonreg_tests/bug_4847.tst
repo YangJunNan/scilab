@@ -8,8 +8,8 @@
 // <-- Non-regression test for bug 4847 -->
 // <-- INTERACTIVE TEST -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/4847
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/4847
 //
 // <-- Short Description -->
 // In uigetfile, there was no way to select files with a given pattern

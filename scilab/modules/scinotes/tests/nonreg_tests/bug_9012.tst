@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 9012 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/9012
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/9012
 //
 // <-- Short Description -->
 // Print preview triggered a java exception.

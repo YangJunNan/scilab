@@ -10,8 +10,8 @@
 
 // <-- Non-regression test for bug 4726 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=4726
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/4726
 // <-- Short Description -->
 // Under !Windows, when the link dynamic was copying the files,
 // in some cases, it was going to copy backup files

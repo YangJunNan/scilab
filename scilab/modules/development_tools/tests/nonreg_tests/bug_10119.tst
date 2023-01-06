@@ -11,8 +11,8 @@
 
 // <-- Non-regression test for bug 10119 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/10119
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/10119
 //
 // <-- Short Description -->
 // assert_checkequal does not support sparse complex doubles

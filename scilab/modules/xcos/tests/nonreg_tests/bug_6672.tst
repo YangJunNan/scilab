@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 6672 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=6672
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/6672
 //
 // <-- Short Description -->
 // Code generation failed if superblock had some gain blocks

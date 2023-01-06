@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 5319 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=5319
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/5319
 //
 // <-- Short Description -->
 // The 'Save as' dialog box should set as initial (default) name the present file name (instead of blank), whenever the file to be saved is already named.

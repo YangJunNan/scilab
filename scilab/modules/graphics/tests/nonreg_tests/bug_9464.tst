@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 9464 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=9464
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/9464
 //
 // <-- Short Description -->
 // contourf did not work when the "Matlab Compatibility functions module" was not installed.

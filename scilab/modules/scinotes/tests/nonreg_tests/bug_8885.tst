@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 8885 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/8885
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/8885
 //
 // <-- Short Description -->
 // Anchors were removed on a Replace All action.

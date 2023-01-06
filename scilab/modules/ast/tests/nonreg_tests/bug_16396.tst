@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 16396 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/16396
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/16396
 //
 // <-- Short Description -->
 // array extraction with : crash the software

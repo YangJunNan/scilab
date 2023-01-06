@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 3753 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=3753
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/3753
 //
 // <-- Short Description -->
 // Using draw axes in range mode ('r') produces labels are completely unreadable and show strange characters.

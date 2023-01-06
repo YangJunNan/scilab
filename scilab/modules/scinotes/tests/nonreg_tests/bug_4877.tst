@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 4877 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=4877
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/4877
 //
 // <-- Short Description -->
 // When commenting several lines :

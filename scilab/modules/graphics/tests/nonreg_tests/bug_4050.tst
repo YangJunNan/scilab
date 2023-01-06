@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 4050 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/4050
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/4050
 //
 // <-- Short Description -->
 // With ged(), editing a graphical text having a font size > 5 set the font

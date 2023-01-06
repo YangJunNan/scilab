@@ -12,8 +12,8 @@
 // <-- Short Description -->
 // load function (hdf5 based) cannot load a tlist.
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=10946
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/10946
 //
 
 // Try to load ref file

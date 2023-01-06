@@ -11,8 +11,8 @@
 
 // <-- Non-regression test for bug 12082 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=12082
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/12082
 //
 // <-- Short Description -->
 // convstr function does not work with non-ASCII symbols: it cannot change the

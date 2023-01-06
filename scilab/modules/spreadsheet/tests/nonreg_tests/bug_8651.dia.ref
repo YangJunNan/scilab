@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 8651 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=8651
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/8651
 //
 // <-- Short Description -->
 // The error message of write_csv was wrong.

@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 2631 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=2631
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/2631
 //
 // <-- Short Description -->
 // Change the <figure_handle>.figure_name property not modify the window title like

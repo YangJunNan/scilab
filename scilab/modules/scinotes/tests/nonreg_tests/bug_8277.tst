@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 8277 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/8277
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/8277
 //
 // <-- Short Description -->
 // SciNotes generated exceptions when the keyboard is switched in Chinese mode

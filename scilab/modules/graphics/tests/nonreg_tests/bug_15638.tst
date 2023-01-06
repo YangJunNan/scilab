@@ -11,8 +11,8 @@
 
 // <-- Non-regression test for bug 15638 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/15638
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/15638
 //
 // <-- Short Description -->
 // colorbar() displayed tips colors twice smaller than for other ones

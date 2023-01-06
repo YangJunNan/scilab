@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 4308 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=4308
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/4308
 //
 // <-- Short Description -->
 // if mdelete is called with a path on a non empty directory

@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 2792 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=2792
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/2792
 //
 // <-- Short Description -->
 // A bug which has appeared with Scilab 5

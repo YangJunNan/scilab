@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 12485 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/12485
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/12485
 //
 // <-- Short Description -->
 // xchange returned bad values with log scale

@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 2913 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=2913
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/2913
 //
 // <-- Short Description -->
 // The legend is displayed over the graphic

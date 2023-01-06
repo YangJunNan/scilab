@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 8356 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=8356
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/8356
 //
 // <-- Short Description -->
 // sci2exp() applied to a list having undefined fields yielded an error

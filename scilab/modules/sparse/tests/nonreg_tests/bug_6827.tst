@@ -10,8 +10,8 @@
 
 // <-- Non-regression test for bug 6827 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=6827
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/6827
 //
 // <-- Short Description -->
 // the function spchol was returning a wrong error message if X is complex

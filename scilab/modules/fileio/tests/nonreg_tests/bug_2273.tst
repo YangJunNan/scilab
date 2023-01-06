@@ -7,8 +7,8 @@
 
 // <-- Non-regression test for bug 2273 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=2273
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/2273
 //
 // <-- Short Description -->
 // Scilab didn't manage UNC path on Windows

@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 2478 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=2478
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/2478
 //
 // <-- Short Description -->
 // param3d line drawing may disappear when mark mode is on.

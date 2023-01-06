@@ -7,8 +7,8 @@
 // =============================================================================
 // <-- Non-regression test for bug 7900 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=7900
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/7900
 //
 // <-- Short Description -->
 // inserting a rational in a rational hymermatrix may generate invalid rationals entries (with zero denominators)

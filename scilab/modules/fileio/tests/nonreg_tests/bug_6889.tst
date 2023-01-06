@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 6889 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=6889
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/6889
 //
 // <-- Short Description -->
 // 'fscanfMat' crashed with wrong formatted files.

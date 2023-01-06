@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 16549 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/16549
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/16549
 //
 // <-- Short Description -->
 // Simple script crashes Scilab in GUI mode

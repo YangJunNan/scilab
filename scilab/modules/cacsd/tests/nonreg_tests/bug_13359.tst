@@ -7,8 +7,8 @@
 //
 // <-- Non-regression test for bug 13359 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/13359
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/13359
 //
 // <-- Short Description -->
 // Nyquist datatip were not displaying negative frequencies properly

@@ -10,8 +10,8 @@
 
 // <-- Non-regression test for bug 15557 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=15557
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/15557
 //
 // <-- Short Description -->
 // mtlb_std called with only one argument returns an error

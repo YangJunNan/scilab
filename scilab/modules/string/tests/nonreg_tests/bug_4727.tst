@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 4727 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=4727
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/4727
 //
 // <-- Short Description -->
 // The function length does not return the same value in master and Scilab 4.1.2

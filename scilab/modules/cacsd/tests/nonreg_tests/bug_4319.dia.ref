@@ -7,8 +7,8 @@
 // =============================================================================
 // <-- Non-regression test for bug 4319 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=4319
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/4319
 //
 // <-- Short Description -->
 //  The function nthresh called by the function parrt in ccontrg.sci is

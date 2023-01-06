@@ -8,8 +8,8 @@
 // <-- Non-regression test for bug 4837 -->
 // <-- INTERACTIVE TEST -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=4837
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/4837
 //
 // <-- Short Description -->
 // uigetfile()/uigetfile() shall accept relative paths for the dir argument.

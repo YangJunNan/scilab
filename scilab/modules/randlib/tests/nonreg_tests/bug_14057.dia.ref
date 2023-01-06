@@ -7,8 +7,8 @@
 // <-- CLI SHELL MODE -->
 // <-- Non-regression test for bug 14057 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=14057
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/14057
 //
 // <-- Short Description -->
 //    Calling grand(m,n) returned a wrong error and grand(m,n,p) called %s_grand

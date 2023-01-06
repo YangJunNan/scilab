@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 9865 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=9865
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/9865
 //
 // <-- Short Description -->
 // When making a plot with "point" (no line), no symbol was shown in the legend.

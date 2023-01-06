@@ -8,8 +8,8 @@
 // <-- Non-regression test for bug 1657 -->
 // NOT FIXED
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=1657
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/1657
 //
 // <-- Short Description -->
 // 'ode' is not reenterable

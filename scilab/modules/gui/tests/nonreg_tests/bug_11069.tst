@@ -8,8 +8,8 @@
 // <-- Non-regression test for bug 11069 -->
 // <-- TEST WITH GRAPHIC -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/11069
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/11069
 //
 // <-- Short Description -->
 // An axes could be wrongly set as parent for an uicontrol.

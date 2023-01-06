@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 15811 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/15811
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/15811
 //
 // <-- Short Description -->
 // comparison of containers with cell failed.

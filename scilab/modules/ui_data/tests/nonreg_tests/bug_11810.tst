@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 11810 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/11810
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/11810
 //
 // <-- Short Description -->
 // In EditVar, undesired data were added when the edition is cancelled.

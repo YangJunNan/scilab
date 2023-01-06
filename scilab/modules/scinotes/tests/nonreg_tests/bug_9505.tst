@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 9505 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/9505
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/9505
 //
 // <-- Short Description -->
 // A LaTeX string in a comment was not considered as a comment

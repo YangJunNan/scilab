@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 3186 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=3186
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/3186
 //
 // <-- Short Description -->
 // input is lost when graphics window is closed

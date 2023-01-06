@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 6686 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=6686
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/6686
 //
 // <-- Short Description -->
 // The automatic sub-ticking gave wrong result.

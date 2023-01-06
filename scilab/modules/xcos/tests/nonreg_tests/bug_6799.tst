@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 6799 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=6799
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/6799
 //
 // <-- Short Description -->
 //  The TOWS_c.sci define the default setting in the wrong order.

@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 12150 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=12150
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/12150
 //
 // <-- Short Description -->
 //    datatipCreate fails with one single point

@@ -8,8 +8,8 @@
 
 // <-- Non-regression test for bug 8607 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=8607
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/8607
 //
 // <-- Short Description -->
 // Some error messages in modules/overloading/macros are not standard and not localized

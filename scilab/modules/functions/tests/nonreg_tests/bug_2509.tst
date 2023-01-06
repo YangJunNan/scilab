@@ -8,8 +8,8 @@
 // <-- CLI SHELL MODE -->
 // <-- Non-regression test for bug 2509 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=2509
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/2509
 //
 // <-- Short Description -->
 // execstr forgets to store the function name and line number when in the errcatch mode

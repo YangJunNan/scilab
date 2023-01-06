@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 1130 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=1130
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/1130
 //
 // <-- Short Description -->
 // logarithmic mode does not work with grayplot.

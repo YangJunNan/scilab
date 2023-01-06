@@ -10,8 +10,8 @@
 
 // <-- Non-regression test for bug 1609 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=1609
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/1609
 //
 // <-- Short Description -->
 // I can't freely choose "fs" parameter in the following example with 'sound'

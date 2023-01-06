@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 11449 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=11449
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/11449
 //
 // <-- Short Description -->
 // color('red') create a visible figure

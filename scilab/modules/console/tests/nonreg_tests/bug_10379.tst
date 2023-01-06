@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 10379 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/10379
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/10379
 //
 // <-- Short Description -->
 // lines did not manage a 1x2 vector [nc, nl] as input argument

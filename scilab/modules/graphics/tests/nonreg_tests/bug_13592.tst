@@ -10,8 +10,8 @@
 
 // <-- Non-regression test for bug 13592 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/13592
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/13592
 //
 // <-- Short Description -->
 // When interactively setting a legend() in an axes embedded in a uicontrol frame,

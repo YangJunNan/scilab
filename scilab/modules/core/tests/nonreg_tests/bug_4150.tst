@@ -7,8 +7,8 @@
 
 // <-- Non-regression test for bug 4150 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=4150
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/4150
 //
 // <-- Short Description -->
 // SCIHOME\scilab.ini is executed twice at Scilab startup.

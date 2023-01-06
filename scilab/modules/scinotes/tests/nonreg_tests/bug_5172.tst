@@ -11,8 +11,8 @@
 //
 // <-- Non-regression test for bug 5172 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=5172
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/5172
 //
 // <-- Short Description -->
 // when i try to open a file, editor indicates that it is already modified + sometimes we have exceptions.

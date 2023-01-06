@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 8309 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/8309
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/8309
 //
 // <-- Short Description -->
 // Bad display of the line number in whereami mode with broken lines

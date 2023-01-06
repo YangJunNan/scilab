@@ -8,8 +8,8 @@
 //
 // <-- Non-regression test for bug 10867 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=10867
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/10867
 //
 // <-- Short Description -->
 // Loading a .scg file fails when the legend contains accentuated characters.

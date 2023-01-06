@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 15553 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=15553
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/15553
 //
 // <-- Short Description -->
 // TOWS_c block failed when simulation time = 0

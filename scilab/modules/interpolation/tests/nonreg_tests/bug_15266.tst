@@ -10,8 +10,8 @@
 
 // <-- Non-regression test for bug 15266 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=15266
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/15266
 //
 // <-- Short Description -->
 // Wrong default out_mode in linear_interpn

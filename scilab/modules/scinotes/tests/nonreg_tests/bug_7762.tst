@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 7762 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/7762
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/7762
 //
 // <-- Short Description -->
 // A keyword was not fully helpable depending on the caret position

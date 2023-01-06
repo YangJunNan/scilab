@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 3459 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=3459
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/3459
 //
 // <-- Short Description -->
 // -->l(2).row1(2)=M.row1(1)

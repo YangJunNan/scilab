@@ -7,8 +7,8 @@
 // <-- TEST WITH GRAPHIC -->
 // <-- Non-regression test for bug 2906 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=2906
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/2906
 //
 // <-- Short Description -->
 // mesh : colors of hidden meshs (to compare with scilab 4.1.2)

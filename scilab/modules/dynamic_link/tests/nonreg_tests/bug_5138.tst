@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 5138 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=5138
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/5138
 // <-- Short Description -->
 //  if the "makefile name" argument is an empty matrix, the generated Makefile is ".mak"
 

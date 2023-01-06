@@ -7,8 +7,8 @@
 // <-- CLI SHELL MODE -->
 // <-- Non-regression test for bug #592 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/592
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/592
 //
 // <-- Short Description -->
 //    linspace(a, b, n<=0) returned b instead of []. Same problem with logspage

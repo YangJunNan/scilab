@@ -8,8 +8,8 @@
 //
 // <-- Non-regression test for bug 10391 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/10391
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/10391
 //
 // <-- Short Description -->
 // Error when completion occurs after global deletation.

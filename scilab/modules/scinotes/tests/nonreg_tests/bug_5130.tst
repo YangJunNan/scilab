@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 5130 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=5130
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/5130
 //
 // <-- Short Description -->
 //   No warning is displayed when "Save As" command failed (because you have no write access on the directory for example) and an exception is printed in the terminal.

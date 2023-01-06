@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 4864 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=4864
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/4864
 //
 // <-- Short Description -->
 //    Ctrl-z should remove "modifed flag" when undoing the last (in fact first) modification

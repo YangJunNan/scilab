@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 10695 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=10695
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/10695
 //
 // <-- Short Description -->
 // scf() and plot() could fail.

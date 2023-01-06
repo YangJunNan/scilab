@@ -10,8 +10,8 @@
 
 // <-- Non-regression test for bug 7652 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/7652
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/7652
 //
 // <-- Short Description -->
 // Inserting list("") in a cells array could be erroneous

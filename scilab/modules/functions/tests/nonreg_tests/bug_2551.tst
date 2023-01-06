@@ -9,7 +9,7 @@
 
 // <-- Non-regression test for bug 2551 -->
 //
-// <-- Bugzilla URL -->
+// <-- GitLab URL -->
 // http://www.scilab.org/cgi-bin/bugzilla_bugAdmin_II/show_bug.cgi?id=2551
 //
 // <-- Short Description -->

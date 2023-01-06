@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 14015 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/14015
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/14015
 //
 // <-- Short Description -->
 // Nany Nan term added to a polynomial was ignored

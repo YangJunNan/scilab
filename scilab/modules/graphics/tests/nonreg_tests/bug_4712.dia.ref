@@ -8,8 +8,8 @@
 //
 // <-- Non-regression test for bug 4712 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=4712
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/4712
 //
 // <-- Short Description -->
 // at src/c/getHandleProperty/set_data_property.c:319

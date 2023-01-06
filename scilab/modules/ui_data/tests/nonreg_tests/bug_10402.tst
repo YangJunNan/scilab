@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 10402 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/10402
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/10402
 //
 // <-- Short Description -->
 // Exception was thrown when a filter was set on an expanded tree in filebrowser.

@@ -8,8 +8,8 @@
 //
 // <-- Non-regression test for bug 13743 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=13743
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/13743
 //
 // <-- Short Description -->
 // neldermead_configure function failed to set options "-gamma" and "-sigma"

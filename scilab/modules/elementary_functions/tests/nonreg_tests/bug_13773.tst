@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 13773 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=13773
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/13773
 //
 // <-- Short Description -->
 // save with negative second argument dit not trigger an error

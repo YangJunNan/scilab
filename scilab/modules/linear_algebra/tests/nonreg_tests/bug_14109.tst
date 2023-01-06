@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 14109 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=14109
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/14109
 //
 // <-- Short Description -->
 //    lsq function crashed Scilab when Scilab version depended on mkl library.

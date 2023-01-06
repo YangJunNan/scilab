@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 3289 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=3289
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/3289
 //
 // <-- Short Description -->
 // When a legended curve is destroyed, legend is not updated and Scilab becomes unstable

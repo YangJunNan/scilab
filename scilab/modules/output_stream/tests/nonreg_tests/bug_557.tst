@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 557 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=557
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/557
 //
 // <-- Short Description -->
 //    mprintf and diary don't work together

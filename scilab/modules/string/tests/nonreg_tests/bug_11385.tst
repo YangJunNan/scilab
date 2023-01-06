@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 11385 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=11385
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/11385
 //
 // <-- Short Description -->
 // Wrong error message returned by length when called without input argument.

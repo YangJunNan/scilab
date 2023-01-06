@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 8230 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/8230
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/8230
 //
 // <-- Short Description -->
 // Save As action did not propose the current file name as default.

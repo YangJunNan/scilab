@@ -11,8 +11,8 @@
 //
 // <-- Non-regression test for bug 15526 -->
 //
-// <-- Bugzilla URL -->
-// https://bugzilla.scilab.org/show_bug.cgi?id=15526
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/15526
 //
 // <-- Short Description -->
 // fscanfMat failed with a large text file

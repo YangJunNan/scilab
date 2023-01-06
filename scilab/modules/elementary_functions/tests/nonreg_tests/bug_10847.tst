@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 10847 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=10847
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/10847
 //
 // <-- Short Description -->
 // dec2base returned a wrong error message with a complex number as input argument

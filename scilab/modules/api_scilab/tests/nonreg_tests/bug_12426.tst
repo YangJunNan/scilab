@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 12426 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=12426
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/12426
 //
 // <-- Short Description -->
 // By using addErrorMessage, random string error can be displayed.

@@ -11,8 +11,8 @@
 //
 // <-- Non-regression test for bug 7625 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=7625
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/7625
 //
 // <-- Short Description -->
 // Problem with selection which disappeared when a window lost the focus.

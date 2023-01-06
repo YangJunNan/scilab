@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 4876 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=4876
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/4876
 //
 // <-- Short Description -->
 //    The cancel button of the "Goto Line" window doesn't work. The original position is forgotten.

@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 2936 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=2936
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/2936
 //
 // <-- Short Description -->
 // The demo "Surface with hole 1" is not colorized (just blue, not multi-colored as in Scilab 4.1.2)

@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 5460 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=5460
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/5460
 //
 // <-- Short Description -->
 // added menus 'Close All' and Close all but this' in editor.

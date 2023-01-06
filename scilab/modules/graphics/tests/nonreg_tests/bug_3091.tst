@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 3091 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=3091
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/3091
 //
 // <-- Short Description -->
 

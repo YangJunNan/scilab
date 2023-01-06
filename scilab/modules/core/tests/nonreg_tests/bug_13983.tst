@@ -9,8 +9,8 @@
 //
 // <-- CLI SHELL MODE -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/13983
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/13983
 //
 // <-- Short Description -->
 // who_user returns wrong values ( %e, %i, ...)

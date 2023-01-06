@@ -11,8 +11,8 @@
 //
 // <-- Non-regression test for bug 11544 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=11544
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/11544
 //
 // <-- Short Description -->
 // genrated cleaner, try to remove "Debug" and "Release" folders.

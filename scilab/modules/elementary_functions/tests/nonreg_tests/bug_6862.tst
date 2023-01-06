@@ -10,8 +10,8 @@
 
 // <-- Non-regression test for bug 6862 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=6862
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/6862
 //
 // <-- Short Description -->
 // vectorfind(M,V,dir)

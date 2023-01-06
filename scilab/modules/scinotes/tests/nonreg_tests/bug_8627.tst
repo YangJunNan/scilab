@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 8627 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/8627
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/8627
 //
 // <-- Short Description -->
 // A bad identifier was not shew as invalid.

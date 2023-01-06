@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 4983 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=4983
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/4983
 //
 // <-- Short Description -->
 // when scilab is started in nw mode, the addmenu examples are failing with a wierd error message.

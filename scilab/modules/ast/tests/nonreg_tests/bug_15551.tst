@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 15551 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/15551
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/15551
 //
 // <-- Short Description -->
 // arithmetic operators give wrong results with booleans

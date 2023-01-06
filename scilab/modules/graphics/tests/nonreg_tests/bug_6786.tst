@@ -10,8 +10,8 @@
 
 // <-- Non-regression test for bug 6786 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=6786
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/6786
 //
 // <-- Short Description -->
 // Plotting polar graphs with regative rho values causes

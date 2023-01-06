@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 13791 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/13791
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/13791
 //
 // <-- Short Description -->
 // ricc() no longer accepts the 'invf' method.

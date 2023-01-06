@@ -10,8 +10,8 @@
 
 // <-- Non-regression test for bug 4643 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=4643
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/4643
 //
 // <-- Short Description -->
 // ilib_build_f90.tst fails on windows x64 debub mode and not with release

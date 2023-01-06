@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 9480 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/9480
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/9480
 //
 // <-- Short Description -->
 // Highlighted words after selection were wrong under Windows.

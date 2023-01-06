@@ -7,8 +7,8 @@
 // <-- TEST WITH GRAPHIC -->
 // <-- Non-regression test for bug 14036 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/14036
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/14036
 //
 // <-- Short Description -->
 // userdata and tag are hidden light properties

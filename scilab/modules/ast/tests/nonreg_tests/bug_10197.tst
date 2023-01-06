@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 10197 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/10197
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/10197
 //
 // <-- Short Description -->
 // creating implicit vector of short integers may fail

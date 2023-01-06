@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 2107 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=2107
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/2107
 //
 
 // Creates file

@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 11223 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=11223
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/11223
 //
 // <-- Short Description -->
 // Deletion of datatips.

@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 12062 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=12062
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/12062
 //
 // <-- Short Description -->
 // getsystemmetrics() failed for some properties such as 'SM_CXMAXIMIZED'.

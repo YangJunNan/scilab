@@ -10,7 +10,7 @@
 //
 // <-- Non-regression test for bug 15472 -->
 //
-// http://bugzilla.scilab.org/show_bug.cgi?id=15472
+// https://gitlab.com/scilab/scilab/-/issues/15472
 //
 // <-- Short Description -->
 // mdelete("test") worked like mdelete("test.*") under Windows 

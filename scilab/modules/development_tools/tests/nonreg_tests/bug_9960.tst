@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 9960 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=9960
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/9960
 //
 // <-- Short Description -->
 // There was no simplified assert_checkerror syntax.

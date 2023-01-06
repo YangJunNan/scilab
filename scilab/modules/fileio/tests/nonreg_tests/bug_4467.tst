@@ -12,8 +12,8 @@
 //
 // <-- Non-regression test for bug 4467 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=4467
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/4467
 //
 // <-- Short Description -->
 // getshortpathname , getlongpathname do not manage matrix of strings

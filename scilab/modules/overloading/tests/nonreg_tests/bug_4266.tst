@@ -8,8 +8,8 @@
 
 // <-- Non-regression test for bug 4266 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=4266
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/4266
 //
 // <-- Short Description -->
 // ones, rand, zeros functions do not remove highest dimensions equal to 1.

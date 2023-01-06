@@ -7,8 +7,8 @@
 
 // <-- Non-regression test for bug 4611 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=4611
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/4611
 //
 // <-- Short Description -->
 // what function doesn't returns a complete list of functions.

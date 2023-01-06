@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 8639 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=8639
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/8639
 //
 // <-- Short Description -->
 // Xcos simulation were not halted at the end of a session

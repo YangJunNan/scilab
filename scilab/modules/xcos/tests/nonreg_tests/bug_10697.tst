@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 10697 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=10697
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/10697
 //
 // <-- Short Description -->
 // Error report on superblock diagram is not supported.

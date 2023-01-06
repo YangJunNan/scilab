@@ -9,8 +9,8 @@
 //
 // <-- CLI SHELL MODE -->
 // 
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=9020
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/9020
 //
 // <-- Short Description -->
 // "exists" does not accept matrix input as first argument

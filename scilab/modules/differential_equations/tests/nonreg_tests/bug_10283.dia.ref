@@ -8,8 +8,8 @@
 //
 // <-- Non-regression test for bug 10283 -->
 //
-// <-- Bugzilla URL -->
-//http://bugzilla.scilab.org/show_bug.cgi?id=10283
+// <-- GitLab URL -->
+//https://gitlab.com/scilab/scilab/-/issues/10283
 //
 // <-- Short Description -->
 // ode crashed when using w and iw arguments,

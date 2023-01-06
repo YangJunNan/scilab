@@ -7,8 +7,8 @@
 // <-- TEST WITH GRAPHIC -->
 // <-- Non-regression test for bug 4093 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=4093
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/4093
 //
 // <-- Short Description -->
 // plot2d overrides Y axis location set in default axes.

@@ -358,7 +358,7 @@ a = [[2 3]  >= ... // a comment
  -3];
 assert_checkequal(a, expected);
 
-// http://bugzilla.scilab.org/14361 :
+// https://gitlab.com/scilab/scilab/-/issues/14361 :
 // --------------------------------
 a=[1; .../* a comment */
 -2];

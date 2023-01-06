@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 13843 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/13843
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/13843
 //
 // <-- Short Description -->
 // plot2d and polarplot crashes Scilab with wrong strf argument

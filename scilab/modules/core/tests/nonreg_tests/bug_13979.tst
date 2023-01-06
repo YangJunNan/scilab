@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 13979 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/13979
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/13979
 //
 // <-- Short Description -->
 // a variable whose name is longer than 24 characters could not be cleared

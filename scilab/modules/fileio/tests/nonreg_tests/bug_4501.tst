@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 4501 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=4501
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/4501
 //
 // <-- Short Description -->
 //  mput() no more allowed integer types as first input argument.

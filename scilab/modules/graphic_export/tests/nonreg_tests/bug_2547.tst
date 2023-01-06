@@ -10,8 +10,8 @@
 
 // <-- Non-regression test for bug 2547 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=2547
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/2547
 //
 // <-- Short Description -->
 // export of very circle marks of very small size in postcript are not displayed

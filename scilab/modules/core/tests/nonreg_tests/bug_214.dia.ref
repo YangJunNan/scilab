@@ -7,8 +7,8 @@
 // =============================================================================
 // <-- Non-regression test for bug 214 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=21'
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/21'
 //
 // <-- Short Description -->
 //     Note that with a real variable, a null element assignment works.

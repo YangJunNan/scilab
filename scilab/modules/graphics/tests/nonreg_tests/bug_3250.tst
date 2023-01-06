@@ -11,8 +11,8 @@
 //
 // <-- Non-regression test for bug 3250 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/3250
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/3250
 //
 // <-- Short Description -->
 // Creates more 40 graphic windows crashs scilab.

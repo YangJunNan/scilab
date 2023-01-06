@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 12747 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=12747
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/12747
 //
 // <-- Short Description -->
 //    The legendre function did not manage the -1 and 1 values for the third 

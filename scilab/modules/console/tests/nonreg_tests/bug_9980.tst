@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 9980 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/9980
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/9980
 //
 // <-- Short Description -->
 // Frozen console when one tryes to complete an empty string

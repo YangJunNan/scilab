@@ -10,8 +10,8 @@
 
 // <-- Non-regression test for bug 8561 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=8561
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/8561
 //
 // <-- Short Description -->
 //    Absolute and relative tolerances sizes were not properly checked.

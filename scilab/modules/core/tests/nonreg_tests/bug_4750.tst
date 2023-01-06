@@ -8,8 +8,8 @@
 
 // <-- Non-regression test for bug 4750 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=4750
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/4750
 //
 // <-- Short Description -->
 //error in catenation of boolean arrays

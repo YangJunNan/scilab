@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 8085 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=8085
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/8085
 //
 // <-- Short Description -->
 // It was not possible to disable the horizontal line wrapping.

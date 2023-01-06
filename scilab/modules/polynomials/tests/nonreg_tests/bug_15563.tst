@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 15563 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/15563
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/15563
 //
 // <-- Short Description -->
 // poly(A,v) is broken when A is a matrix (regression)

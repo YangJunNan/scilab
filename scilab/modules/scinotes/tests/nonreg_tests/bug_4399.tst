@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 4399 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/4399
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/4399
 //
 // <-- Short Description -->
 // It was not possible to distinguish lines from inner functions and from normal functions

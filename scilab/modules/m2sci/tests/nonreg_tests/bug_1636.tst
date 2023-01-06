@@ -10,8 +10,8 @@
 
 // <-- Non-regression test for bug 1636 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/1636
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/1636
 //
 // <-- Short Description -->
 //    When processing an m-file with multiple continuation lines in the

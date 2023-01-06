@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 4751 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=4751
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/4751
 //
 // <-- Short Description -->
 // cat failed for large vector concatenation

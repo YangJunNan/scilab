@@ -9,8 +9,8 @@
 // <-- Non-regression test for bug 7594 -->
 //
 // <-- CLI SHELL MODE -->
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=7594
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/7594
 //
 // <-- Short Description -->
 // Incorrect  error detection since bug 6781 fix

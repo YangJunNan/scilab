@@ -8,8 +8,8 @@
 // <-- Non-regression test for bug 3551 -->
 //
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=3551
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/3551
 //
 // <-- Short Description -->
 // scripts using bvodeS and bvode hang and close Scilab 5.0.1

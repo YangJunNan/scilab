@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 6191 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/6191
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/6191
 //
 // <-- Short Description -->
 // It was not possible to set thickness and line_style properties for a grid

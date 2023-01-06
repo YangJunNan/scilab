@@ -7,8 +7,8 @@
 //
 // <-- Non-regression test for bug 16143 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/16143
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/16143
 //
 // <-- INTERACTIVE TEST -->
 // clc(n) cleared n+1 lines instead of n>0

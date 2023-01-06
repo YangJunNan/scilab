@@ -9,8 +9,8 @@
 // <-- CLI SHELL MODE -->
 // <-- Non-regression test for bug 14271 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=14271
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/14271
 //
 // <-- Short Description -->
 //    conjgrad() displayed an incorrect error message about number of arguments.

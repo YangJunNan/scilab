@@ -7,8 +7,8 @@
 
 // <-- Non-regression test for bug 4039 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=4039
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/4039
 //
 // <-- Short Description -->
 // Problem of completion with version 5.1:

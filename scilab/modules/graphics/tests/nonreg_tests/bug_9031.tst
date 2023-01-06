@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 9031 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/9031
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/9031
 //
 // <-- Short Description -->
 // Misalignment when using xstring with a matrix

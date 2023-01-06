@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 11476 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/11476
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/11476
 //
 // <-- Short Description -->
 // clf('reset') applied to a docked figure moved and resized the whole block

@@ -8,8 +8,8 @@
 
 // <-- Non-regression test for bug 298 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=298
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/298
 //
 // <-- Short Description -->
 //     Using size() without giving any argument messes up Scilab

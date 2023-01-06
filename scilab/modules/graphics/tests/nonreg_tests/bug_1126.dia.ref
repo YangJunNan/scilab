@@ -7,8 +7,8 @@
 // <-- TEST WITH GRAPHIC -->
 // <-- Non-regression test for bug 1126 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=1126
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/1126
 //
 // <-- Short Description -->
 // GIF driver  don't take into account the size of the window.

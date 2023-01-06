@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 9761 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=9761
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/9761
 //
 // <-- Short Description -->
 // NDEBUG not defined by default in release mode on Windows for dynamic link

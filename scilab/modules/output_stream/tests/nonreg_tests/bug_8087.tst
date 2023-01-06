@@ -12,8 +12,8 @@
 // prettyprint didn't handle %inf and %nan
 
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=8087
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/8087
 //
 
 if prettyprint(%inf) <> "${\infty}$" then pause, end

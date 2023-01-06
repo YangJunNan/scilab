@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 8653 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=8653
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/8653
 //
 // <-- Short Description -->
 // csvRead returns double by default

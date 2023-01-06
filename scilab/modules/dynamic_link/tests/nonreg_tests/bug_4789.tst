@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 4789 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=4789
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/4789
 //
 // <-- Short Description -->
 // number of input arguments is not checked in ilib_xxx functions

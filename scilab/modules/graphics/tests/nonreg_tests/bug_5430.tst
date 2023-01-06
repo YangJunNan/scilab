@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 5430 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/5430
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/5430
 //
 // <-- Short Description -->
 // clf() could erase the ATOMS GUI or the m2sci ones

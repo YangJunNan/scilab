@@ -8,8 +8,8 @@
 //
 // <-- Non-regression test for bug 10606 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=10606
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/10606
 //
 // <-- Short Description -->
 //[rep,stat,stderr]=unix_g("diff /etc/passwd /etc/group")

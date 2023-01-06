@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 9132 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/9132
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/9132
 //
 // <-- Short Description -->
 // Comments inside a string were removed when executing

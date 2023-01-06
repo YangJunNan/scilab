@@ -9,8 +9,8 @@
 //
 // <-- CLI SHELL MODE -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=3810
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/3810
 //
 // <-- Short Description -->
 // Insertion in string array and polynomial array may be very slow

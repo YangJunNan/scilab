@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 4974 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=4974
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/4974
 //
 // <-- Short Description -->
 // exec('') crashs scilab

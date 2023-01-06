@@ -9,8 +9,8 @@
 
 // <-- Non-regression test for bug 4780 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=4780
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/4780
 //
 // <-- Short Description -->
 // The insertion point goes to the end of the document at each newly entered char.

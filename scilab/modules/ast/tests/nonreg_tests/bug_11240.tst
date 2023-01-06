@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 11240 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/11240
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/11240
 //
 // <-- Short Description -->
 // A = []; clear B;  then [A($+1),B] = 1; crashed Scilab

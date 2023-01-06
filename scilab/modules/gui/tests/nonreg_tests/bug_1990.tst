@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 1990 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=1990
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/1990
 //
 // <-- Short Description -->
 //   objfigure "position" initially undefined

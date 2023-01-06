@@ -7,8 +7,8 @@
 
 // <-- Non-regression test for bug 6883 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=6883
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/6883
 //
 // <-- Short Description -->
 //  black fails to plot integrators

@@ -10,8 +10,8 @@
 //
 // <-- Non-regression test for bug 15842 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/15842
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/15842
 //
 // <-- Short Description -->
 // unique() yielded an error for 2D sparse matrices

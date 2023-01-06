@@ -7,8 +7,8 @@
 // <-- TEST WITH GRAPHIC -->
 // <-- Non-regression test for bug 13579 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/13579
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/13579
 //
 // <-- Short Description -->
 // Annoying warnings when using bar(1, [1,2,3])

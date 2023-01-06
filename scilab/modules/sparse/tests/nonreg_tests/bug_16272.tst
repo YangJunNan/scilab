@@ -9,8 +9,8 @@
 //
 // <-- Non-regression test for bug 16272 -->
 //
-// <-- Bugzilla URL -->
-// http://bugzilla.scilab.org/show_bug.cgi?id=16272
+// <-- GitLab URL -->
+// https://gitlab.com/scilab/scilab/-/issues/16272
 //
 // <-- Short Description -->
 // spzeros(0,n) <> sparse([]) and spzeros(n,0) <> sparse([])
