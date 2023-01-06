@@ -72,9 +72,9 @@ function y = asciimat(x)
         end
         //
         x = matrix(x,1,-1)
-        // Any zero will block ascii(): http://bugzilla.scilab.org/15101
+        // Any zero will block ascii(): https://gitlab.com/scilab/scilab/-/issues/15101
         x(x==0) = []  // 0 <=> ""
-        x = [x, 65]   // works around http://bugzilla.scilab.org/16686
+        x = [x, 65]   // works around https://gitlab.com/scilab/scilab/-/issues/16686
         y = strsplit(ascii(x), "$€£");
         y($) = []     // removes the ending ascii(65)
         y = matrix(y, [dims(1) 1 dims(3:$)]); // dims#2 not squeezed (Matlab, Octave)

@@ -632,7 +632,7 @@
                 </para>
                 <para>
                     <emphasis role="bold">Please report to us if you encounter such a case.</emphasis>
-                    <ulink url="http://bugzilla.scilab.org/">
+                    <ulink url="https://gitlab.com/scilab/scilab/-/issues">
                         Report bugs and wishes about <emphasis>Scilab</emphasis>
                     </ulink>
                 </para>

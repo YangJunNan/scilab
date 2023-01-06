@@ -9,7 +9,7 @@
 // For more information, see the COPYING file which you should have received
 // along with this program.
 
-// Beware about the bug http://bugzilla.scilab.org/14460
+// Beware about the bug https://gitlab.com/scilab/scilab/-/issues/14460
 
 function r = %sp_sign(m)
     r = m

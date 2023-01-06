@@ -155,7 +155,7 @@ function sgrid(varargin)
     // Typical text size
     rect = xstringl(1,1,"0.3")
     w = rect(3);
-    h = rect(4);   // prone to http://bugzilla.scilab.org/13661 , so:
+    h = rect(4);   // prone to https://gitlab.com/scilab/scilab/-/issues/13661 , so:
     h = w*0.5/(xmax-xmin)*(ymax-ymin);
 
     // Drawing circles and radial labels

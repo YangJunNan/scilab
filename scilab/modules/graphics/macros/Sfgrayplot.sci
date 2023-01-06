@@ -55,7 +55,7 @@ function Sfgrayplot(x, y, f, strf, rect, nax, zminmax, colminmax, mesh, colout)
     q = length(y);
     z = feval(x,y,f);
 
-    // http://bugzilla.scilab.org/15638 :
+    // https://gitlab.com/scilab/scilab/-/issues/15638 :
     if ~isdef("colminmax","l")
         colminmax = [1, size(gcf().color_map,1)]
     end

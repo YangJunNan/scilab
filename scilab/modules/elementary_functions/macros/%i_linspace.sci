@@ -80,7 +80,7 @@ function y = %i_linspace(d1, d2, n)
             y = (span * (0:n-1)) / (n-1) + d1 * ones(1,n);
         end
         // Forces the last value to be exactly the given d2:
-        // http://bugzilla.scilab.org/10966
+        // https://gitlab.com/scilab/scilab/-/issues/10966
         y(:,$) = d2;
     else
         y = []

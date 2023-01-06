@@ -57,7 +57,7 @@ public final class ScilabCodeServer {
             System.out.println("-maxhandlers   An integer giving the maximum of Scilab code handlers");
             System.out.println("               which must be kept in memory (5 by default)");
             System.out.println("");
-            System.out.println("Report bugs on: <http://bugzilla.scilab.org>");
+            System.out.println("Report bugs on: <https://gitlab.com/scilab/scilab/-/issues>");
             System.out.println("Project page: <http://forge.scilab.org/index.php/p/scidoc>");
             return;
         }

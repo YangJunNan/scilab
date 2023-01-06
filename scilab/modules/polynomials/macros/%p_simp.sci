@@ -14,7 +14,7 @@ function [num, den] = %p_simp(num, den)
     // Called when num or/and den are complex-encoded
 
     // Special cases when real or imaginary parts are both null:
-    //   http://bugzilla.scilab.org/8493
+    //   https://gitlab.com/scilab/scilab/-/issues/8493
 
     //   Case of both real null parts
     s = real(num)==0 & real(den)==0

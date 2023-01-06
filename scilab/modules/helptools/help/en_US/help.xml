@@ -112,7 +112,7 @@
                     <th>Issues :</th>
                     <td>
                         Tries to open the web browser, and searches on the
-                        https://bugzilla.scilab.org web site reports of issues declared about the
+                        https://gitlab.com/scilab/scilab/-/issues web site reports of issues declared about the
                         item of the current page.
                         A working internet connection is required.
                         <para/>

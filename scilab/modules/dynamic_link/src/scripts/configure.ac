@@ -21,7 +21,7 @@
 ##########
 
 # Initialise autoconf
-AC_INIT([scilab],[0],[http://bugzilla.scilab.org/])
+AC_INIT([scilab],[0],[https://gitlab.com/scilab/scilab/-/issues])
 AC_CONFIG_MACRO_DIR([m4])
 
 # Initialise automake (foreign is low strictness)

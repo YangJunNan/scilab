@@ -369,12 +369,12 @@ set_embedded_java_vm () {
                         proc="i386"
                         ;;
                     *)
-                        echo "Could not find the Java configuration for the model <${MODEL}>. Please contact us on http://bugzilla.scilab.org"
+                        echo "Could not find the Java configuration for the model <${MODEL}>. Please contact us on https://gitlab.com/scilab/scilab/-/issues"
                         ;;
                 esac
                 ;;
             *)
-            echo "Could not find the Java configuration for the OS <${OS}>. Please contact us or submit a bug report with your detailed configuration http://bugzilla.scilab.org/"
+            echo "Could not find the Java configuration for the OS <${OS}>. Please contact us or submit a bug report with your detailed configuration https://gitlab.com/scilab/scilab/-/issues"
             echo "Fallback on the model <${MODEL}> found by uname -m"
             proc=$MODEL
             ;;
@@ -591,7 +591,7 @@ detect_java_vm() {
                             proc="aarch64"
                             ;;
                         *)
-                            echo "Could not find the Java configuration for the model <${MODEL}>. Please contact us on http://bugzilla.scilab.org"
+                            echo "Could not find the Java configuration for the model <${MODEL}>. Please contact us on https://gitlab.com/scilab/scilab/-/issues"
                             ;;
                     esac
                     ;;
@@ -625,7 +625,7 @@ detect_java_vm() {
                     proc=$MODEL
                     ;;
                 *)
-                    echo "Could not find the Java configuration for the OS <${OS}>. Please contact us or submit a bug report with your detailed configuration http://bugzilla.scilab.org/"
+                    echo "Could not find the Java configuration for the OS <${OS}>. Please contact us or submit a bug report with your detailed configuration https://gitlab.com/scilab/scilab/-/issues"
                     echo "Fallback on the model <${MODEL}> found by uname -m"
                     proc=$MODEL
                     ;;
@@ -646,7 +646,7 @@ detect_java_vm() {
         LD_LIBRARY_PATH="$JRE_HOME/lib/$proc/:$JRE_HOME/lib/$proc/server/:$JRE_HOME/lib/$proc/native_threads/${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}"
     fi
 
-    # Bug http://bugzilla.scilab.org/show_bug.cgi?id=14290 -
+    # Bug https://gitlab.com/scilab/scilab/-/issues/14290 -
     # Never run headless on Mac (unless explicitly asked through
     # the SCI_JAVA_ENABLE_HEADLESS option -- which will not work anyway)
     case $OS in
@@ -711,7 +711,7 @@ else
 fi
 
 
-# See http://bugzilla.scilab.org/show_bug.cgi?id=3486
+# See https://gitlab.com/scilab/scilab/-/issues/3486
 # Some Java stuff raises spurious SIGSEGV. The problem is that when bug-buddy
 # is enabled, it catches the signal and terminate Scilab. We have to
 # desactivate bug-buddy.
@@ -722,7 +722,7 @@ export GTK_MODULES
 
 # libEGL may be partially supported by the closed-source NVIDIA driver.
 # Until they release an EGL driver, we force the egl_glx driver.
-# http://bugzilla.scilab.org/show_bug.cgi?id=12940
+# https://gitlab.com/scilab/scilab/-/issues/12940
 if test $SCILAB_MODE != "nwni" -a -x /usr/bin/glxinfo; then
     NVIDIA_GLX_VENDOR=$(/usr/bin/glxinfo |grep "NVIDIA Corporation")
     if test ! -z "$NVIDIA_GLX_VENDOR"; then

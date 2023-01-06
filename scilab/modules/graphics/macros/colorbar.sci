@@ -30,12 +30,12 @@ function colorbar(umin, umax, colminmax, fmt)
     //     fmt : optional, a C format to display colorbar graduations
     //
     //  HISTORY
-    // 2017 : http://bugzilla.scilab.org/14711 : in uicontrol frame
-    // 2018 : http://bugzilla.scilab.org/15638 : unequal color spans
-    //        http://bugzilla.scilab.org/15805 : poor ticking
-    //        http://bugzilla.scilab.org/15806 : syntaxes with default umin, umax..
-    // 2019 : http://bugzilla.scilab.org/16232 : Support of $ in colminmax added
-    //        http://bugzilla.scilab.org/10553 : gce() is now the colorbar handle
+    // 2017 : https://gitlab.com/scilab/scilab/-/issues/14711 : in uicontrol frame
+    // 2018 : https://gitlab.com/scilab/scilab/-/issues/15638 : unequal color spans
+    //        https://gitlab.com/scilab/scilab/-/issues/15805 : poor ticking
+    //        https://gitlab.com/scilab/scilab/-/issues/15806 : syntaxes with default umin, umax..
+    // 2019 : https://gitlab.com/scilab/scilab/-/issues/16232 : Support of $ in colminmax added
+    //        https://gitlab.com/scilab/scilab/-/issues/10553 : gce() is now the colorbar handle
 
     // Check number of input argument
     [lhs, rhs] = argn();

@@ -83,7 +83,7 @@ static void setAppName(const char * name)
 
 /**
  * Actually launch Scilab under Mac OS X. Need to be in a specific thread.
- * See http://wiki.scilab.org/Compiling_Scilab_5.x_under_MacOSX
+ * See https://scilab.gitlab.io/legacy_wiki/Compiling(20)Scilab(20)under(20)MacOSX.html
  * @param param The structure containing the missing argument mandatory for realmain
  * @return the result of the operation (0 if OK ...)
  */

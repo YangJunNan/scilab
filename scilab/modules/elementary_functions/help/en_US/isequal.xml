@@ -139,12 +139,12 @@ isequal(uint8([1 7]), int8([1 7]))
 isequal(int8([1 7]), int16([1 7]))
 
 and([1 0]==[1 0*%i]) // is %T, but not as objects:
-//isequal([1 0], [1 0*%i])  // bug http://bugzilla.scilab.org/9153#c12
+//isequal([1 0], [1 0*%i])  // bug https://gitlab.com/scilab/scilab/-/issues/9153#note_1126223590
 
 p = (1+%z)^3
 pc = p + 0*%i
 p==pc
-//isequal(p, pc)           // bug http://bugzilla.scilab.org/9153#c12
+//isequal(p, pc)           // bug https://gitlab.com/scilab/scilab/-/issues/9153#note_1126223590
 
 s = sprand(10,10,0.1); and(s==full(s)) // is %T, but not as objects:
 isequal(s, full(s))
@@ -155,7 +155,7 @@ isequal([7 11], [7 11]')
 // 4) fields of tlists or of mlists such as structures must be in the same order:
 s1 = struct("r", %pi,     "t", "Hello")
 s2 = struct("t", "Hello", "r", %pi)
-//isequal(s1,s2)           // bug http://bugzilla.scilab.org/9153#c13
+//isequal(s1,s2)           // bug https://gitlab.com/scilab/scilab/-/issues/9153#note_1126223613
 
 // Results with Nans
 // =================
@@ -164,7 +164,7 @@ isequal(%nan, %nan)           // %F
 isequal([3 %nan], [3 %nan])   // %F
 L = list(3, "test", %z, list(1, %nan, %T));
 isequal(L,L)                  // %F
-//isequalbitwise(L,L)           // %T ! bug http://bugzilla.scilab.org/14512
+//isequalbitwise(L,L)           // %T ! bug https://gitlab.com/scilab/scilab/-/issues/14512
 ]]></programlisting>
     </refsection>
     <refsection role="see also">

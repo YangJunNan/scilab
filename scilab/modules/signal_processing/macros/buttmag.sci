@@ -22,7 +22,7 @@ function [h]=buttmag(order,omegac,sample_vector)
     //!
 
     // For ascendant compatibility before bug 4618 fix
-    // http://bugzilla.scilab.org/show_bug.cgi?id=4618
+    // https://gitlab.com/scilab/scilab/-/issues/4618
     // In case the users calls buttmag with named arguments
     if exists("sample","local")==1 then
         sample_vector = sample;

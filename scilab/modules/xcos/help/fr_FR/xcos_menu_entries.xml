@@ -645,7 +645,7 @@
                     <emphasis role="bold">
                         Si vous rencontrez une telle situation, veuillez s'il vous plaît, nous la signaler.
                     </emphasis>
-                    <ulink url="http://bugzilla.scilab.org/">
+                    <ulink url="https://gitlab.com/scilab/scilab/-/issues">
                         Rapport de bogues et d'amélioration de <emphasis>Scilab</emphasis>
                     </ulink>
                 </para>

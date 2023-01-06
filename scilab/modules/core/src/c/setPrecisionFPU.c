@@ -19,7 +19,7 @@
 #include "setPrecisionFPU.h"
 /*
  * This function is an standalone function which aims to see
- * if the bug 3443 ( http://bugzilla.scilab.org/show_bug.cgi?id=3443 )
+ * if the bug 3443 ( https://gitlab.com/scilab/scilab/-/issues/3443 )
  * is present.
  * As far as we know, this bug is only present under Linux 32 bits
  * Basically, the Java/JNI function JNI_CreateJavaVM which is changing the
@@ -35,7 +35,7 @@
  * (which is not the case in a stand alone code)
  *
  * For more information on the subject:
- * http://wiki.scilab.org/Scilab_precision
+ * https://scilab.gitlab.io/legacy_wiki/Scilab(20)precision.html
  * http://www.vinc17.org/research/extended.en.html
  */
 

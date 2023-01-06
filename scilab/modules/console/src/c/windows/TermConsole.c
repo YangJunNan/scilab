@@ -147,7 +147,7 @@ static unsigned char TerminalGetchar(void)
     unsigned char ch = 0;
     do
     {
-        /* http://bugzilla.scilab.org/show_bug.cgi?id=1052 */
+        /* https://gitlab.com/scilab/scilab/-/issues/1052 */
         if ( ismenu() == 1 )
         {
             return 0;
@@ -428,7 +428,7 @@ char *TerminalGetString(const char *prompt)
             return NULL;
         }
 
-        /* http://bugzilla.scilab.org/show_bug.cgi?id=1052 */
+        /* https://gitlab.com/scilab/scilab/-/issues/1052 */
         if (ismenu () == 1)
         {
             /* Abort current line */

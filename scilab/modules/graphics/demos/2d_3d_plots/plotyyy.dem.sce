@@ -7,7 +7,7 @@
 function demo_plotyyy()
 
     // DEMO START
-    // A plotyyy() example: //http://bugzilla.scilab.org/show_bug.cgi?id=6070
+    // A plotyyy() example: //https://gitlab.com/scilab/scilab/-/issues/6070
 
     my_handle = scf(100001);
     clf(my_handle);

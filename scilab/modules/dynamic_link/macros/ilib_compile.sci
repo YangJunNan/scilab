@@ -142,7 +142,7 @@ function libn = ilib_compile(lib_name, ..
         clearglobal cppCompilation;
 
         if ( ilib_verbose() <> 0 & ScilabTreeFound <> %t) then
-            mprintf(gettext("%s: Warning: Scilab has not been able to find where the Scilab sources are. Please submit a bug report on http://bugzilla.scilab.org/\n"),"ilib_compile");
+            mprintf(gettext("%s: Warning: Scilab has not been able to find where the Scilab sources are. Please submit a bug report on https://gitlab.com/scilab/scilab/-/issues\n"),"ilib_compile");
         end
 
         oldPath = pwd();

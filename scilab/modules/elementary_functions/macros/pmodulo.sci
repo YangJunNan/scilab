@@ -50,7 +50,7 @@ function i = pmodulo(n, m)
     if  nt==2 then
         [i,?] = pdiv(n, m)
     else
-        m = abs(m)  // else returns i<0 for m<0 : http://bugzilla.scilab.org/12373
+        m = abs(m)  // else returns i<0 for m<0 : https://gitlab.com/scilab/scilab/-/issues/12373
         if length(n)>1 & length(m)>1 & or(size(n)<>size(m)) then
             msg = _("%s: Wrong size for input arguments: Same size expected.\n")
             error(msprintf(msg, "pmodulo"))

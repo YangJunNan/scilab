@@ -2,7 +2,7 @@
 //
 // Copyright (C) 1999 - INRIA - Carlos Klimann
 // Copyright (C) 2012 - 2016 - Scilab Enterprises
-// Copyright (C) 2017 - Samuel GOUGEON : http://bugzilla.scilab.org/15144
+// Copyright (C) 2017 - Samuel GOUGEON : https://gitlab.com/scilab/scilab/-/issues/15144
 //
 // This file is hereby licensed under the terms of the GNU GPL v2.0,
 // pursuant to article 5.3.4 of the CeCILL v.2.1.

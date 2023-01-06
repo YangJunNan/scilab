@@ -10,7 +10,7 @@
 
 function %chars = percentchars()
     // Internal function called by scilab.start
-    // http://bugzilla.scilab.org/9221
+    // https://gitlab.com/scilab/scilab/-/issues/9221
 
     %chars.greek.lower       = "αβγδεϵζηθ ι κλμνξοπρστυφϕχψωάϐέήϑίϊϰόϱςύϋΰϖώ";
     %chars.greek.upper       = "ΑΒΓΔΕ ΖΗΘϴΙΪΚΛΜΝΞΟΠΡΣΤΥΫΦΧΨΩ KΩ℧";

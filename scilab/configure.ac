@@ -20,7 +20,7 @@ dnl Process this file with autoconf to produce a configure script.
 
 
 AC_REVISION($Revision$)dnl
-AC_INIT([Scilab],[6],[http://bugzilla.scilab.org/])
+AC_INIT([Scilab],[6],[https://gitlab.com/scilab/scilab/-/issues])
 AC_PREREQ(2.69)
 AC_CONFIG_MACRO_DIR([m4])
 
@@ -2013,11 +2013,11 @@ if test ! -f modules/core/src/cpp/banner.cpp; then
 fi
 
 CURRENT_YEAR=`date "+%Y"`
-DETECTED_YEAR=`grep "Copyright (c) 2017-" modules/core/src/cpp/banner.cpp|sed -e "s/.*Copyright (c) 2017-\([[0-9]]*\).*/\1/g"`
+DETECTED_YEAR=`grep "Copyright (c) 2022-" modules/core/src/cpp/banner.cpp|sed -e "s/.*Copyright (c) 2022-\([[0-9]]*\).*/\1/g"`
 
 if test "$CURRENT_YEAR" != "$DETECTED_YEAR"; then
-   sed -i -e "s| 2017-$DETECTED_YEAR | 2017-$CURRENT_YEAR |g" modules/core/src/cpp/banner.cpp modules/windows_tools/src/c/scilab_windows/console.c
-   sed -i -e "s| 2017-$DETECTED_YEAR ESI Group| 2017-$CURRENT_YEAR ESI Group|g" etc/Info.plist.in
+   sed -i -e "s| 2022-$DETECTED_YEAR | 2022-$CURRENT_YEAR |g" modules/core/src/cpp/banner.cpp modules/windows_tools/src/c/scilab_windows/console.c
+   sed -i -e "s| 2022-$DETECTED_YEAR | 2022-$CURRENT_YEAR |g" etc/Info.plist.in
    sed -i -e "s|VALUE \"LegalCopyright\", \"Copyright (C) $DETECTED_YEAR|VALUE \"LegalCopyright\", \"Copyright (C) $CURRENT_YEAR|" $(find . -iname '*.rc')
    AC_MSG_WARN([New year ($CURRENT_YEAR) detected. Copyright files updated. Please commit them ASAP.])
 fi

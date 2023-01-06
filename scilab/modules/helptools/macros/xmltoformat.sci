@@ -1746,7 +1746,7 @@ function tree_out = x2f_merge_trees( tree_in_1 , tree_in_2 )
         end
     end
 
-    // Fix http://bugzilla.scilab.org/11692 :
+    // Fix https://gitlab.com/scilab/scilab/-/issues/11692 :
     tmp = strsubst(convstr(xmllist_out(:,4)), "/^percent/","%","r")
     [tmp, k] = gsort(tmp, "g", "i");
     tree_out("xml_list") = xmllist_out(k,:);

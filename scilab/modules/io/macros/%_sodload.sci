@@ -783,7 +783,7 @@ function varargout = %_sodload(%__varnameList__)
                 continue
             end
             v = datatipProperties(f)
-            if f == "z_component" // up to 5.5.2: http://bugzilla.scilab.org/16374
+            if f == "z_component" // up to 5.5.2: https://gitlab.com/scilab/scilab/-/issues/16374
                 if v=="on"
                     [f, v] = ("display_components", "xyz")
                 else

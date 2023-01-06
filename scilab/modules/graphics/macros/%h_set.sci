@@ -32,7 +32,7 @@ function hdl = %h_set(varargin)
                 // array of handles
                 RHSsize = size(rhs);
                 for j = 1:nh  // Loop on handles
-                    h = hdl(j)  // works around http://bugzilla.scilab.org/15802
+                    h = hdl(j)  // works around https://gitlab.com/scilab/scilab/-/issues/15802
                     lhs = h(prop);     // Current handle's content
                     LHSsize = size(lhs);
                     if and(RHSsize==LHSsize) | lhs==[] | rhs==[]

@@ -212,7 +212,7 @@ public class WindowsConfigurationManager implements XConfigurationListener {
             System.err.println("Serious problem to copy and parse the configuration file.");
             System.err.println("Please check if you have the rights to write the file: " + USER_WINDOWS_CONFIG_FILE);
             System.err.println("If the previous file exists, please check if it is a valid XML");
-            System.err.println("and if yes, please report a bug: http://bugzilla.scilab.org");
+            System.err.println("and if yes, please report a bug: https://gitlab.com/scilab/scilab/-/issues");
         } else if (doc != null) {
             // We check that the file contains a NULLUUID (used for the console) and only one
             // No console == no Scilab !

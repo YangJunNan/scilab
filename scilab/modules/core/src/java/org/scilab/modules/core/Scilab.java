@@ -123,7 +123,7 @@ public class Scilab {
             }
 
         } catch (Exception e) {
-            System.err.println("Cannot retrieve the variable SCI. Please report on http://bugzilla.scilab.org/");
+            System.err.println("Cannot retrieve the variable SCI. Please report on https://gitlab.com/scilab/scilab/-/issues");
             System.err.println(e.getLocalizedMessage());
             System.exit(-1);
         }
@@ -171,7 +171,7 @@ public class Scilab {
 
                             awtAppClassNameField.set(xToolkit, "Scilab");
                         } catch (Exception e) {
-                            System.err.println("Unable to set WM_CLASS, please report a bug on http://bugzilla.scilab.org/.");
+                            System.err.println("Unable to set WM_CLASS, please report a bug on https://gitlab.com/scilab/scilab/-/issues.");
                             System.err.println("Error: " + e.getLocalizedMessage());
                         }
                     }

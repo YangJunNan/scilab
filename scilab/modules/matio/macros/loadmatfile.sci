@@ -18,9 +18,9 @@ function outStruct = loadmatfile(varargin)
     // www.mathworks.com/access/helpdesk/help/pdf_doc/matlab/matfile_format.pdf
 
     // 2019 - S. Gougeon:
-    //   * "-octave" format added: http://bugzilla.scilab.org/16242
-    //   * "-toStruct" option added: http://bugzilla.scilab.org/15680
-    //   * Automatic format detection added: http://bugzilla.scilab.org/16271
+    //   * "-octave" format added: https://gitlab.com/scilab/scilab/-/issues/16242
+    //   * "-toStruct" option added: https://gitlab.com/scilab/scilab/-/issues/15680
+    //   * Automatic format detection added: https://gitlab.com/scilab/scilab/-/issues/16271
 
     Names = []      // Names of read variables
     Values = list() // Values of read variables

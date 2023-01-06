@@ -200,7 +200,7 @@ bool fillRange(double* pdblOut, double* pdblMin, double* pdblMax, int iRows, int
             Scierror(999, _("%s: Argument #%d: %%nan and %%inf values are forbidden.\n"), "linspace", indInfOrNan);
             return false;
         }
-        // last column is enforced (http://bugzilla.scilab.org/10966)
+        // last column is enforced (https://gitlab.com/scilab/scilab/-/issues/10966)
         pdblOut[k++] = pdblMax[j];
     }
     // doing the linear range generation

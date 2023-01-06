@@ -20,7 +20,7 @@ function script_path = demo_gui_update()
 
     // Deleting All existing demo figures, except the first one (it may be
     // docked in order to view demos figures in a stable way:
-    // http://bugzilla.scilab.org/6973
+    // https://gitlab.com/scilab/scilab/-/issues/6973
     all_figs = winsid();
     all_figs = all_figs(all_figs >= 100001); // All Scilab graphic windows opened for demos
     for fig_index = 2:size(all_figs, "*")

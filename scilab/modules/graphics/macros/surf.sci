@@ -312,7 +312,7 @@ function surf(varargin)
     end
 
     if isempty(XX) | isempty(YY) | isempty(ZZ) then
-        // Nothing will be drawn so return (see http://bugzilla.scilab.org/13180 )
+        // Nothing will be drawn so return (see https://gitlab.com/scilab/scilab/-/issues/13180 )
         return
     end
 

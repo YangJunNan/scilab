@@ -20,7 +20,7 @@ function y = median(x,orient)
     //    - new syntaxes: median(x,'m') and median(x,dim)
     //    S. Gougeon 2016:
     //     - Fixes overflow issues with encoded integers when interpolating
-    //       http://bugzilla.scilab.org/14640
+    //       https://gitlab.com/scilab/scilab/-/issues/14640
 
     // CHECKING ARGUMENTS
     // ==================
@@ -65,7 +65,7 @@ function y = median(x,orient)
         n = size(x,"*");
         x = gsort(x(:),"g","i")
         if 2*int(n/2)==n then
-            // avoid overflow: http://bugzilla.scilab.org/14640
+            // avoid overflow: https://gitlab.com/scilab/scilab/-/issues/14640
             a = x(n/2)
             b = x(n/2+1)
             y = a/2 + b/2 + ((a-(a/2)*2) + (b-(b/2)*2))/2
@@ -101,7 +101,7 @@ function y = median(x,orient)
             for i = 1:M
                 ytemp = gsort(x(i+(0:n-1)'*M+(k-1)*P),"r","i")
                 if 2*int(n/2)==n then
-                    // avoid overflow: http://bugzilla.scilab.org/14640
+                    // avoid overflow: https://gitlab.com/scilab/scilab/-/issues/14640
                     a = ytemp(n/2)
                     b = ytemp(n/2+1)
                     y = [ y ; a/2 + b/2 + ((a-(a/2)*2) + (b-(b/2)*2))/2]

@@ -1,6 +1,6 @@
 // Scilab ( http://www.scilab.org/ ) - This file is part of Scilab
 //
-// Copyright (C) 2017 - Samuel GOUGEON : cat() rewritten: http://bugzilla.scilab.org/8297
+// Copyright (C) 2017 - Samuel GOUGEON : cat() rewritten: https://gitlab.com/scilab/scilab/-/issues/8297
 //
 // This file is hereby licensed under the terms of the GNU GPL v2.0,
 // pursuant to article 5.3.4 of the CeCILL v.2.1.

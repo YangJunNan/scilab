@@ -69,7 +69,7 @@ function [flag, errmsg] = assert_checkequal(computed, expected)
         // k is the index of the first discrepancy (or [] if none)
 
     elseif or(typeof(computed)==["implicitlist" "fptr" "function"])
-                                    // http://bugzilla.scilab.org/16104 C) D) E)
+                                    // https://gitlab.com/scilab/scilab/-/issues/16104 C) D) E)
         flag = computed==expected
         if ~flag then
             if typeof(computed) == "implicitlist"
@@ -93,7 +93,7 @@ function [flag, errmsg] = assert_checkequal(computed, expected)
         end
         return
 
-    elseif type(computed) == 14   // library : http://bugzilla.scilab.org/16104#c1
+    elseif type(computed) == 14   // library : https://gitlab.com/scilab/scilab/-/issues/16104#note_1126897067
         flag = and(string(computed)==string(expected))
         if ~flag then
             errmsg = gettext("%s: Assertion failed: expected= %s  while computed= %s")
@@ -201,8 +201,8 @@ function [flag, k] = comparedoubles ( computed , expected )
 endfunction
 // ---------------------------------------------------------------------------
 function [areEqual, k] = compareContainers(computed , expected)
-    // http://bugzilla.scilab.org/15293
-    // http://bugzilla.scilab.org/16274
+    // https://gitlab.com/scilab/scilab/-/issues/15293
+    // https://gitlab.com/scilab/scilab/-/issues/16274
     tc = typeof(computed)
     te = typeof(expected)
     k = []

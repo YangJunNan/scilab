@@ -139,7 +139,7 @@ void Inspector::displayMemleak()
         }
 
         // display the result
-        std::wcerr << L"Memory leaked, please file a bug on http://bugzilla.scilab.org" << std::endl;
+        std::wcerr << L"Memory leaked, please file a bug on https://gitlab.com/scilab/scilab/-/issues" << std::endl;
         for (auto it = statistics.begin(), itEnd = statistics.end(); it != itEnd; ++it)
         {
             std::wcerr << L"    " << it->second << L" " << it->first;

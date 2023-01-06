@@ -28,8 +28,8 @@ function label = expr2LaTeX(exprs)
         // Protecting ^{.} groups for LaTeX:
         // Bracing exponents (after .^ and ^): the exponent is
         //  assumed to end with the first encountered space or EOL
-        //  http://bugzilla.scilab.org/14551
-        //  http://bugzilla.scilab.org/15979
+        //  https://gitlab.com/scilab/scilab/-/issues/14551
+        //  https://gitlab.com/scilab/scilab/-/issues/15979
         // Groups replacement impossible with strsubst():
         // http://bugzilla.scilabel.org/9123
           regexpon = "/\^((\s*[\-+]?\s*[0-9]+\.?[0-9]*)|[^\s]+)/"

@@ -97,7 +97,7 @@ if or(getscilabmode() == ["STD", "NW"]) then
 end
 
 // Protect variable previously defined  ================================
-clear = clear          // special case: http://bugzilla.scilab.org/12198
+clear = clear          // special case: https://gitlab.com/scilab/scilab/-/issues/12198
 predef("all");
 
 // At startup, no interactive vertical paging by default. ==============

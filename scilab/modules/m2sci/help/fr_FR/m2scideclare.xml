@@ -148,7 +148,7 @@
                         Si en tant qu'utilisateur du convertisseur vous rencontrez une telle alerte
                         <literal>%m2scideclare</literal> qui vous semble incompatible avec ce que
                         vous connaissez de votre code,
-                        vous pouvez rapporter le cas sur https://bugzilla.scilab.org
+                        vous pouvez rapporter le cas sur https://gitlab.com/scilab/scilab/-/issues
                     </para>
                 </listitem>
             </itemizedlist>

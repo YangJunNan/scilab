@@ -1,7 +1,7 @@
 
 // Scilab ( http://www.scilab.org/ ) - This file is part of Scilab
 // Copyright (C) 2013 - Scilab Enterprises - Paul BIGNIER : m parameter added
-// Copyright (C) 2013 - Samuel GOUGEON : http://bugzilla.scilab.org/11209 fixed
+// Copyright (C) 2013 - Samuel GOUGEON : https://gitlab.com/scilab/scilab/-/issues/11209 fixed
 // Copyright (C) 2000 - INRIA - Carlos Klimann
 //
 // Copyright (C) 2012 - 2016 - Scilab Enterprises

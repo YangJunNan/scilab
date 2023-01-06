@@ -523,7 +523,7 @@ AC_DEFUN([AC_JAVA_JNI_LIBS], [
             if test ! -f $D/libjvm.so; then
                 AC_MSG_ERROR([Could not find libjvm.so in
                 jre/lib/$machine/client/ or in jre/lib/$machine/server/.
-                Please report to http://bugzilla.scilab.org/])
+                Please report to https://gitlab.com/scilab/scilab/-/issues])
             fi
         fi
                 ac_java_jvm_jni_lib_runtime_path="${ac_java_jvm_jni_lib_runtime_path}:$D"
@@ -547,7 +547,7 @@ AC_DEFUN([AC_JAVA_JNI_LIBS], [
             if test ! -f $D/libjvm.so; then
                 AC_MSG_ERROR([Could not find libjvm.so in
                 jre/lib/$machine/client/ or in jre/lib/$machine/server/.
-                Please report to http://bugzilla.scilab.org/])
+                Please report to https://gitlab.com/scilab/scilab/-/issues])
             fi
         fi
                 ac_java_jvm_jni_lib_runtime_path="${ac_java_jvm_jni_lib_runtime_path}:$D"

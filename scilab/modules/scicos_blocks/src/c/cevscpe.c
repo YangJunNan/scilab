@@ -787,7 +787,7 @@ static BOOL setSegsBuffers(scicos_block * block, int maxNumberOfPoints)
 
         /*
          * Update color due to bug #9902
-         * http://bugzilla.scilab.org/show_bug.cgi?id=9902
+         * https://gitlab.com/scilab/scilab/-/issues/9902
          */
         color = block->ipar[2 + i];
         if (color > 0)

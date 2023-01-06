@@ -161,7 +161,7 @@
             </para>
             <para>
                 Data saved in the old Scilab&lt;5.4 format
-                <ulink url="http://bugzilla.scilab.org/14840">can't be directly loaded</ulink>:
+                <ulink url="https://gitlab.com/scilab/scilab/-/issues/14840">can't be directly loaded</ulink>:
                 Scilab 5.5.2 must be used as an intermediate to load them from the old format
                 and save them to the SOD format, which can be loaded in Scilab 6.
             </para>

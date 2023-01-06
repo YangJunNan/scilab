@@ -163,7 +163,7 @@ BOOL startJVM(char *SCI_PATH)
         {
             fprintf(stderr, _("\nCould not load JVM dynamic library (libjava).\n"));
             fprintf(stderr, _("Error: %s\n"), GetLastDynLibError());
-            fprintf(stderr, _("If you are using a binary version of Scilab, please report a bug http://bugzilla.scilab.org/.\n"));
+            fprintf(stderr, _("If you are using a binary version of Scilab, please report a bug https://gitlab.com/scilab/scilab/-/issues.\n"));
             fprintf(stderr, _("If you are using a self-built version of Scilab, update the script bin/scilab to provide the path to the JVM.\n"));
 
             fprintf(stderr, _("The problem might be related to SELinux. Try to deactivate it.\n"));

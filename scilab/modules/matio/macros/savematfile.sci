@@ -295,7 +295,7 @@ function savematfile(varargin)
         else
             // Filtering supported types
             // Unsupported : handles 9, macros 13, primitives 130, Others 128, 129
-            // Unsupported : booleans 4 : http://bugzilla.scilab.org/15568
+            // Unsupported : booleans 4 : https://gitlab.com/scilab/scilab/-/issues/15568
             mtlb_names = checkTypeBeforeMatSave(mtlb_names, [1 5 7 8 10 17], version)
             if mtlb_names==[]
                 msg = gettext("savematfile: No variable to save => No file written.")

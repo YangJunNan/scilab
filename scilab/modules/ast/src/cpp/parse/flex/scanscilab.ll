@@ -847,7 +847,7 @@ assign			"="
     // ========
     // [a + b] == [(a + b)]
     // but [a +b] == [a, +b] and plus here is unary and is not removed, as unary plus
-    // is not necessary defined for all data types (http://bugzilla.scilab.org/show_bug.cgi?id=15850)
+    // is not necessary defined for all data types (https://gitlab.com/scilab/scilab/-/issues/15850)
     // A priori, the space *is* coding
 
     unput('+');

@@ -44,7 +44,7 @@ function [%val, %ierr] = evstr(%str)
             %str(k) = strsubst(%str(k), "_(?<!\:|"")?//.*$_" , "", "r");
         end
 
-        // Bracketing expressions: http://bugzilla.scilab.org/15308
+        // Bracketing expressions: https://gitlab.com/scilab/scilab/-/issues/15308
         comm = grep(%str, "_(^|[^:])//_", "r");
         tmp = 1:size(%str,"*");
         if comm~=[]

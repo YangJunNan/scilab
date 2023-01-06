@@ -39,7 +39,7 @@ double C2F(returnanan)(void)
 // It is simpler and safer to use this as a subroutine, where the
 // result variable must still be declared as a DOUBLE PRECISION.
 // See Bug #4678 :
-// http://bugzilla.scilab.org/show_bug.cgi?id=4378
+// https://gitlab.com/scilab/scilab/-/issues/4378
 void C2F(returnananfortran)(double * nan)
 {
     *nan = C2F(returnanan)();

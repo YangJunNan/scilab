@@ -18,7 +18,7 @@ function y = %r_permute(x, dims)
     // Output :
     // -y the result of the x permutation
     // History:
-    // 2013 - S. GOUGEON  : processing rewritten, fixing http://bugzilla.scilab.org/5205
+    // 2013 - S. GOUGEON  : processing rewritten, fixing https://gitlab.com/scilab/scilab/-/issues/5205
     // 2016 - S. GOUGEON  : extension to rationals
     // 2018 - S. MOTTELET : restrict to rationals as permute() is now a native function
 

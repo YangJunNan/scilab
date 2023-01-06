@@ -164,9 +164,6 @@
             <submenu label="&amp;Mailing Lists">
                 <callback instruction="org.scilab.modules.gui.bridge.CallScilabBridge.openMailingList" type="3"/>
             </submenu>
-            <submenu label="Mailing Lists &amp;Archives">
-                <callback instruction="org.scilab.modules.gui.bridge.CallScilabBridge.openMailingListArchives" type="3"/>
-            </submenu>
             <separator/>
             <submenu label="&amp;Forge">
                 <callback instruction="org.scilab.modules.gui.bridge.CallScilabBridge.openForge" type="3"/>
@@ -176,8 +173,8 @@
             </submenu>
         </submenu>
         <separator/>
-        <submenu label="&amp;Scilab Enterprises">
-            <callback instruction="org.scilab.modules.gui.bridge.CallScilabBridge.openSE" type="3"/>
+        <submenu label="&amp;Dassault Systèmes">
+            <callback instruction="org.scilab.modules.gui.bridge.CallScilabBridge.open3DS" type="3"/>
         </submenu>
         <separator/>
         <submenu label="&amp;About Scilab..." accelerator="shift F1">

@@ -36,7 +36,7 @@
 typedef int (*MYPROC1) (HINSTANCE, HINSTANCE , LPSTR szCmdLine, int iCmdShow);
 /*--------------------------------------------------------------------------*/
 /* BUG 6934 */
-/* http://bugzilla.scilab.org/show_bug.cgi?id=6934 */
+/* https://gitlab.com/scilab/scilab/-/issues/6934 */
 /* http://msdn.microsoft.com/en-us/library/chh3fb0k(VS.80).aspx */
 #ifdef __INTEL_COMPILER
 #pragma optimize("g", off)

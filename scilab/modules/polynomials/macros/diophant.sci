@@ -46,7 +46,7 @@ function [x, err] = diophant(p1p2, b)
         end
 
         [Gcd, u] = bezout(p1, p2)
-        if type(p1)==1          // http://bugzilla.scilab.org/16282
+        if type(p1)==1          // https://gitlab.com/scilab/scilab/-/issues/16282
             Gcd = coeff(Gcd)
             u = coeff(u)
         end
