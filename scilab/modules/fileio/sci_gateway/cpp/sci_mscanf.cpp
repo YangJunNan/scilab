@@ -27,11 +27,12 @@
 
 extern "C"
 {
-#include "sci_malloc.h"
-#include "localization.h"
 #include "Scierror.h"
 #include "do_xxscanf.h"
+#include "localization.h"
+#include "prompt.h"
 #include "scanf_functions.h"
+#include "sci_malloc.h"
 #include "scilabRead.h"
 }
 
@@ -81,6 +82,10 @@ types::Function::ReturnValue sci_mscanf(types::typed_list &in, int _iRetCount, t
         return types::Function::Error;
     }
 
+    // dont print a new line before getting user console input
+    bool bPrintCompact = ConfigVariable::isPrintCompact();
+    ConfigVariable::setPrintCompact(true);
+
     wcsFormat = in[size - 1]->getAs<types::String>()->get(0);
     nrow = iNiter;
     while (++rowcount < iNiter)
@@ -93,6 +98,14 @@ types::Function::ReturnValue sci_mscanf(types::typed_list &in, int _iRetCount, t
         // get data
         // The console thread must not parse the next console input.
         ConfigVariable::setScilabCommand(0);
+
+        // remove the prompt using invisible charactere on GUI.
+        // this prompt will be used once, then reset to the default prompt.
+        if (ConfigVariable::getPauseLevel() == 0)
+        {
+            // Unicode - Zero Width Space
+            SetTemporaryPrompt("\xE2\x80\x8B");
+        }
 
         // Get the console input filled by the console thread.
         char* pcConsoleReadStr = ConfigVariable::getConsoleReadStr();
@@ -127,6 +140,8 @@ types::Function::ReturnValue sci_mscanf(types::typed_list &in, int _iRetCount, t
             }
         }
     }
+
+    ConfigVariable::setPrintCompact(bPrintCompact);
 
     unsigned int uiFormatUsed = 0;
     for (int i = 0; i < ncol; i++)

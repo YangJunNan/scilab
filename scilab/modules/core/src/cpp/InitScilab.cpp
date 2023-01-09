@@ -738,7 +738,7 @@ void* scilabReadAndStore(void* param)
             int pause = ConfigVariable::getPauseLevel();
 
             //set prompt value
-           setPreviousLevel(pause);
+            setPreviousLevel(pause);
 
             if (scilabRead() == 0)
             {
