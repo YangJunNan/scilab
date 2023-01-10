@@ -38,9 +38,8 @@
   variables:
     GIT_STRATEGY: none
   script:
-    - REM TODO how to sign ? was
-    - REM call d:\signtool_password.bat
-    - REM "C:\Program Files (x86)\Windows Kits\8.1\bin\x64\signtool.exe" sign /f D:\\ESIGroupCERT.pfx /p "%SIGNPASS%" /t http://timestamp.sectigo.com /v %SCI_VERSION_STRING%.bin.%ARCH%.exe
+    - cd "C:\Program Files (x86)\Windows Kits\8.1\bin\x64\"
+    - .\signtool.exe sign /sha1 26FE905BFEBC7DA07D0DF8D294BBECEF8B544EDF /t http://timestamp.digicert.com/ /v $CI_PROJECT_DIR\$SCI_VERSION_STRING.bin.$ARCH.exe
   artifacts:
     paths:
       - $SCI_VERSION_STRING.bin.$ARCH.exe
