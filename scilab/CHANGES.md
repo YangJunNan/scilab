@@ -356,6 +356,7 @@ Bug Fixes
 * [#16913](https://gitlab.com/scilab/scilab/-/issues/16913): InnoSetup files was not updated after MKL upgrade.
 * [#16914](https://gitlab.com/scilab/scilab/-/issues/16914): Wrong line number with t/mlist extraction overload.
 * [#16912](https://gitlab.com/scilab/scilab/-/issues/16912): Some tools/functions still mentioned Scilab Enterprises and ESI Group as Scilab maintainer and/or Scilab trademark handler.
+* [#16919](https://gitlab.com/scilab/scilab/-/issues/16919): MList overload extraction compatibility with scilab 5.5.2
 
 ### Bugs fixed in 6.1.1:
 * [#3188](https://gitlab.com/scilab/scilab/-/issues/3188): `part()` was slower than in Scilab 4.1.2.

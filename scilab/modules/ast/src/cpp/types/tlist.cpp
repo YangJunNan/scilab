@@ -183,7 +183,6 @@ bool TList::invoke(typed_list & in, optional_list & /*opt*/, int _iRetCount, typ
     this->IncreaseRef();
     in.push_back(this);
 
-    std::wstring stType = getShortTypeStr();
     std::wstring wstrFuncName = L"%" + getShortTypeStr() + L"_e";
 
     try
@@ -194,6 +193,7 @@ bool TList::invoke(typed_list & in, optional_list & /*opt*/, int _iRetCount, typ
             // overload not defined, try with the short name.
             // to compatibility with scilab 5 code.
             // tlist/mlist name are truncated to 8 first character
+            std::wstring stType = getShortTypeStr();
             wstrFuncName = L"%" + stType.substr(0, 8) + L"_e";
             ret = Overload::call(wstrFuncName, in, _iRetCount, out, false, true, e.getLocation());
         }

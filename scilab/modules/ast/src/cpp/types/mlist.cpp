@@ -119,7 +119,16 @@ bool MList::invoke(typed_list & in, optional_list & /*opt*/, int _iRetCount, typ
 
     try
     {
-        ret = Overload::call(wstrFuncName, in, _iRetCount, out, false, true, e.getLocation());
+        ret = Overload::call(wstrFuncName, in, _iRetCount, out, false, false, e.getLocation());
+        if(ret == types::Callable::OK_NoResult)
+        {
+            // overload not defined, try with the short name.
+            // to compatibility with scilab 5 code.
+            // tlist/mlist name are truncated to 8 first character
+            std::wstring stType = getShortTypeStr();
+            wstrFuncName = L"%" + stType.substr(0, 8) + L"_e";
+            ret = Overload::call(wstrFuncName, in, _iRetCount, out, false, true, e.getLocation());
+        }
     }
     catch (const ast::InternalError& ie)
     {
