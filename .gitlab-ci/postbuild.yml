@@ -31,34 +31,6 @@
 #         [ -w "$i" ] && rm -rf "$i";
 #       done
 
-# sign the windows binary
-.x64_windows_sign:
-  stage: postbuild
-  tags: [x64_windows, scilab]
-  variables:
-    GIT_STRATEGY: none
-  script:
-    - REM TODO how to sign ? was
-    - REM call d:\signtool_password.bat
-    - REM "C:\Program Files (x86)\Windows Kits\8.1\bin\x64\signtool.exe" sign /f D:\\ESIGroupCERT.pfx /p "%SIGNPASS%" /t http://timestamp.sectigo.com /v %SCI_VERSION_STRING%.bin.%ARCH%.exe
-  artifacts:
-    paths:
-      - $SCI_VERSION_STRING.bin.$ARCH.exe
-x64_windows_sign_nightly:
-  extends: .x64_windows_sign
-  needs:
-    - x64_windows_build_nightly
-    - x64_windows_set_env
-  rules:
-    - if: $CI_PIPELINE_SOURCE == 'schedule'
-x64_windows_sign_release:
-  extends: .x64_windows_sign
-  needs:
-    - x64_windows_build_release
-    - x64_windows_set_env
-  rules:
-    - if: $CI_COMMIT_TAG
-
 # build javadoc
 .build_javadoc:
   stage: postbuild
