@@ -216,7 +216,7 @@ impacted_x64_windows_test_ugly:
     reports:
       junit: "logs_${CI_COMMIT_SHORT_SHA}/${ARCH}_${TEST}.xml"
 
-.x86_64-linux-gnu_test_branch_good:
+x86_64-linux-gnu_test_branch_good:
   extends: .x86_64-linux-gnu_test
   needs:
     - x86_64-linux-gnu_build_branch
@@ -227,7 +227,7 @@ impacted_x64_windows_test_ugly:
   parallel:
     matrix: *GOOD_TEST_ANCHOR
 
-.x86_64-linux-gnu_test_branch_bad:
+x86_64-linux-gnu_test_branch_bad:
   extends: .x86_64-linux-gnu_test
   needs:
     - x86_64-linux-gnu_build_branch
@@ -238,7 +238,7 @@ impacted_x64_windows_test_ugly:
   parallel:
     matrix: *BAD_TEST_ANCHOR
 
-.x86_64-linux-gnu_test_branch_ugly:
+x86_64-linux-gnu_test_branch_ugly:
   extends: .x86_64-linux-gnu_test
   needs:
     - x86_64-linux-gnu_build_branch
@@ -249,7 +249,7 @@ impacted_x64_windows_test_ugly:
   parallel:
     matrix: *UGLY_TEST_ANCHOR
 
-.x86_64-linux-gnu_test_nightly_good:
+x86_64-linux-gnu_test_nightly_good:
   extends: .x86_64-linux-gnu_test
   needs:
     - x86_64-linux-gnu_build_nightly
@@ -259,7 +259,7 @@ impacted_x64_windows_test_ugly:
   parallel:
     matrix: *GOOD_TEST_ANCHOR
 
-.x86_64-linux-gnu_test_nightly_bad:
+x86_64-linux-gnu_test_nightly_bad:
   extends: .x86_64-linux-gnu_test
   needs:
     - x86_64-linux-gnu_build_nightly
@@ -269,7 +269,7 @@ impacted_x64_windows_test_ugly:
   parallel:
     matrix: *BAD_TEST_ANCHOR
 
-.x86_64-linux-gnu_test_nightly_ugly:
+x86_64-linux-gnu_test_nightly_ugly:
   extends: .x86_64-linux-gnu_test
   needs:
     - x86_64-linux-gnu_build_nightly
@@ -279,7 +279,7 @@ impacted_x64_windows_test_ugly:
   parallel:
     matrix: *UGLY_TEST_ANCHOR
 
-.x86_64-linux-gnu_test_release_good:
+x86_64-linux-gnu_test_release_good:
   extends: .x86_64-linux-gnu_test
   needs:
     - x86_64-linux-gnu_build_release
@@ -289,7 +289,7 @@ impacted_x64_windows_test_ugly:
   parallel:
     matrix: *GOOD_TEST_ANCHOR
 
-.x86_64-linux-gnu_test_release_bad:
+x86_64-linux-gnu_test_release_bad:
   extends: .x86_64-linux-gnu_test
   needs:
     - x86_64-linux-gnu_build_release
@@ -299,7 +299,7 @@ impacted_x64_windows_test_ugly:
   parallel:
     matrix: *BAD_TEST_ANCHOR
 
-.x86_64-linux-gnu_test_release_ugly:
+x86_64-linux-gnu_test_release_ugly:
   extends: .x86_64-linux-gnu_test
   needs:
     - x86_64-linux-gnu_build_release
@@ -309,7 +309,7 @@ impacted_x64_windows_test_ugly:
   parallel:
     matrix: *UGLY_TEST_ANCHOR
 
-.impacted_x86_64-linux-gnu_test_good:
+impacted_x86_64-linux-gnu_test_good:
   extends: .x86_64-linux-gnu_test
   needs:
     - x86_64-linux-gnu_build_branch
@@ -321,7 +321,7 @@ impacted_x64_windows_test_ugly:
   parallel:
     matrix: *GOOD_TEST_ANCHOR
 
-.impacted_x86_64-linux-gnu_test_bad:
+impacted_x86_64-linux-gnu_test_bad:
   extends: .x86_64-linux-gnu_test
   needs:
     - x86_64-linux-gnu_build_branch
@@ -330,7 +330,7 @@ impacted_x64_windows_test_ugly:
   parallel:
     matrix: *BAD_TEST_ANCHOR
 
-.impacted_x86_64-linux-gnu_test_ugly:
+impacted_x86_64-linux-gnu_test_ugly:
   extends: .x86_64-linux-gnu_test
   needs:
     - x86_64-linux-gnu_build_branch

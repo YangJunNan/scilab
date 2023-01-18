@@ -73,7 +73,7 @@ x64_windows_build_release:
       - $SCI_VERSION_STRING.bin.$ARCH.tar.xz
     when: always
 # build an preview/branched version
-.x86_64-linux-gnu_build_branch:
+x86_64-linux-gnu_build_branch:
   extends: .x86_64-linux-gnu_build
   needs:
     - CHANGES_has_no_edit
@@ -81,14 +81,14 @@ x64_windows_build_release:
   rules:
     - if: $CI_PIPELINE_SOURCE == 'merge_request_event' || $CI_PIPELINE_SOURCE == 'push'
 # build a nightly
-.x86_64-linux-gnu_build_nightly:
+x86_64-linux-gnu_build_nightly:
   extends: .x86_64-linux-gnu_build
   needs:
     - x86_64-linux-gnu_set_env
   rules:
     - if: $CI_PIPELINE_SOURCE == 'schedule'
 # build a release
-.x86_64-linux-gnu_build_release:
+x86_64-linux-gnu_build_release:
   extends: .x86_64-linux-gnu_build
   needs:
     - prepare_release_files

@@ -32,7 +32,7 @@
 #       done
 
 # build javadoc
-.build_javadoc:
+build_javadoc:
   stage: postbuild
   tags: [x86_64-linux-gnu, docker, scilab]
   image: docker.io/openjdk:8-jdk-alpine
@@ -54,7 +54,7 @@
   when: manual
 
 # build Doxygen
-.build_doxygen:
+build_doxygen:
   stage: postbuild
   tags: [x86_64-linux-gnu, docker, scilab]
   image: docker.io/tsgkadot/docker-doxygen
@@ -71,7 +71,7 @@
   when: manual
 
 # build preview of help.scilab.org
-.build_help_web:
+build_help_web:
   stage: postbuild
   tags: [x86_64-linux-gnu, docker, scilab]
   image: $DOCKER_LINUX_BUILDER
@@ -87,7 +87,7 @@
   when: manual
 
 # extract jar content to web
-.publish_help_jar:
+publish_help_jar:
   stage: postbuild
   tags: [x86_64-linux-gnu, docker, scilab]
   image: $DOCKER_LINUX_BUILDER
