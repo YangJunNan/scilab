@@ -276,8 +276,8 @@ fi
     $as_echo "$0: be upgraded to zsh 4.3.4 or later."
   else
     $as_echo "$0: Please tell bug-autoconf@gnu.org and
-$0: https://gitlab.com/scilab/scilab/-/issues about your system,
-$0: including any error possibly output before this
+$0: https://gitlab.com/scilab/scilab/-/issues about your
+$0: system, including any error possibly output before this
 $0: message. Then install a modern shell, or manually run
 $0: the script under such a shell if you do have one."
   fi
@@ -2142,9 +2142,9 @@ $as_echo "$as_me: WARNING: $2: see the Autoconf documentation" >&2;}
 $as_echo "$as_me: WARNING: $2:     section \"Present But Cannot Be Compiled\"" >&2;}
     { $as_echo "$as_me:${as_lineno-$LINENO}: WARNING: $2: proceeding with the compiler's result" >&5
 $as_echo "$as_me: WARNING: $2: proceeding with the compiler's result" >&2;}
-( $as_echo "## ------------------------------------------ ##
+( $as_echo "## -------------------------------------------------------- ##
 ## Report this to https://gitlab.com/scilab/scilab/-/issues ##
-## ------------------------------------------ ##"
+## -------------------------------------------------------- ##"
      ) | sed "s/^/$as_me: WARNING:     /" >&2
     ;;
 esac
@@ -2772,9 +2772,9 @@ $as_echo "$as_me: WARNING: $2: see the Autoconf documentation" >&2;}
 $as_echo "$as_me: WARNING: $2:     section \"Present But Cannot Be Compiled\"" >&2;}
     { $as_echo "$as_me:${as_lineno-$LINENO}: WARNING: $2: proceeding with the compiler's result" >&5
 $as_echo "$as_me: WARNING: $2: proceeding with the compiler's result" >&2;}
-( $as_echo "## ------------------------------------------ ##
+( $as_echo "## -------------------------------------------------------- ##
 ## Report this to https://gitlab.com/scilab/scilab/-/issues ##
-## ------------------------------------------ ##"
+## -------------------------------------------------------- ##"
      ) | sed "s/^/$as_me: WARNING:     /" >&2
     ;;
 esac
@@ -50471,11 +50471,51 @@ DETECTED_YEAR=`grep "Copyright (c) 2022-" modules/core/src/cpp/banner.cpp|sed -e
 if test "$CURRENT_YEAR" != "$DETECTED_YEAR"; then
    sed -i -e "s| 2022-$DETECTED_YEAR | 2022-$CURRENT_YEAR |g" modules/core/src/cpp/banner.cpp modules/windows_tools/src/c/scilab_windows/console.c
    sed -i -e "s| 2022-$DETECTED_YEAR | 2022-$CURRENT_YEAR |g" etc/Info.plist.in
+   # aboutscilab.svg updated and aboutscilab.png file deleted (needs to be generated)
+   sed -i -e "s| 2022-$DETECTED_YEAR | 2022-$CURRENT_YEAR |g" modules/gui/images/icons/aboutscilab.svg
+   rm -rf modules/gui/images/icons/aboutscilab.png
+   touch modules/gui/images/icons/aboutscilab.png.needstobegeneratedfromsvg
    sed -i -e "s|VALUE \"LegalCopyright\", \"Copyright (C) $DETECTED_YEAR|VALUE \"LegalCopyright\", \"Copyright (C) $CURRENT_YEAR|" $(find . -iname '*.rc')
+   sed -i -e "s|2017-$DETECTED_YEAR|2017-$CURRENT_YEAR|" $(find . -iname 'banner.xml')
    { $as_echo "$as_me:${as_lineno-$LINENO}: WARNING: New year ($CURRENT_YEAR) detected. Copyright files updated. Please commit them ASAP." >&5
 $as_echo "$as_me: WARNING: New year ($CURRENT_YEAR) detected. Copyright files updated. Please commit them ASAP." >&2;}
 fi
 
+#################
+## Update Scilab version in aboutscilab.svg
+#################
+
+if test ! -f modules/gui/images/icons/aboutscilab.svg; then
+   as_fn_error $? "Could not find aboutscilab.svg file." "$LINENO" 5
+fi
+
+CURRENT_VERSION=$SCILAB_BINARY_VERSION
+DETECTED_VERSION=`grep -m 1 ">Scilab" modules/gui/images/icons/aboutscilab.svg|sed -e "s/.*>Scilab //g"|sed -e "s/<.*//g"`
+
+if test "$CURRENT_VERSION" != "$DETECTED_VERSION"; then
+   # aboutscilab.svg updated and aboutscilab.png file deleted (needs to be generated)
+   sed -i -e "s|Scilab $DETECTED_VERSION|Scilab $CURRENT_VERSION|" modules/gui/images/icons/aboutscilab.svg
+   rm -rf modules/gui/images/icons/aboutscilab.png
+   { $as_echo "$as_me:${as_lineno-$LINENO}: WARNING: New version ($CURRENT_VERSION) detected. \"About Scilab\" images updated. Please commit them ASAP." >&5
+$as_echo "$as_me: WARNING: New version ($CURRENT_VERSION) detected. \"About Scilab\" images need to be checked and committed." >&2;}
+fi
+
+#################
+## Update Scilab version in banner() help pages.
+#################
+
+if test ! -f modules/core/help/en_US/configuration/banner.xml; then
+   as_fn_error $? "Could not find the Scilab banner help file." "$LINENO" 5
+fi
+
+CURRENT_VERSION=$SCILAB_BINARY_VERSION
+DETECTED_VERSION=`grep "scilab-" modules/core/help/en_US/configuration/banner.xml|sed -e "s/.*scilab-//g"`
+
+if test "$CURRENT_VERSION" != "$DETECTED_VERSION"; then
+   sed -i -e "s|scilab-.*|scilab-$CURRENT_VERSION|" $(find . -iname 'banner.xml')
+   { $as_echo "$as_me:${as_lineno-$LINENO}: WARNING: New version ($CURRENT_VERSION) detected. Help files updated. Please commit them ASAP." >&5
+$as_echo "$as_me: WARNING: New version ($CURRENT_VERSION) detected. Help files updated. Please commit them ASAP." >&2;}
+fi
 
 #########
 ## Check extra CC / CXX compiler flags to ease runtime behaviors

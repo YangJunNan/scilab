@@ -2018,10 +2018,48 @@ DETECTED_YEAR=`grep "Copyright (c) 2022-" modules/core/src/cpp/banner.cpp|sed -e
 if test "$CURRENT_YEAR" != "$DETECTED_YEAR"; then
    sed -i -e "s| 2022-$DETECTED_YEAR | 2022-$CURRENT_YEAR |g" modules/core/src/cpp/banner.cpp modules/windows_tools/src/c/scilab_windows/console.c
    sed -i -e "s| 2022-$DETECTED_YEAR | 2022-$CURRENT_YEAR |g" etc/Info.plist.in
+   # aboutscilab.svg updated and aboutscilab.png file deleted (needs to be generated)
+   sed -i -e "s| 2022-$DETECTED_YEAR | 2022-$CURRENT_YEAR |g" modules/gui/images/icons/aboutscilab.svg
+   rm -rf modules/gui/images/icons/aboutscilab.png
+   touch modules/gui/images/icons/aboutscilab.png.needstobegeneratedfromsvg
    sed -i -e "s|VALUE \"LegalCopyright\", \"Copyright (C) $DETECTED_YEAR|VALUE \"LegalCopyright\", \"Copyright (C) $CURRENT_YEAR|" $(find . -iname '*.rc')
+   sed -i -e "s|2017-$DETECTED_YEAR|2017-$CURRENT_YEAR|" $(find . -iname 'banner.xml')
    AC_MSG_WARN([New year ($CURRENT_YEAR) detected. Copyright files updated. Please commit them ASAP.])
 fi
 
+#################
+## Update Scilab version in aboutscilab.svg
+#################
+
+if test ! -f modules/gui/images/icons/aboutscilab.svg; then
+   AC_MSG_ERROR([Could not find aboutscilab.svg file.])
+fi
+
+CURRENT_VERSION=$SCILAB_BINARY_VERSION
+DETECTED_VERSION=`grep -m 1 ">Scilab" modules/gui/images/icons/aboutscilab.svg|sed -e "s/.*>Scilab //g"|sed -e "s/<.*//g"`
+
+if test "$CURRENT_VERSION" != "$DETECTED_VERSION"; then
+   # aboutscilab.svg updated and aboutscilab.png file deleted (needs to be generated)
+   sed -i -e "s|Scilab $DETECTED_VERSION|Scilab $CURRENT_VERSION|" modules/gui/images/icons/aboutscilab.svg
+   rm -rf modules/gui/images/icons/aboutscilab.png
+   AC_MSG_WARN([New version ($CURRENT_VERSION) detected. "About Scilab" images need to be checked and committed.])
+fi
+
+#################
+## Update Scilab version in banner() help pages.
+#################
+
+if test ! -f modules/core/help/en_US/configuration/banner.xml; then
+   AC_MSG_ERROR([Could not find the Scilab banner help file.])
+fi
+
+CURRENT_VERSION=$SCILAB_BINARY_VERSION
+DETECTED_VERSION=`grep "scilab-" modules/core/help/en_US/configuration/banner.xml|sed -e "s/.*scilab-//g"`
+
+if test "$CURRENT_VERSION" != "$DETECTED_VERSION"; then
+   sed -i -e "s|scilab-.*|scilab-$CURRENT_VERSION|" $(find . -iname 'banner.xml')
+   AC_MSG_WARN([New version ($CURRENT_VERSION) detected. Help files updated. Please commit them ASAP.])
+fi
 
 #########
 ## Check extra CC / CXX compiler flags to ease runtime behaviors
