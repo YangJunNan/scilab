@@ -1,5 +1,5 @@
 // =============================================================================
-// Scilab ( http://www.scilab.org/ ) - This file is part of Scilab
+// Scilab ( https://www.scilab.org/ ) - This file is part of Scilab
 // Copyright (C) 2010 - DIGITEO - Pierre MARECHAL
 //
 //  This file is distributed under the same license as the Scilab package.
@@ -19,7 +19,7 @@
 // ATOMS modules of the cloned installation can no longer be launched at the
 // session startup.
 
-atomsRepositorySetOfl("http://scene10.test.atoms.scilab.org");
+atomsRepositorySetOfl("https://scene10.test.atoms.scilab.org");
 atomsInstall("toolbox_1");
 
 // Move the scilab installation to another path

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
- * Scilab ( http://www.scilab.org/ ) - This file is part of Scilab
+ * Scilab ( https://www.scilab.org/ ) - This file is part of Scilab
  * Copyright (C) 2017 - ESI-Group
  *
  * This file is hereby licensed under the terms of the GNU GPL v2.0,
@@ -145,7 +145,7 @@
 data.userId = 12;
 data.title  = "A title";
 data.body   = "A body";
-result = http_post("http://jsonplaceholder.typicode.com/posts", data)
+result = http_post("https://jsonplaceholder.typicode.com/posts", data)
  ]]></programlisting>
     </refsection>
     <refsection role="see also">

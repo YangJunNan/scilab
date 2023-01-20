@@ -1,5 +1,5 @@
 // =============================================================================
-// Scilab ( http://www.scilab.org/ ) - This file is part of Scilab
+// Scilab ( https://www.scilab.org/ ) - This file is part of Scilab
 // Copyright (C) 2013 - Scilab Enterprises
 //
 //  This file is distributed under the same license as the Scilab package.
@@ -12,7 +12,7 @@
 //
 // <-- Short Description -->
 // When host is not found, getURL provokes a Crash To Desktop
-instr = "getURL(''http://www.scilab-dummy.org'', ''scilab_homepage.html'');";
+instr = "getURL(''https://www.scilab-dummy.org'', ''scilab_homepage.html'');";
 if getos() == 'Windows' then
   errReason = "Could not resolve host: www.scilab-dummy.org; Host not found";
 else

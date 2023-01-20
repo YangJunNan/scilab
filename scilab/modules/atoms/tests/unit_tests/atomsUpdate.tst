@@ -1,5 +1,5 @@
 // =============================================================================
-// Scilab ( http://www.scilab.org/ ) - This file is part of Scilab
+// Scilab ( https://www.scilab.org/ ) - This file is part of Scilab
 // Copyright (C) 2009 - DIGITEO - Pierre MARECHAL <pierre.marechal@scilab.org>
 //
 //  This file is distributed under the same license as the Scilab package.
@@ -30,7 +30,7 @@ atomsSetConfig("Verbose" ,"False");
 // =============================================================================
 
 // Load the 1st scenario : See scene10.test.atoms.scilab.org.txt
-atomsRepositorySetOfl("http://scene10.6.0.test.atoms.scilab.org");
+atomsRepositorySetOfl("https://scene10.6.0.test.atoms.scilab.org");
 
 atomsInstall("toolbox_5V6","user");
 
@@ -48,7 +48,7 @@ if atomsGetInstalledStatus(["toolbox_2V6" "1.0-1"],"user")<>"A" then pause, end
 if atomsGetInstalledStatus(["toolbox_1V6" "1.0-1"],"user")<>"A" then pause, end
 
 // Load the 2nd scenario : See scene11.test.atoms.scilab.org.txt
-atomsRepositorySetOfl("http://scene11.6.0.test.atoms.scilab.org");
+atomsRepositorySetOfl("https://scene11.6.0.test.atoms.scilab.org");
 
 atomsUpdate();
 
@@ -73,7 +73,7 @@ if ~isempty( atomsGetInstalled() ) then pause, end
 // =============================================================================
 
 // Load the 1st scenario : See scene10.test.atoms.scilab.org.txt
-atomsRepositorySetOfl("http://scene10.6.0.test.atoms.scilab.org");
+atomsRepositorySetOfl("https://scene10.6.0.test.atoms.scilab.org");
 
 atomsInstall("toolbox_4V6","user");
 atomsInstall("toolbox_5V6","user");
@@ -92,7 +92,7 @@ if atomsGetInstalledStatus(["toolbox_2V6" "1.0-1"],"user")<>"A" then pause, end
 if atomsGetInstalledStatus(["toolbox_1V6" "1.0-1"],"user")<>"A" then pause, end
 
 // Load the 2nd scenario : See scene11.test.atoms.scilab.org.txt
-atomsRepositorySetOfl("http://scene11.6.0.test.atoms.scilab.org");
+atomsRepositorySetOfl("https://scene11.6.0.test.atoms.scilab.org");
 
 atomsUpdate();
 
@@ -119,7 +119,7 @@ if ~isempty( atomsGetInstalled() ) then pause, end
 // =============================================================================
 
 // Load the 1st scenario : See scene10.test.atoms.scilab.org.txt
-atomsRepositorySetOfl("http://scene10.6.0.test.atoms.scilab.org");
+atomsRepositorySetOfl("https://scene10.6.0.test.atoms.scilab.org");
 
 atomsInstall("toolbox_3V6","user");
 atomsInstall("toolbox_4V6","user");
@@ -140,7 +140,7 @@ if atomsGetInstalledStatus(["toolbox_2V6" "1.0-1"],"user")<>"A" then pause, end
 if atomsGetInstalledStatus(["toolbox_1V6" "1.0-1"],"user")<>"A" then pause, end
 
 // Load the 2nd scenario : See scene11.test.atoms.scilab.org.txt
-atomsRepositorySetOfl("http://scene11.6.0.test.atoms.scilab.org");
+atomsRepositorySetOfl("https://scene11.6.0.test.atoms.scilab.org");
 
 atomsUpdate();
 
@@ -169,7 +169,7 @@ if ~isempty( atomsGetInstalled() ) then pause, end
 // =============================================================================
 
 // Load the 1st scenario : See scene10.test.atoms.scilab.org.txt
-atomsRepositorySetOfl("http://scene10.6.0.test.atoms.scilab.org");
+atomsRepositorySetOfl("https://scene10.6.0.test.atoms.scilab.org");
 
 atomsInstall("toolbox_5V6","user");
 atomsInstall("toolbox_5V6","allusers");
@@ -197,7 +197,7 @@ if atomsGetInstalledStatus(["toolbox_2V6" "1.0-1"],"allusers")<>"A" then pause, 
 if atomsGetInstalledStatus(["toolbox_1V6" "1.0-1"],"allusers")<>"A" then pause, end
 
 // Load the 2nd scenario : See scene11.test.atoms.scilab.org.txt
-atomsRepositorySetOfl("http://scene11.6.0.test.atoms.scilab.org");
+atomsRepositorySetOfl("https://scene11.6.0.test.atoms.scilab.org");
 
 atomsUpdate([],"user");
 
@@ -243,7 +243,7 @@ if ~isempty( atomsGetInstalled() ) then pause, end
 // =============================================================================
 
 // Load the 1st scenario : See scene11.test.atoms.scilab.org.txt
-atomsRepositorySetOfl("http://scene11.6.0.test.atoms.scilab.org");
+atomsRepositorySetOfl("https://scene11.6.0.test.atoms.scilab.org");
 
 atomsInstall("toolbox_5V6","user");
 
@@ -260,7 +260,7 @@ if atomsGetInstalledStatus(["toolbox_2V6" "1.0-1"],"user")<>"A" then pause, end
 if atomsGetInstalledStatus(["toolbox_1V6" "1.0-1"],"user")<>"A" then pause, end
 
 // Load the 2nd scenario : See scene12.test.atoms.scilab.org.txt
-atomsRepositorySetOfl("http://scene12.6.0.test.atoms.scilab.org");
+atomsRepositorySetOfl("https://scene12.6.0.test.atoms.scilab.org");
 
 atomsUpdate();
 

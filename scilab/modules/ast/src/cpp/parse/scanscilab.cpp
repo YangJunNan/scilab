@@ -1922,7 +1922,7 @@ goto find_rule; \
 char *yytext;
 /* -*- C++ -*- */
 /*
- * Scilab ( http://www.scilab.org/ ) - This file is part of Scilab
+ * Scilab ( https://www.scilab.org/ ) - This file is part of Scilab
  * Copyright (C) 2008-2012 - Scilab Enterprises - Bruno JOFRET
  * Copyright (C) 2012 - 2016 - Scilab Enterprises
  * Copyright (C) 2018 - Dirk Reusch, Kybernetik Dr. Reusch

@@ -1,5 +1,5 @@
 /*
- * Scilab ( http://www.scilab.org/ ) - This file is part of Scilab
+ * Scilab ( https://www.scilab.org/ ) - This file is part of Scilab
  * Copyright (C) 2010 - Calixte DENIZET
  *
  * Copyright (C) 2012 - 2016 - Scilab Enterprises
@@ -54,7 +54,7 @@ public class HTMLScilabHandler extends ExternalXMLHandler {
      * {@inheritDoc}
      */
     public String getURI() {
-        return "http://www.scilab.org";
+        return "https://www.scilab.org";
     }
 
     /**

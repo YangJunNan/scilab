@@ -284,7 +284,7 @@ dnl @synopsis ACX_ARPACK([ACTION-IF-FOUND[, ACTION-IF-NOT-FOUND]])
 dnl
 dnl This macro looks for a library that implements the ARPACK
 dnl collection of Fortran77 subroutines designed to solve large 
-dnl scale eigenvalue problems (http://forge.scilab.org/index.php/p/arpack-ng/).
+dnl scale eigenvalue problems (https://github.com/opencollab/arpack-ng/).
 dnl On success, it sets the ARPACK_LIBS output variable to
 dnl hold the requisite library linkages.
 dnl

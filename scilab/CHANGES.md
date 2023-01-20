@@ -15,7 +15,7 @@ This file is intended for the specific needs of advanced users, and describes:
 Please report anything we could have missed, on the [mailing lists][2] or the [bug tracker][3].
 
 [1]: https://help.scilab.org/docs/6.0.2/en_US/CHANGES.html
-[2]: http://mailinglists.scilab.org
+[2]: https://www.scilab.org/about/community/mailing-lists
 [3]: https://gitlab.com/scilab/scilab/-/issues
 
 

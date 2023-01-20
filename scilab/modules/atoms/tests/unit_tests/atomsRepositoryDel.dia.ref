@@ -1,5 +1,5 @@
 // =============================================================================
-// Scilab ( http://www.scilab.org/ ) - This file is part of Scilab
+// Scilab ( https://www.scilab.org/ ) - This file is part of Scilab
 // Copyright (C) 2009 - DIGITEO - Pierre MARECHAL <pierre.marechal@scilab.org>
 //
 //  This file is distributed under the same license as the Scilab package.
@@ -7,8 +7,8 @@
 // <-- ENGLISH IMPOSED -->
 // <-- CLI SHELL MODE -->
 if isempty([ atomsRepositoryList("user") ; atomsRepositoryList("allusers")]) then
-    rep1 = "http://scene10.6.0.test.atoms.scilab.org";
-    rep2 = "http://scene11.6.0.test.atoms.scilab.org";
+    rep1 = "https://scene10.6.0.test.atoms.scilab.org";
+    rep2 = "https://scene11.6.0.test.atoms.scilab.org";
     if atomsRepositoryAdd(rep1,"user")     <> 1 then bugmes();quit;end
     if atomsRepositoryAdd(rep2,"allusers") <> 1 then bugmes();quit;end
     if or(atomsRepositoryList("user")     <> [rep1,"user"]) then bugmes();quit;end
@@ -23,15 +23,15 @@ if isempty([ atomsRepositoryList("user") ; atomsRepositoryList("allusers")]) the
     if atomsRepositoryDel([rep1;rep2],"user") <> 2 then bugmes();quit;end
     if ~isempty([ atomsRepositoryList("user") ; atomsRepositoryList("allusers")]) then bugmes();quit;end
 end
-Scanning repository http://atoms.scilab.org/6.0 ... Done
-Scanning repository http://scene10.6.0.test.atoms.scilab.org ... Done
-Scanning repository http://atoms.scilab.org/6.0 ... Done
-Scanning repository http://scene11.6.0.test.atoms.scilab.org ... Done
-Scanning repository http://scene10.6.0.test.atoms.scilab.org ... Done
-Scanning repository http://atoms.scilab.org/6.0 ... Done
-Scanning repository http://scene11.6.0.test.atoms.scilab.org ... Done
-Scanning repository http://atoms.scilab.org/6.0 ... Done
-Scanning repository http://atoms.scilab.org/6.0 ... Done
-Scanning repository http://scene10.6.0.test.atoms.scilab.org ... Done
-Scanning repository http://scene11.6.0.test.atoms.scilab.org ... Done
-Scanning repository http://atoms.scilab.org/6.0 ... Done
+Scanning repository https://atoms.scilab.org/6.0 ... Done
+Scanning repository https://scene10.6.0.test.atoms.scilab.org ... Done
+Scanning repository https://atoms.scilab.org/6.0 ... Done
+Scanning repository https://scene11.6.0.test.atoms.scilab.org ... Done
+Scanning repository https://scene10.6.0.test.atoms.scilab.org ... Done
+Scanning repository https://atoms.scilab.org/6.0 ... Done
+Scanning repository https://scene11.6.0.test.atoms.scilab.org ... Done
+Scanning repository https://atoms.scilab.org/6.0 ... Done
+Scanning repository https://atoms.scilab.org/6.0 ... Done
+Scanning repository https://scene10.6.0.test.atoms.scilab.org ... Done
+Scanning repository https://scene11.6.0.test.atoms.scilab.org ... Done
+Scanning repository https://atoms.scilab.org/6.0 ... Done

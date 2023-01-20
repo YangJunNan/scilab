@@ -463,8 +463,7 @@ msgid ""
 "Please submit a bug report on https://gitlab.com/scilab/scilab/-/issues\n"
 msgstr ""
 "%s: попередження: Scilab не вдалося виявити місце зберігання вихідних кодів "
-"Scilab. Будь ласка, повідомте про це на сторінці http://bugzilla.scilab."
-"org/\n"
+"Scilab. Будь ласка, повідомте про це на сторінці https://gitlab.com/scilab/scilab/-/issues\n"
 
 #, c-format
 msgid "%s: Build command: %s\n"

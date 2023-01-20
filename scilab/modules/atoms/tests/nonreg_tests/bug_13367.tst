@@ -1,5 +1,5 @@
 // =============================================================================
-// Scilab ( http://www.scilab.org/ ) - This file is part of Scilab
+// Scilab ( https://www.scilab.org/ ) - This file is part of Scilab
 // Copyright (C) 2014 - Scilab Enterprises - Bruno JOFRET
 //
 //  This file is distributed under the same license as the Scilab package.
@@ -20,6 +20,6 @@
 defaultRepo = atomsRepositoryList();
 v = getversion("scilab");
 
-goodRepo = sprintf("http://atoms.scilab.org/%d.%d", v(1), v(2));
+goodRepo = sprintf("https://atoms.scilab.org/%d.%d", v(1), v(2));
 
 assert_checkequal(defaultRepo(1), goodRepo);

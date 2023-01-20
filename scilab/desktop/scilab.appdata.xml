@@ -25,22 +25,21 @@
     <screenshots>
       <screenshot type="default">
         <caption>Scilab main window</caption>
-        <image width="1200" height="675">http://cgit.scilab.org/cgit.cgi/scilab/plain/scilab/desktop/images/scilab-desktop.png</image>
+        <image width="1200" height="675">https://gitlab.com/scilab/scilab/-/blob/6.1/scilab/desktop/images/scilab-desktop.png</image>
       </screenshot>
       <screenshot>
         <caption>Scilab plot</caption>
-        <image width="1200" height="675">http://cgit.scilab.org/cgit.cgi/scilab/plain/scilab/desktop/images/scilab-plot.png</image>
+        <image width="1200" height="675">https://gitlab.com/scilab/scilab/-/blob/6.1/scilab/desktop/images/scilab-plot.png</image>
       </screenshot>
       <screenshot>
         <caption>Scilab Xcos</caption>
-        <image width="1200" height="675">http://cgit.scilab.org/cgit.cgi/scilab/plain/scilab/desktop/images/scilab-xcos.png</image>
+        <image width="1200" height="675">https://gitlab.com/scilab/scilab/-/blob/6.1/scilab/desktop/images/scilab-xcos.png</image>
       </screenshot>
       <screenshot>
         <caption>Scilab text editor</caption>
-        <image width="1200" height="675">http://cgit.scilab.org/cgit.cgi/scilab/plain/scilab/desktop/images/scilab-scinotes.png</image>
+        <image width="1200" height="675">https://gitlab.com/scilab/scilab/-/blob/6.1/scilab/desktop/images/scilab-scinotes.png</image>
       </screenshot>
     </screenshots>
-    <url type="homepage">http://www.scilab.org</url>
+    <url type="homepage">https://www.scilab.org</url>
     <update_contact>dev@lists.scilab.org</update_contact>
 </component>
-

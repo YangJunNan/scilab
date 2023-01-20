@@ -31849,7 +31849,7 @@ $as_echo "ARPACK-NG library found" >&6; }
         :
 else
         acx_arpack_ok=no
-        as_fn_error $? "Impossible to find the ARPACK library. Please note that arpack was bundled with version prior to 5.4.0 and Scilab requires arpack-ng ( http://forge.scilab.org/index.php/p/arpack-ng/ )." "$LINENO" 5
+        as_fn_error $? "Impossible to find the ARPACK library. Please note that arpack was bundled with version prior to 5.4.0 and Scilab requires arpack-ng ( https://github.com/opencollab/arpack-ng/ )." "$LINENO" 5
 
 fi
 

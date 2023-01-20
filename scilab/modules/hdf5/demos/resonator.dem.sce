@@ -1,4 +1,4 @@
-// Scilab ( http://www.scilab.org/ ) - This file is part of Scilab
+// Scilab ( https://www.scilab.org/ ) - This file is part of Scilab
 // Copyright (C) 2013 - S/E - Sylvestre Ledru
 // Copyright (C) 2013 - LASS - Antoine Monmayrant
 //

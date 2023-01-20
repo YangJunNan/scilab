@@ -1,5 +1,5 @@
 // =============================================================================
-// Scilab ( http://www.scilab.org/ ) - This file is part of Scilab
+// Scilab ( https://www.scilab.org/ ) - This file is part of Scilab
 // Copyright (C) 2011 - Sylvestre LEDRU
 // Copyright (C) 2013 - Scilab Enterprises
 //
@@ -34,13 +34,13 @@ mkdir(destdir);
 cd(destdir);
 
 // Check downloaded file
-filePath = getURL("http://www.scilab.org");
+filePath = getURL("https://www.scilab.org");
 checkFile(filePath, fullfile(destdir, "index.html"), 1000);
 
-filePath = getURL("http://www.scilab.org/");
+filePath = getURL("https://www.scilab.org/");
 checkFile(filePath, fullfile(destdir, "index.html"), 1000);
 
-filePath = getURL("http://www.scilab.org/product/man/numderivative.html");
+filePath = getURL("https://www.scilab.org/product/man/numderivative.html");
 checkFile(filePath, fullfile(destdir, "numderivative.html"), 1000);
 
 filePath = getURL("www.scilab.org");
@@ -62,23 +62,23 @@ checkFileAndContent(filePath, fullfile(destdir, "README"), 10, "Linux");
 filePath = getURL("https://encrypted.google.com");
 checkFileAndContent(filePath, fullfile(destdir, "index.html"), 100, "html");
 
-filePath = getURL("http://httpbin.org/basic-auth/user/passwd", fullfile(destdir, "testauth"), "user", "passwd");
+filePath = getURL("https://httpbin.org/basic-auth/user/passwd", fullfile(destdir, "testauth"), "user", "passwd");
 checkFileAndContent(filePath, fullfile(destdir, "testauth"), 10, "authenticated");
 
 // Check returned content
-[filePath, content] = getURL("http://www.scilab.org:80");
+[filePath, content] = getURL("https://www.scilab.org:80");
 checkContent(filePath, content, 1000, "html");
 
-[filePath, content] = getURL("http://plop:ae@www.scilab.org:80");
+[filePath, content] = getURL("https://plop:ae@www.scilab.org:80");
 checkContent(filePath, content, 1000, "html");
 
-[filePath, content] = getURL("http://www.scilab.org/aze");
+[filePath, content] = getURL("https://www.scilab.org/aze");
 checkContent(filePath, content, 100, "ESI");
 
-[filePath, content] = getURL("http://www.scilab.org");
+[filePath, content] = getURL("https://www.scilab.org");
 checkContent(filePath, content, 1000, "html");
 
-[filePath, content] = getURL("http://www.scilab.org/");
+[filePath, content] = getURL("https://www.scilab.org/");
 checkContent(filePath, content, 1000, "html");
 
 [filePath, content] = getURL("ftp://ftp.free.fr/pub/Distributions_Linux/debian/README");
@@ -88,10 +88,10 @@ checkContent(filePath, content, 10, "Linux");
 [filePath, content] = getURL("https://encrypted.google.com");
 checkContent(filePath, content, 100, "html");
 
-[filePath, content] = getURL("http://httpbin.org/basic-auth/user/passwd", destdir, "user", "passwd");
+[filePath, content] = getURL("https://httpbin.org/basic-auth/user/passwd", destdir, "user", "passwd");
 checkContent(filePath, content, 10, "authenticated");
 
 // Badly formatted URL
-assert_checkerror("getURL(''http://plop@ae:www.scilab.org:80'');", [], 999);
+assert_checkerror("getURL(''https://plop@ae:www.scilab.org:80'');", [], 999);
 
 cd(curdir);

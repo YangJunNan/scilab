@@ -1,5 +1,5 @@
 ;
-; Scilab ( http://www.scilab.org/ ) - This file is part of Scilab
+; Scilab ( https://www.scilab.org/ ) - This file is part of Scilab
 ; Copyright (C) DIGITEO - 2010 - Allan CORNET
 ;
 ; Copyright (C) 2012 - 2016 - Scilab Enterprises
@@ -44,9 +44,9 @@ LicenseFile=COPYING
 ChangesAssociations=yes
 WindowVisible=false
 AppPublisher=Scilab Enterprises
-AppPublisherURL=http://www.scilab.org
+AppPublisherURL=https://www.scilab.org
 AppSupportURL=https://gitlab.com/scilab/scilab/-/issues
-AppUpdatesURL=http://www.scilab.org/products/scilab/download
+AppUpdatesURL=https://www.scilab.org/products/scilab/download
 WizardImageStretch=no
 WizardImageBackColor=clBlack
 WizardImageFile=tools\innosetup\ScilabLogo.bmp

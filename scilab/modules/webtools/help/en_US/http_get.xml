@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
- * Scilab ( http://www.scilab.org/ ) - This file is part of Scilab
+ * Scilab ( https://www.scilab.org/ ) - This file is part of Scilab
  * Copyright (C) 2017 - ESI-Group
  *
  * This file is hereby licensed under the terms of the GNU GPL v2.0,
@@ -141,7 +141,7 @@ mgetl(file)
 file = http_get("www.google.com", TMPDIR+"/result.html", follow=%t);
 // then open the file in your browser
 
-result = http_get("http://jsonplaceholder.typicode.com/posts?userId=1")
+result = http_get("https://jsonplaceholder.typicode.com/posts?userId=1")
  ]]></programlisting>
     </refsection>
     <refsection role="see also">

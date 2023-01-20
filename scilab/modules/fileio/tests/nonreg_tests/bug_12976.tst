@@ -1,5 +1,5 @@
 // =============================================================================
-// Scilab ( http://www.scilab.org/ ) - This file is part of Scilab
+// Scilab ( https://www.scilab.org/ ) - This file is part of Scilab
 // Copyright (C) 2013 - Scilab Enterprises
 //
 //  This file is distributed under the same license as the Scilab package.
@@ -18,11 +18,11 @@
 curdir = pwd();
 cd(TMPDIR);
 
-filepath = getURL("http://www.scilab.org");
+filepath = getURL("https://www.scilab.org");
 assert_checkequal(filepath, fullfile(TMPDIR, "index.html"));
 deletefile(filepath);
 
-filepath = getURL("http://www.scilab.org", fullfile(TMPDIR, "scilab_homepage.html"));
+filepath = getURL("https://www.scilab.org", fullfile(TMPDIR, "scilab_homepage.html"));
 assert_checkequal(filepath, fullfile(TMPDIR, "scilab_homepage.html"));
 deletefile(filepath);
 

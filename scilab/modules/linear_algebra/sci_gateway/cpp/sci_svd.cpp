@@ -1,5 +1,5 @@
 /*
-* Scilab ( http://www.scilab.org/ ) - This file is part of Scilab
+* Scilab ( https://www.scilab.org/ ) - This file is part of Scilab
 * Copyright (C) 2009 - DIGITEO - Bernard HUGUENEY
 * Copyright (C) 2011 - DIGITEO - Cedric DELAMARRE
 *
@@ -35,7 +35,7 @@ extern "C"
   [U,S,V]=svd(X,0) (obsolete) [U,S,V]=svd(X,"e"): [ [C|R:rows x min(rows,cols)], [R: min(rows,cols) x min(rows,cols)], [C|R:cols x min(rows,cols)] ]
   [U,S,V,rk]=svd(X [,tol]) : cf. supra, rk[R 1 x 1]
 
-  /!\ Contrary to specifications (@ http://www.scilab.org/product/man/svd.html )
+  /!\ Contrary to specifications (@ https://www.scilab.org/product/man/svd.html )
   , previous version was accepting Lhs==2. Worse : tests were using this undocumented behavior.
   implementation and tests have been fixed according to the specification.
 

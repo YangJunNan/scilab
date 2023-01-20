@@ -1,5 +1,5 @@
 /*
- * Scilab ( http://www.scilab.org/ ) - This file is part of Scilab
+ * Scilab ( https://www.scilab.org/ ) - This file is part of Scilab
  * Copyright (C) 2009 - DIGITEO - Bernard HUGUENEY
  * Copyright (C) 2011 - DIGITEO - Cedric DELAMARRE
  *
@@ -531,7 +531,7 @@ int iEigen2RealM(double* pData1, double* pData2, int iCols, double* pAlphaReal, 
 
 /******************************************************************************
  * Code below lifted from assembleEigenvectors.c
- * Scilab ( http://www.scilab.org/ ) - This file is part of Scilab
+ * Scilab ( https://www.scilab.org/ ) - This file is part of Scilab
  * Copyright (C) 2008 - INRIA - Micha\EBl Baudin
  *
  ******************************************************************************/

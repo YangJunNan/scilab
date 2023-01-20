@@ -1,5 +1,5 @@
 /*
- * Scilab ( http://www.scilab.org/ ) - This file is part of Scilab
+ * Scilab ( https://www.scilab.org/ ) - This file is part of Scilab
  * Copyright (C) 2010 - Calixte DENIZET
  *
  * Copyright (C) 2012 - 2016 - Scilab Enterprises
@@ -58,7 +58,7 @@ public final class ScilabCodeServer {
             System.out.println("               which must be kept in memory (5 by default)");
             System.out.println("");
             System.out.println("Report bugs on: <https://gitlab.com/scilab/scilab/-/issues>");
-            System.out.println("Project page: <http://forge.scilab.org/index.php/p/scidoc>");
+            System.out.println("Project page: <https://gitlab.com/scilab/forge/scidoc>");
             return;
         }
 

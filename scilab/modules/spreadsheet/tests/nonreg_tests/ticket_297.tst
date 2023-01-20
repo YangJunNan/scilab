@@ -5,9 +5,6 @@
 // =============================================================================
 // <-- Non-regression test for bug 297 -->
 //
-// <-- URL -->
-//  http://forge.scilab.org/index.php/p/csv-readwrite/issues/297/
-//
 // <-- Short Description -->
 // The csvTextScan function does not take range as a row matrix.
 // =============================================================================

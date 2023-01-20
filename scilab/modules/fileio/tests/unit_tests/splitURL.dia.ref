@@ -1,27 +1,27 @@
 //<-- CLI SHELL MODE -->
 // =============================================================================
-// Scilab ( http://www.scilab.org/ ) - This file is part of Scilab
+// Scilab ( https://www.scilab.org/ ) - This file is part of Scilab
 // Copyright (C) 2011 - Sylvestre LEDRU
 //
 //  This file is distributed under the same license as the Scilab package.
 // =============================================================================
 //splitURL
-[a,b,c,d]=splitURL("http://www.scilab.org");
+[a,b,c,d]=splitURL("https://www.scilab.org");
 assert_checkequal(a, "http");
 assert_checkequal(b, "www.scilab.org");
 assert_checkequal(c, "");
 assert_checkequal(d, "");
-[a,b,c,d]=splitURL("http://www.scilab.org/");
+[a,b,c,d]=splitURL("https://www.scilab.org/");
 assert_checkequal(a, "http");
 assert_checkequal(b, "www.scilab.org");
 assert_checkequal(c, "/");
 assert_checkequal(d, "");
-[a,b,c,d]=splitURL("http://www.scilab.org/products/scilab/environment");
+[a,b,c,d]=splitURL("https://www.scilab.org/products/scilab/environment");
 assert_checkequal(a, "http");
 assert_checkequal(b, "www.scilab.org");
 assert_checkequal(c, "/products/scilab/environment");
 assert_checkequal(d, "");
-[a,b,c,d]=splitURL("http://www.scilab.org/content/search?SearchText=plot");
+[a,b,c,d]=splitURL("https://www.scilab.org/content/search?SearchText=plot");
 assert_checkequal(a, "http");
 assert_checkequal(b, "www.scilab.org");
 assert_checkequal(c, "/content/search");

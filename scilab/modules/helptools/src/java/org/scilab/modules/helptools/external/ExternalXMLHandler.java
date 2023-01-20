@@ -1,5 +1,5 @@
 /*
- * Scilab ( http://www.scilab.org/ ) - This file is part of Scilab
+ * Scilab ( https://www.scilab.org/ ) - This file is part of Scilab
  * Copyright (C) 2010 - Calixte DENIZET
  *
  * Copyright (C) 2012 - 2016 - Scilab Enterprises
@@ -43,7 +43,7 @@ public abstract class ExternalXMLHandler {
     }
 
     public String getScilabURI() {
-        return "http://www.scilab.org";
+        return "https://www.scilab.org";
     }
 
     public void recreateTag(StringBuilder buf, String localName, Attributes attrs) {

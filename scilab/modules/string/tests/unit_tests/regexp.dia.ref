@@ -1,5 +1,5 @@
 // =============================================================================
-// Scilab ( http://www.scilab.org/ ) - This file is part of Scilab
+// Scilab ( https://www.scilab.org/ ) - This file is part of Scilab
 // Copyright (C) 2007-2008 - INRIA
 //
 //  This file is distributed under the same license as the Scilab package.
@@ -600,7 +600,7 @@ assert_checkequal(piStringSplit(2),"14");
 [a,b,c,d]=regexp('xabyabbbz','/ab(.*)b(.*)/');
 assert_checkequal(size(d), [1, 2]);
 // get host name from URL
-myURL="http://www.scilab.org/download/";
+myURL="https://www.scilab.org/download/";
 [a,b,c,d]=regexp(myURL,'@^(?:http://)?([^/]+)@i');
 assert_checkequal(d,"www.scilab.org");
 str='foobar: 2012';

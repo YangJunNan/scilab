@@ -1,5 +1,5 @@
 // =============================================================================
-// Scilab ( http://www.scilab.org/ ) - This file is part of Scilab
+// Scilab ( https://www.scilab.org/ ) - This file is part of Scilab
 // Copyright (C) 2014 - Scilab Enterprises - Bruno JOFRET
 //
 //  This file is distributed under the same license as the Scilab package.
@@ -27,9 +27,9 @@ end
 
 fd = mopen("~/.wgetrc", "w+");
 mputl("use_proxy = on", fd);
-mputl("http_proxy = http://proxy_name:1234/", fd);
-mputl("https_proxy = http://proxy_name:1234/", fd);
-mputl("ftp_proxy = http://proxy_name:1234/", fd);
+mputl("http_proxy = https://proxy_name:1234/", fd);
+mputl("https_proxy = https://proxy_name:1234/", fd);
+mputl("ftp_proxy = https://proxy_name:1234/", fd);
 mclose(fd);
 
 status = atomsGetConfig("useProxy");

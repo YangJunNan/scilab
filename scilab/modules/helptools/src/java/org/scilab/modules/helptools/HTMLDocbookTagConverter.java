@@ -1,5 +1,5 @@
 /*
- * Scilab ( http://www.scilab.org/ ) - This file is part of Scilab
+ * Scilab ( https://www.scilab.org/ ) - This file is part of Scilab
  * Copyright (C) 2010 - Calixte DENIZET
  * Copyright (C) 2016 - 2018 - Samuel GOUGEON
  *
@@ -51,7 +51,7 @@ public class HTMLDocbookTagConverter extends DocbookTagConverter implements Temp
 
     public static enum GenerationType { WEB, JAVAHELP, CHM, HTML };
 
-    private static final String SCILAB_URI = "http://www.scilab.org";
+    private static final String SCILAB_URI = "https://www.scilab.org";
     private static final String LATEXBASENAME = "_LaTeX_";
     private static final String VERSION = Messages.gettext("Version");
     private static final String DESCRIPTION = Messages.gettext("Description");

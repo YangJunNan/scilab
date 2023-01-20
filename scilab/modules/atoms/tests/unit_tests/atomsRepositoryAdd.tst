@@ -1,5 +1,5 @@
 // =============================================================================
-// Scilab ( http://www.scilab.org/ ) - This file is part of Scilab
+// Scilab ( https://www.scilab.org/ ) - This file is part of Scilab
 // Copyright (C) 2009 - DIGITEO - Pierre MARECHAL <pierre.marechal@scilab.org>
 //
 //  This file is distributed under the same license as the Scilab package.
@@ -10,8 +10,8 @@
 
 if isempty([ atomsRepositoryList("user") ; atomsRepositoryList("allusers")]) then
 
-    rep1 = "http://scene10.6.0.test.atoms.scilab.org";
-    rep2 = "http://scene11.6.0.test.atoms.scilab.org";
+    rep1 = "https://scene10.6.0.test.atoms.scilab.org";
+    rep2 = "https://scene11.6.0.test.atoms.scilab.org";
 
     if atomsRepositoryAdd(rep1,"user")     <> 1 then pause, end
     if atomsRepositoryAdd(rep2,"allusers") <> 1 then pause, end

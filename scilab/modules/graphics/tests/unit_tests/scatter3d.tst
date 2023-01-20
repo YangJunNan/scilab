@@ -1,5 +1,5 @@
 // ===================================================================
-// Scilab ( http://www.scilab.org/ ) - This file is part of Scilab
+// Scilab ( https://www.scilab.org/ ) - This file is part of Scilab
 // Copyright (C) 2010-2015 - Scilab Enterprises - Juergen Koch <juergen.koch@hs-esslingen.de>
 // Copyright (C) 2018-2020 - Samuel GOUGEON
 //
