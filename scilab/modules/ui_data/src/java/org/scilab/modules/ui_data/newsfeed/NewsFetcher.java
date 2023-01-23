@@ -15,7 +15,9 @@
 
 package org.scilab.modules.ui_data.newsfeed;
 
+import java.net.HttpURLConnection;
 import java.net.URL;
+import java.net.URLConnection;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -29,7 +31,6 @@ import java.text.SimpleDateFormat;
 import java.util.Locale;
 
 import java.util.List;
-import java.util.ArrayList;
 import javax.swing.SwingWorker;
 
 /**
@@ -61,7 +62,28 @@ public class NewsFetcher {
         @Override
         protected Object doInBackground() throws Exception {
             DocumentBuilder builder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
-            Document doc = builder.parse(rssURL.openStream());
+            
+            // connect and resolve Location (http redirection)
+            URLConnection con = rssURL.openConnection();
+            if (con instanceof HttpURLConnection)
+            {
+                HttpURLConnection connection = (HttpURLConnection) con;
+                String relocation = connection.getHeaderField("Location");
+
+                // resolve until we do not get Location
+                while (relocation != null) {
+                    con = new URL(relocation).openConnection();
+                    if (con instanceof HttpURLConnection) {
+                        connection =  (HttpURLConnection) con;
+                        relocation = connection.getHeaderField("Location");
+                    } else {
+                        relocation = null; // success
+                    }
+                }
+            }
+
+            // fetch the content and parse it
+            Document doc = builder.parse(con.getInputStream());
 
             NodeList items = doc.getElementsByTagName("item");
             if ((items == null) || (items.getLength() == 0)) {
