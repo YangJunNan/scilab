@@ -345,6 +345,7 @@ Bug Fixes
 * [#16849](https://gitlab.com/scilab/scilab/-/issues/16849): toJSON("\\") must return "\\\\" instead of "\\\".
 * [#16865](https://gitlab.com/scilab/scilab/-/issues/16865): Vector extraction with single hypermatrix index yielded a vector.
 * [#16867](https://gitlab.com/scilab/scilab/-/issues/16867): macr2tree() encoded .' (transpose) as ' (conjugate transpose).
+* [#16887](https://gitlab.com/scilab/scilab/-/issues/16887): French localization for `tbx_build_loader()` messages fixed.
 * [#16893](https://gitlab.com/scilab/scilab/-/issues/16893): "exec" instruction crashes Scilab.
 * [#16899](https://gitlab.com/scilab/scilab/-/issues/16899): configure script did not detect clang.
 * [#16900](https://gitlab.com/scilab/scilab/-/issues/16900): no-gui build of Scilab raised an error at startup.
