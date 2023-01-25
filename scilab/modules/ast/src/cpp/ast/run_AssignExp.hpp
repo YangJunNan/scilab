@@ -41,17 +41,6 @@ void RunVisitorT<T>::visitprivate(const AssignExp  &e)
                 setExpectedSize(1);
                 e.getRightExp().accept(*this);
 
-                if (getResultSize() != 1)
-                {
-                    // avoid double deletion when rhs is deleted from exp and cleanResult
-                    setResult(NULL);
-
-                    std::wostringstream os;
-                    os << _W("Can not assign multiple value in a single variable") << std::endl;
-                    //os << ((Location)e.getRightExp().getLocation()).getLocationString() << std::endl;
-                    throw ast::InternalError(os.str(), 999, e.getRightExp().getLocation());
-                }
-
                 pIT = getResult();
                 //reset result
                 setResult(NULL);
