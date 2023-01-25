@@ -54,7 +54,7 @@ public class HTMLScilabHandler extends ExternalXMLHandler {
      * {@inheritDoc}
      */
     public String getURI() {
-        return "https://www.scilab.org";
+        return "http://www.scilab.org";
     }
 
     /**

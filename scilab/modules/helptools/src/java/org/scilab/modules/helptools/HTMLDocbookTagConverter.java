@@ -51,7 +51,7 @@ public class HTMLDocbookTagConverter extends DocbookTagConverter implements Temp
 
     public static enum GenerationType { WEB, JAVAHELP, CHM, HTML };
 
-    private static final String SCILAB_URI = "https://www.scilab.org";
+    private static final String SCILAB_URI = "http://www.scilab.org";
     private static final String LATEXBASENAME = "_LaTeX_";
     private static final String VERSION = Messages.gettext("Version");
     private static final String DESCRIPTION = Messages.gettext("Description");

@@ -178,6 +178,7 @@ public final class SciDocMain {
         } catch (SAXException e) {
             System.err.println("XML parsing error while generating documentation for file " + sourceDoc + ":");
             System.err.println(e.toString());
+            throw new RuntimeException(e);
         } catch (Throwable e) {
             System.err.println("Unhandled error while generating documentation for file " + sourceDoc + ":");
             e.printStackTrace();
