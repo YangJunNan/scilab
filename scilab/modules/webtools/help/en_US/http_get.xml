@@ -26,6 +26,8 @@
         <title>Syntax</title>
         <synopsis>
             [result, status] = http_get(url)
+            [result, status] = http_get(url, &lt;opt_args>)
+
             [result, status] = http_get(url, filename)
             [result, status] = http_get(url, filename, &lt;opt_args>)
         </synopsis>
