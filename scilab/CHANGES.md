@@ -328,6 +328,7 @@ Bug Fixes
 
 ### Bugs fixed in 6.1.2:
 
+* [#463](https://gitlab.com/scilab/scilab/-/issues/463): Invalid format leads to crash for write function.
 * [#7196](https://gitlab.com/scilab/scilab/-/issues/7196): try/catch: returned value assigned in `catch` is not displayed.
 * [#14372](https://gitlab.com/scilab/scilab/-/issues/14372): after `L=list(1,"a",%t), a=L(2:3)` returned an error.
 * [#14998](https://gitlab.com/scilab/scilab/-/issues/14998): `mscanf()` introduces a leading \n newline and the prompt before prompting the user for input

@@ -23,7 +23,8 @@ c     &       (stk(li+j*m),j=0,n-1)
       !write (*, '(f)') dat(1)
       !write (*, '(f)') dat(2)
       do 65 i=1,m
-          write(buf,form,err=20) (dat(j*m+i),j=0, n-1)
+          write(buf,form,err=20,IOSTAT=ios) (dat(j*m+i),j=0, n-1)
+          if(ios.lt.0) goto 20
           lb1=lch
  66       lb1=lb1-1
           if(buf(lb1:lb1).eq.' ') goto 66
@@ -50,7 +51,8 @@ c     &       (stk(li+j*m),j=0,n-1)
       !write (*, '(f)') dat(1)
       !write (*, '(f)') dat(2)
       do 67 i=1,m
-          write(buf,form,err=20) (dat(j*m+i),j=0, n-1)
+          write(buf,form,err=20,IOSTAT=ios) (dat(j*m+i),j=0, n-1)
+          if(ios.lt.0) goto 20
           lb1=lch
  68       lb1=lb1-1
           if(buf(lb1:lb1).eq.' ') goto 68
@@ -159,7 +161,8 @@ c     &       (stk(li+j*m),j=0,n-1)
       character form*(*)
 
       do 73 i=1,m
-          write(buf,form,err=20) (dat(j*m+i),j=0, n-1)
+          write(buf,form,err=20,IOSTAT=ios) (dat(j*m+i),j=0, n-1)
+          if(ios.lt.0) goto 20
           lb1=lch
  74       lb1=lb1-1
           if(buf(lb1:lb1).eq.' ') goto 74
@@ -210,7 +213,8 @@ c     &       (stk(li+j*m),j=0,n-1)
       character form*(*)
 
       do 79 i=1,m
-          write(buf,form,err=20) (dat(j*m+i),j=0, n-1)
+          write(buf,form,err=20,IOSTAT=ios) (dat(j*m+i),j=0, n-1)
+          if(ios.lt.0) goto 20
           lb1=lch
  80       lb1=lb1-1
           if(buf(lb1:lb1).eq.' ') goto 80
