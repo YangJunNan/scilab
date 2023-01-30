@@ -346,6 +346,19 @@ Bug Fixes
 * [#16841](https://gitlab.com/scilab/scilab/-/issues/16841): Zoom on multiaxes could desynchronize axes.
 * [#16849](https://gitlab.com/scilab/scilab/-/issues/16849): toJSON("\\") must return "\\\\" instead of "\\\".
 * [#16865](https://gitlab.com/scilab/scilab/-/issues/16865): Vector extraction with single hypermatrix index yielded a vector.
+* [#16029](https://bugzilla.scilab.org/16029): tick marks were extending out of range for small scale plots 
+* [#16653](https://bugzilla.scilab.org/16653): fromJSON() crashed with a non existing file.
+* [#16713](https://bugzilla.scilab.org/16713): Automatic stretching of Axes box in 3d view was not configurable.
+* [#16717](https://bugzilla.scilab.org/16717): An error occured in findobj when no objects existed.
+* [#16734](https://bugzilla.scilab.org/16734): `findobj()` was slower than before.
+* [#16748](https://bugzilla.scilab.org/16748): Build failed with OCaml 4.11 or newer build without unsafe-strings
+* [#16798](https://bugzilla.scilab.org/16798): `scinotes()` with option and non existing file crashed scilab.
+* [#16826](https://bugzilla.scilab.org/16826): `file()` or `file(fid)` could yield outdated relative paths.
+* [#16822](https://bugzilla.scilab.org/16822): `getrelativefilename()` returned incorrect value in case of same beginning of directory names.
+* [#16755](https://bugzilla.scilab.org/16755): plot3d polygon facets rendering may be wrong when exactly in horizontal or vertical plane
+* [#16841](https://bugzilla.scilab.org/16841): Zoom on multiaxes could desynchronize axes.
+* [#16849](https://bugzilla.scilab.org/16849): toJSON("\\") must return "\\\\" instead of "\\\".
+* [#16865](https://bugzilla.scilab.org/16865): Vector extraction with single hypermatrix index yielded a vector.
 * [#16867](https://gitlab.com/scilab/scilab/-/issues/16867): macr2tree() encoded .' (transpose) as ' (conjugate transpose).
 * [#16887](https://gitlab.com/scilab/scilab/-/issues/16887): French localization for `tbx_build_loader()` messages fixed.
 * [#16893](https://gitlab.com/scilab/scilab/-/issues/16893): "exec" instruction crashes Scilab.
