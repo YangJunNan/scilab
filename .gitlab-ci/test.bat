@@ -30,4 +30,4 @@ call "..\..\%SCI_VERSION_STRING%\bin\scilab.bat" -nwni -scihome "%SCIHOME%" -qui
 rmdir /s /q "%SCIHOME%"
 
 rem fail without xml report
-if not exist "%LOG_PATH%\%ARCH%_%TEST%.xml" exit 1
+dir /s "%LOG_PATH%\%ARCH%_%TEST%.xml"
