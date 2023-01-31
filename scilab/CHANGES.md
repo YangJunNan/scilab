@@ -264,6 +264,7 @@ User Interface improvements
   - On Preferences option, querying some Matlab terms can now redirect and display the documentation of the Scilab equivalent feature.
 * `x_matrix` can now edit matrices of booleans, integers, or text. Matrices of real or complex numbers are better displayed.
 * `importgui` is renamed `uiSpreadsheet`.
+* `testAnalysis` and `testGVN` have been removed. 
 
 
 Xcos

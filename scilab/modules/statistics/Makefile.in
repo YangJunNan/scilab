@@ -740,7 +740,6 @@ libscistatistics_la_CPPFLAGS = \
     -I$(top_srcdir)/modules/ast/includes/symbol/ \
     -I$(top_srcdir)/modules/ast/includes/system_env/ \
     -I$(top_srcdir)/modules/ast/includes/types/ \
-    -I$(top_srcdir)/modules/ast/includes/analysis/ \
     -I$(top_srcdir)/modules/api_scilab/includes/ \
     -I$(top_srcdir)/modules/output_stream/includes/ \
     -I$(top_srcdir)/modules/localization/includes/ \
@@ -768,11 +767,11 @@ modulename = statistics
 libscistatistics_la_rootdir = $(mydatadir)
 libscistatistics_la_root_DATA = license.txt 
 
-#### statistics : init scripts ####
+####ï¿½statistics : init scripts ####
 libscistatistics_la_etcdir = $(mydatadir)/etc
 libscistatistics_la_etc_DATA = etc/statistics.quit etc/statistics.start
 
-#### statistics : gateway declaration ####
+####ï¿½statistics : gateway declaration ####
 libscistatistics_la_sci_gatewaydir = $(mydatadir)/sci_gateway
 libscistatistics_la_sci_gateway_DATA = sci_gateway/statistics_gateway.xml
 

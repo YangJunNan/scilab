@@ -56,7 +56,6 @@ libsciinteger_la_CPPFLAGS = \
     -I$(top_srcdir)/modules/ast/includes/symbol/ \
     -I$(top_srcdir)/modules/ast/includes/system_env/ \
     -I$(top_srcdir)/modules/ast/includes/types/ \
-    -I$(top_srcdir)/modules/ast/includes/analysis/ \
     -I$(top_srcdir)/modules/api_scilab/includes/ \
     -I$(top_srcdir)/modules/output_stream/includes/ \
     -I$(top_srcdir)/modules/localization/includes/ \
@@ -96,7 +95,7 @@ libsciinteger_la_rootdir = $(mydatadir)
 libsciinteger_la_root_DATA =  license.txt
 
 
-#### integer : init scripts ####
+####ï¿½integer : init scripts ####
 libsciinteger_la_etcdir = $(mydatadir)/etc
 libsciinteger_la_etc_DATA = \
     etc/integer.quit \

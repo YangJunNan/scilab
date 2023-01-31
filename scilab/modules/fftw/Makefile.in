@@ -704,7 +704,6 @@ libscifftw_la_etc_DATA = \
 @FFTW_FALSE@    -I$(top_srcdir)/modules/ast/includes/symbol/ \
 @FFTW_FALSE@    -I$(top_srcdir)/modules/ast/includes/system_env/ \
 @FFTW_FALSE@    -I$(top_srcdir)/modules/ast/includes/types/ \
-@FFTW_FALSE@    -I$(top_srcdir)/modules/ast/includes/analysis/ \
 @FFTW_FALSE@    -I$(top_srcdir)/modules/api_scilab/includes/ \
 @FFTW_FALSE@    -I$(top_srcdir)/modules/output_stream/includes/ \
 @FFTW_FALSE@    -I$(top_srcdir)/modules/localization/includes/ \
@@ -721,7 +720,6 @@ libscifftw_la_etc_DATA = \
 @FFTW_TRUE@    -I$(top_srcdir)/modules/ast/includes/symbol/ \
 @FFTW_TRUE@    -I$(top_srcdir)/modules/ast/includes/system_env/ \
 @FFTW_TRUE@    -I$(top_srcdir)/modules/ast/includes/types/ \
-@FFTW_TRUE@    -I$(top_srcdir)/modules/ast/includes/analysis/ \
 @FFTW_TRUE@    -I$(top_srcdir)/modules/threads/includes/ \
 @FFTW_TRUE@    -I$(top_srcdir)/modules/console/includes/ \
 @FFTW_TRUE@    -I$(top_srcdir)/modules/dynamic_link/includes/ \

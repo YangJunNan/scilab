@@ -4,7 +4,7 @@
 # Copyright (C) INRIA   - 2007 - Vincent COUVERT
 # Copyright (C) DIGITEO - 2009 - Sylvestre Ledru
 # Copyright (C) DIGITEO - 2009 - Pierre MARECHAL
-# Copyright (C) DIGITEO - 2010 - Clément DAVID
+# Copyright (C) DIGITEO - 2010 - Clï¿½ment DAVID
 #
 # Copyright (C) 2012 - 2016 - Scilab Enterprises
 #
@@ -238,7 +238,6 @@ libscigui_la_CPPFLAGS = \
     -I$(top_srcdir)/modules/ast/includes/symbol/ \
     -I$(top_srcdir)/modules/ast/includes/system_env/ \
     -I$(top_srcdir)/modules/ast/includes/types/ \
-    -I$(top_srcdir)/modules/ast/includes/analysis/ \
     -I$(top_srcdir)/modules/output_stream/includes \
     -I$(top_srcdir)/modules/fileio/includes/ \
     -I$(top_srcdir)/modules/graphics/includes/ \
@@ -265,7 +264,6 @@ libscigui_disable_la_CPPFLAGS = \
     -I$(top_srcdir)/modules/ast/includes/symbol/ \
     -I$(top_srcdir)/modules/ast/includes/system_env/ \
     -I$(top_srcdir)/modules/ast/includes/types/ \
-    -I$(top_srcdir)/modules/ast/includes/analysis/ \
     -I$(top_srcdir)/modules/api_scilab/includes/ \
     -I$(top_srcdir)/modules/localization/includes/ \
     -I$(top_srcdir)/modules/output_stream/includes/ \

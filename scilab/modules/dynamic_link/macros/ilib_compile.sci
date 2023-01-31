@@ -94,7 +94,7 @@ function libn = ilib_compile(lib_name, ..
         // Headers are dispatched in the source tree
         if isdir(SCI+"/modules/core/includes/") then
             defaultModulesCHeader=[ "core", "mexlib","api_scilab","output_stream","localization",  "dynamic_link",  "threads",  "string",  "console"];
-            defaultKernelCHeader=[ "analysis" "ast" "exps" "operations" "parse" "symbol" "system_env" "types"];
+            defaultKernelCHeader=[ "ast" "exps" "operations" "parse" "symbol" "system_env" "types"];
             defaultModulesFHeader=[ "core" ];
             ScilabTreeFound=%t
 
