@@ -165,7 +165,7 @@ void RunVisitorT<T>::visitprivate(const CallExp &e)
         // This extraction must be a recursive extract.
         int iLoopSize = 1;
         types::List* pListArg = NULL;
-        if (pIT->isCallable() == false && in.size() == 1 && in[0]->isList())
+        if (pIT->isCallable() == false && in.size() == 1 && in[0]->isList() && in[0]->isMList() == false && in[0]->isTList() == false)
         {
             pListArg = in[0]->getAs<types::List>();
             iLoopSize = pListArg->getSize();

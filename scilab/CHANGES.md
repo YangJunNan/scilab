@@ -333,6 +333,7 @@ Bug Fixes
 * [#7196](https://gitlab.com/scilab/scilab/-/issues/7196): try/catch: returned value assigned in `catch` is not displayed.
 * [#14372](https://gitlab.com/scilab/scilab/-/issues/14372): after `L=list(1,"a",%t), a=L(2:3)` returned an error.
 * [#14998](https://gitlab.com/scilab/scilab/-/issues/14998): `mscanf()` introduces a leading \n newline and the prompt before prompting the user for input
+* [#15071](https://gitlab.com/scilab/scilab/-/issues/15071): Extraction of mlist from another mlist debhaves differently in Scilab 6.
 * [#16029](https://gitlab.com/scilab/scilab/-/issues/16029): tick marks were extending out of range for small scale plots.
 * [#16049](https://gitlab.com/scilab/scilab/-/issues/16049): `struct("v", cell())` crashes Scilab.
 * [#16653](https://gitlab.com/scilab/scilab/-/issues/16653): `fromJSON()` crashed with a non existing file.
