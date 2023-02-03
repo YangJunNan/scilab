@@ -311,6 +311,7 @@ delete(f);
 // reload data
 load(plotExportFile);
 
-e = gce();
-e = e.children(1);
+a = gca();
+e = a.children.children;
 assert_checkequal(e.datatips.data, [0.5, 0.125, 0]);
+delete(f);

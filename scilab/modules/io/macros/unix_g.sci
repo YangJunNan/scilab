@@ -60,7 +60,7 @@ function varargout = unix_g(cmd)
             if lhs == 3 then
                 stderr = rep;
             else
-                for i=1:size(rep,"*") do write(%io(2),"   "+rep(i));end
+                for i=1:size(rep,"*") do printf("   %s", rep(i));end
             end
 
             stat = 1;

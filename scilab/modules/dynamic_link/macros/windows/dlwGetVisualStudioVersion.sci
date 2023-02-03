@@ -1,7 +1,5 @@
 // Scilab ( https://www.scilab.org/ ) - This file is part of Scilab
-// Copyright (C) Scilab Enterprises - 2015 - Antoine ELIAS
-//
-// Copyright (C) 2012 - 2016 - Scilab Enterprises
+// Copyright (C) 3DS - 20323 - Antoine ELIAS
 //
 // This file is hereby licensed under the terms of the GNU GPL v2.0,
 // pursuant to article 5.3.4 of the CeCILL v.2.1.
@@ -11,19 +9,13 @@
 // along with this program.
 
 //=============================================================================
-function bOK = dlwIsVc141Pro()
-    bOK = %f;
-    vers = getVsWhereInformation();
-    if isempty(vers) then
-        return;
-    end
-    
-    x = fieldnames(vers);
-    x = find(x == "msvc141pro");
-    if isempty(x) then
-        return;
-    end
+function VSVersion = dlwGetVisualStudioVersion()
+    VSVersion = "";
 
-    bOK = %t;
+    versions = getVsWhereInformation();
+    version = dlwFindMsVcCompiler();
+
+    idx = findinlist(versions.name, version);
+    VSVersion = versions(idx).version;
 endfunction
 //=============================================================================

@@ -41,27 +41,7 @@ CC_LDFLAGS =
 #==================================================
 USE_F2C=YES
 # detect intel fortran compiler
-!IF "$(IFORT_COMPILER9)" == ""
-!ELSE
-USE_F2C=NO
-!ENDIF
-!IF "$(IFORT_COMPILER10)" == ""
-!ELSE
-USE_F2C=NO
-!ENDIF
-!IF "$(IFORT_COMPILER11)" == ""
-!ELSE
-USE_F2C=NO
-!ENDIF
-!IF "$(IFORT_COMPILER12)" == ""
-!ELSE
-USE_F2C=NO
-!ENDIF
-!IF "$(IFORT_COMPILER13)" == ""
-!ELSE
-USE_F2C=NO
-!ENDIF
-!IF "$(IFORT_COMPILER14)" == ""
+!IF "$(IFORT_COMPILER22)" == ""
 !ELSE
 USE_F2C=NO
 !ENDIF

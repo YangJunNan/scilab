@@ -6,8 +6,8 @@ REM Builder script for building Scilab on Windows
 REM
 REM NOTE: log all commands to log files to avoid hitting Gitlab log limit
 
-call "%VS2017INSTALLDIR%\Common7\Tools\VsDevCmd.bat"
-@REM call "C:\Program Files (x86)\Microsoft Visual Studio\2017\Professional\Common7\Tools\VsDevCmd.bat"
+REM set Visual Studio environment
+call "%VS2022INSTALLDIR%\Common7\Tools\VsDevCmd.bat"
 echo on
 
 

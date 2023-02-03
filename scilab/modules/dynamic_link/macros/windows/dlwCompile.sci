@@ -13,8 +13,6 @@
 //=============================================================================
 function dlwCompile(files, make_command, makename)
 
-    dlwConfigureEnv();
-
     nf = size(files,"*");
 
     for i=1:nf
@@ -35,14 +33,14 @@ function dlwCompile(files, make_command, makename)
     end
 
     cmd = make_command + makename + " " + target_build + " 2>&0"
-    scibuildfile = writeBatchFile(cmd);
+    scibuildfile = dlwWriteBatchFile(cmd);
     [msg, stat] = unix_g(scibuildfile);
     deletefile(scibuildfile);
 
     if stat <> 0 then
         // more feedback when compilation fails
         cmd = make_command + makename + " " + target_build + " 1>&2"
-        scibuildfile = writeBatchFile(cmd);
+        scibuildfile = dlwWriteBatchFile(cmd);
         [msg, stat, stderr] = unix_g(scibuildfile);
         deletefile(scibuildfile);
         disp(stderr);
@@ -52,42 +50,4 @@ function dlwCompile(files, make_command, makename)
             disp(msg);
         end
     end
-
-
-endfunction
-//=============================================================================
-function filename = writeBatchFile(cmd)
-
-    //update DEBUG_SCILAB_DYNAMIC_LINK to match with Scilab compilation mode
-    val = getenv("DEBUG_SCILAB_DYNAMIC_LINK","");
-    if val <> "NO" & val <> "YES" then
-        if isDebug() then
-            val = "YES";
-        else
-            val = "NO";
-        end
-    end
-
-    if win64() then
-        if dlwIsExpress() then
-            arch = "x86_amd64";
-        else
-            arch = "x64";
-        end
-    else
-        arch = "x86";
-    end
-
-    path = dlwGetVisualStudioPath();
-
-    scibuild = [ ...
-    "@call """ + path + "\vcvarsall.bat"" " + arch;
-    "set DEBUG_SCILAB_DYNAMIC_LINK=" + val;
-    cmd
-    ];
-
-    //disp(scibuild);
-    filename = TMPDIR + "/scibuild.bat";
-    mputl(scibuild, filename);
-    //filename = "call " + filename;
 endfunction

@@ -43,7 +43,7 @@ function unix_s(cmd)
     if getos() == "Windows" then
         [rep,stat]=dos(cmd);
         if (~stat) then
-            for i=1:size(rep,"*") do write(%io(2),"   "+rep(i));end
+            for i=1:size(rep,"*") do printf("   %s", rep(i));end
             error(msprintf(gettext("%s: error during ""%s"" execution"),"unix_s",cmd));
         end
     else
