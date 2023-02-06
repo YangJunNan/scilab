@@ -312,7 +312,7 @@ void RunVisitorT<T>::visitprivate(const AssignExp  &e)
                         // call killMe on all arguments
                         cleanOut(*currentArgs);
                         delete currentArgs;
-                        // insertion have done, call killMe on pITR
+                        // insertion is done, call killMe on pITR
                         pITR->killMe();
                         throw error;
                     }
@@ -323,8 +323,11 @@ void RunVisitorT<T>::visitprivate(const AssignExp  &e)
                     cleanOut(*currentArgs);
                     delete currentArgs;
 
-                    // insertion have done, call killMe on pITR
-                    pITR->killMe();
+                    if (pOut != pITR)
+                    {
+                        // insertion is done, call killMe on pITR
+                        pITR->killMe();
+                    }
 
                     if (pOut == NULL)
                     {
@@ -332,7 +335,6 @@ void RunVisitorT<T>::visitprivate(const AssignExp  &e)
                         os << _W("Submatrix incorrectly defined.\n");
                         throw ast::InternalError(os.str(), 999, e.getLocation());
                     }
-
 
                     //update variable with new value
                     if (pOut != pIT)
