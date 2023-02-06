@@ -134,7 +134,7 @@ H5Data & H5DataFactory::getObjectData(H5Object & parent, const hsize_t totalSize
         case H5T_TIME:
             return *new H5TimeData(parent, totalSize, dataSize, ndims, dims, (char *)data, stride, offset, dataOwner);
         case H5T_STRING:
-            if (H5Tis_variable_str(type))
+            if (H5Tis_variable_str(type) && ndims > 0)
             {
                 return *new H5StringData(parent, totalSize, dataSize, ndims, dims, (char **)data, stride, offset, dataOwner);
             }

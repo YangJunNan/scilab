@@ -124,8 +124,6 @@ void H5StringData::toScilab(void * pvApiCtx, const int lhsPosition, int * parent
         _data = _tdata;
     }
 
-    std::cout << ndims << std::endl;
-
     if (ndims == 0)
     {
         H5BasicData<char *>::create(pvApiCtx, lhsPosition, 1, 1, _data, parentList, listPosition);
