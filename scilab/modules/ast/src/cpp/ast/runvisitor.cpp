@@ -234,6 +234,13 @@ void RunVisitorT<T>::visitprivate(const VarDec & e)
     {
         /*getting what to assign*/
         e.getInit().accept(*this);
+        if(getResultSize() != 1)
+        {
+            clearResult();
+            setResult(NULL);
+            return;
+        }
+
         getResult()->IncreaseRef();
     }
     catch (const InternalError& error)
@@ -665,6 +672,15 @@ void RunVisitorT<T>::visitprivate(const ForExp  &e)
         throw;
     }
     types::InternalType* pIT = getResult();
+    if(pIT == NULL)
+    {
+        char szError[bsiz];
+        os_sprintf(szError, _("%s: Wrong number of output argument(s): %d expected.\n"), "for expression", 1);
+        wchar_t* wError = to_wide_string(szError);
+        std::wstring err(wError);
+        FREE(wError);
+        throw InternalError(err, 999, e.getLocation());
+    }
 
     if (pIT->isImplicitList())
     {
