@@ -154,11 +154,8 @@ function tree = list2tree_inc(x, Path, tree, styles, arrayByFields)
         end
         tree($).label = tree($).label + tmp
 
-    elseif type(x)==128 & or(typeof(x)==["diagram" "Block"])
-        tmp = _(" [Xcos diagram]")
-        if typeof(x)=="Block" then
-            tmp = _(" [Xcos block]")
-        end
+    elseif type(x)==128
+        tmp = " [" + typeof(x) + " object]";
         struct_array = %f
         v = ["" ; fieldnames(x)]
         II = 2:size(v,"*")  // fields indices
@@ -202,7 +199,7 @@ function tree = list2tree_inc(x, Path, tree, styles, arrayByFields)
 
         // Reads the object
         clear o
-        if typeof(x)=="st" | (type(x)==128 & or(typeof(x)==["diagram" "Block"])) then
+        if typeof(x)=="st" | type(x)==128 then
             if ~struct_array
                 o = x(v(i))
             else
