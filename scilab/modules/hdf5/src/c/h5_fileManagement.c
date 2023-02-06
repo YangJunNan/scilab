@@ -42,7 +42,7 @@ void HDF5cleanup(void)
     */
 
     H5_term_library();
-}
+ }
 /*--------------------------------------------------------------------------*/
 void HDF5ErrorCleanup()
 {

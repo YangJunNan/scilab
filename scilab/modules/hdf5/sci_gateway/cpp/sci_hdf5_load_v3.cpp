@@ -558,6 +558,7 @@ static int getDimsNode(hid_t dataset, int* complex, std::vector<int>& dims)
     int size = getDatasetInfo(id, complex, &dim, d.data());
     if (size < 0)
     {
+        closeDataSet(id);
         return 0;
     }
 

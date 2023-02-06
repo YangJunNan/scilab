@@ -7,6 +7,7 @@
 // =============================================================================
 
 // <-- TEST WITH GRAPHIC -->
+// <-- NO CHECK REF -->
 
 // test to check that save and load are working properly
 plotExportFile = pathconvert(TMPDIR) + "savePlot.hdf5";

@@ -68,7 +68,7 @@ static int getHandleIntVector(hid_t dataset, const std::string& prop, int* row, 
     int ret = getDatasetInfo(node, &complex, &dims, NULL);
     if (ret < 0)
     {
-        closeDataSet(dataset);
+        closeDataSet(node);
         return -1;
     }
 
@@ -116,7 +116,7 @@ static int getHandleBoolVector(hid_t dataset, const std::string& prop, int* row,
     int ret = getDatasetInfo(node, &complex, &dims, NULL);
     if (ret < 0)
     {
-        closeDataSet(dataset);
+        closeDataSet(node);
         return -1;
     }
 
@@ -165,19 +165,20 @@ static int getHandleDoubleVector(hid_t dataset, const std::string& prop, int* ro
     int ret = getDatasetInfo(node, &complex, &dims, NULL);
     if (ret < 0)
     {
-        closeDataSet(dataset);
-        return -1;
-    }
-
-
-    std::vector<int> d(dims);
-    int size = getDatasetInfo(node, &complex, &dims, d.data());
-
-    if (dims == 0 || size <= 0)
-    {
         closeDataSet(node);
         return -1;
     }
+
+    if (dims == 0)
+    {
+        *row = 0;
+        *col = 0;
+        closeDataSet(node);
+        return 0;
+    }
+
+    std::vector<int> d(dims);
+    int size = getDatasetInfo(node, &complex, &dims, d.data());
 
     *row = d[0];
     *col = d[1];
@@ -201,7 +202,7 @@ static int getHandleString(hid_t dataset, const std::string& prop, char** val)
     int ret = getDatasetInfo(node, &complex, &dims, NULL);
     if (ret < 0)
     {
-        closeDataSet(dataset);
+        closeDataSet(node);
         return -1;
     }
 
@@ -233,10 +234,17 @@ static int getHandleStringVector(hid_t dataset, const std::string& prop, int* ro
     int ret = getDatasetInfo(node, &complex, &dims, NULL);
     if (ret < 0)
     {
-        closeDataSet(dataset);
+        closeDataSet(node);
         return -1;
     }
 
+    if (dims == 0)
+    {
+        *row = 0;
+        *col = 0;
+        closeDataSet(node);
+        return -1;
+    }
 
     std::vector<int> d(dims);
     int size = getDatasetInfo(node, &complex, &dims, d.data());
@@ -337,11 +345,12 @@ static int import_handle_children(hid_t dataset, int parent)
 
 static int import_handle_generic(hid_t dataset, int uid, int parent, const HandleProp& props, bool childrenFirst)
 {
-    //link current handle with its parent
+    //  link current handle with its parent
     if (parent != -1)
     {
         setGraphicObjectRelationship(parent, uid);
     }
+
     //restore children before other property in case of properties has an
     //effect on children
 
@@ -351,9 +360,9 @@ static int import_handle_generic(hid_t dataset, int uid, int parent, const Handl
         import_handle_children(dataset, uid);
     }
 
-    for (auto & prop : props)
+    for (auto& prop : props)
     {
-        const char* name = prop.first.data();
+        std::string name = prop.first;
         std::vector<int> info(prop.second);
 
         if (info[0] == SAVE_ONLY)
@@ -790,15 +799,29 @@ static int import_handle_uicontrol(hid_t dataset, int parent)
 {
     int style = 0;
     getHandleInt(dataset, "style", &style);
-    //uicontrol was created by their style instead of type like others graphic objects.
-    int uic = createGraphicObject(style);
 
-    //some properties must be set before parent ( in import_handle_generic )
+    // some properties must be set before parent ( in import_handle_generic )
 
-    //scrollable
+    // scrollable
     int scrollable = 0;
     getHandleBool(dataset, "scrollable", &scrollable);
-    setGraphicObjectProperty(uic, __GO_UI_SCROLLABLE__, &scrollable, jni_bool, 1);
+
+    int uic = 0; 
+    // uicontrol was created by their style instead of type like others graphic objects.
+    if (style == __GO_UI_FRAME__ && scrollable == 1)
+    {
+        uic = createGraphicObject(__GO_UI_FRAME_SCROLLABLE__);
+    }
+    else
+    {
+        uic = createGraphicObject(style);
+    }
+    
+    // layout
+    int layout = 0;
+    getHandleInt(dataset, "layout", &layout);
+    setGraphicObjectProperty(uic, __GO_LAYOUT__, &layout, jni_int, 1);
+
 
     //margins
     int row = 0;
@@ -809,48 +832,48 @@ static int import_handle_uicontrol(hid_t dataset, int parent)
     setGraphicObjectProperty(uic, __GO_MARGINS__, margins, jni_double_vector, row * col);
     delete[] margins;
 
-    //constraints
+    // constraints
 
-    //border_position
+    // border_position
     int border_position = 0;
     getHandleInt(dataset, "border_position", &border_position);
     setGraphicObjectProperty(uic, __GO_UI_BORDER_POSITION__, &border_position, jni_int, 1);
 
-    //border_size
+    // border_size
     int* border_size = nullptr;
     getHandleIntVector(dataset, "border_size", &row, &col, &border_size);
     setGraphicObjectProperty(uic, __GO_UI_BORDER_PREFERREDSIZE__, border_size, jni_int_vector, row * col);
     delete[] border_size;
 
-    //gridbad_grid
+    // gridbad_grid
     int* gridbad_grid = nullptr;
     getHandleIntVector(dataset, "gridbad_grid", &row, &col, &gridbad_grid);
     setGraphicObjectProperty(uic, __GO_UI_GRIDBAG_GRID__, gridbad_grid, jni_int_vector, row * col);
     delete[] gridbad_grid;
 
-    //gridbad_weight
+    // gridbad_weight
     double* gridbad_weight = nullptr;
     getHandleDoubleVector(dataset, "gridbad_weight", &row, &col, &gridbad_weight);
     setGraphicObjectProperty(uic, __GO_UI_GRIDBAG_WEIGHT__, gridbad_weight, jni_double_vector, row * col);
     delete[] gridbad_weight;
 
-    //gridbad_fill
+    // gridbad_fill
     int gridbad_fill = 0;
     getHandleInt(dataset, "gridbad_fill", &gridbad_fill);
     setGraphicObjectProperty(uic, __GO_UI_GRIDBAG_FILL__, &gridbad_fill, jni_int, 1);
 
-    //gridbad_anchor
+    // gridbad_anchor
     int gridbad_anchor = 0;
     getHandleInt(dataset, "gridbad_anchor", &gridbad_anchor);
     setGraphicObjectProperty(uic, __GO_UI_GRIDBAG_ANCHOR__, &gridbad_anchor, jni_int, 1);
 
-    //gridbad_padding
+    // gridbad_padding
     int* gridbad_padding = nullptr;
     getHandleIntVector(dataset, "gridbad_padding", &row, &col, &gridbad_padding);
     setGraphicObjectProperty(uic, __GO_UI_GRIDBAG_PADDING__, gridbad_padding, jni_int_vector, row * col);
     delete[] gridbad_padding;
 
-    //gridbad_size
+    // gridbad_size
     int* gridbad_size = nullptr;
     getHandleIntVector(dataset, "gridbad_size", &row, &col, &gridbad_size);
     setGraphicObjectProperty(uic, __GO_UI_GRIDBAG_PREFERREDSIZE__, gridbad_size, jni_int_vector, row * col);
@@ -872,15 +895,11 @@ static int import_handle_uicontrol(hid_t dataset, int parent)
     int border = import_handle_border(dborder);
     setGraphicObjectProperty(uic, __GO_UI_FRAME_BORDER__, &border, jni_int, 1);
 
-
     //value
     double* value = nullptr;
     getHandleDoubleVector(dataset, "value", &row, &col, &value);
-    if (value)
-    {
-        setGraphicObjectProperty(uic, __GO_UI_VALUE__, value, jni_double_vector, row * col);
-        delete[] value;
-    }
+    setGraphicObjectProperty(uic, __GO_UI_VALUE__, value, jni_double_vector, row * col);
+    delete[] value;
 
     closeList6(dataset);
     return uic;
@@ -1695,13 +1714,13 @@ static int import_handle_figure(hid_t dataset, int parent)
 
     int menu = 0;
     getHandleBool(dataset, "menubar_visible", &menu);
-    int notmenu = !menu;
+    int notmenu = menu == 0;
     int info = 0;
     getHandleBool(dataset, "infobar_visible", &info);
-    int notinfo = !info;
+    int notinfo = info = 0;
     int tool = 0;
     getHandleBool(dataset, "toolbar_visible", &tool);
-    int nottool = !tool;
+    int nottool = tool == 0;
 
     //force inverse flag
     setGraphicObjectProperty(fig, __GO_MENUBAR_VISIBLE__, &notmenu, jni_bool, 1);
@@ -1712,6 +1731,11 @@ static int import_handle_figure(hid_t dataset, int parent)
     setGraphicObjectProperty(fig, __GO_MENUBAR_VISIBLE__, &menu, jni_bool, 1);
     setGraphicObjectProperty(fig, __GO_INFOBAR_VISIBLE__, &info, jni_bool, 1);
     setGraphicObjectProperty(fig, __GO_TOOLBAR_VISIBLE__, &tool, jni_bool, 1);
+
+    //layout
+    int layout = 0;
+    getHandleInt(dataset, "layout", &layout);
+    setGraphicObjectProperty(fig, __GO_LAYOUT__, &layout, jni_int, 1);
 
     //import "standards" properties
     import_handle_generic(dataset, fig, -1, FigureHandle::getPropertyList(), true);
@@ -2026,6 +2050,10 @@ static bool export_handle_generic(hid_t parent, int uid, const HandleProp& props
                 }
                 case jni_int_vector:
                 {
+                    if (name == "border_size")
+                    {
+                        std::cout << "border_size";
+                    }
                     std::vector<int> dims = {row, col};
                     int* vals;
                     getHandleIntVectorProperty(uid, go, &vals);
@@ -2527,7 +2555,6 @@ static bool export_handle_uicontrol(hid_t parent, int uid, hid_t xfer_plist_id)
         char null_char = '\0';
         char* empty = &null_char;
         writeStringMatrix6(parent, "string", 2, dims, &empty, xfer_plist_id);
-
     }
     else
     {
@@ -3435,13 +3462,11 @@ int add_current_entity(hid_t dataset)
             int iCurrentFigure = getCurrentFigure();
             return import_handle(dataset, iCurrentFigure);
         }
-        case __GO_COMPOUND__:
+        default:
         {
+            // add handle as child of current axes ( take care of compound ! )
             int axes = getOrCreateDefaultSubwin();
             return import_handle(dataset, axes);
         }
-        default:
-            //add handle as child of current axes ( take care of compound ! )
-            return -1;
     }
 }

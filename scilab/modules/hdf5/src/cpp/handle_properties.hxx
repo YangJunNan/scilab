@@ -785,12 +785,14 @@ struct UicontrolHandle
     {
         HandleProp m;
 
-        //SAVE_ONLY, so don't care of reload ordering
+        //SAVE_ONLY, will be load explicitly
         m.emplace_back("type", std::vector<int>({SAVE_ONLY, __GO_TYPE__, jni_int}));
         m.emplace_back("style", std::vector<int>({SAVE_ONLY, __GO_STYLE__, jni_int}));
-        m.emplace_back("scrollable", std::vector<int>({SAVE_LOAD, __GO_UI_SCROLLABLE__, jni_bool}));
-        m.emplace_back("margins", std::vector<int>({SAVE_LOAD, __GO_MARGINS__, jni_double_vector, -1, -4}));
-        //constraint
+        m.emplace_back("layout", std::vector<int>({SAVE_ONLY, __GO_LAYOUT__, jni_int}));
+        m.emplace_back("scrollable", std::vector<int>({SAVE_ONLY, __GO_UI_SCROLLABLE__, jni_bool}));
+        m.emplace_back("margins", std::vector<int>({SAVE_ONLY, __GO_MARGINS__, jni_double_vector, -1, -4}));
+
+        //constraints
         m.emplace_back("border_position", std::vector<int>({SAVE_ONLY, __GO_UI_BORDER_POSITION__, jni_int}));
         m.emplace_back("border_size", std::vector<int>({SAVE_ONLY, __GO_UI_BORDER_PREFERREDSIZE__, jni_int_vector, -1, -2}));
         m.emplace_back("gridbad_grid", std::vector<int>({SAVE_ONLY, __GO_UI_GRIDBAG_GRID__, jni_int_vector, -1, -4}));
@@ -825,11 +827,13 @@ struct UicontrolHandle
         m.emplace_back("verticalalignment", std::vector<int>({SAVE_LOAD, __GO_UI_VERTICALALIGNMENT__, jni_string}));
         m.emplace_back("callback", std::vector<int>({SAVE_LOAD, __GO_CALLBACK__, jni_string}));
         m.emplace_back("callback_type", std::vector<int>({SAVE_LOAD, __GO_CALLBACKTYPE__, jni_int}));
-        m.emplace_back("layout", std::vector<int>({SAVE_LOAD, __GO_LAYOUT__, jni_int}));
         //layout_options
         m.emplace_back("layout_grid", std::vector<int>({SAVE_LOAD, __GO_GRID_OPT_GRID__, jni_int_vector, -1, -2}));
         m.emplace_back("layout_padding", std::vector<int>({SAVE_LOAD, __GO_GRID_OPT_PADDING__, jni_int_vector, -1, -2}));
         m.emplace_back("border_padding", std::vector<int>({SAVE_LOAD, __GO_BORDER_OPT_PADDING__, jni_int_vector, -1, -2}));
+        //tab
+        m.emplace_back("title_position", std::vector<int>({SAVE_LOAD, __GO_UI_TITLE_POSITION__, jni_int}));
+
 
         m.emplace_back("groupname", std::vector<int>({SAVE_LOAD, __GO_UI_GROUP_NAME__, jni_string}));
         m.emplace_back("icon", std::vector<int>({SAVE_LOAD, __GO_UI_ICON__, jni_string}));
