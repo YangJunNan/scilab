@@ -338,6 +338,7 @@ Bug Fixes
 * [#15657](https://gitlab.com/scilab/scilab/-/issues/15657): Empty categories corrupted the graphical output of  `histplot()`.
 * [#16029](https://gitlab.com/scilab/scilab/-/issues/16029): tick marks were extending out of range for small scale plots.
 * [#16049](https://gitlab.com/scilab/scilab/-/issues/16049): `struct("v", cell())` crashes Scilab.
+* [#16408](https://gitlab.com/scilab/scilab/-/issues/16408): `toJSON` crashed with wrong parameters order.
 * [#16653](https://gitlab.com/scilab/scilab/-/issues/16653): `fromJSON()` crashed with a non existing file.
 * [#16713](https://gitlab.com/scilab/scilab/-/issues/16713): Automatic stretching of Axes box in 3d view was not configurable.
 * [#16717](https://gitlab.com/scilab/scilab/-/issues/16717): An error occured in findobj when no objects existed.
