@@ -36,7 +36,7 @@
         <itemizedlist>
             <listitem>
                 <para>
-                    <emphasis role="bold">var:</emphasis> input parameter. Can be any types of Scilab objects.
+                    <emphasis role="bold">var:</emphasis> input parameter. Can be a Double, Integer, Boolean, String or List <link linkend="typeof">Scilab object</link>.
                 </para>
             </listitem>
             <listitem>
@@ -50,6 +50,14 @@
         <title>Description</title>
         <para>
             var2vec / vec2var functions are used inside the interfacing functions of Scilab blocks to give the possibility to the user to handle Scilab objects with the real parameter (rpar) and with the discrete state register (z).
+        </para>
+        <para>
+            These functions are also used internally for some fields in blocks (odstate, opar, etc...). 
+        </para>
+        <para>
+            <warning>
+                The serialized data are supposed to be accessible by the simulation function. For complex Scilab objects (struct, handle, file content, etc...), you could store identifiers or global variables as strings and resolve them on your simulation function.
+            </warning>
         </para>
         <para>
         </para>
