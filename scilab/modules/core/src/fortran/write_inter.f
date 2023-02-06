@@ -76,13 +76,23 @@ c     &       (stk(li+j*m),j=0,n-1)
       character dat*(*)
       integer ierr
 
+c     crash in windows debug mode
+c     mimic writestringfile
+c     write(buf,form,err=20) dat
+      do 99 i=1,len(dat),lch
+        lb1=lch
+        if(len(dat) < (i+lch-1)) then
+          write(buf,form,err=20) dat(i:len(dat))
 
-      write(buf,form,err=20) dat
-      lb1=lch
- 69   lb1=lb1-1
-      if(buf(lb1:lb1).eq.' ') goto 69
+69        lb1=lb1-1
+          if(buf(lb1:lb1).eq.' ') goto 69
+        else
+          write(buf,form,err=20) dat(i:(i+lch-1))
+        end if
 
-      call basout(io, 6, buf(1:lb1))
+        call basout(io, 6, buf(1:lb1))
+99    continue
+
       return
 
 20    ierr = 2
@@ -93,7 +103,6 @@ c     &       (stk(li+j*m),j=0,n-1)
       subroutine writestringfile(ID, form, dat, ierr)
 
       parameter (lch=4096)
-      character buf*(lch)
       integer ID,ierr
       character form*(*)
       character dat*(*)
