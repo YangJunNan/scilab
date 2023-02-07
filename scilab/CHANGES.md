@@ -348,6 +348,7 @@ Bug Fixes
 * [#16049](https://gitlab.com/scilab/scilab/-/issues/16049): `struct("v", cell())` crashes Scilab.
 * [#16408](https://gitlab.com/scilab/scilab/-/issues/16408): `toJSON` crashed with wrong parameters order.
 * [#16555](https://gitlab.com/scilab/scilab/-/issues/16555): Details of Xcos CLOCK_c block led to crash
+* [#16575](https://gitlab.com/scilab/scilab/-/issues/16575): for m=rand(2,2,2), end crashes Scilab.
 * [#16653](https://gitlab.com/scilab/scilab/-/issues/16653): `fromJSON()` crashed with a non existing file.
 * [#16713](https://gitlab.com/scilab/scilab/-/issues/16713): Automatic stretching of Axes box in 3d view was not configurable.
 * [#16717](https://gitlab.com/scilab/scilab/-/issues/16717): An error occured in findobj when no objects existed.
@@ -355,8 +356,8 @@ Bug Fixes
 * [#16748](https://gitlab.com/scilab/scilab/-/issues/16748): Build failed with OCaml 4.11 or newer build without unsafe-strings
 * [#16796](https://gitlab.com/scilab/scilab/-/issues/16796): `isreal(complex(1,%nan),0)` returned `%T` instead of `%F`.
 * [#16798](https://gitlab.com/scilab/scilab/-/issues/16798): `scinotes()` with option and non existing file crashed scilab.
-* [#16826](https://gitlab.com/scilab/scilab/-/issues/16826): `file()` or `file(fid)` could yield outdated relative paths.
 * [#16822](https://gitlab.com/scilab/scilab/-/issues/16822): `getrelativefilename()` returned incorrect value in case of same beginning of directory names.
+* [#16826](https://gitlab.com/scilab/scilab/-/issues/16826): `file()` or `file(fid)` could yield outdated relative paths.
 * [#16841](https://gitlab.com/scilab/scilab/-/issues/16841): Zoom on multiaxes could desynchronize axes.
 * [#16849](https://gitlab.com/scilab/scilab/-/issues/16849): toJSON("\\") must return "\\\\" instead of "\\\".
 * [#16865](https://gitlab.com/scilab/scilab/-/issues/16865): Vector extraction with single hypermatrix index yielded a vector.
@@ -386,7 +387,6 @@ Bug Fixes
 * [#16912](https://gitlab.com/scilab/scilab/-/issues/16912): Some tools/functions still mentioned Scilab Enterprises and ESI Group as Scilab maintainer and/or Scilab trademark handler.
 * [#16913](https://gitlab.com/scilab/scilab/-/issues/16913): InnoSetup files was not updated after MKL upgrade.
 * [#16914](https://gitlab.com/scilab/scilab/-/issues/16914): Wrong line number with t/mlist extraction overload.
-* [#16912](https://gitlab.com/scilab/scilab/-/issues/16912): Some tools/functions still mentioned Scilab Enterprises and ESI Group as Scilab maintainer and/or Scilab trademark handler.
 * [#16919](https://gitlab.com/scilab/scilab/-/issues/16919): MList overload extraction compatibility with scilab 5.5.2
 * [#16923](https://gitlab.com/scilab/scilab/-/issues/16923): unable to use `http_get(..., follow=%t)` without a filename argument.
 * [#16920](https://gitlab.com/scilab/scilab/-/issues/16920): MatrixExp insertion in an empty matrix and using colon crashes Scilab.

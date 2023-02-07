@@ -275,10 +275,6 @@ public :
 
     virtual ArrayOf<T>* set(int _iRows, int _iCols, const T _data)
     {
-        //            int piIndexes[2];
-        //            piIndexes[0] = _iRows;
-        //            piIndexes[1] = _iCols;
-        //            return set(getIndex(piIndexes), _data);
         return set(_iCols * getRows() + _iRows, _data);
     }
 
@@ -343,8 +339,7 @@ public :
 
     inline T get(int _iRows, int _iCols)
     {
-        int piIndexes[2] = {_iRows, _iCols};
-        return get(getIndex(piIndexes));
+        return get(_iCols * getRows() + _iRows);
     }
 
     /*internal function to manage img part*/
@@ -369,8 +364,7 @@ public :
 
     ArrayOf<T>* setImg(int _iRows, int _iCols, T _data)
     {
-        int piIndexes[2] = {_iRows, _iCols};
-        return setImg(getIndex(piIndexes), copyValue(_data));
+        return setImg(_iCols * getRows() + _iRows, copyValue(_data));
     }
 
     ArrayOf<T>* setImg(T* _pdata)
@@ -434,8 +428,7 @@ public :
 
     inline T getImg(int _iRows, int _iCols)
     {
-        int piIndexes[2] = {_iRows, _iCols};
-        return getImg(getIndex(piIndexes));
+        return getImg(_iCols * getRows() + _iRows);
     }
 
     virtual ArrayOf<T>* insert(typed_list* _pArgs, InternalType* _pSource) override;
@@ -494,7 +487,7 @@ public :
     ArrayOf<T>* getColumnValues(int _iPos) override
     {
         ArrayOf<T>* pOut = NULL;
-        if (_iPos < m_iCols)
+        if (_iPos < getSize() / getRows())
         {
             int piDims[2] = {m_iRows, 1};
             pOut = createEmpty(2, piDims, m_pImgData != NULL);

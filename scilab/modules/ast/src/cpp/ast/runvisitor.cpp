@@ -854,22 +854,33 @@ void RunVisitorT<T>::visitprivate(const ForExp  &e)
     {
         //Matrix i = [1,3,2,6] or other type
         types::GenericType* pVar = pIT->getAs<types::GenericType>();
-        if (pVar->getDims() > 2)
+        /* if (pVar->getDims() > 2)
         {
             pIT->DecreaseRef();
             pIT->killMe();
+            setResult(NULL);
             CoverageInstance::stopChrono((void*)&e);
             throw InternalError(_W("for expression can only manage 1 or 2 dimensions variables\n"), 999, e.getVardec().getLocation());
         }
+        */
 
         symbol::Variable* var = e.getVardec().getAs<VarDec>()->getStack();
-        for (int i = 0; i < pVar->getCols(); i++)
+        int dim = pVar->getDims();
+        int* dims = pVar->getDimsArray();
+        int count = 1;
+        for (int i = 1; i < dim; ++i)
+        {
+            count *= dims[i];
+        }
+
+        for (int i = 0; i < count; i++)
         {
             types::GenericType* pNew = pVar->getColumnValues(i);
             if (pNew == NULL)
             {
                 pIT->DecreaseRef();
                 pIT->killMe();
+                setResult(NULL);
                 CoverageInstance::stopChrono((void*)&e);
                 throw InternalError(_W("for expression : Wrong type for loop iterator.\n"), 999, e.getVardec().getLocation());
             }
