@@ -2,11 +2,17 @@ REM Execute module test for a module named %TEST%, download and install latest b
 
 @echo on
 REM Install if not exist
-if exist "%SCI_VERSION_STRING%\" goto :installed
+if exist "..\..\%SCI_VERSION_STRING%\" (
+  echo "Installation step skipped: Scilab version already installed."
+  goto :installed
+)
 call "%SCI_VERSION_STRING%.bin.%ARCH%.exe" /TASKS=!desktopicon,!AssociateSCESCI,!AssociateTSTDEM,!AssociateSCICOS,!AssociateSOD ^
   /NOICONS /SUPPRESSMSGBOXES /SILENT /SP- ^
   /DIR="%CI_PROJECT_DIR%\..\..\%SCI_VERSION_STRING%"
-if not exist "..\..\%SCI_VERSION_STRING%\" exit 1
+if not exist "..\..\%SCI_VERSION_STRING%\" (
+  echo "Scilab installation failed: installation directory does not exist."
+  exit 1
+)
 
 :installed
 
@@ -23,6 +29,12 @@ set "SCIHOME=%CI_PROJECT_DIR%\..\..\SCI_TMP_HOME~%RANDOM%"
 if exist -d "%SCIHOME%\" goto :uniqLoop
 mkdir "%SCIHOME%"
 if errorlevel 1  goto :uniqLoop
+
+REM check if scilab.bat exists
+if not exist "..\..\%SCI_VERSION_STRING%\bin\scilab.bat" (
+  echo "..\..\%SCI_VERSION_STRING%\bin\scilab.bat does not exist."
+  exit 1
+)
 
 @echo on
 call "..\..\%SCI_VERSION_STRING%\bin\scilab.bat" -nwni -scihome "%SCIHOME%" -quit -e "test_run('%TEST%',[],[],'%LOG_PATH%\%ARCH%_%TEST%.xml')"
