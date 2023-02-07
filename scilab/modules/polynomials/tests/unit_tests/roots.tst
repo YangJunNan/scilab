@@ -85,7 +85,7 @@ checkroots(p,expectedroots,%eps);
 // 2 real roots with a zero derivate at the root
 p=(%s-%pi)^2;
 expectedroots  = [%pi;%pi];
-checkroots(p,expectedroots,10*%eps);
+checkroots(p,expectedroots,1d-8);
 
 // Tests from CPOLY
 // M. A. Jenkins and J. F. Traub. 1972.

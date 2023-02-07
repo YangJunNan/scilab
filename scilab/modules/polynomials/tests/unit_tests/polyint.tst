@@ -41,7 +41,7 @@ assert_checkequal(polyint([3 ; 1-s ; s^2-2], list(,[-2 1 0]')), Ref);
 
 // ERROR MESSAGES
 // ==============
-assert_checkerror("polyint(1,2,3)", _("Wrong number of input arguments."));
+assert_checkerror("polyint(1,2,3)", sprintf(_("Wrong number of input arguments.\n")));
 msg = msprintf(_("%s: Argument #%d: Polynomial expected.\n"), "polyint",1);
 assert_checkerror("polyint(3)", msg);
 msg = _("%s: Argument #%d: numbers or list of numbers expected.\n");

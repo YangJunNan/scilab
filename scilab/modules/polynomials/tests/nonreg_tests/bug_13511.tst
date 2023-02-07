@@ -21,4 +21,4 @@ assert_checkequal(lcm([96 6250 10000 18700]), 56100000);
 
 [P, U] = bezout(3.5, 4.2);
 assert_checkequal(coeff(P), 1);
-assert_checkalmostequal(coeff(U), [0 4.2; 1/4.2 -3.5]);
+assert_checkalmostequal(clean(coeff(U)), [0 4.2; 1/4.2 -3.5]);

@@ -23,7 +23,7 @@
 s = poly(0, "s");
 p = [s, s*(s+1)^2, 2*s^2+s^3];
 [pgcd, u] = gcd(p);
-assert_checkequal(p*u, [0 0 s]);
+assert_checkequal(clean(p*u), [0 0 s]);
 // Complex polynomials should yield an error
 
 // Normal behavior, with integers
