@@ -39,6 +39,15 @@ function h =  findobj(varargin)
                 h = get(varargin(2));
                 return
             end
+
+            if strcmp(varargin(1), "figure_id", "i") == 0 then
+                figureIds = winsid();
+                idx = find(figureIds == varargin(2))
+                if idx <> [] then
+                    h = scf(figureIds(idx));
+                    return
+                end
+            end
         end
 
         // Get all opened figures
@@ -46,6 +55,7 @@ function h =  findobj(varargin)
         if isempty(figureIds) then
             return
         end
+
         // Iterate over all figures
         currFigure = gcf();
         for figureindex = 1:size(figureIds,2)
