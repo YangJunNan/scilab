@@ -336,6 +336,7 @@ Bug Fixes
 * [#8353](https://gitlab.com/scilab/scilab/-/issues/8353): Just after launching scilab, `log10(3)` makes Scilab crash.
 * [#8734](https://gitlab.com/scilab/scilab/-/issues/8734): copyfile crash Scilab while playing with locales.
 * [#13360](https://gitlab.com/scilab/scilab/-/issues/13360): hilbert function make scilab crash.
+* [#14216](https://gitlab.com/scilab/scilab/-/issues/14216): readxls can make Scilab crash without any error message.
 * [#14372](https://gitlab.com/scilab/scilab/-/issues/14372): after `L=list(1,"a",%t), a=L(2:3)` returned an error.
 * [#14451](https://gitlab.com/scilab/scilab/-/issues/14451): fsolve is no longer reentrant, causes crash.
 * [#14691](https://gitlab.com/scilab/scilab/-/issues/14691): scilab crashes when code is halted then aborted.
