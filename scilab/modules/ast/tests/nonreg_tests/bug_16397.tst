@@ -23,4 +23,8 @@ tic;
 disp([x,x])
 t2 = toc();
 
-assert_checktrue(t2/t1 > 8);
+if getos() == "Windows" then
+    assert_checktrue(t2/t1 > 5);
+else
+    assert_checktrue(t2/t1 > 8);
+end

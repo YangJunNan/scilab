@@ -14,6 +14,7 @@
 //
 // <-- Short Description -->
 // Crash when the function name is forgotten!
+// Test updated after issue #14372 fix
 
-errmsg = gettext(_("Can not assign multiple value in a single variable"));
-assert_checkerror("A=(1,1)", errmsg);
+A=(1,1);
+assert_checkequal(A, 1);
