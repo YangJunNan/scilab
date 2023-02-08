@@ -18,6 +18,7 @@
 #include "output_stream_gw.hxx"
 #include "scilab_sprintf.hxx"
 #include "function.hxx"
+#include "double.hxx"
 #include "string.hxx"
 #include "overload.hxx"
 
@@ -48,6 +49,12 @@ types::Callable::ReturnValue sci_msprintf(types::typed_list &in, int _iRetCount,
         if (in[i]->isDouble() == false && in[i]->isString() == false)
         {
             std::wstring wstFuncName = L"%" + in[i]->getShortTypeStr() + L"_msprintf";
+            return Overload::call(wstFuncName, in, _iRetCount, out);
+        }
+
+        if (in[i]->isDouble() && in[i]->getAs<types::Double>()->getDims() > 2)
+        {
+            std::wstring wstFuncName = L"%hm_msprintf";
             return Overload::call(wstFuncName, in, _iRetCount, out);
         }
     }

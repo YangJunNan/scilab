@@ -91,6 +91,12 @@ types::Function::ReturnValue sci_mfprintf(types::typed_list &in, int _iRetCount,
             std::wstring wstFuncName = L"%" + in[i]->getShortTypeStr() + L"_mfprintf";
             return Overload::call(wstFuncName, in, _iRetCount, out);
         }
+
+        if (in[i]->isDouble() && in[i]->getAs<types::Double>()->getDims() > 2)
+        {
+            std::wstring wstFuncName = L"%hm_mfprintf";
+            return Overload::call(wstFuncName, in, _iRetCount, out);
+        }
     }
 
     // checking ID of file
