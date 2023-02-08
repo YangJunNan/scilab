@@ -5,6 +5,7 @@
 //  This file is distributed under the same license as the Scilab package.
 // ===========================================================================
 
+// <-- NO CHECK REF -->
 // <-- CLI SHELL MODE -->
 
 doc = xmlDocument("TMPDIR/foo.xml");
@@ -37,7 +38,7 @@ assert_checktrue(grep(xmlDump(doc),"http://gro.ba")<>[]);
 
 xmlDelete(doc);
 
-doc = xmlReadStr("<root><a xmlns:scilab=""http://www.scilab.org""><b>Hello </b><scilab:c>World</scilab:c></a></root>");
+doc = xmlReadStr("<root><a xmlns:scilab=""https://www.scilab.org""><b>Hello </b><scilab:c>World</scilab:c></a></root>");
 c = doc.root.children(1).children(2);
 a=xmlGetNsByHref(c, "https://www.scilab.org");
 assert_checkequal(a.prefix,"scilab");
