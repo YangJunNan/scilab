@@ -18,9 +18,8 @@ r=%f;a = 1;
 try
     ev("a*z");
 catch
-    r=%t
+    r=%t;
 end
- r  = 
 if ~r then bugmes();quit;end
 [str,n]=lasterror();
 if n == 0 then bugmes();quit;end
@@ -31,9 +30,8 @@ r=%f;a = 1;
 try
     ev("a*z");
 catch
-    r=%t
+    r=%t;
 end
- r  = 
 if ~r then bugmes();quit;end
 [str,n]=lasterror();
 if n == 0 then bugmes();quit;end
@@ -90,9 +88,9 @@ deff(" r=ev(str)","execstr(''r=''+str),")
 function r=foo()
     r=%f;
     try
-        ev("a*z")
+        ev("a*z");
     catch
-        r=%t
+        r=%t;
     end
 endfunction
 r=foo();
@@ -107,7 +105,7 @@ deff("r=foo()",[
 "try"
 "   ev(a*z);"
 "catch"
-"   r=%t"
+"   r=%t;"
 "end"])
 r=foo();
 if ~r then bugmes();quit;end
@@ -121,7 +119,7 @@ deff("r=foo()",[
 "try"
 "   ev(a*z);"
 "catch"
-"   r=%t"
+"   r=%t;"
 "end"])
 r=foo();
 if ~r then bugmes();quit;end
@@ -132,7 +130,7 @@ clear  foo
 function r=foo()
     r=%f;a=1;
     try
-        execstr("r=a*z")
+        execstr("r=a*z");
     catch
         r=%t;
     end
@@ -147,13 +145,12 @@ mputl("r=a*z",TMPDIR+"/ev");
 function r=foo()
     r=%f;a=1;
     try
-        exec(TMPDIR+"/ev")
+        exec(TMPDIR+"/ev");
     catch
         r=%t;
     end
 endfunction
 r=foo();
-r=a*z
 if ~r then bugmes();quit;end
 [str,n]=lasterror();
 if n == 0 then bugmes();quit;end

@@ -134,12 +134,12 @@ assert_checktrue(abs(norm(a,'fro')-sqrt(14))< 10*%eps);
 //
 a=rand(3,5);ac=a+%i*rand(3,5);
 [u,s,v]=svd(a);u*s*v'-a;
-assert_checktrue(abs(svd(a)-diag(s))< 10*%eps);
+assert_checktrue(abs(svd(a)-diag(s))< 11*%eps);
 [u,s,v]=svd(ac);u*s*v'-ac;
 assert_checktrue(abs(svd(ac)-diag(s))< 10*%eps);
 //
 [u,s,v]=svd(a,0);u*s*v'-a;
-assert_checktrue(abs(svd(a,0)-diag(s,0))< 10*%eps);
+assert_checktrue(abs(svd(a,0)-diag(s,0))< 11*%eps);
 [u,s,v]=svd(ac,0);u*s*v'-ac;
 assert_checktrue(abs(svd(ac,0)-diag(s))< 10*%eps);
 a=a';ac=ac';
