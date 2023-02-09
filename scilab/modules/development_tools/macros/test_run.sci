@@ -237,6 +237,12 @@ function test_run_result = test_run(varargin)
         params.tests_mat    = varargin(2);
         params.moduleName   = varargin(1);
 
+        if size(params.tests_mat, "*") == 1 then
+            if grep(params.tests_mat, ",") <> [] then
+                params.tests_mat = stripblanks(strsplit(params.tests_mat, ","));
+            end
+        end
+
         if ((or(size(params.moduleName) <> [1,1])) & (params.tests_mat <> [])) then
             example = test_examples();
             err   = ["" ; msprintf(gettext("%s: Wrong size for input argument."),"test_run") ; "" ; example ];
@@ -380,7 +386,17 @@ function status = test_module(_params)
             bFind = %f;
             for j = 1:size(directories, "*")
                 currentDir = directories(j);
-                testFile = currentDir + filesep() + _params.tests_mat(i) + ".tst";
+                if part(_params.tests_mat(i), 1) == "#" | ~isnan(strtod(_params.tests_mat(i))) then
+                    if part(_params.tests_mat(i), 1) == "#" then
+                        bugnum = part(_params.tests_mat(i), 2:$);
+                    else
+                        bugnum = _params.tests_mat(i)
+                    end
+
+                    testFile = currentDir + [sprintf("bug_%s", bugnum);sprintf("issue_%s", bugnum)] + ".tst";
+                else
+                    testFile = currentDir + _params.tests_mat(i) + ".tst";
+                end
                 testFile = listfiles(testFile);  // allows *pattern*
                 for File = testFile'
                     if isfile(File) then
@@ -1413,4 +1429,3 @@ function exportToXUnitFormat(exportToFile, testsuites)
 
     xmlWrite(doc);
 endfunction
-
