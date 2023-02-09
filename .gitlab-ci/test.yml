@@ -85,7 +85,6 @@ x64_windows_test_branch_bad:
           - optimization
           - output_stream
           - overloading
-          - parallel
           - randlib
           - renderer
           - scicos
@@ -110,9 +109,18 @@ x64_windows_test_branch_ugly:
     matrix: &UGLY_TEST_ANCHOR
       - TEST:
           - atoms
+          - xcos
+
+x64_windows_test_branch_windows_only:
+  extends: .x64_windows_test
+  rules:
+    - if: $CI_PIPELINE_SOURCE == 'merge_request_event' || $CI_PIPELINE_SOURCE == 'push'
+  when: manual
+  parallel:
+    matrix: &WINDOWS_ONLY_TEST_ANCHOR
+      - TEST:
           - mpi
           - windows_tools
-          - xcos
 
 x64_windows_test_nightly_good:
   extends: .x64_windows_test
@@ -144,6 +152,16 @@ x64_windows_test_nightly_ugly:
   parallel:
     matrix: *UGLY_TEST_ANCHOR
 
+x64_windows_test_nightly_windows_only:
+  extends: .x64_windows_test
+  needs:
+    - x64_windows_build_nightly
+    - x64_windows_set_env
+  rules:
+    - if: $CI_PIPELINE_SOURCE == 'schedule'
+  parallel:
+    matrix: *WINDOWS_ONLY_TEST_ANCHOR
+
 x64_windows_test_release_good:
   extends: .x64_windows_test
   needs:
@@ -174,6 +192,16 @@ x64_windows_test_release_ugly:
   parallel:
     matrix: *UGLY_TEST_ANCHOR
 
+x64_windows_test_release_windows_only:
+  extends: .x64_windows_test
+  needs:
+    - x64_windows_build_release
+    - x64_windows_set_env
+  rules:
+    - if: $CI_COMMIT_TAG
+  parallel:
+    matrix: *WINDOWS_ONLY_TEST_ANCHOR
+
 impacted_x64_windows_test_good:
   extends: .x64_windows_test
   needs:
@@ -203,6 +231,15 @@ impacted_x64_windows_test_ugly:
   rules: *IMPACTED_RULES
   parallel:
     matrix: *UGLY_TEST_ANCHOR
+
+impacted_x64_windows_test_windows_only:
+  extends: .x64_windows_test
+  needs:
+    - x64_windows_build_branch
+    - x64_windows_set_env
+  rules: *IMPACTED_RULES
+  parallel:
+    matrix: *WINDOWS_ONLY_TEST_ANCHOR
 
 .x86_64-linux-gnu_test:
   stage: test
