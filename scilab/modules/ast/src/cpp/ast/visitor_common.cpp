@@ -805,9 +805,12 @@ bool getFieldsFromExp(ast::Exp* _pExp, std::list<ExpHistory*>& fields)
             }
             else
             {
-                // a(x)
-                fields.back()->setArgs(pCurrentArgs);
-                fields.back()->setArgsOwner(true);
+                // a(x) | a() is equal to a
+                if(pCurrentArgs->empty() == false)
+                {
+                    fields.back()->setArgs(pCurrentArgs);
+                    fields.back()->setArgsOwner(true);
+                }
             }
 
             if (bArgList)
