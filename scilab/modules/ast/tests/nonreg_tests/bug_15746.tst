@@ -18,10 +18,12 @@
 
 B=1;
 A=[1 2 3];
-assert_checkerror("B/A", msprintf(_("Inconsistent row/column dimensions.\n")));
+msg = msprintf(_("Operator %ls: Wrong dimensions for operation [%ls] %ls [%ls], same number of columns expected.\n"), "/", "1x1", "/", "1x3");
+assert_checkerror("B/A", msg);
 A=A';
 assert_checkalmostequal((B/A)*A,B);
-assert_checkerror("A\B", msprintf(_("Inconsistent row/column dimensions.\n")));
+msg = msprintf(_("Operator %ls: Wrong dimensions for operation [%ls] %ls [%ls], same number of rows expected.\n"), "\", "3x1", "\", "1x1");
+assert_checkerror("A\B", msg);
 A=A';
 assert_checkalmostequal(A*(A\B),B);
 

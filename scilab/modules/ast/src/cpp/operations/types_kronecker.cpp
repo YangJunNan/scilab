@@ -36,11 +36,7 @@ types::InternalType *GenericKrontimes(types::InternalType *_pLeftOperand, types:
             return NULL;
         }
 
-        int iResult = KroneckerMultiplyDoubleByDouble(pL, pR, &pResult);
-        if (iResult)
-        {
-            throw ast::InternalError(_W("Inconsistent row/column dimensions.\n"));
-        }
+        KroneckerMultiplyDoubleByDouble(pL, pR, &pResult);
 
         return pResult;
     }

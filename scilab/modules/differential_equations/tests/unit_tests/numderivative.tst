@@ -303,7 +303,7 @@ Q = qr(rand(2, 2));
 funf = list(myfunction6, 7., 8.);
 instr = "J = numderivative(funf, x, [], [], [], Q)";
 lclmsg = "%s: Error while evaluating the function: ""%s""\n";
-assert_checkerror (instr, lclmsg, [], "numderivative", msprintf(_("Inconsistent row/column dimensions.\n")));
+assert_checkerror (instr, lclmsg, [], "numderivative", msprintf(_("Operator %ls: Wrong dimensions for operation [%ls] %ls [%ls].\n"), "*", "2x1", "*", "2x1"));
 // 9.3 Various error cases
 x = 2;
 // Correct syntax: [J, H] = numderivative(myfunction, x)

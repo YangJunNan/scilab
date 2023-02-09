@@ -16,6 +16,7 @@
 #include "types_power.hxx"
 #include "types_multiplication.hxx"
 #include "types_finite.hxx"
+#include "operations.hxx"
 
 extern "C"
 {
@@ -26,6 +27,8 @@ extern "C"
 }
 
 using namespace types;
+
+static std::wstring op = L"^";
 
 InternalType *GenericPower(InternalType *_pLeftOperand, InternalType *_pRightOperand)
 {
@@ -40,11 +43,7 @@ InternalType *GenericPower(InternalType *_pLeftOperand, InternalType *_pRightOpe
         Double *pL   = _pLeftOperand->getAs<Double>();
         Double *pR   = _pRightOperand->getAs<Double>();
 
-        int iResult = PowerDoubleByDouble(pL, pR, (Double**)&pResult);
-        if (iResult)
-        {
-            throw ast::InternalError(_W("Inconsistent row/column dimensions.\n"));
-        }
+        PowerDoubleByDouble(pL, pR, (Double**)&pResult);
 
         return pResult;
     }
@@ -61,9 +60,7 @@ InternalType *GenericPower(InternalType *_pLeftOperand, InternalType *_pRightOpe
         int iResult = PowerPolyByDouble(pL, pR, &pResult);
         switch (iResult)
         {
-            case 1 :
-                throw ast::InternalError(_W("Inconsistent row/column dimensions.\n"));
-            case 2 :
+            case 2:
                 throw ast::InternalError(_W("Invalid exponent: expected finite integer exponents.\n"));
             default:
                 //OK
@@ -98,7 +95,7 @@ InternalType *GenericDotPower(InternalType *_pLeftOperand, InternalType *_pRight
         int iResult = DotPowerDoubleByDouble(pL, pR, (Double**)&pResult);
         if (iResult)
         {
-            throw ast::InternalError(_W("Inconsistent row/column dimensions.\n"));
+            throw ast::InternalError(_W("Invalid exponent: Identity matrix not expected.\n"));
         }
 
         return pResult;
@@ -111,13 +108,8 @@ InternalType *GenericDotPower(InternalType *_pLeftOperand, InternalType *_pRight
     {
         types::Sparse *pL = _pLeftOperand->getAs<types::Sparse>();
         Double *pR = _pRightOperand->getAs<Double>();
-        int iResult = DotPowerSpaseByDouble(pL, pR, &pResult);
-        if (iResult)
-        {
-            throw ast::InternalError(_W("Inconsistent row/column dimensions.\n"));
-        }
+        DotPowerSpaseByDouble(pL, pR, &pResult);
         return pResult;
-
     }
 
     /*
@@ -132,9 +124,7 @@ InternalType *GenericDotPower(InternalType *_pLeftOperand, InternalType *_pRight
         int iResult = DotPowerPolyByDouble(pL, pR, &pResult);
         switch (iResult)
         {
-            case 1 :
-                throw ast::InternalError(_W("Inconsistent row/column dimensions.\n"));
-            case 2 :
+            case 2:
                 throw ast::InternalError(_W("Invalid exponent: expected finite integer exponents.\n"));
             default:
                 //OK
@@ -525,7 +515,6 @@ int DotPowerSpaseByDouble(Sparse* _pSp, Double* _pDouble, InternalType** _pOut)
         delete[] Row;
         delete[] iPositVal;
         throw ast::InternalError(_W("Invalid exponent.\n"));
-        return 1;
     }
 
     Sparse* pSpTemp = new Sparse(_pSp->getRows(), _pSp->getCols(), _pSp->isComplex() || _pDouble->isComplex());
@@ -562,7 +551,6 @@ int DotPowerSpaseByDouble(Sparse* _pSp, Double* _pDouble, InternalType** _pOut)
     pSpTemp->finalize();
     *_pOut = pSpTemp;
     return 0;
-
 }
 
 
@@ -663,12 +651,7 @@ int DotPowerPolyByDouble(Polynom* _pPoly, Double* _pDouble, InternalType** _pOut
 
     switch (iResult)
     {
-        case 1 :
-        {
-            delete pPolyOut;
-            throw ast::InternalError(_W("Inconsistent row/column dimensions.\n"));
-        }
-        case 2 :
+        case 2:
         {
             delete pPolyOut;
             throw ast::InternalError(_W("Invalid exponent.\n"));
@@ -829,17 +812,10 @@ int DotPowerDoubleByDouble(Double* _pDouble1, Double* _pDouble2, Double** _pDoub
         int iDims2      = _pDouble2->getDims();
         int* piDims2    = _pDouble2->getDimsArray();
 
-        if (iDims1 != iDims2)
+        std::wstring error = checkSameSize(_pDouble1, _pDouble2, op);
+        if (error.empty() == false)
         {
-            return 1;
-        }
-
-        for (int i = 0 ; i < iDims1 ; i++)
-        {
-            if (piDims1[i] != piDims2[i])
-            {
-                return 1;
-            }
+            throw ast::InternalError(error);
         }
 
         (*_pDoubleOut) = new Double(iDims2, piDims2, true);

@@ -73,7 +73,9 @@ InternalType *GenericLDivide(InternalType *_pLeftOperand, InternalType *_pRightO
         switch (iResult)
         {
             case 1 :
-                throw ast::InternalError(_W("Inconsistent row/column dimensions.\n"));
+                wchar_t pMsg[bsiz];
+                os_swprintf(pMsg, bsiz, _W("Operator %ls: Wrong dimensions for operation [%ls] %ls [%ls], same number of rows expected.\n").c_str(), L"\\", _pLeftOperand->getAs<types::GenericType>()->DimToString().c_str(), L"\\", _pRightOperand->getAs<types::GenericType>()->DimToString().c_str());
+                throw ast::InternalError(pMsg);
             case 2 :
                 throw ast::InternalError(_W("With NaN or Inf a left division by scalar expected.\n"));
             case 3 :
