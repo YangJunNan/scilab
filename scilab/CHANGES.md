@@ -380,6 +380,7 @@ Bug Fixes
 * [#16771](https://gitlab.com/scilab/scilab/-/issues/16771): fullpath("existing_path/*.ext") crashed Scilab under Windows.
 * [#16841](https://bugzilla.scilab.org/16841): Zoom on multiaxes could desynchronize axes.
 * [#16849](https://bugzilla.scilab.org/16849): toJSON("\\") must return "\\\\" instead of "\\\".
+* [#16864](https://gitlab.com/scilab/scilab/-/issues/16864): macr2tree(): after a=1:2, b=a(2) is pseudocoded as a funcall instead of as an extraction operation (Scilab 6.0 regression)
 * [#16865](https://bugzilla.scilab.org/16865): Vector extraction with single hypermatrix index yielded a vector.
 * [#16867](https://gitlab.com/scilab/scilab/-/issues/16867): macr2tree() encoded .' (transpose) as ' (conjugate transpose).
 * [#16887](https://gitlab.com/scilab/scilab/-/issues/16887): French localization for `tbx_build_loader()` messages fixed.
@@ -397,6 +398,9 @@ Bug Fixes
 * [#16919](https://gitlab.com/scilab/scilab/-/issues/16919): MList overload extraction compatibility with scilab 5.5.2
 * [#16923](https://gitlab.com/scilab/scilab/-/issues/16923): unable to use `http_get(..., follow=%t)` without a filename argument.
 * [#16920](https://gitlab.com/scilab/scilab/-/issues/16920): MatrixExp insertion in an empty matrix and using colon crashes Scilab.
+* [#16864](https://gitlab.com/scilab/scilab/-/issues/16864): macr2tree(): after a=1:2, b=a(2) is pseudocoded as a funcall instead of as an extraction operation (Scilab 6.0 regression)
+
+
 
 ### Bugs fixed in 6.1.1:
 * [#3188](https://gitlab.com/scilab/scilab/-/issues/3188): `part()` was slower than in Scilab 4.1.2.

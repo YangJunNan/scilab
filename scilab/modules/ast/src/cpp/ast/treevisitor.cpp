@@ -619,48 +619,92 @@ void TreeVisitor::visit(const AssignExp &e)
 void TreeVisitor::visit(const CallExp &e)
 {
     const ast::SimpleVar & var = static_cast<const ast::SimpleVar &>(e.getName());
-    types::TList* call = new types::TList();
+    // read in the context if the var name
+    // to get if this is a Callable or not.
+    // if collable funcall else extaction.
+    symbol::Context* ctx = symbol::Context::getInstance();
+    symbol::Variable* vvar = ((SimpleVar&)var).getStack();
+    types::InternalType* pIT = ctx->get(vvar);
 
-    //header
-    types::String* varstr = new types::String(1, 4);
-    varstr->set(0, L"funcall");
-    varstr->set(1, L"rhs");
-    varstr->set(2, L"name");
-    varstr->set(3, L"lhsnb");
-    call->append(varstr);
-
-    //rhs
-    types::List* rhs = new types::List();
-    ast::exps_t args = e.getArgs();
-    for (auto arg : args)
+    // Function call
+    if (pIT && pIT->isCallable())
     {
-        arg->accept(*this);
-        types::List* tmp = getList();
-        rhs->append(tmp);
+        types::TList* call = new types::TList();
+
+        // header
+        types::String* varstr = new types::String(1, 4);
+        varstr->set(0, L"funcall");
+        varstr->set(1, L"rhs");
+        varstr->set(2, L"name");
+        varstr->set(3, L"lhsnb");
+        call->append(varstr);
+
+        // rhs
+        types::List* rhs = new types::List();
+        ast::exps_t args = e.getArgs();
+        for (auto arg : args)
+        {
+            arg->accept(*this);
+            types::List* tmp = getList();
+            rhs->append(tmp);
+            tmp->killMe();
+        }
+
+        call->append(rhs);
+        rhs->killMe();
+
+        if (e.getName().isSimpleVar())
+        {
+            // name
+            const std::wstring& name = var.getSymbol().getName();
+            call->append(new types::String(name.c_str()));
+        }
+        else
+        {
+            // ie: a()()
+            call->append(new types::String(L""));
+        }
+
+        // lhsnb
+        // use default value 1
+        // parent exp like assign can adapt it.
+        call->append(new types::Double(1));
+
+        l = call;
+    }
+    else // extraction
+    {
+        types::InternalType* tmp;
+        types::List* ext = new types::List();
+
+        // varname
+        e.getName().accept(*this);
+        tmp = getList();
+        ext->append(tmp);
         tmp->killMe();
+
+        // indexes
+        ast::exps_t args = e.getArgs();
+        for (auto arg : args)
+        {
+            arg->accept(*this);
+            tmp = getList();
+            ext->append(tmp);
+            tmp->killMe();
+        }
+
+        types::List* operation = createOperation();
+        operation->append(ext);
+        ext->killMe();
+
+        // operator
+        operation->append(new types::String(L"ext"));
+        types::List* lst = new types::List();
+        lst->append(operation);
+        operation->killMe();
+
+        l = lst;
     }
-
-    call->append(rhs);
-    rhs->killMe();
-
-    if (e.getName().isSimpleVar())
-    {
-        // name
-        const std::wstring & name = var.getSymbol().getName();
-        call->append(new types::String(name.c_str()));
-    }
-    else
-    {
-        // ie: a()()
-        call->append(new types::String(L""));
-    }
-
-    //lhsnb
-    //use default value 1
-    //parent exp like assign can adapt it.
-    call->append(new types::Double(1));
-
-    l = call;
 }
 
 void TreeVisitor::visit(const ForExp &e)
