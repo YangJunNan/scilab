@@ -23,6 +23,10 @@ void pause_interpreter(void)
 {
     ConfigVariable::IncreasePauseLevel();
 
+    // allow error when paused in a try
+    bool bSilentError = ConfigVariable::isSilentError();
+    ConfigVariable::setSilentError(false);
+
     //return to console so change mode to 2
     int iOldMode = ConfigVariable::getPromptMode();
     ConfigVariable::setPromptMode(2);
@@ -43,4 +47,7 @@ void pause_interpreter(void)
 
     //return from console so change mode to initial
     ConfigVariable::setPromptMode(iOldMode);
+
+    // restore try/catch flag
+    ConfigVariable::setSilentError(bSilentError);
 }

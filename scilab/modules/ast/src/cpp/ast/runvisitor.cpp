@@ -2058,7 +2058,12 @@ void RunVisitorT<T>::visitprivate(const TryCatchExp  &e)
             CoverageInstance::stopChrono((void*)&e);
             throw ast::InternalError(sz);
         }
-
+        catch (const InternalAbort& ia)
+        {
+            //restore previous prompt mode
+            ConfigVariable::setSilentError(oldVal);
+            throw ia;
+        }
     }
     catch (const InternalError& /* ie */)
     {
