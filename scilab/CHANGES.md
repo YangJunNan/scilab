@@ -375,6 +375,7 @@ Bug Fixes
 * [#16826](https://bugzilla.scilab.org/16826): `file()` or `file(fid)` could yield outdated relative paths.
 * [#16822](https://bugzilla.scilab.org/16822): `getrelativefilename()` returned incorrect value in case of same beginning of directory names.
 * [#16755](https://bugzilla.scilab.org/16755): plot3d polygon facets rendering may be wrong when exactly in horizontal or vertical plane
+* [#16771](https://gitlab.com/scilab/scilab/-/issues/16771): fullpath("existing_path/*.ext") crashed Scilab under Windows.
 * [#16841](https://bugzilla.scilab.org/16841): Zoom on multiaxes could desynchronize axes.
 * [#16849](https://bugzilla.scilab.org/16849): toJSON("\\") must return "\\\\" instead of "\\\".
 * [#16865](https://bugzilla.scilab.org/16865): Vector extraction with single hypermatrix index yielded a vector.
