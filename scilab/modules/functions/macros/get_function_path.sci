@@ -30,13 +30,15 @@ function path = get_function_path(name)
     end
 
     libname = whereis(name);
-
-    if libname <> [] & libname <> "script" & type(evstr(name))==13 then
-        for i = 1:size(libname,"*")
+    for i = 1:size(libname,"*")
+        try 
+            evstr(libname(i));
             [funcnames, pathlib] = libraryinfo(libname(i));
             path = [path ; fullfile(pathlib, name + ".sci")];
+        catch
+            path = [path; "<" + libname(i) + ">"];
         end
-        path = pathconvert(path,%F);
     end
+    path = pathconvert(path,%F);
 
 endfunction

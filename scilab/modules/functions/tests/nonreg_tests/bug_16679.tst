@@ -16,10 +16,10 @@
 // get_function_path("acosh") yielded an error (Scilab 6.0.0 regression)
 
 // builtin
-assert_checkequal(get_function_path("sin"), []);
+assert_checkequal(get_function_path("sin"), "<elementary_functions>");
 // user macro
 function test(), endfunction
-assert_checkequal(get_function_path("test"), []);
+assert_checkequal(get_function_path("test"), "<script>");
 // macro in library
 ref =  pathconvert("WSCI\modules\elementary_functions\macros\sind.sci",%f,%t);
 assert_checkequal(get_function_path("sind"), ref);

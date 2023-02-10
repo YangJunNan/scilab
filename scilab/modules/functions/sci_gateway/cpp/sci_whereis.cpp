@@ -51,6 +51,7 @@ types::Function::ReturnValue sci_whereis(types::typed_list &in, int _iRetCount, 
             return types::Function::Error;
         }
 
+        std::list<std::wstring> lst;
         std::wstring sym(pS->get()[0]);
         types::InternalType* pIT = symbol::Context::getInstance()->get(symbol::Symbol(sym));
         if (pIT)
@@ -59,13 +60,12 @@ types::Function::ReturnValue sci_whereis(types::typed_list &in, int _iRetCount, 
             {
                 case types::InternalType::ScilabFunction:
                 case types::InternalType::ScilabMacro:
-                case types::InternalType::ScilabMacroFile:
-                    out.push_back(new types::String(pIT->getAs<types::Callable>()->getModule().c_str()));
-                    return types::Function::OK;
+                    lst.push_back(pIT->getAs<types::Callable>()->getModule().c_str());
+                    // return types::Function::OK;
+                    break;
             }
         }
 
-        std::list<std::wstring> lst;
         int size = symbol::Context::getInstance()->getWhereIs(lst, pS->get()[0]);
         if (lst.empty())
         {

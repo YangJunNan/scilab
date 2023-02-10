@@ -18,13 +18,13 @@
 URL = "https://www.scilab.org/abc.htm";
 // =============================================================================
 tmp = strsubst(URL, "//", "§");
-if tmp <> "http:§www.scilab.org/abc.htm" then pause,end
+if tmp <> "https:§www.scilab.org/abc.htm" then pause,end
 // =============================================================================
 i = strcspn(tmp, "/");
-if length("http:§www.scilab.org") <> 20 then pause, end
-if i <> 20 then pause,end
+if length("https:§www.scilab.org") <> 21 then pause, end
+if i <> 21 then pause,end
 // =============================================================================
 server = strsubst(part(tmp, 1:i), "§", "//");
-if part(tmp, 1:i) <> 'http:§www.scilab.org' then pause, end
+if part(tmp, 1:i) <> 'https:§www.scilab.org' then pause, end
 if server <> 'https://www.scilab.org' then pause, end
 // =============================================================================
