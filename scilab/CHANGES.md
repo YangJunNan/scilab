@@ -331,11 +331,11 @@ Bug Fixes
 
 * [#463](https://gitlab.com/scilab/scilab/-/issues/463): Invalid format leads to crash for write function.
 * [#7196](https://gitlab.com/scilab/scilab/-/issues/7196): try/catch: returned value assigned in `catch` is not displayed.
-* [#14138](https://gitlab.com/scilab/scilab/-/issues/14138): reading some hdf5 file crashes scilab.
 * [#7475](https://gitlab.com/scilab/scilab/-/issues/7475): When running fft, the scilab program crashes.
 * [#8353](https://gitlab.com/scilab/scilab/-/issues/8353): Just after launching scilab, `log10(3)` makes Scilab crash.
 * [#8734](https://gitlab.com/scilab/scilab/-/issues/8734): copyfile crash Scilab while playing with locales.
 * [#13360](https://gitlab.com/scilab/scilab/-/issues/13360): hilbert function make scilab crash.
+* [#14138](https://gitlab.com/scilab/scilab/-/issues/14138): reading some hdf5 file crashes scilab.
 * [#14216](https://gitlab.com/scilab/scilab/-/issues/14216): readxls can make Scilab crash without any error message.
 * [#14372](https://gitlab.com/scilab/scilab/-/issues/14372): after `L=list(1,"a",%t), a=L(2:3)` returned an error.
 * [#14451](https://gitlab.com/scilab/scilab/-/issues/14451): fsolve is no longer reentrant, causes crash.
@@ -348,6 +348,7 @@ Bug Fixes
 * [#16049](https://gitlab.com/scilab/scilab/-/issues/16049): `struct("v", cell())` crashes Scilab.
 * [#16408](https://gitlab.com/scilab/scilab/-/issues/16408): `toJSON` crashed with wrong parameters order.
 * [#16555](https://gitlab.com/scilab/scilab/-/issues/16555): Details of Xcos CLOCK_c block led to crash
+* [#16557](https://gitlab.com/scilab/scilab/-/issues/16557): `macr2tree` + `tree2code` translated `e={2}` into `"e=1"` and `e={2,"ab"}` into `"e=[2,"ab"]"`.
 * [#16575](https://gitlab.com/scilab/scilab/-/issues/16575): for m=rand(2,2,2), end crashes Scilab.
 * [#16179](https://gitlab.com/scilab/scilab/-/issues/16179): pause inhibits error display when executed in try-catch block.
 * [#16179](https://gitlab.com/scilab/scilab/-/issues/16179): `pause` inhibits error display when executed in try-catch block.

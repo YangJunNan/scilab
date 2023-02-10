@@ -172,6 +172,23 @@ void TreeVisitor::visit(const CellExp &e)
     {
         lines.front()->accept(*this);
         types::List* pL = getList();
+
+        // in case of scalar cell: a = {42}
+        // accept() will create a constant as it's done for: a = [42]
+        // create operation "crc" to keep a cell on scalar
+        if (pL->getSize() == 2)
+        {
+            types::List* sub = createOperation();
+            types::List* ope = new types::List();
+            ope->append(pL);
+            pL->killMe();
+            sub->append(ope);
+            ope->killMe();
+            sub->append(new types::String(L"crc"));
+            l = sub;
+            return;
+        }
+
         pL->get(pL->getSize() - 1)->getAs<types::String>()->set(0, L"crc");
         return;
     }
