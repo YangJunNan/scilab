@@ -150,6 +150,9 @@ function replot(varargin)
     // Loop over axes
     // --------------
     for i = 1:na
+        if grep(handl(i).tag, "legend") <> []
+            continue
+        end
         bounds = matrix(rect(i,:)',-1,2)'
         // [ xmin  ymin  zmin
         //   xmax  ymax  zmax ]
