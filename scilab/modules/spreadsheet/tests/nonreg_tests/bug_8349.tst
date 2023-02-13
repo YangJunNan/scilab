@@ -6,8 +6,8 @@
 //  This file is distributed under the same license as the Scilab package.
 // =============================================================================
 //
-// <-- JAVA NOT MANDATORY -->
-//
+// <-- CLI SHELL MODE -->
+// <-- NO CHECK REF -->
 // <-- Non-regression test for bug 8349 -->
 //
 // <-- GitLab URL -->
@@ -50,8 +50,8 @@ assert_checkequal(b,"1.1000000000000001,Inf+Infi");
 b=csvRead(filename);
 assert_checkequal(b, [1.1  %inf*(1+%i)]);
 
-write_csv([ 1.1  1+%i*%inf],filename)
+write_csv([ 1.1  complex(1, %inf)],filename)
 b=mgetl(filename);
 assert_checkequal(b,"1.1000000000000001,1+Infi");
 b=csvRead(filename);
-assert_checkequal(b, [ 1.1  1+%i*%inf]);
+assert_checkequal(b, [ 1.1  complex(1, %inf)]);
