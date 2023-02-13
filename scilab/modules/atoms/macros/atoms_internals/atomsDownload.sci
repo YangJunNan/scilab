@@ -14,7 +14,7 @@
 // Internal function
 
 function atomsDownload(url_in,file_out,md5sum)
-
+    
     // Operating system detection + Architecture detection
     // =========================================================================
     [OSNAME, ARCH, LINUX, MACOSX, SOLARIS,BSD] = atomsGetPlatform();
@@ -123,7 +123,7 @@ function atomsDownload(url_in,file_out,md5sum)
         if CURL then
             // Curl
             timeout_arg = " --connect-timeout ";
-        else
+        elseif WGET then
             // wget
             timeout_arg = " --no-timestamping --no-page-requisites --no-recursive --timeout=";
         end
@@ -152,7 +152,7 @@ function atomsDownload(url_in,file_out,md5sum)
             if CURL then
                 // Curl
                 proxy_host_arg = " --proxy "+ proxy_host;
-            else
+            elseif WGET then
                 // wget
                 proxy_host_arg = " http_proxy="""+proxy_host+""" ";
             end
@@ -162,7 +162,7 @@ function atomsDownload(url_in,file_out,md5sum)
                 if CURL then
                     // Curl
                     proxy_user_arg = " --proxy-user "+atomsGetConfig("proxyUser")+":"+atomsGetConfig("proxyPassword");
-                else
+                elseif WGET then
                     // wget
                     proxy_user_arg = " --proxy-user="""+atomsGetConfig("proxyUser")+""" --proxy-password="""+atomsGetConfig("proxyPassword")+"""";
                 end
@@ -174,59 +174,83 @@ function atomsDownload(url_in,file_out,md5sum)
             proxy_user_arg = " --no-proxy";
         end
 
-
-        if getos() == "Windows" & CURL then
-            download_cmd = """" + pathconvert(SCI+"/tools/curl/curl.exe",%F) + """" + proxy_host_arg + proxy_user_arg + timeout_arg + " -s """ + url_in + """ -o """ + file_out + """";
-        elseif CURL then
-            // curl
-            download_cmd = "curl "+proxy_host_arg+proxy_user_arg+timeout_arg+" -s "+url_in + " -o " + file_out;
-        else
-            // wget
-            download_cmd = proxy_host_arg+"wget"+proxy_user_arg+timeout_arg+" "+url_in + " -O " + file_out;
-        end
+        // Execute the command
+        // =========================================================================
 
         winId = atomsOpenProgressBar(_("Download in progress... Please be patient."), %f);
 
-        err = [];
-        [rep,stat,err] = unix_g(download_cmd);
-
-        // Second try with httpdownload
-        if ( HTTPDOWNLOAD | stat<>0 ) & (getos() == "Windows") then
-            imode = ilib_verbose();
-            ilib_verbose(0) ;
-            id  = link(SCI+"/bin/windows_tools.dll","httpdownload","c");
-            stat  = call("httpdownload", url_in, 1, "c", file_out, 2, "c", "out", [1,1], 3, "d");
-            ulink(id);
-            ilib_verbose(imode);
-
-            // Save the parameter to always download with httpdownload
-            if stat == 0 then
-                atomsSetConfig("downloadTool","httpdownload");
-            end
-        end
-
-        if (HTTP_GET | stat<>0) then
-            try
-                [res,http_status] = http_get(url_in,file_out);
-                select http_status
-                case 200 then
-                    stat = 0;
-                else
-                    stat = -1;
+        function [stat, err] = download(url_in, file_out)
+            stat = -1;
+            err = [];
+            
+            if HTTP_GET then
+                try
+                    [res,http_status] = http_get(url_in,file_out);
+                    select http_status
+                    case 200 then
+                        stat = 0;
+                    else
+                        stat = -1;
+                    end
+                catch
+                    err = lasterror();
+                    select err($);
+                    case _("Couldn''t resolve host name") then
+                        stat = -2;
+                    case msprintf(_("%s: Wrong value for input argument #%d: The given path does not exist.\n"),"http_get",2) then
+                        stat = -7;
+                    end
                 end
-            catch
-                error_message = lasterror();
-                select error_message($);
-                case _("Couldn''t resolve host name") then
-                    stat = -2;
-                case msprintf(_("%s: Wrong value for input argument #%d: The given path does not exist.\n"),"http_get",2) then
-                    stat = -7;
-                end
+            elseif getos() == "Windows" & CURL then
+                download_cmd = """" + pathconvert(SCI+"/tools/curl/curl.exe",%F) + """" + proxy_host_arg + proxy_user_arg + timeout_arg + " -s """ + url_in + """ -o """ + file_out + """";
+                [rep,stat,err] = unix_g(download_cmd);
+            elseif CURL then
+                // curl
+                download_cmd = "curl "+proxy_host_arg+proxy_user_arg+timeout_arg+" -s "+url_in + " -o " + file_out;
+                [rep,stat,err] = unix_g(download_cmd);
+            elseif WGET then
+                // wget
+                download_cmd = proxy_host_arg+"wget"+proxy_user_arg+timeout_arg+" "+url_in + " -O " + file_out;
+                [rep,stat,err] = unix_g(download_cmd);
+            elseif getos() == "Windows" & HTTPDOWNLOAD then
+                imode = ilib_verbose();
+                ilib_verbose(0) ;
+                id  = link(SCI+"/bin/windows_tools.dll","httpdownload","c");
+                stat  = call("httpdownload", url_in, 1, "c", file_out, 2, "c", "out", [1,1], 3, "d");
+                ulink(id);
+                ilib_verbose(imode);
             end
+        endfunction
 
+        // First try
+        [stat, err] = download(url_in, file_out);
+
+        // Second try in case of failure
+        if  stat<>0 then
+            CURL     = %F;
+            WGET     = %F;
+            HTTP_GET = %T;
+            HTTPDOWNLOAD = %F;
+            
+            [stat, err] = download(url_in, file_out);
+            
             // Save the parameter to always download with http_get
             if stat == 0 then
                 atomsSetConfig("downloadTool","http_get");
+            end
+                
+            if stat <> 0 & getos() == "Windows" then
+                CURL     = %F;
+                WGET     = %F;
+                HTTP_GET = %F;
+                HTTPDOWNLOAD = %T;
+                
+                [stat, err] = download(url_in, file_out);
+                
+                // Save the parameter to always download with httpdownload
+                if stat == 0 then
+                    atomsSetConfig("downloadTool","httpdownload");
+                end
             end
         end
 
@@ -254,10 +278,9 @@ function atomsDownload(url_in,file_out,md5sum)
             mprintf(gettext("%s: The following file hasn''t been downloaded:\n"), "atomsDownload");
             mprintf(gettext("\t - URL      : ''%s''\n"), url_in);
             mprintf(gettext("\t - Local location : ''%s''\n"), file_out);
-            if isdef("err") then
-                atomsCloseProgressBar(winId);
-                error(strcat(err, ascii(10)));
-            end
+            
+            atomsCloseProgressBar(winId);
+            error(strcat(err, ascii(10)));
         end
 
     elseif regexp(url_in,"/^file:\/\//","o") == 1 then
