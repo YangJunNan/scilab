@@ -378,6 +378,7 @@ Bug Fixes
 * [#16822](https://bugzilla.scilab.org/16822): `getrelativefilename()` returned incorrect value in case of same beginning of directory names.
 * [#16755](https://bugzilla.scilab.org/16755): plot3d polygon facets rendering may be wrong when exactly in horizontal or vertical plane
 * [#16771](https://gitlab.com/scilab/scilab/-/issues/16771): fullpath("existing_path/*.ext") crashed Scilab under Windows.
+* [#16823](https://gitlab.com/scilab/scilab/-/issues/16823): `[m2sci]Mtbxfun_db.txt` was missing the Scilab releases.
 * [#16841](https://bugzilla.scilab.org/16841): Zoom on multiaxes could desynchronize axes.
 * [#16845](https://gitlab.com/scilab/scilab/-/issues/16845): Replot button or `replot(gcf())` failed for legends.
 * [#16849](https://bugzilla.scilab.org/16849): toJSON("\\") must return "\\\\" instead of "\\\".
