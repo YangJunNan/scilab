@@ -9,25 +9,25 @@
 //splitURL
 
 [a,b,c,d]=splitURL("https://www.scilab.org");
-assert_checkequal(a, "http");
+assert_checkequal(a, "https");
 assert_checkequal(b, "www.scilab.org");
 assert_checkequal(c, "");
 assert_checkequal(d, "");
 
 [a,b,c,d]=splitURL("https://www.scilab.org/");
-assert_checkequal(a, "http");
+assert_checkequal(a, "https");
 assert_checkequal(b, "www.scilab.org");
 assert_checkequal(c, "/");
 assert_checkequal(d, "");
 
 [a,b,c,d]=splitURL("https://www.scilab.org/products/scilab/environment");
-assert_checkequal(a, "http");
+assert_checkequal(a, "https");
 assert_checkequal(b, "www.scilab.org");
 assert_checkequal(c, "/products/scilab/environment");
 assert_checkequal(d, "");
 
 [a,b,c,d]=splitURL("https://www.scilab.org/content/search?SearchText=plot");
-assert_checkequal(a, "http");
+assert_checkequal(a, "https");
 assert_checkequal(b, "www.scilab.org");
 assert_checkequal(c, "/content/search");
 assert_checkequal(d, "SearchText=plot");

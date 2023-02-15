@@ -6,6 +6,7 @@
 // =============================================================================
 //
 // <-- CLI SHELL MODE -->
+// <-- NO CHECK REF -->
 //
 // <-- Non-regression test for bug 16708 -->
 //
@@ -16,11 +17,11 @@
 // mgetl cannot read from stdin
 
 if (getos() <> "Windows") & ~isfile(SCI+"/bin/scilab") then
-    SCI_BIN = strsubst(SCI,"|/share/scilab/?$|","","r");
+    SCI_BIN = strsubst(SCI,"|/share/scilab/?$|","","r") + "/bin/scilab";
 else
-    SCI_BIN = SCI;
+    SCI_BIN = pathconvert(SCI)+"bin\scilab";
 end
 
-cmd = msprintf("echo success | %s/bin/scilab -ns -nwni -nb -e %s", SCI_BIN, """str=mgetl(%io(1));mprintf(str)""");
+cmd = msprintf("echo success| %s -ns -nwni -nb -e %s", SCI_BIN, """str=mgetl(%io(1));mprintf(str)""");
 result = unix_g(cmd);
-assert_checkequal(result,"success")
+assert_checkequal(result,"success");

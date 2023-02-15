@@ -18,9 +18,9 @@
 
 
 if getos() == "Windows"
-    relpath = getrelativefilename('scilab\bin', 'scilabX\modules\helptools\readme.txt');
+    relpath = getrelativefilename(TMPDIR + '\scilab\bin', TMPDIR + '\scilabX\modules\helptools\readme.txt');
     assert_checkequal(relpath,"..\..\scilabX\modules\helptools\readme.txt")
 else
-    relpath = getrelativefilename('scilab/bin', 'scilabX/modules/helptools/readme.txt');
+    relpath = getrelativefilename(TMPDIR + '/scilab/bin', TMPDIR + '/scilabX/modules/helptools/readme.txt');
     assert_checkequal(relpath,"../../scilabX/modules/helptools/readme.txt")
 end

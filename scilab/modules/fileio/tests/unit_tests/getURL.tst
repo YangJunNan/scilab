@@ -22,7 +22,7 @@ function checkFileAndContent(filePath, expectedFilePath, minimalFileSize, keywor
     checkFile(filePath, expectedFilePath, minimalFileSize);
 endfunction
 
-function checkContent(filePath, content, keyword, keywordToFind)
+function checkContent(filePath, content, keywordToFind)
     assert_checktrue(length(content) > 10);
     assert_checktrue(grep(content, keywordToFind) <> []);
     deletefile(filePath);
@@ -67,29 +67,29 @@ checkFileAndContent(filePath, fullfile(destdir, "testauth"), 10, "authenticated"
 
 // Check returned content
 [filePath, content] = getURL("https://www.scilab.org:80");
-checkContent(filePath, content, 1000, "html");
+checkContent(filePath, content, "html");
 
 [filePath, content] = getURL("https://plop:ae@www.scilab.org:80");
-checkContent(filePath, content, 1000, "html");
+checkContent(filePath, content, "html");
 
 [filePath, content] = getURL("https://www.scilab.org/aze");
-checkContent(filePath, content, 100, "ESI");
+checkContent(filePath, content, "Dassault");
 
 [filePath, content] = getURL("https://www.scilab.org");
-checkContent(filePath, content, 1000, "html");
+checkContent(filePath, content, "html");
 
 [filePath, content] = getURL("https://www.scilab.org/");
-checkContent(filePath, content, 1000, "html");
+checkContent(filePath, content, "html");
 
 [filePath, content] = getURL("ftp://ftp.free.fr/pub/Distributions_Linux/debian/README");
-checkContent(filePath, content, 10, "Linux");
+checkContent(filePath, content, "Linux");
 
 // HTTPS
 [filePath, content] = getURL("https://encrypted.google.com");
-checkContent(filePath, content, 100, "html");
+checkContent(filePath, content, "html");
 
 [filePath, content] = getURL("https://httpbin.org/basic-auth/user/passwd", destdir, "user", "passwd");
-checkContent(filePath, content, 10, "authenticated");
+checkContent(filePath, content, "authenticated");
 
 // Badly formatted URL
 assert_checkerror("getURL(''https://plop@ae:www.scilab.org:80'');", [], 999);

@@ -21,7 +21,7 @@ mkdir("testdir")
 if getos() <> "Windows" then
     unix_w("ln -sf "+TMPDIR+"/testdir tmp");
 else
-    host("mklink /D tmp "+TMPDIR+"\testdir");
+    host("mklink /j tmp "+TMPDIR+"\testdir");
 end
 
 // symbolic link
