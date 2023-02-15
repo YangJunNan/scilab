@@ -38,7 +38,13 @@ namespace
 {
 void addToProcess(CoverModule* cm, types::Macro* current)
 {
-    cm->instrumentSingleMacro(current->getModule(), current->getFileName(), current, true);
+    // add .sci file
+    const std::wstring& file = current->getFileName();
+    std::size_t pos = file.find_last_of(L'.');
+    if (pos != std::string::npos)
+    {
+        cm->instrumentMacro(current->getModule(), file.substr(0, pos) + L".sci", current);
+    }
 };
 } /* namespace */
 /*--------------------------------------------------------------------------*/
@@ -76,7 +82,7 @@ types::Function::ReturnValue sci_profileEnable(types::typed_list &in, int _iRetC
 		}
 	}
 
-    // handle macros arguments (stored into Library, MacroFile or self)
+    // handle macros arguments (stored into Library, MacroFile or Macro)
     for (size_t idx = 0; idx < in.size(); idx++)
     {
         types::InternalType* pIT = in[idx];
@@ -118,5 +124,6 @@ types::Function::ReturnValue sci_profileEnable(types::typed_list &in, int _iRetC
         return types::Function::ReturnValue::Error;
     }
 
+    out.emplace_back(new types::Double(cm->getCounters().size()));
     return types::Function::OK;
 }

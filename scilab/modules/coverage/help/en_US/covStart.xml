@@ -15,7 +15,9 @@
         <synopsis>
           covStart(macro)
           covStart([dirs names])
-          covStart(lib), covStart("all")
+          covStart(lib)
+          covStart(libnames)
+          covStart("all") // deprecated, use covStart(librarieslist())
           counters = covStart(...)
        </synopsis>
     </refsynopsisdiv>
@@ -126,4 +128,3 @@ covStop();
         </simplelist>
     </refsection>
 </refentry>
-

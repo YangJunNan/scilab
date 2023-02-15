@@ -39,6 +39,7 @@ extern "C"
 #include "freeArrayOfString.h"
 #include "isdir.h"
 #include "os_string.h"
+#include "sciprint.h"
 #include "sci_malloc.h"
 }
 
@@ -145,6 +146,9 @@ const std::vector<std::pair<std::wstring, std::wstring>> CoverModule::getModule(
 
     if (moduleNames.size() == 1 && moduleNames.back() == L"all")
     {
+        sciprint(_("%s: Argument \"%s\" is obsolete.\n"), _("Warning"), "all");
+        sciprint(_("%s: Please use %s instead.\n"), _("Warning"), "covStart(librarylist())");
+
         // "all" keyword, parse all the Scilab library files
         int size = -1;
         wchar_t** files = findfilesW(path.c_str(), DEFAULT_FILESPEC, &size, FALSE);

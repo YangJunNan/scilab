@@ -368,6 +368,7 @@ Bug Fixes
 * [#16029](https://bugzilla.scilab.org/16029): tick marks were extending out of range for small scale plots 
 * [#16278](https://gitlab.com/scilab/scilab/-/issues/16278): Recursive insertion on unknown function call crashes Scilab.
 * [#16336](https://bugzilla.scilab.org/16336): Xcos preferences final simulation time was not set on new diagrams.
+* [#16196](https://bugzilla.scilab.org/16196): covStart() did not report errors on invalid arguments.
 * [#16653](https://bugzilla.scilab.org/16653): fromJSON() crashed with a non existing file.
 * [#16670](https://gitlab.com/scilab/scilab/-/issues/16670): c(1)(3).line_style = 8; where c is a list of vectors of polyline handles crashes Scilab.
 * [#16713](https://bugzilla.scilab.org/16713): Automatic stretching of Axes box in 3d view was not configurable.
