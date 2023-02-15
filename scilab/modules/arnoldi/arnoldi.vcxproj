@@ -191,7 +191,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="sci_gateway\c\sci_eigs.c" />
     <ClCompile Include="src\c\DllmainArnoldi.c" />
     <ClCompile Include="sci_gateway\c\sci_dnaupd.c" />
     <ClCompile Include="sci_gateway\c\sci_dneupd.c" />
@@ -214,6 +213,7 @@
   <ItemGroup>
     <None Include="core_import.def" />
     <None Include="arnoldi.iss" />
+    <None Include="cpp.hint" />
     <None Include="locales\arnoldi.pot" />
     <None Include="sci_gateway\arnoldi_gateway.xml" />
     <None Include="Makefile.am" />

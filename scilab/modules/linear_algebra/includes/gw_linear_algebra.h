@@ -34,7 +34,8 @@ LINEAR_ALGEBRA_IMPEXP int gw_linear_algebra(void);
 //LINEAR_ALGEBRA_IMPEXP int C2F(intbackslash)(char *fname, unsigned long fname_len);
 //LINEAR_ALGEBRA_IMPEXP int C2F(invnew)(char *fname, unsigned long fname_len);
 //LINEAR_ALGEBRA_IMPEXP int C2F(intslash)(char *fname, unsigned long fname_len);
-int sci_norm(char *fname, void* pvApiCtx);
+int sci_norm(char* fname, void* pvApiCtx);
+int sci_eigs(char* fname, void* pvApiCtx);
 /*--------------------------------------------------------------------------*/
 ///* used in 'eig' */
 //LINEAR_ALGEBRA_IMPEXP int sci_dsyev(char *fname, unsigned long fname_len);

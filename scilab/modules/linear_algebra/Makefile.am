@@ -29,7 +29,8 @@ LINEAR_ALGEBRA_FORTRAN_SOURCES = \
 
 GATEWAY_C_SOURCES = \
     sci_gateway/c/assembleEigenvectors.c \
-    sci_gateway/c/sci_norm.c
+    sci_gateway/c/sci_norm.c \
+    sci_gateway/c/sci_eigs.c
 
 GATEWAY_CPP_SOURCES = \
     sci_gateway/cpp/linear_algebra_gw.cpp \
@@ -67,6 +68,7 @@ libscilinear_algebra_la_CPPFLAGS = \
     -I$(top_srcdir)/modules/dynamic_link/includes \
     -I$(top_srcdir)/modules/dynamic_link/includes \
     -I$(top_srcdir)/modules/localization/includes/ \
+    -I$(top_srcdir)/modules/arnoldi/includes/ \
     $(AM_CPPFLAGS)
 
 if MAINTAINER_MODE

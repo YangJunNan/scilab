@@ -17,6 +17,7 @@
 #define __EIGS_H__
 #include "doublecomplex.h"
 
+#include "dynlib_arnoldi.h"
 
 /**
  * @TODO add comment
@@ -48,7 +49,7 @@
  * @param RVEC
  * @return <ReturnValue>
  */
-int eigs(double *AR, doublecomplex *AC, int N, int Acomplex, int Asym,
+ARNOLDI_IMPEXP int eigs(double* AR, doublecomplex* AC, int N, int Acomplex, int Asym,
          double* B,  doublecomplex* BC, int Bcomplex, int matB, int nev,
          doublecomplex SIGMA, char* which, double* maxiter, double* tol,
          double* NCV, double* RESID, doublecomplex* RESIDC, int* INFO,

@@ -19,7 +19,7 @@
 #include "doublecomplex.h"
 #include "isanan.h"
 #include "core_math.h"
-#include "gw_arnoldi.h"
+#include "gw_linear_algebra.h"
 #include "localization.h"
 #include "Scierror.h"
 #include "api_scilab.h"

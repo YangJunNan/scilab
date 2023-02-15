@@ -39,5 +39,6 @@ int LinearAlgebraModule::Load()
     symbol::Context::getInstance()->addFunction(types::Function::createFunction(L"balanc", &sci_balanc, MODULE_NAME));
     symbol::Context::getInstance()->addFunction(types::Function::createFunction(L"schur", &sci_schur, MODULE_NAME));
     symbol::Context::getInstance()->addFunction(types::Function::createFunction(L"norm", &sci_norm, MODULE_NAME));
+    symbol::Context::getInstance()->addFunction(types::Function::createFunction(L"%_eigs", &sci_eigs, MODULE_NAME));
     return true;
 }

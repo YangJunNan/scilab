@@ -635,8 +635,8 @@ SUBDIRS = prebuildjava threads output_stream arnoldi \
 	elementary_functions integer io linear_algebra localization \
 	polynomials special_functions time windows_tools sparse \
 	completion history_manager output_stream string hdf5 fftw \
-	statistics dynamic_link console arnoldi spreadsheet tclsci \
-	commons jvm types action_binding graphic_objects renderer gui \
+	statistics dynamic_link console spreadsheet tclsci commons jvm \
+	types action_binding graphic_objects renderer gui \
 	graphic_export graphics optimization randlib interpolation \
 	sound overloading m2sci development_tools helptools umfpack \
 	demo_tools parameters matio atoms hdf5 graph ast scinotes \
@@ -708,6 +708,7 @@ ENGINE_LIBS = $(top_builddir)/modules/fileio/libscifileio.la \
 	$(top_builddir)/modules/integer/libsciinteger.la \
 	$(top_builddir)/modules/io/libsciio.la \
 	$(top_builddir)/modules/linear_algebra/libscilinear_algebra.la \
+	$(top_builddir)/modules/arnoldi/libsciarnoldi.la \
 	$(top_builddir)/modules/localization/libscilocalization.la \
 	$(top_builddir)/modules/polynomials/libscipolynomials.la \
 	$(top_builddir)/modules/special_functions/libscispecial_functions.la \
@@ -736,7 +737,6 @@ ENGINE_LIBS_DYNAMIC_LOAD = \
 	$(top_builddir)/modules/optimization/libscioptimization.la \
 	$(top_builddir)/modules/signal_processing/libscisignal_processing.la \
 	$(top_builddir)/modules/interpolation/libsciinterpolation.la \
-	$(top_builddir)/modules/arnoldi/libsciarnoldi.la \
 	$(top_builddir)/modules/randlib/libscirandlib.la \
 	$(top_builddir)/modules/xcos/libscixcos.la \
 	$(top_builddir)/modules/scicos_blocks/libsciscicos_blocks.la \

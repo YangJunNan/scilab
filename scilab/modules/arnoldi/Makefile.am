@@ -15,8 +15,7 @@ GATEWAY_C_SOURCES = \
     sci_gateway/c/sci_dnaupd.c \
     sci_gateway/c/sci_dneupd.c \
     sci_gateway/c/sci_dsaupd.c \
-    sci_gateway/c/sci_znaupd.c \
-    sci_gateway/c/sci_eigs.c
+    sci_gateway/c/sci_znaupd.c
 
 libsciarnoldi_la_CPPFLAGS = \
     -I$(srcdir)/includes/ \
