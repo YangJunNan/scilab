@@ -1,45 +1,74 @@
 REM Execute module test for a module named %TEST%, download and install latest build if needed
 
 @echo on
-REM Install if not exist
-if exist "..\..\%SCI_VERSION_STRING%\" (
+set INSTALLER_DIR=%SCILAB_COMMON_PATH%\%SCI_VERSION_STRING%
+set INSTALL_DIR=%SCILAB_COMMON_PATH%\%SCI_VERSION_STRING%\install
+set INSTALL_LOCK=%SCILAB_COMMON_PATH%\%SCI_VERSION_STRING%\install.lock
+set INSTALL_FAIL=%SCILAB_COMMON_PATH%\%SCI_VERSION_STRING%\install.failed
+set SCIHOME=%SCILAB_COMMON_PATH%\%SCI_VERSION_STRING%\scihome\%SCI_VERSION_STRING%-%TEST%-%CI_CONCURRENT_ID%
+set LOG_PATH=%SCI_VERSION_STRING%
+
+REM check if installation is running
+:wait_install
+if exist "%INSTALL_LOCK%" (
+  echo "Wait installation"
+  sleep 30
+  goto :wait_install
+)
+
+if exist "%INSTALL_FAIL%" (
+  echo "Installation failed - Skip test"
+  rem return job success to ease finding the one that failed the installation
+  exit 0
+)
+
+REM already Installed
+if exist "%INSTALL_DIR%" (
   echo "Installation step skipped: Scilab version already installed."
   goto :installed
 )
-call "%SCI_VERSION_STRING%.bin.%ARCH%.exe" /TASKS=!desktopicon,!AssociateSCESCI,!AssociateTSTDEM,!AssociateSCICOS,!AssociateSOD ^
+
+REM create lock file
+type nul > "%INSTALL_LOCK%"
+
+call "%INSTALLER_DIR%\%SCI_VERSION_STRING%.bin.%ARCH%.exe" ^
+  /TASKS=!desktopicon,!AssociateSCESCI,!AssociateTSTDEM,!AssociateSCICOS,!AssociateSOD ^
   /NOICONS /SUPPRESSMSGBOXES /SILENT /SP- ^
-  /DIR="%CI_PROJECT_DIR%\..\..\%SCI_VERSION_STRING%"
-if not exist "..\..\%SCI_VERSION_STRING%\" (
-  echo "Scilab installation failed: installation directory does not exist."
+  /DIR="%INSTALL_DIR%"
+
+if errorlevel 1 (
+  echo "Scilab Installation failed"
+  type nul > "%INSTALL_FAIL%"
+  del "%INSTALL_LOCK%"
   exit 1
 )
+
+del "%INSTALL_LOCK%"
 
 :installed
 
 REM Create log folder
-set LOG_PATH=logs_%CI_COMMIT_SHORT_SHA%
 if not exist %LOG_PATH% mkdir %LOG_PATH%
 
 @echo on
 setlocal EnableExtensions
 
-rem get unique SCIHOME 
-:uniqLoop
-set "SCIHOME=%CI_PROJECT_DIR%\..\..\SCI_TMP_HOME~%RANDOM%"
-if exist -d "%SCIHOME%\" goto :uniqLoop
+rem can append in case of restarting a test job with same conccurency
+if exist -d "%SCIHOME%" rmdir "%SCIHOME%" 
 mkdir "%SCIHOME%"
-if errorlevel 1  goto :uniqLoop
 
 REM check if scilab.bat exists
-if not exist "..\..\%SCI_VERSION_STRING%\bin\scilab.bat" (
-  echo "..\..\%SCI_VERSION_STRING%\bin\scilab.bat does not exist."
+if not exist "%INSTALL_DIR%\bin\scilab.bat" (
+  echo "%INSTALL_DIR%\bin\scilab.bat does not exist."
   exit 1
 )
 
 @echo on
-call "..\..\%SCI_VERSION_STRING%\bin\scilab.bat" -nwni -scihome "%SCIHOME%" -quit -e "test_run('%TEST%',[],[],'%LOG_PATH%\%ARCH%_%TEST%.xml')"
-
-rmdir /s /q "%SCIHOME%"
+call "%INSTALL_DIR%\bin\scilab.bat" -nwni -scihome "%SCIHOME%" -quit -e "test_run('%TEST%',[],[],'%LOG_PATH%\%TEST%.xml')"
+if errorlevel 1 (
+  echo "Scilab failed to start tests"
+  exit 1
+) 
 
 rem fail without xml report
-dir /s "%LOG_PATH%\%ARCH%_%TEST%.xml"
+copy "%LOG_PATH%\%TEST%.xml" "%SCILAB_COMMON_PATH%\%SCI_VERSION_STRING%\test\"

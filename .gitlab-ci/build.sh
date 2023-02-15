@@ -9,7 +9,7 @@
 # NOTE: log all commands to log.txt to avoid hitting Gitlab log limit
 # NOTE: nproc is used to limit memory usage
 
-LOG_PATH=logs_$CI_COMMIT_SHORT_SHA
+LOG_PATH=$SCI_VERSION_STRING
 [ ! -d "$LOG_PATH" ] && mkdir "$LOG_PATH"
 
 # checkout pre-requirements

@@ -37,7 +37,9 @@ variables:
   DOCKER_WINDOWS_BUILDER:
     value: "registry.gitlab.com/scilab/scilab/windows-builder"
     description: "Docker image used to build Scilab on Windows"
-
+  SCILAB_COMMON_PATH:
+    value: "$CI_PROJECT_DIR/../../../../scilab/"
+    description: "common windows path for persistency"
 workflow:
   rules:
     # Run on contributor's fork

@@ -15,12 +15,12 @@ tar -xJf "${SCI_VERSION_STRING}.bin.${ARCH}.tar.xz" -C /
 
 echo -e "\e[0Ksection_end:$(date +%s):install\r\e[0K"
 
-LOG_PATH=logs_$CI_COMMIT_SHORT_SHA
+LOG_PATH=$SCI_VERSION_STRING
 [ ! -d "$LOG_PATH" ] && mkdir "$LOG_PATH"
 
 echo -e "\e[0Ksection_start:$(date +%s):test\r\e[0KTesting $TEST"
-"/${SCI_VERSION_STRING}/bin/scilab" -nwni -quit -e 'test_run("'"${TEST}"'",[],[],"'"${LOG_PATH}/${ARCH}_${TEST}.xml"'")'
+"/${SCI_VERSION_STRING}/bin/scilab" -nwni -quit -e 'test_run("'"${TEST}"'",[],["mode_nwni"],"'"${LOG_PATH}/${TEST}.xml"'")'
 echo -e "\e[0Ksection_end:$(date +%s):test\r\e[0K"
 
 # fail without xml report
-du -h "${LOG_PATH}/${ARCH}_${TEST}.xml"
+du -h "${LOG_PATH}/${TEST}.xml"

@@ -7,7 +7,7 @@
 # impacted are added for modules modified by Merge Request.
 #
 
-.x64_windows_test:
+.windows_test:
   stage: test
   tags: [x64_windows, scilab]
   script:
@@ -15,15 +15,15 @@
   artifacts:
     when: always
     paths:
-      - "logs_${CI_COMMIT_SHORT_SHA}/${ARCH}_${TEST}.xml"
+      - "${SCI_VERSION_STRING}/${TEST}.xml"
     reports:
-      junit: "logs_${CI_COMMIT_SHORT_SHA}/${ARCH}_${TEST}.xml"
+      junit: "${SCI_VERSION_STRING}/${TEST}.xml"
 
-x64_windows_test_branch_good:
-  extends: .x64_windows_test
+windows_good_mr:
+  extends: .windows_test
   needs:
-    - x64_windows_build_branch
-    - x64_windows_set_env
+    - windows_build_mr
+    - windows_set_env
   rules:
     - if: $CI_PIPELINE_SOURCE == 'merge_request_event' || $CI_PIPELINE_SOURCE == 'push'
   when: manual
@@ -50,8 +50,8 @@ x64_windows_test_branch_good:
           - webtools
           - xml
 
-x64_windows_test_branch_bad:
-  extends: .x64_windows_test
+windows_bad_mr:
+  extends: .windows_test
   rules:
     - if: $CI_PIPELINE_SOURCE == 'merge_request_event' || $CI_PIPELINE_SOURCE == 'push'
   when: manual
@@ -100,8 +100,8 @@ x64_windows_test_branch_bad:
           - ui_data
           - umfpack
 
-x64_windows_test_branch_ugly:
-  extends: .x64_windows_test
+windows_ugly_mr:
+  extends: .windows_test
   rules:
     - if: $CI_PIPELINE_SOURCE == 'merge_request_event' || $CI_PIPELINE_SOURCE == 'push'
   when: manual
@@ -111,8 +111,8 @@ x64_windows_test_branch_ugly:
           - atoms
           - xcos
 
-x64_windows_test_branch_windows_only:
-  extends: .x64_windows_test
+windows_only_mr:
+  extends: .windows_test
   rules:
     - if: $CI_PIPELINE_SOURCE == 'merge_request_event' || $CI_PIPELINE_SOURCE == 'push'
   when: manual
@@ -122,91 +122,91 @@ x64_windows_test_branch_windows_only:
           - mpi
           - windows_tools
 
-x64_windows_test_nightly_good:
-  extends: .x64_windows_test
+windows_good_nightly:
+  extends: .windows_test
   needs:
-    - x64_windows_build_nightly
-    - x64_windows_set_env
+    - windows_build_nightly
+    - windows_set_env
   rules:
     - if: $CI_PIPELINE_SOURCE == 'schedule'
   parallel:
     matrix: *GOOD_TEST_ANCHOR
 
-x64_windows_test_nightly_bad:
-  extends: .x64_windows_test
+windows_bad_nightly:
+  extends: .windows_test
   needs:
-    - x64_windows_build_nightly
-    - x64_windows_set_env
+    - windows_build_nightly
+    - windows_set_env
   rules:
     - if: $CI_PIPELINE_SOURCE == 'schedule'
   parallel:
     matrix: *BAD_TEST_ANCHOR
 
-x64_windows_test_nightly_ugly:
-  extends: .x64_windows_test
+windows_ugly_nightly:
+  extends: .windows_test
   needs:
-    - x64_windows_build_nightly
-    - x64_windows_set_env
+    - windows_build_nightly
+    - windows_set_env
   rules:
     - if: $CI_PIPELINE_SOURCE == 'schedule'
   parallel:
     matrix: *UGLY_TEST_ANCHOR
 
-x64_windows_test_nightly_windows_only:
-  extends: .x64_windows_test
+windows_only_nightly:
+  extends: .windows_test
   needs:
-    - x64_windows_build_nightly
-    - x64_windows_set_env
+    - windows_build_nightly
+    - windows_set_env
   rules:
     - if: $CI_PIPELINE_SOURCE == 'schedule'
   parallel:
     matrix: *WINDOWS_ONLY_TEST_ANCHOR
 
-x64_windows_test_release_good:
-  extends: .x64_windows_test
+windows_good_release:
+  extends: .windows_test
   needs:
-    - x64_windows_build_release
-    - x64_windows_set_env
+    - windows_build_release
+    - windows_set_env
   rules:
     - if: $CI_COMMIT_TAG
   parallel:
     matrix: *GOOD_TEST_ANCHOR
 
-x64_windows_test_release_bad:
-  extends: .x64_windows_test
+windows_bad_release:
+  extends: .windows_test
   needs:
-    - x64_windows_build_release
-    - x64_windows_set_env
+    - windows_build_release
+    - windows_set_env
   rules:
     - if: $CI_COMMIT_TAG
   parallel:
     matrix: *BAD_TEST_ANCHOR
 
-x64_windows_test_release_ugly:
-  extends: .x64_windows_test
+windows_ugly_release:
+  extends: .windows_test
   needs:
-    - x64_windows_build_release
-    - x64_windows_set_env
+    - windows_build_release
+    - windows_set_env
   rules:
     - if: $CI_COMMIT_TAG
   parallel:
     matrix: *UGLY_TEST_ANCHOR
 
-x64_windows_test_release_windows_only:
-  extends: .x64_windows_test
+windows_only_release:
+  extends: .windows_test
   needs:
-    - x64_windows_build_release
-    - x64_windows_set_env
+    - windows_build_release
+    - windows_set_env
   rules:
     - if: $CI_COMMIT_TAG
   parallel:
     matrix: *WINDOWS_ONLY_TEST_ANCHOR
 
-impacted_x64_windows_test_good:
-  extends: .x64_windows_test
+windows_good_impacted:
+  extends: .windows_test
   needs:
-    - x64_windows_build_branch
-    - x64_windows_set_env
+    - windows_build_mr
+    - windows_set_env
   rules: &IMPACTED_RULES
     - if: $CI_PIPELINE_SOURCE == 'merge_request_event' || $CI_PIPELINE_SOURCE == 'push'
       changes:
@@ -214,34 +214,34 @@ impacted_x64_windows_test_good:
   parallel:
     matrix: *GOOD_TEST_ANCHOR
 
-impacted_x64_windows_test_bad:
-  extends: .x64_windows_test
+windows_bad_impacted:
+  extends: .windows_test
   needs:
-    - x64_windows_build_branch
-    - x64_windows_set_env
+    - windows_build_mr
+    - windows_set_env
   rules: *IMPACTED_RULES
   parallel:
     matrix: *BAD_TEST_ANCHOR
 
-impacted_x64_windows_test_ugly:
-  extends: .x64_windows_test
+windows_ugly_impacted:
+  extends: .windows_test
   needs:
-    - x64_windows_build_branch
-    - x64_windows_set_env
+    - windows_build_mr
+    - windows_set_env
   rules: *IMPACTED_RULES
   parallel:
     matrix: *UGLY_TEST_ANCHOR
 
-impacted_x64_windows_test_windows_only:
-  extends: .x64_windows_test
+windows_only_impacted:
+  extends: .windows_test
   needs:
-    - x64_windows_build_branch
-    - x64_windows_set_env
+    - windows_build_mr
+    - windows_set_env
   rules: *IMPACTED_RULES
   parallel:
     matrix: *WINDOWS_ONLY_TEST_ANCHOR
 
-.x86_64-linux-gnu_test:
+.linux_test:
   stage: test
   tags: [x86_64-linux-gnu, docker, scilab]
   image: $DOCKER_LINUX_BUILDER
@@ -249,108 +249,108 @@ impacted_x64_windows_test_windows_only:
   artifacts:
     when: always
     paths:
-      - "logs_${CI_COMMIT_SHORT_SHA}/${ARCH}_${TEST}.xml"
+      - "${SCI_VERSION_STRING}/${TEST}.xml"
     reports:
-      junit: "logs_${CI_COMMIT_SHORT_SHA}/${ARCH}_${TEST}.xml"
+      junit: "${SCI_VERSION_STRING}/${TEST}.xml"
 
-x86_64-linux-gnu_test_branch_good:
-  extends: .x86_64-linux-gnu_test
+linux_good_mr:
+  extends: .linux_test
   needs:
-    - x86_64-linux-gnu_build_branch
-    - x86_64-linux-gnu_set_env
+    - linux_build_mr
+    - linux_set_env
   rules:
     - if: $CI_PIPELINE_SOURCE == 'merge_request_event' || $CI_PIPELINE_SOURCE == 'push'
   when: manual
   parallel:
     matrix: *GOOD_TEST_ANCHOR
 
-x86_64-linux-gnu_test_branch_bad:
-  extends: .x86_64-linux-gnu_test
+linux_bad_mr:
+  extends: .linux_test
   needs:
-    - x86_64-linux-gnu_build_branch
-    - x86_64-linux-gnu_set_env
+    - linux_build_mr
+    - linux_set_env
   rules:
     - if: $CI_PIPELINE_SOURCE == 'merge_request_event' || $CI_PIPELINE_SOURCE == 'push'
   when: manual
   parallel:
     matrix: *BAD_TEST_ANCHOR
 
-x86_64-linux-gnu_test_branch_ugly:
-  extends: .x86_64-linux-gnu_test
+linux_ugly_mr:
+  extends: .linux_test
   needs:
-    - x86_64-linux-gnu_build_branch
-    - x86_64-linux-gnu_set_env
+    - linux_build_mr
+    - linux_set_env
   rules:
     - if: $CI_PIPELINE_SOURCE == 'merge_request_event' || $CI_PIPELINE_SOURCE == 'push'
   when: manual
   parallel:
     matrix: *UGLY_TEST_ANCHOR
 
-x86_64-linux-gnu_test_nightly_good:
-  extends: .x86_64-linux-gnu_test
+linux_good_nightly:
+  extends: .linux_test
   needs:
-    - x86_64-linux-gnu_build_nightly
-    - x86_64-linux-gnu_set_env
+    - linux_build_nightly
+    - linux_set_env
   rules:
     - if: $CI_PIPELINE_SOURCE == 'schedule'
   parallel:
     matrix: *GOOD_TEST_ANCHOR
 
-x86_64-linux-gnu_test_nightly_bad:
-  extends: .x86_64-linux-gnu_test
+linux_bad_nightly:
+  extends: .linux_test
   needs:
-    - x86_64-linux-gnu_build_nightly
-    - x86_64-linux-gnu_set_env
+    - linux_build_nightly
+    - linux_set_env
   rules:
     - if: $CI_PIPELINE_SOURCE == 'schedule'
   parallel:
     matrix: *BAD_TEST_ANCHOR
 
-x86_64-linux-gnu_test_nightly_ugly:
-  extends: .x86_64-linux-gnu_test
+linux_ugly_nightly:
+  extends: .linux_test
   needs:
-    - x86_64-linux-gnu_build_nightly
-    - x86_64-linux-gnu_set_env
+    - linux_build_nightly
+    - linux_set_env
   rules:
     - if: $CI_PIPELINE_SOURCE == 'schedule'
   parallel:
     matrix: *UGLY_TEST_ANCHOR
 
-x86_64-linux-gnu_test_release_good:
-  extends: .x86_64-linux-gnu_test
+linux_good_release:
+  extends: .linux_test
   needs:
-    - x86_64-linux-gnu_build_release
-    - x86_64-linux-gnu_set_env
+    - linux_build_release
+    - linux_set_env
   rules:
     - if: $CI_COMMIT_TAG
   parallel:
     matrix: *GOOD_TEST_ANCHOR
 
-x86_64-linux-gnu_test_release_bad:
-  extends: .x86_64-linux-gnu_test
+linux_bad_release:
+  extends: .linux_test
   needs:
-    - x86_64-linux-gnu_build_release
-    - x86_64-linux-gnu_set_env
+    - linux_build_release
+    - linux_set_env
   rules:
     - if: $CI_COMMIT_TAG
   parallel:
     matrix: *BAD_TEST_ANCHOR
 
-x86_64-linux-gnu_test_release_ugly:
-  extends: .x86_64-linux-gnu_test
+linux_ugly_release:
+  extends: .linux_test
   needs:
-    - x86_64-linux-gnu_build_release
-    - x86_64-linux-gnu_set_env
+    - linux_build_release
+    - linux_set_env
   rules:
     - if: $CI_COMMIT_TAG
   parallel:
     matrix: *UGLY_TEST_ANCHOR
 
-impacted_x86_64-linux-gnu_test_good:
-  extends: .x86_64-linux-gnu_test
+linux_good_impacted:
+  extends: .linux_test
   needs:
-    - x86_64-linux-gnu_build_branch
-    - x86_64-linux-gnu_set_env
+    - linux_build_mr
+    - linux_set_env
   rules: &IMPACTED_RULES
     - if: $CI_PIPELINE_SOURCE == 'merge_request_event' || $CI_PIPELINE_SOURCE == 'push'
       changes:
@@ -358,20 +358,20 @@ impacted_x86_64-linux-gnu_test_good:
   parallel:
     matrix: *GOOD_TEST_ANCHOR
 
-impacted_x86_64-linux-gnu_test_bad:
-  extends: .x86_64-linux-gnu_test
+linux_bad_impacted:
+  extends: .linux_test
   needs:
-    - x86_64-linux-gnu_build_branch
-    - x86_64-linux-gnu_set_env
+    - linux_build_mr
+    - linux_set_env
   rules: *IMPACTED_RULES
   parallel:
     matrix: *BAD_TEST_ANCHOR
 
-impacted_x86_64-linux-gnu_test_ugly:
-  extends: .x86_64-linux-gnu_test
+linux_ugly_impacted:
+  extends: .linux_test
   needs:
-    - x86_64-linux-gnu_build_branch
-    - x86_64-linux-gnu_set_env
+    - linux_build_mr
+    - linux_set_env
   rules: *IMPACTED_RULES
   parallel:
     matrix: *UGLY_TEST_ANCHOR

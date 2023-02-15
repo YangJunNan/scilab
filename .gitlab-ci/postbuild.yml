@@ -8,7 +8,7 @@
 #
 
 # # cleanup old builds from runners
-# x86_64-linux-gnu_cleanup_builds:
+# linux_cleanup_builds:
 #   image: $DOCKER_LINUX_BUILDER
 #   stage: .post
 #   tags: [x86_64-linux-gnu, docker, scilab]
@@ -94,8 +94,8 @@ publish_help_jar:
   variables:
     GIT_STRATEGY: none
   needs:
-    - x86_64-linux-gnu_build_branch
-    - x86_64-linux-gnu_set_env
+    - linux_build_mr
+    - linux_set_env
   script:
     - echo "help from ${SCI_VERSION_STRING} ${ARCH}"
     - "[ ! -d public ] && mkdir public"

@@ -12,7 +12,7 @@ echo on
 
 
 REM Create log folder
-set LOG_PATH=logs_%CI_COMMIT_SHORT_SHA%
+set LOG_PATH=%SCI_VERSION_STRING%
 if not exist %LOG_PATH% mkdir %LOG_PATH%
 
 curl -k -z prereq.zip -o prereq.zip https://oos.eu-west-2.outscale.com/scilab-releases-dev/prerequirements/prerequirements-scilab-branch-6.1-windows_x64.zip
@@ -58,10 +58,12 @@ if not exist "Scilab.iss" exit 1
 "C:\Program Files (x86)\Inno Setup 6\iscc.exe" Scilab.iss >> ..\%LOG_PATH%\log_iss_%CI_COMMIT_SHORT_SHA%.txt
 if errorlevel 1 tail --lines=20 ..\%LOG_PATH%\log_iss_%CI_COMMIT_SHORT_SHA%.txt 1>&2 & exit 1
 
-move ".\Output\%SCI_VERSION_STRING%_%ARCH%.exe" "%CI_PROJECT_DIR%\%SCI_VERSION_STRING%.bin.%ARCH%.exe"
+copy "..\%SCI_VERSION_STRING%\" "%SCILAB_COMMON_PATH%\%SCI_VERSION_STRING%\log\"
 if errorlevel 1 exit 1
 
-REM error if artifact does not exist
-dir /s "%CI_PROJECT_DIR%\%SCI_VERSION_STRING%.bin.%ARCH%.exe"
+REM artifact and persistant files
+move ".\Output\%SCI_VERSION_STRING%_%ARCH%.exe" "..\%SCI_VERSION_STRING%.bin.%ARCH%.exe"
+copy "..\%SCI_VERSION_STRING%.bin.%ARCH%.exe" "%SCILAB_COMMON_PATH%\%SCI_VERSION_STRING%\%SCI_VERSION_STRING%.bin.%ARCH%.exe"
+if errorlevel 1 exit 1
 
 exit 0
