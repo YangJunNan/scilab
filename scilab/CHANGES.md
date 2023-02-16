@@ -342,6 +342,7 @@ Bug Fixes
 * [#14691](https://gitlab.com/scilab/scilab/-/issues/14691): scilab crashes when code is halted then aborted.
 * [#14998](https://gitlab.com/scilab/scilab/-/issues/14998): `mscanf()` introduces a leading \n newline and the prompt before prompting the user for input
 * [#15071](https://gitlab.com/scilab/scilab/-/issues/15071): Extraction of mlist from another mlist debhaves differently in Scilab 6.
+* [#15602](https://gitlab.com/scilab/scilab/-/issues/15602): gca()("thickness") crashed Scilab.
 * [#15657](https://gitlab.com/scilab/scilab/-/issues/15657): Empty categories corrupted the graphical output of  `histplot()`.
 * [#15103](https://gitlab.com/scilab/scilab/-/issues/15103): xcorr leads to immediate crash.
 * [#16029](https://gitlab.com/scilab/scilab/-/issues/16029): tick marks were extending out of range for small scale plots.
