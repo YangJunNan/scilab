@@ -346,6 +346,7 @@ Bug Fixes
 * [#15103](https://gitlab.com/scilab/scilab/-/issues/15103): xcorr leads to immediate crash.
 * [#16029](https://gitlab.com/scilab/scilab/-/issues/16029): tick marks were extending out of range for small scale plots.
 * [#16049](https://gitlab.com/scilab/scilab/-/issues/16049): `struct("v", cell())` crashes Scilab.
+* [#16281](https://gitlab.com/scilab/scilab/-/issues/16281): `bezout(%inf, 1)` and `bezout(%nan, 1)` crashed Scilab
 * [#16408](https://gitlab.com/scilab/scilab/-/issues/16408): `toJSON` crashed with wrong parameters order.
 * [#16555](https://gitlab.com/scilab/scilab/-/issues/16555): Details of Xcos CLOCK_c block led to crash
 * [#16557](https://gitlab.com/scilab/scilab/-/issues/16557): `macr2tree` + `tree2code` translated `e={2}` into `"e=1"` and `e={2,"ab"}` into `"e=[2,"ab"]"`.
