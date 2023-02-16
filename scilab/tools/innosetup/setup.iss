@@ -56,12 +56,20 @@ BackColor2=clBlack
 BackColorDirection=lefttoright
 AppCopyright=Scilab Enterprises - Copyright © {#CurrentYear}
 UninstallDisplayIcon={app}\bin\wscilex.exe
-Compression=lzma/ultra64
-InternalCompressLevel=ultra64
 SolidCompression=true
 VersionInfoVersion={#ScilabVersion}
 VersionInfoCompany=Scilab Enterprises
 ; minimum right to install Scilab
 PrivilegesRequired=none
+
+#ifndef MR
+#define MR="0"
+#endif
+
+#if MR == "0"
+Compression=lzma2/ultra64
+#else
+Compression=lzma2/fast
+#endif
 ;-------------------------------------------------------------------------------
 ;
