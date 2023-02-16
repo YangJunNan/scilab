@@ -157,7 +157,7 @@ find(u(2:$)<>u(1:$-1))
         <title>See Also</title>
         <simplelist type="inline">
             <member>
-                <link linkend="noisegen">noisegen</link>
+                <link linkend="grand">grand</link>
             </member>
             <member>
                 <link linkend="grand">grand</link>

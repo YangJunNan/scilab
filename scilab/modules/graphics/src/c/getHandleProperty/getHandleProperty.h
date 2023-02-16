@@ -165,7 +165,6 @@ GRAPHICS_IMPEXP void* get_anti_aliasing_property(void* _pvCtx, int iObjUID);
 GRAPHICS_IMPEXP void* get_tag_property(void* _pvCtx, int iObjUID);
 GRAPHICS_IMPEXP void* get_UID(void* _pvCtx, int iObjUID);
 GRAPHICS_IMPEXP void* get_tip_orientation_property(void* _pvCtx, int iObjUID);
-GRAPHICS_IMPEXP void* get_tip_z_component_property(void* _pvCtx, int iObjUID);
 GRAPHICS_IMPEXP void* get_tip_display_components_property(void* _pvCtx, int iObjUID);
 GRAPHICS_IMPEXP void* get_datatip_display_mode_property(void* _pvCtx, int iObjUID);
 GRAPHICS_IMPEXP void* get_tip_auto_orientation_property(void* _pvCtx, int iObjUID);

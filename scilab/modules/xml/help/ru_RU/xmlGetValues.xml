@@ -217,9 +217,6 @@ C:\Path\to\another\working\dir2\clf.sci
         <title>Смотрите также</title>
         <simplelist type="inline">
             <member>
-                <link linkend="setPreferencesValue">setPreferencesValue</link>
-            </member>
-            <member>
                 <link linkend="xmlXPath">xmlXPath</link>
             </member>
             <member>

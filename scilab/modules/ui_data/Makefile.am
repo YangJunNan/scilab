@@ -67,9 +67,7 @@ GATEWAY_CXX_SOURCES = \
     sci_gateway/cpp/sci_editvar.cpp \
     sci_gateway/cpp/sci_browsevar.cpp \
     sci_gateway/cpp/sci_filebrowser.cpp \
-    sci_gateway/cpp/sci_updatebrowsevar.cpp \
-    sci_gateway/cpp/sci_closeEditvar.cpp
-
+    sci_gateway/cpp/sci_updatebrowsevar.cpp
 
 libsciui_data_la_CPPFLAGS = \
     $(JAVA_JNI_INCLUDE) \

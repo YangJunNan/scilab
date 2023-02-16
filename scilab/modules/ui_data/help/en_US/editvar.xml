@@ -75,9 +75,6 @@
                 <literal>WSCI</literal>, <literal>TMPDIR</literal>.
             </para>
         </note>
-        <para>
-            <literal>close editvar</literal> closes the open variable editor.
-        </para>
         <refsect3>
             <title>Editor's features</title>
             <para>
@@ -228,6 +225,7 @@ b = ['hello';'good bye'];
 editvar b;
 sp = sparse([1,2;4,5;3,10],[1,2,3])
 editvar("sp");
+close evitvar
  ]]></programlisting>
     </refsection>
     <refsection role="see also">

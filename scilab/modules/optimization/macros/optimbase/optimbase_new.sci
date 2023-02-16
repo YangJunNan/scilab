@@ -52,11 +52,6 @@ function newobj = optimbase_new ()
     "logfilehandle"
     "logstartup"
     "withderivatives"
-    //
-    // Obsolete options.
-    //
-    "costfargument"
-    "outputcommandarg"
     ]);
     // The number of variables to optimize
     newobj.numberofvariables = 0
@@ -120,20 +115,5 @@ function newobj = optimbase_new ()
     newobj.logstartup = %f;
     // Set to %t when the method uses derivatives
     newobj.withderivatives = %f
-    //
-    // Obsolete options
-    //
-    // The costf argument is initialized as a string.
-    // If the user configure this option, it is expected
-    // that a matrix of values or a list, tlist, mlist is
-    // passed so that the argument is appended to the name of the
-    // function.
-    newobj.costfargument = "";
-    // The outputcommand argument is initialized as a string.
-    // If the user configure this option, it is expected
-    // that a matrix of values or a list, tlist, mlist is
-    // passed so that the argument is appended to the name of the
-    // function.
-    newobj.outputcommandarg = ""
 endfunction
 

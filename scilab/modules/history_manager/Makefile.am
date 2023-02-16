@@ -22,7 +22,6 @@ GATEWAY_CPP_SOURCES = \
     sci_gateway/cpp/sci_loadhistory.cpp \
     sci_gateway/cpp/sci_removelinehistory.cpp \
     sci_gateway/cpp/sci_resethistory.cpp \
-    sci_gateway/cpp/sci_saveafterncommands.cpp \
     sci_gateway/cpp/sci_saveconsecutivecommands.cpp \
     sci_gateway/cpp/sci_savehistory.cpp \
     sci_gateway/cpp/sci_sethistoryfile.cpp \

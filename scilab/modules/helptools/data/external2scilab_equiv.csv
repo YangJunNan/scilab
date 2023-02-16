@@ -19,7 +19,7 @@ chebwin;window;
 cla;delete;
 class;typeof;
 clear global;clearglobal;
-closereq;xdel;
+closereq;close;
 colormap;jetcolormap;
 columns;size;// Octave
 commandhistory;browsehistory;

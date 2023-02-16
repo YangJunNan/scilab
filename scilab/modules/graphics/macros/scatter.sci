@@ -28,7 +28,7 @@ function varargout = scatter(varargin)
         return
     end
 
-    // Minimal arguments checking to call scatter3(), and call it.
+    // Minimal arguments checking to call scatter3d(), and call it.
     msg = _("%s: Wrong number of input arguments: At least %d expected.\n");
     if type(varargin(1))==9 then    // graphic handle
         if rhs < 3

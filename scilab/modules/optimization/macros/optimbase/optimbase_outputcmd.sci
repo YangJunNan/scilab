@@ -21,8 +21,7 @@
 //   data : the data to pass to the client output command
 //   stop : set to true to stop the algorithm
 //
-function stop = optimbase_outputcmd ( this , ...
-    state , data )
+function stop = optimbase_outputcmd(this, state, data)
     if ( this.outputcommand <> "" ) then
         //
         // Setup the callback and its arguments
@@ -46,21 +45,5 @@ function stop = optimbase_outputcmd ( this , ...
         // Callback the output
         //
         stop = __optimbase_f__ ( state , data , __optimbase_args__(1:$) )
-        //
-        // Backward-compatibility: define the stop variable
-        //
-        if ( exists("stop")==0 ) then
-            optb_warnheaderobsolete ( "outputfun(state,data)" , "stop=outputfun(state,data)", "5.4.1" )
-            stop = %f
-        end
     end
 endfunction
-
-function optb_warnheaderobsolete ( oldheader , newheader , removedVersion )
-    warnMessage = msprintf(_("Syntax %s is obsolete."),oldheader)
-    warnMessage = [warnMessage, msprintf(_("Please use %s instead."),newheader)]
-    warnMessage = [warnMessage, msprintf(_("This feature will be permanently removed in Scilab %s"), removedVersion)]
-    warning(warnMessage);
-endfunction
-
-

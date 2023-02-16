@@ -181,7 +181,6 @@ GATEWAY_C_SOURCES = \
     sci_gateway/c/sci_uicontrol.c \
     sci_gateway/c/sci_uimenu.c \
     sci_gateway/c/sci_uiwait.c \
-    sci_gateway/c/sci_mpopup.c \
     sci_gateway/c/sci_messagebox.c \
     sci_gateway/c/sci_waitbar.c \
     sci_gateway/c/sci_progressionbar.c \

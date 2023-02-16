@@ -1,5 +1,4 @@
 %_EVoid_p
-setPreferencesValue
 tbx_build_blocks
 tbx_build_cleaner
 tbx_build_gateway
@@ -210,7 +209,6 @@ mu2lin
 playsnd
 savewave
 sound
-soundsec
 wavread
 wavwrite
 TCL_CreateSlave
@@ -478,7 +476,6 @@ qmr
 speye
 sprand
 %k
-%sn
 analpf
 bilt
 buttmag
@@ -1261,7 +1258,6 @@ smooth
 %i_Matplot
 %i_a_s
 %i_champ
-%i_champ1
 %i_contour
 %i_contour2d
 %i_d_s
@@ -1465,7 +1461,6 @@ minss
 narsimul
 nehari
 nicholschart
-noisegen
 nyquist
 nyquistfrequencybounds
 obs_gram
@@ -1482,7 +1477,6 @@ plzr
 prbs_a
 projsl
 repfreq
-ric_desc
 riccati
 routh_t
 rowinout
@@ -1505,7 +1499,6 @@ statgain
 svplot
 sylv
 sysconv
-sysdiag
 sysfact
 syslin
 syssize
@@ -1549,7 +1542,6 @@ zgrid
 %_Matplot
 %_Matplot1
 %_champ
-%_champ1
 %_fec
 %_grayplot
 %_param3d
@@ -1604,7 +1596,6 @@ errbar
 eval3dp
 fchamp
 fgrayplot
-fplot2d
 fplot3d
 fplot3d1
 gca
@@ -1619,14 +1610,12 @@ getColorIndex
 getLineSpec
 getPlotPropertyName
 getSurfPropertyName
-get_figure_handle
 getcolor
 ghdl2tree
 ghdl_fields
 graduate
 graycolormap
 graypolarplot
-hist3d
 histplot
 hotcolormap
 hsv2rgb

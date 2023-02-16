@@ -89,24 +89,6 @@ function value = neldermead_cget (this,key)
         value = this.mymethod
     case "-greedy" then
         value = this.greedy;
-        //
-        // Obsolete options.
-        //
-    case "-tolvarianceflag" then
-        value = this.tolvarianceflag
-    case "-tolabsolutevariance" then
-        value = this.tolabsolutevariance;
-    case "-tolrelativevariance" then
-        value = this.tolrelativevariance;
-    case "-greedy" then
-        value = this.greedy;
-        //
-        // Obsolete options.
-        //
-    case "-myterminate" then
-        value = this.myterminate
-    case "-myterminateflag" then
-        value = this.myterminateflag
     else
         // Delegate to the optimization object
         value = optimbase_cget ( this.optbase , key );

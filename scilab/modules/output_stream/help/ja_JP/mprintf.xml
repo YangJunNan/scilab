@@ -29,7 +29,7 @@
         <refname>printf</refname>
         <refpurpose>
             変換, 整形し,
-            Scilab主ウインドウにデータを書き込む （廃止）
+            Scilab主ウインドウにデータを書き込む
         </refpurpose>
     </refnamediv>
     <refsynopsisdiv>

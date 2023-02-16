@@ -294,7 +294,6 @@
     <ClCompile Include="..\..\sci_gateway\cpp\sci_getinstalledlookandfeels.cpp" />
     <ClCompile Include="..\..\sci_gateway\cpp\sci_getlookandfeel.cpp" />
     <ClCompile Include="..\..\sci_gateway\c\sci_messagebox.c" />
-    <ClCompile Include="..\..\sci_gateway\c\sci_mpopup.c" />
     <ClCompile Include="..\..\sci_gateway\cpp\sci_printfigure.cpp" />
     <ClCompile Include="..\..\sci_gateway\cpp\sci_printsetupbox.cpp" />
     <ClCompile Include="..\..\sci_gateway\c\sci_progressionbar.c" />

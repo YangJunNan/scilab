@@ -21,10 +21,6 @@
         <refname>scatter3d</refname>
         <refpurpose>3D scatter plot</refpurpose>
     </refnamediv>
-    <refnamediv xml:id="scatter3">
-        <refname>scatter3</refname>
-        <refpurpose>3D scatter plot <emphasis role="bold">(obsolete)</emphasis></refpurpose>
-    </refnamediv>
     <refsynopsisdiv>
         <title>Syntax</title>
         <synopsis>

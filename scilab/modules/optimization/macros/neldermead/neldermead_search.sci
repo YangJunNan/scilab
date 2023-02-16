@@ -741,37 +741,6 @@ function [ this , terminate , status ] = neldermead_termination (this , ..
         end
     end
     //
-    // Obsolete option: maintain for backward compatibility
-    // Criteria #10 : variance of function values
-    //
-    if ( ~terminate ) then
-        if ( this.tolvarianceflag ) then
-            var = optimsimplex_fvvariance ( simplex )
-            if ( verbose == 1 ) then
-                this.optbase = optimbase_stoplog ( this.optbase , ..
-                sprintf ( "Test tolvariance : %s < %s" , ..
-                string(var) , string(this.tolabsolutevariance) ) );
-            end
-            if ( var < this.tolrelativevariance * this.variancesimplex0 + this.tolabsolutevariance ) then
-                terminate = %t
-                status = "tolvariance"
-            end
-        end
-    end
-    //
-    // Obsolete option: maintain for backward compatibility
-    // Criteria #11 : user-defined criteria
-    //
-    if ( ~terminate ) then
-        if ( this.myterminateflag ) then
-            [ this , term , stat ] = this.myterminate ( this , simplex )
-            if ( term ) then
-                terminate = term
-                status = stat
-            end
-        end
-    end
-    //
     // A verbose message
     //
     if ( verbose == 1 ) then

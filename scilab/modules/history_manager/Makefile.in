@@ -209,7 +209,6 @@ am__objects_4 = sci_gateway/cpp/libscihistory_manager_la-history_manager_gw.lo \
 	sci_gateway/cpp/libscihistory_manager_la-sci_loadhistory.lo \
 	sci_gateway/cpp/libscihistory_manager_la-sci_removelinehistory.lo \
 	sci_gateway/cpp/libscihistory_manager_la-sci_resethistory.lo \
-	sci_gateway/cpp/libscihistory_manager_la-sci_saveafterncommands.lo \
 	sci_gateway/cpp/libscihistory_manager_la-sci_saveconsecutivecommands.lo \
 	sci_gateway/cpp/libscihistory_manager_la-sci_savehistory.lo \
 	sci_gateway/cpp/libscihistory_manager_la-sci_sethistoryfile.lo \
@@ -242,7 +241,6 @@ am__depfiles_remade = sci_gateway/cpp/$(DEPDIR)/libscihistory_manager_la-history
 	sci_gateway/cpp/$(DEPDIR)/libscihistory_manager_la-sci_loadhistory.Plo \
 	sci_gateway/cpp/$(DEPDIR)/libscihistory_manager_la-sci_removelinehistory.Plo \
 	sci_gateway/cpp/$(DEPDIR)/libscihistory_manager_la-sci_resethistory.Plo \
-	sci_gateway/cpp/$(DEPDIR)/libscihistory_manager_la-sci_saveafterncommands.Plo \
 	sci_gateway/cpp/$(DEPDIR)/libscihistory_manager_la-sci_saveconsecutivecommands.Plo \
 	sci_gateway/cpp/$(DEPDIR)/libscihistory_manager_la-sci_savehistory.Plo \
 	sci_gateway/cpp/$(DEPDIR)/libscihistory_manager_la-sci_sethistoryfile.Plo \
@@ -639,7 +637,6 @@ GATEWAY_CPP_SOURCES = \
     sci_gateway/cpp/sci_loadhistory.cpp \
     sci_gateway/cpp/sci_removelinehistory.cpp \
     sci_gateway/cpp/sci_resethistory.cpp \
-    sci_gateway/cpp/sci_saveafterncommands.cpp \
     sci_gateway/cpp/sci_saveconsecutivecommands.cpp \
     sci_gateway/cpp/sci_savehistory.cpp \
     sci_gateway/cpp/sci_sethistoryfile.cpp \
@@ -934,9 +931,6 @@ sci_gateway/cpp/libscihistory_manager_la-sci_removelinehistory.lo:  \
 sci_gateway/cpp/libscihistory_manager_la-sci_resethistory.lo:  \
 	sci_gateway/cpp/$(am__dirstamp) \
 	sci_gateway/cpp/$(DEPDIR)/$(am__dirstamp)
-sci_gateway/cpp/libscihistory_manager_la-sci_saveafterncommands.lo:  \
-	sci_gateway/cpp/$(am__dirstamp) \
-	sci_gateway/cpp/$(DEPDIR)/$(am__dirstamp)
 sci_gateway/cpp/libscihistory_manager_la-sci_saveconsecutivecommands.lo:  \
 	sci_gateway/cpp/$(am__dirstamp) \
 	sci_gateway/cpp/$(DEPDIR)/$(am__dirstamp)
@@ -977,7 +971,6 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@sci_gateway/cpp/$(DEPDIR)/libscihistory_manager_la-sci_loadhistory.Plo@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@sci_gateway/cpp/$(DEPDIR)/libscihistory_manager_la-sci_removelinehistory.Plo@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@sci_gateway/cpp/$(DEPDIR)/libscihistory_manager_la-sci_resethistory.Plo@am__quote@ # am--include-marker
-@AMDEP_TRUE@@am__include@ @am__quote@sci_gateway/cpp/$(DEPDIR)/libscihistory_manager_la-sci_saveafterncommands.Plo@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@sci_gateway/cpp/$(DEPDIR)/libscihistory_manager_la-sci_saveconsecutivecommands.Plo@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@sci_gateway/cpp/$(DEPDIR)/libscihistory_manager_la-sci_savehistory.Plo@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@sci_gateway/cpp/$(DEPDIR)/libscihistory_manager_la-sci_sethistoryfile.Plo@am__quote@ # am--include-marker
@@ -1138,13 +1131,6 @@ sci_gateway/cpp/libscihistory_manager_la-sci_resethistory.lo: sci_gateway/cpp/sc
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='sci_gateway/cpp/sci_resethistory.cpp' object='sci_gateway/cpp/libscihistory_manager_la-sci_resethistory.lo' libtool=yes @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libscihistory_manager_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o sci_gateway/cpp/libscihistory_manager_la-sci_resethistory.lo `test -f 'sci_gateway/cpp/sci_resethistory.cpp' || echo '$(srcdir)/'`sci_gateway/cpp/sci_resethistory.cpp
-
-sci_gateway/cpp/libscihistory_manager_la-sci_saveafterncommands.lo: sci_gateway/cpp/sci_saveafterncommands.cpp
-@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libscihistory_manager_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT sci_gateway/cpp/libscihistory_manager_la-sci_saveafterncommands.lo -MD -MP -MF sci_gateway/cpp/$(DEPDIR)/libscihistory_manager_la-sci_saveafterncommands.Tpo -c -o sci_gateway/cpp/libscihistory_manager_la-sci_saveafterncommands.lo `test -f 'sci_gateway/cpp/sci_saveafterncommands.cpp' || echo '$(srcdir)/'`sci_gateway/cpp/sci_saveafterncommands.cpp
-@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) sci_gateway/cpp/$(DEPDIR)/libscihistory_manager_la-sci_saveafterncommands.Tpo sci_gateway/cpp/$(DEPDIR)/libscihistory_manager_la-sci_saveafterncommands.Plo
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='sci_gateway/cpp/sci_saveafterncommands.cpp' object='sci_gateway/cpp/libscihistory_manager_la-sci_saveafterncommands.lo' libtool=yes @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libscihistory_manager_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o sci_gateway/cpp/libscihistory_manager_la-sci_saveafterncommands.lo `test -f 'sci_gateway/cpp/sci_saveafterncommands.cpp' || echo '$(srcdir)/'`sci_gateway/cpp/sci_saveafterncommands.cpp
 
 sci_gateway/cpp/libscihistory_manager_la-sci_saveconsecutivecommands.lo: sci_gateway/cpp/sci_saveconsecutivecommands.cpp
 @am__fastdepCXX_TRUE@	$(AM_V_CXX)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libscihistory_manager_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT sci_gateway/cpp/libscihistory_manager_la-sci_saveconsecutivecommands.lo -MD -MP -MF sci_gateway/cpp/$(DEPDIR)/libscihistory_manager_la-sci_saveconsecutivecommands.Tpo -c -o sci_gateway/cpp/libscihistory_manager_la-sci_saveconsecutivecommands.lo `test -f 'sci_gateway/cpp/sci_saveconsecutivecommands.cpp' || echo '$(srcdir)/'`sci_gateway/cpp/sci_saveconsecutivecommands.cpp
@@ -1397,7 +1383,6 @@ distclean: distclean-am
 	-rm -f sci_gateway/cpp/$(DEPDIR)/libscihistory_manager_la-sci_loadhistory.Plo
 	-rm -f sci_gateway/cpp/$(DEPDIR)/libscihistory_manager_la-sci_removelinehistory.Plo
 	-rm -f sci_gateway/cpp/$(DEPDIR)/libscihistory_manager_la-sci_resethistory.Plo
-	-rm -f sci_gateway/cpp/$(DEPDIR)/libscihistory_manager_la-sci_saveafterncommands.Plo
 	-rm -f sci_gateway/cpp/$(DEPDIR)/libscihistory_manager_la-sci_saveconsecutivecommands.Plo
 	-rm -f sci_gateway/cpp/$(DEPDIR)/libscihistory_manager_la-sci_savehistory.Plo
 	-rm -f sci_gateway/cpp/$(DEPDIR)/libscihistory_manager_la-sci_sethistoryfile.Plo
@@ -1464,7 +1449,6 @@ maintainer-clean: maintainer-clean-am
 	-rm -f sci_gateway/cpp/$(DEPDIR)/libscihistory_manager_la-sci_loadhistory.Plo
 	-rm -f sci_gateway/cpp/$(DEPDIR)/libscihistory_manager_la-sci_removelinehistory.Plo
 	-rm -f sci_gateway/cpp/$(DEPDIR)/libscihistory_manager_la-sci_resethistory.Plo
-	-rm -f sci_gateway/cpp/$(DEPDIR)/libscihistory_manager_la-sci_saveafterncommands.Plo
 	-rm -f sci_gateway/cpp/$(DEPDIR)/libscihistory_manager_la-sci_saveconsecutivecommands.Plo
 	-rm -f sci_gateway/cpp/$(DEPDIR)/libscihistory_manager_la-sci_savehistory.Plo
 	-rm -f sci_gateway/cpp/$(DEPDIR)/libscihistory_manager_la-sci_sethistoryfile.Plo

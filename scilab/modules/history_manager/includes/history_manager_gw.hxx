@@ -44,7 +44,6 @@ CPP_GATEWAY_PROTOTYPE(sci_historymanager);
 CPP_GATEWAY_PROTOTYPE(sci_historysize);
 CPP_GATEWAY_PROTOTYPE(sci_removelinehistory);
 CPP_GATEWAY_PROTOTYPE(sci_resethistory);
-CPP_GATEWAY_PROTOTYPE(sci_saveafterncommands);
 CPP_GATEWAY_PROTOTYPE(sci_saveconsecutivecommands);
 CPP_GATEWAY_PROTOTYPE(sci_savehistory);
 CPP_GATEWAY_PROTOTYPE(sci_sethistoryfile);

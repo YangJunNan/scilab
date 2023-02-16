@@ -37,7 +37,6 @@
 
     <!-- Old gateway C-->
     <gateway name="sci_champ"           function="champ"            type="0" />
-    <gateway name="sci_champ1"          function="champ1"           type="0" />
     <gateway name="sci_fec"             function="fec"              type="0" />
     <gateway name="sci_geom3d"          function="geom3d"           type="0" />
     <gateway name="sci_grayplot"        function="grayplot"         type="0" />
@@ -57,7 +56,6 @@
     <gateway name="sci_drawaxis"        function="drawaxis"         type="0" />
     <gateway name="sci_xchange"         function="xchange"          type="0" />
     <gateway name="sci_xclick"          function="xclick"           type="0" />
-    <gateway name="sci_xdel"            function="xdel"             type="0" />
     <gateway name="sci_xarc"            function="xfarc"            type="0" />
     <gateway name="sci_xfarcs"          function="xfarcs"           type="0" />
     <gateway name="sci_xfpoly"          function="xfpoly"           type="0" />
@@ -75,7 +73,6 @@
     <gateway name="sci_xstring"         function="xstring"          type="0" />
     <gateway name="sci_xtitle"          function="xtitle"           type="0" />
     <gateway name="sci_xgraduate"       function="xgraduate"        type="0" />
-    <gateway name="sci_xname"           function="xname"            type="0" />
     <gateway name="sci_zoom_rect"       function="zoom_rect"        type="0" />
     <gateway name="sci_unzoom"          function="unzoom"           type="0" />
     <gateway name="sci_stringbox"       function="stringbox"        type="0" />

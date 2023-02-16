@@ -24,7 +24,7 @@
     </refnamediv>
     <refnamediv xml:id="sprintf">
         <refname>sprintf</refname>
-        <refpurpose>converts, formats, and writes data in a string (obsolete)</refpurpose>
+        <refpurpose>converts, formats, and writes data in a string</refpurpose>
     </refnamediv>
     <refsynopsisdiv>
         <title>Syntax</title>

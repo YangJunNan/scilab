@@ -430,7 +430,6 @@ GATEWAY_C_SOURCES = \
     sci_gateway/c/sci_xstringb.c \
     sci_gateway/c/sci_show_window.c \
     sci_gateway/c/sci_param3d1.c \
-    sci_gateway/c/sci_xname.c \
     sci_gateway/c/sci_xpoly.c \
     sci_gateway/c/sci_xchange.c \
     sci_gateway/c/sci_drawaxis.c \
@@ -457,7 +456,6 @@ GATEWAY_C_SOURCES = \
     sci_gateway/c/sci_xfarcs.c \
     sci_gateway/c/sci_param3d.c \
     sci_gateway/c/sci_contour2di.c \
-    sci_gateway/c/sci_xdel.c \
     sci_gateway/c/sci_fec.c \
     sci_gateway/c/sci_set.c \
     sci_gateway/c/sci_rubberbox.c \

@@ -124,9 +124,6 @@ function this = optimbase_configure (this,key,value)
         optimbase_typeboolean ( value , "value" , 3 );
         optimbase_checkscalar ( "optimbase_configure" , value , "value" , 3 )
         this.withderivatives = value;
-        //
-        // Obsolete options.
-        //
     else
         errmsg = msprintf(gettext("%s: Unknown key %s"),"optimbase_configure",key)
         error(errmsg)

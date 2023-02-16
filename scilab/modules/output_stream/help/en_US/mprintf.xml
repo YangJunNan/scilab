@@ -25,7 +25,7 @@
     </refnamediv>
     <refnamediv xml:id="printf">
         <refname>printf</refname>
-        <refpurpose>converts, formats, and writes data to the main scilab window (obsolete)
+        <refpurpose>converts, formats, and writes data to the main scilab window
         </refpurpose>
     </refnamediv>
     <refsynopsisdiv>

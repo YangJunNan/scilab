@@ -518,7 +518,6 @@ lib /DEF:"$(ProjectDir)elementary_functions_f_Import.def" /SUBSYSTEM:WINDOWS /MA
     <ClCompile Include="sci_gateway\c\sci_xarrows.c" />
     <ClCompile Include="sci_gateway\c\sci_xchange.c" />
     <ClCompile Include="sci_gateway\c\sci_xclick.c" />
-    <ClCompile Include="sci_gateway\c\sci_xdel.c" />
     <ClCompile Include="sci_gateway\c\sci_xfarcs.c" />
     <ClCompile Include="sci_gateway\c\sci_xfpoly.c" />
     <ClCompile Include="sci_gateway\c\sci_xfpolys.c" />
@@ -526,7 +525,6 @@ lib /DEF:"$(ProjectDir)elementary_functions_f_Import.def" /SUBSYSTEM:WINDOWS /MA
     <ClCompile Include="sci_gateway\c\sci_xgraduate.c" />
     <ClCompile Include="sci_gateway\c\sci_xgrid.c" />
     <ClCompile Include="sci_gateway\c\sci_xlfont.c" />
-    <ClCompile Include="sci_gateway\c\sci_xname.c" />
     <ClCompile Include="sci_gateway\c\sci_xpoly.c" />
     <ClCompile Include="sci_gateway\c\sci_xpolys.c" />
     <ClCompile Include="sci_gateway\c\sci_xrect.c" />

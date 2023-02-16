@@ -41,10 +41,6 @@
                     <para>
                         If <varname>fd</varname> equals 6: redirection to stdout (console).
                     </para>
-                    <para>
-                        OBSOLETE: The value <literal>-1</literal> refers to the
-                        default file (i.e the last opened file).
-                    </para>
                 </listitem>
             </varlistentry>
             <varlistentry>

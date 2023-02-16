@@ -339,14 +339,12 @@ cdft
 cell
 ceil
 champ
-champ1
 chdir
 chol
 clean
 clearfun
 clearglobal
 closeEditor
-closeEditvar
 closeXcos
 coeff
 color
@@ -750,7 +748,6 @@ rtitr
 rubberbox
 save
 saveGui
-saveafterncommands
 saveconsecutivecommands
 savehistory
 schur
@@ -912,7 +909,6 @@ xcosPalGet
 xcosPalLoad
 xcosPalMove
 xcosSimulationStarted
-xdel
 xend
 xfarc
 xfarcs
@@ -952,7 +948,6 @@ xmlSetAttributes
 xmlValidate
 xmlWrite
 xmlXPath
-xname
 xpoly
 xpolys
 xrect

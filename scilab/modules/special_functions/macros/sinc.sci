@@ -11,7 +11,7 @@
 // For more information, see the COPYING file which you should have received
 // along with this program.
 
-function y=sinc(x,fl)
+function y=sinc(x)
     //               [  sin(x(i))/x(i) if x(i)~=0
     // computes y(i)=[
     //               [  1 if x(i)~=0
@@ -27,12 +27,6 @@ function y=sinc(x,fl)
         error(msprintf(msg, "sinc", 1));
     end
 
-    if argn(2) == 2 then // for compatibility
-        warning("obsolete use of sinc, use filt_sinc instead")
-        ffilt = ffilt; //load ffilt and its subfunctions
-        y = filt_sinc(x, fl);
-        return
-    end
     y = ones(x);
     kz = find(x <> 0);
     y(kz) = sin(x(kz))./(x(kz));

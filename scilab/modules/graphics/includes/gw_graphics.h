@@ -23,7 +23,6 @@
 /*--------------------------------------------------------------------------*/
 GRAPHICS_IMPEXP int sci_addcb(char *fname, void *pvApiCtx);
 GRAPHICS_IMPEXP int sci_champ(char *fname, void *pvApiCtx);
-GRAPHICS_IMPEXP int sci_champ1(char *fname, void *pvApiCtx);
 GRAPHICS_IMPEXP int sci_champ_G(char *fname,
                                 int (*func) (double *, double *, double *, double *, int *, int *, char *, double *, double *, int),
                                 void *pvApiCtx);
@@ -40,7 +39,6 @@ GRAPHICS_IMPEXP int sci_xrects(char *fname, void *pvApiCtx);
 GRAPHICS_IMPEXP int sci_xrect(char *fname, void *pvApiCtx);
 GRAPHICS_IMPEXP int sci_xpolys(char *fname, void *pvApiCtx);
 GRAPHICS_IMPEXP int sci_xpoly(char *fname, void *pvApiCtx);
-GRAPHICS_IMPEXP int sci_xname(char *fname, void *pvApiCtx);
 GRAPHICS_IMPEXP int sci_xlfont(char *fname, void *pvApiCtx);
 GRAPHICS_IMPEXP int sci_xgrid(char *fname, void *pvApiCtx);
 GRAPHICS_IMPEXP int sci_xgraduate(char *fname, void *pvApiCtx);
@@ -49,7 +47,6 @@ GRAPHICS_IMPEXP int sci_xgetmouse(char *fname, void *pvApiCtx);
 GRAPHICS_IMPEXP int sci_xfpolys(char *fname, void *pvApiCtx);
 GRAPHICS_IMPEXP int sci_xfpoly(char *fname, void *pvApiCtx);
 GRAPHICS_IMPEXP int sci_xfarcs(char *fname, void *pvApiCtx);
-GRAPHICS_IMPEXP int sci_xdel(char *fname, void *pvApiCtx);
 GRAPHICS_IMPEXP int sci_xclick(char *fname, void *pvApiCtx);
 GRAPHICS_IMPEXP int sci_xchange(char *fname, void *pvApiCtx);
 GRAPHICS_IMPEXP int sci_xarrows(char *fname, void *pvApiCtx);

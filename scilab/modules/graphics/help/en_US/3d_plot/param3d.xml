@@ -459,7 +459,7 @@ gcf().children.foreground = color("grey70");
                 <link linkend="plot3d3">plot3d3</link>
             </member>
             <member>
-                <link linkend="scatter3">scatter 3D</link>
+                <link linkend="scatter3d">scatter 3D</link>
             </member>
             <member>
                 <link linkend="axes_properties">axes_properties</link>
