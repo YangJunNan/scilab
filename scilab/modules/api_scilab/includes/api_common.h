@@ -24,6 +24,7 @@ extern "C" {
 #endif
 
 #define scilab_getVar           API_PROTO(getVar)
+#define scilab_setVar           API_PROTO(setVar)
 #define scilab_getClone         API_PROTO(getClone)
 #define scilab_getType          API_PROTO(getType)
 #define scilab_isDouble         API_PROTO(isDouble)
@@ -59,7 +60,7 @@ extern "C" {
 //var
 /*this function should be call out of gateway so do not need scilabEnv argument*/
 scilabVar API_PROTO(getVar)(const wchar_t* name);
-
+void API_PROTO(setVar)(const wchar_t* name, scilabVar var);
 scilabVar API_PROTO(getClone)(scilabEnv env, scilabVar var);
 
 //type

@@ -32,6 +32,11 @@ scilabVar API_PROTO(getVar)(const wchar_t* name)
     return (scilabVar)symbol::Context::getInstance()->get(symbol::Symbol(name));
 }
 
+void API_PROTO(setVar)(const wchar_t* name, scilabVar var)
+{
+    symbol::Context::getInstance()->put(symbol::Symbol(name), (types::InternalType*)var);
+}
+
 scilabVar API_PROTO(getClone)(scilabEnv env, scilabVar var)
 {
     types::InternalType* it = (types::InternalType*)var;
