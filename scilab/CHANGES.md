@@ -387,11 +387,12 @@ Bug Fixes
 * [#16841](https://bugzilla.scilab.org/16841): Zoom on multiaxes could desynchronize axes.
 * [#16845](https://gitlab.com/scilab/scilab/-/issues/16845): Replot button or `replot(gcf())` failed for legends.
 * [#16849](https://bugzilla.scilab.org/16849): toJSON("\\") must return "\\\\" instead of "\\\".
+* [#16861](https://gitlab.com/scilab/scilab/-/issues/16861): `repmat()` was broken for any input sparse matrix.
 * [#16864](https://gitlab.com/scilab/scilab/-/issues/16864): macr2tree(): after a=1:2, b=a(2) is pseudocoded as a funcall instead of as an extraction operation (Scilab 6.0 regression)
 * [#16865](https://bugzilla.scilab.org/16865): Vector extraction with single hypermatrix index yielded a vector.
 * [#16867](https://gitlab.com/scilab/scilab/-/issues/16867): macr2tree() encoded .' (transpose) as ' (conjugate transpose).
-* [#16887](https://gitlab.com/scilab/scilab/-/issues/16887): French localization for `tbx_build_loader()` messages fixed.
 * [#16883](https://gitlab.com/scilab/scilab/-/issues/16883): After h=cat(3, [1 2], [3 4]), mprintf("%d %d\n", h); crashes Scilab (idem with msprintf()).
+* [#16887](https://gitlab.com/scilab/scilab/-/issues/16887): French localization for `tbx_build_loader()` messages fixed.
 * [#16893](https://gitlab.com/scilab/scilab/-/issues/16893): "exec" instruction crashes Scilab.
 * [#16899](https://gitlab.com/scilab/scilab/-/issues/16899): configure script did not detect clang.
 * [#16900](https://gitlab.com/scilab/scilab/-/issues/16900): no-gui build of Scilab raised an error at startup.
