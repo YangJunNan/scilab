@@ -17,6 +17,8 @@
 // savewave  write null signal if 24 bits resolution and more than 2 channels
 
 s=[sin([1:0.1:100]);sin([1:0.1:100]);sin([1:0.1:100])];
-wavwrite(s,22500,24,"B.wav");
-b=wavread("B.wav");
-assert_checkalmostequal(b,s,1e-4,[],'element')
+wavfile=fullfile(TMPDIR,"bug_15528.wav")
+wavwrite(s,22500,24,wavfile);
+b=wavread(wavfile);
+assert_checkalmostequal(b,s,1e-4,[],'element');
+mdelete(wavfile);

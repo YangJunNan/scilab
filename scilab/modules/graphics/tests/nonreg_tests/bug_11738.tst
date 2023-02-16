@@ -21,9 +21,10 @@ clf;
 plot();
 f=gcf();
 nbrChild = size(f.children());
-xsave("test.scg",0);
+xsave(fullfile(TMPDIR, "bug_11738.scg"),0);
 close(0);
-xload("test.scg");
+xload(fullfile(TMPDIR, "bug_11738.scg"));
 
 f=gcf();
 assert_checkequal(size(f.children), nbrChild);
+delete(gcf());

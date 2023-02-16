@@ -6,6 +6,7 @@
 // =============================================================================
 //
 // <-- CLI SHELL MODE -->
+// <-- NO CHECK REF -->
 //
 // <-- Non-regression test for bug 14824 -->
 //
@@ -15,7 +16,7 @@
 // <-- Short Description -->
 // Incorrect error message with mfprintf(fd, "%d", [])
 
-fd = mopen('tmp.tmp', 'w');
+fd = mopen(fullfile(TMPDIR, "bug_14824.tmp"), "w");
 str = "mfprintf(fd, ""%d"", [])";
 assert_checkfalse(execstr(str   ,"errcatch") == 0);
 refMsg = msprintf(_("%s: Wrong number of input arguments: data doesn''t fit with format.\n"), "mfprintf");

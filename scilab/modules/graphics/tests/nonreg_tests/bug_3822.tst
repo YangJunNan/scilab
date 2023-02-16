@@ -6,6 +6,7 @@
 // =============================================================================
 
 // <-- TEST WITH GRAPHIC -->
+// <-- NO CHECK REF -->
 
 // <-- Non-regression test for bug 3822 -->
 //
@@ -20,9 +21,12 @@ f = gcf();
 f.auto_resize='off';
 f.figure_size = [300 300];
 f.viewport = [110 130];
-save('foo.sav',"f");
+savfile = fullfile(TMPDIR, "bug_3822.sav");
+save(savfile, "f");
 delete(f)
-load('foo.sav');
+load(savfile);
 f = gcf();
 if (f.figure_size <> [300 300]) then pause; end
 if (f.viewport <> [110, 130]) then pause; end
+delete(gcf());
+mdelete(savfile);

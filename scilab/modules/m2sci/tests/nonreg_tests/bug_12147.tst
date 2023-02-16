@@ -24,5 +24,5 @@ f = ["function y = f(x)"
      "end"];
 path = TMPDIR+"/f.m";
 mputl(f, path);
-assert_checkequal(mfile2sci(path),1);
+assert_checkequal(mfile2sci(path,TMPDIR),1);
 mdelete(path);

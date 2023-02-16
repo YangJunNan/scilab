@@ -6,6 +6,7 @@
 // =============================================================================
 
 // <-- TEST WITH GRAPHIC -->
+// <-- INTERACTIVE TEST -->
 
 // <-- Non-regression test for bug 1126 -->
 //
@@ -15,28 +16,27 @@
 // <-- Short Description -->
 // GIF driver  don't take into account the size of the window.
 
-
 // create a figure
 x = [0,1];
 z = [0 0.5;0.5 1];
 
 driver("GIF"); 
-xinit('toto.gif')
+xinit(fullfile(TMPDIR,"bug_1126.gif"));
 
 f = gcf();
 f.figure_size = [800,600];
 f.color_map = [jetcolormap(64);[0.9 0.9 0.9]];
 f.background = 65;
    
-colorbar(0,1,colminmax=[1,64])
-Sgrayplot(x,x,z,colminmax=[1,64])
+colorbar(0,1,colminmax=[1,64]);
+Sgrayplot(x,x,z,colminmax=[1,64]);
 
-xtitle("new mode is used: 800 x 600 picture ?")
+xtitle("new mode is used: 800 x 600 picture ?");
 
 // export it to gif
 xend();
-driver("Rec")
+driver("Rec");
 
-// Then open toto.gif in a image viewer. 
+// Then open bug_1126.gif in a image viewer. 
 
 

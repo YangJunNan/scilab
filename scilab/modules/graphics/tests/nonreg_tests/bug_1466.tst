@@ -6,6 +6,7 @@
 // =============================================================================
 
 // <-- TEST WITH GRAPHIC -->
+// <-- NO CHECK REF -->
 
 // <-- Non-regression test for bug 1466 -->
 //
@@ -17,9 +18,9 @@
 
 x=linspace(0,2*%pi,500);
 s=sin(10*x);
-driver("PPM")
-xinit("testplot.ppm")
-plot2d(x,s)
+driver("PPM");
+xinit(fullfile(TMPDIR,"bug_1466.ppm"));
+plot2d(x,s);
 // crash here in Scilab 3.0
 xend();
 
