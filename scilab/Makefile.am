@@ -165,7 +165,7 @@ endif
 if NEED_JAVA
 # Don't do it for scilab_cli_bin. We want to be able to call it without
 # the java libs
-	scilab_bin_LDADD += $(JAVA_JNI_LIBS)
+scilab_bin_LDADD += $(JAVA_JNI_LIBS)
 endif
 
 if IS_SOLARIS
