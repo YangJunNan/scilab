@@ -27,6 +27,7 @@ int PolynomialsModule::Load()
     symbol::Context::getInstance()->addFunction(types::Function::createFunction(L"degree", &sci_degree, MODULE_NAME));
     symbol::Context::getInstance()->addFunction(types::Function::createFunction(L"pppdiv", &sci_pppdiv, MODULE_NAME));
     symbol::Context::getInstance()->addFunction(types::Function::createFunction(L"simp_mode", &sci_simpMode, MODULE_NAME));
+    symbol::Context::getInstance()->addFunction(types::Function::createFunction(L"polyDisplay", &sci_polyDisplay, MODULE_NAME));
     symbol::Context::getInstance()->addFunction(types::Function::createFunction(L"simp", &sci_simp, MODULE_NAME));
     symbol::Context::getInstance()->addFunction(types::Function::createFunction(L"sfact", &sci_sfact, MODULE_NAME));
     symbol::Context::getInstance()->addFunction(types::Function::createFunction(L"bezout", &sci_bezout, MODULE_NAME));

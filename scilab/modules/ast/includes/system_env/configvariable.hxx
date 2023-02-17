@@ -114,6 +114,13 @@ public :
     static void setFormatMode(int _iFormatMode);
     static int getFormatMode(void);
 
+    // Polynomial exponent display (0 -> ASCII, 1 -> Unicode)
+private :
+    static int m_iPolynomialDisplay;
+
+public :
+    static void setPolynomialDisplay(int _iVal);
+    static int getPolynomialDisplay(void);
 
     // Screen console width
 private :

@@ -235,6 +235,20 @@ char* getScilabVersionAsString();
 public";
 int setRecursionLimit(int);
 /* JavaDoc */
+%javamethodmodifiers setPolynomialDisplay() "
+ /**
+   * set the polynomials exponent display style
+   */
+public";
+void setPolynomialDisplay(int);
+/* JavaDoc */
+%javamethodmodifiers getPolynomialDisplay() "
+ /**
+   * returns the polynomials exponent display style
+   */
+public";
+int getPolynomialDisplay();
+/* JavaDoc */
 %javamethodmodifiers getStartProcessing() "
  /**
    * returns the Scilab initialization status

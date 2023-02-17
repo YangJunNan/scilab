@@ -271,6 +271,15 @@ int setRecursionLimit(int val)
     return ConfigVariable::setRecursionLimit(val);
 }
 
+void setPolynomialDisplay(int val)
+{
+    ConfigVariable::setPolynomialDisplay(val);
+}
+int getPolynomialDisplay()
+{
+    return ConfigVariable::getPolynomialDisplay();
+}
+
 int getWebMode()
 {
     return ConfigVariable::getWebMode() ? 1 : 0;

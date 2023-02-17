@@ -227,6 +227,7 @@ am__objects_3 =  \
 	sci_gateway/cpp/libscipolynomials_la-sci_coeff.lo \
 	sci_gateway/cpp/libscipolynomials_la-sci_pppdiv.lo \
 	sci_gateway/cpp/libscipolynomials_la-sci_simpMode.lo \
+	sci_gateway/cpp/libscipolynomials_la-sci_polyDisplay.lo \
 	sci_gateway/cpp/libscipolynomials_la-sci_simp.lo \
 	sci_gateway/cpp/libscipolynomials_la-sci_sfact.lo \
 	sci_gateway/cpp/libscipolynomials_la-sci_bezout.lo
@@ -255,6 +256,7 @@ am__depfiles_remade = sci_gateway/cpp/$(DEPDIR)/libscipolynomials_la-polynomials
 	sci_gateway/cpp/$(DEPDIR)/libscipolynomials_la-sci_coeff.Plo \
 	sci_gateway/cpp/$(DEPDIR)/libscipolynomials_la-sci_degree.Plo \
 	sci_gateway/cpp/$(DEPDIR)/libscipolynomials_la-sci_poly.Plo \
+	sci_gateway/cpp/$(DEPDIR)/libscipolynomials_la-sci_polyDisplay.Plo \
 	sci_gateway/cpp/$(DEPDIR)/libscipolynomials_la-sci_pppdiv.Plo \
 	sci_gateway/cpp/$(DEPDIR)/libscipolynomials_la-sci_roots.Plo \
 	sci_gateway/cpp/$(DEPDIR)/libscipolynomials_la-sci_sfact.Plo \
@@ -716,6 +718,7 @@ GATEWAY_CXX_SOURCES = \
     sci_gateway/cpp/sci_coeff.cpp \
     sci_gateway/cpp/sci_pppdiv.cpp \
     sci_gateway/cpp/sci_simpMode.cpp \
+    sci_gateway/cpp/sci_polyDisplay.cpp \
     sci_gateway/cpp/sci_simp.cpp \
     sci_gateway/cpp/sci_sfact.cpp \
     sci_gateway/cpp/sci_bezout.cpp
@@ -1076,6 +1079,9 @@ sci_gateway/cpp/libscipolynomials_la-sci_pppdiv.lo:  \
 sci_gateway/cpp/libscipolynomials_la-sci_simpMode.lo:  \
 	sci_gateway/cpp/$(am__dirstamp) \
 	sci_gateway/cpp/$(DEPDIR)/$(am__dirstamp)
+sci_gateway/cpp/libscipolynomials_la-sci_polyDisplay.lo:  \
+	sci_gateway/cpp/$(am__dirstamp) \
+	sci_gateway/cpp/$(DEPDIR)/$(am__dirstamp)
 sci_gateway/cpp/libscipolynomials_la-sci_simp.lo:  \
 	sci_gateway/cpp/$(am__dirstamp) \
 	sci_gateway/cpp/$(DEPDIR)/$(am__dirstamp)
@@ -1106,6 +1112,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@sci_gateway/cpp/$(DEPDIR)/libscipolynomials_la-sci_coeff.Plo@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@sci_gateway/cpp/$(DEPDIR)/libscipolynomials_la-sci_degree.Plo@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@sci_gateway/cpp/$(DEPDIR)/libscipolynomials_la-sci_poly.Plo@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@sci_gateway/cpp/$(DEPDIR)/libscipolynomials_la-sci_polyDisplay.Plo@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@sci_gateway/cpp/$(DEPDIR)/libscipolynomials_la-sci_pppdiv.Plo@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@sci_gateway/cpp/$(DEPDIR)/libscipolynomials_la-sci_roots.Plo@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@sci_gateway/cpp/$(DEPDIR)/libscipolynomials_la-sci_sfact.Plo@am__quote@ # am--include-marker
@@ -1222,6 +1229,13 @@ sci_gateway/cpp/libscipolynomials_la-sci_simpMode.lo: sci_gateway/cpp/sci_simpMo
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='sci_gateway/cpp/sci_simpMode.cpp' object='sci_gateway/cpp/libscipolynomials_la-sci_simpMode.lo' libtool=yes @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libscipolynomials_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o sci_gateway/cpp/libscipolynomials_la-sci_simpMode.lo `test -f 'sci_gateway/cpp/sci_simpMode.cpp' || echo '$(srcdir)/'`sci_gateway/cpp/sci_simpMode.cpp
+
+sci_gateway/cpp/libscipolynomials_la-sci_polyDisplay.lo: sci_gateway/cpp/sci_polyDisplay.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libscipolynomials_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT sci_gateway/cpp/libscipolynomials_la-sci_polyDisplay.lo -MD -MP -MF sci_gateway/cpp/$(DEPDIR)/libscipolynomials_la-sci_polyDisplay.Tpo -c -o sci_gateway/cpp/libscipolynomials_la-sci_polyDisplay.lo `test -f 'sci_gateway/cpp/sci_polyDisplay.cpp' || echo '$(srcdir)/'`sci_gateway/cpp/sci_polyDisplay.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) sci_gateway/cpp/$(DEPDIR)/libscipolynomials_la-sci_polyDisplay.Tpo sci_gateway/cpp/$(DEPDIR)/libscipolynomials_la-sci_polyDisplay.Plo
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='sci_gateway/cpp/sci_polyDisplay.cpp' object='sci_gateway/cpp/libscipolynomials_la-sci_polyDisplay.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libscipolynomials_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o sci_gateway/cpp/libscipolynomials_la-sci_polyDisplay.lo `test -f 'sci_gateway/cpp/sci_polyDisplay.cpp' || echo '$(srcdir)/'`sci_gateway/cpp/sci_polyDisplay.cpp
 
 sci_gateway/cpp/libscipolynomials_la-sci_simp.lo: sci_gateway/cpp/sci_simp.cpp
 @am__fastdepCXX_TRUE@	$(AM_V_CXX)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libscipolynomials_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT sci_gateway/cpp/libscipolynomials_la-sci_simp.lo -MD -MP -MF sci_gateway/cpp/$(DEPDIR)/libscipolynomials_la-sci_simp.Tpo -c -o sci_gateway/cpp/libscipolynomials_la-sci_simp.lo `test -f 'sci_gateway/cpp/sci_simp.cpp' || echo '$(srcdir)/'`sci_gateway/cpp/sci_simp.cpp
@@ -1467,6 +1481,7 @@ distclean: distclean-am
 	-rm -f sci_gateway/cpp/$(DEPDIR)/libscipolynomials_la-sci_coeff.Plo
 	-rm -f sci_gateway/cpp/$(DEPDIR)/libscipolynomials_la-sci_degree.Plo
 	-rm -f sci_gateway/cpp/$(DEPDIR)/libscipolynomials_la-sci_poly.Plo
+	-rm -f sci_gateway/cpp/$(DEPDIR)/libscipolynomials_la-sci_polyDisplay.Plo
 	-rm -f sci_gateway/cpp/$(DEPDIR)/libscipolynomials_la-sci_pppdiv.Plo
 	-rm -f sci_gateway/cpp/$(DEPDIR)/libscipolynomials_la-sci_roots.Plo
 	-rm -f sci_gateway/cpp/$(DEPDIR)/libscipolynomials_la-sci_sfact.Plo
@@ -1528,6 +1543,7 @@ maintainer-clean: maintainer-clean-am
 	-rm -f sci_gateway/cpp/$(DEPDIR)/libscipolynomials_la-sci_coeff.Plo
 	-rm -f sci_gateway/cpp/$(DEPDIR)/libscipolynomials_la-sci_degree.Plo
 	-rm -f sci_gateway/cpp/$(DEPDIR)/libscipolynomials_la-sci_poly.Plo
+	-rm -f sci_gateway/cpp/$(DEPDIR)/libscipolynomials_la-sci_polyDisplay.Plo
 	-rm -f sci_gateway/cpp/$(DEPDIR)/libscipolynomials_la-sci_pppdiv.Plo
 	-rm -f sci_gateway/cpp/$(DEPDIR)/libscipolynomials_la-sci_roots.Plo
 	-rm -f sci_gateway/cpp/$(DEPDIR)/libscipolynomials_la-sci_sfact.Plo

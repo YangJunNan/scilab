@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <general title="_(General)">
     <body>
-        <environment fpe="2" printing-format="v" width="10" recursion-limit="1000" container_disp_max_depth="2">
+        <environment fpe="2" printing-format="v" width="10" recursion-limit="1000" container_disp_max_depth="2" polynomial-display="0">
             <fpe code="0" floating-point-exception="_(Produces an error)"/>
             <fpe code="1" floating-point-exception="_(Produces a warning)"/>
             <fpe code="2" floating-point-exception="_(Produces Inf or NaN)"/>
             <printing-format code="v" format="_(Variable format)"/>
             <printing-format code="e" format="_(Scientific format)"/>
+            <polynomial-display code="0" format="_(ASCII)"/>
+            <polynomial-display code="1" format="_(Unicode)"/>
         </environment>
         <languages lang="en_US">
             <language code="en_US" desc="_(English)"/>

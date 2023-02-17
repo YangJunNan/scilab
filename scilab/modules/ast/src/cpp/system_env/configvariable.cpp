@@ -1589,6 +1589,17 @@ int ConfigVariable::setRecursionLimit(int val)
     return old;
 }
 
+int ConfigVariable::m_iPolynomialDisplay = 0;
+
+void ConfigVariable::setPolynomialDisplay(int iVal)
+{
+    m_iPolynomialDisplay = iVal;
+}
+int ConfigVariable::getPolynomialDisplay()
+{
+    return m_iPolynomialDisplay;
+}
+
 int ConfigVariable::getRecursionLevel()
 {
     return recursionLevel;

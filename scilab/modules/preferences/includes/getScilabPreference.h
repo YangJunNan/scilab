@@ -36,6 +36,7 @@ typedef struct
     const char * startup_dir_default;
     const char * startup_dir_previous;
     const char * recursionlimit;
+    const char * polynomialDisplay;
 } ScilabPreferences;
 
 #define HEAPSIZE_XPATH (const xmlChar*)"//general/body/java-heap-memory/@heap-size"
@@ -54,6 +55,7 @@ typedef struct
 #define STARTUP_DIR_USE_XPATH (const xmlChar*)"//general/body/startup/@use"
 #define STARTUP_DIR_DEFAULT_XPATH (const xmlChar*)"//general/body/startup/@default"
 #define STARTUP_DIR_PREVIOUS_XPATH (const xmlChar*)"//general/body/startup/@previous"
+#define POLYNOMIAL_DISPLAY_XPATH (const xmlChar*)"//general/body/environment/@polynomial-display"
 
 PREFERENCES_SCILAB_IMPEXP const ScilabPreferences * getScilabPreferences(void);
 PREFERENCES_SCILAB_IMPEXP void reloadScilabPreferences(void);

@@ -75,6 +75,7 @@ GATEWAY_CXX_SOURCES = \
     sci_gateway/cpp/sci_coeff.cpp \
     sci_gateway/cpp/sci_pppdiv.cpp \
     sci_gateway/cpp/sci_simpMode.cpp \
+    sci_gateway/cpp/sci_polyDisplay.cpp \
     sci_gateway/cpp/sci_simp.cpp \
     sci_gateway/cpp/sci_sfact.cpp \
     sci_gateway/cpp/sci_bezout.cpp

@@ -89,6 +89,9 @@ EXTERN_AST void resetExecutionBreak();
 
 EXTERN_AST int setRecursionLimit(int);
 
+EXTERN_AST void setPolynomialDisplay(int);
+EXTERN_AST int getPolynomialDisplay();
+
 EXTERN_AST int getWebMode();
 #endif /* !__CONFIGVARIABLE_INTERFACE_H__ */
 
