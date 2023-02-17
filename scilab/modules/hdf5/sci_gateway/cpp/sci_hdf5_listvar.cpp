@@ -73,6 +73,7 @@ types::Function::ReturnValue sci_hdf5_listvar(types::typed_list &in, int _iRetCo
             break;
         }
         case 3:
+        case 4: //no change about variable list
         {
             wstFuncName = L"hdf5_listvar_v3";
             break;

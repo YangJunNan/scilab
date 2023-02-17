@@ -29,6 +29,7 @@
     <gateway name="sci_hdf5_load_v1"                    function="hdf5_load_v1"             type="0" />
     <gateway name="sci_hdf5_load_v2"                    function="hdf5_load_v2"             type="0" />
     <gateway name="sci_hdf5_load_v3"                    function="hdf5_load_v3"             type="1" />
+    <gateway name="sci_hdf5_load_v4"                    function="hdf5_load_v4"             type="1" />
     <gateway name="sci_hdf5_listvar"                    function="hdf5_listvar"             type="1" />
     <gateway name="sci_hdf5_listvar"                    function="listvarinfile"            type="1" />
     <gateway name="sci_hdf5_listvar_v2"                 function="hdf5_listvar_v2"          type="0" />

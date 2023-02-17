@@ -128,7 +128,12 @@ types::Function::ReturnValue sci_hdf5_load(types::typed_list &in, int _iRetCount
             wstFuncName = L"hdf5_load_v3";
             break;
         }
-        default :
+        case 4:
+        {
+            wstFuncName = L"hdf5_load_v4";
+            break;
+        }
+        default:
         {
             Scierror(999, _("%s: Wrong SOD file format version. Max Expected: %d Found: %d\n"), fname.data(), SOD_FILE_VERSION, version);
             return types::Function::Error;

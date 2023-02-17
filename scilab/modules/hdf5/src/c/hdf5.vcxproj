@@ -216,6 +216,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\..\sci_gateway\cpp\hdf5_gw.cpp" />
+    <ClCompile Include="..\..\sci_gateway\cpp\sci_hdf5_load_v4.cpp" />
     <ClCompile Include="..\..\sci_gateway\cpp\sci_hdf5_save.cpp" />
     <ClCompile Include="..\..\sci_gateway\cpp\sci_h5attr.cpp" />
     <ClCompile Include="..\..\sci_gateway\cpp\sci_h5close.cpp" />

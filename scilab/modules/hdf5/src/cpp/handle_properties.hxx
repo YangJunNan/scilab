@@ -136,6 +136,22 @@ struct FigureHandle
 
 struct AxesHandle
 {
+    static HandleProp getPropertyList3()
+    {
+        //all properties of vers >= 4 but zoom_enabled, introduced in vers 4 (#16786)
+        HandleProp m = getPropertyList();
+        for (auto it = m.begin(); it != m.end(); ++it)
+        {
+            if (it->first == "zoom_enabled")
+            {
+                m.erase(it);
+                break;
+            }
+        }
+
+        return m;
+    }
+
     static HandleProp getPropertyList()
     {
         HandleProp m;
@@ -189,6 +205,7 @@ struct AxesHandle
         m.emplace_back("tight_limits_z", std::vector<int>({SAVE_LOAD, __GO_Z_TIGHT_LIMITS__, jni_bool}));
         m.emplace_back("data_bounds", std::vector<int>({SAVE_LOAD, __GO_DATA_BOUNDS__, jni_double_vector, -2, -3}));
         m.emplace_back("zoom_box", std::vector<int>({SAVE_LOAD, __GO_ZOOM_BOX__, jni_double_vector, -1, -6}));
+        m.emplace_back("zoom_enabled", std::vector<int>({SAVE_LOAD, __GO_ZOOM_ENABLED__, jni_bool}));
         m.emplace_back("margins", std::vector<int>({SAVE_LOAD, __GO_MARGINS__, jni_double_vector, -1, -4}));
         m.emplace_back("auto_margins", std::vector<int>({SAVE_LOAD, __GO_AUTO_MARGINS__, jni_bool}));
         m.emplace_back("axes_bounds", std::vector<int>({SAVE_LOAD, __GO_AXES_BOUNDS__, jni_double_vector, -1, -4}));
@@ -845,6 +862,6 @@ struct UicontrolHandle
 };
 
 void update_link_path(int legend, Links::PathList& paths);
-int import_handle(hid_t dataset, int parent);
+int import_handle(hid_t dataset, int parent, int version);
 bool export_handle(hid_t parent, const std::string& name, int uid, hid_t xfer_plist_id);
-int add_current_entity(hid_t handle);
+int add_current_entity(hid_t handle, int version);

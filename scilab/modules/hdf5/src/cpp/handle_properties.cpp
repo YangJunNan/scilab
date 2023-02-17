@@ -263,7 +263,7 @@ static int getHandleStringVector(hid_t dataset, const std::string& prop, int* ro
     return node;
 }
 
-static int import_handle_generic(hid_t dataset, int uid, int parent, const HandleProp& props, bool childrenFirst);
+static int import_handle_generic(hid_t dataset, int uid, int parent, const HandleProp& props, bool childrenFirst, int version);
 
 static void import_userdata(hid_t dataset, int uid)
 {
@@ -325,7 +325,7 @@ static void import_handle_tag(hid_t dataset, int uid)
     freeStringMatrix(node, &tag);
 }
 
-static int import_handle_children(hid_t dataset, int parent)
+static int import_handle_children(hid_t dataset, int parent, int version)
 {
     //reload children
     hid_t children = getDataSetIdFromName(dataset, "children");
@@ -336,14 +336,14 @@ static int import_handle_children(hid_t dataset, int parent)
     for (int i = childcount - 1; i >= 0; --i)
     {
         hid_t c = getDataSetIdFromName(children, std::to_string(i).data());
-        int newChild = import_handle(c, parent);
+        int newChild = import_handle(c, parent, version);
     }
 
     closeList6(children);
     return parent;
 }
 
-static int import_handle_generic(hid_t dataset, int uid, int parent, const HandleProp& props, bool childrenFirst)
+static int import_handle_generic(hid_t dataset, int uid, int parent, const HandleProp& props, bool childrenFirst, int version)
 {
     //  link current handle with its parent
     if (parent != -1)
@@ -357,7 +357,7 @@ static int import_handle_generic(hid_t dataset, int uid, int parent, const Handl
     //reload children
     if (childrenFirst)
     {
-        import_handle_children(dataset, uid);
+        import_handle_children(dataset, uid, version);
     }
 
     for (auto& prop : props)
@@ -464,7 +464,7 @@ static int import_handle_generic(hid_t dataset, int uid, int parent, const Handl
     //reload children
     if (childrenFirst == false)
     {
-        import_handle_children(dataset, uid);
+        import_handle_children(dataset, uid, version);
     }
 
     return uid;
@@ -795,7 +795,7 @@ static int import_handle_border(hid_t dataset)
     }
 }
 
-static int import_handle_uicontrol(hid_t dataset, int parent)
+static int import_handle_uicontrol(hid_t dataset, int parent, int version)
 {
     int style = 0;
     getHandleInt(dataset, "style", &style);
@@ -880,7 +880,7 @@ static int import_handle_uicontrol(hid_t dataset, int parent)
     delete[] gridbad_size;
 
     //import "standards" properties
-    import_handle_generic(dataset, uic, parent, UicontrolHandle::getPropertyList(), false);
+    import_handle_generic(dataset, uic, parent, UicontrolHandle::getPropertyList(), false, version);
 
     //string
     char** string = nullptr;
@@ -905,56 +905,56 @@ static int import_handle_uicontrol(hid_t dataset, int parent)
     return uic;
 }
 
-static int import_handle_uicontextmenu(hid_t dataset, int parent)
+static int import_handle_uicontextmenu(hid_t dataset, int parent, int version)
 {
     int menu = createGraphicObject(__GO_UICONTEXTMENU__);
 
     //import "standards" properties
-    import_handle_generic(dataset, menu, parent, UicontextmenuHandle::getPropertyList(), false);
+    import_handle_generic(dataset, menu, parent, UicontextmenuHandle::getPropertyList(), false, version);
 
     closeList6(dataset);
     return menu;
 }
 
-static int import_handle_uimenu(hid_t dataset, int parent)
+static int import_handle_uimenu(hid_t dataset, int parent, int version)
 {
     int menu = createGraphicObject(__GO_UIMENU__);
 
     //import "standards" properties
-    import_handle_generic(dataset, menu, parent, UimenuHandle::getPropertyList(), false);
+    import_handle_generic(dataset, menu, parent, UimenuHandle::getPropertyList(), false, version);
 
     closeList6(dataset);
     return menu;
 }
 
-static int import_handle_light(hid_t dataset, int parent)
+static int import_handle_light(hid_t dataset, int parent, int version)
 {
     int light = createGraphicObject(__GO_LIGHT__);
 
     //import "standards" properties
-    import_handle_generic(dataset, light, parent, LightHandle::getPropertyList(), true);
+    import_handle_generic(dataset, light, parent, LightHandle::getPropertyList(), true, version);
 
     closeList6(dataset);
     return light;
 }
 
-static int import_handle_axis(hid_t dataset, int parent)
+static int import_handle_axis(hid_t dataset, int parent, int version)
 {
     int axis = createGraphicObject(__GO_AXIS__);
 
     //import "standards" properties
-    import_handle_generic(dataset, axis, parent, AxisHandle::getPropertyList(), true);
+    import_handle_generic(dataset, axis, parent, AxisHandle::getPropertyList(), true, version);
 
     closeList6(dataset);
     return axis;
 }
 
-static int import_handle_text(hid_t dataset, int parent)
+static int import_handle_text(hid_t dataset, int parent, int version)
 {
     int t = createGraphicObject(__GO_TEXT__);
 
     //import "standards" properties
-    import_handle_generic(dataset, t, parent, TextHandle::getPropertyList(), true);
+    import_handle_generic(dataset, t, parent, TextHandle::getPropertyList(), true, version);
 
 
     //text
@@ -969,12 +969,12 @@ static int import_handle_text(hid_t dataset, int parent)
     return t;
 }
 
-static int import_handle_legend(hid_t dataset, int parent)
+static int import_handle_legend(hid_t dataset, int parent, int version)
 {
     int legend = createGraphicObject(__GO_LEGEND__);
 
     //import "standards" properties
-    import_handle_generic(dataset, legend, parent, LegendHandle::getPropertyList(), true);
+    import_handle_generic(dataset, legend, parent, LegendHandle::getPropertyList(), true, version);
 
 
     //text
@@ -1019,13 +1019,13 @@ static int import_handle_legend(hid_t dataset, int parent)
     return legend;
 }
 
-static int import_handle_fec(hid_t dataset, int parent)
+static int import_handle_fec(hid_t dataset, int parent, int version)
 {
     int fec = createGraphicObject(__GO_FEC__);
     createDataObject(fec, __GO_FEC__);
 
     //import "standards" properties
-    import_handle_generic(dataset, fec, parent, FecHandle::getPropertyList(), true);
+    import_handle_generic(dataset, fec, parent, FecHandle::getPropertyList(), true, version);
 
     //triangles
     int coordR = 0;
@@ -1060,13 +1060,13 @@ static int import_handle_fec(hid_t dataset, int parent)
     return fec;
 }
 
-static int import_handle_matplot(hid_t dataset, int parent)
+static int import_handle_matplot(hid_t dataset, int parent, int version)
 {
     int plot = createGraphicObject(__GO_MATPLOT__);
     createDataObject(plot, __GO_MATPLOT__);
 
     //import "standards" properties
-    import_handle_generic(dataset, plot, parent, MatplotHandle::getPropertyList(), true);
+    import_handle_generic(dataset, plot, parent, MatplotHandle::getPropertyList(), true, version);
 
     int row = 0;
     int col = 0;
@@ -1112,13 +1112,13 @@ static int import_handle_matplot(hid_t dataset, int parent)
     return plot;
 }
 
-static int import_handle_grayplot(hid_t dataset, int parent)
+static int import_handle_grayplot(hid_t dataset, int parent, int version)
 {
     int plot = createGraphicObject(__GO_GRAYPLOT__);
     createDataObject(plot, __GO_GRAYPLOT__);
 
     //import "standards" properties
-    import_handle_generic(dataset, plot, parent, GrayplotHandle::getPropertyList(), true);
+    import_handle_generic(dataset, plot, parent, GrayplotHandle::getPropertyList(), true, version);
 
     int row = 0;
     int col = 0;
@@ -1147,51 +1147,51 @@ static int import_handle_grayplot(hid_t dataset, int parent)
     return plot;
 }
 
-static int import_handle_segs(hid_t dataset, int parent)
+static int import_handle_segs(hid_t dataset, int parent, int version)
 {
     int segs = createGraphicObject(__GO_SEGS__);
 
     //import "standards" properties
-    import_handle_generic(dataset, segs, parent, SegsHandle::getPropertyList(), true);
+    import_handle_generic(dataset, segs, parent, SegsHandle::getPropertyList(), true, version);
 
     closeList6(dataset);
     return segs;
 }
 
-static int import_handle_arc(hid_t dataset, int parent)
+static int import_handle_arc(hid_t dataset, int parent, int version)
 {
     int arc = createGraphicObject(__GO_ARC__);
 
     //import "standards" properties
-    import_handle_generic(dataset, arc, parent, ArcHandle::getPropertyList(), true);
+    import_handle_generic(dataset, arc, parent, ArcHandle::getPropertyList(), true, version);
 
     closeList6(dataset);
     return arc;
 }
 
-static int import_handle_rectangle(hid_t dataset, int parent)
+static int import_handle_rectangle(hid_t dataset, int parent, int version)
 {
     int rect = createGraphicObject(__GO_RECTANGLE__);
 
     //import "standards" properties
-    import_handle_generic(dataset, rect, parent, RectangleHandle::getPropertyList(), true);
+    import_handle_generic(dataset, rect, parent, RectangleHandle::getPropertyList(), true, version);
 
     closeList6(dataset);
     return rect;
 }
 
-static int import_handle_compound(hid_t dataset, int parent)
+static int import_handle_compound(hid_t dataset, int parent, int version)
 {
     int compound = createGraphicObject(__GO_COMPOUND__);
 
     //import "standards" properties
-    import_handle_generic(dataset, compound, parent, CompoundHandle::getPropertyList(), true);
+    import_handle_generic(dataset, compound, parent, CompoundHandle::getPropertyList(), true, version);
 
     closeList6(dataset);
     return compound;
 }
 
-static int import_handle_datatip(hid_t dataset, int parent)
+static int import_handle_datatip(hid_t dataset, int parent, int version)
 {
     int datatip = createGraphicObject(__GO_DATATIP__);
     //set parent manually, these no real releationship between datatip and parent
@@ -1207,13 +1207,13 @@ static int import_handle_datatip(hid_t dataset, int parent)
     setGraphicObjectProperty(datatip, __GO_DATATIP_INDEXES__, indexes, jni_double_vector, 2);
 
     //import "standards" properties
-    import_handle_generic(dataset, datatip, -1, DatatipHandle::getPropertyList(), true);
+    import_handle_generic(dataset, datatip, -1, DatatipHandle::getPropertyList(), true, version);
 
     closeList6(dataset);
     return datatip;
 }
 
-static int import_handle_datatips(hid_t dataset, int uid)
+static int import_handle_datatips(hid_t dataset, int uid, int version)
 {
     hid_t datatip = getDataSetIdFromName(dataset, "datatips");
     int count = 0;
@@ -1223,7 +1223,7 @@ static int import_handle_datatips(hid_t dataset, int uid)
     for (int i = 0; i < count; ++i)
     {
         hid_t d = getDataSetIdFromName(datatip, std::to_string(i).data());
-        datatips[i] = import_handle_datatip(d, uid);
+        datatips[i] = import_handle_datatip(d, uid, version);
     }
 
     setGraphicObjectProperty(uid, __GO_DATATIPS__, datatips.data(), jni_int_vector, count);
@@ -1325,13 +1325,13 @@ void MiniMaxi(const double vect[], int n, double * const min, double * const max
 }
 
 
-static int import_handle_polyline(hid_t dataset, int parent)
+static int import_handle_polyline(hid_t dataset, int parent, int version)
 {
     int polyline = createGraphicObject(__GO_POLYLINE__);
     createDataObject(polyline, __GO_POLYLINE__);
 
     //import "standards" properties
-    import_handle_generic(dataset, polyline, parent, PolylineHandle::getPropertyList(), true);
+    import_handle_generic(dataset, polyline, parent, PolylineHandle::getPropertyList(), true, version);
 
     //x_shift
     import_polyline_shift(dataset, polyline, "x_shift", __GO_DATA_MODEL_X_COORDINATES_SHIFT_SET__, __GO_DATA_MODEL_X_COORDINATES_SHIFT__);
@@ -1413,24 +1413,24 @@ static int import_handle_polyline(hid_t dataset, int parent)
     }
 
     //datatips
-    import_handle_datatips(dataset, polyline);
+    import_handle_datatips(dataset, polyline, version);
 
     closeList6(dataset);
     return polyline;
 }
 
-static int import_handle_surface(hid_t dataset, int uid, int parent)
+static int import_handle_surface(hid_t dataset, int uid, int parent, int version)
 {
     //import "standards" properties
-    import_handle_generic(dataset, uid, parent, SurfaceHandle::getPropertyList(), true);
+    import_handle_generic(dataset, uid, parent, SurfaceHandle::getPropertyList(), true, version);
     return uid;
 }
 
-static int import_handle_plot3d(hid_t dataset, int parent)
+static int import_handle_plot3d(hid_t dataset, int parent, int version)
 {
     int plot = createGraphicObject(__GO_PLOT3D__);
     createDataObject(plot, __GO_PLOT3D__);
-    import_handle_surface(dataset, plot, parent);
+    import_handle_surface(dataset, plot, parent, version);
 
     //data
     int xR = 0, xC = 0;
@@ -1467,12 +1467,12 @@ static int import_handle_plot3d(hid_t dataset, int parent)
     return plot;
 }
 
-static int import_handle_fac3d(hid_t dataset, int parent)
+static int import_handle_fac3d(hid_t dataset, int parent, int version)
 {
     int fac = createGraphicObject(__GO_FAC3D__);
     createDataObject(fac, __GO_FAC3D__);
 
-    import_handle_surface(dataset, fac, parent);
+    import_handle_surface(dataset, fac, parent, version);
 
     //data
     int xR = 0, xC = 0;
@@ -1522,7 +1522,7 @@ static int import_handle_fac3d(hid_t dataset, int parent)
 }
 
 
-static int import_handle_champ(hid_t dataset, int parent)
+static int import_handle_champ(hid_t dataset, int parent, int version)
 {
     //need to get properties and call a "creator" :x
 
@@ -1561,16 +1561,16 @@ static int import_handle_champ(hid_t dataset, int parent)
     delete[] directionY;
 
     //import "standards" properties
-    import_handle_generic(dataset, champ, parent, ChampHandle::getPropertyList(), true);
+    import_handle_generic(dataset, champ, parent, ChampHandle::getPropertyList(), true, version);
 
     closeList6(dataset);
     return champ;
 }
-static int import_handle_label(hid_t dataset, int uid)
+static int import_handle_label(hid_t dataset, int uid, int version)
 {
     //import "standards" properties
     //do not create releationship between parent
-    import_handle_generic(dataset, uid, -1, LabelHandle::getPropertyList(), true);
+    import_handle_generic(dataset, uid, -1, LabelHandle::getPropertyList(), true, version);
 
     //text
     std::vector<int> dims(2);
@@ -1586,7 +1586,7 @@ static int import_handle_label(hid_t dataset, int uid)
     return uid;
 }
 
-static int import_handle_axes(hid_t dataset, int parent)
+static int import_handle_axes(hid_t dataset, int parent, int version)
 {
     //how to manage call by %h_copy ?
 
@@ -1597,35 +1597,42 @@ static int import_handle_axes(hid_t dataset, int parent)
     setGraphicObjectProperty(axes, __GO_VISIBLE__, &visible, jni_bool, 1);
 
     //import "standards" properties
-    import_handle_generic(dataset, axes, parent, AxesHandle::getPropertyList(), true);
+    if (version == 3)
+    {
+        import_handle_generic(dataset, axes, parent, AxesHandle::getPropertyList3(), true, version);
+    }
+    else
+    {
+        import_handle_generic(dataset, axes, parent, AxesHandle::getPropertyList(), true, version);
+    }
 
     //title
     int title = 0;
     int *ptitle = &title;
     hid_t nodeTitle = getDataSetIdFromName(dataset, "title");
     getGraphicObjectProperty(axes, __GO_TITLE__, jni_int, (void **)&ptitle);
-    import_handle_label(nodeTitle, title);
+    import_handle_label(nodeTitle, title, version);
 
     //x_label
     int x_label = 0;
     int *px_label = &x_label;
     hid_t nodeX = getDataSetIdFromName(dataset, "x_label");
     getGraphicObjectProperty(axes, __GO_X_AXIS_LABEL__, jni_int, (void **)&px_label);
-    import_handle_label(nodeX, x_label);
+    import_handle_label(nodeX, x_label, version);
 
     //y_label
     int y_label = 0;
     int *py_label = &y_label;
     hid_t nodeY = getDataSetIdFromName(dataset, "y_label");
     getGraphicObjectProperty(axes, __GO_Y_AXIS_LABEL__, jni_int, (void **)&py_label);
-    import_handle_label(nodeY, y_label);
+    import_handle_label(nodeY, y_label, version);
 
     //z_label
     int z_label = 0;
     int *pz_label = &z_label;
     hid_t nodeZ = getDataSetIdFromName(dataset, "z_label");
     getGraphicObjectProperty(axes, __GO_Z_AXIS_LABEL__, jni_int, (void **)&pz_label);
-    import_handle_label(nodeZ, z_label);
+    import_handle_label(nodeZ, z_label, version);
 
     //set real visible state
     getHandleInt(dataset, "visible", &visible);
@@ -1689,7 +1696,7 @@ static int import_handle_layout_options(hid_t dataset, int frame)
     return frame;
 }
 
-static int import_handle_figure(hid_t dataset, int parent)
+static int import_handle_figure(hid_t dataset, int parent, int version)
 {
     //some properties must be set @ creation time
     int menubar = 0;
@@ -1738,14 +1745,14 @@ static int import_handle_figure(hid_t dataset, int parent)
     setGraphicObjectProperty(fig, __GO_LAYOUT__, &layout, jni_int, 1);
 
     //import "standards" properties
-    import_handle_generic(dataset, fig, -1, FigureHandle::getPropertyList(), true);
+    import_handle_generic(dataset, fig, -1, FigureHandle::getPropertyList(), true, version);
 
     import_handle_layout_options(dataset, fig);
     closeList6(dataset);
     return fig;
 }
 
-int import_handle(hid_t dataset, int parent)
+int import_handle(hid_t dataset, int parent, int version)
 {
     //get type
     int type = 0;
@@ -1754,83 +1761,83 @@ int import_handle(hid_t dataset, int parent)
     {
         case __GO_FIGURE__:
         {
-            return import_handle_figure(dataset, parent);
+            return import_handle_figure(dataset, parent, version);
         }
         case __GO_AXES__:
         {
-            return import_handle_axes(dataset, parent);
+            return import_handle_axes(dataset, parent, version);
         }
         case __GO_CHAMP__:
         {
-            return import_handle_champ(dataset, parent);
+            return import_handle_champ(dataset, parent, version);
         }
         case __GO_FAC3D__:
         {
-            return import_handle_fac3d(dataset, parent);
+            return import_handle_fac3d(dataset, parent, version);
         }
         case __GO_PLOT3D__:
         {
-            return import_handle_plot3d(dataset, parent);
+            return import_handle_plot3d(dataset, parent, version);
         }
         case __GO_COMPOUND__:
         {
-            return import_handle_compound(dataset, parent);
+            return import_handle_compound(dataset, parent, version);
         }
         case __GO_POLYLINE__:
         {
-            return import_handle_polyline(dataset, parent);
+            return import_handle_polyline(dataset, parent, version);
         }
         case __GO_RECTANGLE__:
         {
-            return import_handle_rectangle(dataset, parent);
+            return import_handle_rectangle(dataset, parent, version);
         }
         case __GO_ARC__:
         {
-            return import_handle_arc(dataset, parent);
+            return import_handle_arc(dataset, parent, version);
         }
         case __GO_SEGS__:
         {
-            return import_handle_segs(dataset, parent);
+            return import_handle_segs(dataset, parent, version);
         }
         case __GO_GRAYPLOT__:
         {
-            return import_handle_grayplot(dataset, parent);
+            return import_handle_grayplot(dataset, parent, version);
         }
         case __GO_MATPLOT__:
         {
-            return import_handle_matplot(dataset, parent);
+            return import_handle_matplot(dataset, parent, version);
         }
         case __GO_FEC__:
         {
-            return import_handle_fec(dataset, parent);
+            return import_handle_fec(dataset, parent, version);
         }
         case __GO_LEGEND__:
         {
-            return import_handle_legend(dataset, parent);
+            return import_handle_legend(dataset, parent, version);
         }
         case __GO_TEXT__:
         {
-            return import_handle_text(dataset, parent);
+            return import_handle_text(dataset, parent, version);
         }
         case __GO_AXIS__:
         {
-            return import_handle_axis(dataset, parent);
+            return import_handle_axis(dataset, parent, version);
         }
         case __GO_LIGHT__:
         {
-            return import_handle_light(dataset, parent);
+            return import_handle_light(dataset, parent, version);
         }
         case __GO_UIMENU__:
         {
-            return import_handle_uimenu(dataset, parent);
+            return import_handle_uimenu(dataset, parent, version);
         }
         case __GO_UICONTEXTMENU__:
         {
-            return import_handle_uicontextmenu(dataset, parent);
+            return import_handle_uicontextmenu(dataset, parent, version);
         }
         case __GO_UICONTROL__:
         {
-            return import_handle_uicontrol(dataset, parent);
+            return import_handle_uicontrol(dataset, parent, version);
         }
     }
     return -1;
@@ -3444,7 +3451,7 @@ static bool export_handle_children(hid_t parent, int uid, hid_t xfer_plist_id)
     return true;
 }
 
-int add_current_entity(hid_t dataset)
+int add_current_entity(hid_t dataset, int version)
 {
     int type = 0;
     getHandleInt(dataset, "type", &type);
@@ -3453,20 +3460,20 @@ int add_current_entity(hid_t dataset)
     {
         case __GO_FIGURE__:
         {
-            return import_handle(dataset, -1);
+            return import_handle(dataset, -1, version);
         }
         case __GO_AXES__:
         {
             //add handle to current figure
             getOrCreateDefaultSubwin();
             int iCurrentFigure = getCurrentFigure();
-            return import_handle(dataset, iCurrentFigure);
+            return import_handle(dataset, iCurrentFigure, version);
         }
         default:
         {
             // add handle as child of current axes ( take care of compound ! )
             int axes = getOrCreateDefaultSubwin();
-            return import_handle(dataset, axes);
+            return import_handle(dataset, axes, version);
         }
     }
 }

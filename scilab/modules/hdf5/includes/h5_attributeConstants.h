@@ -16,7 +16,7 @@
 #ifndef __H5_ATTRIBUTECONSTATS_H__
 #define __H5_ATTRIBUTECONSTATS_H__
 
-#define SOD_FILE_VERSION     3
+#define SOD_FILE_VERSION     4
 
 static const char g_SCILAB_CLASS[]              = "SCILAB_Class";
 static const char g_SCILAB_CLASS_EMPTY[]        = "SCILAB_empty";

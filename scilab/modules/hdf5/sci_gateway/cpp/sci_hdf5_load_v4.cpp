@@ -1,8 +1,6 @@
 /*
-* Scilab ( https://www.scilab.org/ ) - This file is part of Scilab
-* Copyright (C) 2015 - Scilab Enterprises - Antoine ELIAS
-*
- * Copyright (C) 2012 - 2016 - Scilab Enterprises
+ * Scilab ( https://www.scilab.org/ ) - This file is part of Scilab
+ * Copyright (C) 2023 - 3DS - Antoine ELIAS
  *
  * This file is hereby licensed under the terms of the GNU GPL v2.0,
  * pursuant to article 5.3.4 of the CeCILL v.2.1.
@@ -36,8 +34,6 @@
 #include "deserializervisitor.hxx"
 #include "overload.hxx"
 
-std::unordered_map<int, Links::PathList> Links::paths;
-
 extern "C"
 {
 #include "sci_malloc.h"
@@ -56,7 +52,7 @@ extern "C"
 }
 /*--------------------------------------------------------------------------*/
 static bool import_variable(hid_t file, std::string& name);
-static types::InternalType* import_data(hid_t dataset);
+types::InternalType* import_data(hid_t dataset);
 static types::InternalType* import_double(hid_t dataset);
 static types::InternalType* import_string(hid_t dataset);
 static types::InternalType* import_boolean(hid_t dataset);
@@ -75,7 +71,7 @@ static types::InternalType* import_usertype(hid_t dataset);
 /*--------------------------------------------------------------------------*/
 static const std::string fname("load");
 /*--------------------------------------------------------------------------*/
-types::Function::ReturnValue sci_hdf5_load_v3(types::typed_list &in, int _iRetCount, types::typed_list &out)
+types::Function::ReturnValue sci_hdf5_load_v4(types::typed_list &in, int _iRetCount, types::typed_list &out)
 {
     std::string filename;
     int rhs = static_cast<int>(in.size());
@@ -185,7 +181,7 @@ static bool import_variable(hid_t file, std::string& name)
     return false;
 }
 
-static types::InternalType* import_data(hid_t dataset)
+types::InternalType* import_data(hid_t dataset)
 {
     //get var type
     char* ctype = getScilabTypeFromDataSet6(dataset);
@@ -977,7 +973,7 @@ static types::InternalType* import_handles(hid_t dataset)
     {
         //%h_copy
         hid_t ref = getDataSetIdFromName(refs, std::to_string(0).data());
-        int val = add_current_entity(ref, 3);
+        int val = add_current_entity(ref, 4);
         if (val < 0)
         {
             handles->killMe();
@@ -991,7 +987,7 @@ static types::InternalType* import_handles(hid_t dataset)
         for (int i = 0; i < size; ++i)
         {
             hid_t ref = getDataSetIdFromName(refs, std::to_string(i).data());
-            int val = import_handle(ref, -1, 3);
+            int val = import_handle(ref, -1, 4);
             if (val < 0)
             {
                 handles->killMe();
