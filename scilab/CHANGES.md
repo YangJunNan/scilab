@@ -352,7 +352,7 @@ Bug Fixes
 * [#16555](https://gitlab.com/scilab/scilab/-/issues/16555): Details of Xcos CLOCK_c block led to crash
 * [#16557](https://gitlab.com/scilab/scilab/-/issues/16557): `macr2tree` + `tree2code` translated `e={2}` into `"e=1"` and `e={2,"ab"}` into `"e=[2,"ab"]"`.
 * [#16575](https://gitlab.com/scilab/scilab/-/issues/16575): for m=rand(2,2,2), end crashes Scilab.
-* [#16179](https://gitlab.com/scilab/scilab/-/issues/16179): pause inhibits error display when executed in try-catch block.
+* [#16127](https://gitlab.com/scilab/scilab/-/issues/16127): c = {1:$} crashed Scilab.
 * [#16179](https://gitlab.com/scilab/scilab/-/issues/16179): `pause` inhibits error display when executed in try-catch block.
 * [#16653](https://gitlab.com/scilab/scilab/-/issues/16653): `fromJSON()` crashed with a non existing file.
 * [#16713](https://gitlab.com/scilab/scilab/-/issues/16713): Automatic stretching of Axes box in 3d view was not configurable.

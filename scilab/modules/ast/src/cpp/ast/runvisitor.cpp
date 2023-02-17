@@ -298,20 +298,22 @@ void RunVisitorT<T>::visitprivate(const CellExp & e)
             }
             catch (ScilabException &)
             {
+                pC->killMe();
                 CoverageInstance::stopChrono((void*)&e);
                 throw;
             }
+
             types::InternalType *pIT = getResult();
             if (pIT->isImplicitList())
             {
                 types::InternalType * _pIT = pIT->getAs<types::ImplicitList>()->extractFullMatrix();
-                pC->set(i, j, _pIT);
-                _pIT->killMe();
+                if(_pIT) 
+                {
+                    pIT = _pIT;
+                }
             }
-            else
-            {
-                pC->set(i, j, pIT);
-            }
+
+            pC->set(i, j, pIT);
             clearResult();
         }
     }
