@@ -19,7 +19,6 @@ function demo_pendule()
     clf(my_handle,"reset");
 
     show_window();
-    wdim=xget('wdim')
     //mode(1)
 
     dpnd()
