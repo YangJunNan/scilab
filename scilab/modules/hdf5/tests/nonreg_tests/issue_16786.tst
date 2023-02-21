@@ -15,13 +15,13 @@
 // <-- Short Description -->
 // zoom_box property was not correctly saved.
 
-file = fullfile(TMPDIR, "bug_16786.sod");
+file_name = fullfile(TMPDIR, "bug_16786.sod");
 
 plot2d();
 gca().zoom_box = [1.5 -1.5 5 1 -1 1];
 f = gcf();
-save(file, "f");
+save(file_name, "f");
 close();
-load(file);
+load(file_name);
 assert_checkequal(gca().zoom_box, [1.5, -1.5, 5, 1, -1, 1]);
 
