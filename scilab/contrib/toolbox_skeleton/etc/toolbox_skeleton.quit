@@ -3,12 +3,28 @@
 // Some specific hooks can be specify here when the module is unloaded.
 
 function quitModule()
-
-    etc_tlbx  = get_absolute_file_path("toolbox_skeleton.quit");
+    toolboxName = "toolbox_skeleton"
+    etc_tlbx  = get_absolute_file_path(toolboxName + ".quit");
     etc_tlbx  = getshortpathname(etc_tlbx);
     root_tlbx = strncpy( etc_tlbx, length(etc_tlbx)-length("\etc\") );
 
-    //unlink libraries
+    // Unload macros of the library:
+    // -----------------------------
+    clear(string(toolboxName + "lib")(2:$))
+
+    // Unregister the library of macros:
+    // --------------------------------
+    clear(toolboxName + "lib")
+
+    // Del help chapter
+    // ----------------
+    if or(getscilabmode() == ["NW";"STD"]) then
+       mprintf("\tRemove help chapter\n");
+       del_help_chapter(toolboxName, %F);
+    end
+
+    // unlink built-in libraries
+    // -------------------------
     [bOK, ilib] = c_link('skeleton_cpp');
     if bOK then
         ulink(ilib);
@@ -25,10 +41,15 @@ function quitModule()
     end
 
     // Remove Preferences GUI
-    // =============================================================================
+    // ----------------------
     if getscilabmode() == "STD" then
-    removeModulePreferences(root_tlbx);
+        removeModulePreferences(root_tlbx);
     end
+
+    // Unregister demos
+    // ----------------
+    global demolist
+    demolist(grep(demolist(:,2), toolboxName),:) = [];
 
 endfunction
 

@@ -133,17 +133,27 @@ function tbx_build_loader(name, path)
         ];
     else
         unloadertxt = [
-        "    // Unregister the library of macros. This does not unregister its macros"
+        "    // Clear macros loaded from the library:"
+        "    clear(string(" + name + "lib)(2:$))"
+        ""
+        "    // Unregister the library as is:"
         "    clear " + name + "lib"
-        "    // Del help chapter";
-        "    if or(getscilabmode() == [""NW"";""STD""]) then";
+        ""
+        "    // Del help chapter"
+        "    if or(getscilabmode() == [""NW"";""STD""]) then"
         "       mprintf(""\tRemove help chapter\n"");"
-        "       del_help_chapter("""+name+""", %F);"
+        "       del_help_chapter(""" + name + """, %F);"
         "    end"
+        ""
         "    // Remove Preferences GUI"
         "    if getscilabmode() == ""STD"" then"
         "        removeModulePreferences(get_absolute_file_path(""unloader.sce""))"
         "    end"
+        ""
+        "    // Unregister demos:"
+        "    global demolist"
+        "    demolist(grep(demolist(:,2), """ + name + """),:) = [];"
+        ""
         "   // TODO: detect and unlink related gateways"
         ]
     end

@@ -15,7 +15,7 @@ function toolbox_skeletonlib = startModule()
     return;
   end
 
-  etc_tlbx  = get_absolute_file_path("toolbox_skeleton.start");
+  etc_tlbx  = get_absolute_file_path(TOOLBOX_NAME + ".start");
   etc_tlbx  = getshortpathname(etc_tlbx);
   root_tlbx = strncpy( etc_tlbx, length(etc_tlbx)-length("\etc\") );
 
@@ -48,7 +48,7 @@ function toolbox_skeletonlib = startModule()
     end
   end
 
-// Load demos
+// Register demos
 // =============================================================================
   if or(getscilabmode() == ["NW";"STD"]) then
     mprintf("\tLoad demos\n");
