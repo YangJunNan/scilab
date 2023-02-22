@@ -29,14 +29,7 @@ function stop = optimbase_outputcmd(this, state, data)
         funtype = typeof(this.outputcommand)
         if ( funtype == "function" ) then
             __optimbase_f__ = this.outputcommand
-            //
-            // Backward-compatibility: process the outputcommandarg field
-            //
-            if ( typeof(this.outputcommandarg) == "string" ) then
-                __optimbase_args__ = list()
-            else
-                __optimbase_args__ = list(this.outputcommandarg)
-            end
+            __optimbase_args__ = list()
         else
             __optimbase_f__ = this.outputcommand(1)
             __optimbase_args__ = list(this.outputcommand(2:$))
