@@ -11,6 +11,6 @@
 // along with this program.
 
 function r = %s_a_b(a, b)
-    // Copyright INRIA
+    // called when a is complex
     r = a + bool2s(b)
 endfunction

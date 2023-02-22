@@ -11,5 +11,6 @@
 // along with this program.
 
 function r = %b_a_s(b, s)
-    r = [bool2s(b), s]
+    // called when s is complex
+    r = bool2s(b) + s
 endfunction
