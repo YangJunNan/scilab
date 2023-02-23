@@ -1,8 +1,8 @@
-/* A Bison parser, made by GNU Bison 3.5.1.  */
+/* A Bison parser, made by GNU Bison 3.8.2.  */
 
 /* Bison interface for Yacc-like parsers in C
 
-   Copyright (C) 1984, 1989-1990, 2000-2015, 2018-2020 Free Software Foundation,
+   Copyright (C) 1984, 1989-1990, 2000-2015, 2018-2021 Free Software Foundation,
    Inc.
 
    This program is free software: you can redistribute it and/or modify
@@ -16,7 +16,7 @@
    GNU General Public License for more details.
 
    You should have received a copy of the GNU General Public License
-   along with this program.  If not, see <http://www.gnu.org/licenses/>.  */
+   along with this program.  If not, see <https://www.gnu.org/licenses/>.  */
 
 /* As a special exception, you may create a larger work that contains
    part or all of the Bison parser skeleton and distribute that work
@@ -31,8 +31,9 @@
    This special exception was added by the Free Software Foundation in
    version 2.2 of Bison.  */
 
-/* Undocumented macros, especially those whose name start with YY_,
-   are private implementation details.  Do not rely on them.  */
+/* DO NOT RELY ON FEATURES THAT ARE NOT DOCUMENTED in the manual,
+   especially those whose name start with YY_ or yy_.  They are
+   private implementation details that can be changed or removed.  */
 
 #ifndef YY_YY_Y_TAB_H_INCLUDED
 # define YY_YY_Y_TAB_H_INCLUDED
@@ -44,98 +45,105 @@
 extern int yydebug;
 #endif
 
-/* Token type.  */
+/* Token kinds.  */
 #ifndef YYTOKENTYPE
 # define YYTOKENTYPE
   enum yytokentype
   {
-    YYEOF = 0,
-    DOTS = 258,
-    EOL = 259,
-    SPACES = 260,
-    BOOLTRUE = 261,
-    BOOLFALSE = 262,
-    QUOTE = 263,
-    NOT = 264,
-    DOLLAR = 265,
-    COMMA = 266,
-    COLON = 267,
-    SEMI = 268,
-    LPAREN = 269,
-    RPAREN = 270,
-    LBRACK = 271,
-    RBRACK = 272,
-    LBRACE = 273,
-    RBRACE = 274,
-    DOT = 275,
-    DOTQUOTE = 276,
-    PLUS = 277,
-    MINUS = 278,
-    TIMES = 279,
-    DOTTIMES = 280,
-    KRONTIMES = 281,
-    CONTROLTIMES = 282,
-    RDIVIDE = 283,
-    DOTRDIVIDE = 284,
-    CONTROLRDIVIDE = 285,
-    KRONRDIVIDE = 286,
-    LDIVIDE = 287,
-    DOTLDIVIDE = 288,
-    CONTROLLDIVIDE = 289,
-    KRONLDIVIDE = 290,
-    POWER = 291,
-    DOTPOWER = 292,
-    EQ = 293,
-    NE = 294,
-    LT = 295,
-    LE = 296,
-    GT = 297,
-    GE = 298,
-    AND = 299,
-    ANDAND = 300,
-    OR = 301,
-    OROR = 302,
-    ASSIGN = 303,
-    IF = 304,
-    THEN = 305,
-    ELSE = 306,
-    ELSEIF = 307,
-    END = 308,
-    SELECT = 309,
-    SWITCH = 310,
-    CASE = 311,
-    OTHERWISE = 312,
-    FUNCTION = 313,
-    ENDFUNCTION = 314,
-    FOR = 315,
-    WHILE = 316,
-    DO = 317,
-    BREAK = 318,
-    CONTINUE = 319,
-    TRY = 320,
-    CATCH = 321,
-    RETURN = 322,
-    FLEX_ERROR = 323,
-    STR = 324,
-    ID = 325,
-    VARINT = 326,
-    VARFLOAT = 327,
-    NUM = 328,
-    PATH = 329,
-    COMMENT = 330,
-    BLOCKCOMMENT = 331,
-    TOPLEVEL = 332,
-    HIGHLEVEL = 333,
-    UPLEVEL = 334,
-    LISTABLE = 335,
-    CONTROLBREAK = 336,
-    UMINUS = 337,
-    UPLUS = 338,
-    FUNCTIONCALL = 339
+    YYEMPTY = -2,
+    YYEOF = 0,                     /* "end of file"  */
+    YYerror = 256,                 /* error  */
+    YYUNDEF = 257,                 /* "invalid token"  */
+    DOTS = 258,                    /* "line break"  */
+    EOL = 259,                     /* "end of line"  */
+    SPACES = 260,                  /* "spaces"  */
+    BOOLTRUE = 261,                /* "%t or %T"  */
+    BOOLFALSE = 262,               /* "%f or %F"  */
+    QUOTE = 263,                   /* "'"  */
+    NOT = 264,                     /* "~ or @"  */
+    DOLLAR = 265,                  /* "$"  */
+    COMMA = 266,                   /* ","  */
+    COLON = 267,                   /* ":"  */
+    SEMI = 268,                    /* ";"  */
+    LPAREN = 269,                  /* "("  */
+    RPAREN = 270,                  /* ")"  */
+    LBRACK = 271,                  /* "["  */
+    RBRACK = 272,                  /* "]"  */
+    LBRACE = 273,                  /* "{"  */
+    RBRACE = 274,                  /* "}"  */
+    DOT = 275,                     /* "."  */
+    DOTQUOTE = 276,                /* ".'"  */
+    PLUS = 277,                    /* "+"  */
+    MINUS = 278,                   /* "-"  */
+    TIMES = 279,                   /* "*"  */
+    DOTTIMES = 280,                /* ".*"  */
+    KRONTIMES = 281,               /* ".*."  */
+    CONTROLTIMES = 282,            /* "*."  */
+    RDIVIDE = 283,                 /* "/"  */
+    DOTRDIVIDE = 284,              /* "./"  */
+    CONTROLRDIVIDE = 285,          /* "/."  */
+    KRONRDIVIDE = 286,             /* "./."  */
+    LDIVIDE = 287,                 /* "\\"  */
+    DOTLDIVIDE = 288,              /* ".\\"  */
+    CONTROLLDIVIDE = 289,          /* "\\."  */
+    KRONLDIVIDE = 290,             /* ".\\."  */
+    POWER = 291,                   /* "** or ^"  */
+    DOTPOWER = 292,                /* ".^"  */
+    EQ = 293,                      /* "=="  */
+    NE = 294,                      /* "<> or ~="  */
+    LT = 295,                      /* "<"  */
+    LE = 296,                      /* "<="  */
+    GT = 297,                      /* ">"  */
+    GE = 298,                      /* ">="  */
+    AND = 299,                     /* "&"  */
+    ANDAND = 300,                  /* "&&"  */
+    OR = 301,                      /* "|"  */
+    OROR = 302,                    /* "||"  */
+    ASSIGN = 303,                  /* "="  */
+    IF = 304,                      /* "if"  */
+    THEN = 305,                    /* "then"  */
+    ELSE = 306,                    /* "else"  */
+    ELSEIF = 307,                  /* "elseif"  */
+    END = 308,                     /* "end"  */
+    SELECT = 309,                  /* "select"  */
+    SWITCH = 310,                  /* "switch"  */
+    CASE = 311,                    /* "case"  */
+    OTHERWISE = 312,               /* "otherwise"  */
+    FUNCTION = 313,                /* "function"  */
+    ENDFUNCTION = 314,             /* "endfunction"  */
+    FOR = 315,                     /* "for"  */
+    WHILE = 316,                   /* "while"  */
+    DO = 317,                      /* "do"  */
+    BREAK = 318,                   /* "break"  */
+    CONTINUE = 319,                /* "continue"  */
+    TRY = 320,                     /* "try"  */
+    CATCH = 321,                   /* "catch"  */
+    RETURN = 322,                  /* "return"  */
+    FLEX_ERROR = 323,              /* FLEX_ERROR  */
+    STR = 324,                     /* "string"  */
+    ID = 325,                      /* "identifier"  */
+    VARINT = 326,                  /* "integer"  */
+    VARFLOAT = 327,                /* "float"  */
+    NUM = 328,                     /* "number"  */
+    PATH = 329,                    /* "path"  */
+    COMMENT = 330,                 /* "line comment"  */
+    BLOCKCOMMENT = 331,            /* "block comment"  */
+    TOPLEVEL = 332,                /* TOPLEVEL  */
+    HIGHLEVEL = 333,               /* HIGHLEVEL  */
+    UPLEVEL = 334,                 /* UPLEVEL  */
+    LISTABLE = 335,                /* LISTABLE  */
+    CONTROLBREAK = 336,            /* CONTROLBREAK  */
+    UMINUS = 337,                  /* UMINUS  */
+    UPLUS = 338,                   /* UPLUS  */
+    FUNCTIONCALL = 339             /* FUNCTIONCALL  */
   };
+  typedef enum yytokentype yytoken_kind_t;
 #endif
-/* Tokens.  */
+/* Token kinds.  */
+#define YYEMPTY -2
 #define YYEOF 0
+#define YYerror 256
+#define YYUNDEF 257
 #define DOTS 258
 #define EOL 259
 #define SPACES 260
@@ -301,6 +309,8 @@ struct YYLTYPE
 
 extern YYSTYPE yylval;
 extern YYLTYPE yylloc;
+
 int yyparse (void);
+
 
 #endif /* !YY_YY_Y_TAB_H_INCLUDED  */

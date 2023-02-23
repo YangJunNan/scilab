@@ -1053,6 +1053,7 @@ assign			"="
     //yylloc.last_column = 1;
     //scan_step();
     yy_pop_state();
+    // loop to manage \n and \r\n
     for (int i = yyleng - 1 ; i >= 0 ; --i)
     {
         //std::cerr << "Unputting i = {" << i << "}" << std::endl;
@@ -1060,33 +1061,38 @@ assign			"="
         unput(yytext[i]);
         yylloc.last_column--;
     }
+    // yylloc.first_column is the location of the {newline}
+    // remove the size of the comment to have proper location 
+    // as for <<EOF>> '//' is not part of the comment location
+    yylloc.first_column -= pstBuffer.length();
+    
     /*
     ** To forgot comments after lines break
     */
     if (last_token != DOTS)
     {
-        //std::cerr << "pstBuffer = {" << *pstBuffer << "}" << std::endl;
-        //std::cerr << "pstBuffer->c_str() = {" << pstBuffer->c_str() << "}" << std::endl;
-        wchar_t *pwstBuffer = to_wide_string(pstBuffer.c_str());
-        //std::wcerr << L"pwstBuffer = W{" << pwstBuffer << L"}" << std::endl;
-        if (pstBuffer.c_str() != NULL && pwstBuffer == NULL)
-        {
-	    pstBuffer.clear();
-	    std::string str = "Can\'t convert \'";
-	    str += pstBuffer.c_str();
-	    str += "\' to UTF-8";
-	    BEGIN(INITIAL);
-	    yyerror(str);
-	    return scan_throw(FLEX_ERROR);
-        }
-        yylval.comment = new std::wstring(pwstBuffer);
-	pstBuffer.clear();
-        FREE (pwstBuffer);
-        return scan_throw(COMMENT);
+      //std::cerr << "pstBuffer = {" << *pstBuffer << "}" << std::endl;
+      //std::cerr << "pstBuffer->c_str() = {" << pstBuffer->c_str() << "}" << std::endl;
+      wchar_t *pwstBuffer = to_wide_string(pstBuffer.c_str());
+      //std::wcerr << L"pwstBuffer = W{" << pwstBuffer << L"}" << std::endl;
+      if (pstBuffer.c_str() != NULL && pwstBuffer == NULL)
+      {
+        pstBuffer.clear();
+        std::string str = "Can\'t convert \'";
+        str += pstBuffer.c_str();
+        str += "\' to UTF-8";
+        BEGIN(INITIAL);
+        yyerror(str);
+        return scan_throw(FLEX_ERROR);
+      }
+      yylval.comment = new std::wstring(pwstBuffer);
+      pstBuffer.clear();
+      FREE (pwstBuffer);
+      return scan_throw(COMMENT);
     }
     else
     {
-	pstBuffer.clear();
+	    pstBuffer.clear();
     }
   }
 
@@ -1095,13 +1101,13 @@ assign			"="
     wchar_t *pwstBuffer = to_wide_string(pstBuffer.c_str());
     if (pstBuffer.c_str() != NULL && pwstBuffer == NULL)
     {
-	pstBuffer.clear();
-	std::string str = "Can\'t convert \'";
-	str += pstBuffer.c_str();
-	str += "\' to UTF-8";
-	BEGIN(INITIAL);
-	yyerror(str);
-	return scan_throw(FLEX_ERROR);
+      pstBuffer.clear();
+      std::string str = "Can\'t convert \'";
+      str += pstBuffer.c_str();
+      str += "\' to UTF-8";
+      BEGIN(INITIAL);
+      yyerror(str);
+      return scan_throw(FLEX_ERROR);
     }
     yylval.comment = new std::wstring(pwstBuffer);
     pstBuffer.clear();
