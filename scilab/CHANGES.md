@@ -385,6 +385,7 @@ Bug Fixes
 * [#16755](https://bugzilla.scilab.org/16755): plot3d polygon facets rendering may be wrong when exactly in horizontal or vertical plane
 * [#16771](https://gitlab.com/scilab/scilab/-/issues/16771): fullpath("existing_path/*.ext") crashed Scilab under Windows.
 * [#16823](https://gitlab.com/scilab/scilab/-/issues/16823): `[m2sci]Mtbxfun_db.txt` was missing the Scilab releases.
+* [#16831](https://gitlab.com/scilab/scilab/-/issues/16831): `scilab.quit` and `atomsQuit()` forgot quitting ATOMS modules loaded during the session. `atomsQuit()` documentation was misleading.
 * [#16841](https://bugzilla.scilab.org/16841): Zoom on multiaxes could desynchronize axes.
 * [#16845](https://gitlab.com/scilab/scilab/-/issues/16845): Replot button or `replot(gcf())` failed for legends.
 * [#16849](https://bugzilla.scilab.org/16849): toJSON("\\") must return "\\\\" instead of "\\\".
@@ -407,8 +408,6 @@ Bug Fixes
 * [#16919](https://gitlab.com/scilab/scilab/-/issues/16919): MList overload extraction compatibility with scilab 5.5.2
 * [#16923](https://gitlab.com/scilab/scilab/-/issues/16923): unable to use `http_get(..., follow=%t)` without a filename argument.
 * [#16920](https://gitlab.com/scilab/scilab/-/issues/16920): MatrixExp insertion in an empty matrix and using colon crashes Scilab.
-
-
 
 ### Bugs fixed in 6.1.1:
 * [#3188](https://bugzilla.scilab.org/3188): `part()` was slower than in Scilab 4.1.2.

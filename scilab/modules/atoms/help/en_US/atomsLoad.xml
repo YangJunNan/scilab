@@ -15,7 +15,10 @@
  * along with this program.
  *
  -->
-<refentry xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svg="http://www.w3.org/2000/svg" xmlns:ns3="http://www.w3.org/1999/xhtml" xmlns:mml="http://www.w3.org/1998/Math/MathML" xmlns:db="http://docbook.org/ns/docbook" xmlns:scilab="http://www.scilab.org" xml:id="atomsLoad" xml:lang="en">
+<refentry xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:svg="http://www.w3.org/2000/svg" xmlns:ns3="http://www.w3.org/1999/xhtml"
+          xmlns:mml="http://www.w3.org/1998/Math/MathML" xmlns:db="http://docbook.org/ns/docbook"
+          xmlns:scilab="http://www.scilab.org" xml:id="atomsLoad" xml:lang="en">
     <refnamediv>
         <refname>atomsLoad</refname>
         <refpurpose>Load one or several external modules</refpurpose>
@@ -159,7 +162,10 @@ end
                 <link linkend="atomsGetLoaded">atomsGetLoaded</link>
             </member>
             <member>
-                <link linkend="atomsGetLoaded">atomsInstall</link>
+                <link linkend="atomsInstall">atomsInstall</link>
+            </member>
+            <member>
+                <link linkend="atomsQuit">atomsQuit</link>
             </member>
         </simplelist>
     </refsection>

@@ -19,10 +19,8 @@
 function scilabQuit()
 
   // ATOMS ===============================================================
-  if with_module("atoms") then
-    if sciargs() <> "-noatomsautoload" & isdef("atomsQuit") then
+  if with_module("atoms") & isdef("atomsQuit") & atomsGetLoaded()<>[] then
       atomsQuit();
-    end
   end
 endfunction
 // ====================================================================
