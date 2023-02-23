@@ -364,6 +364,7 @@ Bug Fixes
 * [#16798](https://gitlab.com/scilab/scilab/-/issues/16798): `scinotes()` with option and non existing file crashed scilab.
 * [#16822](https://gitlab.com/scilab/scilab/-/issues/16822): `getrelativefilename()` returned incorrect value in case of same beginning of directory names.
 * [#16826](https://gitlab.com/scilab/scilab/-/issues/16826): `file()` or `file(fid)` could yield outdated relative paths.
+* [#16828](https://gitlab.com/scilab/scilab/-/issues/16828): `triu()` was wrong for input matrices of strings, and was poorly documented.
 * [#16841](https://gitlab.com/scilab/scilab/-/issues/16841): Zoom on multiaxes could desynchronize axes.
 * [#16849](https://gitlab.com/scilab/scilab/-/issues/16849): toJSON("\\") must return "\\\\" instead of "\\\".
 * [#16865](https://gitlab.com/scilab/scilab/-/issues/16865): Vector extraction with single hypermatrix index yielded a vector.
@@ -407,7 +408,6 @@ Bug Fixes
 * [#16919](https://gitlab.com/scilab/scilab/-/issues/16919): MList overload extraction compatibility with scilab 5.5.2
 * [#16923](https://gitlab.com/scilab/scilab/-/issues/16923): unable to use `http_get(..., follow=%t)` without a filename argument.
 * [#16920](https://gitlab.com/scilab/scilab/-/issues/16920): MatrixExp insertion in an empty matrix and using colon crashes Scilab.
-
 
 
 ### Bugs fixed in 6.1.1:

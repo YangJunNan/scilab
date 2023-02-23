@@ -201,62 +201,6 @@ assert_checkequal(diag(a), []);
 assert_checkequal(diag(a, 1), []);
 assert_checkequal(diag(a, -1), []);
 
-// triu
-a=[1 2 3 4;5 6 7 8];
-assert_checkequal(triu(a), [1 2 3 4;0 6 7 8]);
-assert_checkequal(triu(a+0), [1 2 3 4;0 6 7 8]);
-assert_checkequal(triu(a, 1), [0 2 3 4; 0 0 7 8]);
-assert_checkequal(triu(a+0, 1), [0 2 3 4; 0 0 7 8]);
-assert_checkequal(triu(a, -1), a);
-assert_checkequal(triu(a+0, -1), a);
-assert_checkequal(triu(a, 4), 0*a);
-
-a(1,1)=%i;
-assert_checkequal(triu(a), [%i 2 3 4;0 6 7 8]);
-assert_checkequal(triu(a+0), [%i 2 3 4;0 6 7 8]);
-assert_checkequal(triu(a, 1), [0 2 3 4;0 0 7 8]+0*%i);
-assert_checkequal(triu(a+0, 1), [0 2 3 4;0 0 7 8]+0*%i);
-assert_checkequal(triu(a, -1), a);
-assert_checkequal(triu(a+0, -1), a);
-assert_checkequal(triu(a,4), 0*a);
-
-assert_checkequal(triu([]), []);
-assert_checkequal(triu([], 1), []);
-assert_checkequal(triu([], -1), []);
-
-a=[];
-assert_checkequal(triu(a), []);
-assert_checkequal(triu(a, 1), []);
-assert_checkequal(triu(a, -1), []);
-
-//tril
-a=[1 2 3 4;5 6 7 8];
-assert_checkequal(tril(a), [1 0 0 0;5 6 0 0]);
-assert_checkequal(tril(a+0), [1 0 0 0;5 6 0 0]);
-assert_checkequal(tril(a, 1), [1 2 0 0;5 6  7 0]);
-assert_checkequal(tril(a+0, 1), [1 2 0 0;5 6  7 0]);
-assert_checkequal(tril(a, 4), a);
-assert_checkequal(tril(a+0, 4), a);
-assert_checkequal(tril(a, -3), 0*a);
-
-a(1,1)=%i;
-assert_checkequal(tril(a), [%i 0 0 0; 5 6 0 0]);
-assert_checkequal(tril(a+0), [%i 0 0 0; 5 6 0 0]);
-assert_checkequal(tril(a, 1), [%i 2 0 0; 5 6 7 0]);
-assert_checkequal(tril(a+0, 1), [%i 2 0 0;5 6  7 0]);
-assert_checkequal(tril(a, 4), a);
-assert_checkequal(tril(a+0, 4), a);
-assert_checkequal(tril(a, -3), 0*a);
-
-assert_checkequal(tril([]), []);
-assert_checkequal(tril([], 1), []);
-assert_checkequal(tril([], -1), []);
-
-a=[];
-assert_checkequal(tril(a), []);
-assert_checkequal(tril(a, 1), []);
-assert_checkequal(tril(a, -1), []);
-
 //abs
 a=[1 2;-3 4;5 -6];
 assert_checkequal(abs(a), [1 2;3 4;5 6]);

@@ -1,45 +1,253 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<refentry xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svg="http://www.w3.org/2000/svg" xmlns:ns5="http://www.w3.org/1999/xhtml" xmlns:mml="http://www.w3.org/1998/Math/MathML" xmlns:db="http://docbook.org/ns/docbook" xmlns:scilab="http://www.scilab.org" xml:id="tril" xml:lang="fr">
+<!--
+ * Scilab ( http://www.scilab.org/ ) - This file is part of Scilab
+ * Copyright (C) 2008 - INRIA
+ * Copyright (C) 2012 - 2016 - Scilab Enterprises
+ * Copyright (C) 2022 - Samuel GOUGEON
+ *
+ * This file is hereby licensed under the terms of the GNU GPL v2.0,
+ * pursuant to article 5.3.4 of the CeCILL v.2.1.
+ * This file was originally licensed under the terms of the CeCILL v2.1,
+ * and continues to be available under such terms.
+ * For more information, see the COPYING file which you should have received
+ * along with this program.
+ *
+ -->
+<refentry xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:svg="http://www.w3.org/2000/svg" xmlns:ns5="http://www.w3.org/1999/xhtml"
+          xmlns:mml="http://www.w3.org/1998/Math/MathML" xmlns:db="http://docbook.org/ns/docbook"
+          xmlns:scilab="http://www.scilab.org" xml:id="tril" xml:lang="fr">
     <refnamediv>
         <refname>tril</refname>
-        <refpurpose>partie triangulaire inférieure d'une matrice</refpurpose>
+        <refpurpose>Partie triangulaire inférieure d'une matrice</refpurpose>
     </refnamediv>
     <refsynopsisdiv>
         <title>Séquence d'appel</title>
-        <synopsis>tril(x [,k])</synopsis>
+        <synopsis>
+            d = tril(x)
+            d = tril(x, k)
+        </synopsis>
     </refsynopsisdiv>
     <refsection>
-        <title>Paramètres</title>
+        <title>Arguments</title>
         <variablelist>
             <varlistentry>
                 <term>x</term>
                 <listitem>
-                    <para>matrice de tout type</para>
+                    matrice de booléens, nombres, polynômes, fractions rationnelles, ou texte.
+                    <para/>
                 </listitem>
             </varlistentry>
             <varlistentry>
                 <term>k</term>
                 <listitem>
-                    <para>entier (0 par défaut)</para>
+                    entier : n° de la diagonale de référence au dessus de laquelle les éléments
+                    sont mis à 0, %f ou "".
+                    <literal>k=0</literal> par défaut, désigne la diagonale principale.
+                    Les diagonales sont numérotées k > 0 au dessus de la diagonale principale,
+                    et par k &lt; 0 en dessous.
+                    <para/>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term>u</term>
+                <listitem>
+                    matrice du type et de la taille de <varname>x</varname>.
+                    <para/>
                 </listitem>
             </varlistentry>
         </variablelist>
     </refsection>
     <refsection>
         <title>Description</title>
-        <para>Partie triangulaire inférieure d'une matrice.
-            <literal>tril(x,k)</literal> est composée des termes sous une diagonale :
-            k&gt;0 (diagonale supérieure) et k&lt;0 (diagonale sous la diagonale
-            principale).
+        <para>
+            <emphasis role="bold">tril(x)</emphasis> met à 0, %f ou "" tous les elements de
+            <varname>x</varname> situés au dessus la diagonale principale, et donne la matrice
+            résultante.
+        </para>
+        <para>
+            <emphasis role="bold">tril(x, k)</emphasis> met à 0, %f ou "" tous les elements de
+            <varname>x</varname> situés au dessus la diagonale n°<varname>k</varname> au
+            dessus de la diagonale principale, et donne la matrice résultante.
         </para>
     </refsection>
     <refsection>
         <title>Exemples</title>
+        <para>
+            Avec des matrices carrées :
+        </para>
         <programlisting role="example"><![CDATA[
-s=poly(0,'s');
-tril([s,s;s,1])
-tril([1/s,1/s;1/s,1])
- ]]></programlisting>
+a = matrix(1:16,4,4)
+tril(a)
+
+tril(a, 1)
+tril(a, -1)
+     ]]></programlisting>
+        <table border="0">
+        <tr>
+            <td>
+            <screen><![CDATA[
+--> a = matrix(1:16,4,4)
+ a  =
+   1.   5.   9.    13.
+   2.   6.   10.   14.
+   3.   7.   11.   15.
+   4.   8.   12.   16.
+
+--> tril(a)
+ ans  =
+   1.   0.   0.    0.
+   2.   6.   0.    0.
+   3.   7.   11.   0.
+   4.   8.   12.   16.
+]]></screen>
+            </td>
+            <td></td>
+            <td>
+            <screen><![CDATA[
+--> tril(a, 1)
+ ans  =
+   1.   5.   0.    0.
+   2.   6.   10.   0.
+   3.   7.   11.   15.
+   4.   8.   12.   16.
+
+--> tril(a, -1)
+ ans  =
+   0.   0.   0.    0.
+   2.   0.   0.    0.
+   3.   7.   0.    0.
+   4.   8.   12.   0.
+]]></screen>
+            </td>
+        </tr>
+        </table>
+        <para>
+            Avec des matrices rectangulaires :
+        </para>
+        <programlisting role="example"><![CDATA[
+a = int8(matrix(1:24,4,6))
+tril(a)
+
+tril(a, 2)
+tril(a, -1)
+     ]]></programlisting>
+        <table border="0">
+        <tr>
+            <td>
+            <screen><![CDATA[
+--> a = int8(matrix(1:24,4,6))
+ a  =
+  1  5   9  13  17  21
+  2  6  10  14  18  22
+  3  7  11  15  19  23
+  4  8  12  16  20  24
+
+--> tril(a)
+ ans  =
+  1  0   0   0  0  0
+  2  6   0   0  0  0
+  3  7  11   0  0  0
+  4  8  12  16  0  0
+]]></screen>
+            </td>
+            <td></td>
+            <td>
+            <screen><![CDATA[
+--> tril(a, 2)
+ ans  =
+  1  5   9   0   0   0
+  2  6  10  14   0   0
+  3  7  11  15  19   0
+  4  8  12  16  20  24
+
+--> tril(a, -1)
+ ans  =
+  0  0   0  0  0  0
+  2  0   0  0  0  0
+  3  7   0  0  0  0
+  4  8  12  0  0  0
+]]></screen>
+            </td>
+        </tr>
+        </table>
+        <para>
+            Avec des matrices de types réguliers quelconques :
+        </para>
+        <programlisting role="example"><![CDATA[
+a = ones(4,5, "boolean")        // booléens
+tril(a, -1)
+
+a = string(matrix(1:16,4,4))    // texte
+tril(a)
+
+a = %z^matrix(1:16,4,4)         // polynômes
+tril(a)
+
+a = 1./%z^matrix(1:10,2,5)      // fractions rationnelles
+tril(a, 1)
+     ]]></programlisting>
+        <screen><![CDATA[
+--> a = ones(4,5, "boolean")        // booléens
+ a  =
+  T T T T T
+  T T T T T
+  T T T T T
+  T T T T T
+
+--> tril(a, -1)
+ ans  =
+  F F F F F
+  T F F F F
+  T T F F F
+  T T T F F
+
+--> a = string(matrix(1:16,4,4))    // texte
+ a  =
+  "1"  "5"  "9"   "13"
+  "2"  "6"  "10"  "14"
+  "3"  "7"  "11"  "15"
+  "4"  "8"  "12"  "16"
+
+--> tril(a)
+ ans  =
+  "1"  ""   ""    ""
+  "2"  "6"  ""    ""
+  "3"  "7"  "11"  ""
+  "4"  "8"  "12"  "16"
+
+--> a = %z^matrix(1:16,4,4)         // polynômes
+ a  =
+  z   z⁵  z⁹   z¹³
+  z²  z⁶  z¹⁰  z¹⁴
+  z³  z⁷  z¹¹  z¹⁵
+  z⁴  z⁸  z¹²  z¹⁶
+
+--> tril(a)
+ ans  =
+  z   0   0    0
+  z²  z⁶  0    0
+  z³  z⁷  z¹¹  0
+  z⁴  z⁸  z¹²  z¹⁶
+
+--> a = 1./%z^matrix(1:10,2,5)      // fractions rationnelles
+ a  =
+   1   1   1   1   1
+   -   --  --  --  --
+   z   z³  z⁵  z⁷  z⁹
+   1   1   1   1    1
+   --  --  --  --  ---
+   z²  z⁴  z⁶  z⁸  z¹⁰
+
+--> tril(a, 1)
+ ans  =
+   1   1   0   0  0
+   -   --  -   -  -
+   z   z³  1   1  1
+   1   1   1   0  0
+   --  --  --  -  -
+   z²  z⁴  z⁶  1  1
+]]></screen>
     </refsection>
     <refsection role="see also">
         <title>Voir aussi</title>
@@ -48,13 +256,13 @@ tril([1/s,1/s;1/s,1])
                 <link linkend="triu">triu</link>
             </member>
             <member>
-                <link linkend="ones">ones</link>
+                <link linkend="diag">diag</link>
             </member>
             <member>
                 <link linkend="eye">eye</link>
             </member>
             <member>
-                <link linkend="diag">diag</link>
+                <link linkend="ones">ones</link>
             </member>
         </simplelist>
     </refsection>

@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <!--
  * Scilab ( https://www.scilab.org/ ) - This file is part of Scilab
  * Copyright (C) 2008 - INRIA
- *
  * Copyright (C) 2012 - 2016 - Scilab Enterprises
+ * Copyright (C) 2022 - Samuel GOUGEON
  *
  * This file is hereby licensed under the terms of the GNU GPL v2.0,
  * pursuant to article 5.3.4 of the CeCILL v.2.1.
@@ -14,122 +13,254 @@
  * along with this program.
  *
  -->
-
-<refentry xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svg="http://www.w3.org/2000/svg" xmlns:ns5="http://www.w3.org/1999/xhtml" xmlns:mml="http://www.w3.org/1998/Math/MathML" xmlns:db="http://docbook.org/ns/docbook" xmlns:scilab="http://www.scilab.org" xml:id="tril" xml:lang="ja">
-
+<refentry xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:svg="http://www.w3.org/2000/svg" xmlns:ns5="http://www.w3.org/1999/xhtml"
+          xmlns:mml="http://www.w3.org/1998/Math/MathML" xmlns:db="http://docbook.org/ns/docbook"
+          xmlns:scilab="http://www.scilab.org" xml:id="tril" xml:lang="ja">
     <refnamediv>
-
         <refname>tril</refname>
-
         <refpurpose>行列の下三角部</refpurpose>
-
     </refnamediv>
-
     <refsynopsisdiv>
-
         <title>呼び出し手順</title>
-
-        <synopsis>tril(x [,k])</synopsis>
-
+        <synopsis>
+            d = tril(x)
+            d = tril(x, k)
+        </synopsis>
     </refsynopsisdiv>
-
     <refsection>
-
         <title>引数</title>
-
         <variablelist>
-
             <varlistentry>
-
                 <term>x</term>
-
                 <listitem>
-
-                    <para>行列 (実数, 複素数, 多項式, 有理数)</para>
-
+                    Matrix of booleans, numbers, polynomials, rationals, or strings.
+                    <para/>
                 </listitem>
-
             </varlistentry>
-
             <varlistentry>
-
                 <term>k</term>
-
                 <listitem>
-
-                    <para>整数 (デフォルト値 0)</para>
-
+                    integer : index of the reference diagonal above which all elements are set to
+                    0, %f, or "".
+                    Default value = 0, standing for the main diagonal. Diagonals are numbered
+                    with k > 0 above the main one, and with k &lt; 0 below it.
+                    <para/>
                 </listitem>
-
             </varlistentry>
-
+            <varlistentry>
+                <term>u</term>
+                <listitem>
+                    matrix of the type and size of <varname>x</varname>.
+                    <para/>
+                </listitem>
+            </varlistentry>
         </variablelist>
-
     </refsection>
-
     <refsection>
-
         <title>説明</title>
-
         <para>
-
-            行列の下三角部. <literal>tril(x,k)</literal> は
-
-            k番目の対角線以下のエントリにより作成されます :
-
-            k&gt;0 (上三角) および
-
-            k&lt;0 (主対角以下の対角線).
-
+            <emphasis role="bold">tril(x)</emphasis> sets to %f, 0 or "" all elements of
+            <varname>x</varname> that are above the main diagonal, and gives the corresponding matrix.
         </para>
-
+        <para>
+            <emphasis role="bold">tril(x, k)</emphasis> does the same with respect to the diagonal
+            number #<varname>k</varname> above the main diagonal.
+        </para>
     </refsection>
-
     <refsection>
-
         <title>例</title>
-
+        <para>
+            With square matrices:
+        </para>
         <programlisting role="example"><![CDATA[
-s=poly(0,'s');
-tril([s,s;s,1])
-tril([1/s,1/s;1/s,1])
- ]]></programlisting>
+a = matrix(1:16,4,4)
+tril(a)
 
+tril(a, 1)
+tril(a, -1)
+     ]]></programlisting>
+        <table border="0">
+        <tr>
+            <td>
+            <screen><![CDATA[
+--> a = matrix(1:16,4,4)
+ a  =
+   1.   5.   9.    13.
+   2.   6.   10.   14.
+   3.   7.   11.   15.
+   4.   8.   12.   16.
+
+--> tril(a)
+ ans  =
+   1.   0.   0.    0.
+   2.   6.   0.    0.
+   3.   7.   11.   0.
+   4.   8.   12.   16.
+]]></screen>
+            </td>
+            <td></td>
+            <td>
+            <screen><![CDATA[
+--> tril(a, 1)
+ ans  =
+   1.   5.   0.    0.
+   2.   6.   10.   0.
+   3.   7.   11.   15.
+   4.   8.   12.   16.
+
+--> tril(a, -1)
+ ans  =
+   0.   0.   0.    0.
+   2.   0.   0.    0.
+   3.   7.   0.    0.
+   4.   8.   12.   0.
+]]></screen>
+            </td>
+        </tr>
+        </table>
+        <para>
+            With non-square matrices:
+        </para>
+        <programlisting role="example"><![CDATA[
+a = int8(matrix(1:24,4,6))
+tril(a)
+
+tril(a, 2)
+tril(a, -1)
+     ]]></programlisting>
+        <table border="0">
+        <tr>
+            <td>
+            <screen><![CDATA[
+--> a = int8(matrix(1:24,4,6))
+ a  =
+  1  5   9  13  17  21
+  2  6  10  14  18  22
+  3  7  11  15  19  23
+  4  8  12  16  20  24
+
+--> tril(a)
+ ans  =
+  1  0   0   0  0  0
+  2  6   0   0  0  0
+  3  7  11   0  0  0
+  4  8  12  16  0  0
+]]></screen>
+            </td>
+            <td></td>
+            <td>
+            <screen><![CDATA[
+--> tril(a, 2)
+ ans  =
+  1  5   9   0   0   0
+  2  6  10  14   0   0
+  3  7  11  15  19   0
+  4  8  12  16  20  24
+
+--> tril(a, -1)
+ ans  =
+  0  0   0  0  0  0
+  2  0   0  0  0  0
+  3  7   0  0  0  0
+  4  8  12  0  0  0
+]]></screen>
+            </td>
+        </tr>
+        </table>
+        <para>
+            For matrices of any regular data type:
+        </para>
+        <programlisting role="example"><![CDATA[
+a = ones(4,5, "boolean")        // booleans
+tril(a, -1)
+
+a = string(matrix(1:16,4,4))    // strings
+tril(a)
+
+a = %z^matrix(1:16,4,4)         // polynomials
+tril(a)
+
+a = 1./%z^matrix(1:10,2,5)      // rationals
+tril(a, 1)
+     ]]></programlisting>
+        <screen><![CDATA[
+--> a = ones(4,5, "boolean")        // booleans
+ a  =
+  T T T T T
+  T T T T T
+  T T T T T
+  T T T T T
+
+--> tril(a, -1)
+ ans  =
+  F F F F F
+  T F F F F
+  T T F F F
+  T T T F F
+
+--> a = string(matrix(1:16,4,4))    // strings
+ a  =
+  "1"  "5"  "9"   "13"
+  "2"  "6"  "10"  "14"
+  "3"  "7"  "11"  "15"
+  "4"  "8"  "12"  "16"
+
+--> tril(a)
+ ans  =
+  "1"  ""   ""    ""
+  "2"  "6"  ""    ""
+  "3"  "7"  "11"  ""
+  "4"  "8"  "12"  "16"
+
+--> a = %z^matrix(1:16,4,4)         // polynomials
+ a  =
+  z   z⁵  z⁹   z¹³
+  z²  z⁶  z¹⁰  z¹⁴
+  z³  z⁷  z¹¹  z¹⁵
+  z⁴  z⁸  z¹²  z¹⁶
+
+--> tril(a)
+ ans  =
+  z   0   0    0
+  z²  z⁶  0    0
+  z³  z⁷  z¹¹  0
+  z⁴  z⁸  z¹²  z¹⁶
+
+--> a = 1./%z^matrix(1:10,2,5)      // rationals
+ a  =
+   1   1   1   1   1
+   -   --  --  --  --
+   z   z³  z⁵  z⁷  z⁹
+   1   1   1   1    1
+   --  --  --  --  ---
+   z²  z⁴  z⁶  z⁸  z¹⁰
+
+--> tril(a, 1)
+ ans  =
+   1   1   0   0  0
+   -   --  -   -  -
+   z   z³  1   1  1
+   1   1   1   0  0
+   --  --  --  -  -
+   z²  z⁴  z⁶  1  1
+]]></screen>
     </refsection>
-
     <refsection role="see also">
-
         <title>参照</title>
-
         <simplelist type="inline">
-
             <member>
-
                 <link linkend="triu">triu</link>
-
             </member>
-
             <member>
-
-                <link linkend="ones">ones</link>
-
-            </member>
-
-            <member>
-
-                <link linkend="eye">eye</link>
-
-            </member>
-
-            <member>
-
                 <link linkend="diag">diag</link>
-
             </member>
-
+            <member>
+                <link linkend="eye">eye</link>
+            </member>
+            <member>
+                <link linkend="ones">ones</link>
+            </member>
         </simplelist>
-
     </refsection>
-
 </refentry>
-

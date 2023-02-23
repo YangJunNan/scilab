@@ -2,8 +2,8 @@
 <!--
  * Scilab ( https://www.scilab.org/ ) - This file is part of Scilab
  * Copyright (C) 2008 - INRIA
- *
  * Copyright (C) 2012 - 2016 - Scilab Enterprises
+ * Copyright (C) 2022 - Samuel GOUGEON
  *
  * This file is hereby licensed under the terms of the GNU GPL v2.0,
  * pursuant to article 5.3.4 of the CeCILL v.2.1.
@@ -13,22 +13,240 @@
  * along with this program.
  *
  -->
-<refentry xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svg="http://www.w3.org/2000/svg" xmlns:ns5="http://www.w3.org/1999/xhtml" xmlns:mml="http://www.w3.org/1998/Math/MathML" xmlns:db="http://docbook.org/ns/docbook" xmlns:scilab="http://www.scilab.org" xml:id="triu" xml:lang="pt">
+<refentry xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:svg="http://www.w3.org/2000/svg" xmlns:ns5="http://www.w3.org/1999/xhtml"
+          xmlns:mml="http://www.w3.org/1998/Math/MathML" xmlns:db="http://docbook.org/ns/docbook"
+          xmlns:scilab="http://www.scilab.org" xml:id="triu" xml:lang="pt">
     <refnamediv>
         <refname>triu</refname>
         <refpurpose>triângulo superior da matriz</refpurpose>
     </refnamediv>
+    <refsynopsisdiv>
+        <title>Seqüência de Chamamento</title>
+        <synopsis>
+            u = triu(x)
+            u = triu(x, k)
+        </synopsis>
+    </refsynopsisdiv>
+    <refsection>
+        <title>Parâmetros</title>
+        <variablelist>
+            <varlistentry>
+                <term>x</term>
+                <listitem>
+                    matriz de booleanos, números, polinômios, frações racionais, ou strings.
+                    <para/>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term>k</term>
+                <listitem>
+                    inteiro : índice de referência abaixo da qual todos os elementos
+                    são definidos como 0, %f, ou "".
+                    Valor por omissão = 0, em pé para a diagonal principal. As diagonais estão
+                    numeradas com k > 0 acima da principal, e com k &lt; 0 abaixo dele.
+                    <para/>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term>u</term>
+                <listitem>
+                    matriz do tipo e tamanho de <varname>x</varname>.
+                    <para/>
+                </listitem>
+            </varlistentry>
+        </variablelist>
+    </refsection>
     <refsection>
         <title>Descrição</title>
-        <para>Triângulo superior da matriz. Ver tril.</para>
+        <para>triu(x)
+            <emphasis role="bold">triu(x)</emphasis> define como %f, 0 ou "" todos os elementos de
+            <varname>x</varname> que estão abaixo da diagonal principal, e dá a matriz correspondente.
+        </para>
+        <para>
+            <emphasis role="bold">triu(x, k)</emphasis> faz a mesma coisa com relação à diagonal
+            number <varname>k</varname> acima da diagonal principal.
+        </para>
     </refsection>
     <refsection>
         <title>Exemplos</title>
+        <para>
+            Com matrizes quadradas :
+        </para>
         <programlisting role="example"><![CDATA[
-s=poly(0,'s');
-triu([s,s;s,1])
-triu([1/s,1/s;1/s,1])
- ]]></programlisting>
+a = matrix(1:16,4,4)
+triu(a)
+
+triu(a, 1)
+triu(a, -1)
+     ]]></programlisting>
+        <table border="0">
+        <tr>
+            <td>
+            <screen><![CDATA[
+--> a = matrix(1:16,4,4)
+ a  =
+   1.   5.   9.    13.
+   2.   6.   10.   14.
+   3.   7.   11.   15.
+   4.   8.   12.   16.
+
+--> triu(a)
+ ans  =
+   1.   5.   9.    13.
+   0.   6.   10.   14.
+   0.   0.   11.   15.
+   0.   0.   0.    16.
+]]></screen>
+            </td>
+            <td></td>
+            <td>
+            <screen><![CDATA[
+--> triu(a, 1)
+ ans  =
+   0.   5.   9.    13.
+   0.   0.   10.   14.
+   0.   0.   0.    15.
+   0.   0.   0.    0.
+
+--> triu(a, -1)
+ ans  =
+   1.   5.   9.    13.
+   2.   6.   10.   14.
+   0.   7.   11.   15.
+   0.   0.   12.   16.
+]]></screen>
+            </td>
+        </tr>
+        </table>
+        <para>
+            Com matrizes não quadradas :
+        </para>
+        <programlisting role="example"><![CDATA[
+a = int8(matrix(1:24,4,6))
+triu(a)
+
+triu(a, 2)
+triu(a, -1)
+     ]]></programlisting>
+        <table border="0">
+        <tr>
+            <td>
+            <screen><![CDATA[
+--> a = int8(matrix(1:24,4,6))
+ a  =
+  1  5   9  13  17  21
+  2  6  10  14  18  22
+  3  7  11  15  19  23
+  4  8  12  16  20  24
+
+--> triu(a)
+ ans  =
+  1  5   9  13  17  21
+  0  6  10  14  18  22
+  0  0  11  15  19  23
+  0  0   0  16  20  24
+]]></screen>
+            </td>
+            <td></td>
+            <td>
+            <screen><![CDATA[
+--> triu(a, 2)
+ ans  =
+  0  0  9  13  17  21
+  0  0  0  14  18  22
+  0  0  0   0  19  23
+  0  0  0   0   0  24
+
+--> triu(a, -1)
+ ans  =
+  1  5   9  13  17  21
+  2  6  10  14  18  22
+  0  7  11  15  19  23
+  0  0  12  16  20  24
+]]></screen>
+            </td>
+        </tr>
+        </table>
+        <para>
+            Para matrizes de qualquer tipo regular de dados :
+        </para>
+        <programlisting role="example"><![CDATA[
+a = ones(4,5, "boolean")        // booleanos
+triu(a, 1)
+
+a = string(matrix(1:16,4,4))    // strings
+triu(a)
+
+a = %z^matrix(1:16,4,4)         // polinômios
+triu(a)
+
+a = 1./%z^matrix(1:10,2,5)      // frações racionais
+triu(a, 2)
+     ]]></programlisting>
+        <screen><![CDATA[
+--> a = ones(4,5, "boolean")        // booleanos
+ a  =
+  T T T T T
+  T T T T T
+  T T T T T
+  T T T T T
+
+--> triu(a, 1)
+ ans  =
+  F T T T T
+  F F T T T
+  F F F T T
+  F F F F T
+
+--> a = string(matrix(1:16,4,4))    // strings
+ a  =
+  "1"  "5"  "9"   "13"
+  "2"  "6"  "10"  "14"
+  "3"  "7"  "11"  "15"
+  "4"  "8"  "12"  "16"
+
+--> triu(a)
+ ans  =
+  "1"  "5"  "9"   "13"
+  ""   "6"  "10"  "14"
+  ""   ""   "11"  "15"
+  ""   ""   ""    "16"
+
+--> a = %z^matrix(1:16,4,4)         // polinômios
+ a  =
+  z   z⁵  z⁹   z¹³
+  z²  z⁶  z¹⁰  z¹⁴
+  z³  z⁷  z¹¹  z¹⁵
+  z⁴  z⁸  z¹²  z¹⁶
+
+--> triu(a)
+ ans  =
+  z  z⁵  z⁹   z¹³
+  0  z⁶  z¹⁰  z¹⁴
+  0  0   z¹¹  z¹⁵
+  0  0   0    z¹⁶
+
+--> a = 1./%z^matrix(1:10,2,5)      // frações racionais
+ a  =
+   1   1   1   1   1
+   -   --  --  --  --
+   z   z³  z⁵  z⁷  z⁹
+
+   1   1   1   1    1
+   --  --  --  --  ---
+   z²  z⁴  z⁶  z⁸  z¹⁰
+
+--> triu(a, 2)
+ ans  =
+   0  0  1   1   1
+   -  -  --  --  --
+   1  1  z⁵  z⁷  z⁹
+
+   0  0  0   1    1
+   -  -  -   --  ---
+   1  1  1   z⁸  z¹⁰
+]]></screen>
     </refsection>
     <refsection role="see also">
         <title>Ver Também</title>
@@ -37,13 +255,13 @@ triu([1/s,1/s;1/s,1])
                 <link linkend="tril">tril</link>
             </member>
             <member>
-                <link linkend="ones">ones</link>
+                <link linkend="diag">diag</link>
             </member>
             <member>
                 <link linkend="eye">eye</link>
             </member>
             <member>
-                <link linkend="diag">diag</link>
+                <link linkend="ones">ones</link>
             </member>
         </simplelist>
     </refsection>
