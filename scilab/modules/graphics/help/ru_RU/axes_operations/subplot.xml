@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
- * Scilab ( https://www.scilab.org/ ) - This file is part of Scilab
+ * Scilab ( http://www.scilab.org/ ) - This file is part of Scilab
  * Copyright (C) INRIA
  * Copyright (C) 2012 - 2016 - Scilab Enterprises
  * Copyright (C) 2019 - Samuel GOUGEON
@@ -20,7 +20,8 @@
     <refnamediv>
         <refname>subplot</refname>
         <refpurpose>
-            устанавливает текущие оси для выбора ячейки текущей разграфлённой фигуры
+            устанавливает текущие оси в выбранную ячейку текущего показателя или рамки
+            с привязкой к сетке
         </refpurpose>
     </refnamediv>
     <refsynopsisdiv>
@@ -36,7 +37,10 @@
             <varlistentry>
                 <term>m, n, p</term>
                 <listitem>
-                    <para>положительные целые числа</para>
+                    <para>
+                        целые числа > 0. (m,n) = числа строк и столбцов виртуальной сетки.
+                        р = индекс целевой ячейки.
+                    </para>
                 </listitem>
             </varlistentry>
             <varlistentry>
@@ -52,8 +56,9 @@
     <refsection>
         <title>Описание</title>
         <para>
-            <literal>subplot(m,n,p)</literal> или <literal>subplot(mnp)</literal> виртуально
-            разделяет графическое окно на матрицу подокон размером m-на-n, и выбирает
+            <emphasis role="bold">subplot(m,n,p)</emphasis> или
+            <emphasis role="bold">subplot(mnp)</emphasis> виртуально разделяет графическое
+            окно или uicontrol(frame) на матрицу подокон размером m-на-n, и выбирает
             <varname>p</varname>-тое подокно для получения следующего графика.
         </para>
         <para>
@@ -99,7 +104,8 @@
         </scilab:image>
         <para/>
         <para>
-            <emphasis role="bold">Более сложная компоновка</emphasis>, но по-прежнему разграфлённая:
+            <emphasis role="bold">Более сложная компоновка</emphasis>, но по-прежнему
+            разграфлённая:
         </para>
         <programlisting role="example"><![CDATA[
             clf
@@ -121,18 +127,18 @@
             param3d()
             xtitle("","","","")
  ]]></programlisting>
-        <scilab:image localized="true">
+        <scilab:image>
             clf
             subplot(1,2,2)
             Matplot1()
-            xtitle("Примеры Matplot1()","","")
+            xtitle("Matplot1() example","","")
 
             subplot(2,2,1)
             histplot
             delete(findobj("type","Legend"))
 
             subplot(2,2,3)
-            title("Несколько меньшие графики:", "fontsize",3)
+            title("Smaller plots:", "fontsize",3)
 
             subplot(2,4,5)
             polarplot()
@@ -142,6 +148,71 @@
             xtitle("","","","")
             gcf().axes_size = [670 400];
         </scilab:image>
+        <para/>
+        <para>
+            <emphasis role="bold">Usage on uicontrol frames</emphasis> :
+        </para>
+        <programlisting role="example"><![CDATA[
+clf reset
+f = gcf();
+
+fr1 = uicontrol(f, "style", "frame",..
+        "units","normalized","position",[0.05 0.1 0.4 0.8]);
+set("current_entity", fr1)
+subplot(3,2,1)
+plot(1:10), title "Top left"
+subplot(3,2,2)
+plot(1:10), title "Top right"
+subplot(3,1,2)
+plot(1:10), title "plot #1"
+subplot(3,1,3)
+plot(1:10), title "plot #2"
+
+//
+fr2 = uicontrol(f, "style", "frame","units","normalized","position",[0.5 0.5 0.5 0.5]);
+set('current_entity', fr2)
+subplot(1,2,1)
+plot(1:10), title "Title #1"
+subplot(1,2,2)
+plot(1:10), title "Title #2"
+
+set("current_entity", f)
+subplot(2,2,4)
+plot2d()
+title "Back to the figure substrate"
+
+gcf().children.type
+gcf().children(2).children
+gcf().children(3).children
+ ]]></programlisting>
+        <screen>
+--> gcf().children.type
+ ans  =
+  "Axes"
+  "uicontrol"
+  "uicontrol"
+  "Axes"
+
+--> gcf().children(2).children
+ ans  =
+2 by 1 matrix of handles:
+=========================
+Axes
+Axes
+
+--> gcf().children(3).children
+ ans  =
+4 by 1 matrix of handles:
+=========================
+Axes
+Axes
+Axes
+Axes </screen>
+        <inlinemediaobject>
+            <imageobject>
+                <imagedata fileref="../../images/subplot_frame.png"/>
+            </imageobject>
+        </inlinemediaobject>
     </refsection>
     <refsection role="see also">
         <title>Смотрите также</title>
@@ -156,5 +227,16 @@
                 <link linkend="axes_properties">axes_properties</link>
             </member>
         </simplelist>
+    </refsection>
+    <refsection>
+        <title>История</title>
+        <revhistory>
+            <revision>
+                <revnumber>6.1.2</revnumber>
+                <revdescription>
+                    <literal>subplot(…)</literal> can be used on uicontrol frames.
+                </revdescription>
+            </revision>
+        </revhistory>
     </refsection>
 </refentry>

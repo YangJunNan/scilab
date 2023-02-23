@@ -19,7 +19,9 @@
           xml:lang="en" xml:id="subplot">
     <refnamediv>
         <refname>subplot</refname>
-        <refpurpose>sets the current axes to a chosen cell of the current gridded figure</refpurpose>
+        <refpurpose>
+            grids the current figure or frame, and sets the current axes to a chosen cell 
+        </refpurpose>
     </refnamediv>
     <refsynopsisdiv>
         <title>Syntax</title>
@@ -34,15 +36,16 @@
             <varlistentry>
                 <term>m, n, p</term>
                 <listitem>
-                    <para>positive integers</para>
+                    integers > 0. (m,n) = numbers of rows and columns of the virtual grid.
+                    p = index of the targeted cell.
+                    <para/>
                 </listitem>
             </varlistentry>
             <varlistentry>
                 <term>mnp</term>
                 <listitem>
-                    <para>
-                        an integer with decimal notation <literal>mnp</literal>
-                    </para>
+                    an integer with decimal notation <literal>mnp</literal>
+                    <para/>
                 </listitem>
             </varlistentry>
         </variablelist>
@@ -50,21 +53,22 @@
     <refsection>
         <title>Description</title>
         <para>
-            subplot(m,n,p) or subplot(mnp) virtually grids the graphics window into an m-by-n
-            matrix of sub-windows, and selects the p<superscript>th</superscript> sub-window
-            for receiving the forthcoming drawings.
+            <emphasis role="bold">subplot(m,n,p)</emphasis> or <emphasis role="bold">subplot(mnp)</emphasis>
+            virtually grids the current graphic window or uicontrol frame into a m-by-n
+            matrix of rectangular sub-areas (cells), and selects the p<superscript>th</superscript>
+            cell for receiving the forthcoming drawings.
         </para>
         <para>
             Into the grid, cells are indexed along each row, starting from the top row.
-            Hence, for instance the last cell of the first row is the p = n<superscript>th</superscript>
+            Hence, the last cell of the first row is the p = n<superscript>th</superscript>
             one. The cell on the row #i and the column #j has the index <literal>p=(i-1)*n+j</literal>.
         </para>
         <para>
-            When the selected area matches exactly an existing axes, <literal>subplot(…)</literal>
+            When the selected cell matches exactly an existing axes, <literal>subplot(…)</literal>
             just sets it as the current axes, and returns.
         </para>
         <para>
-            Otherwise, <literal>subplot(…)</literal> creates an empty axes covering the selected area,
+            Otherwise, <literal>subplot(…)</literal> creates an empty axes covering the selected cell,
             ready to receive forthcoming plotting contents.
         </para>
     </refsection>
@@ -139,6 +143,72 @@
             xtitle("","","","")
             gcf().axes_size = [670 400];
         </scilab:image>
+        <para/>
+        <para>
+            <emphasis role="bold">Usage on uicontrol frames</emphasis> :
+        </para>
+        <programlisting role="example"><![CDATA[
+clf reset
+f = gcf();
+
+fr1 = uicontrol(f, "style", "frame",..
+        "units","normalized","position",[0.05 0.1 0.4 0.8]);
+set("current_entity", fr1)
+subplot(3,2,1)
+plot(1:10), title "Top left"
+subplot(3,2,2)
+plot(1:10), title "Top right"
+subplot(3,1,2)
+plot(1:10), title "plot #1"
+subplot(3,1,3)
+plot(1:10), title "plot #2"
+
+//
+fr2 = uicontrol(f, "style", "frame","units","normalized","position",[0.5 0.5 0.5 0.5]);
+set('current_entity', fr2)
+subplot(1,2,1)
+plot(1:10), title "Title #1"
+subplot(1,2,2)
+plot(1:10), title "Title #2"
+
+set("current_entity", f)
+subplot(2,2,4)
+plot2d()
+title "Back to the figure substrate"
+
+gcf().children.type
+gcf().children(2).children
+gcf().children(3).children
+ ]]></programlisting>
+        <screen>
+--> gcf().children.type
+ ans  =
+  "Axes"
+  "uicontrol"
+  "uicontrol"
+  "Axes"
+
+--> gcf().children(2).children
+ ans  =
+2 by 1 matrix of handles:
+=========================
+Axes
+Axes
+
+--> gcf().children(3).children
+ ans  =
+4 by 1 matrix of handles:
+=========================
+Axes
+Axes
+Axes
+Axes
+</screen>
+        <inlinemediaobject>
+            <imageobject>
+                <imagedata fileref="../../images/subplot_frame.png"/>
+            </imageobject>
+        </inlinemediaobject>
     </refsection>
     <refsection role="see also">
         <title>See also</title>
@@ -153,5 +223,16 @@
                 <link linkend="axes_properties">axes_properties</link>
             </member>
         </simplelist>
+    </refsection>
+    <refsection>
+        <title>History</title>
+        <revhistory>
+            <revision>
+                <revnumber>6.1.2</revnumber>
+                <revdescription>
+                    <literal>subplot(…)</literal> can be used on uicontrol frames.
+                </revdescription>
+            </revision>
+        </revhistory>
     </refsection>
 </refentry>

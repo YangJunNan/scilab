@@ -20,7 +20,7 @@
     <refnamediv>
         <refname>subplot</refname>
         <refpurpose>
-            fixe le repère graphique actif dans une case choisie de la figure courante quadrillée
+            quadrille la figure ou frame courante et fixe le repère graphique actif sur la case choisie
         </refpurpose>
     </refnamediv>
     <refsynopsisdiv>
@@ -34,18 +34,18 @@
         <title>Paramètres</title>
         <variablelist>
             <varlistentry>
-                <term>m, n, p  </term>
+                <term>m, n, p</term>
                 <listitem>
-                    <para>entiers positifs
-                    </para>
+                    entiers > 0 : (m,n) = nombres de rangées et de colonnes du quadrillage
+                    virtuel. p = n° de la case ciblée.
+                    <para/>
                 </listitem>
             </varlistentry>
             <varlistentry>
-                <term>mnp  </term>
+                <term>mnp</term>
                 <listitem>
-                    <para>
-                        un entier avec <literal>mnp</literal> comme notation décimale
-                    </para>
+                    un entier avec <literal>mnp</literal> comme notation décimale.
+                    <para/>
                 </listitem>
             </varlistentry>
         </variablelist>
@@ -53,24 +53,23 @@
     <refsection>
         <title>Description</title>
         <para>
-            subplot(m,n,p) ou subplot(mnp) divise la fenêtre graphique courante
-            en une matrice m x n de sous fenêtres, et sélectionne la p-ième sous-fenêtre
-            comme zone de dessin active.  Le numéro de la sous-fenêtre
-            est compté ligne par ligne, c'est à dire que l'emplacement
-            (i,j) de la matrice porte le numéro (i-1)*n + j.
+            <emphasis role="bold">subplot(m,n,p)</emphasis> ou <emphasis role="bold">subplot(mnp)</emphasis>
+            quadrille la fenêtre graphique ou la zone <literal>uicontrol("style","frame")</literal>
+            courante en un damier virtuel de m × n cases, et sélectionne la p-ième case
+            comme zone de dessin active.
         </para>
         <para>
-            Dans la grille virtuelle de sous-fenêtres, les zones sont numérotées de la gauche vers
-            la droite, et de haut en bas. Ainsi, la dernière zone à droite sur la 1ère ligne a
-            le n° p = n. La zone située sur la ligne n°i colonne n°j est la n°
-            <literal>p=(i-1)*n+j</literal>.
+            Les cases du quadrillage sont numérotées par ordre croissant le long de chaque rangée,
+            puis selon les rangées suivantes vers le bas. Ainsi, la dernière case de la 1ère rangée
+            a le n° <literal>n</literal>. La case (i,j) sur la rangée n°i et la colonne n°j
+            a le numéro <literal>(i-1)*n+j</literal>.
         </para>
         <para>
             Lorsque la zone sélectionnée correspond exactement à celle d'un repère graphique existant,
             <literal>subplot(…)</literal> fixe celui-ci comme repère actif.
         </para>
         <para>
-            Sinon, <literal>subplot(…)</literal> crée un repère graphique vide couvrant la zone
+            Sinon, <literal>subplot(…)</literal> crée un repère graphique vide couvrant la case
             sélectionnée, prêt à recevoir les graphiques à venir.
         </para>
     </refsection>
@@ -145,6 +144,72 @@
             xtitle("","","","")
             gcf().axes_size = [670 400];
         </scilab:image>
+        <para/>
+        <para>
+            <emphasis role="bold">Utilisation sur des uicontrol frames</emphasis> :
+        </para>
+        <programlisting role="example"><![CDATA[
+clf reset
+f = gcf();
+
+fr1 = uicontrol(f, "style", "frame",..
+        "units","normalized","position",[0.05 0.1 0.4 0.8]);
+set("current_entity", fr1)
+subplot(3,2,1)
+plot(1:10), title "Top left"
+subplot(3,2,2)
+plot(1:10), title "Top right"
+subplot(3,1,2)
+plot(1:10), title "plot #1"
+subplot(3,1,3)
+plot(1:10), title "plot #2"
+
+//
+fr2 = uicontrol(f, "style", "frame","units","normalized","position",[0.5 0.5 0.5 0.5]);
+set('current_entity', fr2)
+subplot(1,2,1)
+plot(1:10), title "Title #1"
+subplot(1,2,2)
+plot(1:10), title "Title #2"
+
+set("current_entity", f)
+subplot(2,2,4)
+plot2d()
+title "Back to the figure substrate"
+
+gcf().children.type
+gcf().children(2).children
+gcf().children(3).children
+ ]]></programlisting>
+        <screen>
+--> gcf().children.type
+ ans  =
+  "Axes"
+  "uicontrol"
+  "uicontrol"
+  "Axes"
+
+--> gcf().children(2).children
+ ans  =
+2 by 1 matrix of handles:
+=========================
+Axes
+Axes
+
+--> gcf().children(3).children
+ ans  =
+4 by 1 matrix of handles:
+=========================
+Axes
+Axes
+Axes
+Axes
+</screen>
+        <inlinemediaobject>
+            <imageobject>
+                <imagedata fileref="../../images/subplot_frame.png"/>
+            </imageobject>
+        </inlinemediaobject>
     </refsection>
     <refsection role="see also">
         <title>Voir aussi</title>
@@ -162,5 +227,17 @@
                 <link linkend="plotframe">plotframe</link>
             </member>
         </simplelist>
+    </refsection>
+    <refsection>
+        <title>Historique</title>
+        <revhistory>
+            <revision>
+                <revnumber>6.1.2</revnumber>
+                <revdescription>
+                    <literal>subplot(…)</literal> peut être utilisé sur des composants uicontrol
+                    de style frame.
+                </revdescription>
+            </revision>
+        </revhistory>
     </refsection>
 </refentry>
