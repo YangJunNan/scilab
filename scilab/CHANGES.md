@@ -403,6 +403,7 @@ Bug Fixes
 * [#16864](https://gitlab.com/scilab/scilab/-/issues/16864): macr2tree(): after a=1:2, b=a(2) is pseudocoded as a funcall instead of as an extraction operation (Scilab 6.0 regression)
 * [#16865](https://bugzilla.scilab.org/16865): Vector extraction with single hypermatrix index yielded a vector.
 * [#16867](https://gitlab.com/scilab/scilab/-/issues/16867): macr2tree() encoded .' (transpose) as ' (conjugate transpose).
+* [#16879](https://gitlab.com/scilab/scilab/-/issues/16879): `members(N,H)` was very slow and crashed the computer for big N or/and H arrays of non-Double data.
 * [#16883](https://gitlab.com/scilab/scilab/-/issues/16883): After h=cat(3, [1 2], [3 4]), mprintf("%d %d\n", h); crashes Scilab (idem with msprintf()).
 * [#16887](https://gitlab.com/scilab/scilab/-/issues/16887): French localization for `tbx_build_loader()` messages fixed.
 * [#16893](https://gitlab.com/scilab/scilab/-/issues/16893): "exec" instruction crashes Scilab.
@@ -419,7 +420,6 @@ Bug Fixes
 * [#16923](https://gitlab.com/scilab/scilab/-/issues/16923): unable to use `http_get(..., follow=%t)` without a filename argument.
 * [#16920](https://gitlab.com/scilab/scilab/-/issues/16920): MatrixExp insertion in an empty matrix and using colon crashes Scilab.
 * [#16932](https://gitlab.com/scilab/scilab/-/issues/16932): toJSON() did not escape TABs properly.
-
 
 
 ### Bugs fixed in 6.1.1:
