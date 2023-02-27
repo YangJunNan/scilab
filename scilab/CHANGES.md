@@ -357,6 +357,7 @@ Bug Fixes
 * [#16653](https://gitlab.com/scilab/scilab/-/issues/16653): `fromJSON()` crashed with a non existing file.
 * [#16713](https://gitlab.com/scilab/scilab/-/issues/16713): Automatic stretching of Axes box in 3d view was not configurable.
 * [#16717](https://gitlab.com/scilab/scilab/-/issues/16717): An error occured in findobj when no objects existed.
+* [#16732](https://gitlab.com/scilab/scilab/-/issues/16732): `write()` page: typo, missing information about file overwriting and Fortran formats.
 * [#16734](https://gitlab.com/scilab/scilab/-/issues/16734): `findobj()` was slower than before.
 * [#16748](https://gitlab.com/scilab/scilab/-/issues/16748): Build failed with OCaml 4.11 or newer build without unsafe-strings
 * [#16786](https://gitlab.com/scilab/scilab/-/issues/16786): zoom_box property was not correctly saved.
