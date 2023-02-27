@@ -304,17 +304,19 @@ Obsolete functions or features
 Removed Functions
 -----------------
 
-* `getPreferencesValue` was obsolete and has been removed. Please use `xmlGetValues` instead.
-* `eval` was obsolete and has been removed. Please use `evstr` instead.
-* `hypermat` was obsolete and has been removed. Please use `matrix` instead.
-* `lstsize` was obsolete and has been removed. Please use `size` instead.
 * `denom` was obsolete and has been removed. Please use the `.den` rational field instead.
+* `eval` was obsolete and has been removed. Please use `evstr` instead.
+* `fac3d` was obsolete since Scilab 4 and has been removed. Please use `plot3d` instead.
+* `fac3d1` was obsolete since Scilab 4 and has been removed. Please use `plot3d1` instead.
+* `getPreferencesValue` was obsolete and has been removed. Please use `xmlGetValues` instead.
+* `hypermat` was obsolete and has been removed. Please use `matrix` instead.
+* `isequalbitwise` has been removed in Scilab 6.0.0. Please use `assert_checkequal` instead.
+* `lstsize` was obsolete and has been removed. Please use `size` instead.
 * `numer` was obsolete and has been removed. Please use the `.num` rational field instead.
 * `square` was obsolete and has been removed.
 * `strcmpi` was obsolete and has been removed. Please use `strcmp(,'i')` instead.
+* `with_tk` was obsolete and has been removed. Please use `with_module('tclsci')` instead.
 * `xgetech` was obsolete and has been removed. Please use `gca` instead.
-* `fac3d` was obsolete since Scilab 4 and has been removed. Please use `plot3d` instead.
-* `fac3d1` was obsolete since Scilab 4 and has been removed. Please use `plot3d1` instead.
 * `xinfo` was obsolete and has been removed. Please use `gcf().info_message` instead.
 * `with_tk` was obsolete and has been removed. Please use `with_module('tclsci')` instead.
 * `dirname` was obsolete and has been removed. Please use `fileparts` instead.
@@ -339,6 +341,7 @@ Bug Fixes
 * [#14216](https://gitlab.com/scilab/scilab/-/issues/14216): readxls can make Scilab crash without any error message.
 * [#14372](https://gitlab.com/scilab/scilab/-/issues/14372): after `L=list(1,"a",%t), a=L(2:3)` returned an error.
 * [#14451](https://gitlab.com/scilab/scilab/-/issues/14451): fsolve is no longer reentrant, causes crash.
+* [#14512](https://gitlab.com/scilab/scilab/-/issues/14512): `isequalbitwise()` was made internal in 6.0.0 but was still documented.
 * [#14691](https://gitlab.com/scilab/scilab/-/issues/14691): scilab crashes when code is halted then aborted.
 * [#14998](https://gitlab.com/scilab/scilab/-/issues/14998): `mscanf()` introduces a leading \n newline and the prompt before prompting the user for input
 * [#15071](https://gitlab.com/scilab/scilab/-/issues/15071): Extraction of mlist from another mlist debhaves differently in Scilab 6.

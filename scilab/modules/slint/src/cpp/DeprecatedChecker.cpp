@@ -157,15 +157,16 @@ std::unordered_map<std::wstring, std::wstring> DeprecatedChecker::initDep()
     map.emplace(L"derivative", L"numderivative");
     map.emplace(L"mvvacov", L"cov");
 
-    map.emplace(L"perl", L"");
-    map.emplace(L"lex_sort", L"gsort");
-    map.emplace(L"strcmpi", L"strcmp");
-    map.emplace(L"jconvMatrixMethod", L"jautoTranspose");
-    map.emplace(L"havewindow", L"getscilabmode");
-    map.emplace(L"xpause", L"sleep");
     map.emplace(L"curblockc", L"curblock");
     map.emplace(L"extract_help_examples", L"");
+    map.emplace(L"havewindow", L"getscilabmode");
+    map.emplace(L"isequalbitwise", L"[ans,msg]=assert_checkequal(a,b)");
+    map.emplace(L"jconvMatrixMethod", L"jautoTranspose");
+    map.emplace(L"lex_sort", L"gsort");
     map.emplace(L"mtlb_mode", L"oldEmptyBehaviour");
+    map.emplace(L"perl", L"");
+    map.emplace(L"strcmpi", L"strcmp");
+    map.emplace(L"xpause", L"sleep");
 
     map.emplace(L"addf", L"");
     map.emplace(L"subf", L"");
