@@ -37,7 +37,7 @@ begin
     ModulesXmlFileLines[i] := '<!-- =================== -->'; i := i + 1;
     ModulesXmlFileLines[i] := '<!--'; i := i + 1;
     ModulesXmlFileLines[i] := ' Modules list for Scilab'; i := i + 1;
-    ModulesXmlFileLines[i] := ' @author Scilab Enterprises'; i := i + 1;
+    ModulesXmlFileLines[i] := ' @author Dassault Systèmes'; i := i + 1;
     ModulesXmlFileLines[i] := ' @date 2013'; i := i + 1;
     ModulesXmlFileLines[i] := ' ==================='; i := i + 1;
     ModulesXmlFileLines[i] := ' Do not touch if you do not know what you are doing'; i := i + 1;

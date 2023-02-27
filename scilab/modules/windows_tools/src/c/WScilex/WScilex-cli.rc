@@ -73,7 +73,7 @@ BEGIN
     BEGIN
         BLOCK "040c04b0"
         BEGIN
-            VALUE "CompanyName", "Scilab Enterprises"
+            VALUE "CompanyName", "Dassault Systèmes"
             VALUE "FileDescription", "Scilab 6.1.2 (Advanced Console)"
             VALUE "FileVersion", "6, 1, 2, 0"
             VALUE "InternalName", "WScilex-cli"

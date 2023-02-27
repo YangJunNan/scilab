@@ -1,7 +1,7 @@
 // ============================================================================
 // Scilab ( https://www.scilab.org/ ) - This file is part of Scilab
 // Copyright (C) 2007-2008 - Bruno PINCON
-// Copyrigth (C) 2013 - Scilab Enterprises - Adeline CARNIS
+// Copyright (C) 2013 - Scilab Enterprises - Adeline CARNIS
 //
 //  This file is distributed under the same license as the Scilab package.
 // ============================================================================
