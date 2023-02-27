@@ -308,6 +308,11 @@ function result = atomsInstall(packages,section)
                 fileprefix = OSNAME;
             end
 
+            // fallback to build the source when the binary is not available
+            if ~isfield(this_package_details, fileprefix + "Name") then
+                fileprefix = "source";
+            end 
+
             fileout     = pathconvert(this_package_directory+this_package_details(fileprefix+"Name"),%F);
             filein      = this_package_details(fileprefix+"Url");
             filemd5     = this_package_details(fileprefix+"Md5");
@@ -316,7 +321,7 @@ function result = atomsInstall(packages,section)
             if isfile(filearchive) & getmd5(filearchive)==filemd5 then
                 // Check if the file has already been successfully downloaded
                 // =============================================================
-                if copyfile( filearchive , this_package_directory ) <> 1 then
+                if copyfile(filearchive, this_package_directory) <> 1 then
                     atomsError("error", ..
                     msprintf(gettext("%s: Error while copying the file ''%s'' to the directory ''%s''.\n"), ..
                     "atomsInstall", ..
@@ -337,6 +342,11 @@ function result = atomsInstall(packages,section)
 
         // Rename the created directory
         // =====================================================================
+
+        rename_path = fullpath(fullfile(this_package_details("extractedDirectory"), "..", this_package_version));
+        if isfile(rename_path) then
+            rmdir(rename_path, "s")
+        end
 
         if getos() == "Windows" then
             rename_cmd = "rename """+this_package_details("extractedDirectory")+""" """+this_package_version+"""";
@@ -364,6 +374,7 @@ function result = atomsInstall(packages,section)
             end
 
         end
+
 
         // Move the created directory
         // → Only under windows
@@ -394,6 +405,21 @@ function result = atomsInstall(packages,section)
 
         end
 
+        this_package_details("extractedDirectory") = rename_path;
+        if fileprefix == "source" then
+            //build toolbox
+            this_package_directory = fullpath(fullfile(this_package_details("extractedDirectory"), "..", this_package_version));
+            if atomsBuild(this_package_directory) <> %t then
+                //try to remove source folder
+                rmdir(this_package_details("extractedDirectory"), "s");
+                atomsError("error", ..
+                    msprintf(gettext("%s: Error while building the toolbox ''%s''.\n"),..
+                    "atomsInstall",..
+                    strsubst(this_package_details("extractedDirectory"),"\","\\") ));
+            end
+
+            //error("try from source");
+        end
         // Register the successfully installed package
         // =====================================================================
 

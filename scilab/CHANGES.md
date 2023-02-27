@@ -193,6 +193,7 @@ Feature changes and additions on 6.1.0
 * `circshift` is introduced.
 * `atomsGetInstalledPath` is no longer sensitive to the case or completeness of the names of the modules. Providing the version of the modules is now optional.
 * `function` replaces `mc` as the new overloading code for functions in Scilab language.
+* `atomsInstall` will build the source toolbox locally when the binary is not available.
 
 
 Feature changes and additions on 6.1.1
@@ -337,6 +338,7 @@ Bug Fixes
 * [#8353](https://gitlab.com/scilab/scilab/-/issues/8353): Just after launching scilab, `log10(3)` makes Scilab crash.
 * [#8734](https://gitlab.com/scilab/scilab/-/issues/8734): copyfile crash Scilab while playing with locales.
 * [#13360](https://gitlab.com/scilab/scilab/-/issues/13360): hilbert function make scilab crash.
+* [#13902](https://gitlab.com/scilab/scilab/-/issues/13902): `atomsSystemUpdate()` was slow.
 * [#14138](https://gitlab.com/scilab/scilab/-/issues/14138): reading some hdf5 file crashes scilab.
 * [#14216](https://gitlab.com/scilab/scilab/-/issues/14216): readxls can make Scilab crash without any error message.
 * [#14372](https://gitlab.com/scilab/scilab/-/issues/14372): after `L=list(1,"a",%t), a=L(2:3)` returned an error.

@@ -59,7 +59,12 @@
 
 
 function description_out = atomsDESCRIPTIONread(file_in,additional)
-
+    //internal tools
+    function c = mod(a, b)
+        c = a / b;
+        c = int((c - int(c)) * b);
+    endfunction
+    
     // Check input parameters
     // =========================================================================
 
@@ -123,13 +128,16 @@ function description_out = atomsDESCRIPTIONread(file_in,additional)
         // its processing will be very fast:
         winId = []
     end
+
+    range = floor(size(lines_in,"*") / 100);
     for i=1:(size(lines_in,"*")+1)
 
-        atomsUpdateProgressBar(winId, i / size(lines_in,"*"));
+        if winId <> [] && mod(i, range) == 0 then
+            atomsUpdateProgressBar(winId, i / size(lines_in,"*"));
+        end
 
         // First case : new field, or file all read
         if ((i == (size(lines_in,"*")+1)) | (regexp(lines_in(i),"/^[a-zA-Z0-9]*:\s/","o") == 1)) then
-
             // subcase of First case: new toolbox, or file all read: register the latest toolbox
             if ((i == (size(lines_in,"*")+1)) | (regexp(lines_in(i),"/^Toolbox:\s/","o") == 1)) then
 

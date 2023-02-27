@@ -280,7 +280,11 @@ function atomsDownload(url_in,file_out,md5sum)
             mprintf(gettext("\t - Local location : ''%s''\n"), file_out);
             
             atomsCloseProgressBar(winId);
-            error(strcat(err, ascii(10)));
+            if typeof(err) == "string" then
+                error(strcat(err, ascii(10)));
+            else
+                error("");
+            end
         end
 
     elseif regexp(url_in,"/^file:\/\//","o") == 1 then
@@ -323,7 +327,7 @@ function atomsDownload(url_in,file_out,md5sum)
 
     // Close progress bar handle, if not closed yet
     // =========================================================================
-    if (~isempty(winId))
+    if winId <> [] then
         atomsCloseProgressBar(winId);
     end
 endfunction

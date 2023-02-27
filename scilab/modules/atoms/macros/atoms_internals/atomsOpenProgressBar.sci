@@ -21,6 +21,6 @@ function winId = atomsOpenProgressBar(msg, withValue)
             winId = progressionbar(_("Atoms:")+" "+msg);
         end
     else
-        winId = -1
+        winId = []
     end
 endfunction
