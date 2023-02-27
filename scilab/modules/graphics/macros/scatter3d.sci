@@ -224,14 +224,14 @@ function varargout = scatter3d(varargin)
                     [cMin, cMax] = (min(v), max(v));
                     cmap = gcf().color_map;
                     numColors = size(cmap,1);
-                    if ((cMax-cMin)/(cMin+cMax) > %eps) then
+                    if ((cMax-cMin)/abs(cMin+cMax) > %eps) then
                         mcolors = round((numColors-1)*(v - cMin)/(cMax - cMin)) + 1;
                     else
                         mcolors = cMin;
                     end
-                   [step, iarg] = (3, iarg+1)
-                   varargin(1) = null()
-                   continue
+                    [step, iarg] = (3, iarg+1)
+                    varargin(1) = null()
+                    continue
                 end
            end
            c = iscolor(v)

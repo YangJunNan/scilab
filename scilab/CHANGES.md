@@ -397,6 +397,7 @@ Bug Fixes
 * [#16823](https://gitlab.com/scilab/scilab/-/issues/16823): `[m2sci]Mtbxfun_db.txt` was missing the Scilab releases.
 * [#16841](https://bugzilla.scilab.org/16841): Zoom on multiaxes could desynchronize axes.
 * [#16845](https://gitlab.com/scilab/scilab/-/issues/16845): Replot button or `replot(gcf())` failed for legends.
+* [#16848](https://gitlab.com/scilab/scilab/-/issues/16848): For negative mcolors, `scatter()` and `scatter3d()` did not map correctly the colormap.
 * [#16849](https://bugzilla.scilab.org/16849): toJSON("\\") must return "\\\\" instead of "\\\".
 * [#16861](https://gitlab.com/scilab/scilab/-/issues/16861): `repmat()` was broken for any input sparse matrix.
 * [#16864](https://gitlab.com/scilab/scilab/-/issues/16864): macr2tree(): after a=1:2, b=a(2) is pseudocoded as a funcall instead of as an extraction operation (Scilab 6.0 regression)
