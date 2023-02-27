@@ -408,6 +408,7 @@ Bug Fixes
 * [#16919](https://gitlab.com/scilab/scilab/-/issues/16919): MList overload extraction compatibility with scilab 5.5.2
 * [#16923](https://gitlab.com/scilab/scilab/-/issues/16923): unable to use `http_get(..., follow=%t)` without a filename argument.
 * [#16920](https://gitlab.com/scilab/scilab/-/issues/16920): MatrixExp insertion in an empty matrix and using colon crashes Scilab.
+* [#16932](https://gitlab.com/scilab/scilab/-/issues/16932): toJSON() did not escape TABs properly.
 
 
 

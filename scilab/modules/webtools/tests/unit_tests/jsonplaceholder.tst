@@ -6,6 +6,7 @@
 // =============================================================================
 
 // <-- CLI SHELL MODE -->
+// <-- NO CHECK REF -->
 
 // This test use JSONPlaceholder as a simple fake REST API for testing and prototyping.
 // https://github.com/typicode/jsonplaceholder
@@ -16,7 +17,10 @@ root = "https://jsonplaceholder.typicode.com";
 exp_result.userId = 1;
 exp_result.id = 1;
 exp_result.title = "sunt aut facere repellat provident occaecati excepturi optio reprehenderit";
-exp_result.body = "quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architecto";
+exp_result.body = strcat(["quia et suscipit"
+                          "suscipit recusandae consequuntur expedita et cum"
+                          "reprehenderit molestiae ut ut quas totam"
+                          "nostrum rerum est autem sunt rem eveniet architecto"], ascii(10));
 assert_checkequal(http_get(root + "/posts/1", cert="none"), exp_result);
 
 res = http_get(root + "/posts", cert="none");
@@ -53,7 +57,10 @@ data.title = "New title";
 exp_result.userId = 1;
 exp_result.id = 1;
 exp_result.title = "New title";
-exp_result.body = "quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architecto";
+exp_result.body = strcat(["quia et suscipit"
+                          "suscipit recusandae consequuntur expedita et cum"
+                          "reprehenderit molestiae ut ut quas totam"
+                          "nostrum rerum est autem sunt rem eveniet architecto"], ascii(10));
 assert_checkequal(http_patch(root+"/posts/1", data, cert="none"), exp_result);
 
 // HTTP DELETE
