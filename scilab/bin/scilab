@@ -321,38 +321,6 @@ detect_macos_vm() {
     echo $(/usr/libexec/java_home -v 1.8 -X | xmllint --format  --xpath "(//string[preceding-sibling::key[text()='JVMHomePath']][1][preceding-sibling::string[text()='$ARCH']])[1]/text()" -)
 }
 
-set_macosx_java_vm () {
-    # For Mac OS X we have to detect the CPU
-    export ARCH=x86_64
-    if test -z "$JAVA_HOME"; then
-        JAVA_HOME=$(detect_macos_vm)
-        if test -z "$JAVA_HOME"; then
-            open -W jre/Scilab\ JRE\ Install.app
-            JAVA_HOME=$(detect_macos_vm)
-            if test -z "$JAVA_HOME"; then
-                exit 1
-            fi
-        fi
-    fi
-    # Add JNI capability, typically needed for Oracle JDK
-    PLIST=$JAVA_HOME/../Info.plist
-    if [[ $(plutil -extract JavaVM json -o - $PLIST) == *"JVMCapabilities"* && $(plutil -extract JavaVM.JVMCapabilities json -o - $PLIST) != *"JNI"* ]]; then
-        PROMPT="A Java Runtime Edition has been found at $JAVA_HOME and needs to be allowed to run Scilab (once for all)"
-        osascript -e "do shell script \"plutil -insert JavaVM.JVMCapabilities.0 -string JNI $PLIST\" with prompt \"$PROMPT \" with administrator privileges"
-        if test $? -eq 1; then
-            exit 1
-        fi
-    fi
-    JAVA_JVM_VERSION=$JAVA_HOME
-    export JAVA_JVM_VERSION
-    DYLD_LIBRARY_PATH=$JAVA_HOME/lib/server:$JAVA_HOME/jre/lib/server:$DYLD_LIBRARY_PATH
-    # All working JRE/JDK under BigSur/arm64 need this to find libjava.dylib
-    if test $ARCH == arm64; then
-        DYLD_LIBRARY_PATH=$JAVA_HOME/lib/:$JAVA_HOME/jre/lib/:$DYLD_LIBRARY_PATH
-    fi
-
-}
-
 set_embedded_java_vm () {
 
        # Scilab binary => no Java detection since we are using the embeded JRE
@@ -372,6 +340,23 @@ set_embedded_java_vm () {
                         echo "Could not find the Java configuration for the model <${MODEL}>. Please contact us on https://gitlab.com/scilab/scilab/-/issues"
                         ;;
                 esac
+                ;;
+            Darwin)
+                export ARCH=$(uname -m)
+                # If Scilab does not have an embedded jre we try to detect a system installed one
+                # if not found we prompt the user for installation
+                if test ! -f $SCIBINARYBASE/thirdparty/jre/lib/libjli.dylib; then
+                    JAVA_HOME=$(detect_macos_vm)
+                    if test -z "$JAVA_HOME"; then
+                        open -W "jre/Scilab JRE Install.app"
+                        JAVA_HOME=$(detect_macos_vm)
+                        if test -z "$JAVA_HOME"; then
+                            exit 1
+                        fi
+                    fi
+                    # Add detected jre path to libjli.dylib
+                    DYLD_LIBRARY_PATH="$(dirname $(find $JAVA_HOME  -name libjli.dylib))"
+                fi
                 ;;
             *)
             echo "Could not find the Java configuration for the OS <${OS}>. Please contact us or submit a bug report with your detailed configuration https://gitlab.com/scilab/scilab/-/issues"
@@ -424,9 +409,7 @@ detect_java_vm() {
 
     JAVA_SHLIB="libjava.so"
 
-    if test $OS = "Darwin"; then
-        set_macosx_java_vm
-    elif test $IS_SCILAB_BINARY -eq 1; then
+    if test $IS_SCILAB_BINARY -eq 1; then
         set_embedded_java_vm
     else  # NOT IS_SCILAB_BINARY
 
@@ -624,6 +607,9 @@ detect_java_vm() {
                 *FreeBSD*)
                     proc=$MODEL
                     ;;
+                Darwin)
+                    proc=$MODEL
+                    ;;
                 *)
                     echo "Could not find the Java configuration for the OS <${OS}>. Please contact us or submit a bug report with your detailed configuration https://gitlab.com/scilab/scilab/-/issues"
                     echo "Fallback on the model <${MODEL}> found by uname -m"
@@ -692,10 +678,8 @@ if test $IS_SCILAB_BINARY -eq 1; then
 
     case $OS in
         *darwin* | *Darwin*)
-            DYLD_LIBRARY_PATH=$SCIBINARYBASE/lib/scilab:$SCIBINARYBASE/lib/thirdparty${DYLD_LIBRARY_PATH+:$DYLD_LIBRARY_PATH}
-            export DYLD_LIBRARY_PATH
-            PATH="/sw/bin:/sw64/bin:$PATH"
-            export PATH
+            DYLD_FALLBACK_LIBRARY_PATH=$SCIBINARYBASE/lib/thirdparty
+            export DYLD_FALLBACK_LIBRARY_PATH
             ;;
     esac
 
@@ -774,14 +758,14 @@ dialog_try_or_exit()
 
 fail_macosx_version()
 {
-    dialog_try_or_exit "This version of Scilab may fail on this system ($macosxVersion): Scilab is currently supported from 10.13 (High Sierra) to 13 (Ventura)."
+    dialog_try_or_exit "This version of Scilab may fail on this system ($macosxVersion): Scilab is currently supported from 10.9 (Mavericks) to 13 (Ventura)."
 }
 check_macosx_version()
 {
     case $macosxMajorVersion in
         10)
             case $macosxMinorVersion in
-                13|14|15)
+                9|10|11|12|13|14|15)
                    ;;
                 *)
                     fail_macosx_version

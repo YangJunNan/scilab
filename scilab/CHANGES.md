@@ -59,6 +59,8 @@ Compilation
 
 * Migration to Microsoft Visual Studio 2017 and Intel® oneAPI HPC Toolkit 2022.
 
+* macOS detect and use an installed JDK at build-time and run-time.
+
 
 Dependencies
 ------------
