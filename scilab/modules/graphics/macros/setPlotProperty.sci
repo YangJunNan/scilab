@@ -171,10 +171,9 @@ function [fail]=setPlotProperty(PropertyName,PropertyValue,Curves,current_figure
         /////////////////////////
 
         markmodeON = find(Curves.mark_mode=="on");
-        tmp = "/^"+PropertyValue+"/"
         if type(PropertyValue)==10 & size(PropertyValue,"*")==1 & ..
-                                        grep(["none" "auto"], tmp, "r") <> []
-            if grep("none", tmp, "r") <> []
+                                     grep(["none" "auto"], "/^"+PropertyValue+"/", "r") <> []
+            if grep("none", "/^"+PropertyValue+"/", "r") <> []
                 if markmodeON <> []
                     Curves(markmodeON).mark_foreground = gca().background;
                 end
@@ -205,9 +204,8 @@ function [fail]=setPlotProperty(PropertyName,PropertyValue,Curves,current_figure
         /////////////////////////
 
         markmodeON = find(Curves.mark_mode=="on");
-        tmp = "/^"+PropertyValue+"/"
         if type(PropertyValue)==10 & size(PropertyValue,"*")==1 & ..
-                                        grep(["none" "auto"], tmp, "r") <> []
+                                     grep(["none" "auto"], "/^"+PropertyValue+"/", "r") <> []
             if markmodeON <> []
                 Curves(markmodeON).mark_background = gca().background;
             end
