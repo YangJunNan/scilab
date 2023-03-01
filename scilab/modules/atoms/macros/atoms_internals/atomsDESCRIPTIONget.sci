@@ -109,10 +109,11 @@ function [packages,categories_flat,categories] = atomsDESCRIPTIONget(update)
             %_atoms_cache(3) = categories_flat;
 
         else
-            global %_atoms_cache; // /!\ Do not rename this variable. Name is tracked/ignored by Variable Browser
-            
             st = fromJSON(packages_path, "file");
-            %_atoms_cache = list(st.packages, st.categories, st.categories_flat);
+            // Initialize output variables
+            packages = st.packages;
+            categories = st.categories;
+            categories_flat = st.categories_flat;
         end
 
         return
@@ -299,7 +300,11 @@ function [packages,categories_flat,categories] = atomsDESCRIPTIONget(update)
         global %_atoms_cache; // /!\ Do not rename this variable. Name is tracked/ignored by Variable Browser
         if isempty(%_atoms_cache) then
             st = fromJSON(packages_path, "file");
-            %_atoms_cache = list(st.packages, st.categories, st.categories_flat);
+            // Initialize output variables
+            packages = st.packages;
+            categories = st.categories;
+            categories_flat = st.categories_flat;
+            %_atoms_cache = list(packages, categories, categories_flat);
         else
             packages = %_atoms_cache(1);
             categories = %_atoms_cache(2);
