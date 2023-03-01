@@ -660,7 +660,8 @@ ac_includes_default="\
 
 ac_header_c_list=
 gt_needs=
-ac_subst_vars='am__EXEEXT_FALSE
+ac_subst_vars='INKSCAPE
+am__EXEEXT_FALSE
 am__EXEEXT_TRUE
 LTLIBOBJS
 SCI_LDFLAGS
@@ -3839,9 +3840,10 @@ else
     DEVTOOLS_LIBDIR=
 fi
 
-SCILAB_VERSION_MAJOR=6
-SCILAB_VERSION_MINOR=1
-SCILAB_VERSION_MAINTENANCE=2
+# Change version here, other files will be updated at the end of configure
+SCILAB_VERSION_MAJOR=2023
+SCILAB_VERSION_MINOR=0
+SCILAB_VERSION_MAINTENANCE=0
 
 
 
@@ -10738,10 +10740,10 @@ if test "x${prefix}" = "xNONE"; then
 fi
 
 ###############################
-## get the version
+## get the version commited
 ###############################
 
-SCIVERSION=`cat $SCI_SRCDIR/Version.incl | sed -e "s/SCIVERSION=//" `
+SCIVERSION=$(sed -e "s/SCIVERSION=//" $SCI_SRCDIR/Version.incl)
 
 #############################################
 ## Compilers and options according to machine
@@ -13619,7 +13621,7 @@ printf "%s\n" "$ac_java_classpath" >&6; }
 printf %s "checking to see if the java compiler works... " >&6; }
 
     cat << \EOF > conftest.java
-// #line 13622 "configure"
+// #line 13624 "configure"
 import java.util.regex.Pattern;
 
 
@@ -13706,7 +13708,7 @@ printf %s "checking type of jvm... " >&6; }
     if test "x$ac_java_jvm_name" = "x" ; then
 
     cat << \EOF > conftest.java
-// #line 13709 "configure"
+// #line 13711 "configure"
 import java.util.regex.Pattern;
 
 import gnu.java.io.EncodingManager;
@@ -13790,7 +13792,7 @@ printf %s "checking java API version... " >&6; }
     # The class java.nio.charset.Charset is new to 1.4
 
     cat << \EOF > conftest.java
-// #line 13793 "configure"
+// #line 13795 "configure"
 import java.util.regex.Pattern;
 
 import java.nio.charset.Charset;
@@ -13855,7 +13857,7 @@ EOF
     # The class java.lang.StringBuilder is new to 1.5
 
     cat << \EOF > conftest.java
-// #line 13858 "configure"
+// #line 13860 "configure"
 import java.util.regex.Pattern;
 
 import java.lang.StringBuilder;
@@ -13920,7 +13922,7 @@ EOF
     # The class java.util.ArrayDeque is new to 1.6
 
     cat << \EOF > conftest.java
-// #line 13923 "configure"
+// #line 13925 "configure"
 import java.util.regex.Pattern;
 
 import java.util.ArrayDeque;
@@ -13985,7 +13987,7 @@ EOF
     # The class java.nio.file.Path is new to 1.7
 
     cat << \EOF > conftest.java
-// #line 13988 "configure"
+// #line 13990 "configure"
 import java.util.regex.Pattern;
 
 import java.nio.file.Path;
@@ -14050,7 +14052,7 @@ EOF
     # The class java.util.stream.DoubleStream is new to 1.8
 
     cat << \EOF > conftest.java
-// #line 14053 "configure"
+// #line 14055 "configure"
 import java.util.regex.Pattern;
 
 import java.util.stream.DoubleStream;
@@ -14115,7 +14117,7 @@ EOF
     # The class java.lang.ProcessHandle is new to 1.9
 
     cat << \EOF > conftest.java
-// #line 14118 "configure"
+// #line 14120 "configure"
 import java.util.regex.Pattern;
 
 import java.lang.ProcessHandle;
@@ -15602,7 +15604,7 @@ fi
                    # jgraphx
 
     cat << \EOF > conftestSharedChecker.java
-// #line 15605 "configure"
+// #line 15607 "configure"
 import java.util.regex.Pattern;
 import java.io.File;
 import java.io.IOException;
@@ -15803,7 +15805,7 @@ printf %s "checking jgraphx... " >&6; }
     if test ! -f conftestSharedChecker.class ; then
 
     cat << \EOF > conftestSharedChecker.java
-// #line 15806 "configure"
+// #line 15808 "configure"
 import java.util.regex.Pattern;
 import java.io.File;
 import java.io.IOException;
@@ -16039,7 +16041,7 @@ printf %s "checking scirenderer... " >&6; }
     if test ! -f conftestSharedChecker.class ; then
 
     cat << \EOF > conftestSharedChecker.java
-// #line 16042 "configure"
+// #line 16044 "configure"
 import java.util.regex.Pattern;
 import java.io.File;
 import java.io.IOException;
@@ -16281,7 +16283,7 @@ printf %s "checking flexdock... " >&6; }
     if test ! -f conftestSharedChecker.class ; then
 
     cat << \EOF > conftestSharedChecker.java
-// #line 16284 "configure"
+// #line 16286 "configure"
 import java.util.regex.Pattern;
 import java.io.File;
 import java.io.IOException;
@@ -16515,7 +16517,7 @@ printf %s "checking looks... " >&6; }
     if test ! -f conftestSharedChecker.class ; then
 
     cat << \EOF > conftestSharedChecker.java
-// #line 16518 "configure"
+// #line 16520 "configure"
 import java.util.regex.Pattern;
 import java.io.File;
 import java.io.IOException;
@@ -16749,7 +16751,7 @@ printf %s "checking jgoodies-looks... " >&6; }
     if test ! -f conftestSharedChecker.class ; then
 
     cat << \EOF > conftestSharedChecker.java
-// #line 16752 "configure"
+// #line 16754 "configure"
 import java.util.regex.Pattern;
 import java.io.File;
 import java.io.IOException;
@@ -16984,7 +16986,7 @@ printf %s "checking skinlf... " >&6; }
     if test ! -f conftestSharedChecker.class ; then
 
     cat << \EOF > conftestSharedChecker.java
-// #line 16987 "configure"
+// #line 16989 "configure"
 import java.util.regex.Pattern;
 import java.io.File;
 import java.io.IOException;
@@ -17218,7 +17220,7 @@ printf %s "checking jogl2... " >&6; }
     if test ! -f conftestSharedChecker.class ; then
 
     cat << \EOF > conftestSharedChecker.java
-// #line 17221 "configure"
+// #line 17223 "configure"
 import java.util.regex.Pattern;
 import java.io.File;
 import java.io.IOException;
@@ -17558,7 +17560,7 @@ printf %s "checking gluegen2-rt... " >&6; }
     if test ! -f conftestSharedChecker.class ; then
 
     cat << \EOF > conftestSharedChecker.java
-// #line 17561 "configure"
+// #line 17563 "configure"
 import java.util.regex.Pattern;
 import java.io.File;
 import java.io.IOException;
@@ -17849,7 +17851,7 @@ printf %s "checking jhall... " >&6; }
     if test ! -f conftestSharedChecker.class ; then
 
     cat << \EOF > conftestSharedChecker.java
-// #line 17852 "configure"
+// #line 17854 "configure"
 import java.util.regex.Pattern;
 import java.io.File;
 import java.io.IOException;
@@ -18081,7 +18083,7 @@ printf %s "checking javahelp2... " >&6; }
     if test ! -f conftestSharedChecker.class ; then
 
     cat << \EOF > conftestSharedChecker.java
-// #line 18084 "configure"
+// #line 18086 "configure"
 import java.util.regex.Pattern;
 import java.io.File;
 import java.io.IOException;
@@ -18316,7 +18318,7 @@ printf %s "checking lucene-core... " >&6; }
     if test ! -f conftestSharedChecker.class ; then
 
     cat << \EOF > conftestSharedChecker.java
-// #line 18319 "configure"
+// #line 18321 "configure"
 import java.util.regex.Pattern;
 import java.io.File;
 import java.io.IOException;
@@ -18550,7 +18552,7 @@ printf %s "checking lucene-analyzers-common... " >&6; }
     if test ! -f conftestSharedChecker.class ; then
 
     cat << \EOF > conftestSharedChecker.java
-// #line 18553 "configure"
+// #line 18555 "configure"
 import java.util.regex.Pattern;
 import java.io.File;
 import java.io.IOException;
@@ -18784,7 +18786,7 @@ printf %s "checking lucene-queryparser... " >&6; }
     if test ! -f conftestSharedChecker.class ; then
 
     cat << \EOF > conftestSharedChecker.java
-// #line 18787 "configure"
+// #line 18789 "configure"
 import java.util.regex.Pattern;
 import java.io.File;
 import java.io.IOException;
@@ -19018,7 +19020,7 @@ printf %s "checking jrosetta-API... " >&6; }
     if test ! -f conftestSharedChecker.class ; then
 
     cat << \EOF > conftestSharedChecker.java
-// #line 19021 "configure"
+// #line 19023 "configure"
 import java.util.regex.Pattern;
 import java.io.File;
 import java.io.IOException;
@@ -19249,7 +19251,7 @@ printf %s "checking jrosetta-api... " >&6; }
     if test ! -f conftestSharedChecker.class ; then
 
     cat << \EOF > conftestSharedChecker.java
-// #line 19252 "configure"
+// #line 19254 "configure"
 import java.util.regex.Pattern;
 import java.io.File;
 import java.io.IOException;
@@ -19484,7 +19486,7 @@ printf %s "checking jrosetta-engine... " >&6; }
     if test ! -f conftestSharedChecker.class ; then
 
     cat << \EOF > conftestSharedChecker.java
-// #line 19487 "configure"
+// #line 19489 "configure"
 import java.util.regex.Pattern;
 import java.io.File;
 import java.io.IOException;
@@ -19720,7 +19722,7 @@ printf %s "checking jeuclid-core... " >&6; }
     if test ! -f conftestSharedChecker.class ; then
 
     cat << \EOF > conftestSharedChecker.java
-// #line 19723 "configure"
+// #line 19725 "configure"
 import java.util.regex.Pattern;
 import java.io.File;
 import java.io.IOException;
@@ -19956,7 +19958,7 @@ printf %s "checking fop... " >&6; }
     if test ! -f conftestSharedChecker.class ; then
 
     cat << \EOF > conftestSharedChecker.java
-// #line 19959 "configure"
+// #line 19961 "configure"
 import java.util.regex.Pattern;
 import java.io.File;
 import java.io.IOException;
@@ -20198,7 +20200,7 @@ printf %s "checking freehep-graphics2d... " >&6; }
     if test ! -f conftestSharedChecker.class ; then
 
     cat << \EOF > conftestSharedChecker.java
-// #line 20201 "configure"
+// #line 20203 "configure"
 import java.util.regex.Pattern;
 import java.io.File;
 import java.io.IOException;
@@ -20432,7 +20434,7 @@ printf %s "checking freehep-graphicsio... " >&6; }
     if test ! -f conftestSharedChecker.class ; then
 
     cat << \EOF > conftestSharedChecker.java
-// #line 20435 "configure"
+// #line 20437 "configure"
 import java.util.regex.Pattern;
 import java.io.File;
 import java.io.IOException;
@@ -20666,7 +20668,7 @@ printf %s "checking freehep-graphicsio-emf... " >&6; }
     if test ! -f conftestSharedChecker.class ; then
 
     cat << \EOF > conftestSharedChecker.java
-// #line 20669 "configure"
+// #line 20671 "configure"
 import java.util.regex.Pattern;
 import java.io.File;
 import java.io.IOException;
@@ -20900,7 +20902,7 @@ printf %s "checking freehep-io... " >&6; }
     if test ! -f conftestSharedChecker.class ; then
 
     cat << \EOF > conftestSharedChecker.java
-// #line 20903 "configure"
+// #line 20905 "configure"
 import java.util.regex.Pattern;
 import java.io.File;
 import java.io.IOException;
@@ -21134,7 +21136,7 @@ printf %s "checking freehep-util... " >&6; }
     if test ! -f conftestSharedChecker.class ; then
 
     cat << \EOF > conftestSharedChecker.java
-// #line 21137 "configure"
+// #line 21139 "configure"
 import java.util.regex.Pattern;
 import java.io.File;
 import java.io.IOException;
@@ -21369,7 +21371,7 @@ printf %s "checking batik-all... " >&6; }
     if test ! -f conftestSharedChecker.class ; then
 
     cat << \EOF > conftestSharedChecker.java
-// #line 21372 "configure"
+// #line 21374 "configure"
 import java.util.regex.Pattern;
 import java.io.File;
 import java.io.IOException;
@@ -21603,7 +21605,7 @@ printf %s "checking batik... " >&6; }
     if test ! -f conftestSharedChecker.class ; then
 
     cat << \EOF > conftestSharedChecker.java
-// #line 21606 "configure"
+// #line 21608 "configure"
 import java.util.regex.Pattern;
 import java.io.File;
 import java.io.IOException;
@@ -21838,7 +21840,7 @@ printf %s "checking commons-io... " >&6; }
     if test ! -f conftestSharedChecker.class ; then
 
     cat << \EOF > conftestSharedChecker.java
-// #line 21841 "configure"
+// #line 21843 "configure"
 import java.util.regex.Pattern;
 import java.io.File;
 import java.io.IOException;
@@ -22072,7 +22074,7 @@ printf %s "checking xmlgraphics-commons... " >&6; }
     if test ! -f conftestSharedChecker.class ; then
 
     cat << \EOF > conftestSharedChecker.java
-// #line 22075 "configure"
+// #line 22077 "configure"
 import java.util.regex.Pattern;
 import java.io.File;
 import java.io.IOException;
@@ -22306,7 +22308,7 @@ printf %s "checking avalon-framework... " >&6; }
     if test ! -f conftestSharedChecker.class ; then
 
     cat << \EOF > conftestSharedChecker.java
-// #line 22309 "configure"
+// #line 22311 "configure"
 import java.util.regex.Pattern;
 import java.io.File;
 import java.io.IOException;
@@ -22540,7 +22542,7 @@ printf %s "checking xml-apis-ext... " >&6; }
     if test ! -f conftestSharedChecker.class ; then
 
     cat << \EOF > conftestSharedChecker.java
-// #line 22543 "configure"
+// #line 22545 "configure"
 import java.util.regex.Pattern;
 import java.io.File;
 import java.io.IOException;
@@ -22774,7 +22776,7 @@ printf %s "checking xml-commons-apis-ext... " >&6; }
     if test ! -f conftestSharedChecker.class ; then
 
     cat << \EOF > conftestSharedChecker.java
-// #line 22777 "configure"
+// #line 22779 "configure"
 import java.util.regex.Pattern;
 import java.io.File;
 import java.io.IOException;
@@ -23012,7 +23014,7 @@ printf %s "checking commons-logging... " >&6; }
     if test ! -f conftestSharedChecker.class ; then
 
     cat << \EOF > conftestSharedChecker.java
-// #line 23015 "configure"
+// #line 23017 "configure"
 import java.util.regex.Pattern;
 import java.io.File;
 import java.io.IOException;
@@ -23246,7 +23248,7 @@ printf %s "checking jlatexmath... " >&6; }
     if test ! -f conftestSharedChecker.class ; then
 
     cat << \EOF > conftestSharedChecker.java
-// #line 23249 "configure"
+// #line 23251 "configure"
 import java.util.regex.Pattern;
 import java.io.File;
 import java.io.IOException;
@@ -23480,7 +23482,7 @@ printf %s "checking jlatexmath-fop... " >&6; }
     if test ! -f conftestSharedChecker.class ; then
 
     cat << \EOF > conftestSharedChecker.java
-// #line 23483 "configure"
+// #line 23485 "configure"
 import java.util.regex.Pattern;
 import java.io.File;
 import java.io.IOException;
@@ -23720,7 +23722,7 @@ printf %s "checking checkstyle... " >&6; }
     if test ! -f conftestSharedChecker.class ; then
 
     cat << \EOF > conftestSharedChecker.java
-// #line 23723 "configure"
+// #line 23725 "configure"
 import java.util.regex.Pattern;
 import java.io.File;
 import java.io.IOException;
@@ -23954,7 +23956,7 @@ printf %s "checking commons-beanutils... " >&6; }
     if test ! -f conftestSharedChecker.class ; then
 
     cat << \EOF > conftestSharedChecker.java
-// #line 23957 "configure"
+// #line 23959 "configure"
 import java.util.regex.Pattern;
 import java.io.File;
 import java.io.IOException;
@@ -24188,7 +24190,7 @@ printf %s "checking antlr... " >&6; }
     if test ! -f conftestSharedChecker.class ; then
 
     cat << \EOF > conftestSharedChecker.java
-// #line 24191 "configure"
+// #line 24193 "configure"
 import java.util.regex.Pattern;
 import java.io.File;
 import java.io.IOException;
@@ -24422,7 +24424,7 @@ printf %s "checking junit4... " >&6; }
     if test ! -f conftestSharedChecker.class ; then
 
     cat << \EOF > conftestSharedChecker.java
-// #line 24425 "configure"
+// #line 24427 "configure"
 import java.util.regex.Pattern;
 import java.io.File;
 import java.io.IOException;
@@ -24653,7 +24655,7 @@ printf %s "checking junit... " >&6; }
     if test ! -f conftestSharedChecker.class ; then
 
     cat << \EOF > conftestSharedChecker.java
-// #line 24656 "configure"
+// #line 24658 "configure"
 import java.util.regex.Pattern;
 import java.io.File;
 import java.io.IOException;
@@ -24891,7 +24893,7 @@ printf %s "checking hamcrest-all... " >&6; }
     if test ! -f conftestSharedChecker.class ; then
 
     cat << \EOF > conftestSharedChecker.java
-// #line 24894 "configure"
+// #line 24896 "configure"
 import java.util.regex.Pattern;
 import java.io.File;
 import java.io.IOException;
@@ -25122,7 +25124,7 @@ printf %s "checking hamcrest/all... " >&6; }
     if test ! -f conftestSharedChecker.class ; then
 
     cat << \EOF > conftestSharedChecker.java
-// #line 25125 "configure"
+// #line 25127 "configure"
 import java.util.regex.Pattern;
 import java.io.File;
 import java.io.IOException;
@@ -25357,7 +25359,7 @@ printf %s "checking cobertura... " >&6; }
     if test ! -f conftestSharedChecker.class ; then
 
     cat << \EOF > conftestSharedChecker.java
-// #line 25360 "configure"
+// #line 25362 "configure"
 import java.util.regex.Pattern;
 import java.io.File;
 import java.io.IOException;
@@ -25591,7 +25593,7 @@ printf %s "checking asm3... " >&6; }
     if test ! -f conftestSharedChecker.class ; then
 
     cat << \EOF > conftestSharedChecker.java
-// #line 25594 "configure"
+// #line 25596 "configure"
 import java.util.regex.Pattern;
 import java.io.File;
 import java.io.IOException;
@@ -25822,7 +25824,7 @@ printf %s "checking asm... " >&6; }
     if test ! -f conftestSharedChecker.class ; then
 
     cat << \EOF > conftestSharedChecker.java
-// #line 25825 "configure"
+// #line 25827 "configure"
 import java.util.regex.Pattern;
 import java.io.File;
 import java.io.IOException;
@@ -26056,7 +26058,7 @@ printf %s "checking ecj... " >&6; }
     if test ! -f conftestSharedChecker.class ; then
 
     cat << \EOF > conftestSharedChecker.java
-// #line 26059 "configure"
+// #line 26061 "configure"
 import java.util.regex.Pattern;
 import java.io.File;
 import java.io.IOException;
@@ -31191,7 +31193,7 @@ CHK_EIGEN_MINOR=2
 { printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking if Eigen is version $CHK_EIGEN_WORLD.$CHK_EIGEN_MAJOR.$CHK_EIGEN_MINOR or later" >&5
 printf %s "checking if Eigen is version $CHK_EIGEN_WORLD.$CHK_EIGEN_MAJOR.$CHK_EIGEN_MINOR or later... " >&6; }
 cat > conftest.$ac_ext <<EOF
-#line 31194 "configure"
+#line 31196 "configure"
 #include "confdefs.h"
 
 #include "$PATH_TO_EIGEN/Eigen/Sparse"
@@ -35944,7 +35946,7 @@ CPPFLAGS="$CPPFLAGS -I$CHK_TCL_INCLUDE_PATH"
 { printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking if tcl is version $CHK_TCL_MAJOR.$CHK_TCL_MINOR or later" >&5
 printf %s "checking if tcl is version $CHK_TCL_MAJOR.$CHK_TCL_MINOR or later... " >&6; }
 cat > conftest.$ac_ext <<EOF
-#line 35947 "configure"
+#line 35949 "configure"
 #include "confdefs.h"
 
 #include "$CHK_TCL_INCLUDE_PATH/$CHK_TCL_INC_NAME"
@@ -36255,7 +36257,7 @@ CPPFLAGS="$CPPFLAGS $TCL_INC_PATH -I$CHK_TK_INCLUDE_PATH $X_CFLAGS"
 printf %s "checking if tk is version $CHK_TK_MAJOR.$CHK_TK_MINOR or later... " >&6; }
 
 cat > conftest.$ac_ext <<EOF
-#line 36258 "configure"
+#line 36260 "configure"
 #include "confdefs.h"
 
 #include "$CHK_TK_INCLUDE_PATH/$CHK_TK_INC_NAME"
@@ -36846,7 +36848,7 @@ printf %s "checking saxon9he... " >&6; }
     if test ! -f conftestSharedChecker.class ; then
 
     cat << \EOF > conftestSharedChecker.java
-// #line 36849 "configure"
+// #line 36851 "configure"
 import java.util.regex.Pattern;
 import java.io.File;
 import java.io.IOException;
@@ -37078,7 +37080,7 @@ printf %s "checking saxon... " >&6; }
     if test ! -f conftestSharedChecker.class ; then
 
     cat << \EOF > conftestSharedChecker.java
-// #line 37081 "configure"
+// #line 37083 "configure"
 import java.util.regex.Pattern;
 import java.io.File;
 import java.io.IOException;
@@ -37311,7 +37313,7 @@ printf %s "checking saxon... " >&6; }
     if test ! -f conftestSharedChecker.class ; then
 
     cat << \EOF > conftestSharedChecker.java
-// #line 37314 "configure"
+// #line 37316 "configure"
 import java.util.regex.Pattern;
 import java.io.File;
 import java.io.IOException;
@@ -52718,67 +52720,6 @@ printf "%s\n" "#define SHARED_LIB_EXTW L\"$shrext_cmds\"" >>confdefs.h
 
 
 
-
-#################
-## Update the years in the various part of the code.
-#################
-
-if test ! -f modules/core/src/cpp/banner.cpp; then
-   as_fn_error $? "Could not find the Scilab banner file." "$LINENO" 5
-fi
-
-CURRENT_YEAR=`date "+%Y"`
-DETECTED_YEAR=`grep "Copyright (c) 2022-" modules/core/src/cpp/banner.cpp|sed -e "s/.*Copyright (c) 2022-\([0-9]*\).*/\1/g"`
-
-if test "$CURRENT_YEAR" != "$DETECTED_YEAR"; then
-   sed -i -e "s| 2022-$DETECTED_YEAR | 2022-$CURRENT_YEAR |g" modules/core/src/cpp/banner.cpp modules/windows_tools/src/c/scilab_windows/console.c
-   sed -i -e "s| 2022-$DETECTED_YEAR | 2022-$CURRENT_YEAR |g" etc/Info.plist.in
-   # aboutscilab.svg updated and aboutscilab.png file deleted (needs to be generated)
-   sed -i -e "s| 2022-$DETECTED_YEAR | 2022-$CURRENT_YEAR |g" modules/gui/images/icons/aboutscilab.svg
-   rm -rf modules/gui/images/icons/aboutscilab.png
-   touch modules/gui/images/icons/aboutscilab.png.needstobegeneratedfromsvg
-   sed -i -e "s|VALUE \"LegalCopyright\", \"Copyright (C) $DETECTED_YEAR|VALUE \"LegalCopyright\", \"Copyright (C) $CURRENT_YEAR|" $(find . -iname '*.rc')
-   sed -i -e "s|2017-$DETECTED_YEAR|2017-$CURRENT_YEAR|" $(find . -iname 'banner.xml')
-   { printf "%s\n" "$as_me:${as_lineno-$LINENO}: WARNING: New year ($CURRENT_YEAR) detected. Copyright files updated. Please commit them ASAP." >&5
-printf "%s\n" "$as_me: WARNING: New year ($CURRENT_YEAR) detected. Copyright files updated. Please commit them ASAP." >&2;}
-fi
-
-#################
-## Update Scilab version in aboutscilab.svg
-#################
-
-if test ! -f modules/gui/images/icons/aboutscilab.svg; then
-   as_fn_error $? "Could not find aboutscilab.svg file." "$LINENO" 5
-fi
-
-CURRENT_VERSION=$SCILAB_BINARY_VERSION
-DETECTED_VERSION=`grep -m 1 ">Scilab" modules/gui/images/icons/aboutscilab.svg|sed -e "s/.*>Scilab //g"|sed -e "s/<.*//g"`
-
-if test "$CURRENT_VERSION" != "$DETECTED_VERSION"; then
-   # aboutscilab.svg updated and aboutscilab.png file deleted (needs to be generated)
-   sed -i -e "s|Scilab $DETECTED_VERSION|Scilab $CURRENT_VERSION|" modules/gui/images/icons/aboutscilab.svg
-   rm -rf modules/gui/images/icons/aboutscilab.png
-   { printf "%s\n" "$as_me:${as_lineno-$LINENO}: WARNING: New version ($CURRENT_VERSION) detected. \"About Scilab\" images need to be checked and committed." >&5
-printf "%s\n" "$as_me: WARNING: New version ($CURRENT_VERSION) detected. \"About Scilab\" images need to be checked and committed." >&2;}
-fi
-
-#################
-## Update Scilab version in banner() help pages.
-#################
-
-if test ! -f modules/core/help/en_US/configuration/banner.xml; then
-   as_fn_error $? "Could not find the Scilab banner help file." "$LINENO" 5
-fi
-
-CURRENT_VERSION=$SCILAB_BINARY_VERSION
-DETECTED_VERSION=`grep "scilab-" modules/core/help/en_US/configuration/banner.xml|sed -e "s/.*scilab-//g"`
-
-if test "$CURRENT_VERSION" != "$DETECTED_VERSION"; then
-   sed -i -e "s|scilab-.*|scilab-$CURRENT_VERSION|" $(find . -iname 'banner.xml')
-   { printf "%s\n" "$as_me:${as_lineno-$LINENO}: WARNING: New version ($CURRENT_VERSION) detected. Help files updated. Please commit them ASAP." >&5
-printf "%s\n" "$as_me: WARNING: New version ($CURRENT_VERSION) detected. Help files updated. Please commit them ASAP." >&2;}
-fi
-
 #########
 ## Check extra CC / CXX compiler flags to ease runtime behaviors
 #########
@@ -56512,4 +56453,152 @@ echo "  F77_LDFLAGS .... = $F77_LDFLAGS"
 echo "  FLIBS...... .... = $FLIBS"
 echo "  TERMCAP_LIB .... = $TERMCAP_LIB"
 echo ""
+
+#################
+## Update the years in the various part of the code.
+#################
+
+if test ! -f modules/core/src/cpp/banner.cpp; then
+   as_fn_error $? "Could not find the Scilab banner file." "$LINENO" 5
+fi
+
+CURRENT_YEAR=`date "+%Y"`
+DETECTED_YEAR=`grep "Copyright (c) 2022-" ${SCI_SRCDIR}/modules/core/src/cpp/banner.cpp|sed -e "s/.*Copyright (c) 2022-\([0-9]*\).*/\1/g"`
+
+if test "$CURRENT_YEAR" != "$DETECTED_YEAR"; then
+    # Extract the first word of "inkscape", so it can be a program name with args.
+set dummy inkscape; ac_word=$2
+{ printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking for $ac_word" >&5
+printf %s "checking for $ac_word... " >&6; }
+if test ${ac_cv_path_INKSCAPE+y}
+then :
+  printf %s "(cached) " >&6
+else $as_nop
+  case $INKSCAPE in
+  [\\/]* | ?:[\\/]*)
+  ac_cv_path_INKSCAPE="$INKSCAPE" # Let the user override the test with a path.
+  ;;
+  *)
+  as_save_IFS=$IFS; IFS=$PATH_SEPARATOR
+for as_dir in $PATH
+do
+  IFS=$as_save_IFS
+  case $as_dir in #(((
+    '') as_dir=./ ;;
+    */) ;;
+    *) as_dir=$as_dir/ ;;
+  esac
+    for ac_exec_ext in '' $ac_executable_extensions; do
+  if as_fn_executable_p "$as_dir$ac_word$ac_exec_ext"; then
+    ac_cv_path_INKSCAPE="$as_dir$ac_word$ac_exec_ext"
+    printf "%s\n" "$as_me:${as_lineno-$LINENO}: found $as_dir$ac_word$ac_exec_ext" >&5
+    break 2
+  fi
+done
+  done
+IFS=$as_save_IFS
+
+  ;;
+esac
+fi
+INKSCAPE=$ac_cv_path_INKSCAPE
+if test -n "$INKSCAPE"; then
+  { printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: $INKSCAPE" >&5
+printf "%s\n" "$INKSCAPE" >&6; }
+else
+  { printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: no" >&5
+printf "%s\n" "no" >&6; }
+fi
+
+
+    sed -i -e "s| 2022-$DETECTED_YEAR | 2022-$CURRENT_YEAR |g" ${SCI_SRCDIR}/modules/core/src/cpp/banner.cpp ${SCI_SRCDIR}/modules/windows_tools/src/c/scilab_windows/console.c
+    sed -i -e "s| 2022-$DETECTED_YEAR | 2022-$CURRENT_YEAR |g" ${SCI_SRCDIR}/etc/Info.plist.in
+    sed -i -e "s| 2022-$DETECTED_YEAR | 2022-$CURRENT_YEAR |g" ${SCI_SRCDIR}/modules/gui/images/icons/aboutscilab.svg
+    $INKSCAPE -w 600 -h 290 ${SCI_SRCDIR}/modules/gui/images/icons/aboutscilab.svg -o ${SCI_SRCDIR}/modules/gui/images/icons/aboutscilab.png
+    sed -i -e "s|VALUE \"LegalCopyright\", \"Copyright (C) $DETECTED_YEAR|VALUE \"LegalCopyright\", \"Copyright (C) $CURRENT_YEAR|" $(find ${SCI_SRCDIR} -iname '*.rc')
+    sed -i -e "s|2017-$DETECTED_YEAR|2017-$CURRENT_YEAR|" $(find ${SCI_SRCDIR} -iname 'banner.xml')
+    { printf "%s\n" "$as_me:${as_lineno-$LINENO}: WARNING: New year ($CURRENT_YEAR) detected. Source files updated, commit them !" >&5
+printf "%s\n" "$as_me: WARNING: New year ($CURRENT_YEAR) detected. Source files updated, commit them !" >&2;}
+fi
+
+#################
+## Update Scilab version based on aboutscilab.svg
+#################
+
+if test ! -f ${SCI_SRCDIR}/modules/gui/images/icons/aboutscilab.svg; then
+    as_fn_error $? "Could not find aboutscilab.svg file." "$LINENO" 5
+fi
+DETECTED_VERSION=`grep -m 1 ">Scilab" ${SCI_SRCDIR}/modules/gui/images/icons/aboutscilab.svg|sed -e "s/.*>Scilab //g"|sed -e "s/<.*//g"`
+if test "$SCILAB_BINARY_VERSION" != "$DETECTED_VERSION"; then
+    # alert the user
+    { printf "%s\n" "$as_me:${as_lineno-$LINENO}: WARNING: Migrating from version $DETECTED_VERSION to $SCILAB_BINARY_VERSION" >&5
+printf "%s\n" "$as_me: WARNING: Migrating from version $DETECTED_VERSION to $SCILAB_BINARY_VERSION" >&2;}
+    # Extract the first word of "inkscape", so it can be a program name with args.
+set dummy inkscape; ac_word=$2
+{ printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking for $ac_word" >&5
+printf %s "checking for $ac_word... " >&6; }
+if test ${ac_cv_path_INKSCAPE+y}
+then :
+  printf %s "(cached) " >&6
+else $as_nop
+  case $INKSCAPE in
+  [\\/]* | ?:[\\/]*)
+  ac_cv_path_INKSCAPE="$INKSCAPE" # Let the user override the test with a path.
+  ;;
+  *)
+  as_save_IFS=$IFS; IFS=$PATH_SEPARATOR
+for as_dir in $PATH
+do
+  IFS=$as_save_IFS
+  case $as_dir in #(((
+    '') as_dir=./ ;;
+    */) ;;
+    *) as_dir=$as_dir/ ;;
+  esac
+    for ac_exec_ext in '' $ac_executable_extensions; do
+  if as_fn_executable_p "$as_dir$ac_word$ac_exec_ext"; then
+    ac_cv_path_INKSCAPE="$as_dir$ac_word$ac_exec_ext"
+    printf "%s\n" "$as_me:${as_lineno-$LINENO}: found $as_dir$ac_word$ac_exec_ext" >&5
+    break 2
+  fi
+done
+  done
+IFS=$as_save_IFS
+
+  ;;
+esac
+fi
+INKSCAPE=$ac_cv_path_INKSCAPE
+if test -n "$INKSCAPE"; then
+  { printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: $INKSCAPE" >&5
+printf "%s\n" "$INKSCAPE" >&6; }
+else
+  { printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: no" >&5
+printf "%s\n" "no" >&6; }
+fi
+
+
+    # put the version into Version.incl
+    echo "SCIVERSION=scilab-branch-$SCILAB_VERSION_MAJOR.$SCILAB_VERSION_MINOR" >$SCI_SRCDIR/Version.incl
+    # put the correct text in version.h
+    sed -i  -e "s|SCI_VERSION_STRING \".*\"|SCI_VERSION_STRING \"scilab-branch-$SCILAB_VERSION_MAJOR.$SCILAB_VERSION_MINOR\"|" \
+            -e "s|SCI_VERSION_WIDE_STRING L\".*\"|SCI_VERSION_WIDE_STRING L\"scilab-branch-$SCILAB_VERSION_MAJOR.$SCILAB_VERSION_MINOR\"|" \
+            -e "s|DEFAULT_SCI_VERSION_MESSAGE L\".*\"|DEFAULT_SCI_VERSION_MESSAGE L\"scilab-branch-$SCILAB_VERSION_MAJOR.$SCILAB_VERSION_MINOR\"|" \
+            ${SCI_SRCDIR}/modules/core/includes/version.h ${SCI_SRCDIR}/modules/core/includes/version.h.{in,vc}
+    # update some help pages
+    sed -i -e "s|scilab-[0-9]\(\.[0-9]\)\+|scilab-$SCILAB_BINARY_VERSION|" $(find ${SCI_SRCDIR} -iname 'banner.xml')
+    # update rc files
+    sed -i  -e "s|FILEVERSION [0-9]\(,[0-9]\)\+|FILEVERSION $SCILAB_VERSION_MAJOR,$SCILAB_VERSION_MINOR,$SCILAB_VERSION_MAINTENANCE,0|" \
+            -e "s|PRODUCTVERSION [0-9]\(,[0-9]\)\+|FILEVERSION $SCILAB_VERSION_MAJOR,$SCILAB_VERSION_MINOR,$SCILAB_VERSION_MAINTENANCE,0|" \
+            -e "s|VALUE \"FileVersion\", \"[0-9]\(, [0-9]\)\+\"|VALUE \"FileVersion\", \"$SCILAB_VERSION_MAJOR, $SCILAB_VERSION_MINOR, $SCILAB_VERSION_MAINTENANCE, 0\"|" \
+            -e "s|VALUE \"ProductVersion\", \"[0-9]\(, [0-9]\)\+\"|VALUE \"ProductVersion\", \"$SCILAB_VERSION_MAJOR, $SCILAB_VERSION_MINOR, $SCILAB_VERSION_MAINTENANCE, 0\"|" \
+            -e "s|Scilab [0-9]\(\.[0-9]\)\+|Scilab $SCILAB_BINARY_VERSION|" \
+            $(find ${SCI_SRCDIR} -iname '*.rc')
+    # update banner, inkscape is used to generate png from svg
+    sed -i -e "s|Scilab [0-9]\(\.[0-9]\)\+|Scilab $SCILAB_BINARY_VERSION|" ${SCI_SRCDIR}/modules/gui/images/icons/aboutscilab.svg
+    $INKSCAPE -w 600 -h 290 ${SCI_SRCDIR}/modules/gui/images/icons/aboutscilab.svg -o ${SCI_SRCDIR}/modules/gui/images/icons/aboutscilab.png
+    # alert the user
+    { printf "%s\n" "$as_me:${as_lineno-$LINENO}: WARNING: New version $SCILAB_BINARY_VERSION detected. Source files updated, commit them !" >&5
+printf "%s\n" "$as_me: WARNING: New version $SCILAB_BINARY_VERSION detected. Source files updated, commit them !" >&2;}
+fi
 

@@ -42,6 +42,7 @@ if exist modules\core\includes\version.h sed -i ^
  -e "s/SCI_VERSION_REVISION .*/SCI_VERSION_REVISION \"%CI_COMMIT_SHA%\"/" ^
  -e "s/SCI_VERSION_TIMESTAMP .*/SCI_VERSION_TIMESTAMP %SCI_VERSION_TIMESTAMP%/" ^
  modules\core\includes\version.h
+echo SCIVERSION=%SCI_VERSION_STRING% >Version.incl
 
 REM build with Visual Studio and Intel compilers
 devenv Scilab.sln /build "Release|x64" /project dumpexts > ..\%LOG_PATH%\log_dumpexts_%CI_COMMIT_SHORT_SHA%.txt

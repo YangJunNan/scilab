@@ -33,6 +33,8 @@ sed -i \
  -e "s/SCI_VERSION_REVISION .*/SCI_VERSION_REVISION \"${CI_COMMIT_SHA}\"/" \
  -e "s/SCI_VERSION_TIMESTAMP .*/SCI_VERSION_TIMESTAMP ${SCI_VERSION_TIMESTAMP}/" \
  scilab/modules/core/includes/version.h.in
+echo SCIVERSION=${SCI_VERSION_STRING} >scilab/Version.incl
+
 
 # predefined env
 LD_LIBRARY_PATH=$(pwd)/usr/lib/ && export LD_LIBRARY_PATH
