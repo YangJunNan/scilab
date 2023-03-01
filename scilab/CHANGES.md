@@ -374,8 +374,10 @@ Bug Fixes
 * [#16798](https://gitlab.com/scilab/scilab/-/issues/16798): `scinotes()` with option and non existing file crashed scilab.
 * [#16801](https://gitlab.com/scilab/scilab/-/issues/16801): Management of `covWrite("html")` results wrapping was poor.
 * [#16812](https://gitlab.com/scilab/scilab/-/issues/16812): `atomsLoad("linalg")` while the help browser is opened yielded an error breaking the loading.
+* [#16803](https://gitlab.com/scilab/scilab/-/issues/16803): `tbx_build_localization(…)` and `tbx_make … localization` never updated existing .po files.
 * [#16822](https://gitlab.com/scilab/scilab/-/issues/16822): `getrelativefilename()` returned incorrect value in case of same beginning of directory names.
 * [#16826](https://gitlab.com/scilab/scilab/-/issues/16826): `file()` or `file(fid)` could yield outdated relative paths.
+* [#16836](https://gitlab.com/scilab/scilab/-/issues/16836): `tbx_generate_pofile(…)` (and so `tbx_build_localization(…)` silently failed for any module with too (but no so) many files to process.
 * [#16841](https://gitlab.com/scilab/scilab/-/issues/16841): Zoom on multiaxes could desynchronize axes.
 * [#16849](https://gitlab.com/scilab/scilab/-/issues/16849): toJSON("\\") must return "\\\\" instead of "\\\".
 * [#16865](https://gitlab.com/scilab/scilab/-/issues/16865): Vector extraction with single hypermatrix index yielded a vector.
