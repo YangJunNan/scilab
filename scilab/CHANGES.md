@@ -363,6 +363,7 @@ Bug Fixes
 * [#16127](https://gitlab.com/scilab/scilab/-/issues/16127): c = {1:$} crashed Scilab.
 * [#16179](https://gitlab.com/scilab/scilab/-/issues/16179): `pause` inhibits error display when executed in try-catch block.
 * [#16653](https://gitlab.com/scilab/scilab/-/issues/16653): `fromJSON()` crashed with a non existing file.
+* [#16676](https://gitlab.com/scilab/scilab/-/issues/16676): sfact([%s %s ; %s %s]) crashes Scilab after "sfact: Wrong value for input argument #1: singular or asymmetric problem." message.
 * [#16713](https://gitlab.com/scilab/scilab/-/issues/16713): Automatic stretching of Axes box in 3d view was not configurable.
 * [#16717](https://gitlab.com/scilab/scilab/-/issues/16717): An error occured in findobj when no objects existed.
 * [#16732](https://gitlab.com/scilab/scilab/-/issues/16732): `write()` page: typo, missing information about file overwriting and Fortran formats.
