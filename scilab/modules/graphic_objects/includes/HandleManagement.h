@@ -48,4 +48,12 @@ GRAPHIC_OBJECTS_IMPEXP long getHandle(int iUID);
  */
 GRAPHIC_OBJECTS_IMPEXP int getObjectFromHandle(long handle);
 
+/**
+ * @brief Get the type string of an UID.
+ *
+ * @param a UID
+ * @return a string type.
+ */
+GRAPHIC_OBJECTS_IMPEXP char* getHandleTypeStr(int iUID);
+
 #endif /* !__HANDLE_MANAGEMENT_H__ */

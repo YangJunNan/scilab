@@ -238,6 +238,7 @@ lib /DEF:"$(ProjectDir)elementary_functions_f_Import.def" /SUBSYSTEM:WINDOWS /MA
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="sci_gateway\cpp\sci_get.cpp" />
+    <ClCompile Include="sci_gateway\cpp\sci_glue.cpp" />
     <ClCompile Include="sci_gateway\cpp\sci_matplot.cpp" />
     <ClCompile Include="sci_gateway\cpp\sci_matplot1.cpp" />
     <ClCompile Include="sci_gateway\cpp\sci_winsid.cpp" />
@@ -494,7 +495,6 @@ lib /DEF:"$(ProjectDir)elementary_functions_f_Import.def" /SUBSYSTEM:WINDOWS /MA
     <ClCompile Include="sci_gateway\c\sci_drawnow.c" />
     <ClCompile Include="sci_gateway\c\sci_fec.c" />
     <ClCompile Include="sci_gateway\c\sci_geom3d.c" />
-    <ClCompile Include="sci_gateway\c\sci_glue.c" />
     <ClCompile Include="sci_gateway\c\sci_grayplot.c" />
     <ClCompile Include="sci_gateway\c\sci_is_handle_valid.c" />
     <ClCompile Include="sci_gateway\c\sci_Legend.c" />

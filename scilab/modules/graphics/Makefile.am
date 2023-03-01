@@ -423,7 +423,6 @@ GATEWAY_C_SOURCES = \
     sci_gateway/c/sci_geom3d.c \
     sci_gateway/c/sci_unzoom.c \
     sci_gateway/c/sci_xsegs.c \
-    sci_gateway/c/sci_glue.c \
     sci_gateway/c/sci_xarc.c \
     sci_gateway/c/sci_xpolys.c \
     sci_gateway/c/sci_xstring.c \
@@ -474,7 +473,8 @@ GATEWAY_CXX_SOURCES = \
     sci_gateway/cpp/sci_matplot.cpp \
     sci_gateway/cpp/sci_matplot1.cpp \
     sci_gateway/cpp/sci_winsid.cpp \
-    sci_gateway/cpp/sci_contour2dm.cpp
+    sci_gateway/cpp/sci_contour2dm.cpp \
+    sci_gateway/cpp/sci_glue.cpp
 
 libscigraphics_la_CPPFLAGS = \
     -I$(srcdir)/includes/ \
