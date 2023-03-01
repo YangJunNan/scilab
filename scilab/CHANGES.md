@@ -422,9 +422,12 @@ Bug Fixes
 * [#16913](https://gitlab.com/scilab/scilab/-/issues/16913): InnoSetup files was not updated after MKL upgrade.
 * [#16914](https://gitlab.com/scilab/scilab/-/issues/16914): Wrong line number with t/mlist extraction overload.
 * [#16919](https://gitlab.com/scilab/scilab/-/issues/16919): MList overload extraction compatibility with scilab 5.5.2
-* [#16923](https://gitlab.com/scilab/scilab/-/issues/16923): unable to use `http_get(..., follow=%t)` without a filename argument.
 * [#16920](https://gitlab.com/scilab/scilab/-/issues/16920): MatrixExp insertion in an empty matrix and using colon crashes Scilab.
+* [#16923](https://gitlab.com/scilab/scilab/-/issues/16923): unable to use `http_get(..., follow=%t)` without a filename argument.
+* [#16925](https://gitlab.com/scilab/scilab/-/issues/16925): Xcos modelica simulation failed when model name contains `-`.
 * [#16932](https://gitlab.com/scilab/scilab/-/issues/16932): toJSON() did not escape TABs properly.
+
+
 
 ### Bugs fixed in 6.1.1:
 * [#3188](https://bugzilla.scilab.org/3188): `part()` was slower than in Scilab 4.1.2.
