@@ -190,6 +190,12 @@ xset("alufunction",i)           gcf().pixel_drawing_mode = str(i);
                     The only <literal>xset("fpf", format)</literal> syntax is now supported.
                 </revremark>
             </revision>
+            <revision>
+                <revnumber>2023.0.0</revnumber>
+                <revremark>
+                    Tagged obsolete.
+                </revremark>
+            </revision>
         </revhistory>
     </refsection>
 </refentry>

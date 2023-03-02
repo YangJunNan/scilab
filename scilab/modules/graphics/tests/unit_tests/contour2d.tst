@@ -38,9 +38,8 @@ endfunction
 h = scf();
 contour(t,t,my_surface,10)
 // changing the format of the printing of the levels
-xset("fpf","%.1f")
 clf()
-contour(t,t,my_surface,10)
+contour(t,t,my_surface,10,fpf="%.1f")
 close(h);
 //
 // Test #3: use data

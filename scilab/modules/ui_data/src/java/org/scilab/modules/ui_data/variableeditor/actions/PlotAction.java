@@ -84,7 +84,7 @@ public final class PlotAction extends CommonCallBack {
     private static final String COM_MESH = "mesh(%s)";
     private static final String COM_SURF = "surf(%s)";
     private static final String COM_HIST3D = "hist3d(%s)";
-    private static final String COM_CONTOUR2D = "L?8625083632641564278=xget(\"fpf\");xset(\"fpf\",\" \");contour2d(1:%s,1:%s,%s,10);xset(\"fpf\",L?8625083632641564278);clear(\"L?8625083632641564278\")";
+    private static final String COM_CONTOUR2D = "contour2d(1:%s,1:%s,%s,10)";
     private static final String COM_PIE = "L?8625083632641564278=%s;pie(L?8625083632641564278(find(L?8625083632641564278>0&L?8625083632641564278<>%%inf&L?8625083632641564278<>%%nan)))";
 
     private static final String[] COMMANDS = new String[] {COM_PLOT2D, COM_MATPLOT, COM_GRAYPLOT, COM_SGRAYPLOT, COM_CHAMP, COM_HISTPLOT, COM_MESH, COM_SURF, COM_HIST3D, COM_CONTOUR2D, COM_PIE};

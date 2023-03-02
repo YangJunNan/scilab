@@ -90,11 +90,10 @@ function demo_nmplot_2()
     nx = 50 ;
     ny = 50;
     scf();
-    xset("fpf"," ")
     drawlater();
     xdata=linspace(xmin,xmax,nx);
     ydata=linspace(ymin,ymax,ny);
-    contour ( xdata , ydata , han2C , [0.1 0.2 0.5 1.0 1.5 1.9] )
+    contour ( xdata , ydata , han2C , [0.1 0.2 0.5 1.0 1.5 1.9] , fpf=" ")
     nmplot_simplexhistory ( nm );
     drawnow();
     demo_viewCode(filename);

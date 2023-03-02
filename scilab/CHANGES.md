@@ -303,6 +303,7 @@ Obsolete functions or features
 * `xname` is obsolete. It will be removed from Scilab 6.2.x. Please use `gcf().figure_name` instead.
 * `soundsec` is obsolete. It will be removed from Scilab 6.2.x. Please use `0 : 1/freq : t*(1-%eps)` instead.
 * `fplot2d` is obsolete. It will be removed from Scilab 6.2.x. Please use `plot(x, f)` instead.
+* `xget` and `xset` are obsoletes. They will be removed from Scilab 2024.0.0.
 
 Removed Functions
 -----------------

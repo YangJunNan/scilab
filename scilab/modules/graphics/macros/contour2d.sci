@@ -10,7 +10,7 @@
 // For more information, see the COPYING file which you should have received
 // along with this program.
 
-function levels = contour2d(x, y, z, nz, style, strf, leg, rect, nax, void)
+function levels = contour2d(x, y, z, nz, style, strf, leg, rect, nax, fpf)
 
     [lhs, rhs] = argn(0);
 
@@ -101,8 +101,7 @@ function levels = contour2d(x, y, z, nz, style, strf, leg, rect, nax, void)
     end
 
     [xc, yc] = contour2di(x, y, z, nz);
-    fpf = xget("fpf");
-    if fpf == "" then
+    if exists("fpf", "l") == 0 || fpf == "" then
         fpf = "%.3g";
     end
 

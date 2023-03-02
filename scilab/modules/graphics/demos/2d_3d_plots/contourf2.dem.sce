@@ -35,11 +35,9 @@ function demo_contourf2()
     b = [zeros(2*n,1); (1:m-2*n)'/(m-2*n)];
     h = [r g b];
     my_handle.color_map = h;
-    xset("fpf"," ");
     clf();
 
-    contourf([],[],z,[-6:-1,-logspace(-5,0,10),logspace(-5,0,10),1:8], zeros(1,m))
-    xset("fpf","");
+    contourf([],[],z,[-6:-1,-logspace(-5,0,10),logspace(-5,0,10),1:8], zeros(1,m), "021", " ", [0,0,1,1], [1,10,1,10], " ")
     halt(_("Press Return to continue ... \n"));
 
     if is_handle_valid(my_handle) == %f then

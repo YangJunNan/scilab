@@ -37,7 +37,7 @@ extern "C"
 #include "localization.h"
 #include "Scierror.h"
 #include "HandleManagement.h"
-
+#include "Sciwarning.h"
 #include "createGraphicObject.h"
 #include "BuildObjects.h"
 #include "graphicObjectProperties.h"
@@ -62,6 +62,8 @@ types::Function::ReturnValue sci_xset(types::typed_list &in, int _iRetCount, typ
     {
         return Overload::call(L"%_xset", in, _iRetCount, out);
     }
+
+    Sciwarning(_("%s: This feature will be permanently removed in Scilab %s\n\n"), _("Warning"), "2024.0.0");
 
     if (in.size() > 6)
     {

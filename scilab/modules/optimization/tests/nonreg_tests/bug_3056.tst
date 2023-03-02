@@ -85,8 +85,7 @@ end
 
 scf();
 drawlater;
-xset("fpf"," ");
-contour(x,y,Z', 10);
+contour(x,y,Z', 10, fpf=" ");
 _axes = get("current_axes");
 _axes.data_bounds = [Min(1) Max(1) Min(2) Max(2)];
 xtitle("myf","x1","x2");
