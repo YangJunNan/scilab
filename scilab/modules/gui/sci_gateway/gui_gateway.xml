@@ -65,7 +65,6 @@
     <gateway name="sci_datatipremove"               function="datatipRemove"            type="0" />
     <gateway name="sci_plotbrowser"                 function="plotbrowser"              type="0" />
     <gateway name="sci_datatip_manager_mode"        function="datatipManagerMode"       type="0" />
-    <gateway name="sci_datatip_toggle"              function="datatipToggle"            type="0" />
     <gateway name="sci_datatipmove"                 function="datatipMove"              type="0" />
     <gateway name="sci_datatip_set_style"           function="datatipSetStyle"          type="0" />
     <gateway name="sci_datatip_set_display"         function="datatipSetDisplay"        type="0" />

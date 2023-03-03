@@ -194,13 +194,6 @@ R18=foo("aaa","bbb","cc")=="aaabbbcc";
 if ~R18 then pause,end
 clear foo
 
-// ================ Test 19 ====================================================
-// comp is obsolete since Scilab 6
-//comp(foo)
-//R19=foo('aaa','bbb','cc')=='aaabbbcc'
-//if ~R19 then pause,end
-//clear foo
-
 // ================ Test 20 ====================================================
 
 //function definition nested in a or loop!

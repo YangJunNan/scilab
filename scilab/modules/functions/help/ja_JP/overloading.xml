@@ -232,18 +232,6 @@
                 <td>最初のmlistエントリの最初の文字列</td>
             </tr>
             <tr>
-                <td>ハイパー行列</td>
-                <td>
-                    <literal>hm</literal>
-                </td>
-                <td>
-                    <literal>hypermat</literal>
-                </td>
-                <td>Obsolete. Will be removed from Scilab 6.
-                    The code of the hypermat contents must be targeted instead.
-                </td>
-            </tr>
-            <tr>
                 <td>ポインタ</td>
                 <td>
                     <literal>ptr</literal>
@@ -630,8 +618,9 @@
             <revision>
                 <revnumber>6.0</revnumber>
                 <revdescription>
-                  <literal>function</literal> replaces <literal>mc</literal> as overloading code
-                  for functions in Scilab language.
+                  <para><literal>function</literal> replaces <literal>mc</literal> as overloading code
+                  for functions in Scilab language.</para>
+                  <para><literal>hm</literal> is no longer used for hypermatrix, as for matrices <literal>s</literal> is used instead.</para>
                 </revdescription>
             </revision>
         </revhistory>

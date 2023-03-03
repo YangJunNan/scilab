@@ -79,11 +79,6 @@ int set_box_property(void* _pvCtx, int iObjUID, void* _pvData, int valueType, in
         {
             boxType = 3;
         }
-        else if (stricmp((char*)_pvData, "hidden_axis") == 0)
-        {
-            Sciwarning(_("WARNING !!!\nIn '%s' property: '%s' is deprecated use '%s' instead.\n"), "box", "hidden_axis", "hidden_axes");
-            boxType = 2;
-        }
         else
         {
             Scierror(999, _("Wrong value for '%s' property: Must be in the set {%s}.\n"), "box", "on, off, hidden_axes, back_half");

@@ -122,12 +122,6 @@ types::Function::ReturnValue sci_ode(types::typed_list &in, int _iRetCount, type
         {
             meth = 3;
         }
-        else if (wcscmp(wcsType, L"roots") == 0)
-        {
-            sciprint(_("%s: Feature %s is obsolete.\n"), _("Warning"), "roots");
-            sciprint(_("%s: Please use %s instead.\n"), _("Warning"), "root");
-            meth = 3;
-        }
         else if (wcscmp(wcsType, L"discrete") == 0)
         {
             meth = 4;

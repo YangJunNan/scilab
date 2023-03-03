@@ -14,7 +14,7 @@
 //
 // <-- Short Description -->
 // fscanf did not check number of input arguments
-// fscanf is obsolete, mfscanf is used instead.
+// fscanf is the same function than mfscanf.
 
 msgError = gettext("%s: Wrong number of input argument(s): %d to %d expected.\n");
 assert_checkerror ("mfscanf()", msgError , [] , "mfscanf" , 2, 3);

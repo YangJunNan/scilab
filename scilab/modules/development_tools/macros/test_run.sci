@@ -699,12 +699,6 @@ function status = test_single(_module, _testPath, _testName)
         return;
     end
 
-    if ~isempty(grep(sciFile, "<-- JVM NOT MANDATORY -->")) then
-        status.warning = _("option ""JVM NOT MANDATORY"" is deprecated, please use ""CLI SHELL MODE"" instead");
-        jvm = %F;
-        execMode = "NWNI";
-    end
-
     if ~isempty(grep(sciFile, "<-- CLI SHELL MODE -->")) then
         jvm = %F;
         execMode = "NWNI";

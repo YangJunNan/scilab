@@ -27,8 +27,6 @@
         <synopsis>
             tbx_build_loader()
             tbx_build_loader(toolbox_path)
-            tbx_build_loader(toolbox_name)                 // obsolete
-            tbx_build_loader(toolbox_name, toolbox_path)   // obsolete
         </synopsis>
     </refsynopsisdiv>
 
@@ -42,13 +40,6 @@
                         the script will be generated here (default: current directory).
                         The file <literal>toolbox_path/etc/*.start</literal> must exist.
                         The toolbox_name is retrieved from its basename.
-                    </para>
-                </listitem>
-            </varlistentry>
-            <varlistentry>
-                <term>toolbox_name (obsolete)</term>
-                <listitem>
-                    <para>a single string. Toolbox short name ; the library and help chapter name when generating the default loader.
                     </para>
                 </listitem>
             </varlistentry>
@@ -134,6 +125,10 @@ tbx_build_loader(get_absolute_file_path('builder.sce'))
                         </listitem>
                     </itemizedlist>
                 </revremark>
+            </revision>
+            <revision>
+                <revnumber>2023.0.0</revnumber>
+                <revdescription>toolbox_name input argument removed.</revdescription>
             </revision>
         </revhistory>
     </refsection>

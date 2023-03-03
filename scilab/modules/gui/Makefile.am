@@ -211,7 +211,6 @@ GATEWAY_CXX_SOURCES = \
     sci_gateway/cpp/sci_datatipremove.cpp \
     sci_gateway/cpp/sci_plotbrowser.cpp \
     sci_gateway/cpp/sci_datatip_manager_mode.cpp \
-    sci_gateway/cpp/sci_datatip_toggle.cpp \
     sci_gateway/cpp/sci_datatipmove.cpp \
     sci_gateway/cpp/sci_datatip_set_style.cpp \
     sci_gateway/cpp/sci_datatip_set_display.cpp \

@@ -288,7 +288,6 @@
             <listitem>
                 <para>
                     &lt;-- CLI SHELL MODE --&gt;
-                    (anciennement &lt;-- JVM NOT MANDATORY --&gt; maintenant obsolète)
                     Le test est exécuté avec l'option de lancement <literal>-nwni</literal>.
                 </para>
             </listitem>
@@ -596,6 +595,12 @@ test_run string *ascii*
                     <para>Les noms de tests avec joker * sont désormais utilisables,
                         tels que sin*, *sin, ou *sin*
                     </para>
+                </revdescription>
+            </revision>
+            <revision>
+                <revnumber>2023.0.0</revnumber>
+                <revdescription>
+                    <para> Tag <literal>JVM NOT MANDATORY</literal> supprimé.</para>
                 </revdescription>
             </revision>
         </revhistory>

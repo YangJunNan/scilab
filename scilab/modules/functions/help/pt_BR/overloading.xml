@@ -437,8 +437,9 @@
             <revision>
                 <revnumber>6.0</revnumber>
                 <revdescription>
-                  <literal>function</literal> replaces <literal>mc</literal> as overloading code
-                  for functions in Scilab language.
+                  <para><literal>function</literal> replaces <literal>mc</literal> as overloading code
+                  for functions in Scilab language.</para>
+                  <para><literal>hm</literal> is no longer used for hypermatrix, as for matrices <literal>s</literal> is used instead.</para>
                 </revdescription>
             </revision>
         </revhistory>

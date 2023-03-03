@@ -241,18 +241,6 @@
                 <td>первая строка первого элемента матричноориентированного списка</td>
             </tr>
             <tr>
-                <td>гиперматрица</td>
-                <td>
-                    <literal>hm</literal>
-                </td>
-                <td>
-                    <literal>hypermat</literal>
-                </td>
-                <td>Устарело. Будет удалено из Scilab 6.
-                    Код содержимого гиперматрицы должен быть специализированным.
-                </td>
-            </tr>
-            <tr>
                 <td>указатель</td>
                 <td>
                     <literal>ptr</literal>
@@ -651,8 +639,9 @@
             <revision>
                 <revnumber>6.0</revnumber>
                 <revdescription>
-                  <literal>function</literal> replaces <literal>mc</literal> as overloading code
-                  for functions in Scilab language.
+                  <para><literal>function</literal> replaces <literal>mc</literal> as overloading code
+                  for functions in Scilab language.</para>
+                  <para><literal>hm</literal> is no longer used for hypermatrix, as for matrices <literal>s</literal> is used instead.</para>
                 </revdescription>
             </revision>
         </revhistory>

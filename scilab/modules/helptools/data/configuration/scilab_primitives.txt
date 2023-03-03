@@ -384,7 +384,6 @@ datatipRemove
 datatipSetDisplay
 datatipSetInterp
 datatipSetStyle
-datatipToggle
 dawson
 dct
 debug
@@ -396,7 +395,6 @@ deletefile
 delip
 delmenu
 det
-dgettext
 dhinf
 diag
 diary
