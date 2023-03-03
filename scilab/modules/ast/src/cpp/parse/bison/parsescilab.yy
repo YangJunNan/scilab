@@ -471,8 +471,11 @@ recursiveExpression :
 recursiveExpression expression expressionLineBreak    {
                               print_rules("recursiveExpression", "recursiveExpression expression expressionLineBreak");
                               $2->setVerbose($3->bVerbose);
-                              // add the expressionLineBreak size to the expression size
-                              $2->getLocation().last_column += $3->iNbBreaker;
+                              // set the expressionLineBreak last position to the expression
+                              if($3->iNbBreaker)
+                              {
+                                $2->getLocation().last_column = $3->iNbBreaker;
+                              }
                               $1->push_back($2);
                               $$ = $1;
                               delete $3;
@@ -497,8 +500,11 @@ recursiveExpression expression expressionLineBreak    {
 | expression expressionLineBreak            {
                               print_rules("recursiveExpression", "expression expressionLineBreak");
                               ast::exps_t* tmp = new ast::exps_t;
-                              // add the expressionLineBreak size to the expression size
-                              $1->getLocation().last_column += $2->iNbBreaker;
+                              // set the expressionLineBreak last position to the expression
+                              if($2->iNbBreaker)
+                              {
+                                $1->getLocation().last_column = $2->iNbBreaker;
+                              }
                               $1->setVerbose($2->bVerbose);
                               tmp->push_back($1);
                               $$ = tmp;
@@ -510,10 +516,10 @@ recursiveExpression expression expressionLineBreak    {
 ** -*- EXPRESSION LINE BREAK -*-
 */
 /* Fake Rule : How can we be sure this is the end of an instruction. */
-// $$->iNbBreaker is used to add SEMI or COMMA size to the expression size
+// $$->iNbBreaker is used to set SEMI or COMMA location to the expression
 expressionLineBreak :
-SEMI                            { $$ = new LineBreakStr(); $$->bVerbose = false; $$->iNbBreaker = 1; print_rules("expressionLineBreak", "SEMI"); }
-| COMMA                         { $$ = new LineBreakStr(); $$->bVerbose = true;  $$->iNbBreaker = 1; print_rules("expressionLineBreak", "COMMA"); }
+SEMI                            { $$ = new LineBreakStr(); $$->bVerbose = false; $$->iNbBreaker = @1.last_column; print_rules("expressionLineBreak", "SEMI"); }
+| COMMA                         { $$ = new LineBreakStr(); $$->bVerbose = true;  $$->iNbBreaker = @1.last_column; print_rules("expressionLineBreak", "COMMA"); }
 | EOL                           { $$ = new LineBreakStr(); $$->bVerbose = true;  $$->iNbBreaker = 0; print_rules("expressionLineBreak", "EOL");}
 | expressionLineBreak SEMI      { $$ = $1; print_rules("expressionLineBreak", "expressionLineBreak SEMI"); }
 | expressionLineBreak COMMA     { $$ = $1; print_rules("expressionLineBreak", "expressionLineBreak COMMA"); }
