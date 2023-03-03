@@ -68,7 +68,7 @@ if norm(pp*x1-x1,1)>1.d-5 then bugmes();quit;end // Bug because we don't have th
 t=1.5409711;
 ww=dae([x0,x0d],t0,t,g);
 ww=[t;ww];
-if abs(ww(5)-1)>0.001 then bugmes();quit;end
+if abs(abs(ww(5))-1)>0.001 then bugmes();quit;end
 deff("[rt]=surface(t,y,yd)","rt=y(4)-1");
 nbsurf=1;
 [yyy,nnn]=dae("root",[x0,x0d],t0,t,g,nbsurf,surface);

@@ -20,18 +20,11 @@
 #include "dynlib_elementary_functions.h"
 
 /**
-* do a long jump (slatec)
+* halt solver execution
 * @param messg a message
 * @param l length of messg
 */
 ELEMENTARY_FUNCTIONS_IMPEXP void C2F(xerhlt) (char *messg, unsigned long l);
-
-/**
-* setjmp slatec
-* @returns the value 0 if returning directly and  non-zero
-* when returning from longjmp() using the saved context
-*/
-ELEMENTARY_FUNCTIONS_IMPEXP int setjmp_slatec_jmp_env(void);
 
 #endif /* __XERHLT_H__ */
 /*--------------------------------------------------------------------------*/
