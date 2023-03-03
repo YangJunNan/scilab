@@ -2,19 +2,10 @@
 
 // Some specific hooks can be specify here when the module is unloaded.
 
-function quitModule()
-    toolboxName = "toolbox_skeleton"
+function quitModule(toolboxName)
     etc_tlbx  = get_absolute_file_path(toolboxName + ".quit");
     etc_tlbx  = getshortpathname(etc_tlbx);
     root_tlbx = strncpy( etc_tlbx, length(etc_tlbx)-length("\etc\") );
-
-    // Unload macros of the library:
-    // -----------------------------
-    clear(string(toolboxName + "lib")(2:$))
-
-    // Unregister the library of macros:
-    // --------------------------------
-    clear(toolboxName + "lib")
 
     // Del help chapter
     // ----------------
@@ -53,6 +44,15 @@ function quitModule()
 
 endfunction
 
+// ====================================================
 
-quitModule();
-clear quitModule;
+toolboxName = "toolbox_skeleton";
+
+// Unload macros of the library:
+clear(string(toolboxName + "lib")(2:$))
+
+// Unregister the library of macros:
+clear(toolboxName + "lib")
+
+quitModule(toolboxName);
+clear quitModule toolboxName
