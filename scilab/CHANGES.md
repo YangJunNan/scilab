@@ -305,6 +305,7 @@ Obsolete functions or features
 * `fplot2d` is obsolete. It will be removed from Scilab 6.2.x. Please use `plot(x, f)` instead.
 * `xget` and `xset` are obsoletes. They will be removed from Scilab 2024.0.0.
 * `svd(X, 0)` is obsolete. It will be removed from Scilab 2024.0.0. Please use `svd(X, "e")` instead.
+* `plotframe` is obsolete and will be removed from Scilab 2024.0.0. Please use `plot2d([], [], 0, "011", " ", [xmin ymin ymax ymax])` instead.
 
 Removed Functions
 -----------------

@@ -155,9 +155,6 @@
             <member>
                 <link linkend="axes_properties">axes_properties</link>
             </member>
-            <member>
-                <link linkend="plotframe">plotframe</link>
-            </member>
         </simplelist>
     </refsection>
 </refentry>

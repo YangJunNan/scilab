@@ -134,7 +134,7 @@ hallchart();
 
 // In a preset empty axes
 subplot(1,2,2)
-plotframe([-4 -2 1 4]) // xmin ymin ymax ymax
+plot2d([], [], 0, "011", " ", [-4 -2 1 4]) // xmin ymin ymax ymax
 hallchart();
     ]]></programlisting>
         <scilab:image localized="true">
@@ -145,7 +145,7 @@ hallchart();
 
         // In a preset empty axes
         subplot(1,2,2)
-        plotframe([-4 -2 1 4])
+        plot2d([], [], 0, "011", " ", [-4 -2 1 4])
         hallchart();
         gcf().axes_size = [800 450];
         </scilab:image>

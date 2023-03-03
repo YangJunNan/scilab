@@ -252,7 +252,7 @@
         <title>Examples</title>
         <programlisting role="example"><![CDATA[
 t = linspace(-2*%pi, 2*%pi, 30);
-plotframe([0 0 1 1])
+plot2d([], [], 0, "011", " ", [0 0 1 1])
 
 subplot(2,1,1)
 plot(t, sin(t), "color", "orange")
@@ -272,7 +272,7 @@ ylabel color orange  rotation -90
 ]]>     </programlisting>
         <scilab:image>
             t = linspace(-2*%pi, 2*%pi, 30);
-            plotframe([0 0 1 1])
+            plot2d([], [], 0, "011", " ", [0 0 1 1])
 
             subplot(2,1,1)
             plot(t, sin(t), "color", "orange")

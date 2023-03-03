@@ -15,7 +15,7 @@
 // <-- NO CHECK REF -->
 
 clf reset
-plotframe([0 0 1 1]);
+plot2d([], [], 0, "011", " ", [0 0 1 1]);
 ax = gca();
 t = "Title à";
 funs = list(xlabel, ylabel, zlabel, title);

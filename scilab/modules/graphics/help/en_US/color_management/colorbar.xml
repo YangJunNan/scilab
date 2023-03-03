@@ -230,7 +230,7 @@ colbar1.title.font_size = 3;        // .. with a bigger font
 sca(ax0); // Reset the focus to ax0 before going on
 
 // Now plot a frame in the empty axes:
-plotframe([0 0 1 1])
+plot2d([], [], 0, "011", " ", [0 0 1 1])
 
 // Then add some other color bars, still for the current axes
 colorbar(-2, 5, [1 70])
@@ -241,7 +241,9 @@ gce().font_color = color("red");
 
 // axes on the right
 // -----------------
-subplot(1,2,2), plotframe([0 0 1 1])
+subplot(1,2,2)
+plot2d([], [], 0, "011", " ", [0 0 1 1])
+
 ax1 = gca();
 // top half of the colormap, with another data scale:
 colorbar(0, 1.5, [$/2+1 $])
@@ -295,7 +297,7 @@ colbar3.y_location = "left";
             sca(ax0); // Reset the focus to ax0 before going on
 
             // Now plot a frame in the empty axes:
-            plotframe([0 0 1 1])
+            plot2d([], [], 0, "011", " ", [0 0 1 1])
 
             // Then add some other color bars, still for the current axes
             colorbar(-2, 5, [1 70])
@@ -306,7 +308,8 @@ colbar3.y_location = "left";
 
             // axes on the right
             // -----------------
-            subplot(1,2,2), plotframe([0 0 1 1])
+            subplot(1,2,2)
+            plot2d([], [], 0, "011", " ", [0 0 1 1])
             ax1 = gca();
             // top half of the colormap, with another data scale:
             colorbar(0, 1.5, [$/2+1 $])
