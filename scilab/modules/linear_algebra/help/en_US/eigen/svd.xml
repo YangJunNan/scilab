@@ -71,7 +71,7 @@
             matrices <literal>U</literal> and <literal>V</literal> so that <literal>X = U*S*V'</literal>.
         </para>
         <para>
-            <literal>[U,S,V] = svd(X,0)</literal> produces the "economy
+            <literal>[U,S,V] = svd(X,"e")</literal> produces the "economy
             size" decomposition. If <literal>X</literal> is m-by-n with m &gt;
             n, then only the first n columns of <literal>U</literal> are computed
             and <literal>S</literal> is n-by-n.
@@ -125,5 +125,16 @@ sqrt(spec(X*X'))
             svd decompositions are based on  the Lapack routines DGESVD for
             real matrices and  ZGESVD for the complex case.
         </para>
+    </refsection>
+    <refsection>
+        <title>History</title>
+        <revhistory>
+            <revision>
+                <revnumber>2023.0.0</revnumber>
+                <revdescription>
+                    <para>svd(X, 0) is obsolete, use svd(X, "e") instead.</para>
+                </revdescription>
+            </revision>
+        </revhistory>
     </refsection>
 </refentry>

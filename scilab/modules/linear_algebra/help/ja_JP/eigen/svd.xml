@@ -137,7 +137,7 @@
 
         <para>
 
-            <literal>[U,S,V] = svd(X,0)</literal> は
+            <literal>[U,S,V] = svd(X,"e")</literal> は
 
             "エコノミーサイズ"分解を出力します.
 
@@ -250,6 +250,15 @@ sqrt(spec(X*X'))
         </para>
 
     </refsection>
-
+    <refsection>
+        <title>History</title>
+        <revhistory>
+            <revision>
+                <revnumber>2023.0.0</revnumber>
+                <revdescription>
+                    <para>svd(X, 0) is obsolete, use svd(X, "e") instead.</para>
+                </revdescription>
+            </revision>
+        </revhistory>
+    </refsection>
 </refentry>
-
