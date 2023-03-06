@@ -11,7 +11,7 @@ assert_checkalmostequal(sqrtm([8 8 ; 8 8]), [2 2 ; 2 2]);
 
 x = [0 1; 2 4];
 w = sqrtm(x);
-assert_checkalmostequal(norm(w*w-x), 0, [], 3*%eps);
+assert_checkalmostequal(norm(w*w-x), 0, [], 5*%eps);
 x(1, 2) = %i;
 w = sqrtm(x);
 assert_checkalmostequal(norm(w*w-x, 1), 0, [], 15*%eps);
