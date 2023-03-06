@@ -2,8 +2,8 @@
 <!--
  * Scilab ( https://www.scilab.org/ ) - This file is part of Scilab
  * Copyright (C) ENPC - Jean-Philippe Chancelier
- *
  * Copyright (C) 2012 - 2016 - Scilab Enterprises
+ * Copyright (C) 2021 - Samuel GOUGEON
  *
  * This file is hereby licensed under the terms of the GNU GPL v2.0,
  * pursuant to article 5.3.4 of the CeCILL v.2.1.
@@ -13,57 +13,90 @@
  * along with this program.
  *
  -->
-<refentry xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svg="http://www.w3.org/2000/svg" xmlns:mml="http://www.w3.org/1998/Math/MathML" xmlns:db="http://docbook.org/ns/docbook" xmlns:scilab="http://www.scilab.org"  xml:lang="en" xml:id="xsetech">
+<refentry xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:svg="http://www.w3.org/2000/svg" xmlns:mml="http://www.w3.org/1998/Math/MathML"
+          xmlns:db="http://docbook.org/ns/docbook" xmlns:scilab="http://www.scilab.org"
+          xml:lang="en" xml:id="xsetech">
     <refnamediv>
         <refname>xsetech</refname>
         <refpurpose>
-            set the sub-window of a graphics window for plotting
+            sets and initializes an axes anywhere in the current figure or uiframe
         </refpurpose>
     </refnamediv>
     <refsynopsisdiv>
         <title>Syntax</title>
         <synopsis>
-            xsetech(wrect, [frect, logflag])
-            xsetech(wrect=[...], frect=[..], logflag="..", arect=[...])
-            xsetech()
+            xsetech
+            xsetech(axes_bounds)
+            xsetech(axes_bounds, data_bounds)
+            xsetech(axes_bounds, data_bounds, logflag)
+            xsetech(axes_bounds, data_bounds, logflag, margins)
         </synopsis>
     </refsynopsisdiv>
     <refsection>
         <title>Arguments</title>
         <variablelist>
             <varlistentry>
-                <term>wrect</term>
+                <term>axes_bounds</term>
                 <listitem>
                     <para>
-                        a vector of size 4, defining the sub-window to use.
+                        vector <literal>[x, y, width, height]</literal> of normalized coordinates
+                        (in [0,1]) specifying the position <literal>[x, y]</literal> and sizes
+                        <literal>[width, height]</literal> of the axes overall area, with
+                        respect to <literal>gcf().axes_sizes</literal> or to
+                        <literal>uiframe.position(3:4)</literal> sizes.
+                    </para>
+                    <para>
+                        <literal>[x,y]</literal> are the normalized coordinates of top-left corner
+                        of the axes area, with respect to the top-left corner of the figure or
+                        uiframe substrate.
+                    </para>
+                    <para>
+                        Any coordinate specified as <literal>%nan</literal> keeps its current
+                        or default value.
+                        Default values are <literal>[0 0 1 1]</literal>, covering the whole substrate.
                     </para>
                 </listitem>
             </varlistentry>
             <varlistentry>
-                <term>frect</term>
+                <term>data_bounds</term>
                 <listitem>
                     <para>
-                        a vector of size 4.
+                        vector <literal>[xmin, ymin, xmax, ymax]</literal> initializing
+                        <literal>axes.data_bounds=[xmin xmax ymin ymax]</literal>.
+                        <warning>
+                            Beware about the order of <literal>xmax</literal> and <literal>ymin</literal>.
+                        </warning>
+                    </para>
+                    <para>
+                        Any bound specified as <literal>%nan</literal> keeps its current or default
+                        value. Default values are <literal>gda().data_bounds([1 3 2 4])</literal>
+                        (usually [0 0 1 1]).
                     </para>
                 </listitem>
             </varlistentry>
             <varlistentry>
                 <term>logflag</term>
                 <listitem>
-                    <para>
-                        a string of size 2 <literal>"xy"</literal>, where
-                        <literal>x</literal> and <literal>y</literal> can be
-                        <literal>"n"</literal> or <literal>"l"</literal>.
-                        <literal>"n"</literal> stands for  normal and "l" stands
-                        for logscale. <literal>x</literal> stands for the x-axis
-                        and <literal>y</literal> stands for the y-axis.
-                    </para>
+                    2-character flag made of "n" (for normal scale) or
+                    "l" (for logarithmic scale). The first character sets
+                    the scale for the x axis, the second for the y axis.
+                    Example: <literal>"ln"</literal>.
+                    <para/>
+                    Any margin specified as <literal>%nan</literal> keeps its current or default value.
+                    The default value is  <literal>gda().log_flag</literal> (usually "nn").
                 </listitem>
             </varlistentry>
             <varlistentry>
-                <term>arect</term>
+                <term>margins</term>
                 <listitem>
-                    <para>a vector of size 4.</para>
+                    vector <literal>[left, right, above, bellow]</literal> in [0,1] specifying the
+                    relative widths or heights or margins around the data area, where the
+                    axes ticks labels, the x axis and y axis legends and the overall title
+                    are expected.
+                    <para/>
+                    The default values are <literal>gda().margins</literal> (usually
+                    <literal>[1 1 1 1]/8</literal>).
                 </listitem>
             </varlistentry>
         </variablelist>
@@ -71,110 +104,193 @@
     <refsection>
         <title>Description</title>
         <para>
-            <function>xsetech</function> is mainly used to set the sub-window of
-            the graphics window which will be used for plotting. The sub-window
-            is specified with the parameter <literal>wrect=[x,y,w,h]</literal>
-            (upper-left point, width, height). The values in
-            <varname>wrect</varname> are specified using proportion of
-            the width or height of the current graphic window. For instance
-            <literal>wrect=[0, 0, 1, 1]</literal> means that the whole graphics
-            window will be used, and <literal>wrect=[0.5, 0, 0.5, 1]</literal>
-            means that the graphics region will be the right half of the
-            graphics window.
+            <literal>xsetech(…)</literal> creates or updates an axes anywhere on the substrate of
+            the current entity <literal>gce()</literal>, that can be either a uiframe or a figure.
+            It is useful
+            <itemizedlist>
+                <listitem>
+                    when the layout of the graphical substrate is not gridable,
+                    what prevents using <literal>subplot(…)</literal>.
+                </listitem>
+                <listitem>
+                    when the main properties of the new axes must be set at creation time
+                    out of the default values.
+                </listitem>
+                <listitem>
+                    or for instance to define some graphic inset.
+                </listitem>
+            </itemizedlist>
         </para>
         <para>
-            <function>xsetech</function> also set the current graphics scales
-            for 2D plotting and can be used in conjunction with graphics
-            routines which request the current graphics scale (for instance
-            <literal>strf="x0z"</literal> or <literal>frameflag=0</literal> in
-            <function>plot2d</function>).
+            If the graphical area defined by <varname>axes_bounds</varname> matches exactly
+            an existing axes, <literal>xsetech(…)</literal> sets it as the current axes and
+            updates its properties <literal>.data_bounds</literal>, <literal>.log_flag</literal>
+            and <literal>.margins</literal> with other input data (if any).
         </para>
         <para>
-            <literal>frect=[xmin, ymin, xmax, ymax]</literal> is used to set the
-            graphics scale and is just like the <varname>rect</varname> argument
-            of <function>plot2d</function>. If <varname>frect</varname> is not
-            given the current value of the graphic scale remains unchanged. the
-            default value of <varname>rect</varname> is <literal>[0,0,1,1]</literal>
-            (at window creation, when switching back to default value with
-            <code>clf('reset')</code> or when clearing graphic recorded
-            events <code>clf()</code>).
+            Otherwise, a new axes is created with given input properties. By default,
+            <literal>gda()</literal> properties are set.
+       </para>
+        <para>
+            To ignore an input argument and use its default value, just skip it as in
+            <literal>xsetech(axes_bounds, , , margins)</literal> where default values
+            are used for <literal>data_bounds</literal> and <literal>logflag</literal>.
         </para>
         <para>
-            <literal>arect=[x_left, x_right,y_up,y_down]</literal> is used to
-            set the graphic frame inside the sub-window. The graphic frame is
-            specified (like <varname>wrect</varname>) using proportion of the
-            width or height of the current graphic sub-window.  Default value is
-            <literal>1/8*[1,1,1,1]</literal>. If <varname>arect</varname> is not
-            given, current value remains unchanged.
+            <literal>xsetech(…)</literal> ends by setting the current entity to
+            <literal>gca()</literal>.
         </para>
     </refsection>
     <refsection>
         <title>Examples</title>
+        <para>
+            <emphasis role="bold">Example for a non-gridable graphics layout</emphasis>:
+        </para>
         <programlisting role="example"><![CDATA[
-// To get a graphical explanation of xsetech parameters enter:
-exec('SCI/modules/graphics/demos/xsetechfig.sce');
+clf
+title "Main title" fontsize 4
 
-// Here xsetech is used to split the graphics window in two parts
-// first xsetech is used to set the first sub-window
-// and the graphics scale
-xsetech([0,0,1.0,0.5],[-5,-3,5,3])
-// we call plot2d with the "001" option to use the graphics scale
-// set by xsetech
-plot2d([1:10]',[1:10]',1,"001"," ")
-// then xsetech is used to set the second sub-window
-xsetech([0,0.5,1.0,0.5])
-// the graphics scale is set by xsetech to [0,0,1,1] by default
-// and we change it with the use of the rect argument in plot2d
-plot2d([1:10]',[1:10]',1,"011"," ",[-6,-6,6,6])
- ]]></programlisting>
-        <programlisting role="example"><![CDATA[
-// Four plots on a single graphics window
-clf()
-set(gca(),"font_style",2,"font_size",0);
-xsetech([0,0,0.5,0.5]);
-plot3d()
-xsetech([0.5,0,0.5,0.5]);
-plot2d()
-xsetech([0.5,0.5,0.5,0.5]);
-grayplot()
-xsetech([0,0.5,0.5,0.5]);
-histplot()
-// back to default values for the sub-window
-xsetech([0,0,1,1])
- ]]></programlisting>
-        <scilab:image>
-            set(gca(),"font_style",2,"font_size",0);
-            xsetech([0,0,0.5,0.5]);
-            plot3d()
-            xsetech([0.5,0,0.5,0.5]);
-            plot2d()
-            xsetech([0.5,0.5,0.5,0.5]);
-            grayplot()
-            xsetech([0,0.5,0.5,0.5]);
-            histplot()
-            xsetech([0,0,1,1])
-        </scilab:image>
+// Top right
+xsetech([0.6 0 0.4 0.4])
+plot3d
 
-        <programlisting role="example"><![CDATA[
-// One plot with changed arect
-clf()
-xsetech(arect=[0,0,0,0])
-x=1:0.1:10;plot2d(x',sin(x)')
+// Middle right
+xsetech([0.6 0.4 0.4 0.3])
+param3d
+
+// Bottom right, with reduced left/right margins
+xsetech([0.4 0.7 0.6 0.28],,,[0.06 0.06 %nan %nan])
+plot2d
+
+// Bottom left
+xsetech([0 0.7 0.4 0.28])
+x = -2:0.05:8;
+plot(x, sin(x) + rand(x)/5)
+
+// Top left, with reduced left/right margins
+xsetech([0 0.05 0.6 0.65],,,[0.10 0.06 %nan %nan])
+histplot, title "", ylabel ""
  ]]></programlisting>
         <scilab:image>
-            xsetech(arect=[0,0,0,0])
-            x=1:0.1:10;plot2d(x',sin(x)')
+            clf
+            title "Main title" fontsize 4
+
+            // Top right
+            xsetech([0.6 0 0.4 0.4])
+            plot3d
+
+            // Middle right
+            xsetech([0.6 0.4 0.4 0.3])
+            param3d
+
+            // Bottom right, with reduced left/right margins
+            xsetech([0.4 0.7 0.6 0.28],,,[0.06 0.06 %nan %nan])
+            plot2d
+
+            // Bottom left
+            xsetech([0 0.7 0.4 0.28])
+            x = -2:0.05:8;
+            plot(x, sin(x) + rand(x)/5)
+
+            // Top left, with reduced left/right margins
+            xsetech([0 0.05 0.6 0.65],,,[0.10 0.06 %nan %nan])
+            histplot, title "", ylabel ""
         </scilab:image>
+        <para/>
+        <para>
+            <emphasis role="bold">Example to draw a graphic inset</emphasis>:
+        </para>
         <programlisting role="example"><![CDATA[
-clf()
-xsetech(arect=[1/8,1/8,1/16,1/4])
-x=1:0.1:10;plot2d(x',sin(x)')
-clf()
+x = linspace(-2,8,1000);
+y = sin(x) + rand(x)/20;
+
+clf
+plot(x, y)
+xgrid(color("grey"))
+
+// Inset
+xsetech([0.5 0.13 0.27 0.35])
+r = x>=1.2 & x<2;
+plot(x(r),y(r))
  ]]></programlisting>
-        <scilab:image>
-            xsetech(arect=[1/8,1/8,1/16,1/4])
-            x=1:0.1:10;plot2d(x',sin(x)')
-        </scilab:image>
+        <scilab:image><![CDATA[
+        x = linspace(-2,8,1000);
+        y = sin(x) + rand(x)/20;
+
+        clf
+        plot(x, y)
+        xgrid(color("grey"))
+
+        // Inset
+        xsetech([0.5 0.13 0.27 0.35])
+        r = x>=1.2 & x<2;
+        plot(x(r),y(r))
+        gcf().axes_size = [600 380];
+     ]]></scilab:image>
+        <para/>
+        <para>
+            <emphasis role="bold">Example on a uiframe</emphasis>:
+        </para>
+        <programlisting role="example"><![CDATA[
+clf
+f = gcf();
+// Frame = left pannel, full figure's height
+fr1 = uicontrol(f, "style", "frame", ..
+        "units","normalized","position",[0 0 0.5 1]);
+
+x = -2:0.02:8;
+
+set("current_entity", fr1)
+xsetech([0 0 0.7 0.3])  // Width 70% of frame's width
+plot(x, sin(x))
+xsetech([0 0.3 1 0.3])  // Width 100%
+plot(x, cos(x))
+xsetech([0 0.6 1.3 0.3]) // Width 130%
+plot(x, tan(x))
+//gca().background = color("lightcyan");
+
+set("current_entity", f)
+subplot(3,2,2)
+plot(x, sec(x))
+
+gcf().children
+gcf().children(2).type
+gcf().children(2).children
+ ]]></programlisting>
+    <table border="0">
+    <tr valign="top">
+        <td>
+            <screen><![CDATA[
+--> gcf().children
+ ans  =
+3 by 1 matrix of handles:
+=========================
+Axes
+uicontrol
+Axes
+
+--> gcf().children(2).type
+ ans  =
+  "uicontrol"
+
+--> gcf().children(2).children
+ ans  =
+3 by 1 matrix of handles:
+=========================
+Axes
+Axes
+Axes
+]]></screen>
+        </td>
+        <td>
+            <inlinemediaobject>
+                <imageobject>
+                    <imagedata fileref="../../images/xsetech_uiframe.png"/>
+                </imageobject>
+            </inlinemediaobject>
+        </td>
+    </tr>
+    </table>
     </refsection>
     <refsection role="see also">
         <title>See also</title>
@@ -183,11 +299,37 @@ clf()
                 <link linkend="subplot">subplot</link>
             </member>
             <member>
-                <link linkend="isoview">isoview</link>
+                <link linkend="newaxes">newaxes</link>
             </member>
             <member>
-                <link linkend="replot">replot</link>
+                <link linkend="axes_properties">axes_properties</link>
+            </member>
+            <member>
+                <link linkend="gda">gda</link>
             </member>
         </simplelist>
+    </refsection>
+    <refsection role="history">
+        <title>History</title>
+        <revhistory>
+            <revision>
+                <revnumber>6.1.2</revnumber>
+                <revdescription>
+                    <itemizedlist>
+                        <listitem>
+                            xsetech(…) can be used as well on any uiframe substrate.
+                        </listitem>
+                        <listitem>
+                            Any <literal>%nan</literal> value allows to keep the current
+                            or default value.
+                        </listitem>
+                        <listitem>
+                            Named input arguments <literal>wrect, frect, arect</literal> are renamed
+                            respectively <literal>axes_bounds, data_bounds, margins</literal>.
+                        </listitem>
+                    </itemizedlist>
+                </revdescription>
+            </revision>
+        </revhistory>
     </refsection>
 </refentry>

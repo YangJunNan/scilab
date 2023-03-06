@@ -249,6 +249,10 @@ Feature changes and additions on 6.1.1
 * `complex` is extended to sparse arrays.
 * `m2sci` Matlab-to-Scilab code converter upgraded for better code conversion.
 
+Feature changes and additions on 6.1.2
+--------------------------------------
+* `xsetech()` can be used on uiframes.
+
 
 User Interface improvements
 ---------------------------
@@ -361,6 +365,7 @@ Bug Fixes
 * [#16281](https://gitlab.com/scilab/scilab/-/issues/16281): `bezout(%inf, 1)` and `bezout(%nan, 1)` crashed Scilab
 * [#16408](https://gitlab.com/scilab/scilab/-/issues/16408): `toJSON` crashed with wrong parameters order.
 * [#16640](https://gitlab.com/scilab/scilab/-/issues/16640): `glue` crashed with Figure.
+* [#16532](https://gitlab.com/scilab/scilab/-/issues/16532): `xsetech()` could not be used on uiframes. It was not possible to keep a default value for a bound or a margin. In the documentation, examples were not relevant.
 * [#16555](https://gitlab.com/scilab/scilab/-/issues/16555): Details of Xcos CLOCK_c block led to crash
 * [#16557](https://gitlab.com/scilab/scilab/-/issues/16557): `macr2tree` + `tree2code` translated `e={2}` into `"e=1"` and `e={2,"ab"}` into `"e=[2,"ab"]"`.
 * [#16575](https://gitlab.com/scilab/scilab/-/issues/16575): for m=rand(2,2,2), end crashes Scilab.
