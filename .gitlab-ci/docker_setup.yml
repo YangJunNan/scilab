@@ -7,7 +7,7 @@
 #
 
 # Create/refresh Docker build
-.create_docker_image_linux:
+create_docker_image_linux:
   stage: docker_create
   image: docker:20.10.16
   tags: [x86_64-linux-gnu, docker, scilab]
@@ -31,7 +31,7 @@
 #     - changes: *DOCKER_CHANGES
 
 # cleanup intermediate Docker image after the build
-.linux_cleanup_docker:
+linux_cleanup_docker:
   stage: docker_cleanup
   image: docker:20.10.16
   tags: [x86_64-linux-gnu, docker, scilab]
