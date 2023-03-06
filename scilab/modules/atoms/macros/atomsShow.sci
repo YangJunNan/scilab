@@ -158,7 +158,7 @@ function atomsShow(package)
         // Other
         //
 
-        if isempty(value) then
+        if isempty(value) && isfield(details, fields_map(i,1)) then
             value = details(fields_map(i,1));
         end
 

@@ -8,10 +8,14 @@
 // <-- ENGLISH IMPOSED -->
 // <-- CLI SHELL MODE -->
 
+load("SCI/modules/atoms/macros/atoms_internals/lib");
+exec("SCI/modules/atoms/tests/unit_tests/atomsTestUtils.sce");
+atomsRepositoryReset();
+
 if isempty([ atomsRepositoryList("user") ; atomsRepositoryList("allusers")]) then
 
-    rep1 = "https://scene10.6.0.test.atoms.scilab.org";
-    rep2 = "https://scene11.6.0.test.atoms.scilab.org";
+    rep1 = atomsCreateLocalRepositoryFromDescription(SCI+"/modules/atoms/tests/unit_tests/scene10.DESCRIPTION", "scene10");
+    rep2 = atomsCreateLocalRepositoryFromDescription(SCI+"/modules/atoms/tests/unit_tests/scene11.DESCRIPTION", "scene11");
 
     if atomsRepositoryAdd(rep1,"user")     <> 1 then pause, end
     if atomsRepositoryAdd(rep2,"allusers") <> 1 then pause, end

@@ -20,6 +20,6 @@
 defaultRepo = atomsRepositoryList();
 v = getversion("scilab");
 
-goodRepo = sprintf("https://atoms.scilab.org/%d.%d", v(1), v(2));
+goodRepo = sprintf("https://atoms.scilab.org/%d.%d/TOOLBOXES/64", v(1), v(2));
 
 assert_checkequal(defaultRepo(1), goodRepo);

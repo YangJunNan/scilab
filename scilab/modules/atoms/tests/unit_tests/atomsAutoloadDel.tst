@@ -9,6 +9,7 @@
 // <-- CLI SHELL MODE -->
 
 load("SCI/modules/atoms/macros/atoms_internals/lib");
+exec("SCI/modules/atoms/tests/unit_tests/atomsTestUtils.sce");
 
 // We need a clean version
 // =============================================================================
@@ -24,7 +25,7 @@ atomsSetConfig("autoloadAddAfterInstall","False");
 atomsSetConfig("Verbose" ,"False");
 
 // Load the 1st scenario : See scene10.test.atoms.scilab.org.txt
-atomsRepositorySetOfl("https://scene10.6.0.test.atoms.scilab.org");
+atomsLoadTestScene("scene10");
 
 // 1st test case
 // =============================================================================

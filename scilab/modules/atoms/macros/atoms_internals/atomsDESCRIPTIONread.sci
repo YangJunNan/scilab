@@ -191,12 +191,19 @@ function description_out = atomsDESCRIPTIONread(file_in,additional)
             current_value                  = part(lines_in(i),current_field_length+2:length(lines_in(i)));
 
             // process binary files
-            if regexp(current_field,"/^(windows|linux|macosx|solaris|bsd)(32|64)?(Url|Name|Md5|Sha1|Id)$/","o")<>[] then
+
+            //goal is to have "binaryName" as field of atoms struct. (see atomsInstall L~315 "Define the path of the downloaded file")
+            if regexp(current_field, "/^(binary|windows|linux|macosx|solaris|bsd)(32|64)?(Url|Name|Md5|Sha1|Id)$/","o") <> [] then
                 // This field doesn't concern this platform => Next line
-                if regexp(current_field,"/^"+OSNAME+ARCH+"/","o")==[] then
-                    continue;
+                if regexp(current_field,"/^"+OSNAME+ARCH+"/","o") == [] then
+                    //fallback to binary keys
+                    if regexp(current_field,"/^" + "binary" + ARCH + "/","o") == [] then
+                        continue;
+                    else
+                        current_field = "binary" + part(current_field, length("binary" + ARCH) + 1:length(current_field));
+                    end
                 else
-                    current_field = "binary"+part(current_field,length(OSNAME+ARCH)+1:length(current_field));
+                    current_field = "binary" + part(current_field, length(OSNAME + ARCH) + 1:length(current_field));
                 end
             end
 

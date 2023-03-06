@@ -97,12 +97,11 @@ function dir_created = atomsExtract(archive_in,dir_out)
         atomsError("error", ..
         msprintf(gettext("%s: The extraction of the archive ''%s'' has failed.\n"), ..
         "atomsExtract", ..
-        strsubst(archive_in,"\","\\") ));
+            strsubst(archive_in,"\","\\") ));
     end
 
     // Get the list of directories after the extraction
     // =========================================================================
-
     dirs_after = atomsListDir(dir_out);
 
 

@@ -7,10 +7,11 @@
 // <-- ENGLISH IMPOSED -->
 // <-- CLI SHELL MODE -->
 load("SCI/modules/atoms/macros/atoms_internals/lib");
+exec("SCI/modules/atoms/tests/unit_tests/atomsTestUtils.sce");
 // Load the 1st scenario : See scene10.test.atoms.scilab.org.txt
 // =============================================================================
-atomsRepositorySetOfl("https://scene10.6.0.test.atoms.scilab.org");
-Scanning repository https://scene10.6.0.test.atoms.scilab.org ... Done
+atomsLoadTestScene("scene10");
+Scanning repository file://TMPDIR/scene10 ... Done
 // -----------------------------------------------------------------------------
 ref = [ "+" "U" "toolbox_4V6" "1.0-1" ;
 "+" ""  "toolbox_2V6" "1.0-1" ;
@@ -28,8 +29,8 @@ ref = [ "+" "U" "toolbox_6V6" "1.0-1" ;
 if or(atomsInstallList("toolbox_6V6")<>ref) then bugmes();quit;end
 // Load the 2nd scenario : See scene11.test.atoms.scilab.org.txt
 // =============================================================================
-atomsRepositorySetOfl("https://scene11.6.0.test.atoms.scilab.org");
-Scanning repository https://scene11.6.0.test.atoms.scilab.org ... Done
+atomsLoadTestScene("scene11");
+Scanning repository file://TMPDIR/scene11 ... Done
 // -----------------------------------------------------------------------------
 ref = [ "+" "U" "toolbox_4V6" "1.1-1" ;
 "+" ""  "toolbox_2V6" "1.0-1" ;
@@ -48,4 +49,4 @@ if or(atomsInstallList("toolbox_6V6")<>ref) then bugmes();quit;end
 // Restore Original values
 // =============================================================================
 atomsRepositorySetOfl(mgetl(SCI+"/modules/atoms/tests/unit_tests/repositories.orig"));
-Scanning repository https://atoms.scilab.org/6.0 ... Done
+Scanning repository https://atoms.scilab.org/2023.0/TOOLBOXES/64 ... Done

@@ -112,10 +112,17 @@ function result = atomsInstall(packages,section)
 
     // Create needed directories
     // =========================================================================
-    atoms_system_directory  = atomsPath("system" ,section);
-    atoms_install_directory = atomsPath("install",section);
-    atoms_session_directory = atomsPath("system","session");
-    atoms_tmp_directory     = pathconvert("TMPDIR\.atoms\tmp_" + sprintf("%d\n",getdate("s")) );
+    atoms_system_directory  = atomsPath("system", section);
+    atoms_install_directory = atomsPath("install", section);
+    atoms_session_directory = atomsPath("system", "session");
+    atoms_tmp_directory     = pathconvert("TMPDIR\.atoms\tmp_" + sprintf("%d\n",getdate("s")));
+
+    if getos() == "Windows" then
+        if part(atoms_install_directory, 1) <> part(atoms_tmp_directory, 1) then
+            [?, fname] = fileparts(tempname());
+            atoms_tmp_directory = fullfile(atoms_install_directory, fname) + filesep();
+        end
+    end
 
     directories2create = [  atoms_system_directory ;   ..
     atoms_install_directory ;  ..
@@ -166,7 +173,7 @@ function result = atomsInstall(packages,section)
             // expand filename - bug 10707
             this_package = pathconvert(this_package, %f);
 
-            tmp_dir = atomsExtract(this_package,atoms_tmp_directory);
+            tmp_dir = atomsExtract(this_package, atoms_tmp_directory);
             tmp_dir = pathconvert(atoms_tmp_directory+tmp_dir);
 
             if fileinfo( tmp_dir + "DESCRIPTION" ) then
@@ -295,23 +302,21 @@ function result = atomsInstall(packages,section)
         // "Repository" installation ; Download and Extract
         // =====================================================================
 
+        fileprefix = ""
         if this_package_details("fromRepository") == "1" then
 
             // Define the path of the downloaded file
             // =================================================================
-
             if isfield(this_package_details,"binaryName") then
                 fileprefix = "binary";
             elseif isfield(this_package_details,OSNAME+ARCH+"Name") then
-                fileprefix = OSNAME+ARCH;
-            else
+                fileprefix = OSNAME + ARCH;
+            elseif isfield(this_package_details,OSNAME+"Name") then
                 fileprefix = OSNAME;
-            end
-
+            else
             // fallback to build the source when the binary is not available
-            if ~isfield(this_package_details, fileprefix + "Name") then
                 fileprefix = "source";
-            end 
+            end
 
             fileout     = pathconvert(this_package_directory+this_package_details(fileprefix+"Name"),%F);
             filein      = this_package_details(fileprefix+"Url");
@@ -398,9 +403,9 @@ function result = atomsInstall(packages,section)
                 end
 
                 atomsError("error", ..
-                msprintf(gettext("%s: Error while creating the directory ''%s''.\n"),..
-                "atomsInstall",..
-                strsubst(pathconvert(this_package_directory+this_package_version),"\","\\") ));
+                    msprintf(gettext("%s: Error while creating the directory ''%s''.\n"),..
+                    "atomsInstall",..
+                    strsubst(pathconvert(this_package_directory+this_package_version),"\","\\") ));
             end
 
         end

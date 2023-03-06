@@ -9,6 +9,7 @@
 // <-- ENGLISH IMPOSED -->
 
 load("SCI/modules/atoms/macros/atoms_internals/lib");
+exec("SCI/modules/atoms/tests/unit_tests/atomsTestUtils.sce");
 
 // We need a clean version
 // =============================================================================
@@ -19,7 +20,9 @@ atomsRestoreConfig(%T);
 atomsSaveConfig();
 
 //force official ATOMS repository
-atomsRepositorySetOfl(mgetl(SCI+"/modules/atoms/tests/unit_tests/repositories.orig"));
+// Load the 1st scenario : See scene12.test.atoms.scilab.org.txt
+// =============================================================================
+atomsLoadTestScene("scene12");
 
 // Set some parameters for the test
 // =============================================================================
@@ -32,30 +35,30 @@ atomsInstall("toolbox_5V6");
 
 // Check if the module is really installed
 
-if ~ and( atomsIsInstalled( ["toolbox_5V6" "1.2" ; ..
+if ~ and( atomsIsInstalled( ["toolbox_5V6" "1.0" ; ..
     "toolbox_4V6" "1.1" ; ..
-    "toolbox_2V6" "2.1" ; ..
-"toolbox_1V6" "2.0"])) then pause, end
+    "toolbox_2V6" "1.0" ; ..
+"toolbox_1V6" "1.0"])) then pause, end
 
 atomsLoad("toolbox_5V6");
 
 if ~ atomsIsLoaded("toolbox_5V6") then pause, end
-if ~ atomsIsLoaded(["toolbox_5V6" "1.2"]) then pause, end
+if ~ atomsIsLoaded(["toolbox_5V6" "1.0"]) then pause, end
 
 if ~ and(atomsIsLoaded(["toolbox_5V6"; ..
     "toolbox_2V6"; ..
     "toolbox_1V6"; ..
 "toolbox_4V6"])) then pause, end
 
-if ~ and(atomsIsLoaded(["toolbox_5V6" "1.2"; ..
-    "toolbox_2V6" "2.1"; ..
-    "toolbox_1V6" "2.0"; ..
+if ~ and(atomsIsLoaded(["toolbox_5V6" "1.0"; ..
+    "toolbox_2V6" "1.0"; ..
+    "toolbox_1V6" "1.0"; ..
 "toolbox_4V6" "1.1"])) then pause, end
 
-if or( t5_version() <> ["Toolbox 5 -> version = 1.2"; ..
+if or( t5_version() <> ["Toolbox 5 -> version = 1.0"; ..
     "Toolbox 4 -> version = 1.1"; ..
     "Toolbox 2 -> version = 1.0"; ..
-"Toolbox 1 -> version = 2.0" ] ) then pause, end
+"Toolbox 1 -> version = 1.0" ] ) then pause, end
 
 atomsRemove("toolbox_5V6");
 

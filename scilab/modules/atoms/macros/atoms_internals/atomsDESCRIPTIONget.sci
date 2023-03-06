@@ -168,7 +168,7 @@ function [packages,categories_flat,categories] = atomsDESCRIPTIONget(update)
         for i=1:size(repositories,"*")
             // Building url & file_out
             // ----------------------------------------
-            url      = repositories(i)+"/TOOLBOXES/"+ARCH+"/"+OSNAME+".gz";
+            url      = repositories(i)+"/"+OSNAME+".gz";
             file_out     = pathconvert(getshortpathname(fullpath(atoms_tmp_directory))+string(i)+"_TOOLBOXES.gz",%f);
 
             // Remove the existing file
