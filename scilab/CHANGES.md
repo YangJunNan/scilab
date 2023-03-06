@@ -350,6 +350,7 @@ Bug Fixes
 * [#14451](https://gitlab.com/scilab/scilab/-/issues/14451): fsolve is no longer reentrant, causes crash.
 * [#14512](https://gitlab.com/scilab/scilab/-/issues/14512): `isequalbitwise()` was made internal in 6.0.0 but was still documented.
 * [#14691](https://gitlab.com/scilab/scilab/-/issues/14691): scilab crashes when code is halted then aborted.
+* [#14917](https://gitlab.com/scilab/scilab/-/issues/14917): A first empty instruction `; a=1` yields an error.
 * [#14998](https://gitlab.com/scilab/scilab/-/issues/14998): `mscanf()` introduces a leading \n newline and the prompt before prompting the user for input
 * [#15071](https://gitlab.com/scilab/scilab/-/issues/15071): Extraction of mlist from another mlist debhaves differently in Scilab 6.
 * [#15602](https://gitlab.com/scilab/scilab/-/issues/15602): gca()("thickness") crashed Scilab.

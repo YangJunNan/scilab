@@ -404,7 +404,7 @@ static void print_rules(const std::string& _parent, const double _value)
 /* Root of the Abstract Syntax Tree */
 program:
 expressions                     { SetTree($1); print_rules("program", "expressions");}
-| EOL expressions               { SetTree($2); print_rules("program", "EOL expressions");}
+| expressionLineBreak expressions { SetTree($2); delete $1; print_rules("program", "expressionLineBreak expressions");}
 | expressionLineBreak           {
                                     print_rules("program", "expressionLineBreak");
                                     ast::exps_t* tmp = new ast::exps_t;
