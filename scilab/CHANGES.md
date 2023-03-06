@@ -373,6 +373,7 @@ Bug Fixes
 * [#16732](https://gitlab.com/scilab/scilab/-/issues/16732): `write()` page: typo, missing information about file overwriting and Fortran formats.
 * [#16734](https://gitlab.com/scilab/scilab/-/issues/16734): `findobj()` was slower than before.
 * [#16748](https://gitlab.com/scilab/scilab/-/issues/16748): Build failed with OCaml 4.11 or newer build without unsafe-strings
+* [#16750](https://gitlab.com/scilab/scilab/-/issues/16750): Xcos RELATIONALOP's icon became blank when editing the block.
 * [#16786](https://gitlab.com/scilab/scilab/-/issues/16786): zoom_box property was not correctly saved.
 * [#16796](https://gitlab.com/scilab/scilab/-/issues/16796): `isreal(complex(1,%nan),0)` returned `%T` instead of `%F`.
 * [#16798](https://gitlab.com/scilab/scilab/-/issues/16798): `scinotes()` with option and non existing file crashed scilab.
