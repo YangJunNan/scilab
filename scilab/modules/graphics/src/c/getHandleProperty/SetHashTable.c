@@ -227,7 +227,6 @@ static setHashTableCouple propertySetTable[] =
     {"tooltipstring", SetUicontrolTooltipString},
     {"closerequestfcn", set_figure_closerequestfcn_property},
     {"orientation", set_tip_orientation_property},
-    {"z_component", set_tip_z_component_property},
     {"display_components", set_tip_display_components_property},
     {"datatip_display_mode", set_datatip_display_mode_property},
     {"auto_orientation", set_tip_auto_orientation_property},

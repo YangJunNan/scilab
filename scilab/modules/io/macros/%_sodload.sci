@@ -783,6 +783,16 @@ function varargout = %_sodload(%__varnameList__)
                 continue
             end
             v = datatipProperties(f)
+            // backward compatibility, z_component removed in 2023.0.0
+            if f == "z_component" then
+                f = "display_components";
+                if v == "on" then
+                    v = "xyz";
+                else
+                    v = "xy";
+                end
+            end
+
             set(h, f, v);
         end
     endfunction
