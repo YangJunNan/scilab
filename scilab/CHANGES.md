@@ -1008,3 +1008,4 @@ Bug Fixes
 * [#16463](https://gitlab.com/scilab/scilab/-/issues/16463): `matrix(sparse([]),[0 0])` yielded `[]` instead of `sparse([])`.
 * [#16483](https://gitlab.com/scilab/scilab/-/issues/16483): Substraction of complex polynomial matrices was broken (Scilab 6 regression).
 * [#16498](https://gitlab.com/scilab/scilab/-/issues/16498): After `esb=sparse([%t %f]); esb(1,:)=[];` , `size(esb)` answered `[0 2]` instead of `[0 0]` .
+* [#16940](https://gitlab.com/scilab/scilab/-/issues/16940): `string` of cell, struct, list did not call overload.
