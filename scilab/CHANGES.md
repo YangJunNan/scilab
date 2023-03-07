@@ -334,7 +334,6 @@ Known issues
 
 Bug Fixes
 ---------
-
 ### Bugs fixed in 6.1.2:
 
 * [#463](https://gitlab.com/scilab/scilab/-/issues/463): Invalid format leads to crash for write function.
@@ -376,6 +375,7 @@ Bug Fixes
 * [#16750](https://gitlab.com/scilab/scilab/-/issues/16750): Xcos RELATIONALOP's icon became blank when editing the block.
 * [#16786](https://gitlab.com/scilab/scilab/-/issues/16786): zoom_box property was not correctly saved.
 * [#16796](https://gitlab.com/scilab/scilab/-/issues/16796): `isreal(complex(1,%nan),0)` returned `%T` instead of `%F`.
+* [#16797](https://gitlab.com/scilab/scilab/-/issues/16797): `atomsGui` could yield some `field <module_name> unknown` error after running the `File => update the list of package` menu.
 * [#16798](https://gitlab.com/scilab/scilab/-/issues/16798): `scinotes()` with option and non existing file crashed scilab.
 * [#16801](https://gitlab.com/scilab/scilab/-/issues/16801): Management of `covWrite("html")` results wrapping was poor.
 * [#16812](https://gitlab.com/scilab/scilab/-/issues/16812): `atomsLoad("linalg")` while the help browser is opened yielded an error breaking the loading.
