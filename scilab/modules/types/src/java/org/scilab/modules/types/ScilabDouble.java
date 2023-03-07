@@ -438,18 +438,24 @@ public class ScilabDouble implements ScilabType {
             return "[]";
         }
 
+        // real scalar case
+        if (isReal() && getHeight() == 1 && getWidth() == 1) {
+            double v = getRealElement(0, 0);
+            return toScilabDoubleString(v);
+        }
+
         result.append("[");
         final boolean real = isReal();
         for (int i = 0; i < getHeight(); ++i) {
             for (int j = 0; j < getWidth(); ++j) {
-                result.append(Double.toString(getRealElement(i, j)));
+                result.append(toScilabDoubleString(getRealElement(i, j)));
                 if (!real) {
                     final double y = getImaginaryElement(i, j);
                     if (y != 0) {
                         if (y > 0) {
                             result.append(" + ");
                         }
-                        result.append(Double.toString(y));
+                        result.append(toScilabDoubleString(y));
                         result.append(" * %i");
                     }
                 }
@@ -464,5 +470,23 @@ public class ScilabDouble implements ScilabType {
         result.append("]");
 
         return result.toString();
+    }
+
+    private static String toScilabDoubleString(double v) {
+        if (Double.isFinite(v))
+            if (v == Math.floor(v))
+                return Integer.toString((int) v);
+            else
+                return Double.toString(v);
+
+        // infinity can be positive or negative
+        if (Double.isInfinite(v))
+            if (v > 0)
+                return "%inf";
+            else
+                return "-%inf";
+
+        // nan as a last resort
+        return "%nan";
     }
 }

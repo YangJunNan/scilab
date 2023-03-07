@@ -34,6 +34,7 @@ import org.scilab.modules.xcos.ObjectProperties;
 import org.scilab.modules.xcos.Xcos;
 import org.scilab.modules.xcos.XcosTab;
 import org.scilab.modules.xcos.block.BasicBlock;
+import org.scilab.modules.xcos.graph.ScicosParameters;
 import org.scilab.modules.xcos.graph.XcosDiagram;
 import org.scilab.modules.xcos.graph.model.BlockInterFunction;
 import org.scilab.modules.xcos.graph.model.ScicosObjectOwner;
@@ -181,7 +182,8 @@ public class BlockParametersAction extends VertexSelectionDependantAction {
 
                     ScilabDirectHandler handler = ScilabDirectHandler.acquire();
                     try {
-                        handler.writeContext(graph.getContext());
+                        ScicosParameters parameters = new ScicosParameters(Xcos.findRoot(graph), new ScicosObjectOwner(controller, graph.getUID(), graph.getKind()));
+                        handler.writeContext(parameters.getAllContext(controller));
                     } finally {
                         handler.release();
                     }
