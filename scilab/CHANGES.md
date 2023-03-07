@@ -339,11 +339,15 @@ Bug Fixes
 * [#463](https://gitlab.com/scilab/scilab/-/issues/463): Invalid format leads to crash for write function.
 * [#7196](https://gitlab.com/scilab/scilab/-/issues/7196): try/catch: returned value assigned in `catch` is not displayed.
 * [#7475](https://gitlab.com/scilab/scilab/-/issues/7475): When running fft, the scilab program crashes.
+* [#8076](https://gitlab.com/scilab/scilab/-/issues/8076): Xcos Superblock Create mask UI was not having a default value setup.
 * [#8353](https://gitlab.com/scilab/scilab/-/issues/8353): Just after launching scilab, `log10(3)` makes Scilab crash.
 * [#8734](https://gitlab.com/scilab/scilab/-/issues/8734): copyfile crash Scilab while playing with locales.
+* [#8760](https://gitlab.com/scilab/scilab/-/issues/8760): masked superblock customization dialog was too complex
+* [#10383](https://gitlab.com/scilab/scilab/-/issues/10383): Xcos Superblock context and mask did not handle Scilab %inf.
 * [#13360](https://gitlab.com/scilab/scilab/-/issues/13360): hilbert function make scilab crash.
 * [#13902](https://gitlab.com/scilab/scilab/-/issues/13902): `atomsSystemUpdate()` was slow.
 * [#14138](https://gitlab.com/scilab/scilab/-/issues/14138): reading some hdf5 file crashes scilab.
+* [#14155](https://gitlab.com/scilab/scilab/-/issues/14155): Superblock mask variables was hard to defined and assign.
 * [#14216](https://gitlab.com/scilab/scilab/-/issues/14216): readxls can make Scilab crash without any error message.
 * [#14372](https://gitlab.com/scilab/scilab/-/issues/14372): after `L=list(1,"a",%t), a=L(2:3)` returned an error.
 * [#14451](https://gitlab.com/scilab/scilab/-/issues/14451): fsolve is no longer reentrant, causes crash.
@@ -355,6 +359,7 @@ Bug Fixes
 * [#15602](https://gitlab.com/scilab/scilab/-/issues/15602): gca()("thickness") crashed Scilab.
 * [#15657](https://gitlab.com/scilab/scilab/-/issues/15657): Empty categories corrupted the graphical output of  `histplot()`.
 * [#15103](https://gitlab.com/scilab/scilab/-/issues/15103): xcorr leads to immediate crash.
+* [#15546](https://gitlab.com/scilab/scilab/-/issues/15546): Superblock mask variables was impossible to rename
 * [#16029](https://gitlab.com/scilab/scilab/-/issues/16029): tick marks were extending out of range for small scale plots.
 * [#16049](https://gitlab.com/scilab/scilab/-/issues/16049): `struct("v", cell())` crashes Scilab.
 * [#16281](https://gitlab.com/scilab/scilab/-/issues/16281): `bezout(%inf, 1)` and `bezout(%nan, 1)` crashed Scilab
@@ -428,6 +433,7 @@ Bug Fixes
 * [#16914](https://gitlab.com/scilab/scilab/-/issues/16914): Wrong line number with t/mlist extraction overload.
 * [#16919](https://gitlab.com/scilab/scilab/-/issues/16919): MList overload extraction compatibility with scilab 5.5.2
 * [#16920](https://gitlab.com/scilab/scilab/-/issues/16920): MatrixExp insertion in an empty matrix and using colon crashes Scilab.
+* [#16924](https://gitlab.com/scilab/scilab/-/issues/16924): Xcos Superblock mask could not be used to add variables.
 * [#16923](https://gitlab.com/scilab/scilab/-/issues/16923): unable to use `http_get(..., follow=%t)` without a filename argument.
 * [#16925](https://gitlab.com/scilab/scilab/-/issues/16925): Xcos modelica simulation failed when model name contains `-`.
 * [#16932](https://gitlab.com/scilab/scilab/-/issues/16932): toJSON() did not escape TABs properly.
