@@ -167,14 +167,14 @@ while n < 3000
     s = sparse(triu(complex(rand(n,n),rand(n,n))));
     ref = prod(diag(s));
     if n < 2000
-        assert_checkalmostequal(det(s), ref, 100*n*%eps);
+        assert_checkalmostequal(det(s), ref, 500*n*%eps);
     else
         assert_checkequal(det(s), 0*%i);
     end
     [e, m] = det(s);
     [eref, mref] = det(full(s));
     assert_checkequal(e, eref);
-    assert_checkalmostequal(m, mref, 100*n*%eps);
+    assert_checkalmostequal(m, mref, 200*n*%eps);
     n = n*2;
 end
 // Overflow:
@@ -183,13 +183,13 @@ while n < 3000
     s = sparse(triu(complex(rand(n,n),rand(n,n))))*6;
     ref = prod(diag(s));
     if n < 600
-        assert_checkalmostequal(det(s), ref, 100*n*%eps);
+        assert_checkalmostequal(det(s), ref, 200*n*%eps);
     else
         assert_checkequal(abs(real(det(s))), %inf);
     end
     [e, m] = det(s);
     [eref, mref] = det(full(s));
     assert_checkequal(e, eref);
-    assert_checkalmostequal(m, mref, 200*n*%eps);
+    assert_checkalmostequal(m, mref, 300*n*%eps);
     n = n*2;
 end

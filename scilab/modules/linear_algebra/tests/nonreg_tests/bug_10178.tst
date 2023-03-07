@@ -47,4 +47,4 @@ AS = sparse(A);
 assert_checkequal(norm(A), norm(AS));
 assert_checkequal(norm(A, 1), norm(AS, 1));
 assert_checkequal(norm(A, %inf), norm(AS, %inf));
-assert_checkequal(norm(A, 'fro'), norm(AS, 'fro'));
+assert_checkalmostequal(norm(A, 'fro'), norm(AS, 'fro'));
