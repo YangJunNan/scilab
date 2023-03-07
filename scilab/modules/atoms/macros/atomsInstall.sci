@@ -362,9 +362,8 @@ function result = atomsInstall(packages,section)
         [rep,stat,err]=unix_g(rename_cmd);
 
         if stat <> 0 then
-
             // Second try after a sleep
-            // This is needed on windows platforms
+            // This is needed on windows platforms as there might be "Access is denied" errors.
 
             if getos() == "Windows" then
                 sleep(2000);
