@@ -16,9 +16,14 @@ create_docker_image_linux:
     - docker build --file .gitlab-ci/Dockerfile.linux -t $DOCKER_LINUX_BUILDER .
     - docker push $DOCKER_LINUX_BUILDER
   rules:
-    - changes: &DOCKER_CHANGES
+    - if: $CI_PROJECT_PATH_SLUG !~ /scilab-scilab/
+      changes: &DOCKER_CHANGES
         paths:
           - .gitlab-ci/Dockerfile*
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+      changes: *DOCKER_CHANGES
+    - if: $CI_MERGE_REQUEST_APPROVED
+      changes: *DOCKER_CHANGES
 # create_docker_image_windows:
 #   stage: docker_create
 #   tags: [x64_windows, shell, scilab]

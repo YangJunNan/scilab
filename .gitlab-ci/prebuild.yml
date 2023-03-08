@@ -80,10 +80,14 @@ CHANGES_has_no_edit:
       allow_failure: true
       variables:
         STATUS: 1
-# on forks, always trigger a warning as we have no source branch to compare to
-    - allow_failure: true
+    # on forks, alert the user
+    - if: $CI_PROJECT_PATH_SLUG !~ /scilab-scilab/
+      allow_failure: true
       variables:
         STATUS: 1
+    # otherwise do not execute
+    - when: never
+    
   script:
     - echo "$STATUS"
     - exit $STATUS

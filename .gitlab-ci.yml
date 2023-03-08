@@ -20,17 +20,17 @@ stages:
 
 variables:
   GIT_STRATEGY:
-    value: "fetch"
+    value: "clone"
     description: "fastest strategy as it re-uses the local working copy"
   GIT_CLEAN_FLAGS:
-    value: "none"
+    value: "-fxd"
     description: "do clean build, each job should clean previous artifacts at startup"
   GIT_DEPTH:
     value: "1"
     description: "speedup cloning, only fetch the latest commit"
   PREREQUIREMENTS_BRANCH:
-    value: "branches/6.1"
-    description: "Scilab prerequirements branch name or trunk"
+    value: "branch-6.1"
+    description: "Scilab prerequirements branch name"
   DOCKER_LINUX_BUILDER:
     value: "registry.gitlab.com/scilab/scilab/linux-builder"
     description: "Docker image used to build Scilab on Linux"
@@ -48,35 +48,39 @@ workflow:
         paths:
           - .gitlab-ci/Dockerfile*
       variables:
+        GIT_STRATEGY: "fetch"
+        GIT_CLEAN_FLAGS: "none"
         SCI_VERSION_STRING: "$CI_PROJECT_PATH_SLUG-${CI_COMMIT_SHORT_SHA}"
         DOCKER_LINUX_BUILDER: "$CI_REGISTRY_IMAGE/linux-builder:$CI_COMMIT_BRANCH"
         DOCKER_WINDOWS_BUILDER: "$CI_REGISTRY_IMAGE/windows-builder:$CI_COMMIT_BRANCH"
     - if: $CI_PROJECT_PATH_SLUG !~ /scilab-scilab/
       variables:
+        GIT_STRATEGY: "fetch"
+        GIT_CLEAN_FLAGS: "none"
         SCI_VERSION_STRING: "$CI_PROJECT_PATH_SLUG-${CI_COMMIT_SHORT_SHA}"
     # run on merge request and set specific docker image tag
     - if: $CI_PIPELINE_SOURCE == "merge_request_event"
       changes: *DOCKER_CHANGES
       variables:
+        GIT_STRATEGY: "fetch"
+        GIT_CLEAN_FLAGS: "none"
         SCI_VERSION_STRING: "scilab-mr${CI_MERGE_REQUEST_IID}-${CI_COMMIT_SHORT_SHA}"
         DOCKER_LINUX_BUILDER: "$CI_REGISTRY_IMAGE/linux-builder:$CI_MERGE_REQUEST_ID"
         DOCKER_WINDOWS_BUILDER: "$CI_REGISTRY_IMAGE/windows-builder:$CI_MERGE_REQUEST_ID"
     # run on merge request
     - if: $CI_PIPELINE_SOURCE == "merge_request_event"
       variables:
+        GIT_STRATEGY: "fetch"
+        GIT_CLEAN_FLAGS: "none"
         SCI_VERSION_STRING: "scilab-mr${CI_MERGE_REQUEST_IID}-${CI_COMMIT_SHORT_SHA}"
     # Scheduled pipeline
     - if: $CI_PIPELINE_SOURCE == 'schedule'
       variables:
         SCI_VERSION_STRING: "scilab-branch-${CI_COMMIT_BRANCH}-${CI_COMMIT_SHORT_SHA}"
-        GIT_STRATEGY: clone
-        GIT_CLEAN_FLAGS: -fxd
     # Release
     - if: $CI_COMMIT_TAG
       variables:
         SCI_VERSION_STRING: "scilab-${CI_COMMIT_TAG}"
-        GIT_STRATEGY: clone
-        GIT_CLEAN_FLAGS: -fxd
     # Update default Docker image on merge
     - if: $CI_MERGE_REQUEST_APPROVED
       changes: *DOCKER_CHANGES

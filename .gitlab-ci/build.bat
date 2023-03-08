@@ -15,14 +15,11 @@ REM Create log folder
 set LOG_PATH=%SCI_VERSION_STRING%
 if not exist %LOG_PATH% mkdir %LOG_PATH%
 
-curl -k -z prereq.zip -o prereq.zip https://oos.eu-west-2.outscale.com/scilab-releases-dev/prerequirements/prerequirements-scilab-branch-6.1-windows_x64.zip
+curl -k -z prereq.zip -o prereq.zip https://oos.eu-west-2.outscale.com/scilab-releases-dev/prerequirements/prerequirements-scilab-%PREREQUIREMENTS_BRANCH%-windows_x64.zip
 unzip -o prereq.zip -d scilab > %LOG_PATH%\log_prereq_%CI_COMMIT_SHORT_SHA%.txt
-@REM svn checkout --username anonymous --password Scilab svn://svn.scilab.org/scilab/%PREREQUIREMENTS_BRANCH%/Dev-Tools/SE/Prerequirements/Windows_x64/ scilab > %LOG_PATH%\log_svn_%CI_COMMIT_SHORT_SHA%.txt
-@REM if errorlevel 1 tail --lines=20 %LOG_PATH%\log_svn_%CI_COMMIT_SHORT_SHA%.txt 1>&2 & exit 1
 @REM REM display svn revision
-@REM tail -n 1 %LOG_PATH%\log_svn_%CI_COMMIT_SHORT_SHA%.txt
-@REM REM revert local modification
-@REM svn revert -R scilab >> %LOG_PATH%\log_svn_%CI_COMMIT_SHORT_SHA%.txt
+type scilab\svn-info.txt
+if errorlevel 1 exit 1
 
 REM Define environment variables
 set SCILAB_JDK64=%JAVA_HOME%

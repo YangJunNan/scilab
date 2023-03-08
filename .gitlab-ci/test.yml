@@ -24,7 +24,9 @@ windows_good_mr:
   needs:
     - windows_build_mr
     - windows_set_env
-  rules:
+  rules: &MR_RULES
+    - if: $CI_COMMIT_TAG
+      when: never
     - if: $CI_PIPELINE_SOURCE == 'merge_request_event' || $CI_PIPELINE_SOURCE == 'push'
   when: manual
   parallel:
@@ -52,8 +54,7 @@ windows_good_mr:
 
 windows_bad_mr:
   extends: .windows_test
-  rules:
-    - if: $CI_PIPELINE_SOURCE == 'merge_request_event' || $CI_PIPELINE_SOURCE == 'push'
+  rules: *MR_RULES
   when: manual
   parallel:
     matrix: &BAD_TEST_ANCHOR
@@ -102,8 +103,7 @@ windows_bad_mr:
 
 windows_ugly_mr:
   extends: .windows_test
-  rules:
-    - if: $CI_PIPELINE_SOURCE == 'merge_request_event' || $CI_PIPELINE_SOURCE == 'push'
+  rules: *MR_RULES
   when: manual
   parallel:
     matrix: &UGLY_TEST_ANCHOR
@@ -113,8 +113,7 @@ windows_ugly_mr:
 
 windows_only_mr:
   extends: .windows_test
-  rules:
-    - if: $CI_PIPELINE_SOURCE == 'merge_request_event' || $CI_PIPELINE_SOURCE == 'push'
+  rules: *MR_RULES
   when: manual
   parallel:
     matrix: &WINDOWS_ONLY_TEST_ANCHOR
@@ -208,6 +207,8 @@ windows_good_impacted:
     - windows_build_mr
     - windows_set_env
   rules: &IMPACTED_RULES
+    - if: $CI_COMMIT_TAG
+      when: never
     - if: $CI_PIPELINE_SOURCE == 'merge_request_event' || $CI_PIPELINE_SOURCE == 'push'
       changes:
         - scilab/modules/$TEST/**/*
@@ -258,8 +259,7 @@ linux_good_mr:
   needs:
     - linux_build_mr
     - linux_set_env
-  rules:
-    - if: $CI_PIPELINE_SOURCE == 'merge_request_event' || $CI_PIPELINE_SOURCE == 'push'
+  rules: *MR_RULES
   when: manual
   parallel:
     matrix: *GOOD_TEST_ANCHOR
@@ -269,8 +269,7 @@ linux_bad_mr:
   needs:
     - linux_build_mr
     - linux_set_env
-  rules:
-    - if: $CI_PIPELINE_SOURCE == 'merge_request_event' || $CI_PIPELINE_SOURCE == 'push'
+  rules: *MR_RULES
   when: manual
   parallel:
     matrix: *BAD_TEST_ANCHOR
@@ -280,8 +279,7 @@ linux_ugly_mr:
   needs:
     - linux_build_mr
     - linux_set_env
-  rules:
-    - if: $CI_PIPELINE_SOURCE == 'merge_request_event' || $CI_PIPELINE_SOURCE == 'push'
+  rules: *MR_RULES
   when: manual
   parallel:
     matrix: *UGLY_TEST_ANCHOR
@@ -351,10 +349,7 @@ linux_good_impacted:
   needs:
     - linux_build_mr
     - linux_set_env
-  rules: &IMPACTED_RULES
-    - if: $CI_PIPELINE_SOURCE == 'merge_request_event' || $CI_PIPELINE_SOURCE == 'push'
-      changes:
-        - scilab/modules/$TEST/**/*
+  rules: *IMPACTED_RULES
   parallel:
     matrix: *GOOD_TEST_ANCHOR
 

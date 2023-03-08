@@ -14,16 +14,10 @@ LOG_PATH=$SCI_VERSION_STRING
 
 # checkout pre-requirements
 echo -e "\e[0Ksection_start:$(date +%s):prerequirements\r\e[0KGetting prerequirements"
-curl -k -z prereq.tar.xz -o prereq.tar.xz https://oos.eu-west-2.outscale.com/scilab-releases-dev/prerequirements/prerequirements-scilab-branch-6.1-linux_x64.tar.xz
+curl -k -z prereq.tar.xz -o prereq.tar.xz https://oos.eu-west-2.outscale.com/scilab-releases-dev/prerequirements/prerequirements-scilab-${PREREQUIREMENTS_BRANCH}-linux_x64.tar.xz
 tar -xvf prereq.tar.xz -C scilab > ${LOG_PATH}/log_prereq_${CI_COMMIT_SHORT_SHA}.txt
-# svn checkout \
-#     --username anonymous --password Scilab \
-#     "svn://svn.scilab.org/scilab/${PREREQUIREMENTS_BRANCH}/Dev-Tools/SE/Prerequirements/linux_x64/" scilab \
-#     > ${LOG_PATH}/log_svn_${CI_COMMIT_SHORT_SHA}.txt || (tail --lines=100 $LOG_PATH/log_svn_${CI_COMMIT_SHORT_SHA}.txt; exit 1)
-# # display svn revision
-# tail -n 1 ${LOG_PATH}/log_svn_${CI_COMMIT_SHORT_SHA}.txt
-# # revert local modification
-# svn revert -R scilab >> ${LOG_PATH}/log_svn_${CI_COMMIT_SHORT_SHA}.txt
+# display svn revision
+cat scilab/svn-info.txt || exit 1
 echo -e "\e[0Ksection_end:$(date +%s):prerequirements\r\e[0K"
 
 # patch version numbers
