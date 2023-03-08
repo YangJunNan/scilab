@@ -1,26 +1,24 @@
 // =============================================================================
 // Scilab ( https://www.scilab.org/ ) - This file is part of Scilab
-// Copyright (C) 2020 - Stéphane MOTTELET
+// Copyright (C) 2023 - Dassault Systèmes 
 //
 //  This file is distributed under the same license as the Scilab package.
 // =============================================================================
-// <-- CLI SHELL MODE -->
-// <-- NO CHECK REF -->
-//
-// <-- Non-regression test for bug 16397 -->
-//
-// <-- GitLab URL -->
-// https://gitlab.com/scilab/scilab/-/issues/16397
-//
-// <-- Short Description -->
-// display of long real vectors in the console is slow
 
+// Benchmark test for a display of long real vectors
+// t2/t1 > 4 on Windows ; t2/t1 > 8 on Linux
+// benchmark created from non-regression test bug_16397
+
+// <-- BENCH NB RUN : 1 -->
 x=rand(1e4,1);
+
+// <-- BENCH START -->
 tic;
 disp(x)
 t1 = toc();
 tic;
 disp([x,x])
 t2 = toc();
+t2/t1
 
-assert_checktrue(t2 > t1);
+// <-- BENCH END -->
