@@ -54,7 +54,7 @@ bin\WScilex-cli.exe -nb -f "tools\innosetup\Create_ISS.sce" > ..\%LOG_PATH%\log_
 if errorlevel 1 tail --lines=20 ..\%LOG_PATH%\log_iss_%CI_COMMIT_SHORT_SHA%.txt 1>&2 & exit 1
 if not exist "Scilab.iss" exit 1
 set ISS_MR=0
-if not "%CI_PIPELINE_SOURCE%" == "schedule" set ISS_MR=1
+if "%CI_PIPELINE_SOURCE%" == "merge_request_event" set ISS_MR=1
 "C:\Program Files (x86)\Inno Setup 6\iscc.exe" Scilab.iss /DMR=%ISS_MR% >> ..\%LOG_PATH%\log_iss_%CI_COMMIT_SHORT_SHA%.txt
 if errorlevel 1 tail --lines=20 ..\%LOG_PATH%\log_iss_%CI_COMMIT_SHORT_SHA%.txt 1>&2 & exit 1
 
