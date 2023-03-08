@@ -81,6 +81,7 @@ windows_build_release:
     paths:
       - $SCI_VERSION_STRING
       - scilab/modules/core/includes/version.h
+      - scilab/config.log
       - $SCI_VERSION_STRING.bin.$ARCH.tar.xz
     when: always
 # build an MR version

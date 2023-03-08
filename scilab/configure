@@ -30521,6 +30521,11 @@ TERMCAP_LIB=no
 #    - need to include termcap.h and link with -ltermcap for tgetent()
 #
 
+if $WITH_DEVTOOLS; then
+    # ncurses includes are in a subdir
+    CFLAGS="-I$DEVTOOLS_INCDIR -I$DEVTOOLS_INCDIR/ncurses $CFLAGS"
+fi
+
 { printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking for main in -lcurses" >&5
 printf %s "checking for main in -lcurses... " >&6; }
 if test ${ac_cv_lib_curses_main+y}
@@ -30684,7 +30689,7 @@ if test "x$ac_cv_lib_curses_main" = "xyes" -o "x$ac_cv_lib_ncurses_main" = "xyes
 printf "%s\n" "#define HAVE_TERMCAP /**/" >>confdefs.h
 
 else
- as_fn_error $? "No termcap library detected. Please install ncurses dev library (or termcap library)" "$LINENO" 5
+as_fn_error $? "No termcap library detected. Please install ncurses dev library (or termcap library)" "$LINENO" 5
 fi
 
 ##################
@@ -31193,7 +31198,7 @@ CHK_EIGEN_MINOR=2
 { printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking if Eigen is version $CHK_EIGEN_WORLD.$CHK_EIGEN_MAJOR.$CHK_EIGEN_MINOR or later" >&5
 printf %s "checking if Eigen is version $CHK_EIGEN_WORLD.$CHK_EIGEN_MAJOR.$CHK_EIGEN_MINOR or later... " >&6; }
 cat > conftest.$ac_ext <<EOF
-#line 31196 "configure"
+#line 31201 "configure"
 #include "confdefs.h"
 
 #include "$PATH_TO_EIGEN/Eigen/Sparse"
@@ -35946,7 +35951,7 @@ CPPFLAGS="$CPPFLAGS -I$CHK_TCL_INCLUDE_PATH"
 { printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking if tcl is version $CHK_TCL_MAJOR.$CHK_TCL_MINOR or later" >&5
 printf %s "checking if tcl is version $CHK_TCL_MAJOR.$CHK_TCL_MINOR or later... " >&6; }
 cat > conftest.$ac_ext <<EOF
-#line 35949 "configure"
+#line 35954 "configure"
 #include "confdefs.h"
 
 #include "$CHK_TCL_INCLUDE_PATH/$CHK_TCL_INC_NAME"
@@ -36257,7 +36262,7 @@ CPPFLAGS="$CPPFLAGS $TCL_INC_PATH -I$CHK_TK_INCLUDE_PATH $X_CFLAGS"
 printf %s "checking if tk is version $CHK_TK_MAJOR.$CHK_TK_MINOR or later... " >&6; }
 
 cat > conftest.$ac_ext <<EOF
-#line 36260 "configure"
+#line 36265 "configure"
 #include "confdefs.h"
 
 #include "$CHK_TK_INCLUDE_PATH/$CHK_TK_INC_NAME"
@@ -36848,7 +36853,7 @@ printf %s "checking saxon9he... " >&6; }
     if test ! -f conftestSharedChecker.class ; then
 
     cat << \EOF > conftestSharedChecker.java
-// #line 36851 "configure"
+// #line 36856 "configure"
 import java.util.regex.Pattern;
 import java.io.File;
 import java.io.IOException;
@@ -37080,7 +37085,7 @@ printf %s "checking saxon... " >&6; }
     if test ! -f conftestSharedChecker.class ; then
 
     cat << \EOF > conftestSharedChecker.java
-// #line 37083 "configure"
+// #line 37088 "configure"
 import java.util.regex.Pattern;
 import java.io.File;
 import java.io.IOException;
@@ -37313,7 +37318,7 @@ printf %s "checking saxon... " >&6; }
     if test ! -f conftestSharedChecker.class ; then
 
     cat << \EOF > conftestSharedChecker.java
-// #line 37316 "configure"
+// #line 37321 "configure"
 import java.util.regex.Pattern;
 import java.io.File;
 import java.io.IOException;

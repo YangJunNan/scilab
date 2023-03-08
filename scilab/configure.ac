@@ -1456,6 +1456,11 @@ TERMCAP_LIB=no
 #    - need to include termcap.h and link with -ltermcap for tgetent()
 #
 
+if $WITH_DEVTOOLS; then
+    # ncurses includes are in a subdir
+    CFLAGS="-I$DEVTOOLS_INCDIR -I$DEVTOOLS_INCDIR/ncurses $CFLAGS"
+fi
+
 AC_CHECK_LIB([curses],[main])
 if test $ac_cv_lib_curses_main = no ; then
     AC_CHECK_LIB([ncurses],[main])
@@ -1467,9 +1472,9 @@ AC_SEARCH_LIBS([tgetent],[termcap])
 AC_CHECK_HEADERS([ncurses.h curses.h])
 
 if test "x$ac_cv_lib_curses_main" = "xyes" -o "x$ac_cv_lib_ncurses_main" = "xyes" ; then
-  AC_DEFINE([HAVE_TERMCAP],[],[Have Term Cap])
+AC_DEFINE([HAVE_TERMCAP],[],[Have Term Cap])
 else
- AC_MSG_ERROR([No termcap library detected. Please install ncurses dev library (or termcap library)])
+AC_MSG_ERROR([No termcap library detected. Please install ncurses dev library (or termcap library)])
 fi
 
 ##################
