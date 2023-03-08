@@ -18,8 +18,8 @@ Please report anything we could have missed, on the [mailing lists][2] or the [b
 [3]: https://gitlab.com/scilab/scilab/-/issues
 
 
-Main new features
------------------
+New features
+------------
 
 For a high-level description of the main new features of this release, please consult the [embedded help][4]. It is also available as the "What's new" page of the help, by simply typing `help` in Scilab console.
 
@@ -117,29 +117,22 @@ Compilation
 Packaging & Supported Operating Systems
 ---------------------------------------
 
-* Scilab embedded JVM is Java 8. To run or compile Scilab you need at least:
-  - Windows:
+* 32-bit Windows platforms are no more supported (no binary versions released).
+
+* Scilab embedded JVM is Java 8. 
+
+* To run or compile Scilab you need at least:
+  - Windows (64-bit):
+     - Windows 11 (Desktop)
      - Windows 10 (Desktop)
      - Windows 8 (Desktop)
-     - Windows 7
-     - Windows Vista SP2
-     - Windows Server 2008 R2 SP1 (64-bit)
-     - Windows Server 2012 (64-bit)
-  - macOS:
+  - macOS (64-bit):
      - Intel-based Mac running macOS 10.9+ (run) and 10.14+ (compile)
      - Support of macOS Monterey & Ventura added in Scilab 2023.0.0
-  - Linux:
-     - Red Hat Enterprise Linux 5.5+, 6.x (32-bit), 6.x (64-bit), 7.x (64-bit)
-     - Oracle Linux 5.5+, 6.x (32-bit), 6.x (64-bit), 7.x (64-bit)
-     - Ubuntu Linux 12.04 LTS, 13.x
+  - Linux (64-bit):
+     - Red Hat Enterprise Linux 6.x, 7.x
+     - Ubuntu Linux 18.04 LTS, 22.04 LTS
      - Suse Linux Enterprise Server 10 SP2+, 11.x
-
-    For more information, please consult: [What are the system requirements for Java?][5]
-
-* [SSE2][6], Streaming SIMD Extensions 2 support is now mandatory to run Scilab on Linux i686.
-
-[5]: http://java.com/en/download/help/sysreq.xml
-[6]: https://en.wikipedia.org/wiki/SSE2
 
 
 API/ABI modification

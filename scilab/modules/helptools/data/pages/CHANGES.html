@@ -35,7 +35,7 @@ For changelogs of earlier releases, please see <a href="https://help.scilab.org/
 <li>Fixed bugs</li>
 </ul>
 <p>Please report anything we could have missed, on the <a href="https://www.scilab.org/about/community/mailing-lists">mailing lists</a> or the <a href="https://gitlab.com/scilab/scilab/-/issues">bug tracker</a>.</p>
-<h2>Main new features</h2>
+<h2>New features</h2>
 <p>For a high-level description of the main new features of this release, please consult the <a href="modules/helptools/data/pages/homepage-en_US.html">embedded help</a>. It is also available as the &quot;What's new&quot; page of the help, by simply typing <code>help</code> in Scilab console.</p>
 <p>In summary, the main new features and additions are:</p>
 <ul>
@@ -49,7 +49,7 @@ For changelogs of earlier releases, please see <a href="https://help.scilab.org/
 <li><code>for c = h,.., end</code> now accepts an hypermatrix <code>h</code> and iterates over its columns <code>matrix(h, size(h,1),-1)</code>.</li>
 <li>When an operation fails due to mismatching sizes of operands, the sizes are now displayed in the message.</li>
 <li>Displaying <code>covWrite(&quot;html&quot;, dir)</code> results is improved.</li>
-<li><code>tbx_make . localization</code> can now update files of translated messages according to new gettext entries in the code.</li>
+<li><code>tbx_make(&quot;.&quot;, &quot;localization&quot;)</code> can now update files of translated messages according to new gettext entries in the code.</li>
 </ul>
 <h2>Obsolete functions or features</h2>
 <p>All these functions and features will be removed in Scilab 2024.0.0 (October 2023):</p>
@@ -94,9 +94,6 @@ For changelogs of earlier releases, please see <a href="https://help.scilab.org/
 <li><code>0</code> value as <code>&quot;linestyle&quot;</code> property for polyline handles. Please use <code>1</code> instead.</li>
 <li><code>&quot;hidden_axis&quot;</code> value as <code>&quot;box&quot;</code> property for axes handles. Please use <code>&quot;hidden_axes&quot;</code> instead.</li>
 <li><code>m2sciassume</code> usage to annotate code for <code>mfile2sci()</code>. Please use <code>m2scideclare</code> instead.</li>
-<li><code>tbx_build_cleaner(toolbox_name)</code> or <code>tbx_build_cleaner(toolbox_name, toolbox_path)</code> usage.</li>
-<li><code>tbx_build_localization(toolbox_name)</code> or <code>tbx_build_localization(toolbox_name, toolbox_path)</code> usage.</li>
-<li><code>tbx_generate_pofile(toolbox_name)</code> or <code>tbx_generate_pofile(toolbox_name, toolbox_path)</code> usage.</li>
 <li><code>qmr(A, Ap)</code> usage. Please use <code>qmr(A)</code> instead.</li>
 <li><code>histc()</code> usage with <code>normalization</code> (boolean) as third argument.</li>
 <li><code>ode()</code> usage with <code>&quot;roots&quot;</code> as solver (third argument). Please use <code>&quot;root&quot;</code> instead.</li>
@@ -132,40 +129,35 @@ For changelogs of earlier releases, please see <a href="https://help.scilab.org/
 <h2>Packaging &amp; Supported Operating Systems</h2>
 <ul>
 <li>
-<p>Scilab embedded JVM is Java 8. To run or compile Scilab you need at least:</p>
-<ul>
-<li>
-<p>Windows:</p>
-<ul>
-<li>Windows 10 (Desktop)</li>
-<li>Windows 8 (Desktop)</li>
-<li>Windows 7</li>
-<li>Windows Vista SP2</li>
-<li>Windows Server 2008 R2 SP1 (64-bit)</li>
-<li>Windows Server 2012 (64-bit)</li>
-</ul>
+<p>32-bit Windows platforms are no more supported (no binary versions released).</p>
 </li>
 <li>
-<p>macOS:</p>
+<p>Scilab embedded JVM is Java 8.</p>
+</li>
+<li>
+<p>To run or compile Scilab you need at least:</p>
+<ul>
+<li>Windows (64-bit):
+<ul>
+<li>Windows 11 (Desktop)</li>
+<li>Windows 10 (Desktop)</li>
+<li>Windows 8 (Desktop)</li>
+</ul>
+</li>
+<li>macOS (64-bit):
 <ul>
 <li>Intel-based Mac running macOS 10.9+ (run) and 10.14+ (compile)</li>
 <li>Support of macOS Monterey &amp; Ventura added in Scilab 2023.0.0</li>
 </ul>
 </li>
-<li>
-<p>Linux:</p>
+<li>Linux (64-bit):
 <ul>
-<li>Red Hat Enterprise Linux 5.5+, 6.x (32-bit), 6.x (64-bit), 7.x (64-bit)</li>
-<li>Oracle Linux 5.5+, 6.x (32-bit), 6.x (64-bit), 7.x (64-bit)</li>
-<li>Ubuntu Linux 12.04 LTS, 13.x</li>
+<li>Red Hat Enterprise Linux 6.x, 7.x</li>
+<li>Ubuntu Linux 18.04 LTS, 22.04 LTS</li>
 <li>Suse Linux Enterprise Server 10 SP2+, 11.x</li>
 </ul>
-<p>For more information, please consult: <a href="http://java.com/en/download/help/sysreq.xml">What are the system requirements for Java?</a></p>
 </li>
 </ul>
-</li>
-<li>
-<p><a href="https://en.wikipedia.org/wiki/SSE2">SSE2</a>, Streaming SIMD Extensions 2 support is now mandatory to run Scilab on Linux i686.</p>
 </li>
 </ul>
 <h2>API/ABI modification</h2>
