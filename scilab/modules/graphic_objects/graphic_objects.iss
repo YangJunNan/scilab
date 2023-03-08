@@ -25,6 +25,8 @@ Source: modules\{#GRAPHIC_OBJECTS}\license.txt; DestDir: {app}\modules\{#GRAPHIC
 ;
 Source: bin\sci{#GRAPHIC_OBJECTS}.dll; DestDir: {app}\bin; Components: {#COMPN_GRAPHICS}
 ;
+Source: bin\nosci{#GRAPHIC_OBJECTS}.dll; DestDir: {app}\bin ; Components: ({#COMPN_GRAPHICS})
+;
 Source: bin\nosci{#GRAPHIC_OBJECTS}.dll; DestDir: {app}\bin; DestName: sci{#GRAPHIC_OBJECTS}.dll; Components: not ({#COMPN_GRAPHICS})
 ;
 Source: modules\{#GRAPHIC_OBJECTS}\etc\{#GRAPHIC_OBJECTS}.quit; DestDir: {app}\modules\{#GRAPHIC_OBJECTS}\etc; Components: {#COMPN_GRAPHICS}
