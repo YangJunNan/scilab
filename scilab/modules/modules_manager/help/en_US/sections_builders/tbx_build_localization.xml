@@ -27,6 +27,8 @@
         <synopsis>
             tbx_build_localization()
             tbx_build_localization(tbx_path)
+            tbx_build_localization(tbx_name)               // obsolete
+            tbx_build_localization(tbx_name, tbx_path)     // obsolete
         </synopsis>
     </refsynopsisdiv>
     <refsection>
@@ -36,6 +38,16 @@
                 <term>tbx_path</term>
                 <listitem>
                     <para>path of the toolbox, use to locate files to compile.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term>tbx_name (deprecated)</term>
+                <listitem>
+                    <para>Name of the toolbox, use to name localization files and domain.</para>
+                    <para>The name of the toolbox is now retrieved as the basename of the file
+                        <literal>tbx_path/etc/*.start</literal>. This file must be available, even
+                        if it is empty.
+                    </para>
                 </listitem>
             </varlistentry>
         </variablelist>
@@ -127,8 +139,7 @@ Generating localization
             <revision>
                 <revnumber>2023.0.0</revnumber>
                 <revdescription>
-                    <para>Existing .po files are now automatically updated for every newly detected msgid.</para>
-                    <para>tbx_name input argument removed.</para>
+                    Existing .po files are now automatically updated for every newly detected msgid.
                 </revdescription>
             </revision>
         </revhistory>

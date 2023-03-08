@@ -36,7 +36,7 @@ In summary, the main new features and additions are:
 * `for c = h,.., end` now accepts an hypermatrix `h` and iterates over its columns `matrix(h, size(h,1),-1)`.
 * When an operation fails due to mismatching sizes of operands, the sizes are now displayed in the message.
 * Displaying `covWrite("html", dir)` results is improved.
-* `tbx_make . localization` can now update files of translated messages according to new gettext entries in the code.
+* `tbx_make(".", "localization")` can now update files of translated messages according to new gettext entries in the code.
 
 
 Obsolete functions or features
@@ -88,9 +88,6 @@ The following features and usages have been removed or disabled:
 * `0` value as `"linestyle"` property for polyline handles. Please use `1` instead.
 * `"hidden_axis"` value as `"box"` property for axes handles. Please use `"hidden_axes"` instead.
 * `m2sciassume` usage to annotate code for `mfile2sci()`. Please use `m2scideclare` instead.
-* `tbx_build_cleaner(toolbox_name)` or `tbx_build_cleaner(toolbox_name, toolbox_path)` usage.
-* `tbx_build_localization(toolbox_name)` or `tbx_build_localization(toolbox_name, toolbox_path)` usage.
-* `tbx_generate_pofile(toolbox_name)` or `tbx_generate_pofile(toolbox_name, toolbox_path)` usage.
 * `qmr(A, Ap)` usage. Please use `qmr(A)` instead.
 * `histc()` usage with `normalization` (boolean) as third argument.
 * `ode()` usage with `"roots"` as solver (third argument). Please use `"root"` instead.

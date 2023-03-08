@@ -28,6 +28,8 @@
         <synopsis>
             pofile = tbx_generate_pofile()
             pofile = tbx_generate_pofile(tbx_path)
+            pofile = tbx_generate_pofile(tbx_name)             // obsolete
+            pofile = tbx_generate_pofile(tbx_name, tbx_path)   // obsolete
         </synopsis>
     </refsynopsisdiv>
     <refsection role="parameters">
@@ -37,6 +39,16 @@
                 <term>tbx_path</term>
                 <listitem>
                     <para>path of the toolbox, use to locate files to compile.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term>tbx_name (obsolete)</term>
+                <listitem>
+                    <para>name of the toolbox, use to name localization files and domain.</para>
+                    <warning>
+                       <varname>tbx_name</varname> is now retrieved as the basename of the file
+                       <literal>tbx_path/etc/*.start</literal>. This file must exist, even if it is empty.
+                    </warning>
                 </listitem>
             </varlistentry>
             <varlistentry>
@@ -152,10 +164,6 @@ edit(path+"/locales/en_US.po")
                 <revdescription>
                     Existing .po files are now automatically updated for every newly detected msgid.
                 </revdescription>
-            </revision>
-            <revision>
-                <revnumber>2023.0.0</revnumber>
-                <revdescription>tbx_name input argument removed.</revdescription>
             </revision>
         </revhistory>
     </refsection>

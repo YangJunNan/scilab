@@ -25,6 +25,8 @@
         <synopsis>
             tbx_build_cleaner()
             tbx_build_cleaner(toolbox_path)
+            tbx_build_cleaner(toolbox_name)                // obsolete
+            tbx_build_cleaner(toolbox_name, toolbox_path)  // obsolete
         </synopsis>
     </refsynopsisdiv>
     <refsection>
@@ -35,6 +37,14 @@
                 <listitem>
                     <para>Root directory of toolbox sources ; the script will be
                         generated here (default: current directory).
+                    </para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term>toolbox_name (obsolete)</term>
+                <listitem>
+                    <para>
+                        Toolbox short name = basename of the <literal>.start</literal> file in the <literal>etc/</literal> directory of the toolbox.
                     </para>
                 </listitem>
             </varlistentry>
@@ -56,10 +66,6 @@ tbx_build_cleaner(get_absolute_file_path('builder.sce'))
                 <revremark>
                     Syntaxes using <literal>toolbox_name</literal> are obsolete.
                 </revremark>
-            </revision>
-            <revision>
-                <revnumber>2023.0.0</revnumber>
-                <revdescription>toolbox_name input argument removed.</revdescription>
             </revision>
         </revhistory>
     </refsection>

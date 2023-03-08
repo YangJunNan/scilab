@@ -10,7 +10,9 @@
 // For more information, see the COPYING file which you should have received
 // along with this program.
 
-function ret = tbx_generate_pofile(tbx_path)
+function ret = tbx_generate_pofile(tbx_name, tbx_path)
+    // tbx_generate_pofile(tbx_name, tbx_path)   // deprecated (6.0)
+    // tbx_generate_pofile(tbx_name)             // deprecated (6.0)
     // tbx_generate_pofile(tbx_path)             // 6.0
     // tbx_generate_pofile()                     // 6.0  path = pwd()
 
@@ -20,17 +22,29 @@ function ret = tbx_generate_pofile(tbx_path)
 
     // CHECKING INPUT PARAMETERS
     // -------------------------
-    if and(rhs <> [0 1]) then
+    if and(rhs <> [0 1 2]) then
         msg = _("%s: Wrong number of input arguments: %d to %d expected.\n")
         error(msprintf(msg, fname, 0, 1))
     end
 
-    if rhs==0
+    if rhs==2
+        msg = "%s: %s(name, path) is obsolete. Please use %s(path) instead.\n"
+        warning(msprintf(msg, fname, fname, fname))  // no translation
+
+    elseif rhs==0
         tbx_path = pwd()
     else
-        if type(tbx_path) <> 10 && isscalar(tbx_path) then
-            msg = _("%s: Argument #%d: Scalar string expected.\n")
+        tbx_path = tbx_name
+        if type(tbx_path) <> 10 then
+            msg = _("%s: Argument #%d: Text(s) expected.\n")
             error(msprintf(msg, fname, rhs))
+        end
+        tbx_path = tbx_path(1)
+        // May be
+        //  * either the former tbx_generate_pofile(tbx_name) (until 5.5.2)
+        //  * or the new        tbx_generate_pofile(tbx_path) (from 6.0.0)
+        if grep(tbx_path,["/" "\"])==[] && ~isdir(tbx_path) then // only name was provided
+            tbx_path = pwd()
         end
         if ~isdir(tbx_path) then
             msg = _("%s: The directory ''%s'' doesn''t exist or is not read accessible.\n")
@@ -49,9 +63,10 @@ function ret = tbx_generate_pofile(tbx_path)
     else
         XGETTEXT="xgettext";
     end
-    XGETTEXT_OPTIONS=" --omit-header  --language=python --no-wrap " + ..
-                 "-k --keyword=gettext:2 --keyword=_:2 " + ..
-                 "--keyword=xmlgettext:2";
+    // -F : sort by file
+    XGETTEXT_OPTIONS = " --omit-header  --language=python --no-wrap -F " + ..
+        "-k --keyword=gettext:2 --keyword=_:2 " + ..
+        "--keyword=dgettext:2 --keyword=_d:2 --keyword=xmlgettext:2";
 
     EXTENSIONS = ["c" "h" "cpp" "cxx" "hxx" "hpp" "java"];
     EXTENSIONS_MACROS = ["sci" "sce" "start" "quit"];
@@ -75,6 +90,8 @@ function ret = tbx_generate_pofile(tbx_path)
         replace = "xmlgettext(""\1"", ""\2"")";
         for i = 1:size(xmlFiles, "*")
             content = mgetl(xmlFiles(i));
+            newLine = sedLoc(content, "/\""_d"+search, replace);// "_d(xxx,xxx)"
+            newLine = sedLoc(newLine, "/\""dgettext"+search, replace);
             newLine = sedLoc(newLine, "/\""gettext"+search, replace);
             newLine = sedLoc(newLine, "/\""_"+search, replace);
             mputl(newLine, xmlFake);
