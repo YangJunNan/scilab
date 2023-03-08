@@ -52,29 +52,28 @@ All these functions and features will be removed in Scilab 2024.0.0 (October 202
 Removed Functions
 -----------------
 
-|   Removed function   | Obsolete since |        Replacement         |
-|----------------------|:--------------:|----------------------------|
-|`%sn`                 | 6.1.0          | `ellipj`                   |
-|`champ1`              | 6.1.0          | `champ().colored='on'`     |
-|`closeEditvar`        | 6.1.0          | `close editvar`            |
-|`datatipToggle`       | 6.0.2          | `datatipManagerMode`       |
-|`dgettext`            | 6.0.1          | `gettext(domain,..)`       |
-|`dirname`             | 6.0.2          | `fileparts(..,'path')`     |
-|`fplot2d`             | 6.1.1          | `plot(x, f)`               |
-|`get_figure_handle`   | 6.1.0          | `findobj("figure_id", id)` |
-|`hist3d`              | 6.1.0          | `bar3d`                    |
-|`noisegen`            | 6.1.0          | `grand`                    |
-|`ric_desc`            | 6.1.0          | `riccati`                  |
-|`saveafterncommands`  | 6.1.0          |                            |
-|`scatter3`            | 6.1.0          | `scatter3d`                |
-|`setPreferencesValue` | 6.1.0          | `xmlSetValues`             |
-|`soundsec`            | 6.1.1          | `0 : 1/freq : t*(1-%eps)`  |
-|`sysdiag`             | 6.1.0          | `blockdiag`                |
-|`xdel`                | 6.1.1          | `close`                    |
-|`xname`               | 6.1.1          | `gcf().figure_name`        |
+The following functions have been removed:
+* `%sn`, obsolete since 6.1.0, replaced by `ellipj`.
+* `champ1`, obsolete since 6.1.0, replaced by `champ().colored='on'`.
+* `closeEditvar`, obsolete since 6.1.0, replaced by `close editvar`.
+* `datatipToggle`, obsolete since 6.0.2, replaced by `datatipManagerMode`.
+* `dgettext`, obsolete since 6.0.1, replaced by `gettext(domain,..)`.
+* `dirname`, obsolete since 6.0.2, replaced by `fileparts(..,'path')`.
+* `fplot2d`, obsolete since 6.1.1, replaced by `plot(x, f)`.
+* `get_figure_handle`, obsolete since 6.1.0, replaced by `findobj("figure_id", id)`.
+* `hist3d`, obsolete since 6.1.0, replaced by `bar3d`.
+* `noisegen`, obsolete since 6.1.0, replaced by `grand`.
+* `ric_desc`, obsolete since 6.1.0, replaced by `riccati`.
+* `saveafterncommands`, obsolete since 6.1.0.
+* `scatter3`, obsolete since 6.1.0, replaced by `scatter3d`.
+* `setPreferencesValue`, obsolete since 6.1.0, replaced by `xmlSetValues`.
+* `soundsec`, obsolete since 6.1.1, replaced by `0 : 1/freq : t*(1-%eps)`.
+* `sysdiag`, obsolete since 6.1.0, replaced by `blockdiag`.
+* `xdel`, obsolete since 6.1.1, replaced by `close`.
+* `xname`, obsolete since 6.1.1, replaced by `gcf().figure_name`.
 
 
-Removed features
+Removed Features
 ----------------
 
 The following features and usages have been removed or disabled:
@@ -155,32 +154,32 @@ Bug Fixes
 
 ### Bugs fixed in 2023.0.0:
 
-
-* [#463](https://gitlab.com/scilab/scilab/-/issues/463): Invalid format leads to crash for write function.
+* [#463](https://gitlab.com/scilab/scilab/-/issues/463): Invalid format led to crash for `write()` function.
 * [#6094](https://gitlab.com/scilab/scilab/-/issues/6094): Error message in case of inconsistent operation was reporting wrong dimensions of operands.
-* [#7196](https://gitlab.com/scilab/scilab/-/issues/7196): try/catch: returned value assigned in `catch` is not displayed.
-* [#7475](https://gitlab.com/scilab/scilab/-/issues/7475): When running fft, the scilab program crashes.
-* [#8076](https://gitlab.com/scilab/scilab/-/issues/8076): Xcos Superblock Create mask UI was not having a default value setup.
-* [#8353](https://gitlab.com/scilab/scilab/-/issues/8353): Just after launching scilab, `log10(3)` makes Scilab crash.
-* [#8734](https://gitlab.com/scilab/scilab/-/issues/8734): copyfile crash Scilab while playing with locales.
-* [#8760](https://gitlab.com/scilab/scilab/-/issues/8760): masked superblock customization dialog was too complex
+* [#7196](https://gitlab.com/scilab/scilab/-/issues/7196): When using `try/catch`, returned value assigned in `catch` statement was not displayed.
+* [#7475](https://gitlab.com/scilab/scilab/-/issues/7475): When running `fft()`, Scilab crashed.
+* [#8076](https://gitlab.com/scilab/scilab/-/issues/8076): Xcos Superblock Create Mask UI did not have a default value setup.
+* [#8353](https://gitlab.com/scilab/scilab/-/issues/8353): Just after launching Scilab, `log10(3)` made Scilab crash.
+* [#8734](https://gitlab.com/scilab/scilab/-/issues/8734): `copyfile()` crashed Scilab while playing with locales.
+* [#8760](https://gitlab.com/scilab/scilab/-/issues/8760): Masked superblock customization dialog was too complex.
 * [#10383](https://gitlab.com/scilab/scilab/-/issues/10383): Xcos Superblock context and mask did not handle Scilab %inf.
-* [#13360](https://gitlab.com/scilab/scilab/-/issues/13360): hilbert function make scilab crash.
+* [#13087](https://gitlab.com/scilab/scilab/-/issues/13087): A symbolic link was missing in macOS version.
+* [#13360](https://gitlab.com/scilab/scilab/-/issues/13360): `hilbert()` function made Scilab crash.
 * [#13902](https://gitlab.com/scilab/scilab/-/issues/13902): `atomsSystemUpdate()` was slow.
 * [#14138](https://gitlab.com/scilab/scilab/-/issues/14138): Reading some hdf5 file crashed Scilab.
-* [#14155](https://gitlab.com/scilab/scilab/-/issues/14155): Superblock mask variables was hard to defined and assign.
+* [#14155](https://gitlab.com/scilab/scilab/-/issues/14155): Defining and assigning Superblock mask variables was difficult.
 * [#14216](https://gitlab.com/scilab/scilab/-/issues/14216): `readxls` could make Scilab crash without any error message.
 * [#14372](https://gitlab.com/scilab/scilab/-/issues/14372): `a=L(2:3)` returned an error after `L=list(1,"a",%t)`.
 * [#14451](https://gitlab.com/scilab/scilab/-/issues/14451): `fsolve()` was no longer reentrant.
-* [#14512](https://gitlab.com/scilab/scilab/-/issues/14512): `isequalbitwise()` was made internal in 6.0.0 but was still documented.
+* [#14512](https://gitlab.com/scilab/scilab/-/issues/14512): `isequalbitwise()` was made internal in Scilab 6.0.0 but was still documented.
 * [#14585](https://gitlab.com/scilab/scilab/-/issues/14585): `closeEditvar()` had to be replaced by `close("editvar")`.
 * [#14691](https://gitlab.com/scilab/scilab/-/issues/14691): Scilab crashed when code was halted then aborted.
-* [#14917](https://gitlab.com/scilab/scilab/-/issues/14917): A first empty instruction `; a=1` yields an error.
+* [#14917](https://gitlab.com/scilab/scilab/-/issues/14917): A first empty instruction `; a=1` returned an error.
 * [#14998](https://gitlab.com/scilab/scilab/-/issues/14998): `mscanf()` introduced a leading newline (`\n`) and the prompt, before prompting the user for input.
 * [#15071](https://gitlab.com/scilab/scilab/-/issues/15071): Extraction of mlist from another mlist behaved differently in Scilab 5 and 6.
 * [#15103](https://gitlab.com/scilab/scilab/-/issues/15103): `xcorr()` led to immediate crash.
 * [#15106](https://gitlab.com/scilab/scilab/-/issues/15106): `write` Fortran subroutine crashed Scilab in debug mode.
-* [#15546](https://gitlab.com/scilab/scilab/-/issues/15546): Superblock mask variables was impossible to rename
+* [#15546](https://gitlab.com/scilab/scilab/-/issues/15546): Superblock mask variables could not be renamed.
 * [#15602](https://gitlab.com/scilab/scilab/-/issues/15602): `gca()("thickness")` crashed Scilab.
 * [#15657](https://gitlab.com/scilab/scilab/-/issues/15657): Empty categories corrupted the graphical output of `histplot()`.
 * [#16029](https://gitlab.com/scilab/scilab/-/issues/16029): Tick marks were extending out of range for small scale plots.
@@ -195,17 +194,17 @@ Bug Fixes
 * [#16541](https://gitlab.com/scilab/scilab/-/issues/16541): `load()/save()` did not handle the "layout" property correctly.
 * [#16555](https://gitlab.com/scilab/scilab/-/issues/16555): Asking for `Details` of Xcos `CLOCK_c` block led to Scilab crash.
 * [#16557](https://gitlab.com/scilab/scilab/-/issues/16557): `macr2tree` + `tree2code` translated `e={2}` into `"e=1"` and `e={2,"ab"}` into `"e=[2,"ab"]"`.
-* [#16575](https://gitlab.com/scilab/scilab/-/issues/16575): for m=rand(2,2,2), end crashes Scilab.
+* [#16575](https://gitlab.com/scilab/scilab/-/issues/16575): `for m=rand(2,2,2), end` crashed Scilab.
 * [#16576](https://gitlab.com/scilab/scilab/-/issues/16576): `macr2tree()` (and maybe `tree2code()`) killed recursive extractions made with indices (was OK with fields).
 * [#16593](https://gitlab.com/scilab/scilab/-/issues/16593): `for o = L(3:$), o, end` after `L = list(1,2);` crashed Scilab.
-* [#16640](https://gitlab.com/scilab/scilab/-/issues/16640): `glue()` crashed with Figure.
+* [#16640](https://gitlab.com/scilab/scilab/-/issues/16640): `glue()` crashed Scilab when called with 'Figure' handle as input.
 * [#16653](https://gitlab.com/scilab/scilab/-/issues/16653): `fromJSON()` crashed with a non existing file.
 * [#16670](https://gitlab.com/scilab/scilab/-/issues/16670): `c(1)(3).line_style = 8;` where `c` is a list of vectors of polyline handles crashed Scilab.
 * [#16676](https://gitlab.com/scilab/scilab/-/issues/16676): `sfact([%s %s ; %s %s])` crashed Scilab after "sfact: Wrong value for input argument #1: singular or asymmetric problem." message.
 * [#16704](https://gitlab.com/scilab/scilab/-/issues/16704): New Xcos schemas were not set to preferences-defined parameters.
 * [#16713](https://gitlab.com/scilab/scilab/-/issues/16713): Automatic stretching of Axes box in 3d view was not configurable.
 * [#16717](https://gitlab.com/scilab/scilab/-/issues/16717): An error occured in `findobj()` when no object existed.
-* [#16732](https://gitlab.com/scilab/scilab/-/issues/16732): Missing information about file overwriting and Fortran formats was missing in `write()` help page.
+* [#16732](https://gitlab.com/scilab/scilab/-/issues/16732): Information about file overwriting and Fortran formats was missing in `write()` help page.
 * [#16734](https://gitlab.com/scilab/scilab/-/issues/16734): `findobj()` was slower than before.
 * [#16748](https://gitlab.com/scilab/scilab/-/issues/16748): Build failed with OCaml 4.11 or newer build without unsafe-strings
 * [#16750](https://gitlab.com/scilab/scilab/-/issues/16750): Xcos RELATIONALOP's icon became blank when editing the block.
@@ -214,11 +213,11 @@ Bug Fixes
 * [#16785](https://gitlab.com/scilab/scilab/-/issues/16785): `xsave`/`save` of datatips produced double free in data model.
 * [#16786](https://gitlab.com/scilab/scilab/-/issues/16786): `zoom_box` property was not correctly saved.
 * [#16796](https://gitlab.com/scilab/scilab/-/issues/16796): `isreal(complex(1,%nan),0)` returned `%T` instead of `%F`.
-* [#16797](https://gitlab.com/scilab/scilab/-/issues/16797): `atomsGui` could yield some `field <module_name> unknown` error after running the `File => update the list of package` menu.
+* [#16797](https://gitlab.com/scilab/scilab/-/issues/16797): `atomsGui()` could produce some `field <module_name> unknown` error after running the `File / Update List of Packages` menu.
 * [#16798](https://gitlab.com/scilab/scilab/-/issues/16798): `scinotes()` with option and non existing file crashed Scilab.
 * [#16801](https://gitlab.com/scilab/scilab/-/issues/16801): Management of `covWrite("html")` results wrapping was wrong.
 * [#16803](https://gitlab.com/scilab/scilab/-/issues/16803): `tbx_build_localization(…)` and `tbx_make(dir, "localization")` never updated existing .po files.
-* [#16812](https://gitlab.com/scilab/scilab/-/issues/16812): `atomsLoad("linalg")` errored and broke the loading.
+* [#16812](https://gitlab.com/scilab/scilab/-/issues/16812): While the help browser was open, `atomsLoad("linalg")` errored and broke the loading.
 * [#16822](https://gitlab.com/scilab/scilab/-/issues/16822): `getrelativefilename()` returned incorrect value in case of same beginning of directory names.
 * [#16823](https://gitlab.com/scilab/scilab/-/issues/16823): `Mtbxfun_db.txt` was missing the Scilab releases (`m2sci` module).
 * [#16826](https://gitlab.com/scilab/scilab/-/issues/16826): `file()` or `file(fid)` could return outdated relative paths.
@@ -232,7 +231,7 @@ Bug Fixes
 * [#16864](https://gitlab.com/scilab/scilab/-/issues/16864): `macr2tree()` interpreted `a=1:2, b=a(2)` as a funcall instead of as an extraction operation (Scilab 6.0 regression).
 * [#16865](https://gitlab.com/scilab/scilab/-/issues/16865): Vector extraction with single hypermatrix index returned a vector.
 * [#16867](https://gitlab.com/scilab/scilab/-/issues/16867): `macr2tree()` encoded `.'` (transpose) as `'` (conjugate transpose).
-* [#16871](https://gitlab.com/scilab/scilab/-/issues/16871): Polynomial exponent display could either use ascii or unicode (configurable through preferences).
+* [#16871](https://gitlab.com/scilab/scilab/-/issues/16871): Choosing the display of Polynomial exponents with either ascii or unicode characters was not possible through preferences.
 * [#16879](https://gitlab.com/scilab/scilab/-/issues/16879): `members(N,H)` was very slow and crashed the computer for big `N` or/and `H` arrays of non-double data.
 * [#16883](https://gitlab.com/scilab/scilab/-/issues/16883): `mprintf("%d %d\n", h);` called after `h=cat(3, [1 2], [3 4]);` crashed Scilab (same issue with `msprintf()`).
 * [#16887](https://gitlab.com/scilab/scilab/-/issues/16887): French localization for `tbx_build_loader()` messages fixed.

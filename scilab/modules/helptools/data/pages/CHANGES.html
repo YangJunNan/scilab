@@ -60,27 +60,28 @@ For changelogs of earlier releases, please see <a href="https://help.scilab.org/
 <li><code>xget('fpf')</code> and <code>xset('fpf')</code>: Please use <code>fpf</code> argument of <code>contour()</code>, <code>contourf()</code>, <code>contour2d()</code> instead.</li>
 </ul>
 <h2>Removed Functions</h2>
-<p>|   Removed function   | Obsolete since |        Replacement         |
-|----------------------|:--------------:|----------------------------|
-|<code>%sn</code>                 | 6.1.0          | <code>ellipj</code>                   |
-|<code>champ1</code>              | 6.1.0          | <code>champ().colored='on'</code>     |
-|<code>closeEditvar</code>        | 6.1.0          | <code>close editvar</code>            |
-|<code>datatipToggle</code>       | 6.0.2          | <code>datatipManagerMode</code>       |
-|<code>dgettext</code>            | 6.0.1          | <code>gettext(domain,..)</code>       |
-|<code>dirname</code>             | 6.0.2          | <code>fileparts(..,'path')</code>     |
-|<code>fplot2d</code>             | 6.1.1          | <code>plot(x, f)</code>               |
-|<code>get_figure_handle</code>   | 6.1.0          | <code>findobj(&quot;figure_id&quot;, id)</code> |
-|<code>hist3d</code>              | 6.1.0          | <code>bar3d</code>                    |
-|<code>noisegen</code>            | 6.1.0          | <code>grand</code>                    |
-|<code>ric_desc</code>            | 6.1.0          | <code>riccati</code>                  |
-|<code>saveafterncommands</code>  | 6.1.0          |                            |
-|<code>scatter3</code>            | 6.1.0          | <code>scatter3d</code>                |
-|<code>setPreferencesValue</code> | 6.1.0          | <code>xmlSetValues</code>             |
-|<code>soundsec</code>            | 6.1.1          | <code>0 : 1/freq : t*(1-%eps)</code>  |
-|<code>sysdiag</code>             | 6.1.0          | <code>blockdiag</code>                |
-|<code>xdel</code>                | 6.1.1          | <code>close</code>                    |
-|<code>xname</code>               | 6.1.1          | <code>gcf().figure_name</code>        |</p>
-<h2>Removed features</h2>
+<p>The following functions have been removed:</p>
+<ul>
+<li><code>%sn</code>, obsolete since 6.1.0, replaced by <code>ellipj</code>.</li>
+<li><code>champ1</code>, obsolete since 6.1.0, replaced by <code>champ().colored='on'</code>.</li>
+<li><code>closeEditvar</code>, obsolete since 6.1.0, replaced by <code>close editvar</code>.</li>
+<li><code>datatipToggle</code>, obsolete since 6.0.2, replaced by <code>datatipManagerMode</code>.</li>
+<li><code>dgettext</code>, obsolete since 6.0.1, replaced by <code>gettext(domain,..)</code>.</li>
+<li><code>dirname</code>, obsolete since 6.0.2, replaced by <code>fileparts(..,'path')</code>.</li>
+<li><code>fplot2d</code>, obsolete since 6.1.1, replaced by <code>plot(x, f)</code>.</li>
+<li><code>get_figure_handle</code>, obsolete since 6.1.0, replaced by <code>findobj(&quot;figure_id&quot;, id)</code>.</li>
+<li><code>hist3d</code>, obsolete since 6.1.0, replaced by <code>bar3d</code>.</li>
+<li><code>noisegen</code>, obsolete since 6.1.0, replaced by <code>grand</code>.</li>
+<li><code>ric_desc</code>, obsolete since 6.1.0, replaced by <code>riccati</code>.</li>
+<li><code>saveafterncommands</code>, obsolete since 6.1.0.</li>
+<li><code>scatter3</code>, obsolete since 6.1.0, replaced by <code>scatter3d</code>.</li>
+<li><code>setPreferencesValue</code>, obsolete since 6.1.0, replaced by <code>xmlSetValues</code>.</li>
+<li><code>soundsec</code>, obsolete since 6.1.1, replaced by <code>0 : 1/freq : t*(1-%eps)</code>.</li>
+<li><code>sysdiag</code>, obsolete since 6.1.0, replaced by <code>blockdiag</code>.</li>
+<li><code>xdel</code>, obsolete since 6.1.1, replaced by <code>close</code>.</li>
+<li><code>xname</code>, obsolete since 6.1.1, replaced by <code>gcf().figure_name</code>.</li>
+</ul>
+<h2>Removed Features</h2>
 <p>The following features and usages have been removed or disabled:</p>
 <ul>
 <li>Datatip <code>&quot;z_component&quot;</code> property.</li>
@@ -175,31 +176,32 @@ For changelogs of earlier releases, please see <a href="https://help.scilab.org/
 <h2>Bug Fixes</h2>
 <h3>Bugs fixed in 2023.0.0:</h3>
 <ul>
-<li><a href="https://gitlab.com/scilab/scilab/-/issues/463">#463</a>: Invalid format leads to crash for write function.</li>
+<li><a href="https://gitlab.com/scilab/scilab/-/issues/463">#463</a>: Invalid format led to crash for <code>write()</code> function.</li>
 <li><a href="https://gitlab.com/scilab/scilab/-/issues/6094">#6094</a>: Error message in case of inconsistent operation was reporting wrong dimensions of operands.</li>
-<li><a href="https://gitlab.com/scilab/scilab/-/issues/7196">#7196</a>: try/catch: returned value assigned in <code>catch</code> is not displayed.</li>
-<li><a href="https://gitlab.com/scilab/scilab/-/issues/7475">#7475</a>: When running fft, the scilab program crashes.</li>
-<li><a href="https://gitlab.com/scilab/scilab/-/issues/8076">#8076</a>: Xcos Superblock Create mask UI was not having a default value setup.</li>
-<li><a href="https://gitlab.com/scilab/scilab/-/issues/8353">#8353</a>: Just after launching scilab, <code>log10(3)</code> makes Scilab crash.</li>
-<li><a href="https://gitlab.com/scilab/scilab/-/issues/8734">#8734</a>: copyfile crash Scilab while playing with locales.</li>
-<li><a href="https://gitlab.com/scilab/scilab/-/issues/8760">#8760</a>: masked superblock customization dialog was too complex</li>
+<li><a href="https://gitlab.com/scilab/scilab/-/issues/7196">#7196</a>: When using <code>try/catch</code>, returned value assigned in <code>catch</code> statement was not displayed.</li>
+<li><a href="https://gitlab.com/scilab/scilab/-/issues/7475">#7475</a>: When running <code>fft()</code>, Scilab crashed.</li>
+<li><a href="https://gitlab.com/scilab/scilab/-/issues/8076">#8076</a>: Xcos Superblock Create Mask UI did not have a default value setup.</li>
+<li><a href="https://gitlab.com/scilab/scilab/-/issues/8353">#8353</a>: Just after launching Scilab, <code>log10(3)</code> made Scilab crash.</li>
+<li><a href="https://gitlab.com/scilab/scilab/-/issues/8734">#8734</a>: <code>copyfile()</code> crashed Scilab while playing with locales.</li>
+<li><a href="https://gitlab.com/scilab/scilab/-/issues/8760">#8760</a>: Masked superblock customization dialog was too complex.</li>
 <li><a href="https://gitlab.com/scilab/scilab/-/issues/10383">#10383</a>: Xcos Superblock context and mask did not handle Scilab %inf.</li>
-<li><a href="https://gitlab.com/scilab/scilab/-/issues/13360">#13360</a>: hilbert function make scilab crash.</li>
+<li><a href="https://gitlab.com/scilab/scilab/-/issues/13087">#13087</a>: A symbolic link was missing in macOS version.</li>
+<li><a href="https://gitlab.com/scilab/scilab/-/issues/13360">#13360</a>: <code>hilbert()</code> function made Scilab crash.</li>
 <li><a href="https://gitlab.com/scilab/scilab/-/issues/13902">#13902</a>: <code>atomsSystemUpdate()</code> was slow.</li>
 <li><a href="https://gitlab.com/scilab/scilab/-/issues/14138">#14138</a>: Reading some hdf5 file crashed Scilab.</li>
-<li><a href="https://gitlab.com/scilab/scilab/-/issues/14155">#14155</a>: Superblock mask variables was hard to defined and assign.</li>
+<li><a href="https://gitlab.com/scilab/scilab/-/issues/14155">#14155</a>: Defining and assigning Superblock mask variables was difficult.</li>
 <li><a href="https://gitlab.com/scilab/scilab/-/issues/14216">#14216</a>: <code>readxls</code> could make Scilab crash without any error message.</li>
 <li><a href="https://gitlab.com/scilab/scilab/-/issues/14372">#14372</a>: <code>a=L(2:3)</code> returned an error after <code>L=list(1,&quot;a&quot;,%t)</code>.</li>
 <li><a href="https://gitlab.com/scilab/scilab/-/issues/14451">#14451</a>: <code>fsolve()</code> was no longer reentrant.</li>
-<li><a href="https://gitlab.com/scilab/scilab/-/issues/14512">#14512</a>: <code>isequalbitwise()</code> was made internal in 6.0.0 but was still documented.</li>
+<li><a href="https://gitlab.com/scilab/scilab/-/issues/14512">#14512</a>: <code>isequalbitwise()</code> was made internal in Scilab 6.0.0 but was still documented.</li>
 <li><a href="https://gitlab.com/scilab/scilab/-/issues/14585">#14585</a>: <code>closeEditvar()</code> had to be replaced by <code>close(&quot;editvar&quot;)</code>.</li>
 <li><a href="https://gitlab.com/scilab/scilab/-/issues/14691">#14691</a>: Scilab crashed when code was halted then aborted.</li>
-<li><a href="https://gitlab.com/scilab/scilab/-/issues/14917">#14917</a>: A first empty instruction <code>; a=1</code> yields an error.</li>
+<li><a href="https://gitlab.com/scilab/scilab/-/issues/14917">#14917</a>: A first empty instruction <code>; a=1</code> returned an error.</li>
 <li><a href="https://gitlab.com/scilab/scilab/-/issues/14998">#14998</a>: <code>mscanf()</code> introduced a leading newline (<code>\n</code>) and the prompt, before prompting the user for input.</li>
 <li><a href="https://gitlab.com/scilab/scilab/-/issues/15071">#15071</a>: Extraction of mlist from another mlist behaved differently in Scilab 5 and 6.</li>
 <li><a href="https://gitlab.com/scilab/scilab/-/issues/15103">#15103</a>: <code>xcorr()</code> led to immediate crash.</li>
 <li><a href="https://gitlab.com/scilab/scilab/-/issues/15106">#15106</a>: <code>write</code> Fortran subroutine crashed Scilab in debug mode.</li>
-<li><a href="https://gitlab.com/scilab/scilab/-/issues/15546">#15546</a>: Superblock mask variables was impossible to rename</li>
+<li><a href="https://gitlab.com/scilab/scilab/-/issues/15546">#15546</a>: Superblock mask variables could not be renamed.</li>
 <li><a href="https://gitlab.com/scilab/scilab/-/issues/15602">#15602</a>: <code>gca()(&quot;thickness&quot;)</code> crashed Scilab.</li>
 <li><a href="https://gitlab.com/scilab/scilab/-/issues/15657">#15657</a>: Empty categories corrupted the graphical output of <code>histplot()</code>.</li>
 <li><a href="https://gitlab.com/scilab/scilab/-/issues/16029">#16029</a>: Tick marks were extending out of range for small scale plots.</li>
@@ -214,17 +216,17 @@ For changelogs of earlier releases, please see <a href="https://help.scilab.org/
 <li><a href="https://gitlab.com/scilab/scilab/-/issues/16541">#16541</a>: <code>load()/save()</code> did not handle the &quot;layout&quot; property correctly.</li>
 <li><a href="https://gitlab.com/scilab/scilab/-/issues/16555">#16555</a>: Asking for <code>Details</code> of Xcos <code>CLOCK_c</code> block led to Scilab crash.</li>
 <li><a href="https://gitlab.com/scilab/scilab/-/issues/16557">#16557</a>: <code>macr2tree</code> + <code>tree2code</code> translated <code>e={2}</code> into <code>&quot;e=1&quot;</code> and <code>e={2,&quot;ab&quot;}</code> into <code>&quot;e=[2,&quot;ab&quot;]&quot;</code>.</li>
-<li><a href="https://gitlab.com/scilab/scilab/-/issues/16575">#16575</a>: for m=rand(2,2,2), end crashes Scilab.</li>
+<li><a href="https://gitlab.com/scilab/scilab/-/issues/16575">#16575</a>: <code>for m=rand(2,2,2), end</code> crashed Scilab.</li>
 <li><a href="https://gitlab.com/scilab/scilab/-/issues/16576">#16576</a>: <code>macr2tree()</code> (and maybe <code>tree2code()</code>) killed recursive extractions made with indices (was OK with fields).</li>
 <li><a href="https://gitlab.com/scilab/scilab/-/issues/16593">#16593</a>: <code>for o = L(3:$), o, end</code> after <code>L = list(1,2);</code> crashed Scilab.</li>
-<li><a href="https://gitlab.com/scilab/scilab/-/issues/16640">#16640</a>: <code>glue()</code> crashed with Figure.</li>
+<li><a href="https://gitlab.com/scilab/scilab/-/issues/16640">#16640</a>: <code>glue()</code> crashed Scilab when called with 'Figure' handle as input.</li>
 <li><a href="https://gitlab.com/scilab/scilab/-/issues/16653">#16653</a>: <code>fromJSON()</code> crashed with a non existing file.</li>
 <li><a href="https://gitlab.com/scilab/scilab/-/issues/16670">#16670</a>: <code>c(1)(3).line_style = 8;</code> where <code>c</code> is a list of vectors of polyline handles crashed Scilab.</li>
 <li><a href="https://gitlab.com/scilab/scilab/-/issues/16676">#16676</a>: <code>sfact([%s %s ; %s %s])</code> crashed Scilab after &quot;sfact: Wrong value for input argument #1: singular or asymmetric problem.&quot; message.</li>
 <li><a href="https://gitlab.com/scilab/scilab/-/issues/16704">#16704</a>: New Xcos schemas were not set to preferences-defined parameters.</li>
 <li><a href="https://gitlab.com/scilab/scilab/-/issues/16713">#16713</a>: Automatic stretching of Axes box in 3d view was not configurable.</li>
 <li><a href="https://gitlab.com/scilab/scilab/-/issues/16717">#16717</a>: An error occured in <code>findobj()</code> when no object existed.</li>
-<li><a href="https://gitlab.com/scilab/scilab/-/issues/16732">#16732</a>: Missing information about file overwriting and Fortran formats was missing in <code>write()</code> help page.</li>
+<li><a href="https://gitlab.com/scilab/scilab/-/issues/16732">#16732</a>: Information about file overwriting and Fortran formats was missing in <code>write()</code> help page.</li>
 <li><a href="https://gitlab.com/scilab/scilab/-/issues/16734">#16734</a>: <code>findobj()</code> was slower than before.</li>
 <li><a href="https://gitlab.com/scilab/scilab/-/issues/16748">#16748</a>: Build failed with OCaml 4.11 or newer build without unsafe-strings</li>
 <li><a href="https://gitlab.com/scilab/scilab/-/issues/16750">#16750</a>: Xcos RELATIONALOP's icon became blank when editing the block.</li>
@@ -233,11 +235,11 @@ For changelogs of earlier releases, please see <a href="https://help.scilab.org/
 <li><a href="https://gitlab.com/scilab/scilab/-/issues/16785">#16785</a>: <code>xsave</code>/<code>save</code> of datatips produced double free in data model.</li>
 <li><a href="https://gitlab.com/scilab/scilab/-/issues/16786">#16786</a>: <code>zoom_box</code> property was not correctly saved.</li>
 <li><a href="https://gitlab.com/scilab/scilab/-/issues/16796">#16796</a>: <code>isreal(complex(1,%nan),0)</code> returned <code>%T</code> instead of <code>%F</code>.</li>
-<li><a href="https://gitlab.com/scilab/scilab/-/issues/16797">#16797</a>: <code>atomsGui</code> could yield some <code>field &lt;module_name&gt; unknown</code> error after running the <code>File =&gt; update the list of package</code> menu.</li>
+<li><a href="https://gitlab.com/scilab/scilab/-/issues/16797">#16797</a>: <code>atomsGui()</code> could produce some <code>field &lt;module_name&gt; unknown</code> error after running the <code>File / Update List of Packages</code> menu.</li>
 <li><a href="https://gitlab.com/scilab/scilab/-/issues/16798">#16798</a>: <code>scinotes()</code> with option and non existing file crashed Scilab.</li>
 <li><a href="https://gitlab.com/scilab/scilab/-/issues/16801">#16801</a>: Management of <code>covWrite(&quot;html&quot;)</code> results wrapping was wrong.</li>
 <li><a href="https://gitlab.com/scilab/scilab/-/issues/16803">#16803</a>: <code>tbx_build_localization(…)</code> and <code>tbx_make(dir, &quot;localization&quot;)</code> never updated existing .po files.</li>
-<li><a href="https://gitlab.com/scilab/scilab/-/issues/16812">#16812</a>: <code>atomsLoad(&quot;linalg&quot;)</code> errored and broke the loading.</li>
+<li><a href="https://gitlab.com/scilab/scilab/-/issues/16812">#16812</a>: While the help browser was open, <code>atomsLoad(&quot;linalg&quot;)</code> errored and broke the loading.</li>
 <li><a href="https://gitlab.com/scilab/scilab/-/issues/16822">#16822</a>: <code>getrelativefilename()</code> returned incorrect value in case of same beginning of directory names.</li>
 <li><a href="https://gitlab.com/scilab/scilab/-/issues/16823">#16823</a>: <code>Mtbxfun_db.txt</code> was missing the Scilab releases (<code>m2sci</code> module).</li>
 <li><a href="https://gitlab.com/scilab/scilab/-/issues/16826">#16826</a>: <code>file()</code> or <code>file(fid)</code> could return outdated relative paths.</li>
@@ -251,7 +253,7 @@ For changelogs of earlier releases, please see <a href="https://help.scilab.org/
 <li><a href="https://gitlab.com/scilab/scilab/-/issues/16864">#16864</a>: <code>macr2tree()</code> interpreted <code>a=1:2, b=a(2)</code> as a funcall instead of as an extraction operation (Scilab 6.0 regression).</li>
 <li><a href="https://gitlab.com/scilab/scilab/-/issues/16865">#16865</a>: Vector extraction with single hypermatrix index returned a vector.</li>
 <li><a href="https://gitlab.com/scilab/scilab/-/issues/16867">#16867</a>: <code>macr2tree()</code> encoded <code>.'</code> (transpose) as <code>'</code> (conjugate transpose).</li>
-<li><a href="https://gitlab.com/scilab/scilab/-/issues/16871">#16871</a>: Polynomial exponent display could either use ascii or unicode (configurable through preferences).</li>
+<li><a href="https://gitlab.com/scilab/scilab/-/issues/16871">#16871</a>: Choosing the display of Polynomial exponents with either ascii or unicode characters was not possible through preferences.</li>
 <li><a href="https://gitlab.com/scilab/scilab/-/issues/16879">#16879</a>: <code>members(N,H)</code> was very slow and crashed the computer for big <code>N</code> or/and <code>H</code> arrays of non-double data.</li>
 <li><a href="https://gitlab.com/scilab/scilab/-/issues/16883">#16883</a>: <code>mprintf(&quot;%d %d\n&quot;, h);</code> called after <code>h=cat(3, [1 2], [3 4]);</code> crashed Scilab (same issue with <code>msprintf()</code>).</li>
 <li><a href="https://gitlab.com/scilab/scilab/-/issues/16887">#16887</a>: French localization for <code>tbx_build_loader()</code> messages fixed.</li>
