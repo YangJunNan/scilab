@@ -22,7 +22,7 @@ function filename = dlwWriteBatchFile(cmd)
     end
 
     ifort = findmsifortcompiler();
-    if ifort <> "" then
+    if ifort <> "unknown" then
         //call setvars from intel oneAPI to setup env (fortran AND C/C++)
         VSVer = dlwGetVisualStudioVersion();
         cmdenv = "@call """ + getIntelInformation() + "\setvars.bat"" " + "intel64" + sprintf(" vs%d", VSVer);
