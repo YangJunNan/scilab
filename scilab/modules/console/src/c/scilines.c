@@ -24,11 +24,11 @@
 
 #ifndef _MSC_VER
 
-#  if defined(HAVE_CURSES_H)
-#    include <curses.h>
-#  elif defined(HAVE_NCURSES_H)
-#    include <ncurses.h>
-#  endif
+#if defined(HAVE_CURSES_H)
+#include <curses.h>
+#elif defined(HAVE_NCURSES_H)
+#include <ncurses.h>
+#endif
 
 
 #ifdef HAVE_TERMCAP_H

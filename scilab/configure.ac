@@ -1442,8 +1442,6 @@ AC_STRUCT_ST_BLOCKS
 # For now, just check for -lcurses and then -lncurses.  The user control
 # may need to be revisited
 
-TERMCAP_LIB=no
-
 # Various observations:
 #
 #  ncurses
@@ -1458,24 +1456,38 @@ TERMCAP_LIB=no
 
 if $WITH_DEVTOOLS; then
     # ncurses includes are in a subdir
-    CFLAGS="-I$DEVTOOLS_INCDIR -I$DEVTOOLS_INCDIR/ncurses $CFLAGS"
+    NCURSES_CFLAGS="-I$DEVTOOLS_INCDIR -I$DEVTOOLS_INCDIR/ncurses"
+    NCURSES_LIBS="-L$DEVTOOLS_LIBDIR/ -lscincurses"
+    
+    saved_LIBS="$LIBS"
+    LIBS="$LIBS $NCURSES_LIBS"
+    AC_CHECK_LIB([scincurses],[tgetent])
+    LIBS="$saved_LIBS"
+    
+    ac_cv_lib_ncurses_tgetent=$ac_cv_lib_scincurses_tgetent
+else
+    NCURSES_CFLAGS=""
+    AC_CHECK_LIB([curses],[tgetent],[NCURSES_LIBS="-lcurses"])
+    if test $ac_cv_lib_curses_tgetent = no ; then
+        AC_CHECK_LIB([ncurses],[tgetent],[NCURSES_LIBS="-lncurses"])
+    fi
+    # make sure we have what we need for tgetent
+    if test $ac_cv_lib_ncurses_tgetent = no ; then
+        AC_CHECK_LIB([termcap],[tgetent])
+    fi
 fi
-
-AC_CHECK_LIB([curses],[main])
-if test $ac_cv_lib_curses_main = no ; then
-    AC_CHECK_LIB([ncurses],[main])
-fi
-
-# make sure we have what we need for tgetent
-AC_SEARCH_LIBS([tgetent],[termcap])
 
 AC_CHECK_HEADERS([ncurses.h curses.h])
 
-if test "x$ac_cv_lib_curses_main" = "xyes" -o "x$ac_cv_lib_ncurses_main" = "xyes" ; then
+if test "x$ac_cv_lib_curses_tgetent" = "xyes" -o "x$ac_cv_lib_ncurses_tgetent" = "xyes" -o "x$ac_cv_lib_termcap_tgetent" = "xyes" ; then
 AC_DEFINE([HAVE_TERMCAP],[],[Have Term Cap])
 else
 AC_MSG_ERROR([No termcap library detected. Please install ncurses dev library (or termcap library)])
 fi
+
+AC_SUBST(NCURSES_CFLAGS)
+AC_SUBST(NCURSES_LIBS)
+
 
 ##################
 ## other libraries
@@ -2511,7 +2523,6 @@ echo "  FFLAGS ......... = $FFLAGS"
 echo "  SCI_FFLAGS ..... = $SCI_FFLAGS"
 echo "  F77_LDFLAGS .... = $F77_LDFLAGS"
 echo "  FLIBS...... .... = $FLIBS"
-echo "  TERMCAP_LIB .... = $TERMCAP_LIB"
 echo ""
 
 #################

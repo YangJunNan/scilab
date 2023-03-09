@@ -134,6 +134,7 @@ libsciconsole_minimal_la_CPPFLAGS = \
     -I$(top_srcdir)/modules/threads/includes \
     -I$(top_srcdir)/modules/string/includes \
     -I$(top_srcdir)/modules/dynamic_link/includes \
+    $(NCURSES_CFLAGS) \
     $(AM_CPPFLAGS)
 
 # Includes need for the compilation
@@ -173,6 +174,7 @@ if GUI
 pkglib_LTLIBRARIES += libsciconsole.la
 endif
 
+libsciconsole_minimal_la_LIBADD = $(NCURSES_LIBS)
 libsciconsole_la_LIBADD = libsciconsole-minimal.la
 
 # All the sources needed by libsciconsole.la
