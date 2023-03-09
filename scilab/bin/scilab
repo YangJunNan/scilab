@@ -345,7 +345,7 @@ set_embedded_java_vm () {
                 export ARCH=$(uname -m)
                 # If Scilab does not have an embedded jre we try to detect a system installed one
                 # if not found we prompt the user for installation
-                if test ! -f $SCIBINARYBASE/thirdparty/jre/lib/libjli.dylib; then
+                if test ! -f $SCIBINARYBASE/thirdparty/jre/lib/jli/libjli.dylib; then
                     JAVA_HOME=$(detect_macos_vm)
                     if test -z "$JAVA_HOME"; then
                         open -W "jre/Scilab JRE Install.app"
