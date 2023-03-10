@@ -79,7 +79,6 @@ sed -i "s#$(pwd)#\$SCILAB/../../#g" "/${SCI_VERSION_STRING}/share/scilab/etc/cla
 
 # Update the rpath and ELF NEEDED
 cd "/${SCI_VERSION_STRING}/" ||exit
-export PATH="${CI_PROJECT_DIR}/scilab/usr/bin/:$PATH"
 patchelf --set-rpath '$ORIGIN:$ORIGIN/../lib/scilab:$ORIGIN/../lib/thirdparty:$ORIGIN/../lib/thirdparty/redist' \
 	bin/scilab-cli-bin bin/scilab-bin
 find lib/scilab/*.so* -type f -exec patchelf \
