@@ -15,7 +15,11 @@ function VSPath = dlwGetVisualStudioPath()
     versions = getVsWhereInformation();
     version = dlwFindMsVcCompiler();
 
-    idx = findinlist(versions.name, version);
+    idx = 1;
+    if size(versions, "*") > 1 then
+        idx = findinlist(versions.name, version);
+    end
+    
     VSPath = versions(idx).path;
 endfunction
 //=============================================================================
