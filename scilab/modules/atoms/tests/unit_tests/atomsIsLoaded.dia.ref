@@ -28,8 +28,10 @@ atomsLoad(["toolbox_2V6","2.1","user"]);
 Start Toolbox 1
 	Load macros
 	Load gateways
+	Load help
 Start Toolbox 2
 	Load macros
+	Load help
 if ~ atomsIsLoaded("toolbox_2V6")                  then bugmes();quit;end
 if ~ atomsIsLoaded(["toolbox_2V6","2.1"])          then bugmes();quit;end
 if ~ atomsIsLoaded(["toolbox_2V6","2.1","user"])   then bugmes();quit;end

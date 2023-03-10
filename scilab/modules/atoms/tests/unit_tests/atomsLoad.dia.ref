@@ -35,12 +35,16 @@ atomsLoad("toolbox_5V6");
 Start Toolbox 1
 	Load macros
 	Load gateways
+	Load help
 Start Toolbox 2
 	Load macros
+	Load help
 Start Toolbox 4
 	Load macros
+	Load help
 Start Toolbox 5
 	Load macros
+	Load help
 if ~ atomsIsLoaded("toolbox_5V6") then bugmes();quit;end
 if ~ atomsIsLoaded(["toolbox_5V6" "1.0"]) then bugmes();quit;end
 if ~ and(atomsIsLoaded(["toolbox_5V6"; ..
