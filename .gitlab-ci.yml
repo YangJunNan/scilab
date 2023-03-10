@@ -70,8 +70,8 @@ workflow:
     # run on merge request
     - if: $CI_PIPELINE_SOURCE == "merge_request_event"
       variables:
-        GIT_STRATEGY: "fetch"
-        GIT_CLEAN_FLAGS: "none"
+        #GIT_STRATEGY: "fetch"
+        #GIT_CLEAN_FLAGS: "none"
         SCI_VERSION_STRING: "scilab-mr${CI_MERGE_REQUEST_IID}-${CI_COMMIT_SHORT_SHA}"
     # Scheduled pipeline
     - if: $CI_PIPELINE_SOURCE == 'schedule'

@@ -14,7 +14,7 @@ LOG_PATH=$SCI_VERSION_STRING
 
 # checkout pre-requirements
 echo -e "\e[0Ksection_start:$(date +%s):prerequirements\r\e[0KGetting prerequirements"
-curl -k -z prereq.tar.xz -o prereq.tar.xz https://oos.eu-west-2.outscale.com/scilab-releases-dev/prerequirements/prerequirements-scilab-${PREREQUIREMENTS_BRANCH}-linux_x64.tar.xz
+curl -v -k -z prereq.tar.xz -o prereq.tar.xz https://oos.eu-west-2.outscale.com/scilab-releases-dev/prerequirements/prerequirements-scilab-${PREREQUIREMENTS_BRANCH}-linux_x64.tar.xz
 rm -fr scilab/java scilab/lib scilab/thirdparty scilab/usr
 tar -xvf prereq.tar.xz -C scilab > ${LOG_PATH}/log_prereq_${CI_COMMIT_SHORT_SHA}.txt
 # display svn revision
@@ -43,9 +43,6 @@ export SCILIBS_LDFLAGS="-Wl,--allow-shlib-undefined"
 # configure (with reconfigure for up to date info)
 echo -e "\e[0Ksection_start:$(date +%s):configure[collapsed=true]\r\e[0KConfigure"
 cd scilab ||exit 1
-aclocal  >  ../${LOG_PATH}/log_autoreconf_${CI_COMMIT_SHORT_SHA}.txt
-autoconf >> ../${LOG_PATH}/log_autoreconf_${CI_COMMIT_SHORT_SHA}.txt
-automake >> ../${LOG_PATH}/log_autoreconf_${CI_COMMIT_SHORT_SHA}.txt
 ./configure --prefix='' |tee -a ../${LOG_PATH}/log_configure_${CI_COMMIT_SHORT_SHA}.txt
 cp -a config.log ../${LOG_PATH}/log_config.log_${CI_COMMIT_SHORT_SHA}.txt
 echo -e "\e[0Ksection_end:$(date +%s):configure\r\e[0K"
@@ -72,6 +69,10 @@ cp -a README.md "/${SCI_VERSION_STRING}/"
 cp -a lib/thirdparty "/${SCI_VERSION_STRING}/lib/"
 cp -a thirdparty "/${SCI_VERSION_STRING}/"
 cp -a java/jdk*-jre "/${SCI_VERSION_STRING}/thirdparty/java"
+cp -a modules/tclsci/tcl "/${SCI_VERSION_STRING}/share/scilab/tclsci/"
+
+# copy gcc libs from docker cutoms build gcc
+cp -a /install/lib/libsci*  "/${SCI_VERSION_STRING}/lib/thirdparty/redist"
 
 # Update the classpath
 sed -i "s#$(pwd)#\$SCILAB/../../#g" "/${SCI_VERSION_STRING}/share/scilab/etc/classpath.xml"
@@ -80,21 +81,9 @@ sed -i "s#$(pwd)#\$SCILAB/../../#g" "/${SCI_VERSION_STRING}/share/scilab/etc/cla
 cd "/${SCI_VERSION_STRING}/" ||exit
 export PATH="${CI_PROJECT_DIR}/scilab/usr/bin/:$PATH"
 patchelf --set-rpath '$ORIGIN:$ORIGIN/../lib/scilab:$ORIGIN/../lib/thirdparty:$ORIGIN/../lib/thirdparty/redist' \
-	--replace-needed libgcc_s.so.1 libscigcc_s.so.1 \
-	--replace-needed libstdc++.so.6 libscistdc++.so.6 \
-	--replace-needed libquadmath.so.0 libsciquadmath.so.0 \
-	--replace-needed libgfortran.so.5 libscigfortran.so.5 \
-	--remove-needed libtinfo.so.5 \
-	--remove-needed libncurses.so.5 \
 	bin/scilab-cli-bin bin/scilab-bin
 find lib/scilab/*.so* -type f -exec patchelf \
 	--set-rpath '$ORIGIN:$ORIGIN/../thirdparty:$ORIGIN/../thirdparty/redist' \
-	--replace-needed libgcc_s.so.1 libscigcc_s.so.1 \
-	--replace-needed libstdc++.so.6 libscistdc++.so.6 \
-	--replace-needed libquadmath.so.0 libsciquadmath.so.0 \
-	--replace-needed libgfortran.so.5 libscigfortran.so.5 \
-	--remove-needed libtinfo.so.5 \
-	--remove-needed libncurses.so.5 \
 	{} \;
 
 readelf -d bin/scilab-cli-bin |awk '/NEEDED/{gsub(/\[/,""); gsub(/\]/,""); print "patchelf --add-needed "$NF" lib/scilab/libscilab-cli.so"}' |sh -
