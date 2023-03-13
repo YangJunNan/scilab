@@ -65,12 +65,12 @@ BEGIN
         BLOCK "040c04b0"
         BEGIN
             VALUE "FileDescription", "linpack_f module"
-            VALUE "FileVersion", "2023, 0, 0, 0"
+            VALUE "FileVersion", "2024, 0, 0, 0"
             VALUE "InternalName", "linpack_f module"
             VALUE "LegalCopyright", "Copyright (C) 2023"
             VALUE "OriginalFilename", "linpack_f.dll"
             VALUE "ProductName", "linpack_f module"
-            VALUE "ProductVersion", "2023, 0, 0, 0"
+            VALUE "ProductVersion", "2024, 0, 0, 0"
         END
     END
     BLOCK "VarFileInfo"

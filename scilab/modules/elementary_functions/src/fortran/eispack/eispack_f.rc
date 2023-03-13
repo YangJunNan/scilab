@@ -65,12 +65,12 @@ BEGIN
         BLOCK "040c04b0"
         BEGIN
             VALUE "FileDescription", "eispack library"
-            VALUE "FileVersion", "2023, 0, 0, 0"
-            VALUE "InternalName", "eispack library for Scilab 6.x"
+            VALUE "FileVersion", "2024, 0, 0, 0"
+            VALUE "InternalName", "eispack library for Scilab"
             VALUE "LegalCopyright", "Copyright (C) 2023"
             VALUE "OriginalFilename", "eispack.dll"
-            VALUE "ProductName", "eispack library for Scilab 6.x"
-            VALUE "ProductVersion", "2023, 0, 0, 0"
+            VALUE "ProductName", "eispack library for Scilab"
+            VALUE "ProductVersion", "2024, 0, 0, 0"
         END
     END
     BLOCK "VarFileInfo"
