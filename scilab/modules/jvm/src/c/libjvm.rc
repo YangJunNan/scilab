@@ -66,12 +66,12 @@ BEGIN
         BEGIN
             VALUE "CompanyName", "Scilab"
             VALUE "FileDescription", "jvm module"
-            VALUE "FileVersion", "2023, 0, 0, 0"
+            VALUE "FileVersion", "2023, 1, 0, 0"
             VALUE "InternalName", "jvm"
             VALUE "LegalCopyright", "Copyright (C) 2023"
             VALUE "OriginalFilename", "libjvm.dll"
             VALUE "ProductName", "jvm"
-            VALUE "ProductVersion", "2023, 0, 0, 0"
+            VALUE "ProductVersion", "2023, 1, 0, 0"
         END
     END
     BLOCK "VarFileInfo"

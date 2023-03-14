@@ -65,12 +65,12 @@ BEGIN
         BLOCK "040c04b0"
         BEGIN
             VALUE "FileDescription", "sparse_f module"
-            VALUE "FileVersion", "2023, 0, 0, 0"
+            VALUE "FileVersion", "2023, 1, 0, 0"
             VALUE "InternalName", "sparse_f module"
             VALUE "LegalCopyright", "Copyright (C) 2023"
             VALUE "OriginalFilename", "sparse_f.dll"
             VALUE "ProductName", "sparse_f module"
-            VALUE "ProductVersion", "2023, 0, 0, 0"
+            VALUE "ProductVersion", "2023, 1, 0, 0"
         END
     END
     BLOCK "VarFileInfo"

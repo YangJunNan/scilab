@@ -1,7 +1,7 @@
-Welcome to Scilab 2023.0.0
+Welcome to Scilab 2023.1.0
 ==========================
 
-This file details the changes between Scilab 2023.0.0 (this version), and the previous 6.1.1 release.
+This file details the changes between Scilab 2023.1.0 (this version), and the previous 6.1.1 release.
 For changelogs of earlier releases, please see [Scilab 6.1.1][1].
 
 Summary:
@@ -144,6 +144,11 @@ API/ABI modification
 
 Bug Fixes
 ---------
+
+### Bugs fixed in 2023.1.0:
+
+* __add your bug fix here and keep this line__
+
 
 ### Bugs fixed in 2023.0.0:
 

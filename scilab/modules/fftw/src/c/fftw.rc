@@ -66,12 +66,12 @@ BEGIN
         BEGIN
             VALUE "CompanyName", "Scilab"
             VALUE "FileDescription", "fftw module"
-            VALUE "FileVersion", "2023, 0, 0, 0"
+            VALUE "FileVersion", "2023, 1, 0, 0"
             VALUE "InternalName", "fftw"
             VALUE "LegalCopyright", "Copyright (C) 2023"
             VALUE "OriginalFilename", "fftw.rc"
             VALUE "ProductName", " fftw"
-            VALUE "ProductVersion", "2023, 0, 0, 0"
+            VALUE "ProductVersion", "2023, 1, 0, 0"
         END
     END
     BLOCK "VarFileInfo"

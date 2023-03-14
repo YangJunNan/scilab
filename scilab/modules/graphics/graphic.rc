@@ -65,12 +65,12 @@ BEGIN
         BLOCK "040c04b0"
         BEGIN
             VALUE "FileDescription", "graphics module"
-            VALUE "FileVersion", "2023, 0, 0, 0"
+            VALUE "FileVersion", "2023, 1, 0, 0"
             VALUE "InternalName", "graphics module"
             VALUE "LegalCopyright", "Copyright (C) 2023"
             VALUE "OriginalFilename", "graphics.dll"
             VALUE "ProductName", "graphics module"
-            VALUE "ProductVersion", "2023, 0, 0, 0"
+            VALUE "ProductVersion", "2023, 1, 0, 0"
         END
     END
     BLOCK "VarFileInfo"
