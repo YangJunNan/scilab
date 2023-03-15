@@ -3,6 +3,9 @@ Scilab
 
 Open source, cross-platform numerical computational package and a high-level, numerically oriented programming language.
 
+[![Latest Release](https://gitlab.com/scilab/scilab/-/badges/release.svg)](https://gitlab.com/scilab/scilab/-/releases)
+[![Pipeline Status](https://gitlab.com/scilab/scilab/badges/main/pipeline.svg)](https://gitlab.com/scilab/scilab/-/commits/main)
+
 COPYRIGHT NOTICE
 ----------------
 
@@ -34,7 +37,7 @@ OTHER RESOURCES
  1. If you have any problem or suggestion to improve Scilab, post an [issue](https://gitlab.com/scilab/scilab/-/issues).
      Don't hesitate to browse other issues to see workarounds.
 
- 2. User and development mailing lists are available :
+ 2. User and development mailing lists are available:
      [Users Mail Archive](https://www.mail-archive.com/users@lists.scilab.org/),
      [Others](https://www.scilab.org/about/community/mailing-lists)
 
