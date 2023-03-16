@@ -634,7 +634,7 @@ gcc-* | gcc | ccache*gcc | ccache*gcc-* )
     # Once all cyclic dependencies have been dropped, this line could be removed.
     # Check if linker supports --as-needed and --no-as-needed options
     if $LD --help 2>/dev/null | grep no-as-needed > /dev/null; then
-        LDFLAGS="$LDFLAGS -Wl,--no-as-needed"
+        COMPILER_LDFLAGS="$COMPILER_LDFLAGS -Wl,--no-as-needed"
     fi
 
     case "$host" in
@@ -778,6 +778,11 @@ AM_CONDITIONAL(ENABLE_DEBUG, test "$enable_debug" = yes)
 SCILIBS_CFLAGS=''
 SCILIBS_CXXFLAGS=''
 SCILIBS_FFLAGS=''
+SCILIBS_LDFLAGS=''
+if $WITH_DEVTOOLS; then
+    # with devtools the needed dependencies are all there, discard private dependencies
+    SCILIBS_LDFLAGS='-Wl,--allow-shlib-undefined'
+fi
 
 if test $IS_64_BITS_CPU = true -o "$MACOSX" = "1"; then
    if test $f90compatible = false; then

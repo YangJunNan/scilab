@@ -15,6 +15,10 @@ create_docker_image_linux:
     - docker login -u $CI_REGISTRY_USER -p $CI_JOB_TOKEN $CI_REGISTRY
     - docker build --file .gitlab-ci/Dockerfile.linux -t $DOCKER_LINUX_BUILDER .
     - docker push $DOCKER_LINUX_BUILDER
+    - docker logout $CI_REGISTRY
+    # this image has been pushed successfully, cleanup local copy
+    - docker rmi $DOCKER_LINUX_BUILDER
+    - docker image prune --force
   rules:
     - if: $CI_PROJECT_PATH_SLUG !~ /scilab-scilab/
       changes: &DOCKER_CHANGES
@@ -34,40 +38,3 @@ create_docker_image_linux:
 #     - docker logout $CI_REGISTRY
 #   rules:
 #     - changes: *DOCKER_CHANGES
-
-# cleanup intermediate Docker image after the build
-linux_cleanup_docker:
-  stage: docker_cleanup
-  image: docker:20.10.16
-  tags: [x86_64-linux-gnu, docker, scilab]
-  dependencies: []
-  variables:
-    GIT_STRATEGY: none
-  script:
-    - echo $DOCKER_LINUX_BUILDER
-    # untag the dedicated image for this MR
-    - docker rmi $DOCKER_LINUX_BUILDER
-    # remove all dangling image
-    - docker image prune
-  rules:
-    - if: $CI_PROJECT_PATH_SLUG !~ /scilab-scilab/
-      changes: *DOCKER_CHANGES
-    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
-      changes: *DOCKER_CHANGES
-# windows_cleanup_docker:
-#   stage: docker_cleanup
-#   tags: [x64_windows, shell, scilab]
-#   dependencies: []
-#   variables:
-#     GIT_STRATEGY: none
-#   script:
-#     - echo $env:DOCKER_LINUX_BUILDER
-#     # untag the dedicated image for this MR
-#     - docker rmi $env:DOCKER_LINUX_BUILDER
-#     # remove all dangling image
-#     - docker image prune
-#   rules:
-#     - if: $CI_PROJECT_PATH_SLUG !~ /scilab-scilab/
-#       changes: *DOCKER_CHANGES
-#     - if: $CI_PIPELINE_SOURCE == "merge_request_event"
-#       changes: *DOCKER_CHANGES

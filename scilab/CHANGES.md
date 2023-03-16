@@ -129,10 +129,11 @@ Packaging & Supported Operating Systems
   - macOS (64-bit):
      - Intel-based Mac running macOS 10.9+ (run) and 10.14+ (compile)
      - Support of macOS Monterey & Ventura added in Scilab 2023.0.0
-  - Linux (64-bit):
-     - Red Hat Enterprise Linux 6.x, 7.x
-     - Ubuntu Linux 18.04 LTS, 22.04 LTS
-     - Suse Linux Enterprise Server 10 SP2+, 11.x
+  - Linux with Docker images (amd64):
+     - debian:11
+     - ubuntu:18.04, 20.04, 22.04
+     - fedora:37
+     - redhat/ubi8:8, ubi9:9.1 
 
 
 API/ABI modification

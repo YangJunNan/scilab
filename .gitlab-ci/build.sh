@@ -9,14 +9,21 @@
 # NOTE: log all commands to log.txt to avoid hitting Gitlab log limit
 # NOTE: nproc is used to limit memory usage
 
+echo "GIT_STRATEGY: $GIT_STRATEGY"
+echo "GIT_CLEAN_FLAGS: $GIT_CLEAN_FLAGS"
+
 LOG_PATH=$SCI_VERSION_STRING
 [ ! -d "$LOG_PATH" ] && mkdir "$LOG_PATH"
 
 # checkout pre-requirements
-echo -e "\e[0Ksection_start:$(date +%s):prerequirements\r\e[0KGetting prerequirements"
-curl -v -k -z prereq.tar.xz -o prereq.tar.xz https://oos.eu-west-2.outscale.com/scilab-releases-dev/prerequirements/prerequirements-scilab-${PREREQUIREMENTS_BRANCH}-linux_x64.tar.xz
-rm -fr scilab/java scilab/lib scilab/thirdparty scilab/usr
+echo -e "\e[0Ksection_start:$(date +%s):prerequirements[collapsed=true]\r\e[0KGetting prerequirements"
+curl -v -k -o prereq.tar.xz https://oos.eu-west-2.outscale.com/scilab-releases-dev/prerequirements/prerequirements-scilab-branch-${BRANCH}-linux_x64.tar.xz
+git clean -fxd scilab/java scilab/lib scilab/thirdparty scilab/usr scilab/modules/tclsci/tcl
 tar -xvf prereq.tar.xz -C scilab > ${LOG_PATH}/log_prereq_${CI_COMMIT_SHORT_SHA}.txt
+
+# before mr258, enforce link on prerequirement libscistdc++
+ln -s libscistdc++.so.6 scilab/usr/lib/libstdc++.so
+
 # display svn revision
 cat scilab/svn-info.txt || exit 1
 echo -e "\e[0Ksection_end:$(date +%s):prerequirements\r\e[0K"
@@ -34,11 +41,6 @@ echo SCIVERSION=${SCI_VERSION_STRING} >scilab/Version.incl
 # predefined env
 LD_LIBRARY_PATH="$LD_LIBRARY_PATH:$(pwd)/scilab/usr/lib/"
 export LD_LIBRARY_PATH
-DISPLAY=:0.0 && export DISPLAY
-
-# FIXME: workaround to only have minimal dependencies set
-# otherwise, libcurl will require libopenssl which will likely be system dependent
-export SCILIBS_LDFLAGS="-Wl,--allow-shlib-undefined"
 
 # configure (with reconfigure for up to date info)
 echo -e "\e[0Ksection_start:$(date +%s):configure[collapsed=true]\r\e[0KConfigure"
@@ -69,10 +71,10 @@ cp -a README.md "/${SCI_VERSION_STRING}/"
 cp -a lib/thirdparty "/${SCI_VERSION_STRING}/lib/"
 cp -a thirdparty "/${SCI_VERSION_STRING}/"
 cp -a java/jdk*-jre "/${SCI_VERSION_STRING}/thirdparty/java"
-cp -a modules/tclsci/tcl "/${SCI_VERSION_STRING}/share/scilab/tclsci/"
+cp -a modules/tclsci/tcl "/${SCI_VERSION_STRING}/share/scilab/modules/tclsci/"
 
-# copy gcc libs from docker cutoms build gcc
-cp -a /install/lib/libsci*  "/${SCI_VERSION_STRING}/lib/thirdparty/redist"
+# copy gcc libs from docker cutoms build gcc after !258
+#cp -a /install/lib/libsci*  "/${SCI_VERSION_STRING}/lib/thirdparty/redist"
 
 # Update the classpath
 sed -i "s#$(pwd)#\$SCILAB/../../#g" "/${SCI_VERSION_STRING}/share/scilab/etc/classpath.xml"
@@ -101,3 +103,5 @@ echo -e "\e[0Ksection_end:$(date +%s):package\r\e[0K"
 
 # error if artifact does not exist
 du -h "${SCI_VERSION_STRING}.bin.${ARCH}.tar.xz"
+ccache -s
+
