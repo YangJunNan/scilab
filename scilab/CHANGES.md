@@ -3,6 +3,11 @@ Welcome to Scilab 2024.0.0
 
 This file details the changes between Scilab 2024.0.0 (this version), and the previous 2023.0.0 release.
 For changelogs of earlier releases, please see [Scilab 2023.0.0][1].
+Welcome to Scilab 2023.1.0
+==========================
+
+This file details the changes between Scilab 2023.1.0 (this version), and the previous 6.1.1 release.
+For changelogs of earlier releases, please see [Scilab 6.1.1][1].
 
 Summary:
 - New features
@@ -83,10 +88,11 @@ Packaging & Supported Operating Systems
   - macOS (64-bit):
      - Intel-based Mac running macOS 10.9+ (run) and 10.14+ (compile)
      - Support of macOS Monterey & Ventura added in Scilab 2023.0.0
-  - Linux (64-bit):
-     - Red Hat Enterprise Linux 6.x, 7.x
-     - Ubuntu Linux 18.04 LTS, 22.04 LTS
-     - Suse Linux Enterprise Server 10 SP2+, 11.x
+  - Linux with Docker images (amd64):
+     - debian:11
+     - ubuntu:18.04, 20.04, 22.04
+     - fedora:37
+     - redhat/ubi8:8, ubi9:9.1 
 
 
 API/ABI modification
@@ -99,4 +105,10 @@ Bug Fixes
 ---------
 
 ### Bugs fixed in 2024.0.0:
+### Bugs fixed in 2023.1.0:
+
+* __add your bug fix here and keep this line__
+
+
+### Bugs fixed in 2023.0.0:
 

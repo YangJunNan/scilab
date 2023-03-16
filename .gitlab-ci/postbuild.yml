@@ -7,30 +7,6 @@
 # optional and generate/build extra documentation from Scilab build.
 #
 
-# # cleanup old builds from runners
-# linux_cleanup_builds:
-#   image: $DOCKER_LINUX_BUILDER
-#   stage: .post
-#   tags: [x86_64-linux-gnu, docker, scilab]
-#   variables:
-#     GIT_STRATEGY: none
-#   script:
-#     - set -e -x
-#     # Remove any previous tarball
-#     - rm -fr scilab-*.tar.xz
-#     # Remove install dir older than 3 days
-#     - |
-#       find . -maxdepth 1 -mtime +2 -name "scilab-*" -type d -print0 |\
-#       while IFS= read -r -d '' i ; do
-#         chmod -R +w "$i" && rm -rf "$i";
-#       done
-#     # Remove TMPDIRs older than 1 day
-#     - |
-#       find /tmp -maxdepth 1 -mtime +0 -name "SCI_TMP*" -type d -print0 |\
-#       while IFS= read -r -d '' i ; do
-#         [ -w "$i" ] && rm -rf "$i";
-#       done
-
 # build javadoc
 build_javadoc:
   stage: postbuild
@@ -109,10 +85,36 @@ publish_help_jar:
     - jar xf scilab_images.jar -d images/
     - rm scilab_images.jar
     - sed -i -e "s#jarsci:./#../images/#g" */*.html
-  rules:
+  rules: &MR_RULES
     - if: $CI_COMMIT_TAG
       when: never
     - if: $CI_PIPELINE_SOURCE == 'merge_request_event' || $CI_PIPELINE_SOURCE == 'push'
   artifacts:
     paths:
       - public
+
+# start scilab on multiple distro 
+linux_startup:
+  stage: postbuild
+  tags: [x86_64-linux-gnu, docker, scilab]
+  image: $DISTRO
+  needs:
+    - linux_build_mr
+    - linux_set_env
+  rules: *MR_RULES
+  script:
+    - tar -xJf "${SCI_VERSION_STRING}.bin.${ARCH}.tar.xz" -C /
+    - export SCIVERBOSE=1
+    - /${SCI_VERSION_STRING}/bin/scilab -$MODE -e "disp started" -quit
+  allow_failure: true
+  parallel:
+    matrix:
+      - DISTRO:
+          - "amd64/debian:11"
+          - "amd64/ubuntu:18.04"
+          - "amd64/ubuntu:20.04"
+          - "amd64/ubuntu:22.04"
+          - "amd64/fedora:37"
+          - "redhat/ubi8:8.7"
+          - "redhat/ubi9:9.1"
+        MODE: ["nwni", "nw"]
