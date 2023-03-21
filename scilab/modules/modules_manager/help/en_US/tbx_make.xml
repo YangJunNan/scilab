@@ -224,6 +224,13 @@ tbx_make("path/to/mytoolbox", ["macros", "help", "src"])
                     The existing builder is run only if no specific sections are requested.
                 </revremark>
             </revision>
+            <revision>
+                <revnumber>2023.0.0</revnumber>
+                <revdescription>
+                    <literal>tbx_make . localization</literal> automatically updates existing .po
+                    files for every newly detected msgid.
+                </revdescription>
+            </revision>
         </revhistory>
     </refsection>
 </refentry>

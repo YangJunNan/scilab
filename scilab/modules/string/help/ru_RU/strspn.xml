@@ -31,12 +31,21 @@
         <title>Аргументы</title>
         <variablelist>
             <varlistentry>
-                <term>Texts, allowedChars, headsLengths</term>
+                <term>Texts, allowedChars</term>
                 <listitem>
                     <para>
                         Матрицы текстов одинаковых размеров.
                         Разрешённые символы <varname>allowedChars</varname> могут быть в виде скалярной строки.
                         Тогда она используется для всех элементов текстов <varname>Texts</varname>.
+                    </para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term>headsLengths</term>
+                <listitem>
+                    <para>
+                        Matrix of positive real integers, of the size of <varname>Strings</varname>:
+						lengths of the selected <varname>Texts</varname> heads.
                     </para>
                 </listitem>
             </varlistentry>
