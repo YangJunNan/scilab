@@ -164,7 +164,7 @@
 
         <jar destfile="${library.jar}" basedir="${classes.dir}">
             <manifest>
-                <attribute name="Class-Path" value="jogl2.jar gluegen2.jar"/>
+                <attribute name="Class-Path" value="jogl-all.jar gluegen-rt.jar"/>
             </manifest>
         </jar>
     </target>
