@@ -31,7 +31,7 @@
         <title>Parâmetros</title>
         <variablelist>
             <varlistentry>
-                <term>Texts, allowedChars, headsLengths</term>
+                <term>Texts, allowedChars</term>
                 <listitem>
                     <para>
                         Matrices of texts, of identical dimensions.
@@ -40,12 +40,21 @@
                     </para>
                 </listitem>
             </varlistentry>
+            <varlistentry>
+                <term>headsLengths</term>
+                <listitem>
+                    <para>
+                        Matrix of positive real integers, of the size of <varname>Strings</varname>:
+                        lengths of the selected <varname>Texts</varname> heads.
+                    </para>
+                </listitem>
+            </varlistentry>
         </variablelist>
     </refsection>
     <refsection>
         <title>Descrição</title>
         <para>
-            <literal>headsLengths = strspn(Texts,allowedChars)</literal> retorna o comprimento da
+            <literal>headsLengths = strspn(Texts, allowedChars)</literal> retorna o comprimento da
             porção inicial de <varname>Texts</varname> que consiste apenas de caracteres que
             fazem parte de <varname>allowedChars</varname>.
         </para>
