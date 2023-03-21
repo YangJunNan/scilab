@@ -11313,7 +11313,7 @@ SCILIBS_CXXFLAGS=''
 SCILIBS_FFLAGS=''
 SCILIBS_LDFLAGS=''
 if $WITH_DEVTOOLS; then
-    # with devtools the needed dependencies are all there, discard
+    # with devtools the needed dependencies are all there, discard private dependencies
     SCILIBS_LDFLAGS='-Wl,--allow-shlib-undefined'
 fi
 
@@ -17216,13 +17216,13 @@ printf "%s\n" "$as_me: WARNING: Could not find or use the Java package/jar skinl
 
 
 
-    { printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking jogl2" >&5
-printf %s "checking jogl2... " >&6; }
+    { printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking jogl" >&5
+printf %s "checking jogl... " >&6; }
     PACKAGE_JAR_FILE=
 
     DEFAULT_JAR_DIR="$(pwd)/thirdparty/ $(pwd)/jar/ /usr/local/java/ /usr/local/java/jar /usr/local/share/java/ /usr/local/share/java/jar/ /usr/local/lib/java/ $(find /usr/share/java/ -maxdepth 1 -type d 2>/dev/null | sort) $(find /usr/lib64/ -maxdepth 1 -type d 2>/dev/null) $(find  /usr/lib/ -maxdepth 1 -type d 2>/dev/null) $(find /usr/share/*/lib -maxdepth 1 -type d 2>/dev/null) /opt/java/lib/"
 
-    jar_resolved="$(find $DEFAULT_JAR_DIR -maxdepth 1 \( -type f -name 'jogl2.jar' -or -name 'libjogl2.jar' -or -name 'libjogl2-java.jar' -or -name 'jogl2*.jar' \) 2>/dev/null |tr '\n' ':')."
+    jar_resolved="$(find $DEFAULT_JAR_DIR -maxdepth 1 \( -type f -name 'jogl.jar' -or -name 'libjogl.jar' -or -name 'libjogl-java.jar' -or -name 'jogl*.jar' \) 2>/dev/null |tr '\n' ':')."
 
     if test ! -f conftestSharedChecker.class ; then
 
@@ -17419,7 +17419,7 @@ EOF
     CLASSPATH=$ac_java_classpath
     export CLASSPATH
     echo "CLASSPATH="$CLASSPATH >&5
-    cmd="$JAVA conftestSharedChecker \"jogl2\" \"javax.media.opengl.glu.GLUnurbs\" \"$jar_resolved\" \"\" \"2.2\" \"\""
+    cmd="$JAVA conftestSharedChecker \"jogl\" \"jogamp.opengl.x11.glx.GLX\" \"$jar_resolved\" \"\" \"2.4\" \"\""
     if (echo $cmd >&5 ; eval $cmd >conftestSharedChecker.java.output 2>&5); then
         read PACKAGE_JAR_FILE PACKAGE_JAR_VERSION << EOF
 $(tail -n 1 conftestSharedChecker.java.output)
@@ -17433,10 +17433,10 @@ printf "%s\n" " $PACKAGE_JAR_FILE $PACKAGE_JAR_VERSION " >&6; }
       { printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: no" >&5
 printf "%s\n" "no" >&6; }
       if test "" = "yes"; then
-         { printf "%s\n" "$as_me:${as_lineno-$LINENO}: WARNING: Could not find or use the Java package/jar jogl2 used by Scilab 3D rendering - Version 2.0 (looking for package javax.media.opengl.glu.GLUnurbs)" >&5
-printf "%s\n" "$as_me: WARNING: Could not find or use the Java package/jar jogl2 used by Scilab 3D rendering - Version 2.0 (looking for package javax.media.opengl.glu.GLUnurbs)" >&2;}
+         { printf "%s\n" "$as_me:${as_lineno-$LINENO}: WARNING: Could not find or use the Java package/jar jogl used by Scilab 3D rendering (looking for package jogamp.opengl.x11.glx.GLX)" >&5
+printf "%s\n" "$as_me: WARNING: Could not find or use the Java package/jar jogl used by Scilab 3D rendering (looking for package jogamp.opengl.x11.glx.GLX)" >&2;}
       else
-          as_fn_error $? "Could not find or use the Java package/jar jogl2 used by Scilab 3D rendering - Version 2.0 (looking for package javax.media.opengl.glu.GLUnurbs)" "$LINENO" 5
+          as_fn_error $? "Could not find or use the Java package/jar jogl used by Scilab 3D rendering (looking for package jogamp.opengl.x11.glx.GLX)" "$LINENO" 5
       fi
     fi
     if test -f conftestSharedChecker.java.output; then
@@ -17556,13 +17556,13 @@ fi
 
 
 
-    { printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking gluegen2-rt" >&5
-printf %s "checking gluegen2-rt... " >&6; }
+    { printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking gluegen" >&5
+printf %s "checking gluegen... " >&6; }
     PACKAGE_JAR_FILE=
 
     DEFAULT_JAR_DIR="$(pwd)/thirdparty/ $(pwd)/jar/ /usr/local/java/ /usr/local/java/jar /usr/local/share/java/ /usr/local/share/java/jar/ /usr/local/lib/java/ $(find /usr/share/java/ -maxdepth 1 -type d 2>/dev/null | sort) $(find /usr/lib64/ -maxdepth 1 -type d 2>/dev/null) $(find  /usr/lib/ -maxdepth 1 -type d 2>/dev/null) $(find /usr/share/*/lib -maxdepth 1 -type d 2>/dev/null) /opt/java/lib/"
 
-    jar_resolved="$(find $DEFAULT_JAR_DIR -maxdepth 1 \( -type f -name 'gluegen2-rt.jar' -or -name 'libgluegen2-rt.jar' -or -name 'libgluegen2-rt-java.jar' -or -name 'gluegen2-rt*.jar' \) 2>/dev/null |tr '\n' ':')."
+    jar_resolved="$(find $DEFAULT_JAR_DIR -maxdepth 1 \( -type f -name 'gluegen.jar' -or -name 'libgluegen.jar' -or -name 'libgluegen-java.jar' -or -name 'gluegen*.jar' \) 2>/dev/null |tr '\n' ':')."
 
     if test ! -f conftestSharedChecker.class ; then
 
@@ -17759,7 +17759,7 @@ EOF
     CLASSPATH=$ac_java_classpath
     export CLASSPATH
     echo "CLASSPATH="$CLASSPATH >&5
-    cmd="$JAVA conftestSharedChecker \"gluegen2-rt\" \"jogamp.common.os.MachineDescriptionRuntime\" \"$jar_resolved\" \"\" \"\" \"\""
+    cmd="$JAVA conftestSharedChecker \"gluegen\" \"com.jogamp.common.os.Platform\" \"$jar_resolved\" \"\" \"\" \"\""
     if (echo $cmd >&5 ; eval $cmd >conftestSharedChecker.java.output 2>&5); then
         read PACKAGE_JAR_FILE PACKAGE_JAR_VERSION << EOF
 $(tail -n 1 conftestSharedChecker.java.output)
@@ -17773,10 +17773,10 @@ printf "%s\n" " $PACKAGE_JAR_FILE $PACKAGE_JAR_VERSION " >&6; }
       { printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: no" >&5
 printf "%s\n" "no" >&6; }
       if test "" = "yes"; then
-         { printf "%s\n" "$as_me:${as_lineno-$LINENO}: WARNING: Could not find or use the Java package/jar gluegen2-rt used by Scilab 3D rendering (looking for package jogamp.common.os.MachineDescriptionRuntime)" >&5
-printf "%s\n" "$as_me: WARNING: Could not find or use the Java package/jar gluegen2-rt used by Scilab 3D rendering (looking for package jogamp.common.os.MachineDescriptionRuntime)" >&2;}
+         { printf "%s\n" "$as_me:${as_lineno-$LINENO}: WARNING: Could not find or use the Java package/jar gluegen used by Scilab 3D rendering (looking for package com.jogamp.common.os.Platform)" >&5
+printf "%s\n" "$as_me: WARNING: Could not find or use the Java package/jar gluegen used by Scilab 3D rendering (looking for package com.jogamp.common.os.Platform)" >&2;}
       else
-          as_fn_error $? "Could not find or use the Java package/jar gluegen2-rt used by Scilab 3D rendering (looking for package jogamp.common.os.MachineDescriptionRuntime)" "$LINENO" 5
+          as_fn_error $? "Could not find or use the Java package/jar gluegen used by Scilab 3D rendering (looking for package com.jogamp.common.os.Platform)" "$LINENO" 5
       fi
     fi
     if test -f conftestSharedChecker.java.output; then
