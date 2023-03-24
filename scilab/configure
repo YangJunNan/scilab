@@ -17796,15 +17796,15 @@ printf "%s\n" "$as_me: WARNING: Could not find or use the Java package/jar glueg
                    LDFLAGS="$LDFLAGS -L/usr/lib/gluegen2 -L/usr/lib64/gluegen2"         # RedHat
                    LDFLAGS="$LDFLAGS -L$SCI_SRCDIR/thirdparty -L$SCI_SRCDIR/lib/thirdparty -L$SCI_SRCDIR/bin"        # Scilab thirdparties
                    symbol="Java_jogamp_common_jvm_JVMUtil_initialize"
-                   as_ac_Lib=`printf "%s\n" "ac_cv_lib_gluegen2-rt_$symbol" | $as_tr_sh`
-{ printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking for $symbol in -lgluegen2-rt" >&5
-printf %s "checking for $symbol in -lgluegen2-rt... " >&6; }
+                   as_ac_Lib=`printf "%s\n" "ac_cv_lib_gluegen_rt_$symbol" | $as_tr_sh`
+{ printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking for $symbol in -lgluegen_rt" >&5
+printf %s "checking for $symbol in -lgluegen_rt... " >&6; }
 if eval test \${$as_ac_Lib+y}
 then :
   printf %s "(cached) " >&6
 else $as_nop
   ac_check_lib_save_LIBS=$LIBS
-LIBS="-lgluegen2-rt -ldl $LIBS"
+LIBS="-lgluegen_rt -ldl $LIBS"
 cat confdefs.h - <<_ACEOF >conftest.$ac_ext
 /* end confdefs.h.  */
 
@@ -17835,9 +17835,9 @@ eval ac_res=\$$as_ac_Lib
 printf "%s\n" "$ac_res" >&6; }
 if eval test \"x\$"$as_ac_Lib"\" = x"yes"
 then :
-  GLUEGEN2_RT_LIBS="-lgluegen2-rt"
+  GLUEGEN2_RT_LIBS="-lgluegen_rt"
 else $as_nop
-  as_fn_error $? "libgluegen2-rt: Library missing (Cannot find symbol $symbol). Check if libgluegen-rt - C/Java (JNI) interface for GLUEGEN2 - is installed and if the version is correct. Note that you might have to update etc/librarypath.xml to provide the actual path to the JNI libraries." "$LINENO" 5
+  as_fn_error $? "libgluegen_rt: Library missing (Cannot find symbol $symbol). Check if libgluegen_rt - C/Java (JNI) interface for GLUEGEN2 - is installed and if the version is correct. Note that you might have to update etc/librarypath.xml to provide the actual path to the JNI libraries." "$LINENO" 5
 fi
 
                    LDFLAGS=$LDFLAGS_save
