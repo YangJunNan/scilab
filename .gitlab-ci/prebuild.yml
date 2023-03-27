@@ -19,7 +19,7 @@ linux_set_env:
     - echo CI_COMMIT_BRANCH=$CI_COMMIT_BRANCH
     - echo CI_MERGE_REQUEST_TARGET_BRANCH_NAME=$CI_MERGE_REQUEST_TARGET_BRANCH_NAME
     # get current build machine architecture
-    - ARCH=$(cc -dumpmachine)
+    - ARCH=$(cc -print-multiarch)
     # define NOW as Gitlab display ISO 8601 timestamp
     - date +"%s" >timestamp
     - NOW=$(cat timestamp)

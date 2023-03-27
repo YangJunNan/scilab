@@ -230,7 +230,9 @@ esac
 #####################################################
 ## Look for pkg-config
 #####################################################
+if test ! $WITH_DEVTOOLS; then
 PKG_PROG_PKG_CONFIG
+fi
 
 #####################################################
 ## check if options are correct (or not)
@@ -1674,8 +1676,12 @@ AM_CONDITIONAL(UMFPACK, test "$with_umfpack" != no)
 #######################
 ## Test for PCRE
 #######################
-
-AC_PCRE()
+if $WITH_DEVTOOLS; then # Scilab thirdparties
+    PCRE_CFLAGS="-I$DEVTOOLS_INCDIR"
+    PCRE_LIBS="-L$DEVTOOLS_LIBDIR -lpcre -lpcreposix"
+else
+    AC_PCRE()
+fi
 
 #######################
 ## Test for CURL
