@@ -355,7 +355,6 @@ function result = atomsInstall(packages,section)
 
         if getos() == "Windows" then
             tmp = this_package_details("extractedDirectory")
-            mprintf("%s\n", tmp)
             [stat, err] = movefile(tmp, fileparts(tmp, "path") + this_package_version);
             stat = 1 - stat
         else
