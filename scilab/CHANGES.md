@@ -105,6 +105,7 @@ Packaging & Supported Operating Systems
 
 API/ABI modification
 --------------------
+* [#16961](https://gitlab.com/scilab/scilab/-/issues/16961): on Windows, `atomsInstall()` was often broken when trying to rename the installation directory.
 
 - External toolboxes can use C++14, C++17, C++20 or more recent versions
 - Javasci source/target version switched from 6 to 7 (minimal version supported by Java 17).
