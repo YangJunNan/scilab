@@ -63,5 +63,5 @@ Bug Fixes
 
 ### Bugs fixed in 2023.1.0:
 
-* <TODO>
+* [#16966](https://gitlab.com/scilab/scilab/-/issues/16966): The warning message for removal of `xset/xget` did not tell which function displayed the message.
 
