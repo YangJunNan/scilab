@@ -230,7 +230,11 @@ esac
 #####################################################
 ## Look for pkg-config
 #####################################################
-if test ! $WITH_DEVTOOLS; then
+AC_MSG_CHECKING([if prebuilt binaries are available])
+if $WITH_DEVTOOLS; then
+AC_MSG_RESULT([WITH_DEVTOOLS: $SCI_SRCDIR_FULL/usr])
+else
+AC_MSG_RESULT([no])
 PKG_PROG_PKG_CONFIG
 fi
 
