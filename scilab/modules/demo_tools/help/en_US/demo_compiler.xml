@@ -13,38 +13,52 @@
  * along with this program.
  *
  -->
-<refentry xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svg="http://www.w3.org/2000/svg" xmlns:mml="http://www.w3.org/1998/Math/MathML" xmlns:db="http://docbook.org/ns/docbook" xmlns:scilab="http://www.scilab.org" xml:lang="en" xml:id="demo_compiler">
+<refentry xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:svg="http://www.w3.org/2000/svg" xmlns:mml="http://www.w3.org/1998/Math/MathML"
+          xmlns:db="http://docbook.org/ns/docbook" xmlns:scilab="http://www.scilab.org"
+          xml:lang="en" xml:id="demo_compiler">
     <refnamediv>
         <refname>demo_compiler</refname>
-        <refpurpose>test the presence of a compiler </refpurpose>
+        <refpurpose>get sure that a C compiler is available</refpurpose>
     </refnamediv>
     <refsynopsisdiv>
         <title>Syntax</title>
-        <synopsis>status = demo_compiler()</synopsis>
+        <synopsis>found? = demo_compiler()</synopsis>
     </refsynopsisdiv>
     <refsection>
         <title>Description</title>
         <para>
-            The function demo_compiler asks the computer if it owns a compiler C or not.
-            It returns a boolean indicating whether the compiler exists or not.
+            <warning>
+                <literal>demo_compiler()</literal> is obsolete. It will be removed from Scilab
+                2025.0.0 (october 2024).
+                Please use <literal>demo_run(…,"needCompiler")</literal> instead.
+            </warning>
+        </para>
+        <para>
+            <literal>demo_compiler()</literal> searches on the computer for a C compiler.
+            If such a compiler is found, <varname>found?</varname> is set to <literal>%T</literal>.
+            Otherwise, a messagebox is displayed, telling that the demonstration can't be run,
+            and <literal>found?</literal> is set to <literal>%F</literal>.
         </para>
     </refsection>
     <refsection>
         <title>Examples</title>
-        <programlisting role="example"><![CDATA[
-select num,
- case 0
-  return;
- case 2 then
-  st = demo_compiler(); //The compiler will be used
-  if (st==%t) then
-    mode(0);
-    wheel_build_and_load()
-  end
- case 1 then // A precomputed value
-  x=read(path+'/x.wrt',8,301);
-  wheelg=wheelgs;
-  show(x);
+        <programlisting role="no-scilab_exec"><![CDATA[
+select num
+case 0
+    return
+
+case 2 then
+    st = demo_compiler(); // The compiler will be used
+    if (st==%t) then
+        mode(0);
+        wheel_build_and_load()
+    end
+
+case 1 then     // A precomputed value
+    x = read(path+'/x.wrt',8,301);
+    wheelg = wheelgs;
+    show(x);
 end
  ]]></programlisting>
     </refsection>
@@ -52,8 +66,20 @@ end
         <title>See also</title>
         <simplelist type="inline">
             <member>
-                <link linkend="findmsvccompiler">findmsvccompiler</link>
+                <link linkend="haveacompiler">haveacompiler</link>
             </member>
         </simplelist>
+    </refsection>
+    <refsection role="history">
+        <title>History</title>
+        <revhistory>
+            <revision>
+                <revnumber>2023.1.0</revnumber>
+                <revdescription>
+                    <literal>demo_compiler()</literal> declared obsolete.
+                    <literal>demo_run(…,"needCompiler")</literal> may be used instead.
+                </revdescription>
+            </revision>
+        </revhistory>
     </refsection>
 </refentry>

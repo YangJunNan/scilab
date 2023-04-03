@@ -1,4 +1,3 @@
-
 // Scilab ( https://www.scilab.org/ ) - This file is part of Scilab
 // Copyright (C) 2007-2008 - INRIA - Ghislain HELIOT
 //
@@ -11,11 +10,14 @@
 // For more information, see the COPYING file which you should have received
 // along with this program.
 
-function [ans]=demo_compiler()
-    if (~haveacompiler()) then
+function ans = demo_compiler()
+
+    warnobsolete("demo_run(…, ''compilerNeeded'')", "2025.0.0")
+
+    if ~haveacompiler() then
         messagebox(["Scilab doesn''t find a C compiler","This demo is disabled"],"modal");
-        ans=%f;
+        ans = %f;
     else
-        ans=%t;
+        ans = %t;
     end
 endfunction
