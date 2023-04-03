@@ -68,17 +68,11 @@ function [] = demo_file_choice()
 endfunction
 
 
-function [] = demo_clean()
+function demo_clean()
 
-    // Suppression de toutes les fenêtres graphiques créé
-    // par les précédentes démos
-
-    opened_windows = winsid();
-
-    for i=1:size(opened_windows,"c")
-        if (opened_windows(i)>=100000) & (opened_windows(i)<=100100) then
-            close(opened_windows(i));
-        end
-    end
+	// Windows to close, opened by demos
+    tmp = winsid();
+	tmp = tmp(tmp >=100000 & tmp <= 100100)
+    close(tmp)
 
 endfunction

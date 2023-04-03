@@ -2,8 +2,8 @@
 <!--
  * Scilab ( https://www.scilab.org/ ) - This file is part of Scilab
  * Copyright (C) 2008 - INRIA
- *
  * Copyright (C) 2012 - 2016 - Scilab Enterprises
+ * Copyright (C) 2023 - Samuel GOUGEON
  *
  * This file is hereby licensed under the terms of the GNU GPL v2.0,
  * pursuant to article 5.3.4 of the CeCILL v.2.1.
@@ -13,19 +13,49 @@
  * along with this program.
  *
  -->
-<refentry xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svg="http://www.w3.org/2000/svg" xmlns:mml="http://www.w3.org/1998/Math/MathML" xmlns:db="http://docbook.org/ns/docbook" xmlns:scilab="http://www.scilab.org" xml:lang="en" xml:id="demo_run">
+<refentry xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:svg="http://www.w3.org/2000/svg" xmlns:mml="http://www.w3.org/1998/Math/MathML"
+          xmlns:db="http://docbook.org/ns/docbook" xmlns:scilab="http://www.scilab.org"
+          xml:lang="en" xml:id="demo_run">
     <refnamediv>
         <refname>demo_run</refname>
-        <refpurpose>script file execution </refpurpose>
+        <refpurpose>executes the script file of a demo, and cleanly returns</refpurpose>
     </refnamediv>
     <refsynopsisdiv>
         <title>Syntax</title>
-        <synopsis>demo_run(fil)</synopsis>
+        <synopsis>
+            demo_run(demo_script_filepath)
+            demo_run(demo_script_filepath, "needCompiler")
+        </synopsis>
     </refsynopsisdiv>
     <refsection>
         <title>Description</title>
         <para>
-            The  function demo_run executes a script in the file 'fil' given in argument.
+            <emphasis role="bold">demo_run(demo_script_filepath)</emphasis> executes the file
+            located at <varname>demo_script_filepath</varname> and containing the instructions
+            of the demo.
+            <varname>demo_script_filepath</varname> typically points to a <literal>*.sce</literal>
+            file.
+        </para>
+        <para>
+            <emphasis role="bold">demo_run(demo_script_filepath, "needCompiler")</emphasis>
+            priorly ensures that a C compiler is found on the computer :
+            <itemizedlist>
+                <listitem>
+                    If a C compiler is not found, a warning messagebox is displayed and the
+                    user's visa is required (interactive modes of Scilab) ; or the warning messagebox
+                    is displayed in the console (non-interactive Scilab modes).
+                    The demonstration is then canceled.
+                </listitem>
+                <listitem>
+                    Otherwise, the demonstration is run.
+                </listitem>
+            </itemizedlist>
+        </para>
+        <para>
+            All the local variables defined during the execution of the demo script
+            are cleared before returning. This would not be the case while directly using
+            <literal>exec(demo_script_filepath)</literal>.
         </para>
     </refsection>
     <refsection role="see also">
@@ -35,11 +65,27 @@
                 <link linkend="exec">exec</link>
             </member>
             <member>
-                <link linkend="demo_begin">demo_begin</link>
-            </member>
-            <member>
-                <link linkend="demo_end">demo_end</link>
+                <link linkend="haveacompiler">haveacompiler</link>
             </member>
         </simplelist>
+    </refsection>
+    <refsection role="history">
+        <title>History</title>
+        <revhistory>
+            <revision>
+                <revnumber>2023.1.0</revnumber>
+                <revdescription>
+                    <itemizedlist>
+                        <listitem>
+                            <literal>demo_run()</literal> includes the features of
+                            <literal>demo_begin()</literal> and <literal>demo_end()</literal>.
+                        </listitem>
+                        <listitem>
+                            option <literal>"needCompiler"</literal> added.
+                        </listitem>
+                    </itemizedlist>
+                </revdescription>
+            </revision>
+        </revhistory>
     </refsection>
 </refentry>

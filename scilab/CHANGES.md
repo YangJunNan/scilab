@@ -19,6 +19,9 @@ Please report anything we could have missed, on the [mailing lists][2] or the [b
 
 New features
 ------------
+* `demo_run()` is upgraded:
+  * former `demo_begin()`and `demo_end()` features are actually implemented, included, and extended.
+  * option `"needCompiler"` added. It replaces `demo_compiler()`
 
 For a high-level description of the main new features of this release, please consult the [embedded help][4]. It is also available as the "What's new" page of the help, by simply typing `help` in Scilab console.
 
@@ -30,6 +33,7 @@ In summary, the main new features and additions are:
 
 Obsolete functions or features
 ------------------------------
+* `demo_begin`, `demo_end` and `demo_compiler`
 
 All these functions and features will be removed in Scilab 2025.0.0 (October 2024):
 * `getURL()`: Please use `http_get()` instead.
@@ -63,6 +67,8 @@ Bug Fixes
 ### Bugs fixed in 2023.1.0:
 
 * [#3666](https://gitlab.com/scilab/scilab/-/issues/3666): `input()` badly reencoded UTF-8 input strings
+* [#7113](https://gitlab.com/scilab/scilab/-/issues/7113): In case of missing C compiler, `demo_compiler()` warns the user but was unable to abort the demonstration. Its added value w.r.t. `haveacompiler()` was poor.
+* [#8212](https://gitlab.com/scilab/scilab/-/issues/8212): `demo_begin()` and `demo_end()` were not able to clean variables defined by a demonstration.
 * [#8666](https://gitlab.com/scilab/scilab/-/issues/8666): Linear algebra demonstration failed with xerbla error.
 * [#8812](https://gitlab.com/scilab/scilab/-/issues/8812): Multi-selection in a listbox now works when `max - min` is greater than 1.
 * [#8917](https://gitlab.com/scilab/scilab/-/issues/8917): `write(filename,..)` could not overwrite an existing file.

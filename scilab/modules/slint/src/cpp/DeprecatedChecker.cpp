@@ -96,6 +96,9 @@ std::unordered_map<std::wstring, std::wstring> DeprecatedChecker::initDep()
     map.emplace(L"getURL", L"http_get");
 
     // Scilab 2023.0.0 => 2024.0.0
+    map.emplace(L"demo_begin", L"demo_run");
+    map.emplace(L"demo_end", L"demo_run");
+    map.emplace(L"demo_compiler", L"demo_run");
     map.emplace(L"xget", L"");
     map.emplace(L"xset", L"");
     //map.emplace(L"svd(X,0)", L"svd(X,\"e\")"); // will never be detected as is
