@@ -4,7 +4,7 @@
 # Copyright (C) INRIA   - 2007 - Vincent COUVERT
 # Copyright (C) DIGITEO - 2009 - Sylvestre Ledru
 # Copyright (C) DIGITEO - 2009 - Pierre MARECHAL
-# Copyright (C) DIGITEO - 2010 - Cl�ment DAVID
+# Copyright (C) DIGITEO - 2010 - Clément DAVID
 #
 # Copyright (C) 2012 - 2016 - Scilab Enterprises
 #
@@ -326,6 +326,7 @@ images/icons/16x16/actions/edit-undo.png \
 images/icons/16x16/actions/execute-all.png \
 images/icons/16x16/actions/filter.png \
 images/icons/16x16/actions/format-text-bold.png \
+images/icons/16x16/actions/ged_move.png \
 images/icons/16x16/actions/go-bottom.png \
 images/icons/16x16/actions/go-next.png \
 images/icons/16x16/actions/go-previous.png \
