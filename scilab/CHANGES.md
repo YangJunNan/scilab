@@ -76,4 +76,6 @@ Bug Fixes
 * [#16986](https://gitlab.com/scilab/scilab/-/issues/16986): MPI module must be active during build, build doc and packaging process.
 * [#16989](https://gitlab.com/scilab/scilab/-/issues/16989): `atomsSystemUpdate()` could not more be run in NWNI mode.
 * [#16995](https://gitlab.com/scilab/scilab/-/issues/16995): `hist3d` plotting feature no more worked in variable browser and variable editor.
+* [#17001](https://gitlab.com/scilab/scilab/-/issues/17001): Improve AppStream metadata
+
 * __add your bug fix here and keep this line__
