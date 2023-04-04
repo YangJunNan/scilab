@@ -73,14 +73,14 @@ types::Function::ReturnValue sci_write(types::typed_list &in, int _iRetCount, ty
             return types::Function::Error;
         }
 
-        int piMode[2] = {0, 0};
+        int piMode[2] = {3, 0};
         char* pstFilename = wide_string_to_UTF8(pSPath->get(0));
         int iErr = C2F(clunit)(&iID, pstFilename, piMode, (int)strlen(pstFilename));
 
         if (iErr == 240)
         {
             closeFile(in[0], iID);
-            Scierror(999, _("File \"%s\" already exists or directory write access denied.\n"), pstFilename);
+            Scierror(999, _("%s: Write access denied to %s\'s directory.\n"), "write", pstFilename);
             FREE(pstFilename);
             return types::Function::Error;
         }

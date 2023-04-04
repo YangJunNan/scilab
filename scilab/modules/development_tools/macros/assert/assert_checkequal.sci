@@ -1,7 +1,7 @@
 // Copyright (C) 2008-2009 - INRIA - Michael Baudin
 // Copyright (C) 2010 - 2011 - DIGITEO - Michael Baudin
 // Copyright (C) 2012 - 2016 - Scilab Enterprises
-// Copyright (C) 2019 - 2020 - Samuel GOUGEON
+// Copyright (C) 2019 - 2021 - Samuel GOUGEON
 //
 // This file is hereby licensed under the terms of the GNU GPL v2.0,
 // pursuant to article 5.3.4 of the CeCILL v.2.1.
@@ -13,15 +13,19 @@
 function [flag, errmsg] = assert_checkequal(computed, expected)
     //  Check that computed and expected are equal.
     [lhs,rhs] = argn()
+    flag = %F
     if ( rhs <> 2 ) then
         errmsg = gettext("%s: Wrong number of input arguments: %d expected.\n")
         error(msprintf(errmsg, "assert_checkequal", 2))
     end
 
     // Check types of variables
-    if ( typeof(computed) <> typeof(expected) ) then
-        errmsg = gettext("%s: Incompatible input arguments #%d and #%d: Same types expected.\n")
-        error(msprintf(errmsg, "assert_checkequal", 1, 2))
+    if typeof(computed) <> typeof(expected) then
+        errmsg = msprintf(gettext("%s: Incompatible input arguments #%d and #%d: Same types expected.\n"), "assert_checkequal", 1, 2);
+        if lhs < 2 then
+            error(errmsg)
+        end
+        return
     end
 
     //
@@ -41,22 +45,31 @@ function [flag, errmsg] = assert_checkequal(computed, expected)
             nexp = -2
         end
     end
-    if ( or(ncom <> nexp) ) then
+    if or(ncom <> nexp) then
         errmsg = msprintf(gettext ( "%s: Incompatible input arguments #%d and #%d: Same sizes expected.\n"), "assert_checkequal", 1 , 2)
-        error(errmsg)
+        if lhs < 2 then
+            error(errmsg)
+        end
+        return
     end
 
     // sparse or full real or complex matrices
     if or(type(computed) == [1 5])  then
         cisreal = isreal(computed)
         eisreal = isreal(expected)
-        if ( cisreal & ~eisreal ) then
+        if cisreal & ~eisreal then
             errmsg = msprintf(gettext("%s: Computed is real, but expected is complex."), "assert_checkequal")
-            error(errmsg)
+            if lhs < 2 then
+                error(errmsg)
+            end
+            return
         end
-        if ( ~cisreal & eisreal ) then
+        if ~cisreal & eisreal then
             errmsg = msprintf(gettext("%s: Computed is complex, but expected is real."), "assert_checkequal")
-            error(errmsg)
+            if lhs < 2 then
+                error(errmsg)
+            end
+            return
         end
         if cisreal & eisreal then
             [flag, k] = comparedoubles ( computed , expected )

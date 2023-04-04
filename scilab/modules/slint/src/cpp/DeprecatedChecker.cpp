@@ -96,9 +96,9 @@ std::unordered_map<std::wstring, std::wstring> DeprecatedChecker::initDep()
 
 
     // Scilab 2023.0.0 => 2024.0.0
-    map.emplace(L"xget()", L"");
-    map.emplace(L"xset()", L"");
-    map.emplace(L"svd(X,0)", L"svd(X,\"e\")");
+    map.emplace(L"xget", L"");
+    map.emplace(L"xset", L"");
+    //map.emplace(L"svd(X,0)", L"svd(X,\"e\")"); // will never be detected as is
     map.emplace(L"plotframe", L"plot2d");
 
     // Scilab 6.1.x => 2023.0.0

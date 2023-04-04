@@ -404,7 +404,7 @@ images/icons/48x48/emblems/emblem-readonly.png \
 images/icons/64x40/mimetypes/application-x-scilab-champ.png \
 images/icons/64x40/mimetypes/application-x-scilab-contour2d.png \
 images/icons/64x40/mimetypes/application-x-scilab-grayplot.png \
-images/icons/64x40/mimetypes/application-x-scilab-hist3d.png \
+images/icons/64x40/mimetypes/application-x-scilab-bar3d.png \
 images/icons/64x40/mimetypes/application-x-scilab-histplot.png \
 images/icons/64x40/mimetypes/application-x-scilab-Matplot.png \
 images/icons/64x40/mimetypes/application-x-scilab-mesh.png \

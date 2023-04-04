@@ -88,10 +88,10 @@ import java.util.Map;
 import java.util.Set;
 import java.util.UUID;
 
-import javax.media.opengl.GL;
-import javax.media.opengl.GLCapabilities;
-import javax.media.opengl.GLProfile;
-import javax.media.opengl.awt.GLCanvas;
+import com.jogamp.opengl.GL;
+import com.jogamp.opengl.GLCapabilities;
+import com.jogamp.opengl.GLProfile;
+import com.jogamp.opengl.awt.GLCanvas;
 import javax.swing.JComponent;
 import javax.swing.JSeparator;
 import javax.swing.SwingUtilities;
@@ -161,7 +161,7 @@ public final class SwingView implements GraphicView {
 
     static {
         try {
-            System.loadLibrary("gluegen2-rt");
+            System.loadLibrary("gluegen_rt");
         } catch (Exception e) {
             System.err.println(e);
         }
