@@ -260,7 +260,7 @@ public class SwingScilabVariableEditor extends SwingScilabDockablePanel implemen
         plots.add(PlotAction.createJMenuItem(this, "histplot", true));
         plots.add(PlotAction.createJMenuItem(this, "mesh", true));
         plots.add(PlotAction.createJMenuItem(this, "surf", true));
-        plots.add(PlotAction.createJMenuItem(this, "hist3d", true));
+        plots.add(PlotAction.createJMenuItem(this, "bar3d", true));
         plots.add(PlotAction.createJMenuItem(this, "contour2d", true));
         plots.add(PlotAction.createJMenuItem(this, "pie", true));
 
@@ -277,7 +277,7 @@ public class SwingScilabVariableEditor extends SwingScilabDockablePanel implemen
         plotAll.add(PlotAction.createJMenuItem(this, "histplot", false));
         plotAll.add(PlotAction.createJMenuItem(this, "mesh", false));
         plotAll.add(PlotAction.createJMenuItem(this, "surf", false));
-        plotAll.add(PlotAction.createJMenuItem(this, "hist3d", false));
+        plotAll.add(PlotAction.createJMenuItem(this, "bar3d", false));
         plotAll.add(PlotAction.createJMenuItem(this, "contour2d", false));
         plotAll.add(PlotAction.createJMenuItem(this, "pie", false));
 

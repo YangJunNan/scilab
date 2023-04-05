@@ -57,7 +57,7 @@ types::Function::ReturnValue sci_xget(types::typed_list &in, int _iRetCount, typ
         return Overload::call(L"%_xget", in, _iRetCount, out);
     }
 
-    Sciwarning(_("%s: This feature will be permanently removed in Scilab %s\n\n"), _("Warning"), "2024.0.0");
+    Sciwarning(_("%s: %s will be permanently removed in Scilab %s\n\n"), _("Warning"), "xget()", "2024.0.0");
 
     if (in.size() > 2)
     {

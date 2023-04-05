@@ -38,8 +38,7 @@
                     <para>Either
                         <itemizedlist>
                             <listitem>
-                                a character string specifying the file name.
-                                Trying to overwrite an existing file will yield an error.
+                                A character string specifying the file name.
                             </listitem>
                             <listitem>
                                 or the integer id of a file opened with <literal>file(…)</literal>
@@ -100,10 +99,11 @@
     </refsection>
     <refsection>
         <title>Description</title>
-        <para>writes row-by-row a real matrix or a column vector of character
-            strings in a formatted file. Each row of the <varname>a</varname> argument
-            begin in a new line of <varname>file_desc</varname> file. Depending on
-            <varname>format</varname> a given row of the <varname>a</varname> argument
+        <para>writes row-by-row in a formatted file a matrix of real numbers or a column vector
+            of character strings. If the file already exists, it is overwritten.
+            Each row of the <varname>a</varname> argument
+            begins a new line of <varname>file_desc</varname> file. Depending on
+            <varname>format</varname>, a given row of the <varname>a</varname> argument
             may be written in more than one line of <varname>file_desc</varname>
             file.
         </para>

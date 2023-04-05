@@ -230,7 +230,13 @@ esac
 #####################################################
 ## Look for pkg-config
 #####################################################
+AC_MSG_CHECKING([if prebuilt binaries are available])
+if $WITH_DEVTOOLS; then
+AC_MSG_RESULT([WITH_DEVTOOLS: $SCI_SRCDIR_FULL/usr])
+else
+AC_MSG_RESULT([no])
 PKG_PROG_PKG_CONFIG
+fi
 
 #####################################################
 ## check if options are correct (or not)
@@ -996,7 +1002,7 @@ if test "$with_javasci" != no -o "$with_gui" != no -o "$enable_build_help" != no
                 AC_SUBST(SKINLF)
 
                 # JOGL 2
-                AC_JAVA_CHECK_JAR([jogl2],[javax.media.opengl.glu.GLUnurbs],[Scilab 3D rendering - Version 2.0], [], [], [2.2])
+                AC_JAVA_CHECK_JAR([jogl],[jogamp.opengl.x11.glx.GLX],[Scilab 3D rendering], [], [], 2.4)
                 JOGL2=$PACKAGE_JAR_FILE
                 AC_SUBST(JOGL2)
 
@@ -1025,7 +1031,7 @@ interface for JOGL2 - or libGL (OpenGL library) are installed and if the version
                 fi
 
                 # JoGL Native <=> Java connector
-                AC_JAVA_CHECK_JAR([gluegen2-rt],[jogamp.common.os.MachineDescriptionRuntime],[Scilab 3D rendering])
+                AC_JAVA_CHECK_JAR([gluegen],[com.jogamp.common.os.Platform],[Scilab 3D rendering])
                 GLUEGEN2_RT=$PACKAGE_JAR_FILE
                 AC_SUBST(GLUEGEN2_RT)
 
@@ -1039,8 +1045,8 @@ interface for JOGL2 - or libGL (OpenGL library) are installed and if the version
                    LDFLAGS="$LDFLAGS -L/usr/lib/gluegen2 -L/usr/lib64/gluegen2"         # RedHat
                    LDFLAGS="$LDFLAGS -L$SCI_SRCDIR/thirdparty -L$SCI_SRCDIR/lib/thirdparty -L$SCI_SRCDIR/bin"        # Scilab thirdparties
                    symbol="Java_jogamp_common_jvm_JVMUtil_initialize"
-                   AC_CHECK_LIB([gluegen2-rt], [$symbol], [GLUEGEN2_RT_LIBS="-lgluegen2-rt"],
-                   [AC_MSG_ERROR([libgluegen2-rt: Library missing (Cannot find symbol $symbol). Check if libgluegen-rt - C/Java (JNI) interface for GLUEGEN2 - is installed and if the version is correct. Note that you might have to update etc/librarypath.xml to provide the actual path to the JNI libraries.])],
+                   AC_CHECK_LIB([gluegen_rt], [$symbol], [GLUEGEN2_RT_LIBS="-lgluegen_rt"],
+                   [AC_MSG_ERROR([libgluegen_rt: Library missing (Cannot find symbol $symbol). Check if libgluegen_rt - C/Java (JNI) interface for GLUEGEN2 - is installed and if the version is correct. Note that you might have to update etc/librarypath.xml to provide the actual path to the JNI libraries.])],
                    [-ldl])
                    LDFLAGS=$LDFLAGS_save
                 fi
@@ -1473,11 +1479,11 @@ if $WITH_DEVTOOLS; then
 else
     NCURSES_CFLAGS=""
     AC_CHECK_LIB([curses],[tgetent],[NCURSES_LIBS="-lcurses"])
-    if test $ac_cv_lib_curses_tgetent = no ; then
+    if test "x$ac_cv_lib_curses_tgetent" = "xno" ; then
         AC_CHECK_LIB([ncurses],[tgetent],[NCURSES_LIBS="-lncurses"])
     fi
     # make sure we have what we need for tgetent
-    if test $ac_cv_lib_ncurses_tgetent = no ; then
+    if test "x$ac_cv_lib_ncurses_tgetent" = "xno" ; then
         AC_CHECK_LIB([termcap],[tgetent])
     fi
 fi
@@ -1674,8 +1680,12 @@ AM_CONDITIONAL(UMFPACK, test "$with_umfpack" != no)
 #######################
 ## Test for PCRE
 #######################
-
-AC_PCRE()
+if $WITH_DEVTOOLS; then # Scilab thirdparties
+    PCRE_CFLAGS="-I$DEVTOOLS_INCDIR"
+    PCRE_LIBS="-L$DEVTOOLS_LIBDIR -lpcre -lpcreposix"
+else
+    AC_PCRE()
+fi
 
 #######################
 ## Test for CURL
@@ -2542,13 +2552,22 @@ CURRENT_YEAR=`date "+%Y"`
 DETECTED_YEAR=`grep "Copyright (c) 2022-" ${SCI_SRCDIR}/modules/core/src/cpp/banner.cpp|sed -e "s/.*Copyright (c) 2022-\([[0-9]]*\).*/\1/g"`
 
 if test "$CURRENT_YEAR" != "$DETECTED_YEAR"; then
-    AC_PATH_PROG(INKSCAPE, inkscape)
     sed -i -e "s| 2022-$DETECTED_YEAR | 2022-$CURRENT_YEAR |g" ${SCI_SRCDIR}/modules/core/src/cpp/banner.cpp ${SCI_SRCDIR}/modules/windows_tools/src/c/scilab_windows/console.c
     sed -i -e "s| 2022-$DETECTED_YEAR | 2022-$CURRENT_YEAR |g" ${SCI_SRCDIR}/etc/Info.plist.in
-    sed -i -e "s| 2022-$DETECTED_YEAR | 2022-$CURRENT_YEAR |g" ${SCI_SRCDIR}/modules/gui/images/icons/aboutscilab.svg
-    $INKSCAPE -w 600 -h 290 ${SCI_SRCDIR}/modules/gui/images/icons/aboutscilab.svg -o ${SCI_SRCDIR}/modules/gui/images/icons/aboutscilab.png
     sed -i -e "s|VALUE \"LegalCopyright\", \"Copyright (C) $DETECTED_YEAR|VALUE \"LegalCopyright\", \"Copyright (C) $CURRENT_YEAR|" $(find ${SCI_SRCDIR} -iname '*.rc')
     sed -i -e "s|2017-$DETECTED_YEAR|2017-$CURRENT_YEAR|" $(find ${SCI_SRCDIR} -iname 'banner.xml')
+    
+    sed -i -e "s| 2022-$DETECTED_YEAR | 2022-$CURRENT_YEAR |g" ${SCI_SRCDIR}/modules/gui/images/icons/aboutscilab.svg
+    AC_CHECK_PROG(INKSCAPE, inkscape)
+    if test -n "$INKSCAPE"; then
+        $INKSCAPE -w 600 -h 290 ${SCI_SRCDIR}/modules/gui/images/icons/aboutscilab.svg -o ${SCI_SRCDIR}/modules/gui/images/icons/aboutscilab.png
+    else
+        AC_CHECK_PROG(CAIROSVG, cairosvg)
+        if test -n "$CAIROSVG"; then
+            $CAIROSVG --output-width 600 --output-height 290 ${SCI_SRCDIR}/modules/gui/images/icons/aboutscilab.svg -o ${SCI_SRCDIR}/modules/gui/images/icons/aboutscilab.png
+        fi
+    fi
+
     AC_MSG_WARN([New year ($CURRENT_YEAR) detected. Source files updated, commit them !])
 fi
 

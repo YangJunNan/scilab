@@ -29,7 +29,7 @@ function atomsSystemUpdate()
 
     // Check write access on allusers zone
     // =========================================================================
-    if get("atomsFigure")==[] then  // command-line mode
+    if or(getscilabmode() == ["NWNI", "API"]) | get("atomsFigure")==[] then  // command-line mode
         atomsDESCRIPTIONget(%T);
     else                            // atomsGUI mode
         allModules = [];

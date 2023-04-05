@@ -242,4 +242,4 @@ assert_checktrue(isempty(atomsGetInstalled()));
 // =============================================================================
 atomsRestoreConfig(%T);
 atomsRepositorySetOfl(mgetl(SCI+"/modules/atoms/tests/unit_tests/repositories.orig"));
-Scanning repository https://atoms.scilab.org/2023.0/TOOLBOXES/64 ... Done
+Scanning repository https://atoms.scilab.org/2023.1/TOOLBOXES/64 ... Done

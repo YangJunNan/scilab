@@ -3,16 +3,10 @@ Welcome to Scilab 2024.0.0
 
 This file details the changes between Scilab 2024.0.0 (this version), and the previous 2023.0.0 release.
 For changelogs of earlier releases, please see [Scilab 2023.0.0][1].
-Welcome to Scilab 2023.1.0
-==========================
-
-This file details the changes between Scilab 2023.1.0 (this version), and the previous 6.1.1 release.
-For changelogs of earlier releases, please see [Scilab 6.1.1][1].
 
 Summary:
 - New features
 - Obsolete functions & features
-- Removed functions & features
 - Installation, Compilation, Packaging, API/ABI changes
 - Fixed bugs
 
@@ -64,15 +58,7 @@ Installation
 Compilation
 -----------
 
-* GNU autotools have been updated to :
-   - automake (GNU automake) 1.16.5
-   - autoconf (GNU Autoconf) 2.71
-   
-* All builds require a C++17 compiler. Toolboxes might also want to use this standard by specifying `-std=c++17` as a `CFLAGS` under Linux and macOS.
-
-* Migration to Microsoft Visual Studio 2022 and Intel® oneAPI HPC Toolkit 2022.3.
-
-* macOS: Build environment has been migrated to conda and now relies on clang and libc++, hence (existing) toolboxes with binary gateways have to be (re)compiled using the same conda environment (see https://gitlab.com/scilab/scilab/-/wikis/Developers/setup-Scilab-repository-macOS)
+* __add your installation notes here and keep this line__
 
 
 Packaging & Supported Operating Systems
@@ -81,13 +67,6 @@ Packaging & Supported Operating Systems
 * Scilab embedded JVM is Java 8. 
 
 * To run or compile Scilab you need at least:
-  - Windows (64-bit):
-     - Windows 11 (Desktop)
-     - Windows 10 (Desktop)
-     - Windows 8 (Desktop)
-  - macOS (64-bit):
-     - Intel-based Mac running macOS 10.9+ (run) and 10.14+ (compile)
-     - Support of macOS Monterey & Ventura added in Scilab 2023.0.0
   - Linux with Docker images (amd64):
      - debian:11
      - ubuntu:18.04, 20.04, 22.04
@@ -105,10 +84,7 @@ Bug Fixes
 ---------
 
 ### Bugs fixed in 2024.0.0:
-### Bugs fixed in 2023.1.0:
 
 * __add your bug fix here and keep this line__
 
-
-### Bugs fixed in 2023.0.0:
 
