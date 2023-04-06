@@ -156,26 +156,26 @@ fr1 = uicontrol(f, "style", "frame",..
         "units","normalized","position",[0.05 0.1 0.4 0.8]);
 set("current_entity", fr1)
 subplot(3,2,1)
-plot(1:10), title "Top left"
+plot(1:10), title("Top left")
 subplot(3,2,2)
-plot(1:10), title "Top right"
+plot(1:10), title("Top right")
 subplot(3,1,2)
-plot(1:10), title "plot #1"
+plot(1:10), title("plot #1")
 subplot(3,1,3)
-plot(1:10), title "plot #2"
+plot(1:10), title("plot #2")
 
 //
 fr2 = uicontrol(f, "style", "frame","units","normalized","position",[0.5 0.5 0.5 0.5]);
 set('current_entity', fr2)
 subplot(1,2,1)
-plot(1:10), title "Title #1"
+plot(1:10), title("Title #1")
 subplot(1,2,2)
-plot(1:10), title "Title #2"
+plot(1:10), title("Title #2")
 
 set("current_entity", f)
 subplot(2,2,4)
 plot2d()
-title "Back to the figure substrate"
+title("Back to the figure substrate")
 
 gcf().children.type
 gcf().children(2).children
