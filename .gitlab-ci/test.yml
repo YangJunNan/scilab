@@ -33,6 +33,7 @@ windows_good_nightly:
           - arnoldi
           - ast
           - boolean
+          - call_scilab
           - completion
           - core
           - data_structures
