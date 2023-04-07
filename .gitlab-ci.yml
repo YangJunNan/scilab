@@ -37,6 +37,9 @@ variables:
   DOCKER_WINDOWS_BUILDER:
     value: "registry.gitlab.com/scilab/scilab/windows-builder-main"
     description: "Docker image used to build Scilab on Windows"
+  DOCKER_TAG:
+    value: "latest"
+    description: "Docker tag to publish image on"
   SCILAB_COMMON_PATH:
     value: "${CI_PROJECT_DIR}/../../../../scilab/"
     description: "common windows path for persistency"
@@ -46,13 +49,18 @@ workflow:
     - if: $CI_PROJECT_PATH_SLUG !~ /scilab-scilab/
       changes: &DOCKER_CHANGES
         paths:
+          - .gitlab-ci.yml
+          - .gitlab-ci/docker_setup.yml
+          - .gitlab-ci/docker_setup.sh
           - .gitlab-ci/Dockerfile*
+          - .gitlab-ci/linux-images/Dockerfile*
       variables:
         GIT_STRATEGY: "fetch"
         GIT_CLEAN_FLAGS: "none"
         SCI_VERSION_STRING: "${CI_PROJECT_PATH_SLUG}-${CI_COMMIT_SHORT_SHA}"
-        DOCKER_LINUX_BUILDER: "${CI_REGISTRY_IMAGE}/linux-builder-${BRANCH}:${CI_COMMIT_BRANCH}"
-        DOCKER_WINDOWS_BUILDER: "${CI_REGISTRY_IMAGE}/windows-builder-${BRANCH}:${CI_COMMIT_BRANCH}"
+        BRANCH: "${CI_COMMIT_BRANCH}"
+        DOCKER_LINUX_BUILDER: "${CI_REGISTRY_IMAGE}/linux-builder-${BRANCH}"
+        DOCKER_WINDOWS_BUILDER: "${CI_REGISTRY_IMAGE}/windows-builder-${BRANCH}"
     - if: $CI_PROJECT_PATH_SLUG !~ /scilab-scilab/
       variables:
         GIT_STRATEGY: "fetch"
@@ -66,8 +74,9 @@ workflow:
         GIT_CLEAN_FLAGS: "none"
         SCI_VERSION_STRING: "scilab-mr${CI_MERGE_REQUEST_IID}-${CI_COMMIT_SHORT_SHA}"
         BRANCH: "${CI_MERGE_REQUEST_TARGET_BRANCH_NAME}"
-        DOCKER_LINUX_BUILDER: "${CI_REGISTRY_IMAGE}/linux-builder-${BRANCH}:mr${CI_MERGE_REQUEST_IID}"
-        DOCKER_WINDOWS_BUILDER: "${CI_REGISTRY_IMAGE}/windows-builder-${BRANCH}:mr${CI_MERGE_REQUEST_IID}"
+        DOCKER_LINUX_BUILDER: "${CI_REGISTRY_IMAGE}/linux-builder-${BRANCH}"
+        DOCKER_WINDOWS_BUILDER: "${CI_REGISTRY_IMAGE}/windows-builder-${BRANCH}"
+        DOCKER_TAG: "mr${CI_MERGE_REQUEST_IID}"
     # run on merge request
     - if: $CI_PIPELINE_SOURCE == "merge_request_event"
       variables:

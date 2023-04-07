@@ -55,7 +55,6 @@ Packaging & Supported Operating Systems
      - debian:11
      - ubuntu:18.04, 20.04, 22.04
      - fedora:37
-     - redhat/ubi8:8, ubi9:9.1 
 
 
 Bug Fixes

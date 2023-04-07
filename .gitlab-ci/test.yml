@@ -168,6 +168,21 @@ windows_only_release:
   parallel:
     matrix: *WINDOWS_ONLY_TEST_ANCHOR
 
+windows_ci:
+  extends: .windows_test
+  needs:
+    - windows_build_mr
+    - windows_set_env
+  variables:
+    TEST: core
+  rules:
+    - if: $CI_COMMIT_TAG
+      when: never
+    - if: $CI_PIPELINE_SOURCE == 'merge_request_event' || $CI_PIPELINE_SOURCE == 'push'
+      changes:
+        - .gitlab-ci.yml
+        - .gitlab-ci/*
+
 windows_good_ci:
   extends: .windows_test
   needs:
@@ -178,6 +193,7 @@ windows_good_ci:
       when: never
     - if: $CI_PIPELINE_SOURCE == 'merge_request_event' || $CI_PIPELINE_SOURCE == 'push'
       changes:
+        - .gitlab-ci.yml
         - .gitlab-ci/*
   parallel:
     matrix: *GOOD_TEST_ANCHOR
@@ -227,7 +243,7 @@ windows_only_impacted:
 .linux_test:
   stage: test
   tags: [x86_64-linux-gnu, docker, scilab]
-  image: $DOCKER_LINUX_BUILDER
+  image: $DOCKER_LINUX_BUILDER:$DOCKER_TAG
   script: bash -e -x .gitlab-ci/test.sh
   artifacts:
     when: always
@@ -296,6 +312,21 @@ linux_ugly_release:
   parallel:
     matrix: *UGLY_TEST_ANCHOR
 
+linux_ci:
+  extends: .linux_test
+  needs:
+    - linux_build_mr
+    - linux_set_env
+  variables:
+    TEST: core
+  rules:
+    - if: $CI_COMMIT_TAG
+      when: never
+    - if: $CI_PIPELINE_SOURCE == 'merge_request_event' || $CI_PIPELINE_SOURCE == 'push'
+      changes:
+        - .gitlab-ci.yml
+        - .gitlab-ci/*
+
 linux_good_ci:
   extends: .linux_test
   needs:
@@ -306,10 +337,11 @@ linux_good_ci:
       when: never
     - if: $CI_PIPELINE_SOURCE == 'merge_request_event' || $CI_PIPELINE_SOURCE == 'push'
       changes:
+        - .gitlab-ci.yml
         - .gitlab-ci/*
   parallel:
     matrix: *GOOD_TEST_ANCHOR
-  when: manual
+  when: manual  
 
 linux_good_impacted:
   extends: .linux_test

@@ -50,7 +50,7 @@ build_doxygen:
 build_help_web:
   stage: postbuild
   tags: [x86_64-linux-gnu, docker, scilab]
-  image: $DOCKER_LINUX_BUILDER
+  image: $DOCKER_LINUX_BUILDER:$DOCKER_TAG
   dependencies: []
   script:
     - cd scilab
@@ -66,7 +66,7 @@ build_help_web:
 publish_help_jar:
   stage: postbuild
   tags: [x86_64-linux-gnu, docker, scilab]
-  image: $DOCKER_LINUX_BUILDER
+  image: $DOCKER_LINUX_BUILDER:$DOCKER_TAG
   variables:
     GIT_STRATEGY: none
   needs:
@@ -97,24 +97,23 @@ publish_help_jar:
 linux_startup:
   stage: postbuild
   tags: [x86_64-linux-gnu, docker, scilab]
-  image: $DISTRO
+  image: ${CI_REGISTRY_IMAGE}/$DISTRO:$DOCKER_TAG
   needs:
     - linux_build_mr
     - linux_set_env
   rules: *MR_RULES
   script:
-    - tar -xJf "${SCI_VERSION_STRING}.bin.${ARCH}.tar.xz" -C /
+    - tar -xJf "${SCI_VERSION_STRING}.bin.${ARCH}.tar.xz" -C $HOME
+    - cd $HOME
+    - export SCI_JAVA_ENABLE_HEADLESS=1
     - export SCIVERBOSE=1
-    - /${SCI_VERSION_STRING}/bin/scilab -$MODE -e "disp started" -quit
-  allow_failure: true
+    - xvfb-run ${SCI_VERSION_STRING}/bin/scilab $MODE -e "disp(getscilabmode()); if getscilabmode() <> 'NWNI' then plot(); end" -quit
   parallel:
     matrix:
       - DISTRO:
-          - "amd64/debian:11"
-          - "amd64/ubuntu:18.04"
-          - "amd64/ubuntu:20.04"
-          - "amd64/ubuntu:22.04"
-          - "amd64/fedora:37"
-          - "redhat/ubi8:8.7"
-          - "redhat/ubi9:9.1"
-        MODE: ["nwni", "nw"]
+          - "ubuntu-18.04"
+          - "ubuntu-20.04"
+          - "ubuntu-22.04"
+          - "fedora-37"
+          - "debian-11"
+        MODE: ["-nwni", "-nw"]

@@ -1,0 +1,19 @@
+# Scilab ( http://www.scilab.org/ ) - This file is part of Scilab
+# Copyright (C) Dassault Systemes - 2023 - Clement DAVID
+#
+#
+# This Dockerfile describe the configuration of a Linux Ubuntu image base system
+#
+
+ARG DISTRO=ubuntu:18.04
+FROM $DISTRO
+
+RUN apt-get update && apt-get install -y \
+  xvfb \
+  libxft2 \
+  libxtst6 \
+  xz-utils \
+  && rm -rf /var/lib/apt/lists/*
+
+RUN useradd --create-home scilab
+USER scilab
