@@ -14,7 +14,6 @@
 * along with this program.
 *
 */
-
 #include <fstream>
 #include <iostream>
 
@@ -97,7 +96,6 @@ int mgetl(int iFileID, int iLineCount, wchar_t*** pwstLines)
         }
 
         int orig = ftell(fd);
-
 #ifndef _MSC_VER
         //must reopen the file
         std::wstring wname = pFile->getFilename();
@@ -118,6 +116,7 @@ int mgetl(int iFileID, int iLineCount, wchar_t*** pwstLines)
         if (pos == -1)
         {
             fseek(fd, 0, SEEK_END);
+            fgetc(fd);//force stream state to end-of-file
         }
         else
         {

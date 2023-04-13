@@ -73,6 +73,7 @@ Bug Fixes
 * [#16877](https://gitlab.com/scilab/scilab/-/issues/16877): `cellstr()` & `iscellstr()` now belong to the `m2sci` module, where their code, pages and tests should be.
 * [#16878](https://gitlab.com/scilab/scilab/-/issues/16878): `or(%i, dim)` and `and(%i, dim)` yielded an error.
 * [#16941](https://gitlab.com/scilab/scilab/-/issues/16941): `fplot3d(xr,yr,f,theta,..)` ignored theta.
+* [#16953](https://gitlab.com/scilab/scilab/-/issues/16953): `mgetl` did not trigger stream status end-of-file.
 * [#16958](https://gitlab.com/scilab/scilab/-/issues/16958): preferences for polynomial display were ignored at startup.
 * [#16966](https://gitlab.com/scilab/scilab/-/issues/16966): The warning message for removal of `xset/xget` did not tell which function displayed the message.
 * [#16968](https://gitlab.com/scilab/scilab/-/issues/16968): `cov` generated a warning (xerbla) or maked Scilab crash (MKL generation issue).
