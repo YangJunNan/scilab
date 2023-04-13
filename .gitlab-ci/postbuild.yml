@@ -105,7 +105,6 @@ linux_startup:
   script:
     - tar -xJf "${SCI_VERSION_STRING}.bin.${ARCH}.tar.xz" -C $HOME
     - cd $HOME
-    - export SCI_JAVA_ENABLE_HEADLESS=1
     - export SCIVERBOSE=1
     - xvfb-run ${SCI_VERSION_STRING}/bin/scilab $MODE -e "disp(getscilabmode()); if getscilabmode() <> 'NWNI' then plot(); end" -quit
   parallel:
