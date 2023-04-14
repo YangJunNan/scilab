@@ -26,7 +26,7 @@ function [gm,fr] = g_margin(h)
     end
 
     if typeof(h)=="state-space" then
-        h=ss2tf(h)
+        h=clean(ss2tf(h))
     elseif typeof(h)=="zpk" then
         h=zpk2tf(h)
     end
