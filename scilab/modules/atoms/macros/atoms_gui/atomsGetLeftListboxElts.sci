@@ -235,23 +235,16 @@ function packages = atomsGetAvailable(category, nameonly)
 	// if nameonly is TRUE, a mx1 matrix is returned:
 	//
 	//         !ampl_toolbox      !
-	//         !                  !
 	//         !ANN_Toolbox       !
-	//         !                  !
 	//         !celestlab         !
-	//         !                  !
 	//         ...
 
 	// if nameonly is FALSE, a mx2 matrix is returned:
 	//
 	//        !ampl_toolbox      1.3-1      !
-	//        !                             !
 	//        !ampl_toolbox      1.2-1      !
-	//        !                             !
 	//        !ANN_Toolbox       0.4.2.3-1  !
-	//        !                             !
 	//        !celestlab         2.0.0-1    !
-	//        !                             !
 	//        !celestlab         1.0.1-1    !
 	//        ...
 
