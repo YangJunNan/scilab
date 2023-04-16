@@ -28,7 +28,7 @@ function elements = atomsGetHomeListboxElts()
             items_str = "";
             items_mat = ["" ""];
         end
-        items_mat = [emptystr(items_mat)+"module" items_mat ]
+        items_mat = [emptystr(items_mat(:,1))+"module" items_mat ]
 
         elements("items_str") = items_str;
         elements("items_mat") = items_mat;
