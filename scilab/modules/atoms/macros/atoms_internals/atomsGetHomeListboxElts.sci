@@ -14,7 +14,7 @@
 
 function elements = atomsGetHomeListboxElts()
     items_str  = "";
-    items_mat  = "";
+    items_mat  = ["" ""];
 
     installed  = atomsGetInstalled();
     tmp = atomsAutoloadList("all")
@@ -23,10 +23,10 @@ function elements = atomsGetHomeListboxElts()
         allModules = get("atomsFigure", "UserData");
 
         items_str  = atomsSetInstalledList(installed)
-        items_mat = installed(:,1)
+        items_mat = installed(:, 1:2)
         if isempty(items_str)
             items_str = "";
-            items_mat = "";
+            items_mat = ["" ""];
         end
         items_mat = [emptystr(items_mat)+"module" items_mat ]
 

@@ -64,7 +64,7 @@ function elements = atomsGetLeftListboxElts(category)
         categories = atomsCategoryGet("filter:main");
 
         items_str = [items_str ; "user-home", _("All modules"), "#ffffff"];
-        items_mat = [items_mat ; "category" "filter:all"];
+        items_mat = [items_mat ; "category" "filter:all" ""];
 
         for i=1:size(categories, "*")
             if background == "#eeeeee" then
@@ -74,7 +74,7 @@ function elements = atomsGetLeftListboxElts(category)
             end
 
             items_str = [items_str ; "folder", _(categories(i)), background];
-            items_mat = [items_mat ; "category" categories(i)];
+            items_mat = [items_mat ; "category" categories(i) ""];
         end
 
         // 2nd case: Sub categories + modules
@@ -109,7 +109,7 @@ function elements = atomsGetLeftListboxElts(category)
 
         items_str = [items_str ; "user-home", _(top_str), "#ffffff"];
         //items_str = [items_str ; thisItem ];
-        items_mat = [items_mat ; top_mat  ];
+        items_mat = [items_mat ; [top_mat ""] ];
 
         for i=1:size(categories, "*")
             if background == "#eeeeee" then
@@ -119,7 +119,7 @@ function elements = atomsGetLeftListboxElts(category)
             end
 
             items_str = [items_str ; "folder", _(categories(i)), background];
-            items_mat = [items_mat ; "category" category+" - "+categories(i) ];
+            items_mat = [items_mat ; "category" category+" - "+categories(i) ""];
         end
 
         // Modules
@@ -134,7 +134,7 @@ function elements = atomsGetLeftListboxElts(category)
         MRVersionAvailable = atomsGetMRVersion(modulesNames);
         modulesIsInstalled = atomsIsInstalled(modulesNames);
 
-        for i=1:size(modulesNames, "*")
+        for i = 1:size(modulesNames, "r")
 
             thisModuleTitle    = allModules(modulesNames(i))(MRVersionAvailable(i)).Title;
 
@@ -163,7 +163,7 @@ function elements = atomsGetLeftListboxElts(category)
             end
 
             items_str = [items_str ; icon, _(thisModuleTitle), background];
-            items_mat = [items_mat ; "module" modulesNames(i)];
+            items_mat = [items_mat ; "module" modulesNames(i) ""];
 
         end
 
