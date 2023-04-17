@@ -20,7 +20,7 @@
     </refnamediv>
     <refsynopsisdiv>
         <title>Синтаксис</title>
-        <synopsis>[t]=asin(x)</synopsis>
+        <synopsis>t = asin(x)</synopsis>
     </refsynopsisdiv>
     <refsection>
         <title>Аргументы</title>

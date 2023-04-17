@@ -6,8 +6,11 @@
     </refnamediv>
     <refsynopsisdiv>
         <title>Séquence d'appel</title>
-        <synopsis>[N,D]=rat(X [,tol])
-            Y=rat(X [,tol])
+        <synopsis>
+            [N, D] = rat(X)
+            [N, D] = rat(X, tol)
+            Y = rat(X)
+            Y = rat(X, tol)
         </synopsis>
     </refsynopsisdiv>
     <refsection>
