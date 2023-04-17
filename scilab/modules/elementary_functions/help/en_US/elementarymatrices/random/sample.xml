@@ -20,7 +20,7 @@
     </refnamediv>
     <refsynopsisdiv>
         <title>Syntax</title>
-        <synopsis>s = sample(n,X,orient)</synopsis>
+        <synopsis>s = sample(n, X, orient)</synopsis>
     </refsynopsisdiv>
     <refsection>
         <title>Arguments</title>
