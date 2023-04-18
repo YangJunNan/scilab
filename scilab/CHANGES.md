@@ -83,6 +83,7 @@ Bug Fixes
 * [#16968](https://gitlab.com/scilab/scilab/-/issues/16968): `cov` generated a warning (xerbla) or maked Scilab crash (MKL generation issue).
 * [#16969](https://gitlab.com/scilab/scilab/-/issues/16969): WSL default position was out of screen.
 * [#16970](https://gitlab.com/scilab/scilab/-/issues/16970): Tests on `types::` in Webtools gateways fixed and http_upload example fixed.
+* [#16980](https://gitlab.com/scilab/scilab/-/issues/16980): `contour` fpf = ' ' did not turn off labels.
 * [#16982](https://gitlab.com/scilab/scilab/-/issues/16982): vcruntime140_1.dll was missing in Windows package.
 * [#16983](https://gitlab.com/scilab/scilab/-/issues/16983): `input(msg)` no longer printed the message.
 * [#16986](https://gitlab.com/scilab/scilab/-/issues/16986): MPI module must be active during build, build doc and packaging process.

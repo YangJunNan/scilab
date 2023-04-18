@@ -101,7 +101,7 @@ function contour(x, y, z, nz, theta, alpha, leg, flag, ebox, zlev, fpf)
 
     job = flag(1);
     if rhs == 4 | job == 2 then
-        contour2d(x, y, z, nz);
+        contour2d(x, y, z, nz, fpf=fpf);
         return;
     end
 
