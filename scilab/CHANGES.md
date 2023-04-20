@@ -19,13 +19,13 @@ Please report anything we could have missed, on the [mailing lists][2] or the [b
 
 New features
 ------------
+* `color_input()` checks entries against chosen color formats: indices, [r g b] triplets, color names, or "#RRGGBB" identifiers.
+* <TODO>
 
 For a high-level description of the main new features of this release, please consult the [embedded help][4]. It is also available as the "What's new" page of the help, by simply typing `help` in Scilab console.
 
 [4]: modules/helptools/data/pages/homepage-en_US.html
 
-In summary, the main new features and additions are:
-* <TODO>
 
 
 Obsolete functions or features
@@ -94,6 +94,5 @@ Bug Fixes
 * [#17001](https://gitlab.com/scilab/scilab/-/issues/17001): Improve AppStream metadata
 * [#17008](https://gitlab.com/scilab/scilab/-/issues/17008): The C code displayed in the `API Scilab/API double functions` documentation page did not match the code used in the next runnable script, and was not compilable.
 * [#17011](https://gitlab.com/scilab/scilab/-/issues/17011): `Matplot` crashed because of missing `rect` input argument.
+* [#17012](https://gitlab.com/scilab/scilab/-/issues/17012): The internal function `iscolor` deserved being renamed and made public and documented.
 * __add your bug fix here and keep this line__
-
-

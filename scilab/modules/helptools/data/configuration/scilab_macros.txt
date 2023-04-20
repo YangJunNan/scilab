@@ -1580,6 +1580,7 @@ checkXYPair
 clf
 colorbar
 colordef
+color_input
 comet
 comet3d
 contour
