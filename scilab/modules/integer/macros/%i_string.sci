@@ -15,7 +15,6 @@ function str = %i_string(i)
     format("v",22)
     str = string(i)
     if or(inttype(i)==[8 18])
-        //pause
         k = abs(i) > 2^52
         if or(k)
             i = i(k)
@@ -30,7 +29,7 @@ function str = %i_string(i)
             end
             //
             tmp = string(q)
-            tmp = tmp + string(i - q.*iconvert(10000, inttype(i)))
+            tmp = tmp + string(i - q.*10000)
             if or(kneg)
                 tmp(kneg) = "-" + tmp(kneg)
             end
