@@ -1765,7 +1765,6 @@ hex2dec
 ind2sub
 intersect
 isDocked
-iscolor
 iscolumn
 isempty
 isinf
