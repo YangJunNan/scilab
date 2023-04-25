@@ -95,6 +95,7 @@ Bug Fixes
 * [#17008](https://gitlab.com/scilab/scilab/-/issues/17008): The C code displayed in the `API Scilab/API double functions` documentation page did not match the code used in the next runnable script, and was not compilable.
 * [#17011](https://gitlab.com/scilab/scilab/-/issues/17011): `Matplot` crashed because of missing `rect` input argument.
 * [#17014](https://gitlab.com/scilab/scilab/-/issues/17014): The tolerance required for the `rat` computation should verify `abs(N./D - X) <= tol * norm(X, 1)` (help page fixed).
+* [#17022](https://gitlab.com/scilab/scilab/-/issues/17022): `kroneck()` returned wrong error message.
 * __add your bug fix here and keep this line__
 
 
