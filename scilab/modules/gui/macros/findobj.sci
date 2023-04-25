@@ -44,7 +44,9 @@ function h =  findobj(varargin)
                 figureIds = winsid();
                 idx = find(figureIds == varargin(2))
                 if idx <> [] then
+                    currentFig = gcf();
                     h = scf(figureIds(idx));
+                    scf(currentFig);
                     return
                 end
             end
