@@ -32,7 +32,7 @@
                 <term>x</term>
                 <listitem>
                     <para>
-                        matrice carrée ou rectangulaire de type booléen, entier encodé,
+                        matrice de type booléen, entier encodé,
                         réel, complexe, polynomial, fraction polynomiale, ou texte.
                     </para>
                 </listitem>

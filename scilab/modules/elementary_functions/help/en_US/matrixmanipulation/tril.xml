@@ -32,7 +32,7 @@
                 <term>x</term>
                 <listitem>
                     <para>
-                        square or rectangular matrix of booleans, integers, reals,
+                        matrix of booleans, integers, reals,
                         complexes, polynomials, polynomial fractions, or text.
                     </para>
                 </listitem>
