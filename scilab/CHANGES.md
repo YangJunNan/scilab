@@ -69,6 +69,7 @@ Bug Fixes
 * [#12391](https://gitlab.com/scilab/scilab/-/issues/12391): `findobj("figure_id", num)` changed current figure (returned by `gcf()`).
 * [#15075](https://gitlab.com/scilab/scilab/-/issues/15075): `read` was slow with dims == -1.
 * [#15075](https://gitlab.com/scilab/scilab/-/issues/15075): `read` was slow when reading an unknown number of lines (dims == -1).
+* [#13307](https://gitlab.com/scilab/scilab/-/issues/13307): Clicking on the same item from a listbox a second time did not trigger the callback.
 * [#15709](https://gitlab.com/scilab/scilab/-/issues/15709): `tbx_make(.,"help")` needed a `languages` option to target building to some chosen languages.
 * [#16685](https://gitlab.com/scilab/scilab/-/issues/16685): `asciimat()` now belongs to the `m2sci` module, where its code, pages and tests should be.
 * [#16804](https://gitlab.com/scilab/scilab/-/issues/16804): `[s,m]=assert_checkequal(1,%z)` yielded an error instead of silently returning the error message in `m`.
