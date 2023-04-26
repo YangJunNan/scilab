@@ -33,11 +33,11 @@ In summary, the main new features and additions are:
 
 Obsolete functions or features
 ------------------------------
-* `demo_begin`, `demo_end` and `demo_compiler`
+* `getURL()`: Please use `http_get()` instead.
+* `demo_begin()`, `demo_end()` and `demo_compiler()`: Please use `demo_run()` instead.
+* <TODO>
 
 All these functions and features will be removed in Scilab 2025.0.0 (October 2024):
-* `getURL()`: Please use `http_get()` instead.
-* <TODO>
 
 
 Installation
