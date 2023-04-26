@@ -115,7 +115,7 @@
 
             <literal>[N,D] = rat(X,tol)</literal> は,
 
-            <literal>abs(N./D - X) &lt;= tol*norm(X,1)*abs(X)</literal>の基準で
+            <literal>abs(N./D - X) &lt;= tol*norm(X,1)</literal>の基準で
 
             <literal>N./D</literal>が<literal>X</literal>に近くなるような
 
@@ -175,4 +175,3 @@ n/d-%pi
     </refsection>
 
 </refentry>
-

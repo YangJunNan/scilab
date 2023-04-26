@@ -106,6 +106,11 @@ void InitializePreferences(int useCWD)
         setRecursionLimit(recursionlimit);
     }
 
+    //polynomial exponent display
+    if (prefs->polynomialDisplay)
+    {
+        setPolynomialDisplay(atoi(prefs->polynomialDisplay));
+    }
 
     clearScilabPreferences();
 }

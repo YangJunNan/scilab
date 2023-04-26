@@ -92,6 +92,9 @@ function contour(x, y, z, nz, theta, alpha, leg, flag, ebox, zlev, fpf)
     if exists("zlev" , "local") == 0 then
         zlev = 0;
     end
+    if exists("fpf", "l") == 0 || fpf == "" then
+        fpf = "%.2g";
+    end
 
     if or(type(z) == [13]) then
         fun = z;
@@ -101,7 +104,7 @@ function contour(x, y, z, nz, theta, alpha, leg, flag, ebox, zlev, fpf)
 
     job = flag(1);
     if rhs == 4 | job == 2 then
-        contour2d(x, y, z, nz);
+        contour2d(x, y, z, nz, fpf=fpf);
         return;
     end
 
@@ -122,9 +125,7 @@ function contour(x, y, z, nz, theta, alpha, leg, flag, ebox, zlev, fpf)
     fig.immediate_drawing = "off";
     cnt = 0;
 
-    if exists("fpf", "l") == 0 || fpf == "" then
-        fpf = "%.2g";
-    end
+    
 
     k = 1;
     n = yc(k);

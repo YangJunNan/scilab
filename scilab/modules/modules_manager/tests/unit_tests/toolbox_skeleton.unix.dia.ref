@@ -94,6 +94,9 @@ Building gateway...
    Generate a cleaner file
 Generating loader_gateway.sce...
 Generating cleaner_gateway.sce...
+WARNING: tbx_build_localization (toolbox_skeleton\locales\): 
+WARNING:    - The msgid have been updated in '*.po' files.
+WARNING:    - fr_FR.po : 0 untranslated messages.
 Generating localization
 -- Building for "en_US" --
 -- Building for "fr_FR" --

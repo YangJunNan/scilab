@@ -298,4 +298,15 @@ and(A, "c")
             </member>
         </simplelist>
     </refsection>
+    <refsection role="history">
+        <title>Historique</title>
+        <revhistory>
+            <revision>
+                <revnumber>6.0.0</revnumber>
+                <revdescription>
+                    Les nombres complexes sont désormais acceptés.
+                </revdescription>
+            </revision>
+        </revhistory>
+    </refsection>
 </refentry>

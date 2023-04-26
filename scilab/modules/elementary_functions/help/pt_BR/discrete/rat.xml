@@ -58,7 +58,7 @@
         <para>
             <literal>[N,D] = rat(x,tol)</literal> retorna duas matrizes de
             inteiros tais que <literal>N./D</literal> é próxima a <literal>x</literal>
-            no sentido de que <literal>abs(N./D - X) &lt;= tol*abs(x)</literal>. As
+            no sentido de que <literal>abs(N./D - X) &lt;= tol * norm(X, 1)</literal>. As
             aproximações racionais são geradas truncando-se expansões de frações
             contínuas. <literal>tol = 1.e-6*norm(X,1)</literal> é o padrão. <literal>y
                 = rat(x,tol)

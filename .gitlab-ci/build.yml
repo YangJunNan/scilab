@@ -67,7 +67,7 @@ windows_build_release:
 # build scilab using a linux runner
 .linux_build:
   stage: build
-  image: $DOCKER_LINUX_BUILDER
+  image: $DOCKER_LINUX_BUILDER:$DOCKER_TAG
   tags: [x86_64-linux-gnu, docker, scilab]
   before_script:
     - echo -e "\e[0Ksection_start:$(date +%s):cleanup\r\e[0KCleaning $CI_PROJECT_DIR"

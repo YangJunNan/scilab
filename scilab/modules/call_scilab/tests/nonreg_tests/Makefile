@@ -4,31 +4,32 @@
 #This file is distributed under the same license as the Scilab package.
 #=============================================================================
 
-# these two environment variables must be defined
+# These two environment variables must be defined
 # export SCI=~/your/install/path/share/scilab
-# export LD_LIBRARY_PATH=~/your/install/path/lib/scilab/:~/your/install/path/lib/thirdparty/
+# export LD_LIBRARY_PATH=~/your/install/path/lib/scilab/
+# From this directory:
+# export SCI=$(pwd)/../../../../../../share/scilab
+# export LD_LIBRARY_PATH=$(pwd)/../../../../../../lib/scilab/
+
+# /!\ To avoid "undefined reference to" error with libcurl, delete it from lib/thirdparty /!\
+# /!\ Only work with a release due to include and libs path /!\
 
 CC=gcc
-EXEC=	bug_7601 \
-		bug_7602 \
-		bug_8115 \
-		bug_8830
+EXEC=bug_7601 \
+	bug_7602 \
+	bug_8115 \
+	bug_8830
 
 SRC= $(EXEC:=.c)
 
-CFLAGS=	-W -Wall -Werror=implicit-function-declaration \
-		-I../../../../../../include/scilab/
+CFLAGS= -W -Wall -Werror=implicit-function-declaration \
+		-I$(SCI)/../../include/scilab/
 
-LDFLAGS=	-L../../../../../../lib/scilab/ \
-			-L../../../../../../lib/thirdparty/ \
-			-lscicall_scilab \
-			-lscilocalization \
-			-lstdc++ \
-			-lscilab-cli
-
+LDFLAGS=-L$(SCI)/../../lib/scilab/ \
+		-lscicall_scilab \
+		-lscilab-cli
 
 all: $(EXEC)
-
 
 bug_7601: bug_7601.o
 	$(CC) -o $@ $^ $(LDFLAGS)
@@ -41,7 +42,6 @@ bug_8115: bug_8115.o
 
 bug_8830: bug_8830.o
 	$(CC) -o $@ $^ $(LDFLAGS)
-
 
 %.o: %.c
 	$(CC) -o $@ -c $< $(CFLAGS)

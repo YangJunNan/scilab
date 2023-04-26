@@ -24,6 +24,7 @@ extern "C"
 #include "matrix_power.h"
 #include "localization.h"
 #include "charEncoding.h"
+#include "sciprint.h"
 }
 
 using namespace types;
@@ -244,12 +245,18 @@ int PowerDoubleByDouble(Double* _pDouble1, Double* _pDouble2, Double** _pDoubleO
 
             if (bComplex1 == false && bComplex2 == false)
             {
-                for (int i = 0 ; i < (*_pDoubleOut)->getSize() ; i++)
+                int size = (*_pDoubleOut)->getSize();
+                double* pR = (*_pDoubleOut)->get();
+                double* pI = (*_pDoubleOut)->getImg();
+                double* pR1 = _pDouble1->get();
+                double R2 = _pDouble2->get()[0];
+                iComplex = 0;
+
+                for (int i = 0; i < size; i++)
                 {
-                    iPowerRealScalarByRealScalar(
-                        _pDouble1->get(i),
-                        _pDouble2->get(0),
-                        &(*_pDoubleOut)->get()[i], &(*_pDoubleOut)->getImg()[i], &iComplex);
+                    int c = 1;
+                    iPowerRealScalarByRealScalar(pR1[i], R2, pR + i, pI + i, &c);
+                    iComplex |= c;
                 }
             }
             else if (bComplex1 == false && bComplex2 == true)
