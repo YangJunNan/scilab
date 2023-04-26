@@ -32,7 +32,7 @@
                 <term>x</term>
                 <listitem>
                     <para>
-                        matriz quadrada ou retangular de booleanos, inteiros, reais, complexos,
+                        matriz de booleanos, inteiros, reais, complexos,
                         polinômios, frações polinomiais, ou texto.
                     </para>
                 </listitem>
