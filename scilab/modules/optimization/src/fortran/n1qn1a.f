@@ -22,7 +22,7 @@ c
 *     just for output (the computing code is normally not modified).
 
       implicit double precision (a-h,o-z)
-      dimension x(n),f(1),g(n),scale(n),h(*),d(n),w(n),
+      dimension x(n),f(1),ftmp(1),g(n),scale(n),h(*),d(n),w(n),
      1 xa(n),ga(n),xb(n),gb(n),izs(*),dzs(*)
       character bufstr*(4096)
       real rzs(*)
@@ -206,9 +206,10 @@ c              calcul de fonction-gradient
       do 180 i=1,n
   180 xb(i)=xa(i)+c*d(i)
       indic=4
-      call simul (indic,n,xb,fb,gb,izs,rzs,dzs)
+      call simul (indic,n,xb,ftmp,gb,izs,rzs,dzs)
 c     next line added by Serge to avoid Inf and Nan's (04/2007)
-      if (vfinite(1,fb).ne.1.and.vfinite(n,gb).ne.1) indic=-1
+      if (vfinite(1,ftmp).ne.1.and.vfinite(n,gb).ne.1) indic=-1
+      fb=ftmp(1)
 c              test sur indic
       if (indic.gt.0) goto 185
       if (indic.lt.0) goto 183
