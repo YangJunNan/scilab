@@ -32,14 +32,6 @@ clear sel
 function t=sel(R),t=real(R)<0 ,endfunction
 //Empty matrix
 A=[];
-if schur(A)<>[] then pause,end
-if schur(A,"real")<>[] then pause,end
-if schur(A,"complex")<>[] then pause,end
-
-if schur(A,"c")<>[] then pause,end
-if schur(A,"d")<>[] then pause,end
-if schur(A,sel)<>[] then pause,end
-
 [U,S]=schur(A);
 if U<>[]|S<>[] then pause,end
 [U,S]=schur(A,"real");

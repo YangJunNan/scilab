@@ -70,10 +70,4 @@ xcosAddToolsMenu("met à jour le block", "myUpdateFunction(blk, scs_m)");
             </member>
         </simplelist>
     </refsection>
-    <refsection id="Authors_xcosAddToolsMenu">
-        <title>Authors</title>
-        <para>
-            <emphasis role="bold">Clément David</emphasis> - Scilab Enterprises
-        </para>
-    </refsection>
 </refentry>

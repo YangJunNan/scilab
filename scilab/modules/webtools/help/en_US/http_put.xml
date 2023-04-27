@@ -101,6 +101,15 @@
                                 </para>
                             </listitem>
                         </varlistentry>
+                        <varlistentry>
+                            <term>verbose</term>
+                            <listitem>
+                                <para>
+                                    This option displays information in the Scilab console to diagnose potential network issues. 
+                                    It is disabled by default, set <literal>verbose=%t</literal> to display the in-progress log.
+                                </para>
+                            </listitem>
+                        </varlistentry>
                     </variablelist>
                     <variablelist>
                         <varlistentry>
@@ -148,7 +157,7 @@ data.userId = 12;
 data.title  = "A title";
 data.body   = "A body";
 data.id = 1;
-result = http_put(https://jsonplaceholder.typicode.com/posts/1", data)
+result = http_put("https://jsonplaceholder.typicode.com/posts/1", data)
  ]]></programlisting>
     </refsection>
     <refsection role="see also">

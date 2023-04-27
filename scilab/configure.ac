@@ -5,6 +5,7 @@
 # Copyright (C) DIGITEO - 2009 - Pierre MARECHAL <pierre.marechal@scilab.org>
 # Copyright (C) Scilab Enterprises - 2014 - Clement DAVID <clement.david@scilab-enterprises.com>
 # Copyright (C) ESI Group - 2018 - Clement DAVID <clement.david@scilab-enterprises.com>
+# Copyright (C) Dassault Systèmes - 2023 - Clement DAVID <clement.david@3ds.com>
 #
 # Copyright (C) 2012 - 2016 - Scilab Enterprises
 #
@@ -41,9 +42,10 @@ else
     DEVTOOLS_LIBDIR=
 fi
 
-SCILAB_VERSION_MAJOR=6
+# Change version here, other files will be updated at the end of configure
+SCILAB_VERSION_MAJOR=2023
 SCILAB_VERSION_MINOR=1
-SCILAB_VERSION_MAINTENANCE=2
+SCILAB_VERSION_MAINTENANCE=0
 AC_SUBST(SCILAB_VERSION_MAJOR)
 AC_SUBST(SCILAB_VERSION_MINOR)
 AC_SUBST(SCILAB_VERSION_MAINTENANCE)
@@ -228,7 +230,13 @@ esac
 #####################################################
 ## Look for pkg-config
 #####################################################
+AC_MSG_CHECKING([if prebuilt binaries are available])
+if $WITH_DEVTOOLS; then
+AC_MSG_RESULT([WITH_DEVTOOLS: $SCI_SRCDIR_FULL/usr])
+else
+AC_MSG_RESULT([no])
 PKG_PROG_PKG_CONFIG
+fi
 
 #####################################################
 ## check if options are correct (or not)
@@ -394,10 +402,10 @@ if test "x${prefix}" = "xNONE"; then
 fi
 
 ###############################
-## get the version
+## get the version commited
 ###############################
 
-SCIVERSION=`cat $SCI_SRCDIR/Version.incl | sed -e "s/SCIVERSION=//" `
+SCIVERSION=$(sed -e "s/SCIVERSION=//" $SCI_SRCDIR/Version.incl)
 
 #############################################
 ## Compilers and options according to machine
@@ -632,7 +640,7 @@ gcc-* | gcc | ccache*gcc | ccache*gcc-* )
     # Once all cyclic dependencies have been dropped, this line could be removed.
     # Check if linker supports --as-needed and --no-as-needed options
     if $LD --help 2>/dev/null | grep no-as-needed > /dev/null; then
-        LDFLAGS="$LDFLAGS -Wl,--no-as-needed"
+        COMPILER_LDFLAGS="$COMPILER_LDFLAGS -Wl,--no-as-needed"
     fi
 
     case "$host" in
@@ -776,6 +784,11 @@ AM_CONDITIONAL(ENABLE_DEBUG, test "$enable_debug" = yes)
 SCILIBS_CFLAGS=''
 SCILIBS_CXXFLAGS=''
 SCILIBS_FFLAGS=''
+SCILIBS_LDFLAGS=''
+if $WITH_DEVTOOLS; then
+    # with devtools the needed dependencies are all there, discard private dependencies
+    SCILIBS_LDFLAGS='-Wl,--allow-shlib-undefined'
+fi
 
 if test $IS_64_BITS_CPU = true -o "$MACOSX" = "1"; then
    if test $f90compatible = false; then
@@ -935,37 +948,14 @@ if test "$with_javasci" != no -o "$with_gui" != no -o "$enable_build_help" != no
         AC_JAVA_JNI_INCLUDE
         JAVA_JNI_INCLUDE=$ac_java_jvm_jni_include_flags
 
-        case "$host_os" in
-             *Darwin* | *darwin*)
-               # Mac OS X does not link against the lib but uses -framework
-               macosx_version=`sw_vers -productVersion`
-               case $macosx_version in
-                   11.*)
-                   JAVA_JNI_LIBS="-framework JavaNativeFoundation"
-                   ;;
-                   10.*)
-                   JAVA_JNI_LIBS="-framework JavaVM"
-                   ;;
-               esac
-               ;;
-             *)
-               AC_JAVA_JNI_LIBS
-               JAVA_JNI_LIBS=$ac_java_jvm_jni_lib_flags
-               JAVA_JNI_LIBS_PRELOAD=$ac_java_jvm_ld_preload
-             ;;
-        esac
+        AC_JAVA_JNI_LIBS
+        JAVA_JNI_LIBS=$ac_java_jvm_jni_lib_flags
+        JAVA_JNI_LIBS_PRELOAD=$ac_java_jvm_ld_preload
 
         AC_JAVA_CLASSPATH
         JAVA_CLASSPATH=$ac_java_classpath
         AC_JAVA_TOOLS
         AC_JAVA_ANT
-
-        case "$host_os" in
-             *Darwin* | *darwin*)
-                  JAVA_HOME=""
-             ;;
-        esac
-
 
         if test "$with_gui" != no; then
 
@@ -1012,7 +1002,7 @@ if test "$with_javasci" != no -o "$with_gui" != no -o "$enable_build_help" != no
                 AC_SUBST(SKINLF)
 
                 # JOGL 2
-                AC_JAVA_CHECK_JAR([jogl2],[javax.media.opengl.glu.GLUnurbs],[Scilab 3D rendering - Version 2.0], [], [], [2.2])
+                AC_JAVA_CHECK_JAR([jogl],[jogamp.opengl.x11.glx.GLX],[Scilab 3D rendering], [], [], 2.4)
                 JOGL2=$PACKAGE_JAR_FILE
                 AC_SUBST(JOGL2)
 
@@ -1041,7 +1031,7 @@ interface for JOGL2 - or libGL (OpenGL library) are installed and if the version
                 fi
 
                 # JoGL Native <=> Java connector
-                AC_JAVA_CHECK_JAR([gluegen2-rt],[jogamp.common.os.MachineDescriptionRuntime],[Scilab 3D rendering])
+                AC_JAVA_CHECK_JAR([gluegen],[com.jogamp.common.os.Platform],[Scilab 3D rendering])
                 GLUEGEN2_RT=$PACKAGE_JAR_FILE
                 AC_SUBST(GLUEGEN2_RT)
 
@@ -1055,8 +1045,8 @@ interface for JOGL2 - or libGL (OpenGL library) are installed and if the version
                    LDFLAGS="$LDFLAGS -L/usr/lib/gluegen2 -L/usr/lib64/gluegen2"         # RedHat
                    LDFLAGS="$LDFLAGS -L$SCI_SRCDIR/thirdparty -L$SCI_SRCDIR/lib/thirdparty -L$SCI_SRCDIR/bin"        # Scilab thirdparties
                    symbol="Java_jogamp_common_jvm_JVMUtil_initialize"
-                   AC_CHECK_LIB([gluegen2-rt], [$symbol], [GLUEGEN2_RT_LIBS="-lgluegen2-rt"],
-                   [AC_MSG_ERROR([libgluegen2-rt: Library missing (Cannot find symbol $symbol). Check if libgluegen-rt - C/Java (JNI) interface for GLUEGEN2 - is installed and if the version is correct. Note that you might have to update etc/librarypath.xml to provide the actual path to the JNI libraries.])],
+                   AC_CHECK_LIB([gluegen_rt], [$symbol], [GLUEGEN2_RT_LIBS="-lgluegen_rt"],
+                   [AC_MSG_ERROR([libgluegen_rt: Library missing (Cannot find symbol $symbol). Check if libgluegen_rt - C/Java (JNI) interface for GLUEGEN2 - is installed and if the version is correct. Note that you might have to update etc/librarypath.xml to provide the actual path to the JNI libraries.])],
                    [-ldl])
                    LDFLAGS=$LDFLAGS_save
                 fi
@@ -1463,8 +1453,6 @@ AC_STRUCT_ST_BLOCKS
 # For now, just check for -lcurses and then -lncurses.  The user control
 # may need to be revisited
 
-TERMCAP_LIB=no
-
 # Various observations:
 #
 #  ncurses
@@ -1477,21 +1465,40 @@ TERMCAP_LIB=no
 #    - need to include termcap.h and link with -ltermcap for tgetent()
 #
 
-AC_CHECK_LIB([curses],[main])
-if test $ac_cv_lib_curses_main = no ; then
-    AC_CHECK_LIB([ncurses],[main])
+if $WITH_DEVTOOLS; then
+    # ncurses includes are in a subdir
+    NCURSES_CFLAGS="-I$DEVTOOLS_INCDIR -I$DEVTOOLS_INCDIR/ncurses"
+    NCURSES_LIBS="-L$DEVTOOLS_LIBDIR/ -lscincurses"
+    
+    saved_LIBS="$LIBS"
+    LIBS="$LIBS $NCURSES_LIBS"
+    AC_CHECK_LIB([scincurses],[tgetent])
+    LIBS="$saved_LIBS"
+    
+    ac_cv_lib_ncurses_tgetent=$ac_cv_lib_scincurses_tgetent
+else
+    NCURSES_CFLAGS=""
+    AC_CHECK_LIB([curses],[tgetent],[NCURSES_LIBS="-lcurses"])
+    if test "x$ac_cv_lib_curses_tgetent" = "xno" ; then
+        AC_CHECK_LIB([ncurses],[tgetent],[NCURSES_LIBS="-lncurses"])
+    fi
+    # make sure we have what we need for tgetent
+    if test "x$ac_cv_lib_ncurses_tgetent" = "xno" ; then
+        AC_CHECK_LIB([termcap],[tgetent])
+    fi
 fi
-
-# make sure we have what we need for tgetent
-AC_SEARCH_LIBS([tgetent],[termcap])
 
 AC_CHECK_HEADERS([ncurses.h curses.h])
 
-if test "x$ac_cv_lib_curses_main" = "xyes" -o "x$ac_cv_lib_ncurses_main" = "xyes" ; then
-  AC_DEFINE([HAVE_TERMCAP],[],[Have Term Cap])
+if test "x$ac_cv_lib_curses_tgetent" = "xyes" -o "x$ac_cv_lib_ncurses_tgetent" = "xyes" -o "x$ac_cv_lib_termcap_tgetent" = "xyes" ; then
+AC_DEFINE([HAVE_TERMCAP],[],[Have Term Cap])
 else
- AC_MSG_ERROR([No termcap library detected. Please install ncurses dev library (or termcap library)])
+AC_MSG_ERROR([No termcap library detected. Please install ncurses dev library (or termcap library)])
 fi
+
+AC_SUBST(NCURSES_CFLAGS)
+AC_SUBST(NCURSES_LIBS)
+
 
 ##################
 ## other libraries
@@ -1673,8 +1680,12 @@ AM_CONDITIONAL(UMFPACK, test "$with_umfpack" != no)
 #######################
 ## Test for PCRE
 #######################
-
-AC_PCRE()
+if $WITH_DEVTOOLS; then # Scilab thirdparties
+    PCRE_CFLAGS="-I$DEVTOOLS_INCDIR"
+    PCRE_LIBS="-L$DEVTOOLS_LIBDIR -lpcre -lpcreposix"
+else
+    AC_PCRE()
+fi
 
 #######################
 ## Test for CURL
@@ -2002,64 +2013,6 @@ AH_BOTTOM([
 AC_DEFINE_UNQUOTED([SHARED_LIB_EXT],["$shrext_cmds"],[Extension of a shared library])
 AC_DEFINE_UNQUOTED([SHARED_LIB_EXTW],[L"$shrext_cmds"],[Extension of a shared library ( wide string )])
 
-
-
-#################
-## Update the years in the various part of the code.
-#################
-
-if test ! -f modules/core/src/cpp/banner.cpp; then
-   AC_MSG_ERROR([Could not find the Scilab banner file.])
-fi
-
-CURRENT_YEAR=`date "+%Y"`
-DETECTED_YEAR=`grep "Copyright (c) 2022-" modules/core/src/cpp/banner.cpp|sed -e "s/.*Copyright (c) 2022-\([[0-9]]*\).*/\1/g"`
-
-if test "$CURRENT_YEAR" != "$DETECTED_YEAR"; then
-   sed -i -e "s| 2022-$DETECTED_YEAR | 2022-$CURRENT_YEAR |g" modules/core/src/cpp/banner.cpp modules/windows_tools/src/c/scilab_windows/console.c
-   sed -i -e "s| 2022-$DETECTED_YEAR | 2022-$CURRENT_YEAR |g" etc/Info.plist.in
-   # aboutscilab.svg updated and aboutscilab.png file deleted (needs to be generated)
-   sed -i -e "s| 2022-$DETECTED_YEAR | 2022-$CURRENT_YEAR |g" modules/gui/images/icons/aboutscilab.svg
-   rm -rf modules/gui/images/icons/aboutscilab.png
-   touch modules/gui/images/icons/aboutscilab.png.needstobegeneratedfromsvg
-   sed -i -e "s|VALUE \"LegalCopyright\", \"Copyright (C) $DETECTED_YEAR|VALUE \"LegalCopyright\", \"Copyright (C) $CURRENT_YEAR|" $(find . -iname '*.rc')
-   sed -i -e "s|2017-$DETECTED_YEAR|2017-$CURRENT_YEAR|" $(find . -iname 'banner.xml')
-   AC_MSG_WARN([New year ($CURRENT_YEAR) detected. Copyright files updated. Please commit them ASAP.])
-fi
-
-#################
-## Update Scilab version in aboutscilab.svg
-#################
-
-if test ! -f modules/gui/images/icons/aboutscilab.svg; then
-   AC_MSG_ERROR([Could not find aboutscilab.svg file.])
-fi
-
-CURRENT_VERSION=$SCILAB_BINARY_VERSION
-DETECTED_VERSION=`grep -m 1 ">Scilab" modules/gui/images/icons/aboutscilab.svg|sed -e "s/.*>Scilab //g"|sed -e "s/<.*//g"`
-
-if test "$CURRENT_VERSION" != "$DETECTED_VERSION"; then
-   # aboutscilab.svg updated and aboutscilab.png file deleted (needs to be generated)
-   sed -i -e "s|Scilab $DETECTED_VERSION|Scilab $CURRENT_VERSION|" modules/gui/images/icons/aboutscilab.svg
-   rm -rf modules/gui/images/icons/aboutscilab.png
-   AC_MSG_WARN([New version ($CURRENT_VERSION) detected. "About Scilab" images need to be checked and committed.])
-fi
-
-#################
-## Update Scilab version in banner() help pages.
-#################
-
-if test ! -f modules/core/help/en_US/configuration/banner.xml; then
-   AC_MSG_ERROR([Could not find the Scilab banner help file.])
-fi
-
-CURRENT_VERSION=$SCILAB_BINARY_VERSION
-DETECTED_VERSION=`grep "scilab-" modules/core/help/en_US/configuration/banner.xml|sed -e "s/.*scilab-//g"`
-
-if test "$CURRENT_VERSION" != "$DETECTED_VERSION"; then
-   sed -i -e "s|scilab-.*|scilab-$CURRENT_VERSION|" $(find . -iname 'banner.xml')
-   AC_MSG_WARN([New version ($CURRENT_VERSION) detected. Help files updated. Please commit them ASAP.])
-fi
 
 #########
 ## Check extra CC / CXX compiler flags to ease runtime behaviors
@@ -2585,5 +2538,70 @@ echo "  FFLAGS ......... = $FFLAGS"
 echo "  SCI_FFLAGS ..... = $SCI_FFLAGS"
 echo "  F77_LDFLAGS .... = $F77_LDFLAGS"
 echo "  FLIBS...... .... = $FLIBS"
-echo "  TERMCAP_LIB .... = $TERMCAP_LIB"
 echo ""
+
+#################
+## Update the years in the various part of the code.
+#################
+
+if test ! -f modules/core/src/cpp/banner.cpp; then
+   AC_MSG_ERROR([Could not find the Scilab banner file.])
+fi
+
+CURRENT_YEAR=`date "+%Y"`
+DETECTED_YEAR=`grep "Copyright (c) 2022-" ${SCI_SRCDIR}/modules/core/src/cpp/banner.cpp|sed -e "s/.*Copyright (c) 2022-\([[0-9]]*\).*/\1/g"`
+
+if test "$CURRENT_YEAR" != "$DETECTED_YEAR"; then
+    sed -i -e "s| 2022-$DETECTED_YEAR | 2022-$CURRENT_YEAR |g" ${SCI_SRCDIR}/modules/core/src/cpp/banner.cpp ${SCI_SRCDIR}/modules/windows_tools/src/c/scilab_windows/console.c
+    sed -i -e "s| 2022-$DETECTED_YEAR | 2022-$CURRENT_YEAR |g" ${SCI_SRCDIR}/etc/Info.plist.in
+    sed -i -e "s|VALUE \"LegalCopyright\", \"Copyright (C) $DETECTED_YEAR|VALUE \"LegalCopyright\", \"Copyright (C) $CURRENT_YEAR|" $(find ${SCI_SRCDIR} -iname '*.rc')
+    sed -i -e "s|2017-$DETECTED_YEAR|2017-$CURRENT_YEAR|" $(find ${SCI_SRCDIR} -iname 'banner.xml')
+    
+    sed -i -e "s| 2022-$DETECTED_YEAR | 2022-$CURRENT_YEAR |g" ${SCI_SRCDIR}/modules/gui/images/icons/aboutscilab.svg
+    AC_CHECK_PROG(INKSCAPE, inkscape)
+    if test -n "$INKSCAPE"; then
+        $INKSCAPE -w 600 -h 290 ${SCI_SRCDIR}/modules/gui/images/icons/aboutscilab.svg -o ${SCI_SRCDIR}/modules/gui/images/icons/aboutscilab.png
+    else
+        AC_CHECK_PROG(CAIROSVG, cairosvg)
+        if test -n "$CAIROSVG"; then
+            $CAIROSVG --output-width 600 --output-height 290 ${SCI_SRCDIR}/modules/gui/images/icons/aboutscilab.svg -o ${SCI_SRCDIR}/modules/gui/images/icons/aboutscilab.png
+        fi
+    fi
+
+    AC_MSG_WARN([New year ($CURRENT_YEAR) detected. Source files updated, commit them !])
+fi
+
+#################
+## Update Scilab version based on aboutscilab.svg
+#################
+
+if test ! -f ${SCI_SRCDIR}/modules/gui/images/icons/aboutscilab.svg; then
+    AC_MSG_ERROR([Could not find aboutscilab.svg file.])
+fi
+DETECTED_VERSION=`grep -m 1 ">Scilab" ${SCI_SRCDIR}/modules/gui/images/icons/aboutscilab.svg|sed -e "s/.*>Scilab //g"|sed -e "s/<.*//g"`
+if test "$SCILAB_BINARY_VERSION" != "$DETECTED_VERSION"; then
+    # alert the user
+    AC_MSG_WARN([Migrating from version $DETECTED_VERSION to $SCILAB_BINARY_VERSION])
+    AC_PATH_PROG(INKSCAPE, inkscape)
+    # put the version into Version.incl
+    echo "SCIVERSION=scilab-branch-$SCILAB_VERSION_MAJOR.$SCILAB_VERSION_MINOR" >$SCI_SRCDIR/Version.incl
+    # put the correct text in version.h
+    sed -i  -e "s|SCI_VERSION_STRING \".*\"|SCI_VERSION_STRING \"scilab-branch-$SCILAB_VERSION_MAJOR.$SCILAB_VERSION_MINOR\"|" \
+            -e "s|SCI_VERSION_WIDE_STRING L\".*\"|SCI_VERSION_WIDE_STRING L\"scilab-branch-$SCILAB_VERSION_MAJOR.$SCILAB_VERSION_MINOR\"|" \
+            -e "s|DEFAULT_SCI_VERSION_MESSAGE L\".*\"|DEFAULT_SCI_VERSION_MESSAGE L\"scilab-branch-$SCILAB_VERSION_MAJOR.$SCILAB_VERSION_MINOR\"|" \
+            ${SCI_SRCDIR}/modules/core/includes/version.h ${SCI_SRCDIR}/modules/core/includes/version.h.{in,vc}
+    # update some help pages
+    sed -i -e "s|scilab-[[0-9]]\(\.[[0-9]]\)\+|scilab-$SCILAB_BINARY_VERSION|" $(find ${SCI_SRCDIR} -iname 'banner.xml')
+    # update rc files
+    sed -i  -e "s|FILEVERSION [[0-9]]\(,[[0-9]]\)\+|FILEVERSION $SCILAB_VERSION_MAJOR,$SCILAB_VERSION_MINOR,$SCILAB_VERSION_MAINTENANCE,0|" \
+            -e "s|PRODUCTVERSION [[0-9]]\(,[[0-9]]\)\+|FILEVERSION $SCILAB_VERSION_MAJOR,$SCILAB_VERSION_MINOR,$SCILAB_VERSION_MAINTENANCE,0|" \
+            -e "s|VALUE \"FileVersion\", \"[[0-9]]\(, [[0-9]]\)\+\"|VALUE \"FileVersion\", \"$SCILAB_VERSION_MAJOR, $SCILAB_VERSION_MINOR, $SCILAB_VERSION_MAINTENANCE, 0\"|" \
+            -e "s|VALUE \"ProductVersion\", \"[[0-9]]\(, [[0-9]]\)\+\"|VALUE \"ProductVersion\", \"$SCILAB_VERSION_MAJOR, $SCILAB_VERSION_MINOR, $SCILAB_VERSION_MAINTENANCE, 0\"|" \
+            -e "s|Scilab [[0-9]]\(\.[[0-9]]\)\+|Scilab $SCILAB_BINARY_VERSION|" \
+            $(find ${SCI_SRCDIR} -iname '*.rc')
+    # update banner, inkscape is used to generate png from svg
+    sed -i -e "s|Scilab [[0-9]]\(\.[[0-9]]\)\+|Scilab $SCILAB_BINARY_VERSION|" ${SCI_SRCDIR}/modules/gui/images/icons/aboutscilab.svg
+    $INKSCAPE -w 600 -h 290 ${SCI_SRCDIR}/modules/gui/images/icons/aboutscilab.svg -o ${SCI_SRCDIR}/modules/gui/images/icons/aboutscilab.png
+    # alert the user
+    AC_MSG_WARN([New version $SCILAB_BINARY_VERSION detected. Source files updated, commit them !])
+fi

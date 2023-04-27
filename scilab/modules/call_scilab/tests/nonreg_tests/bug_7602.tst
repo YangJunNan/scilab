@@ -17,8 +17,7 @@
 // <-- Short Description -->
 // it was not possible to start/close a Scilab engine at anytime.
 
-// export SCI=/your/scilab/install/share/scilab
-// export LD_LIBRARY_PATH=/your/scilab/install/lib/scilab/:/your/scilab/install/lib/thirdparty/
+// Define Variables as decribed in the Makefile
 // make bug_7602
 // ./bug_7602
 

@@ -22,6 +22,9 @@ function plotframe(rect,axisdata,options,legs,subwindow)
     //	      rect initial data.
     //  subwindow : see xsetech (wrect)
     //!
+
+    warnobsolete("plot2d","2024.0.0")
+
     [lhs,rhs]=argn(0)
 
     if rhs < 1 then

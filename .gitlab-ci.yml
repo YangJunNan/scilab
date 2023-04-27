@@ -20,25 +20,28 @@ stages:
 
 variables:
   GIT_STRATEGY:
-    value: "fetch"
+    value: "clone"
     description: "fastest strategy as it re-uses the local working copy"
   GIT_CLEAN_FLAGS:
-    value: "none"
+    value: "-fxd"
     description: "do clean build, each job should clean previous artifacts at startup"
   GIT_DEPTH:
     value: "1"
     description: "speedup cloning, only fetch the latest commit"
-  PREREQUIREMENTS_BRANCH:
-    value: "branches/6.1"
-    description: "Scilab prerequirements branch name or trunk"
+  BRANCH:
+    value: "main"
+    description: "Scilab branch name to build"
   DOCKER_LINUX_BUILDER:
-    value: "registry.gitlab.com/scilab/scilab/linux-builder"
+    value: "registry.gitlab.com/scilab/scilab/linux-builder-main"
     description: "Docker image used to build Scilab on Linux"
   DOCKER_WINDOWS_BUILDER:
-    value: "registry.gitlab.com/scilab/scilab/windows-builder"
+    value: "registry.gitlab.com/scilab/scilab/windows-builder-main"
     description: "Docker image used to build Scilab on Windows"
+  DOCKER_TAG:
+    value: "latest"
+    description: "Docker tag to publish image on"
   SCILAB_COMMON_PATH:
-    value: "$CI_PROJECT_DIR/../../../../scilab/"
+    value: "${CI_PROJECT_DIR}/../../../../scilab/"
     description: "common windows path for persistency"
 workflow:
   rules:
@@ -46,37 +49,57 @@ workflow:
     - if: $CI_PROJECT_PATH_SLUG !~ /scilab-scilab/
       changes: &DOCKER_CHANGES
         paths:
+          - .gitlab-ci.yml
+          - .gitlab-ci/docker_setup.yml
+          - .gitlab-ci/docker_setup.sh
           - .gitlab-ci/Dockerfile*
+          - .gitlab-ci/linux-images/Dockerfile*
       variables:
-        SCI_VERSION_STRING: "$CI_PROJECT_PATH_SLUG-${CI_COMMIT_SHORT_SHA}"
-        DOCKER_LINUX_BUILDER: "$CI_REGISTRY_IMAGE/linux-builder:$CI_COMMIT_BRANCH"
-        DOCKER_WINDOWS_BUILDER: "$CI_REGISTRY_IMAGE/windows-builder:$CI_COMMIT_BRANCH"
+        GIT_STRATEGY: "fetch"
+        GIT_CLEAN_FLAGS: "none"
+        SCI_VERSION_STRING: "${CI_PROJECT_PATH_SLUG}-${CI_COMMIT_SHORT_SHA}"
+        BRANCH: "${CI_COMMIT_BRANCH}"
+        DOCKER_LINUX_BUILDER: "${CI_REGISTRY_IMAGE}/linux-builder-${BRANCH}"
+        DOCKER_WINDOWS_BUILDER: "${CI_REGISTRY_IMAGE}/windows-builder-${BRANCH}"
     - if: $CI_PROJECT_PATH_SLUG !~ /scilab-scilab/
       variables:
-        SCI_VERSION_STRING: "$CI_PROJECT_PATH_SLUG-${CI_COMMIT_SHORT_SHA}"
+        GIT_STRATEGY: "fetch"
+        GIT_CLEAN_FLAGS: "none"
+        SCI_VERSION_STRING: "${CI_PROJECT_PATH_SLUG}-${CI_COMMIT_SHORT_SHA}"
     # run on merge request and set specific docker image tag
     - if: $CI_PIPELINE_SOURCE == "merge_request_event"
       changes: *DOCKER_CHANGES
       variables:
+        GIT_STRATEGY: "fetch"
+        GIT_CLEAN_FLAGS: "none"
         SCI_VERSION_STRING: "scilab-mr${CI_MERGE_REQUEST_IID}-${CI_COMMIT_SHORT_SHA}"
-        DOCKER_LINUX_BUILDER: "$CI_REGISTRY_IMAGE/linux-builder:$CI_MERGE_REQUEST_ID"
-        DOCKER_WINDOWS_BUILDER: "$CI_REGISTRY_IMAGE/windows-builder:$CI_MERGE_REQUEST_ID"
+        BRANCH: "${CI_MERGE_REQUEST_TARGET_BRANCH_NAME}"
+        DOCKER_LINUX_BUILDER: "${CI_REGISTRY_IMAGE}/linux-builder-${BRANCH}"
+        DOCKER_WINDOWS_BUILDER: "${CI_REGISTRY_IMAGE}/windows-builder-${BRANCH}"
+        DOCKER_TAG: "mr${CI_MERGE_REQUEST_IID}"
     # run on merge request
     - if: $CI_PIPELINE_SOURCE == "merge_request_event"
       variables:
+        GIT_STRATEGY: "fetch"
+        GIT_CLEAN_FLAGS: "none"
         SCI_VERSION_STRING: "scilab-mr${CI_MERGE_REQUEST_IID}-${CI_COMMIT_SHORT_SHA}"
+        BRANCH: "${CI_MERGE_REQUEST_TARGET_BRANCH_NAME}"
+        DOCKER_LINUX_BUILDER: "${CI_REGISTRY_IMAGE}/linux-builder-${BRANCH}"
+        DOCKER_WINDOWS_BUILDER: "${CI_REGISTRY_IMAGE}/windows-builder-${BRANCH}"
     # Scheduled pipeline
     - if: $CI_PIPELINE_SOURCE == 'schedule'
       variables:
         SCI_VERSION_STRING: "scilab-branch-${CI_COMMIT_BRANCH}-${CI_COMMIT_SHORT_SHA}"
-        GIT_STRATEGY: clone
-        GIT_CLEAN_FLAGS: -fxd
+        BRANCH: "${CI_COMMIT_BRANCH}"
+        DOCKER_LINUX_BUILDER: "${CI_REGISTRY_IMAGE}/linux-builder-${CI_COMMIT_BRANCH}"
+        DOCKER_WINDOWS_BUILDER: "${CI_REGISTRY_IMAGE}/windows-builder-${CI_COMMIT_BRANCH}"
     # Release
     - if: $CI_COMMIT_TAG
       variables:
         SCI_VERSION_STRING: "scilab-${CI_COMMIT_TAG}"
-        GIT_STRATEGY: clone
-        GIT_CLEAN_FLAGS: -fxd
+        BRANCH: "${CI_COMMIT_BRANCH}"
+        DOCKER_LINUX_BUILDER: "${CI_REGISTRY_IMAGE}/linux-builder-${CI_COMMIT_BRANCH}"
+        DOCKER_WINDOWS_BUILDER: "${CI_REGISTRY_IMAGE}/windows-builder-${CI_COMMIT_BRANCH}"
     # Update default Docker image on merge
     - if: $CI_MERGE_REQUEST_APPROVED
       changes: *DOCKER_CHANGES

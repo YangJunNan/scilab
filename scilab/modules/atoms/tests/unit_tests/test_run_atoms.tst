@@ -7,6 +7,7 @@
 
 // <-- ENGLISH IMPOSED -->
 // <-- CLI SHELL MODE -->
+// <-- NOT FIXED -->
 
 // We need a clean version
 // ============================================================================

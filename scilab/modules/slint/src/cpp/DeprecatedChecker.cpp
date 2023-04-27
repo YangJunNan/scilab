@@ -92,6 +92,15 @@ std::unordered_map<std::wstring, std::wstring> DeprecatedChecker::initDep()
     // TODO: get this list from a conf file
     std::unordered_map<std::wstring, std::wstring> map;
 
+    // Scilab 2023.1.0 => 2025.0.0
+    map.emplace(L"getURL", L"http_get");
+
+    // Scilab 2023.0.0 => 2024.0.0
+    map.emplace(L"xget", L"");
+    map.emplace(L"xset", L"");
+    //map.emplace(L"svd(X,0)", L"svd(X,\"e\")"); // will never be detected as is
+    map.emplace(L"plotframe", L"plot2d");
+
     // Scilab 6.1.x => 2023.0.0
     map.emplace(L"fplot2d", L"plot");
     map.emplace(L"xdel", L"close");
@@ -157,15 +166,16 @@ std::unordered_map<std::wstring, std::wstring> DeprecatedChecker::initDep()
     map.emplace(L"derivative", L"numderivative");
     map.emplace(L"mvvacov", L"cov");
 
-    map.emplace(L"perl", L"");
-    map.emplace(L"lex_sort", L"gsort");
-    map.emplace(L"strcmpi", L"strcmp");
-    map.emplace(L"jconvMatrixMethod", L"jautoTranspose");
-    map.emplace(L"havewindow", L"getscilabmode");
-    map.emplace(L"xpause", L"sleep");
     map.emplace(L"curblockc", L"curblock");
     map.emplace(L"extract_help_examples", L"");
+    map.emplace(L"havewindow", L"getscilabmode");
+    map.emplace(L"isequalbitwise", L"[ans,msg]=assert_checkequal(a,b)");
+    map.emplace(L"jconvMatrixMethod", L"jautoTranspose");
+    map.emplace(L"lex_sort", L"gsort");
     map.emplace(L"mtlb_mode", L"oldEmptyBehaviour");
+    map.emplace(L"perl", L"");
+    map.emplace(L"strcmpi", L"strcmp");
+    map.emplace(L"xpause", L"sleep");
 
     map.emplace(L"addf", L"");
     map.emplace(L"subf", L"");

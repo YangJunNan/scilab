@@ -8,9 +8,9 @@
 
 #include "json.hxx"
 
-#include <chrono>
 #include <fstream>
 #include <iomanip>
+#include <map>
 #include <regex>
 #include <sstream>
 #include <string>
@@ -23,6 +23,7 @@ extern "C"
 #include "jsmn.h"
 #include "os_string.h"
 #include "sciprint.h"
+#include <wchar.h>
 }
 
 //
@@ -50,29 +51,34 @@ static unsigned int printType(unsigned char c)
     return (unsigned int)c;
 }
 
-static void string_replace(std::wstring& str, const std::wstring& f, const std::wstring& r)
+static void string_escape(std::wstring& str, wchar_t specialChar, wchar_t readableChar)
 {
     size_t index = 0;
     while (true)
     {
-        index = str.find(f, index);
+        index = str.find(specialChar, index);
         if (index == std::string::npos)
         {
             break;
         }
 
-        str.replace(index, f.size(), r);
-        index += r.size();
+        str[index] = L'\\';
+        str.insert(index+1, 1, readableChar);
+        index += 2;
     }
 }
 
 static std::wstring printType(wchar_t* s)
 {
     std::wstring str = s;
-    string_replace(str, L"\\", L"\\\\");
-    string_replace(str, L"\"", L"\\\"");
-    string_replace(str, L"\t", L"\\\t");
-
+    string_escape(str, L'\\', L'\\');
+    string_escape(str, L'\"', L'\"');
+    string_escape(str, L'/' , L'/' );
+    string_escape(str, L'\b', L'b' );
+    string_escape(str, L'\f', L'f' );
+    string_escape(str, L'\n', L'n' );
+    string_escape(str, L'\r', L'r' );
+    string_escape(str, L'\t', L't' );
     return L"\"" + str + L"\"";
 }
 
@@ -84,12 +90,70 @@ static std::wstring printType(bool b)
 static wchar_t* unescape(const char* str)
 {
     wchar_t* wc = to_wide_string(str);
-    std::wstring w(wc);
-    FREE(wc);
-    string_replace(w, L"\\\t", L"\t");
-    string_replace(w, L"\\\"", L"\"");
-    string_replace(w, L"\\\\", L"\\");
-    return os_wcsdup(w.data());
+    
+    // JSON special characters
+    const std::map<wchar_t, wchar_t> specialChars{
+        {L'\"', L'\"'},
+        {L'/' , L'/' }, 
+        {L'b' , L'\b'}, 
+        {L'f' , L'\f'}, 
+        {L'n' , L'\n'}, 
+        {L'r' , L'\r'}, 
+        {L't' , L'\t'}, 
+        {L'\\', L'\\'}
+    };
+    
+    // the wc string is modified in place thanks to pointer chasing
+    wchar_t* found = wcschr(wc, L'\\');
+    if (found == NULL)
+    {
+        return wc;
+    }
+    // initialize all pointers after the first segment. A segment is in-between two escape char
+    //   * found point to the end of a segment
+    //   * dst is where to write content
+    //   * pre point to the start of a segment
+    //
+    wchar_t* next = found + 1;
+    wchar_t* dst = next;
+    if (*next == L'\0')
+        return wc;
+    auto it = specialChars.find(*next);
+    if (it != specialChars.end())
+    {
+        *found = it->second;
+        found = next + 1;
+    }
+    wchar_t* pre = found;
+    found = wcschr(found, L'\\');
+
+    // iterate on each segment
+    for(; found != NULL; pre = found, found = wcschr(found, L'\\'))
+    {
+        // corner case: we are at the end of the string
+        next = found + 1;
+        if (*next == L'\0')
+            break;
+
+        it = specialChars.find(*next);
+        if (it != specialChars.end())
+        {
+            // move the string content between two escaped char
+            wmemmove(dst, pre, found - pre);
+            // to the escape char of the next segment
+            dst = dst + (found - pre);
+            // set the escaped char
+            *dst = it->second;
+            // to the next segment
+            dst = dst + 1;
+        }
+        found = next + 1;
+    }
+
+    // last segment including the terminating \0
+    wmemmove(dst, pre, wcslen(pre)+1);
+    
+    return wc;
 }
 
 template<typename T>
@@ -195,14 +259,14 @@ static bool export_struct(scilabEnv env, int indent, const std::vector<wchar_t*>
 
     os << L"{";
     os << indentStr2;
-    os << L"\"" << fields[0] << L"\": ";
+    os << printType(fields[0]) << L": ";
     export_data(env, data[0], indent, os);
 
     for (size_t i = 1; i < size; ++i)
     {
         os << L",";
         os << indentStr2;
-        os << L"\"" << fields[i] << L"\": ";
+        os << printType(fields[i]) << L": ";
         export_data(env, data[i], indent, os);
     }
 
@@ -735,7 +799,7 @@ scilabVar createScilabVar(scilabEnv env, const JSONVar* v)
             fields.reserve(fsize);
             for (auto f : v->fields)
             {
-                fields.push_back(to_wide_string(f.data()));
+                fields.push_back(unescape(f.data()));
             }
 
             int size = 1;

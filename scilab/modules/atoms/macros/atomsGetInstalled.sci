@@ -62,6 +62,8 @@ function varargout = atomsGetInstalled(section)
     if argn(1) > 0 then
         varargout = list(packages)
     else
-        mprintf("%s\n", strcat(justify(packages,"l"), "  ", "c"))
+        if packages <> [] then
+            mprintf("%s\n", strcat(justify(packages,"l"), "  ", "c"))
+        end
     end
 endfunction

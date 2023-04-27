@@ -541,7 +541,10 @@ types::Function::ReturnValue sci_string(types::typed_list &in, int _iRetCount, t
             return PolynomString(in[0]->getAs<types::Polynom>(), out);
             break;            
         }
-        
+        case types::InternalType::ScilabStruct:
+        case types::InternalType::ScilabCell:
+        case types::InternalType::ScilabList:
+            return Overload::generateNameAndCall(L"string", in, _iRetCount, out);
         default:
         {
             std::wostringstream ostr;

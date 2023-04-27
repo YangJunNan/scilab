@@ -193,7 +193,8 @@ am__installdirs = "$(DESTDIR)$(pkglibdir)" \
 	"$(DESTDIR)$(libsciconsole_la_rootdir)" \
 	"$(DESTDIR)$(libsciconsole_la_includedir)"
 LTLIBRARIES = $(pkglib_LTLIBRARIES)
-libsciconsole_minimal_la_LIBADD =
+am__DEPENDENCIES_1 =
+libsciconsole_minimal_la_DEPENDENCIES = $(am__DEPENDENCIES_1)
 am__dirstamp = $(am__leading_dot)dirstamp
 am_libsciconsole_minimal_la_OBJECTS =  \
 	src/noconsole/libsciconsole_minimal_la-noconsole.lo \
@@ -467,6 +468,7 @@ HAVE_CXX17 = @HAVE_CXX17@
 HDF5_CFLAGS = @HDF5_CFLAGS@
 HDF5_LIBS = @HDF5_LIBS@
 HELP_ENABLE = @HELP_ENABLE@
+INKSCAPE = @INKSCAPE@
 INSTALL = @INSTALL@
 INSTALL_DATA = @INSTALL_DATA@
 INSTALL_PROGRAM = @INSTALL_PROGRAM@
@@ -531,6 +533,8 @@ MSGCAT = @MSGCAT@
 MSGFMT = @MSGFMT@
 MSGMERGE = @MSGMERGE@
 MSGMERGE_FOR_MSGFMT_OPTION = @MSGMERGE_FOR_MSGFMT_OPTION@
+NCURSES_CFLAGS = @NCURSES_CFLAGS@
+NCURSES_LIBS = @NCURSES_LIBS@
 NM = @NM@
 NMEDIT = @NMEDIT@
 OBJDUMP = @OBJDUMP@
@@ -782,6 +786,7 @@ libsciconsole_minimal_la_CPPFLAGS = \
     -I$(top_srcdir)/modules/threads/includes \
     -I$(top_srcdir)/modules/string/includes \
     -I$(top_srcdir)/modules/dynamic_link/includes \
+    $(NCURSES_CFLAGS) \
     $(AM_CPPFLAGS)
 
 
@@ -817,6 +822,7 @@ libsciconsole_la_CPPFLAGS = \
 
 # Name of the library
 pkglib_LTLIBRARIES = libsciconsole-minimal.la $(am__append_4)
+libsciconsole_minimal_la_LIBADD = $(NCURSES_LIBS)
 libsciconsole_la_LIBADD = libsciconsole-minimal.la
 
 # All the sources needed by libsciconsole.la

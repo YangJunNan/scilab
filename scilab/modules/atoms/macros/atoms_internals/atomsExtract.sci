@@ -71,9 +71,9 @@ function dir_created = atomsExtract(archive_in,dir_out)
     // Build the extract command
     // =========================================================================
 
-    if ( LINUX | MACOSX | SOLARIS | BSD ) & regexp(archive_in,"/(\.tar\.gz|\.tgz)$/","o") <> [] then
+    if regexp(archive_in,"/(\.tar\.gz|\.tgz)$/","o") <> [] then
 
-        extract_cmd = "tar xzf "+ archive_in + " -C """+ dir_out + """";
+        extract_cmd = "tar xzf "+ archive_in + " -C """+ pathconvert(dir_out,%F) + """";
 
     elseif regexp(archive_in,"/\.zip$/","o") <> [] then
 
@@ -88,7 +88,7 @@ function dir_created = atomsExtract(archive_in,dir_out)
         if getos() == "Darwin"
             extract_cmd = extract_cmd + " -x __MACOSX/*"
         end
-
+    // else unsupported format is filtered out at the start of the function
     end
 
     [rep,stat,err] = unix_g(extract_cmd);
@@ -97,12 +97,11 @@ function dir_created = atomsExtract(archive_in,dir_out)
         atomsError("error", ..
         msprintf(gettext("%s: The extraction of the archive ''%s'' has failed.\n"), ..
         "atomsExtract", ..
-        strsubst(archive_in,"\","\\") ));
+            strsubst(archive_in,"\","\\") ));
     end
 
     // Get the list of directories after the extraction
     // =========================================================================
-
     dirs_after = atomsListDir(dir_out);
 
 

@@ -119,7 +119,7 @@ function [y, ind] = histplot(n,data,style,strf,leg,rect,nax,logflag,frameflag,ax
 
     // Prevent degenerate/flat polygon when category is void
     y_for_poly = y;
-    y_for_poly(y==0) = max(y)*%eps;
+    y_for_poly(y==0) = max(y)*%eps*65536;
 
     // BUG#1885
     // We start the histplot line to %eps rather than 0

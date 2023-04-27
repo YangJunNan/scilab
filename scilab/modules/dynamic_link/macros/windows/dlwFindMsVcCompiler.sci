@@ -13,20 +13,27 @@ function MSCompiler = dlwFindMsVcCompiler()
     MSCompiler = "unknown";
 
     versions = getVsWhereInformation();
-    if ~isempty(versions) then
-        val = getenv("SCILAB_PREFERRED_MSVC", "");
-        if val == "" then //for compatibility
-            val = getenv("SCILAB_PREFERED_MSVC", "");
-        end
-
-        if val then
-            idx = findinlist(versions.name, val);
-            if idx <> [] then
-                MSCompiler = val;
-                return;
-            end
-        end
-
-        MSCompiler = versions(1).name;
+    if isempty(versions) then
+        return
     end
+
+    if size(versions, "*") == 1 then
+        MSCompiler = versions.name;
+        return;
+    end
+
+    val = getenv("SCILAB_PREFERRED_MSVC", "");
+    if val == "" then //for compatibility
+        val = getenv("SCILAB_PREFERED_MSVC", "");
+    end
+
+    if val then
+        idx = findinlist(versions.name, val);
+        if idx <> [] then
+            MSCompiler = val;
+            return;
+        end
+    end
+
+    MSCompiler = versions(1).name;
 endfunction

@@ -93,7 +93,7 @@ if Err(Q*R-Ac'*x)> 200*%eps then pause,end
 [Q,R,x]=qr(Ac',"e");
 if Err(Q*R-Ac'*x)> 200*%eps then pause,end
 
-//Rank detection (obsolete)
+//Rank detection
 [Q,R,rk,x]=qr(A);
 if Err(Q*R*x'-A)> 200*%eps | rk<>2  then pause,end
 [Q,R,rk,x]=qr(A,1.d-8);
@@ -171,7 +171,7 @@ if Err(Q*R-Ac'*x)> 2000*%eps then pause,end
 [Q,R,x]=qr(Ac',"e");
 if Err(Q*R-Ac'*x)> 2000*%eps then pause,end
 
-//Rank detection (obsolete)
+//Rank detection
 [Q,R,rk,x]=qr(A);
 if Err(Q*R*x'-A)> 2000*%eps | rk<>60  then pause,end
 [Q,R,rk,x]=qr(A,1.d-8);

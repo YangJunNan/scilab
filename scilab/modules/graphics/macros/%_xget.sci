@@ -19,5 +19,6 @@
 //
 
 function [] = %_xget()
+    warnobsolete(scilabRemovedVersion="2024.0.0")
     ged(1);
 endfunction

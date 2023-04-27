@@ -27,6 +27,7 @@ extern "C"
 #include "Scierror.h"
 #include "svd.h"
 #include "doublecomplex.h"
+#include "Sciwarning.h"
 }
 /*--------------------------------------------------------------------------*/
 /*
@@ -99,8 +100,9 @@ types::Function::ReturnValue sci_svd(types::typed_list &in, int _iRetCount, type
         if (in[1]->isDouble() == true)
         {
             /* no further testing for "old Economy size:  [U,S,V]=svd(A,0) " */
-            if (_iRetCount == 3)
+            if (_iRetCount < 4)
             {
+                Sciwarning(_("%s: %s will be permanently removed in Scilab %s.\n Please use %s instead.\n"), _("Warning"), "svd(X,0)", "2024.0.0", "svd(X,\"e\")");
                 economy = 1;
             }
         }

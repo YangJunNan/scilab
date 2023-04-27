@@ -32,7 +32,8 @@
             <varlistentry>
                 <term>H</term>
                 <listitem>
-                    <para>a vector of handle.</para>
+                    <para>a vector of unique handle.</para>
+                    <para>Only Matplot, Champ, Fec, Grayplot, Polyline, Fac3d, Plot3d, Arc, Rectangle, Segs, Text and Compound are supported</para>
                 </listitem>
             </varlistentry>
             <varlistentry>

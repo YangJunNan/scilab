@@ -63,18 +63,6 @@ AC_DEFUN([AC_GREP_FILE], [
 #------------------------------------------------------------------------
 
 AC_DEFUN([AC_PROG_JAVAC], [
-# Mac OS X
-    if test "x$JAVAC" = "x" ; then
-    case "$host_os" in
-         *darwin* )
-         # Don't follow the symlink since Java under MacOS is messy
-         # Uses the wrapper providing by Apple to retrieve the path
-         # See: http://developer.apple.com/mac/library/qa/qa2001/qa1170.html
-           JAVAC=$(/usr/libexec/java_home --arch x86_64 --failfast --version 1.8+)/bin/javac
-               DONT_FOLLOW_SYMLINK=yes
-         ;;
-    esac
-    fi
     if test "x$JAVAC" = "x" ; then
         AC_PATH_PROG(JAVAC, javac)
         if test "x$JAVAC" = "x" ; then
@@ -248,18 +236,6 @@ Maybe JAVA_HOME is pointing to a JRE (Java Runtime Environment) instead of a JDK
         AC_MSG_RESULT([not defined])
     fi
 
-# Mac OS default path
-    if test "x$JAVAC" = "x" && test "x$ac_java_jvm_dir" != "x"; then
-        case "$host_os" in
-             *darwin* )
-            AC_MSG_RESULT([Darwin (Mac OS X) found. Use the standard paths.])
-            # See: http://developer.apple.com/mac/library/qa/qa2001/qa1170.html
-            ac_java_jvm_dir=$(/usr/libexec/java_home --arch x86_64 --failfast --version 1.8+)
-            JAVAC=$ac_java_jvm_dir/bin/javac
-            ;;
-        esac
-    fi
-
     # if we do not know the jvm dir, javac will be found on the PATH
     if test "x$JAVAC" = "x" && test "x$ac_java_jvm_dir" != "x"; then
         ac_java_jvm_dir=`cd $ac_java_jvm_dir ; pwd`
@@ -397,14 +373,7 @@ AC_DEFUN([AC_JAVA_JNI_INCLUDE], [
          if test -f "$F" ; then
              ac_java_jvm_jni_include_flags="-I`dirname $F`"
          else
-        case "$host_os" in
-             *darwin* )
-                       ac_java_jvm_jni_include_flags="-I/Developer/SDKs/MacOSX${macosx_version}.sdk/System/Library/Frameworks/JavaVM.framework/Headers -I$(/usr/libexec/java_home --arch x86_64 --failfast --version 1.8+)/include/ -I/System/Library/Frameworks/JavaVM.framework/Versions/A/Headers/"
-                  ;;
-              *)
-                       AC_MSG_ERROR([Could not locate Java's jni.h include file])
-               ;;
-               esac
+             AC_MSG_ERROR([Could not locate Java's jni.h include file])
          fi
     fi
 
@@ -575,6 +544,20 @@ AC_DEFUN([AC_JAVA_JNI_LIBS], [
                 D=$ac_java_jvm_dir/jre/lib/amd64/server
                 ac_java_jvm_jni_lib_runtime_path="${ac_java_jvm_jni_lib_runtime_path}:$D"
                 ac_java_jvm_jni_lib_flags="$ac_java_jvm_jni_lib_flags -L$D -ljvm"
+            fi
+        fi
+
+        # OpenJDK for macOS
+
+        F=jre/lib/jli/libjli.dylib
+        if test "x$ac_java_jvm_jni_lib_flags" = "x" ; then
+            AC_MSG_LOG([Looking for $ac_java_jvm_dir/$F])
+            if test -f $ac_java_jvm_dir/$F ; then
+                AC_MSG_LOG([Found $ac_java_jvm_dir/$F])
+
+                D=$ac_java_jvm_dir/jre/lib/jli
+                ac_java_jvm_jni_lib_runtime_path="${ac_java_jvm_jni_lib_runtime_path}:$D"
+                ac_java_jvm_jni_lib_flags="$ac_java_jvm_jni_lib_flags -L$D -ljli -Wl,-rpath,$D"
             fi
         fi
 

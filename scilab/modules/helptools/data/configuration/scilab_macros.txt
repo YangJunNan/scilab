@@ -1852,7 +1852,6 @@ zp2tf
 zpk
 zpk2ss
 zpk2tf
-%Block_e
 %Block_load
 %Block_p
 %Block_save

@@ -14,20 +14,10 @@
  */
 
 /*--------------------------------------------------------------------------*/
-
-#include <string.h>
-#include <setjmp.h>
 #include "xerhlt.h"
-/*--------------------------------------------------------------------------*/
-jmp_buf slatec_jmp_env;
 /*--------------------------------------------------------------------------*/
 void C2F(xerhlt) (char *messg, unsigned long l)
 {
-    longjmp(slatec_jmp_env, 1);
-}
-/*--------------------------------------------------------------------------*/
-int setjmp_slatec_jmp_env(void)
-{
-    return setjmp(slatec_jmp_env);
+	// dassl calling this function will return properly
 }
 /*--------------------------------------------------------------------------*/

@@ -1,4 +1,3 @@
-//<-- CLI SHELL MODE -->
 // =============================================================================
 // Scilab ( https://www.scilab.org/ ) - This file is part of Scilab
 // Copyright (C) 2013 - Scilab Enterprises - Simon MARCHETTO
@@ -6,7 +5,7 @@
 //  This file is distributed under the same license as the Scilab package.
 // =============================================================================
 //
-// <-- JAVA NOT MANDATORY -->
+// <-- CLI SHELL MODE -->
 
 // Load dynamic_link Internal lib if it's not already loaded
 if ~ exists("dynamic_linkutilslib") then

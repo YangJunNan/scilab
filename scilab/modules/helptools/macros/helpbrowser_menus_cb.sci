@@ -71,11 +71,11 @@ function helpbrowser_menus_cb(action, param)
             messagebox(msg, "modal")
             return
         end
-        GitlabIssuesSearch = "https://gitlab.com/scilab/scilab/-/issues/?search=£"
+        issuesSearch = "https://gitlab.com/scilab/scilab/-/issues/?in=TITLE&sort=created_date&search=£"
         if ~isdef("param","l") | type(param)<>10 | param(1)<>"unresolved"
-            BugzillaSearch = BugzillaSearch + "&state=all"
+            issuesSearch = issuesSearch + "&state=all"
         end
-        url = strsubst(BugzillaSearch, "£", id)
+        url = strsubst(issuesSearch, "£", id)
         openURL(url)
     end
 endfunction
@@ -103,4 +103,3 @@ function openURL(url)
         unix(cmd + """" + url + """")
     end
 endfunction
-

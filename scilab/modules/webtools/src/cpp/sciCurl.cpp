@@ -191,6 +191,10 @@ void SciCurl::setCommonHeaders(CURL* curl)
     // set user agent header
     curl_easy_setopt(curl, CURLOPT_USERAGENT, pcUserAgent.data());
 
+    // set Accept-Encoding whatever curl was built with
+    std::string empty;
+    curl_easy_setopt(curl, CURLOPT_ACCEPT_ENCODING, empty.c_str());
+
     FREE(OperatingSystem);
     FREE(Release);
 }

@@ -48,7 +48,7 @@ Category: biology - Robotic_2
 
 // Name of the institution (company, university, lab...) who has developped the toolbox.
 // If you developped the toolbox as an individual, then just enter "private individual"
-Entity: Scilab Enterprises
+Entity: Personnal
 
 // Optional website that has more information about this toolbox
 WebSite: https://www.scilab.org

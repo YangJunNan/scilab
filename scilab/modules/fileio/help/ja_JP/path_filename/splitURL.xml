@@ -118,20 +118,12 @@
             [proto, server, path] = splitURL("ftp://ftp.free.fr/pub/Distributions_Linux/debian/README")
             [a,b,c,d]=splitURL("https://www.scilab.org/content/search?SearchText=plot")
         </programlisting>
-        <!--
-// This example fails for now (probably a bug on evstr)
-// Retrieve the content and execute it
-[f,content]=getURL("https://fileexchange.scilab.org/toolboxes/161000/1.0/files/cshift.sci")
-evstr(content);
-M = grand(3,4,"uin",0,9);
-cshift(M,1);
--->
     </refsection>
     <refsection role="see also">
         <title>参照</title>
         <simplelist type="inline">
             <member>
-                <link linkend="getURL">getURL</link>
+                <link linkend="http_get">http_get</link>
             </member>
         </simplelist>
     </refsection>

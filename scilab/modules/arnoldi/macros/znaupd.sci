@@ -8,7 +8,8 @@
 // For more information, see the COPYING file which you should have received
 // along with this program.
 
-function [d, v] = znaupd(varargin)
+function varargout = znaupd(varargin)
     warnobsolete("eigs", "2024.0.0")
-    [d,v] = %_znaupd(varargin(:));
+    c = "[" + strcat("varargout(" + string(1:nargout) + ")", ", ") + "] = %_znaupd(varargin(:))";
+    execstr(c);
 endfunction

@@ -118,6 +118,15 @@
                                 </para>
                             </listitem>
                         </varlistentry>
+                        <varlistentry>
+                            <term>verbose</term>
+                            <listitem>
+                                <para>
+                                    This option displays information in the Scilab console to diagnose potential network issues. 
+                                    It is disabled by default, set <literal>verbose=%t</literal> to display the in-progress log.
+                                </para>
+                            </listitem>
+                        </varlistentry>
                     </variablelist>
                     <variablelist>
                         <varlistentry>
@@ -162,7 +171,7 @@
     </refsection>
     <refsection>
         <title>Examples</title>
-        <programlisting role="example"><![CDATA[
+        <programlisting role="scilab-no-exec"><![CDATA[
 f1 = "myfilename";
 res = http_upload("url:port/route", f1, "varname");
 res = http_upload("url:port/route", f1, "varname", method="PUT");
@@ -170,9 +179,9 @@ res = http_upload("url:port/route", f1, "varname", method="PUT");
 f2 = "myfilenametwo";
 res = http_upload("url:port/route", [f1 f2], "varname");
 
-data.type = "images"
+data.type = "images";
 data.date = date();
-res = http_upload("url:port/route", [f1 f2], data, "varname");
+res = http_upload("url:port/route", [f1 f2], "varname", data);
  ]]></programlisting>
     </refsection>
     <refsection role="see also">

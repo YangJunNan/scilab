@@ -407,7 +407,7 @@ public final class SwingScilabVariableBrowser extends SwingScilabDockablePanel i
             menuPlot.add(PlotAction.createMenuItem((SwingScilabDockablePanel)SwingScilabVariableBrowser.this, "histplot", false));
             menuPlot.add(PlotAction.createMenuItem((SwingScilabDockablePanel)SwingScilabVariableBrowser.this, "mesh", false));
             menuPlot.add(PlotAction.createMenuItem((SwingScilabDockablePanel)SwingScilabVariableBrowser.this, "surf", false));
-            menuPlot.add(PlotAction.createMenuItem((SwingScilabDockablePanel)SwingScilabVariableBrowser.this, "hist3d", false));
+            menuPlot.add(PlotAction.createMenuItem((SwingScilabDockablePanel)SwingScilabVariableBrowser.this, "bar3d", false));
             menuPlot.add(PlotAction.createMenuItem((SwingScilabDockablePanel)SwingScilabVariableBrowser.this, "contour2d", false));
             menuPlot.add(PlotAction.createMenuItem((SwingScilabDockablePanel)SwingScilabVariableBrowser.this, "pie", false));
             menu.add(menuPlot);

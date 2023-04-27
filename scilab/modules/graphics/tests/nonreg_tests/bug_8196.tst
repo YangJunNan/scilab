@@ -19,7 +19,7 @@ plot(1:10);
 e=gce();
 refMsg = msprintf(_("Wrong value for ''%s'' property: Must be greater or equal to %d.\n"), "thickness", 0);
 assert_checkerror("e;e.thickness = -1;", refMsg);
-refMsg = msprintf(_("Wrong value for ''%s'' property: Must be greater or equal to %d.\n"), "line_style", 0);
+refMsg = msprintf(_("Wrong value for ''%s'' property: Integer between %d and %d expected.\n"), "line_style", 1, 10);
 assert_checkerror("e;e.line_style = -1;", refMsg);
 refMsg = msprintf(_("Wrong value for ''%s'' property: Must be greater or equal to %d.\n"), "mark_size", 0);
 assert_checkerror("e;e.mark_size = -1;", refMsg);

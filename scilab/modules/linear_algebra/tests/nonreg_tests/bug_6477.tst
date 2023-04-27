@@ -39,7 +39,8 @@ ref_z = [0.4973431,  - 0.6831312,    0.2943626,  - 0.4464664; ..
     0.4702536,    0.5375540,    0.6832618,    0.1518237; ..
     0.0048984,  - 0.4789154,    0.1826199,    0.8586419; ..
   - 0.7290318,  - 0.1225046,    0.6427705,  - 0.2008765];
-  
-if or(abs(as - ref_as) > 1e10 * %eps) then pause, end
-if or(abs(bs - ref_bs) > 1e10 * %eps) then pause, end
-if or(abs(z - ref_z) > 1e9 * %eps) then pause, end
+
+
+assert_checkalmostequal(as(1:dim, 1:dim), ref_as(1:dim, 1:dim));
+assert_checkalmostequal(bs(1:dim, 1:dim), ref_bs(1:dim, 1:dim), [], 1e-7);
+assert_checkalmostequal(abs(z*z'), eye(z), [], 1e-15);

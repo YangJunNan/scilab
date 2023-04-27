@@ -31,6 +31,9 @@ function close(h)
 
         elseif type(h) == 1 then
             fig_ids = winsid();
+            if fig_ids == [] then
+                return
+            end
             current_fig = gcf();
             for i = 1:length(h)
                 if or(fig_ids == h(i)) then

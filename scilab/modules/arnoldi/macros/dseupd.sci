@@ -8,7 +8,8 @@
 // For more information, see the COPYING file which you should have received
 // along with this program.
 
-function [d, v] = dseupd(varargin)
+function varargout = dseupd(varargin)
     warnobsolete("eigs", "2024.0.0")
-    [d,v] = %_dseupd(varargin(:));
+    c = "[" + strcat("varargout(" + string(1:nargout) + ")", ", ") + "] = %_dseupd(varargin(:))";
+    execstr(c);
 endfunction

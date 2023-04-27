@@ -7,21 +7,15 @@
 //
 // <-- Non-regression test for bug 5513 -->
 // <-- INTERACTIVE TEST -->
-// <-- NOT FIXED -->  6.0.2 -> 6.0.2
+// <-- NOT FIXED -->  6.0.2 -> 6.1.1
 //
 // <-- Short Description -->
-// input("message") did not restore the original prompt after the input job is done.
+// input("message") interrupted with CTRL-C + resume did not restore
+// the original prompt after resuming
 //
 // <-- GitLab URL -->
 // https://gitlab.com/scilab/scilab/-/issues/5513
 //
-
-a = rand(2,2)
-
-// type a string example:  This is a test
-// check that you have good prompt
-
-b = input("Give a string : ","string")
 
 
 c = input("Give a string : ","string")
@@ -35,11 +29,3 @@ d = input("Give a value : ")
 // type resume
 // and put a value
 // d must be correct
-
-e = input("Give a string : ","string")
-// and press enter
-// e must be equal to ''
-
-f = input("Give a value : ")
-// and press enter
-// f must be equal to []

@@ -124,6 +124,7 @@ body {
 }
 
 .source table .src pre {
+    white-space: pre-wrap;       /* Since CSS 2.1 */
     font-size: 11px;
     margin: 0px;
     padding: 0px 0px 0px 1em;
@@ -139,6 +140,7 @@ body {
 }
 
 .source table .time {
+    white-space: nowrap;
     font-size: 10px;
     margin: 0px;
     padding: 0px 1em 0px 1em;

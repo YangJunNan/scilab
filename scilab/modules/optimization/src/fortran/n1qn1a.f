@@ -208,8 +208,7 @@ c              calcul de fonction-gradient
       indic=4
       call simul (indic,n,xb,fb,gb,izs,rzs,dzs)
 c     next line added by Serge to avoid Inf and Nan's (04/2007)
-      f(1) = fb
-      if (vfinite(1,f).ne.1.and.vfinite(n,gb).ne.1) indic=-1
+      if (vfinite(1,fb).ne.1.and.vfinite(n,gb).ne.1) indic=-1
 c              test sur indic
       if (indic.gt.0) goto 185
       if (indic.lt.0) goto 183

@@ -52,8 +52,10 @@ t=[1,2,3];t0=0;info=list([],0,[],[],[],0,0);
 x=dassl([x0,x0d],t0,t,g,info);x1=x(2:nx+1,:);
 assert_checkalmostequal(norm(pp*x1,1),norm(x1,1),1.d-5);
 //x(4) goes through 1 at  t=1.5409711;
+// with mkl dll (on windows) and this case, svd returns U and V with different signs.
+// [U,s,V] = svd(A) ==> U*s*V' == A && (-U)*s*(-V)' == A
 t=1.5409711;ww=dassl([x0,x0d],t0,t,g,info);
-assert_checkalmostequal(ww(5),1,0.001);
+assert_checkalmostequal(abs(ww(5)), 1, 0.001);
 deff('[rt]=surface(t,y,yd)','rt=y(4)-1');nbsurf=1;
 [yyy,nnn]=dasrt([x0,x0d],t0,t,g,nbsurf,surface,info);
 deff('pd=j(t,y,ydot,cj)','pd=cj*E-A');

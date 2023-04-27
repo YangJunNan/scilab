@@ -4,7 +4,7 @@
 # Copyright (C) INRIA   - 2007 - Vincent COUVERT
 # Copyright (C) DIGITEO - 2009 - Sylvestre Ledru
 # Copyright (C) DIGITEO - 2009 - Pierre MARECHAL
-# Copyright (C) DIGITEO - 2010 - Cl�ment DAVID
+# Copyright (C) DIGITEO - 2010 - Clément DAVID
 #
 # Copyright (C) 2012 - 2016 - Scilab Enterprises
 #
@@ -211,7 +211,6 @@ GATEWAY_CXX_SOURCES = \
     sci_gateway/cpp/sci_datatipremove.cpp \
     sci_gateway/cpp/sci_plotbrowser.cpp \
     sci_gateway/cpp/sci_datatip_manager_mode.cpp \
-    sci_gateway/cpp/sci_datatip_toggle.cpp \
     sci_gateway/cpp/sci_datatipmove.cpp \
     sci_gateway/cpp/sci_datatip_set_style.cpp \
     sci_gateway/cpp/sci_datatip_set_display.cpp \
@@ -327,6 +326,7 @@ images/icons/16x16/actions/edit-undo.png \
 images/icons/16x16/actions/execute-all.png \
 images/icons/16x16/actions/filter.png \
 images/icons/16x16/actions/format-text-bold.png \
+images/icons/16x16/actions/ged_move.png \
 images/icons/16x16/actions/go-bottom.png \
 images/icons/16x16/actions/go-next.png \
 images/icons/16x16/actions/go-previous.png \
@@ -405,7 +405,7 @@ images/icons/48x48/emblems/emblem-readonly.png \
 images/icons/64x40/mimetypes/application-x-scilab-champ.png \
 images/icons/64x40/mimetypes/application-x-scilab-contour2d.png \
 images/icons/64x40/mimetypes/application-x-scilab-grayplot.png \
-images/icons/64x40/mimetypes/application-x-scilab-hist3d.png \
+images/icons/64x40/mimetypes/application-x-scilab-bar3d.png \
 images/icons/64x40/mimetypes/application-x-scilab-histplot.png \
 images/icons/64x40/mimetypes/application-x-scilab-Matplot.png \
 images/icons/64x40/mimetypes/application-x-scilab-mesh.png \

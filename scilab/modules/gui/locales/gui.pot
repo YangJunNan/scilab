@@ -201,7 +201,6 @@ msgstr ""
 # File: modules/gui/sci_gateway/cpp/sci_datatip_set_interp.cpp, line: 83
 # File: modules/gui/sci_gateway/cpp/sci_datatip_set_orient.cpp, line: 61
 # File: modules/gui/sci_gateway/cpp/sci_datatip_set_style.cpp, line: 64
-# File: modules/gui/sci_gateway/cpp/sci_datatip_toggle.cpp, line: 69
 # File: modules/gui/sci_gateway/cpp/sci_datatipcreate.cpp, line: 64
 # File: modules/gui/sci_gateway/cpp/sci_datatipcreate.cpp, line: 71
 # File: modules/gui/sci_gateway/cpp/sci_datatipmove.cpp, line: 61
@@ -410,8 +409,6 @@ msgstr ""
 # File: modules/gui/sci_gateway/c/sci_mpopup.c, line: 53
 # File: modules/gui/sci_gateway/c/sci_mpopup.c, line: 54
 # File: modules/gui/sci_gateway/c/sci_mpopup.c, line: 55
-# File: modules/gui/sci_gateway/cpp/sci_datatip_toggle.cpp, line: 34
-# File: modules/gui/sci_gateway/cpp/sci_datatip_toggle.cpp, line: 35
 # File: modules/gui/src/java/org/scilab/modules/gui/editor/Editor.java, line: 590
 # File: modules/gui/src/java/org/scilab/modules/gui/editor/Editor.java, line: 796
 # File: modules/gui/src/java/org/scilab/modules/gui/ged/MessagesGED.java, line: 91
@@ -420,7 +417,6 @@ msgstr ""
 
 #
 # File: modules/gui/sci_gateway/c/sci_mpopup.c, line: 54
-# File: modules/gui/sci_gateway/cpp/sci_datatip_toggle.cpp, line: 35
 #, c-format
 msgid "%s: Please use %s instead.\n"
 msgstr ""
@@ -594,7 +590,6 @@ msgstr ""
 # File: modules/gui/sci_gateway/cpp/sci_datatip_set_orient.cpp, line: 202
 # File: modules/gui/sci_gateway/cpp/sci_datatip_set_orient.cpp, line: 208
 # File: modules/gui/sci_gateway/cpp/sci_datatip_set_style.cpp, line: 298
-# File: modules/gui/sci_gateway/cpp/sci_datatip_toggle.cpp, line: 81
 # File: modules/gui/sci_gateway/cpp/sci_datatipcreate.cpp, line: 127
 # File: modules/gui/sci_gateway/cpp/sci_datatipcreate.cpp, line: 133
 # File: modules/gui/sci_gateway/cpp/sci_datatipmove.cpp, line: 82
@@ -756,13 +751,6 @@ msgid "%s: Wrong type for input argument #%d: A scalar expected.\n"
 msgstr ""
 
 #
-# File: modules/gui/sci_gateway/cpp/sci_datatip_toggle.cpp, line: 34
-#, c-format
-msgid "%s: %s is obsolete and will be removed from Scilab %s\n"
-msgstr ""
-
-#
-# File: modules/gui/sci_gateway/cpp/sci_datatip_toggle.cpp, line: 87
 # File: modules/gui/sci_gateway/cpp/sci_datatipremove.cpp, line: 166
 #, c-format
 msgid "%s: Wrong number for input argument: %d or %d expected.\n"

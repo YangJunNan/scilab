@@ -18,6 +18,4 @@
 // whos did not display global variables
 
 whos -name %modalWarning
-whos -name corel
-
 whos -type polynomial

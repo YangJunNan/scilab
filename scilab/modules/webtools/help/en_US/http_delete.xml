@@ -91,6 +91,15 @@
                                 </para>
                             </listitem>
                         </varlistentry>
+                        <varlistentry>
+                            <term>verbose</term>
+                            <listitem>
+                                <para>
+                                    This option displays information in the Scilab console to diagnose potential network issues. 
+                                    It is disabled by default, set <literal>verbose=%t</literal> to display the in-progress log.
+                                </para>
+                            </listitem>
+                        </varlistentry>
                     </variablelist>
                 </listitem>
             </varlistentry>

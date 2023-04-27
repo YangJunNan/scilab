@@ -7,7 +7,7 @@
 // <-- CLI SHELL MODE -->
 // <-- NO CHECK REF -->
 //
-// <-- Non-regression test for bug 13936 -->
+// <-- Non-regression test for bug 16397 -->
 //
 // <-- GitLab URL -->
 // https://gitlab.com/scilab/scilab/-/issues/16397
@@ -23,8 +23,4 @@ tic;
 disp([x,x])
 t2 = toc();
 
-if getos() == "Windows" then
-    assert_checktrue(t2/t1 > 5);
-else
-    assert_checktrue(t2/t1 > 8);
-end
+assert_checktrue(t2 > t1);

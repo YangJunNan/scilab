@@ -114,7 +114,7 @@ function atomsDownload(url_in,file_out,md5sum)
     // =========================================================================
     winId = [];
 
-    if regexp(url_in, "/^(https?|ftp):\/\//", "o") == 1 then
+    if regexp(url_in, "/^(file|https?|ftp):\/\//", "o") == 1 then
         proxy_host_arg = "";
         proxy_user_arg = "";
         timeout_arg  = "";
@@ -280,27 +280,12 @@ function atomsDownload(url_in,file_out,md5sum)
             mprintf(gettext("\t - Local location : ''%s''\n"), file_out);
             
             atomsCloseProgressBar(winId);
-            error(strcat(err, ascii(10)));
+            if typeof(err) == "string" then
+                error(strcat(err, ascii(10)));
+            else
+                error("");
+            end
         end
-
-    elseif regexp(url_in,"/^file:\/\//","o") == 1 then
-
-        if getos() == "Windows" then
-            url_pattern = "file:///";
-        else
-            url_pattern = "file://";
-        end
-
-        file_in = pathconvert(part(url_in,length(url_pattern)+1:length(url_in)),%F);
-
-        if copyfile(file_in,file_out) <> 1 then
-            mprintf(gettext("%s: The following file has not been copied:\n"),"atomsDownload");
-            mprintf(gettext("\t - source    : ''%s''\n"),file_in);
-            mprintf(gettext("\t - destination : ''%s''\n"),file_out);
-            atomsCloseProgressBar(winId);
-            error(strcat(lasterror(), ascii(10)));
-        end
-
     end
 
     // If md5sum is gived, check the md5sum of the downloaded file
@@ -323,7 +308,7 @@ function atomsDownload(url_in,file_out,md5sum)
 
     // Close progress bar handle, if not closed yet
     // =========================================================================
-    if (~isempty(winId))
+    if winId <> [] then
         atomsCloseProgressBar(winId);
     end
 endfunction

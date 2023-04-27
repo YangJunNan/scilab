@@ -177,8 +177,7 @@ function plotimplicit(fun, x_grid, y_grid, varargin)
     cnt = 0
     if size(xc, "*") == 0
         warning(msprintf(gettext("%s: Function evaluation in selected range does not cross any zeros.\n"), fname));
-        plotframe([min(x_grid) min(y_grid) max(x_grid) max(y_grid)])
-
+        plot2d([], [], 0, "011", " ", [min(x_grid) min(y_grid) max(x_grid) max(y_grid)])
     else
         // Cleaning results of contour2di
         // The function might return several times the same contour

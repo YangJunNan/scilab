@@ -140,6 +140,12 @@ xget("line mode")         gca().line_mode
                     Only the <literal>xget("fpf")</literal> syntax is now supported.
                 </revremark>
             </revision>
+            <revision>
+                <revnumber>2023.0.0</revnumber>
+                <revremark>
+                    Tagged obsolete.
+                </revremark>
+            </revision>
         </revhistory>
     </refsection>
 </refentry>

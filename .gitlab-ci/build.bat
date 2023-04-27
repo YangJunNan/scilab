@@ -15,14 +15,11 @@ REM Create log folder
 set LOG_PATH=%SCI_VERSION_STRING%
 if not exist %LOG_PATH% mkdir %LOG_PATH%
 
-curl -k -z prereq.zip -o prereq.zip https://oos.eu-west-2.outscale.com/scilab-releases-dev/prerequirements/prerequirements-scilab-branch-6.1-windows_x64.zip
+curl.exe -v -k -o prereq.zip https://oos.eu-west-2.outscale.com/scilab-releases-dev/prerequirements/prerequirements-scilab-branch-%BRANCH%-windows_x64.zip
 unzip -o prereq.zip -d scilab > %LOG_PATH%\log_prereq_%CI_COMMIT_SHORT_SHA%.txt
-@REM svn checkout --username anonymous --password Scilab svn://svn.scilab.org/scilab/%PREREQUIREMENTS_BRANCH%/Dev-Tools/SE/Prerequirements/Windows_x64/ scilab > %LOG_PATH%\log_svn_%CI_COMMIT_SHORT_SHA%.txt
-@REM if errorlevel 1 tail --lines=20 %LOG_PATH%\log_svn_%CI_COMMIT_SHORT_SHA%.txt 1>&2 & exit 1
 @REM REM display svn revision
-@REM tail -n 1 %LOG_PATH%\log_svn_%CI_COMMIT_SHORT_SHA%.txt
-@REM REM revert local modification
-@REM svn revert -R scilab >> %LOG_PATH%\log_svn_%CI_COMMIT_SHORT_SHA%.txt
+type scilab\svn-info.txt
+if errorlevel 1 exit 1
 
 REM Define environment variables
 set SCILAB_JDK64=%JAVA_HOME%
@@ -42,6 +39,7 @@ if exist modules\core\includes\version.h sed -i ^
  -e "s/SCI_VERSION_REVISION .*/SCI_VERSION_REVISION \"%CI_COMMIT_SHA%\"/" ^
  -e "s/SCI_VERSION_TIMESTAMP .*/SCI_VERSION_TIMESTAMP %SCI_VERSION_TIMESTAMP%/" ^
  modules\core\includes\version.h
+echo SCIVERSION=%SCI_VERSION_STRING% >Version.incl
 
 REM build with Visual Studio and Intel compilers
 devenv Scilab.sln /build "Release|x64" /project dumpexts > ..\%LOG_PATH%\log_dumpexts_%CI_COMMIT_SHORT_SHA%.txt
@@ -56,7 +54,7 @@ bin\WScilex-cli.exe -nb -f "tools\innosetup\Create_ISS.sce" > ..\%LOG_PATH%\log_
 if errorlevel 1 tail --lines=20 ..\%LOG_PATH%\log_iss_%CI_COMMIT_SHORT_SHA%.txt 1>&2 & exit 1
 if not exist "Scilab.iss" exit 1
 set ISS_MR=0
-if not "%CI_PIPELINE_SOURCE%" == "schedule" set ISS_MR=1
+if "%CI_PIPELINE_SOURCE%" == "merge_request_event" set ISS_MR=1
 "C:\Program Files (x86)\Inno Setup 6\iscc.exe" Scilab.iss /DMR=%ISS_MR% >> ..\%LOG_PATH%\log_iss_%CI_COMMIT_SHORT_SHA%.txt
 if errorlevel 1 tail --lines=20 ..\%LOG_PATH%\log_iss_%CI_COMMIT_SHORT_SHA%.txt 1>&2 & exit 1
 

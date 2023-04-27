@@ -19,4 +19,5 @@
 //
 
 function [] = %_xset()
+    warnobsolete(scilabRemovedVersion="2024.0.0")
 endfunction

@@ -43,6 +43,7 @@ extern "C"
 #include "sci_malloc.h"
 #include "getHandleProperty.h"
 #include "CurrentFigure.h"
+#include "Sciwarning.h"
 }
 /*--------------------------------------------------------------------------*/
 types::Function::ReturnValue sci_xget(types::typed_list &in, int _iRetCount, types::typed_list &out)
@@ -55,6 +56,8 @@ types::Function::ReturnValue sci_xget(types::typed_list &in, int _iRetCount, typ
     {
         return Overload::call(L"%_xget", in, _iRetCount, out);
     }
+
+    Sciwarning(_("%s: %s will be permanently removed in Scilab %s\n\n"), _("Warning"), "xget()", "2024.0.0");
 
     if (in.size() > 2)
     {

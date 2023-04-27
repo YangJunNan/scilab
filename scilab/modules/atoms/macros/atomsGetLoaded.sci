@@ -38,8 +38,10 @@ function varargout = atomsGetLoaded()
     // =========================================================================
     if argn(1) > 0 then
         varargout = list(packages)
-    else
+    elseif packages <> []
         mprintf("%s\n", strcat(justify(packages,"l"), "  ", "c"))
+    else
+        mprintf(_("No ATOMS module is loaded."))
     end
 
 endfunction

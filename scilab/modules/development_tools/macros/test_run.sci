@@ -699,12 +699,6 @@ function status = test_single(_module, _testPath, _testName)
         return;
     end
 
-    if ~isempty(grep(sciFile, "<-- JVM NOT MANDATORY -->")) then
-        status.warning = _("option ""JVM NOT MANDATORY"" is deprecated, please use ""CLI SHELL MODE"" instead");
-        jvm = %F;
-        execMode = "NWNI";
-    end
-
     if ~isempty(grep(sciFile, "<-- CLI SHELL MODE -->")) then
         jvm = %F;
         execMode = "NWNI";
@@ -919,16 +913,19 @@ function status = test_single(_module, _testPath, _testName)
     returnStatus = host(test_cmd);
     //Check return status
     if (returnStatus <> 0)
+        details = [ checkthefile(tmp_dia); ..
+        launchthecommand(testFile)];
         status.id = 5;
         status.message = "failed: Slave Scilab exited with error code " + string(returnStatus);
-        if params.show_error then
+        status.details = details;
+        if params.show_error == %T then
             tmp = mgetl(tmp_res)
             tmp(tmp=="") = []
-            status.details = "   " + strsubst(..
+            status.details = [ status.details; "   " + strsubst(..
             [""
             "----- " + tmp_res + ": 10 last lines: -----"
             tmp(max(1,size(tmp,1)-9):$)
-            ], TMPDIR, "TMPDIR")
+            ], TMPDIR, "TMPDIR")]
         end
         return;
     end

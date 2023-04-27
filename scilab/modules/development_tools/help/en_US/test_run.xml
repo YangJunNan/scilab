@@ -292,9 +292,7 @@
             <listitem>
                 <para>
                     &lt;-- CLI SHELL MODE --&gt;
-                    (was &lt;-- JVM NOT MANDATORY --&gt; and is obsolete)
                     This test will be executed with scilab -nwni.
-                    All tests without this, will not be executed in "mode_mwni".
                 </para>
             </listitem>
             <listitem>
@@ -613,6 +611,12 @@ test_run string *ascii*
                 <revnumber>6.0.2</revnumber>
                 <revdescription>
                     <para>Tests names with the * wildcard like sin*, *sin, or *sin* are now allowed</para>
+                </revdescription>
+            </revision>
+            <revision>
+                <revnumber>2023.0.0</revnumber>
+                <revdescription>
+                    <para> Tag <literal>JVM NOT MANDATORY</literal> removed.</para>
                 </revdescription>
             </revision>
         </revhistory>

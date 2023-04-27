@@ -14,7 +14,7 @@
 //
 // <-- Short Description -->
 // regression fscanf
-// fscanf is obsolete, mfscanf is used instead.
+// fscanf is the same function than mfscanf.
 
 fln = TMPDIR + filesep() +'bug_3905.txt';
 strs = ['txt1','txt2','txt3'];

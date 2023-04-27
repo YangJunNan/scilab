@@ -31,6 +31,11 @@ import java.awt.Font;
 import java.awt.event.AdjustmentEvent;
 import java.awt.event.AdjustmentListener;
 import java.io.IOException;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+
 
 import javax.swing.DefaultListModel;
 import javax.swing.Icon;
@@ -82,6 +87,7 @@ public class SwingScilabListBox extends JScrollPane implements SwingViewObject, 
 
     private AdjustmentListener adjustmentListener;
 
+    private int selectionCount = 0;
     /**
      * the JList we use
      */
@@ -124,28 +130,57 @@ public class SwingScilabListBox extends JScrollPane implements SwingViewObject, 
 
         getList().setCellRenderer(listRenderer);
 
-        listListener = new ListSelectionListener() {
-            public void valueChanged(ListSelectionEvent e) {
-
-                //value not ready
-                if (e.getValueIsAdjusting()) {
+        getList().addMouseListener(new MouseAdapter() {
+            public void mouseClicked(MouseEvent e) {
+                //only mouse left click
+                if (e.getButton() != MouseEvent.BUTTON1 || e.getClickCount() != 1) {
                     return;
                 }
 
-                // Scilab indices in Value begin at 1 and Java indices begin at 0
-                int[] javaIndices = getList().getSelectedIndices().clone();
-                Double[] scilabIndices = new Double[javaIndices.length];
-                for (int i = 0; i < getList().getSelectedIndices().length; i++) {
-                    scilabIndices[i] = (double) javaIndices[i] + 1;
-                }
+                updateValue();
 
-                GraphicController.getController().setProperty(uid, __GO_UI_VALUE__, scilabIndices);
                 if (callback != null) {
                     callback.actionPerformed(null);
                 }
             }
-        };
-        getList().addListSelectionListener(listListener);
+        });
+
+        getList().addKeyListener(new KeyAdapter() {
+            //perform AFTER model update (contrary of keyPressed)
+            public void keyReleased(KeyEvent e) {
+
+                boolean hasControl = false;
+                int modifiers = e.getModifiersEx();
+                if ((modifiers & KeyEvent.CTRL_DOWN_MASK) == KeyEvent.CTRL_DOWN_MASK) {
+                    hasControl = true;
+                }
+
+               //only up,down, end, home, pageup and pagedown change listbox selection
+               int key = e.getKeyCode();
+                if (key != KeyEvent.VK_UP &&
+                    key != KeyEvent.VK_DOWN &&
+                    key != KeyEvent.VK_HOME &&
+                    key != KeyEvent.VK_END &&
+                    key != KeyEvent.VK_PAGE_UP &&
+                    key != KeyEvent.VK_PAGE_DOWN &&
+                    key != KeyEvent.VK_SPACE) {
+                    return;
+                }
+
+                //use ctrl + direction on multiselection list must not trigger callback
+                if (hasControl && 
+                    getList().getSelectionMode() == ListSelectionModel.MULTIPLE_INTERVAL_SELECTION &&
+                    key != KeyEvent.VK_SPACE) {
+                    return;
+                }
+
+                updateValue();
+
+                if (callback != null) {
+                    callback.actionPerformed(null);
+                }
+            }
+        });
 
         adjustmentListener = new AdjustmentListener() {
             public void adjustmentValueChanged(AdjustmentEvent arg0) {
@@ -156,6 +191,18 @@ public class SwingScilabListBox extends JScrollPane implements SwingViewObject, 
         getVerticalScrollBar().addAdjustmentListener(adjustmentListener);
     }
 
+
+    private void updateValue() {
+        // Scilab indices in Value begin at 1 and Java indices begin at 0
+        int[] javaIndices = getList().getSelectedIndices().clone();
+        selectionCount = javaIndices.length;
+        Double[] scilabIndices = new Double[javaIndices.length];
+        for (int i = 0; i < getList().getSelectedIndices().length; i++) {
+            scilabIndices[i] = (double) javaIndices[i] + 1;
+        }
+
+        GraphicController.getController().setProperty(uid, __GO_UI_VALUE__, scilabIndices);
+    }
     /**
      * To get the Background color of the element.
      * @return color the Color

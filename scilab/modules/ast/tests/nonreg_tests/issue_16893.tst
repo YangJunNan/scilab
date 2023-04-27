@@ -22,3 +22,6 @@ txt = [ "1;//"; ";"; ";"];
 mputl(txt, fname);
 exec(fname, -1)
 deletefile(fname)
+
+// executing multiple lines containing only ';'
+execstr(strcat(emptystr(4,1)+";", ascii(10)));

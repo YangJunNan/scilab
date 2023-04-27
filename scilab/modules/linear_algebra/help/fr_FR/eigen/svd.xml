@@ -132,4 +132,15 @@ sqrt(spec(X*X'))
             matrices réelles et  ZGESVD pour le cas complexe.
         </para>
     </refsection>
+    <refsection>
+        <title>History</title>
+        <revhistory>
+            <revision>
+                <revnumber>2023.0.0</revnumber>
+                <revdescription>
+                    <para>svd(X, 0) est obsolète, utilisez svd(X, "e") à la place.</para>
+                </revdescription>
+            </revision>
+        </revhistory>
+    </refsection>
 </refentry>

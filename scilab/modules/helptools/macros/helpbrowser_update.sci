@@ -37,6 +37,7 @@ function helpbrowser_update(startup)
               end
               // Update the browser
               helpbrowser(%helps(:,1), id, lang, %f)
+              sleep(200)  // required by https://bugzilla.scilab.org/16812
           end
       end
       jremove hb ScilabHelpBrowser

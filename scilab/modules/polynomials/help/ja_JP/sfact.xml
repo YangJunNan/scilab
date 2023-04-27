@@ -66,7 +66,7 @@ w*(horner(w, 1/%z)).num
 // matrix example
 z = %z;
 F1 = [z-1/2, z+1/2, z^2+2; 1, z, -z; z^3+2*z, z, 1/2-z];
-P = F1*gtild(F1,'d');  // P is symmetric
+P = F1*gtild(F1,'d');
 F = sfact(P)
 roots(det(P))
 roots(det(gtild(F,'d')))  //The stable roots

@@ -98,9 +98,8 @@ function demo_boxbounds()
     xdata=linspace(xmin,xmax,nx);
     ydata=linspace(ymin,ymax,ny);
     scf();
-    xset("fpf"," ")
     drawlater();
-    contour ( xdata , ydata , myquadC , 10 )
+    contour ( xdata , ydata , myquadC , 10 , fpf=" ")
     nmplot_simplexhistory ( nm );
     drawnow();
     demo_viewCode(filename);

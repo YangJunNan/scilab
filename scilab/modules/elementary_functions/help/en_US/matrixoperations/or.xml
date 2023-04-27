@@ -303,4 +303,15 @@ or(A, "c")
             </member>
         </simplelist>
     </refsection>
+    <refsection role="history">
+        <title>History</title>
+        <revhistory>
+            <revision>
+                <revnumber>6.0.0</revnumber>
+                <revdescription>
+                    Complex numbers are now accepted.
+                </revdescription>
+            </revision>
+        </revhistory>
+    </refsection>
 </refentry>

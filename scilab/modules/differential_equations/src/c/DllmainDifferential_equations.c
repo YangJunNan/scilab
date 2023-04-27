@@ -31,6 +31,11 @@
 
 DIFFERENTIAL_EQUATIONS_IMPEXP struct
 {
+    int ierror;
+} C2F(ierdassl);
+
+DIFFERENTIAL_EQUATIONS_IMPEXP struct
+{
     int iero;
 } C2F(iercol);
 

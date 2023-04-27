@@ -12,7 +12,9 @@
 function ifortCompiler = findmsifortcompiler()
     ifortCompiler = "unknown"; // unknown
     if getos() == "Windows" then
-        if getenv("IFORT_COMPILER22", "") <> "" then
+        if getenv("IFORT_COMPILER23", "") <> "" then
+            ifortCompiler = "Intel oneAPI HPC 2023";
+        elseif getenv("IFORT_COMPILER22", "") <> "" then
             ifortCompiler = "Intel oneAPI HPC 2022";
         end
     else // NOT Windows

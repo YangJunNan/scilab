@@ -9,7 +9,7 @@
 
 # define x86_64-linux-gnu env variables
 linux_set_env:
-  image: $DOCKER_LINUX_BUILDER
+  image: $DOCKER_LINUX_BUILDER:$DOCKER_TAG
   stage: prebuild
   tags: [x86_64-linux-gnu, docker, scilab]
   variables:
@@ -19,7 +19,7 @@ linux_set_env:
     - echo CI_COMMIT_BRANCH=$CI_COMMIT_BRANCH
     - echo CI_MERGE_REQUEST_TARGET_BRANCH_NAME=$CI_MERGE_REQUEST_TARGET_BRANCH_NAME
     # get current build machine architecture
-    - ARCH=$(cc -dumpmachine)
+    - ARCH=$(cc -print-multiarch)
     # define NOW as Gitlab display ISO 8601 timestamp
     - date +"%s" >timestamp
     - NOW=$(cat timestamp)
@@ -54,7 +54,7 @@ windows_set_env:
 
 # patch, copy, modify files before building a release
 prepare_release_files:
-  image: $DOCKER_LINUX_BUILDER
+  image: $DOCKER_LINUX_BUILDER:$DOCKER_TAG
   stage: prebuild
   tags: [x86_64-linux-gnu]
   rules:
@@ -80,10 +80,14 @@ CHANGES_has_no_edit:
       allow_failure: true
       variables:
         STATUS: 1
-# on forks, always trigger a warning as we have no source branch to compare to
-    - allow_failure: true
+    # on forks, alert the user
+    - if: $CI_PROJECT_PATH_SLUG !~ /scilab-scilab/
+      allow_failure: true
       variables:
         STATUS: 1
+    # otherwise do not execute
+    - when: never
+    
   script:
     - echo "$STATUS"
     - exit $STATUS
