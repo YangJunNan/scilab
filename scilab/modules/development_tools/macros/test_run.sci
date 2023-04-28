@@ -932,36 +932,39 @@ function status = test_single(_module, _testPath, _testName)
 
     //Check errors
     if (error_output == "check") & (_module.error_output == "check") then
-        if getos() == "Darwin" then
-            tmp_errfile_info = fileinfo(tmp_err);
-            msg = "Picked up _JAVA_OPTIONS:"; // When -Djava.awt.headless=false is forced for example
+        tmp_errfile_info = fileinfo(tmp_err);
 
-            if ~isempty(tmp_errfile_info) then
-                txt = mgetl(tmp_err);
-                toRemove = grep(txt, msg);
+        if ~isempty(tmp_errfile_info) then
+            txt = mgetl(tmp_err);
+
+            
+            if ~isempty(txt) then
+                // some Concurrent exception are reported on the console without stacktrace
+                toRemove = grep(txt, "java.util.ConcurrentModificationException");
                 txt(toRemove) = [];
-                if isempty(txt) then
-                    deletefile(tmp_err);
-                else // Remove messages due to JOGL2 RC8
+            end
+
+
+            if getos() == "Darwin" then
+                if ~isempty(txt) then
+                    // When -Djava.awt.headless=false is forced for example
+                    toRemove = grep(txt, "Picked up _JAVA_OPTIONS:");
+                    txt(toRemove) = [];
+                end
+
+                if ~isempty(txt) then
+                    // Remove messages due to JOGL2 RC8
                     toRemove = grep(txt, "__NSAutoreleaseNoPool()");
                     txt(toRemove) = [];
-                    if isempty(txt) then
-                        deletefile(tmp_err);
-                    end
                 end
             end
-        end
-
-        if getos() == "Linux" then // Ignore JOGL2 debug message
-            tmp_errfile_info = fileinfo(tmp_err);
-            msg = "Error: unable to open display "
-
-            if ~isempty(tmp_errfile_info) then
-                txt = mgetl(tmp_err);
-                txt(txt==msg) = [];
-
-                // Remove messages due to warning message from external
-                // libraries
+        
+            if getos() == "Linux" then
+                if ~isempty(txt) then
+                    // Ignore JOGL2 debug message
+                    toRemove = grep(txt, "Error: unable to open display ");
+                    txt(txt==msg) = [];
+                end
 
                 if ~isempty(txt) then
                     // Gtk style on Ubuntu or other Gtk logging
@@ -976,38 +979,40 @@ function status = test_single(_module, _testPath, _testName)
                 end
 
                 if ~isempty(txt) then
+                    // missing RANDR extension display some warning on stderr
                     toRemove = grep(txt, "extension ""RANDR"" missing on display");
                     txt(toRemove) = [];
                 end
 
-                // Remove SELinux context change warnings
                 if ~isempty(txt) then
+                    // Remove SELinux context change warnings
                     toRemove = grep(txt, "/usr/bin/chcon:");
                     txt(toRemove) = [];
                 end
+            end
 
-                if isempty(txt) then
-                    deletefile(tmp_err);
+            if getos() == "Windows" then
+                if ~isempty(txt) then
+                    // Ignore TCL encoding issue on Windows UTF-8 regional settings
+                    toRemove = grep(txt, "Tcl_SetSystemEncoding:");
+                    txt(toRemove) = [];
+                end
+
+                if ~isempty(txt) then
+                    // Ignore JOGL 2.2.4 debug message
+                    toRemove = grep(txt, "Info: GLReadBufferUtil.readPixels: pre-exisiting GL error 0x500");
+                    txt(toRemove) = [];
+                end
+
+                if ~isempty(txt) then
+                    // Ignore JOGL 2.1.4 debug message
+                    toRemove = grep(txt, "Info: GLDrawableHelper.reshape: pre-exisiting GL error 0x500");
+                    txt(toRemove) = [];
                 end
             end
-        end
-
-        if getos() == "Windows" then // Ignore JOGL 2.2.4 debug message
-            tmp_errfile_info = fileinfo(tmp_err);
-            msg = "Info: GLReadBufferUtil.readPixels: pre-exisiting GL error 0x500";
-
-            if ~isempty(tmp_errfile_info) then
-                txt = mgetl(tmp_err);
-                txt(txt==msg) = [];
-                if isempty(txt) then
-                    deletefile(tmp_err);
-                else // Ignore JOGL 2.1.4 debug message
-                    msg = "Info: GLDrawableHelper.reshape: pre-exisiting GL error 0x500";
-                    txt(txt==msg) = [];
-                    if isempty(txt) then
-                        deletefile(tmp_err);
-                    end
-                end
+            
+            if isempty(txt) then
+                deletefile(tmp_err);
             end
         end
 
