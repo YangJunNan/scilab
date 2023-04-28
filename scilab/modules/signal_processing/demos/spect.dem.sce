@@ -43,7 +43,7 @@ function demo_spectral()
 
     plot2d(fr', log(hf2)');
     xtitle(_("Data spectrum"), _("frequency"), _("magnitude"));
-    halt(_("Press Return to continue ... \n"));
+    messagebox("Please click OK to go on...", "Spectral estimation demo", "modal");
 
     if is_handle_valid(my_handle) == %f then
         return
@@ -56,7 +56,7 @@ function demo_spectral()
     clf(my_handle, "reset");
     plot2d(fr', log(sm1)');
     xtitle(_("Spectral estimation"), _("frequency"), _("spectral power"));
-    halt(_("Press Return to continue ... \n"));
+    messagebox("Please click OK to go on...", "Spectral estimation demo", "modal");
 
     if is_handle_valid(my_handle) == %f then
         return

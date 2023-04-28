@@ -11,10 +11,8 @@ function demo_polarplot()
 
     my_plot_desc          = "polarplot";
     my_handle.figure_name = my_plot_desc;
-    tmp = gettext("Please press enter into the Scilab console to see more polarplot examples")
-    messagebox(tmp,"modal");
 
-    nextMessage = gettext("Press enter to go on...");
+    nextMessage = gettext("Please click OK to go on...");
     t=linspace(0,1,100)*%pi*2;
     drawlater
     clf
@@ -31,7 +29,7 @@ function demo_polarplot()
     polarplot(t/4-%pi/2,sin(t/10))
     show_window(my_handle)
     drawnow
-    input(nextMessage,"s");
+    messagebox(nextMessage, "Polarplot examples", "modal");
 
     // 2 quadrants:
     drawlater
@@ -45,7 +43,7 @@ function demo_polarplot()
     polarplot(t/2-%pi/2,sin(t/10))
     show_window(my_handle)
     drawnow
-    input(nextMessage,"s");
+    messagebox(nextMessage, "Polarplot examples", "modal");
 
     // else : full circle:
     drawlater
@@ -60,7 +58,7 @@ function demo_polarplot()
     title(gettext("Several curves may be plotted at the same time"))
     show_window(my_handle)
     drawnow
-    input(nextMessage,"s");
+    messagebox(nextMessage, "Polarplot examples", "modal");
 
     // Various radii scales:
     t=linspace(0,1,200)*%pi*2;
