@@ -81,11 +81,11 @@ const wchar_t* LoggerView::toString(enum LogLevel level)
     return L"";
 }
 
-const char* LoggerView::toDisplay(enum LogLevel level)
+const std::string LoggerView::toDisplay(enum LogLevel level)
 {
     if (LOG_TRACE <= level && level <= LOG_FATAL)
     {
-        return displayTable[level].data();
+        return displayTable[level];
     }
     return "";
 }
@@ -97,13 +97,11 @@ void LoggerView::log(enum LogLevel level, const std::stringstream& msg)
         std::string str = msg.str();
         if (USE_SCILAB_WRITE)
         {
-            scilabForcedWrite(LoggerView::toDisplay(level));
-            scilabForcedWrite(str.data());
+            scilabForcedWrite((LoggerView::toDisplay(level) + str).data());
         }
         else
         {
-            std::cerr << LoggerView::toDisplay(level);
-            std::cerr << str;
+            std::cerr << LoggerView::toDisplay(level) << str;
         }
     }
 }
@@ -114,13 +112,11 @@ void LoggerView::log(enum LogLevel level, const std::string& msg)
     {
         if (USE_SCILAB_WRITE)
         {
-            scilabForcedWrite(LoggerView::toDisplay(level));
-            scilabForcedWrite(msg.data());
+            scilabForcedWrite((LoggerView::toDisplay(level) + msg).data());
         }
         else
         {
-            std::cerr << LoggerView::toDisplay(level);
-            std::cerr << msg;
+            std::cerr << LoggerView::toDisplay(level) << msg;
         }
     }
 }
@@ -138,13 +134,11 @@ void LoggerView::log(enum LogLevel level, const char* msg, ...)
 
         if (USE_SCILAB_WRITE)
         {
-            scilabForcedWrite(LoggerView::toDisplay(level));
-            scilabForcedWrite(str);
+            scilabForcedWrite((LoggerView::toDisplay(level) + str).data());
         }
         else
         {
-            std::cerr << LoggerView::toDisplay(level);
-            std::cerr << str;
+            std::cerr << LoggerView::toDisplay(level) << str;
         }
     }
 }
@@ -163,7 +157,7 @@ void LoggerView::log(enum LogLevel level, const wchar_t* msg, ...)
 
         if (USE_SCILAB_WRITE)
         {
-            scilabForcedWrite(LoggerView::toDisplay(level));
+            scilabForcedWrite(LoggerView::toDisplay(level).data());
             scilabForcedWriteW(str);
         }
         else
