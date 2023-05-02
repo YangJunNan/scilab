@@ -147,20 +147,20 @@
             <emphasis role="bold">Example for a non-gridable graphics layout</emphasis>:
         </para>
         <programlisting role="example"><![CDATA[
-clf
-title "Main title" fontsize 4
+clf()
+title("Main title", "fontsize", 4)
 
 // Top right
 xsetech([0.6 0 0.4 0.4])
-plot3d
+plot3d()
 
 // Middle right
 xsetech([0.6 0.4 0.4 0.3])
-param3d
+param3d()
 
 // Bottom right, with reduced left/right margins
-xsetech([0.4 0.7 0.6 0.28],,,[0.06 0.06 %nan %nan])
-plot2d
+xsetech([0.4 0.7 0.6 0.28], margins=[0.06 0.06 %nan %nan])
+plot2d()
 
 // Bottom left
 xsetech([0 0.7 0.4 0.28])
@@ -168,9 +168,10 @@ x = -2:0.05:8;
 plot(x, sin(x) + rand(x)/5)
 
 // Top left, with reduced left/right margins
-xsetech([0 0.05 0.6 0.65],,,[0.10 0.06 %nan %nan])
-histplot, title "", ylabel ""
- ]]></programlisting>
+xsetech([0 0.05 0.6 0.65], margins=[0.10 0.06 %nan %nan])
+histplot()
+title(""), ylabel("")
+     ]]></programlisting>
         <scilab:image>
             clf
             title "Main title" fontsize 4
