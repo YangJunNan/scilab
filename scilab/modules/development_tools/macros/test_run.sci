@@ -963,7 +963,7 @@ function status = test_single(_module, _testPath, _testName)
                 if ~isempty(txt) then
                     // Ignore JOGL2 debug message
                     toRemove = grep(txt, "Error: unable to open display ");
-                    txt(txt==msg) = [];
+                    txt(toRemove) = [];
                 end
 
                 if ~isempty(txt) then
