@@ -404,6 +404,7 @@ Bug Fixes
 * [#16845](https://gitlab.com/scilab/scilab/-/issues/16845): Replot button or `replot(gcf())` failed for legends.
 * [#16848](https://gitlab.com/scilab/scilab/-/issues/16848): For negative mcolors, `scatter()` and `scatter3d()` did not map correctly the colormap.
 * [#16849](https://bugzilla.scilab.org/16849): toJSON("\\") must return "\\\\" instead of "\\\".
+* [#16853](https://gitlab.com/scilab/scilab/-/issues/16853): `plot(1:2, 'MarkerEdgeColor',[0.2 0.8 0.6])` yielded an error
 * [#16861](https://gitlab.com/scilab/scilab/-/issues/16861): `repmat()` was broken for any input sparse matrix.
 * [#16864](https://gitlab.com/scilab/scilab/-/issues/16864): macr2tree(): after a=1:2, b=a(2) is pseudocoded as a funcall instead of as an extraction operation (Scilab 6.0 regression)
 * [#16865](https://bugzilla.scilab.org/16865): Vector extraction with single hypermatrix index yielded a vector.
@@ -425,7 +426,6 @@ Bug Fixes
 * [#16923](https://gitlab.com/scilab/scilab/-/issues/16923): unable to use `http_get(..., follow=%t)` without a filename argument.
 * [#16920](https://gitlab.com/scilab/scilab/-/issues/16920): MatrixExp insertion in an empty matrix and using colon crashes Scilab.
 * [#16932](https://gitlab.com/scilab/scilab/-/issues/16932): toJSON() did not escape TABs properly.
-
 
 ### Bugs fixed in 6.1.1:
 * [#3188](https://bugzilla.scilab.org/3188): `part()` was slower than in Scilab 4.1.2.
