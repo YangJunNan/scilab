@@ -102,6 +102,8 @@ Bug Fixes
 * [#17011](https://gitlab.com/scilab/scilab/-/issues/17011): `Matplot` crashed because of missing `rect` input argument.
 * [#17014](https://gitlab.com/scilab/scilab/-/issues/17014): The tolerance required for the `rat` computation should verify `abs(N./D - X) <= tol * norm(X, 1)` (help page fixed).
 * [#17022](https://gitlab.com/scilab/scilab/-/issues/17022): `kroneck()` returned wrong error message.
+* [#17018](https://gitlab.com/scilab/scilab/-/issues/17018): The documentation for `x=input(…)` had error (x type), and was poor (description, examples). The only example was canceled with commenting.
+
 * __add your bug fix here and keep this line__
 
 
