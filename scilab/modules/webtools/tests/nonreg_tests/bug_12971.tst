@@ -4,8 +4,10 @@
 //
 //  This file is distributed under the same license as the Scilab package.
 // =============================================================================
+
 // <-- CLI SHELL MODE -->
 // <-- ENGLISH IMPOSED -->
+
 // <-- Non-regression test for bug 12971 -->
 //
 // <-- GitLab URL -->
@@ -13,13 +15,11 @@
 //
 // <-- Short Description -->
 // getURL() downloaded file name is wrong
-curdir = pwd();
-cd(TMPDIR);
-filePath = getURL("www.scilab.org");
-Warning: getURL will be permanently removed in Scilab 2025.0.0.
- Please use http_get instead.
+
+filePath = http_get("www.scilab.org", fullfile(TMPDIR, "index.html"));
+
 expectedFilePath = fullfile(TMPDIR, "index.html");
 assert_checkequal(filePath, expectedFilePath);
 assert_checktrue(isfile(filePath));
+
 deletefile(filePath);
-cd(curdir);

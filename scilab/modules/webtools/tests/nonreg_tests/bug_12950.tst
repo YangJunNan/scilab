@@ -21,19 +21,14 @@ atomsSaveConfig(%T);
 atomsSetConfig("useProxy", "True");
 atomsSetConfig("proxyHost", "123aa");
 
-instr = "getURL(''https://www.scilab.org'', ''scilab_homepage.html'');";
-
-if getos() == 'Windows' then
-  errReason = "Could not resolve proxy: 123aa; Host not found";
-else
-  errReason = "Couldn''t resolve proxy ''123aa''";
+errMsg = msprintf(_("%s: Wrong proxy information, please check in the ''internet'' Scilab preference.\n"), "http_get");
+try
+    http_get("https://www.scilab.org", fullfile(TMPDIR,"scilab_homepage.html"));
+catch
+    error_msg = lasterror();
 end
-errMsg =  msprintf(gettext("Transfer did not complete successfully: %s\n"), errReason);
-assert_checkerror(instr, errMsg);
 
-filepath = fullfile(pwd(), 'scilab_homepage.html');
-if isfile(filepath) then
-  deletefile(filepath);
-end;
-
+// Restore the config even if the test fails
 atomsRestoreConfig();
+assert_checkequal(error_msg, errMsg);
+

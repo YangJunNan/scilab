@@ -4,26 +4,16 @@
 //
 //  This file is distributed under the same license as the Scilab package.
 // =============================================================================
-
+//
 // <-- CLI SHELL MODE -->
-// <-- ENGLISH IMPOSED -->
-
-// <-- Non-regression test for bug 12971 -->
+// <-- Non-regression test for bug 12948 -->
 //
 // <-- GitLab URL -->
-// https://gitlab.com/scilab/scilab/-/issues/12971
+// https://gitlab.com/scilab/scilab/-/issues/12948
 //
 // <-- Short Description -->
-// getURL() downloaded file name is wrong
+// When host is not found, getURL provokes a Crash To Desktop
 
-curdir = pwd();
-cd(TMPDIR);
-
-filePath = getURL("www.scilab.org");
-
-expectedFilePath = fullfile(TMPDIR, "index.html");
-assert_checkequal(filePath, expectedFilePath);
-assert_checktrue(isfile(filePath));
-
-deletefile(filePath);
-cd(curdir);
+instr = "http_get(''https://www.scilab-dummy.org'', ''scilab_homepage.html'');";
+errMsg = msprintf(_("%s: CURL execution failed.\n%s\n"), "http_get", "Couldn''t resolve host name");
+assert_checkerror(instr, errMsg);
