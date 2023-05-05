@@ -42,7 +42,7 @@
         </simplelist>
     </refsection>
     <refsection role="description">
-        Checking codes and default parameters are defined in the <literal>SCI/modules/slint/etc/slint.xml</literal> file. In the same file, each criterion may be enabled (default) or disabled.
+        Checking codes and default parameters are defined in the <literal>SCIHOME/slint.xml</literal> file. In the same file, each criterion may be enabled (default) or disabled.
         <!-- ==============================================================-->
         <refsect2 id="slint_codetable">
             <title>Checking id</title>

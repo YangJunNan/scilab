@@ -41,7 +41,7 @@
             <varlistentry>
                 <term>conf</term>
                 <listitem>
-                    a string: the name of the configuration file (by default it's <literal>SCI/modules/slint/etc/slint.xml</literal>).
+                    a string: the name of the configuration file (by default it's <literal>SCIHOME/slint.xml</literal>).
                 </listitem>
             </varlistentry>
             <varlistentry>
@@ -79,7 +79,7 @@
     <refsection>
         <title>Examples</title>
         <programlisting role="example"><![CDATA[
-editor SCI/modules/slint/etc/slint.xml   // Main configuration file for criteria
+editor SCIHOME/slint.xml   // Main configuration file for criteria
 editor SCI/modules/slint/tests/unit_tests/files/slint_sample.sci;
 slint SCI/modules/slint/tests/unit_tests/files/slint_sample.sci;
     ]]></programlisting>

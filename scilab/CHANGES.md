@@ -101,6 +101,7 @@ Bug Fixes
 * [#16991](https://gitlab.com/scilab/scilab/-/issues/16991): Scilab run without Java failed at startup if preferences file (XConfiguration.xml) did not exist.
 * [#16995](https://gitlab.com/scilab/scilab/-/issues/16995): `hist3d` plotting feature no more worked in variable browser and variable editor.
 * [#17001](https://gitlab.com/scilab/scilab/-/issues/17001): Improve AppStream metadata
+* [#17002](https://gitlab.com/scilab/scilab/-/issues/17002): `Slint` default configuration file copied into SCIHOME and used instead of the original one.
 * [#17008](https://gitlab.com/scilab/scilab/-/issues/17008): The C code displayed in the `API Scilab/API double functions` documentation page did not match the code used in the next runnable script, and was not compilable.
 * [#17011](https://gitlab.com/scilab/scilab/-/issues/17011): `Matplot` crashed because of missing `rect` input argument.
 * [#17014](https://gitlab.com/scilab/scilab/-/issues/17014): The tolerance required for the `rat` computation should verify `abs(N./D - X) <= tol * norm(X, 1)` (help page fixed).

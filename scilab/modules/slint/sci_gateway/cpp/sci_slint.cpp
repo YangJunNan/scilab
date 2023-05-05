@@ -33,6 +33,7 @@ extern "C"
 #include "Scierror.h"
 #include "sciprint.h"
 #include "localization.h"
+#include "FileExist.h"
 }
 
 static bool contributionMsg = true;
@@ -147,7 +148,14 @@ types::Function::ReturnValue sci_slint(types::typed_list & in, int _iRetCount, t
         }
         else
         {
-            slint::XMLConfig::getOptions(L"SCI/modules/slint/etc/slint.xml", options);
+            if(FileExist("SCIHOME/slint.xml"))
+            {
+                slint::XMLConfig::getOptions(L"SCIHOME/slint.xml", options);
+            }
+            else
+            {
+                slint::XMLConfig::getOptions(L"SCI/modules/slint/etc/slint.xml", options);
+            }
         }
 
         if (outFile)
