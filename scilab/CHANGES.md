@@ -67,6 +67,7 @@ Bug Fixes
 * [#8812](https://gitlab.com/scilab/scilab/-/issues/8812): Multi-selection in a listbox now works when `max - min` is greater than 1.
 * [#8917](https://gitlab.com/scilab/scilab/-/issues/8917): `write(filename,..)` could not overwrite an existing file.
 * [#12391](https://gitlab.com/scilab/scilab/-/issues/12391): `findobj("figure_id", num)` changed current figure (returned by `gcf()`).
+* [#14358](https://gitlab.com/scilab/scilab/-/issues/14358): Black Hole demo produced an error java, clicking on "Clear" button.
 * [#15075](https://gitlab.com/scilab/scilab/-/issues/15075): `read` was slow with dims == -1.
 * [#15075](https://gitlab.com/scilab/scilab/-/issues/15075): `read` was slow when reading an unknown number of lines (dims == -1).
 * [#13307](https://gitlab.com/scilab/scilab/-/issues/13307): Clicking on the same item from a listbox a second time did not trigger the callback.
