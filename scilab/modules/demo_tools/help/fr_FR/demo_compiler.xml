@@ -2,8 +2,8 @@
 <!--
  * Scilab ( https://www.scilab.org/ ) - This file is part of Scilab
  * Copyright (C) 2008 - INRIA
- *
  * Copyright (C) 2012 - 2016 - Scilab Enterprises
+ * Copyright (C) 2023 - Samuel GOUGEON
  *
  * This file is hereby licensed under the terms of the GNU GPL v2.0,
  * pursuant to article 5.3.4 of the CeCILL v.2.1.
@@ -13,48 +13,73 @@
  * along with this program.
  *
  -->
-<refentry xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svg="http://www.w3.org/2000/svg" xmlns:mml="http://www.w3.org/1998/Math/MathML" xmlns:db="http://docbook.org/ns/docbook" xmlns:scilab="http://www.scilab.org" xml:lang="fr" xml:id="demo_compiler">
+<refentry xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:svg="http://www.w3.org/2000/svg" xmlns:mml="http://www.w3.org/1998/Math/MathML"
+          xmlns:db="http://docbook.org/ns/docbook" xmlns:scilab="http://www.scilab.org"
+          xml:lang="fr" xml:id="demo_compiler">
     <refnamediv>
         <refname>demo_compiler</refname>
-        <refpurpose>teste la présence d'un compilateur </refpurpose>
+        <refpurpose>s'assure de la présence d'un compilateur C</refpurpose>
     </refnamediv>
     <refsynopsisdiv>
         <title>Séquence d'appel</title>
-        <synopsis>status = demo_compiler()</synopsis>
+        <synopsis>found? = demo_compiler()</synopsis>
     </refsynopsisdiv>
     <refsection>
         <title>Description</title>
         <para>
-            La fonction demo_compiler interroge l'ordinateur pour savoir s'il possède un
-            compilateur C. Elle renvoie un booléen corresdondant à la présence ou non du
-            compilateur.
+            <warning>
+                <literal>demo_compiler()</literal> est obsolète. Elle sera retirée de Scilab
+                2025.0.0 (octobre 2024). Alternativement, l'utilisation de
+                <literal>demo_run(…)</literal> est conseillée.
+            </warning>
+        </para>
+        <para>
+            <literal>demo_compiler()</literal> recherche un compilateur C sur l'ordinateur.
+            Si un compilateur est trouvé, <varname>found?</varname> vaut <literal>%T</literal>.
+            Sinon, une fenêtre d'information est affichée indiquant que la démonstration
+            ne peut pas être lancée, et <literal>found?</literal> vaut <literal>%F</literal>.
         </para>
     </refsection>
     <refsection>
         <title>Exemples</title>
-        <programlisting role="example"><![CDATA[
-select num,
- case 0
-  return;
- case 2 then
-  st = demo_compiler(); //The compiler will be used
-  if (st==%t) then
-    mode(0);
-    wheel_build_and_load()
-  end
- case 1 then // A precomputed value
-    x=read(path+'/x.wrt',8,301);
-    wheelg=wheelgs;
+        <programlisting role="no-scilab_exec"><![CDATA[
+select num
+case 0
+    return
+
+case 2 then
+    st = demo_compiler(); // The compiler will be used
+    if (st==%t) then
+        mode(0);
+        wheel_build_and_load()
+    end
+
+case 1 then     // A precomputed value
+    x = read(path+'/x.wrt',8,301);
+    wheelg = wheelgs;
     show(x);
 end
- ]]></programlisting>
+     ]]></programlisting>
     </refsection>
     <refsection role="see also">
         <title>Voir aussi</title>
         <simplelist type="inline">
             <member>
-                <link linkend="findmsvccompiler">findmsvccompiler</link>
+                <link linkend="haveacompiler">haveacompiler</link>
             </member>
         </simplelist>
+    </refsection>
+    <refsection role="history">
+        <title>Historique</title>
+        <revhistory>
+            <revision>
+                <revnumber>2023.1.0</revnumber>
+                <revdescription>
+                    <literal>demo_compiler()</literal> est déclarée obsolète.
+                    <literal>demo_run(…,"needCompiler")</literal> peut être utilisée à la place.
+                </revdescription>
+            </revision>
+        </revhistory>
     </refsection>
 </refentry>
