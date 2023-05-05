@@ -247,8 +247,7 @@ am__objects_3 = sci_gateway/c/libscifileio_la-sci_fprintfMat.lo \
 	sci_gateway/c/libscifileio_la-sci_copyfile.lo \
 	sci_gateway/c/libscifileio_la-sci_tempname.lo \
 	sci_gateway/c/libscifileio_la-sci_movefile.lo \
-	sci_gateway/c/libscifileio_la-sci_getURL.lo \
-	sci_gateway/c/libscifileio_la-sci_splitURL.lo
+	sci_gateway/c/libscifileio_la-sci_getURL.lo
 am__objects_4 = sci_gateway/cpp/libscifileio_la-fileio_gw.lo \
 	sci_gateway/cpp/libscifileio_la-sci_mopen.lo \
 	sci_gateway/cpp/libscifileio_la-sci_mclose.lo \
@@ -315,7 +314,6 @@ am__depfiles_remade =  \
 	sci_gateway/c/$(DEPDIR)/libscifileio_la-sci_getURL.Plo \
 	sci_gateway/c/$(DEPDIR)/libscifileio_la-sci_movefile.Plo \
 	sci_gateway/c/$(DEPDIR)/libscifileio_la-sci_pwd.Plo \
-	sci_gateway/c/$(DEPDIR)/libscifileio_la-sci_splitURL.Plo \
 	sci_gateway/c/$(DEPDIR)/libscifileio_la-sci_tempname.Plo \
 	sci_gateway/cpp/$(DEPDIR)/libscifileio_la-fileio_gw.Plo \
 	sci_gateway/cpp/$(DEPDIR)/libscifileio_la-sci_basename.Plo \
@@ -814,8 +812,7 @@ GATEWAY_C_SOURCES = \
     sci_gateway/c/sci_copyfile.c \
     sci_gateway/c/sci_tempname.c \
     sci_gateway/c/sci_movefile.c \
-	sci_gateway/c/sci_getURL.c \
-	sci_gateway/c/sci_splitURL.c
+	sci_gateway/c/sci_getURL.c
 
 GATEWAY_CPP_SOURCES = \
 	sci_gateway/cpp/fileio_gw.cpp \
@@ -1235,9 +1232,6 @@ sci_gateway/c/libscifileio_la-sci_movefile.lo:  \
 sci_gateway/c/libscifileio_la-sci_getURL.lo:  \
 	sci_gateway/c/$(am__dirstamp) \
 	sci_gateway/c/$(DEPDIR)/$(am__dirstamp)
-sci_gateway/c/libscifileio_la-sci_splitURL.lo:  \
-	sci_gateway/c/$(am__dirstamp) \
-	sci_gateway/c/$(DEPDIR)/$(am__dirstamp)
 sci_gateway/cpp/$(am__dirstamp):
 	@$(MKDIR_P) sci_gateway/cpp
 	@: > sci_gateway/cpp/$(am__dirstamp)
@@ -1386,7 +1380,6 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@sci_gateway/c/$(DEPDIR)/libscifileio_la-sci_getURL.Plo@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@sci_gateway/c/$(DEPDIR)/libscifileio_la-sci_movefile.Plo@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@sci_gateway/c/$(DEPDIR)/libscifileio_la-sci_pwd.Plo@am__quote@ # am--include-marker
-@AMDEP_TRUE@@am__include@ @am__quote@sci_gateway/c/$(DEPDIR)/libscifileio_la-sci_splitURL.Plo@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@sci_gateway/c/$(DEPDIR)/libscifileio_la-sci_tempname.Plo@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@sci_gateway/cpp/$(DEPDIR)/libscifileio_la-fileio_gw.Plo@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@sci_gateway/cpp/$(DEPDIR)/libscifileio_la-sci_basename.Plo@am__quote@ # am--include-marker
@@ -1773,13 +1766,6 @@ sci_gateway/c/libscifileio_la-sci_getURL.lo: sci_gateway/c/sci_getURL.c
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='sci_gateway/c/sci_getURL.c' object='sci_gateway/c/libscifileio_la-sci_getURL.lo' libtool=yes @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libscifileio_la_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o sci_gateway/c/libscifileio_la-sci_getURL.lo `test -f 'sci_gateway/c/sci_getURL.c' || echo '$(srcdir)/'`sci_gateway/c/sci_getURL.c
-
-sci_gateway/c/libscifileio_la-sci_splitURL.lo: sci_gateway/c/sci_splitURL.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libscifileio_la_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT sci_gateway/c/libscifileio_la-sci_splitURL.lo -MD -MP -MF sci_gateway/c/$(DEPDIR)/libscifileio_la-sci_splitURL.Tpo -c -o sci_gateway/c/libscifileio_la-sci_splitURL.lo `test -f 'sci_gateway/c/sci_splitURL.c' || echo '$(srcdir)/'`sci_gateway/c/sci_splitURL.c
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) sci_gateway/c/$(DEPDIR)/libscifileio_la-sci_splitURL.Tpo sci_gateway/c/$(DEPDIR)/libscifileio_la-sci_splitURL.Plo
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='sci_gateway/c/sci_splitURL.c' object='sci_gateway/c/libscifileio_la-sci_splitURL.lo' libtool=yes @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libscifileio_la_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o sci_gateway/c/libscifileio_la-sci_splitURL.lo `test -f 'sci_gateway/c/sci_splitURL.c' || echo '$(srcdir)/'`sci_gateway/c/sci_splitURL.c
 
 .cpp.o:
 @am__fastdepCXX_TRUE@	$(AM_V_CXX)depbase=`echo $@ | sed 's|[^/]*$$|$(DEPDIR)/&|;s|\.o$$||'`;\
@@ -2434,7 +2420,6 @@ distclean: distclean-am
 	-rm -f sci_gateway/c/$(DEPDIR)/libscifileio_la-sci_getURL.Plo
 	-rm -f sci_gateway/c/$(DEPDIR)/libscifileio_la-sci_movefile.Plo
 	-rm -f sci_gateway/c/$(DEPDIR)/libscifileio_la-sci_pwd.Plo
-	-rm -f sci_gateway/c/$(DEPDIR)/libscifileio_la-sci_splitURL.Plo
 	-rm -f sci_gateway/c/$(DEPDIR)/libscifileio_la-sci_tempname.Plo
 	-rm -f sci_gateway/cpp/$(DEPDIR)/libscifileio_la-fileio_gw.Plo
 	-rm -f sci_gateway/cpp/$(DEPDIR)/libscifileio_la-sci_basename.Plo
@@ -2579,7 +2564,6 @@ maintainer-clean: maintainer-clean-am
 	-rm -f sci_gateway/c/$(DEPDIR)/libscifileio_la-sci_getURL.Plo
 	-rm -f sci_gateway/c/$(DEPDIR)/libscifileio_la-sci_movefile.Plo
 	-rm -f sci_gateway/c/$(DEPDIR)/libscifileio_la-sci_pwd.Plo
-	-rm -f sci_gateway/c/$(DEPDIR)/libscifileio_la-sci_splitURL.Plo
 	-rm -f sci_gateway/c/$(DEPDIR)/libscifileio_la-sci_tempname.Plo
 	-rm -f sci_gateway/cpp/$(DEPDIR)/libscifileio_la-fileio_gw.Plo
 	-rm -f sci_gateway/cpp/$(DEPDIR)/libscifileio_la-sci_basename.Plo

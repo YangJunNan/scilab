@@ -177,7 +177,7 @@
         <title>Смотрите также</title>
         <simplelist type="inline">
             <member>
-                <link linkend="splitURL">splitURL</link>
+                <link linkend="url_split">url_split</link>
             </member>
         </simplelist>
     </refsection>

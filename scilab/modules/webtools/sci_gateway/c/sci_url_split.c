@@ -19,9 +19,10 @@
 #include "Scierror.h"
 #include "sci_malloc.h"
 #include "localization.h"
+#include "gw_webtools.h"
 
 /* ==================================================================== */
-int sci_splitURL(char *fname, void* pvApiCtx)
+int sci_url_split(char* fname, void* pvApiCtx)
 {
     SciErr sciErr;
     int length = 0;

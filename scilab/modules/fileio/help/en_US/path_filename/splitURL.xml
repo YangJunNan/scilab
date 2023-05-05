@@ -26,6 +26,7 @@
         <refname>splitURL</refname>
 
         <refpurpose>Split an URL (HTTP, HTTPS, FTP...) </refpurpose>
+        <refpurpose>This function is obsolete, please use <link linkend="url_split">url_split</link> instead.</refpurpose>
     </refnamediv>
 
     <refsynopsisdiv>

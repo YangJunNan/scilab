@@ -13,7 +13,7 @@
  * along with this program.
  *
  -->
-<refentry xml:id="splitURL" xml:lang="ja"
+<refentry xml:id="url_split" xml:lang="ja"
           xmlns="http://docbook.org/ns/docbook"
           xmlns:xlink="http://www.w3.org/1999/xlink"
           xmlns:svg="http://www.w3.org/2000/svg"
@@ -22,13 +22,12 @@
           xmlns:scilab="http://www.scilab.org"
           xmlns:db="http://docbook.org/ns/docbook">
     <refnamediv>
-        <refname>splitURL</refname>
+        <refname>url_split</refname>
         <refpurpose>URL (HTTP, HTTPS, FTP...) を分解</refpurpose>
-        <refpurpose>This function is obsolete, please use <link linkend="url_split">url_split</link> instead.</refpurpose>
     </refnamediv>
     <refsynopsisdiv>
         <title>呼び出し手順</title>
-        <synopsis>[proto, server, path, query, username, port, fragment] = splitURL(URL);
+        <synopsis>[proto, server, path, query, username, port, fragment] = url_split(URL);
         </synopsis>
     </refsynopsisdiv>
     <refsection>
@@ -115,9 +114,9 @@
     <refsection>
         <title>例</title>
         <programlisting role="example">
-            [proto, server, path, query, username, port, fragment] = splitURL("http://xmlsoft.org/html/libxml-uri.html#xmlParseURI")
-            [proto, server, path] = splitURL("ftp://ftp.free.fr/pub/Distributions_Linux/debian/README")
-            [a,b,c,d]=splitURL("https://www.scilab.org/content/search?SearchText=plot")
+            [proto, server, path, query, username, port, fragment] = url_split("http://xmlsoft.org/html/libxml-uri.html#xmlParseURI")
+            [proto, server, path] = url_split("ftp://ftp.free.fr/pub/Distributions_Linux/debian/README")
+            [a,b,c,d]=url_split("https://www.scilab.org/content/search?SearchText=plot")
         </programlisting>
     </refsection>
     <refsection role="see also">
@@ -134,6 +133,12 @@
             <revision>
                 <revnumber>5.5.0</revnumber>
                 <revremark>この関数はScilab 5.5.0で追加されました</revremark>
+            </revision>
+            <revision>
+                <revnumber>2023.0.0</revnumber>
+                <revremark>
+                    Renamed <literal>url_split()</literal>.
+                </revremark>
             </revision>
         </revhistory>
     </refsection>
