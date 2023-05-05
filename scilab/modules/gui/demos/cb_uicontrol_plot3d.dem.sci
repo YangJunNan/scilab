@@ -13,7 +13,13 @@
 //
 
 function uicontrol_plot3d()
-    demo_plot3d = figure( ...
+    if get("uicontrols_demo_plot3d") <> [] then
+        demo_plot3d = get("uicontrols_demo_plot3d");
+        delete(demo_plot3d.children);
+    else
+        close(100002)
+        // Create a figure
+        demo_plot3d = figure( ...
         "dockable", "off", ...
         "infobar_visible", "off", ...
         "toolbar_visible", "off", ...
@@ -22,15 +28,19 @@ function uicontrol_plot3d()
         "menubar", "none", ...
         "default_axes", "off", ...
         "layout", "border", ...
+        "tag", "uicontrols_demo_plot3d", ...
         "visible", "off");
 
+        demo_plot3d.figure_id       = 100002;
+        demo_plot3d.background      = -2;
+        demo_plot3d.color_map       = jetcolormap(128);
+        demo_plot3d.figure_position = [0 0];
+        demo_plot3d.figure_name     = gettext("Control Plot3d");
+        demo_plot3d.axes_size       = [900 450];
+    end
+
     fakeframe_height = 10;
-    demo_plot3d.figure_id       = 100001;
-    demo_plot3d.background      = -2;
-    demo_plot3d.color_map       = jetcolormap(128);
-    demo_plot3d.figure_position = [0 0];
-    demo_plot3d.figure_name     = gettext("Control Plot3d");
-    demo_plot3d.axes_size       = [900 450];
+    
 
     // New menu
     h = uimenu(demo_plot3d, ...

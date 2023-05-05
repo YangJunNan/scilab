@@ -14,8 +14,8 @@ function pong()
 
     jimport java.awt.MouseInfo;
 
-    clf
-    f = gcf();
+    f = scf(100001);
+    clf(f, "reset");
     f.resize = "off";
     f.toolbar_visible=%f;
 
