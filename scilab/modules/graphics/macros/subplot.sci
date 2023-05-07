@@ -1,7 +1,7 @@
-// Scilab ( https://www.scilab.org/ ) - This file is part of Scilab
+// Scilab ( http://www.scilab.org/ ) - This file is part of Scilab
 // Copyright (C) INRIA
 // Copyright (C) 2012 - 2016 - Scilab Enterprises
-// Copyright (C) 2021 - Samuel GOUGEON
+// Copyright (C) 2021 - 2023 - Samuel GOUGEON
 //
 // This file is hereby licensed under the terms of the GNU GPL v2.0,
 // pursuant to article 5.3.4 of the CeCILL v.2.1.
@@ -10,7 +10,7 @@
 // For more information, see the COPYING file which you should have received
 // along with this program.
 
-function subplot(m,n,p)
+function subplot(m ,n, p)
 
     rhs = argn(2)
     if rhs<>3 & rhs<>1 then
@@ -33,8 +33,19 @@ function subplot(m,n,p)
     i = p - 1 -n*j
     axes_bounds = [i/n,j/m,1/n,1/m];
 
-    // Determine the subplot substrate according to gce()
-    e = gce();
+    // Determining the subplot' substrate
+    // ----------------------------------
+    e = gcf()
+    t = e.children.type
+    k = findobj(e, "type","Axes");
+    if k <> []
+        e = gce();
+    else
+        k = findobj(e, "type","uicontrol", "-and", "style","frame");
+        if k <> []
+            e = k(1)
+        end
+    end
     if e.type=="Figure" | (e.type=="uicontrol" & e.style=="frame") then
         f = e
     else
@@ -45,7 +56,10 @@ function subplot(m,n,p)
         f = tmp
     end
 
-    na = size(f.children,"*")
+    na = 0
+    if f.children <> []
+        na = sum(f.children.type=="Axes")
+    end
     if f.type=="Figure" & na==1 then
         // an axes is automatically created when a figure is created
         // do not create a new axes if we have just this one

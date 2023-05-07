@@ -3,7 +3,7 @@
  * Scilab ( https://www.scilab.org/ ) - This file is part of Scilab
  * Copyright (C) INRIA
  * Copyright (C) 2012 - 2016 - Scilab Enterprises
- * Copyright (C) 2019 - Samuel GOUGEON
+ * Copyright (C) 2019 - 2023 - Samuel GOUGEON
  *
  * This file is hereby licensed under the terms of the GNU GPL v2.0,
  * pursuant to article 5.3.4 of the CeCILL v.2.1.
@@ -148,61 +148,68 @@
             <emphasis role="bold">Usage on uicontrol frames</emphasis> :
         </para>
         <programlisting role="example"><![CDATA[
-clf reset
-f = gcf();
+f = figure("default_axes","off", "toolbar","none", "name","subplot in frames", ..
+           "backgroundColor",[1 1 1]*0.97);
+x = -4:0.05:4;
 
-fr1 = uicontrol(f, "style", "frame",..
-        "units","normalized","position",[0.05 0.1 0.4 0.8]);
-set("current_entity", fr1)
-subplot(3,2,1)
-plot(1:10), title("Top left")
-subplot(3,2,2)
-plot(1:10), title("Top right")
-subplot(3,1,2)
-plot(1:10), title("plot #1")
-subplot(3,1,3)
-plot(1:10), title("plot #2")
+// Frame #1
+b = createBorder("titled", "Frame #1");
+uicontrol(f, "style", "frame", "units","normalized", "border", b, ..
+                   "position", [0.03 0.83 0.94 0.15]);
 
-//
-fr2 = uicontrol(f, "style", "frame","units","normalized","position",[0.5 0.5 0.5 0.5]);
-set('current_entity', fr2)
+// Frame #2
+b(2) = "Frame #2";
+fr2 = uicontrol(f, "style", "frame", "units","normalized", "border", b, ..
+                   "position", [0.03 0.03 0.60 0.8]);
 subplot(1,2,1)
-plot(1:10), title("Title #1")
-subplot(1,2,2)
-plot(1:10), title("Title #2")
+plot(x, tanh(x)), title("tanh")
 
-set("current_entity", f)
+subplot(2,2,2)
+plot(x, sinh(x)), title("sinh")
+
+// Frame #3
+b(2) = "Frame #3";
+fr3 = uicontrol(f, "style", "frame", "units","normalized", "border", b, ..
+                   "position", [0.65 0.03 0.32 0.8]);
+set("current_entity", fr3);
+subplot(2,1,1)
+plot(2*x, sinc(2*x)), title("sinc")
+
+subplot(2,1,2)
+plot(2*x, sin(2*x)), title("sin")
+
+// Back to Frame #2
+set("current_entity", fr2);
 subplot(2,2,4)
-plot2d()
-title("Back to the figure substrate")
-
-gcf().children.type
-gcf().children(2).children
-gcf().children(3).children
- ]]></programlisting>
+plot(x, cosh(x)), title("cosh")
+     ]]></programlisting>
         <screen>
---> gcf().children.type
+--> gcf().children
  ans  =
-  "Axes"
-  "uicontrol"
-  "uicontrol"
-  "Axes"
+3 by 1 matrix of handles:
+=========================
+uicontrol 
+uicontrol 
+uicontrol 
 
---> gcf().children(2).children
+--> gcf().children(1).children
  ans  =
 2 by 1 matrix of handles:
 =========================
-Axes
-Axes
+Axes 
+Axes 
+
+--> gcf().children(2).children
+ ans  =
+3 by 1 matrix of handles:
+=========================
+Axes 
+Axes 
+Axes 
 
 --> gcf().children(3).children
  ans  =
-4 by 1 matrix of handles:
-=========================
-Axes
-Axes
-Axes
-Axes
+    []
 </screen>
         <inlinemediaobject>
             <imageobject>
@@ -228,7 +235,7 @@ Axes
         <title>History</title>
         <revhistory>
             <revision>
-                <revnumber>6.1.2</revnumber>
+                <revnumber>2023.1</revnumber>
                 <revdescription>
                     <literal>subplot(…)</literal> can be used on uicontrol frames.
                 </revdescription>

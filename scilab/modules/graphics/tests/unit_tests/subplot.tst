@@ -1,7 +1,7 @@
 // =============================================================================
-// Scilab ( https://www.scilab.org/ ) - This file is part of Scilab
+// Scilab ( http://www.scilab.org/ ) - This file is part of Scilab
 // Copyright (C) 2012 - Scilab Enterprises - Bruno JOFRET
-// Copyright (C) 2021 - Samuel GOUGEON
+// Copyright (C) 2021 - 2023 - Samuel GOUGEON
 //
 //  This file is distributed under the same license as the Scilab package.
 // =============================================================================
@@ -69,47 +69,70 @@ assert_checkequal(f.children(2).title.text, "The  overall  title");
 // ---------
 // on frames
 // ---------
-clf reset
-f = gcf();
-// Frame #1
-fr1 = uicontrol(f, "style", "frame","units","normalized","position",[0.05 0.1 0.4 0.8]);
-assert_checkequal(f.children.type, ["uicontrol" "Axes"]')
-set("current_entity", fr1)
-subplot(3,2,1)
-plot(1:10), title "Top left"
-subplot(3,2,2)
-plot(1:10), title "Top right"
-subplot(3,1,2)
-plot(1:10), title "plot #1"
-subplot(3,1,3)
-plot(1:10), title "plot #2"
+f = figure("default_axes","off", "toolbar","none", "name","subplot in frames", ..
+           "backgroundColor",[1 1 1]*0.97);
+x = -4:0.05:4;
 
-assert_checkequal(length(fr1.children), 4);
-assert_checktrue(and(fr1.children.type=="Axes"));
-ref = ["plot #2"
-       "plot #1"
-       "Top right"
-       "Top left"
-       ];
-assert_checkequal(fr1.children.title.text, ref);
+// Frame #1
+b = createBorder("titled", "Frame #1");
+fr1 = uicontrol(f, "style", "frame", "units","normalized", "border", b, ..
+                   "position", [0.03 0.83 0.94 0.15]);
+assert_checkequal(f.children.type, "uicontrol");
 
 // Frame #2
-fr2 = uicontrol(f, "style", "frame","units","normalized","position",[0.5 0.5 0.5 0.5]);
-assert_checkequal(f.children.type, ["uicontrol" "uicontrol" "Axes"]')
-set('current_entity', fr2)
+b(2) = "Frame #2";
+fr2 = uicontrol(f, "style", "frame", "units","normalized", "border", b, ..
+                   "position", [0.03 0.03 0.60 0.8]);
+assert_checkequal(f.children.type, ["uicontrol" "uicontrol"]');
+
 subplot(1,2,1)
-plot(1:10), title "Title #1"
-subplot(1,2,2)
-plot(1:10), title "Title #2"
-assert_checktrue(and(fr2.children.type=="Axes"));
-ref = ["Title #2"
-       "Title #1"];
-assert_checkequal(fr2.children.title.text, ref);
+e = gce();
+assert_checkequal(e.type, "Axes");
+assert_checkequal(e.parent.type, "uicontrol");
+assert_checkequal(e.axes_bounds, [0,0,0.5,1]);
+plot(x, tanh(x)), title("tanh")
 
-// Figure
-set("current_entity", f)
+subplot(2,2,2)
+e = gce();
+assert_checkequal(e.type, "Axes");
+assert_checkequal(e.parent.type, "uicontrol");
+assert_checkequal(e.axes_bounds, [0.5,0,0.5,0.5]);
+plot(x, sinh(x)), title("sinh")
+
+
+// Frame #3
+b(2) = "Frame #3";
+fr3 = uicontrol(f, "style", "frame", "units","normalized", "border", b, ..
+                   "position", [0.65 0.03 0.32 0.8]);
+assert_checkequal(f.children.type, ["uicontrol" "uicontrol" "uicontrol"]');
+set("current_entity", fr3);
+
+subplot(2,1,1)
+e = gce();
+assert_checkequal(e.type, "Axes");
+assert_checkequal(e.parent.type, "uicontrol");
+assert_checkequal(e.axes_bounds, [0,0,1,0.5]);
+plot(2*x, sinc(2*x)), title("sinc")
+
+subplot(2,1,2)
+e = gce();
+assert_checkequal(e.type, "Axes");
+assert_checkequal(e.parent.type, "uicontrol");
+assert_checkequal(e.axes_bounds, [0,0.5,1,0.5]);
+plot(2*x, sin(2*x)), title("sin")
+
+// Back to Frame #2
+set("current_entity", fr2);
 subplot(2,2,4)
-plot2d()
-title "Back to the figure substrate"
+e = gce();
+assert_checkequal(e.type, "Axes");
+assert_checkequal(e.parent.type, "uicontrol");
+assert_checkequal(e.axes_bounds, [0.5,0.5,0.5,0.5]);
+plot(x, cosh(x)), title("cosh")
 
-assert_checkequal(f.children.type, ["Axes" "uicontrol" "uicontrol" "Axes"]')
+
+assert_checkequal(f.children(1).children.type, ["Axes" "Axes"]');
+assert_checkequal(f.children(1).children.title.text, ["sin" "sinc"]');
+assert_checkequal(f.children(2).children.type, ["Axes" "Axes" "Axes"]');
+assert_checkequal(f.children(2).children.title.text, ["cosh" "sinh" "tanh"]');
+assert_checkequal(f.children(3).children, []);
