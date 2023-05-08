@@ -31,7 +31,7 @@
         <para>
             <warning>
                 <literal>demo_begin()</literal> est obsolète. Elle sera retirée de Scilab
-                2025.0.0 (octobre 2024). Alternativement, l'utilisation de
+                2025.0.0. Alternativement, l'utilisation de
                 <literal>demo_run(…)</literal> est conseillée.
             </warning>
         </para>

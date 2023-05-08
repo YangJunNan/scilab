@@ -32,7 +32,7 @@
         <para>
             <warning>
                 <literal>demo_end()</literal> is obsolete. It will be removed from Scilab
-                2025.0.0 (october 2024). Please use <literal>demo_run(…)</literal> instead.
+                2025.0.0. Please use <literal>demo_run(…)</literal> instead.
             </warning>
         </para>
         <para>

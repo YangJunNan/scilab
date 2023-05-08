@@ -30,7 +30,7 @@
         <para>
             <warning>
                 <literal>demo_compiler()</literal> is obsolete. It will be removed from Scilab
-                2025.0.0 (october 2024).
+                2025.0.0.
                 Please use <literal>demo_run(…,"needCompiler")</literal> instead.
             </warning>
         </para>
