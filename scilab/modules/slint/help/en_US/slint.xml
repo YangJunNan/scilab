@@ -23,10 +23,13 @@
         <title>Calling Sequence</title>
         <synopsis>
             slint(files)
-            slint(files, out)
+            slint(files, conf, %t)
+
+            slint(files, resFilename)
             slint(files, conf, resFilename)
-            out = slint(files, conf, print)
-            out = slint(files, print)
+
+            out = slint(files)
+            out = slint(files, conf)
         </synopsis>
     </refsynopsisdiv>
     <refsection>
