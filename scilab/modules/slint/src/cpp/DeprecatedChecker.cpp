@@ -95,6 +95,7 @@ std::unordered_map<std::wstring, std::wstring> DeprecatedChecker::initDep()
     // Scilab 2023.1.0 => 2025.0.0
     map.emplace(L"getURL", L"http_get");
     map.emplace(L"splitURL", L"url_split");
+    map.emplace(L"sound", L"playsnd");
 
     // Scilab 2023.0.0 => 2024.0.0
     map.emplace(L"xget", L"");

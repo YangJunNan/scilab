@@ -34,6 +34,7 @@ Obsolete functions or features
 All these functions and features will be removed in Scilab 2025.0.0 (October 2024):
 * `getURL()`: Please use `http_get()` instead.
 * `splitURL()`: Please use `url_split()` instead.
+* `sound()`: Please use `playsnd()` instead.
 * <TODO>
 
 
@@ -73,6 +74,7 @@ Bug Fixes
 * [#15075](https://gitlab.com/scilab/scilab/-/issues/15075): `read` was slow when reading an unknown number of lines (dims == -1).
 * [#13307](https://gitlab.com/scilab/scilab/-/issues/13307): Clicking on the same item from a listbox a second time did not trigger the callback.
 * [#15709](https://gitlab.com/scilab/scilab/-/issues/15709): `tbx_make(.,"help")` needed a `languages` option to target building to some chosen languages.
+* [#16136](https://gitlab.com/scilab/scilab/-/issues/16136): `sound()` is a useless wrapper of `playsnd()`. It needed to be declared obsolete before forthcoming removal.
 * [#16442](https://gitlab.com/scilab/scilab/-/issues/16442): `splitURL` moved to webtools module and renamed to `url_split`.
 * [#16685](https://gitlab.com/scilab/scilab/-/issues/16685): `asciimat()` now belongs to the `m2sci` module, where its code, pages and tests should be.
 * [#16804](https://gitlab.com/scilab/scilab/-/issues/16804): `[s,m]=assert_checkequal(1,%z)` yielded an error instead of silently returning the error message in `m`.
