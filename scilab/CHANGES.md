@@ -25,8 +25,13 @@ For a high-level description of the main new features of this release, please co
 [4]: modules/helptools/data/pages/homepage-en_US.html
 
 In summary, the main new features and additions are:
+* `edit_curv()` is upgraded. New implemented features:
+  - Undo / Redo actions.
+  - Deletion of points.
+  - Editing a curve of given (customized) handle.
+  - Editing a curve of given handle.
+  - Editing in a given axes, persistent when leaving.
 * <TODO>
-
 
 Obsolete functions or features
 ------------------------------
@@ -64,6 +69,7 @@ Bug Fixes
 ---------
 ### Bugs fixed in 2023.1.0:
 
+* __add your bug fix here and keep this line__
 * [#3666](https://gitlab.com/scilab/scilab/-/issues/3666): `input()` badly reencoded UTF-8 input strings
 * [#8666](https://gitlab.com/scilab/scilab/-/issues/8666): Linear algebra demonstration failed with xerbla error.
 * [#8812](https://gitlab.com/scilab/scilab/-/issues/8812): Multi-selection in a listbox now works when `max - min` is greater than 1.
@@ -73,11 +79,13 @@ Bug Fixes
 * [#15075](https://gitlab.com/scilab/scilab/-/issues/15075): `read` was slow with dims == -1.
 * [#15075](https://gitlab.com/scilab/scilab/-/issues/15075): `read` was slow when reading an unknown number of lines (dims == -1).
 * [#13307](https://gitlab.com/scilab/scilab/-/issues/13307): Clicking on the same item from a listbox a second time did not trigger the callback.
+* [#13392](https://gitlab.com/scilab/scilab/-/issues/13392): `edit_curv()`: `Undo` could cancel only the very last action. There was no `Redo` action.
 * [#15709](https://gitlab.com/scilab/scilab/-/issues/15709): `tbx_make(.,"help")` needed a `languages` option to target building to some chosen languages.
 * [#16136](https://gitlab.com/scilab/scilab/-/issues/16136): `sound()` is a useless wrapper of `playsnd()`. It needed to be declared obsolete before forthcoming removal.
 * [#16442](https://gitlab.com/scilab/scilab/-/issues/16442): `splitURL` moved to webtools module and renamed to `url_split`.
 * [#16685](https://gitlab.com/scilab/scilab/-/issues/16685): `asciimat()` now belongs to the `m2sci` module, where its code, pages and tests should be.
 * [#16804](https://gitlab.com/scilab/scilab/-/issues/16804): `[s,m]=assert_checkequal(1,%z)` yielded an error instead of silently returning the error message in `m`.
+* [#16810](https://gitlab.com/scilab/scilab/-/issues/16810): `edit_curv()` needed to be fixed and upgraded.
 * [#16868](https://gitlab.com/scilab/scilab/-/issues/16868): `justify(hypermat,..)` processed only the first page `hypermat(:,:,1)`.
 * [#16872](https://gitlab.com/scilab/scilab/-/issues/16872): `cat()` did not apply `[,]` and `[;]` input transtyping rules.
 * [#16877](https://gitlab.com/scilab/scilab/-/issues/16877): `cellstr()` & `iscellstr()` now belong to the `m2sci` module, where their code, pages and tests should be.
@@ -112,6 +120,8 @@ Bug Fixes
 * [#17010](https://gitlab.com/scilab/scilab/-/issues/17010): `slint` was overwriting the config file.
 * [#17011](https://gitlab.com/scilab/scilab/-/issues/17011): `Matplot` crashed because of missing `rect` input argument.
 * [#17041](https://gitlab.com/scilab/scilab/-/issues/17041): Wrong error message when calling `mopen` in read mode for a new file.
+* [#13392](https://gitlab.com/scilab/scilab/-/issues/13392): `edit_curv()`: `Undo` could cancel only the very last action. There was no `Redo` action.
+* [#16810](https://gitlab.com/scilab/scilab/-/issues/16810): `edit_curv()` needed to be fixed and upgraded.
 
 * __add your bug fix here and keep this line__
 
