@@ -94,14 +94,10 @@ publish_help_jar:
       - public
 
 # start scilab on multiple distro 
-linux_startup:
+.linux_startup:
   stage: postbuild
   tags: [x86_64-linux-gnu, docker, scilab]
   image: ${CI_REGISTRY_IMAGE}/$DISTRO:$DOCKER_TAG
-  needs:
-    - linux_build_mr
-    - linux_set_env
-  rules: *MR_RULES
   script:
     - tar -xJf "${SCI_VERSION_STRING}.bin.${ARCH}.tar.xz" -C $HOME
     - cd $HOME
@@ -116,3 +112,26 @@ linux_startup:
           - "fedora-37"
           - "debian-11"
         MODE: ["-nwni", "-nw"]
+
+linux_startup_mr:
+  extends: .linux_startup
+  needs:
+    - linux_build_mr
+    - linux_set_env
+  rules: *MR_RULES
+
+linux_startup_nightly:
+  extends: .linux_startup
+  needs:
+    - linux_build_nightly
+    - linux_set_env
+  rules:
+    - if: $CI_PIPELINE_SOURCE == 'schedule'
+
+linux_startup_release:
+  extends: .linux_startup
+  needs:
+    - linux_build_release
+    - linux_set_env
+  rules:
+    - if: $CI_COMMIT_TAG
