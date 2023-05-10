@@ -75,10 +75,10 @@ Bug Fixes
 * [#8812](https://gitlab.com/scilab/scilab/-/issues/8812): Multi-selection in a listbox now works when `max - min` is greater than 1.
 * [#8917](https://gitlab.com/scilab/scilab/-/issues/8917): `write(filename,..)` could not overwrite an existing file.
 * [#12391](https://gitlab.com/scilab/scilab/-/issues/12391): `findobj("figure_id", num)` changed current figure (returned by `gcf()`).
-* [#14358](https://gitlab.com/scilab/scilab/-/issues/14358): Black Hole demo produced an error java, clicking on "Clear" button.
-* [#15075](https://gitlab.com/scilab/scilab/-/issues/15075): `read` was slow with dims == -1.
-* [#15075](https://gitlab.com/scilab/scilab/-/issues/15075): `read` was slow when reading an unknown number of lines (dims == -1).
 * [#13307](https://gitlab.com/scilab/scilab/-/issues/13307): Clicking on the same item from a listbox a second time did not trigger the callback.
+* [#14069](https://gitlab.com/scilab/scilab/-/issues/14069): Autosave in SciNotes did not work as intended for the "source file directory" option.
+* [#14358](https://gitlab.com/scilab/scilab/-/issues/14358): Black Hole demo produced an error java, clicking on "Clear" button.
+* [#15075](https://gitlab.com/scilab/scilab/-/issues/15075): `read` was slow when reading an unknown number of lines (dims == -1).
 * [#13392](https://gitlab.com/scilab/scilab/-/issues/13392): `edit_curv()`: `Undo` could cancel only the very last action. There was no `Redo` action.
 * [#15709](https://gitlab.com/scilab/scilab/-/issues/15709): `tbx_make(.,"help")` needed a `languages` option to target building to some chosen languages.
 * [#16136](https://gitlab.com/scilab/scilab/-/issues/16136): `sound()` is a useless wrapper of `playsnd()`. It needed to be declared obsolete before forthcoming removal.
