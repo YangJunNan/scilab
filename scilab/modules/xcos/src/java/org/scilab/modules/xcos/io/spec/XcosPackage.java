@@ -358,6 +358,7 @@ public class XcosPackage {
 
     public void setContent(XcosDiagram content) {
         this.content = content;
+        content.setSavedFile(file);
     }
 
     public XcosDiagram getContent() {

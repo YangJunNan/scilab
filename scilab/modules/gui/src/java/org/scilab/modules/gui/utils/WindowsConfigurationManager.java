@@ -1163,6 +1163,7 @@ public class WindowsConfigurationManager implements XConfigurationListener {
             try {
                 startRestoration(uuid);
             } catch (Exception e) {
+                e.printStackTrace();
                 killScilab();
             }
         } else {
@@ -1173,6 +1174,7 @@ public class WindowsConfigurationManager implements XConfigurationListener {
                     }
                 });
             } catch (Exception e) {
+                e.printStackTrace();
                 killScilab();
             }
         }

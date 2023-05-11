@@ -86,6 +86,7 @@ Bug Fixes
 * [#16442](https://gitlab.com/scilab/scilab/-/issues/16442): `splitURL` moved to webtools module and renamed to `url_split`.
 * [#16685](https://gitlab.com/scilab/scilab/-/issues/16685): `asciimat()` now belongs to the `m2sci` module, where its code, pages and tests should be.
 * [#16804](https://gitlab.com/scilab/scilab/-/issues/16804): `[s,m]=assert_checkequal(1,%z)` yielded an error instead of silently returning the error message in `m`.
+* [#16838](https://gitlab.com/scilab/scilab/-/issues/16838): Xcos window were not restore properly from `windowsConfiguration.xml`. 
 * [#16810](https://gitlab.com/scilab/scilab/-/issues/16810): `edit_curv()` needed to be fixed and upgraded.
 * [#16868](https://gitlab.com/scilab/scilab/-/issues/16868): `justify(hypermat,..)` processed only the first page `hypermat(:,:,1)`.
 * [#16872](https://gitlab.com/scilab/scilab/-/issues/16872): `cat()` did not apply `[,]` and `[;]` input transtyping rules.

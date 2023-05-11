@@ -52,6 +52,18 @@
         </DockingPortNode>
     </Window>
     <Xcos factory="org.scilab.modules.xcos.Xcos$XcosTabFactory" height="382" load="Xcos" uuid="xcos-default-tab" width="574" winuuid="xcos-default-window"/>
+    <Window height="500" uuid="xcos-viewport-default-window" width="300" x="1182" y="40" state="0">
+        <DockingPortNode>
+            <DockableNode dockableId="xcos-viewport-default-tab"/>
+        </DockingPortNode>
+    </Window>
+    <Xcos factory="org.scilab.modules.xcos.Xcos$XcosTabFactory" height="382" load="Xcos" uuid="xcos-viewport-default-tab" width="574" winuuid="xcos-viewport-default-window"/>
+    <Window height="500" uuid="xcos-browser-default-window" width="300" x="1182" y="40" state="0">
+        <DockingPortNode>
+            <DockableNode dockableId="xcos-browser-default-tab"/>
+        </DockingPortNode>
+    </Window>
+    <Xcos factory="org.scilab.modules.xcos.Xcos$XcosTabFactory" height="382" load="Xcos" uuid="xcos-browser-default-tab" width="574" winuuid="xcos-browser-default-window"/>
     <HelpBrowser factory="org.scilab.modules.gui.tabfactory.HelpBrowserTabFactory" height="645" load="" uuid="d1ef5062-533e-4aee-b12a-66740820d6d1" width="1068" winuuid="584a15f5-8692-469f-9369-33980b55e9a3"/>
     <Window state="0" uuid="584a15f5-8692-469f-9369-33980b55e9a3" height="750" width="900" x="100" y="100">
         <DockingPortNode>
