@@ -118,7 +118,7 @@ public final class Jxgetmouse {
     /**
      * @return the WindowsID
      */
-    public static Integer getWindowsID() {
+    public static int getWindowsID() {
         return ClickInfos.getInstance().getWindowID();
     }
 
