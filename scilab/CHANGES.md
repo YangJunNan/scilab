@@ -90,6 +90,7 @@ Bug Fixes
 * [#16872](https://gitlab.com/scilab/scilab/-/issues/16872): `cat()` did not apply `[,]` and `[;]` input transtyping rules.
 * [#16877](https://gitlab.com/scilab/scilab/-/issues/16877): `cellstr()` & `iscellstr()` now belong to the `m2sci` module, where their code, pages and tests should be.
 * [#16878](https://gitlab.com/scilab/scilab/-/issues/16878): `or(%i, dim)` and `and(%i, dim)` yielded an error.
+* [#16939](https://gitlab.com/scilab/scilab/-/issues/16993): `getversion()` did not detect that Scilab was built using `clang`.
 * [#16906](https://gitlab.com/scilab/scilab/-/issues/16906): In the `param3d()` documentation, the descriptions of alpha and theta were inverted.
 * [#16941](https://gitlab.com/scilab/scilab/-/issues/16941): `fplot3d(xr,yr,f,theta,..)` ignored theta.
 * [#16951](https://gitlab.com/scilab/scilab/-/issues/16951): Javasci failed to load Scilab in nwni mode.
