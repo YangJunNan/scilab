@@ -15,4 +15,4 @@
 // <-- Short Description -->
 // libraryinfo() yields 0x0 matrix of strings for lib without macro
 
- assert_checktrue(isempty(libraryinfo("webtoolslib")))
+ assert_checktrue(isempty(libraryinfo("astlib")))

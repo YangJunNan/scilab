@@ -13,7 +13,7 @@
 // Unitary test for conversion of Matlab function: GRAYMON
 
 Syntaxes = [
-    "graymon"   "gdf().color_map = [0.75;0.5;0.25] * ones(1,3); "
+    "graymon"   "gdf().color_map = [0.75;0.5;0.25] * ones(1,3);"
     ];
 
 mfile = TMPDIR + "/_graymon";
