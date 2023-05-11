@@ -62,8 +62,8 @@ SCIFILECONTENTSREF=["";
 "      J = [1;2;3];  G = [4;5;6];";
 "    else";
 "      J = [1;2;3];  G = [4;5;6];";
-"    end;";
-"  end;";
-"end;"];
+"    end";
+"  end";
+"end"];
 
 if or(SCIFILECONTENTSREF<>SCIFILECONTENTS) then pause,end

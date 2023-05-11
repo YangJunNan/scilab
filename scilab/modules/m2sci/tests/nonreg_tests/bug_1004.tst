@@ -50,6 +50,6 @@ SCIFILECONTENTSREF=[
     "";
     "for i = 1:5";
     "";
-    "end;"]
+    "end"]
 
 if or(SCIFILECONTENTSREF<>SCIFILECONTENTS) then pause,end
