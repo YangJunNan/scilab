@@ -28,7 +28,8 @@ function fig_handle = createMainWindow(axes_size, fig_name, tag_name)
             "axes_size", axes_size, ...
             "figure_name", fig_name, ...
             "tag", tag_name);
-
+    end
+    
     //The plot will be in the top 3/4 of the figure
     a = gca();
     a.axes_bounds = [0 0 1 2/3];
