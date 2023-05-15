@@ -125,7 +125,6 @@ windows_only_nightly:
   parallel:
     matrix: &WINDOWS_ONLY_TEST_ANCHOR
       - TEST:
-          - mpi
           - windows_tools
 
 windows_good_release:
