@@ -131,7 +131,7 @@ public class SwingScilabListBox extends JScrollPane implements SwingViewObject, 
         getList().setCellRenderer(listRenderer);
 
         getList().addMouseListener(new MouseAdapter() {
-            public void mouseClicked(MouseEvent e) {
+            public void mouseReleased(MouseEvent e) {
                 //only mouse left click
                 if (e.getButton() != MouseEvent.BUTTON1 || e.getClickCount() != 1) {
                     return;
@@ -155,7 +155,7 @@ public class SwingScilabListBox extends JScrollPane implements SwingViewObject, 
                     hasControl = true;
                 }
 
-               //only up,down, end, home, pageup and pagedown change listbox selection
+               //only up, down, end, home, pageup and pagedown change listbox selection
                int key = e.getKeyCode();
                 if (key != KeyEvent.VK_UP &&
                     key != KeyEvent.VK_DOWN &&
