@@ -97,7 +97,7 @@
                     </itemizedlist>
                 </listitem>
             </itemizedlist>
-            If <literal>k_input</literal> is empty or made of blanks, <varname>x</varname> is set to
+            If <literal>keyboard_input</literal> is empty or made of blanks, <varname>x</varname> is set to
             <literal>[]</literal>.
         </para>
         <para>

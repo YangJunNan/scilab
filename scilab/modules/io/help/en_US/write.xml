@@ -167,4 +167,15 @@ write('foo',A)
             </member>
         </simplelist>
     </refsection>
+    <refsection role="history">
+        <title>History</title>
+        <revhistory>
+            <revision>
+                <revnumber>2023.1</revnumber>
+                <revdescription>
+                    write(…) overwrites existing file.
+                </revdescription>
+            </revision>
+        </revhistory>
+    </refsection>
 </refentry>
