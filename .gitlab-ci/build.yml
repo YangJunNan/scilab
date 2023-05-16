@@ -24,7 +24,7 @@
     # kill all Scilab older than 3 days
     - Get-Process *scilex* | Where StartTime -lt (Get-Date).AddDays(-1) | Stop-Process -Force
     # Uninstall Scilab older than 3 day
-    - Get-ChildItem -Path "$SCILAB_COMMON_PATH/*/install/unins000.exe" | Where-Object {($_.LastWriteTime -lt (Get-Date).AddDays(-3))} | foreach { Start-Process $_ -ArgumentList /SILENT,/SP- -NoNewWindow -Wait }
+    - Get-ChildItem -Path "$SCILAB_COMMON_PATH/*/install/unins000.exe" | Where-Object {($_.LastWriteTime -lt (Get-Date).AddDays(-3))} | foreach { Start-Process $_ -ArgumentList /VERYSILENT,SP-,/SUPPRESSMSGBOXES,/FORCECLOSEAPPLICATIONS  -NoNewWindow -Wait }
     # Remove folder older than 3 day
     - Get-ChildItem -Path "$SCILAB_COMMON_PATH/*" | Where-Object {($_.LastWriteTime -lt (Get-Date).AddDays(-3))} | Remove-Item -Recurse
     # Remove TMPDIR older than 3 day
