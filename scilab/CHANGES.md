@@ -31,6 +31,7 @@ In summary, the main new features and additions are:
   - Editing a curve of given (customized) handle.
   - Editing a curve of given handle.
   - Editing in a given axes, persistent when leaving.
+* Use `curl` as default on `atomsDownload` for all OS to handle local file repositories
 * <TODO>
 
 Obsolete functions or features
