@@ -14,7 +14,7 @@
 
 package org.scilab.forge.scirenderer.implementation.jogl.picking;
 
-import com.jogamp.opengl.GL;
+import javax.media.opengl.GL;
 
 /**
  * @author Pierre Lando
