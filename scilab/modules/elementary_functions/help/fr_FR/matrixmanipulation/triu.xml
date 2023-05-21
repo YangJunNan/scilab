@@ -1,45 +1,256 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<refentry xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svg="http://www.w3.org/2000/svg" xmlns:ns5="http://www.w3.org/1999/xhtml" xmlns:mml="http://www.w3.org/1998/Math/MathML" xmlns:db="http://docbook.org/ns/docbook" xmlns:scilab="http://www.scilab.org" xml:id="triu" xml:lang="fr">
+<!--
+ * Scilab ( http://www.scilab.org/ ) - This file is part of Scilab
+ * Copyright (C) 2008 - INRIA
+ * Copyright (C) 2012 - 2016 - Scilab Enterprises
+ * Copyright (C) 2022 - Samuel GOUGEON
+ *
+ * This file is hereby licensed under the terms of the GNU GPL v2.0,
+ * pursuant to article 5.3.4 of the CeCILL v.2.1.
+ * This file was originally licensed under the terms of the CeCILL v2.1,
+ * and continues to be available under such terms.
+ * For more information, see the COPYING file which you should have received
+ * along with this program.
+ *
+ -->
+<refentry xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:svg="http://www.w3.org/2000/svg" xmlns:ns5="http://www.w3.org/1999/xhtml"
+          xmlns:mml="http://www.w3.org/1998/Math/MathML" xmlns:db="http://docbook.org/ns/docbook"
+          xmlns:scilab="http://www.scilab.org" xml:id="triu" xml:lang="fr">
     <refnamediv>
         <refname>triu</refname>
-        <refpurpose>partie triangulaire supérieure d'une matrice</refpurpose>
+        <refpurpose>
+            partie triangulaire supérieure d'une matrice
+        </refpurpose>
     </refnamediv>
     <refsynopsisdiv>
         <title>Séquence d'appel</title>
-        <synopsis>triu(x [,k])</synopsis>
+        <synopsis>
+            u = triu(x)
+            u = triu(x, k)
+        </synopsis>
     </refsynopsisdiv>
     <refsection>
-        <title>Paramètres</title>
+        <title>Arguments</title>
         <variablelist>
             <varlistentry>
                 <term>x</term>
                 <listitem>
-                    <para>matrice de tout type</para>
+                    matrice de booléens, nombres, polynômes, fractions rationnelles, ou texte.
+                    <para/>
                 </listitem>
             </varlistentry>
             <varlistentry>
                 <term>k</term>
                 <listitem>
-                    <para>entier (0 par défaut)</para>
+                    entier : n° de la diagonale de référence sous laquelle les éléments sont mis
+                    à 0, %F, ou "".
+                    <literal>k=0</literal> par défaut, désigne la diagonale principale.
+                    Les diagonales sont numérotées selon k > 0 au dessus de la diagonale principale,
+                    et selon k &lt; 0 en dessous.
+                    <para/>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term>u</term>
+                <listitem>
+                    matrice du type et de la taille de <varname>x</varname>.
+                    <para/>
                 </listitem>
             </varlistentry>
         </variablelist>
     </refsection>
     <refsection>
         <title>Description</title>
-        <para>Partie triangulaire supérieure d'une matrice.
-            <literal>triu(x,k)</literal> est composée des termes au dessus d'une
-            diagonale : k&gt;0 (diagonale supérieure) et k&lt;0 (diagonale sous la
-            diagonale principale).
+        <para>
+            <emphasis role="bold">triu(x)</emphasis> met à 0, %f ou "" tous les elements de
+            <varname>x</varname> situés sous la diagonale principale, et donne la matrice résultante.
+        </para>
+        <para>
+            <emphasis role="bold">triu(x, k)</emphasis> met à 0, %f ou "" tous les elements de
+            <varname>x</varname> situés sous la diagonale n°<varname>k</varname> au dessus de la
+            diagonale principale, et donne la matrice résultante.
         </para>
     </refsection>
     <refsection>
         <title>Exemples</title>
+        <para>
+            Avec des matrices carrées :
+        </para>
         <programlisting role="example"><![CDATA[
-s=poly(0,'s');
-triu([s,s;s,1])
-triu([1/s,1/s;1/s,1])
- ]]></programlisting>
+a = matrix(1:16,4,4)
+triu(a)
+
+triu(a, 1)
+triu(a, -1)
+     ]]></programlisting>
+        <table border="0">
+        <tr>
+            <td>
+            <screen><![CDATA[
+--> a = matrix(1:16,4,4)
+ a  =
+   1.   5.   9.    13.
+   2.   6.   10.   14.
+   3.   7.   11.   15.
+   4.   8.   12.   16.
+
+--> triu(a)
+ ans  =
+   1.   5.   9.    13.
+   0.   6.   10.   14.
+   0.   0.   11.   15.
+   0.   0.   0.    16.
+]]></screen>
+            </td>
+            <td></td>
+            <td>
+            <screen><![CDATA[
+--> triu(a, 1)
+ ans  =
+   0.   5.   9.    13.
+   0.   0.   10.   14.
+   0.   0.   0.    15.
+   0.   0.   0.    0.
+
+--> triu(a, -1)
+ ans  =
+   1.   5.   9.    13.
+   2.   6.   10.   14.
+   0.   7.   11.   15.
+   0.   0.   12.   16.
+]]></screen>
+            </td>
+        </tr>
+        </table>
+        <para>
+            Avec des matrices rectangulaires :
+        </para>
+        <programlisting role="example"><![CDATA[
+a = int8(matrix(1:24,4,6))
+triu(a)
+
+triu(a, 2)
+triu(a, -1)
+     ]]></programlisting>
+        <table border="0">
+        <tr>
+            <td>
+            <screen><![CDATA[
+--> a = int8(matrix(1:24,4,6))
+ a  =
+  1  5   9  13  17  21
+  2  6  10  14  18  22
+  3  7  11  15  19  23
+  4  8  12  16  20  24
+
+--> triu(a)
+ ans  =
+  1  5   9  13  17  21
+  0  6  10  14  18  22
+  0  0  11  15  19  23
+  0  0   0  16  20  24
+]]></screen>
+            </td>
+            <td></td>
+            <td>
+            <screen><![CDATA[
+--> triu(a, 2)
+ ans  =
+  0  0  9  13  17  21
+  0  0  0  14  18  22
+  0  0  0   0  19  23
+  0  0  0   0   0  24
+
+--> triu(a, -1)
+ ans  =
+  1  5   9  13  17  21
+  2  6  10  14  18  22
+  0  7  11  15  19  23
+  0  0  12  16  20  24
+]]></screen>
+            </td>
+        </tr>
+        </table>
+        <para>
+            Avec des matrices de types réguliers quelconques :
+        </para>
+        <programlisting role="example"><![CDATA[
+a = ones(4,5, "boolean")        // booléens
+triu(a, 1)
+
+a = string(matrix(1:16,4,4))    // texte
+triu(a)
+
+a = %z^matrix(1:16,4,4)         // polynômes
+triu(a)
+
+a = 1./%z^matrix(1:10,2,5)      // fractions rationnelles
+triu(a, 2)
+     ]]></programlisting>
+        <screen><![CDATA[
+--> a = ones(4,5, "boolean")        // booléens
+ a  =
+  T T T T T
+  T T T T T
+  T T T T T
+  T T T T T
+
+--> triu(a, 1)
+ ans  =
+  F T T T T
+  F F T T T
+  F F F T T
+  F F F F T
+
+--> a = string(matrix(1:16,4,4))    // texte
+ a  =
+  "1"  "5"  "9"   "13"
+  "2"  "6"  "10"  "14"
+  "3"  "7"  "11"  "15"
+  "4"  "8"  "12"  "16"
+
+--> triu(a)
+ ans  =
+  "1"  "5"  "9"   "13"
+  ""   "6"  "10"  "14"
+  ""   ""   "11"  "15"
+  ""   ""   ""    "16"
+
+--> a = %z^matrix(1:16,4,4)         // polynômes
+ a  =
+  z   z⁵  z⁹   z¹³
+  z²  z⁶  z¹⁰  z¹⁴
+  z³  z⁷  z¹¹  z¹⁵
+  z⁴  z⁸  z¹²  z¹⁶
+
+--> triu(a)
+ ans  =
+  z  z⁵  z⁹   z¹³
+  0  z⁶  z¹⁰  z¹⁴
+  0  0   z¹¹  z¹⁵
+  0  0   0    z¹⁶
+
+--> a = 1./%z^matrix(1:10,2,5)      // fractions rationnelles
+ a  =
+   1   1   1   1   1
+   -   --  --  --  --
+   z   z³  z⁵  z⁷  z⁹
+
+   1   1   1   1    1
+   --  --  --  --  ---
+   z²  z⁴  z⁶  z⁸  z¹⁰
+
+--> triu(a, 2)
+ ans  =
+   0  0  1   1   1
+   -  -  --  --  --
+   1  1  z⁵  z⁷  z⁹
+
+   0  0  0   1    1
+   -  -  -   --  ---
+   1  1  1   z⁸  z¹⁰
+]]></screen>
     </refsection>
     <refsection role="see also">
         <title>Voir aussi</title>
@@ -48,13 +259,13 @@ triu([1/s,1/s;1/s,1])
                 <link linkend="tril">tril</link>
             </member>
             <member>
-                <link linkend="ones">ones</link>
+                <link linkend="diag">diag</link>
             </member>
             <member>
                 <link linkend="eye">eye</link>
             </member>
             <member>
-                <link linkend="diag">diag</link>
+                <link linkend="ones">ones</link>
             </member>
         </simplelist>
     </refsection>
