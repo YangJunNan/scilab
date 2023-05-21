@@ -89,6 +89,7 @@ Bug Fixes
 * [#16804](https://gitlab.com/scilab/scilab/-/issues/16804): `[s,m]=assert_checkequal(1,%z)` yielded an error instead of silently returning the error message in `m`.
 * [#16838](https://gitlab.com/scilab/scilab/-/issues/16838): Xcos window were not restore properly from `windowsConfiguration.xml`. 
 * [#16810](https://gitlab.com/scilab/scilab/-/issues/16810): `edit_curv()` needed to be fixed and upgraded.
+* [#16859](https://gitlab.com/scilab/scilab/-/issues/16859): TKSCALE example had a flash duration. END_c and ENDBLK blocks were in the Sinks and/or Misc palettes instead of in Events.
 * [#16868](https://gitlab.com/scilab/scilab/-/issues/16868): `justify(hypermat,..)` processed only the first page `hypermat(:,:,1)`.
 * [#16872](https://gitlab.com/scilab/scilab/-/issues/16872): `cat()` did not apply `[,]` and `[;]` input transtyping rules.
 * [#16877](https://gitlab.com/scilab/scilab/-/issues/16877): `cellstr()` & `iscellstr()` now belong to the `m2sci` module, where their code, pages and tests should be.
@@ -128,5 +129,3 @@ Bug Fixes
 * [#16810](https://gitlab.com/scilab/scilab/-/issues/16810): `edit_curv()` needed to be fixed and upgraded.
 
 * __add your bug fix here and keep this line__
-
-

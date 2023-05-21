@@ -28,7 +28,7 @@
         xmlns:scilab="http://www.scilab.org" xml:id="END_c" xml:lang="en_US">
     <refnamediv>
         <refname>END_c</refname>
-        <refpurpose>END_c block</refpurpose>
+        <refpurpose>Conditionally defines a shortened simulation duration</refpurpose>
     </refnamediv>
     <refsection>
         <title>Block Screenshot</title>
@@ -67,20 +67,14 @@
 
     <refsection id="Description_END_c">
         <title>Description</title>
-        <para>That block increases the current time to the final integration time
-            of the simulation when it is activated :
-        </para>
-        <emphasis>T<subscript>f</subscript> = T<subscript>cur</subscript></emphasis>
         <para>
-            with <emphasis role="bold">T<subscript>cur</subscript></emphasis> the activation date of
-            the block and <emphasis role="bold">T<subscript>f</subscript></emphasis> the final
-            integration time defined in the in the Setup item of the simulate Menu
-            (scs_m.props.tf).
+            When it is activated by the input event, this block resets the end of the simulation
+            to the specified time shorter than the value defined in the Simulation => Setup
+            'final integration time' (scs_m.props.tf).
         </para>
         <para>
-            Note that the 'Final simulation time' item (on diagram settings) always end the
-            simulation at the specified time. This block should be configured to end the
-            simulation before this setting.
+            Note that specifying a value greater than the 'Final simulation time' does NOT
+            extend this one. This has no effect.
         </para>
     </refsection>
 
@@ -95,11 +89,11 @@
         <itemizedlist>
             <listitem>
                 <para>
-                    <emphasis role="bold">Final simulation time</emphasis>
+                    <emphasis role="bold">Shortened simulation duration</emphasis>
                 </para>
                 <para>That parameter is a date for an initial output event. By using a
                     feed back from the event output port to the event input port, then
-                    that block can himself end the simulation at the time defined by this
+                    that block can end the simulation at the time defined by this
                     parameter.
                 </para>
                 <para>Properties : Type 'vec' of size 1.</para>
@@ -168,10 +162,10 @@
 
     <refsection id="Example_END_c">
         <title>Example</title>
-        <link type="scilab" linkend="scilab.xcos/xcos/examples/sinks_pal/END_c_Example.zcos">
+        <link type="scilab" linkend="scilab.xcos/xcos/examples/events_pal/END_c_Example.zcos">
             <inlinemediaobject>
                 <imageobject>
-                    <imagedata align="center" fileref="../../../../examples/sinks_pal/END_c_Example.zcos" valign="middle"/>
+                    <imagedata align="center" fileref="../../../../examples/events_pal/END_c_Example.zcos" valign="middle"/>
                 </imageobject>
             </inlinemediaobject>
         </link>
