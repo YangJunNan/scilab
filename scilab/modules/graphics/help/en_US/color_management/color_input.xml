@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ * Scilab ( https://www.scilab.org/ ) - This file is part of Scilab
+ * Copyright (C) 2023 - Samuel GOUGEON
+ *
+ * This file is hereby licensed under the terms of the GNU GPL v2.0,
+ * pursuant to article 5.3.4 of the CeCILL v.2.1.
+ * This file was originally licensed under the terms of the CeCILL v2.1,
+ * and continues to be available under such terms.
+ * For more information, see the COPYING file which you should have received
+ * along with this program.
+ *
+ -->
+<refentry xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:svg="http://www.w3.org/2000/svg" xmlns:ns5="http://www.w3.org/1999/xhtml"
+          xmlns:mml="http://www.w3.org/1998/Math/MathML" xmlns:db="http://docbook.org/ns/docbook"
+          xmlns:scilab="http://www.scilab.org" xml:id="color_input" xml:lang="en">
+    <refnamediv>
+        <refname>color_input</refname>
+        <refpurpose>
+            checks the input against chosen color formats
+        </refpurpose>
+    </refnamediv>
+    <refsynopsisdiv>
+        <title>Syntax</title>
+        <synopsis>
+            colors = color_input(C)
+            colors = color_input(C, acceptedFormats)
+        </synopsis>
+    </refsynopsisdiv>
+    <refsection>
+        <title>Arguments</title>
+        <variablelist>
+            <varlistentry>
+                <term>C</term>
+                <listitem>
+                scalar, vector, matrix.. of color identifiers:
+                <itemizedlist>
+                    <listitem>
+                        integers: indices of colors in the colormap of the current figure,
+                        or special indices -2 or -1.
+                    </listitem>
+                    <listitem>
+                        strings: can mix names of predefined colors
+                        (see <link linkend="color_list">color list</link>) and
+                        <literal>"#RRGGBB"</literal>-like identifiers.
+                        Shortcuts from the standard list <literal>"red" "green" "blue"
+                        "cyan" "magenta" "yellow" "black" "white" "k"</literal> are supported,
+                        like <literal>"ma"</literal> for <literal>"magenta"</literal> or
+                        <literal>"b"</literal> for <literal>"blue"</literal>.
+                    </listitem>
+                    <listitem>
+                        (N×3) [r g b] matrix of real numbers, with <literal>0 ≤ r,g,b ≤ 1</literal>
+                        as in the <literal>gcf().color_map</literal> matrix.
+                    </listitem>
+                </itemizedlist>
+                <para/>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term>acceptedFormats</term>
+                <listitem>
+                    single string made of 0 to 4 characters in any order, among
+                    <table>
+                        <tr><th>"1"</th><td> : indices accepted</td></tr>
+                        <tr><th>"."</th><td> : [r g b] accepted</td></tr>
+                        <tr><th>"#"</th><td> : "#RRGGBB" accepted (case insensitive)</td></tr>
+                        <tr><th>"a"</th><td> : color names accepted</td></tr>
+                    </table>
+                    Default = <literal>"1.#a"</literal>  (all formats accepted)
+                    <para/>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term>colors</term>
+                <listitem>
+                    The format and content of <varname>colors</varname> depends on the
+                    acknowledged identifiers in <varname>C</varname>:
+                    <itemizedlist>
+                        <listitem>
+                            If <varname>C</varname> are indices: <varname>colors</varname>
+                            is a column of color indices with as many elements as in
+                            <varname>C</varname>.
+                            <para/>
+                        </listitem>
+                        <listitem>
+                            Otherwise: <varname>colors</varname> is a (N×3) [r g b] matrix,
+                            with N = number of colors defined in <varname>C</varname>,
+                            and <literal>0 ≤ r,g,b ≤ 1</literal>.
+                            <para/>
+                            If <literal>C(i)</literal> or <literal>C(i,:)</literal> is not a known
+                            color identifier, then <literal>colors(i) = %nan</literal> or
+                            <literal>colors(i,:) = [%nan %nan %nan]</literal>.
+                        </listitem>
+                    </itemizedlist>
+                    <para/>
+                </listitem>
+            </varlistentry>
+        </variablelist>
+    </refsection>
+    <refsection>
+        <title>Description</title>
+        <para>
+            <literal>color_input(C)</literal> checks whether <varname>C</varname> entries
+            are valid color identifiers and returns either corresponding color indices or
+            a matrix of corresponding <literal>[r g b]</literal> intensities.
+        </para>
+        <para>
+            For every entry not known as a valid color identifier, <literal>%nan</literal>
+            or a <literal>[%nan %nan %nan]</literal> row is returned instead of actual color data.
+        </para>
+        <para>
+            <literal>color_input(C, acceptedFormats)</literal> does the same but filters
+            accepted formats of color identifiers: indices, names, "#RRGGBB",
+            or <literal>[r g b]</literal> triplets. Entries that are valid but not for
+            <varname>acceptedFormats</varname> are rejected by returning <literal>%nan</literal>.
+        </para>
+    </refsection>
+    <refsection>
+        <title>Examples</title>
+        <programlisting role="example"><![CDATA[
+color_input([10 -2 2000 -1 -10 0.7 3 7])'
+color_input(["r" "GREEN" "#0000FF" "Pink" "why" "peach puff"])
+color_input([0 0.5 0.7 ; -0.1 0.2 0.5 ; 0.1 0.2 0.3 ; 0 0 -2])
+     ]]></programlisting>
+        <screen><![CDATA[
+--> color_input([10 -2 2000 -1 -10 0.7 3 7])'
+ ans  =
+   10.  -2.   Nan  -1.   Nan   Nan   3.   7.
+
+--> color_input(["r" "GREEN" "#0000FF" "Pink" "why" "peach puff"])
+ ans  =
+   1.    0.          0.
+   0.    1.          0.
+   0.    0.          1.
+   1.    0.7529412   0.7960784
+   Nan   Nan         Nan
+   1.    0.854902    0.7254902
+
+--> color_input([0 0.5 0.7 ; -0.1 0.2 0.5 ; 0.1 0.2 0.3 ; 0 0 -2])
+ ans  =
+   0.    0.5   0.7
+   Nan   Nan   Nan
+   0.1   0.2   0.3
+   Nan   Nan   Nan
+]]></screen>
+        <para>
+            With only valid input identifiers but that not all match accepted formats:
+        </para>
+        <programlisting role="example"><![CDATA[
+color_input([10 -2], "a#.")   // all formats accepted but indices
+color_input(["m" "#0000FF" "peach puff" "yellow"], "a")
+     ]]></programlisting>
+        <screen><![CDATA[
+--> color_input([10 -2], "a#.")   // all formats accepted but indices
+ ans  =
+   Nan
+   Nan
+
+--> color_input(["m" "#0000FF" "peach puff" "yellow"], "a")
+ ans  =
+   1.    0.         1.
+   Nan   Nan        Nan
+   1.    0.854902   0.7254902
+   1.    1.         0.
+]]></screen>
+    </refsection>
+
+    <refsection role="see also">
+        <title>See also</title>
+        <simplelist type="inline">
+            <member>
+                <link linkend="color_list">color_list</link>
+            </member>
+            <member>
+                <link linkend="colormap">colormap</link>
+            </member>
+            <member>
+                <link linkend="uigetcolor">uigetcolor</link>
+            </member>
+        </simplelist>
+    </refsection>
+
+    <refsection role="history">
+        <title>History</title>
+        <revhistory>
+            <revision>
+                <revnumber>2023.1</revnumber>
+                <revdescription>
+                    color_input() introduced.
+                </revdescription>
+            </revision>
+        </revhistory>
+    </refsection>
+</refentry>

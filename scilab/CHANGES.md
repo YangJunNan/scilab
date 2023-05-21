@@ -19,6 +19,8 @@ Please report anything we could have missed, on the [mailing lists][2] or the [b
 
 New features
 ------------
+* `color_input()` checks entries against chosen color formats: indices, [r g b] triplets, color names, or "#RRGGBB" identifiers.
+* <TODO>
 
 For a high-level description of the main new features of this release, please consult the [embedded help][4]. It is also available as the "What's new" page of the help, by simply typing `help` in Scilab console.
 
@@ -127,6 +129,5 @@ Bug Fixes
 * [#13392](https://gitlab.com/scilab/scilab/-/issues/13392): `edit_curv()`: `Undo` could cancel only the very last action. There was no `Redo` action.
 * [#16810](https://gitlab.com/scilab/scilab/-/issues/16810): `edit_curv()` needed to be fixed and upgraded.
 
+* [#17012](https://gitlab.com/scilab/scilab/-/issues/17012): The internal function `iscolor` deserved being renamed and made public and documented.
 * __add your bug fix here and keep this line__
-
-

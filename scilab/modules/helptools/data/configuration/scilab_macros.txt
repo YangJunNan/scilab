@@ -1579,6 +1579,7 @@ checkXYPair
 clf
 colorbar
 colordef
+color_input
 comet
 comet3d
 contour
@@ -1763,7 +1764,6 @@ hex2dec
 ind2sub
 intersect
 isDocked
-iscolor
 iscolumn
 isempty
 isinf
