@@ -154,7 +154,7 @@
                         <link linkend="atomsQuit">atomsQuit</link>
                     </td>
                     <td>
-                        Launch the .quit file of all loaded modules
+                        Unload all loaded modules (run their <literal>unloader.sce</literal>).
                     </td>
                 </tr>
             </informaltable>

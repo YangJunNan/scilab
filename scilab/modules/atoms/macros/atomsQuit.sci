@@ -10,9 +10,11 @@
 // For more information, see the COPYING file which you should have received
 // along with this program.
 
-// Call .quit file of loaded modules
 
 function result = atomsQuit()
+    // Call unloader.sce or .quit file of loaded modules.
+
+    // called by scilab.quit
 
     result = %T;
 
@@ -22,20 +24,16 @@ function result = atomsQuit()
         load("SCI/modules/atoms/macros/atoms_internals/lib");
     end
 
-    // If the autoload system is disabled, no need to continue
+    // Processing. If no module is loaded, the loop is skipped
     // =========================================================================
-    if atomsGetConfig("autoload") == "False" then
-        return;
-    end
-
     atomsModulesLoaded = atomsGetLoaded();
     sizeLoaded = size(atomsModulesLoaded);
+
     // To silently redefine the same quitModule() in the series of .quit files,
     // when several modules are unloaded:
     old_prot = funcprot(0);
 
     for i = 1:sizeLoaded(1)
-
         this_package_name = atomsModulesLoaded(i, 1);
         this_package_path = atomsModulesLoaded(i, 4);
         this_package_version = atomsModulesLoaded(i, 2);
