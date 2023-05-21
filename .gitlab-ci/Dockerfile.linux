@@ -126,10 +126,8 @@ COPY --from=0 /usr/local /usr/local
 ENV PATH /usr/local/bin:$PATH
 ENV LD_LIBRARY_PATH /usr/local/lib
 
-# Add a scilab build user and the Gitlab build dir
-RUN mkdir -p /builds
-RUN useradd --home-dir /builds scilab
-RUN chown scilab: /builds
+# Add a scilab build user
+RUN useradd --create-home scilab
 
 # start docker using scilab user
 USER scilab
@@ -141,4 +139,3 @@ ENV LANGUAGE=en_US.UTF-8
 
 # Use ccache with local gcc
 ENV CCACHE_DIR /builds/scilab/scilab/ccache
-RUN mkdir -p $CCACHE_DIR

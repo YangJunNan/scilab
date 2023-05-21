@@ -18,8 +18,7 @@
 // <-- Short Description -->
 // call_scilab C functions did not check if engine is started.
 
-// export SCI=/your/scilab/install/share/scilab
-// export LD_LIBRARY_PATH=/your/scilab/install/lib/scilab/:/your/scilab/install/lib/thirdparty/
+// Define Variables as decribed in the Makefile
 // make bug_7601
 // ./bug_7601
 

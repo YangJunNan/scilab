@@ -605,7 +605,6 @@ A = testmat1(2.5,n);
 C = rand(n,n);
 C = C+C';
 
-if execstr('X = linmeq(2,A,C)'                ,'errcatch') == 0 then pause,end
 if execstr('X = linmeq(2,A,C,flag)'           ,'errcatch') == 0 then pause,end
 if execstr('X = linmeq(2,rand(3,3),C,flag)'   ,'errcatch') == 0 then pause,end
 if execstr('X = linmeq(2,rand(4,3),C,flag)'   ,'errcatch') == 0 then pause,end

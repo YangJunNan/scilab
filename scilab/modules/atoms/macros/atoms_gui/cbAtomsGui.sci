@@ -31,7 +31,7 @@ function cbAtomsGui()
         selected = getSelected(UItag);
         if selected(1) == "module" then
             // Save the module name
-            set("DescFrame", "userdata", selected(2));
+            set("DescFrame", "userdata", selected(2:3));
             // Update the description frame
             updateDescFrame();
             // Show the description frame
@@ -61,7 +61,7 @@ function cbAtomsGui()
     if UItag == "installButton" then
         if get("installButton", "String") == _("Install") then
             updateStatusBar("info",_("Installing") + "...");
-            if execstr("atomsInstall("""+module+""")","errcatch")<>0 then
+            if execstr("atomsInstall("""+module(1)+""")","errcatch")<>0 then
                 updateStatusBar();
                 messagebox(_("Installation failed!"),_("ATOMS error"),"error");
             else
@@ -70,7 +70,7 @@ function cbAtomsGui()
             end
         else
             updateStatusBar("info",_("Updating") + "...");
-            if execstr("atomsUpdate("""+module+""")","errcatch")<>0 then
+            if execstr("atomsUpdate("""+module(1)+""")","errcatch")<>0 then
                 updateStatusBar();
                 messagebox(_("Update failed!"),_("ATOMS error"),"error");
             else
@@ -91,6 +91,8 @@ function cbAtomsGui()
         end
     end
 
+    // Autoload Checkbox
+    // =========================================================================
     if UItag == "autoloadCheck" then
         module = get("DescFrame", "userdata")
         if get("autoloadCheck", "value") == get("autoloadCheck", "max") then
@@ -179,7 +181,8 @@ function updateDescFrame()
     // Get the modules list and the selected module
     // =========================================================================
     allModules     = get("atomsFigure", "userdata");
-    thisModuleName = get("DescFrame" ,"userdata");
+    tmp = get("DescFrame" ,"userdata");
+	[thisModuleName, thisModuleVersion] = (tmp(1), tmp(2));
 
     // Reset the message frame
     // =========================================================================
@@ -315,7 +318,8 @@ function updateDescFrame()
         // Is autoloaded
         // -------------
         tmp = atomsAutoloadList()
-        if or(thisModuleName==tmp) then
+		tmp = (tmp(:,1)==thisModuleName & tmp(:,2)==thisModuleVersion);
+        if or(tmp) then
             set("autoloadCheck", "Value", get("autoloadCheck", "max"), "Enable", "on");
         else
             set("autoloadCheck", "Value", get("autoloadCheck", "min"), "Enable", "on");

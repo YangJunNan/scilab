@@ -26,7 +26,7 @@ function items_str = atomsSetInstalledList(installed)
     end
 
     tmp = atomsAutoloadList("all")
-    autoloaded = tmp(:,1)
+    autoloaded = tmp(:, 1:2)
     allModules = get("atomsFigure", "UserData");
 
     // Widths of HTML columns
@@ -55,7 +55,8 @@ function items_str = atomsSetInstalledList(installed)
         end
 
         // Building the content
-        if or(installed(i,1)==autoloaded) then
+        tmp = (autoloaded(:,1)==installed(i,1) & autoloaded(:,2)==installed(i,2));
+        if or(tmp) then
             tmp = "<span style=""color:green"">"+_("Loaded<br>at startup")+"</span>"
         else
             tmp = ""

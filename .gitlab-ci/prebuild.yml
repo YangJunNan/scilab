@@ -9,7 +9,7 @@
 
 # define x86_64-linux-gnu env variables
 linux_set_env:
-  image: $DOCKER_LINUX_BUILDER
+  image: $DOCKER_LINUX_BUILDER:$DOCKER_TAG
   stage: prebuild
   tags: [x86_64-linux-gnu, docker, scilab]
   variables:
@@ -54,7 +54,7 @@ windows_set_env:
 
 # patch, copy, modify files before building a release
 prepare_release_files:
-  image: $DOCKER_LINUX_BUILDER
+  image: $DOCKER_LINUX_BUILDER:$DOCKER_TAG
   stage: prebuild
   tags: [x86_64-linux-gnu]
   rules:
