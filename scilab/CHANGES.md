@@ -82,6 +82,7 @@ Bug Fixes
 * [#15075](https://gitlab.com/scilab/scilab/-/issues/15075): `read` was slow when reading an unknown number of lines (dims == -1).
 * [#13392](https://gitlab.com/scilab/scilab/-/issues/13392): `edit_curv()`: `Undo` could cancel only the very last action. There was no `Redo` action.
 * [#13913](https://gitlab.com/scilab/scilab/-/issues/13913): The second output argument of `xgetmouse` always returned 0.
+* [#15488](https://gitlab.com/scilab/scilab/-/issues/15488): `string(integers)` output was wrong, as it processed integers as doubles.
 * [#15709](https://gitlab.com/scilab/scilab/-/issues/15709): `tbx_make(.,"help")` needed a `languages` option to target building to some chosen languages.
 * [#16136](https://gitlab.com/scilab/scilab/-/issues/16136): `sound()` is a useless wrapper of `playsnd()`. It needed to be declared obsolete before forthcoming removal.
 * [#16442](https://gitlab.com/scilab/scilab/-/issues/16442): `splitURL` moved to webtools module and renamed to `url_split`.

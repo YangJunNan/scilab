@@ -414,36 +414,16 @@ types::Function::ReturnValue sci_string(types::typed_list &in, int _iRetCount, t
         }
 
         case types::InternalType::ScilabInt8 :
-        {
-            return intString(in[0]->getAs<types::Int8>(), out);
-        }
         case types::InternalType::ScilabUInt8 :
-        {
-            return intString(in[0]->getAs<types::UInt8>(), out);
-        }
         case types::InternalType::ScilabInt16 :
-        {
-            return intString(in[0]->getAs<types::Int16>(), out);
-        }
         case types::InternalType::ScilabUInt16 :
-        {
-            return intString(in[0]->getAs<types::UInt16>(), out);
-        }
         case types::InternalType::ScilabInt32 :
-        {
-            return intString(in[0]->getAs<types::Int32>(), out);
-        }
         case types::InternalType::ScilabUInt32 :
-        {
-            return intString(in[0]->getAs<types::UInt32>(), out);
-        }
         case types::InternalType::ScilabInt64 :
-        {
-            return intString(in[0]->getAs<types::Int64>(), out);
-        }
         case types::InternalType::ScilabUInt64 :
         {
-            return intString(in[0]->getAs<types::UInt64>(), out);
+            std::wstring wstFuncName = L"%i_string";
+            return Overload::call(wstFuncName, in, _iRetCount, out);
         }
         case types::InternalType::ScilabDouble :
         {
