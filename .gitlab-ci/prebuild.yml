@@ -66,28 +66,6 @@ prepare_release_files:
       - scilab/modules/core/includes/version.h.vc
       - scilab/modules/core/includes/version.h.in
 
-# check MR has modified CHANGES.md
-CHANGES_has_no_edit:
-  stage: prebuild
-  tags: [scilab]
-  rules:
-    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
-      changes:
-        - scilab/CHANGES.md
-      variables:
-        STATUS: 0
-    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
-      allow_failure: true
-      variables:
-        STATUS: 1
-    # on forks, alert the user
-    - if: $CI_PROJECT_PATH_SLUG !~ /scilab-scilab/
-      allow_failure: true
-      variables:
-        STATUS: 1
-    # otherwise do not execute
-    - when: never
-    
   script:
     - echo "$STATUS"
     - exit $STATUS

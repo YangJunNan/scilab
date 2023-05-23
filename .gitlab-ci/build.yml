@@ -42,7 +42,6 @@
 windows_build_mr:
   extends: .windows_build
   needs:
-    - CHANGES_has_no_edit
     - windows_set_env
   rules:
     - if: $CI_COMMIT_TAG
@@ -86,7 +85,6 @@ windows_build_release:
 linux_build_mr:
   extends: .linux_build
   needs:
-    - CHANGES_has_no_edit
     - linux_set_env
   rules:
     - if: $CI_COMMIT_TAG
