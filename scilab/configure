@@ -34016,6 +34016,13 @@ doit (void)
         {
           if (info < 0)
             {
+              delete[] m;
+              delete[] resid;
+              delete[] ip;
+              delete[] ipntr;
+              delete[] v;
+              delete[] workl;
+              delete[] workd;
               return;  // Error
             }
 
@@ -34046,6 +34053,19 @@ doit (void)
                              sigmai, workev, "I", n, "LM", k, tol,
                              resid, p, v, n, ip, ipntr, workd,
                              workl, lwork, info, 1L, 1L, 2L);
+  delete[] m;
+  delete[] resid;
+  delete[] ip;
+  delete[] ipntr;
+  delete[] v;
+  delete[] workl;
+  delete[] workd;
+  delete[] sel;
+  delete[] dr;
+  delete[] di;
+  delete[] workev;
+  delete[] z;
+
 }
 
 #ifdef F77_DUMMY_MAIN
@@ -36010,7 +36030,7 @@ CPPFLAGS="$CPPFLAGS -I$CHK_TCL_INCLUDE_PATH"
 { printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking if tcl is version $CHK_TCL_MAJOR.$CHK_TCL_MINOR or later" >&5
 printf %s "checking if tcl is version $CHK_TCL_MAJOR.$CHK_TCL_MINOR or later... " >&6; }
 cat > conftest.$ac_ext <<EOF
-#line 36013 "configure"
+#line 36033 "configure"
 #include "confdefs.h"
 
 #include "$CHK_TCL_INCLUDE_PATH/$CHK_TCL_INC_NAME"
@@ -36321,7 +36341,7 @@ CPPFLAGS="$CPPFLAGS $TCL_INC_PATH -I$CHK_TK_INCLUDE_PATH $X_CFLAGS"
 printf %s "checking if tk is version $CHK_TK_MAJOR.$CHK_TK_MINOR or later... " >&6; }
 
 cat > conftest.$ac_ext <<EOF
-#line 36324 "configure"
+#line 36344 "configure"
 #include "confdefs.h"
 
 #include "$CHK_TK_INCLUDE_PATH/$CHK_TK_INC_NAME"
@@ -36912,7 +36932,7 @@ printf %s "checking saxon9he... " >&6; }
     if test ! -f conftestSharedChecker.class ; then
 
     cat << \EOF > conftestSharedChecker.java
-// #line 36915 "configure"
+// #line 36935 "configure"
 import java.util.regex.Pattern;
 import java.io.File;
 import java.io.IOException;
@@ -37144,7 +37164,7 @@ printf %s "checking saxon... " >&6; }
     if test ! -f conftestSharedChecker.class ; then
 
     cat << \EOF > conftestSharedChecker.java
-// #line 37147 "configure"
+// #line 37167 "configure"
 import java.util.regex.Pattern;
 import java.io.File;
 import java.io.IOException;
@@ -37377,7 +37397,7 @@ printf %s "checking saxon... " >&6; }
     if test ! -f conftestSharedChecker.class ; then
 
     cat << \EOF > conftestSharedChecker.java
-// #line 37380 "configure"
+// #line 37400 "configure"
 import java.util.regex.Pattern;
 import java.io.File;
 import java.io.IOException;

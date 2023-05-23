@@ -487,6 +487,13 @@ doit (void)
         {
           if (info < 0)
             {
+              delete[] m;
+              delete[] resid;
+              delete[] ip;
+              delete[] ipntr;
+              delete[] v;
+              delete[] workl;
+              delete[] workd;
               return;  // Error
             }
 
@@ -517,6 +524,19 @@ doit (void)
                              sigmai, workev, "I", n, "LM", k, tol,
                              resid, p, v, n, ip, ipntr, workd,
                              workl, lwork, info, 1L, 1L, 2L);
+  delete[] m;
+  delete[] resid;
+  delete[] ip;
+  delete[] ipntr;
+  delete[] v;
+  delete[] workl;
+  delete[] workd;
+  delete[] sel;
+  delete[] dr;
+  delete[] di;
+  delete[] workev;
+  delete[] z;
+
 }
 ]], [[
   for (int i = 0; i < 10; i++)
