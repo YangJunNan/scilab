@@ -291,7 +291,7 @@ tbx_make("path/to/mytoolbox", ["macros", "help", "src"])
                 </revremark>
             </revision>
             <revision>
-                <revnumber>6.1.2</revnumber>
+                <revnumber>2023.1</revnumber>
                 <revremark>
                     <literal>languages</literal> input option added.
                 </revremark>

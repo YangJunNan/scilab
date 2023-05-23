@@ -17,8 +17,7 @@
 // <-- Short Description -->
 // In call_scilab, TerminateScilab  did not clear the last error.
 
-// export SCI=/your/scilab/install/share/scilab
-// export LD_LIBRARY_PATH=/your/scilab/install/lib/scilab/:/your/scilab/install/lib/thirdparty/
+// Define Variables as decribed in the Makefile
 // make bug_8830
 // ./bug_8830
 

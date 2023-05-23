@@ -46,8 +46,7 @@ function atomsRepositorySetOfl(url)
     if(ATOMSALLUSERSWRITEACCESS) then
         mputl(url,pathconvert(SCI+"/modules/atoms/etc/repositories",%F));
     else
-        mkdir(pathconvert(SCIHOME+"/atoms",%F));
-        mputl(url,pathconvert(SCIHOME+"/atoms/repositories",%F));
+        error(msprintf(gettext("%s: Admin rights are needed to change ATOMS official repository.\n"), "atomsRepositorySetOfl"));
     end
 
     // Update the toolbox list

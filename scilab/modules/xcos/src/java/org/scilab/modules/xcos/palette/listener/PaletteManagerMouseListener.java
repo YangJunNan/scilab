@@ -60,7 +60,7 @@ public class PaletteManagerMouseListener implements MouseListener {
         if ((e.getClickCount() == 1 && SwingUtilities.isRightMouseButton(e)) || e.isPopupTrigger() || XcosMessages.isMacOsPopupTrigger(e)) {
 
             if (PaletteManagerView.get() == null) {
-                PaletteManagerView.restore(null);
+                PaletteManagerView.restore();
             }
             final JTree paletteTree = PaletteManagerView.get().getTree();
             final TreePath path = paletteTree.getPathForLocation(e.getX(), e.getY());

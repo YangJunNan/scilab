@@ -17,7 +17,8 @@ function demo_conv()
     t=0:dt:1;
     f=1;// frequency in Hertz
     y=sin(2*%pi*f*t)+0.1*rand(t);
-    scf(1000);clf;
+    my_handle             = scf(100001);
+    clf(my_handle,"reset");
     demo_viewCode("conv.dem.sce");
     drawlater()
 

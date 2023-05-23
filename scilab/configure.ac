@@ -1002,7 +1002,7 @@ if test "$with_javasci" != no -o "$with_gui" != no -o "$enable_build_help" != no
                 AC_SUBST(SKINLF)
 
                 # JOGL 2
-                AC_JAVA_CHECK_JAR([jogl],[jogamp.opengl.x11.glx.GLX],[Scilab 3D rendering], [], [], 2.4)
+                AC_JAVA_CHECK_JAR([jogl2],[javax.media.opengl.glu.GLUnurbs],[Scilab 3D rendering - Version 2.0], [], [], [2.2])
                 JOGL2=$PACKAGE_JAR_FILE
                 AC_SUBST(JOGL2)
 
@@ -1031,7 +1031,7 @@ interface for JOGL2 - or libGL (OpenGL library) are installed and if the version
                 fi
 
                 # JoGL Native <=> Java connector
-                AC_JAVA_CHECK_JAR([gluegen],[com.jogamp.common.os.Platform],[Scilab 3D rendering])
+                AC_JAVA_CHECK_JAR([gluegen2-rt],[jogamp.common.os.MachineDescriptionRuntime],[Scilab 3D rendering])
                 GLUEGEN2_RT=$PACKAGE_JAR_FILE
                 AC_SUBST(GLUEGEN2_RT)
 
@@ -1045,8 +1045,8 @@ interface for JOGL2 - or libGL (OpenGL library) are installed and if the version
                    LDFLAGS="$LDFLAGS -L/usr/lib/gluegen2 -L/usr/lib64/gluegen2"         # RedHat
                    LDFLAGS="$LDFLAGS -L$SCI_SRCDIR/thirdparty -L$SCI_SRCDIR/lib/thirdparty -L$SCI_SRCDIR/bin"        # Scilab thirdparties
                    symbol="Java_jogamp_common_jvm_JVMUtil_initialize"
-                   AC_CHECK_LIB([gluegen_rt], [$symbol], [GLUEGEN2_RT_LIBS="-lgluegen_rt"],
-                   [AC_MSG_ERROR([libgluegen_rt: Library missing (Cannot find symbol $symbol). Check if libgluegen_rt - C/Java (JNI) interface for GLUEGEN2 - is installed and if the version is correct. Note that you might have to update etc/librarypath.xml to provide the actual path to the JNI libraries.])],
+                   AC_CHECK_LIB([gluegen2-rt], [$symbol], [GLUEGEN2_RT_LIBS="-lgluegen2-rt"],
+                   [AC_MSG_ERROR([libgluegen2-rt: Library missing (Cannot find symbol $symbol). Check if libgluegen2-rt - C/Java (JNI) interface for GLUEGEN2 - is installed and if the version is correct. Note that you might have to update etc/librarypath.xml to provide the actual path to the JNI libraries.])],
                    [-ldl])
                    LDFLAGS=$LDFLAGS_save
                 fi

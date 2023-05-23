@@ -14,6 +14,7 @@
 //
 // <-- Short Description -->
 // Linear algebra demonstration failed with xerbla error.
+funcprot(0);
 H=[1.    1.    1.    0.;
 2.   -1.    0.    1;
 1.    0.    1.    1.;
@@ -33,6 +34,5 @@ function [flg] = sel(x, y)
     flg = %f;
     if abs(x / y - ww(3)) < 0.0001 | abs(x / y - ww(4)) < 0.00001 then flg = %t,end
 endfunction
-Warning : redefining function: sel                     . Use funcprot(0) to avoid this message
 [X, d] = schur(H, eye(H), sel);
 assert_checktrue(norm(X * X' - eye(X), 1) > %eps);

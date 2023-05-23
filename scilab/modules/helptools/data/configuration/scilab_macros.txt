@@ -208,7 +208,6 @@ mapsound
 mu2lin
 playsnd
 savewave
-sound
 wavread
 wavwrite
 TCL_CreateSlave

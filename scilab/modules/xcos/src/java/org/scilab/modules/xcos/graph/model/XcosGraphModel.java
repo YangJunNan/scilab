@@ -31,11 +31,11 @@ import org.scilab.modules.xcos.block.BasicBlock;
  * Implement a custom model for Xcos
  */
 public class XcosGraphModel extends mxGraphModel {
-
-    public XcosGraphModel(JavaController controller, long diagramId, Kind kind, String uid) {
+    
+    public XcosGraphModel(JavaController controller, ScicosObjectOwner owner, String uid) {
         super(new mxCell());
 
-        XcosCell parent = new XcosCell(controller, diagramId, kind, null, null, null, uid);
+        XcosCell parent = new XcosCell(controller, owner, null, null, null, uid);
         ((mxCell) root).insert(parent);
     }
 

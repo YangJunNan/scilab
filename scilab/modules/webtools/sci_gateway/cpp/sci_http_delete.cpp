@@ -47,7 +47,7 @@ types::Function::ReturnValue sci_http_delete(types::typed_list &in, types::optio
     }
 
     // get URL
-    if(in[0]->isString() == false && in[0]->getAs<types::String>()->isScalar() == false)
+    if(in[0]->isString() == false || in[0]->getAs<types::String>()->isScalar() == false)
     {
         Scierror(999, _("%s: Wrong type for input argument #%d: A scalar string expected.\n"), fname, 1);
         return types::Function::Error;

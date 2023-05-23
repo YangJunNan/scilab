@@ -21,6 +21,6 @@ assert_checkequal(get_function_path("sin"), "<elementary_functions>");
 function test(), endfunction
 assert_checkequal(get_function_path("test"), "<script>");
 // macro in library
-ref =  pathconvert("WSCI\modules\elementary_functions\macros\sind.sci",%f,%t);
+ref =  pathconvert("SCI\modules\elementary_functions\macros\sind.sci",%f,%t);
 assert_checkequal(get_function_path("sind"), ref);
 

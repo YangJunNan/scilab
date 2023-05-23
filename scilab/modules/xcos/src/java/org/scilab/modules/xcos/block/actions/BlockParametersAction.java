@@ -23,17 +23,21 @@ import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
+import java.util.Optional;
 
 import org.scilab.modules.action_binding.highlevel.ScilabInterpreterManagement.InterpreterException;
 import org.scilab.modules.graph.ScilabGraph;
 import org.scilab.modules.graph.actions.base.VertexSelectionDependantAction;
 import org.scilab.modules.gui.menuitem.MenuItem;
+import org.scilab.modules.gui.utils.WindowsConfigurationManager;
 import org.scilab.modules.xcos.JavaController;
 import org.scilab.modules.xcos.Kind;
 import org.scilab.modules.xcos.ObjectProperties;
 import org.scilab.modules.xcos.Xcos;
 import org.scilab.modules.xcos.XcosTab;
 import org.scilab.modules.xcos.block.BasicBlock;
+import org.scilab.modules.xcos.configuration.ConfigurationManager;
+import org.scilab.modules.xcos.configuration.model.DocumentType;
 import org.scilab.modules.xcos.graph.ScicosParameters;
 import org.scilab.modules.xcos.graph.XcosDiagram;
 import org.scilab.modules.xcos.graph.model.BlockInterFunction;
@@ -125,6 +129,15 @@ public class BlockParametersAction extends VertexSelectionDependantAction {
                     // done on children insertion
                     sub.setModified(false);
                     sub.setModified(Xcos.getInstance().isModified(root));
+
+                    // set window position from a previously closed tab
+                    String[] blockUID = {""};
+                    controller.getObjectProperty(cell.getUID(), cell.getKind(), ObjectProperties.UID, blockUID);
+                    Optional<DocumentType> tab = ConfigurationManager.getInstance().streamTab()
+                        .filter(d -> blockUID[0].equals(d.getPath()))
+                        .findFirst();
+                    if (tab.isPresent())
+                        sub.setGraphTab(tab.get().getUuid());
 
                     // setup graphical interface
                     sub.getUndoManager().clear();

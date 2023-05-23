@@ -19,7 +19,7 @@ package org.scilab.modules.gui.canvas;
 
 import java.awt.image.BufferedImage;
 
-import com.jogamp.opengl.GL;
+import javax.media.opengl.GL;
 
 import org.scilab.modules.gui.bridge.ScilabBridge;
 import org.scilab.modules.gui.dockable.ScilabDockable;

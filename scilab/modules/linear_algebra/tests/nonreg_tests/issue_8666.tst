@@ -14,6 +14,7 @@
 //
 // <-- Short Description -->
 // Linear algebra demonstration failed with xerbla error.
+funcprot(0);
 
 H=[1.    1.    1.    0.;
 2.   -1.    0.    1;

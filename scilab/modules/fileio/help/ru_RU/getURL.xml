@@ -26,6 +26,7 @@
         <refname>getURL</refname>
 
         <refpurpose>Загрузка по URL (HTTP, HTTPS, FTP...) </refpurpose>
+        <refpurpose>Obsolete, please use <link linkend="http_get">http_get</link> instead.</refpurpose>
     </refnamediv>
 
     <refsynopsisdiv>
@@ -176,7 +177,7 @@
         <title>Смотрите также</title>
         <simplelist type="inline">
             <member>
-                <link linkend="splitURL">splitURL</link>
+                <link linkend="url_split">url_split</link>
             </member>
         </simplelist>
     </refsection>
@@ -188,6 +189,12 @@
                 <revnumber>5.5.0</revnumber>
                 <revremark>
                     Введена функция <literal>getURL()</literal>
+                </revremark>
+            </revision>
+            <revision>
+                <revnumber>2023.1.0</revnumber>
+                <revremark>
+                    Tagged obsolete and will be removed in Scilab 2025.0.0.
                 </revremark>
             </revision>
         </revhistory>

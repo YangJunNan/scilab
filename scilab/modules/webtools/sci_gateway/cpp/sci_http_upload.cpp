@@ -51,7 +51,7 @@ types::Function::ReturnValue sci_http_upload(types::typed_list &in, types::optio
     }
 
     // get URL
-    if(in[0]->isString() == false && in[0]->getAs<types::String>()->isScalar() == false)
+    if(in[0]->isString() == false || in[0]->getAs<types::String>()->isScalar() == false)
     {
         Scierror(999, _("%s: Wrong type for input argument #%d: A scalar string expected.\n"), fname, 1);
         return types::Function::Error;
@@ -87,7 +87,7 @@ types::Function::ReturnValue sci_http_upload(types::typed_list &in, types::optio
     }
 
     // get variable name server side
-    if(in[2]->isString() == false && in[2]->getAs<types::String>()->isScalar() == false)
+    if(in[2]->isString() == false || in[2]->getAs<types::String>()->isScalar() == false)
     {
         Scierror(999, _("%s: Wrong type for input argument #%d: A scalar string expected.\n"), fname, 3);
         return types::Function::Error;
@@ -129,9 +129,9 @@ types::Function::ReturnValue sci_http_upload(types::typed_list &in, types::optio
     if(in.size() > 3)
     {
         // get data
-        if(in[3]->isStruct() == false && in[3]->getAs<types::Struct>()->isScalar() == false)
+        if(in[3]->isStruct() == false || in[3]->getAs<types::Struct>()->isScalar() == false)
         {
-            Scierror(999, _("%s: Wrong type for input argument #%d: A structure of size %d expected.\n"), fname, 3, 1);
+            Scierror(999, _("%s: Wrong type for input argument #%d: A structure of size %d expected.\n"), fname, 4, 1);
             return types::Function::Error;
         }
 
@@ -148,7 +148,6 @@ types::Function::ReturnValue sci_http_upload(types::typed_list &in, types::optio
                 strData = strData.substr(1);
                 strData.pop_back();
             }
-            sciprint("|%s|: |%s|\n", pcFieldName, strData.data());
             curl_formadd(&formpost,
                          &lastptr,
                          CURLFORM_COPYNAME, pcFieldName,
@@ -179,7 +178,7 @@ types::Function::ReturnValue sci_http_upload(types::typed_list &in, types::optio
     {
         if (o.first == L"method")
         {
-            if(o.second->isString() == false && o.second->getAs<types::String>()->isScalar() == false)
+            if(o.second->isString() == false || o.second->getAs<types::String>()->isScalar() == false)
             {
                 Scierror(999, _("%s: Wrong type for input argument #%s: A scalar string expected.\n"), fname, o.first.data());
                 return types::Function::Error;

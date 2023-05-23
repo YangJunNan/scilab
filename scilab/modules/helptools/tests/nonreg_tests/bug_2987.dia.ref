@@ -10,7 +10,7 @@
 // <-- GitLab URL -->
 // https://gitlab.com/scilab/scilab/-/issues/2987
 head_comments("sinc")
-function [y] = sinc(x,fl)
+function [y] = sinc(x)
                [  sin(x(i))/x(i) if x(i)~=0
  computes y(i)=[
                [  1 if x(i)~=0

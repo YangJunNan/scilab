@@ -13,6 +13,9 @@ WEBTOOLS_CPP_SOURCES = \
     src/cpp/webtools.cpp \
     src/cpp/json.cpp
 
+GATEWAY_C_SOURCES = \
+    sci_gateway/c/sci_url_split.c
+
 GATEWAY_CPP_SOURCES = \
     sci_gateway/cpp/sci_http_get.cpp \
     sci_gateway/cpp/sci_http_put.cpp \
@@ -44,6 +47,7 @@ libsciwebtools_la_CPPFLAGS= \
     -I$(top_srcdir)/modules/api_scilab/includes \
     -I$(top_srcdir)/modules/preferences/includes \
     $(CURL_CFLAGS) \
+    $(XML_FLAGS) \
     $(AM_CPPFLAGS)
 
 libsciwebtools_algo_la_CPPFLAGS = $(libsciwebtools_la_CPPFLAGS)
@@ -54,7 +58,7 @@ noinst_LTLIBRARIES = libsciwebtools-algo.la
 libsciwebtools_algo_la_LDFLAGS = $(CURL_LIBS)
 libsciwebtools_algo_la_SOURCES = $(WEBTOOLS_CPP_SOURCES) $(WEBTOOLS_C_SOURCES)
 
-libsciwebtools_la_SOURCES = $(GATEWAY_CPP_SOURCES)
+libsciwebtools_la_SOURCES = $(GATEWAY_CPP_SOURCES) $(GATEWAY_C_SOURCES)
 libsciwebtools_la_LIBADD = libsciwebtools-algo.la
 
 # For the code check (splint)

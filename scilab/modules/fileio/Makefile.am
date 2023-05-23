@@ -44,8 +44,7 @@ GATEWAY_C_SOURCES = \
     sci_gateway/c/sci_copyfile.c \
     sci_gateway/c/sci_tempname.c \
     sci_gateway/c/sci_movefile.c \
-	sci_gateway/c/sci_getURL.c \
-	sci_gateway/c/sci_splitURL.c
+	sci_gateway/c/sci_getURL.c
 
 GATEWAY_CPP_SOURCES = \
 	sci_gateway/cpp/fileio_gw.cpp \

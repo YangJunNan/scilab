@@ -19,7 +19,8 @@ function demo_conv2()
 
     load(get_absolute_file_path("conv2.dem.sce")+"image.dat")
 
-    f=scf(1000);clf;
+    f = scf(100001);
+    clf(f,"reset");
     f.axes_size=[800 400];
     demo_viewCode("conv2.dem.sce");
 

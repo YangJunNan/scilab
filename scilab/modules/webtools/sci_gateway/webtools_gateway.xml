@@ -29,6 +29,7 @@
     <gateway name="sci_http_patch"      function="http_patch"   type="3" />
     <gateway name="sci_http_delete"     function="http_delete"  type="3" />
     <gateway name="sci_http_upload"     function="http_upload"  type="3" />
+    <gateway name="sci_url_split"       function="url_split"    type="0" />
     <gateway name="sci_toJSON"          function="toJSON"       type="4" />
     <gateway name="sci_fromJSON"        function="fromJSON"     type="4" />
 </module>

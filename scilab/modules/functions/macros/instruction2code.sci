@@ -242,9 +242,7 @@ function  C = instruction2code(I, bprettyprintformat)
                 C = rhs2code(I.expression)
             end
         end
-        if I.endsymbol <> ""
-            C($) = C($) + I.endsymbol + " "
-        end
+        C($) = C($) + I.endsymbol
         return
     end
 

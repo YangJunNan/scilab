@@ -158,7 +158,7 @@ public class PaletteTreeTransferHandler extends TransferHandler {
     @Override
     public boolean importData(final TransferSupport support) {
         if (PaletteManagerView.get() == null) {
-            PaletteManagerView.restore(null);
+            PaletteManagerView.restore();
         }
         final JTree tree = PaletteManagerView.get().getTree();
         final JTree.DropLocation location = tree.getDropLocation();

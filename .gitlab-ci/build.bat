@@ -15,7 +15,7 @@ REM Create log folder
 set LOG_PATH=%SCI_VERSION_STRING%
 if not exist %LOG_PATH% mkdir %LOG_PATH%
 
-curl.exe -v -k -o prereq.zip https://oos.eu-west-2.outscale.com/scilab-releases-dev/prerequirements/prerequirements-scilab-branch-%BRANCH%-windows_x64.zip
+curl.exe -k -o prereq.zip https://oos.eu-west-2.outscale.com/scilab-releases-dev/prerequirements/prerequirements-scilab-branch-%BRANCH%-windows_x64.zip
 unzip -o prereq.zip -d scilab > %LOG_PATH%\log_prereq_%CI_COMMIT_SHORT_SHA%.txt
 @REM REM display svn revision
 type scilab\svn-info.txt

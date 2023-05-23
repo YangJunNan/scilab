@@ -7,8 +7,6 @@
 //
 // <-- CLI SHELL MODE -->
 //
-// <-- NOT FIXED -->
-//
 // <-- Non-regression test for bug 3543 -->
 //
 // <-- GitLab URL -->
@@ -22,7 +20,8 @@ testtxt = ["function bug_3543()";
 "st.name = ""test"";";
 "st.value(1,index) = index;";
 "a = st.val(1,index);";
-"endfunction"];
+"endfunction";
+""];
 
 mputl(testtxt, TMPDIR+filesep()+"bug_3543.sci");
 

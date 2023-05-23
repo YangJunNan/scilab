@@ -77,12 +77,14 @@ function varargout = atomsAutoloadList(section)
 
     end
 
-    // Set the result
+    // Set or print the result
     // =========================================================================
     if argn(1) > 0 then
         varargout = list(modules)
-    else
+    elseif modules <> []
         mprintf("%s\n", strcat(justify(modules,"l"), "  ", "c"))
+    else
+        mprintf(_("No module is autoloaded at Scilab startup.\n"))
     end
 
 endfunction

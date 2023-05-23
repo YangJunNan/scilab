@@ -184,7 +184,6 @@
     <ClCompile Include="..\c\sci_getURL.c" />
     <ClCompile Include="..\c\sci_movefile.c" />
     <ClCompile Include="..\c\sci_pwd.c" />
-    <ClCompile Include="..\c\sci_splitURL.c" />
     <ClCompile Include="..\c\sci_tempname.c" />
     <ClCompile Include="fileio_gw.cpp" />
     <ClCompile Include="sci_basename.cpp" />

@@ -75,9 +75,9 @@ The option is "disableUnderMode" and can be:
 
     <path value="$SCILAB/modules/scirenderer/jar/scirenderer.jar"/>
 
-    <path value="$SCILAB/thirdparty/jogl-all.jar"/>
+    <path value="$SCILAB/thirdparty/jogl2.jar"/>
 
-    <path value="$SCILAB/thirdparty/gluegen-rt.jar"/>
+    <path value="$SCILAB/thirdparty/gluegen2-rt.jar"/>
 
     <!-- Temp. loaded at startup -->
     <path value="$SCILAB/modules/types/jar/org.scilab.modules.types.jar"/>
