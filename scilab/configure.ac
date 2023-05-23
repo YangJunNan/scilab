@@ -2591,16 +2591,16 @@ if test "$SCILAB_BINARY_VERSION" != "$DETECTED_VERSION"; then
             -e "s|DEFAULT_SCI_VERSION_MESSAGE L\".*\"|DEFAULT_SCI_VERSION_MESSAGE L\"scilab-branch-$SCILAB_VERSION_MAJOR.$SCILAB_VERSION_MINOR\"|" \
             ${SCI_SRCDIR}/modules/core/includes/version.h ${SCI_SRCDIR}/modules/core/includes/version.h.{in,vc}
     # update some help pages
-    sed -i -e "s|scilab-[[0-9]]\(\.[[0-9]]\)\+|scilab-$SCILAB_BINARY_VERSION|" $(find ${SCI_SRCDIR} -iname 'banner.xml')
+    sed -i -e "s|scilab-[[0-9]]\+\(\.[[0-9]]\+\)\+|scilab-$SCILAB_BINARY_VERSION|" $(find ${SCI_SRCDIR} -iname 'banner.xml')
     # update rc files
-    sed -i  -e "s|FILEVERSION [[0-9]]\(,[[0-9]]\)\+|FILEVERSION $SCILAB_VERSION_MAJOR,$SCILAB_VERSION_MINOR,$SCILAB_VERSION_MAINTENANCE,0|" \
-            -e "s|PRODUCTVERSION [[0-9]]\(,[[0-9]]\)\+|FILEVERSION $SCILAB_VERSION_MAJOR,$SCILAB_VERSION_MINOR,$SCILAB_VERSION_MAINTENANCE,0|" \
-            -e "s|VALUE \"FileVersion\", \"[[0-9]]\(, [[0-9]]\)\+\"|VALUE \"FileVersion\", \"$SCILAB_VERSION_MAJOR, $SCILAB_VERSION_MINOR, $SCILAB_VERSION_MAINTENANCE, 0\"|" \
-            -e "s|VALUE \"ProductVersion\", \"[[0-9]]\(, [[0-9]]\)\+\"|VALUE \"ProductVersion\", \"$SCILAB_VERSION_MAJOR, $SCILAB_VERSION_MINOR, $SCILAB_VERSION_MAINTENANCE, 0\"|" \
-            -e "s|Scilab [[0-9]]\(\.[[0-9]]\)\+|Scilab $SCILAB_BINARY_VERSION|" \
+    sed -i  -e "s|FILEVERSION [[0-9]]\+\(,[[0-9]]\+\)\+|FILEVERSION $SCILAB_VERSION_MAJOR,$SCILAB_VERSION_MINOR,$SCILAB_VERSION_MAINTENANCE,0|" \
+            -e "s|PRODUCTVERSION [[0-9]]\+\(,[[0-9]]\+\)\+|FILEVERSION $SCILAB_VERSION_MAJOR,$SCILAB_VERSION_MINOR,$SCILAB_VERSION_MAINTENANCE,0|" \
+            -e "s|VALUE \"FileVersion\", \"[[0-9]]\+\(, [[0-9]]\+\)\+\"|VALUE \"FileVersion\", \"$SCILAB_VERSION_MAJOR, $SCILAB_VERSION_MINOR, $SCILAB_VERSION_MAINTENANCE, 0\"|" \
+            -e "s|VALUE \"ProductVersion\", \"[[0-9]]\+\(, [[0-9]]\+\)\+\"|VALUE \"ProductVersion\", \"$SCILAB_VERSION_MAJOR, $SCILAB_VERSION_MINOR, $SCILAB_VERSION_MAINTENANCE, 0\"|" \
+            -e "s|Scilab [[0-9]]\+\(\.[[0-9]]\+\)\+|Scilab $SCILAB_BINARY_VERSION|" \
             $(find ${SCI_SRCDIR} -iname '*.rc')
     # update banner, inkscape is used to generate png from svg
-    sed -i -e "s|Scilab [[0-9]]\(\.[[0-9]]\)\+|Scilab $SCILAB_BINARY_VERSION|" ${SCI_SRCDIR}/modules/gui/images/icons/aboutscilab.svg
+    sed -i -e "s|Scilab [[0-9]]\+\(\.[[0-9]]\+\)\+|Scilab $SCILAB_BINARY_VERSION|" ${SCI_SRCDIR}/modules/gui/images/icons/aboutscilab.svg
     $INKSCAPE -w 600 -h 290 ${SCI_SRCDIR}/modules/gui/images/icons/aboutscilab.svg -o ${SCI_SRCDIR}/modules/gui/images/icons/aboutscilab.png
     # alert the user
     AC_MSG_WARN([New version $SCILAB_BINARY_VERSION detected. Source files updated, commit them !])
