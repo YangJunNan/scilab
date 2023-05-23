@@ -22,7 +22,7 @@
 #define RENDERER "renderer"
 ;
 Source: bin\jogl_desktop.dll; DestDir: {app}\bin; Components: {#COMPN_GRAPHICS}
-Source: bin\gluegen-rt.dll; DestDir: {app}\bin; Components: {#COMPN_GRAPHICS}
+Source: bin\gluegen_rt.dll; DestDir: {app}\bin; Components: {#COMPN_GRAPHICS}
 Source: bin\nativewindow_awt.dll; DestDir: {app}\bin; Components: {#COMPN_GRAPHICS}
 Source: bin\nativewindow_win32.dll; DestDir: {app}\bin; Components: {#COMPN_GRAPHICS}
 Source: bin\newt_head.dll; DestDir: {app}\bin; Components: {#COMPN_GRAPHICS}
