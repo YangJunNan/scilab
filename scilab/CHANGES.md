@@ -1,114 +1,91 @@
 Welcome to Scilab 2024.0.0
 ==========================
 
-This file details the changes between Scilab 2024.0.0 (this version), and the previous 2023.0.0 release.
-For changelogs of earlier releases, please see [Scilab 2023.0.0][1].
-Welcome to Scilab 2023.1.0
-==========================
-
-This file details the changes between Scilab 2023.1.0 (this version), and the previous 2023.0.0 release.
-For changelogs of earlier releases, please see [Scilab 2023.0.0][1].
+This file details the changes between Scilab 2024.0.0 (this version), and the previous 2023.1.0 release.
+For changelogs of earlier releases, please see [Scilab 2023.1.0][1].
 
 Summary:
+
 - New features
 - Obsolete functions & features
+- Removed functions & features
 - Installation, Compilation, Packaging, API/ABI changes
 - Fixed bugs
 
 Please report anything we could have missed, on the [mailing lists][2] or the [bug tracker][3].
 
-[1]: https://help.scilab.org/docs/2023.0.0/en_US/CHANGES.html
+[1]: https://help.scilab.org/docs/2023.1.0/en_US/CHANGES.html
 [2]: https://www.scilab.org/about/community/mailing-lists
 [3]: https://gitlab.com/scilab/scilab/-/issues
-
 
 New features
 ------------
 
-For a high-level description of the main new features of this release, please consult the [embedded help][4]. It is also available as the "What's new" page of the help, by simply typing `help` in Scilab console.
+For a high-level description of the main new features of this release, please consult the [embedded help][4]. It is also available as the "What's new" page of the help, by simply typing `help` in the Scilab console.
 
 [4]: modules/helptools/data/pages/homepage-en_US.html
 
 In summary, the main new features and additions are:
-* __add your features here and keep this line__
-* <TODO>
 
+- __add your features before and keep this line__
 
 Obsolete functions or features
 ------------------------------
 
 All these functions and features will be removed in Scilab 2025.0.0 (October 2024):
-* __add your obsolete features here and keep this line__
 
+- __add your obsolete features before and keep this line__
 
 Removed Functions
 -----------------
 
 The following functions have been removed:
-* __add your removed functions here and keep this line__
 
+- __add your removed functions before and keep this line__
 
 Removed Features
 ----------------
 
 The following features and usages have been removed or disabled:
-* __add your removed features here and keep this line__
-* <TODO>
 
+- __add your removed features before and keep this line__
 
 Installation
 ------------
 
-* __add your installation notes here and keep this line__
-* <TODO>
-
+- __add your installation notes before and keep this line__
 
 Compilation
 -----------
 
-* Minimal version of JoGL (2.4.0) enforced.
-
+- __add your compilation notes before and keep this line__
 
 Packaging & Supported Operating Systems
 ---------------------------------------
 
-* Scilab embedded JVM is Java 8. 
+- 32-bit Windows platforms are no more supported (no binary versions released).
 
-* To run or compile Scilab you need at least:
-  - Linux with Docker images (amd64):
-     - debian:11
-     - ubuntu:18.04, 20.04, 22.04
-     - fedora:37
-     - redhat/ubi8:8, ubi9:9.1 
+- Scilab embedded JVM is Java 8.
 
+- To run or compile Scilab you need at least:
+  - Windows (amd64):
+    - Windows 11 (Desktop)
+    - Windows 10 (Desktop)
+    - Windows 8 (Desktop)
+  - macOS (amd64):
+    - Intel-based Mac running macOS 10.9+ (run) and 10.14+ with Conda (compile)
+    - Support of macOS Monterey & Ventura added in Scilab 2023.0.0
+  - Linux (amd64):
+    - debian:11
+    - ubuntu:18.04, 20.04, 22.04
+    - fedora:37
 
 API/ABI modification
 --------------------
 
-* __add your API modification here and keep this line__
+- __add your API/ABI modification notes before and keep this line__
 
+Issue Fixes
+-----------
 
-Bug Fixes
----------
-
-### Bugs fixed in 2024.0.0:
-### Bugs fixed in 2023.1.0:
-
-* [#3666](https://gitlab.com/scilab/scilab/-/issues/3666): `input()` badly reencoded UTF-8 input strings
-* [#8666](https://gitlab.com/scilab/scilab/-/issues/8666): Linear algebra demonstration failed with xerbla error.
-* [#8812](https://gitlab.com/scilab/scilab/-/issues/8812): Multi-selection in a listbox now works when `max - min` is greater than 1.
-* [#8917](https://gitlab.com/scilab/scilab/-/issues/8917): `write(filename,..)` could not overwrite an existing file.
-* [#16685](https://gitlab.com/scilab/scilab/-/issues/16685): `asciimat()` now belongs to the `m2sci` module, where its code, pages and tests should be.
-* [#16804](https://gitlab.com/scilab/scilab/-/issues/16804): `[s,m]=assert_checkequal(1,%z)` yielded an error instead of silently returning the error message in `m`.
-* [#16877](https://gitlab.com/scilab/scilab/-/issues/16877): `cellstr()` & `iscellstr()` now belong to the `m2sci` module, where their code, pages and tests should be.
-* [#16966](https://gitlab.com/scilab/scilab/-/issues/16966): The warning message for removal of `xset/xget` did not tell which function displayed the message.
-* [#16983](https://gitlab.com/scilab/scilab/-/issues/16983): `input(msg)` no longer printed the message.
-* [#16982](https://gitlab.com/scilab/scilab/-/issues/16982): vcruntime140_1.dll was missing in Windows package.
-* [#16986](https://gitlab.com/scilab/scilab/-/issues/16986): MPI module must be active during build, build doc and packaging process.
-* [#16989](https://gitlab.com/scilab/scilab/-/issues/16989): `atomsSystemUpdate()` could not more be run in NWNI mode.
-* [#16995](https://gitlab.com/scilab/scilab/-/issues/16995): `hist3d` plotting feature no more worked in variable browser and variable editor.
-* __add your bug fix here and keep this line__
-
-
-### Bugs fixed in 2023.0.0:
-
+- __THIS PART WILL BE GENERATED FROM THE MILESTONE/GIT LOG__

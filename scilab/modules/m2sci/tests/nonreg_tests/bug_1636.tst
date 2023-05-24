@@ -40,7 +40,7 @@ SCIFILECONTENTSREF=[
     "function [A] = bug1636(x,y,z,t,u,v,w,z)"
     ""
     "// Output variables initialisation (not found in input variables)"
-    "A=[];"
+    "A = [];"
     ""
     "a = mtlb_a(mtlb_a(mtlb_a(mtlb_a(mtlb_a(mtlb_a(mtlb_a(x,y),z),t),u),v),w),z);"
     "endfunction"];

@@ -64,7 +64,7 @@ SCIFILECONTENTSREF=[
     "function [out] = bug1629(par)"
     ""
     "// Output variables initialisation (not found in input variables)"
-    "out=[];"
+    "out = [];"
     ""
     "// Number of arguments in function call"
     "[%nargout,%nargin] = argn(0)"
@@ -83,7 +83,7 @@ SCIFILECONTENTSREF=[
     "  par.d = 1000;"
     "  par.o = 8;"
     "  par.u = 0;"
-    "end;"
+    "end"
     "endfunction"];
 
 if or(SCIFILECONTENTSREF<>SCIFILECONTENTS) then pause,end

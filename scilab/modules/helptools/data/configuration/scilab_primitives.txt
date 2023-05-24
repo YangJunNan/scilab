@@ -793,6 +793,7 @@ splin
 splin2d
 splin3d
 splitURL
+url_split
 spones
 spzeros
 sqrt

@@ -23,9 +23,9 @@
     <br/>
     <div class="refsection">
 <!-- Copy the html rendered CHANGES.md file below -->
-<h1>Welcome to Scilab 2023.0.0</h1>
-<p>This file details the changes between Scilab 2023.0.0 (this version), and the previous 6.1.1 release.
-For changelogs of earlier releases, please see <a href="https://help.scilab.org/docs/6.1.1/en_US/CHANGES.html">Scilab 6.1.1</a>.</p>
+<h1>Welcome to Scilab 2023.1.0</h1>
+<p>This file details the changes between Scilab 2023.1.0 (this version), and the previous stable 6.1.1 release (including information from 2023.0.0).
+For changelogs of earlier releases, please see <a href="https://help.scilab.org/docs/2023.0.0/en_US/CHANGES.html">Scilab 2023.0.0</a>.</p>
 <p>Summary:</p>
 <ul>
 <li>New features</li>
@@ -34,24 +34,49 @@ For changelogs of earlier releases, please see <a href="https://help.scilab.org/
 <li>Installation, Compilation, Packaging, API/ABI changes</li>
 <li>Fixed bugs</li>
 </ul>
-<p>Please report anything we could have missed, on the <a href="https://www.scilab.org/about/community/mailing-lists">mailing lists</a> or the <a href="https://gitlab.com/scilab/scilab/-/issues">bug tracker</a>.</p>
+<p>Please report anything we could have missed, on the <a href="https://gitlab.com/scilab/scilab/-/issues">mailing lists</a> or the <a href="modules/helptools/data/pages/homepage-en_US.html">bug tracker</a>.</p>
 <h2>New features</h2>
 <p>For a high-level description of the main new features of this release, please consult the <a href="modules/helptools/data/pages/homepage-en_US.html">embedded help</a>. It is also available as the &quot;What's new&quot; page of the help, by simply typing <code>help</code> in Scilab console.</p>
+<h3>Scilab 2023.1.0:</h3>
 <p>In summary, the main new features and additions are:</p>
 <ul>
-<li><code>axes.auto_stretch</code> property added.</li>
+<li><code>edit_curv()</code> is upgraded. Newly implemented features:
+<ul>
+<li>Undo / Redo actions.</li>
+<li>Deletion of points.</li>
+<li>Editing a curve of a given (customized) handle.</li>
+<li>Editing in given axes, persistent when leaving.</li>
+</ul>
+</li>
+<li>Use <code>curl</code> as default on <code>atomsDownload()</code> for all OS to handle local file repositories.</li>
+<li><code>cat()</code> accepts arrays of different but compatible types according to [,] and [;] rules.</li>
+<li><code>tbx_make(&quot;.&quot;, &quot;help&quot;, lang)</code> builds the documentation restricted to a given language.</li>
+<li>The MPI module documentation has been improved.</li>
+</ul>
+<h3>Scilab 2023.0.0:</h3>
+<p>In summary, the main new features and additions are:</p>
+<ul>
+<li><code>auto_stretch</code> property has been added for axes handles.</li>
 <li><code>http_get()</code> function now sets <code>accept-encoding</code> flag.</li>
 <li>Optional <code>verbose</code> parameter added to <code>http_get()</code>.</li>
 <li><code>atomsInstall()</code> will now try to build a package (containing only Scilab code) locally from sources when no compatible binary version is found.</li>
-<li>Polynomial exponent display can either use ascii or unicode, and is configurable through preferences (See issue #16871).</li>
+<li>Polynomial exponent display can either use ASCII or Unicode and is configurable through preferences (See issue <a href="https://gitlab.com/scilab/scilab/-/issues/16871">#16871</a>).</li>
 <li><code>toJSON(var, filename, indent)</code> implemented, after <code>toJSON(var, filename)</code>.</li>
 <li><code>fromJSON</code> and <code>toJSON</code> processing of <code>tab</code> (<code>ascii(9)</code>) is changed.</li>
-<li><code>for c = h,.., end</code> now accepts an hypermatrix <code>h</code> and iterates over its columns <code>matrix(h, size(h,1),-1)</code>.</li>
+<li><code>for c = h,.., end</code> now accepts a hypermatrix <code>h</code> and iterates over its columns <code>matrix(h, size(h,1),-1)</code>.</li>
 <li>When an operation fails due to mismatching sizes of operands, the sizes are now displayed in the message.</li>
 <li>Displaying <code>covWrite(&quot;html&quot;, dir)</code> results is improved.</li>
 <li><code>tbx_make(&quot;.&quot;, &quot;localization&quot;)</code> can now update files of translated messages according to new gettext entries in the code.</li>
 </ul>
 <h2>Obsolete functions or features</h2>
+<h3>Scilab 2023.1.0:</h3>
+<p>All these functions and features will be removed in Scilab 2025.0.0 (October 2024):</p>
+<ul>
+<li><code>getURL()</code>: Please use <code>http_get()</code> instead.</li>
+<li><code>splitURL()</code>: Please use <code>url_split()</code> instead.</li>
+<li><code>sound()</code>: Please use <code>playsnd()</code> instead.</li>
+</ul>
+<h3>Scilab 2023.0.0:</h3>
 <p>All these functions and features will be removed in Scilab 2024.0.0 (October 2023):</p>
 <ul>
 <li><code>dnaupd()</code>, <code>dneupd()</code>, <code>dsaupd()</code>, <code>dseupd()</code>, <code>znaupd()</code>, <code>zneupd()</code>: Please use <code>eigs()</code> instead.</li>
@@ -60,6 +85,7 @@ For changelogs of earlier releases, please see <a href="https://help.scilab.org/
 <li><code>xget('fpf')</code> and <code>xset('fpf')</code>: Please use <code>fpf</code> argument of <code>contour()</code>, <code>contourf()</code>, <code>contour2d()</code> instead.</li>
 </ul>
 <h2>Removed Functions</h2>
+<h3>Scilab 2023.0.0:</h3>
 <p>The following functions have been removed:</p>
 <ul>
 <li><code>%sn</code>, obsolete since 6.1.0, replaced by <code>ellipj</code>.</li>
@@ -82,6 +108,7 @@ For changelogs of earlier releases, please see <a href="https://help.scilab.org/
 <li><code>xname</code>, obsolete since 6.1.1, replaced by <code>gcf().figure_name</code>.</li>
 </ul>
 <h2>Removed Features</h2>
+<h3>Scilab 2023.0.0:</h3>
 <p>The following features and usages have been removed or disabled:</p>
 <ul>
 <li>Datatip <code>&quot;z_component&quot;</code> property.</li>
@@ -100,14 +127,16 @@ For changelogs of earlier releases, please see <a href="https://help.scilab.org/
 <li><code>frexp</code> is now an internal function. Please use <code>[m,e]=log2(x)</code> instead.</li>
 </ul>
 <h2>Installation</h2>
+<h3>Scilab 2023.0.0:</h3>
 <ul>
 <li>macOS
 <ul>
-<li>Scilab now includes an embedded JRE and won't require a system installed JDK at run-time (See issue #13087).</li>
+<li>Scilab includes an embedded JRE and won't require a system-installed JDK at run-time (See issue  <a href="https://gitlab.com/scilab/scilab/-/issues/13087">#13087</a>).</li>
 </ul>
 </li>
 </ul>
 <h2>Compilation</h2>
+<h3>Scilab 2023.0.0:</h3>
 <ul>
 <li>
 <p>GNU autotools have been updated to :</p>
@@ -123,7 +152,7 @@ For changelogs of earlier releases, please see <a href="https://help.scilab.org/
 <p>Migration to Microsoft Visual Studio 2022 and Intel® oneAPI HPC Toolkit 2022.3.</p>
 </li>
 <li>
-<p>macOS: Build environment has been migrated to conda and now relies on clang and libc++, hence (existing) toolboxes with binary gateways have to be (re)compiled using the same conda environment (see https://gitlab.com/scilab/scilab/-/wikis/Developers/setup-Scilab-repository-macOS)</p>
+<p>macOS: The build environment has been migrated to conda and now relies on clang and libc++, hence (existing) toolboxes with binary gateways have to be (re)compiled using the same conda environment (see https://gitlab.com/scilab/scilab/-/wikis/Developers/setup-Scilab-repository-macOS)</p>
 </li>
 </ul>
 <h2>Packaging &amp; Supported Operating Systems</h2>
@@ -137,36 +166,92 @@ For changelogs of earlier releases, please see <a href="https://help.scilab.org/
 <li>
 <p>To run or compile Scilab you need at least:</p>
 <ul>
-<li>Windows (64-bit):
+<li>Windows (amd64):
 <ul>
 <li>Windows 11 (Desktop)</li>
 <li>Windows 10 (Desktop)</li>
 <li>Windows 8 (Desktop)</li>
 </ul>
 </li>
-<li>macOS (64-bit):
+<li>macOS (amd64):
 <ul>
-<li>Intel-based Mac running macOS 10.9+ (run) and 10.14+ (compile)</li>
+<li>Intel-based Mac running macOS 10.9+ (run) and 10.14+ with Conda (compile)</li>
 <li>Support of macOS Monterey &amp; Ventura added in Scilab 2023.0.0</li>
 </ul>
 </li>
-<li>Linux (64-bit):
+<li>Linux (amd64):
 <ul>
-<li>Red Hat Enterprise Linux 6.x, 7.x</li>
-<li>Ubuntu Linux 18.04 LTS, 22.04 LTS</li>
-<li>Suse Linux Enterprise Server 10 SP2+, 11.x</li>
+<li>debian:11</li>
+<li>ubuntu:18.04, 20.04, 22.04</li>
+<li>fedora:37</li>
 </ul>
 </li>
 </ul>
 </li>
 </ul>
 <h2>API/ABI modification</h2>
+<h3>Scilab 2023.0.0:</h3>
 <ul>
-<li><code>analysis</code> module removed.</li>
+<li><code>analysis</code> module has been removed.</li>
 <li><code>scilab_setVar</code> function added to API.</li>
 </ul>
 <h2>Bug Fixes</h2>
-<h3>Bugs fixed in 2023.0.0:</h3>
+<h3>Scilab 2023.1.0:</h3>
+<ul>
+<li><a href="https://gitlab.com/scilab/scilab/-/issues/3666">#3666</a>: <code>input()</code> badly reencoded UTF-8 input strings.</li>
+<li><a href="https://gitlab.com/scilab/scilab/-/issues/8666">#8666</a>: Linear algebra demonstration failed with xerbla error.</li>
+<li><a href="https://gitlab.com/scilab/scilab/-/issues/8812">#8812</a>: Multi-selection in a listbox did not work when <code>max - min</code> was greater than 1.</li>
+<li><a href="https://gitlab.com/scilab/scilab/-/issues/8917">#8917</a>: <code>write(filename,..)</code> could not overwrite an existing file.</li>
+<li><a href="https://gitlab.com/scilab/scilab/-/issues/12391">#12391</a>: <code>findobj(&quot;figure_id&quot;, num)</code> changed current figure (returned by <code>gcf()</code>).</li>
+<li><a href="https://gitlab.com/scilab/scilab/-/issues/13307">#13307</a>: Clicking on the same item from a listbox a second time did not trigger the callback.</li>
+<li><a href="https://gitlab.com/scilab/scilab/-/issues/13392">#13392</a>: <code>edit_curv()</code>: <code>Undo</code> could cancel only the very last action. There was no <code>Redo</code> action.</li>
+<li><a href="https://gitlab.com/scilab/scilab/-/issues/13913">#13913</a>: The second output argument of <code>xgetmouse()</code> always returned 0.</li>
+<li><a href="https://gitlab.com/scilab/scilab/-/issues/14069">#14069</a>: Autosave in SciNotes did not work as intended for the &quot;source file directory&quot; option.</li>
+<li><a href="https://gitlab.com/scilab/scilab/-/issues/14358">#14358</a>: Black Hole demonstration produced a Java error when clicking on &quot;Clear&quot; button.</li>
+<li><a href="https://gitlab.com/scilab/scilab/-/issues/15075">#15075</a>: <code>read()</code> was slow when reading an unknown number of lines (dims == -1).</li>
+<li><a href="https://gitlab.com/scilab/scilab/-/issues/15709">#15709</a>: <code>languages</code> option has been added to <code>tbx_make(&quot;.&quot;,&quot;help&quot;)</code> to target building to some chosen languages.</li>
+<li><a href="https://gitlab.com/scilab/scilab/-/issues/16136">#16136</a>: <code>sound()</code> is a useless wrapper of <code>playsnd()</code>. It is now obsolete before forthcoming removal.</li>
+<li><a href="https://gitlab.com/scilab/scilab/-/issues/16442">#16442</a>: <code>splitURL()</code> has been moved to the webtools module and renamed to <code>url_split()</code>.</li>
+<li><a href="https://gitlab.com/scilab/scilab/-/issues/16685">#16685</a>: <code>asciimat()</code> now belongs to the <code>m2sci</code> module, where its code, pages and tests should be.</li>
+<li><a href="https://gitlab.com/scilab/scilab/-/issues/16804">#16804</a>: <code>[s,m]=assert_checkequal(1,%z)</code> yielded an error instead of silently returning the error message in <code>m</code>.</li>
+<li><a href="https://gitlab.com/scilab/scilab/-/issues/16810">#16810</a>: <code>edit_curv()</code> has been fixed and upgraded.</li>
+<li><a href="https://gitlab.com/scilab/scilab/-/issues/16838">#16838</a>: Xcos windows were not restored properly from <code>windowsConfiguration.xml</code>.</li>
+<li><a href="https://gitlab.com/scilab/scilab/-/issues/16868">#16868</a>: <code>justify(hypermat,..)</code> processed only the first page <code>hypermat(:,:,1)</code>.</li>
+<li><a href="https://gitlab.com/scilab/scilab/-/issues/16872">#16872</a>: <code>cat()</code> did not apply <code>[,]</code> and <code>[;]</code> input transtyping rules.</li>
+<li><a href="https://gitlab.com/scilab/scilab/-/issues/16877">#16877</a>: <code>cellstr()</code> &amp; <code>iscellstr()</code> now belongs to the <code>m2sci</code> module, where their code, pages and tests should be.</li>
+<li><a href="https://gitlab.com/scilab/scilab/-/issues/16878">#16878</a>: <code>or(%i, dim)</code> and <code>and(%i, dim)</code> yielded an error.</li>
+<li><a href="https://gitlab.com/scilab/scilab/-/issues/16906">#16906</a>: In the <code>param3d()</code> documentation, the descriptions of alpha and theta were inverted.</li>
+<li><a href="https://gitlab.com/scilab/scilab/-/issues/16993">#16939</a>: <code>getversion()</code> did not detect that Scilab was built using <code>clang</code>.</li>
+<li><a href="https://gitlab.com/scilab/scilab/-/issues/16941">#16941</a>: <code>fplot3d(xr,yr,f,theta,..)</code> ignored theta.</li>
+<li><a href="https://gitlab.com/scilab/scilab/-/issues/16951">#16951</a>: Javasci failed to load Scilab in NWNI mode.</li>
+<li><a href="https://gitlab.com/scilab/scilab/-/issues/16953">#16953</a>: <code>mgetl()</code> did not trigger stream status end-of-file.</li>
+<li><a href="https://gitlab.com/scilab/scilab/-/issues/16958">#16958</a>: Preferences for polynomial display were ignored at startup.</li>
+<li><a href="https://gitlab.com/scilab/scilab/-/issues/16960">#16960</a>: <code>write()</code> now prints/writes an empty line in console/file when the input is an empty string.</li>
+<li><a href="https://gitlab.com/scilab/scilab/-/issues/16962">#16962</a>: <code>getURL()</code> is now obsolete.</li>
+<li><a href="https://gitlab.com/scilab/scilab/-/issues/16966">#16966</a>: The warning message for the removal of <code>xset()/xget()</code> did not tell which function displayed the message.</li>
+<li><a href="https://gitlab.com/scilab/scilab/-/issues/16968">#16968</a>: <code>cov()</code> generated a warning (xerbla) or made Scilab crash (MKL generation issue).</li>
+<li><a href="https://gitlab.com/scilab/scilab/-/issues/16969">#16969</a>: Scilab desktop default position was out of screen in WSL.</li>
+<li><a href="https://gitlab.com/scilab/scilab/-/issues/16970">#16970</a>: Tests on <code>types::</code> in Webtools gateways and <code>http_upload()</code> example have been fixed.</li>
+<li><a href="https://gitlab.com/scilab/scilab/-/issues/16980">#16980</a>: <code>fpf=' '</code> did not turn off labels in <code>contour()</code>.</li>
+<li><a href="https://gitlab.com/scilab/scilab/-/issues/16982">#16982</a>: <code>vcruntime140_1.dll</code> was missing in Windows package.</li>
+<li><a href="https://gitlab.com/scilab/scilab/-/issues/16983">#16983</a>: <code>input(msg)</code> no longer printed the message.</li>
+<li><a href="https://gitlab.com/scilab/scilab/-/issues/16986">#16986</a>: MPI module is now activated during build, build doc and packaging process.</li>
+<li><a href="https://gitlab.com/scilab/scilab/-/issues/16987">#16987</a>: &quot;Move object&quot; icon was missing in the figures menubar under Linux/MacOS.</li>
+<li><a href="https://gitlab.com/scilab/scilab/-/issues/16988">#16988</a>: Scilab did not start in case of wrong encoding of <code>SCI/etc/modules.xml</code>.</li>
+<li><a href="https://gitlab.com/scilab/scilab/-/issues/16989">#16989</a>: <code>atomsSystemUpdate()</code> could no more be run in NWNI mode.</li>
+<li><a href="https://gitlab.com/scilab/scilab/-/issues/16991">#16991</a>: Scilab run without Java failed at startup if preferences file (XConfiguration.xml) did not exist.</li>
+<li><a href="https://gitlab.com/scilab/scilab/-/issues/16995">#16995</a>: <code>hist3d()</code> plotting feature no more worked in the variable browser and variable editor.</li>
+<li><a href="https://gitlab.com/scilab/scilab/-/issues/17001">#17001</a>: AppStream metadata have been improved.</li>
+<li><a href="https://gitlab.com/scilab/scilab/-/issues/17002">#17002</a>: <code>slint()</code> default configuration file is now copied into SCIHOME and used instead of the original one.</li>
+<li><a href="https://gitlab.com/scilab/scilab/-/issues/17008">#17008</a>: The C code displayed in the <code>API Scilab/API double functions</code> documentation page has been fixed.</li>
+<li><a href="https://gitlab.com/scilab/scilab/-/issues/17010">#17010</a>: <code>slint()</code> overwrote the default configuration file.</li>
+<li><a href="https://gitlab.com/scilab/scilab/-/issues/17011">#17011</a>: <code>Matplot()</code> crashed when <code>rect</code> input argument was missing.</li>
+<li><a href="https://gitlab.com/scilab/scilab/-/issues/17014">#17014</a>: The tolerance required for the <code>rat()</code> computation should verify <code>abs(N./D - X) &lt;= tol * norm(X, 1)</code> (help page fixed).</li>
+<li><a href="https://gitlab.com/scilab/scilab/-/issues/17018">#17018</a>: The documentation for <code>x=input(…)</code> had an error (x type), and was poorly documented (description, examples).</li>
+<li><a href="https://gitlab.com/scilab/scilab/-/issues/17022">#17022</a>: <code>kroneck()</code> returned a wrong error message.</li>
+<li><a href="https://gitlab.com/scilab/scilab/-/issues/17041">#17041</a>: A wrong error message was returned when calling <code>mopen()</code> in read mode for a new file.</li>
+</ul>
+<h3>Scilab 2023.0.0:</h3>
 <ul>
 <li><a href="https://gitlab.com/scilab/scilab/-/issues/463">#463</a>: Invalid format led to crash for <code>write()</code> function.</li>
 <li><a href="https://gitlab.com/scilab/scilab/-/issues/6094">#6094</a>: Error message in case of inconsistent operation was reporting wrong dimensions of operands.</li>
@@ -199,7 +284,7 @@ For changelogs of earlier releases, please see <a href="https://help.scilab.org/
 <li><a href="https://gitlab.com/scilab/scilab/-/issues/16029">#16029</a>: Tick marks were extending out of range for small scale plots.</li>
 <li><a href="https://gitlab.com/scilab/scilab/-/issues/16049">#16049</a>: <code>struct(&quot;v&quot;, cell())</code> crashed Scilab.</li>
 <li><a href="https://gitlab.com/scilab/scilab/-/issues/16127">#16127</a>: <code>c = {1:$}</code> crashed Scilab.</li>
-<li><a href="https://gitlab.com/scilab/scilab/-/issues/16179">#16179</a>: <code>pause</code> inhibited error display when executed in try-catch block.</li>
+<li><a href="https://gitlab.com/scilab/scilab/-/issues/16179">#16179</a>: <code>pause</code> inhibited error display when executed in a try-catch block.</li>
 <li><a href="https://gitlab.com/scilab/scilab/-/issues/16196">#16196</a>: <code>covStart()</code> did not report errors on invalid arguments.</li>
 <li><a href="https://gitlab.com/scilab/scilab/-/issues/16278">#16278</a>: Recursive insertion on unknown function call crashed Scilab.</li>
 <li><a href="https://gitlab.com/scilab/scilab/-/issues/16281">#16281</a>: <code>bezout(%inf, 1)</code> and <code>bezout(%nan, 1)</code> crashed Scilab.</li>
@@ -222,7 +307,7 @@ For changelogs of earlier releases, please see <a href="https://help.scilab.org/
 <li><a href="https://gitlab.com/scilab/scilab/-/issues/16734">#16734</a>: <code>findobj()</code> was slower than before.</li>
 <li><a href="https://gitlab.com/scilab/scilab/-/issues/16748">#16748</a>: Build failed with OCaml 4.11 or newer build without unsafe-strings</li>
 <li><a href="https://gitlab.com/scilab/scilab/-/issues/16750">#16750</a>: Xcos RELATIONALOP's icon became blank when editing the block.</li>
-<li><a href="https://gitlab.com/scilab/scilab/-/issues/16755">#16755</a>: <code>plot3d</code> polygon facets rendering could be wrong when exactly in horizontal or vertical plane.</li>
+<li><a href="https://gitlab.com/scilab/scilab/-/issues/16755">#16755</a>: <code>plot3d</code> polygon facets rendering could be wrong when exactly in the horizontal or vertical plane.</li>
 <li><a href="https://gitlab.com/scilab/scilab/-/issues/16771">#16771</a>: <code>fullpath(&quot;existing_path/*.ext&quot;)</code> crashed Scilab under Windows.</li>
 <li><a href="https://gitlab.com/scilab/scilab/-/issues/16785">#16785</a>: <code>xsave</code>/<code>save</code> of datatips produced double free in data model.</li>
 <li><a href="https://gitlab.com/scilab/scilab/-/issues/16786">#16786</a>: <code>zoom_box</code> property was not correctly saved.</li>
@@ -232,7 +317,7 @@ For changelogs of earlier releases, please see <a href="https://help.scilab.org/
 <li><a href="https://gitlab.com/scilab/scilab/-/issues/16801">#16801</a>: Management of <code>covWrite(&quot;html&quot;)</code> results wrapping was wrong.</li>
 <li><a href="https://gitlab.com/scilab/scilab/-/issues/16803">#16803</a>: <code>tbx_build_localization(…)</code> and <code>tbx_make(dir, &quot;localization&quot;)</code> never updated existing .po files.</li>
 <li><a href="https://gitlab.com/scilab/scilab/-/issues/16812">#16812</a>: While the help browser was open, <code>atomsLoad(&quot;linalg&quot;)</code> errored and broke the loading.</li>
-<li><a href="https://gitlab.com/scilab/scilab/-/issues/16822">#16822</a>: <code>getrelativefilename()</code> returned incorrect value in case of same beginning of directory names.</li>
+<li><a href="https://gitlab.com/scilab/scilab/-/issues/16822">#16822</a>: <code>getrelativefilename()</code> returned an incorrect value in case of the same beginning of directory names.</li>
 <li><a href="https://gitlab.com/scilab/scilab/-/issues/16823">#16823</a>: <code>Mtbxfun_db.txt</code> was missing the Scilab releases (<code>m2sci</code> module).</li>
 <li><a href="https://gitlab.com/scilab/scilab/-/issues/16826">#16826</a>: <code>file()</code> or <code>file(fid)</code> could return outdated relative paths.</li>
 <li><a href="https://gitlab.com/scilab/scilab/-/issues/16836">#16836</a>: <code>tbx_generate_pofile(…)</code> (and so <code>tbx_build_localization(…)</code>) silently failed for any module with too (but no so) many files to process.</li>

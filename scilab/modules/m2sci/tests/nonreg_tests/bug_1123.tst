@@ -33,6 +33,6 @@ SCIFILECONTENTSREF=[
     ""
     "if %t then"
     "  t = 1;"
-    "end;"];
+    "end"];
 
 if or(SCIFILECONTENTSREF<>SCIFILECONTENTS) then pause,end

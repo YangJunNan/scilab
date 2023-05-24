@@ -14,7 +14,8 @@
 // https://gitlab.com/scilab/scilab/-/issues/15249
 //
 // <-- Short Description -->
-// findobj("toto") yielded an error instead of returning []
+// findobj("toto") yields an error after https://gitlab.com/scilab/scilab/-/issues/7117
 
 clf
-assert_checkequal(findobj("toto"), []);
+refMsg = msprintf(_("%s: Wrong number of input argument(s): At least %d expected.\n"), "findobj", 2);
+assert_checkerror("findobj(""toto"")", refMsg);

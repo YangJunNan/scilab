@@ -1479,11 +1479,11 @@ if $WITH_DEVTOOLS; then
 else
     NCURSES_CFLAGS=""
     AC_CHECK_LIB([curses],[tgetent],[NCURSES_LIBS="-lcurses"])
-    if test $ac_cv_lib_curses_tgetent = no ; then
+    if test "x$ac_cv_lib_curses_tgetent" = "xno" ; then
         AC_CHECK_LIB([ncurses],[tgetent],[NCURSES_LIBS="-lncurses"])
     fi
     # make sure we have what we need for tgetent
-    if test $ac_cv_lib_ncurses_tgetent = no ; then
+    if test "x$ac_cv_lib_ncurses_tgetent" = "xno" ; then
         AC_CHECK_LIB([termcap],[tgetent])
     fi
 fi
@@ -2552,13 +2552,22 @@ CURRENT_YEAR=`date "+%Y"`
 DETECTED_YEAR=`grep "Copyright (c) 2022-" ${SCI_SRCDIR}/modules/core/src/cpp/banner.cpp|sed -e "s/.*Copyright (c) 2022-\([[0-9]]*\).*/\1/g"`
 
 if test "$CURRENT_YEAR" != "$DETECTED_YEAR"; then
-    AC_PATH_PROG(INKSCAPE, inkscape)
     sed -i -e "s| 2022-$DETECTED_YEAR | 2022-$CURRENT_YEAR |g" ${SCI_SRCDIR}/modules/core/src/cpp/banner.cpp ${SCI_SRCDIR}/modules/windows_tools/src/c/scilab_windows/console.c
     sed -i -e "s| 2022-$DETECTED_YEAR | 2022-$CURRENT_YEAR |g" ${SCI_SRCDIR}/etc/Info.plist.in
-    sed -i -e "s| 2022-$DETECTED_YEAR | 2022-$CURRENT_YEAR |g" ${SCI_SRCDIR}/modules/gui/images/icons/aboutscilab.svg
-    $INKSCAPE -w 600 -h 290 ${SCI_SRCDIR}/modules/gui/images/icons/aboutscilab.svg -o ${SCI_SRCDIR}/modules/gui/images/icons/aboutscilab.png
     sed -i -e "s|VALUE \"LegalCopyright\", \"Copyright (C) $DETECTED_YEAR|VALUE \"LegalCopyright\", \"Copyright (C) $CURRENT_YEAR|" $(find ${SCI_SRCDIR} -iname '*.rc')
     sed -i -e "s|2017-$DETECTED_YEAR|2017-$CURRENT_YEAR|" $(find ${SCI_SRCDIR} -iname 'banner.xml')
+    
+    sed -i -e "s| 2022-$DETECTED_YEAR | 2022-$CURRENT_YEAR |g" ${SCI_SRCDIR}/modules/gui/images/icons/aboutscilab.svg
+    AC_CHECK_PROG(INKSCAPE, inkscape)
+    if test -n "$INKSCAPE"; then
+        $INKSCAPE -w 600 -h 290 ${SCI_SRCDIR}/modules/gui/images/icons/aboutscilab.svg -o ${SCI_SRCDIR}/modules/gui/images/icons/aboutscilab.png
+    else
+        AC_CHECK_PROG(CAIROSVG, cairosvg)
+        if test -n "$CAIROSVG"; then
+            $CAIROSVG --output-width 600 --output-height 290 ${SCI_SRCDIR}/modules/gui/images/icons/aboutscilab.svg -o ${SCI_SRCDIR}/modules/gui/images/icons/aboutscilab.png
+        fi
+    fi
+
     AC_MSG_WARN([New year ($CURRENT_YEAR) detected. Source files updated, commit them !])
 fi
 
@@ -2582,16 +2591,16 @@ if test "$SCILAB_BINARY_VERSION" != "$DETECTED_VERSION"; then
             -e "s|DEFAULT_SCI_VERSION_MESSAGE L\".*\"|DEFAULT_SCI_VERSION_MESSAGE L\"scilab-branch-$SCILAB_VERSION_MAJOR.$SCILAB_VERSION_MINOR\"|" \
             ${SCI_SRCDIR}/modules/core/includes/version.h ${SCI_SRCDIR}/modules/core/includes/version.h.{in,vc}
     # update some help pages
-    sed -i -e "s|scilab-[[0-9]]\(\.[[0-9]]\)\+|scilab-$SCILAB_BINARY_VERSION|" $(find ${SCI_SRCDIR} -iname 'banner.xml')
+    sed -i -e "s|scilab-[[0-9]]\+\(\.[[0-9]]\+\)\+|scilab-$SCILAB_BINARY_VERSION|" $(find ${SCI_SRCDIR} -iname 'banner.xml')
     # update rc files
-    sed -i  -e "s|FILEVERSION [[0-9]]\(,[[0-9]]\)\+|FILEVERSION $SCILAB_VERSION_MAJOR,$SCILAB_VERSION_MINOR,$SCILAB_VERSION_MAINTENANCE,0|" \
-            -e "s|PRODUCTVERSION [[0-9]]\(,[[0-9]]\)\+|FILEVERSION $SCILAB_VERSION_MAJOR,$SCILAB_VERSION_MINOR,$SCILAB_VERSION_MAINTENANCE,0|" \
-            -e "s|VALUE \"FileVersion\", \"[[0-9]]\(, [[0-9]]\)\+\"|VALUE \"FileVersion\", \"$SCILAB_VERSION_MAJOR, $SCILAB_VERSION_MINOR, $SCILAB_VERSION_MAINTENANCE, 0\"|" \
-            -e "s|VALUE \"ProductVersion\", \"[[0-9]]\(, [[0-9]]\)\+\"|VALUE \"ProductVersion\", \"$SCILAB_VERSION_MAJOR, $SCILAB_VERSION_MINOR, $SCILAB_VERSION_MAINTENANCE, 0\"|" \
-            -e "s|Scilab [[0-9]]\(\.[[0-9]]\)\+|Scilab $SCILAB_BINARY_VERSION|" \
+    sed -i  -e "s|FILEVERSION [[0-9]]\+\(,[[0-9]]\+\)\+|FILEVERSION $SCILAB_VERSION_MAJOR,$SCILAB_VERSION_MINOR,$SCILAB_VERSION_MAINTENANCE,0|" \
+            -e "s|PRODUCTVERSION [[0-9]]\+\(,[[0-9]]\+\)\+|FILEVERSION $SCILAB_VERSION_MAJOR,$SCILAB_VERSION_MINOR,$SCILAB_VERSION_MAINTENANCE,0|" \
+            -e "s|VALUE \"FileVersion\", \"[[0-9]]\+\(, [[0-9]]\+\)\+\"|VALUE \"FileVersion\", \"$SCILAB_VERSION_MAJOR, $SCILAB_VERSION_MINOR, $SCILAB_VERSION_MAINTENANCE, 0\"|" \
+            -e "s|VALUE \"ProductVersion\", \"[[0-9]]\+\(, [[0-9]]\+\)\+\"|VALUE \"ProductVersion\", \"$SCILAB_VERSION_MAJOR, $SCILAB_VERSION_MINOR, $SCILAB_VERSION_MAINTENANCE, 0\"|" \
+            -e "s|Scilab [[0-9]]\+\(\.[[0-9]]\+\)\+|Scilab $SCILAB_BINARY_VERSION|" \
             $(find ${SCI_SRCDIR} -iname '*.rc')
     # update banner, inkscape is used to generate png from svg
-    sed -i -e "s|Scilab [[0-9]]\(\.[[0-9]]\)\+|Scilab $SCILAB_BINARY_VERSION|" ${SCI_SRCDIR}/modules/gui/images/icons/aboutscilab.svg
+    sed -i -e "s|Scilab [[0-9]]\+\(\.[[0-9]]\+\)\+|Scilab $SCILAB_BINARY_VERSION|" ${SCI_SRCDIR}/modules/gui/images/icons/aboutscilab.svg
     $INKSCAPE -w 600 -h 290 ${SCI_SRCDIR}/modules/gui/images/icons/aboutscilab.svg -o ${SCI_SRCDIR}/modules/gui/images/icons/aboutscilab.png
     # alert the user
     AC_MSG_WARN([New version $SCILAB_BINARY_VERSION detected. Source files updated, commit them !])

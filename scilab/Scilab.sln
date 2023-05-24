@@ -470,6 +470,9 @@ EndProject
 Project("{6989167D-11E4-40FE-8C1A-2192A86A7E90}") = "scicos_blocks-cli_f", "modules\scicos_blocks\src\fortran\cli\scicos_blocks-cli_f.vfproj", "{3E0FF981-B5FB-4FC2-B6D8-8C1091FBB23A}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "webtools", "modules\webtools\webtools.vcxproj", "{8DBF9BA7-ABB8-4C35-A82A-0ADBEB7E5331}"
+	ProjectSection(ProjectDependencies) = postProject
+		{EF5402DA-29FD-4F1B-B98B-D284D4E27C15} = {EF5402DA-29FD-4F1B-B98B-D284D4E27C15}
+	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "WScilex-cli", "modules\windows_tools\src\c\WScilex\WScilex-cli.vcxproj", "{1633D502-8B08-442B-923F-F83F3213EEF3}"
 EndProject

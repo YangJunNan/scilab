@@ -201,7 +201,8 @@ am__objects_3 = sci_gateway/cpp/libsciwebtools_la-sci_http_get.lo \
 	sci_gateway/cpp/libsciwebtools_la-sci_toJSON.lo \
 	sci_gateway/cpp/libsciwebtools_la-sci_fromJSON.lo \
 	sci_gateway/cpp/libsciwebtools_la-checkCommonOpt.lo
-am_libsciwebtools_la_OBJECTS = $(am__objects_3)
+am__objects_4 = sci_gateway/c/libsciwebtools_la-sci_url_split.lo
+am_libsciwebtools_la_OBJECTS = $(am__objects_3) $(am__objects_4)
 libsciwebtools_la_OBJECTS = $(am_libsciwebtools_la_OBJECTS)
 AM_V_P = $(am__v_P_@AM_V@)
 am__v_P_ = $(am__v_P_@AM_DEFAULT_V@)
@@ -218,7 +219,9 @@ am__v_at_1 =
 DEFAULT_INCLUDES = -I.@am__isrc@ -I$(top_builddir)/modules/core/includes
 depcomp = $(SHELL) $(top_srcdir)/config/depcomp
 am__maybe_remake_depfiles = depfiles
-am__depfiles_remade = sci_gateway/cpp/$(DEPDIR)/libsciwebtools_la-checkCommonOpt.Plo \
+am__depfiles_remade =  \
+	sci_gateway/c/$(DEPDIR)/libsciwebtools_la-sci_url_split.Plo \
+	sci_gateway/cpp/$(DEPDIR)/libsciwebtools_la-checkCommonOpt.Plo \
 	sci_gateway/cpp/$(DEPDIR)/libsciwebtools_la-sci_fromJSON.Plo \
 	sci_gateway/cpp/$(DEPDIR)/libsciwebtools_la-sci_http_delete.Plo \
 	sci_gateway/cpp/$(DEPDIR)/libsciwebtools_la-sci_http_get.Plo \
@@ -611,6 +614,9 @@ WEBTOOLS_CPP_SOURCES = \
     src/cpp/webtools.cpp \
     src/cpp/json.cpp
 
+GATEWAY_C_SOURCES = \
+    sci_gateway/c/sci_url_split.c
+
 GATEWAY_CPP_SOURCES = \
     sci_gateway/cpp/sci_http_get.cpp \
     sci_gateway/cpp/sci_http_put.cpp \
@@ -642,6 +648,7 @@ libsciwebtools_la_CPPFLAGS = \
     -I$(top_srcdir)/modules/api_scilab/includes \
     -I$(top_srcdir)/modules/preferences/includes \
     $(CURL_CFLAGS) \
+    $(XML_FLAGS) \
     $(AM_CPPFLAGS)
 
 libsciwebtools_algo_la_CPPFLAGS = $(libsciwebtools_la_CPPFLAGS)
@@ -649,7 +656,7 @@ pkglib_LTLIBRARIES = libsciwebtools.la
 noinst_LTLIBRARIES = libsciwebtools-algo.la
 libsciwebtools_algo_la_LDFLAGS = $(CURL_LIBS)
 libsciwebtools_algo_la_SOURCES = $(WEBTOOLS_CPP_SOURCES) $(WEBTOOLS_C_SOURCES)
-libsciwebtools_la_SOURCES = $(GATEWAY_CPP_SOURCES)
+libsciwebtools_la_SOURCES = $(GATEWAY_CPP_SOURCES) $(GATEWAY_C_SOURCES)
 libsciwebtools_la_LIBADD = libsciwebtools-algo.la
 
 # For the code check (splint)
@@ -887,12 +894,23 @@ sci_gateway/cpp/libsciwebtools_la-sci_fromJSON.lo:  \
 sci_gateway/cpp/libsciwebtools_la-checkCommonOpt.lo:  \
 	sci_gateway/cpp/$(am__dirstamp) \
 	sci_gateway/cpp/$(DEPDIR)/$(am__dirstamp)
+sci_gateway/c/$(am__dirstamp):
+	@$(MKDIR_P) sci_gateway/c
+	@: > sci_gateway/c/$(am__dirstamp)
+sci_gateway/c/$(DEPDIR)/$(am__dirstamp):
+	@$(MKDIR_P) sci_gateway/c/$(DEPDIR)
+	@: > sci_gateway/c/$(DEPDIR)/$(am__dirstamp)
+sci_gateway/c/libsciwebtools_la-sci_url_split.lo:  \
+	sci_gateway/c/$(am__dirstamp) \
+	sci_gateway/c/$(DEPDIR)/$(am__dirstamp)
 
 libsciwebtools.la: $(libsciwebtools_la_OBJECTS) $(libsciwebtools_la_DEPENDENCIES) $(EXTRA_libsciwebtools_la_DEPENDENCIES) 
 	$(AM_V_CXXLD)$(CXXLINK) -rpath $(pkglibdir) $(libsciwebtools_la_OBJECTS) $(libsciwebtools_la_LIBADD) $(LIBS)
 
 mostlyclean-compile:
 	-rm -f *.$(OBJEXT)
+	-rm -f sci_gateway/c/*.$(OBJEXT)
+	-rm -f sci_gateway/c/*.lo
 	-rm -f sci_gateway/cpp/*.$(OBJEXT)
 	-rm -f sci_gateway/cpp/*.lo
 	-rm -f src/c/*.$(OBJEXT)
@@ -903,6 +921,7 @@ mostlyclean-compile:
 distclean-compile:
 	-rm -f *.tab.c
 
+@AMDEP_TRUE@@am__include@ @am__quote@sci_gateway/c/$(DEPDIR)/libsciwebtools_la-sci_url_split.Plo@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@sci_gateway/cpp/$(DEPDIR)/libsciwebtools_la-checkCommonOpt.Plo@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@sci_gateway/cpp/$(DEPDIR)/libsciwebtools_la-sci_fromJSON.Plo@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@sci_gateway/cpp/$(DEPDIR)/libsciwebtools_la-sci_http_delete.Plo@am__quote@ # am--include-marker
@@ -962,6 +981,13 @@ src/c/libsciwebtools_algo_la-jsmn.lo: src/c/jsmn.c
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='src/c/jsmn.c' object='src/c/libsciwebtools_algo_la-jsmn.lo' libtool=yes @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libsciwebtools_algo_la_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o src/c/libsciwebtools_algo_la-jsmn.lo `test -f 'src/c/jsmn.c' || echo '$(srcdir)/'`src/c/jsmn.c
+
+sci_gateway/c/libsciwebtools_la-sci_url_split.lo: sci_gateway/c/sci_url_split.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libsciwebtools_la_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT sci_gateway/c/libsciwebtools_la-sci_url_split.lo -MD -MP -MF sci_gateway/c/$(DEPDIR)/libsciwebtools_la-sci_url_split.Tpo -c -o sci_gateway/c/libsciwebtools_la-sci_url_split.lo `test -f 'sci_gateway/c/sci_url_split.c' || echo '$(srcdir)/'`sci_gateway/c/sci_url_split.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) sci_gateway/c/$(DEPDIR)/libsciwebtools_la-sci_url_split.Tpo sci_gateway/c/$(DEPDIR)/libsciwebtools_la-sci_url_split.Plo
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='sci_gateway/c/sci_url_split.c' object='sci_gateway/c/libsciwebtools_la-sci_url_split.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libsciwebtools_la_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o sci_gateway/c/libsciwebtools_la-sci_url_split.lo `test -f 'sci_gateway/c/sci_url_split.c' || echo '$(srcdir)/'`sci_gateway/c/sci_url_split.c
 
 .cpp.o:
 @am__fastdepCXX_TRUE@	$(AM_V_CXX)depbase=`echo $@ | sed 's|[^/]*$$|$(DEPDIR)/&|;s|\.o$$||'`;\
@@ -1083,6 +1109,7 @@ mostlyclean-libtool:
 
 clean-libtool:
 	-rm -rf .libs _libs
+	-rm -rf sci_gateway/c/.libs sci_gateway/c/_libs
 	-rm -rf sci_gateway/cpp/.libs sci_gateway/cpp/_libs
 	-rm -rf src/c/.libs src/c/_libs
 	-rm -rf src/cpp/.libs src/cpp/_libs
@@ -1268,6 +1295,8 @@ clean-generic:
 distclean-generic:
 	-test -z "$(CONFIG_CLEAN_FILES)" || rm -f $(CONFIG_CLEAN_FILES)
 	-test . = "$(srcdir)" || test -z "$(CONFIG_CLEAN_VPATH_FILES)" || rm -f $(CONFIG_CLEAN_VPATH_FILES)
+	-rm -f sci_gateway/c/$(DEPDIR)/$(am__dirstamp)
+	-rm -f sci_gateway/c/$(am__dirstamp)
 	-rm -f sci_gateway/cpp/$(DEPDIR)/$(am__dirstamp)
 	-rm -f sci_gateway/cpp/$(am__dirstamp)
 	-rm -f src/c/$(DEPDIR)/$(am__dirstamp)
@@ -1284,7 +1313,8 @@ clean-am: clean-generic clean-libtool clean-local \
 	clean-noinstLTLIBRARIES clean-pkglibLTLIBRARIES mostlyclean-am
 
 distclean: distclean-am
-		-rm -f sci_gateway/cpp/$(DEPDIR)/libsciwebtools_la-checkCommonOpt.Plo
+		-rm -f sci_gateway/c/$(DEPDIR)/libsciwebtools_la-sci_url_split.Plo
+	-rm -f sci_gateway/cpp/$(DEPDIR)/libsciwebtools_la-checkCommonOpt.Plo
 	-rm -f sci_gateway/cpp/$(DEPDIR)/libsciwebtools_la-sci_fromJSON.Plo
 	-rm -f sci_gateway/cpp/$(DEPDIR)/libsciwebtools_la-sci_http_delete.Plo
 	-rm -f sci_gateway/cpp/$(DEPDIR)/libsciwebtools_la-sci_http_get.Plo
@@ -1346,7 +1376,8 @@ install-ps-am:
 installcheck-am:
 
 maintainer-clean: maintainer-clean-am
-		-rm -f sci_gateway/cpp/$(DEPDIR)/libsciwebtools_la-checkCommonOpt.Plo
+		-rm -f sci_gateway/c/$(DEPDIR)/libsciwebtools_la-sci_url_split.Plo
+	-rm -f sci_gateway/cpp/$(DEPDIR)/libsciwebtools_la-checkCommonOpt.Plo
 	-rm -f sci_gateway/cpp/$(DEPDIR)/libsciwebtools_la-sci_fromJSON.Plo
 	-rm -f sci_gateway/cpp/$(DEPDIR)/libsciwebtools_la-sci_http_delete.Plo
 	-rm -f sci_gateway/cpp/$(DEPDIR)/libsciwebtools_la-sci_http_get.Plo

@@ -141,25 +141,26 @@ public class SciNotesAutosave implements ActionListener {
         return true;
     }
 
-    public static File getBackupFile(String name) {
+    public static File getBackupFile(String originalName) {
         SciNotesOptions.Autosave as = SciNotesOptions.getSciNotesAutosave();
         DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd_HHmmss");
+        String backupName = originalName;
         if (as.appendFilename) {
-            name += as.appendWith.replaceAll("%date", dateFormat.format(new Date()));
+            backupName += as.appendWith.replaceAll("%date", dateFormat.format(new Date()));
         } else {
-            int dotpos = name.lastIndexOf('.');
+            int dotpos = backupName.lastIndexOf('.');
             if (dotpos != -1) {
-                name = name.substring(0, dotpos + 1) + as.replaceWith;
+                backupName = backupName.substring(0, dotpos + 1) + as.replaceWith;
             }
         }
 
-        File file = new File(name);
+        File file = new File(backupName);
         String filename = file.getName();
         if (!as.sourceFlag) {
             file = new File(as.singleDirectory, filename);
         }
 
-        boolean identic = new File(name).equals(file);
+        boolean identic = new File(originalName).equals(file);
 
         if (identic) {
             return null;

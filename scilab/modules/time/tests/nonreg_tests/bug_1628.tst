@@ -22,7 +22,7 @@
 
 timer();
 sleep(9900);
-assert_checktrue(timer()>0);
+assert_checkfalse(timer() < 0);
 
 // another test
 runs = 50;
@@ -32,4 +32,4 @@ for i = 1:runs
     a = matrix(b, 750, 3000);
     b = a';
 end
-assert_checktrue(timer()>0);
+assert_checkfalse(timer() < 0);

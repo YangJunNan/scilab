@@ -29,7 +29,7 @@
         <refname>getURL</refname>
 
         <refpurpose>URL (HTTP, HTTPS, FTP...) をダウンロード</refpurpose>
-
+        <refpurpose>Obsolete, please use <link linkend="http_get">http_get</link> instead.</refpurpose>
     </refnamediv>
 
     <refsynopsisdiv>
@@ -281,10 +281,14 @@
                 <revremark>この関数はScilab 5.5.0で追加されました</revremark>
 
             </revision>
-
+            <revision>
+                <revnumber>2023.1.0</revnumber>
+                <revremark>
+                    Tagged obsolete and will be removed in Scilab 2025.0.0.
+                </revremark>
+            </revision>
         </revhistory>
 
     </refsection>
 
 </refentry>
-

@@ -33,6 +33,7 @@ extern "C"
 #include "Scierror.h"
 #include "sciprint.h"
 #include "localization.h"
+#include "FileExist.h"
 }
 
 static bool contributionMsg = true;
@@ -88,7 +89,14 @@ types::Function::ReturnValue sci_slint(types::typed_list & in, int _iRetCount, t
             }
             else if (in[1]->isString())
             {
-                outFile = in[1]->getAs<types::String>();
+                if(_iRetCount)
+                {
+                    conf = in[1]->getAs<types::String>();
+                }
+                else
+                {
+                    outFile = in[1]->getAs<types::String>();
+                }
             }
             else
             {
@@ -123,7 +131,7 @@ types::Function::ReturnValue sci_slint(types::typed_list & in, int _iRetCount, t
 
             if (!in[1]->isString())
             {
-                Scierror(999, _("%s: Wrong type for input argument #%d: A string expected.\n"), "slint", 3);
+                Scierror(999, _("%s: Wrong type for input argument #%d: A string expected.\n"), "slint", 2);
                 return types::Function::Error;
             }
             conf = in[1]->getAs<types::String>();
@@ -147,7 +155,14 @@ types::Function::ReturnValue sci_slint(types::typed_list & in, int _iRetCount, t
         }
         else
         {
-            slint::XMLConfig::getOptions(L"SCI/modules/slint/etc/slint.xml", options);
+            if(FileExist("SCIHOME/slint.xml"))
+            {
+                slint::XMLConfig::getOptions(L"SCIHOME/slint.xml", options);
+            }
+            else
+            {
+                slint::XMLConfig::getOptions(L"SCI/modules/slint/etc/slint.xml", options);
+            }
         }
 
         if (outFile)

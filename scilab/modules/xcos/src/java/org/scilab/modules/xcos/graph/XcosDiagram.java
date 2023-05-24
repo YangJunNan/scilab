@@ -18,32 +18,36 @@
  */
 package org.scilab.modules.xcos.graph;
 
-import org.scilab.modules.xcos.graph.model.XcosGraphModel;
 import java.awt.GraphicsEnvironment;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.IOException;
+import java.lang.reflect.Constructor;
+import java.rmi.server.UID;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Hashtable;
 import java.util.IllegalFormatException;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.Queue;
 import java.util.Set;
 import java.util.logging.Logger;
+import java.util.stream.Collectors;
 
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.SwingWorker;
 import javax.swing.Timer;
 
-import org.scilab.modules.action_binding.highlevel.ScilabInterpreterManagement;
 import org.scilab.modules.action_binding.highlevel.ScilabInterpreterManagement.InterpreterException;
 import org.scilab.modules.graph.ScilabGraph;
 import org.scilab.modules.graph.utils.ScilabGraphConstants;
@@ -57,8 +61,10 @@ import org.scilab.modules.gui.tabfactory.ScilabTabFactory;
 import org.scilab.modules.xcos.JavaController;
 import org.scilab.modules.xcos.Kind;
 import org.scilab.modules.xcos.ObjectProperties;
+import org.scilab.modules.xcos.VectorOfBool;
 import org.scilab.modules.xcos.VectorOfDouble;
 import org.scilab.modules.xcos.VectorOfInt;
+import org.scilab.modules.xcos.VectorOfScicosID;
 import org.scilab.modules.xcos.VectorOfString;
 import org.scilab.modules.xcos.Xcos;
 import org.scilab.modules.xcos.XcosTab;
@@ -66,22 +72,25 @@ import org.scilab.modules.xcos.actions.SaveAsAction;
 import org.scilab.modules.xcos.block.AfficheBlock;
 import org.scilab.modules.xcos.block.BasicBlock;
 import org.scilab.modules.xcos.block.SplitBlock;
+import org.scilab.modules.xcos.block.SuperBlock;
 import org.scilab.modules.xcos.block.TextBlock;
+import org.scilab.modules.xcos.block.io.ContextUpdate;
+import org.scilab.modules.xcos.block.io.ContextUpdate.IOBlocks;
 import org.scilab.modules.xcos.block.io.EventInBlock;
 import org.scilab.modules.xcos.block.io.EventOutBlock;
 import org.scilab.modules.xcos.block.io.ExplicitInBlock;
 import org.scilab.modules.xcos.block.io.ExplicitOutBlock;
 import org.scilab.modules.xcos.block.io.ImplicitInBlock;
 import org.scilab.modules.xcos.block.io.ImplicitOutBlock;
-import org.scilab.modules.xcos.block.io.ContextUpdate.IOBlocks;
 import org.scilab.modules.xcos.configuration.ConfigurationManager;
 import org.scilab.modules.xcos.graph.model.BlockInterFunction;
 import org.scilab.modules.xcos.graph.model.ScicosObjectOwner;
 import org.scilab.modules.xcos.graph.model.XcosCell;
 import org.scilab.modules.xcos.graph.model.XcosCellFactory;
+import org.scilab.modules.xcos.graph.model.XcosGraphModel;
 import org.scilab.modules.xcos.graph.swing.GraphComponent;
+import org.scilab.modules.xcos.io.ScilabTypeCoder;
 import org.scilab.modules.xcos.io.XcosFileType;
-import org.scilab.modules.xcos.io.scicos.ScilabDirectHandler;
 import org.scilab.modules.xcos.link.BasicLink;
 import org.scilab.modules.xcos.link.CommandControlLink;
 import org.scilab.modules.xcos.link.ExplicitLink;
@@ -98,9 +107,9 @@ import org.scilab.modules.xcos.port.output.ExplicitOutputPort;
 import org.scilab.modules.xcos.port.output.ImplicitOutputPort;
 import org.scilab.modules.xcos.preferences.XcosOptions;
 import org.scilab.modules.xcos.utils.BlockPositioning;
-import org.scilab.modules.xcos.utils.Stack;
 import org.scilab.modules.xcos.utils.XcosConstants;
 import org.scilab.modules.xcos.utils.XcosDialogs;
+import org.scilab.modules.xcos.utils.XcosEvent;
 import org.scilab.modules.xcos.utils.XcosMessages;
 
 import com.mxgraph.model.mxCell;
@@ -112,19 +121,6 @@ import com.mxgraph.util.mxEventObject;
 import com.mxgraph.util.mxPoint;
 import com.mxgraph.view.mxGraphSelectionModel;
 import com.mxgraph.view.mxMultiplicity;
-import java.lang.reflect.Constructor;
-import java.rmi.server.UID;
-import java.util.HashMap;
-import java.util.Hashtable;
-import java.util.Optional;
-import java.util.stream.Collectors;
-import org.scilab.modules.types.ScilabType;
-import org.scilab.modules.xcos.VectorOfBool;
-import org.scilab.modules.xcos.VectorOfScicosID;
-import org.scilab.modules.xcos.block.SuperBlock;
-import org.scilab.modules.xcos.block.io.ContextUpdate;
-import org.scilab.modules.xcos.io.ScilabTypeCoder;
-import org.scilab.modules.xcos.utils.XcosEvent;
 
 /**
  * The base class for a diagram. This class contains jgraphx + Scicos data.
@@ -153,7 +149,11 @@ public class XcosDiagram extends ScilabGraph {
      * @param uid the string UID that will be used on the default parent
      */
     public XcosDiagram(final JavaController controller, final long diagramId, final Kind kind, String uid) {
-        super(new XcosGraphModel(controller, diagramId, kind, uid), Xcos.getInstance().getStyleSheet());
+        this(controller, new ScicosObjectOwner(controller, diagramId, kind), uid);
+    }
+
+    public XcosDiagram(final JavaController controller, final ScicosObjectOwner owner, String uid) {
+        super(new XcosGraphModel(controller, owner, uid), Xcos.getInstance().getStyleSheet());
 
         // set the default parent (the JGraphX layer) defined on the model
         setDefaultParent(getModel().getChildAt(getModel().getRoot(), 0));
@@ -2006,6 +2006,9 @@ public class XcosDiagram extends ScilabGraph {
      * Update the title
      */
     public void updateTabTitle() {
+        if (isReadonly())
+            return;
+
         // get the modifier string
         final String modified;
         if (Xcos.getInstance().isModified(Xcos.findRoot(this))) {

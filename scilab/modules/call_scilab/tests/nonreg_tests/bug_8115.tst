@@ -16,8 +16,8 @@
 //
 // <-- Short Description -->
 // DisableInteractiveMode did not work
-// export SCI=/your/scilab/install/share/scilab
-// export LD_LIBRARY_PATH=/your/scilab/install/lib/scilab/:/your/scilab/install/lib/thirdparty/
+
+// Define Variables as decribed in the Makefile
 // make bug_8115
 // ./bug_8115
 

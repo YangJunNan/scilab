@@ -85,6 +85,9 @@
     <ClCompile Include="sci_gateway\cpp\sci_http_patch.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="sci_gateway\c\sci_url_split.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Xml Include="sci_gateway\webtools_gateway.xml" />

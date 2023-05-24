@@ -33,7 +33,7 @@ SCIFILECONTENTSREF=[
         "a = 1;"
         "while a==1"
         "  a = 2;"
-        "end;"
+        "end"
         "a = 3"];
 
 if or(SCIFILECONTENTSREF<>SCIFILECONTENTS) then pause,end

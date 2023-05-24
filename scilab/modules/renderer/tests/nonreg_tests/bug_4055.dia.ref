@@ -14,8 +14,8 @@
 // <-- Short Description -->
 // From time to time, when I plot a graphic, scilab displays a blank graphic windows.
 if getos() == 'Windows' then
-    if fileinfo(SCI+'\bin\jogl_cg.dll') == [] then bugmes();quit;end
-    if fileinfo(SCI+'\bin\gluegen2-rt.dll') == [] then bugmes();quit;end
+    if fileinfo(SCI+'\bin\jogl_desktop.dll') == [] then bugmes();quit;end
+    if fileinfo(SCI+'\bin\gluegen_rt.dll') == [] then bugmes();quit;end
     if fileinfo(SCI+'\thirdparty\gluegen2-rt.jar') == [] then bugmes();quit;end
     if fileinfo(SCI+'\thirdparty\jogl2.jar') == [] then bugmes();quit;end
 end

@@ -41,6 +41,10 @@ assert_checkalmostequal(r ^ C, expm(log(r) * C));
 assert_checkalmostequal(c ^ R, expm(log(c) * R));
 //c ^ C
 assert_checkalmostequal(c ^ C, expm(log(c) * C));
+r1 = [1, -2.32, 1] .^ -1.123;
+r2 = [1, -2.32, 1] ^ -1.123;
+assert_checkalmostequal(r1, [1, -0.359991792326739168395+0.1464703519103459083972*%i, 1]);
+assert_checkalmostequal(r2, [1, -0.359991792326739168395+0.1464703519103459083972*%i, 1]);
 //POLY
 //poly ^ double
 //pR ^ r

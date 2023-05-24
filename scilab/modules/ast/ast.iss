@@ -29,6 +29,7 @@ Source: modules\{#AST}\includes\*.*; DestDir: {app}\modules\{#AST}\includes; Fla
 ;
 Source: modules\{#AST}\etc\{#AST}.quit; DestDir: {app}\modules\{#AST}\etc; Components: {#COMPN_SCILAB}
 Source: modules\{#AST}\etc\{#AST}.start; DestDir: {app}\modules\{#AST}\etc; Components: {#COMPN_SCILAB}
+Source: modules\{#AST}\macros\lib; DestDir: {app}\modules\{#AST}\macros; Components: {#COMPN_SCILAB}
 ;
 Source: modules\{#AST}\tests\*.*; DestDir: {app}\modules\{#AST}\tests; Flags: recursesubdirs; Components: {#COMPN_SCILAB} and {#COMPN_TESTS}
 ;

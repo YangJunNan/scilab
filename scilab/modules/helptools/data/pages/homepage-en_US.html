@@ -29,41 +29,64 @@
     <br>
     <br>
     <div class="refsection">
-        <h3 class="title">Welcome to Scilab 2023.0.0</h3>
+        <h2 class="title">Welcome to Scilab 2023.1.0</h2>
         <p class="para">
-            Scilab 2023.0.0 is a major new release of Scilab, the open-source
+            Scilab 2023.1.0 is a new stable release of Scilab, the open-source
             platform for numerical computation.
         </p>
         <p class="para">
-            Here is a tour of the changes between Scilab 6.1.1 &amp; 2023.0.0.
+            Here is a tour of the changes since Scilab 6.1.1.
         </p>
         <p class="para">
-            To have a tour with the help browser, enter <code>help("2023.0.0")</code>
+            To have a tour with the help browser, enter <code>help("2023.1.0")</code>
             in the console, and browse related pages.
         </p>
-        <h2 class="title">Feature changes and additions</h2>
+        <h3 class="title">Feature changes and additions</h3>
         <ul>
-            <li><code>axes.auto_stretch</code> property added.</li>
-            <li><code>http_get()</code> function now sets <code>accept-encoding</code> flag.</li>
-            <li>Optional <code>verbose</code> parameter added to <code>http_get()</code>.</li>
-            <li><code>atomsInstall()</code> will now try to build a package (containing only Scilab code) locally from sources when no compatible binary version is found.</li>
-            <li>Polynomial exponent display can either use ascii or unicode, and is configurable through preferences (See issue #16871).</li>
-            <li><code>toJSON(var, filename, indent)</code> implemented, after <code>toJSON(var, filename)</code>.</li>
-            <li><code>fromJSON</code> and <code>toJSON</code> processing of <code>tab</code> (<code>ascii(9)</code>) is changed.</li>
-            <li><code>for c = h,.., end</code> now accepts an hypermatrix <code>h</code> and iterates over its columns <code>matrix(h, size(h,1),-1)</code>.</li>
-            <li>When an operation fails due to mismatching sizes of operands, the sizes are now displayed in the message.</li>
-            <li>Displaying <code>covWrite("html", dir)</code> results is improved.</li>
-            <li><code>tbx_make . localization</code> can now update files of translated messages according to new gettext entries in the code.</li>
+            <li>ATOMS:
+                <ul>
+                    <li><code>atomsInstall()</code> will now try to build a package (containing only Scilab code) locally from sources when no compatible binary version is found.</li>
+                    <li><code>curl</code> is now used as default in <code>atomsDownload()</code> for all OS to handle local file repositories.
+                </ul>
+            </li>
+            <li>Development Tools:
+                <ul>
+                    <li><code>tbx_make(".", "localization")</code> can now update files of translated messages according to new gettext entries in the code.</li>
+                    <li><code>tbx_make(".", "help", lang)</code> builds the documentation restricted to a given language.</li>
+                </ul>
+            </li>
+            <li>Graphics:
+                <ul>
+                    <li><code>edit_curv()</code> UI has been upgraded (copy/paste, deletion of points, ...).</li>
+                    <li><code>auto_stretch</code> property has been added for axes handles.</li>
+                </ul>
+            </li>
+            <li>Web Tools:
+                <ul>
+                    <li><code>http_get()</code> function now sets <code>accept-encoding</code> flag.</li>
+                    <li>Optional <code>verbose</code> parameter added to <code>http_get()</code>.</li>
+                    <li><code>toJSON(var, filename, indent)</code> implemented, after <code>toJSON(var, filename)</code>.</li>
+                    <li><code>fromJSON()</code> and <code>toJSON()</code> processing of <code>tab</code> (<code>ascii(9)</code>) is changed.</li>
+                </ul>
+            </li>
+            <li>Other Improvements:
+                <ul>
+                    <li>Polynomial exponent display can either use ASCII or Unicode, and is configurable through preferences.</li>
+                    <li><code>for c = h,..., end</code> now accepts an hypermatrix <code>h</code> and iterates over its columns <code>matrix(h, size(h,1),-1)</code>.</li>
+                    <li>When an operation fails due to mismatching sizes of operands, the sizes are now displayed in the message.</li>
+                    <li><code>cat()</code> accepts arrays of different but compatible types according to <code>[,]</code> and <code>[;]</code> rules.</li>
+                    <li>Displaying <code>covWrite("html", dir)</code> results is improved.</li>
+                    <li>MKL version has been updated for Windows version.</li>
+                </ul>
+            </li>
         </ul>
 
-        <h2 class="title">Bug fixes</h2>
         <p class="para">
-            In this version, extra effort has been expended on bug fixing and stabilization.
-            Detailed information about those improvements can be found on the <a href="CHANGES.html">CHANGES</a> file.
+            In this version, extra effort has been expanded on fixing issues and stabilization.
+            Detailed information about those improvements can be found in the <a href="CHANGES.html">CHANGES</a> file.
         </p>
     </div>
     <hr>
-    <br>
     <div class="refsection">
         <h3 class="title">Documentation and help</h3>
         <p class="para">If you are new to Scilab, please use
@@ -74,10 +97,8 @@
         <p class="para">The Scilab Team provides also
             some <a href="https://www.scilab.org/tutorials">documentation
                 and tutorials</a>.</p>
-        <br>
     </div>
     <hr>
-    <br>
     <div class="refsection">
         <h3 class="title">Other resources</h3>
         <p class="para"><a href="https://www.scilab.org/" class="ulink">Scilab Website</a> - Consult Scilab official

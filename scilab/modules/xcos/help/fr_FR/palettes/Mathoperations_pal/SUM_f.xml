@@ -150,17 +150,13 @@
     </refsection>
     <refsection id="Seealso_SUM_f" role="see also">
         <title>Voir aussi</title>
-        <itemizedlist>
-            <listitem>
-                <para>
-                    <link linkend="SUMMATION">SUMMATION</link>
-                </para>
-            </listitem>
-            <listitem>
-                <para>
-                    <link linkend="BIGSOM_f">BIGSOM_f</link>
-                </para>
-            </listitem>
-        </itemizedlist>
+        <simplelist type="inline">
+            <member>
+                <link linkend="SUMMATION">SUMMATION</link>
+            </member>
+            <member>
+                <link linkend="BIGSOM_f">BIGSOM_f</link>
+            </member>
+        </simplelist>
     </refsection>
 </refentry>
