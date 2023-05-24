@@ -55,13 +55,13 @@ if l<>2|f<>"foo" then pause,end
 foo=["a=1";"a=aaaa"];
 if execstr(foo,"errcatch")==0 then pause,end
 [str,n,l,f]=lasterror(%t);
-if l<>2|f<>"" then pause,end
+if l<>2|f<>"execstr" then pause,end
 
 //complex situations
 deff("foo","execstr(''a=aaaa'')")
 if execstr("foo()","errcatch")==0 then pause,end
 [str,n,l,f]=lasterror(%t);
-if l<>1|f<>"foo" then pause,end
+if l<>1|f<>"execstr" then pause,end
 
 
 funcprot(prot);

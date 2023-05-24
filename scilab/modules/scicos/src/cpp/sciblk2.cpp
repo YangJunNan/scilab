@@ -165,7 +165,6 @@ void sciblk2(int* flag, int* nevprt, double* t, double xd[], double x[], int* nx
         ConfigVariable::resetWhereError();
 
         ConfigVariable::where_end();
-        ConfigVariable::setLastErrorFunction(pCall->getName());
         ConfigVariable::decreaseRecursion();
 
         setErrAndFree(-1, out);

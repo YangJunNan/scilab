@@ -131,19 +131,19 @@ public :
     InternalError(const std::wstring& _wstErrorMesssage) : ScilabException(_wstErrorMesssage)
     {
         m_type = TYPE_ERROR;
-        setLastError(999, _wstErrorMesssage.c_str(), 0, NULL);
+        setLastError(999, _wstErrorMesssage.c_str());
     }
 
     InternalError(std::string _stErrorMesssage) : ScilabException(_stErrorMesssage)
     {
         m_type = TYPE_ERROR;
-        setLastError(999, m_wstErrorMessage.c_str(), 0, NULL);
+        setLastError(999, m_wstErrorMessage.c_str());
     }
 
     InternalError(const std::wstring& _wstErrorMesssage, int _iErrorNumber, const Location& _ErrorLocation) : ScilabException(_wstErrorMesssage, _iErrorNumber, _ErrorLocation)
     {
         m_type = TYPE_ERROR;
-        setLastError(_iErrorNumber, _wstErrorMesssage.c_str(), _ErrorLocation.first_line, NULL);
+        setLastError(_iErrorNumber, _wstErrorMesssage.c_str());
     }
 };
 
