@@ -316,7 +316,6 @@ void sciblk4(scicos_block* blk, const int flag)
         ConfigVariable::resetWhereError();
 
         ConfigVariable::where_end();
-        ConfigVariable::setLastErrorFunction(pCall->getName());
         ConfigVariable::decreaseRecursion();
 
         set_block_error(-1);

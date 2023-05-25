@@ -1338,7 +1338,7 @@ void ConfigVariable::whereErrorToString(std::wostringstream& ostr)
 
 void ConfigVariable::fillWhereError(int _iErrorLine)
 {
-    if (m_WhereError.empty())
+    if (m_WhereError.empty() && m_Where.empty() == false)
     {
         int iTmp = 0;
         if (_iErrorLine != 0)
@@ -1361,6 +1361,10 @@ void ConfigVariable::fillWhereError(int _iErrorLine)
 
             iTmp = where->m_line;
         }
+
+        // fill lasterror function name and line
+        setLastErrorFunction(m_WhereError[0].m_function_name);
+        setLastErrorLine(m_WhereError[0].m_line);
     }
 }
 

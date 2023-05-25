@@ -152,12 +152,6 @@ types::Function::ReturnValue Overload::call(const std::wstring& _stOverloadingFu
         ConfigVariable::fillWhereError(ie.GetErrorLocation().first_line);
         if (pCall)
         {
-            if (ConfigVariable::getLastErrorFunction() == L"")
-            {
-                ConfigVariable::setLastErrorFunction(pCall->getName());
-                ConfigVariable::setLastErrorLine(ie.GetErrorLocation().first_line);
-            }
-
             // remove function name in where
             ConfigVariable::where_end();
             ConfigVariable::decreaseRecursion();
@@ -168,7 +162,6 @@ types::Function::ReturnValue Overload::call(const std::wstring& _stOverloadingFu
     catch (const ast::InternalAbort& ia)
     {
         ConfigVariable::where_end();
-        ConfigVariable::setLastErrorFunction(_stOverloadingFunctionName);
         ConfigVariable::decreaseRecursion();
         throw ia;
     }

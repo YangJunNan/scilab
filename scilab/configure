@@ -10723,19 +10723,19 @@ else
 fi
 
 if test "$enable_debug_fortran" = yes; then
-   FFLAGS="`echo "$FFLAGS"| sed -e 's|-O0-9+|-O0|'`"
+   FFLAGS="`echo "$FFLAGS"| sed -e 's|-O[0-9+]|-O0|'`"
 else
    enable_debug_fortran=no
 fi
 
 if test "$enable_debug_C" = yes; then
-   CFLAGS="`echo "$CFLAGS"| sed -e 's|-O0-9+|-O0|'`"
+   CFLAGS="`echo "$CFLAGS"| sed -e 's|-O[0-9+]|-O0|'`"
 else
    enable_debug_C=no
 fi
 
 if test "$enable_debug_CXX" = yes; then
-   CXXFLAGS="`echo "$CXXFLAGS"| sed -e 's|-O0-9+|-O0|'`"
+   CXXFLAGS="`echo "$CXXFLAGS"| sed -e 's|-O[0-9+]|-O0|'`"
 else
    enable_debug_CXX=no
 fi
