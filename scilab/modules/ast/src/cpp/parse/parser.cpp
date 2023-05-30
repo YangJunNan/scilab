@@ -188,6 +188,40 @@ void Parser::disableStopOnFirstError(void)
     ParserSingleInstance::disableStopOnFirstError();
 }
 
+#ifdef _MSC_VER
+#include <io.h>
+#include <fcntl.h>
+#include <sys/stat.h>
+FILE* fmemopen(void* buf, size_t len, const char* type)
+{
+    int fd;
+    FILE* fp;
+    char szFile[MAX_PATH];
+    sprintf(szFile, "%s\\command.temp", getTMPDIR());
+
+    if (_sopen_s(&fd, szFile, _O_CREAT | _O_SHORT_LIVED | _O_TEMPORARY | _O_RDWR | _O_NOINHERIT, _SH_DENYRW, _S_IREAD | _S_IWRITE) != 0)
+    {
+        return NULL;
+    }
+
+    if (fd == -1)
+    {
+        return NULL;
+    }
+
+    fp = _fdopen(fd, "wt+");
+    if (!fp)
+    {
+        _close(fd);
+        return NULL;
+    }
+
+    fwrite(buf, len, 1, fp);
+    rewind(fp);
+    return fp;
+}
+#endif
+
 /** \brief parse the given file command */
 void ParserSingleInstance::parse(const char *command)
 {
@@ -195,58 +229,8 @@ void ParserSingleInstance::parse(const char *command)
 
     yylloc.first_line = yylloc.last_line = 1;
     yylloc.first_column = yylloc.last_column = 1;
-#ifdef _MSC_VER
-    char szFile[MAX_PATH];
-    char* pstTmpDIr = getTMPDIR();
-    os_sprintf(szFile, "%s\\%s", pstTmpDIr, "command.temp");
-    FREE(pstTmpDIr);
-    if (fileLocker)
-    {
-        fclose(fileLocker);
-        fileLocker = nullptr;
-    }
 
-    errno_t err;
-    err = fopen_s(&yyin, szFile, "w");
-    if (err)
-    {
-        ParserSingleInstance::setExitStatus(Parser::Failed);
-        ParserSingleInstance::resetErrorMessage();
-        wchar_t szError[bsiz];
-        wchar_t* wszFile = to_wide_string(szFile);
-        os_swprintf(szError, bsiz, _W("%ls: Cannot open file %ls.\n").c_str(), L"parser", wszFile);
-        FREE(wszFile);
-        appendErrorMessage(szError);
-        return;
-    }
-
-    fwrite(command, sizeof(char), len, yyin);
-    fclose(yyin);
-    fopen_s(&yyin, szFile, "r");
-#endif
-
-#ifdef __APPLE__
-    char szFile[PATH_MAX];
-    char* pstTmpDIr = "/tmp";
-    sprintf(szFile, "%s/%s", getTMPDIR(), "command.temp");
-    //FREE(pstTmpDIr);
-    if (fileLocker)
-    {
-        fclose(fileLocker);
-        fileLocker = nullptr;
-    }
-    yyin = fopen(szFile, "w");
-    fwrite(command, 1, len, yyin);
-    fclose(yyin);
-    yyin = fopen(szFile, "r");
-#endif
-
-
-#ifndef _MSC_VER
-#ifndef __APPLE__
     yyin = fmemopen((void*)command, len, "r");
-#endif
-#endif
 
     ParserSingleInstance::disableStrictMode();
     ParserSingleInstance::setFileName(L"prompt");
@@ -258,17 +242,6 @@ void ParserSingleInstance::parse(const char *command)
     yyparse();
 
     fclose(yyin);
-#ifdef _MSC_VER
-    DeleteFileA(szFile);
-#endif
-
-#ifdef _MSC_VER
-    //reopen a file to prevents max file opened.
-    fopen_s(&fileLocker, szFile, "w");
-#endif
-#ifdef __APPLE__
-    fileLocker = fopen(szFile, "w");
-#endif
 }
 
 /** \brief put the asked line in codeLine */
