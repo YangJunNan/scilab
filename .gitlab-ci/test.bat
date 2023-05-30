@@ -17,9 +17,11 @@ if exist "%INSTALL_LOCK%" (
 )
 
 if exist "%INSTALL_FAIL%" (
-  echo "Installation failed - Skip test"
+  echo "Skip test - Installation failed - check the test job of "
+  rem display the module name that fails the install
+  cat %INSTALL_FAIL%
   rem return job success to ease finding the one that failed the installation
-  exit 0
+  exit 1
 )
 
 REM already Installed
@@ -30,6 +32,9 @@ if exist "%INSTALL_DIR%" (
 
 REM create lock file
 type nul > "%INSTALL_LOCK%"
+if errorlevel 1 (
+  goto :wait_install
+)
 
 call "%INSTALLER_DIR%\%SCI_VERSION_STRING%.bin.%ARCH%.exe" ^
   /TASKS=!desktopicon,!AssociateSCESCI,!AssociateTSTDEM,!AssociateSCICOS,!AssociateSOD ^
@@ -38,7 +43,7 @@ call "%INSTALLER_DIR%\%SCI_VERSION_STRING%.bin.%ARCH%.exe" ^
 
 if errorlevel 1 (
   echo "Scilab Installation failed"
-  type nul > "%INSTALL_FAIL%"
+  echo "%TEST%" > "%INSTALL_FAIL%"
   del "%INSTALL_LOCK%"
   exit 1
 )
