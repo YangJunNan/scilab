@@ -212,7 +212,7 @@ int CdfBase(char const * const fname, void* pvApiCtx, int inarg, int oarg, int s
     int pos = 0;
     int pos1 = 0;
 
-    char *option = create_string(pvApiCtx, 1);
+    char *option = NULL;
 
     if ( Rhs != inarg + 1 )
     {
@@ -242,6 +242,7 @@ int CdfBase(char const * const fname, void* pvApiCtx, int inarg, int oarg, int s
     }
 
     //check which scilab function is called
+    option = create_string(pvApiCtx, 1);
     switch (siz)
     {
         case 4:
@@ -374,6 +375,8 @@ int CdfBase(char const * const fname, void* pvApiCtx, int inarg, int oarg, int s
             }
             break;
     }
+
+    destroy_string(option);
 
     if (pos != 0)
     {
