@@ -1057,6 +1057,7 @@ NOT variable                %prec NOT       { $$ = new ast::NotExp(@$, *$2); pri
 | comparison                                { $$ = $1; print_rules("variable", "comparison");}
 | variable LPAREN functionArgs RPAREN       { $$ = new ast::CallExp(@$, *$1, *$3); print_rules("variable", "variable LPAREN functionArgs RPAREN");}
 | functionCall LPAREN functionArgs RPAREN   { $$ = new ast::CallExp(@$, *$1, *$3); print_rules("variable", "functionCall LPAREN functionArgs RPAREN");}
+| functionCall LPAREN RPAREN                { $$ = new ast::CallExp(@$, *$1, *new ast::exps_t); print_rules("variable", "functionCall LPAREN RPAREN");}
 ;
 
 /*
