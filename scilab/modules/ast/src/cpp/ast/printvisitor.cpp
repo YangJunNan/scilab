@@ -381,7 +381,7 @@ void PrintVisitor::visit(const OpExp &e)
         *ostr << SCI_LPAREN;
     }
 
-    if (e.getOper() != OpExp::unaryMinus)
+    if (e.getOper() != OpExp::unaryMinus && e.getOper() != OpExp::unaryPlus)
     {
         // Getting Left Operand
         this->enable_force_parenthesis();
@@ -400,6 +400,7 @@ void PrintVisitor::visit(const OpExp &e)
     switch (e.getOper())
     {
         // Arithmetics.
+        case OpExp::unaryPlus:
         case OpExp::plus:
             *ostr << SCI_PLUS;
             break;
@@ -475,7 +476,10 @@ void PrintVisitor::visit(const OpExp &e)
             // FIXME : This case should never happend.
             break;
     }
-    *ostr << " ";
+    if (e.getOper() != OpExp::unaryMinus && e.getOper() != OpExp::unaryPlus)
+    {
+        *ostr << " ";
+    }
 
     // Now getting right operand
     this->enable_force_parenthesis();
