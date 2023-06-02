@@ -166,7 +166,7 @@ msprintf("%2$6s is %1$d-year old.\n", ages, names)
                 <link linkend="mprintf">mprintf</link>
             </member>
             <member>
-                <link linkend="percentchars">percentchars</link>
+                <link linkend="percentchars">%chars</link>
             </member>
         </simplelist>
     </refsection>

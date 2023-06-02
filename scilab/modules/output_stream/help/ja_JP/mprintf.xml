@@ -155,10 +155,10 @@ Martha is 25-year old.
                 <link linkend="write">write</link>
             </member>
             <member>
-                <link linkend="percentio">percentio</link>
+                <link linkend="percentio">%io</link>
             </member>
             <member>
-                <link linkend="percentchars">percentchars</link>
+                <link linkend="percentchars">%chars</link>
             </member>
         </simplelist>
     </refsection>

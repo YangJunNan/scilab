@@ -1318,9 +1318,7 @@ public class HTMLDocbookTagConverter extends DocbookTagConverter implements Temp
                     id = urlBase + link;
                 }
             } else {
-                warnings++;
-                System.err.println("Warning (should be fixed): invalid internal link to " + link + " in " + currentFileName + String.format(":%d:%d", getDocumentLocator().getLineNumber(), getDocumentLocator().getColumnNumber()));
-                return null;
+                throw new SAXException("Invalid internal link to " + link + " in " + currentFileName + String.format(":%d:%d", getDocumentLocator().getLineNumber(), getDocumentLocator().getColumnNumber()));
             }
         }
 
@@ -1334,8 +1332,7 @@ public class HTMLDocbookTagConverter extends DocbookTagConverter implements Temp
         }
 
         if (str == null) {
-            warnings++;
-            System.err.println("Warning (should be fixed): empty link (no text will be printed) to " + link + " in " + currentFileName + "\nat line " + locator.getLineNumber());
+            throw new SAXException("Empty link (no text will be printed) to " + link + " in " + currentFileName + "\nat line " + locator.getLineNumber());
         }
 
         String href = encloseContents("a", new String[] {"href", id, "class", "link"}, str);
@@ -1428,9 +1425,7 @@ public class HTMLDocbookTagConverter extends DocbookTagConverter implements Temp
 
         String id = mapId.get(link);
         if (id == null) {
-            warnings++;
-            System.err.println("Warning (should be fixed): invalid internal link to " + link + " in " + currentFileName + String.format(":%d:%d", getDocumentLocator().getLineNumber(), getDocumentLocator().getColumnNumber()));
-            return null;
+            throw new SAXException("Invalid internal link to " + link + " in " + currentFileName + String.format(":%d:%d", getDocumentLocator().getLineNumber(), getDocumentLocator().getColumnNumber()));
         }
 
         return encloseContents("a", new String[] {"href", id, "class", "xref"}, contents);
