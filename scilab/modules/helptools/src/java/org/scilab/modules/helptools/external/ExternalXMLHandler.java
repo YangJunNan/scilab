@@ -17,6 +17,7 @@ package org.scilab.modules.helptools.external;
 
 import org.xml.sax.Attributes;
 import org.xml.sax.Locator;
+import org.xml.sax.SAXException;
 import org.scilab.modules.helptools.DocbookTagConverter;
 
 public abstract class ExternalXMLHandler {
@@ -26,7 +27,7 @@ public abstract class ExternalXMLHandler {
 
     public abstract StringBuilder startExternalXML(String localName, Attributes attributes, Locator locator);
 
-    public abstract String endExternalXML(String localName);
+    public abstract String endExternalXML(String localName) throws SAXException;
 
     public abstract String getURI();
 
@@ -43,7 +44,7 @@ public abstract class ExternalXMLHandler {
     }
 
     public String getScilabURI() {
-        return "https://www.scilab.org";
+        return "http://www.scilab.org";
     }
 
     public void recreateTag(StringBuilder buf, String localName, Attributes attrs) {
@@ -71,12 +72,12 @@ public abstract class ExternalXMLHandler {
 
     protected static final Boolean getLocalized(final String URI, final Attributes attributes) {
         String v = URI == null ? attributes.getValue("localized") : attributes.getValue(URI, "localized");
-        if (v == null || v.isEmpty()) {
-            return Boolean.FALSE;
-        } else if ("true".equalsIgnoreCase(v)) {
-            return Boolean.TRUE;
-        } else if ("false".equalsIgnoreCase(v)) {
+        if (v == null || v.isEmpty()) { // No information found
             return null;
+        } else if ("true".equalsIgnoreCase(v)) { // Activate localization
+            return Boolean.TRUE;
+        } else if ("false".equalsIgnoreCase(v)) { // Force localization to be ignored for code (even if special cyrillic characters are found, ...)
+            return Boolean.FALSE;
         } else {
             return Boolean.FALSE;
         }

@@ -43,6 +43,7 @@ import org.xml.sax.Attributes;
 import org.xml.sax.InputSource;
 import org.xml.sax.Locator;
 import org.xml.sax.SAXException;
+import org.xml.sax.SAXParseException;
 import org.xml.sax.helpers.DefaultHandler;
 
 /**
@@ -429,11 +430,18 @@ public abstract class DocbookTagConverter extends DefaultHandler implements Conv
                 exceptionOccurred(new SAXException("uri " + uri + " not handled"));
                 return;
             }
-            String str = h.endExternalXML(localName);
-            if (str != null) {
-                stack.pop();
-                stack.peek().getStringBuilder().append(str);
+            String str = null;
+            try {
+                str = h.endExternalXML(localName);
+                if (str != null) {
+                    stack.pop();
+                    stack.peek().getStringBuilder().append(str);
+                }
+            } catch (SAXException e) {
+                exceptionOccurred(e);
+                return;
             }
+
         }
 
         if (converters != null) {
@@ -547,7 +555,7 @@ public abstract class DocbookTagConverter extends DefaultHandler implements Conv
     private String makeErrorMessage(Exception e) {
         String sId = "";
         if (currentFileName != null) {
-            sId = "SystemID:" + currentFileName;
+            sId = "SystemID: " + currentFileName;
         }
 
         String file;
@@ -558,9 +566,9 @@ public abstract class DocbookTagConverter extends DefaultHandler implements Conv
             file = null;
         }
         if (locator != null) {
-            return "\nCannot parse " + file + ":\n" + e.getMessage() + "\n" + sId + " at line " + locator.getLineNumber();
+            return "\nCannot parse " + file + ":\n" + sId + String.format(":%d:%d", locator.getLineNumber(), locator.getColumnNumber()) + "\n\t" + e.getMessage();
         } else {
-            return "\nCannot parse " + file + ":\n" + e.getMessage() + "\n" + sId;
+            return "\nCannot parse " + file + ":\n" + sId + "\n\t" + e.getMessage();
         }
     }
 
@@ -589,6 +597,14 @@ public abstract class DocbookTagConverter extends DefaultHandler implements Conv
         buf.setLength(i + 1);
 
         return buf;
+    }
+
+    /**
+     * Handle an exception without throwing it
+     * @param e the exception to handle
+     */
+    public void error(SAXParseException e) {
+        exceptionOccurred(e);
     }
 
     /*

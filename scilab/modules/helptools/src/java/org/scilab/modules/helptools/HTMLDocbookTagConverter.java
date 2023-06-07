@@ -42,6 +42,7 @@ import org.scilab.modules.helptools.scilab.ScilabLexer;
 import org.scilab.modules.localization.Messages;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
+import org.xml.sax.SAXParseException;
 
 /**
  * Class to convert DocBook to HTML
@@ -157,7 +158,12 @@ public class HTMLDocbookTagConverter extends DocbookTagConverter implements Temp
                     if (id.length() > 0 && id.charAt(0) == '%') {
                         id = id.replace("%", "percent");
                     }
-                    return mapId.get(id);
+                    
+                    String link = mapId.get(id);
+                    if (link == null) {
+                        error(new SAXParseException("The function " + id + " is used in an example and is undocumented.", getDocumentLocator()));
+                    }
+                    return link;
                 }
             });
         }
@@ -1318,7 +1324,7 @@ public class HTMLDocbookTagConverter extends DocbookTagConverter implements Temp
                     id = urlBase + link;
                 }
             } else {
-                throw new SAXException("Invalid internal link to " + link + " in " + currentFileName + String.format(":%d:%d", getDocumentLocator().getLineNumber(), getDocumentLocator().getColumnNumber()));
+                error(new SAXParseException("Invalid internal link to " + link, getDocumentLocator()));
             }
         }
 
@@ -1332,7 +1338,7 @@ public class HTMLDocbookTagConverter extends DocbookTagConverter implements Temp
         }
 
         if (str == null) {
-            throw new SAXException("Empty link (no text will be printed) to " + link + " in " + currentFileName + "\nat line " + locator.getLineNumber());
+            error(new SAXParseException("Empty link to " + link, locator));
         }
 
         String href = encloseContents("a", new String[] {"href", id, "class", "link"}, str);
@@ -1425,7 +1431,7 @@ public class HTMLDocbookTagConverter extends DocbookTagConverter implements Temp
 
         String id = mapId.get(link);
         if (id == null) {
-            throw new SAXException("Invalid internal link to " + link + " in " + currentFileName + String.format(":%d:%d", getDocumentLocator().getLineNumber(), getDocumentLocator().getColumnNumber()));
+            error(new SAXParseException("Invalid internal link to " + link, getDocumentLocator()));
         }
 
         return encloseContents("a", new String[] {"href", id, "class", "xref"}, contents);

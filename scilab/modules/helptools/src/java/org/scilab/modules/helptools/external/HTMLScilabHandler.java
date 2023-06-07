@@ -23,6 +23,7 @@ import java.util.Map;
 
 import org.xml.sax.Attributes;
 import org.xml.sax.Locator;
+import org.xml.sax.SAXParseException;
 
 import org.scilab.modules.helptools.HTMLDocbookTagConverter;
 
@@ -103,7 +104,11 @@ public class HTMLScilabHandler extends ExternalXMLHandler {
             if (getConverter() instanceof HTMLDocbookTagConverter) {
                 baseImagePath = ((HTMLDocbookTagConverter) getConverter()).getBaseImagePath();
             }
+
             if ((isLocalized != null && isLocalized.booleanValue()) || (existing = getExistingFile(outputDir, fileName)) == null) {
+                if (!language.equals("en_US") && !getConverter().getImageConverter().compareMD5(buffer.toString(), fileName) && (isLocalized == null)) {
+                    getConverter().error(new SAXParseException("Overwrite image " + f.getName() + " from line " + line + ". Check the code or use localized=\"true\" attribute.", null));
+                }
                 ret = getConverter().getImageConverter().getImageByCode(currentFileName, buffer.toString(), attributes, "image/scilab", f, baseDir + f.getName(), baseImagePath, line, language, isLocalized);
             } else {
                 ret = getConverter().getImageConverter().getImageByFile(attributes, null, existing.getAbsolutePath(), outputDir, ".", baseImagePath);

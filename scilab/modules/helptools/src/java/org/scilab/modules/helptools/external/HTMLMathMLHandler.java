@@ -21,6 +21,8 @@ import java.util.Map;
 
 import org.xml.sax.Attributes;
 import org.xml.sax.Locator;
+import org.xml.sax.SAXException;
+import org.xml.sax.SAXParseException;
 
 import org.scilab.modules.helptools.HTMLDocbookTagConverter;
 
@@ -75,18 +77,22 @@ public class HTMLMathMLHandler extends ExternalXMLHandler {
     /**
      * {@inheritDoc}
      */
-    public String endExternalXML(String localName) {
+    public String endExternalXML(String localName) throws SAXException {
         if (MATH.equals(localName)) {
             recreateTag(buffer, localName, null);
             File f;
             String language = ((HTMLDocbookTagConverter) getConverter()).getLanguage();
-            if (isLocalized != null && isLocalized.booleanValue()) {
-                f = new File(outputDir, BASENAME + getConverter().getCurrentBaseName() + "_" + language + "_" + (compt++) + ".png");
+            if (isLocalized != null) {
+                if (isLocalized.booleanValue()) {
+                    f = new File(outputDir, BASENAME + getConverter().getCurrentBaseName() + "_" + language + "_" + (compt++) + ".png");
+                } else { // No localization needed
+                    f = new File(outputDir, BASENAME + getConverter().getCurrentBaseName() + "_" + (compt++) + ".png");    
+                }
             } else {
                 if ("ru_RU".equals(language) && HTMLDocbookTagConverter.containsCyrillic(buffer)) {
-                    System.err.println("Warning: MathML code in " + getConverter().getCurrentFileName() + " at line " + line + " contains cyrillic character. The tag <math> should contain the attribute scilab:localized=\"true\"");
+                    getConverter().error(new SAXParseException("MathML code contains cyrillic character. The tag <math> should contain the attribute scilab:localized=\"true\" at line " + line + ".", null));
                 } else if ("ja_JP".equals(language) && HTMLDocbookTagConverter.containsCJK(buffer)) {
-                    System.err.println("Warning: MathML code in " + getConverter().getCurrentFileName() + " at line " + line + " contains CJK character. The tag <math> should contain the attribute scilab:localized=\"true\"");
+                    getConverter().error(new SAXParseException("MathML code contains CJK character. The tag <math> should contain the attribute scilab:localized=\"true\" at line " + line + ".", null));
                 }
                 f = new File(outputDir, BASENAME + getConverter().getCurrentBaseName() + "_" + (compt++) + ".png");
             }
