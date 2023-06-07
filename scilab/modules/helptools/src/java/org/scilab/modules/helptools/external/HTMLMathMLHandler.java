@@ -21,7 +21,6 @@ import java.util.Map;
 
 import org.xml.sax.Attributes;
 import org.xml.sax.Locator;
-import org.xml.sax.SAXException;
 import org.xml.sax.SAXParseException;
 
 import org.scilab.modules.helptools.HTMLDocbookTagConverter;
@@ -77,7 +76,7 @@ public class HTMLMathMLHandler extends ExternalXMLHandler {
     /**
      * {@inheritDoc}
      */
-    public String endExternalXML(String localName) throws SAXException {
+    public String endExternalXML(String localName) {
         if (MATH.equals(localName)) {
             recreateTag(buffer, localName, null);
             File f;

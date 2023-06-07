@@ -17,7 +17,6 @@ package org.scilab.modules.helptools.external;
 
 import org.xml.sax.Attributes;
 import org.xml.sax.Locator;
-import org.xml.sax.SAXException;
 import org.scilab.modules.helptools.DocbookTagConverter;
 
 public abstract class ExternalXMLHandler {
@@ -27,7 +26,7 @@ public abstract class ExternalXMLHandler {
 
     public abstract StringBuilder startExternalXML(String localName, Attributes attributes, Locator locator);
 
-    public abstract String endExternalXML(String localName) throws SAXException;
+    public abstract String endExternalXML(String localName);
 
     public abstract String getURI();
 

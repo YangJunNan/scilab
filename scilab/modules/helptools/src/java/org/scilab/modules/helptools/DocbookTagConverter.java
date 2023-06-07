@@ -430,16 +430,10 @@ public abstract class DocbookTagConverter extends DefaultHandler implements Conv
                 exceptionOccurred(new SAXException("uri " + uri + " not handled"));
                 return;
             }
-            String str = null;
-            try {
-                str = h.endExternalXML(localName);
-                if (str != null) {
-                    stack.pop();
-                    stack.peek().getStringBuilder().append(str);
-                }
-            } catch (SAXException e) {
-                exceptionOccurred(e);
-                return;
+            String str = h.endExternalXML(localName);
+            if (str != null) {
+                stack.pop();
+                stack.peek().getStringBuilder().append(str);
             }
 
         }
