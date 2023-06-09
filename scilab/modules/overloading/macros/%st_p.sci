@@ -2,7 +2,7 @@
 // Copyright (C) INRIA
 // Copyright (C) 2010 - DIGITEO - Vincent COUVERT <vincent.couvert@scilab.org>
 // Copyright (C) 2012 - 2016 - Scilab Enterprises
-// Copyright (C) 2018 - Stéphane MOTTELET
+// Copyright (C) 2018 - UTC - Stéphane MOTTELET
 // Copyright (C) 2019 - 2020 - Samuel GOUGEON
 //
 // This file is hereby licensed under the terms of the GNU GPL v2.0,
