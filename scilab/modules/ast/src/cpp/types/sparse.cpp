@@ -2687,7 +2687,7 @@ int* Sparse::getOuterPtr(int* count)
 
 namespace
 {
-template<typename S> struct GetReal : std::unary_function<typename S::InnerIterator, double>
+template<typename S> struct GetReal
 {
     double operator()(typename S::InnerIterator it) const
     {
@@ -2695,28 +2695,27 @@ template<typename S> struct GetReal : std::unary_function<typename S::InnerItera
     }
 };
 template<> struct GetReal< Eigen::SparseMatrix<std::complex<double >, Eigen::RowMajor > >
-    : std::unary_function<Sparse::CplxSparse_t::InnerIterator, double>
 {
     double operator()(Sparse::CplxSparse_t::InnerIterator it) const
     {
         return it.value().real();
     }
 };
-template<typename S> struct GetImag : std::unary_function<typename S::InnerIterator, double>
+template<typename S> struct GetImag
 {
     double operator()(typename S::InnerIterator it) const
     {
         return it.value().imag();
     }
 };
-template<typename S> struct GetRow : std::unary_function<typename S::InnerIterator, int>
+template<typename S> struct GetRow
 {
     int operator()(typename S::InnerIterator it) const
     {
         return static_cast<int>(it.row() + 1);
     }
 };
-template<typename S> struct GetCol : std::unary_function<typename S::InnerIterator, int>
+template<typename S> struct GetCol
 {
     int operator()(typename S::InnerIterator it) const
     {
