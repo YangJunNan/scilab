@@ -23,7 +23,7 @@
         <title>Calling Sequence</title>
         <synopsis>
             slint(files)
-            slint(files, conf, %t)
+            slint(files, conf, print)
 
             slint(files, resFilename)
             slint(files, conf, resFilename)
@@ -38,7 +38,8 @@
             <varlistentry>
                 <term>files</term>
                 <listitem>
-                    matrix of strings: the <literal>.sci</literal> files or the directories to analyze. <literal>.sce</literal> or other files are ignored.
+                    matrix of strings: the <literal>.sci</literal> files or the directories to analyze.
+                    <literal>.sce</literal> or other types of input files are ignored.
                 </listitem>
             </varlistentry>
             <varlistentry>
@@ -50,7 +51,7 @@
             <varlistentry>
                 <term>resFilename</term>
                 <listitem>
-                    a string: the path + name of the file of results.
+                    a string: the path + name of the file of XML-formated results.
                 </listitem>
             </varlistentry>
             <varlistentry>
@@ -73,11 +74,34 @@
             slint has been written to check the &quot;quality&quot; of the Scilab's code according to configurable rules.
        </para>
         <para>
-            Scripts that list Scilab instructions out of any function can be analyzed, provided that their files have the <literal>.sci</literal> extension.
+            Scripts that list Scilab instructions out of any function can be analyzed,
+            provided that their files have the <literal>.sci</literal> extension.
         </para>
         <warning>
             The Scilab code to be analyzed must show no error at compilation time.
         </warning>
+        <para>
+            <emphasis role="bold">slint(files)</emphasis> analyzes given files, and prints results
+            in the console.
+        </para>
+        <para>
+            <emphasis role="bold">slint(files, resFilename)</emphasis> silently records
+            results in the given <varname>resFilename</varname>.
+        </para>
+        <para>
+            <emphasis role="bold">slint(files, conf, resFilename)</emphasis> analyzes given files
+            according to the custom <varname>conf</varname> configuration file, and silently records
+            results in the given <varname>resFilename</varname>.
+        </para>
+        <para>
+            <emphasis role="bold">out = slint(files, conf, %f)</emphasis> analyzes given files
+            according to the custom <varname>conf</varname> configuration file, and silently records
+            results as a structure in <varname>out</varname>.
+        </para>
+        <para>
+            <emphasis role="bold">out = slint(files, conf, %t)</emphasis> does the same,
+            but additionally  prints results in the console.
+        </para>
     </refsection>
     <refsection>
         <title>Examples</title>

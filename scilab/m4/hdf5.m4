@@ -21,13 +21,13 @@ AC_DEFUN([AC_HDF5], [
 
 
 AC_ARG_WITH(hdf5_include,
-        AC_HELP_STRING([--with-hdf5-include=DIR],[Set the path to the HDF5 headers]),
+        AS_HELP_STRING([--with-hdf5-include=DIR],[Set the path to the HDF5 headers]),
         [with_hdf5_include=$withval],
         [with_hdf5_include='yes']
         )
 
 AC_ARG_WITH(hdf5_library,
-        AC_HELP_STRING([--with-hdf5-library=DIR],[Set the path to the HDF5 libraries]),
+        AS_HELP_STRING([--with-hdf5-library=DIR],[Set the path to the HDF5 libraries]),
         [with_hdf5_library=$withval],
         [with_hdf5_library='yes']
         )

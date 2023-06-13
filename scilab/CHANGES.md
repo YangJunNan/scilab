@@ -58,6 +58,8 @@ Installation
 Compilation
 -----------
 
+- Update autotools to support Linux aarch64 and macOS Apple M1.
+  Use Autoconf 2.71 and Automake 1.16.5 to update.
 - __add your compilation notes before and keep this line__
 
 Packaging & Supported Operating Systems
