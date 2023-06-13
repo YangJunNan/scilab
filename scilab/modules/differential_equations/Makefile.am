@@ -125,11 +125,46 @@ libscidifferential_equations_la_CPPFLAGS= \
     -I$(top_srcdir)/modules/elementary_functions/includes/ \
     $(AM_CPPFLAGS)
 
+
+#### scicos : SUNDIALS STUFF ####
+libscisundials_la_SOURCES = src/patched_sundials/src/cvode/cvode.c \
+src/patched_sundials/src/cvode/cvode_dense.c \
+src/patched_sundials/src/cvode/cvode_direct.c \
+src/patched_sundials/src/cvode/cvode_io.c \
+src/patched_sundials/src/ida/ida.c \
+src/patched_sundials/src/ida/ida_dense.c \
+src/patched_sundials/src/ida/ida_direct.c \
+src/patched_sundials/src/ida/ida_ic.c \
+src/patched_sundials/src/ida/ida_io.c \
+src/patched_sundials/src/kinsol/kinsol.c \
+src/patched_sundials/src/kinsol/kinsol_dense.c \
+src/patched_sundials/src/kinsol/kinsol_direct.c \
+src/patched_sundials/src/kinsol/kinsol_io.c \
+src/patched_sundials/src/nvec_ser/nvector_serial.c \
+src/patched_sundials/src/sundials/sundials_dense.c \
+src/patched_sundials/src/sundials/sundials_direct.c \
+src/patched_sundials/src/sundials/sundials_math.c \
+src/patched_sundials/src/sundials/sundials_nvector.c \
+src/patched_sundials/src/sundials/sundials_extension.c
+
+libscisundials_la_CPPFLAGS = -I$(top_srcdir)/modules/differential_equations/src/patched_sundials/include \
+-I$(top_srcdir)/modules/differential_equations/src/patched_sundials/include/cvode \
+-I$(top_srcdir)/modules/differential_equations/src/patched_sundials/include/ida \
+-I$(top_srcdir)/modules/differential_equations/src/patched_sundials/include/kinsol \
+-I$(top_srcdir)/modules/differential_equations/src/patched_sundials/include/nvec_ser \
+-I$(top_srcdir)/modules/differential_equations/src/patched_sundials/include/sundials \
+-I$(top_srcdir)/modules/differential_equations/src/patched_sundials/src/cvode \
+-I$(top_srcdir)/modules/differential_equations/src/patched_sundials/src/ida \
+-I$(top_srcdir)/modules/differential_equations/src/patched_sundials/src/kinsol \
+-I$(top_srcdir)/modules/differential_equations/src/patched_sundials/src/nvec_ser \
+-I$(top_srcdir)/modules/differential_equations/src/patched_sundials/src/sundials
+
+
 if MAINTAINER_MODE
-pkglib_LTLIBRARIES = libscidifferential_equations.la
+pkglib_LTLIBRARIES = libscidifferential_equations.la libscisundials.la
 noinst_LTLIBRARIES = libscidifferential_equations-algo.la
 else
-noinst_LTLIBRARIES = libscidifferential_equations-algo.la libscidifferential_equations.la
+noinst_LTLIBRARIES = libscidifferential_equations-algo.la libscidifferential_equations.la libscisundials.la
 endif
 
 if IS_MACOSX
@@ -146,7 +181,9 @@ libscidifferential_equations_algo_la_CPPFLAGS = $(libscidifferential_equations_l
 CHECK_SRC= $(DIFFERENTIAL_EQUATIONS_C_SOURCES) $(DIFFERENTIAL_EQUATIONS_CPP_SOURCES)
 INCLUDE_FLAGS = $(libscidifferential_equations_la_CPPFLAGS)
 
-libscidifferential_equations_la_LIBADD = libscidifferential_equations-algo.la $(FLIBS)
+libscidifferential_equations_la_LIBADD = libscidifferential_equations-algo.la $(FLIBS) libscisundials.la
+
+
 
 
 #### Target ######

@@ -228,7 +228,8 @@ am__v_lt_1 =
 @MAINTAINER_MODE_TRUE@am_libscidifferential_equations_algo_la_rpath =
 am__DEPENDENCIES_1 =
 libscidifferential_equations_la_DEPENDENCIES =  \
-	libscidifferential_equations-algo.la $(am__DEPENDENCIES_1)
+	libscidifferential_equations-algo.la $(am__DEPENDENCIES_1) \
+	libscisundials.la
 am__objects_4 = sci_gateway/fortran/Ex-impl.lo \
 	sci_gateway/fortran/Ex-int2d.lo \
 	sci_gateway/fortran/Ex-int3d.lo sci_gateway/fortran/Ex-intg.lo \
@@ -254,6 +255,30 @@ libscidifferential_equations_la_OBJECTS =  \
 @MAINTAINER_MODE_FALSE@am_libscidifferential_equations_la_rpath =
 @MAINTAINER_MODE_TRUE@am_libscidifferential_equations_la_rpath =  \
 @MAINTAINER_MODE_TRUE@	-rpath $(pkglibdir)
+libscisundials_la_LIBADD =
+am_libscisundials_la_OBJECTS =  \
+	src/patched_sundials/src/cvode/libscisundials_la-cvode.lo \
+	src/patched_sundials/src/cvode/libscisundials_la-cvode_dense.lo \
+	src/patched_sundials/src/cvode/libscisundials_la-cvode_direct.lo \
+	src/patched_sundials/src/cvode/libscisundials_la-cvode_io.lo \
+	src/patched_sundials/src/ida/libscisundials_la-ida.lo \
+	src/patched_sundials/src/ida/libscisundials_la-ida_dense.lo \
+	src/patched_sundials/src/ida/libscisundials_la-ida_direct.lo \
+	src/patched_sundials/src/ida/libscisundials_la-ida_ic.lo \
+	src/patched_sundials/src/ida/libscisundials_la-ida_io.lo \
+	src/patched_sundials/src/kinsol/libscisundials_la-kinsol.lo \
+	src/patched_sundials/src/kinsol/libscisundials_la-kinsol_dense.lo \
+	src/patched_sundials/src/kinsol/libscisundials_la-kinsol_direct.lo \
+	src/patched_sundials/src/kinsol/libscisundials_la-kinsol_io.lo \
+	src/patched_sundials/src/nvec_ser/libscisundials_la-nvector_serial.lo \
+	src/patched_sundials/src/sundials/libscisundials_la-sundials_dense.lo \
+	src/patched_sundials/src/sundials/libscisundials_la-sundials_direct.lo \
+	src/patched_sundials/src/sundials/libscisundials_la-sundials_math.lo \
+	src/patched_sundials/src/sundials/libscisundials_la-sundials_nvector.lo \
+	src/patched_sundials/src/sundials/libscisundials_la-sundials_extension.lo
+libscisundials_la_OBJECTS = $(am_libscisundials_la_OBJECTS)
+@MAINTAINER_MODE_FALSE@am_libscisundials_la_rpath =
+@MAINTAINER_MODE_TRUE@am_libscisundials_la_rpath = -rpath $(pkglibdir)
 AM_V_P = $(am__v_P_@AM_V@)
 am__v_P_ = $(am__v_P_@AM_DEFAULT_V@)
 am__v_P_0 = false
@@ -292,7 +317,26 @@ am__depfiles_remade = sci_gateway/cpp/$(DEPDIR)/libscidifferential_equations_la-
 	src/c/$(DEPDIR)/libscidifferential_equations_algo_la-rk4.Plo \
 	src/cpp/$(DEPDIR)/libscidifferential_equations_algo_la-checkodeerror.Plo \
 	src/cpp/$(DEPDIR)/libscidifferential_equations_algo_la-differentialequationfunctions.Plo \
-	src/cpp/$(DEPDIR)/libscidifferential_equations_algo_la-scifunctions.Plo
+	src/cpp/$(DEPDIR)/libscidifferential_equations_algo_la-scifunctions.Plo \
+	src/patched_sundials/src/cvode/$(DEPDIR)/libscisundials_la-cvode.Plo \
+	src/patched_sundials/src/cvode/$(DEPDIR)/libscisundials_la-cvode_dense.Plo \
+	src/patched_sundials/src/cvode/$(DEPDIR)/libscisundials_la-cvode_direct.Plo \
+	src/patched_sundials/src/cvode/$(DEPDIR)/libscisundials_la-cvode_io.Plo \
+	src/patched_sundials/src/ida/$(DEPDIR)/libscisundials_la-ida.Plo \
+	src/patched_sundials/src/ida/$(DEPDIR)/libscisundials_la-ida_dense.Plo \
+	src/patched_sundials/src/ida/$(DEPDIR)/libscisundials_la-ida_direct.Plo \
+	src/patched_sundials/src/ida/$(DEPDIR)/libscisundials_la-ida_ic.Plo \
+	src/patched_sundials/src/ida/$(DEPDIR)/libscisundials_la-ida_io.Plo \
+	src/patched_sundials/src/kinsol/$(DEPDIR)/libscisundials_la-kinsol.Plo \
+	src/patched_sundials/src/kinsol/$(DEPDIR)/libscisundials_la-kinsol_dense.Plo \
+	src/patched_sundials/src/kinsol/$(DEPDIR)/libscisundials_la-kinsol_direct.Plo \
+	src/patched_sundials/src/kinsol/$(DEPDIR)/libscisundials_la-kinsol_io.Plo \
+	src/patched_sundials/src/nvec_ser/$(DEPDIR)/libscisundials_la-nvector_serial.Plo \
+	src/patched_sundials/src/sundials/$(DEPDIR)/libscisundials_la-sundials_dense.Plo \
+	src/patched_sundials/src/sundials/$(DEPDIR)/libscisundials_la-sundials_direct.Plo \
+	src/patched_sundials/src/sundials/$(DEPDIR)/libscisundials_la-sundials_extension.Plo \
+	src/patched_sundials/src/sundials/$(DEPDIR)/libscisundials_la-sundials_math.Plo \
+	src/patched_sundials/src/sundials/$(DEPDIR)/libscisundials_la-sundials_nvector.Plo
 am__mv = mv -f
 COMPILE = $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) \
 	$(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS)
@@ -346,9 +390,11 @@ am__v_F77LD_ = $(am__v_F77LD_@AM_DEFAULT_V@)
 am__v_F77LD_0 = @echo "  F77LD   " $@;
 am__v_F77LD_1 = 
 SOURCES = $(libscidifferential_equations_algo_la_SOURCES) \
-	$(libscidifferential_equations_la_SOURCES)
+	$(libscidifferential_equations_la_SOURCES) \
+	$(libscisundials_la_SOURCES)
 DIST_SOURCES = $(libscidifferential_equations_algo_la_SOURCES) \
-	$(libscidifferential_equations_la_SOURCES)
+	$(libscidifferential_equations_la_SOURCES) \
+	$(libscisundials_la_SOURCES)
 am__can_run_installinfo = \
   case $$AM_UPDATE_INFO_DIR in \
     n|no|NO) false;; \
@@ -799,8 +845,42 @@ libscidifferential_equations_la_CPPFLAGS = \
     -I$(top_srcdir)/modules/elementary_functions/includes/ \
     $(AM_CPPFLAGS)
 
-@MAINTAINER_MODE_TRUE@pkglib_LTLIBRARIES = libscidifferential_equations.la
-@MAINTAINER_MODE_FALSE@noinst_LTLIBRARIES = libscidifferential_equations-algo.la libscidifferential_equations.la
+
+#### scicos : SUNDIALS STUFF ####
+libscisundials_la_SOURCES = src/patched_sundials/src/cvode/cvode.c \
+src/patched_sundials/src/cvode/cvode_dense.c \
+src/patched_sundials/src/cvode/cvode_direct.c \
+src/patched_sundials/src/cvode/cvode_io.c \
+src/patched_sundials/src/ida/ida.c \
+src/patched_sundials/src/ida/ida_dense.c \
+src/patched_sundials/src/ida/ida_direct.c \
+src/patched_sundials/src/ida/ida_ic.c \
+src/patched_sundials/src/ida/ida_io.c \
+src/patched_sundials/src/kinsol/kinsol.c \
+src/patched_sundials/src/kinsol/kinsol_dense.c \
+src/patched_sundials/src/kinsol/kinsol_direct.c \
+src/patched_sundials/src/kinsol/kinsol_io.c \
+src/patched_sundials/src/nvec_ser/nvector_serial.c \
+src/patched_sundials/src/sundials/sundials_dense.c \
+src/patched_sundials/src/sundials/sundials_direct.c \
+src/patched_sundials/src/sundials/sundials_math.c \
+src/patched_sundials/src/sundials/sundials_nvector.c \
+src/patched_sundials/src/sundials/sundials_extension.c
+
+libscisundials_la_CPPFLAGS = -I$(top_srcdir)/modules/differential_equations/src/patched_sundials/include \
+-I$(top_srcdir)/modules/differential_equations/src/patched_sundials/include/cvode \
+-I$(top_srcdir)/modules/differential_equations/src/patched_sundials/include/ida \
+-I$(top_srcdir)/modules/differential_equations/src/patched_sundials/include/kinsol \
+-I$(top_srcdir)/modules/differential_equations/src/patched_sundials/include/nvec_ser \
+-I$(top_srcdir)/modules/differential_equations/src/patched_sundials/include/sundials \
+-I$(top_srcdir)/modules/differential_equations/src/patched_sundials/src/cvode \
+-I$(top_srcdir)/modules/differential_equations/src/patched_sundials/src/ida \
+-I$(top_srcdir)/modules/differential_equations/src/patched_sundials/src/kinsol \
+-I$(top_srcdir)/modules/differential_equations/src/patched_sundials/src/nvec_ser \
+-I$(top_srcdir)/modules/differential_equations/src/patched_sundials/src/sundials
+
+@MAINTAINER_MODE_TRUE@pkglib_LTLIBRARIES = libscidifferential_equations.la libscisundials.la
+@MAINTAINER_MODE_FALSE@noinst_LTLIBRARIES = libscidifferential_equations-algo.la libscidifferential_equations.la libscisundials.la
 @MAINTAINER_MODE_TRUE@noinst_LTLIBRARIES = libscidifferential_equations-algo.la
 libscidifferential_equations_algo_la_SOURCES = $(DIFFERENTIAL_EQUATIONS_C_SOURCES) $(DIFFERENTIAL_EQUATIONS_FORTRAN_SOURCES) $(DIFFERENTIAL_EQUATIONS_CPP_SOURCES)
 libscidifferential_equations_la_SOURCES = $(GATEWAY_FORTRAN_SOURCES) $(GATEWAY_CPP_SOURCES) $(GATEWAY_C_SOURCES)
@@ -809,7 +889,7 @@ libscidifferential_equations_algo_la_CPPFLAGS = $(libscidifferential_equations_l
 # For the code check (splint)
 CHECK_SRC = $(DIFFERENTIAL_EQUATIONS_C_SOURCES) $(DIFFERENTIAL_EQUATIONS_CPP_SOURCES)
 INCLUDE_FLAGS = $(libscidifferential_equations_la_CPPFLAGS)
-libscidifferential_equations_la_LIBADD = libscidifferential_equations-algo.la $(FLIBS)
+libscidifferential_equations_la_LIBADD = libscidifferential_equations-algo.la $(FLIBS) libscisundials.la
 
 #### Target ######
 modulename = differential_equations
@@ -1204,6 +1284,96 @@ sci_gateway/cpp/libscidifferential_equations_la-sci_daskr.lo:  \
 
 libscidifferential_equations.la: $(libscidifferential_equations_la_OBJECTS) $(libscidifferential_equations_la_DEPENDENCIES) $(EXTRA_libscidifferential_equations_la_DEPENDENCIES) 
 	$(AM_V_CXXLD)$(CXXLINK) $(am_libscidifferential_equations_la_rpath) $(libscidifferential_equations_la_OBJECTS) $(libscidifferential_equations_la_LIBADD) $(LIBS)
+src/patched_sundials/src/cvode/$(am__dirstamp):
+	@$(MKDIR_P) src/patched_sundials/src/cvode
+	@: > src/patched_sundials/src/cvode/$(am__dirstamp)
+src/patched_sundials/src/cvode/$(DEPDIR)/$(am__dirstamp):
+	@$(MKDIR_P) src/patched_sundials/src/cvode/$(DEPDIR)
+	@: > src/patched_sundials/src/cvode/$(DEPDIR)/$(am__dirstamp)
+src/patched_sundials/src/cvode/libscisundials_la-cvode.lo:  \
+	src/patched_sundials/src/cvode/$(am__dirstamp) \
+	src/patched_sundials/src/cvode/$(DEPDIR)/$(am__dirstamp)
+src/patched_sundials/src/cvode/libscisundials_la-cvode_dense.lo:  \
+	src/patched_sundials/src/cvode/$(am__dirstamp) \
+	src/patched_sundials/src/cvode/$(DEPDIR)/$(am__dirstamp)
+src/patched_sundials/src/cvode/libscisundials_la-cvode_direct.lo:  \
+	src/patched_sundials/src/cvode/$(am__dirstamp) \
+	src/patched_sundials/src/cvode/$(DEPDIR)/$(am__dirstamp)
+src/patched_sundials/src/cvode/libscisundials_la-cvode_io.lo:  \
+	src/patched_sundials/src/cvode/$(am__dirstamp) \
+	src/patched_sundials/src/cvode/$(DEPDIR)/$(am__dirstamp)
+src/patched_sundials/src/ida/$(am__dirstamp):
+	@$(MKDIR_P) src/patched_sundials/src/ida
+	@: > src/patched_sundials/src/ida/$(am__dirstamp)
+src/patched_sundials/src/ida/$(DEPDIR)/$(am__dirstamp):
+	@$(MKDIR_P) src/patched_sundials/src/ida/$(DEPDIR)
+	@: > src/patched_sundials/src/ida/$(DEPDIR)/$(am__dirstamp)
+src/patched_sundials/src/ida/libscisundials_la-ida.lo:  \
+	src/patched_sundials/src/ida/$(am__dirstamp) \
+	src/patched_sundials/src/ida/$(DEPDIR)/$(am__dirstamp)
+src/patched_sundials/src/ida/libscisundials_la-ida_dense.lo:  \
+	src/patched_sundials/src/ida/$(am__dirstamp) \
+	src/patched_sundials/src/ida/$(DEPDIR)/$(am__dirstamp)
+src/patched_sundials/src/ida/libscisundials_la-ida_direct.lo:  \
+	src/patched_sundials/src/ida/$(am__dirstamp) \
+	src/patched_sundials/src/ida/$(DEPDIR)/$(am__dirstamp)
+src/patched_sundials/src/ida/libscisundials_la-ida_ic.lo:  \
+	src/patched_sundials/src/ida/$(am__dirstamp) \
+	src/patched_sundials/src/ida/$(DEPDIR)/$(am__dirstamp)
+src/patched_sundials/src/ida/libscisundials_la-ida_io.lo:  \
+	src/patched_sundials/src/ida/$(am__dirstamp) \
+	src/patched_sundials/src/ida/$(DEPDIR)/$(am__dirstamp)
+src/patched_sundials/src/kinsol/$(am__dirstamp):
+	@$(MKDIR_P) src/patched_sundials/src/kinsol
+	@: > src/patched_sundials/src/kinsol/$(am__dirstamp)
+src/patched_sundials/src/kinsol/$(DEPDIR)/$(am__dirstamp):
+	@$(MKDIR_P) src/patched_sundials/src/kinsol/$(DEPDIR)
+	@: > src/patched_sundials/src/kinsol/$(DEPDIR)/$(am__dirstamp)
+src/patched_sundials/src/kinsol/libscisundials_la-kinsol.lo:  \
+	src/patched_sundials/src/kinsol/$(am__dirstamp) \
+	src/patched_sundials/src/kinsol/$(DEPDIR)/$(am__dirstamp)
+src/patched_sundials/src/kinsol/libscisundials_la-kinsol_dense.lo:  \
+	src/patched_sundials/src/kinsol/$(am__dirstamp) \
+	src/patched_sundials/src/kinsol/$(DEPDIR)/$(am__dirstamp)
+src/patched_sundials/src/kinsol/libscisundials_la-kinsol_direct.lo:  \
+	src/patched_sundials/src/kinsol/$(am__dirstamp) \
+	src/patched_sundials/src/kinsol/$(DEPDIR)/$(am__dirstamp)
+src/patched_sundials/src/kinsol/libscisundials_la-kinsol_io.lo:  \
+	src/patched_sundials/src/kinsol/$(am__dirstamp) \
+	src/patched_sundials/src/kinsol/$(DEPDIR)/$(am__dirstamp)
+src/patched_sundials/src/nvec_ser/$(am__dirstamp):
+	@$(MKDIR_P) src/patched_sundials/src/nvec_ser
+	@: > src/patched_sundials/src/nvec_ser/$(am__dirstamp)
+src/patched_sundials/src/nvec_ser/$(DEPDIR)/$(am__dirstamp):
+	@$(MKDIR_P) src/patched_sundials/src/nvec_ser/$(DEPDIR)
+	@: > src/patched_sundials/src/nvec_ser/$(DEPDIR)/$(am__dirstamp)
+src/patched_sundials/src/nvec_ser/libscisundials_la-nvector_serial.lo:  \
+	src/patched_sundials/src/nvec_ser/$(am__dirstamp) \
+	src/patched_sundials/src/nvec_ser/$(DEPDIR)/$(am__dirstamp)
+src/patched_sundials/src/sundials/$(am__dirstamp):
+	@$(MKDIR_P) src/patched_sundials/src/sundials
+	@: > src/patched_sundials/src/sundials/$(am__dirstamp)
+src/patched_sundials/src/sundials/$(DEPDIR)/$(am__dirstamp):
+	@$(MKDIR_P) src/patched_sundials/src/sundials/$(DEPDIR)
+	@: > src/patched_sundials/src/sundials/$(DEPDIR)/$(am__dirstamp)
+src/patched_sundials/src/sundials/libscisundials_la-sundials_dense.lo:  \
+	src/patched_sundials/src/sundials/$(am__dirstamp) \
+	src/patched_sundials/src/sundials/$(DEPDIR)/$(am__dirstamp)
+src/patched_sundials/src/sundials/libscisundials_la-sundials_direct.lo:  \
+	src/patched_sundials/src/sundials/$(am__dirstamp) \
+	src/patched_sundials/src/sundials/$(DEPDIR)/$(am__dirstamp)
+src/patched_sundials/src/sundials/libscisundials_la-sundials_math.lo:  \
+	src/patched_sundials/src/sundials/$(am__dirstamp) \
+	src/patched_sundials/src/sundials/$(DEPDIR)/$(am__dirstamp)
+src/patched_sundials/src/sundials/libscisundials_la-sundials_nvector.lo:  \
+	src/patched_sundials/src/sundials/$(am__dirstamp) \
+	src/patched_sundials/src/sundials/$(DEPDIR)/$(am__dirstamp)
+src/patched_sundials/src/sundials/libscisundials_la-sundials_extension.lo:  \
+	src/patched_sundials/src/sundials/$(am__dirstamp) \
+	src/patched_sundials/src/sundials/$(DEPDIR)/$(am__dirstamp)
+
+libscisundials.la: $(libscisundials_la_OBJECTS) $(libscisundials_la_DEPENDENCIES) $(EXTRA_libscisundials_la_DEPENDENCIES) 
+	$(AM_V_CCLD)$(LINK) $(am_libscisundials_la_rpath) $(libscisundials_la_OBJECTS) $(libscisundials_la_LIBADD) $(LIBS)
 
 mostlyclean-compile:
 	-rm -f *.$(OBJEXT)
@@ -1217,6 +1387,16 @@ mostlyclean-compile:
 	-rm -f src/cpp/*.lo
 	-rm -f src/fortran/*.$(OBJEXT)
 	-rm -f src/fortran/*.lo
+	-rm -f src/patched_sundials/src/cvode/*.$(OBJEXT)
+	-rm -f src/patched_sundials/src/cvode/*.lo
+	-rm -f src/patched_sundials/src/ida/*.$(OBJEXT)
+	-rm -f src/patched_sundials/src/ida/*.lo
+	-rm -f src/patched_sundials/src/kinsol/*.$(OBJEXT)
+	-rm -f src/patched_sundials/src/kinsol/*.lo
+	-rm -f src/patched_sundials/src/nvec_ser/*.$(OBJEXT)
+	-rm -f src/patched_sundials/src/nvec_ser/*.lo
+	-rm -f src/patched_sundials/src/sundials/*.$(OBJEXT)
+	-rm -f src/patched_sundials/src/sundials/*.lo
 
 distclean-compile:
 	-rm -f *.tab.c
@@ -1245,6 +1425,25 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@src/cpp/$(DEPDIR)/libscidifferential_equations_algo_la-checkodeerror.Plo@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@src/cpp/$(DEPDIR)/libscidifferential_equations_algo_la-differentialequationfunctions.Plo@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@src/cpp/$(DEPDIR)/libscidifferential_equations_algo_la-scifunctions.Plo@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@src/patched_sundials/src/cvode/$(DEPDIR)/libscisundials_la-cvode.Plo@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@src/patched_sundials/src/cvode/$(DEPDIR)/libscisundials_la-cvode_dense.Plo@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@src/patched_sundials/src/cvode/$(DEPDIR)/libscisundials_la-cvode_direct.Plo@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@src/patched_sundials/src/cvode/$(DEPDIR)/libscisundials_la-cvode_io.Plo@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@src/patched_sundials/src/ida/$(DEPDIR)/libscisundials_la-ida.Plo@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@src/patched_sundials/src/ida/$(DEPDIR)/libscisundials_la-ida_dense.Plo@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@src/patched_sundials/src/ida/$(DEPDIR)/libscisundials_la-ida_direct.Plo@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@src/patched_sundials/src/ida/$(DEPDIR)/libscisundials_la-ida_ic.Plo@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@src/patched_sundials/src/ida/$(DEPDIR)/libscisundials_la-ida_io.Plo@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@src/patched_sundials/src/kinsol/$(DEPDIR)/libscisundials_la-kinsol.Plo@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@src/patched_sundials/src/kinsol/$(DEPDIR)/libscisundials_la-kinsol_dense.Plo@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@src/patched_sundials/src/kinsol/$(DEPDIR)/libscisundials_la-kinsol_direct.Plo@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@src/patched_sundials/src/kinsol/$(DEPDIR)/libscisundials_la-kinsol_io.Plo@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@src/patched_sundials/src/nvec_ser/$(DEPDIR)/libscisundials_la-nvector_serial.Plo@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@src/patched_sundials/src/sundials/$(DEPDIR)/libscisundials_la-sundials_dense.Plo@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@src/patched_sundials/src/sundials/$(DEPDIR)/libscisundials_la-sundials_direct.Plo@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@src/patched_sundials/src/sundials/$(DEPDIR)/libscisundials_la-sundials_extension.Plo@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@src/patched_sundials/src/sundials/$(DEPDIR)/libscisundials_la-sundials_math.Plo@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@src/patched_sundials/src/sundials/$(DEPDIR)/libscisundials_la-sundials_nvector.Plo@am__quote@ # am--include-marker
 
 $(am__depfiles_remade):
 	@$(MKDIR_P) $(@D)
@@ -1338,6 +1537,139 @@ src/c/libscidifferential_equations_algo_la-errmds.lo: src/c/errmds.c
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='src/c/errmds.c' object='src/c/libscidifferential_equations_algo_la-errmds.lo' libtool=yes @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libscidifferential_equations_algo_la_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o src/c/libscidifferential_equations_algo_la-errmds.lo `test -f 'src/c/errmds.c' || echo '$(srcdir)/'`src/c/errmds.c
+
+src/patched_sundials/src/cvode/libscisundials_la-cvode.lo: src/patched_sundials/src/cvode/cvode.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libscisundials_la_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT src/patched_sundials/src/cvode/libscisundials_la-cvode.lo -MD -MP -MF src/patched_sundials/src/cvode/$(DEPDIR)/libscisundials_la-cvode.Tpo -c -o src/patched_sundials/src/cvode/libscisundials_la-cvode.lo `test -f 'src/patched_sundials/src/cvode/cvode.c' || echo '$(srcdir)/'`src/patched_sundials/src/cvode/cvode.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) src/patched_sundials/src/cvode/$(DEPDIR)/libscisundials_la-cvode.Tpo src/patched_sundials/src/cvode/$(DEPDIR)/libscisundials_la-cvode.Plo
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='src/patched_sundials/src/cvode/cvode.c' object='src/patched_sundials/src/cvode/libscisundials_la-cvode.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libscisundials_la_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o src/patched_sundials/src/cvode/libscisundials_la-cvode.lo `test -f 'src/patched_sundials/src/cvode/cvode.c' || echo '$(srcdir)/'`src/patched_sundials/src/cvode/cvode.c
+
+src/patched_sundials/src/cvode/libscisundials_la-cvode_dense.lo: src/patched_sundials/src/cvode/cvode_dense.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libscisundials_la_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT src/patched_sundials/src/cvode/libscisundials_la-cvode_dense.lo -MD -MP -MF src/patched_sundials/src/cvode/$(DEPDIR)/libscisundials_la-cvode_dense.Tpo -c -o src/patched_sundials/src/cvode/libscisundials_la-cvode_dense.lo `test -f 'src/patched_sundials/src/cvode/cvode_dense.c' || echo '$(srcdir)/'`src/patched_sundials/src/cvode/cvode_dense.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) src/patched_sundials/src/cvode/$(DEPDIR)/libscisundials_la-cvode_dense.Tpo src/patched_sundials/src/cvode/$(DEPDIR)/libscisundials_la-cvode_dense.Plo
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='src/patched_sundials/src/cvode/cvode_dense.c' object='src/patched_sundials/src/cvode/libscisundials_la-cvode_dense.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libscisundials_la_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o src/patched_sundials/src/cvode/libscisundials_la-cvode_dense.lo `test -f 'src/patched_sundials/src/cvode/cvode_dense.c' || echo '$(srcdir)/'`src/patched_sundials/src/cvode/cvode_dense.c
+
+src/patched_sundials/src/cvode/libscisundials_la-cvode_direct.lo: src/patched_sundials/src/cvode/cvode_direct.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libscisundials_la_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT src/patched_sundials/src/cvode/libscisundials_la-cvode_direct.lo -MD -MP -MF src/patched_sundials/src/cvode/$(DEPDIR)/libscisundials_la-cvode_direct.Tpo -c -o src/patched_sundials/src/cvode/libscisundials_la-cvode_direct.lo `test -f 'src/patched_sundials/src/cvode/cvode_direct.c' || echo '$(srcdir)/'`src/patched_sundials/src/cvode/cvode_direct.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) src/patched_sundials/src/cvode/$(DEPDIR)/libscisundials_la-cvode_direct.Tpo src/patched_sundials/src/cvode/$(DEPDIR)/libscisundials_la-cvode_direct.Plo
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='src/patched_sundials/src/cvode/cvode_direct.c' object='src/patched_sundials/src/cvode/libscisundials_la-cvode_direct.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libscisundials_la_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o src/patched_sundials/src/cvode/libscisundials_la-cvode_direct.lo `test -f 'src/patched_sundials/src/cvode/cvode_direct.c' || echo '$(srcdir)/'`src/patched_sundials/src/cvode/cvode_direct.c
+
+src/patched_sundials/src/cvode/libscisundials_la-cvode_io.lo: src/patched_sundials/src/cvode/cvode_io.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libscisundials_la_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT src/patched_sundials/src/cvode/libscisundials_la-cvode_io.lo -MD -MP -MF src/patched_sundials/src/cvode/$(DEPDIR)/libscisundials_la-cvode_io.Tpo -c -o src/patched_sundials/src/cvode/libscisundials_la-cvode_io.lo `test -f 'src/patched_sundials/src/cvode/cvode_io.c' || echo '$(srcdir)/'`src/patched_sundials/src/cvode/cvode_io.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) src/patched_sundials/src/cvode/$(DEPDIR)/libscisundials_la-cvode_io.Tpo src/patched_sundials/src/cvode/$(DEPDIR)/libscisundials_la-cvode_io.Plo
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='src/patched_sundials/src/cvode/cvode_io.c' object='src/patched_sundials/src/cvode/libscisundials_la-cvode_io.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libscisundials_la_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o src/patched_sundials/src/cvode/libscisundials_la-cvode_io.lo `test -f 'src/patched_sundials/src/cvode/cvode_io.c' || echo '$(srcdir)/'`src/patched_sundials/src/cvode/cvode_io.c
+
+src/patched_sundials/src/ida/libscisundials_la-ida.lo: src/patched_sundials/src/ida/ida.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libscisundials_la_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT src/patched_sundials/src/ida/libscisundials_la-ida.lo -MD -MP -MF src/patched_sundials/src/ida/$(DEPDIR)/libscisundials_la-ida.Tpo -c -o src/patched_sundials/src/ida/libscisundials_la-ida.lo `test -f 'src/patched_sundials/src/ida/ida.c' || echo '$(srcdir)/'`src/patched_sundials/src/ida/ida.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) src/patched_sundials/src/ida/$(DEPDIR)/libscisundials_la-ida.Tpo src/patched_sundials/src/ida/$(DEPDIR)/libscisundials_la-ida.Plo
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='src/patched_sundials/src/ida/ida.c' object='src/patched_sundials/src/ida/libscisundials_la-ida.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libscisundials_la_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o src/patched_sundials/src/ida/libscisundials_la-ida.lo `test -f 'src/patched_sundials/src/ida/ida.c' || echo '$(srcdir)/'`src/patched_sundials/src/ida/ida.c
+
+src/patched_sundials/src/ida/libscisundials_la-ida_dense.lo: src/patched_sundials/src/ida/ida_dense.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libscisundials_la_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT src/patched_sundials/src/ida/libscisundials_la-ida_dense.lo -MD -MP -MF src/patched_sundials/src/ida/$(DEPDIR)/libscisundials_la-ida_dense.Tpo -c -o src/patched_sundials/src/ida/libscisundials_la-ida_dense.lo `test -f 'src/patched_sundials/src/ida/ida_dense.c' || echo '$(srcdir)/'`src/patched_sundials/src/ida/ida_dense.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) src/patched_sundials/src/ida/$(DEPDIR)/libscisundials_la-ida_dense.Tpo src/patched_sundials/src/ida/$(DEPDIR)/libscisundials_la-ida_dense.Plo
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='src/patched_sundials/src/ida/ida_dense.c' object='src/patched_sundials/src/ida/libscisundials_la-ida_dense.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libscisundials_la_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o src/patched_sundials/src/ida/libscisundials_la-ida_dense.lo `test -f 'src/patched_sundials/src/ida/ida_dense.c' || echo '$(srcdir)/'`src/patched_sundials/src/ida/ida_dense.c
+
+src/patched_sundials/src/ida/libscisundials_la-ida_direct.lo: src/patched_sundials/src/ida/ida_direct.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libscisundials_la_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT src/patched_sundials/src/ida/libscisundials_la-ida_direct.lo -MD -MP -MF src/patched_sundials/src/ida/$(DEPDIR)/libscisundials_la-ida_direct.Tpo -c -o src/patched_sundials/src/ida/libscisundials_la-ida_direct.lo `test -f 'src/patched_sundials/src/ida/ida_direct.c' || echo '$(srcdir)/'`src/patched_sundials/src/ida/ida_direct.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) src/patched_sundials/src/ida/$(DEPDIR)/libscisundials_la-ida_direct.Tpo src/patched_sundials/src/ida/$(DEPDIR)/libscisundials_la-ida_direct.Plo
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='src/patched_sundials/src/ida/ida_direct.c' object='src/patched_sundials/src/ida/libscisundials_la-ida_direct.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libscisundials_la_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o src/patched_sundials/src/ida/libscisundials_la-ida_direct.lo `test -f 'src/patched_sundials/src/ida/ida_direct.c' || echo '$(srcdir)/'`src/patched_sundials/src/ida/ida_direct.c
+
+src/patched_sundials/src/ida/libscisundials_la-ida_ic.lo: src/patched_sundials/src/ida/ida_ic.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libscisundials_la_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT src/patched_sundials/src/ida/libscisundials_la-ida_ic.lo -MD -MP -MF src/patched_sundials/src/ida/$(DEPDIR)/libscisundials_la-ida_ic.Tpo -c -o src/patched_sundials/src/ida/libscisundials_la-ida_ic.lo `test -f 'src/patched_sundials/src/ida/ida_ic.c' || echo '$(srcdir)/'`src/patched_sundials/src/ida/ida_ic.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) src/patched_sundials/src/ida/$(DEPDIR)/libscisundials_la-ida_ic.Tpo src/patched_sundials/src/ida/$(DEPDIR)/libscisundials_la-ida_ic.Plo
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='src/patched_sundials/src/ida/ida_ic.c' object='src/patched_sundials/src/ida/libscisundials_la-ida_ic.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libscisundials_la_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o src/patched_sundials/src/ida/libscisundials_la-ida_ic.lo `test -f 'src/patched_sundials/src/ida/ida_ic.c' || echo '$(srcdir)/'`src/patched_sundials/src/ida/ida_ic.c
+
+src/patched_sundials/src/ida/libscisundials_la-ida_io.lo: src/patched_sundials/src/ida/ida_io.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libscisundials_la_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT src/patched_sundials/src/ida/libscisundials_la-ida_io.lo -MD -MP -MF src/patched_sundials/src/ida/$(DEPDIR)/libscisundials_la-ida_io.Tpo -c -o src/patched_sundials/src/ida/libscisundials_la-ida_io.lo `test -f 'src/patched_sundials/src/ida/ida_io.c' || echo '$(srcdir)/'`src/patched_sundials/src/ida/ida_io.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) src/patched_sundials/src/ida/$(DEPDIR)/libscisundials_la-ida_io.Tpo src/patched_sundials/src/ida/$(DEPDIR)/libscisundials_la-ida_io.Plo
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='src/patched_sundials/src/ida/ida_io.c' object='src/patched_sundials/src/ida/libscisundials_la-ida_io.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libscisundials_la_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o src/patched_sundials/src/ida/libscisundials_la-ida_io.lo `test -f 'src/patched_sundials/src/ida/ida_io.c' || echo '$(srcdir)/'`src/patched_sundials/src/ida/ida_io.c
+
+src/patched_sundials/src/kinsol/libscisundials_la-kinsol.lo: src/patched_sundials/src/kinsol/kinsol.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libscisundials_la_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT src/patched_sundials/src/kinsol/libscisundials_la-kinsol.lo -MD -MP -MF src/patched_sundials/src/kinsol/$(DEPDIR)/libscisundials_la-kinsol.Tpo -c -o src/patched_sundials/src/kinsol/libscisundials_la-kinsol.lo `test -f 'src/patched_sundials/src/kinsol/kinsol.c' || echo '$(srcdir)/'`src/patched_sundials/src/kinsol/kinsol.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) src/patched_sundials/src/kinsol/$(DEPDIR)/libscisundials_la-kinsol.Tpo src/patched_sundials/src/kinsol/$(DEPDIR)/libscisundials_la-kinsol.Plo
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='src/patched_sundials/src/kinsol/kinsol.c' object='src/patched_sundials/src/kinsol/libscisundials_la-kinsol.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libscisundials_la_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o src/patched_sundials/src/kinsol/libscisundials_la-kinsol.lo `test -f 'src/patched_sundials/src/kinsol/kinsol.c' || echo '$(srcdir)/'`src/patched_sundials/src/kinsol/kinsol.c
+
+src/patched_sundials/src/kinsol/libscisundials_la-kinsol_dense.lo: src/patched_sundials/src/kinsol/kinsol_dense.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libscisundials_la_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT src/patched_sundials/src/kinsol/libscisundials_la-kinsol_dense.lo -MD -MP -MF src/patched_sundials/src/kinsol/$(DEPDIR)/libscisundials_la-kinsol_dense.Tpo -c -o src/patched_sundials/src/kinsol/libscisundials_la-kinsol_dense.lo `test -f 'src/patched_sundials/src/kinsol/kinsol_dense.c' || echo '$(srcdir)/'`src/patched_sundials/src/kinsol/kinsol_dense.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) src/patched_sundials/src/kinsol/$(DEPDIR)/libscisundials_la-kinsol_dense.Tpo src/patched_sundials/src/kinsol/$(DEPDIR)/libscisundials_la-kinsol_dense.Plo
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='src/patched_sundials/src/kinsol/kinsol_dense.c' object='src/patched_sundials/src/kinsol/libscisundials_la-kinsol_dense.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libscisundials_la_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o src/patched_sundials/src/kinsol/libscisundials_la-kinsol_dense.lo `test -f 'src/patched_sundials/src/kinsol/kinsol_dense.c' || echo '$(srcdir)/'`src/patched_sundials/src/kinsol/kinsol_dense.c
+
+src/patched_sundials/src/kinsol/libscisundials_la-kinsol_direct.lo: src/patched_sundials/src/kinsol/kinsol_direct.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libscisundials_la_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT src/patched_sundials/src/kinsol/libscisundials_la-kinsol_direct.lo -MD -MP -MF src/patched_sundials/src/kinsol/$(DEPDIR)/libscisundials_la-kinsol_direct.Tpo -c -o src/patched_sundials/src/kinsol/libscisundials_la-kinsol_direct.lo `test -f 'src/patched_sundials/src/kinsol/kinsol_direct.c' || echo '$(srcdir)/'`src/patched_sundials/src/kinsol/kinsol_direct.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) src/patched_sundials/src/kinsol/$(DEPDIR)/libscisundials_la-kinsol_direct.Tpo src/patched_sundials/src/kinsol/$(DEPDIR)/libscisundials_la-kinsol_direct.Plo
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='src/patched_sundials/src/kinsol/kinsol_direct.c' object='src/patched_sundials/src/kinsol/libscisundials_la-kinsol_direct.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libscisundials_la_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o src/patched_sundials/src/kinsol/libscisundials_la-kinsol_direct.lo `test -f 'src/patched_sundials/src/kinsol/kinsol_direct.c' || echo '$(srcdir)/'`src/patched_sundials/src/kinsol/kinsol_direct.c
+
+src/patched_sundials/src/kinsol/libscisundials_la-kinsol_io.lo: src/patched_sundials/src/kinsol/kinsol_io.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libscisundials_la_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT src/patched_sundials/src/kinsol/libscisundials_la-kinsol_io.lo -MD -MP -MF src/patched_sundials/src/kinsol/$(DEPDIR)/libscisundials_la-kinsol_io.Tpo -c -o src/patched_sundials/src/kinsol/libscisundials_la-kinsol_io.lo `test -f 'src/patched_sundials/src/kinsol/kinsol_io.c' || echo '$(srcdir)/'`src/patched_sundials/src/kinsol/kinsol_io.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) src/patched_sundials/src/kinsol/$(DEPDIR)/libscisundials_la-kinsol_io.Tpo src/patched_sundials/src/kinsol/$(DEPDIR)/libscisundials_la-kinsol_io.Plo
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='src/patched_sundials/src/kinsol/kinsol_io.c' object='src/patched_sundials/src/kinsol/libscisundials_la-kinsol_io.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libscisundials_la_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o src/patched_sundials/src/kinsol/libscisundials_la-kinsol_io.lo `test -f 'src/patched_sundials/src/kinsol/kinsol_io.c' || echo '$(srcdir)/'`src/patched_sundials/src/kinsol/kinsol_io.c
+
+src/patched_sundials/src/nvec_ser/libscisundials_la-nvector_serial.lo: src/patched_sundials/src/nvec_ser/nvector_serial.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libscisundials_la_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT src/patched_sundials/src/nvec_ser/libscisundials_la-nvector_serial.lo -MD -MP -MF src/patched_sundials/src/nvec_ser/$(DEPDIR)/libscisundials_la-nvector_serial.Tpo -c -o src/patched_sundials/src/nvec_ser/libscisundials_la-nvector_serial.lo `test -f 'src/patched_sundials/src/nvec_ser/nvector_serial.c' || echo '$(srcdir)/'`src/patched_sundials/src/nvec_ser/nvector_serial.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) src/patched_sundials/src/nvec_ser/$(DEPDIR)/libscisundials_la-nvector_serial.Tpo src/patched_sundials/src/nvec_ser/$(DEPDIR)/libscisundials_la-nvector_serial.Plo
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='src/patched_sundials/src/nvec_ser/nvector_serial.c' object='src/patched_sundials/src/nvec_ser/libscisundials_la-nvector_serial.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libscisundials_la_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o src/patched_sundials/src/nvec_ser/libscisundials_la-nvector_serial.lo `test -f 'src/patched_sundials/src/nvec_ser/nvector_serial.c' || echo '$(srcdir)/'`src/patched_sundials/src/nvec_ser/nvector_serial.c
+
+src/patched_sundials/src/sundials/libscisundials_la-sundials_dense.lo: src/patched_sundials/src/sundials/sundials_dense.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libscisundials_la_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT src/patched_sundials/src/sundials/libscisundials_la-sundials_dense.lo -MD -MP -MF src/patched_sundials/src/sundials/$(DEPDIR)/libscisundials_la-sundials_dense.Tpo -c -o src/patched_sundials/src/sundials/libscisundials_la-sundials_dense.lo `test -f 'src/patched_sundials/src/sundials/sundials_dense.c' || echo '$(srcdir)/'`src/patched_sundials/src/sundials/sundials_dense.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) src/patched_sundials/src/sundials/$(DEPDIR)/libscisundials_la-sundials_dense.Tpo src/patched_sundials/src/sundials/$(DEPDIR)/libscisundials_la-sundials_dense.Plo
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='src/patched_sundials/src/sundials/sundials_dense.c' object='src/patched_sundials/src/sundials/libscisundials_la-sundials_dense.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libscisundials_la_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o src/patched_sundials/src/sundials/libscisundials_la-sundials_dense.lo `test -f 'src/patched_sundials/src/sundials/sundials_dense.c' || echo '$(srcdir)/'`src/patched_sundials/src/sundials/sundials_dense.c
+
+src/patched_sundials/src/sundials/libscisundials_la-sundials_direct.lo: src/patched_sundials/src/sundials/sundials_direct.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libscisundials_la_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT src/patched_sundials/src/sundials/libscisundials_la-sundials_direct.lo -MD -MP -MF src/patched_sundials/src/sundials/$(DEPDIR)/libscisundials_la-sundials_direct.Tpo -c -o src/patched_sundials/src/sundials/libscisundials_la-sundials_direct.lo `test -f 'src/patched_sundials/src/sundials/sundials_direct.c' || echo '$(srcdir)/'`src/patched_sundials/src/sundials/sundials_direct.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) src/patched_sundials/src/sundials/$(DEPDIR)/libscisundials_la-sundials_direct.Tpo src/patched_sundials/src/sundials/$(DEPDIR)/libscisundials_la-sundials_direct.Plo
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='src/patched_sundials/src/sundials/sundials_direct.c' object='src/patched_sundials/src/sundials/libscisundials_la-sundials_direct.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libscisundials_la_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o src/patched_sundials/src/sundials/libscisundials_la-sundials_direct.lo `test -f 'src/patched_sundials/src/sundials/sundials_direct.c' || echo '$(srcdir)/'`src/patched_sundials/src/sundials/sundials_direct.c
+
+src/patched_sundials/src/sundials/libscisundials_la-sundials_math.lo: src/patched_sundials/src/sundials/sundials_math.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libscisundials_la_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT src/patched_sundials/src/sundials/libscisundials_la-sundials_math.lo -MD -MP -MF src/patched_sundials/src/sundials/$(DEPDIR)/libscisundials_la-sundials_math.Tpo -c -o src/patched_sundials/src/sundials/libscisundials_la-sundials_math.lo `test -f 'src/patched_sundials/src/sundials/sundials_math.c' || echo '$(srcdir)/'`src/patched_sundials/src/sundials/sundials_math.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) src/patched_sundials/src/sundials/$(DEPDIR)/libscisundials_la-sundials_math.Tpo src/patched_sundials/src/sundials/$(DEPDIR)/libscisundials_la-sundials_math.Plo
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='src/patched_sundials/src/sundials/sundials_math.c' object='src/patched_sundials/src/sundials/libscisundials_la-sundials_math.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libscisundials_la_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o src/patched_sundials/src/sundials/libscisundials_la-sundials_math.lo `test -f 'src/patched_sundials/src/sundials/sundials_math.c' || echo '$(srcdir)/'`src/patched_sundials/src/sundials/sundials_math.c
+
+src/patched_sundials/src/sundials/libscisundials_la-sundials_nvector.lo: src/patched_sundials/src/sundials/sundials_nvector.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libscisundials_la_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT src/patched_sundials/src/sundials/libscisundials_la-sundials_nvector.lo -MD -MP -MF src/patched_sundials/src/sundials/$(DEPDIR)/libscisundials_la-sundials_nvector.Tpo -c -o src/patched_sundials/src/sundials/libscisundials_la-sundials_nvector.lo `test -f 'src/patched_sundials/src/sundials/sundials_nvector.c' || echo '$(srcdir)/'`src/patched_sundials/src/sundials/sundials_nvector.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) src/patched_sundials/src/sundials/$(DEPDIR)/libscisundials_la-sundials_nvector.Tpo src/patched_sundials/src/sundials/$(DEPDIR)/libscisundials_la-sundials_nvector.Plo
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='src/patched_sundials/src/sundials/sundials_nvector.c' object='src/patched_sundials/src/sundials/libscisundials_la-sundials_nvector.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libscisundials_la_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o src/patched_sundials/src/sundials/libscisundials_la-sundials_nvector.lo `test -f 'src/patched_sundials/src/sundials/sundials_nvector.c' || echo '$(srcdir)/'`src/patched_sundials/src/sundials/sundials_nvector.c
+
+src/patched_sundials/src/sundials/libscisundials_la-sundials_extension.lo: src/patched_sundials/src/sundials/sundials_extension.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libscisundials_la_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT src/patched_sundials/src/sundials/libscisundials_la-sundials_extension.lo -MD -MP -MF src/patched_sundials/src/sundials/$(DEPDIR)/libscisundials_la-sundials_extension.Tpo -c -o src/patched_sundials/src/sundials/libscisundials_la-sundials_extension.lo `test -f 'src/patched_sundials/src/sundials/sundials_extension.c' || echo '$(srcdir)/'`src/patched_sundials/src/sundials/sundials_extension.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) src/patched_sundials/src/sundials/$(DEPDIR)/libscisundials_la-sundials_extension.Tpo src/patched_sundials/src/sundials/$(DEPDIR)/libscisundials_la-sundials_extension.Plo
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='src/patched_sundials/src/sundials/sundials_extension.c' object='src/patched_sundials/src/sundials/libscisundials_la-sundials_extension.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libscisundials_la_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o src/patched_sundials/src/sundials/libscisundials_la-sundials_extension.lo `test -f 'src/patched_sundials/src/sundials/sundials_extension.c' || echo '$(srcdir)/'`src/patched_sundials/src/sundials/sundials_extension.c
 
 .cpp.o:
 @am__fastdepCXX_TRUE@	$(AM_V_CXX)depbase=`echo $@ | sed 's|[^/]*$$|$(DEPDIR)/&|;s|\.o$$||'`;\
@@ -1487,6 +1819,11 @@ clean-libtool:
 	-rm -rf src/c/.libs src/c/_libs
 	-rm -rf src/cpp/.libs src/cpp/_libs
 	-rm -rf src/fortran/.libs src/fortran/_libs
+	-rm -rf src/patched_sundials/src/cvode/.libs src/patched_sundials/src/cvode/_libs
+	-rm -rf src/patched_sundials/src/ida/.libs src/patched_sundials/src/ida/_libs
+	-rm -rf src/patched_sundials/src/kinsol/.libs src/patched_sundials/src/kinsol/_libs
+	-rm -rf src/patched_sundials/src/nvec_ser/.libs src/patched_sundials/src/nvec_ser/_libs
+	-rm -rf src/patched_sundials/src/sundials/.libs src/patched_sundials/src/sundials/_libs
 install-libscidifferential_equations_la_etcDATA: $(libscidifferential_equations_la_etc_DATA)
 	@$(NORMAL_INSTALL)
 	@list='$(libscidifferential_equations_la_etc_DATA)'; test -n "$(libscidifferential_equations_la_etcdir)" || list=; \
@@ -1679,6 +2016,16 @@ distclean-generic:
 	-rm -f src/cpp/$(am__dirstamp)
 	-rm -f src/fortran/$(DEPDIR)/$(am__dirstamp)
 	-rm -f src/fortran/$(am__dirstamp)
+	-rm -f src/patched_sundials/src/cvode/$(DEPDIR)/$(am__dirstamp)
+	-rm -f src/patched_sundials/src/cvode/$(am__dirstamp)
+	-rm -f src/patched_sundials/src/ida/$(DEPDIR)/$(am__dirstamp)
+	-rm -f src/patched_sundials/src/ida/$(am__dirstamp)
+	-rm -f src/patched_sundials/src/kinsol/$(DEPDIR)/$(am__dirstamp)
+	-rm -f src/patched_sundials/src/kinsol/$(am__dirstamp)
+	-rm -f src/patched_sundials/src/nvec_ser/$(DEPDIR)/$(am__dirstamp)
+	-rm -f src/patched_sundials/src/nvec_ser/$(am__dirstamp)
+	-rm -f src/patched_sundials/src/sundials/$(DEPDIR)/$(am__dirstamp)
+	-rm -f src/patched_sundials/src/sundials/$(am__dirstamp)
 
 maintainer-clean-generic:
 	@echo "This command is intended for maintainers to use"
@@ -1713,6 +2060,25 @@ distclean: distclean-am
 	-rm -f src/cpp/$(DEPDIR)/libscidifferential_equations_algo_la-checkodeerror.Plo
 	-rm -f src/cpp/$(DEPDIR)/libscidifferential_equations_algo_la-differentialequationfunctions.Plo
 	-rm -f src/cpp/$(DEPDIR)/libscidifferential_equations_algo_la-scifunctions.Plo
+	-rm -f src/patched_sundials/src/cvode/$(DEPDIR)/libscisundials_la-cvode.Plo
+	-rm -f src/patched_sundials/src/cvode/$(DEPDIR)/libscisundials_la-cvode_dense.Plo
+	-rm -f src/patched_sundials/src/cvode/$(DEPDIR)/libscisundials_la-cvode_direct.Plo
+	-rm -f src/patched_sundials/src/cvode/$(DEPDIR)/libscisundials_la-cvode_io.Plo
+	-rm -f src/patched_sundials/src/ida/$(DEPDIR)/libscisundials_la-ida.Plo
+	-rm -f src/patched_sundials/src/ida/$(DEPDIR)/libscisundials_la-ida_dense.Plo
+	-rm -f src/patched_sundials/src/ida/$(DEPDIR)/libscisundials_la-ida_direct.Plo
+	-rm -f src/patched_sundials/src/ida/$(DEPDIR)/libscisundials_la-ida_ic.Plo
+	-rm -f src/patched_sundials/src/ida/$(DEPDIR)/libscisundials_la-ida_io.Plo
+	-rm -f src/patched_sundials/src/kinsol/$(DEPDIR)/libscisundials_la-kinsol.Plo
+	-rm -f src/patched_sundials/src/kinsol/$(DEPDIR)/libscisundials_la-kinsol_dense.Plo
+	-rm -f src/patched_sundials/src/kinsol/$(DEPDIR)/libscisundials_la-kinsol_direct.Plo
+	-rm -f src/patched_sundials/src/kinsol/$(DEPDIR)/libscisundials_la-kinsol_io.Plo
+	-rm -f src/patched_sundials/src/nvec_ser/$(DEPDIR)/libscisundials_la-nvector_serial.Plo
+	-rm -f src/patched_sundials/src/sundials/$(DEPDIR)/libscisundials_la-sundials_dense.Plo
+	-rm -f src/patched_sundials/src/sundials/$(DEPDIR)/libscisundials_la-sundials_direct.Plo
+	-rm -f src/patched_sundials/src/sundials/$(DEPDIR)/libscisundials_la-sundials_extension.Plo
+	-rm -f src/patched_sundials/src/sundials/$(DEPDIR)/libscisundials_la-sundials_math.Plo
+	-rm -f src/patched_sundials/src/sundials/$(DEPDIR)/libscisundials_la-sundials_nvector.Plo
 	-rm -f Makefile
 distclean-am: clean-am distclean-compile distclean-generic \
 	distclean-local distclean-tags
@@ -1785,6 +2151,25 @@ maintainer-clean: maintainer-clean-am
 	-rm -f src/cpp/$(DEPDIR)/libscidifferential_equations_algo_la-checkodeerror.Plo
 	-rm -f src/cpp/$(DEPDIR)/libscidifferential_equations_algo_la-differentialequationfunctions.Plo
 	-rm -f src/cpp/$(DEPDIR)/libscidifferential_equations_algo_la-scifunctions.Plo
+	-rm -f src/patched_sundials/src/cvode/$(DEPDIR)/libscisundials_la-cvode.Plo
+	-rm -f src/patched_sundials/src/cvode/$(DEPDIR)/libscisundials_la-cvode_dense.Plo
+	-rm -f src/patched_sundials/src/cvode/$(DEPDIR)/libscisundials_la-cvode_direct.Plo
+	-rm -f src/patched_sundials/src/cvode/$(DEPDIR)/libscisundials_la-cvode_io.Plo
+	-rm -f src/patched_sundials/src/ida/$(DEPDIR)/libscisundials_la-ida.Plo
+	-rm -f src/patched_sundials/src/ida/$(DEPDIR)/libscisundials_la-ida_dense.Plo
+	-rm -f src/patched_sundials/src/ida/$(DEPDIR)/libscisundials_la-ida_direct.Plo
+	-rm -f src/patched_sundials/src/ida/$(DEPDIR)/libscisundials_la-ida_ic.Plo
+	-rm -f src/patched_sundials/src/ida/$(DEPDIR)/libscisundials_la-ida_io.Plo
+	-rm -f src/patched_sundials/src/kinsol/$(DEPDIR)/libscisundials_la-kinsol.Plo
+	-rm -f src/patched_sundials/src/kinsol/$(DEPDIR)/libscisundials_la-kinsol_dense.Plo
+	-rm -f src/patched_sundials/src/kinsol/$(DEPDIR)/libscisundials_la-kinsol_direct.Plo
+	-rm -f src/patched_sundials/src/kinsol/$(DEPDIR)/libscisundials_la-kinsol_io.Plo
+	-rm -f src/patched_sundials/src/nvec_ser/$(DEPDIR)/libscisundials_la-nvector_serial.Plo
+	-rm -f src/patched_sundials/src/sundials/$(DEPDIR)/libscisundials_la-sundials_dense.Plo
+	-rm -f src/patched_sundials/src/sundials/$(DEPDIR)/libscisundials_la-sundials_direct.Plo
+	-rm -f src/patched_sundials/src/sundials/$(DEPDIR)/libscisundials_la-sundials_extension.Plo
+	-rm -f src/patched_sundials/src/sundials/$(DEPDIR)/libscisundials_la-sundials_math.Plo
+	-rm -f src/patched_sundials/src/sundials/$(DEPDIR)/libscisundials_la-sundials_nvector.Plo
 	-rm -f Makefile
 maintainer-clean-am: distclean-am maintainer-clean-generic
 

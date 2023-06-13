@@ -26,8 +26,6 @@ Source: bin\no{#SCICOS}.lib; DestDir: {app}\bin; DestName: {#SCICOS}.lib; Compon
 Source: bin\{#SCICOS}_f.lib; DestDir: {app}\bin; Components: {#COMPN_XCOS}
 Source: bin\{#SCICOS}_f.dll; DestDir: {app}\bin; Components: {#COMPN_XCOS}
 ;
-Source: bin\{#SCICOS}_sundials.dll; DestDir: {app}\bin; Components: {#COMPN_XCOS}
-;
 Source: bin\{#SCICOS}.lib; DestDir: {app}\bin; Components: {#COMPN_XCOS}
 Source: bin\{#SCICOS}.dll; DestDir: {app}\bin; Components: {#COMPN_XCOS}
 ;

@@ -19,7 +19,7 @@
 #include "sundials_extension.h"
 #include "sundials/sundials_types.h" // Definition of types 'realtype' and 'booleantype'
 #include "nvector/nvector_serial.h"  // Type 'N_Vector'
-#include "../scicos_sundials/src/cvode/cvode_impl.h" // Error handling
+#include "../../../differential_equations/src/patched_sundials/src/cvode/cvode_impl.h" // Error handling
 
 #ifndef max
 #define max(A,B) ((A>B) ? A:B)  // 'max()' function
