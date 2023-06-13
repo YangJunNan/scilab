@@ -35,7 +35,7 @@ AC_DEFUN([CHECK_COMPILER_ARG],[
 AC_DEFUN([AC_CHECK_STDCPP_STATIC],[
 
 AC_ARG_ENABLE(static-system-lib,
-    AC_HELP_STRING([--enable-static-system-lib],[Enable the usage of the static stdc++ and libgcc libs]),
+    AS_HELP_STRING([--enable-static-system-lib],[Enable the usage of the static stdc++ and libgcc libs]),
 )
 
 # Check if -static-libstdc++ and -static-libgcc are supported.

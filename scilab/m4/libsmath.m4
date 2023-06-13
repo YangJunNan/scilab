@@ -40,7 +40,7 @@ acx_blas_ok=no
 acx_blas_save_LIBS="$LIBS"
 
 AC_ARG_WITH(blas-library,
-            AC_HELP_STRING([--with-blas-library=DIR], [set the path to the BLAS (refblas, Atlas, MKL...) library]))
+            AS_HELP_STRING([--with-blas-library=DIR], [set the path to the BLAS (refblas, Atlas, MKL...) library]))
 saved_ldflags="$LDFLAGS"
 
 
@@ -211,7 +211,7 @@ AC_REQUIRE([ACX_BLAS])
 acx_lapack_ok=no
 
 AC_ARG_WITH(lapack-library,
-            AC_HELP_STRING([--with-lapack-library=DIR], [set the path to the LAPACK library]))
+            AS_HELP_STRING([--with-lapack-library=DIR], [set the path to the LAPACK library]))
 saved_ldflags="$LDFLAGS"
 
 if test "$with_lapack_library" != no -a "$with_lapack_library" != ""; then
@@ -320,7 +320,7 @@ AC_REQUIRE([ACX_LAPACK])
 acx_arpack_ok=no
 
 AC_ARG_WITH(arpack-library,
-            AC_HELP_STRING([--with-arpack-library=DIR], [set the path to the ARPACK library]))
+            AS_HELP_STRING([--with-arpack-library=DIR], [set the path to the ARPACK library]))
 saved_ldflags="$LDFLAGS"
 
 if test "$with_arpack_library" != no -a "$with_arpack_library" != ""; then

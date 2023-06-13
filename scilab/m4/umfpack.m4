@@ -23,13 +23,13 @@ UMFPACK_OK=no
 SUITESPARSE=no
 
 AC_ARG_WITH(umfpack_library,
-		AC_HELP_STRING([--with-umfpack-library=DIR],[Set the path to the UMFPACK libraries]),
+		AS_HELP_STRING([--with-umfpack-library=DIR],[Set the path to the UMFPACK libraries]),
 		[with_umfpack_library=$withval],
 		[with_umfpack_library='yes']
 		)
 
 AC_ARG_WITH(umfpack_include,
-		AC_HELP_STRING([--with-umfpack-include=DIR],[Set the path to the UMFPACK headers]),
+		AS_HELP_STRING([--with-umfpack-include=DIR],[Set the path to the UMFPACK headers]),
 		[with_umfpack_include=$withval],
 		[with_umfpack_include='yes']
 		)

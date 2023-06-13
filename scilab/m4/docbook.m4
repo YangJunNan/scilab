@@ -25,7 +25,7 @@ if test "x$ac_java_jvm_name" != "x" ; then
     # if JDK is not enabled, skip the docbook detection
 
 AC_ARG_WITH(docbook,
-		AC_HELP_STRING([--with-docbook=DIR],[Set the path to the docbook package]),
+		AS_HELP_STRING([--with-docbook=DIR],[Set the path to the docbook package]),
 		[with_docbook=$withval],
 		[with_docbook='yes']
 		)
