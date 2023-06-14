@@ -6,4 +6,7 @@
 // =============================================================================
 
 // <-- CLI SHELL MODE -->
-if atomsVersion() <> ["2023.1"] then pause, end
+// <-- NO CHECK REF -->
+
+v = getversion("scilab")
+assert_checkequal(strcat(string(v(1:2)), "."), atomsVersion())

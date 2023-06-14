@@ -28,6 +28,8 @@ For a high-level description of the main new features of this release, please co
 In summary, the main new features and additions are:
 
 - __add your features before and keep this line__
+* Use `curl` as default in `atomsDownload()` for all OS to handle local file repositories.
+* <TODO>
 
 Obsolete functions or features
 ------------------------------
