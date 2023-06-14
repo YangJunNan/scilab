@@ -784,7 +784,8 @@ function status = test_single(_module, _testPath, _testName)
     end
     head = [ head ;
     "predef(''all'');";
-    "tmpdirToPrint = msprintf(''TMPDIR1=''''%s'''';//\n'',TMPDIR);"
+    "TMPDIR1 = msprintf(''TMPDIR1=''''%s'''';//\n'', TMPDIR);"
+    "TMPDIR2 = msprintf(''TMPDIR2=''''%s'''';//\n'', getshortpathname(TMPDIR));"
     ];
 
     if xcosNeeded then
@@ -803,7 +804,8 @@ function status = test_single(_module, _testPath, _testName)
     head = [
     head;
     "diary(''" + tmp_dia + "'');";
-    "printf(''%s\n'',tmpdirToPrint);";
+    "printf(''%s\n'',TMPDIR1);";
+    "printf(''%s\n'',TMPDIR2);";
     "// <-- HEADER END -->"
     ];
 
@@ -1054,6 +1056,8 @@ function status = test_single(_module, _testPath, _testName)
     // To get TMPDIR value
     tmpdir1_line = grep(dia, "/^TMPDIR1=/", "r");
     execstr(dia(tmpdir1_line));
+    tmpdir2_line = grep(dia, "/^TMPDIR2=/", "r");
+    execstr(dia(tmpdir2_line));
 
     //Check for execution errors
     if try_catch & grep(dia,"<--Error on the test script file-->") <> [] then
@@ -1138,8 +1142,10 @@ function status = test_single(_module, _testPath, _testName)
         (reference ~= "skip" & _module.reference=="create") then
         //  Do some modification in  dia file
 
-        dia(grep(dia, "printf(''%s\n'',tmpdirToPrint);")) = [];
+        dia(grep(dia, "printf(''%s\n'',TMPDIR1);")) = [];
+        dia(grep(dia, "printf(''%s\n'',TMPDIR2);")) = [];
         dia(grep(dia, "TMPDIR1")) = [];
+        dia(grep(dia, "TMPDIR2")) = [];
         dia(grep(dia, "diary(0)")) = [];
 
         if getos() == "Darwin" then // TMPDIR is a symblic link
@@ -1148,16 +1154,18 @@ function status = test_single(_module, _testPath, _testName)
         end
         dia = strsubst(dia,TMPDIR ,"TMPDIR");
         dia = strsubst(dia,TMPDIR1, "TMPDIR");
+        dia = strsubst(dia,TMPDIR2, "TMPDIR");
 
         if getos() == "Windows" then
             dia = strsubst(dia, strsubst(TMPDIR, "\","/"), "TMPDIR");
-            dia = strsubst(dia, strsubst(TMPDIR1, "\","/"), "TMPDIR");
             dia = strsubst(dia, strsubst(TMPDIR, "/","\"), "TMPDIR");
-            dia = strsubst(dia, strsubst(TMPDIR1, "/","\"), "TMPDIR");
             dia = strsubst(dia, strsubst(getshortpathname(TMPDIR), "\","/"), "TMPDIR");
-            dia = strsubst(dia, strsubst(getshortpathname(TMPDIR1), "\","/"), "TMPDIR");
             dia = strsubst(dia, getshortpathname(TMPDIR), "TMPDIR");
-            dia = strsubst(dia, getshortpathname(TMPDIR1), "TMPDIR");
+
+            dia = strsubst(dia, strsubst(TMPDIR1, "\","/"), "TMPDIR");
+            dia = strsubst(dia, strsubst(TMPDIR2, "\","/"), "TMPDIR");
+            dia = strsubst(dia, strsubst(TMPDIR1, "/","\"), "TMPDIR");
+            dia = strsubst(dia, strsubst(TMPDIR2, "/","\"), "TMPDIR");
         end
 
         dia = strsubst(dia, SCI, "SCI");
