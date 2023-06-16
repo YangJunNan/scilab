@@ -1257,8 +1257,13 @@ function msg = checkthefile( filename )
     msg(2) = "   - "+filename
     if params.show_error == %t then
         if isfile(filename) then
+            content = mgetl(filename);
+            content(content=="") = [];
+
             msg=[msg; strsubst(strsubst([""
             "----- " + filename + " -----"
+            "    " + content
+            ""
             ], SCI, "SCI"), TMPDIR, "TMPDIR") ];
         end
     end
