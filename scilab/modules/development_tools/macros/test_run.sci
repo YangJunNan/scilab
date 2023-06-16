@@ -433,7 +433,8 @@ function status = test_module(_params)
     testsuite.name=moduleName
     testsuite.time=0
     testsuite.tests=0
-    testsuite.errors=0
+    testsuite.errors=0 // unexpected errors / exception on execution
+    testsuite.failures=0 // when a test failed
 
     //don't test only return list of tests.
     if _params.reference == "list" then
@@ -499,7 +500,7 @@ function status = test_module(_params)
                 printf(part(" ", 1:62) + "%s \n", msg(2));
             end
 
-            if result.id < 10 then
+            if result.id < 5 then
                 //failed
                 test_failed_count = test_failed_count + 1;
                 detailled_failures = [ detailled_failures ; sprintf("   TEST : [%s] %s", _params.moduleName, tests(i,2))];
@@ -507,9 +508,20 @@ function status = test_module(_params)
                 detailled_failures = [ detailled_failures ; result.details ];
                 detailled_failures = [ detailled_failures ; "" ];
 
-                testsuite.errors = testsuite.errors + 1
+                testsuite.failures = testsuite.failures + 1
                 testsuite.testcase(i).failure.type=result.message
                 testsuite.testcase(i).failure.content=result.details
+            elseif (result.id >= 5) & (result.id < 10) then
+                // error
+                test_failed_count = test_failed_count + 1;
+                detailled_failures = [ detailled_failures ; sprintf("   TEST : [%s] %s", _params.moduleName, tests(i,2))];
+                detailled_failures = [ detailled_failures ; sprintf("   %s", result.message) ];
+                detailled_failures = [ detailled_failures ; result.details ];
+                detailled_failures = [ detailled_failures ; "" ];
+
+                testsuite.errors = testsuite.errors + 1
+                testsuite.testcase(i).error.type=result.message
+                testsuite.testcase(i).error.content=result.details
 
             elseif (result.id >= 10) & (result.id < 20) then
                 // skipped
@@ -891,22 +903,8 @@ function status = test_single(_module, _testPath, _testName)
         end
     end
 
-    //clean previous tmp files
-    if isfile(tmp_tst) then
-        deletefile(tmp_tst);
-    end
-
-    if isfile(tmp_dia) then
-        deletefile(tmp_dia);
-    end
-
-    if isfile(tmp_res) then
-        deletefile(tmp_res);
-    end
-
-    if isfile(tmp_err) then
-        deletefile(tmp_err);
-    end
+    // cleanup previously generated files
+    deletetmpfiles(tmp_tst, tmp_dia, tmp_res, tmp_err);
 
     //create tmp test file
     mputl(sciFile, tmp_tst);
@@ -921,13 +919,18 @@ function status = test_single(_module, _testPath, _testName)
         status.message = "failed: Slave Scilab exited with error code " + string(returnStatus);
         status.details = details;
         if params.show_error == %T then
-            tmp = mgetl(tmp_res)
-            tmp(tmp=="") = []
-            status.details = [ status.details; "   " + strsubst(..
-            [""
-            "----- " + tmp_res + ": 10 last lines: -----"
-            tmp(max(1,size(tmp,1)-9):$)
-            ], TMPDIR, "TMPDIR")]
+            res = mgetl(tmp_res)
+            res(res=="") = []
+            err = mgetl(tmp_err)
+            err(err=="") = []
+            status.details = [ status.details; strsubst(strsubst([""
+            "----- " + tmp_res + " -----"
+            "    " + res
+            ""
+            "----- " + tmp_err + " -----"
+            "    " + err
+            ""
+            ], SCI, "SCI"), TMPDIR, "TMPDIR") ];
         end
         return;
     end
@@ -1110,7 +1113,7 @@ function status = test_single(_module, _testPath, _testName)
         status.details = details;
         if params.show_error == %t then
             status.details = [ status.details; dia($-min(10, size(dia, "*")-1):$) ]
-        end
+        end          
         return;
     end
 
@@ -1201,6 +1204,8 @@ function status = test_single(_module, _testPath, _testName)
             mputl(dia, path_dia_ref);
             status.id = 20;
             status.message = "passed: ref created";
+
+            deletetmpfiles(tmp_tst, tmp_dia, tmp_res, tmp_err);
             return;
         else
             // write down the resulting dia file
@@ -1233,10 +1238,13 @@ function status = test_single(_module, _testPath, _testName)
                 end
 
             else
+                deletetmpfiles(tmp_tst, tmp_dia, tmp_res, tmp_err);
                 error(sprintf(gettext("The ref file (%s) doesn''t exist"), path_dia_ref));
             end
         end
     end
+    
+    deletetmpfiles(tmp_tst, tmp_dia, tmp_res, tmp_err);
 endfunction
 
 // checkthefile
@@ -1248,9 +1256,32 @@ function msg = checkthefile( filename )
     msg(1) = "   Check the following file :"
     msg(2) = "   - "+filename
     if params.show_error == %t then
-        msg=[msg; mgetl(filename)]
+        if isfile(filename) then
+            msg=[msg; strsubst(strsubst([""
+            "----- " + filename + " -----"
+            ], SCI, "SCI"), TMPDIR, "TMPDIR") ];
+        end
     end
 
+endfunction
+
+// deletetmpfiles: clean previous tmp files
+function deletetmpfiles(tmp_tst, tmp_dia, tmp_res, tmp_err)
+    if isfile(tmp_tst) then
+        deletefile(tmp_tst);
+    end
+
+    if isfile(tmp_dia) then
+        deletefile(tmp_dia);
+    end
+
+    if isfile(tmp_res) then
+        deletefile(tmp_res);
+    end
+
+    if isfile(tmp_err) then
+        deletefile(tmp_err);
+    end
 endfunction
 
 // launchthecommand
@@ -1373,6 +1404,8 @@ endfunction
 
 
 function exportToXUnitFormat(exportToFile, testsuites)
+    // export in JUnit XML format (also specified as XUnit)
+    // see https://github.com/testmoapp/junitxml
 
     if isfile(exportToFile) then
         // File already existing. Append the results
@@ -1398,6 +1431,7 @@ function exportToXUnitFormat(exportToFile, testsuites)
 
         testsuite.attributes.tests = string(module.tests);
         testsuite.attributes.errors = string(module.errors);
+        testsuite.attributes.failures = string(module.failures);
 
 
         if isfield(module, "testcase") then
@@ -1407,7 +1441,18 @@ function exportToXUnitFormat(exportToFile, testsuites)
                 testsuite.children(j).attributes.name = unitTest.name;
                 testsuite.children(j).attributes.time = string(unitTest.time);
                 testsuite.children(j).attributes.classname = getversion()+"."+module.name;
-                if isfield(unitTest,"failure") & size(unitTest.failure,"*") >= 1 then
+                if isfield(unitTest,"error") & size(unitTest.error,"*") >= 1 then
+                    testsuite.children(j).children(1) = xmlElement(doc,"error");
+                    testsuite.children(j).children(1).attributes.type = unitTest.error.type;
+                    content = unitTest.error.content;
+                    // escaping XML as described in https://www.w3.org/TR/REC-xml/#syntax
+                    // the extra spaces might not be needed but the spec is unclear on that point.
+                    content = strsubst(content, "&", "&amp;");
+                    content = strsubst(content, "<", "&lt;");
+                    content = strsubst(content, "]]>", "]]&gt;");
+
+                    testsuite.children(j).children(1).content = content;
+                elseif isfield(unitTest,"failure") & size(unitTest.failure,"*") >= 1 then
                     testsuite.children(j).children(1) = xmlElement(doc,"failure");
                     testsuite.children(j).children(1).attributes.type = unitTest.failure.type;
                     content = unitTest.failure.content;
