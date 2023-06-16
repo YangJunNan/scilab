@@ -700,6 +700,7 @@ src/scripts/Makefile.am \
 src/scripts/aclocal.m4
 
 libscidynamic_link_la_script_SCRIPTS = src/scripts/compilerDetection.sh \
+src/scripts/compile \
 src/scripts/config.guess \
 src/scripts/config.sub \
 src/scripts/configure \
