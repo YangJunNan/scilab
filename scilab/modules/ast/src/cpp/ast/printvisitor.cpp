@@ -28,7 +28,7 @@ void PrintVisitor::visit (const MatrixExp &e)
     ast::exps_t::const_iterator	i, j;
     *ostr << SCI_OPEN_MATRIX;
     ++indent;
-    this->is_last_matrix_line = false;
+    bool is_last_matrix_line = false;
     ast::exps_t lines = e.getLines();
     for (i = lines.begin() ; i != lines.end() ; )
     {
@@ -36,11 +36,11 @@ void PrintVisitor::visit (const MatrixExp &e)
         j = i;
         if (++j == lines.end())
         {
-            this->is_last_matrix_line = true;
+            is_last_matrix_line = true;
         }
         else
         {
-            if ((*i)->getLocation().last_line != (*j)->getLocation().first_line)
+            if ((*i)->getLocation().first_line != (*j)->getLocation().first_line)
             {
                 addIndent = true;
             }
@@ -55,10 +55,18 @@ void PrintVisitor::visit (const MatrixExp &e)
             (*i)->accept(*this);
         }
 
+        if (!this->is_last_column_comment && is_last_matrix_line == false)
+        {
+            *ostr << SCI_LINE_SEPARATOR;
+        }
+        
         //if (lines.size() > 1 || this->is_last_column_comment)
-        if (addIndent)
+        if (addIndent || this->is_last_column_comment)
         {
             *ostr << std::endl;
+        }
+        if (addIndent)
+        {
             this->apply_indent();
         }
 
@@ -97,11 +105,6 @@ void PrintVisitor::visit (const MatrixLineExp &e)
             }
             *ostr << " ";
         }
-    }
-
-    if (!this->is_last_column_comment && this->is_last_matrix_line == false)
-    {
-        *ostr << SCI_LINE_SEPARATOR;
     }
 }
 /** \} */
@@ -255,7 +258,16 @@ void PrintVisitor::visit (const DoubleExp  &e)
     }
     else
     {
-        *ostr << e.getValue();
+        double dblValue = e.getValue();
+        if (dblValue < 0) {
+            *ostr << L"(";
+            *ostr << dblValue;
+            *ostr << L")";
+        }
+        else 
+        {
+            *ostr << dblValue;
+        }
     }
 }
 

@@ -106,11 +106,13 @@ windows_advanced_nightly:
       - TEST:
           - atoms
           - call_scilab
+          - external_objects
           - external_objects_java
           - graphic_export
           - graphic_objects
           - graphics
           - gui
+          - preferences
           - scicos
           - scicos_blocks
           - scinotes
