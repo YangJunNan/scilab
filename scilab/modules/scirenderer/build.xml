@@ -1,6 +1,4 @@
-        <project name="scirenderer" default="jar">
-
-
+<project name="scirenderer" default="jar">
 
     <property file="scirenderer-version.properties"/>
 
@@ -91,6 +89,8 @@
         <delete dir="${build.dir}"/>
         <delete dir="${build.example.dir}"/>
         <delete dir="${build.jar.dir}"/>
+		<delete dir="${classes.dir}"/>
+		<delete dir="${classes.test.dir}"/>
         <delete dir="${doc.dir}"/>
         <delete file="${library.jar}"/>
     </target>

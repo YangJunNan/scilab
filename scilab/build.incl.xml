@@ -104,12 +104,13 @@
     <target name="clean" description="Clean built files" depends="clean-test">
         <delete dir="${build.dir}"/>
         <delete dir="${build.jar.dir}"/>
+		<delete dir="${classes.dir}"/>
         <delete file="${build.jar.dir}/${library.name}"/>
     </target>
     <!-- Compile sources -->
     <target name="compile" description="Build sources" depends="init">
         <javac srcdir="${src.dir}" destdir="${classes.dir}" classpathref="compile.classpath" deprecation="on" debug="${build.debug}" debuglevel="lines,vars,source" verbose="off" listfiles="on" includeAntRuntime="no" source="8" target="8" encoding="utf-8">
-            <compilerarg value="-Xlint" />
+			<compilerarg value="-Xlint" />
             <!--  Silent some warnings -->
             <compilerarg value="-Xlint:-unchecked" />
             <!-- Too borring and painful to fix -->
