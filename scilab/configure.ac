@@ -1818,9 +1818,7 @@ AC_ARG_ENABLE(build-help,
         AS_HELP_STRING([--disable-build-help],[Disable the help build])
         )
 
-if test "$enable_build_help" != no; then
-    AC_DOCBOOK()
-else
+if test "$enable_build_help" == no; then
     HELP_ENABLE=no
 fi
 
@@ -2345,7 +2343,6 @@ fi
 echo ""
 if test $HELP_ENABLE = yes; then
    echo "Documentation building configuration:"
-   echo "  Docbook XSL path ....... = $DOCBOOK_ROOT"
    echo "  Saxon XSLT ............. = $SAXON"
    echo "  XML commons external ... = $XML_APIS_EXT"
 else

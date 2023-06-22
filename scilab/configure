@@ -711,8 +711,6 @@ INSTALL_HELP_XML_TRUE
 BUILD_HELP_FALSE
 BUILD_HELP_TRUE
 HELP_ENABLE
-SAXON
-DOCBOOK_ROOT
 MATIO_FALSE
 MATIO_TRUE
 MATIO_ENABLE
@@ -1103,7 +1101,6 @@ with_matio
 with_matio_include
 with_matio_library
 enable_build_help
-with_docbook
 with_install_help_xml
 enable_build_doxygen
 enable_force_full_link
@@ -1900,7 +1897,6 @@ Optional Packages:
                           Set the path to the MATIO headers
   --with-matio-library=DIR
                           Set the path to the MATIO libraries
-  --with-docbook=DIR      Set the path to the docbook package
   --with-install-help-xml make install will install XML files
 
   --with-pic[=PKGS]       try to use only PIC/non-PIC objects [default=use
@@ -13488,7 +13484,7 @@ printf "%s\n" "$ac_java_classpath" >&6; }
 printf %s "checking to see if the java compiler works... " >&6; }
 
     cat << \EOF > conftest.java
-// #line 13491 "configure"
+// #line 13487 "configure"
 import java.util.regex.Pattern;
 
 
@@ -13575,7 +13571,7 @@ printf %s "checking type of jvm... " >&6; }
     if test "x$ac_java_jvm_name" = "x" ; then
 
     cat << \EOF > conftest.java
-// #line 13578 "configure"
+// #line 13574 "configure"
 import java.util.regex.Pattern;
 
 import gnu.java.io.EncodingManager;
@@ -13659,7 +13655,7 @@ printf %s "checking java API version... " >&6; }
     # The class java.nio.charset.Charset is new to 1.4
 
     cat << \EOF > conftest.java
-// #line 13662 "configure"
+// #line 13658 "configure"
 import java.util.regex.Pattern;
 
 import java.nio.charset.Charset;
@@ -13724,7 +13720,7 @@ EOF
     # The class java.lang.StringBuilder is new to 1.5
 
     cat << \EOF > conftest.java
-// #line 13727 "configure"
+// #line 13723 "configure"
 import java.util.regex.Pattern;
 
 import java.lang.StringBuilder;
@@ -13789,7 +13785,7 @@ EOF
     # The class java.util.ArrayDeque is new to 1.6
 
     cat << \EOF > conftest.java
-// #line 13792 "configure"
+// #line 13788 "configure"
 import java.util.regex.Pattern;
 
 import java.util.ArrayDeque;
@@ -13854,7 +13850,7 @@ EOF
     # The class java.nio.file.Path is new to 1.7
 
     cat << \EOF > conftest.java
-// #line 13857 "configure"
+// #line 13853 "configure"
 import java.util.regex.Pattern;
 
 import java.nio.file.Path;
@@ -13919,7 +13915,7 @@ EOF
     # The class java.util.stream.DoubleStream is new to 1.8
 
     cat << \EOF > conftest.java
-// #line 13922 "configure"
+// #line 13918 "configure"
 import java.util.regex.Pattern;
 
 import java.util.stream.DoubleStream;
@@ -13984,7 +13980,7 @@ EOF
     # The class java.lang.ProcessHandle is new to 1.9
 
     cat << \EOF > conftest.java
-// #line 13987 "configure"
+// #line 13983 "configure"
 import java.util.regex.Pattern;
 
 import java.lang.ProcessHandle;
@@ -15470,7 +15466,7 @@ fi
                    # jgraphx
 
     cat << \EOF > conftestSharedChecker.java
-// #line 15473 "configure"
+// #line 15469 "configure"
 import java.util.regex.Pattern;
 import java.io.File;
 import java.io.IOException;
@@ -15671,7 +15667,7 @@ printf %s "checking jgraphx... " >&6; }
     if test ! -f conftestSharedChecker.class ; then
 
     cat << \EOF > conftestSharedChecker.java
-// #line 15674 "configure"
+// #line 15670 "configure"
 import java.util.regex.Pattern;
 import java.io.File;
 import java.io.IOException;
@@ -15907,7 +15903,7 @@ printf %s "checking scirenderer... " >&6; }
     if test ! -f conftestSharedChecker.class ; then
 
     cat << \EOF > conftestSharedChecker.java
-// #line 15910 "configure"
+// #line 15906 "configure"
 import java.util.regex.Pattern;
 import java.io.File;
 import java.io.IOException;
@@ -16149,7 +16145,7 @@ printf %s "checking flexdock... " >&6; }
     if test ! -f conftestSharedChecker.class ; then
 
     cat << \EOF > conftestSharedChecker.java
-// #line 16152 "configure"
+// #line 16148 "configure"
 import java.util.regex.Pattern;
 import java.io.File;
 import java.io.IOException;
@@ -16383,7 +16379,7 @@ printf %s "checking looks... " >&6; }
     if test ! -f conftestSharedChecker.class ; then
 
     cat << \EOF > conftestSharedChecker.java
-// #line 16386 "configure"
+// #line 16382 "configure"
 import java.util.regex.Pattern;
 import java.io.File;
 import java.io.IOException;
@@ -16617,7 +16613,7 @@ printf %s "checking jgoodies-looks... " >&6; }
     if test ! -f conftestSharedChecker.class ; then
 
     cat << \EOF > conftestSharedChecker.java
-// #line 16620 "configure"
+// #line 16616 "configure"
 import java.util.regex.Pattern;
 import java.io.File;
 import java.io.IOException;
@@ -16852,7 +16848,7 @@ printf %s "checking skinlf... " >&6; }
     if test ! -f conftestSharedChecker.class ; then
 
     cat << \EOF > conftestSharedChecker.java
-// #line 16855 "configure"
+// #line 16851 "configure"
 import java.util.regex.Pattern;
 import java.io.File;
 import java.io.IOException;
@@ -17086,7 +17082,7 @@ printf %s "checking jogl... " >&6; }
     if test ! -f conftestSharedChecker.class ; then
 
     cat << \EOF > conftestSharedChecker.java
-// #line 17089 "configure"
+// #line 17085 "configure"
 import java.util.regex.Pattern;
 import java.io.File;
 import java.io.IOException;
@@ -17426,7 +17422,7 @@ printf %s "checking gluegen... " >&6; }
     if test ! -f conftestSharedChecker.class ; then
 
     cat << \EOF > conftestSharedChecker.java
-// #line 17429 "configure"
+// #line 17425 "configure"
 import java.util.regex.Pattern;
 import java.io.File;
 import java.io.IOException;
@@ -17717,7 +17713,7 @@ printf %s "checking jhall... " >&6; }
     if test ! -f conftestSharedChecker.class ; then
 
     cat << \EOF > conftestSharedChecker.java
-// #line 17720 "configure"
+// #line 17716 "configure"
 import java.util.regex.Pattern;
 import java.io.File;
 import java.io.IOException;
@@ -17949,7 +17945,7 @@ printf %s "checking javahelp2... " >&6; }
     if test ! -f conftestSharedChecker.class ; then
 
     cat << \EOF > conftestSharedChecker.java
-// #line 17952 "configure"
+// #line 17948 "configure"
 import java.util.regex.Pattern;
 import java.io.File;
 import java.io.IOException;
@@ -18184,7 +18180,7 @@ printf %s "checking lucene-core... " >&6; }
     if test ! -f conftestSharedChecker.class ; then
 
     cat << \EOF > conftestSharedChecker.java
-// #line 18187 "configure"
+// #line 18183 "configure"
 import java.util.regex.Pattern;
 import java.io.File;
 import java.io.IOException;
@@ -18418,7 +18414,7 @@ printf %s "checking lucene-analyzers-common... " >&6; }
     if test ! -f conftestSharedChecker.class ; then
 
     cat << \EOF > conftestSharedChecker.java
-// #line 18421 "configure"
+// #line 18417 "configure"
 import java.util.regex.Pattern;
 import java.io.File;
 import java.io.IOException;
@@ -18652,7 +18648,7 @@ printf %s "checking lucene-queryparser... " >&6; }
     if test ! -f conftestSharedChecker.class ; then
 
     cat << \EOF > conftestSharedChecker.java
-// #line 18655 "configure"
+// #line 18651 "configure"
 import java.util.regex.Pattern;
 import java.io.File;
 import java.io.IOException;
@@ -18886,7 +18882,7 @@ printf %s "checking jrosetta-API... " >&6; }
     if test ! -f conftestSharedChecker.class ; then
 
     cat << \EOF > conftestSharedChecker.java
-// #line 18889 "configure"
+// #line 18885 "configure"
 import java.util.regex.Pattern;
 import java.io.File;
 import java.io.IOException;
@@ -19117,7 +19113,7 @@ printf %s "checking jrosetta-api... " >&6; }
     if test ! -f conftestSharedChecker.class ; then
 
     cat << \EOF > conftestSharedChecker.java
-// #line 19120 "configure"
+// #line 19116 "configure"
 import java.util.regex.Pattern;
 import java.io.File;
 import java.io.IOException;
@@ -19352,7 +19348,7 @@ printf %s "checking jrosetta-engine... " >&6; }
     if test ! -f conftestSharedChecker.class ; then
 
     cat << \EOF > conftestSharedChecker.java
-// #line 19355 "configure"
+// #line 19351 "configure"
 import java.util.regex.Pattern;
 import java.io.File;
 import java.io.IOException;
@@ -19588,7 +19584,7 @@ printf %s "checking jeuclid-core... " >&6; }
     if test ! -f conftestSharedChecker.class ; then
 
     cat << \EOF > conftestSharedChecker.java
-// #line 19591 "configure"
+// #line 19587 "configure"
 import java.util.regex.Pattern;
 import java.io.File;
 import java.io.IOException;
@@ -19824,7 +19820,7 @@ printf %s "checking fop... " >&6; }
     if test ! -f conftestSharedChecker.class ; then
 
     cat << \EOF > conftestSharedChecker.java
-// #line 19827 "configure"
+// #line 19823 "configure"
 import java.util.regex.Pattern;
 import java.io.File;
 import java.io.IOException;
@@ -20066,7 +20062,7 @@ printf %s "checking freehep-graphics2d... " >&6; }
     if test ! -f conftestSharedChecker.class ; then
 
     cat << \EOF > conftestSharedChecker.java
-// #line 20069 "configure"
+// #line 20065 "configure"
 import java.util.regex.Pattern;
 import java.io.File;
 import java.io.IOException;
@@ -20300,7 +20296,7 @@ printf %s "checking freehep-graphicsio... " >&6; }
     if test ! -f conftestSharedChecker.class ; then
 
     cat << \EOF > conftestSharedChecker.java
-// #line 20303 "configure"
+// #line 20299 "configure"
 import java.util.regex.Pattern;
 import java.io.File;
 import java.io.IOException;
@@ -20534,7 +20530,7 @@ printf %s "checking freehep-graphicsio-emf... " >&6; }
     if test ! -f conftestSharedChecker.class ; then
 
     cat << \EOF > conftestSharedChecker.java
-// #line 20537 "configure"
+// #line 20533 "configure"
 import java.util.regex.Pattern;
 import java.io.File;
 import java.io.IOException;
@@ -20768,7 +20764,7 @@ printf %s "checking freehep-io... " >&6; }
     if test ! -f conftestSharedChecker.class ; then
 
     cat << \EOF > conftestSharedChecker.java
-// #line 20771 "configure"
+// #line 20767 "configure"
 import java.util.regex.Pattern;
 import java.io.File;
 import java.io.IOException;
@@ -21002,7 +20998,7 @@ printf %s "checking freehep-util... " >&6; }
     if test ! -f conftestSharedChecker.class ; then
 
     cat << \EOF > conftestSharedChecker.java
-// #line 21005 "configure"
+// #line 21001 "configure"
 import java.util.regex.Pattern;
 import java.io.File;
 import java.io.IOException;
@@ -21237,7 +21233,7 @@ printf %s "checking batik-all... " >&6; }
     if test ! -f conftestSharedChecker.class ; then
 
     cat << \EOF > conftestSharedChecker.java
-// #line 21240 "configure"
+// #line 21236 "configure"
 import java.util.regex.Pattern;
 import java.io.File;
 import java.io.IOException;
@@ -21471,7 +21467,7 @@ printf %s "checking batik... " >&6; }
     if test ! -f conftestSharedChecker.class ; then
 
     cat << \EOF > conftestSharedChecker.java
-// #line 21474 "configure"
+// #line 21470 "configure"
 import java.util.regex.Pattern;
 import java.io.File;
 import java.io.IOException;
@@ -21706,7 +21702,7 @@ printf %s "checking commons-io... " >&6; }
     if test ! -f conftestSharedChecker.class ; then
 
     cat << \EOF > conftestSharedChecker.java
-// #line 21709 "configure"
+// #line 21705 "configure"
 import java.util.regex.Pattern;
 import java.io.File;
 import java.io.IOException;
@@ -21940,7 +21936,7 @@ printf %s "checking xmlgraphics-commons... " >&6; }
     if test ! -f conftestSharedChecker.class ; then
 
     cat << \EOF > conftestSharedChecker.java
-// #line 21943 "configure"
+// #line 21939 "configure"
 import java.util.regex.Pattern;
 import java.io.File;
 import java.io.IOException;
@@ -22174,7 +22170,7 @@ printf %s "checking avalon-framework... " >&6; }
     if test ! -f conftestSharedChecker.class ; then
 
     cat << \EOF > conftestSharedChecker.java
-// #line 22177 "configure"
+// #line 22173 "configure"
 import java.util.regex.Pattern;
 import java.io.File;
 import java.io.IOException;
@@ -22408,7 +22404,7 @@ printf %s "checking xml-apis-ext... " >&6; }
     if test ! -f conftestSharedChecker.class ; then
 
     cat << \EOF > conftestSharedChecker.java
-// #line 22411 "configure"
+// #line 22407 "configure"
 import java.util.regex.Pattern;
 import java.io.File;
 import java.io.IOException;
@@ -22642,7 +22638,7 @@ printf %s "checking xml-commons-apis-ext... " >&6; }
     if test ! -f conftestSharedChecker.class ; then
 
     cat << \EOF > conftestSharedChecker.java
-// #line 22645 "configure"
+// #line 22641 "configure"
 import java.util.regex.Pattern;
 import java.io.File;
 import java.io.IOException;
@@ -22880,7 +22876,7 @@ printf %s "checking commons-logging... " >&6; }
     if test ! -f conftestSharedChecker.class ; then
 
     cat << \EOF > conftestSharedChecker.java
-// #line 22883 "configure"
+// #line 22879 "configure"
 import java.util.regex.Pattern;
 import java.io.File;
 import java.io.IOException;
@@ -23114,7 +23110,7 @@ printf %s "checking jlatexmath... " >&6; }
     if test ! -f conftestSharedChecker.class ; then
 
     cat << \EOF > conftestSharedChecker.java
-// #line 23117 "configure"
+// #line 23113 "configure"
 import java.util.regex.Pattern;
 import java.io.File;
 import java.io.IOException;
@@ -23348,7 +23344,7 @@ printf %s "checking jlatexmath-fop... " >&6; }
     if test ! -f conftestSharedChecker.class ; then
 
     cat << \EOF > conftestSharedChecker.java
-// #line 23351 "configure"
+// #line 23347 "configure"
 import java.util.regex.Pattern;
 import java.io.File;
 import java.io.IOException;
@@ -23588,7 +23584,7 @@ printf %s "checking checkstyle... " >&6; }
     if test ! -f conftestSharedChecker.class ; then
 
     cat << \EOF > conftestSharedChecker.java
-// #line 23591 "configure"
+// #line 23587 "configure"
 import java.util.regex.Pattern;
 import java.io.File;
 import java.io.IOException;
@@ -23822,7 +23818,7 @@ printf %s "checking commons-beanutils... " >&6; }
     if test ! -f conftestSharedChecker.class ; then
 
     cat << \EOF > conftestSharedChecker.java
-// #line 23825 "configure"
+// #line 23821 "configure"
 import java.util.regex.Pattern;
 import java.io.File;
 import java.io.IOException;
@@ -24056,7 +24052,7 @@ printf %s "checking antlr... " >&6; }
     if test ! -f conftestSharedChecker.class ; then
 
     cat << \EOF > conftestSharedChecker.java
-// #line 24059 "configure"
+// #line 24055 "configure"
 import java.util.regex.Pattern;
 import java.io.File;
 import java.io.IOException;
@@ -24290,7 +24286,7 @@ printf %s "checking junit4... " >&6; }
     if test ! -f conftestSharedChecker.class ; then
 
     cat << \EOF > conftestSharedChecker.java
-// #line 24293 "configure"
+// #line 24289 "configure"
 import java.util.regex.Pattern;
 import java.io.File;
 import java.io.IOException;
@@ -24521,7 +24517,7 @@ printf %s "checking junit... " >&6; }
     if test ! -f conftestSharedChecker.class ; then
 
     cat << \EOF > conftestSharedChecker.java
-// #line 24524 "configure"
+// #line 24520 "configure"
 import java.util.regex.Pattern;
 import java.io.File;
 import java.io.IOException;
@@ -24759,7 +24755,7 @@ printf %s "checking hamcrest-all... " >&6; }
     if test ! -f conftestSharedChecker.class ; then
 
     cat << \EOF > conftestSharedChecker.java
-// #line 24762 "configure"
+// #line 24758 "configure"
 import java.util.regex.Pattern;
 import java.io.File;
 import java.io.IOException;
@@ -24990,7 +24986,7 @@ printf %s "checking hamcrest/all... " >&6; }
     if test ! -f conftestSharedChecker.class ; then
 
     cat << \EOF > conftestSharedChecker.java
-// #line 24993 "configure"
+// #line 24989 "configure"
 import java.util.regex.Pattern;
 import java.io.File;
 import java.io.IOException;
@@ -25225,7 +25221,7 @@ printf %s "checking cobertura... " >&6; }
     if test ! -f conftestSharedChecker.class ; then
 
     cat << \EOF > conftestSharedChecker.java
-// #line 25228 "configure"
+// #line 25224 "configure"
 import java.util.regex.Pattern;
 import java.io.File;
 import java.io.IOException;
@@ -25459,7 +25455,7 @@ printf %s "checking asm3... " >&6; }
     if test ! -f conftestSharedChecker.class ; then
 
     cat << \EOF > conftestSharedChecker.java
-// #line 25462 "configure"
+// #line 25458 "configure"
 import java.util.regex.Pattern;
 import java.io.File;
 import java.io.IOException;
@@ -25690,7 +25686,7 @@ printf %s "checking asm... " >&6; }
     if test ! -f conftestSharedChecker.class ; then
 
     cat << \EOF > conftestSharedChecker.java
-// #line 25693 "configure"
+// #line 25689 "configure"
 import java.util.regex.Pattern;
 import java.io.File;
 import java.io.IOException;
@@ -25924,7 +25920,7 @@ printf %s "checking ecj... " >&6; }
     if test ! -f conftestSharedChecker.class ; then
 
     cat << \EOF > conftestSharedChecker.java
-// #line 25927 "configure"
+// #line 25923 "configure"
 import java.util.regex.Pattern;
 import java.io.File;
 import java.io.IOException;
@@ -36572,742 +36568,7 @@ then :
 fi
 
 
-if test "$enable_build_help" != no; then
-
-
-DOCBOOK_OK=no
-DOCBOOK_ROOT=""
-
-if test "x$ac_java_jvm_name" != "x" ; then
-    # if JDK is not enabled, skip the docbook detection
-
-
-# Check whether --with-docbook was given.
-if test ${with_docbook+y}
-then :
-  withval=$with_docbook; with_docbook=$withval
-else $as_nop
-  with_docbook='yes'
-
-fi
-
-
-	for dir in $with_docbook $SCI_SRCDIR_FULL/thirdparty/docbook/ /usr/share/sgml/docbook/stylesheet/xsl/nwalsh /usr/share/docbook2X/xslt/man/ /usr/share/xml/docbook/stylesheet/nwalsh/ /usr/share/xml/docbook/stylesheet/nwalsh/current/ /sw/share/xml/xsl/docbook-xsl /usr/share/xml/docbook/xsl-stylesheets-*/ /usr/share/sgml/docbook/xsl-stylesheets-*/ /usr/share/sgml/docbook/xsl-stylesheets /usr/share/sgml/docbook/xsl-ns-stylesheets-*/ /usr/share/xml/docbook/stylesheet/docbook-xsl /opt/local/share/xsl/docbook-xsl; do
-		if test -r "$dir/fo/docbook.xsl" -a "$DOCBOOK_ROOT" = ""; then
-			DOCBOOK_ROOT=$dir
-        fi
-	done
-	if test -z "$DOCBOOK_ROOT"; then
-		as_fn_error $? "Could not find the Docbook root directory. If you have installed it on your system and we haven't been able to find it. Please report a bug" "$LINENO" 5
-	fi
-
-
-
-	# Saxon XSLT Processor, as the JVM implementation is unable to parse the docbook xsl files
-	# check Saxon-HE 9.5 first then fallback to Saxon-6.5
-
-
-
-    { printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking saxon9he" >&5
-printf %s "checking saxon9he... " >&6; }
-    PACKAGE_JAR_FILE=
-
-    DEFAULT_JAR_DIR="$(pwd)/thirdparty/ $(pwd)/jar/ /usr/local/java/ /usr/local/java/jar /usr/local/share/java/ /usr/local/share/java/jar/ /usr/local/lib/java/ $(find /usr/share/java/ -maxdepth 1 -type d 2>/dev/null | sort) $(find /usr/lib64/ -maxdepth 1 -type d 2>/dev/null) $(find  /usr/lib/ -maxdepth 1 -type d 2>/dev/null) $(find /usr/share/*/lib -maxdepth 1 -type d 2>/dev/null) /opt/java/lib/"
-
-    jar_resolved="$(find $DEFAULT_JAR_DIR -maxdepth 1 \( -type f -name 'saxon9he.jar' -or -name 'libsaxon9he.jar' -or -name 'libsaxon9he-java.jar' -or -name 'saxon9he*.jar' \) 2>/dev/null |tr '\n' ':')."
-
-    if test ! -f conftestSharedChecker.class ; then
-
-    cat << \EOF > conftestSharedChecker.java
-// #line 36622 "configure"
-import java.util.regex.Pattern;
-import java.io.File;
-import java.io.IOException;
-import java.lang.reflect.Field;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
-import java.net.URL;
-import java.net.URLClassLoader;
-import java.util.ArrayList;
-
-public class conftestSharedChecker {
-
-    /**
-     * Required arguments :
-     *  argv[0]: name of the jar package
-     *  argv[1]: name of the class (with the package prefix)
-     *  argv[2]: possible paths of the jar package (separated by ':')
-     *
-     * Optional arguments:
-     *  argv[3]: field or method used to retrieve the version
-     *  argv[4]: expected version
-     *  argv[5]: String comparator :
-     *      "="  for exact version
-     */
-    public static void main(String[] argv) {
-        final String packageName = argv[0];
-        final String className = argv[1];
-        final String[] jarList = argv[2].split(":");
-
-        ArrayList<URL> found = new ArrayList<>();
-        for(String jar : jarList)
-        {
-            try {
-                File f = new File(jar);
-                if (f.exists()) {
-                    found.add(f.toURI().toURL());
-                }
-            } catch (IOException ex) {
-                System.err.println(ex.toString());
-            }
-        }
-
-        URLClassLoader localClassLoader = new URLClassLoader(found.toArray(new URL[found.size()]));
-        URL klassURL = null;
-        Class<?> klass = null;
-        try {
-            String resourceName = className.replace(".", "/") + ".class";
-            klassURL = localClassLoader.getResource(resourceName);
-            klass = localClassLoader.loadClass(className);
-        } catch (ClassNotFoundException ex) {
-            System.err.println(className + " not found");
-            System.exit(-1);
-        }
-
-        String pathURL = klassURL.getPath().substring(0, klassURL.getPath().indexOf('!'));
-        String path = pathURL.substring(pathURL.indexOf(':') + 1);
-        System.err.println("found: " + path);
-
-        String version;
-        if (!"".equals(argv[3])) {
-            version = checkVersion(klass, argv);
-        } else {
-            version = klass.getPackage().getSpecificationVersion();
-        }
-
-        System.out.println(path + " " + version);
-    }
-
-    private static String checkVersion(Class<?> klass, String[] argv) throws SecurityException, IllegalArgumentException {
-        final String versionMethod = argv[3];
-        final String expected = argv[4];
-        final String atLeastOrEqual;
-        if (!"".equals(argv[5])) {
-            atLeastOrEqual = argv[5];
-        } else {
-            atLeastOrEqual = "<=";
-        }
-
-        String value = "";
-        if (versionMethod.isEmpty()) {
-            value = klass.getPackage().getSpecificationVersion();
-            compareAndDisplay(atLeastOrEqual, expected, value);
-            return value;
-        }
-
-        try {
-            try {
-                Field field = klass.getField(versionMethod);
-                value = String.valueOf(field.get(null));
-                compareAndDisplay(atLeastOrEqual, expected, value);
-            } catch (NoSuchFieldException fe) {
-                Method method = null;
-                try {
-                    method = klass.getMethod(versionMethod);
-                } catch (NoSuchMethodException ex) {
-                    System.err.println(ex.toString());
-                    System.exit(-3);
-                }
-
-                try {
-                    value = String.valueOf(method.invoke(null));
-                    compareAndDisplay(atLeastOrEqual, expected, value);
-                } catch (NullPointerException ex) {
-                    value = String.valueOf(method.invoke(klass.newInstance()));
-                    compareAndDisplay(atLeastOrEqual, expected, value);
-                }
-            }
-        } catch (IllegalAccessException ex) {
-            System.err.println(ex);
-            System.exit(-2);
-        } catch (InvocationTargetException ex) {
-            System.err.println(ex);
-            System.exit(-2);
-        } catch (InstantiationException ex) {
-            System.err.println(ex);
-            System.exit(-2);
-        }
-        return value;
-    }
-
-    private static void compareAndDisplay(String atLeastOrEqual, String expected, String value) {
-        int cmp = compare(expected, value);
-
-        switch(atLeastOrEqual) {
-            case ">":
-                if (cmp > 0) {
-                    return;
-                } else {
-                    System.err.println("expected "+atLeastOrEqual+""+expected+" but got "+value);
-                    System.exit(-4);
-                }
-            case "==":
-                if (cmp == 0) {
-                    return;
-                } else {
-                    System.err.println("expected "+atLeastOrEqual+""+expected+" but got "+value);
-                    System.exit(-4);
-                }
-            case "<=":
-                if (cmp <= 0) {
-                    return;
-                } else {
-                    System.err.println("expected "+atLeastOrEqual+""+expected+" but got "+value);
-                    System.exit(-4);
-                }
-            default:
-                System.err.println("unable to compare with "+atLeastOrEqual);
-                System.exit(-4);
-        }
-    }
-
-    private static int compare(String v1, String v2) {
-        String s1 = normalisedVersion(v1);
-        String s2 = normalisedVersion(v2);
-
-        System.err.println("compare: " + v1 + " normalised to " + s1);
-        System.err.println("compare: " + v2 + " normalised to " + s2);
-        return s1.compareTo(s2);
-    }
-
-    private static String normalisedVersion(String version) {
-        return normalisedVersion(version, ".", 4);
-    }
-
-    private static String normalisedVersion(String version, String sep, int maxWidth) {
-        String[] split = Pattern.compile(sep, Pattern.LITERAL).split(version);
-        StringBuilder sb = new StringBuilder();
-        for (String s : split) {
-            sb.append(String.format("%" + maxWidth + 's', s));
-        }
-        return sb.toString();
-    }
-}
-EOF
-
-    CLASSPATH=$ac_java_classpath
-    export CLASSPATH
-    cmd="$JAVAC ${JAVAC_FLAGS} conftestSharedChecker.java"
-    if (echo $cmd >&5 ; eval $cmd >conftestSharedChecker.java.output 2>&5) ; then
-        echo "configure: conftestSharedChecker.class available" >&5
-    else
-        echo "configure: failed program was:" >&5
-        cat conftestSharedChecker.java >&5
-        echo "configure: CLASSPATH was $CLASSPATH" >&5
-    fi
-
-    fi
-
-    CLASSPATH=$ac_java_classpath
-    export CLASSPATH
-    echo "CLASSPATH="$CLASSPATH >&5
-    cmd="$JAVA conftestSharedChecker \"saxon9he\" \"net.sf.saxon.Version\" \"$jar_resolved\" \"\" \"\" \"\""
-    if (echo $cmd >&5 ; eval $cmd >conftestSharedChecker.java.output 2>&5); then
-        read PACKAGE_JAR_FILE PACKAGE_JAR_VERSION << EOF
-$(tail -n 1 conftestSharedChecker.java.output)
-EOF
-        { printf "%s\n" "$as_me:${as_lineno-$LINENO}: result:  $PACKAGE_JAR_FILE $PACKAGE_JAR_VERSION " >&5
-printf "%s\n" " $PACKAGE_JAR_FILE $PACKAGE_JAR_VERSION " >&6; }
-        echo "yes" >&5
-        # append the found file to the classpath to manage jar dependency
-        ac_java_classpath="$ac_java_classpath:$PACKAGE_JAR_FILE"
-    else
-      { printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: no" >&5
-printf "%s\n" "no" >&6; }
-      if test ""yes"" = "yes"; then
-         { printf "%s\n" "$as_me:${as_lineno-$LINENO}: WARNING: Could not find or use the Java package/jar saxon9he used by Saxon XSLT Processor (looking for package net.sf.saxon.Version)" >&5
-printf "%s\n" "$as_me: WARNING: Could not find or use the Java package/jar saxon9he used by Saxon XSLT Processor (looking for package net.sf.saxon.Version)" >&2;}
-      else
-          as_fn_error $? "Could not find or use the Java package/jar saxon9he used by Saxon XSLT Processor (looking for package net.sf.saxon.Version)" "$LINENO" 5
-      fi
-    fi
-    if test -f conftestSharedChecker.java.output; then
-        rm conftestSharedChecker.java.output
-    fi
-
-	SAXON=$PACKAGE_JAR_FILE
-	if test -z "$SAXON"; then
-
-
-
-    { printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking saxon" >&5
-printf %s "checking saxon... " >&6; }
-    PACKAGE_JAR_FILE=
-
-    DEFAULT_JAR_DIR="$(pwd)/thirdparty/ $(pwd)/jar/ /usr/local/java/ /usr/local/java/jar /usr/local/share/java/ /usr/local/share/java/jar/ /usr/local/lib/java/ $(find /usr/share/java/ -maxdepth 1 -type d 2>/dev/null | sort) $(find /usr/lib64/ -maxdepth 1 -type d 2>/dev/null) $(find  /usr/lib/ -maxdepth 1 -type d 2>/dev/null) $(find /usr/share/*/lib -maxdepth 1 -type d 2>/dev/null) /opt/java/lib/"
-
-    jar_resolved="$(find $DEFAULT_JAR_DIR -maxdepth 1 \( -type f -name 'saxon.jar' -or -name 'libsaxon.jar' -or -name 'libsaxon-java.jar' -or -name 'saxon*.jar' \) 2>/dev/null |tr '\n' ':')."
-
-    if test ! -f conftestSharedChecker.class ; then
-
-    cat << \EOF > conftestSharedChecker.java
-// #line 36854 "configure"
-import java.util.regex.Pattern;
-import java.io.File;
-import java.io.IOException;
-import java.lang.reflect.Field;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
-import java.net.URL;
-import java.net.URLClassLoader;
-import java.util.ArrayList;
-
-public class conftestSharedChecker {
-
-    /**
-     * Required arguments :
-     *  argv[0]: name of the jar package
-     *  argv[1]: name of the class (with the package prefix)
-     *  argv[2]: possible paths of the jar package (separated by ':')
-     *
-     * Optional arguments:
-     *  argv[3]: field or method used to retrieve the version
-     *  argv[4]: expected version
-     *  argv[5]: String comparator :
-     *      "="  for exact version
-     */
-    public static void main(String[] argv) {
-        final String packageName = argv[0];
-        final String className = argv[1];
-        final String[] jarList = argv[2].split(":");
-
-        ArrayList<URL> found = new ArrayList<>();
-        for(String jar : jarList)
-        {
-            try {
-                File f = new File(jar);
-                if (f.exists()) {
-                    found.add(f.toURI().toURL());
-                }
-            } catch (IOException ex) {
-                System.err.println(ex.toString());
-            }
-        }
-
-        URLClassLoader localClassLoader = new URLClassLoader(found.toArray(new URL[found.size()]));
-        URL klassURL = null;
-        Class<?> klass = null;
-        try {
-            String resourceName = className.replace(".", "/") + ".class";
-            klassURL = localClassLoader.getResource(resourceName);
-            klass = localClassLoader.loadClass(className);
-        } catch (ClassNotFoundException ex) {
-            System.err.println(className + " not found");
-            System.exit(-1);
-        }
-
-        String pathURL = klassURL.getPath().substring(0, klassURL.getPath().indexOf('!'));
-        String path = pathURL.substring(pathURL.indexOf(':') + 1);
-        System.err.println("found: " + path);
-
-        String version;
-        if (!"".equals(argv[3])) {
-            version = checkVersion(klass, argv);
-        } else {
-            version = klass.getPackage().getSpecificationVersion();
-        }
-
-        System.out.println(path + " " + version);
-    }
-
-    private static String checkVersion(Class<?> klass, String[] argv) throws SecurityException, IllegalArgumentException {
-        final String versionMethod = argv[3];
-        final String expected = argv[4];
-        final String atLeastOrEqual;
-        if (!"".equals(argv[5])) {
-            atLeastOrEqual = argv[5];
-        } else {
-            atLeastOrEqual = "<=";
-        }
-
-        String value = "";
-        if (versionMethod.isEmpty()) {
-            value = klass.getPackage().getSpecificationVersion();
-            compareAndDisplay(atLeastOrEqual, expected, value);
-            return value;
-        }
-
-        try {
-            try {
-                Field field = klass.getField(versionMethod);
-                value = String.valueOf(field.get(null));
-                compareAndDisplay(atLeastOrEqual, expected, value);
-            } catch (NoSuchFieldException fe) {
-                Method method = null;
-                try {
-                    method = klass.getMethod(versionMethod);
-                } catch (NoSuchMethodException ex) {
-                    System.err.println(ex.toString());
-                    System.exit(-3);
-                }
-
-                try {
-                    value = String.valueOf(method.invoke(null));
-                    compareAndDisplay(atLeastOrEqual, expected, value);
-                } catch (NullPointerException ex) {
-                    value = String.valueOf(method.invoke(klass.newInstance()));
-                    compareAndDisplay(atLeastOrEqual, expected, value);
-                }
-            }
-        } catch (IllegalAccessException ex) {
-            System.err.println(ex);
-            System.exit(-2);
-        } catch (InvocationTargetException ex) {
-            System.err.println(ex);
-            System.exit(-2);
-        } catch (InstantiationException ex) {
-            System.err.println(ex);
-            System.exit(-2);
-        }
-        return value;
-    }
-
-    private static void compareAndDisplay(String atLeastOrEqual, String expected, String value) {
-        int cmp = compare(expected, value);
-
-        switch(atLeastOrEqual) {
-            case ">":
-                if (cmp > 0) {
-                    return;
-                } else {
-                    System.err.println("expected "+atLeastOrEqual+""+expected+" but got "+value);
-                    System.exit(-4);
-                }
-            case "==":
-                if (cmp == 0) {
-                    return;
-                } else {
-                    System.err.println("expected "+atLeastOrEqual+""+expected+" but got "+value);
-                    System.exit(-4);
-                }
-            case "<=":
-                if (cmp <= 0) {
-                    return;
-                } else {
-                    System.err.println("expected "+atLeastOrEqual+""+expected+" but got "+value);
-                    System.exit(-4);
-                }
-            default:
-                System.err.println("unable to compare with "+atLeastOrEqual);
-                System.exit(-4);
-        }
-    }
-
-    private static int compare(String v1, String v2) {
-        String s1 = normalisedVersion(v1);
-        String s2 = normalisedVersion(v2);
-
-        System.err.println("compare: " + v1 + " normalised to " + s1);
-        System.err.println("compare: " + v2 + " normalised to " + s2);
-        return s1.compareTo(s2);
-    }
-
-    private static String normalisedVersion(String version) {
-        return normalisedVersion(version, ".", 4);
-    }
-
-    private static String normalisedVersion(String version, String sep, int maxWidth) {
-        String[] split = Pattern.compile(sep, Pattern.LITERAL).split(version);
-        StringBuilder sb = new StringBuilder();
-        for (String s : split) {
-            sb.append(String.format("%" + maxWidth + 's', s));
-        }
-        return sb.toString();
-    }
-}
-EOF
-
-    CLASSPATH=$ac_java_classpath
-    export CLASSPATH
-    cmd="$JAVAC ${JAVAC_FLAGS} conftestSharedChecker.java"
-    if (echo $cmd >&5 ; eval $cmd >conftestSharedChecker.java.output 2>&5) ; then
-        echo "configure: conftestSharedChecker.class available" >&5
-    else
-        echo "configure: failed program was:" >&5
-        cat conftestSharedChecker.java >&5
-        echo "configure: CLASSPATH was $CLASSPATH" >&5
-    fi
-
-    fi
-
-    CLASSPATH=$ac_java_classpath
-    export CLASSPATH
-    echo "CLASSPATH="$CLASSPATH >&5
-    cmd="$JAVA conftestSharedChecker \"saxon\" \"net.sf.saxon.Version\" \"$jar_resolved\" \"\" \"\" \"\""
-    if (echo $cmd >&5 ; eval $cmd >conftestSharedChecker.java.output 2>&5); then
-        read PACKAGE_JAR_FILE PACKAGE_JAR_VERSION << EOF
-$(tail -n 1 conftestSharedChecker.java.output)
-EOF
-        { printf "%s\n" "$as_me:${as_lineno-$LINENO}: result:  $PACKAGE_JAR_FILE $PACKAGE_JAR_VERSION " >&5
-printf "%s\n" " $PACKAGE_JAR_FILE $PACKAGE_JAR_VERSION " >&6; }
-        echo "yes" >&5
-        # append the found file to the classpath to manage jar dependency
-        ac_java_classpath="$ac_java_classpath:$PACKAGE_JAR_FILE"
-    else
-      { printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: no" >&5
-printf "%s\n" "no" >&6; }
-      if test ""yes"" = "yes"; then
-         { printf "%s\n" "$as_me:${as_lineno-$LINENO}: WARNING: Could not find or use the Java package/jar saxon used by Saxon XSLT Processor (looking for package net.sf.saxon.Version)" >&5
-printf "%s\n" "$as_me: WARNING: Could not find or use the Java package/jar saxon used by Saxon XSLT Processor (looking for package net.sf.saxon.Version)" >&2;}
-      else
-          as_fn_error $? "Could not find or use the Java package/jar saxon used by Saxon XSLT Processor (looking for package net.sf.saxon.Version)" "$LINENO" 5
-      fi
-    fi
-    if test -f conftestSharedChecker.java.output; then
-        rm conftestSharedChecker.java.output
-    fi
-
-		SAXON=$PACKAGE_JAR_FILE
-	fi
-	if test -z "$SAXON"; then
-
-
-
-    { printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking saxon" >&5
-printf %s "checking saxon... " >&6; }
-    PACKAGE_JAR_FILE=
-
-    DEFAULT_JAR_DIR="$(pwd)/thirdparty/ $(pwd)/jar/ /usr/local/java/ /usr/local/java/jar /usr/local/share/java/ /usr/local/share/java/jar/ /usr/local/lib/java/ $(find /usr/share/java/ -maxdepth 1 -type d 2>/dev/null | sort) $(find /usr/lib64/ -maxdepth 1 -type d 2>/dev/null) $(find  /usr/lib/ -maxdepth 1 -type d 2>/dev/null) $(find /usr/share/*/lib -maxdepth 1 -type d 2>/dev/null) /opt/java/lib/"
-
-    jar_resolved="$(find $DEFAULT_JAR_DIR -maxdepth 1 \( -type f -name 'saxon.jar' -or -name 'libsaxon.jar' -or -name 'libsaxon-java.jar' -or -name 'saxon*.jar' \) 2>/dev/null |tr '\n' ':')."
-
-    if test ! -f conftestSharedChecker.class ; then
-
-    cat << \EOF > conftestSharedChecker.java
-// #line 37087 "configure"
-import java.util.regex.Pattern;
-import java.io.File;
-import java.io.IOException;
-import java.lang.reflect.Field;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
-import java.net.URL;
-import java.net.URLClassLoader;
-import java.util.ArrayList;
-
-public class conftestSharedChecker {
-
-    /**
-     * Required arguments :
-     *  argv[0]: name of the jar package
-     *  argv[1]: name of the class (with the package prefix)
-     *  argv[2]: possible paths of the jar package (separated by ':')
-     *
-     * Optional arguments:
-     *  argv[3]: field or method used to retrieve the version
-     *  argv[4]: expected version
-     *  argv[5]: String comparator :
-     *      "="  for exact version
-     */
-    public static void main(String[] argv) {
-        final String packageName = argv[0];
-        final String className = argv[1];
-        final String[] jarList = argv[2].split(":");
-
-        ArrayList<URL> found = new ArrayList<>();
-        for(String jar : jarList)
-        {
-            try {
-                File f = new File(jar);
-                if (f.exists()) {
-                    found.add(f.toURI().toURL());
-                }
-            } catch (IOException ex) {
-                System.err.println(ex.toString());
-            }
-        }
-
-        URLClassLoader localClassLoader = new URLClassLoader(found.toArray(new URL[found.size()]));
-        URL klassURL = null;
-        Class<?> klass = null;
-        try {
-            String resourceName = className.replace(".", "/") + ".class";
-            klassURL = localClassLoader.getResource(resourceName);
-            klass = localClassLoader.loadClass(className);
-        } catch (ClassNotFoundException ex) {
-            System.err.println(className + " not found");
-            System.exit(-1);
-        }
-
-        String pathURL = klassURL.getPath().substring(0, klassURL.getPath().indexOf('!'));
-        String path = pathURL.substring(pathURL.indexOf(':') + 1);
-        System.err.println("found: " + path);
-
-        String version;
-        if (!"".equals(argv[3])) {
-            version = checkVersion(klass, argv);
-        } else {
-            version = klass.getPackage().getSpecificationVersion();
-        }
-
-        System.out.println(path + " " + version);
-    }
-
-    private static String checkVersion(Class<?> klass, String[] argv) throws SecurityException, IllegalArgumentException {
-        final String versionMethod = argv[3];
-        final String expected = argv[4];
-        final String atLeastOrEqual;
-        if (!"".equals(argv[5])) {
-            atLeastOrEqual = argv[5];
-        } else {
-            atLeastOrEqual = "<=";
-        }
-
-        String value = "";
-        if (versionMethod.isEmpty()) {
-            value = klass.getPackage().getSpecificationVersion();
-            compareAndDisplay(atLeastOrEqual, expected, value);
-            return value;
-        }
-
-        try {
-            try {
-                Field field = klass.getField(versionMethod);
-                value = String.valueOf(field.get(null));
-                compareAndDisplay(atLeastOrEqual, expected, value);
-            } catch (NoSuchFieldException fe) {
-                Method method = null;
-                try {
-                    method = klass.getMethod(versionMethod);
-                } catch (NoSuchMethodException ex) {
-                    System.err.println(ex.toString());
-                    System.exit(-3);
-                }
-
-                try {
-                    value = String.valueOf(method.invoke(null));
-                    compareAndDisplay(atLeastOrEqual, expected, value);
-                } catch (NullPointerException ex) {
-                    value = String.valueOf(method.invoke(klass.newInstance()));
-                    compareAndDisplay(atLeastOrEqual, expected, value);
-                }
-            }
-        } catch (IllegalAccessException ex) {
-            System.err.println(ex);
-            System.exit(-2);
-        } catch (InvocationTargetException ex) {
-            System.err.println(ex);
-            System.exit(-2);
-        } catch (InstantiationException ex) {
-            System.err.println(ex);
-            System.exit(-2);
-        }
-        return value;
-    }
-
-    private static void compareAndDisplay(String atLeastOrEqual, String expected, String value) {
-        int cmp = compare(expected, value);
-
-        switch(atLeastOrEqual) {
-            case ">":
-                if (cmp > 0) {
-                    return;
-                } else {
-                    System.err.println("expected "+atLeastOrEqual+""+expected+" but got "+value);
-                    System.exit(-4);
-                }
-            case "==":
-                if (cmp == 0) {
-                    return;
-                } else {
-                    System.err.println("expected "+atLeastOrEqual+""+expected+" but got "+value);
-                    System.exit(-4);
-                }
-            case "<=":
-                if (cmp <= 0) {
-                    return;
-                } else {
-                    System.err.println("expected "+atLeastOrEqual+""+expected+" but got "+value);
-                    System.exit(-4);
-                }
-            default:
-                System.err.println("unable to compare with "+atLeastOrEqual);
-                System.exit(-4);
-        }
-    }
-
-    private static int compare(String v1, String v2) {
-        String s1 = normalisedVersion(v1);
-        String s2 = normalisedVersion(v2);
-
-        System.err.println("compare: " + v1 + " normalised to " + s1);
-        System.err.println("compare: " + v2 + " normalised to " + s2);
-        return s1.compareTo(s2);
-    }
-
-    private static String normalisedVersion(String version) {
-        return normalisedVersion(version, ".", 4);
-    }
-
-    private static String normalisedVersion(String version, String sep, int maxWidth) {
-        String[] split = Pattern.compile(sep, Pattern.LITERAL).split(version);
-        StringBuilder sb = new StringBuilder();
-        for (String s : split) {
-            sb.append(String.format("%" + maxWidth + 's', s));
-        }
-        return sb.toString();
-    }
-}
-EOF
-
-    CLASSPATH=$ac_java_classpath
-    export CLASSPATH
-    cmd="$JAVAC ${JAVAC_FLAGS} conftestSharedChecker.java"
-    if (echo $cmd >&5 ; eval $cmd >conftestSharedChecker.java.output 2>&5) ; then
-        echo "configure: conftestSharedChecker.class available" >&5
-    else
-        echo "configure: failed program was:" >&5
-        cat conftestSharedChecker.java >&5
-        echo "configure: CLASSPATH was $CLASSPATH" >&5
-    fi
-
-    fi
-
-    CLASSPATH=$ac_java_classpath
-    export CLASSPATH
-    echo "CLASSPATH="$CLASSPATH >&5
-    cmd="$JAVA conftestSharedChecker \"saxon\" \"com.icl.saxon.Loader\" \"$jar_resolved\" \"\" \"\" \"\""
-    if (echo $cmd >&5 ; eval $cmd >conftestSharedChecker.java.output 2>&5); then
-        read PACKAGE_JAR_FILE PACKAGE_JAR_VERSION << EOF
-$(tail -n 1 conftestSharedChecker.java.output)
-EOF
-        { printf "%s\n" "$as_me:${as_lineno-$LINENO}: result:  $PACKAGE_JAR_FILE $PACKAGE_JAR_VERSION " >&5
-printf "%s\n" " $PACKAGE_JAR_FILE $PACKAGE_JAR_VERSION " >&6; }
-        echo "yes" >&5
-        # append the found file to the classpath to manage jar dependency
-        ac_java_classpath="$ac_java_classpath:$PACKAGE_JAR_FILE"
-    else
-      { printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: no" >&5
-printf "%s\n" "no" >&6; }
-      if test "" = "yes"; then
-         { printf "%s\n" "$as_me:${as_lineno-$LINENO}: WARNING: Could not find or use the Java package/jar saxon used by Saxon XSLT Processor (looking for package com.icl.saxon.Loader)" >&5
-printf "%s\n" "$as_me: WARNING: Could not find or use the Java package/jar saxon used by Saxon XSLT Processor (looking for package com.icl.saxon.Loader)" >&2;}
-      else
-          as_fn_error $? "Could not find or use the Java package/jar saxon used by Saxon XSLT Processor (looking for package com.icl.saxon.Loader)" "$LINENO" 5
-      fi
-    fi
-    if test -f conftestSharedChecker.java.output; then
-        rm conftestSharedChecker.java.output
-    fi
-
-		SAXON=$PACKAGE_JAR_FILE
-	fi
-
-
-fi # JDK
-
-
-else
+if test "$enable_build_help" == no; then
     HELP_ENABLE=no
 fi
 
@@ -56180,7 +55441,6 @@ fi
 echo ""
 if test $HELP_ENABLE = yes; then
    echo "Documentation building configuration:"
-   echo "  Docbook XSL path ....... = $DOCBOOK_ROOT"
    echo "  Saxon XSLT ............. = $SAXON"
    echo "  XML commons external ... = $XML_APIS_EXT"
 else

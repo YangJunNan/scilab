@@ -19,20 +19,23 @@ echo "    SCI_VERSION_TIMESTAMP: $SCI_VERSION_TIMESTAMP"
 echo "    BRANCH:                $BRANCH"
 echo ""
 
-
 LOG_PATH=$SCI_VERSION_STRING
 [ ! -d "$LOG_PATH" ] && mkdir "$LOG_PATH"
 
 # checkout pre-requirements
 echo -e "\e[0Ksection_start:$(date +%s):prerequirements[collapsed=true]\r\e[0KGetting prerequirements"
-# check archive integrity and remove it if it's not a tar archive
-tar -tvf prereq.tar.xz > /dev/null || rm -f prereq.tar.xz
-curl -k -o "prereq.tar.xz" "https://oos.eu-west-2.outscale.com/scilab-releases-dev/prerequirements/prerequirements-scilab-branch-${BRANCH}-linux_x64.tar.xz"
+# prebuild or download
+if [ -f "prerequirements-${SCI_VERSION_STRING}.bin.${ARCH}.tar.xz" ]; then
+	mv -f "prerequirements-${SCI_VERSION_STRING}.bin.${ARCH}.tar.xz" "prereq.tar.xz"
+else
+	curl -k -o "prereq.tar.xz" "https://oos.eu-west-2.outscale.com/scilab-releases-dev/prerequirements/prerequirements-scilab-branch-${BRANCH}.bin.${ARCH}.tar.xz"
+fi
+# cleanup and extract
 git clean -fxd scilab/java scilab/lib scilab/thirdparty scilab/usr scilab/modules/tclsci/tcl
+rm -f scilab/svn-info.txt scilab/version.txt
 tar -xvf prereq.tar.xz -C scilab >"${LOG_PATH}/log_prereq_${CI_COMMIT_SHORT_SHA}.txt"
-
 # display svn revision
-cat scilab/svn-info.txt || exit 1
+cat scilab/svn-info.txt || cat scilab/version.txt || exit 1
 echo -e "\e[0Ksection_end:$(date +%s):prerequirements\r\e[0K"
 
 # patch version numbers
@@ -43,7 +46,6 @@ sed -i \
  -e "s/SCI_VERSION_TIMESTAMP .*/SCI_VERSION_TIMESTAMP ${SCI_VERSION_TIMESTAMP}/" \
  scilab/modules/core/includes/version.h.in
 echo SCIVERSION="${SCI_VERSION_STRING}" >scilab/Version.incl
-
 
 # predefined env
 LD_LIBRARY_PATH="$LD_LIBRARY_PATH:$(pwd)/scilab/usr/lib/"
@@ -77,7 +79,7 @@ cp -a README.md "/tmp/${SCI_VERSION_STRING}/"
 # copy thirdparties
 cp -a lib/thirdparty "/tmp/${SCI_VERSION_STRING}/lib/"
 cp -a thirdparty "/tmp/${SCI_VERSION_STRING}/"
-cp -a java/jdk*-jre "/tmp/${SCI_VERSION_STRING}/thirdparty/java"
+cp -r java/jre/ "/tmp/${SCI_VERSION_STRING}/thirdparty/java"
 cp -a modules/tclsci/tcl "/tmp/${SCI_VERSION_STRING}/share/scilab/modules/tclsci/"
 
 # copy gcc libs from docker customs build gcc if available
@@ -89,8 +91,11 @@ sed -i "s#$(pwd)#\$SCILAB/../../#g" "/tmp/${SCI_VERSION_STRING}/share/scilab/etc
 # Update the rpath and ELF NEEDED
 cd "/tmp/${SCI_VERSION_STRING}/" ||exit
 export PATH="${CI_PROJECT_DIR}/scilab/usr/bin/:$PATH"
+
+# shellcheck disable=SC2016
 patchelf --set-rpath '$ORIGIN:$ORIGIN/../lib/scilab:$ORIGIN/../lib/thirdparty:$ORIGIN/../lib/thirdparty/redist' \
 	bin/scilab-cli-bin bin/scilab-bin
+# shellcheck disable=SC2016
 find lib/scilab/*.so* -type f -exec patchelf \
 	--set-rpath '$ORIGIN:$ORIGIN/../thirdparty:$ORIGIN/../thirdparty/redist' \
 	{} \;
@@ -101,7 +106,7 @@ echo -e "\e[0Ksection_end:$(date +%s):patch\r\e[0K"
 
 # package as a tar xz file
 echo -e "\e[0Ksection_start:$(date +%s):package\r\e[0KPackage"
-XZ_OPT="-9T0" && [ "$CI_PIPELINE_SOURCE" = "merge_request_event" ] && XZ_OPT="-0T0"
+XZ_OPT="-9T0" && [ "${CI_PIPELINE_SOURCE}" = "merge_request_event" ] && XZ_OPT="-0T0"
 export XZ_OPT
 tar -cJf "${SCI_VERSION_STRING}.bin.${ARCH}.tar.xz" -C "/tmp" "${SCI_VERSION_STRING}"
 echo -e "\e[0Ksection_end:$(date +%s):package\r\e[0K"

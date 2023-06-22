@@ -33,10 +33,13 @@ variables:
     description: "Scilab branch name to build"
   DOCKER_LINUX_BUILDER:
     value: "registry.gitlab.com/scilab/scilab/linux-builder-${BRANCH}"
-    description: "Docker image used to build Scilab on Linux"
+    description: "Docker image to build Scilab on Linux"
+  DOCKER_LINUX_PREBUILD:
+    value: "registry.gitlab.com/scilab/scilab/linux-prebuild-${BRANCH}"
+    description: "Docker image to build Scilab prerequirements on Linux"
   DOCKER_WINDOWS_BUILDER:
     value: "registry.gitlab.com/scilab/scilab/windows-builder-${BRANCH}"
-    description: "Docker image used to build Scilab on Windows"
+    description: "Docker image to build Scilab on Windows"
   DOCKER_TAG:
     value: "latest"
     description: "Docker tag to publish image on"
@@ -61,6 +64,7 @@ workflow:
         SCI_VERSION_STRING: "${CI_PROJECT_PATH_SLUG}-${CI_COMMIT_SHORT_SHA}"
         DOCKER_LINUX_BUILDER: "${CI_REGISTRY_IMAGE}/linux-builder-${BRANCH}"
         DOCKER_WINDOWS_BUILDER: "${CI_REGISTRY_IMAGE}/windows-builder-${BRANCH}"
+        DOCKER_LINUX_PREBUILD: "${CI_REGISTRY_IMAGE}/linux-prebuild-${BRANCH}"
     - if: $CI_PROJECT_PATH_SLUG !~ /scilab-scilab/
       variables:
         GIT_STRATEGY: "fetch"
@@ -76,6 +80,7 @@ workflow:
         SCI_VERSION_STRING: "scilab-mr${CI_MERGE_REQUEST_IID}-${CI_COMMIT_SHORT_SHA}"
         DOCKER_LINUX_BUILDER: "${CI_REGISTRY_IMAGE}/linux-builder-${BRANCH}"
         DOCKER_WINDOWS_BUILDER: "${CI_REGISTRY_IMAGE}/windows-builder-${BRANCH}"
+        DOCKER_LINUX_PREBUILD: "${CI_REGISTRY_IMAGE}/linux-prebuild-${BRANCH}"
         DOCKER_TAG: "mr${CI_MERGE_REQUEST_IID}"
     # run on merge request
     - if: $CI_PIPELINE_SOURCE == "merge_request_event"
@@ -85,13 +90,15 @@ workflow:
         BRANCH: "${CI_MERGE_REQUEST_TARGET_BRANCH_NAME}"
         SCI_VERSION_STRING: "scilab-mr${CI_MERGE_REQUEST_IID}-${CI_COMMIT_SHORT_SHA}"
         DOCKER_LINUX_BUILDER: "${CI_REGISTRY_IMAGE}/linux-builder-${BRANCH}"
+        DOCKER_LINUX_PREBUILD: "${CI_REGISTRY_IMAGE}/linux-prebuild-${BRANCH}"
         DOCKER_WINDOWS_BUILDER: "${CI_REGISTRY_IMAGE}/windows-builder-${BRANCH}"
     # Scheduled pipeline
-    - if: $CI_PIPELINE_SOURCE == 'schedule'
+    - if: $CI_PIPELINE_SOURCE == "schedule"
       variables:
         BRANCH: "${CI_COMMIT_BRANCH}"
         SCI_VERSION_STRING: "scilab-branch-${BRANCH}-${CI_COMMIT_SHORT_SHA}"
         DOCKER_LINUX_BUILDER: "${CI_REGISTRY_IMAGE}/linux-builder-${BRANCH}"
+        DOCKER_LINUX_PREBUILD: "${CI_REGISTRY_IMAGE}/linux-prebuild-${BRANCH}"
         DOCKER_WINDOWS_BUILDER: "${CI_REGISTRY_IMAGE}/windows-builder-${BRANCH}"
     # Release
     - if: $CI_COMMIT_TAG
@@ -99,6 +106,7 @@ workflow:
         BRANCH: "main"
         SCI_VERSION_STRING: "scilab-${CI_COMMIT_TAG}"
         DOCKER_LINUX_BUILDER: "${CI_REGISTRY_IMAGE}/linux-builder-${BRANCH}"
+        DOCKER_LINUX_PREBUILD: "${CI_REGISTRY_IMAGE}/linux-prebuild-${BRANCH}"
         DOCKER_WINDOWS_BUILDER: "${CI_REGISTRY_IMAGE}/windows-builder-${BRANCH}"
     # Update default Docker image on merge
     - if: $CI_MERGE_REQUEST_APPROVED
