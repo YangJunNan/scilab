@@ -51,6 +51,10 @@ avalon-framework.jar=@AVALON_FRAMEWORK@
 
 library.src.path=src/java/
 
+library.scirenderer.dir=${modules.dir}/scirenderer/${build.jar.dir}/
+library.scirenderer.src.dir=${modules.dir}/scirenderer/${library.src.path}
+library.scirenderer.name=scirenderer.jar
+
 library.jvm.dir=${modules.dir}/jvm/${build.jar.dir}/
 library.jvm.src.dir=${modules.dir}/jvm/${library.src.path}
 library.jvm.name=org.scilab.modules.jvm.jar

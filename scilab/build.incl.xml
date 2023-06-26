@@ -67,7 +67,7 @@
         <pathelement location="${jogl2.jar}"/>
         <pathelement location="${jhall.jar}"/>
         <pathelement location="${jgraphx.jar}"/>
-        <pathelement location="${scirenderer.jar}"/>
+        <pathelement location="${library.scirenderer.dir}/${library.scirenderer.name}"/>
         <pathelement location="${lucene-core.jar}"/>
         <pathelement location="${lucene-analyzers-common.jar}"/>
         <pathelement location="${lucene-queryparser.jar}"/>

@@ -12,8 +12,6 @@ flexdock.jar=${thirdparty.dir}/flexdock-1.2.4.jar
 
 jgraphx.jar=${thirdparty.dir}/jgraphx.jar
 
-scirenderer.jar=${modules.dir}/scirenderer/jar/scirenderer.jar
-
 jogl2.jar=${thirdparty.dir}/jogl-all.jar
 
 jhall.jar=${thirdparty.dir}/jhall.jar
@@ -46,6 +44,10 @@ asm3.jar=${thirdparty.dir}/asm3.jar
 
 ; To build the export through the Java
 avalon-framework.jar=${thirdparty.dir}/avalon-framework.jar
+
+library.scirenderer.dir=${modules.dir}/scirenderer/${build.jar.dir}/
+library.scirenderer.src.dir=${modules.dir}/scirenderer/${library.src.path}
+library.scirenderer.name=scirenderer.jar
 
 library.jvm.dir=${modules.dir}/jvm/${build.jar.dir}/
 library.jvm.src.dir=${modules.dir}/jvm/${library.src.path}
