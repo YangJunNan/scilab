@@ -192,7 +192,7 @@ public :
         return m_pImgData != NULL;
     }
 
-    virtual bool isComplexElement(int idx)
+    virtual bool isComplexElement(int /*idx*/)
     {
         return isComplex();
     }
