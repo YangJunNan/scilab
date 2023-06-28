@@ -69,7 +69,6 @@ import org.scilab.modules.ui_data.actions.IntegerFilteringAction;
 import org.scilab.modules.ui_data.actions.IntrinsicFunctionFilteringAction;
 import org.scilab.modules.ui_data.actions.ListFilteringAction;
 import org.scilab.modules.ui_data.actions.MListFilteringAction;
-import org.scilab.modules.ui_data.actions.MatlabSparseFilteringAction;
 import org.scilab.modules.ui_data.actions.PointerFilteringAction;
 import org.scilab.modules.ui_data.actions.PolynomialFilteringAction;
 import org.scilab.modules.ui_data.actions.ScilabVarFilteringAction;
@@ -122,7 +121,6 @@ public final class SwingScilabVariableBrowser extends SwingScilabDockablePanel i
     private CheckBoxMenuItem filterMListCheckBox;
     private CheckBoxMenuItem filterPointerCheckBox;
     private CheckBoxMenuItem filterIntrinsicFunctionCheckBox;
-    private CheckBoxMenuItem filterMatlabSparseCheckBox;
     private CheckBoxMenuItem filterImplicitPolynomialCheckBox;
     private JButton filteringButton;
 
@@ -505,9 +503,6 @@ public final class SwingScilabVariableBrowser extends SwingScilabDockablePanel i
         filterIntrinsicFunctionCheckBox = IntrinsicFunctionFilteringAction.createCheckBoxMenu();
         filterMenu.add(filterIntrinsicFunctionCheckBox);
 
-        filterMatlabSparseCheckBox = MatlabSparseFilteringAction.createCheckBoxMenu();
-        filterMenu.add(filterMatlabSparseCheckBox);
-
         filterImplicitPolynomialCheckBox = ImplicitPolynomialFilteringAction.createCheckBoxMenu();
         filterMenu.add(filterImplicitPolynomialCheckBox);
 
@@ -595,10 +590,6 @@ public final class SwingScilabVariableBrowser extends SwingScilabDockablePanel i
 
         if (!filterIntrinsicFunctionCheckBox.isChecked()) {
             filteredValues.add(ScilabTypeEnum.sci_intrinsic_function);
-        }
-
-        if (!filterMatlabSparseCheckBox.isChecked()) {
-            filteredValues.add(ScilabTypeEnum.sci_matlab_sparse);
         }
 
         if (!filterImplicitPolynomialCheckBox.isChecked()) {

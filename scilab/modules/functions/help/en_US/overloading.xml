@@ -133,16 +133,6 @@
                 <td/>
             </tr>
             <tr>
-                <td>Matlab sparse matrix</td>
-                <td>
-                    <literal>msp</literal>
-                </td>
-                <td>
-                    <literal>Matlab sparse</literal>
-                </td>
-                <td/>
-            </tr>
-            <tr>
                 <td>integer matrix</td>
                 <td>
                     <literal>i</literal>

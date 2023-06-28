@@ -31,7 +31,6 @@ namespace DotNetScilab
         sci_boolean = 4,
         sci_sparse = 5,
         sci_boolean_sparse = 6,
-        sci_matlab_sparse = 7,
         sci_ints = 8,
         sci_handles = 9,
         sci_strings = 10,

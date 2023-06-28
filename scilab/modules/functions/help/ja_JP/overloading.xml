@@ -132,16 +132,6 @@
                 <td/>
             </tr>
             <tr>
-                <td>Matlab 疎行列</td>
-                <td>
-                    <literal>msp</literal>
-                </td>
-                <td>
-                    <literal>Matlab疎行列</literal>
-                </td>
-                <td/>
-            </tr>
-            <tr>
                 <td>整数行列</td>
                 <td>
                     <literal>i</literal>

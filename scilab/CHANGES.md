@@ -50,6 +50,7 @@ Removed Features
 
 The following features and usages have been removed or disabled:
 
+Matlab Sparse datatype has been removed.
 - __add your removed features before and keep this line__
 
 Installation

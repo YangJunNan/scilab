@@ -524,8 +524,6 @@ typeof(r)
 w = sprand(100,100,0.001)
 typeof(w)     // numérique
 typeof(w==w)  // booléenne
-//x = mtlb_sparse(sprand(10,10,0.1));
-//typeof(x)
 
 // Functions et bibliothèques écrites en Scilab
 // --------------------------------------------
