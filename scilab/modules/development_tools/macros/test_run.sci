@@ -471,12 +471,12 @@ function status = test_module(_params)
             displayModuleName = sprintf("[%s] %s", name(1), tests(i,2));
         end
 
-        printf("%s", displayModuleName);
-        if length(displayModuleName) >= 50 then
+        printf("%s ", displayModuleName);
+        if length(displayModuleName) < 49 then
+            for j = length(displayModuleName):48
+                printf(".");
+            end
             printf(" ");
-        end
-        for j = length(displayModuleName):50
-            printf(".");
         end
 
         elapsedTimeBefore=toc();
@@ -500,19 +500,8 @@ function status = test_module(_params)
                 printf(part(" ", 1:62) + "%s \n", msg(2));
             end
 
-            if result.id < 5 then
-                //failed
-                test_failed_count = test_failed_count + 1;
-                detailled_failures = [ detailled_failures ; sprintf("   TEST : [%s] %s", _params.moduleName, tests(i,2))];
-                detailled_failures = [ detailled_failures ; sprintf("   %s", result.message) ];
-                detailled_failures = [ detailled_failures ; result.details ];
-                detailled_failures = [ detailled_failures ; "" ];
-
-                testsuite.failures = testsuite.failures + 1
-                testsuite.testcase(i).failure.type=result.message
-                testsuite.testcase(i).failure.content=result.details
-            elseif (result.id >= 5) & (result.id < 10) then
-                // error
+            if result.id == 5 then
+                // error : an execution error happened and crashed Scilab
                 test_failed_count = test_failed_count + 1;
                 detailled_failures = [ detailled_failures ; sprintf("   TEST : [%s] %s", _params.moduleName, tests(i,2))];
                 detailled_failures = [ detailled_failures ; sprintf("   %s", result.message) ];
@@ -522,7 +511,17 @@ function status = test_module(_params)
                 testsuite.errors = testsuite.errors + 1
                 testsuite.testcase(i).error.type=result.message
                 testsuite.testcase(i).error.content=result.details
+            elseif result.id < 10 then
+                // failures
+                test_failed_count = test_failed_count + 1;
+                detailled_failures = [ detailled_failures ; sprintf("   TEST : [%s] %s", _params.moduleName, tests(i,2))];
+                detailled_failures = [ detailled_failures ; sprintf("   %s", result.message) ];
+                detailled_failures = [ detailled_failures ; result.details ];
+                detailled_failures = [ detailled_failures ; "" ];
 
+                testsuite.failures = testsuite.failures + 1
+                testsuite.testcase(i).failure.type=result.message
+                testsuite.testcase(i).failure.content=result.details
             elseif (result.id >= 10) & (result.id < 20) then
                 // skipped
                 test_skipped_count = test_skipped_count + 1;
@@ -567,8 +566,9 @@ function status = test_single(_module, _testPath, _testName)
     execMode      = "";
     platform      = "all";
     language      = "any";
+    assert        = %t;
     //try_catch     = %T; // Scilab 5.4.0
-    try_catch     = %f; // see comment about "dia(find(dia == '')) = [];" (~line 890)
+    try_catch     = %f; // changed for 6.0.0, see comment about "try/catch is desactived"
     error_output  = "check";
     reference     = "check";
     xcosNeeded    = %F;
@@ -749,6 +749,11 @@ function status = test_single(_module, _testPath, _testName)
         language = "en_US";
     end
 
+    // assert_check* functions will produce errors instead of failures
+    if ~isempty(grep(sciFile, "<-- NO ASSERT FAILURE -->")) then
+        assert = %F;
+    end
+
     // Test building
     if ~isempty(grep(sciFile, "<-- NO TRY CATCH -->")) then
         try_catch = %F;
@@ -807,6 +812,11 @@ function status = test_single(_module, _testPath, _testName)
         "loadXcosLibs(); loadScicos();";
         "funcprot(prot);";
         ];
+    end
+
+    if assert then
+        head = [ head ;
+        "function assert_generror(errmsg), printf(errmsg);printf(''\nassert failed on test\n'');quit; endfunction"];
     end
 
     if try_catch then
@@ -916,7 +926,7 @@ function status = test_single(_module, _testPath, _testName)
         details = [ checkthefile(tmp_dia); ..
         launchthecommand(testFile)];
         status.id = 5;
-        status.message = "failed: Slave Scilab exited with error code " + string(returnStatus);
+        status.message = "failed: tested Scilab exited with error code " + string(returnStatus);
         status.details = details;
         if params.show_error == %T then
             res = mgetl(tmp_res)
@@ -1061,7 +1071,7 @@ function status = test_single(_module, _testPath, _testName)
     execstr(dia(tmpdir1_line));
     tmpdir2_line = grep(dia, "/^TMPDIR2=/", "r");
     execstr(dia(tmpdir2_line));
-
+    
     //Check for execution errors
     if try_catch & grep(dia,"<--Error on the test script file-->") <> [] then
         details = [ checkthefile(tmp_dia); ..
@@ -1125,7 +1135,7 @@ function status = test_single(_module, _testPath, _testName)
         return;
     end
 
-
+    
     // Check the reference file only if check_ref (i.e. for the whole
     // test sequence) is true and this_check_ref (i.e. for the specific current .tst)
     // is true.
@@ -1138,7 +1148,7 @@ function status = test_single(_module, _testPath, _testName)
             return;
         end
     end
-
+    
     // Comparaison ref <--> dia
 
     if   (reference=="check" & _module.reference=="check") | ..
@@ -1296,7 +1306,7 @@ function msg = launchthecommand( filename )
     //   - exec("C:\path\scilab\modules\optimization\tests\unit_testseldermeadeldermead_configure.tst")
     // Workaround for bug #4827
     msg(1) = "   Or launch the following command :"
-    msg(2) = "   - exec(""" + fullpath(filename) + """);"
+    msg(2) = "   - exec(""" + strsubst(fullpath(filename), SCI, "SCI") + """);"
 endfunction
 
 // => remove header from the diary txt

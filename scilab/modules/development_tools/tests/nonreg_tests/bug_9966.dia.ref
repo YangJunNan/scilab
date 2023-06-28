@@ -19,3 +19,5 @@ lclmsg = "%s: Assertion failed: expected = %s while computed = %s";
 strA = "[" + string(A(1)) + " ...]";
 strB = "[" + string(B(1)) + " ...]";
 assert_checkerror(instr,lclmsg,[],"assert_checkalmostequal",strA,strB);
+assert_checkalmostequal: Assertion failed: expected = [1.000D+10 ...] while computed = [1.000D+10 ...]
+assert failed on test
