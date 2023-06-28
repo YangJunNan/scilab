@@ -193,16 +193,6 @@
                 </td>
             </tr>
             <tr>
-                <td style="white-space:nowrap">
-                    <emphasis role="bold">"Matlab sparse"</emphasis>
-                </td>
-                <td>
-                    <varname>object</varname> est une matrice numérique creuse
-                    au format Matlab
-                    (voir <link linkend="mtlb_sparse">mtlb_sparse()</link>).
-                </td>
-            </tr>
-            <tr>
                 <td>
                     <emphasis role="bold">fptr</emphasis>
                 </td>
@@ -649,9 +639,6 @@ h5close(a)
             </member>
             <member>
                 <link linkend="issparse">issparse</link>
-            </member>
-            <member>
-                <link linkend="mtlb_sparse">mtlb_sparse</link>
             </member>
             <member>
                 <link linkend="syslin">syslin</link>
