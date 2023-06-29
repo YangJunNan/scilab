@@ -54,7 +54,6 @@ public final class UiDataMessages {
     public static final String MLIST = Messages.gettext("Mlist");
     public static final String POINTER = Messages.gettext("Pointer");
     public static final String INTRINSIC_FUNCTION = Messages.gettext("Intrinsic function");
-    public static final String MATLAB_SPARSE = Messages.gettext("Matlab sparse");
     public static final String IMPLICIT_POLYNOMIAL = Messages.gettext("Implicit polynomial");
 
     public static final String VARIABLE_EDITOR = Messages.gettext("Variable Editor");

@@ -230,7 +230,6 @@
 %l_i_XMLList
 %lss_i_XMLList
 %mc_i_XMLList
-%msp_i_XMLList
 %p_i_XMLList
 %ptr_i_XMLList
 %r_i_XMLList

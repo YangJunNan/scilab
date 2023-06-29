@@ -36,7 +36,6 @@ public:
         displayOriginal(_displayOriginal),
         headerOnly(_headerOnly),
         indent(0),
-        is_last_matrix_line(false),
         is_last_column_comment(false) { }
 
     PrintVisitor* clone()
@@ -133,7 +132,6 @@ protected:
     const bool      displayOriginal;
     const bool      headerOnly;
     int             indent;
-    bool            is_last_matrix_line;
     bool            is_last_column_comment;
 
     void            apply_indent(void);

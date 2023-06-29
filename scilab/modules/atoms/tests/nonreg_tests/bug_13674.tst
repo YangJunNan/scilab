@@ -8,6 +8,7 @@
 // <-- TEST WITH ATOMS -->
 // <-- CLI SHELL MODE -->
 // <-- LINUX ONLY -->
+// <-- NO CHECK REF -->
 //
 // <-- Non-regression test for bug 13674 -->
 //

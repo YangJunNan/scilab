@@ -7,6 +7,7 @@
 
 // <-- TEST WITH ATOMS -->
 // <-- CLI SHELL MODE -->
+// <-- NO CHECK REF -->
 //
 // <-- Non-regression test for bug 10933 -->
 //

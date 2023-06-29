@@ -9,7 +9,7 @@
 
 # define x86_64-linux-gnu env variables
 linux_set_env:
-  image: $DOCKER_LINUX_BUILDER:$DOCKER_TAG
+  image: ${DOCKER_LINUX_BUILDER}:${DOCKER_TAG}
   stage: prebuild
   tags: [x86_64-linux-gnu, docker, scilab]
   variables:
@@ -52,9 +52,31 @@ windows_set_env:
     reports:
       dotenv: build.env
 
+# rebuild linux dependencies
+linux_build_prereq:
+  image: ${DOCKER_LINUX_PREBUILD}:${DOCKER_TAG}
+  stage: prebuild
+  tags: [x86_64-linux-gnu, docker, scilab]
+  needs:
+    - linux_set_env
+  before_script: bash .gitlab-ci/prebuild.sh versions
+  script: bash -x -e .gitlab-ci/prebuild.sh fromscratch
+  artifacts:
+    paths:
+      - prerequirements-${SCI_VERSION_STRING}.bin.${ARCH}.tar.xz
+      - log
+  rules:
+    - if: $CI_PROJECT_PATH_SLUG !~ /scilab-scilab/
+      changes: &PREREQ_CHANGES
+        paths:
+          - .gitlab-ci/Dockerfile.linux.prebuild
+          - .gitlab-ci/prebuild.sh
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+      changes: *PREREQ_CHANGES
+
 # patch, copy, modify files before building a release
 prepare_release_files:
-  image: $DOCKER_LINUX_BUILDER:$DOCKER_TAG
+  image: ${DOCKER_LINUX_BUILDER}:${DOCKER_TAG}
   stage: prebuild
   tags: [x86_64-linux-gnu]
   rules:

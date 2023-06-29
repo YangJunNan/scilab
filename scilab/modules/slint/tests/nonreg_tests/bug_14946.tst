@@ -8,6 +8,8 @@
 // <-- CLI SHELL MODE -->
 // <-- NO CHECK REF -->
 //
+// https://gitlab.com/scilab/scilab/-/issues/14946
+//  wrong "00003.Uninitialized" warning for %s, %z and home predefined variables
 
 s = slint("SCI/modules/slint/tests/nonreg_tests/bug_14946.sci", %f);
 assert_checkfalse(isfield(s.info, "00003.Uninitialized"));

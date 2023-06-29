@@ -24,7 +24,7 @@ AC_DEFUN([AC_PCRE], [
 
 
 AC_ARG_WITH(pcre,
-    AC_HELP_STRING([--with-pcre=DIR],[Set the path to your PCRE (Perl 5 Compatible Regular Expression Library) installation]),
+    AS_HELP_STRING([--with-pcre=DIR],[Set the path to your PCRE (Perl 5 Compatible Regular Expression Library) installation]),
     [with_pcre=$withval],
     [with_pcre='yes']
     )

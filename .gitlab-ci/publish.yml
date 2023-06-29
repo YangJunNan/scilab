@@ -10,7 +10,7 @@
 index_gitlab_pages:
   stage: publish
   tags: [x86_64-linux-gnu, docker, scilab]
-  image: $DOCKER_LINUX_BUILDER:$DOCKER_TAG
+  image: ${DOCKER_LINUX_BUILDER}:${DOCKER_TAG}
   script:
     - mkdir public ||true
     - |

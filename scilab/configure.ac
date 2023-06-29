@@ -22,7 +22,7 @@ dnl Process this file with autoconf to produce a configure script.
 
 AC_REVISION($Revision$)dnl
 AC_INIT([Scilab],[6],[https://gitlab.com/scilab/scilab/-/issues])
-AC_PREREQ(2.69)
+AC_PREREQ([2.71])
 AC_CONFIG_MACRO_DIR([m4])
 
 SCI_BUILDDIR="`pwd`"
@@ -86,7 +86,7 @@ AC_CONFIG_HEADERS([modules/core/includes/machine.h])
 AC_PROG_LN_S
 AM_PROG_AR
 
-AC_CUSTOM_LARGE_FILE
+AC_SYS_LARGEFILE
 
 # In order to be able to change the scilab directory
 # See http://wiki.debian.org/RpathIssue
@@ -832,7 +832,7 @@ AC_CHECK_UNDERSCORE_FORTRAN()
 
 if test "$enable_build_parser" = yes; then
 
-   AC_PROG_LEX
+   AC_PROG_LEX(noyywrap)
    if test -z "$LEX" -o "$LEX" = ":"; then
 	  AC_MSG_ERROR([No implementation of Lex (flex, lex) detected. Please install it (package flex)])
    fi
@@ -1406,9 +1406,6 @@ AC_CHECK_HEADERS([fcntl.h float.h libintl.h locale.h malloc.h netdb.h netinet/in
 # check header dirent
 AC_HEADER_DIRENT
 
-# static struct timeval defined or not | used in modules/core/src/c/timer.c
-AC_HEADER_TIME
-
 # check if the specific header is available or not | used in modules/core/src/c/link_SYSV.c
 AC_HEADER_SYS_WAIT
 
@@ -1430,9 +1427,6 @@ AM_GNU_GETTEXT_VERSION([0.16])
 
 # function closedir used in modules/metanet/src/c/files.c
 AC_FUNC_CLOSEDIR_VOID
-
-# Signals used in modules/core/src/c/realmain.c
-AC_TYPE_SIGNAL
 
 # struct tm used in modules/core/src/c/history.c
 AC_STRUCT_TM
@@ -1824,9 +1818,7 @@ AC_ARG_ENABLE(build-help,
         AS_HELP_STRING([--disable-build-help],[Disable the help build])
         )
 
-if test "$enable_build_help" != no; then
-    AC_DOCBOOK()
-else
+if test "$enable_build_help" == no; then
     HELP_ENABLE=no
 fi
 
@@ -1887,7 +1879,7 @@ if test "$enable_compilation_tests" != no -a "$enable_compilation_tests" != ""; 
 fi
 
 if test COMPILATION_TESTS=yes -a "$JUNIT4" == ""; then
-   AC_MSG_WARN([--enable-compilation-tests deactivated: Could not find Junit4"])
+   AC_MSG_WARN([--enable-compilation-tests deactivated: Could not find Junit4])
    COMPILATION_TESTS=no
 fi
 
@@ -2035,7 +2027,6 @@ fi
 
 # SCI_*FLAGS contains all defaults values detected on configure
 SCI_CFLAGS=$(echo                                             \
-             $LARGEFILE_CFLAGS                                \
              $CODECOVERAGE_CFLAGS                             \
              $DEBUG_CFLAGS                                    \
              $ARCH_CFLAGS                                     \
@@ -2046,7 +2037,6 @@ SCI_CFLAGS=$(echo                                             \
              $WARNING_CFLAGS                                  )
 SCI_CXXFLAGS=$(echo                                           \
                $STDCXX_CXXFLAGS                               \
-               $LARGEFILE_CXXFLAGS                            \
                $CODECOVERAGE_CXXFLAGS                         \
                $DEBUG_CXXFLAGS                                \
                $ARCH_CXXFLAGS                                 \
@@ -2056,7 +2046,6 @@ SCI_CXXFLAGS=$(echo                                           \
                $BACKTRACE_CXXFLAGS                            \
                $WARNING_CXXFLAGS                              )
 SCI_FFLAGS=$(echo                                             \
-             $LARGEFILE_FFLAGS                                \
              $CODECOVERAGE_FFLAGS                             \
              $DEBUG_FFLAGS                                    \
              $ARCH_FFLAGS                                     \
@@ -2066,7 +2055,6 @@ SCI_FFLAGS=$(echo                                             \
              $BACKTRACE_FFLAGS                                \
              $WARNING_FFLAGS                                  )
 SCI_LDFLAGS=$(echo                                            \
-              $LARGEFILE_LDFLAGS                              \
               $CODECOVERAGE_LDFLAGS                           \
               $DEBUG_LDFLAGS                                  \
               $ARCH_LDFLAGS                                   \
@@ -2355,7 +2343,6 @@ fi
 echo ""
 if test $HELP_ENABLE = yes; then
    echo "Documentation building configuration:"
-   echo "  Docbook XSL path ....... = $DOCBOOK_ROOT"
    echo "  Saxon XSLT ............. = $SAXON"
    echo "  XML commons external ... = $XML_APIS_EXT"
 else

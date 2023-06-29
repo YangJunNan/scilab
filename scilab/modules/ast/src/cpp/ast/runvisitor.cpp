@@ -437,33 +437,21 @@ void RunVisitorT<T>::visitprivate(const FieldExp &e)
         std::wstring stType = pValue->getShortTypeStr();
         std::wstring wstrFuncName = L"%" + stType + L"_e";
 
-        try
+        Ret = Overload::call(wstrFuncName.c_str(), in, 1, out, false, false, e.getLocation());
+        if(Ret == types::Callable::OK_NoResult && wstrFuncName.length() > 8)
         {
+            // overload not defined, try with the short name.
+            // to compatibility with scilab 5 code.
+            // tlist/mlist name are truncated to 8 first character
+            wstrFuncName = L"%" + stType.substr(0, 8) + L"_e";
             Ret = Overload::call(wstrFuncName.c_str(), in, 1, out, false, false, e.getLocation());
-            if(Ret == types::Callable::OK_NoResult)
-            {
-                // overload not defined, try with the short name.
-                // to compatibility with scilab 5 code.
-                // tlist/mlist name are truncated to 8 first character
-                wstrFuncName = L"%" + stType.substr(0, 8) + L"_e";
-                Ret = Overload::call(wstrFuncName.c_str(), in, 1, out, false, true, e.getLocation());
-            }
         }
-        catch (const InternalError& ie)
+
+        if(pValue->isList() && Ret == types::Callable::OK_NoResult)
         {
-            // TList or Mlist
-            // last error is not empty when the error have been setted by the overload itself.
-            if (pValue->isList() && ConfigVariable::getLastErrorFunction().empty())
-            {
-                wstrFuncName = L"%l_e";
-                Ret = Overload::call(wstrFuncName.c_str(), in, 1, out, false, true, e.getLocation());
-            }
-            else
-            {
-                CoverageInstance::stopChrono((void*)&e);
-                // throw the exception in case where the overload have not been defined.
-                throw ie;
-            }
+            // last try that will throw an error if it not exists
+            wstrFuncName = L"%l_e";
+            Ret = Overload::call(wstrFuncName, in, 1, out, false, true, e.getLocation());
         }
 
         if (Ret != types::Callable::OK)

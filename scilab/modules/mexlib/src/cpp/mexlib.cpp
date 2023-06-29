@@ -26,9 +26,7 @@
  *    matrix which cannot be used here.
  *    -Assumes that sparse matrices have been converted into the Matlab
  *    format. Scilab sparse matrices are stored in the transposed Matlab
- *    format. If A is a sparse Scilab matrix, it should be converted
- *    by the command A=mtlb_sparse(A) in the syntax of the
- *    mex function.
+ *    format.
   --------------------------------------------------------------------------*/
 #include <stdarg.h>
 

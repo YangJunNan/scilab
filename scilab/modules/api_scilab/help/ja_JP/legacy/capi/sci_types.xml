@@ -41,11 +41,6 @@
             </listitem>
             <listitem>
                 <para>
-                    7 - <emphasis>sci_matlab_sparse</emphasis>: matlab疎行列
-                </para>
-            </listitem>
-            <listitem>
-                <para>
                     8 - <emphasis>sci_ints</emphasis>: 整数行列
                 </para>
             </listitem>
@@ -141,9 +136,6 @@ int sci_mysci_typesrhs(char * fname, void* pvApiCtx)
         break;
     case sci_boolean_sparse:
         sciprint("A sparse matrix of booleans\n");
-        break;
-    case sci_matlab_sparse:
-        sciprint("A sparse matlab matrix\n");
         break;
     case sci_ints:
         sciprint("A matrix of integers\n");

@@ -6,8 +6,8 @@
 // =============================================================================
 
 // <-- ENGLISH IMPOSED -->
-
 // <-- CLI SHELL MODE -->
+// <-- NO CHECK REF -->
 
 load("SCI/modules/atoms/macros/atoms_internals/lib");
 

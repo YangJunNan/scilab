@@ -57,13 +57,19 @@ std::string adapterName(const object_properties_t /*port_kind*/)
     switch (p)
     {
         case CONNECTED_SIGNALS:
+            [[fallthrough]];
         case IMPLICIT:
+            [[fallthrough]];
         case LABEL:
+            [[fallthrough]];
         case STYLE:
             return "graphics";
         case DATATYPE_ROWS:
+            [[fallthrough]];
         case DATATYPE_COLS:
+            [[fallthrough]];
         case DATATYPE_TYPE:
+            [[fallthrough]];
         case FIRING:
             return "model";
         default:
@@ -158,6 +164,7 @@ types::InternalType* get_ports_property(const Adaptor& adaptor, const object_pro
     switch (p)
     {
         case STYLE:
+            [[fallthrough]];
         case LABEL:
         {
             if (ids.empty())
@@ -180,10 +187,10 @@ types::InternalType* get_ports_property(const Adaptor& adaptor, const object_pro
                 return new types::Double(1);
             }
             datatypeIndex++;
-        // no break
+            [[fallthrough]];
         case DATATYPE_COLS:
             datatypeIndex++;
-        // no break
+            [[fallthrough]];
         case DATATYPE_ROWS:
         {
             datatypeIndex++;
@@ -302,6 +309,7 @@ bool set_ports_property(const Adaptor& adaptor, const object_properties_t port_k
         switch (p)
         {
             case STYLE:
+                [[fallthrough]];
             case LABEL:
             {
                 for (std::vector<ScicosID>::iterator it = ids.begin(); it != ids.end(); ++it, ++i)
@@ -395,16 +403,17 @@ bool set_ports_property(const Adaptor& adaptor, const object_properties_t port_k
                 }
                 return true;
             case STYLE:
+                [[fallthrough]];
             case LABEL:
                 // Do nothing, because if the sizes match, then there are already zero concerned ports, so no ports to update
                 return true;
 
             case DATATYPE_TYPE:
                 datatypeIndex++;
-            // no break
+                [[fallthrough]];
             case DATATYPE_COLS:
                 datatypeIndex++;
-            // no break
+                [[fallthrough]];
             case DATATYPE_ROWS:
             {
                 datatypeIndex++;
@@ -502,10 +511,10 @@ inline bool updateNewPort(model::Port* oldPortObject, int newPort, Controller& c
     {
         case DATATYPE_TYPE:
             datatypeIndex++;
-        // no break
+            [[fallthrough]];
         case DATATYPE_COLS:
             datatypeIndex++;
-        // no break
+            [[fallthrough]];
         case DATATYPE_ROWS:
         {
             datatypeIndex++;
@@ -546,10 +555,10 @@ inline bool addNewPort(model::Port* newPortObject, int newPort, Controller& cont
     {
         case DATATYPE_TYPE:
             datatypeIndex++;
-        // no break
+            [[fallthrough]];
         case DATATYPE_COLS:
             datatypeIndex++;
-        // no break
+            [[fallthrough]];
         case DATATYPE_ROWS:
         {
             datatypeIndex++;

@@ -8,41 +8,72 @@
 #
 
 # Create/refresh Docker build
-create_docker_image_linux:
+builder_linux:
   stage: docker_create
   image: docker:20.10.16
   tags: [x86_64-linux-gnu, docker, scilab]
   script:
-    - docker login -u $CI_REGISTRY_USER -p $CI_JOB_TOKEN $CI_REGISTRY
-    - .gitlab-ci/docker_setup.sh --builder $DOCKER_LINUX_BUILDER $DOCKER_TAG
-    - docker logout $CI_REGISTRY
+    - docker login -u "${CI_REGISTRY_USER}" -p "${CI_JOB_TOKEN}" "${CI_REGISTRY}"
+    - echo "Build image ${DOCKER_LINUX_BUILDER}:${DOCKER_TAG}"
+    - .gitlab-ci/docker_setup.sh --builder "${DOCKER_LINUX_BUILDER}" "${DOCKER_TAG}"
+    - docker rmi "${DOCKER_LINUX_BUILDER}:${DOCKER_TAG}"
+    - docker image prune --force
+    - docker logout "${CI_REGISTRY}"
   rules:
     - if: $CI_PROJECT_PATH_SLUG !~ /scilab-scilab/
-      changes: &DOCKER_CHANGES
+      changes: &DOCKER_LINUX_BUILDER_CHANGES
         paths:
           - .gitlab-ci.yml
           - .gitlab-ci/docker_setup.yml
           - .gitlab-ci/docker_setup.sh
-          - .gitlab-ci/Dockerfile*
+          - .gitlab-ci/Dockerfile.linux
       allow_failure: true
     - if: $CI_PIPELINE_SOURCE == "merge_request_event"
-      changes: *DOCKER_CHANGES
+      changes: *DOCKER_LINUX_BUILDER_CHANGES
       allow_failure: true
     - if: $CI_MERGE_REQUEST_APPROVED
-      changes: *DOCKER_CHANGES
+      changes: *DOCKER_LINUX_BUILDER_CHANGES
       allow_failure: true
 
-create_docker_image_linux_tests:
+prebuild_linux:
+  stage: docker_create
+  image: docker:20.10.16
+  tags: [x86_64-linux-gnu, docker, scilab]
+  needs:
+    - builder_linux
+  script:
+    - docker login -u "${CI_REGISTRY_USER}" -p "${CI_JOB_TOKEN}" "${CI_REGISTRY}"
+    - echo "Build image ${DOCKER_LINUX_PREBUILD}:${DOCKER_TAG}"
+    - .gitlab-ci/docker_setup.sh --prebuild "${DOCKER_LINUX_PREBUILD}" "${DOCKER_TAG}"
+    - docker rmi "${DOCKER_LINUX_PREBUILD}:${DOCKER_TAG}"
+    - docker image prune --force
+    - docker logout "${CI_REGISTRY}"
+  rules:
+    - if: $CI_PROJECT_PATH_SLUG !~ /scilab-scilab/
+      changes: &DOCKER_LINUX_PREBUILD_CHANGES
+        paths:
+          - .gitlab-ci.yml
+          - .gitlab-ci/docker_setup.yml
+          - .gitlab-ci/docker_setup.sh
+          - .gitlab-ci/Dockerfile.linux.prebuild
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+      changes: *DOCKER_LINUX_PREBUILD_CHANGES
+      allow_failure: true
+    - if: $CI_MERGE_REQUEST_APPROVED
+      changes: *DOCKER_LINUX_PREBUILD_CHANGES
+      allow_failure: true
+
+tester_linux:
   stage: docker_create
   image: docker:20.10.16
   tags: [x86_64-linux-gnu, docker, scilab]
   script:
-    - docker login -u $CI_REGISTRY_USER -p $CI_JOB_TOKEN $CI_REGISTRY
-    - .gitlab-ci/docker_setup.sh --registry $CI_REGISTRY_IMAGE $DOCKER_TAG
-    - docker logout $CI_REGISTRY
+    - docker login -u "${CI_REGISTRY_USER}" -p "${CI_JOB_TOKEN}" "${CI_REGISTRY}"
+    - .gitlab-ci/docker_setup.sh --registry "${CI_REGISTRY_IMAGE}" "${DOCKER_TAG}"
+    - docker logout "${CI_REGISTRY}"
   rules:
     - if: $CI_PROJECT_PATH_SLUG !~ /scilab-scilab/
-      changes: &DOCKER_CHANGES
+      changes: &DOCKER_LINUX_TEST_CHANGES
         paths:
           - .gitlab-ci.yml
           - .gitlab-ci/docker_setup.yml
@@ -50,19 +81,17 @@ create_docker_image_linux_tests:
           - .gitlab-ci/linux-images/Dockerfile*
       allow_failure: true
     - if: $CI_PIPELINE_SOURCE == "merge_request_event"
-      changes: *DOCKER_CHANGES
+      changes: *DOCKER_LINUX_TEST_CHANGES
       allow_failure: true
     - if: $CI_MERGE_REQUEST_APPROVED
-      changes: *DOCKER_CHANGES
+      changes: *DOCKER_LINUX_TEST_CHANGES
       allow_failure: true
 
-# create_docker_image_windows:
+# builder_windows:
 #   stage: docker_create
 #   tags: [x64_windows, shell, scilab]
 #   script:
-#     - docker login -u $CI_REGISTRY_USER -p $CI_JOB_TOKEN $CI_REGISTRY
+#     - docker login -u "${CI_REGISTRY_USER}" -p "${CI_JOB_TOKEN}" "${CI_REGISTRY}"
 #     - docker build --memory 4GB --file .gitlab-ci/Dockerfile.windows -t $DOCKER_WINDOWS_BUILDER .
 #     - docker push $DOCKER_WINDOWS_BUILDER
-#     - docker logout $CI_REGISTRY
-#   rules:
-#     - changes: *DOCKER_CHANGES
+#     - docker logout "${CI_REGISTRY}"

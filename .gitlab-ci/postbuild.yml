@@ -50,7 +50,7 @@ build_doxygen:
 build_help_web:
   stage: postbuild
   tags: [x86_64-linux-gnu, docker, scilab]
-  image: $DOCKER_LINUX_BUILDER:$DOCKER_TAG
+  image: ${DOCKER_LINUX_BUILDER}:${DOCKER_TAG}
   dependencies: []
   script:
     - cd scilab
@@ -66,7 +66,7 @@ build_help_web:
 publish_help_jar:
   stage: postbuild
   tags: [x86_64-linux-gnu, docker, scilab]
-  image: $DOCKER_LINUX_BUILDER:$DOCKER_TAG
+  image: ${DOCKER_LINUX_BUILDER}:${DOCKER_TAG}
   variables:
     GIT_STRATEGY: none
   needs:
@@ -88,7 +88,7 @@ publish_help_jar:
   rules: &MR_RULES
     - if: $CI_COMMIT_TAG
       when: never
-    - if: $CI_PIPELINE_SOURCE == 'merge_request_event' || $CI_PIPELINE_SOURCE == 'push'
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event" || $CI_PIPELINE_SOURCE == "push"
   artifacts:
     paths:
       - public
@@ -97,7 +97,7 @@ publish_help_jar:
 .linux_startup:
   stage: postbuild
   tags: [x86_64-linux-gnu, docker, scilab]
-  image: ${CI_REGISTRY_IMAGE}/$DISTRO:$DOCKER_TAG
+  image: ${CI_REGISTRY_IMAGE}/$DISTRO:${DOCKER_TAG}
   script:
     - tar -xJf "${SCI_VERSION_STRING}.bin.${ARCH}.tar.xz" -C $HOME
     - cd $HOME
@@ -126,7 +126,7 @@ linux_startup_nightly:
     - linux_build_nightly
     - linux_set_env
   rules:
-    - if: $CI_PIPELINE_SOURCE == 'schedule'
+    - if: $CI_PIPELINE_SOURCE == "schedule"
 
 linux_startup_release:
   extends: .linux_startup

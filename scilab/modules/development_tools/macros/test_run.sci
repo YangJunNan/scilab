@@ -433,7 +433,8 @@ function status = test_module(_params)
     testsuite.name=moduleName
     testsuite.time=0
     testsuite.tests=0
-    testsuite.errors=0
+    testsuite.errors=0 // unexpected errors / exception on execution
+    testsuite.failures=0 // when a test failed
 
     //don't test only return list of tests.
     if _params.reference == "list" then
@@ -470,12 +471,12 @@ function status = test_module(_params)
             displayModuleName = sprintf("[%s] %s", name(1), tests(i,2));
         end
 
-        printf("%s", displayModuleName);
-        if length(displayModuleName) >= 50 then
+        printf("%s ", displayModuleName);
+        if length(displayModuleName) < 49 then
+            for j = length(displayModuleName):48
+                printf(".");
+            end
             printf(" ");
-        end
-        for j = length(displayModuleName):50
-            printf(".");
         end
 
         elapsedTimeBefore=toc();
@@ -499,8 +500,8 @@ function status = test_module(_params)
                 printf(part(" ", 1:62) + "%s \n", msg(2));
             end
 
-            if result.id < 10 then
-                //failed
+            if result.id == 5 then
+                // error : an execution error happened and crashed Scilab
                 test_failed_count = test_failed_count + 1;
                 detailled_failures = [ detailled_failures ; sprintf("   TEST : [%s] %s", _params.moduleName, tests(i,2))];
                 detailled_failures = [ detailled_failures ; sprintf("   %s", result.message) ];
@@ -508,9 +509,19 @@ function status = test_module(_params)
                 detailled_failures = [ detailled_failures ; "" ];
 
                 testsuite.errors = testsuite.errors + 1
+                testsuite.testcase(i).error.type=result.message
+                testsuite.testcase(i).error.content=result.details
+            elseif result.id < 10 then
+                // failures
+                test_failed_count = test_failed_count + 1;
+                detailled_failures = [ detailled_failures ; sprintf("   TEST : [%s] %s", _params.moduleName, tests(i,2))];
+                detailled_failures = [ detailled_failures ; sprintf("   %s", result.message) ];
+                detailled_failures = [ detailled_failures ; result.details ];
+                detailled_failures = [ detailled_failures ; "" ];
+
+                testsuite.failures = testsuite.failures + 1
                 testsuite.testcase(i).failure.type=result.message
                 testsuite.testcase(i).failure.content=result.details
-
             elseif (result.id >= 10) & (result.id < 20) then
                 // skipped
                 test_skipped_count = test_skipped_count + 1;
@@ -555,8 +566,9 @@ function status = test_single(_module, _testPath, _testName)
     execMode      = "";
     platform      = "all";
     language      = "any";
+    assert        = %t;
     //try_catch     = %T; // Scilab 5.4.0
-    try_catch     = %f; // see comment about "dia(find(dia == '')) = [];" (~line 890)
+    try_catch     = %f; // changed for 6.0.0, see comment about "try/catch is desactived"
     error_output  = "check";
     reference     = "check";
     xcosNeeded    = %F;
@@ -737,6 +749,11 @@ function status = test_single(_module, _testPath, _testName)
         language = "en_US";
     end
 
+    // assert_check* functions will produce errors instead of failures
+    if ~isempty(grep(sciFile, "<-- NO ASSERT FAILURE -->")) then
+        assert = %F;
+    end
+
     // Test building
     if ~isempty(grep(sciFile, "<-- NO TRY CATCH -->")) then
         try_catch = %F;
@@ -784,7 +801,8 @@ function status = test_single(_module, _testPath, _testName)
     end
     head = [ head ;
     "predef(''all'');";
-    "tmpdirToPrint = msprintf(''TMPDIR1=''''%s'''';//\n'',TMPDIR);"
+    "TMPDIR1 = msprintf(''TMPDIR1=''''%s'''';//\n'', TMPDIR);"
+    "TMPDIR2 = msprintf(''TMPDIR2=''''%s'''';//\n'', getshortpathname(TMPDIR));"
     ];
 
     if xcosNeeded then
@@ -796,6 +814,11 @@ function status = test_single(_module, _testPath, _testName)
         ];
     end
 
+    if assert then
+        head = [ head ;
+        "function assert_generror(errmsg), printf(errmsg);printf(''\nassert failed on test\n'');quit; endfunction"];
+    end
+
     if try_catch then
         head = [ head ; "try" ];
     end
@@ -803,7 +826,8 @@ function status = test_single(_module, _testPath, _testName)
     head = [
     head;
     "diary(''" + tmp_dia + "'');";
-    "printf(''%s\n'',tmpdirToPrint);";
+    "printf(''%s\n'',TMPDIR1);";
+    "printf(''%s\n'',TMPDIR2);";
     "// <-- HEADER END -->"
     ];
 
@@ -889,22 +913,8 @@ function status = test_single(_module, _testPath, _testName)
         end
     end
 
-    //clean previous tmp files
-    if isfile(tmp_tst) then
-        deletefile(tmp_tst);
-    end
-
-    if isfile(tmp_dia) then
-        deletefile(tmp_dia);
-    end
-
-    if isfile(tmp_res) then
-        deletefile(tmp_res);
-    end
-
-    if isfile(tmp_err) then
-        deletefile(tmp_err);
-    end
+    // cleanup previously generated files
+    deletetmpfiles(tmp_tst, tmp_dia, tmp_res, tmp_err);
 
     //create tmp test file
     mputl(sciFile, tmp_tst);
@@ -916,16 +926,21 @@ function status = test_single(_module, _testPath, _testName)
         details = [ checkthefile(tmp_dia); ..
         launchthecommand(testFile)];
         status.id = 5;
-        status.message = "failed: Slave Scilab exited with error code " + string(returnStatus);
+        status.message = "failed: tested Scilab exited with error code " + string(returnStatus);
         status.details = details;
         if params.show_error == %T then
-            tmp = mgetl(tmp_res)
-            tmp(tmp=="") = []
-            status.details = [ status.details; "   " + strsubst(..
-            [""
-            "----- " + tmp_res + ": 10 last lines: -----"
-            tmp(max(1,size(tmp,1)-9):$)
-            ], TMPDIR, "TMPDIR")]
+            res = mgetl(tmp_res)
+            res(res=="") = []
+            err = mgetl(tmp_err)
+            err(err=="") = []
+            status.details = [ status.details; strsubst(strsubst([""
+            "----- " + tmp_res + " -----"
+            "    " + res
+            ""
+            "----- " + tmp_err + " -----"
+            "    " + err
+            ""
+            ], SCI, "SCI"), TMPDIR, "TMPDIR") ];
         end
         return;
     end
@@ -1054,7 +1069,9 @@ function status = test_single(_module, _testPath, _testName)
     // To get TMPDIR value
     tmpdir1_line = grep(dia, "/^TMPDIR1=/", "r");
     execstr(dia(tmpdir1_line));
-
+    tmpdir2_line = grep(dia, "/^TMPDIR2=/", "r");
+    execstr(dia(tmpdir2_line));
+    
     //Check for execution errors
     if try_catch & grep(dia,"<--Error on the test script file-->") <> [] then
         details = [ checkthefile(tmp_dia); ..
@@ -1106,7 +1123,7 @@ function status = test_single(_module, _testPath, _testName)
         status.details = details;
         if params.show_error == %t then
             status.details = [ status.details; dia($-min(10, size(dia, "*")-1):$) ]
-        end
+        end          
         return;
     end
 
@@ -1118,7 +1135,7 @@ function status = test_single(_module, _testPath, _testName)
         return;
     end
 
-
+    
     // Check the reference file only if check_ref (i.e. for the whole
     // test sequence) is true and this_check_ref (i.e. for the specific current .tst)
     // is true.
@@ -1131,15 +1148,17 @@ function status = test_single(_module, _testPath, _testName)
             return;
         end
     end
-
+    
     // Comparaison ref <--> dia
 
     if   (reference=="check" & _module.reference=="check") | ..
         (reference ~= "skip" & _module.reference=="create") then
         //  Do some modification in  dia file
 
-        dia(grep(dia, "printf(''%s\n'',tmpdirToPrint);")) = [];
+        dia(grep(dia, "printf(''%s\n'',TMPDIR1);")) = [];
+        dia(grep(dia, "printf(''%s\n'',TMPDIR2);")) = [];
         dia(grep(dia, "TMPDIR1")) = [];
+        dia(grep(dia, "TMPDIR2")) = [];
         dia(grep(dia, "diary(0)")) = [];
 
         if getos() == "Darwin" then // TMPDIR is a symblic link
@@ -1148,16 +1167,18 @@ function status = test_single(_module, _testPath, _testName)
         end
         dia = strsubst(dia,TMPDIR ,"TMPDIR");
         dia = strsubst(dia,TMPDIR1, "TMPDIR");
+        dia = strsubst(dia,TMPDIR2, "TMPDIR");
 
         if getos() == "Windows" then
             dia = strsubst(dia, strsubst(TMPDIR, "\","/"), "TMPDIR");
-            dia = strsubst(dia, strsubst(TMPDIR1, "\","/"), "TMPDIR");
             dia = strsubst(dia, strsubst(TMPDIR, "/","\"), "TMPDIR");
-            dia = strsubst(dia, strsubst(TMPDIR1, "/","\"), "TMPDIR");
             dia = strsubst(dia, strsubst(getshortpathname(TMPDIR), "\","/"), "TMPDIR");
-            dia = strsubst(dia, strsubst(getshortpathname(TMPDIR1), "\","/"), "TMPDIR");
             dia = strsubst(dia, getshortpathname(TMPDIR), "TMPDIR");
-            dia = strsubst(dia, getshortpathname(TMPDIR1), "TMPDIR");
+
+            dia = strsubst(dia, strsubst(TMPDIR1, "\","/"), "TMPDIR");
+            dia = strsubst(dia, strsubst(TMPDIR2, "\","/"), "TMPDIR");
+            dia = strsubst(dia, strsubst(TMPDIR1, "/","\"), "TMPDIR");
+            dia = strsubst(dia, strsubst(TMPDIR2, "/","\"), "TMPDIR");
         end
 
         dia = strsubst(dia, SCI, "SCI");
@@ -1193,6 +1214,8 @@ function status = test_single(_module, _testPath, _testName)
             mputl(dia, path_dia_ref);
             status.id = 20;
             status.message = "passed: ref created";
+
+            deletetmpfiles(tmp_tst, tmp_dia, tmp_res, tmp_err);
             return;
         else
             // write down the resulting dia file
@@ -1225,10 +1248,13 @@ function status = test_single(_module, _testPath, _testName)
                 end
 
             else
+                deletetmpfiles(tmp_tst, tmp_dia, tmp_res, tmp_err);
                 error(sprintf(gettext("The ref file (%s) doesn''t exist"), path_dia_ref));
             end
         end
     end
+    
+    deletetmpfiles(tmp_tst, tmp_dia, tmp_res, tmp_err);
 endfunction
 
 // checkthefile
@@ -1240,9 +1266,37 @@ function msg = checkthefile( filename )
     msg(1) = "   Check the following file :"
     msg(2) = "   - "+filename
     if params.show_error == %t then
-        msg=[msg; mgetl(filename)]
+        if isfile(filename) then
+            content = mgetl(filename);
+            content(content=="") = [];
+
+            msg=[msg; strsubst(strsubst([""
+            "----- " + filename + " -----"
+            "    " + content
+            ""
+            ], SCI, "SCI"), TMPDIR, "TMPDIR") ];
+        end
     end
 
+endfunction
+
+// deletetmpfiles: clean previous tmp files
+function deletetmpfiles(tmp_tst, tmp_dia, tmp_res, tmp_err)
+    if isfile(tmp_tst) then
+        deletefile(tmp_tst);
+    end
+
+    if isfile(tmp_dia) then
+        deletefile(tmp_dia);
+    end
+
+    if isfile(tmp_res) then
+        deletefile(tmp_res);
+    end
+
+    if isfile(tmp_err) then
+        deletefile(tmp_err);
+    end
 endfunction
 
 // launchthecommand
@@ -1252,7 +1306,7 @@ function msg = launchthecommand( filename )
     //   - exec("C:\path\scilab\modules\optimization\tests\unit_testseldermeadeldermead_configure.tst")
     // Workaround for bug #4827
     msg(1) = "   Or launch the following command :"
-    msg(2) = "   - exec(""" + fullpath(filename) + """);"
+    msg(2) = "   - exec(""" + strsubst(fullpath(filename), SCI, "SCI") + """);"
 endfunction
 
 // => remove header from the diary txt
@@ -1365,6 +1419,8 @@ endfunction
 
 
 function exportToXUnitFormat(exportToFile, testsuites)
+    // export in JUnit XML format (also specified as XUnit)
+    // see https://github.com/testmoapp/junitxml
 
     if isfile(exportToFile) then
         // File already existing. Append the results
@@ -1390,6 +1446,7 @@ function exportToXUnitFormat(exportToFile, testsuites)
 
         testsuite.attributes.tests = string(module.tests);
         testsuite.attributes.errors = string(module.errors);
+        testsuite.attributes.failures = string(module.failures);
 
 
         if isfield(module, "testcase") then
@@ -1399,7 +1456,18 @@ function exportToXUnitFormat(exportToFile, testsuites)
                 testsuite.children(j).attributes.name = unitTest.name;
                 testsuite.children(j).attributes.time = string(unitTest.time);
                 testsuite.children(j).attributes.classname = getversion()+"."+module.name;
-                if isfield(unitTest,"failure") & size(unitTest.failure,"*") >= 1 then
+                if isfield(unitTest,"error") & size(unitTest.error,"*") >= 1 then
+                    testsuite.children(j).children(1) = xmlElement(doc,"error");
+                    testsuite.children(j).children(1).attributes.type = unitTest.error.type;
+                    content = unitTest.error.content;
+                    // escaping XML as described in https://www.w3.org/TR/REC-xml/#syntax
+                    // the extra spaces might not be needed but the spec is unclear on that point.
+                    content = strsubst(content, "&", "&amp;");
+                    content = strsubst(content, "<", "&lt;");
+                    content = strsubst(content, "]]>", "]]&gt;");
+
+                    testsuite.children(j).children(1).content = content;
+                elseif isfield(unitTest,"failure") & size(unitTest.failure,"*") >= 1 then
                     testsuite.children(j).children(1) = xmlElement(doc,"failure");
                     testsuite.children(j).children(1).attributes.type = unitTest.failure.type;
                     content = unitTest.failure.content;

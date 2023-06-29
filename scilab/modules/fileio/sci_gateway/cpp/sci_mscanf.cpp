@@ -121,6 +121,7 @@ types::Function::ReturnValue sci_mscanf(types::typed_list &in, int _iRetCount, t
         FREE(wcsRead);
         if (err < 0)
         {
+            ConfigVariable::setPrintCompact(bPrintCompact);
             return types::Function::Error;
         }
         err = Store_Scan(&nrow, &ncol, type_s, type, &retval, &retval_s, buf, &data, rowcount, args);
@@ -130,11 +131,13 @@ types::Function::ReturnValue sci_mscanf(types::typed_list &in, int _iRetCount, t
             {
                 case DO_XXPRINTF_MISMATCH:
                     Free_Scan(rowcount, ncol, type_s, &data);
+                    ConfigVariable::setPrintCompact(bPrintCompact);
                     Scierror(999, _("%s: Data mismatch.\n"), "mscanf");
                     return types::Function::Error;
 
                 case DO_XXPRINTF_MEM_LACK:
                     Free_Scan(rowcount, ncol, type_s, &data);
+                    ConfigVariable::setPrintCompact(bPrintCompact);
                     Scierror(999, _("%s: No more memory.\n"), "mscanf");
                     return types::Function::Error;
             }

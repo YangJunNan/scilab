@@ -351,7 +351,7 @@ function z=my_surface(x,y),z=x*sin(x)^2*cos(y),endfunction
 // 等高線の出力形式を変更します
 contour(t,t,my_surface,10, fpf="%.1f")
  ]]></programlisting>
-        <scilab:image>
+        <scilab:image localized="true">
             t=linspace(-%pi,%pi,30);
             clf()
             function z=my_surface(x,y),z=x*sin(x)^2*cos(y),endfunction

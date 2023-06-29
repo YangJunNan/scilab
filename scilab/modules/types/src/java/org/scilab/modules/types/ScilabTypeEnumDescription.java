@@ -33,8 +33,6 @@ public class ScilabTypeEnumDescription {
                     return Messages.gettext("Sparse");
                 case sci_boolean_sparse:
                     return Messages.gettext("Boolean Sparse");
-                case sci_matlab_sparse:
-                    return Messages.gettext("Matlab Sparse");
                 case sci_ints:
                     return Messages.gettext("Integer");
                 case sci_handles:

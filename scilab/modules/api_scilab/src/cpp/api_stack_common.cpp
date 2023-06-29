@@ -499,9 +499,6 @@ SciErr getVarType(void *_pvCtx, int *_piAddress, int *_piType)
         case types::InternalType::ScilabSparseBool :
             *_piType = sci_boolean_sparse;
             break;
-            //case types::InternalType::RealMatlabSparse :
-            //    *_piType = sci_matlab_sparse;
-            //    break;
         case types::InternalType::ScilabInt8 :
         case types::InternalType::ScilabUInt8 :
         case types::InternalType::ScilabInt16 :
@@ -647,7 +644,6 @@ int isVarMatrixType(void *_pvCtx, int *_piAddress)
             case sci_boolean:
             case sci_sparse:
             case sci_boolean_sparse:
-            case sci_matlab_sparse:
             case sci_ints:
             case sci_handles:
             case sci_strings:

@@ -28,6 +28,8 @@ For a high-level description of the main new features of this release, please co
 In summary, the main new features and additions are:
 
 - __add your features before and keep this line__
+* Use `curl` as default in `atomsDownload()` for all OS to handle local file repositories.
+* <TODO>
 
 Obsolete functions or features
 ------------------------------
@@ -48,6 +50,7 @@ Removed Features
 
 The following features and usages have been removed or disabled:
 
+Matlab Sparse datatype has been removed.
 - __add your removed features before and keep this line__
 
 Installation
@@ -58,6 +61,8 @@ Installation
 Compilation
 -----------
 
+- Update autotools to support Linux aarch64 and macOS Apple M1.
+  Use Autoconf 2.71 and Automake 1.16.5 to update.
 - __add your compilation notes before and keep this line__
 
 Packaging & Supported Operating Systems

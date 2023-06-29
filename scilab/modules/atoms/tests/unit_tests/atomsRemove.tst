@@ -7,6 +7,7 @@
 
 // <-- ENGLISH IMPOSED -->
 // <-- CLI SHELL MODE -->
+// <-- NO CHECK REF -->
 
 
 //detect scilab arch
@@ -224,9 +225,9 @@ elseif getos()=="Linux" then
         "toolbox_2_2.0-1.bin.i686.linux.tar.gz";
         "toolbox_6_1.0-1.bin.i686.linux.tar.gz"];
     else
-        ref_ls = [ "toolbox_1_1.0-1.bin.x86_64.linux.tar.gz";
-        "toolbox_2_2.0-1.bin.x86_64.linux.tar.gz";
-        "toolbox_6_1.0-1.bin.x86_64.linux.tar.gz"];
+        ref_ls = [ "toolbox_1V6_1.0-1.bin.x86_64.linux.zip";
+        "toolbox_2V6_2.0-1.bin.zip"; // toolbox_2V6_2.0-1.bin.x86_64.linux.zip
+        "toolbox_6V6_1.0-1.bin.zip"]; // toolbox_6V6_1.0-1.bin.x86_64.linux.zip
     end
 elseif getos()=="Darwin" then
     ref_ls = [ "toolbox_1_1.0-1.bin.x86_64.darwin.tar.gz";

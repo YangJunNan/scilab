@@ -296,7 +296,7 @@ legend(['nearest','linear','spline','nodes'], "in_lower_left");
             yy1 = interp1(x, y, xx, 'nearest');
             yy3 = interp1(x, y, xx, 'spline');
             clf
-            h=plot(xx, [yy1 yy2 yy3],x, y, '.')
+            h = plot(xx, [yy1 yy2 yy3], x, y, '.')
             h(1).mark_size = 8;
             title "Interpolation of a poorly sampled sin() function" fontsize 3
             legend(['nearest','linear','spline','nodes'], "in_lower_left");

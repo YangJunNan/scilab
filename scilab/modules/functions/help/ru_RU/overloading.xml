@@ -145,16 +145,6 @@
                 <td/>
             </tr>
             <tr>
-                <td>разрежённая матрица Matlab'а</td>
-                <td>
-                    <literal>msp</literal>
-                </td>
-                <td>
-                    <literal>Matlab sparse</literal>
-                </td>
-                <td/>
-            </tr>
-            <tr>
                 <td>матрица целочисленных значений</td>
                 <td>
                     <literal>i</literal>

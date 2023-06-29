@@ -3,7 +3,7 @@
 #
 #
 # This YAML file describe the test stage of the CI. Tests run are defined
-# per platform and split in good, bad and ugly sets. Special rules named
+# per platform and split in basic, intermediate and advanced sets. Special rules named
 # impacted are added for modules modified by Merge Request.
 #
 
@@ -19,27 +19,28 @@
     reports:
       junit: "${SCI_VERSION_STRING}/${TEST}.xml"
 
-windows_good_nightly:
+windows_basic_nightly:
   extends: .windows_test
   needs:
     - windows_build_nightly
     - windows_set_env
   rules:
-    - if: $CI_PIPELINE_SOURCE == 'schedule'
+    - if: $CI_PIPELINE_SOURCE == "schedule"
   parallel:
-    matrix: &GOOD_TEST_ANCHOR
+    matrix: &BASIC_TEST_ANCHOR
       - TEST:
           - api_scilab
           - arnoldi
           - ast
           - boolean
-          - call_scilab
           - completion
           - core
           - data_structures
+          - elementary_functions
           - fftw
           - fileio
           - functions
+          - hdf5
           - history_manager
           - integer
           - parameters
@@ -50,15 +51,16 @@ windows_good_nightly:
           - webtools
           - xml
 
-windows_bad_nightly:
+windows_intermediate_nightly:
   extends: .windows_test
   needs:
     - windows_build_nightly
     - windows_set_env
+    - windows_basic_nightly
   rules:
-    - if: $CI_PIPELINE_SOURCE == 'schedule'
+    - if: $CI_PIPELINE_SOURCE == "schedule"
   parallel:
-    matrix: &BAD_TEST_ANCHOR
+    matrix: &INTERMEDIATE_TEST_ANCHOR
       - TEST:
           - cacsd
           - console
@@ -67,13 +69,6 @@ windows_bad_nightly:
           - development_tools
           - differential_equations
           - dynamic_link
-          - elementary_functions
-          - external_objects_java
-          - graphic_export
-          - graphic_objects
-          - graphics
-          - gui
-          - hdf5
           - helptools
           - interpolation
           - io
@@ -89,30 +84,39 @@ windows_bad_nightly:
           - overloading
           - randlib
           - renderer
-          - scicos
-          - scicos_blocks
-          - scinotes
           - signal_processing
           - slint
           - sound
           - sparse
           - statistics
-          - tclsci
           - time
           - ui_data
           - umfpack
 
-windows_ugly_nightly:
+windows_advanced_nightly:
   extends: .windows_test
   needs:
     - windows_build_nightly
     - windows_set_env
+    - windows_intermediate_nightly
   rules:
-    - if: $CI_PIPELINE_SOURCE == 'schedule'
+    - if: $CI_PIPELINE_SOURCE == "schedule"
   parallel:
-    matrix: &UGLY_TEST_ANCHOR
+    matrix: &ADVANCED_TEST_ANCHOR
       - TEST:
           - atoms
+          - call_scilab
+          - external_objects
+          - external_objects_java
+          - graphic_export
+          - graphic_objects
+          - graphics
+          - gui
+          - preferences
+          - scicos
+          - scicos_blocks
+          - scinotes
+          - tclsci
           - xcos
 
 windows_only_nightly:
@@ -120,14 +124,15 @@ windows_only_nightly:
   needs:
     - windows_build_nightly
     - windows_set_env
+    - windows_intermediate_nightly
   rules:
-    - if: $CI_PIPELINE_SOURCE == 'schedule'
+    - if: $CI_PIPELINE_SOURCE == "schedule"
   parallel:
     matrix: &WINDOWS_ONLY_TEST_ANCHOR
       - TEST:
           - windows_tools
 
-windows_good_release:
+windows_basic_release:
   extends: .windows_test
   needs:
     - windows_build_release
@@ -135,33 +140,36 @@ windows_good_release:
   rules:
     - if: $CI_COMMIT_TAG
   parallel:
-    matrix: *GOOD_TEST_ANCHOR
+    matrix: *BASIC_TEST_ANCHOR
 
-windows_bad_release:
+windows_intermediate_release:
   extends: .windows_test
   needs:
     - windows_build_release
     - windows_set_env
+    - windows_basic_release
   rules:
     - if: $CI_COMMIT_TAG
   parallel:
-    matrix: *BAD_TEST_ANCHOR
+    matrix: *INTERMEDIATE_TEST_ANCHOR
 
-windows_ugly_release:
+windows_advanced_release:
   extends: .windows_test
   needs:
     - windows_build_release
     - windows_set_env
+    - windows_intermediate_release
   rules:
     - if: $CI_COMMIT_TAG
   parallel:
-    matrix: *UGLY_TEST_ANCHOR
+    matrix: *ADVANCED_TEST_ANCHOR
 
 windows_only_release:
   extends: .windows_test
   needs:
     - windows_build_release
     - windows_set_env
+    - windows_intermediate_release
   rules:
     - if: $CI_COMMIT_TAG
   parallel:
@@ -177,12 +185,12 @@ windows_ci:
   rules:
     - if: $CI_COMMIT_TAG
       when: never
-    - if: $CI_PIPELINE_SOURCE == 'merge_request_event' || $CI_PIPELINE_SOURCE == 'push'
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event" || $CI_PIPELINE_SOURCE == "push"
       changes:
         - .gitlab-ci.yml
         - .gitlab-ci/*
 
-windows_good_ci:
+windows_basic_ci:
   extends: .windows_test
   needs:
     - windows_build_mr
@@ -190,15 +198,15 @@ windows_good_ci:
   rules:
     - if: $CI_COMMIT_TAG
       when: never
-    - if: $CI_PIPELINE_SOURCE == 'merge_request_event' || $CI_PIPELINE_SOURCE == 'push'
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event" || $CI_PIPELINE_SOURCE == "push"
       changes:
         - .gitlab-ci.yml
         - .gitlab-ci/*
   parallel:
-    matrix: *GOOD_TEST_ANCHOR
+    matrix: *BASIC_TEST_ANCHOR
   when: manual
 
-windows_good_impacted:
+windows_basic_impacted:
   extends: .windows_test
   needs:
     - windows_build_mr
@@ -206,29 +214,29 @@ windows_good_impacted:
   rules: &IMPACTED_RULES
     - if: $CI_COMMIT_TAG
       when: never
-    - if: $CI_PIPELINE_SOURCE == 'merge_request_event' || $CI_PIPELINE_SOURCE == 'push'
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event" || $CI_PIPELINE_SOURCE == "push"
       changes:
         - scilab/modules/$TEST/**/*
   parallel:
-    matrix: *GOOD_TEST_ANCHOR
+    matrix: *BASIC_TEST_ANCHOR
 
-windows_bad_impacted:
+windows_intermediate_impacted:
   extends: .windows_test
   needs:
     - windows_build_mr
     - windows_set_env
   rules: *IMPACTED_RULES
   parallel:
-    matrix: *BAD_TEST_ANCHOR
+    matrix: *INTERMEDIATE_TEST_ANCHOR
 
-windows_ugly_impacted:
+windows_advanced_impacted:
   extends: .windows_test
   needs:
     - windows_build_mr
     - windows_set_env
   rules: *IMPACTED_RULES
   parallel:
-    matrix: *UGLY_TEST_ANCHOR
+    matrix: *ADVANCED_TEST_ANCHOR
 
 windows_only_impacted:
   extends: .windows_test
@@ -242,7 +250,7 @@ windows_only_impacted:
 .linux_test:
   stage: test
   tags: [x86_64-linux-gnu, docker, scilab]
-  image: $CI_REGISTRY_IMAGE/ubuntu-18.04:$DOCKER_TAG
+  image: ${CI_REGISTRY_IMAGE}/ubuntu-18.04:${DOCKER_TAG}
   script: bash -e -x .gitlab-ci/test.sh
   artifacts:
     when: always
@@ -251,37 +259,39 @@ windows_only_impacted:
     reports:
       junit: "${SCI_VERSION_STRING}/${TEST}.xml"
 
-linux_good_nightly:
+linux_basic_nightly:
   extends: .linux_test
   needs:
     - linux_build_nightly
     - linux_set_env
   rules:
-    - if: $CI_PIPELINE_SOURCE == 'schedule'
+    - if: $CI_PIPELINE_SOURCE == "schedule"
   parallel:
-    matrix: *GOOD_TEST_ANCHOR
+    matrix: *BASIC_TEST_ANCHOR
 
-linux_bad_nightly:
+linux_intermediate_nightly:
   extends: .linux_test
   needs:
     - linux_build_nightly
     - linux_set_env
+    - linux_basic_nightly
   rules:
-    - if: $CI_PIPELINE_SOURCE == 'schedule'
+    - if: $CI_PIPELINE_SOURCE == "schedule"
   parallel:
-    matrix: *BAD_TEST_ANCHOR
+    matrix: *INTERMEDIATE_TEST_ANCHOR
 
-linux_ugly_nightly:
+linux_advanced_nightly:
   extends: .linux_test
   needs:
     - linux_build_nightly
     - linux_set_env
+    - linux_intermediate_nightly
   rules:
-    - if: $CI_PIPELINE_SOURCE == 'schedule'
+    - if: $CI_PIPELINE_SOURCE == "schedule"
   parallel:
-    matrix: *UGLY_TEST_ANCHOR
+    matrix: *ADVANCED_TEST_ANCHOR
 
-linux_good_release:
+linux_basic_release:
   extends: .linux_test
   needs:
     - linux_build_release
@@ -289,27 +299,29 @@ linux_good_release:
   rules:
     - if: $CI_COMMIT_TAG
   parallel:
-    matrix: *GOOD_TEST_ANCHOR
+    matrix: *BASIC_TEST_ANCHOR
 
-linux_bad_release:
+linux_intermediate_release:
   extends: .linux_test
   needs:
     - linux_build_release
     - linux_set_env
+    - linux_basic_release
   rules:
     - if: $CI_COMMIT_TAG
   parallel:
-    matrix: *BAD_TEST_ANCHOR
+    matrix: *INTERMEDIATE_TEST_ANCHOR
 
-linux_ugly_release:
+linux_advanced_release:
   extends: .linux_test
   needs:
     - linux_build_release
     - linux_set_env
+    - linux_intermediate_release
   rules:
     - if: $CI_COMMIT_TAG
   parallel:
-    matrix: *UGLY_TEST_ANCHOR
+    matrix: *ADVANCED_TEST_ANCHOR
 
 linux_ci:
   extends: .linux_test
@@ -321,12 +333,12 @@ linux_ci:
   rules:
     - if: $CI_COMMIT_TAG
       when: never
-    - if: $CI_PIPELINE_SOURCE == 'merge_request_event' || $CI_PIPELINE_SOURCE == 'push'
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event" || $CI_PIPELINE_SOURCE == "push"
       changes:
         - .gitlab-ci.yml
         - .gitlab-ci/*
 
-linux_good_ci:
+linux_basic_ci:
   extends: .linux_test
   needs:
     - linux_build_mr
@@ -334,37 +346,37 @@ linux_good_ci:
   rules:
     - if: $CI_COMMIT_TAG
       when: never
-    - if: $CI_PIPELINE_SOURCE == 'merge_request_event' || $CI_PIPELINE_SOURCE == 'push'
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event" || $CI_PIPELINE_SOURCE == "push"
       changes:
         - .gitlab-ci.yml
         - .gitlab-ci/*
   parallel:
-    matrix: *GOOD_TEST_ANCHOR
+    matrix: *BASIC_TEST_ANCHOR
   when: manual  
 
-linux_good_impacted:
+linux_basic_impacted:
   extends: .linux_test
   needs:
     - linux_build_mr
     - linux_set_env
   rules: *IMPACTED_RULES
   parallel:
-    matrix: *GOOD_TEST_ANCHOR
+    matrix: *BASIC_TEST_ANCHOR
 
-linux_bad_impacted:
+linux_intermediate_impacted:
   extends: .linux_test
   needs:
     - linux_build_mr
     - linux_set_env
   rules: *IMPACTED_RULES
   parallel:
-    matrix: *BAD_TEST_ANCHOR
+    matrix: *INTERMEDIATE_TEST_ANCHOR
 
-linux_ugly_impacted:
+linux_advanced_impacted:
   extends: .linux_test
   needs:
     - linux_build_mr
     - linux_set_env
   rules: *IMPACTED_RULES
   parallel:
-    matrix: *UGLY_TEST_ANCHOR
+    matrix: *ADVANCED_TEST_ANCHOR

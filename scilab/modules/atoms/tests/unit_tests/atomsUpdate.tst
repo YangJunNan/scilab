@@ -7,8 +7,7 @@
 
 // <-- ENGLISH IMPOSED -->
 // <-- CLI SHELL MODE -->
-
-
+// <-- NO CHECK REF -->
 
 load("SCI/modules/atoms/macros/atoms_internals/lib");
 exec("SCI/modules/atoms/tests/unit_tests/atomsTestUtils.sce");

@@ -24,7 +24,7 @@ AC_DEFUN([AC_CURL], [
 
 
 AC_ARG_WITH(curl,
-    AC_HELP_STRING([--with-curl=DIR],[Set the path to your CURL installation]),
+    AS_HELP_STRING([--with-curl=DIR],[Set the path to your CURL installation]),
     [with_curl=$withval],
     [with_curl='yes']
     )

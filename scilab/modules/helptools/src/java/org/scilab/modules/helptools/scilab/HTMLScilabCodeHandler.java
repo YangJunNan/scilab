@@ -133,10 +133,7 @@ public class HTMLScilabCodeHandler extends AbstractScilabCodeHandler {
                 buffer.append("<span class=\"scilabcommand\">");
                 buffer.append(seq);
                 buffer.append("</span>");
-                //if (!undoc.contains(seq)) {
-                System.err.println("Warning: the command " + seq + " is used in an example and is undocumented (" + new File(currentFileName).getName() + ").");
                 undoc.add(seq);
-                //}
             } else {
                 buffer.append("<a class=\"scilabcommand\" href=\"");
                 buffer.append(link);
@@ -161,10 +158,7 @@ public class HTMLScilabCodeHandler extends AbstractScilabCodeHandler {
                 buffer.append("<span class=\"scilabmacro\">");
                 buffer.append(seq);
                 buffer.append("</span>");
-                //if (!undoc.contains(seq)) {
-                System.err.println("Warning: the macro " + seq + " is used in an example and is undocumented (" + new File(currentFileName).getName() + ").");
                 undoc.add(seq);
-                //}
             } else {
                 buffer.append("<a class=\"scilabmacro\" href=\"");
                 buffer.append(link);

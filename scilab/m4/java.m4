@@ -392,19 +392,25 @@ AC_DEFUN([AC_JAVA_JNI_INCLUDE], [
 
     AC_REQUIRE([AC_PROG_CC])
 
-    AC_CACHE_CHECK(if jni.h can be included,
-        ac_cv_java_jvm_jni_working,[
+    AC_CACHE_CHECK([if jni.h can be included],
+        ac_cv_java_jvm_jni_working, [
         AC_LANG_PUSH(C)
         ac_saved_cflags=$CFLAGS
         CFLAGS="$CFLAGS $ac_java_jvm_jni_include_flags"
-        AC_TRY_COMPILE([
-            #include <jni.h>
-        ],[return 0;],
-        ac_cv_java_jvm_jni_working=yes,
-        AC_MSG_ERROR([could not compile file that includes jni.h. If you run Mac OS X please make sure you have 'Java developer package'. This is available on http://connect.apple.com/ ]))
+        AC_COMPILE_IFELSE([AC_LANG_SOURCE([
+#include <jni.h>
+
+int main (void)
+{
+    return 0;
+}
+])],
+            ac_cv_java_jvm_jni_working=yes,
+            AC_MSG_ERROR([could not compile file that includes jni.h. If you run Mac OS X please make sure you have 'Java developer package'. This is available on http://connect.apple.com])
+        )
         AC_LANG_POP()
         CFLAGS=$ac_saved_cflags
-    ])
+    ] )
 
     # FIXME: should we look for or require a include/native_threads dir?
 ])
@@ -671,11 +677,18 @@ AC_DEFUN([AC_JAVA_JNI_LIBS], [
         ac_saved_libs=$LIBS
         CFLAGS="$CFLAGS $ac_java_jvm_jni_include_flags"
         LIBS="$LIBS $ac_java_jvm_jni_lib_flags"
-        AC_TRY_LINK([
-            #include <jni.h>
-        ],[$libSymbolToTest(NULL,0,NULL);],
+        AC_LINK_IFELSE([AC_LANG_SOURCE([
+#include <jni.h>
+
+int main (void)
+{
+    $libSymbolToTest(NULL,0,NULL);
+    return 0;
+}
+])],
             ac_cv_java_jvm_working_jni_link=yes,
-            ac_cv_java_jvm_working_jni_link=no)
+            ac_cv_java_jvm_working_jni_link=no
+        )
         AC_LANG_POP()
         CFLAGS=$ac_saved_cflags
         LIBS=$ac_saved_libs
@@ -691,11 +704,18 @@ AC_DEFUN([AC_JAVA_JNI_LIBS], [
         ac_saved_libs=$LIBS
         CFLAGS="$CFLAGS $ac_java_jvm_jni_include_flags"
         LIBS="$LIBS -L$srcdir/win -ljvm"
-        AC_TRY_LINK([
-            #include <jni.h>
-        ],[$libSymbolToTest(NULL,0,NULL);],
+        AC_LINK_IFELSE([AC_LANG_SOURCE([
+#include <jni.h>
+
+int main (void)
+{
+    $libSymbolToTest(NULL,0,NULL);
+    return 0;
+}
+])],
             ac_cv_java_jvm_working_jni_link=yes,
-            ac_cv_java_jvm_working_jni_link=no)
+            ac_cv_java_jvm_working_jni_link=no
+        )
         AC_LANG_POP()
         CFLAGS=$ac_saved_cflags
         LIBS=$ac_saved_libs
@@ -730,7 +750,7 @@ AC_DEFUN([AC_JAVA_JNI_LIBS], [
 
 AC_DEFUN([AC_JAVA_WITH_JDK], [
     AC_ARG_WITH(jdk,
-    AC_HELP_STRING([--with-jdk=DIR],[use JDK from DIR]))
+    AS_HELP_STRING([--with-jdk=DIR],[use JDK from DIR]))
 
     if test "$with_jdk" = "no" -o -z "$with_jdk"; then
         NO=op
@@ -818,7 +838,7 @@ AC_DEFUN([AC_JAVA_TOOLS], [
 
 AC_DEFUN([AC_JAVA_ANT], [
     AC_ARG_WITH(ant,
-    AC_HELP_STRING([--with-ant=DIR],[Use ant from DIR]),
+    AS_HELP_STRING([--with-ant=DIR],[Use ant from DIR]),
     ANTPATH=$withval, ANTPATH=no)
     if test "$ANTPATH" = "no" ; then
         if test -d "$SCI_SRCDIR_FULL/java/ant"; then # Scilab thirdparties

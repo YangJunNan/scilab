@@ -13,6 +13,8 @@ RUN apt-get update && apt-get install -y \
   libxft2 \
   libxtst6 \
   xz-utils \
+  curl \
+  unzip \
   locales gcc g++ gfortran make \
   && rm -rf /var/lib/apt/lists/*
 

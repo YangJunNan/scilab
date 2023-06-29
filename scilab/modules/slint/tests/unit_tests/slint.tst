@@ -2,6 +2,7 @@
 // Scilab ( https://www.scilab.org/ ) - This file is part of Scilab
 // Copyright (C) 2015 - Scilab Enterprises - Calixte DENIZET
 // Copyright (C) 2023 - Dassault Systemes - Cedric DELAMARRE
+// Copyright (C) 2023 - Samuel GOUGEON
 //
 //  This file is distributed under the same license as the Scilab package.
 // ============================================================================
@@ -9,20 +10,21 @@
 // <-- CLI SHELL MODE -->
 // <-- ENGLISH IMPOSED -->
 //
+conf = "SCI/modules/slint/etc/slint_all.xml";
 
-a = slint("SCI/modules/slint/tests/unit_tests/files/GlobalKeyword.sci",%f);
+a = slint("SCI/modules/slint/tests/unit_tests/files/GlobalKeyword.sci", conf, %f);
 assert_checktrue(isfield(a.info, "00001"));
 assert_checkequal(size(a.info("00001"), "*"), 1);
 assert_checkequal(a.info("00001").loc, [2 5; 2 11]);
 
-a = slint("SCI/modules/slint/tests/unit_tests/files/Redefinition.sci",%f);
+a = slint("SCI/modules/slint/tests/unit_tests/files/Redefinition.sci", conf, %f);
 assert_checktrue(isfield(a.info, "00002"));
 assert_checkequal(size(a.info("00002"), "*"), 3);
 assert_checkequal(a.info("00002")(1).loc, [2 5; 2 8]);
 assert_checkequal(a.info("00002")(2).loc, [3 5; 3 12]);
 assert_checkequal(a.info("00002")(3).loc, [4 5; 4 12]);
 
-a = slint("SCI/modules/slint/tests/unit_tests/files/Variables.sci",%f);
+a = slint("SCI/modules/slint/tests/unit_tests/files/Variables.sci", conf, %f);
 assert_checktrue(isfield(a.info, "00003.Uninitialized"));
 assert_checkequal(size(a.info("00003.Uninitialized"), "*"), 1);
 assert_checkequal(a.info("00003.Uninitialized").loc, [2 9; 2 10]);
@@ -45,7 +47,7 @@ for i = 1:unused_size
     end
 end
 
-a = slint("SCI/modules/slint/tests/unit_tests/files/FunctionArgs.sci",%f);
+a = slint("SCI/modules/slint/tests/unit_tests/files/FunctionArgs.sci", conf, %f);
 assert_checktrue(isfield(a.info, "00005"));
 assert_checkequal(size(a.info("00005"), "*"), 2);
 assert_checkequal(a.info("00005")(1).loc, [4 1; 5 12]);
@@ -53,42 +55,43 @@ assert_checkequal(a.info("00005")(1).msg, msprintf(_("Duplicated function argume
 assert_checkequal(a.info("00005")(2).loc, [7 1; 8 12]);
 assert_checkequal(a.info("00005")(2).msg, msprintf(_("Function arguments used as output values: %s."), "a"));
 
-a = slint("SCI/modules/slint/tests/unit_tests/files/UselessArg.sci",%f);
+a = slint("SCI/modules/slint/tests/unit_tests/files/UselessArg.sci", conf, %f);
 assert_checktrue(isfield(a.info, "00006"));
 assert_checkequal(size(a.info("00006"), "*"), 1);
 assert_checkequal(a.info("00006")(1).loc, [5 29; 5 30]);
 assert_checkequal(a.info("00006")(1).msg, msprintf(_("Function argument might be unused: %s."), "b"));
 
-a = slint("SCI/modules/slint/tests/unit_tests/files/UselessRet.sci",%f);
+a = slint("SCI/modules/slint/tests/unit_tests/files/UselessRet.sci", conf, %f);
 assert_checktrue(isfield(a.info, "00007"));
 assert_checkequal(size(a.info("00007"), "*"), 1);
 assert_checkequal(a.info("00007")(1).loc, [5 11; 5 12]);
 assert_checkequal(a.info("00007")(1).msg, msprintf(_("Function returned value might be unused: %s."), "y"));
 
-a = slint("SCI/modules/slint/tests/unit_tests/files/SingleInstr.sci",%f);
+a = slint("SCI/modules/slint/tests/unit_tests/files/SingleInstr.sci", conf, %f);
 assert_checktrue(isfield(a.info, "00009"));
 assert_checkequal(size(a.info("00009"), "*"), 1);
 assert_checkequal(a.info("00009")(1).loc, [2 12; 2 18]);
 
-a = slint("SCI/modules/slint/tests/unit_tests/files/EmptyBlock.sci",%f);
+a = slint("SCI/modules/slint/tests/unit_tests/files/EmptyBlock.sci", conf, %f);
 assert_checktrue(isfield(a.info, "00010"));
 assert_checkequal(size(a.info("00010"), "*"), 1);
 assert_checkequal(a.info("00010")(1).loc, [3 1; 3 1]);
+assert_checkequal(a.info("00010").msg, _("Empty block."));
 
-a = slint("SCI/modules/slint/tests/unit_tests/files/MopenMclose.sci",%f);
+a = slint("SCI/modules/slint/tests/unit_tests/files/MopenMclose.sci", conf, %f);
 assert_checktrue(isfield(a.info, "00011"));
 assert_checkequal(size(a.info("00011"), "*"), 2);
 assert_checkequal(a.info("00011")(1).loc, [1 1; 3 12]);
 assert_checkequal(a.info("00011")(1).msg, msprintf(_("Open files not closed: %s."), "fd"));
 assert_checkequal(a.info("00011")(2).loc, [7 5; 7 18]);
 
-a = slint("SCI/modules/slint/tests/unit_tests/files/McCabe.sci",%f);
+a = slint("SCI/modules/slint/tests/unit_tests/files/McCabe.sci", conf, %f);
 assert_checktrue(isfield(a.info, "00012"));
 assert_checkequal(size(a.info("00012"), "*"), 1);
 assert_checkequal(a.info("00012")(1).loc, [1 1; 91 12]);
 assert_checkequal(a.info("00012")(1).msg, msprintf(_("McCabe''s complexity is %d and is greater than %d."), 33, 30));
 
-a = slint("SCI/modules/slint/tests/unit_tests/files/Decimal.sci",%f);
+a = slint("SCI/modules/slint/tests/unit_tests/files/Decimal.sci", conf, %f);
 assert_checktrue(isfield(a.info, "00013"));
 assert_checkequal(size(a.info("00013"), "*"), 3);
 assert_checkequal(a.info("00013")(1).loc, [2 9; 2 15]);
@@ -97,3 +100,23 @@ assert_checkequal(a.info("00013")(2).loc, [3 9; 3 15]);
 assert_checkequal(a.info("00013")(2).msg, msprintf(_("Bad decimal exponent: %s was expected and %s was found."), "eE", "d"));
 assert_checkequal(a.info("00013")(3).loc, [4 9; 4 15]);
 assert_checkequal(a.info("00013")(3).msg, msprintf(_("Bad decimal exponent: %s was expected and %s was found."), "eE", "D"));
+
+a = slint("SCI/modules/slint/tests/unit_tests/files/McCabe.sci", conf, %f);
+assert_checktrue(isfield(a.info, "00012"));
+assert_checkequal(size(a.info("00012"), "*"), 1);
+assert_checkequal(a.info("00012")(1).loc, [1 1; 91 12]);
+assert_checkequal(a.info("00012")(1).msg, msprintf(_("McCabe''s complexity is %d and is greater than %d."), 33, 30));
+
+a = slint("SCI/modules/slint/tests/unit_tests/files/Decimal.sci", conf, %f);
+assert_checktrue(isfield(a.info, "00013"));
+assert_checkequal(size(a.info("00013"), "*"), 3);
+assert_checkequal(a.info("00013")(1).loc, [2 9 ; 2 15]);
+assert_checkequal(a.info("00013")(1).msg, _("Decimal numbers must not begin by a dot."));
+assert_checkequal(a.info("00013")(2).loc, [3 9 ; 3 15]);
+assert_checkequal(a.info("00013")(2).msg, msprintf(_("Bad decimal exponent: %s was expected and %s was found."), "eE", "d"));
+assert_checkequal(a.info("00013")(3).loc, [4 9 ; 4 15]);
+assert_checkequal(a.info("00013")(3).msg, msprintf(_("Bad decimal exponent: %s was expected and %s was found."), "eE", "D"));
+
+//slint("SCI/modules/slint/tests/unit_tests/files/slint_sample.sci", conf, %t);
+// can't have a .dia.ref: The first output line is the explicit absolute path
+// of the input file, without abstracted "SCI"

@@ -34,6 +34,8 @@ import javax.activation.MimetypesFileTypeMap;
 import javax.imageio.ImageIO;
 import javax.swing.Icon;
 
+import org.xml.sax.SAXParseException;
+
 import org.scilab.modules.commons.ScilabCommonsUtils;
 import org.scilab.modules.helptools.DocbookTagConverter;
 
@@ -246,7 +248,7 @@ public final class ImageConverter {
             if ((isLocalized != null && isLocalized.booleanValue()) || language.equals("en_US")) {
                 System.err.println("Info: Create image " + imageFile.getName() + " from line " + lineNumber + " in " + current.getName());
             } else if (!language.equals("en_US") && imageFile.exists()) {
-                System.err.println("Warning: Overwrite image " + imageFile.getName() + " from line " + lineNumber + " in " + current.getName() + ". Check the code or use scilab:localized=\"true\" attribute.");
+                conv.error(new SAXParseException("Overwrite image " + imageFile.getName() + " from line " + lineNumber + ". Check the code or use scilab:localized=\"true\" attribute.", null));
             }
 
             return imgConv.convertToImage(currentFile, code, attrs, imageFile, imageName);

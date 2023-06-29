@@ -2,7 +2,7 @@
 *  Scilab ( https://www.scilab.org/ ) - This file is part of Scilab
 *  Copyright (C) 2008-2008 - DIGITEO - Antoine ELIAS
 *  Copyright (C) 2011-2011 - DIGITEO - Bruno JOFRET
-*  Copyright (C) 2018 - Stéphane MOTTELET
+*  Copyright (C) 2018 - UTC - Stéphane MOTTELET
  * Copyright (C) 2012 - 2016 - Scilab Enterprises
  *
  * This file is hereby licensed under the terms of the GNU GPL v2.0,
