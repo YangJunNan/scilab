@@ -49,7 +49,7 @@
                     </para>
                     <para>
                         This function can not open a UTF filename. In this case,
-                        please uses <link linkend="file">mopen</link>.
+                        please uses <link linkend="file">file</link>.
                     </para>
                 </listitem>
             </varlistentry>

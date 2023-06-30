@@ -53,7 +53,7 @@
                     </para>
                     <para>
                         Esta função não consegue abrir um arquivo UTF.
-                        Neste caso, por favor use  <link linkend="file">mopen</link>.
+                        Neste caso, por favor use  <link linkend="file">file</link>.
                     </para>
                 </listitem>
             </varlistentry>
