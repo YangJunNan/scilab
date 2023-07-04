@@ -816,7 +816,7 @@ function status = test_single(_module, _testPath, _testName)
 
     if assert then
         head = [ head ;
-        "function assert_generror(errmsg), printf(errmsg);printf(''\nassert failed on test\n'');quit; endfunction"];
+        "function assert_generror(errmsg, errnb), printf(''%s\nassert failed on test\n'',errmsg);quit; endfunction"];
     end
 
     if try_catch then
