@@ -783,12 +783,13 @@ function status = test_single(_module, _testPath, _testName)
     sciFile = strsubst(sciFile, "halt();", "");
 
     // Build test header
+    bugmes_def = "function []=bugmes(), printf(''error on test'');endfunction";
     head = [
     "// <-- HEADER START -->";
     "mode(3);" ;
     "lines(28,72);";
     "lines(0);" ;
-    "function []=bugmes(), printf(''error on test'');endfunction"
+    bugmes_def;
     "function %onprompt" ;
     "   [msg, num] = lasterror();" ;
     "   if (num <> 0) then" ;
@@ -797,7 +798,12 @@ function status = test_single(_module, _testPath, _testName)
     "   quit;" ;
     "endfunction"];
     if ~interactive then
-        head($+1) = "function []=messagebox(msg, msg_title, info, buttons, isModal), disp(''messagebox: '' + msg);endfunction";
+        head = [ head ;
+        "prot=funcprot(0);";
+        "function []=messagebox(msg, msg_title, info, buttons, isModal), disp(''messagebox: '' + msg);endfunction";
+        "funcprot(prot);";
+        "clear prot";
+        ];
     end
     head = [ head ;
     "predef(''all'');";
@@ -806,17 +812,22 @@ function status = test_single(_module, _testPath, _testName)
     ];
 
     if xcosNeeded then
-        head = [
-        head;
-        "prot=funcprot(); funcprot(0);";
+        head = [ head;
+        "prot=funcprot(0);";
         "loadXcosLibs(); loadScicos();";
         "funcprot(prot);";
+        "clear prot";
         ];
     end
 
+    assert_generror_def = "function assert_generror(errmsg, errnb), printf(''%s\nassert failed on test\n'',errmsg);quit; endfunction";
     if assert then
         head = [ head ;
-        "function assert_generror(errmsg, errnb), printf(''%s\nassert failed on test\n'',errmsg);quit; endfunction"];
+        "prot=funcprot(0);";
+        assert_generror_def;
+        "funcprot(prot);";
+        "clear prot";
+        ];
     end
 
     if try_catch then
@@ -1114,8 +1125,31 @@ function status = test_single(_module, _testPath, _testName)
         return;
     end
 
+    if grep(dia_tmp,"assert failed on test")<>[] then
+        errlines = dia_tmp(grep(dia_tmp,"assert failed on test"))
+        // Remove false positives due to the display of log, res, .. files
+        errlines(grep(errlines, assert_generror_def)) = []
+        if errlines == [] then
+            return
+        end
+        details = [ checkthefile(tmp_dia); ..
+        launchthecommand(testFile) ];
+        status.id = 2;
+        status.message = "failed: one or several tests failed";
+        status.details = details;
+        if params.show_error == %t then
+            status.details = [ status.details; dia($-min(10, size(dia, "*")-1):$) ]
+        end
+        return;
+    end
 
     if grep(dia_tmp,"error on test")<>[] then
+        errlines = dia_tmp(grep(dia_tmp,"error on test"))
+        // Remove false positives due to the display of log, res, .. files
+        errlines(grep(errlines, bugmes_def)) = []
+        if errlines == [] then
+            return
+        end
         details = [ checkthefile(tmp_dia); ..
         launchthecommand(testFile) ];
         status.id = 2;
