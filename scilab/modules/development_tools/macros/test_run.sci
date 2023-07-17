@@ -934,8 +934,8 @@ function status = test_single(_module, _testPath, _testName)
     returnStatus = host(test_cmd);
     //Check return status
     if (returnStatus <> 0)
-        details = [ checkthefile(tmp_dia); ..
-        launchthecommand(testFile)];
+        details = [ launchthecommand(testFile); ..
+        checkthefile(tmp_dia)];
         status.id = 5;
         status.message = "failed: tested Scilab exited with error code " + string(returnStatus);
         status.details = details;
@@ -1085,8 +1085,8 @@ function status = test_single(_module, _testPath, _testName)
     
     //Check for execution errors
     if try_catch & grep(dia,"<--Error on the test script file-->") <> [] then
-        details = [ checkthefile(tmp_dia); ..
-        launchthecommand(testFile)];
+        details = [ launchthecommand(testFile); ..
+        checkthefile(tmp_dia)];
         status.id = 3;
         status.message = "failed: premature end of the test script";
         status.details = details;
@@ -1117,8 +1117,8 @@ function status = test_single(_module, _testPath, _testName)
     dia_tmp(grep(dia_tmp, "//")) = [];
 
     if try_catch & grep(dia_tmp, "!--error") <> [] then
-        details = [ checkthefile(tmp_dia); ..
-        launchthecommand(testFile) ];
+        details = [ launchthecommand(testFile); ..
+         checkthefile(tmp_dia)];
         status.id = 1;
         status.message = "failed: the string (!--error) has been detected";
         status.details = details;
@@ -1150,8 +1150,8 @@ function status = test_single(_module, _testPath, _testName)
         if errlines == [] then
             return
         end
-        details = [ checkthefile(tmp_dia); ..
-        launchthecommand(testFile) ];
+        details = [ launchthecommand(testFile); ..
+        checkthefile(tmp_dia) ];
         status.id = 2;
         status.message = "failed: one or several tests failed";
         status.details = details;
@@ -1339,7 +1339,7 @@ function msg = launchthecommand( filename )
     //   Or launch the following command :
     //   - exec("C:\path\scilab\modules\optimization\tests\unit_testseldermeadeldermead_configure.tst")
     // Workaround for bug #4827
-    msg(1) = "   Or launch the following command :"
+    msg(1) = "   Launch the following command :"
     msg(2) = "   - exec(""" + strsubst(fullpath(filename), SCI, "SCI") + """);"
 endfunction
 
