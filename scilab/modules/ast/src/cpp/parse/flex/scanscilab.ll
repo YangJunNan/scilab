@@ -1131,7 +1131,6 @@ assign			"="
     if (comment_level == 0) {
       ParserSingleInstance::popControlStatus();
       yy_pop_state();
-      delete yylval.comment;
       //return scan_throw(BLOCKCOMMENT);
     }
   }
@@ -1145,7 +1144,7 @@ assign			"="
     yylloc.last_line += 1;
     yylloc.last_column = 1;
     scan_step();
-    *yylval.comment += L"\n//";
+    *yylval.comment += L"\n";
   }
 
   {char_in_comment}				|
