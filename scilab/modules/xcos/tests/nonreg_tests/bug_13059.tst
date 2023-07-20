@@ -6,6 +6,7 @@
 // =============================================================================
 
 // <-- XCOS TEST -->
+// <-- NO CHECK REF -->
 //
 // <-- Non-regression test for bug 13059 -->
 //
@@ -22,6 +23,7 @@ assert_checktrue(importXcosDiagram(SCI + "/modules/xcos/tests/nonreg_tests/bug_1
 // check using scicos_simulate
 scicos_simulate(scs_m);
 
+A.values
 assert_checkequal(A.values, %nan);
 clear A;
 

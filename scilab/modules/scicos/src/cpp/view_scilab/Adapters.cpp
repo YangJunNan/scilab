@@ -133,7 +133,7 @@ model::BaseObject* Adapters::descriptor(adapters_index_t index, types::InternalT
     }
 }
 
-types::InternalType* Adapters::allocate_view(ScicosID id, kind_t kind)
+types::InternalType* Adapters::allocate_view(ScicosID id, kind_t)
 {
     Controller controller;
 

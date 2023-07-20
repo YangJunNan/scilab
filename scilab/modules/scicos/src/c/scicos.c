@@ -129,7 +129,7 @@ enum Solver
 
 /* TJacque allocated by sundials */
 #define freeallx				\
-	if (*neq>0) free(TJacque);	\
+	if (*neq>0 && TJacque) DestroyMat(TJacque);	\
 	if (*neq>0) FREE(data->rwork);		\
 	if (( ng>0 )&& (*neq>0)) FREE(data->gwork);	\
 	if (*neq>0) N_VDestroy_Serial(data->ewt);	\
@@ -527,6 +527,7 @@ int C2F(scicos)(double *x_in, int *xptr_in, double *z__,
         }
         return 0;
     }
+    memset(Blocks, 0, sizeof(scicos_block) * nblk);
 
     /** Setting blocks properties for each entry in Block's array **/
 
@@ -747,16 +748,8 @@ int C2F(scicos)(double *x_in, int *xptr_in, double *z__,
         }
 
         /* 10 : pointer on the beginning of the residual array (res) */
+        // will be set to solver's internal vectors before callf
         Blocks[kf].res = NULL;
-        if (Blocks[kf].nx != 0)
-        {
-            if ((Blocks[kf].res = MALLOC(Blocks[kf].nx * sizeof(double))) == NULL)
-            {
-                FREE_blocks();
-                *ierr = 5;
-                return 0;
-            }
-        }
 
         /* 11 : block label (label) */
         i1 = izptr[kf];
@@ -782,15 +775,6 @@ int C2F(scicos)(double *x_in, int *xptr_in, double *z__,
 
         /* 12 : block array of crossed surfaces (jroot) */
         Blocks[kf].jroot = NULL;
-        if (Blocks[kf].ng > 0)
-        {
-            if ((Blocks[kf].jroot = CALLOC(Blocks[kf].ng, sizeof(int))) == NULL)
-            {
-                FREE_blocks();
-                *ierr = 5;
-                return 0;
-            }
-        }
 
         /* 13 : block work array  (work) */
         Blocks[kf].work = (void **)(((double *)work) + kf);

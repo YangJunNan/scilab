@@ -27,6 +27,6 @@ types::InternalType* get_il_state(void);
 /**
 * set il_state
 */
-types::InternalType* set_il_state(types::InternalType* _state);
+void set_il_state(types::InternalType* _state);
 
 #endif /* __IL_STATE_HXX__ */
