@@ -1,8 +1,8 @@
 /*
  * Scilab ( https://www.scilab.org/ ) - This file is part of Scilab
  * Copyright (C) 2010 - DIGITEO - Manuel JULIACHS
- *
  * Copyright (C) 2012 - 2016 - Scilab Enterprises
+ * Copyright (C) 2023 - UTC - Stéphane MOTTELET
  *
  * This file is hereby licensed under the terms of the GNU GPL v2.0,
  * pursuant to article 5.3.4 of the CeCILL v.2.1.
@@ -25,12 +25,13 @@ import org.scilab.modules.graphic_objects.lighting.Material;
 /**
  * Surface class
  * @author Manuel JULIACHS
+ * @author Stéphane MOTTELET
  */
 public abstract class Surface extends ClippableContouredObject {
     // TBD Data -> Data Model
     /* TBD: properties relative to the data model */
     /** Surface properties names */
-    private enum SurfaceProperty { SURFACEMODE, COLORMODE, COLORFLAG, HIDDENCOLOR };
+    private enum SurfaceProperty { SURFACEMODE, COLORMODE, COLORFLAG, HIDDENCOLOR, COLORBOUNDS, OUTSIDECOLOR, CMAPRANGE};
 
     /** Specifies whether the surface is drawn or not */
     private boolean surfaceMode;
@@ -46,7 +47,16 @@ public abstract class Surface extends ClippableContouredObject {
 
     /** material properties used for lighting */
     private Material material;
+    
+    /** color Bounds: 2-element array */
+    private double[] colorBounds;
 
+    /** 2-element array */
+    private int[] outsideColor;
+
+    /** 2-element array */
+    private int[] cMapRange;
+    
     /** Constructor */
     public Surface() {
         super();
@@ -55,6 +65,9 @@ public abstract class Surface extends ClippableContouredObject {
         colorFlag = 0;
         hiddenColor = 0;
         material = new Material();
+        colorBounds = new double[2];
+        outsideColor = new int[2];
+        cMapRange = new int[2];
     }
 
     /**
@@ -82,6 +95,12 @@ public abstract class Surface extends ClippableContouredObject {
                 return Material.MaterialProperty.COLOR_MATERIAL;
             case __GO_MATERIAL_SHININESS__ :
                 return Material.MaterialProperty.SHININESS;
+            case __GO_COLOR_BOUNDS__ :
+                return SurfaceProperty.COLORBOUNDS;
+            case __GO_OUTSIDE_COLOR__ :
+                return SurfaceProperty.OUTSIDECOLOR;
+            case __GO_COLORMAP_RANGE__ :
+                return SurfaceProperty.CMAPRANGE;
             default :
                 return super.getPropertyFromName(propertyName);
         }
@@ -104,6 +123,12 @@ public abstract class Surface extends ClippableContouredObject {
                     return getColorFlag();
                 case HIDDENCOLOR:
                     return getHiddenColor();
+                case COLORBOUNDS:
+                    return getColorBounds();
+                case OUTSIDECOLOR:
+                    return getOutsideColor();
+                case CMAPRANGE:
+                    return getCMapRange(); 
             }
         } else if (property instanceof Material.MaterialProperty) {
             Material.MaterialProperty mp = (Material.MaterialProperty)property;
@@ -148,6 +173,15 @@ public abstract class Surface extends ClippableContouredObject {
                     break;
                 case HIDDENCOLOR:
                     setHiddenColor((Integer) value);
+                    break;
+                case COLORBOUNDS:
+                    setColorBounds((Double[]) value);
+                    break;
+                case OUTSIDECOLOR:
+                    setOutsideColor((int[]) value);
+                    break;
+                case CMAPRANGE:
+                    setCMapRange((int[]) value);
                     break;
             }
         } else if (property instanceof Material.MaterialProperty) {
@@ -232,6 +266,66 @@ public abstract class Surface extends ClippableContouredObject {
      */
     public UpdateStatus setHiddenColor(Integer hiddenColor) {
         this.hiddenColor = hiddenColor;
+        return UpdateStatus.Success;
+    }
+
+    /**
+     * @return the cMapRange
+     */
+    public Integer[] getCMapRange() {
+        Integer[] retCMapRange = new Integer[2];
+        retCMapRange[0] = cMapRange[0];
+        retCMapRange[1] = cMapRange[1];
+
+        return retCMapRange;
+    }
+
+    /**
+     * @param cMapRange the cMapRange to set
+     */
+    public UpdateStatus setCMapRange(Integer[] cMapRange) {
+        this.cMapRange[0] = cMapRange[0];
+        this.cMapRange[1] = cMapRange[1];
+        return UpdateStatus.Success;
+    }
+
+    /**
+     * @return the outsideColor
+     */
+    public Integer[] getOutsideColor() {
+        Integer[] retOutsideColor = new Integer[2];
+        retOutsideColor[0] = outsideColor[0];
+        retOutsideColor[1] = outsideColor[1];
+
+        return retOutsideColor;
+    }
+
+    /**
+     * @param outsideColor the outsideColor to set
+     */
+    public UpdateStatus setOutsideColor(Integer[] outsideColor) {
+        this.outsideColor[0] = outsideColor[0];
+        this.outsideColor[1] = outsideColor[1];
+        return UpdateStatus.Success;
+    }
+
+    /**
+     * @return the zBounds
+     */
+    public Double[] getColorBounds() {
+        Double[] retColorBounds = new Double[2];
+        retColorBounds[0] = colorBounds[0];
+        retColorBounds[1] = colorBounds[1];
+
+        return retColorBounds;
+    }
+
+    /**
+     * @param bounds the colorBounds to set
+     */
+    public UpdateStatus setColorBounds(Double[] colorBounds) {
+        this.colorBounds[0] = colorBounds[0];
+        this.colorBounds[1] = colorBounds[1];
         return UpdateStatus.Success;
     }
 
