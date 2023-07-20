@@ -152,6 +152,8 @@ int StaticRunner::launch()
         if (ConfigVariable::getPauseLevel())
         {
             ConfigVariable::DecreasePauseLevel();
+            // Release the console to display the prompt after aborting a callback execution
+            sendExecDoneSignal();
             // set back the runner wich have been overwritten in StaticRunner::getRunner
             m_CurrentRunner.store(pRunSave);
             throw ia;
@@ -201,8 +203,15 @@ int StaticRunner::launch()
     // reset error state when new prompt occurs
     ConfigVariable::resetError();
 
-    // send the good signal about the end of execution
-    sendExecDoneSignal();
+    // resume will make the execution continue
+    // even if resume is a console command, it must not release the prompt
+    // because the prompt will be released at the end of the original console command
+    // but it must be released if the original command is a callback.
+    if(!pRunSave || pRunSave->getCommandOrigin() != CONSOLE)
+    {
+        // send the good signal about the end of execution
+        sendExecDoneSignal();
+    }
 
     // send information about execution done to debuggers
     manager->sendExecutionReleased();
