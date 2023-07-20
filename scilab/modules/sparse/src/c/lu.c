@@ -111,7 +111,7 @@ void C2F(lufact1)(double *val, int *lln, int *col, int *n, int *nel,
 
         if (pelement == 0)
         {
-            removeluptr(fmat);
+            removeluptr((size_t)fmat);
             spDestroy(fmat);
             *ierr = 2;
             return;
@@ -131,12 +131,12 @@ void C2F(lufact1)(double *val, int *lln, int *col, int *n, int *nel,
     {
         case spZERO_DIAG:
             Scierror(999, _("%s: A zero was encountered on the diagonal the matrix.\n"), "zero_diag");
-            removeluptr(fmat);
+            removeluptr((size_t)fmat);
             spDestroy(fmat);
             return;
         case spNO_MEMORY:
             *ierr = 3;
-            removeluptr(fmat);
+            removeluptr((size_t)fmat);
             spDestroy(fmat);
             return;
         case spSINGULAR:
