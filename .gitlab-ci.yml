@@ -59,7 +59,7 @@ workflow:
           - .gitlab-ci/linux-images/Dockerfile*
       variables:
         GIT_STRATEGY: "fetch"
-        GIT_CLEAN_FLAGS: "none"
+        GIT_CLEAN_FLAGS: "-fxd scilab"
         BRANCH: "${CI_COMMIT_BRANCH}"
         SCI_VERSION_STRING: "${CI_PROJECT_PATH_SLUG}-${CI_COMMIT_SHORT_SHA}"
         DOCKER_LINUX_BUILDER: "${CI_REGISTRY_IMAGE}/linux-builder-${BRANCH}"
@@ -68,14 +68,14 @@ workflow:
     - if: $CI_PROJECT_PATH_SLUG !~ /scilab-scilab/
       variables:
         GIT_STRATEGY: "fetch"
-        GIT_CLEAN_FLAGS: "none"
+        GIT_CLEAN_FLAGS: "-fxd scilab"
         SCI_VERSION_STRING: "${CI_PROJECT_PATH_SLUG}-${CI_COMMIT_SHORT_SHA}"
     # run on merge request and set specific docker image tag
     - if: $CI_PIPELINE_SOURCE == "merge_request_event"
       changes: *DOCKER_CHANGES
       variables:
         GIT_STRATEGY: "fetch"
-        GIT_CLEAN_FLAGS: "none"
+        GIT_CLEAN_FLAGS: "-fxd scilab"
         BRANCH: "${CI_MERGE_REQUEST_TARGET_BRANCH_NAME}"
         SCI_VERSION_STRING: "scilab-mr${CI_MERGE_REQUEST_IID}-${CI_COMMIT_SHORT_SHA}"
         DOCKER_LINUX_BUILDER: "${CI_REGISTRY_IMAGE}/linux-builder-${BRANCH}"
@@ -86,7 +86,7 @@ workflow:
     - if: $CI_PIPELINE_SOURCE == "merge_request_event"
       variables:
         GIT_STRATEGY: "fetch"
-        GIT_CLEAN_FLAGS: "none"
+        GIT_CLEAN_FLAGS: "-fxd scilab"
         BRANCH: "${CI_MERGE_REQUEST_TARGET_BRANCH_NAME}"
         SCI_VERSION_STRING: "scilab-mr${CI_MERGE_REQUEST_IID}-${CI_COMMIT_SHORT_SHA}"
         DOCKER_LINUX_BUILDER: "${CI_REGISTRY_IMAGE}/linux-builder-${BRANCH}"
