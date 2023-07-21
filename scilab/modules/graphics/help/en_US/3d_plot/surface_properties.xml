@@ -430,6 +430,30 @@
                 </listitem>
             </varlistentry>
             <varlistentry>
+                <term>cdata_bounds: </term>
+                <listitem>
+                    <para>
+                        This vector of size 2, <literal>[cmin,cmax]</literal>, gives the <literal>data.color</literal> interval of values mapped to the current
+                        colormap or to an eventual subset of this one defined by the <term>color_range</term> property.
+                        Values of <literal>data.color</literal> outside <literal>[cmin,cmax]</literal> are mapped respectively to the first or the last element of the colormap.
+                        By default the <literal>cdata_bounds</literal> property is <literal>[0,0]</literal> which means
+                        that <literal>cmin</literal> and <literal>cmax</literal> are automatically set to the minimum and maximum of <literal>data.color</literal>.
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term>color_range: </term>
+                <listitem>
+                    <para>
+                        This vector of size 2, <literal>[rmin, rmax]</literal>, allows to use a subset
+                        colormap for display. <literal>rmin</literal> and <literal>rmax</literal> stand for
+                        colormap indices. If they are both greater than 1, then the actual colormap used to
+                        display the fac3d entity is <literal>colormap(rmin:rmax,:)</literal> where <literal>colormap</literal>
+                        is the colormap of the parent figure. By default, the <literal>color_range</literal> property value is <literal>[0,0]</literal>.
+                        In that case, the whole colormap is used.
+                    </para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
                 <term>hiddencolor: </term>
                 <listitem>
                     <para>

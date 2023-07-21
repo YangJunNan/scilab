@@ -204,7 +204,6 @@ void Fac3DDecomposer::fillTextureCoordinates(int id, float* buffer, int bufferLe
         /*
          * color is proportional to data.z
         */
-        printf("HERE colorFlag==1\n");
         fillNormalizedZColorsTextureCoordinates(buffer, bufferLength, colormap, colorsNumber, z, numGons, numVerticesPerGon, cDataBounds);
     }
     else if (colorFlag > 1 && numColors == 0)
@@ -229,7 +228,6 @@ void Fac3DDecomposer::fillTextureCoordinates(int id, float* buffer, int bufferLe
        /*
         * color is proportional to data.color
        */
-        printf("HERE colorFlag!==1\n");
         fillDataColorsTextureCoordinates(buffer, bufferLength, colormap, colorsNumber,
                                          cData, colorFlag, perVertex, dataMapping, numGons, numVerticesPerGon, cDataBounds);
     }
@@ -250,8 +248,6 @@ void Fac3DDecomposer::fillNormalizedZColorsTextureCoordinates(float* buffer, int
     int i = 0;
     int j = 0;
     int bufferOffset = 0;
-    
-    printf("HERE in fillNormalizedZColorsTextureCoordinates cDataBounds=[%g %g]\n",cDataBounds[0],cDataBounds[1]);
     
 
     if ((cDataBounds[0] != 0.0 || cDataBounds[1] != 0.0) && (DecompositionUtils::isValid(cDataBounds[0]) && DecompositionUtils::isValid(cDataBounds[1])) && (cDataBounds[0] != cDataBounds[1]))
@@ -340,12 +336,10 @@ void Fac3DDecomposer::fillDataColorsTextureCoordinates(float* buffer, int buffer
     /* 0: color data is mapped/scaled to colormap subset (cdata_mapping == "scaled") */
     if (cDataMapping == 0)
     {
-        printf("HERE in fillDataColorsTextureCoordinates cDataBounds=[%g %g]\n",cDataBounds[0],cDataBounds[1]);
         if ((cDataBounds[0] != 0.0 || cDataBounds[1] != 0.0) && (DecompositionUtils::isValid(cDataBounds[0]) && DecompositionUtils::isValid(cDataBounds[1])) && (cDataBounds[0] != cDataBounds[1]))
         {
             cDataMin = cDataBounds[0];
             cDataRange = cDataBounds[1]-cDataBounds[0];
-            printf("HERE in fillDataColorsTextureCoordinates\n");
         }
         else
         {
