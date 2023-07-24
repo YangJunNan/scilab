@@ -801,7 +801,7 @@ function status = test_single(_module, _testPath, _testName)
         head = [ head ;
         "prot=funcprot(0);";
         "function []=messagebox(msg, msg_title, info, buttons, isModal), disp(''messagebox: '' + msg);endfunction";
-        "funcprot(prot);";
+        "prot=funcprot(prot);"; // Assign result to prot to avoid to create 'ans'
         "clear prot";
         ];
     end
@@ -815,7 +815,7 @@ function status = test_single(_module, _testPath, _testName)
         head = [ head;
         "prot=funcprot(0);";
         "loadXcosLibs(); loadScicos();";
-        "funcprot(prot);";
+        "prot=funcprot(prot);"; // Assign result to prot to avoid to create 'ans'
         "clear prot";
         ];
     end
@@ -825,7 +825,7 @@ function status = test_single(_module, _testPath, _testName)
         head = [ head ;
         "prot=funcprot(0);";
         assert_generror_def;
-        "funcprot(prot);";
+        "prot=funcprot(prot);"; // Assign result to prot to avoid to create 'ans'
         "clear prot";
         ];
     end
