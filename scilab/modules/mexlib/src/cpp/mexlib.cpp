@@ -889,14 +889,14 @@ int mxSetDimensions(mxArray *array_ptr, const int *dims, int ndim)
     }
     else if (mxIsSparse(array_ptr))
     {
-        int temp_dim = 0;
-
-        for (int i = 0; i < ndim; i++)
+        if (ndim == 1)
         {
-            temp_dim += dims[i];
+            ((types::Sparse*)array_ptr->ptr)->resize(dims[0], 1);
         }
-
-        ((types::Sparse *)array_ptr->ptr)->resize(temp_dim, 1);
+        else
+        {
+            ((types::Sparse*)array_ptr->ptr)->resize(dims[0], dims[1]);
+        }
         ((types::Sparse *)array_ptr->ptr)->reshape((int *)dims, ndim);
     }
     else if (mxIsInt8(array_ptr))
@@ -1827,11 +1827,11 @@ void mexErrMsgTxt(const char *error_msg)
     throw ast::InternalError(error_msg);
 }
 
-void mexWarnMsgTxt(const char *error_msg)
+void mexWarnMsgTxt(const char *warning_msg)
 {
-    scilabError(_("Warning: "));
-    scilabError(error_msg);
-    scilabError("\n\n");
+    scilabWrite(_("Warning: "));
+    scilabWrite(warning_msg);
+    scilabWrite("\n\n");
 }
 
 int mexIsLocked(void)
