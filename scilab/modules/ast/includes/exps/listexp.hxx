@@ -16,6 +16,7 @@
 #ifndef AST_LISTEXP_HXX
 #define AST_LISTEXP_HXX
 
+#include <limits> // std::numeric_limits
 #include "exp.hxx"
 
 namespace ast
