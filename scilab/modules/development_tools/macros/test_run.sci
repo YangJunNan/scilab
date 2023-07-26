@@ -970,6 +970,11 @@ function status = test_single(_module, _testPath, _testName)
                 txt(toRemove) = [];
             end
 
+            if ~isempty(txt) then
+                // Message displayed at startup because we force the JVM to use Scilab custom class loader
+                toRemove = grep(txt, "OpenJDK 64-Bit Server VM warning: Archived non-system classes are disabled because the java.system.class.loader property is specified");
+                txt(toRemove) = [];
+            end
 
             if getos() == "Darwin" then
                 if ~isempty(txt) then

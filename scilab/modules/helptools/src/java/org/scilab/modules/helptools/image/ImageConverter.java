@@ -30,7 +30,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.TreeMap;
 
-import javax.activation.MimetypesFileTypeMap;
+import jakarta.activation.MimetypesFileTypeMap;
 import javax.imageio.ImageIO;
 import javax.swing.Icon;
 

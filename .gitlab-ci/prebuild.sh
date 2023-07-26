@@ -56,7 +56,7 @@ export PATH="/usr/local/bin:$INSTALLUSRDIR/bin:$PATH"
 ##### DEPENDENCIES VERSION #####
 ################################
 JDK_VERSION=17.0.7+7
-JRE_VERSION=8u372-b07
+JRE_VERSION=17.0.7_7
 ANT_VERSION=1.10.5
 OPENBLAS_VERSION=0.3.7
 ARPACK_VERSION=3.1.5
@@ -118,7 +118,8 @@ make_versions() {
 download_dependencies() {
     cd "$DOWNLOADDIR" || exit 1
 
-    [ ! -f jre-$JRE_VERSION.tar.gz ] && curl -L -o jre-$JRE_VERSION.tar.gz "https://oos.eu-west-2.outscale.com/scilab-releases-dev/prerequirements-sources/OpenJDK8U-jdk_x64_linux_hotspot_$(echo ${JRE_VERSION} |sed 's/-//g').tar.gz"
+
+    [ ! -f jre-$JRE_VERSION.tar.gz ] && curl -L -o jre-$JRE_VERSION.tar.gz "https://oos.eu-west-2.outscale.com/scilab-releases-dev/prerequirements-sources/OpenJDK17U-jre_x64_linux_hotspot_$(echo ${JRE_VERSION} |sed 's/-//g').tar.gz"
     [ ! -f jdk-$JDK_VERSION.tar.gz ] && curl -L -o jdk-$JDK_VERSION.tar.gz "https://oos.eu-west-2.outscale.com/scilab-releases-dev/prerequirements-sources/ibm-semeru-open-jdk_x64_linux_$(echo ${JDK_VERSION} |sed 's/+/_/g')_openj9-0.38.0.tar.gz"
 
     [ ! -f OpenBLAS-$OPENBLAS_VERSION.tar.gz ] && curl -LO https://oos.eu-west-2.outscale.com/scilab-releases-dev/prerequirements-sources/OpenBLAS-$OPENBLAS_VERSION.tar.gz
@@ -151,7 +152,7 @@ download_dependencies() {
     [ ! -f fop-$FOP_VERSION-bin.zip ] && curl -LO https://oos.eu-west-2.outscale.com/scilab-releases-dev/prerequirements-sources/fop-$FOP_VERSION-bin.zip
 
     # This archive contains .jar that have been copied from Scilab prerequirements thirdparty
-    [ ! -f thirdparty-jar.zip ] && curl -LO https://oos.eu-west-2.outscale.com/scilab-releases-dev/prerequirements-sources/thirdparty-jar.zip
+    curl -LO --time-cond thirdparty-jar.zip https://oos.eu-west-2.outscale.com/scilab-releases-dev/prerequirements-sources/thirdparty-jar.zip
 
     true;
 }
@@ -414,16 +415,16 @@ build_openblas() {
 
 build_openjdk() {
     [ -e "$BUILDDIR/java" ] && rm -fr "$BUILDDIR/java"
-    [ -d "$INSTALLROOTDIR/java/jdk$JRE_VERSION-jre" ] && rm -fr "$INSTALLROOTDIR/java/jdk$JRE_VERSION-jre"
+    [ -d "$INSTALLROOTDIR/java/jdk-$JDK_VERSION-jre" ] && rm -fr "$INSTALLROOTDIR/java/jdk-$JDK_VERSION-jre"
     [ -e "$INSTALLROOTDIR/java/jre" ] && rm -fr "$INSTALLROOTDIR/java/jre"
 
     mkdir -p "$BUILDDIR/java/"
     cd "$BUILDDIR/java/" || exit 1
-    tar -xzf "$DOWNLOADDIR/jdk-$JDK_VERSION.tar.gz"
+    tar -xzf "$DOWNLOADDIR/jdk-$JDK_VERSION.tar.gz" # Needed to build other dependencies such as JoGL
     tar -xzf "$DOWNLOADDIR/jre-$JRE_VERSION.tar.gz"
     
-    cp -a "jdk$JRE_VERSION/jre" "$INSTALLROOTDIR/java/jdk$JRE_VERSION-jre"
-    ln -s "jdk$JRE_VERSION-jre" "$INSTALLROOTDIR/java/jre"
+    cp -a "jdk-$JDK_VERSION-jre" "$INSTALLROOTDIR/java/jdk-$JRE_VERSION-jre"
+    ln -s "jdk-$JRE_VERSION-jre" "$INSTALLROOTDIR/java/jre"
 }
 
 build_ant() {

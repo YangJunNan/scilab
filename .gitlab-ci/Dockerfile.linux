@@ -137,7 +137,7 @@ RUN apt-get update && apt-get install -y \
         curl rsync git \
         make binutils libc-dev \
         gettext ccache \
-        openjdk-8-jdk \
+        openjdk-17-jdk \
         libgl1-mesa-dev \
         dumb-init \
     && apt-get clean
