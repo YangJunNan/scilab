@@ -23,7 +23,7 @@ INSTALLROOTDIR=$(pwd)/install
 INSTALLUSRDIR=$(pwd)/install/usr
 DOWNLOADDIR=$(pwd)/downloads
 BUILDDIR=$(pwd)/builds
-LOGDIR=$(pwd)/log
+LOGDIR=$(pwd)/$SCI_VERSION_STRING
 
 echo
 echo "INSTALLROOTDIR = $INSTALLROOTDIR"
@@ -386,6 +386,7 @@ make_archive() {
     export XZ_OPT="-9T0"
     tar -cJf "prerequirements-${SCI_VERSION_STRING}.bin.${ARCH}.tar.xz" -C "$INSTALLROOTDIR" \
         -- java lib modules thirdparty usr version.txt
+    cp -a "prerequirements-${SCI_VERSION_STRING}.bin.${ARCH}.tar.xz" "prerequirements-scilab-branch-${BRANCH}.bin.${ARCH}.tar.xz"
 }
 
 ####################

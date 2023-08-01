@@ -24,11 +24,19 @@ LOG_PATH=$SCI_VERSION_STRING
 
 # checkout pre-requirements
 echo -e "\e[0Ksection_start:$(date +%s):prerequirements[collapsed=true]\r\e[0KGetting prerequirements"
-# prebuild or download
 if [ -f "prerequirements-${SCI_VERSION_STRING}.bin.${ARCH}.tar.xz" ]; then
+	# custom build for this commit or tag
 	mv -f "prerequirements-${SCI_VERSION_STRING}.bin.${ARCH}.tar.xz" "prereq.tar.xz"
+elif [ -f "prerequirements-scilab-branch-${BRANCH}.bin.${ARCH}.tar.xz" ]; then
+	# custom build for this branch
+	cp -a "prerequirements-scilab-branch-${BRANCH}.bin.${ARCH}.tar.xz" "prereq.tar.xz"
 else
+	# download prebuild for this branch
 	curl -k -o "prereq.tar.xz" "https://oos.eu-west-2.outscale.com/scilab-releases-dev/prerequirements/prerequirements-scilab-branch-${BRANCH}.bin.${ARCH}-java17.tar.xz"
+	if ! xz -t "prereq.tar.xz"; then
+		# fallback to the default branch
+		curl -k -o "prereq.tar.xz" "https://oos.eu-west-2.outscale.com/scilab-releases-dev/prerequirements/prerequirements-scilab-branch-${CI_DEFAULT_BRANCH}.bin.${ARCH}-java17.tar.xz"
+	fi
 fi
 # cleanup and extract
 git clean -fxd scilab/java scilab/lib scilab/thirdparty scilab/usr scilab/modules/tclsci/tcl
@@ -48,6 +56,8 @@ sed -i \
 echo SCIVERSION="${SCI_VERSION_STRING}" >scilab/Version.incl
 
 # predefined env
+CCACHE_DIR="${CI_PROJECT_DIR}/ccache"
+export CCACHE_DIR
 LD_LIBRARY_PATH="$LD_LIBRARY_PATH:$(pwd)/scilab/usr/lib/"
 export LD_LIBRARY_PATH
 
