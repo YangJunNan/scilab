@@ -78,6 +78,9 @@ workflow:
         DOCKER_LINUX_PREBUILD: "${CI_REGISTRY_IMAGE}/linux-prebuild-${BRANCH}"
         DOCKER_WINDOWS_BUILDER: "${CI_REGISTRY_IMAGE}/windows-builder-${BRANCH}"
         DOCKER_TAG: "mr${CI_MERGE_REQUEST_IID}"
+    # update docker images after a MR merge
+    - if: $CI_PIPELINE_SOURCE == "push"
+      changes: *DOCKER_CHANGES
     # run on merge request
     - if: $CI_PIPELINE_SOURCE == "merge_request_event"
       variables:
@@ -95,7 +98,8 @@ workflow:
         DOCKER_LINUX_PREBUILD: "${CI_REGISTRY_IMAGE}/linux-prebuild-${BRANCH}"
         DOCKER_WINDOWS_BUILDER: "${CI_REGISTRY_IMAGE}/windows-builder-${BRANCH}"
     # Run on other cases (web, api, etc..), default variables may be modified
-    - when: always
+    - if: $CI_PIPELINE_SOURCE != "push"
+      when: always
 
 default:
   artifacts:
