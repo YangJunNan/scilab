@@ -199,7 +199,8 @@ am__objects_3 = sci_gateway/cpp/libsciwebtools_la-sci_http_get.lo \
 	sci_gateway/cpp/libsciwebtools_la-sci_http_upload.lo \
 	sci_gateway/cpp/libsciwebtools_la-sci_toJSON.lo \
 	sci_gateway/cpp/libsciwebtools_la-sci_fromJSON.lo \
-	sci_gateway/cpp/libsciwebtools_la-checkCommonOpt.lo
+	sci_gateway/cpp/libsciwebtools_la-checkCommonOpt.lo \
+	sci_gateway/cpp/libsciwebtools_la-setPreferences.lo
 am__objects_4 = sci_gateway/c/libsciwebtools_la-sci_url_split.lo
 am_libsciwebtools_la_OBJECTS = $(am__objects_3) $(am__objects_4)
 libsciwebtools_la_OBJECTS = $(am_libsciwebtools_la_OBJECTS)
@@ -230,6 +231,7 @@ am__depfiles_remade =  \
 	sci_gateway/cpp/$(DEPDIR)/libsciwebtools_la-sci_http_put_post.Plo \
 	sci_gateway/cpp/$(DEPDIR)/libsciwebtools_la-sci_http_upload.Plo \
 	sci_gateway/cpp/$(DEPDIR)/libsciwebtools_la-sci_toJSON.Plo \
+	sci_gateway/cpp/$(DEPDIR)/libsciwebtools_la-setPreferences.Plo \
 	src/c/$(DEPDIR)/libsciwebtools_algo_la-DllmainWebtools.Plo \
 	src/c/$(DEPDIR)/libsciwebtools_algo_la-jsmn.Plo \
 	src/cpp/$(DEPDIR)/libsciwebtools_algo_la-json.Plo \
@@ -634,7 +636,8 @@ GATEWAY_CPP_SOURCES = \
     sci_gateway/cpp/sci_http_upload.cpp \
     sci_gateway/cpp/sci_toJSON.cpp \
     sci_gateway/cpp/sci_fromJSON.cpp \
-    sci_gateway/cpp/checkCommonOpt.cpp
+    sci_gateway/cpp/checkCommonOpt.cpp \
+    sci_gateway/cpp/setPreferences.cpp
 
 libsciwebtools_la_CPPFLAGS = \
     -I$(srcdir)/includes/ \
@@ -901,6 +904,9 @@ sci_gateway/cpp/libsciwebtools_la-sci_fromJSON.lo:  \
 sci_gateway/cpp/libsciwebtools_la-checkCommonOpt.lo:  \
 	sci_gateway/cpp/$(am__dirstamp) \
 	sci_gateway/cpp/$(DEPDIR)/$(am__dirstamp)
+sci_gateway/cpp/libsciwebtools_la-setPreferences.lo:  \
+	sci_gateway/cpp/$(am__dirstamp) \
+	sci_gateway/cpp/$(DEPDIR)/$(am__dirstamp)
 sci_gateway/c/$(am__dirstamp):
 	@$(MKDIR_P) sci_gateway/c
 	@: > sci_gateway/c/$(am__dirstamp)
@@ -939,6 +945,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@sci_gateway/cpp/$(DEPDIR)/libsciwebtools_la-sci_http_put_post.Plo@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@sci_gateway/cpp/$(DEPDIR)/libsciwebtools_la-sci_http_upload.Plo@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@sci_gateway/cpp/$(DEPDIR)/libsciwebtools_la-sci_toJSON.Plo@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@sci_gateway/cpp/$(DEPDIR)/libsciwebtools_la-setPreferences.Plo@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@src/c/$(DEPDIR)/libsciwebtools_algo_la-DllmainWebtools.Plo@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@src/c/$(DEPDIR)/libsciwebtools_algo_la-jsmn.Plo@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@src/cpp/$(DEPDIR)/libsciwebtools_algo_la-json.Plo@am__quote@ # am--include-marker
@@ -1110,6 +1117,13 @@ sci_gateway/cpp/libsciwebtools_la-checkCommonOpt.lo: sci_gateway/cpp/checkCommon
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='sci_gateway/cpp/checkCommonOpt.cpp' object='sci_gateway/cpp/libsciwebtools_la-checkCommonOpt.lo' libtool=yes @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libsciwebtools_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o sci_gateway/cpp/libsciwebtools_la-checkCommonOpt.lo `test -f 'sci_gateway/cpp/checkCommonOpt.cpp' || echo '$(srcdir)/'`sci_gateway/cpp/checkCommonOpt.cpp
+
+sci_gateway/cpp/libsciwebtools_la-setPreferences.lo: sci_gateway/cpp/setPreferences.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libsciwebtools_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT sci_gateway/cpp/libsciwebtools_la-setPreferences.lo -MD -MP -MF sci_gateway/cpp/$(DEPDIR)/libsciwebtools_la-setPreferences.Tpo -c -o sci_gateway/cpp/libsciwebtools_la-setPreferences.lo `test -f 'sci_gateway/cpp/setPreferences.cpp' || echo '$(srcdir)/'`sci_gateway/cpp/setPreferences.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) sci_gateway/cpp/$(DEPDIR)/libsciwebtools_la-setPreferences.Tpo sci_gateway/cpp/$(DEPDIR)/libsciwebtools_la-setPreferences.Plo
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='sci_gateway/cpp/setPreferences.cpp' object='sci_gateway/cpp/libsciwebtools_la-setPreferences.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libsciwebtools_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o sci_gateway/cpp/libsciwebtools_la-setPreferences.lo `test -f 'sci_gateway/cpp/setPreferences.cpp' || echo '$(srcdir)/'`sci_gateway/cpp/setPreferences.cpp
 
 mostlyclean-libtool:
 	-rm -f *.lo
@@ -1331,6 +1345,7 @@ distclean: distclean-am
 	-rm -f sci_gateway/cpp/$(DEPDIR)/libsciwebtools_la-sci_http_put_post.Plo
 	-rm -f sci_gateway/cpp/$(DEPDIR)/libsciwebtools_la-sci_http_upload.Plo
 	-rm -f sci_gateway/cpp/$(DEPDIR)/libsciwebtools_la-sci_toJSON.Plo
+	-rm -f sci_gateway/cpp/$(DEPDIR)/libsciwebtools_la-setPreferences.Plo
 	-rm -f src/c/$(DEPDIR)/libsciwebtools_algo_la-DllmainWebtools.Plo
 	-rm -f src/c/$(DEPDIR)/libsciwebtools_algo_la-jsmn.Plo
 	-rm -f src/cpp/$(DEPDIR)/libsciwebtools_algo_la-json.Plo
@@ -1394,6 +1409,7 @@ maintainer-clean: maintainer-clean-am
 	-rm -f sci_gateway/cpp/$(DEPDIR)/libsciwebtools_la-sci_http_put_post.Plo
 	-rm -f sci_gateway/cpp/$(DEPDIR)/libsciwebtools_la-sci_http_upload.Plo
 	-rm -f sci_gateway/cpp/$(DEPDIR)/libsciwebtools_la-sci_toJSON.Plo
+	-rm -f sci_gateway/cpp/$(DEPDIR)/libsciwebtools_la-setPreferences.Plo
 	-rm -f src/c/$(DEPDIR)/libsciwebtools_algo_la-DllmainWebtools.Plo
 	-rm -f src/c/$(DEPDIR)/libsciwebtools_algo_la-jsmn.Plo
 	-rm -f src/cpp/$(DEPDIR)/libsciwebtools_algo_la-json.Plo

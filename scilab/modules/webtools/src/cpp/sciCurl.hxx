@@ -28,26 +28,51 @@ extern "C"
 class WEBTOOLS_IMPEXP SciCurl
 {
 public:
-    static SciCurl* getInstance(void);
-    static void destroyInstance(void);
-
-    void getResultAsObject(CURL* curl);
-    void getResultAsFile(CURL* curl, FILE* fd);
-    int setProxy(CURL* curl);
-    void setCommonHeaders(CURL* curl);
-
-    types::InternalType* getResult(void);
-    void clear(void);
-
-    static int write_result(char* pcInput, size_t size, size_t nmemb, void* output);
-
-private:
     SciCurl();
     ~SciCurl();
 
-    static SciCurl* me;
-    static std::string data;
-    static bool useFile;
+    bool init();
+
+    void setURL(const char* url);
+    void setMethod(const char* method);
+    void setData(const char* data);
+    bool setProxy();
+    bool setCookies();
+    void setCustomCookies(const char* pcCookies);
+
+    void ssl(bool verifyPeer);
+    void follow(int follow);
+    void auth(const char* auth);
+    void verbose(bool verbose, const char* fname);
+
+    void perform(FILE* fd = nullptr);
+    bool hasFailed();
+    const char* getError();
+    long getResponseCode();
+
+    void addFileToForm(const char* name, const char* file);
+    void addContentToForm(const char* name, const char* data);
+    void setForm();
+
+    void addHTTPHeader(const char* pcHeader);
+    void setHTTPHeader();
+
+    types::InternalType* getResult(void);
+    FILE* getFile();
+    void appendData(std::string& part);
+
+    static int write_result(char* pcInput, size_t size, size_t nmemb, void* output);
+    static int debug_callback(CURL *handle, curl_infotype type, char *data, size_t size, void *clientp);
+
+private:
+    CURL* _curl;
+    CURLcode _status;
+
+    std::string _data;
+    FILE* _fd;
+    struct curl_slist* _headers;
+    struct curl_httppost* _formpost;
+    struct curl_httppost* _lastptr;
 };
 
 #endif /* !__SCICURL_HXX__ */

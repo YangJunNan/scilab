@@ -42,13 +42,13 @@ checkFile(filePath, fullfile(destdir, "index.html"), 1000);
 filePath = http_get("https://www.scilab.org/", fullfile(destdir, "index.html"));
 checkFile(filePath, fullfile(destdir, "index.html"), 1000);
 
-filePath = http_get("https://www.scilab.org/product/man/numderivative.html", fullfile(destdir, "numderivative.html"));
+filePath = http_get("https://help.scilab.org/numderivative.html", fullfile(destdir, "numderivative.html"));
 checkFile(filePath, fullfile(destdir, "numderivative.html"), 1000);
 
 filePath = http_get("www.scilab.org", fullfile(destdir, "index.html"), follow=%t);
 checkFile(filePath, fullfile(destdir, "index.html"), 1000);
 
-filePath = http_get("www.scilab.org/product/man/numderivative.html", fullfile(destdir, "numderivative.html"), follow=%t);
+filePath = http_get("https://help.scilab.org/numderivative.html", fullfile(destdir, "numderivative.html"), follow=%t);
 checkFile(filePath, fullfile(destdir, "numderivative.html"), 1000);
 
 filePath = http_get("ftp://ftp.free.fr/pub/Distributions_Linux/debian/README", fullfile(destdir, "README"));

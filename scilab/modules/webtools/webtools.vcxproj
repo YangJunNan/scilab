@@ -206,6 +206,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="sci_gateway\cpp\checkCommonOpt.cpp" />
+    <ClCompile Include="sci_gateway\cpp\setPreferences.cpp" />
     <ClCompile Include="sci_gateway\cpp\sci_http_delete.cpp" />
     <ClCompile Include="sci_gateway\cpp\sci_fromJSON.cpp" />
     <ClCompile Include="sci_gateway\cpp\sci_http_get.cpp" />

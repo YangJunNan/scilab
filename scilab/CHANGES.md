@@ -29,6 +29,8 @@ In summary, the main new features and additions are:
 
 - __add your features before and keep this line__
 * Use `curl` as default in `atomsDownload()` for all OS to handle local file repositories.
+* Add headers as optional input argument in `http_*` functions.
+* Add cookie management in webtools module.
 * <TODO>
 
 Obsolete functions or features

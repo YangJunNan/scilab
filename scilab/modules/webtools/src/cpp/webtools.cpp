@@ -12,8 +12,7 @@
 *
 */
 /*--------------------------------------------------------------------------*/
-#include "sciCurl.hxx"
-
+#include <curl/curl.h>
 extern "C"
 {
     #include "webtools.h"
@@ -22,12 +21,13 @@ extern "C"
 // functions call at library loading
 int Initialize_Webtools(void)
 {
+    curl_global_init(CURL_GLOBAL_ALL);
     return 0;
 }
 
 // functions call at library closing
 int Finalize_Webtools(void)
 {
-    SciCurl::destroyInstance();
+    curl_global_cleanup();
     return 0;
 }

@@ -81,6 +81,24 @@
                     </para>
                     <variablelist>
                         <varlistentry>
+                            <term>headers</term>
+                            <listitem>
+                                <para>
+                                    Strings defined as <literal>"name: value"</literal>.
+                                </para>
+                            </listitem>
+                        </varlistentry>
+                        <varlistentry>
+                            <term>cookies</term>
+                            <listitem>
+                                <para>
+                                    Strings defined as <literal>"name=value"</literal>.
+                                    This parameter is used to send custom cookies regardless of cookie preferences.
+                                    Those cookies are sent in addition to stored cookies.
+                                </para>
+                            </listitem>
+                        </varlistentry>
+                        <varlistentry>
                             <term>cert</term>
                             <listitem>
                                 <para>
@@ -166,7 +184,38 @@
         <para>This function will perform an HTTP POST or PUT request to upload file(s).</para>
         <para>
             The proxy configuration is used if it's enabled in the Preferences under the rubric
-            "Internet".
+            "Web".
+        </para>
+        <para>
+            The cookies configuration under the "Web" rubric is used.
+            <variablelist>
+                <varlistentry>
+                    <term>Disabled</term>
+                    <listitem>
+                        <para>
+                            No cookies are used and store.
+                        </para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry>
+                    <term>Normal</term>
+                    <listitem>
+                        <para>
+                            Cookies are used and store. They are keeped between Scilab sessions.
+                            They are stored in <code>SCIHOME/cookies.txt</code>.
+                        </para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry>
+                    <term>Private</term>
+                    <listitem>
+                        <para>
+                             Cookies are used and store. They are deleted at Scilab close.
+                             They are stored in <code>TMPDIR/cookies.txt</code>.
+                        </para>
+                    </listitem>
+                </varlistentry>
+            </variablelist>
         </para>
     </refsection>
     <refsection>
