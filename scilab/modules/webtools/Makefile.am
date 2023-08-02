@@ -26,7 +26,8 @@ GATEWAY_CPP_SOURCES = \
     sci_gateway/cpp/sci_http_upload.cpp \
     sci_gateway/cpp/sci_toJSON.cpp \
     sci_gateway/cpp/sci_fromJSON.cpp \
-    sci_gateway/cpp/checkCommonOpt.cpp
+    sci_gateway/cpp/checkCommonOpt.cpp \
+    sci_gateway/cpp/setPreferences.cpp
 
 libsciwebtools_la_CPPFLAGS= \
     -I$(srcdir)/includes/ \

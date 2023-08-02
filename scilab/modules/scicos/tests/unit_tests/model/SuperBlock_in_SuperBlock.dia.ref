@@ -40,9 +40,11 @@ Xcos trace:   propertyUpdated( 3 , LINK , DESTINATION_PORT ) : NO_CHANGES
 Xcos trace:   objectReferenced( 3 , LINK ) : 1
 Xcos debug:   propertyUpdated( 3 , LINK , PARENT_DIAGRAM ) : SUCCESS
 Xcos trace:   propertyUpdated( 3 , LINK , PARENT_BLOCK ) : NO_CHANGES
+Xcos trace:   propertyUpdated( 3 , LINK , SOURCE_PORT ) : NO_CHANGES
+Xcos trace:   propertyUpdated( 3 , LINK , DESTINATION_PORT ) : NO_CHANGES
 Xcos debug:   propertyUpdated( 2 , DIAGRAM , CHILDREN ) : SUCCESS
 Xcos trace:   objectUnreferenced( 3 , LINK ) : 0
-Xcos debug:   propertyUpdated( 2 , DIAGRAM , VERSION_NUMBER ) : SUCCESS
+Xcos trace:   propertyUpdated( 2 , DIAGRAM , VERSION_NUMBER ) : NO_CHANGES
 Super1 = scicos_block(,..
 model=scicos_model(sim="super",in=[],in2=[],intyp=1,out=[],out2=[],outtyp=[],evtin=[],evtout=[],state=[],dstate=[],odstate=list(),..
 rpar=subDiag,..
@@ -80,6 +82,8 @@ Xcos trace:   propertyUpdated( 5 , LINK , DESTINATION_PORT ) : NO_CHANGES
 Xcos trace:   objectReferenced( 5 , LINK ) : 1
 Xcos trace:   propertyUpdated( 5 , LINK , PARENT_DIAGRAM ) : NO_CHANGES
 Xcos debug:   propertyUpdated( 5 , LINK , PARENT_BLOCK ) : SUCCESS
+Xcos trace:   propertyUpdated( 5 , LINK , SOURCE_PORT ) : NO_CHANGES
+Xcos trace:   propertyUpdated( 5 , LINK , DESTINATION_PORT ) : NO_CHANGES
 Xcos debug:   propertyUpdated( 4 , BLOCK , CHILDREN ) : SUCCESS
 Xcos trace:   objectUnreferenced( 5 , LINK ) : 0
 Xcos trace:   objectUnreferenced( 3 , LINK ) : 0
@@ -111,7 +115,7 @@ Xcos trace:   propertyUpdated( 6 , DIAGRAM , PROPERTIES ) : NO_CHANGES
 Xcos trace:   propertyUpdated( 6 , DIAGRAM , CONTEXT ) : NO_CHANGES
 Xcos trace:   objectUnreferenced( 6 , DIAGRAM ) : 0
 Xcos trace:   propertyUpdated( 6 , DIAGRAM , CHILDREN ) : NO_CHANGES
-Xcos debug:   propertyUpdated( 6 , DIAGRAM , VERSION_NUMBER ) : SUCCESS
+Xcos trace:   propertyUpdated( 6 , DIAGRAM , VERSION_NUMBER ) : NO_CHANGES
 diag.objs(1) = Super1;
 Xcos info:    objectCreated( 7 , BLOCK )
 Xcos info:    objectCloned( 4 , 7 , BLOCK )
@@ -238,7 +242,7 @@ evtout = []
 state = []
 dstate = []
 odstate = list()
-rpar = mlist(["diagram","props","objs","version","contrib"],tlist(["params","wpar","title","tol","tf","context","void1","options","void2","void3","doc"],[600,450,0,0,600,450],["Quat_Conj";""],[0.000001,0.000001,1.000D-10,100001,0,1,0],30,[],[],tlist(["scsopt","3D","Background","Link","ID","Cmap"],list(%t,33),[8,1],[1,5],list([4,1,10,1],[4,1,2,1]),[0.8,0.8,0.8]),[],[],list()),list(mlist(["Link","xx","yy","id","thick","ct","from","to"],[],[],"",[0,0],[1,1],[2,1,0],[3,1,1])),"",list())
+rpar = mlist(["diagram","props","objs","version","contrib"],tlist(["params","wpar","title","tol","tf","context","void1","options","void2","void3","doc"],[600,450,0,0,600,450],["Quat_Conj";""],[0.000001,0.000001,1.000D-10,100001,0,1,0],30,[],[],tlist(["scsopt","3D","Background","Link","ID","Cmap"],list(%t,33),[8,1],[1,5],list([4,1,10,1],[4,1,2,1]),[0.8,0.8,0.8]),[],[],list()),list(mlist(["Link","xx","yy","id","thick","ct","from","to"],[],[],"",[0,0],[1,1],[2,1,0],[3,1,1])),"scicos4.4",list())
 ipar = []
 opar = list()
 blocktype = "h"
@@ -596,9 +600,9 @@ clear
 Xcos debug:   propertyUpdated( 4 , BLOCK , CHILDREN ) : SUCCESS
 Xcos info:    objectDeleted( 5 , LINK )
 Xcos info:    objectDeleted( 4 , BLOCK )
-Xcos debug:   propertyUpdated( 9 , BLOCK , CHILDREN ) : SUCCESS
 Xcos debug:   propertyUpdated( 10 , BLOCK , CHILDREN ) : SUCCESS
 Xcos info:    objectDeleted( 11 , LINK )
+Xcos debug:   propertyUpdated( 9 , BLOCK , CHILDREN ) : SUCCESS
 Xcos info:    objectDeleted( 10 , BLOCK )
 Xcos info:    objectDeleted( 9 , BLOCK )
 Xcos debug:   propertyUpdated( 7 , BLOCK , PARENT_DIAGRAM ) : SUCCESS

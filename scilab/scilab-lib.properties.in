@@ -10,6 +10,12 @@ commons-logging.jar=@COMMONS_LOGGING@
 
 flexdock.jar=@FLEXDOCK@
 
+jakarta.activation-api.jar=@JAKARTA_ACTIVATION_API@
+
+javax.annotation-api.jar=@JAVAX_ANNOTATION@
+
+jaxb-api.jar=@JAXB_API@
+
 jogl2.jar=@JOGL2@
 
 jhall.jar=@JHALL@

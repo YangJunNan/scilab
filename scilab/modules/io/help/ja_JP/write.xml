@@ -50,7 +50,7 @@
                     </itemizedlist>
                     </para>
                     <para>この関数はUTFのファイル名をオープンすることができません.
-                        この場合は <link linkend="file">mopen</link> を使用してください.
+                        この場合は <link linkend="file">file</link> を使用してください.
                     </para>
                 </listitem>
             </varlistentry>

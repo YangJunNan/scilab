@@ -13,13 +13,11 @@
 */
 /*--------------------------------------------------------------------------*/
 
-#include <curl/curl.h>
 #include "webtools_gw.hxx"
 #include "function.hxx"
 #include "string.hxx"
 #include "double.hxx"
 #include "json.hxx"
-#include "sciCurl.hxx"
 
 extern "C"
 {
@@ -32,10 +30,7 @@ extern "C"
 /*--------------------------------------------------------------------------*/
 types::Function::ReturnValue sci_http_put_post(types::typed_list &in, types::optional_list &opt, int _iRetCount, types::typed_list &out, const char* fname)
 {
-    SciCurl* sciCurlObj = SciCurl::getInstance();
-    CURLcode res = CURLE_OK;
-    struct curl_slist *headers = NULL;
-    bool isJson = false;
+    bool isJson  = false;
     char* pcData = NULL;
 
     if (in.size() < 1 || in.size() > 2)
@@ -57,43 +52,38 @@ types::Function::ReturnValue sci_http_put_post(types::typed_list &in, types::opt
         return types::Function::Error;
     }
 
-    CURL* curl = curl_easy_init();
-    if(curl == nullptr)
+    SciCurl query;
+    if(query.init() == false)
     {
         Scierror(999, _("%s: CURL initialization failed.\n"), fname);
         return types::Function::Error;
     }
 
-    sciCurlObj->setCommonHeaders(curl);
-
-    char* pcURL = wide_string_to_UTF8(in[0]->getAs<types::String>()->get(0));
-    curl_easy_setopt(curl, CURLOPT_URL, pcURL);
-    FREE(pcURL);
-
-    sciCurlObj->getResultAsObject(curl);
-    if(strcmp(fname, "http_put") == 0)
-    {
-        curl_easy_setopt(curl, CURLOPT_CUSTOMREQUEST, "PUT");
-    }
-    else if(strcmp(fname, "http_patch") == 0)
-    {
-        curl_easy_setopt(curl, CURLOPT_CUSTOMREQUEST, "PATCH");
-    }
-    else
-    {
-        curl_easy_setopt(curl, CURLOPT_CUSTOMREQUEST, "POST");
-    }
-
-    // common optional argument
-    if(checkCommonOpt((void*)curl, opt, fname))
+    if(setPreferences(query, fname))
     {
         return types::Function::Error;
     }
 
-    // set proxy information
-    if(sciCurlObj->setProxy(curl))
+    char* pcURL = wide_string_to_UTF8(in[0]->getAs<types::String>()->get(0));
+    query.setURL(pcURL);
+    FREE(pcURL);
+
+    if(strcmp(fname, "http_put") == 0)
     {
-        Scierror(999, _("%s: Wrong proxy information, please check in the 'internet' Scilab preference.\n"), fname);
+        query.setMethod("PUT");
+    }
+    else if(strcmp(fname, "http_post") == 0)
+    {
+        query.setMethod("POST");
+    }
+    else
+    {
+        query.setMethod("PATCH");
+    }
+
+    // common optional argument
+    if(checkCommonOpt(query, opt, fname))
+    {
         return types::Function::Error;
     }
 
@@ -104,7 +94,7 @@ types::Function::ReturnValue sci_http_put_post(types::typed_list &in, types::opt
         {
             if(o.second->isString() == false || o.second->getAs<types::String>()->isScalar() == false)
             {
-                Scierror(999, _("%s: Wrong type for input argument #%s: A scalar string expected.\n"), fname, o.first.data());
+                Scierror(999, _("%s: Wrong type for input argument #%s: A scalar string expected.\n"), fname, "format");
                 return types::Function::Error;
             }
 
@@ -131,42 +121,35 @@ types::Function::ReturnValue sci_http_put_post(types::typed_list &in, types::opt
 
         if(isJson)
         {
-            headers = curl_slist_append(headers, "Accept: application/json");
-            headers = curl_slist_append(headers, "Content-Type: application/json");
-            headers = curl_slist_append(headers, "charsets: utf-8");
-            curl_easy_setopt(curl, CURLOPT_HTTPHEADER, headers);
+            query.addHTTPHeader("Accept: application/json");
+            query.addHTTPHeader("Content-Type: application/json");
+            query.addHTTPHeader("charsets: utf-8");
         }
 
-        curl_easy_setopt(curl, CURLOPT_POSTFIELDS, pcData);
+        query.setData(pcData);
     }
 
-    res = curl_easy_perform(curl);
+    // configure headers when they have all been added.
+    query.setHTTPHeader();
+
+    // send the query
+    query.perform();
     if (pcData)
     {
         FREE(pcData);
     }
 
-    if(headers)
+    if(query.hasFailed())
     {
-        curl_slist_free_all(headers);
-    }
-
-    if(res != CURLE_OK)
-    {
-        Scierror(999, _("%s: CURL execution failed.\n%s\n"), fname, curl_easy_strerror(res));
-        sciCurlObj->clear();
+        Scierror(999, _("%s: CURL execution failed.\n%s\n"), fname, query.getError());
         return types::Function::Error;
     }
 
-    out.push_back(sciCurlObj->getResult());
-
+    out.push_back(query.getResult());
     if(_iRetCount == 2)
     {
-        long http_code = 0;
-        curl_easy_getinfo (curl, CURLINFO_RESPONSE_CODE, &http_code);
-        out.push_back(new types::Double((double)http_code));
+        out.push_back(new types::Double((double)query.getResponseCode()));
     }
 
-    curl_easy_cleanup(curl);
     return types::Function::OK;
 }

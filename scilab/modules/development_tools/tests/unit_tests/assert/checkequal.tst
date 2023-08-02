@@ -12,6 +12,7 @@
 // --------------------------------------------------------------------------
 // <-- NO CHECK REF -->
 // <-- ENGLISH IMPOSED -->
+// <-- NO ASSERT FAILURE -->
 
 // ====================================
 // Unitary tests of assert_checkequal()

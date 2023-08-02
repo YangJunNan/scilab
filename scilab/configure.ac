@@ -931,12 +931,10 @@ if test "$with_javasci" != no -o "$with_gui" != no -o "$enable_build_help" != no
 
      AC_JAVA_DETECT_JVM
      case "$ac_java_jvm_version" in
-        1.9)
-        ;;
-        1.8)
+        17)
         ;;
         *)
-            AC_MSG_ERROR([Wrong version of Java. Expected at least 1.8. Found $ac_java_jvm_version])
+            AC_MSG_ERROR([Wrong version of Java. Expected at least 17. Found $ac_java_jvm_version])
         ;;
      esac
 
@@ -959,11 +957,43 @@ if test "$with_javasci" != no -o "$with_gui" != no -o "$enable_build_help" != no
 
         if test "$with_gui" != no; then
 
+                # Jakarta Activation (Run dependency)
+                # Do not look for jakarta.activation.spi.MimeTypeRegistry here since it will detect jakarta.activation-api.jar
+                # Checked before activation.jar to avoid false detection
+                AC_JAVA_CHECK_JAR([jakarta.activation],[com.sun.activation.registries.MimeTypeFile],[Scilab Help - MimeTypes for image conversion])
+                JAKARTA_ACTIVATION=$PACKAGE_JAR_FILE
+                AC_SUBST(JAKARTA_ACTIVATION)
+
                 if test "$with_xcos" != no; then
                    # jgraphx
                    AC_JAVA_CHECK_JAR([jgraphx],[com.mxgraph.view.mxGraph],[Diagram design],[],[VERSION],[2.0.0.1])
                    JGRAPHX=$PACKAGE_JAR_FILE
                    AC_SUBST(JGRAPHX)
+
+                   # Jaxb (Build dependency)
+                   AC_JAVA_CHECK_JAR([jaxb-api],[javax.xml.bind.annotation.XmlElement],[XML file reading/validation])
+                   JAXB_API=$PACKAGE_JAR_FILE
+                   AC_SUBST(JAXB_API)
+
+                   # Jaxb Runtime (Run dependency)
+                   AC_JAVA_CHECK_JAR([jaxb-runtime],[javax.xml.bind.JAXBException],[XML file reading/validation])
+                   JAXB_RUNTIME=$PACKAGE_JAR_FILE
+                   AC_SUBST(JAXB_RUNTIME)
+
+                   # Jaxb Impl
+                   AC_JAVA_CHECK_JAR([jaxb-impl],[com.sun.xml.bind.v2.ContextFactory],[XML file reading/validation])
+                   JAXB_IMPL=$PACKAGE_JAR_FILE
+                   AC_SUBST(JAXB_IMPL)
+
+                   # Activation
+                   AC_JAVA_CHECK_JAR([activation],[javax.activation.DataSource],[XML file reading/validation])
+                   ACTIVATION=$PACKAGE_JAR_FILE
+                   AC_SUBST(ACTIVATION)
+
+                   # Istack Commons Runtime
+                   AC_JAVA_CHECK_JAR([istack-commons-runtime],[com.sun.istack.FinalArrayList],[XML file reading/validation])
+                   ISTACK_COMMONS_RUNTIME=$PACKAGE_JAR_FILE
+                   AC_SUBST(ISTACK_COMMONS_RUNTIME)
                 fi
 
                 if test "$with_external_scirenderer" = yes; then
@@ -980,7 +1010,7 @@ if test "$with_javasci" != no -o "$with_gui" != no -o "$enable_build_help" != no
                 AC_SUBST(SCIRENDERER)
                 AC_SUBST(SCIRENDERER_CP)
 
-               # Docking system
+                # Docking system
                 AC_JAVA_CHECK_JAR([flexdock],[org.flexdock.util.Utilities],[Scilab Gui],[],[VERSION],[1.2.4])
                 FLEXDOCK=$PACKAGE_JAR_FILE
                 AC_SUBST(FLEXDOCK)
@@ -1000,6 +1030,16 @@ if test "$with_javasci" != no -o "$with_gui" != no -o "$enable_build_help" != no
                 AC_JAVA_CHECK_JAR([skinlf],[com.l2fprod.util.AccessUtils],[Scilab Gui - Skin Look and Feel])
                 SKINLF=$PACKAGE_JAR_FILE
                 AC_SUBST(SKINLF)
+
+                # Javax Annotation (Build dependency)
+                AC_JAVA_CHECK_JAR([javax.annotation-api],[javax.annotation.Generated],[Scilab Graphics - CSS Validation])
+                JAVAX_ANNOTATION=$PACKAGE_JAR_FILE
+                AC_SUBST(JAVAX_ANNOTATION)
+
+                # Jakarta Activation API (Build dependency)
+                AC_JAVA_CHECK_JAR([jakarta.activation-api],[jakarta.activation.spi.MimeTypeRegistryProvider],[Scilab Help - MimeTypes for image conversion])
+                JAKARTA_ACTIVATION_API=$PACKAGE_JAR_FILE
+                AC_SUBST(JAKARTA_ACTIVATION_API)
 
                 # JOGL 2
                 AC_JAVA_CHECK_JAR([jogl],[jogamp.opengl.x11.glx.GLX],[Scilab 3D rendering], [], [], 2.4)
@@ -1240,7 +1280,7 @@ Unit tests],"yes")
         AC_JAVA_CHECK_JAR([ecj],[org.eclipse.jdt.core.compiler.batch.BatchCompiler],[Eclipse Java compiler],"yes")
         ECJ=$PACKAGE_JAR_FILE
         if test -z "$ECJ"; then
-           ECJ='$SCILAB/thirdparty/ecj.jar'
+           ECJ='$SCILAB/thirdparty/ecj-3.34.0.jar'
         fi
         AC_SUBST(ECJ)
 

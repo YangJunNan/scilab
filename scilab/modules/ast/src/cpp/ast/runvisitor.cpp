@@ -944,10 +944,6 @@ void RunVisitorT<T>::visitprivate(const ReturnExp &e)
             //return or resume
             ConfigVariable::DecreasePauseLevel();
             CoverageInstance::stopChrono((void*)&e);
-            // resume will make the execution continue
-            // event if resume is a console command, it must not release the prompt
-            // because the prompt will be release at the and of the original command
-            StaticRunner_setCommandOrigin(NONE);
             return;
         }
         else

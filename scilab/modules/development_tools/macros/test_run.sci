@@ -783,12 +783,13 @@ function status = test_single(_module, _testPath, _testName)
     sciFile = strsubst(sciFile, "halt();", "");
 
     // Build test header
+    bugmes_def = "function []=bugmes(), printf(''error on test'');endfunction";
     head = [
     "// <-- HEADER START -->";
     "mode(3);" ;
     "lines(28,72);";
     "lines(0);" ;
-    "function []=bugmes(), printf(''error on test'');endfunction"
+    bugmes_def;
     "function %onprompt" ;
     "   [msg, num] = lasterror();" ;
     "   if (num <> 0) then" ;
@@ -797,7 +798,12 @@ function status = test_single(_module, _testPath, _testName)
     "   quit;" ;
     "endfunction"];
     if ~interactive then
-        head($+1) = "function []=messagebox(msg, msg_title, info, buttons, isModal), disp(''messagebox: '' + msg);endfunction";
+        head = [ head ;
+        "prot=funcprot(0);";
+        "function []=messagebox(msg, msg_title, info, buttons, isModal), disp(''messagebox: '' + msg);endfunction";
+        "prot=funcprot(prot);"; // Assign result to prot to avoid to create 'ans'
+        "clear prot";
+        ];
     end
     head = [ head ;
     "predef(''all'');";
@@ -806,17 +812,22 @@ function status = test_single(_module, _testPath, _testName)
     ];
 
     if xcosNeeded then
-        head = [
-        head;
-        "prot=funcprot(); funcprot(0);";
+        head = [ head;
+        "prot=funcprot(0);";
         "loadXcosLibs(); loadScicos();";
-        "funcprot(prot);";
+        "prot=funcprot(prot);"; // Assign result to prot to avoid to create 'ans'
+        "clear prot";
         ];
     end
 
+    assert_generror_def = "function assert_generror(errmsg, errnb), printf(''%s\nassert failed on test\n'',errmsg);quit; endfunction";
     if assert then
         head = [ head ;
-        "function assert_generror(errmsg), printf(errmsg);printf(''\nassert failed on test\n'');quit; endfunction"];
+        "prot=funcprot(0);";
+        assert_generror_def;
+        "prot=funcprot(prot);"; // Assign result to prot to avoid to create 'ans'
+        "clear prot";
+        ];
     end
 
     if try_catch then
@@ -923,8 +934,8 @@ function status = test_single(_module, _testPath, _testName)
     returnStatus = host(test_cmd);
     //Check return status
     if (returnStatus <> 0)
-        details = [ checkthefile(tmp_dia); ..
-        launchthecommand(testFile)];
+        details = [ launchthecommand(testFile); ..
+        checkthefile(tmp_dia)];
         status.id = 5;
         status.message = "failed: tested Scilab exited with error code " + string(returnStatus);
         status.details = details;
@@ -959,6 +970,11 @@ function status = test_single(_module, _testPath, _testName)
                 txt(toRemove) = [];
             end
 
+            if ~isempty(txt) then
+                // Message displayed at startup because we force the JVM to use Scilab custom class loader
+                toRemove = grep(txt, "OpenJDK 64-Bit Server VM warning: Archived non-system classes are disabled because the java.system.class.loader property is specified");
+                txt(toRemove) = [];
+            end
 
             if getos() == "Darwin" then
                 if ~isempty(txt) then
@@ -1074,8 +1090,8 @@ function status = test_single(_module, _testPath, _testName)
     
     //Check for execution errors
     if try_catch & grep(dia,"<--Error on the test script file-->") <> [] then
-        details = [ checkthefile(tmp_dia); ..
-        launchthecommand(testFile)];
+        details = [ launchthecommand(testFile); ..
+        checkthefile(tmp_dia)];
         status.id = 3;
         status.message = "failed: premature end of the test script";
         status.details = details;
@@ -1106,18 +1122,41 @@ function status = test_single(_module, _testPath, _testName)
     dia_tmp(grep(dia_tmp, "//")) = [];
 
     if try_catch & grep(dia_tmp, "!--error") <> [] then
-        details = [ checkthefile(tmp_dia); ..
-        launchthecommand(testFile) ];
+        details = [ launchthecommand(testFile); ..
+         checkthefile(tmp_dia)];
         status.id = 1;
         status.message = "failed: the string (!--error) has been detected";
         status.details = details;
         return;
     end
 
-
-    if grep(dia_tmp,"error on test")<>[] then
+    if grep(dia_tmp,"assert failed on test")<>[] then
+        errlines = dia_tmp(grep(dia_tmp,"assert failed on test"))
+        // Remove false positives due to the display of log, res, .. files
+        errlines(grep(errlines, assert_generror_def)) = []
+        if errlines == [] then
+            return
+        end
         details = [ checkthefile(tmp_dia); ..
         launchthecommand(testFile) ];
+        status.id = 2;
+        status.message = "failed: one or several tests failed";
+        status.details = details;
+        if params.show_error == %t then
+            status.details = [ status.details; dia($-min(10, size(dia, "*")-1):$) ]
+        end
+        return;
+    end
+
+    if grep(dia_tmp,"error on test")<>[] then
+        errlines = dia_tmp(grep(dia_tmp,"error on test"))
+        // Remove false positives due to the display of log, res, .. files
+        errlines(grep(errlines, bugmes_def)) = []
+        if errlines == [] then
+            return
+        end
+        details = [ launchthecommand(testFile); ..
+        checkthefile(tmp_dia) ];
         status.id = 2;
         status.message = "failed: one or several tests failed";
         status.details = details;
@@ -1305,7 +1344,7 @@ function msg = launchthecommand( filename )
     //   Or launch the following command :
     //   - exec("C:\path\scilab\modules\optimization\tests\unit_testseldermeadeldermead_configure.tst")
     // Workaround for bug #4827
-    msg(1) = "   Or launch the following command :"
+    msg(1) = "   Launch the following command :"
     msg(2) = "   - exec(""" + strsubst(fullpath(filename), SCI, "SCI") + """);"
 endfunction
 

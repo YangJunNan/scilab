@@ -166,6 +166,10 @@ void Model::deleteObject(model::BaseObject* object)
         if (allObjects.erase(object->id()))
         {
             deleteBaseObject(object);
+
+            // reset the lastId for reproducibility
+            if (allObjects.empty())
+                lastId = ScicosID();
         }
         else
         {

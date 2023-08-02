@@ -94,7 +94,7 @@ function assert_check_options(options)
 endfunction
 
 // assert on a new scicos_diagram
-assert_check_diagram(scicos_diagram());
+assert_check_diagram(scicos_diagram(), "scicos4.4");
 
 // assert on an empty xcos diagram
 assert_checktrue(importXcosDiagram(SCI + "/modules/xcos/tests/unit_tests/empty.zcos"));

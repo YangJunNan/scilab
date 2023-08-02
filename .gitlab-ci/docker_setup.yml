@@ -9,7 +9,7 @@
 
 # Create/refresh Docker build
 builder_linux:
-  stage: docker_create
+  stage: docker_setup
   image: docker:20.10.16
   tags: [x86_64-linux-gnu, docker, scilab]
   script:
@@ -20,23 +20,17 @@ builder_linux:
     - docker image prune --force
     - docker logout "${CI_REGISTRY}"
   rules:
-    - if: $CI_PROJECT_PATH_SLUG !~ /scilab-scilab/
-      changes: &DOCKER_LINUX_BUILDER_CHANGES
+    # rebuild on demand
+    - changes:
         paths:
           - .gitlab-ci.yml
           - .gitlab-ci/docker_setup.yml
           - .gitlab-ci/docker_setup.sh
           - .gitlab-ci/Dockerfile.linux
       allow_failure: true
-    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
-      changes: *DOCKER_LINUX_BUILDER_CHANGES
-      allow_failure: true
-    - if: $CI_MERGE_REQUEST_APPROVED
-      changes: *DOCKER_LINUX_BUILDER_CHANGES
-      allow_failure: true
 
 prebuild_linux:
-  stage: docker_create
+  stage: docker_setup
   image: docker:20.10.16
   tags: [x86_64-linux-gnu, docker, scilab]
   needs:
@@ -49,22 +43,17 @@ prebuild_linux:
     - docker image prune --force
     - docker logout "${CI_REGISTRY}"
   rules:
-    - if: $CI_PROJECT_PATH_SLUG !~ /scilab-scilab/
-      changes: &DOCKER_LINUX_PREBUILD_CHANGES
+    # rebuild on demand
+    - changes:
         paths:
           - .gitlab-ci.yml
           - .gitlab-ci/docker_setup.yml
           - .gitlab-ci/docker_setup.sh
+          - .gitlab-ci/Dockerfile.linux
           - .gitlab-ci/Dockerfile.linux.prebuild
-    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
-      changes: *DOCKER_LINUX_PREBUILD_CHANGES
-      allow_failure: true
-    - if: $CI_MERGE_REQUEST_APPROVED
-      changes: *DOCKER_LINUX_PREBUILD_CHANGES
-      allow_failure: true
 
 tester_linux:
-  stage: docker_create
+  stage: docker_setup
   image: docker:20.10.16
   tags: [x86_64-linux-gnu, docker, scilab]
   script:
@@ -72,23 +61,17 @@ tester_linux:
     - .gitlab-ci/docker_setup.sh --registry "${CI_REGISTRY_IMAGE}" "${DOCKER_TAG}"
     - docker logout "${CI_REGISTRY}"
   rules:
-    - if: $CI_PROJECT_PATH_SLUG !~ /scilab-scilab/
-      changes: &DOCKER_LINUX_TEST_CHANGES
+    # rebuild on demand
+    - changes:
         paths:
           - .gitlab-ci.yml
           - .gitlab-ci/docker_setup.yml
           - .gitlab-ci/docker_setup.sh
           - .gitlab-ci/linux-images/Dockerfile*
       allow_failure: true
-    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
-      changes: *DOCKER_LINUX_TEST_CHANGES
-      allow_failure: true
-    - if: $CI_MERGE_REQUEST_APPROVED
-      changes: *DOCKER_LINUX_TEST_CHANGES
-      allow_failure: true
 
 # builder_windows:
-#   stage: docker_create
+#   stage: docker_setup
 #   tags: [x64_windows, shell, scilab]
 #   script:
 #     - docker login -u "${CI_REGISTRY_USER}" -p "${CI_JOB_TOKEN}" "${CI_REGISTRY}"

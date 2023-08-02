@@ -29,6 +29,8 @@ In summary, the main new features and additions are:
 
 - __add your features before and keep this line__
 * Use `curl` as default in `atomsDownload()` for all OS to handle local file repositories.
+* Add headers as optional input argument in `http_*` functions.
+* Add cookie management in webtools module.
 * <TODO>
 
 Obsolete functions or features
@@ -63,6 +65,7 @@ Compilation
 
 - Update autotools to support Linux aarch64 and macOS Apple M1.
   Use Autoconf 2.71 and Automake 1.16.5 to update.
+- Update JDK to Java 17.
 - __add your compilation notes before and keep this line__
 
 Packaging & Supported Operating Systems
@@ -70,7 +73,7 @@ Packaging & Supported Operating Systems
 
 - 32-bit Windows platforms are no more supported (no binary versions released).
 
-- Scilab embedded JVM is Java 8.
+- Scilab embedded JVM is Java 17.
 
 - To run or compile Scilab you need at least:
   - Windows (amd64):
@@ -88,6 +91,7 @@ Packaging & Supported Operating Systems
 API/ABI modification
 --------------------
 
+- Javasci source/target version switched from 6 to 7 (minimal version supported by Java 17).
 - __add your API/ABI modification notes before and keep this line__
 
 Issue Fixes

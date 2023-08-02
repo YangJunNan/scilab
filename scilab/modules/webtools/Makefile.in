@@ -118,11 +118,10 @@ subdir = modules/webtools
 ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
 am__aclocal_m4_deps = $(top_srcdir)/m4/ax_cxx_compile_stdcxx.m4 \
 	$(top_srcdir)/m4/backtrace.m4 $(top_srcdir)/m4/compiler.m4 \
-	$(top_srcdir)/m4/curl.m4 $(top_srcdir)/m4/docbook.m4 \
-	$(top_srcdir)/m4/doxygen.m4 $(top_srcdir)/m4/eigen.m4 \
-	$(top_srcdir)/m4/fftw.m4 $(top_srcdir)/m4/fortran.m4 \
-	$(top_srcdir)/m4/giws.m4 $(top_srcdir)/m4/hdf5.m4 \
-	$(top_srcdir)/m4/intel_compiler.m4 \
+	$(top_srcdir)/m4/curl.m4 $(top_srcdir)/m4/doxygen.m4 \
+	$(top_srcdir)/m4/eigen.m4 $(top_srcdir)/m4/fftw.m4 \
+	$(top_srcdir)/m4/fortran.m4 $(top_srcdir)/m4/giws.m4 \
+	$(top_srcdir)/m4/hdf5.m4 $(top_srcdir)/m4/intel_compiler.m4 \
 	$(top_srcdir)/m4/java-thirdparty.m4 $(top_srcdir)/m4/java.m4 \
 	$(top_srcdir)/m4/lib-ld.m4 $(top_srcdir)/m4/libsmath.m4 \
 	$(top_srcdir)/m4/libtool.m4 $(top_srcdir)/m4/libxml2.m4 \
@@ -200,7 +199,8 @@ am__objects_3 = sci_gateway/cpp/libsciwebtools_la-sci_http_get.lo \
 	sci_gateway/cpp/libsciwebtools_la-sci_http_upload.lo \
 	sci_gateway/cpp/libsciwebtools_la-sci_toJSON.lo \
 	sci_gateway/cpp/libsciwebtools_la-sci_fromJSON.lo \
-	sci_gateway/cpp/libsciwebtools_la-checkCommonOpt.lo
+	sci_gateway/cpp/libsciwebtools_la-checkCommonOpt.lo \
+	sci_gateway/cpp/libsciwebtools_la-setPreferences.lo
 am__objects_4 = sci_gateway/c/libsciwebtools_la-sci_url_split.lo
 am_libsciwebtools_la_OBJECTS = $(am__objects_3) $(am__objects_4)
 libsciwebtools_la_OBJECTS = $(am_libsciwebtools_la_OBJECTS)
@@ -231,6 +231,7 @@ am__depfiles_remade =  \
 	sci_gateway/cpp/$(DEPDIR)/libsciwebtools_la-sci_http_put_post.Plo \
 	sci_gateway/cpp/$(DEPDIR)/libsciwebtools_la-sci_http_upload.Plo \
 	sci_gateway/cpp/$(DEPDIR)/libsciwebtools_la-sci_toJSON.Plo \
+	sci_gateway/cpp/$(DEPDIR)/libsciwebtools_la-setPreferences.Plo \
 	src/c/$(DEPDIR)/libsciwebtools_algo_la-DllmainWebtools.Plo \
 	src/c/$(DEPDIR)/libsciwebtools_algo_la-jsmn.Plo \
 	src/cpp/$(DEPDIR)/libsciwebtools_algo_la-json.Plo \
@@ -306,6 +307,7 @@ am__DIST_COMMON = $(srcdir)/Makefile.in $(top_srcdir)/Makefile.incl.am \
 	$(top_srcdir)/config/mkinstalldirs
 DISTFILES = $(DIST_COMMON) $(DIST_SOURCES) $(TEXINFOS) $(EXTRA_DIST)
 ACLOCAL = @ACLOCAL@
+ACTIVATION = @ACTIVATION@
 ALL_LINGUAS = @ALL_LINGUAS@
 ALL_LINGUAS_DOC = @ALL_LINGUAS_DOC@
 AMTAR = @AMTAR@
@@ -350,7 +352,6 @@ DEFS = @DEFS@
 DEMOTOOLS_ENABLE = @DEMOTOOLS_ENABLE@
 DEPDIR = @DEPDIR@
 DLLTOOL = @DLLTOOL@
-DOCBOOK_ROOT = @DOCBOOK_ROOT@
 DOXYGEN_BIN = @DOXYGEN_BIN@
 DSYMUTIL = @DSYMUTIL@
 DUMPBIN = @DUMPBIN@
@@ -398,17 +399,24 @@ INSTALL_SCRIPT = @INSTALL_SCRIPT@
 INSTALL_STRIP_PROGRAM = @INSTALL_STRIP_PROGRAM@
 INTLLIBS = @INTLLIBS@
 INTL_MACOSX_LIBS = @INTL_MACOSX_LIBS@
+ISTACK_COMMONS_RUNTIME = @ISTACK_COMMONS_RUNTIME@
+JAKARTA_ACTIVATION = @JAKARTA_ACTIVATION@
+JAKARTA_ACTIVATION_API = @JAKARTA_ACTIVATION_API@
 JAR = @JAR@
 JAVA = @JAVA@
 JAVAC = @JAVAC@
 JAVAC_DEBUG = @JAVAC_DEBUG@
 JAVADOC = @JAVADOC@
 JAVASCI_ENABLE = @JAVASCI_ENABLE@
+JAVAX_ANNOTATION = @JAVAX_ANNOTATION@
 JAVA_ENABLE = @JAVA_ENABLE@
 JAVA_G = @JAVA_G@
 JAVA_HOME = @JAVA_HOME@
 JAVA_JNI_INCLUDE = @JAVA_JNI_INCLUDE@
 JAVA_JNI_LIBS = @JAVA_JNI_LIBS@
+JAXB_API = @JAXB_API@
+JAXB_IMPL = @JAXB_IMPL@
+JAXB_RUNTIME = @JAXB_RUNTIME@
 JDB = @JDB@
 JEUCLID_CORE = @JEUCLID_CORE@
 JGRAPHX = @JGRAPHX@
@@ -498,7 +506,6 @@ PYTHON = @PYTHON@
 RANLIB = @RANLIB@
 RELOCATABLE = @RELOCATABLE@
 RT_LIB = @RT_LIB@
-SAXON = @SAXON@
 SCILAB_BINARY_VERSION = @SCILAB_BINARY_VERSION@
 SCILAB_LIBRARY_VERSION = @SCILAB_LIBRARY_VERSION@
 SCILAB_VERSION_MAINTENANCE = @SCILAB_VERSION_MAINTENANCE@
@@ -629,7 +636,8 @@ GATEWAY_CPP_SOURCES = \
     sci_gateway/cpp/sci_http_upload.cpp \
     sci_gateway/cpp/sci_toJSON.cpp \
     sci_gateway/cpp/sci_fromJSON.cpp \
-    sci_gateway/cpp/checkCommonOpt.cpp
+    sci_gateway/cpp/checkCommonOpt.cpp \
+    sci_gateway/cpp/setPreferences.cpp
 
 libsciwebtools_la_CPPFLAGS = \
     -I$(srcdir)/includes/ \
@@ -896,6 +904,9 @@ sci_gateway/cpp/libsciwebtools_la-sci_fromJSON.lo:  \
 sci_gateway/cpp/libsciwebtools_la-checkCommonOpt.lo:  \
 	sci_gateway/cpp/$(am__dirstamp) \
 	sci_gateway/cpp/$(DEPDIR)/$(am__dirstamp)
+sci_gateway/cpp/libsciwebtools_la-setPreferences.lo:  \
+	sci_gateway/cpp/$(am__dirstamp) \
+	sci_gateway/cpp/$(DEPDIR)/$(am__dirstamp)
 sci_gateway/c/$(am__dirstamp):
 	@$(MKDIR_P) sci_gateway/c
 	@: > sci_gateway/c/$(am__dirstamp)
@@ -934,6 +945,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@sci_gateway/cpp/$(DEPDIR)/libsciwebtools_la-sci_http_put_post.Plo@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@sci_gateway/cpp/$(DEPDIR)/libsciwebtools_la-sci_http_upload.Plo@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@sci_gateway/cpp/$(DEPDIR)/libsciwebtools_la-sci_toJSON.Plo@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@sci_gateway/cpp/$(DEPDIR)/libsciwebtools_la-setPreferences.Plo@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@src/c/$(DEPDIR)/libsciwebtools_algo_la-DllmainWebtools.Plo@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@src/c/$(DEPDIR)/libsciwebtools_algo_la-jsmn.Plo@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@src/cpp/$(DEPDIR)/libsciwebtools_algo_la-json.Plo@am__quote@ # am--include-marker
@@ -1105,6 +1117,13 @@ sci_gateway/cpp/libsciwebtools_la-checkCommonOpt.lo: sci_gateway/cpp/checkCommon
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='sci_gateway/cpp/checkCommonOpt.cpp' object='sci_gateway/cpp/libsciwebtools_la-checkCommonOpt.lo' libtool=yes @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libsciwebtools_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o sci_gateway/cpp/libsciwebtools_la-checkCommonOpt.lo `test -f 'sci_gateway/cpp/checkCommonOpt.cpp' || echo '$(srcdir)/'`sci_gateway/cpp/checkCommonOpt.cpp
+
+sci_gateway/cpp/libsciwebtools_la-setPreferences.lo: sci_gateway/cpp/setPreferences.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libsciwebtools_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT sci_gateway/cpp/libsciwebtools_la-setPreferences.lo -MD -MP -MF sci_gateway/cpp/$(DEPDIR)/libsciwebtools_la-setPreferences.Tpo -c -o sci_gateway/cpp/libsciwebtools_la-setPreferences.lo `test -f 'sci_gateway/cpp/setPreferences.cpp' || echo '$(srcdir)/'`sci_gateway/cpp/setPreferences.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) sci_gateway/cpp/$(DEPDIR)/libsciwebtools_la-setPreferences.Tpo sci_gateway/cpp/$(DEPDIR)/libsciwebtools_la-setPreferences.Plo
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='sci_gateway/cpp/setPreferences.cpp' object='sci_gateway/cpp/libsciwebtools_la-setPreferences.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libsciwebtools_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o sci_gateway/cpp/libsciwebtools_la-setPreferences.lo `test -f 'sci_gateway/cpp/setPreferences.cpp' || echo '$(srcdir)/'`sci_gateway/cpp/setPreferences.cpp
 
 mostlyclean-libtool:
 	-rm -f *.lo
@@ -1326,6 +1345,7 @@ distclean: distclean-am
 	-rm -f sci_gateway/cpp/$(DEPDIR)/libsciwebtools_la-sci_http_put_post.Plo
 	-rm -f sci_gateway/cpp/$(DEPDIR)/libsciwebtools_la-sci_http_upload.Plo
 	-rm -f sci_gateway/cpp/$(DEPDIR)/libsciwebtools_la-sci_toJSON.Plo
+	-rm -f sci_gateway/cpp/$(DEPDIR)/libsciwebtools_la-setPreferences.Plo
 	-rm -f src/c/$(DEPDIR)/libsciwebtools_algo_la-DllmainWebtools.Plo
 	-rm -f src/c/$(DEPDIR)/libsciwebtools_algo_la-jsmn.Plo
 	-rm -f src/cpp/$(DEPDIR)/libsciwebtools_algo_la-json.Plo
@@ -1389,6 +1409,7 @@ maintainer-clean: maintainer-clean-am
 	-rm -f sci_gateway/cpp/$(DEPDIR)/libsciwebtools_la-sci_http_put_post.Plo
 	-rm -f sci_gateway/cpp/$(DEPDIR)/libsciwebtools_la-sci_http_upload.Plo
 	-rm -f sci_gateway/cpp/$(DEPDIR)/libsciwebtools_la-sci_toJSON.Plo
+	-rm -f sci_gateway/cpp/$(DEPDIR)/libsciwebtools_la-setPreferences.Plo
 	-rm -f src/c/$(DEPDIR)/libsciwebtools_algo_la-DllmainWebtools.Plo
 	-rm -f src/c/$(DEPDIR)/libsciwebtools_algo_la-jsmn.Plo
 	-rm -f src/cpp/$(DEPDIR)/libsciwebtools_algo_la-json.Plo

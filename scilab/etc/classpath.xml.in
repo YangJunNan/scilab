@@ -73,6 +73,33 @@ The option is "disableUnderMode" and can be:
     <load on="documentationGeneration"/>
 </path>
 
+<path value="@JAXB_RUNTIME@" load="onUse">
+    <load on="Xcos"/>
+</path>
+
+<path value="@JAXB_IMPL@" load="onUse">
+    <load on="Xcos"/>
+</path>
+
+<!-- java.lang.NoClassDefFoundError: javax/activation/DataSource -->
+<path value="@ACTIVATION@" load="onUse">
+    <load on="Xcos"/>
+</path>
+
+<path value="@ISTACK_COMMONS_RUNTIME@" load="onUse">
+    <load on="Xcos"/>
+</path>
+
+<!-- java.lang.NoClassDefFoundError: jakarta/activation/MimetypesFileTypeMap -->
+<!-- java.lang.RuntimeException: Provider for jakarta.activation.spi.MimeTypeRegistryProvider cannot be found -->
+<path value="@JAKARTA_ACTIVATION@" load="onUse"> 
+    <load on="documentationGeneration"/>
+</path>
+
+<!--<path value="@JAKARTA_ACTIVATION_API@" load="onUse"> 
+    <load on="documentationGeneration"/>
+</path>-->
+
 <path value="@SCIRENDERER_CP@"/>
 
 <path value="@JOGL2@"/>
