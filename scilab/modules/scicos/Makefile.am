@@ -134,7 +134,9 @@ libsciscicos_algo_la_CPPFLAGS= -I$(srcdir)/includes/ \
 			-I$(srcdir)/src/cpp/ \
 			-I$(top_srcdir)/modules/differential_equations/src/patched_sundials/include/ \
 			-I$(top_srcdir)/modules/differential_equations/src/patched_sundials/include/sundials/ \
+			-I$(top_srcdir)/modules/differential_equations/src/patched_sundials/src/sundials/ \
 			-I$(top_srcdir)/modules/differential_equations/src/patched_sundials/src/ida/ \
+			-I$(top_srcdir)/modules/differential_equations/src/patched_sundials/src/cvode/ \
 			-I$(top_srcdir)/modules/output_stream/includes/ \
 			-I$(top_srcdir)/modules/fileio/includes/ \
 			-I$(top_srcdir)/modules/dynamic_link/includes/ \

@@ -861,6 +861,7 @@ JOGL2 = @JOGL2@
 JROSETTA_API = @JROSETTA_API@
 JROSETTA_ENGINE = @JROSETTA_ENGINE@
 JUNIT4 = @JUNIT4@
+KLU_ENABLE = @KLU_ENABLE@
 LAPACK_LIBS = @LAPACK_LIBS@
 LCOV = @LCOV@
 LD = @LD@
@@ -1168,7 +1169,9 @@ libsciscicos_la_LDFLAGS = $(AM_LDFLAGS)
 @XCOS_TRUE@			-I$(srcdir)/src/cpp/ \
 @XCOS_TRUE@			-I$(top_srcdir)/modules/differential_equations/src/patched_sundials/include/ \
 @XCOS_TRUE@			-I$(top_srcdir)/modules/differential_equations/src/patched_sundials/include/sundials/ \
+@XCOS_TRUE@			-I$(top_srcdir)/modules/differential_equations/src/patched_sundials/src/sundials/ \
 @XCOS_TRUE@			-I$(top_srcdir)/modules/differential_equations/src/patched_sundials/src/ida/ \
+@XCOS_TRUE@			-I$(top_srcdir)/modules/differential_equations/src/patched_sundials/src/cvode/ \
 @XCOS_TRUE@			-I$(top_srcdir)/modules/output_stream/includes/ \
 @XCOS_TRUE@			-I$(top_srcdir)/modules/fileio/includes/ \
 @XCOS_TRUE@			-I$(top_srcdir)/modules/dynamic_link/includes/ \

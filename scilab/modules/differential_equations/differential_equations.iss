@@ -20,11 +20,14 @@
 ;--------------------------------------------------------------------------------------------------------------
 ;
 #define DIFFEQU "differential_equations"
+#define PATCHSUN "patched_sundials"
 ;
 Source: bin\{#DIFFEQU}_f.dll; DestDir: {app}\bin; Components: {#COMPN_SCILAB}
 Source: bin\{#DIFFEQU}_f.lib; DestDir: {app}\bin; Components: {#COMPN_SCILAB}
 Source: bin\{#DIFFEQU}.dll; DestDir: {app}\bin; Components: {#COMPN_SCILAB}
 Source: bin\{#DIFFEQU}_gw.dll; DestDir: {app}\bin; Components: {#COMPN_SCILAB}
+Source: bin\{#PATCHSUN}.dll; DestDir: {app}\bin; Components: {#COMPN_SCILAB}
+Source: bin\{#PATCHSUN}.dll; DestDir: {app}\bin; Components: {#COMPN_SCILAB}
 ;
 Source: bin\patched_sundials.dll; DestDir: {app}\bin; Components: {#COMPN_SCILAB}
 ;

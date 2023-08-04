@@ -266,6 +266,9 @@ lib /DEF:"$(ProjectDir)elementary_functions_f_Import.def" /SUBSYSTEM:WINDOWS /MA
     <ProjectReference Include="..\..\..\threads\threads.vcxproj">
       <Project>{50a1ffc8-adc2-4d9e-a2d0-5dcd63188ae9}</Project>
     </ProjectReference>
+    <ProjectReference Include="..\patched_sundials\patched_sundials.vcxproj">
+      <Project>{c781737a-7c97-4cf9-acbc-f68c2bbf0ffa}</Project>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Library Include="..\..\..\..\bin\blasplus.lib" />

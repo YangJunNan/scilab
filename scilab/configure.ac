@@ -1711,6 +1711,23 @@ fi
 AC_SUBST(UMFPACK_ENABLE)
 AM_CONDITIONAL(UMFPACK, test "$with_umfpack" != no)
 
+#################
+## KLU
+#################
+
+AC_ARG_WITH(klu,
+    AS_HELP_STRING([--without-klu],[Disable the interface to the KLU library]))
+
+KLU_ENABLE=no
+if test "$with_klu" != no; then
+   AC_KLU([$BLAS_LIBS])
+   KLU_ENABLE=yes
+fi
+
+AC_SUBST(KLU_ENABLE)
+AM_CONDITIONAL(KLU, test "$with_klu" != no)
+
+
 #######################
 ## Test for PCRE
 #######################
