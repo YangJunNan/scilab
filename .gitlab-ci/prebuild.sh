@@ -386,7 +386,6 @@ make_archive() {
     export XZ_OPT="-9T0"
     tar -cJf "prerequirements-${SCI_VERSION_STRING}.bin.${ARCH}.tar.xz" -C "$INSTALLROOTDIR" \
         -- java lib modules thirdparty usr version.txt
-    cp -a "prerequirements-${SCI_VERSION_STRING}.bin.${ARCH}.tar.xz" "prerequirements-scilab-branch-${BRANCH}.bin.${ARCH}.tar.xz"
 }
 
 ####################

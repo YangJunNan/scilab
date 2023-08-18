@@ -68,7 +68,6 @@ linux_build_prereq:
   artifacts:
     paths:
       - prerequirements-${SCI_VERSION_STRING}.bin.${ARCH}.tar.xz
-      - prerequirements-scilab-branch-${BRANCH}.bin.${ARCH}.tar.xz
       - $SCI_VERSION_STRING
   rules:
     # rebuild on demand
