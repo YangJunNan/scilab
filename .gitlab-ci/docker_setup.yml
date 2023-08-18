@@ -27,6 +27,7 @@ builder_linux:
           - .gitlab-ci/docker_setup.yml
           - .gitlab-ci/docker_setup.sh
           - .gitlab-ci/Dockerfile.linux
+          - .gitlab-ci/Dockerfile.linux.prebuild
       allow_failure: true
 
 prebuild_linux:
