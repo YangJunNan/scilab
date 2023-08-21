@@ -38,7 +38,6 @@ import java.util.StringTokenizer;
 
 import javax.swing.JDialog;
 import javax.swing.SwingUtilities;
-import javax.swing.border.Border;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
@@ -303,8 +302,6 @@ public abstract class XCommonManager {
 
             StringBuilder buffer = new StringBuilder("<?xml version='1.0' encoding='utf-8'?>\n");
             buffer.append("<xsl:stylesheet version=\"1.0\" xmlns:xsl=\"http://www.w3.org/1999/XSL/Transform\">\n");
-            buffer.append("<xsl:param name=\"OS\"/>\n");
-            buffer.append("<xsl:param name=\"SCILAB_LANGUAGE\"/>\n");
             buffer.append("<xsl:import href=\"").append(SCI).append("/modules/preferences/src/xslt/XConfiguration.xsl").append("\"/>\n");
 
             FilenameFilter filter = new FilenameFilter() {
@@ -344,6 +341,8 @@ public abstract class XCommonManager {
                 }
             }
 
+            buffer.append("<xsl:param name=\"OS\"/>\n");
+            buffer.append("<xsl:param name=\"SCILAB_LANGUAGE\"/>\n");
             buffer.append("</xsl:stylesheet>");
 
             XSLCODE = buffer.toString();
@@ -371,8 +370,10 @@ public abstract class XCommonManager {
             }
         } catch (TransformerConfigurationException e1) {
             System.err.println(ERROR_READ + address);
+            System.err.println(e1.getLocalizedMessage());
         } catch (TransformerFactoryConfigurationError e1) {
             System.err.println(ERROR_READ + address);
+            System.err.println(e1.getLocalizedMessage());
         }
     }
 
