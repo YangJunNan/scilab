@@ -75,19 +75,23 @@ The option is "disableUnderMode" and can be:
 
 <path value="@JAXB_RUNTIME@" load="onUse">
     <load on="Xcos"/>
+    <load on="documentationGeneration"/>
 </path>
 
 <path value="@JAXB_IMPL@" load="onUse">
     <load on="Xcos"/>
+    <load on="documentationGeneration"/>
 </path>
 
 <!-- java.lang.NoClassDefFoundError: javax/activation/DataSource -->
 <path value="@ACTIVATION@" load="onUse">
     <load on="Xcos"/>
+    <load on="documentationGeneration"/>
 </path>
 
 <path value="@ISTACK_COMMONS_RUNTIME@" load="onUse">
     <load on="Xcos"/>
+    <load on="documentationGeneration"/>
 </path>
 
 <!-- java.lang.NoClassDefFoundError: jakarta/activation/MimetypesFileTypeMap -->

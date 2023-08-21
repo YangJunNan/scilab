@@ -75,19 +75,23 @@ The option is "disableUnderMode" and can be:
 
     <path value="$SCILAB/thirdparty/jaxb-runtime-2.3.1.jar" load="onUse">
         <load on="Xcos"/>
+        <load on="documentationGeneration"/>
     </path>
 
     <path value="$SCILAB/thirdparty/jaxb-impl-2.3.1.jar" load="onUse">
         <load on="Xcos"/>
+        <load on="documentationGeneration"/>
     </path>
 
     <!-- java.lang.NoClassDefFoundError: javax/activation/DataSource -->
     <path value="$SCILAB/thirdparty/activation-1.1.1.jar" load="onUse">
         <load on="Xcos"/>
+        <load on="documentationGeneration"/>
     </path>
 
     <path value="$SCILAB/thirdparty/istack-commons-runtime-4.2.0.jar" load="onUse">
         <load on="Xcos"/>
+        <load on="documentationGeneration"/>
     </path>
 
     <!-- java.lang.NoClassDefFoundError: jakarta/activation/MimetypesFileTypeMap -->
