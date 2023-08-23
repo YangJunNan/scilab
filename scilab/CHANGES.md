@@ -27,11 +27,12 @@ For a high-level description of the main new features of this release, please co
 
 In summary, the main new features and additions are:
 
-- __add your features before and keep this line__
 * Use `curl` as default in `atomsDownload()` for all OS to handle local file repositories.
 * Add headers as optional input argument in `http_*` functions.
 * Add cookie management in webtools module.
+* [ColPack](https://github.com/CSCsw/ColPack) graph coloring algorithms have been integrated.
 * <TODO>
+
 
 Obsolete functions or features
 ------------------------------
