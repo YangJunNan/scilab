@@ -75,7 +75,7 @@ TK_VERSION=8.5.15
 BWIDGET_VERSION=1.9.16
 ZLIB_VERSION=1.2.11
 # PNG_VERSION=1.6.37
-JOGL_VERSION=2.4.0
+JOGL_VERSION=2.5.0
 OPENXLSX_VERSION=0.3.2
 FOP_VERSION=2.0
 
@@ -142,7 +142,7 @@ download_dependencies() {
     # [ ! -f libpng-$PNG_VERSION.tar.gz ] && curl -LO https://oos.eu-west-2.outscale.com/scilab-releases-dev/prerequirements-sources/libpng-$PNG_VERSION.tar.gz
 
     [ ! -f gluegen-v$JOGL_VERSION.tar.xz ] && curl -LO https://oos.eu-west-2.outscale.com/scilab-releases-dev/prerequirements-sources/gluegen-v$JOGL_VERSION.tar.xz
-    [ ! -f gluegen-jcpp-v$JOGL_VERSION.zip ] && curl -LO https://oos.eu-west-2.outscale.com/scilab-releases-dev/prerequirements-sources/gluegen-jcpp-v$JOGL_VERSION.zip
+    [ ! -f jcpp-v$JOGL_VERSION.tar.xz ] && curl -LO https://oos.eu-west-2.outscale.com/scilab-releases-dev/prerequirements-sources/jcpp-v$JOGL_VERSION.tar.xz
     [ ! -f jogl-v$JOGL_VERSION.tar.xz ] && curl -LO https://oos.eu-west-2.outscale.com/scilab-releases-dev/prerequirements-sources/jogl-v$JOGL_VERSION.tar.xz
 
     [ ! -f OpenXLSX-$OPENXLSX_VERSION.tar.gz ] && curl -LO https://oos.eu-west-2.outscale.com/scilab-releases-dev/prerequirements-sources/OpenXLSX-$OPENXLSX_VERSION.tar.gz
@@ -373,7 +373,7 @@ make_jar() {
     cd thirdparty-jar || exit 1
     unzip "$DOWNLOADDIR/thirdparty-jar.zip"
     # remove .jar already managed
-    rm xml* fontbox* commons* batik* avalon* fop.jar gluegen-rt.jar jogl-all.jar
+    rm xml* fontbox* commons* batik* avalon* fop.jar gluegen2-rt.jar jogl2.jar gluegen-rt.jar jogl-all.jar
     cp -a ./* "$JAVATHIRDPARTYDIR"
 }
 
@@ -824,8 +824,8 @@ build_gluegen() {
 
     tar -xJf "$DOWNLOADDIR/gluegen-v$JOGL_VERSION.tar.xz"
     cd gluegen-v$JOGL_VERSION || exit 1
-    unzip "$DOWNLOADDIR/gluegen-jcpp-v$JOGL_VERSION.zip"
-    rm -fr jcpp && mv jcpp-master jcpp
+    tar -xJf "$DOWNLOADDIR/jcpp-v$JOGL_VERSION.tar.xz"
+    rm -fr jcpp && mv jcpp-v$JOGL_VERSION jcpp
 
     cd make || exit 1
     "$ANT_HOME/bin/ant"

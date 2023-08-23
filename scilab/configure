@@ -19709,7 +19709,7 @@ EOF
     CLASSPATH=$ac_java_classpath
     export CLASSPATH
     echo "CLASSPATH="$CLASSPATH >&5
-    cmd="$JAVA conftestSharedChecker \"jogl\" \"jogamp.opengl.x11.glx.GLX\" \"$jar_resolved\" \"\" \"2.4\" \"\""
+    cmd="$JAVA conftestSharedChecker \"jogl\" \"jogamp.opengl.x11.glx.GLX\" \"$jar_resolved\" \"\" \"2.5\" \"\""
     if (echo $cmd >&5 ; eval $cmd >conftestSharedChecker.java.output 2>&5); then
         read PACKAGE_JAR_FILE PACKAGE_JAR_VERSION << EOF
 $(tail -n 1 conftestSharedChecker.java.output)
