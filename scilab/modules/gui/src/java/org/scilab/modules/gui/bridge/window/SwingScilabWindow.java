@@ -22,6 +22,7 @@ package org.scilab.modules.gui.bridge.window;
 import java.awt.Dimension;
 import java.awt.Frame;
 import java.awt.Point;
+import java.awt.Taskbar;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ComponentAdapter;
@@ -111,6 +112,11 @@ public abstract class SwingScilabWindow extends JFrame implements SimpleWindow {
         this.setTitle("Scilab");
         setIconImage(new ImageIcon(FindIconHelper.findIcon("scilab", "256x256")).getImage());
 
+        if (MAC_OS_X) {
+            Taskbar macosTaskbar = Taskbar.getTaskbar();
+            macosTaskbar.setIconImage(new ImageIcon(FindIconHelper.findIcon("scilab", "256x256")).getImage());
+        }
+
         /* defining the Layout */
         super.setLayout(new java.awt.BorderLayout());
         windowUID = new UID().toString();
@@ -145,11 +151,6 @@ public abstract class SwingScilabWindow extends JFrame implements SimpleWindow {
                 }
             }
         });
-
-        if (MAC_OS_X) {
-            registerForMacOSXEvents();
-        }
-
     }
 
     public void setIsRestoring(boolean b) {
@@ -182,51 +183,6 @@ public abstract class SwingScilabWindow extends JFrame implements SimpleWindow {
         }
 
         return lastPosition;
-    }
-
-    /**
-     * This method registers some methods against the specific Mac OS X API
-     * (in order to set the "special" mac os x menus)
-     */
-    private void registerForMacOSXEvents() {
-        try {
-            // Generate and register the OSXAdapter, passing it a hash of all the methods we wish to
-            // use as delegates for various com.apple.eawt.ApplicationListener methods
-            OSXAdapter.setAboutHandler(this, getClass().getMethod("macosxAbout", (Class[]) null));
-            OSXAdapter.setQuitHandler(this, getClass().getMethod("macosxQuit", (Class[]) null));
-            OSXAdapter.setPreferencesHandler(this, getClass().getMethod("macosxPreferences", (Class[]) null));
-            OSXAdapter.setDockIcon(new ImageIcon(FindIconHelper.findIcon("scilabMacOs", "256x256")));
-        } catch (java.lang.NoSuchMethodException e) {
-            System.err.println("OSXAdapter could not find the method: " + e.getLocalizedMessage());
-        }
-    }
-
-    /**
-     * This method is called by the OSXAdapter class when the specific Mac
-     * OS X "About" menu is called. It is the only case where this method
-     * should be used
-     */
-    public void macosxAbout() {
-        InterpreterManagement.requestScilabExec("about();");
-    }
-
-    /**
-     * This method is called by the OSXAdapter class when the specific Mac
-     * OS X "Quit Scilab" menu is called. It is the only case where this method
-     * should be used
-     */
-    public boolean macosxQuit() {
-        InterpreterManagement.requestScilabExec("exit();");
-        return false;
-    }
-
-    /**
-     * This method is called by the OSXAdapter class when the specific Mac
-     * OS X "Preferences" menu is called. It is the only case where this method
-     * should be used
-     */
-    public void macosxPreferences() {
-        InterpreterManagement.requestScilabExec("preferences();");
     }
 
     /**
