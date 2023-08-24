@@ -32,10 +32,10 @@ elif [ -f "prerequirements-scilab-branch-${BRANCH}.bin.${ARCH}.tar.xz" ]; then
 	cp -a "prerequirements-scilab-branch-${BRANCH}.bin.${ARCH}.tar.xz" "prereq.tar.xz"
 else
 	# download prebuild for this branch
-	curl -k -o "prereq.tar.xz" "https://oos.eu-west-2.outscale.com/scilab-releases-dev/prerequirements/prerequirements-scilab-branch-${BRANCH}.bin.${ARCH}-java17.tar.xz"
+	curl -k -o "prereq.tar.xz" "https://oos.eu-west-2.outscale.com/scilab-releases-dev/prerequirements/prerequirements-scilab-branch-${BRANCH}.bin.${ARCH}.tar.xz"
 	if ! xz -t "prereq.tar.xz"; then
 		# fallback to the default branch
-		curl -k -o "prereq.tar.xz" "https://oos.eu-west-2.outscale.com/scilab-releases-dev/prerequirements/prerequirements-scilab-branch-${CI_DEFAULT_BRANCH}.bin.${ARCH}-java17.tar.xz"
+		curl -k -o "prereq.tar.xz" "https://oos.eu-west-2.outscale.com/scilab-releases-dev/prerequirements/prerequirements-scilab-branch-${CI_DEFAULT_BRANCH}.bin.${ARCH}.tar.xz"
 	fi
 fi
 # cleanup and extract
