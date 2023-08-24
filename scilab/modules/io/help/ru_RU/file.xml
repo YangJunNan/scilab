@@ -93,7 +93,7 @@
                         <varlistentry>
                             <term>"direct"</term>
                             <listitem>
-                                <para>прямой доступ.</para>
+                                <para>прямой доступ. Тогда обязателен следующий аргумент <varname>recl</varname>.</para>
                             </listitem>
                         </varlistentry>
                     </variablelist>

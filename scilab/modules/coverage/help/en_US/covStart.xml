@@ -27,7 +27,10 @@
             <varlistentry>
                 <term>macro</term>
                 <listitem>
-                    <para>a specific function (as a string name or a function value).</para>
+                    <para>
+                        handle of a specific function. Example: <literal>covStart(members)</literal>,
+                        not <literal>covStart("members")</literal>.
+                    </para>
                 </listitem>
             </varlistentry>
             <varlistentry>

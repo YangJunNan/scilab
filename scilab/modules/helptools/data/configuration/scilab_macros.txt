@@ -1572,6 +1572,7 @@ coppercolormap
 createBorder
 createConstraints
 createLayoutOptions
+cutaxes
 dragrect
 edit_curv
 errbar

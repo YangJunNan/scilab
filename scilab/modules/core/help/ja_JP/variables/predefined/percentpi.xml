@@ -21,6 +21,7 @@
         <refname>%pi</refname>
         <refpurpose>円の円周と直径の比</refpurpose>
     </refnamediv>
+    <refnamediv xml:id="pi"/>
     <refsynopsisdiv>
         <title>呼び出し手順</title>
         <synopsis>%pi</synopsis>

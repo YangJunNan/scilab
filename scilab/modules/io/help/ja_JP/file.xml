@@ -92,7 +92,8 @@
                         <varlistentry>
                             <term>"direct"</term>
                             <listitem>
-                                <para>直接アクセス.</para>
+                                <para>直接アクセス. The next input argument <varname>recl</varname>
+                                   is then mandatory.</para>
                             </listitem>
                         </varlistentry>
                     </variablelist>

@@ -66,9 +66,9 @@
             <literal>B</literal>のクロネッカーテンソル積を返します.
             結果の行列は以下のようなブロック形式となります:
             <latex style="display" alt="
-          [ A(1,1).B  ..  A(1,n).B ] \n
-A .✶. B = |   ⋮        ⋮     ⋮      | \n
-          [ A(m,1).B  ..  A(m,n).B ]">
+          [ A(1,1).B  ⋯  A(1,n).B ] \n
+A .*. B = |   ⋮        ⋮     ⋮      | \n
+          [ A(m,1).B  ⋯  A(m,n).B ]">
                 A \; .*.\; B = \begin{pmatrix}
                     A_{1,1}\cdot B &amp; \cdots &amp; A_{1,n}\cdot B  \\
                           \vdots   &amp;        &amp;        \vdots   \\

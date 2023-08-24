@@ -86,7 +86,7 @@
                     </listitem>
                     <listitem>
                         <emphasis role="bold">Getting the literal name of the library</emphasis>:
-                        <literal>libraryname = xmlGetValues("//scilablib", "name", libpath)</literal>
+                        <literal>libraryname = xmlGetValues("//scilablib", "name", libpath+"/lib")</literal>
                     </listitem>
                 </itemizedlist>
             </para>
