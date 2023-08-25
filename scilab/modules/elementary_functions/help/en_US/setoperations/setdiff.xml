@@ -46,6 +46,8 @@
                 <term>b</term>
                 <listitem>
                     <para>elements to remove from <varname>a</varname>.</para>
+                </listitem>
+            </varlistentry>
             <varlistentry>
                 <term>orien</term>
                 <listitem>
@@ -118,7 +120,7 @@
         <title>Description</title>
         <para>
             <literal>setdiff(a, b,..)</literal> computes and returns the elements or rows or columns
-            of <varname>a</varname> that are <bold>not</bold> in <varname>b</varname>.
+            of <varname>a</varname> that are <emphasis role="bold">not</emphasis> in <varname>b</varname>.
         </para>
         <para>
             All duplicates (elements or rows or columns) are removed from <varname>a</varname> and
