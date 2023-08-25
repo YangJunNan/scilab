@@ -56,7 +56,7 @@ public class NewsFetcher {
 
         @Override
         protected void done() {
-            controller.nextNews();
+            controller.fireNewsFeedEvent(NewsFeedEvent.NEWS_CHANGED);
         }
 
         @Override

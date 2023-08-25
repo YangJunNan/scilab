@@ -199,7 +199,7 @@ public class NewsFeedController implements ActionListener {
         }
     }
 
-    private void fireNewsFeedEvent(int eventType) {
+    public void fireNewsFeedEvent(int eventType) {
         NewsFeedEvent event = new NewsFeedEvent(this, eventType);
         Iterator<NewsFeedEventListener> iterator = listeners.iterator();
         while (iterator.hasNext()) {
