@@ -193,10 +193,6 @@ function Info = scicos_simulate(scs_m, Info, updated_vars, flag, Ignb)
         end
     end
 
-    //** prepare from and to workspace stuff
-    //-------------------------------------
-    scicos_workspace_init()
-
     if flag == "nw" then
         Ignore = [Ignore,Ignoreb]
     end

@@ -84,9 +84,9 @@ function ierr = cos2cosf(u,scs_m,count)
     for k=1:size(scs_m.objs)
 
         o=scs_m.objs(k)
+        lhs=lname+".objs("+string(k)+")="
+        
         if typeof(o)=="Block" then
-            lhs=lname+".objs("+string(k)+")="
-
             if o.model.sim=="super"| o.model.sim=="csuper"| o.model.sim(1)=="asuper" then  //Super blocks
                 cos2cosf(u,o.model.rpar,count);//model.rpar
             end
@@ -206,8 +206,6 @@ function ierr = cos2cosf(u,scs_m,count)
             // Alan : JESAISPASIYADAUTRESOBJS
             // QUEDESBLOCKSETDESLINKSDANSSCICOS
             // ALORSJELAISSELEVIEUCODE
-            lhs=lname+".objs("+string(k)+")="
-            
             t=[]
             t1=sci2exp(o)
             n1=size(t1,1)
