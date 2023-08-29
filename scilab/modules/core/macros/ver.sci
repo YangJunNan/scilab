@@ -36,8 +36,8 @@ function res = ver()
         system_getproperty("java.vm.version"), ..
         system_getproperty("java.vm.info"));
 
-        res(6,1) = gettext("Vendor: ");
-        res(6,2) = system_getproperty("java.vm.vendor");
+        res(6,1) = gettext("Vendor specification: ");
+        res(6,2) = system_getproperty("java.vm.specification.vendor");
     end
 endfunction
 //===============================

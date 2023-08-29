@@ -48,12 +48,12 @@ r = ver()
         <screen><![CDATA[
 --> r = ver()
  r  =
-  "Scilab Version: "                    "2024.0.0"                                            
-  "Operating System: "                  "Windows 10 10.0"                                               
-  "Java version: "                      "17.0.7"                                                        
-  "Java runtime information: "          "OpenJDK Runtime Environment (build 17.0.7+7)"                  
-  "Java Virtual Machine information: "  "OpenJDK 64-Bit Server VM (build 17.0.7+7, mixed mode, sharing)"
-  "Vendor: "                            "Eclipse Adoptium"                                              
+  "Scilab Version: "                    "6.1.1.0"
+  "Operating System: "                  "Windows 10 10.0"
+  "Java version: "                      "1.8.0_151"
+  "Java runtime information: "          "Java(TM) SE Runtime Environment (build 1.8.0_151-b12)"
+  "Java Virtual Machine information: "  "Java HotSpot(TM) 64-Bit Server VM (build 25.151-b12, mixed mode)"
+  "Vendor specification: "              "Oracle Corporation"
 ]]></screen>
     </refsection>
     <refsection>
