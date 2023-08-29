@@ -2354,7 +2354,7 @@ fi
 echo ""
 if test $UMFPACK_ENABLE = yes;  then
    echo "UMFPACK Configuration:"
-   echo "  UMFPACK LIBS ....... = $UMFPACK_LIB"
+   echo "  UMFPACK LIBS ....... = $UMFPACK_LIBS"
    echo "  UMFPACK CFLAGS ..... = $UMFPACK_CFLAGS"
    if test $SUITESPARSE = yes; then
       echo "  UMFPACK SUITESPARSE  = Yes"

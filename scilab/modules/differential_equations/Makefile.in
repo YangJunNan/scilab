@@ -16,6 +16,7 @@
 
 # Scilab ( https://www.scilab.org/ ) - This file is part of Scilab
 # Copyright (C) 2006 - INRIA - Sylvestre LEDRU
+# Copyright (C) 2023 - UTC - Stéphane MOTTELET
 #
 # This file is distributed under the same license as the Scilab package.
 
@@ -123,16 +124,16 @@ am__aclocal_m4_deps = $(top_srcdir)/m4/ax_cxx_compile_stdcxx.m4 \
 	$(top_srcdir)/m4/fortran.m4 $(top_srcdir)/m4/giws.m4 \
 	$(top_srcdir)/m4/hdf5.m4 $(top_srcdir)/m4/intel_compiler.m4 \
 	$(top_srcdir)/m4/java-thirdparty.m4 $(top_srcdir)/m4/java.m4 \
-	$(top_srcdir)/m4/lib-ld.m4 $(top_srcdir)/m4/libsmath.m4 \
-	$(top_srcdir)/m4/libtool.m4 $(top_srcdir)/m4/libxml2.m4 \
-	$(top_srcdir)/m4/ltoptions.m4 $(top_srcdir)/m4/ltsugar.m4 \
-	$(top_srcdir)/m4/ltversion.m4 $(top_srcdir)/m4/lt~obsolete.m4 \
-	$(top_srcdir)/m4/macosx.m4 $(top_srcdir)/m4/mpi.m4 \
-	$(top_srcdir)/m4/ocaml.m4 $(top_srcdir)/m4/pcre.m4 \
-	$(top_srcdir)/m4/pkg.m4 $(top_srcdir)/m4/relocatable.m4 \
-	$(top_srcdir)/m4/swig.m4 $(top_srcdir)/m4/symlinks.m4 \
-	$(top_srcdir)/m4/tcltk.m4 $(top_srcdir)/m4/umfpack.m4 \
-	$(top_srcdir)/configure.ac
+	$(top_srcdir)/m4/klu.m4 $(top_srcdir)/m4/lib-ld.m4 \
+	$(top_srcdir)/m4/libsmath.m4 $(top_srcdir)/m4/libtool.m4 \
+	$(top_srcdir)/m4/libxml2.m4 $(top_srcdir)/m4/ltoptions.m4 \
+	$(top_srcdir)/m4/ltsugar.m4 $(top_srcdir)/m4/ltversion.m4 \
+	$(top_srcdir)/m4/lt~obsolete.m4 $(top_srcdir)/m4/macosx.m4 \
+	$(top_srcdir)/m4/mpi.m4 $(top_srcdir)/m4/ocaml.m4 \
+	$(top_srcdir)/m4/pcre.m4 $(top_srcdir)/m4/pkg.m4 \
+	$(top_srcdir)/m4/relocatable.m4 $(top_srcdir)/m4/swig.m4 \
+	$(top_srcdir)/m4/symlinks.m4 $(top_srcdir)/m4/tcltk.m4 \
+	$(top_srcdir)/m4/umfpack.m4 $(top_srcdir)/configure.ac
 am__configure_deps = $(am__aclocal_m4_deps) $(CONFIGURE_DEPENDENCIES) \
 	$(ACLOCAL_M4)
 DIST_COMMON = $(srcdir)/Makefile.am $(am__DIST_COMMON)
@@ -183,7 +184,8 @@ am__objects_1 =  \
 	src/c/libscidifferential_equations_algo_la-Ex-odedc.lo \
 	src/c/libscidifferential_equations_algo_la-Ex-ode.lo \
 	src/c/libscidifferential_equations_algo_la-Ex-daskr.lo \
-	src/c/libscidifferential_equations_algo_la-errmds.lo
+	src/c/libscidifferential_equations_algo_la-errmds.lo \
+	src/c/libscidifferential_equations_algo_la-externals_for_tests.lo
 am__objects_2 = src/fortran/rscar1.lo src/fortran/bcomp.lo \
 	src/fortran/lcomp.lo src/fortran/loren.lo src/fortran/prja.lo \
 	src/fortran/vnorm.lo src/fortran/lsoda.lo \
@@ -214,7 +216,19 @@ am__objects_2 = src/fortran/rscar1.lo src/fortran/bcomp.lo \
 am__objects_3 =  \
 	src/cpp/libscidifferential_equations_algo_la-scifunctions.lo \
 	src/cpp/libscidifferential_equations_algo_la-checkodeerror.lo \
-	src/cpp/libscidifferential_equations_algo_la-differentialequationfunctions.lo
+	src/cpp/libscidifferential_equations_algo_la-differentialequationfunctions.lo \
+	src/cpp/libscidifferential_equations_algo_la-SUNDIALSManager.lo \
+	src/cpp/libscidifferential_equations_algo_la-CVODEManager.lo \
+	src/cpp/libscidifferential_equations_algo_la-KINSOLManager.lo \
+	src/cpp/libscidifferential_equations_algo_la-IDAManager.lo \
+	src/cpp/libscidifferential_equations_algo_la-ARKODEManager.lo \
+	src/cpp/libscidifferential_equations_algo_la-OdeManagerInit.lo \
+	src/cpp/libscidifferential_equations_algo_la-OdeManagerCompute.lo \
+	src/cpp/libscidifferential_equations_algo_la-OdeManagerParse.lo \
+	src/cpp/libscidifferential_equations_algo_la-OdeManagerHelpers.lo \
+	src/cpp/libscidifferential_equations_algo_la-OdeManagerSolve.lo \
+	src/cpp/libscidifferential_equations_algo_la-odeparameters.lo \
+	src/cpp/libscidifferential_equations_algo_la-complexHelpers.lo
 am_libscidifferential_equations_algo_la_OBJECTS = $(am__objects_1) \
 	$(am__objects_2) $(am__objects_3)
 libscidifferential_equations_algo_la_OBJECTS =  \
@@ -227,6 +241,7 @@ am__v_lt_1 =
 am__DEPENDENCIES_1 =
 libscidifferential_equations_la_DEPENDENCIES =  \
 	libscidifferential_equations-algo.la libscisundials.la \
+	$(am__DEPENDENCIES_1) $(am__DEPENDENCIES_1) \
 	$(am__DEPENDENCIES_1)
 am__objects_4 = sci_gateway/fortran/Ex-impl.lo \
 	sci_gateway/fortran/Ex-int2d.lo \
@@ -245,7 +260,12 @@ am__objects_5 = sci_gateway/cpp/libscidifferential_equations_la-differential_equ
 	sci_gateway/cpp/libscidifferential_equations_la-sci_impl.lo \
 	sci_gateway/cpp/libscidifferential_equations_la-sci_dassl.lo \
 	sci_gateway/cpp/libscidifferential_equations_la-sci_dasrt.lo \
-	sci_gateway/cpp/libscidifferential_equations_la-sci_daskr.lo
+	sci_gateway/cpp/libscidifferential_equations_la-sci_daskr.lo \
+	sci_gateway/cpp/libscidifferential_equations_la-sci_cvode.lo \
+	sci_gateway/cpp/libscidifferential_equations_la-sci_ida.lo \
+	sci_gateway/cpp/libscidifferential_equations_la-sci_arkode.lo \
+	sci_gateway/cpp/libscidifferential_equations_la-sci_kinsol.lo \
+	sci_gateway/cpp/libscidifferential_equations_la-sci_percent_odeSolution.lo
 am_libscidifferential_equations_la_OBJECTS = $(am__objects_4) \
 	$(am__objects_5)
 libscidifferential_equations_la_OBJECTS =  \
@@ -324,6 +344,7 @@ am_libscisundials_la_OBJECTS =  \
 	src/patched_sundials/src/sunlinsol/lapackband/libscisundials_la-sunlinsol_lapackband.lo \
 	src/patched_sundials/src/sunlinsol/lapackdense/libscisundials_la-sunlinsol_lapackdense.lo \
 	src/patched_sundials/src/sunlinsol/pcg/libscisundials_la-sunlinsol_pcg.lo \
+	src/patched_sundials/src/sunlinsol/klu/libscisundials_la-sunlinsol_klu.lo \
 	src/patched_sundials/src/sunlinsol/spbcgs/libscisundials_la-sunlinsol_spbcgs.lo \
 	src/patched_sundials/src/sunlinsol/spfgmr/libscisundials_la-sunlinsol_spfgmr.lo \
 	src/patched_sundials/src/sunlinsol/spgmr/libscisundials_la-sunlinsol_spgmr.lo \
@@ -350,17 +371,22 @@ DEFAULT_INCLUDES = -I.@am__isrc@ -I$(top_builddir)/modules/core/includes
 depcomp = $(SHELL) $(top_srcdir)/config/depcomp
 am__maybe_remake_depfiles = depfiles
 am__depfiles_remade = sci_gateway/cpp/$(DEPDIR)/libscidifferential_equations_la-differential_equations_gw.Plo \
+	sci_gateway/cpp/$(DEPDIR)/libscidifferential_equations_la-sci_arkode.Plo \
 	sci_gateway/cpp/$(DEPDIR)/libscidifferential_equations_la-sci_bvode.Plo \
+	sci_gateway/cpp/$(DEPDIR)/libscidifferential_equations_la-sci_cvode.Plo \
 	sci_gateway/cpp/$(DEPDIR)/libscidifferential_equations_la-sci_daskr.Plo \
 	sci_gateway/cpp/$(DEPDIR)/libscidifferential_equations_la-sci_dasrt.Plo \
 	sci_gateway/cpp/$(DEPDIR)/libscidifferential_equations_la-sci_dassl.Plo \
 	sci_gateway/cpp/$(DEPDIR)/libscidifferential_equations_la-sci_feval.Plo \
+	sci_gateway/cpp/$(DEPDIR)/libscidifferential_equations_la-sci_ida.Plo \
 	sci_gateway/cpp/$(DEPDIR)/libscidifferential_equations_la-sci_impl.Plo \
 	sci_gateway/cpp/$(DEPDIR)/libscidifferential_equations_la-sci_int2d.Plo \
 	sci_gateway/cpp/$(DEPDIR)/libscidifferential_equations_la-sci_int3d.Plo \
 	sci_gateway/cpp/$(DEPDIR)/libscidifferential_equations_la-sci_intg.Plo \
+	sci_gateway/cpp/$(DEPDIR)/libscidifferential_equations_la-sci_kinsol.Plo \
 	sci_gateway/cpp/$(DEPDIR)/libscidifferential_equations_la-sci_ode.Plo \
 	sci_gateway/cpp/$(DEPDIR)/libscidifferential_equations_la-sci_odedc.Plo \
+	sci_gateway/cpp/$(DEPDIR)/libscidifferential_equations_la-sci_percent_odeSolution.Plo \
 	src/c/$(DEPDIR)/libscidifferential_equations_algo_la-Ex-daskr.Plo \
 	src/c/$(DEPDIR)/libscidifferential_equations_algo_la-Ex-ode.Plo \
 	src/c/$(DEPDIR)/libscidifferential_equations_algo_la-Ex-odedc.Plo \
@@ -368,10 +394,23 @@ am__depfiles_remade = sci_gateway/cpp/$(DEPDIR)/libscidifferential_equations_la-
 	src/c/$(DEPDIR)/libscidifferential_equations_algo_la-colnewmsgs.Plo \
 	src/c/$(DEPDIR)/libscidifferential_equations_algo_la-dassl.Plo \
 	src/c/$(DEPDIR)/libscidifferential_equations_algo_la-errmds.Plo \
+	src/c/$(DEPDIR)/libscidifferential_equations_algo_la-externals_for_tests.Plo \
 	src/c/$(DEPDIR)/libscidifferential_equations_algo_la-feval.Plo \
 	src/c/$(DEPDIR)/libscidifferential_equations_algo_la-rk4.Plo \
+	src/cpp/$(DEPDIR)/libscidifferential_equations_algo_la-ARKODEManager.Plo \
+	src/cpp/$(DEPDIR)/libscidifferential_equations_algo_la-CVODEManager.Plo \
+	src/cpp/$(DEPDIR)/libscidifferential_equations_algo_la-IDAManager.Plo \
+	src/cpp/$(DEPDIR)/libscidifferential_equations_algo_la-KINSOLManager.Plo \
+	src/cpp/$(DEPDIR)/libscidifferential_equations_algo_la-OdeManagerCompute.Plo \
+	src/cpp/$(DEPDIR)/libscidifferential_equations_algo_la-OdeManagerHelpers.Plo \
+	src/cpp/$(DEPDIR)/libscidifferential_equations_algo_la-OdeManagerInit.Plo \
+	src/cpp/$(DEPDIR)/libscidifferential_equations_algo_la-OdeManagerParse.Plo \
+	src/cpp/$(DEPDIR)/libscidifferential_equations_algo_la-OdeManagerSolve.Plo \
+	src/cpp/$(DEPDIR)/libscidifferential_equations_algo_la-SUNDIALSManager.Plo \
 	src/cpp/$(DEPDIR)/libscidifferential_equations_algo_la-checkodeerror.Plo \
+	src/cpp/$(DEPDIR)/libscidifferential_equations_algo_la-complexHelpers.Plo \
 	src/cpp/$(DEPDIR)/libscidifferential_equations_algo_la-differentialequationfunctions.Plo \
+	src/cpp/$(DEPDIR)/libscidifferential_equations_algo_la-odeparameters.Plo \
 	src/cpp/$(DEPDIR)/libscidifferential_equations_algo_la-scifunctions.Plo \
 	src/patched_sundials/src/arkode/$(DEPDIR)/libscisundials_la-arkode.Plo \
 	src/patched_sundials/src/arkode/$(DEPDIR)/libscisundials_la-arkode_adapt.Plo \
@@ -442,6 +481,7 @@ am__depfiles_remade = sci_gateway/cpp/$(DEPDIR)/libscidifferential_equations_la-
 	src/patched_sundials/src/sundials/$(DEPDIR)/libscisundials_la-sundials_version.Plo \
 	src/patched_sundials/src/sunlinsol/band/$(DEPDIR)/libscisundials_la-sunlinsol_band.Plo \
 	src/patched_sundials/src/sunlinsol/dense/$(DEPDIR)/libscisundials_la-sunlinsol_dense.Plo \
+	src/patched_sundials/src/sunlinsol/klu/$(DEPDIR)/libscisundials_la-sunlinsol_klu.Plo \
 	src/patched_sundials/src/sunlinsol/lapackband/$(DEPDIR)/libscisundials_la-sunlinsol_lapackband.Plo \
 	src/patched_sundials/src/sunlinsol/lapackdense/$(DEPDIR)/libscisundials_la-sunlinsol_lapackdense.Plo \
 	src/patched_sundials/src/sunlinsol/pcg/$(DEPDIR)/libscisundials_la-sunlinsol_pcg.Plo \
@@ -662,7 +702,9 @@ JOGL2 = @JOGL2@
 JROSETTA_API = @JROSETTA_API@
 JROSETTA_ENGINE = @JROSETTA_ENGINE@
 JUNIT4 = @JUNIT4@
+KLU_CFLAGS = @KLU_CFLAGS@
 KLU_ENABLE = @KLU_ENABLE@
+KLU_LIBS = @KLU_LIBS@
 LAPACK_LIBS = @LAPACK_LIBS@
 LCOV = @LCOV@
 LD = @LD@
@@ -769,7 +811,7 @@ TCL_INC_PATH = @TCL_INC_PATH@
 TK_INC_PATH = @TK_INC_PATH@
 UMFPACK_CFLAGS = @UMFPACK_CFLAGS@
 UMFPACK_ENABLE = @UMFPACK_ENABLE@
-UMFPACK_LIB = @UMFPACK_LIB@
+UMFPACK_LIBS = @UMFPACK_LIBS@
 USE_NLS = @USE_NLS@
 VALGRIND_CFLAGS = @VALGRIND_CFLAGS@
 VALGRIND_LIBS = @VALGRIND_LIBS@
@@ -853,7 +895,19 @@ yacc_present = @yacc_present@
 DIFFERENTIAL_EQUATIONS_CPP_SOURCES = \
     src/cpp/scifunctions.cpp \
     src/cpp/checkodeerror.cpp \
-    src/cpp/differentialequationfunctions.cpp
+    src/cpp/differentialequationfunctions.cpp \
+    src/cpp/SUNDIALSManager.cpp \
+    src/cpp/CVODEManager.cpp \
+    src/cpp/KINSOLManager.cpp \
+    src/cpp/IDAManager.cpp \
+    src/cpp/ARKODEManager.cpp \
+    src/cpp/OdeManagerInit.cpp \
+    src/cpp/OdeManagerCompute.cpp \
+    src/cpp/OdeManagerParse.cpp \
+    src/cpp/OdeManagerHelpers.cpp \
+    src/cpp/OdeManagerSolve.cpp \
+    src/cpp/odeparameters.cpp \
+    src/cpp/complexHelpers.cpp
 
 DIFFERENTIAL_EQUATIONS_C_SOURCES = \
     src/c/colnewmsgs.c \
@@ -864,7 +918,8 @@ DIFFERENTIAL_EQUATIONS_C_SOURCES = \
     src/c/Ex-odedc.c \
     src/c/Ex-ode.c \
     src/c/Ex-daskr.c \
-    src/c/errmds.c
+    src/c/errmds.c \
+    src/c/externals_for_tests.c
 
 DIFFERENTIAL_EQUATIONS_FORTRAN_SOURCES = \
     src/fortran/rscar1.f \
@@ -947,12 +1002,28 @@ GATEWAY_CPP_SOURCES = \
     sci_gateway/cpp/sci_impl.cpp \
     sci_gateway/cpp/sci_dassl.cpp \
     sci_gateway/cpp/sci_dasrt.cpp \
-    sci_gateway/cpp/sci_daskr.cpp
+    sci_gateway/cpp/sci_daskr.cpp \
+    sci_gateway/cpp/sci_cvode.cpp \
+    sci_gateway/cpp/sci_ida.cpp \
+    sci_gateway/cpp/sci_arkode.cpp \
+    sci_gateway/cpp/sci_kinsol.cpp \
+    sci_gateway/cpp/sci_percent_odeSolution.cpp
 
 libscidifferential_equations_la_CPPFLAGS = \
     -I$(srcdir)/includes/ \
     -I$(srcdir)/src/cpp/ \
     -I$(srcdir)/src/c/ \
+    -I$(srcdir)/src/patched_sundials/include/ \
+    -I$(srcdir)/src/patched_sundials/src/ \
+    -I$(srcdir)/src/patched_sundials/src/sundials \
+    -I$(top_srcdir)/modules/sparse/includes/ \
+    -I$(top_srcdir)/modules/sparse/src/ColPack/includes/ \
+    -I$(top_srcdir)/modules/sparse/src/ColPack/include/ \
+    -I$(top_srcdir)/modules/sparse/src/ColPack/src/Utilities/ \
+    -I$(top_srcdir)/modules/sparse/src/ColPack/src/Recovery/ \
+    -I$(top_srcdir)/modules/sparse/src/ColPack/src/GeneralGraphColoring \
+    -I$(top_srcdir)/modules/sparse/src/ColPack/src/BipartiteGraphPartialColoring \
+    -I$(top_srcdir)/modules/sparse/src/ColPack/src/BipartiteGraphBicoloring \
     -I$(top_srcdir)/modules/ast/includes/ast/ \
     -I$(top_srcdir)/modules/ast/includes/exps/ \
     -I$(top_srcdir)/modules/ast/includes/operations/ \
@@ -969,7 +1040,9 @@ libscidifferential_equations_la_CPPFLAGS = \
     -I$(top_srcdir)/modules/threads/includes/ \
     -I$(top_srcdir)/modules/string/includes/ \
     -I$(top_srcdir)/modules/elementary_functions/includes/ \
-    $(AM_CPPFLAGS)
+    $(AM_CPPFLAGS) \
+    $(EIGEN_CPPFLAGS) \
+    $(OPENMP_CXXFLAGS)
 
 
 #### scicos : SUNDIALS STUFF ####
@@ -1081,6 +1154,7 @@ libscisundials_la_SOURCES = \
     src/patched_sundials/src/sunlinsol/lapackband/sunlinsol_lapackband.c \
     src/patched_sundials/src/sunlinsol/lapackdense/sunlinsol_lapackdense.c \
     src/patched_sundials/src/sunlinsol/pcg/sunlinsol_pcg.c \
+    src/patched_sundials/src/sunlinsol/klu/sunlinsol_klu.c \
     src/patched_sundials/src/sunlinsol/spbcgs/sunlinsol_spbcgs.c \
     src/patched_sundials/src/sunlinsol/spfgmr/sunlinsol_spfgmr.c \
     src/patched_sundials/src/sunlinsol/spgmr/sunlinsol_spgmr.c \
@@ -1120,6 +1194,8 @@ CHECK_SRC = $(DIFFERENTIAL_EQUATIONS_C_SOURCES) $(DIFFERENTIAL_EQUATIONS_CPP_SOU
 INCLUDE_FLAGS = $(libscidifferential_equations_la_CPPFLAGS)
 libscidifferential_equations_la_LIBADD = libscidifferential_equations-algo.la \
     libscisundials.la \
+    $(UMFPACK_LIBS) \
+    $(OPENMP_LIBS) \
     $(FLIBS)
 
 
@@ -1314,6 +1390,8 @@ src/c/libscidifferential_equations_algo_la-Ex-daskr.lo:  \
 	src/c/$(am__dirstamp) src/c/$(DEPDIR)/$(am__dirstamp)
 src/c/libscidifferential_equations_algo_la-errmds.lo:  \
 	src/c/$(am__dirstamp) src/c/$(DEPDIR)/$(am__dirstamp)
+src/c/libscidifferential_equations_algo_la-externals_for_tests.lo:  \
+	src/c/$(am__dirstamp) src/c/$(DEPDIR)/$(am__dirstamp)
 src/fortran/$(am__dirstamp):
 	@$(MKDIR_P) src/fortran
 	@: > src/fortran/$(am__dirstamp)
@@ -1448,6 +1526,30 @@ src/cpp/libscidifferential_equations_algo_la-checkodeerror.lo:  \
 	src/cpp/$(am__dirstamp) src/cpp/$(DEPDIR)/$(am__dirstamp)
 src/cpp/libscidifferential_equations_algo_la-differentialequationfunctions.lo:  \
 	src/cpp/$(am__dirstamp) src/cpp/$(DEPDIR)/$(am__dirstamp)
+src/cpp/libscidifferential_equations_algo_la-SUNDIALSManager.lo:  \
+	src/cpp/$(am__dirstamp) src/cpp/$(DEPDIR)/$(am__dirstamp)
+src/cpp/libscidifferential_equations_algo_la-CVODEManager.lo:  \
+	src/cpp/$(am__dirstamp) src/cpp/$(DEPDIR)/$(am__dirstamp)
+src/cpp/libscidifferential_equations_algo_la-KINSOLManager.lo:  \
+	src/cpp/$(am__dirstamp) src/cpp/$(DEPDIR)/$(am__dirstamp)
+src/cpp/libscidifferential_equations_algo_la-IDAManager.lo:  \
+	src/cpp/$(am__dirstamp) src/cpp/$(DEPDIR)/$(am__dirstamp)
+src/cpp/libscidifferential_equations_algo_la-ARKODEManager.lo:  \
+	src/cpp/$(am__dirstamp) src/cpp/$(DEPDIR)/$(am__dirstamp)
+src/cpp/libscidifferential_equations_algo_la-OdeManagerInit.lo:  \
+	src/cpp/$(am__dirstamp) src/cpp/$(DEPDIR)/$(am__dirstamp)
+src/cpp/libscidifferential_equations_algo_la-OdeManagerCompute.lo:  \
+	src/cpp/$(am__dirstamp) src/cpp/$(DEPDIR)/$(am__dirstamp)
+src/cpp/libscidifferential_equations_algo_la-OdeManagerParse.lo:  \
+	src/cpp/$(am__dirstamp) src/cpp/$(DEPDIR)/$(am__dirstamp)
+src/cpp/libscidifferential_equations_algo_la-OdeManagerHelpers.lo:  \
+	src/cpp/$(am__dirstamp) src/cpp/$(DEPDIR)/$(am__dirstamp)
+src/cpp/libscidifferential_equations_algo_la-OdeManagerSolve.lo:  \
+	src/cpp/$(am__dirstamp) src/cpp/$(DEPDIR)/$(am__dirstamp)
+src/cpp/libscidifferential_equations_algo_la-odeparameters.lo:  \
+	src/cpp/$(am__dirstamp) src/cpp/$(DEPDIR)/$(am__dirstamp)
+src/cpp/libscidifferential_equations_algo_la-complexHelpers.lo:  \
+	src/cpp/$(am__dirstamp) src/cpp/$(DEPDIR)/$(am__dirstamp)
 
 libscidifferential_equations-algo.la: $(libscidifferential_equations_algo_la_OBJECTS) $(libscidifferential_equations_algo_la_DEPENDENCIES) $(EXTRA_libscidifferential_equations_algo_la_DEPENDENCIES) 
 	$(AM_V_CXXLD)$(CXXLINK) $(am_libscidifferential_equations_algo_la_rpath) $(libscidifferential_equations_algo_la_OBJECTS) $(libscidifferential_equations_algo_la_LIBADD) $(LIBS)
@@ -1511,6 +1613,21 @@ sci_gateway/cpp/libscidifferential_equations_la-sci_dasrt.lo:  \
 	sci_gateway/cpp/$(am__dirstamp) \
 	sci_gateway/cpp/$(DEPDIR)/$(am__dirstamp)
 sci_gateway/cpp/libscidifferential_equations_la-sci_daskr.lo:  \
+	sci_gateway/cpp/$(am__dirstamp) \
+	sci_gateway/cpp/$(DEPDIR)/$(am__dirstamp)
+sci_gateway/cpp/libscidifferential_equations_la-sci_cvode.lo:  \
+	sci_gateway/cpp/$(am__dirstamp) \
+	sci_gateway/cpp/$(DEPDIR)/$(am__dirstamp)
+sci_gateway/cpp/libscidifferential_equations_la-sci_ida.lo:  \
+	sci_gateway/cpp/$(am__dirstamp) \
+	sci_gateway/cpp/$(DEPDIR)/$(am__dirstamp)
+sci_gateway/cpp/libscidifferential_equations_la-sci_arkode.lo:  \
+	sci_gateway/cpp/$(am__dirstamp) \
+	sci_gateway/cpp/$(DEPDIR)/$(am__dirstamp)
+sci_gateway/cpp/libscidifferential_equations_la-sci_kinsol.lo:  \
+	sci_gateway/cpp/$(am__dirstamp) \
+	sci_gateway/cpp/$(DEPDIR)/$(am__dirstamp)
+sci_gateway/cpp/libscidifferential_equations_la-sci_percent_odeSolution.lo:  \
 	sci_gateway/cpp/$(am__dirstamp) \
 	sci_gateway/cpp/$(DEPDIR)/$(am__dirstamp)
 
@@ -1803,6 +1920,15 @@ src/patched_sundials/src/sunlinsol/pcg/$(DEPDIR)/$(am__dirstamp):
 src/patched_sundials/src/sunlinsol/pcg/libscisundials_la-sunlinsol_pcg.lo:  \
 	src/patched_sundials/src/sunlinsol/pcg/$(am__dirstamp) \
 	src/patched_sundials/src/sunlinsol/pcg/$(DEPDIR)/$(am__dirstamp)
+src/patched_sundials/src/sunlinsol/klu/$(am__dirstamp):
+	@$(MKDIR_P) src/patched_sundials/src/sunlinsol/klu
+	@: > src/patched_sundials/src/sunlinsol/klu/$(am__dirstamp)
+src/patched_sundials/src/sunlinsol/klu/$(DEPDIR)/$(am__dirstamp):
+	@$(MKDIR_P) src/patched_sundials/src/sunlinsol/klu/$(DEPDIR)
+	@: > src/patched_sundials/src/sunlinsol/klu/$(DEPDIR)/$(am__dirstamp)
+src/patched_sundials/src/sunlinsol/klu/libscisundials_la-sunlinsol_klu.lo:  \
+	src/patched_sundials/src/sunlinsol/klu/$(am__dirstamp) \
+	src/patched_sundials/src/sunlinsol/klu/$(DEPDIR)/$(am__dirstamp)
 src/patched_sundials/src/sunlinsol/spbcgs/$(am__dirstamp):
 	@$(MKDIR_P) src/patched_sundials/src/sunlinsol/spbcgs
 	@: > src/patched_sundials/src/sunlinsol/spbcgs/$(am__dirstamp)
@@ -1917,6 +2043,8 @@ mostlyclean-compile:
 	-rm -f src/patched_sundials/src/sunlinsol/band/*.lo
 	-rm -f src/patched_sundials/src/sunlinsol/dense/*.$(OBJEXT)
 	-rm -f src/patched_sundials/src/sunlinsol/dense/*.lo
+	-rm -f src/patched_sundials/src/sunlinsol/klu/*.$(OBJEXT)
+	-rm -f src/patched_sundials/src/sunlinsol/klu/*.lo
 	-rm -f src/patched_sundials/src/sunlinsol/lapackband/*.$(OBJEXT)
 	-rm -f src/patched_sundials/src/sunlinsol/lapackband/*.lo
 	-rm -f src/patched_sundials/src/sunlinsol/lapackdense/*.$(OBJEXT)
@@ -1946,17 +2074,22 @@ distclean-compile:
 	-rm -f *.tab.c
 
 @AMDEP_TRUE@@am__include@ @am__quote@sci_gateway/cpp/$(DEPDIR)/libscidifferential_equations_la-differential_equations_gw.Plo@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@sci_gateway/cpp/$(DEPDIR)/libscidifferential_equations_la-sci_arkode.Plo@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@sci_gateway/cpp/$(DEPDIR)/libscidifferential_equations_la-sci_bvode.Plo@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@sci_gateway/cpp/$(DEPDIR)/libscidifferential_equations_la-sci_cvode.Plo@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@sci_gateway/cpp/$(DEPDIR)/libscidifferential_equations_la-sci_daskr.Plo@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@sci_gateway/cpp/$(DEPDIR)/libscidifferential_equations_la-sci_dasrt.Plo@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@sci_gateway/cpp/$(DEPDIR)/libscidifferential_equations_la-sci_dassl.Plo@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@sci_gateway/cpp/$(DEPDIR)/libscidifferential_equations_la-sci_feval.Plo@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@sci_gateway/cpp/$(DEPDIR)/libscidifferential_equations_la-sci_ida.Plo@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@sci_gateway/cpp/$(DEPDIR)/libscidifferential_equations_la-sci_impl.Plo@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@sci_gateway/cpp/$(DEPDIR)/libscidifferential_equations_la-sci_int2d.Plo@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@sci_gateway/cpp/$(DEPDIR)/libscidifferential_equations_la-sci_int3d.Plo@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@sci_gateway/cpp/$(DEPDIR)/libscidifferential_equations_la-sci_intg.Plo@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@sci_gateway/cpp/$(DEPDIR)/libscidifferential_equations_la-sci_kinsol.Plo@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@sci_gateway/cpp/$(DEPDIR)/libscidifferential_equations_la-sci_ode.Plo@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@sci_gateway/cpp/$(DEPDIR)/libscidifferential_equations_la-sci_odedc.Plo@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@sci_gateway/cpp/$(DEPDIR)/libscidifferential_equations_la-sci_percent_odeSolution.Plo@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@src/c/$(DEPDIR)/libscidifferential_equations_algo_la-Ex-daskr.Plo@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@src/c/$(DEPDIR)/libscidifferential_equations_algo_la-Ex-ode.Plo@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@src/c/$(DEPDIR)/libscidifferential_equations_algo_la-Ex-odedc.Plo@am__quote@ # am--include-marker
@@ -1964,10 +2097,23 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@src/c/$(DEPDIR)/libscidifferential_equations_algo_la-colnewmsgs.Plo@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@src/c/$(DEPDIR)/libscidifferential_equations_algo_la-dassl.Plo@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@src/c/$(DEPDIR)/libscidifferential_equations_algo_la-errmds.Plo@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@src/c/$(DEPDIR)/libscidifferential_equations_algo_la-externals_for_tests.Plo@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@src/c/$(DEPDIR)/libscidifferential_equations_algo_la-feval.Plo@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@src/c/$(DEPDIR)/libscidifferential_equations_algo_la-rk4.Plo@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@src/cpp/$(DEPDIR)/libscidifferential_equations_algo_la-ARKODEManager.Plo@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@src/cpp/$(DEPDIR)/libscidifferential_equations_algo_la-CVODEManager.Plo@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@src/cpp/$(DEPDIR)/libscidifferential_equations_algo_la-IDAManager.Plo@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@src/cpp/$(DEPDIR)/libscidifferential_equations_algo_la-KINSOLManager.Plo@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@src/cpp/$(DEPDIR)/libscidifferential_equations_algo_la-OdeManagerCompute.Plo@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@src/cpp/$(DEPDIR)/libscidifferential_equations_algo_la-OdeManagerHelpers.Plo@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@src/cpp/$(DEPDIR)/libscidifferential_equations_algo_la-OdeManagerInit.Plo@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@src/cpp/$(DEPDIR)/libscidifferential_equations_algo_la-OdeManagerParse.Plo@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@src/cpp/$(DEPDIR)/libscidifferential_equations_algo_la-OdeManagerSolve.Plo@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@src/cpp/$(DEPDIR)/libscidifferential_equations_algo_la-SUNDIALSManager.Plo@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@src/cpp/$(DEPDIR)/libscidifferential_equations_algo_la-checkodeerror.Plo@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@src/cpp/$(DEPDIR)/libscidifferential_equations_algo_la-complexHelpers.Plo@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@src/cpp/$(DEPDIR)/libscidifferential_equations_algo_la-differentialequationfunctions.Plo@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@src/cpp/$(DEPDIR)/libscidifferential_equations_algo_la-odeparameters.Plo@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@src/cpp/$(DEPDIR)/libscidifferential_equations_algo_la-scifunctions.Plo@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@src/patched_sundials/src/arkode/$(DEPDIR)/libscisundials_la-arkode.Plo@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@src/patched_sundials/src/arkode/$(DEPDIR)/libscisundials_la-arkode_adapt.Plo@am__quote@ # am--include-marker
@@ -2038,6 +2184,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@src/patched_sundials/src/sundials/$(DEPDIR)/libscisundials_la-sundials_version.Plo@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@src/patched_sundials/src/sunlinsol/band/$(DEPDIR)/libscisundials_la-sunlinsol_band.Plo@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@src/patched_sundials/src/sunlinsol/dense/$(DEPDIR)/libscisundials_la-sunlinsol_dense.Plo@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@src/patched_sundials/src/sunlinsol/klu/$(DEPDIR)/libscisundials_la-sunlinsol_klu.Plo@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@src/patched_sundials/src/sunlinsol/lapackband/$(DEPDIR)/libscisundials_la-sunlinsol_lapackband.Plo@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@src/patched_sundials/src/sunlinsol/lapackdense/$(DEPDIR)/libscisundials_la-sunlinsol_lapackdense.Plo@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@src/patched_sundials/src/sunlinsol/pcg/$(DEPDIR)/libscisundials_la-sunlinsol_pcg.Plo@am__quote@ # am--include-marker
@@ -2143,6 +2290,13 @@ src/c/libscidifferential_equations_algo_la-errmds.lo: src/c/errmds.c
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='src/c/errmds.c' object='src/c/libscidifferential_equations_algo_la-errmds.lo' libtool=yes @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libscidifferential_equations_algo_la_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o src/c/libscidifferential_equations_algo_la-errmds.lo `test -f 'src/c/errmds.c' || echo '$(srcdir)/'`src/c/errmds.c
+
+src/c/libscidifferential_equations_algo_la-externals_for_tests.lo: src/c/externals_for_tests.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libscidifferential_equations_algo_la_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT src/c/libscidifferential_equations_algo_la-externals_for_tests.lo -MD -MP -MF src/c/$(DEPDIR)/libscidifferential_equations_algo_la-externals_for_tests.Tpo -c -o src/c/libscidifferential_equations_algo_la-externals_for_tests.lo `test -f 'src/c/externals_for_tests.c' || echo '$(srcdir)/'`src/c/externals_for_tests.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) src/c/$(DEPDIR)/libscidifferential_equations_algo_la-externals_for_tests.Tpo src/c/$(DEPDIR)/libscidifferential_equations_algo_la-externals_for_tests.Plo
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='src/c/externals_for_tests.c' object='src/c/libscidifferential_equations_algo_la-externals_for_tests.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libscidifferential_equations_algo_la_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o src/c/libscidifferential_equations_algo_la-externals_for_tests.lo `test -f 'src/c/externals_for_tests.c' || echo '$(srcdir)/'`src/c/externals_for_tests.c
 
 src/patched_sundials/src/arkode/libscisundials_la-arkode.lo: src/patched_sundials/src/arkode/arkode.c
 @am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libscisundials_la_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT src/patched_sundials/src/arkode/libscisundials_la-arkode.lo -MD -MP -MF src/patched_sundials/src/arkode/$(DEPDIR)/libscisundials_la-arkode.Tpo -c -o src/patched_sundials/src/arkode/libscisundials_la-arkode.lo `test -f 'src/patched_sundials/src/arkode/arkode.c' || echo '$(srcdir)/'`src/patched_sundials/src/arkode/arkode.c
@@ -2648,6 +2802,13 @@ src/patched_sundials/src/sunlinsol/pcg/libscisundials_la-sunlinsol_pcg.lo: src/p
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libscisundials_la_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o src/patched_sundials/src/sunlinsol/pcg/libscisundials_la-sunlinsol_pcg.lo `test -f 'src/patched_sundials/src/sunlinsol/pcg/sunlinsol_pcg.c' || echo '$(srcdir)/'`src/patched_sundials/src/sunlinsol/pcg/sunlinsol_pcg.c
 
+src/patched_sundials/src/sunlinsol/klu/libscisundials_la-sunlinsol_klu.lo: src/patched_sundials/src/sunlinsol/klu/sunlinsol_klu.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libscisundials_la_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT src/patched_sundials/src/sunlinsol/klu/libscisundials_la-sunlinsol_klu.lo -MD -MP -MF src/patched_sundials/src/sunlinsol/klu/$(DEPDIR)/libscisundials_la-sunlinsol_klu.Tpo -c -o src/patched_sundials/src/sunlinsol/klu/libscisundials_la-sunlinsol_klu.lo `test -f 'src/patched_sundials/src/sunlinsol/klu/sunlinsol_klu.c' || echo '$(srcdir)/'`src/patched_sundials/src/sunlinsol/klu/sunlinsol_klu.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) src/patched_sundials/src/sunlinsol/klu/$(DEPDIR)/libscisundials_la-sunlinsol_klu.Tpo src/patched_sundials/src/sunlinsol/klu/$(DEPDIR)/libscisundials_la-sunlinsol_klu.Plo
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='src/patched_sundials/src/sunlinsol/klu/sunlinsol_klu.c' object='src/patched_sundials/src/sunlinsol/klu/libscisundials_la-sunlinsol_klu.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libscisundials_la_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o src/patched_sundials/src/sunlinsol/klu/libscisundials_la-sunlinsol_klu.lo `test -f 'src/patched_sundials/src/sunlinsol/klu/sunlinsol_klu.c' || echo '$(srcdir)/'`src/patched_sundials/src/sunlinsol/klu/sunlinsol_klu.c
+
 src/patched_sundials/src/sunlinsol/spbcgs/libscisundials_la-sunlinsol_spbcgs.lo: src/patched_sundials/src/sunlinsol/spbcgs/sunlinsol_spbcgs.c
 @am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libscisundials_la_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT src/patched_sundials/src/sunlinsol/spbcgs/libscisundials_la-sunlinsol_spbcgs.lo -MD -MP -MF src/patched_sundials/src/sunlinsol/spbcgs/$(DEPDIR)/libscisundials_la-sunlinsol_spbcgs.Tpo -c -o src/patched_sundials/src/sunlinsol/spbcgs/libscisundials_la-sunlinsol_spbcgs.lo `test -f 'src/patched_sundials/src/sunlinsol/spbcgs/sunlinsol_spbcgs.c' || echo '$(srcdir)/'`src/patched_sundials/src/sunlinsol/spbcgs/sunlinsol_spbcgs.c
 @am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) src/patched_sundials/src/sunlinsol/spbcgs/$(DEPDIR)/libscisundials_la-sunlinsol_spbcgs.Tpo src/patched_sundials/src/sunlinsol/spbcgs/$(DEPDIR)/libscisundials_la-sunlinsol_spbcgs.Plo
@@ -2756,6 +2917,90 @@ src/cpp/libscidifferential_equations_algo_la-differentialequationfunctions.lo: s
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libscidifferential_equations_algo_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o src/cpp/libscidifferential_equations_algo_la-differentialequationfunctions.lo `test -f 'src/cpp/differentialequationfunctions.cpp' || echo '$(srcdir)/'`src/cpp/differentialequationfunctions.cpp
 
+src/cpp/libscidifferential_equations_algo_la-SUNDIALSManager.lo: src/cpp/SUNDIALSManager.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libscidifferential_equations_algo_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT src/cpp/libscidifferential_equations_algo_la-SUNDIALSManager.lo -MD -MP -MF src/cpp/$(DEPDIR)/libscidifferential_equations_algo_la-SUNDIALSManager.Tpo -c -o src/cpp/libscidifferential_equations_algo_la-SUNDIALSManager.lo `test -f 'src/cpp/SUNDIALSManager.cpp' || echo '$(srcdir)/'`src/cpp/SUNDIALSManager.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) src/cpp/$(DEPDIR)/libscidifferential_equations_algo_la-SUNDIALSManager.Tpo src/cpp/$(DEPDIR)/libscidifferential_equations_algo_la-SUNDIALSManager.Plo
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='src/cpp/SUNDIALSManager.cpp' object='src/cpp/libscidifferential_equations_algo_la-SUNDIALSManager.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libscidifferential_equations_algo_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o src/cpp/libscidifferential_equations_algo_la-SUNDIALSManager.lo `test -f 'src/cpp/SUNDIALSManager.cpp' || echo '$(srcdir)/'`src/cpp/SUNDIALSManager.cpp
+
+src/cpp/libscidifferential_equations_algo_la-CVODEManager.lo: src/cpp/CVODEManager.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libscidifferential_equations_algo_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT src/cpp/libscidifferential_equations_algo_la-CVODEManager.lo -MD -MP -MF src/cpp/$(DEPDIR)/libscidifferential_equations_algo_la-CVODEManager.Tpo -c -o src/cpp/libscidifferential_equations_algo_la-CVODEManager.lo `test -f 'src/cpp/CVODEManager.cpp' || echo '$(srcdir)/'`src/cpp/CVODEManager.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) src/cpp/$(DEPDIR)/libscidifferential_equations_algo_la-CVODEManager.Tpo src/cpp/$(DEPDIR)/libscidifferential_equations_algo_la-CVODEManager.Plo
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='src/cpp/CVODEManager.cpp' object='src/cpp/libscidifferential_equations_algo_la-CVODEManager.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libscidifferential_equations_algo_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o src/cpp/libscidifferential_equations_algo_la-CVODEManager.lo `test -f 'src/cpp/CVODEManager.cpp' || echo '$(srcdir)/'`src/cpp/CVODEManager.cpp
+
+src/cpp/libscidifferential_equations_algo_la-KINSOLManager.lo: src/cpp/KINSOLManager.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libscidifferential_equations_algo_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT src/cpp/libscidifferential_equations_algo_la-KINSOLManager.lo -MD -MP -MF src/cpp/$(DEPDIR)/libscidifferential_equations_algo_la-KINSOLManager.Tpo -c -o src/cpp/libscidifferential_equations_algo_la-KINSOLManager.lo `test -f 'src/cpp/KINSOLManager.cpp' || echo '$(srcdir)/'`src/cpp/KINSOLManager.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) src/cpp/$(DEPDIR)/libscidifferential_equations_algo_la-KINSOLManager.Tpo src/cpp/$(DEPDIR)/libscidifferential_equations_algo_la-KINSOLManager.Plo
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='src/cpp/KINSOLManager.cpp' object='src/cpp/libscidifferential_equations_algo_la-KINSOLManager.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libscidifferential_equations_algo_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o src/cpp/libscidifferential_equations_algo_la-KINSOLManager.lo `test -f 'src/cpp/KINSOLManager.cpp' || echo '$(srcdir)/'`src/cpp/KINSOLManager.cpp
+
+src/cpp/libscidifferential_equations_algo_la-IDAManager.lo: src/cpp/IDAManager.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libscidifferential_equations_algo_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT src/cpp/libscidifferential_equations_algo_la-IDAManager.lo -MD -MP -MF src/cpp/$(DEPDIR)/libscidifferential_equations_algo_la-IDAManager.Tpo -c -o src/cpp/libscidifferential_equations_algo_la-IDAManager.lo `test -f 'src/cpp/IDAManager.cpp' || echo '$(srcdir)/'`src/cpp/IDAManager.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) src/cpp/$(DEPDIR)/libscidifferential_equations_algo_la-IDAManager.Tpo src/cpp/$(DEPDIR)/libscidifferential_equations_algo_la-IDAManager.Plo
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='src/cpp/IDAManager.cpp' object='src/cpp/libscidifferential_equations_algo_la-IDAManager.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libscidifferential_equations_algo_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o src/cpp/libscidifferential_equations_algo_la-IDAManager.lo `test -f 'src/cpp/IDAManager.cpp' || echo '$(srcdir)/'`src/cpp/IDAManager.cpp
+
+src/cpp/libscidifferential_equations_algo_la-ARKODEManager.lo: src/cpp/ARKODEManager.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libscidifferential_equations_algo_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT src/cpp/libscidifferential_equations_algo_la-ARKODEManager.lo -MD -MP -MF src/cpp/$(DEPDIR)/libscidifferential_equations_algo_la-ARKODEManager.Tpo -c -o src/cpp/libscidifferential_equations_algo_la-ARKODEManager.lo `test -f 'src/cpp/ARKODEManager.cpp' || echo '$(srcdir)/'`src/cpp/ARKODEManager.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) src/cpp/$(DEPDIR)/libscidifferential_equations_algo_la-ARKODEManager.Tpo src/cpp/$(DEPDIR)/libscidifferential_equations_algo_la-ARKODEManager.Plo
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='src/cpp/ARKODEManager.cpp' object='src/cpp/libscidifferential_equations_algo_la-ARKODEManager.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libscidifferential_equations_algo_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o src/cpp/libscidifferential_equations_algo_la-ARKODEManager.lo `test -f 'src/cpp/ARKODEManager.cpp' || echo '$(srcdir)/'`src/cpp/ARKODEManager.cpp
+
+src/cpp/libscidifferential_equations_algo_la-OdeManagerInit.lo: src/cpp/OdeManagerInit.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libscidifferential_equations_algo_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT src/cpp/libscidifferential_equations_algo_la-OdeManagerInit.lo -MD -MP -MF src/cpp/$(DEPDIR)/libscidifferential_equations_algo_la-OdeManagerInit.Tpo -c -o src/cpp/libscidifferential_equations_algo_la-OdeManagerInit.lo `test -f 'src/cpp/OdeManagerInit.cpp' || echo '$(srcdir)/'`src/cpp/OdeManagerInit.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) src/cpp/$(DEPDIR)/libscidifferential_equations_algo_la-OdeManagerInit.Tpo src/cpp/$(DEPDIR)/libscidifferential_equations_algo_la-OdeManagerInit.Plo
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='src/cpp/OdeManagerInit.cpp' object='src/cpp/libscidifferential_equations_algo_la-OdeManagerInit.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libscidifferential_equations_algo_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o src/cpp/libscidifferential_equations_algo_la-OdeManagerInit.lo `test -f 'src/cpp/OdeManagerInit.cpp' || echo '$(srcdir)/'`src/cpp/OdeManagerInit.cpp
+
+src/cpp/libscidifferential_equations_algo_la-OdeManagerCompute.lo: src/cpp/OdeManagerCompute.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libscidifferential_equations_algo_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT src/cpp/libscidifferential_equations_algo_la-OdeManagerCompute.lo -MD -MP -MF src/cpp/$(DEPDIR)/libscidifferential_equations_algo_la-OdeManagerCompute.Tpo -c -o src/cpp/libscidifferential_equations_algo_la-OdeManagerCompute.lo `test -f 'src/cpp/OdeManagerCompute.cpp' || echo '$(srcdir)/'`src/cpp/OdeManagerCompute.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) src/cpp/$(DEPDIR)/libscidifferential_equations_algo_la-OdeManagerCompute.Tpo src/cpp/$(DEPDIR)/libscidifferential_equations_algo_la-OdeManagerCompute.Plo
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='src/cpp/OdeManagerCompute.cpp' object='src/cpp/libscidifferential_equations_algo_la-OdeManagerCompute.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libscidifferential_equations_algo_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o src/cpp/libscidifferential_equations_algo_la-OdeManagerCompute.lo `test -f 'src/cpp/OdeManagerCompute.cpp' || echo '$(srcdir)/'`src/cpp/OdeManagerCompute.cpp
+
+src/cpp/libscidifferential_equations_algo_la-OdeManagerParse.lo: src/cpp/OdeManagerParse.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libscidifferential_equations_algo_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT src/cpp/libscidifferential_equations_algo_la-OdeManagerParse.lo -MD -MP -MF src/cpp/$(DEPDIR)/libscidifferential_equations_algo_la-OdeManagerParse.Tpo -c -o src/cpp/libscidifferential_equations_algo_la-OdeManagerParse.lo `test -f 'src/cpp/OdeManagerParse.cpp' || echo '$(srcdir)/'`src/cpp/OdeManagerParse.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) src/cpp/$(DEPDIR)/libscidifferential_equations_algo_la-OdeManagerParse.Tpo src/cpp/$(DEPDIR)/libscidifferential_equations_algo_la-OdeManagerParse.Plo
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='src/cpp/OdeManagerParse.cpp' object='src/cpp/libscidifferential_equations_algo_la-OdeManagerParse.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libscidifferential_equations_algo_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o src/cpp/libscidifferential_equations_algo_la-OdeManagerParse.lo `test -f 'src/cpp/OdeManagerParse.cpp' || echo '$(srcdir)/'`src/cpp/OdeManagerParse.cpp
+
+src/cpp/libscidifferential_equations_algo_la-OdeManagerHelpers.lo: src/cpp/OdeManagerHelpers.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libscidifferential_equations_algo_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT src/cpp/libscidifferential_equations_algo_la-OdeManagerHelpers.lo -MD -MP -MF src/cpp/$(DEPDIR)/libscidifferential_equations_algo_la-OdeManagerHelpers.Tpo -c -o src/cpp/libscidifferential_equations_algo_la-OdeManagerHelpers.lo `test -f 'src/cpp/OdeManagerHelpers.cpp' || echo '$(srcdir)/'`src/cpp/OdeManagerHelpers.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) src/cpp/$(DEPDIR)/libscidifferential_equations_algo_la-OdeManagerHelpers.Tpo src/cpp/$(DEPDIR)/libscidifferential_equations_algo_la-OdeManagerHelpers.Plo
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='src/cpp/OdeManagerHelpers.cpp' object='src/cpp/libscidifferential_equations_algo_la-OdeManagerHelpers.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libscidifferential_equations_algo_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o src/cpp/libscidifferential_equations_algo_la-OdeManagerHelpers.lo `test -f 'src/cpp/OdeManagerHelpers.cpp' || echo '$(srcdir)/'`src/cpp/OdeManagerHelpers.cpp
+
+src/cpp/libscidifferential_equations_algo_la-OdeManagerSolve.lo: src/cpp/OdeManagerSolve.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libscidifferential_equations_algo_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT src/cpp/libscidifferential_equations_algo_la-OdeManagerSolve.lo -MD -MP -MF src/cpp/$(DEPDIR)/libscidifferential_equations_algo_la-OdeManagerSolve.Tpo -c -o src/cpp/libscidifferential_equations_algo_la-OdeManagerSolve.lo `test -f 'src/cpp/OdeManagerSolve.cpp' || echo '$(srcdir)/'`src/cpp/OdeManagerSolve.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) src/cpp/$(DEPDIR)/libscidifferential_equations_algo_la-OdeManagerSolve.Tpo src/cpp/$(DEPDIR)/libscidifferential_equations_algo_la-OdeManagerSolve.Plo
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='src/cpp/OdeManagerSolve.cpp' object='src/cpp/libscidifferential_equations_algo_la-OdeManagerSolve.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libscidifferential_equations_algo_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o src/cpp/libscidifferential_equations_algo_la-OdeManagerSolve.lo `test -f 'src/cpp/OdeManagerSolve.cpp' || echo '$(srcdir)/'`src/cpp/OdeManagerSolve.cpp
+
+src/cpp/libscidifferential_equations_algo_la-odeparameters.lo: src/cpp/odeparameters.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libscidifferential_equations_algo_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT src/cpp/libscidifferential_equations_algo_la-odeparameters.lo -MD -MP -MF src/cpp/$(DEPDIR)/libscidifferential_equations_algo_la-odeparameters.Tpo -c -o src/cpp/libscidifferential_equations_algo_la-odeparameters.lo `test -f 'src/cpp/odeparameters.cpp' || echo '$(srcdir)/'`src/cpp/odeparameters.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) src/cpp/$(DEPDIR)/libscidifferential_equations_algo_la-odeparameters.Tpo src/cpp/$(DEPDIR)/libscidifferential_equations_algo_la-odeparameters.Plo
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='src/cpp/odeparameters.cpp' object='src/cpp/libscidifferential_equations_algo_la-odeparameters.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libscidifferential_equations_algo_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o src/cpp/libscidifferential_equations_algo_la-odeparameters.lo `test -f 'src/cpp/odeparameters.cpp' || echo '$(srcdir)/'`src/cpp/odeparameters.cpp
+
+src/cpp/libscidifferential_equations_algo_la-complexHelpers.lo: src/cpp/complexHelpers.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libscidifferential_equations_algo_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT src/cpp/libscidifferential_equations_algo_la-complexHelpers.lo -MD -MP -MF src/cpp/$(DEPDIR)/libscidifferential_equations_algo_la-complexHelpers.Tpo -c -o src/cpp/libscidifferential_equations_algo_la-complexHelpers.lo `test -f 'src/cpp/complexHelpers.cpp' || echo '$(srcdir)/'`src/cpp/complexHelpers.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) src/cpp/$(DEPDIR)/libscidifferential_equations_algo_la-complexHelpers.Tpo src/cpp/$(DEPDIR)/libscidifferential_equations_algo_la-complexHelpers.Plo
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='src/cpp/complexHelpers.cpp' object='src/cpp/libscidifferential_equations_algo_la-complexHelpers.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libscidifferential_equations_algo_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o src/cpp/libscidifferential_equations_algo_la-complexHelpers.lo `test -f 'src/cpp/complexHelpers.cpp' || echo '$(srcdir)/'`src/cpp/complexHelpers.cpp
+
 sci_gateway/cpp/libscidifferential_equations_la-differential_equations_gw.lo: sci_gateway/cpp/differential_equations_gw.cpp
 @am__fastdepCXX_TRUE@	$(AM_V_CXX)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libscidifferential_equations_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT sci_gateway/cpp/libscidifferential_equations_la-differential_equations_gw.lo -MD -MP -MF sci_gateway/cpp/$(DEPDIR)/libscidifferential_equations_la-differential_equations_gw.Tpo -c -o sci_gateway/cpp/libscidifferential_equations_la-differential_equations_gw.lo `test -f 'sci_gateway/cpp/differential_equations_gw.cpp' || echo '$(srcdir)/'`sci_gateway/cpp/differential_equations_gw.cpp
 @am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) sci_gateway/cpp/$(DEPDIR)/libscidifferential_equations_la-differential_equations_gw.Tpo sci_gateway/cpp/$(DEPDIR)/libscidifferential_equations_la-differential_equations_gw.Plo
@@ -2840,6 +3085,41 @@ sci_gateway/cpp/libscidifferential_equations_la-sci_daskr.lo: sci_gateway/cpp/sc
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libscidifferential_equations_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o sci_gateway/cpp/libscidifferential_equations_la-sci_daskr.lo `test -f 'sci_gateway/cpp/sci_daskr.cpp' || echo '$(srcdir)/'`sci_gateway/cpp/sci_daskr.cpp
 
+sci_gateway/cpp/libscidifferential_equations_la-sci_cvode.lo: sci_gateway/cpp/sci_cvode.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libscidifferential_equations_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT sci_gateway/cpp/libscidifferential_equations_la-sci_cvode.lo -MD -MP -MF sci_gateway/cpp/$(DEPDIR)/libscidifferential_equations_la-sci_cvode.Tpo -c -o sci_gateway/cpp/libscidifferential_equations_la-sci_cvode.lo `test -f 'sci_gateway/cpp/sci_cvode.cpp' || echo '$(srcdir)/'`sci_gateway/cpp/sci_cvode.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) sci_gateway/cpp/$(DEPDIR)/libscidifferential_equations_la-sci_cvode.Tpo sci_gateway/cpp/$(DEPDIR)/libscidifferential_equations_la-sci_cvode.Plo
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='sci_gateway/cpp/sci_cvode.cpp' object='sci_gateway/cpp/libscidifferential_equations_la-sci_cvode.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libscidifferential_equations_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o sci_gateway/cpp/libscidifferential_equations_la-sci_cvode.lo `test -f 'sci_gateway/cpp/sci_cvode.cpp' || echo '$(srcdir)/'`sci_gateway/cpp/sci_cvode.cpp
+
+sci_gateway/cpp/libscidifferential_equations_la-sci_ida.lo: sci_gateway/cpp/sci_ida.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libscidifferential_equations_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT sci_gateway/cpp/libscidifferential_equations_la-sci_ida.lo -MD -MP -MF sci_gateway/cpp/$(DEPDIR)/libscidifferential_equations_la-sci_ida.Tpo -c -o sci_gateway/cpp/libscidifferential_equations_la-sci_ida.lo `test -f 'sci_gateway/cpp/sci_ida.cpp' || echo '$(srcdir)/'`sci_gateway/cpp/sci_ida.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) sci_gateway/cpp/$(DEPDIR)/libscidifferential_equations_la-sci_ida.Tpo sci_gateway/cpp/$(DEPDIR)/libscidifferential_equations_la-sci_ida.Plo
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='sci_gateway/cpp/sci_ida.cpp' object='sci_gateway/cpp/libscidifferential_equations_la-sci_ida.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libscidifferential_equations_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o sci_gateway/cpp/libscidifferential_equations_la-sci_ida.lo `test -f 'sci_gateway/cpp/sci_ida.cpp' || echo '$(srcdir)/'`sci_gateway/cpp/sci_ida.cpp
+
+sci_gateway/cpp/libscidifferential_equations_la-sci_arkode.lo: sci_gateway/cpp/sci_arkode.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libscidifferential_equations_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT sci_gateway/cpp/libscidifferential_equations_la-sci_arkode.lo -MD -MP -MF sci_gateway/cpp/$(DEPDIR)/libscidifferential_equations_la-sci_arkode.Tpo -c -o sci_gateway/cpp/libscidifferential_equations_la-sci_arkode.lo `test -f 'sci_gateway/cpp/sci_arkode.cpp' || echo '$(srcdir)/'`sci_gateway/cpp/sci_arkode.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) sci_gateway/cpp/$(DEPDIR)/libscidifferential_equations_la-sci_arkode.Tpo sci_gateway/cpp/$(DEPDIR)/libscidifferential_equations_la-sci_arkode.Plo
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='sci_gateway/cpp/sci_arkode.cpp' object='sci_gateway/cpp/libscidifferential_equations_la-sci_arkode.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libscidifferential_equations_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o sci_gateway/cpp/libscidifferential_equations_la-sci_arkode.lo `test -f 'sci_gateway/cpp/sci_arkode.cpp' || echo '$(srcdir)/'`sci_gateway/cpp/sci_arkode.cpp
+
+sci_gateway/cpp/libscidifferential_equations_la-sci_kinsol.lo: sci_gateway/cpp/sci_kinsol.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libscidifferential_equations_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT sci_gateway/cpp/libscidifferential_equations_la-sci_kinsol.lo -MD -MP -MF sci_gateway/cpp/$(DEPDIR)/libscidifferential_equations_la-sci_kinsol.Tpo -c -o sci_gateway/cpp/libscidifferential_equations_la-sci_kinsol.lo `test -f 'sci_gateway/cpp/sci_kinsol.cpp' || echo '$(srcdir)/'`sci_gateway/cpp/sci_kinsol.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) sci_gateway/cpp/$(DEPDIR)/libscidifferential_equations_la-sci_kinsol.Tpo sci_gateway/cpp/$(DEPDIR)/libscidifferential_equations_la-sci_kinsol.Plo
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='sci_gateway/cpp/sci_kinsol.cpp' object='sci_gateway/cpp/libscidifferential_equations_la-sci_kinsol.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libscidifferential_equations_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o sci_gateway/cpp/libscidifferential_equations_la-sci_kinsol.lo `test -f 'sci_gateway/cpp/sci_kinsol.cpp' || echo '$(srcdir)/'`sci_gateway/cpp/sci_kinsol.cpp
+
+sci_gateway/cpp/libscidifferential_equations_la-sci_percent_odeSolution.lo: sci_gateway/cpp/sci_percent_odeSolution.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libscidifferential_equations_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT sci_gateway/cpp/libscidifferential_equations_la-sci_percent_odeSolution.lo -MD -MP -MF sci_gateway/cpp/$(DEPDIR)/libscidifferential_equations_la-sci_percent_odeSolution.Tpo -c -o sci_gateway/cpp/libscidifferential_equations_la-sci_percent_odeSolution.lo `test -f 'sci_gateway/cpp/sci_percent_odeSolution.cpp' || echo '$(srcdir)/'`sci_gateway/cpp/sci_percent_odeSolution.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) sci_gateway/cpp/$(DEPDIR)/libscidifferential_equations_la-sci_percent_odeSolution.Tpo sci_gateway/cpp/$(DEPDIR)/libscidifferential_equations_la-sci_percent_odeSolution.Plo
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='sci_gateway/cpp/sci_percent_odeSolution.cpp' object='sci_gateway/cpp/libscidifferential_equations_la-sci_percent_odeSolution.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libscidifferential_equations_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o sci_gateway/cpp/libscidifferential_equations_la-sci_percent_odeSolution.lo `test -f 'sci_gateway/cpp/sci_percent_odeSolution.cpp' || echo '$(srcdir)/'`sci_gateway/cpp/sci_percent_odeSolution.cpp
+
 .f.o:
 	$(AM_V_F77)$(F77COMPILE) -c -o $@ $<
 
@@ -2868,6 +3148,7 @@ clean-libtool:
 	-rm -rf src/patched_sundials/src/sundials/.libs src/patched_sundials/src/sundials/_libs
 	-rm -rf src/patched_sundials/src/sunlinsol/band/.libs src/patched_sundials/src/sunlinsol/band/_libs
 	-rm -rf src/patched_sundials/src/sunlinsol/dense/.libs src/patched_sundials/src/sunlinsol/dense/_libs
+	-rm -rf src/patched_sundials/src/sunlinsol/klu/.libs src/patched_sundials/src/sunlinsol/klu/_libs
 	-rm -rf src/patched_sundials/src/sunlinsol/lapackband/.libs src/patched_sundials/src/sunlinsol/lapackband/_libs
 	-rm -rf src/patched_sundials/src/sunlinsol/lapackdense/.libs src/patched_sundials/src/sunlinsol/lapackdense/_libs
 	-rm -rf src/patched_sundials/src/sunlinsol/pcg/.libs src/patched_sundials/src/sunlinsol/pcg/_libs
@@ -3090,6 +3371,8 @@ distclean-generic:
 	-rm -f src/patched_sundials/src/sunlinsol/band/$(am__dirstamp)
 	-rm -f src/patched_sundials/src/sunlinsol/dense/$(DEPDIR)/$(am__dirstamp)
 	-rm -f src/patched_sundials/src/sunlinsol/dense/$(am__dirstamp)
+	-rm -f src/patched_sundials/src/sunlinsol/klu/$(DEPDIR)/$(am__dirstamp)
+	-rm -f src/patched_sundials/src/sunlinsol/klu/$(am__dirstamp)
 	-rm -f src/patched_sundials/src/sunlinsol/lapackband/$(DEPDIR)/$(am__dirstamp)
 	-rm -f src/patched_sundials/src/sunlinsol/lapackband/$(am__dirstamp)
 	-rm -f src/patched_sundials/src/sunlinsol/lapackdense/$(DEPDIR)/$(am__dirstamp)
@@ -3125,17 +3408,22 @@ clean-am: clean-generic clean-libtool clean-local \
 
 distclean: distclean-am
 		-rm -f sci_gateway/cpp/$(DEPDIR)/libscidifferential_equations_la-differential_equations_gw.Plo
+	-rm -f sci_gateway/cpp/$(DEPDIR)/libscidifferential_equations_la-sci_arkode.Plo
 	-rm -f sci_gateway/cpp/$(DEPDIR)/libscidifferential_equations_la-sci_bvode.Plo
+	-rm -f sci_gateway/cpp/$(DEPDIR)/libscidifferential_equations_la-sci_cvode.Plo
 	-rm -f sci_gateway/cpp/$(DEPDIR)/libscidifferential_equations_la-sci_daskr.Plo
 	-rm -f sci_gateway/cpp/$(DEPDIR)/libscidifferential_equations_la-sci_dasrt.Plo
 	-rm -f sci_gateway/cpp/$(DEPDIR)/libscidifferential_equations_la-sci_dassl.Plo
 	-rm -f sci_gateway/cpp/$(DEPDIR)/libscidifferential_equations_la-sci_feval.Plo
+	-rm -f sci_gateway/cpp/$(DEPDIR)/libscidifferential_equations_la-sci_ida.Plo
 	-rm -f sci_gateway/cpp/$(DEPDIR)/libscidifferential_equations_la-sci_impl.Plo
 	-rm -f sci_gateway/cpp/$(DEPDIR)/libscidifferential_equations_la-sci_int2d.Plo
 	-rm -f sci_gateway/cpp/$(DEPDIR)/libscidifferential_equations_la-sci_int3d.Plo
 	-rm -f sci_gateway/cpp/$(DEPDIR)/libscidifferential_equations_la-sci_intg.Plo
+	-rm -f sci_gateway/cpp/$(DEPDIR)/libscidifferential_equations_la-sci_kinsol.Plo
 	-rm -f sci_gateway/cpp/$(DEPDIR)/libscidifferential_equations_la-sci_ode.Plo
 	-rm -f sci_gateway/cpp/$(DEPDIR)/libscidifferential_equations_la-sci_odedc.Plo
+	-rm -f sci_gateway/cpp/$(DEPDIR)/libscidifferential_equations_la-sci_percent_odeSolution.Plo
 	-rm -f src/c/$(DEPDIR)/libscidifferential_equations_algo_la-Ex-daskr.Plo
 	-rm -f src/c/$(DEPDIR)/libscidifferential_equations_algo_la-Ex-ode.Plo
 	-rm -f src/c/$(DEPDIR)/libscidifferential_equations_algo_la-Ex-odedc.Plo
@@ -3143,10 +3431,23 @@ distclean: distclean-am
 	-rm -f src/c/$(DEPDIR)/libscidifferential_equations_algo_la-colnewmsgs.Plo
 	-rm -f src/c/$(DEPDIR)/libscidifferential_equations_algo_la-dassl.Plo
 	-rm -f src/c/$(DEPDIR)/libscidifferential_equations_algo_la-errmds.Plo
+	-rm -f src/c/$(DEPDIR)/libscidifferential_equations_algo_la-externals_for_tests.Plo
 	-rm -f src/c/$(DEPDIR)/libscidifferential_equations_algo_la-feval.Plo
 	-rm -f src/c/$(DEPDIR)/libscidifferential_equations_algo_la-rk4.Plo
+	-rm -f src/cpp/$(DEPDIR)/libscidifferential_equations_algo_la-ARKODEManager.Plo
+	-rm -f src/cpp/$(DEPDIR)/libscidifferential_equations_algo_la-CVODEManager.Plo
+	-rm -f src/cpp/$(DEPDIR)/libscidifferential_equations_algo_la-IDAManager.Plo
+	-rm -f src/cpp/$(DEPDIR)/libscidifferential_equations_algo_la-KINSOLManager.Plo
+	-rm -f src/cpp/$(DEPDIR)/libscidifferential_equations_algo_la-OdeManagerCompute.Plo
+	-rm -f src/cpp/$(DEPDIR)/libscidifferential_equations_algo_la-OdeManagerHelpers.Plo
+	-rm -f src/cpp/$(DEPDIR)/libscidifferential_equations_algo_la-OdeManagerInit.Plo
+	-rm -f src/cpp/$(DEPDIR)/libscidifferential_equations_algo_la-OdeManagerParse.Plo
+	-rm -f src/cpp/$(DEPDIR)/libscidifferential_equations_algo_la-OdeManagerSolve.Plo
+	-rm -f src/cpp/$(DEPDIR)/libscidifferential_equations_algo_la-SUNDIALSManager.Plo
 	-rm -f src/cpp/$(DEPDIR)/libscidifferential_equations_algo_la-checkodeerror.Plo
+	-rm -f src/cpp/$(DEPDIR)/libscidifferential_equations_algo_la-complexHelpers.Plo
 	-rm -f src/cpp/$(DEPDIR)/libscidifferential_equations_algo_la-differentialequationfunctions.Plo
+	-rm -f src/cpp/$(DEPDIR)/libscidifferential_equations_algo_la-odeparameters.Plo
 	-rm -f src/cpp/$(DEPDIR)/libscidifferential_equations_algo_la-scifunctions.Plo
 	-rm -f src/patched_sundials/src/arkode/$(DEPDIR)/libscisundials_la-arkode.Plo
 	-rm -f src/patched_sundials/src/arkode/$(DEPDIR)/libscisundials_la-arkode_adapt.Plo
@@ -3217,6 +3518,7 @@ distclean: distclean-am
 	-rm -f src/patched_sundials/src/sundials/$(DEPDIR)/libscisundials_la-sundials_version.Plo
 	-rm -f src/patched_sundials/src/sunlinsol/band/$(DEPDIR)/libscisundials_la-sunlinsol_band.Plo
 	-rm -f src/patched_sundials/src/sunlinsol/dense/$(DEPDIR)/libscisundials_la-sunlinsol_dense.Plo
+	-rm -f src/patched_sundials/src/sunlinsol/klu/$(DEPDIR)/libscisundials_la-sunlinsol_klu.Plo
 	-rm -f src/patched_sundials/src/sunlinsol/lapackband/$(DEPDIR)/libscisundials_la-sunlinsol_lapackband.Plo
 	-rm -f src/patched_sundials/src/sunlinsol/lapackdense/$(DEPDIR)/libscisundials_la-sunlinsol_lapackdense.Plo
 	-rm -f src/patched_sundials/src/sunlinsol/pcg/$(DEPDIR)/libscisundials_la-sunlinsol_pcg.Plo
@@ -3278,17 +3580,22 @@ installcheck-am:
 
 maintainer-clean: maintainer-clean-am
 		-rm -f sci_gateway/cpp/$(DEPDIR)/libscidifferential_equations_la-differential_equations_gw.Plo
+	-rm -f sci_gateway/cpp/$(DEPDIR)/libscidifferential_equations_la-sci_arkode.Plo
 	-rm -f sci_gateway/cpp/$(DEPDIR)/libscidifferential_equations_la-sci_bvode.Plo
+	-rm -f sci_gateway/cpp/$(DEPDIR)/libscidifferential_equations_la-sci_cvode.Plo
 	-rm -f sci_gateway/cpp/$(DEPDIR)/libscidifferential_equations_la-sci_daskr.Plo
 	-rm -f sci_gateway/cpp/$(DEPDIR)/libscidifferential_equations_la-sci_dasrt.Plo
 	-rm -f sci_gateway/cpp/$(DEPDIR)/libscidifferential_equations_la-sci_dassl.Plo
 	-rm -f sci_gateway/cpp/$(DEPDIR)/libscidifferential_equations_la-sci_feval.Plo
+	-rm -f sci_gateway/cpp/$(DEPDIR)/libscidifferential_equations_la-sci_ida.Plo
 	-rm -f sci_gateway/cpp/$(DEPDIR)/libscidifferential_equations_la-sci_impl.Plo
 	-rm -f sci_gateway/cpp/$(DEPDIR)/libscidifferential_equations_la-sci_int2d.Plo
 	-rm -f sci_gateway/cpp/$(DEPDIR)/libscidifferential_equations_la-sci_int3d.Plo
 	-rm -f sci_gateway/cpp/$(DEPDIR)/libscidifferential_equations_la-sci_intg.Plo
+	-rm -f sci_gateway/cpp/$(DEPDIR)/libscidifferential_equations_la-sci_kinsol.Plo
 	-rm -f sci_gateway/cpp/$(DEPDIR)/libscidifferential_equations_la-sci_ode.Plo
 	-rm -f sci_gateway/cpp/$(DEPDIR)/libscidifferential_equations_la-sci_odedc.Plo
+	-rm -f sci_gateway/cpp/$(DEPDIR)/libscidifferential_equations_la-sci_percent_odeSolution.Plo
 	-rm -f src/c/$(DEPDIR)/libscidifferential_equations_algo_la-Ex-daskr.Plo
 	-rm -f src/c/$(DEPDIR)/libscidifferential_equations_algo_la-Ex-ode.Plo
 	-rm -f src/c/$(DEPDIR)/libscidifferential_equations_algo_la-Ex-odedc.Plo
@@ -3296,10 +3603,23 @@ maintainer-clean: maintainer-clean-am
 	-rm -f src/c/$(DEPDIR)/libscidifferential_equations_algo_la-colnewmsgs.Plo
 	-rm -f src/c/$(DEPDIR)/libscidifferential_equations_algo_la-dassl.Plo
 	-rm -f src/c/$(DEPDIR)/libscidifferential_equations_algo_la-errmds.Plo
+	-rm -f src/c/$(DEPDIR)/libscidifferential_equations_algo_la-externals_for_tests.Plo
 	-rm -f src/c/$(DEPDIR)/libscidifferential_equations_algo_la-feval.Plo
 	-rm -f src/c/$(DEPDIR)/libscidifferential_equations_algo_la-rk4.Plo
+	-rm -f src/cpp/$(DEPDIR)/libscidifferential_equations_algo_la-ARKODEManager.Plo
+	-rm -f src/cpp/$(DEPDIR)/libscidifferential_equations_algo_la-CVODEManager.Plo
+	-rm -f src/cpp/$(DEPDIR)/libscidifferential_equations_algo_la-IDAManager.Plo
+	-rm -f src/cpp/$(DEPDIR)/libscidifferential_equations_algo_la-KINSOLManager.Plo
+	-rm -f src/cpp/$(DEPDIR)/libscidifferential_equations_algo_la-OdeManagerCompute.Plo
+	-rm -f src/cpp/$(DEPDIR)/libscidifferential_equations_algo_la-OdeManagerHelpers.Plo
+	-rm -f src/cpp/$(DEPDIR)/libscidifferential_equations_algo_la-OdeManagerInit.Plo
+	-rm -f src/cpp/$(DEPDIR)/libscidifferential_equations_algo_la-OdeManagerParse.Plo
+	-rm -f src/cpp/$(DEPDIR)/libscidifferential_equations_algo_la-OdeManagerSolve.Plo
+	-rm -f src/cpp/$(DEPDIR)/libscidifferential_equations_algo_la-SUNDIALSManager.Plo
 	-rm -f src/cpp/$(DEPDIR)/libscidifferential_equations_algo_la-checkodeerror.Plo
+	-rm -f src/cpp/$(DEPDIR)/libscidifferential_equations_algo_la-complexHelpers.Plo
 	-rm -f src/cpp/$(DEPDIR)/libscidifferential_equations_algo_la-differentialequationfunctions.Plo
+	-rm -f src/cpp/$(DEPDIR)/libscidifferential_equations_algo_la-odeparameters.Plo
 	-rm -f src/cpp/$(DEPDIR)/libscidifferential_equations_algo_la-scifunctions.Plo
 	-rm -f src/patched_sundials/src/arkode/$(DEPDIR)/libscisundials_la-arkode.Plo
 	-rm -f src/patched_sundials/src/arkode/$(DEPDIR)/libscisundials_la-arkode_adapt.Plo
@@ -3370,6 +3690,7 @@ maintainer-clean: maintainer-clean-am
 	-rm -f src/patched_sundials/src/sundials/$(DEPDIR)/libscisundials_la-sundials_version.Plo
 	-rm -f src/patched_sundials/src/sunlinsol/band/$(DEPDIR)/libscisundials_la-sunlinsol_band.Plo
 	-rm -f src/patched_sundials/src/sunlinsol/dense/$(DEPDIR)/libscisundials_la-sunlinsol_dense.Plo
+	-rm -f src/patched_sundials/src/sunlinsol/klu/$(DEPDIR)/libscisundials_la-sunlinsol_klu.Plo
 	-rm -f src/patched_sundials/src/sunlinsol/lapackband/$(DEPDIR)/libscisundials_la-sunlinsol_lapackband.Plo
 	-rm -f src/patched_sundials/src/sunlinsol/lapackdense/$(DEPDIR)/libscisundials_la-sunlinsol_lapackdense.Plo
 	-rm -f src/patched_sundials/src/sunlinsol/pcg/$(DEPDIR)/libscisundials_la-sunlinsol_pcg.Plo

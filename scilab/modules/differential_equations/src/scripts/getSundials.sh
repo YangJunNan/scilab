@@ -1,4 +1,7 @@
 #!/bin/bash
+# Scilab ( https://www.scilab.org/ ) - This file is part of Scilab
+# Copyright (C) 2023 - UTC - Stéphane MOTTELET
+
 SUNDIALS_VERSION=6.6.0
 SUNDIALS_DIR=patched_sundials
 rm -rf $SUNDIALS_DIR

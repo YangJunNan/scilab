@@ -1,6 +1,7 @@
 /*  Scicos
 *
 *  Copyright (C) INRIA - METALAU Project <scicos@inria.fr>
+*  Copyright (C) 2023 - UTC - Stéphane MOTTELET
 *
 * This program is free software; you can redistribute it and/or modify
 * it under the terms of the GNU General Public License as published by
@@ -40,7 +41,7 @@
 #include <math.h>
 
 /* Sundials includes */
-#include <cvode/cvode.h>            /* prototypes for CVODES fcts. and consts. */
+#include <cvode/cvode.h>            /* prototypes for CVODE fcts. and consts. */
 #include <cvode/cvode_direct.h>    /* prototypes for various SUNDlsMat operations */
 #include <ida/ida.h>
 #include <ida/ida_direct.h>
@@ -2127,6 +2128,7 @@ L30:
         /*     end of main loop on time */
     }
     freeall;
+    SUNContext_Free(&scicos_sunctx); /* Free the SUNDIALS context */
 } /* cossim_ */
 
 /*--------------------------------------------------------------------------*/
@@ -3556,6 +3558,7 @@ L30:
         /*     end of main loop on time */
     }
     freeallx;
+    SUNContext_Free(&scicos_sunctx); /* Free the SUNDIALS context */
 } /* cossimdaskr_ */
 /*--------------------------------------------------------------------------*/
 /* Subroutine cosend */

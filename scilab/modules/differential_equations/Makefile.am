@@ -1,13 +1,25 @@
 # Scilab ( https://www.scilab.org/ ) - This file is part of Scilab
 # Copyright (C) 2006 - INRIA - Sylvestre LEDRU
+# Copyright (C) 2023 - UTC - Stéphane MOTTELET
 #
 # This file is distributed under the same license as the Scilab package.
 
 DIFFERENTIAL_EQUATIONS_CPP_SOURCES = \
     src/cpp/scifunctions.cpp \
     src/cpp/checkodeerror.cpp \
-    src/cpp/differentialequationfunctions.cpp
-
+    src/cpp/differentialequationfunctions.cpp \
+    src/cpp/SUNDIALSManager.cpp \
+    src/cpp/CVODEManager.cpp \
+    src/cpp/KINSOLManager.cpp \
+    src/cpp/IDAManager.cpp \
+    src/cpp/ARKODEManager.cpp \
+    src/cpp/OdeManagerInit.cpp \
+    src/cpp/OdeManagerCompute.cpp \
+    src/cpp/OdeManagerParse.cpp \
+    src/cpp/OdeManagerHelpers.cpp \
+    src/cpp/OdeManagerSolve.cpp \
+    src/cpp/odeparameters.cpp \
+    src/cpp/complexHelpers.cpp
 
 DIFFERENTIAL_EQUATIONS_C_SOURCES = \
     src/c/colnewmsgs.c \
@@ -18,7 +30,8 @@ DIFFERENTIAL_EQUATIONS_C_SOURCES = \
     src/c/Ex-odedc.c \
     src/c/Ex-ode.c \
     src/c/Ex-daskr.c \
-    src/c/errmds.c
+    src/c/errmds.c \
+    src/c/externals_for_tests.c
 
 DIFFERENTIAL_EQUATIONS_FORTRAN_SOURCES = \
     src/fortran/rscar1.f \
@@ -101,12 +114,28 @@ GATEWAY_CPP_SOURCES = \
     sci_gateway/cpp/sci_impl.cpp \
     sci_gateway/cpp/sci_dassl.cpp \
     sci_gateway/cpp/sci_dasrt.cpp \
-    sci_gateway/cpp/sci_daskr.cpp
+    sci_gateway/cpp/sci_daskr.cpp \
+    sci_gateway/cpp/sci_cvode.cpp \
+    sci_gateway/cpp/sci_ida.cpp \
+    sci_gateway/cpp/sci_arkode.cpp \
+    sci_gateway/cpp/sci_kinsol.cpp \
+    sci_gateway/cpp/sci_percent_odeSolution.cpp
 
 libscidifferential_equations_la_CPPFLAGS= \
     -I$(srcdir)/includes/ \
     -I$(srcdir)/src/cpp/ \
     -I$(srcdir)/src/c/ \
+    -I$(srcdir)/src/patched_sundials/include/ \
+    -I$(srcdir)/src/patched_sundials/src/ \
+    -I$(srcdir)/src/patched_sundials/src/sundials \
+    -I$(top_srcdir)/modules/sparse/includes/ \
+    -I$(top_srcdir)/modules/sparse/src/ColPack/includes/ \
+    -I$(top_srcdir)/modules/sparse/src/ColPack/include/ \
+    -I$(top_srcdir)/modules/sparse/src/ColPack/src/Utilities/ \
+    -I$(top_srcdir)/modules/sparse/src/ColPack/src/Recovery/ \
+    -I$(top_srcdir)/modules/sparse/src/ColPack/src/GeneralGraphColoring \
+    -I$(top_srcdir)/modules/sparse/src/ColPack/src/BipartiteGraphPartialColoring \
+    -I$(top_srcdir)/modules/sparse/src/ColPack/src/BipartiteGraphBicoloring \
     -I$(top_srcdir)/modules/ast/includes/ast/ \
     -I$(top_srcdir)/modules/ast/includes/exps/ \
     -I$(top_srcdir)/modules/ast/includes/operations/ \
@@ -123,7 +152,9 @@ libscidifferential_equations_la_CPPFLAGS= \
     -I$(top_srcdir)/modules/threads/includes/ \
     -I$(top_srcdir)/modules/string/includes/ \
     -I$(top_srcdir)/modules/elementary_functions/includes/ \
-    $(AM_CPPFLAGS)
+    $(AM_CPPFLAGS) \
+    $(EIGEN_CPPFLAGS) \
+    $(OPENMP_CXXFLAGS)
 
 
 #### scicos : SUNDIALS STUFF ####
@@ -235,6 +266,7 @@ libscisundials_la_SOURCES = \
     src/patched_sundials/src/sunlinsol/lapackband/sunlinsol_lapackband.c \
     src/patched_sundials/src/sunlinsol/lapackdense/sunlinsol_lapackdense.c \
     src/patched_sundials/src/sunlinsol/pcg/sunlinsol_pcg.c \
+    src/patched_sundials/src/sunlinsol/klu/sunlinsol_klu.c \
     src/patched_sundials/src/sunlinsol/spbcgs/sunlinsol_spbcgs.c \
     src/patched_sundials/src/sunlinsol/spfgmr/sunlinsol_spfgmr.c \
     src/patched_sundials/src/sunlinsol/spgmr/sunlinsol_spgmr.c \
@@ -284,6 +316,9 @@ INCLUDE_FLAGS = $(libscidifferential_equations_la_CPPFLAGS)
 
 libscidifferential_equations_la_LIBADD = libscidifferential_equations-algo.la \
     libscisundials.la \
+    $(KLU_LIBS) \
+    $(UMFPACK_LIBS) \
+    $(OPENMP_LIBS) \
     $(FLIBS)
 
 

@@ -23,13 +23,13 @@ KLU_OK=no
 SUITESPARSE=no
 
 AC_ARG_WITH(klu_library,
-		AC_HELP_STRING([--with-klu-library=DIR],[Set the path to the KLU libraries]),
+		AS_HELP_STRING([--with-klu-library=DIR],[Set the path to the KLU libraries]),
 		[with_klu_library=$withval],
 		[with_klu_library='yes']
 		)
 
 AC_ARG_WITH(klu_include,
-		AC_HELP_STRING([--with-klu-include=DIR],[Set the path to the KLU headers]),
+		AS_HELP_STRING([--with-klu-include=DIR],[Set the path to the KLU headers]),
 		[with_klu_include=$withval],
 		[with_klu_include='yes']
 		)
@@ -73,7 +73,7 @@ if test "x$with_klu_library" != "xyes"; then
 	# We need -lm because sometimes (ubuntu 7.10 for example) does not link libamd against lib math
 
 	AC_CHECK_LIB([klu], [klu_l_solve],
-			[KLU_LIB="-L$with_klu_library -lklu $KLU_LIB"; KLU_OK=yes],
+			[KLU_LIBS="-L$with_klu_library -lklu $KLU_LIBS"; KLU_OK=yes],
             [AC_MSG_ERROR([libklu : Library missing. (Cannot find klu_l_solve). Check if libklu is installed and if the version is correct (also called lib suitesparse)])]
 			)
 
@@ -85,26 +85,26 @@ fi
 # check in the default path
 if test $KLU_OK = no; then
     if $WITH_DEVTOOLS; then # Scilab thirparties
-        KLU_LIB="-L$DEVTOOLS_LIBDIR -lklu -lamd"
+        KLU_LIBS="-L$DEVTOOLS_LIBDIR -lklu -lamd"
     else
         save_LIBS="$LIBS"
         LIBS="$BLAS_LIBS $LIBS -lm" # libamd* is mandatory to link klu
         # We need -lm because sometimes (ubuntu 7.10 for example) does not link libamd against lib math
 
         AC_CHECK_LIB([amd], [amd_info],
-            [KLU_LIB="-lamd"],
+            [KLU_LIBS="-lamd"],
             [AC_MSG_ERROR([libamd: Library missing (Cannot find symbol amd_info). Check if libamd (sparse matrix minimum degree ordering) is installed and if the version is correct])]
             )
         LIBS="$KLU_LIB $LIBS"
         AC_CHECK_LIB([klu], [klu_l_solve],
-            [KLU_LIB="-lklu $KLU_LIB"; KLU_OK=yes],
+            [KLU_LIBS="-lklu $KLU_LIBS"; KLU_OK=yes],
             [AC_MSG_ERROR([libklu: Library missing. (Cannot find symbol klu_l_solve). Check if libklu is installed and if the version is correct (also called lib suitesparse)])]
             )
         LIBS="$save_LIBS"
     fi
 fi
 
-AC_SUBST(KLU_LIB)
+AC_SUBST(KLU_LIBS)
 AC_SUBST(KLU_CFLAGS)
 if test $SUITESPARSE = yes; then
    AC_DEFINE_UNQUOTED([KLU_SUITESPARSE],[] , [If it is KLU/Suitesparse or KLU standalone])

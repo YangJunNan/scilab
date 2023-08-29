@@ -600,6 +600,12 @@
     <ClCompile Include="src\nvector\openmp\nvector_openmp.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\sunlinsol\klu\sunlinsol_klu.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\sunlinsol\sptfqmr\sunlinsol_sptfqmr.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="src\arkode\arkode_butcher_dirk.def">
@@ -611,5 +617,28 @@
     <None Include="src\arkode\arkode_mri_tables.def">
       <Filter>Source Files</Filter>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Library Include="..\..\..\..\bin\blasplus.lib">
+      <Filter>Libraries Dependencies</Filter>
+    </Library>
+    <Library Include="..\..\..\..\bin\libcolamd.lib">
+      <Filter>Libraries Dependencies</Filter>
+    </Library>
+    <Library Include="..\..\..\..\bin\lapack.lib">
+      <Filter>Libraries Dependencies</Filter>
+    </Library>
+    <Library Include="..\..\..\..\bin\libamd.lib">
+      <Filter>Libraries Dependencies</Filter>
+    </Library>
+    <Library Include="..\..\..\..\bin\libbtf.lib">
+      <Filter>Libraries Dependencies</Filter>
+    </Library>
+    <Library Include="..\..\..\..\bin\libklu.lib">
+      <Filter>Libraries Dependencies</Filter>
+    </Library>
+    <Library Include="..\..\..\..\bin\suitesparseconfig.lib">
+      <Filter>Libraries Dependencies</Filter>
+    </Library>
   </ItemGroup>
 </Project>

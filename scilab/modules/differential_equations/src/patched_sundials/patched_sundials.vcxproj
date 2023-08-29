@@ -83,7 +83,7 @@
     </PreBuildEvent>
     <ClCompile>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>include;include/sundials;src/cvode;src/ida;src/kinsol;src/nvec_ser;src/sundials;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>include;include/sundials;src/cvode;src/ida;src/kinsol;src/nvec_ser;src/sundials;../../../../libs/UMFPACK/includes/suitesparse;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>_CRT_SECURE_NO_DEPRECATE;FORDLL;_DEBUG;_WINDOWS;_USRDLL;PATCHED_SUNDIALS_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <WarningLevel>Level3</WarningLevel>
@@ -122,7 +122,7 @@ cd ..
     </Midl>
     <ClCompile>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>include;include/sundials;src/cvode;src/ida;src/kinsol;src/nvec_ser;src/sundials;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>include;include/sundials;src/cvode;src/ida;src/kinsol;src/nvec_ser;src/sundials;../../../../libs/UMFPACK/includes/suitesparse;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>_CRT_SECURE_NO_DEPRECATE;FORDLL;_DEBUG;_WINDOWS;_USRDLL;PATCHED_SUNDIALS_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <WarningLevel>Level3</WarningLevel>
@@ -159,7 +159,7 @@ cd ..
     <ClCompile>
       <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
       <WholeProgramOptimization>false</WholeProgramOptimization>
-      <AdditionalIncludeDirectories>include;include/sundials;src/cvode;src/ida;src/kinsol;src/nvec_ser;src/sundials;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>include;include/sundials;src/cvode;src/ida;src/kinsol;src/nvec_ser;src/sundials;../../../../libs/UMFPACK/includes/suitesparse;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>_CRT_SECURE_NO_DEPRECATE;FORDLL;NDEBUG;_WINDOWS;_USRDLL;PATCHED_SUNDIALS_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <StringPooling>true</StringPooling>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
@@ -203,7 +203,7 @@ cd ..
     <ClCompile>
       <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
       <WholeProgramOptimization>false</WholeProgramOptimization>
-      <AdditionalIncludeDirectories>include;include/sundials;src/cvode;src/ida;src/kinsol;src/nvec_ser;src/sundials;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>include;include/sundials;src/cvode;src/ida;src/kinsol;src/nvec_ser;src/sundials;../../../../libs/UMFPACK/includes/suitesparse;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>_CRT_SECURE_NO_DEPRECATE;FORDLL;NDEBUG;_WINDOWS;_USRDLL;PATCHED_SUNDIALS_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <StringPooling>true</StringPooling>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
@@ -430,12 +430,14 @@ cd ..
     <ClCompile Include="src\sundials\sundials_version.c" />
     <ClCompile Include="src\sunlinsol\band\sunlinsol_band.c" />
     <ClCompile Include="src\sunlinsol\dense\sunlinsol_dense.c" />
+    <ClCompile Include="src\sunlinsol\klu\sunlinsol_klu.c" />
     <ClCompile Include="src\sunlinsol\lapackband\sunlinsol_lapackband.c" />
     <ClCompile Include="src\sunlinsol\lapackdense\sunlinsol_lapackdense.c" />
     <ClCompile Include="src\sunlinsol\pcg\sunlinsol_pcg.c" />
     <ClCompile Include="src\sunlinsol\spbcgs\sunlinsol_spbcgs.c" />
     <ClCompile Include="src\sunlinsol\spfgmr\sunlinsol_spfgmr.c" />
     <ClCompile Include="src\sunlinsol\spgmr\sunlinsol_spgmr.c" />
+    <ClCompile Include="src\sunlinsol\sptfqmr\sunlinsol_sptfqmr.c" />
     <ClCompile Include="src\sunmatrix\band\sunmatrix_band.c" />
     <ClCompile Include="src\sunmatrix\dense\sunmatrix_dense.c" />
     <ClCompile Include="src\sunmatrix\sparse\sunmatrix_sparse.c" />
@@ -447,6 +449,15 @@ cd ..
     <None Include="src\arkode\arkode_butcher_dirk.def" />
     <None Include="src\arkode\arkode_butcher_erk.def" />
     <None Include="src\arkode\arkode_mri_tables.def" />
+  </ItemGroup>
+  <ItemGroup>
+    <Library Include="..\..\..\..\bin\blasplus.lib" />
+    <Library Include="..\..\..\..\bin\lapack.lib" />
+    <Library Include="..\..\..\..\bin\libamd.lib" />
+    <Library Include="..\..\..\..\bin\libbtf.lib" />
+    <Library Include="..\..\..\..\bin\libcolamd.lib" />
+    <Library Include="..\..\..\..\bin\libklu.lib" />
+    <Library Include="..\..\..\..\bin\suitesparseconfig.lib" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

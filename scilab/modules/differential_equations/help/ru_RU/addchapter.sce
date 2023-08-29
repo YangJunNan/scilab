@@ -10,5 +10,5 @@
 // For more information, see the COPYING file which you should have received
 // along with this program.
 
-add_help_chapter("Дифференциальное счисление, интегрирование",SCI+"/modules/differential_equations/help/ru_RU",%T);
+add_help_chapter("Дифференциальные уравнения",SCI+"/modules/differential_equations/help/ru_RU",%T);
 
