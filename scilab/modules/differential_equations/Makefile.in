@@ -242,7 +242,7 @@ am__DEPENDENCIES_1 =
 libscidifferential_equations_la_DEPENDENCIES =  \
 	libscidifferential_equations-algo.la libscisundials.la \
 	$(am__DEPENDENCIES_1) $(am__DEPENDENCIES_1) \
-	$(am__DEPENDENCIES_1)
+	$(am__DEPENDENCIES_1) $(am__DEPENDENCIES_1)
 am__objects_4 = sci_gateway/fortran/Ex-impl.lo \
 	sci_gateway/fortran/Ex-int2d.lo \
 	sci_gateway/fortran/Ex-int3d.lo sci_gateway/fortran/Ex-intg.lo \
@@ -270,7 +270,8 @@ am_libscidifferential_equations_la_OBJECTS = $(am__objects_4) \
 	$(am__objects_5)
 libscidifferential_equations_la_OBJECTS =  \
 	$(am_libscidifferential_equations_la_OBJECTS)
-libscisundials_la_LIBADD =
+libscisundials_la_DEPENDENCIES = $(am__DEPENDENCIES_1) \
+	$(am__DEPENDENCIES_1) $(am__DEPENDENCIES_1)
 am_libscisundials_la_OBJECTS =  \
 	src/patched_sundials/src/arkode/libscisundials_la-arkode.lo \
 	src/patched_sundials/src/arkode/libscisundials_la-arkode_adapt.lo \
@@ -1183,6 +1184,10 @@ libscisundials_la_CPPFLAGS = -I$(top_srcdir)/modules/differential_equations/src/
     $(OPENMP_CFLAGS) \
     $(KLU_CFLAGS)
 
+libscisundials_la_LIBADD = $(KLU_LIBS) \
+    $(UMFPACK_LIBS) \
+    $(OPENMP_LIBS)
+
 pkglib_LTLIBRARIES = libscisundials.la libscidifferential_equations.la
 @MAINTAINER_MODE_TRUE@noinst_LTLIBRARIES = libscidifferential_equations-algo.la
 libscidifferential_equations_algo_la_SOURCES = $(DIFFERENTIAL_EQUATIONS_C_SOURCES) $(DIFFERENTIAL_EQUATIONS_FORTRAN_SOURCES) $(DIFFERENTIAL_EQUATIONS_CPP_SOURCES)
@@ -1194,6 +1199,7 @@ CHECK_SRC = $(DIFFERENTIAL_EQUATIONS_C_SOURCES) $(DIFFERENTIAL_EQUATIONS_CPP_SOU
 INCLUDE_FLAGS = $(libscidifferential_equations_la_CPPFLAGS)
 libscidifferential_equations_la_LIBADD = libscidifferential_equations-algo.la \
     libscisundials.la \
+    $(KLU_LIBS) \
     $(UMFPACK_LIBS) \
     $(OPENMP_LIBS) \
     $(FLIBS)

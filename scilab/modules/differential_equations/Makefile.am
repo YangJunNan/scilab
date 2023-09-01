@@ -295,6 +295,10 @@ libscisundials_la_CPPFLAGS = -I$(top_srcdir)/modules/differential_equations/src/
     $(OPENMP_CFLAGS) \
     $(KLU_CFLAGS)
 
+libscisundials_la_LIBADD = $(KLU_LIBS) \
+    $(UMFPACK_LIBS) \
+    $(OPENMP_LIBS)
+
 pkglib_LTLIBRARIES = libscisundials.la libscidifferential_equations.la
 if MAINTAINER_MODE
 noinst_LTLIBRARIES = libscidifferential_equations-algo.la
