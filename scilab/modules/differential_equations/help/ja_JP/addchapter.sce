@@ -10,5 +10,4 @@
 // For more information, see the COPYING file which you should have received
 // along with this program.
 
-add_help_chapter("Differential Equations, Integration",SCI+"/modules/differential_equations/help/ja_JP",%T);
-
+add_help_chapter("微分方程式",SCI+"/modules/differential_equations/help/ja_JP",%T);

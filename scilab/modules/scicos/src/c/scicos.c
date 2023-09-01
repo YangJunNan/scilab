@@ -1,6 +1,7 @@
 /*  Scicos
 *
 *  Copyright (C) INRIA - METALAU Project <scicos@inria.fr>
+*  Copyright (C) 2023 - UTC - Stéphane MOTTELET
 *
 * This program is free software; you can redistribute it and/or modify
 * it under the terms of the GNU General Public License as published by
@@ -40,22 +41,21 @@
 #include <math.h>
 
 /* Sundials includes */
-#include <cvode/cvode.h>            /* prototypes for CVODES fcts. and consts. */
-#include <cvode/cvode_dense.h>     /* prototype for CVDense */
-#include <cvode/cvode_direct.h>    /* prototypes for various DlsMat operations */
+#include <cvode/cvode.h>            /* prototypes for CVODE fcts. and consts. */
+#include <cvode/cvode_direct.h>    /* prototypes for various SUNDlsMat operations */
 #include <ida/ida.h>
-#include <ida/ida_dense.h>
 #include <ida/ida_direct.h>
 #include <nvector/nvector_serial.h>   /* serial N_Vector types, fcts., and macros */
-#include <sundials/sundials_dense.h>  /* prototypes for various DlsMat operations */
-#include <sundials/sundials_direct.h> /* definitions of DlsMat and DENSE_ELEM */
+#include <sundials/sundials_context.h>  /* prototypes for SUNDIALS context */
+#include <sundials/sundials_dense.h>  /* prototypes for various SUNDlsMat operations */
+#include <sundials/sundials_direct.h> /* definitions of SUNDlsMat and SUNDLS_DENSE_ELEM */
 #include <sundials/sundials_types.h>  /* definition of type realtype */
 #include <sundials/sundials_math.h>
+#include <sunlinsol/sunlinsol_dense.h> /* access to dense SUNLinearSolver */
+#include <sunnonlinsol/sunnonlinsol_fixedpoint.h>
 #include <kinsol/kinsol.h>
-#include <kinsol/kinsol_dense.h>
 #include <kinsol/kinsol_direct.h>
 #include <sundials/sundials_extension.h> /* uses extension for scicos */
-#include "ida_impl.h"
 
 #include "machine.h" /* C2F */
 #include "scicos-def.h"
@@ -124,12 +124,16 @@ enum Solver
 	if (*neq>0) ODEFree(&ode_mem); 		\
 	if (*neq>0) N_VDestroy_Serial(y);		\
 	if ( ng>0 ) FREE(jroot);			\
-	if ( ng>0 ) FREE(zcros);
+	if ( ng>0 ) FREE(zcros);            \
+	SUNContext_Free(&scicos_sunctx);
 
 
-/* TJacque allocated by sundials */
+/* TJacque, m_A, m_LS, m_NLS allocated by sundials */
 #define freeallx				\
-	if (*neq>0 && TJacque) DestroyMat(TJacque);	\
+    if (*neq>0 && TJacque != NULL) SUNMatDestroy(TJacque);	\
+    if (m_A != NULL) SUNMatDestroy(m_A);	\
+    if (m_LS != NULL) SUNLinSolFree(m_LS);	\
+    if (m_NLS != NULL) SUNNonlinSolFree(m_NLS);	\
 	if (*neq>0) FREE(data->rwork);		\
 	if (( ng>0 )&& (*neq>0)) FREE(data->gwork);	\
 	if (*neq>0) N_VDestroy_Serial(data->ewt);	\
@@ -140,7 +144,8 @@ enum Solver
 	if (*neq>0) N_VDestroy_Serial(yy);		\
 	if ( ng>0 ) FREE(jroot);			\
 	if ( ng>0 ) FREE(zcros);			\
-	if (nmod>0) FREE(Mode_save);
+	if (nmod>0) FREE(Mode_save);        \
+	SUNContext_Free(&scicos_sunctx);
 
 #define freeouttbptr				\
 	FREE(outtbd);					\
@@ -155,7 +160,9 @@ enum Solver
 	FREE(Mode_save);				\
 	N_VDestroy_Serial(y);				\
 	N_VDestroy_Serial(fscale);			\
-	N_VDestroy_Serial(yscale);			\
+    N_VDestroy_Serial(yscale);			\
+    if (m_A != NULL) SUNMatDestroy(m_A);	\
+    if (m_LS != NULL) SUNLinSolFree(m_LS);	\
 	KINFree(&kin_mem);
 
 
@@ -180,6 +187,7 @@ static int c__91 = 91;
 static int c__0 = 0;
 static double c_b14 = 0.;
 static int c__1 = 1;
+/*--------------------------------------------------------------------------*/
 
 int TCritWarning = 0;
 
@@ -230,6 +238,9 @@ double SQuround = 0.;
 /* Jacobian*/
 static int AJacobian_block = 0;
 
+/* SUNDIALS Context (SUNDIALS >= 6) */
+/* We use a global context because scicos code is not multithreaded */
+static SUNContext scicos_sunctx;
 
 /* Variable declaration moved to scicos.c because it was in the scicos-def.h therefore
 * multiple declaration of the variable and linkers were complaining about duplicate
@@ -279,8 +290,8 @@ static void Multp(double *A, double *B, double *R, int ra, int rb, int ca, int c
 static int read_id(ezxml_t *elements, char *id, double *value);
 static int simblkdaskr(realtype tres, N_Vector yy, N_Vector yp, N_Vector resval, void *rdata);
 static void SundialsErrHandler(int error_code, const char *module, const char *function, char *msg, void *user_data);
-static int Jacobians(long int Neq, realtype tt, realtype cj, N_Vector yy,
-                     N_Vector yp, N_Vector resvec, DlsMat Jacque, void *jdata,
+static int Jacobians(realtype tt, realtype cj, N_Vector yy,
+                     N_Vector yp, N_Vector resvec, SUNMatrix Jacque, void *jdata,
                      N_Vector tempv1, N_Vector tempv2, N_Vector tempv3);
 static void call_debug_scicos(scicos_block *block, scicos_flag *flag, int flagi, int deb_blk);
 static int synchro_nev(ScicosImport *scs_imp, int kf, int *ierr);
@@ -1423,7 +1434,11 @@ static void cossim(double *told)
     int Discrete_Jump = 0;
     int *jroot = NULL, *zcros = NULL;
     realtype reltol = 0., abstol = 0.;
+    
     N_Vector y = NULL;
+    SUNMatrix m_A = NULL;
+    SUNLinearSolver m_LS = NULL;
+    SUNNonlinearSolver m_NLS = NULL;
     void *ode_mem = NULL;
     int flag = 0, flagr = 0;
     int cnt = 0;
@@ -1440,6 +1455,11 @@ static void cossim(double *told)
     /* Generic flags for stop mode */
     int ODE_NORMAL   = 1;  /* ODE_NORMAL   = CV_NORMAL   = LS_NORMAL   = 1 */
     int ODE_ONE_STEP = 2;  /* ODE_ONE_STEP = CV_ONE_STEP = LS_ONE_STEP = 2 */
+    if (SUNContext_Create(NULL, &scicos_sunctx) < 0)
+    {
+        *ierr = 10000;
+        return;        
+    }
     switch (solver)
     {
         case LSodar_Dynamic:
@@ -1506,7 +1526,7 @@ static void cossim(double *told)
 
     if (*neq > 0) /* Unfortunately CVODE does not work with NEQ==0 */
     {
-        y = N_VNewEmpty_Serial(*neq);
+        y = N_VNewEmpty_Serial(*neq, scicos_sunctx);
         if (check_flag((void *)y, "N_VNewEmpty_Serial", 0))
         {
             *ierr = 10000;
@@ -1534,32 +1554,32 @@ static void cossim(double *told)
                 ode_mem = LSodarCreate(neq, ng); /* Create the lsodar problem */
                 break;
             case CVode_BDF_Newton:
-                ode_mem = CVodeCreate(CV_BDF, CV_NEWTON);
+                ode_mem = CVodeCreate(CV_BDF, scicos_sunctx);
                 break;
             case CVode_BDF_Functional:
-                ode_mem = CVodeCreate(CV_BDF, CV_FUNCTIONAL);
+                ode_mem = CVodeCreate(CV_BDF, scicos_sunctx);
                 break;
             case CVode_Adams_Newton:
-                ode_mem = CVodeCreate(CV_ADAMS, CV_NEWTON);
+                ode_mem = CVodeCreate(CV_ADAMS, scicos_sunctx);
                 break;
             case CVode_Adams_Functional:
-                ode_mem = CVodeCreate(CV_ADAMS, CV_FUNCTIONAL);
+                ode_mem = CVodeCreate(CV_ADAMS, scicos_sunctx);
                 break;
             case Dormand_Prince:
-                ode_mem = CVodeCreate(CV_DOPRI, CV_FUNCTIONAL);
+                ode_mem = CVodeCreate(CV_DOPRI, scicos_sunctx);
                 break;
             case Runge_Kutta:
-                ode_mem = CVodeCreate(CV_ExpRK, CV_FUNCTIONAL);
+                ode_mem = CVodeCreate(CV_ExpRK, scicos_sunctx);
                 break;
             case Implicit_Runge_Kutta:
-                ode_mem = CVodeCreate(CV_ImpRK, CV_FUNCTIONAL);
+                ode_mem = CVodeCreate(CV_ImpRK, scicos_sunctx);
                 break;
             case Crank_Nicolson:
-                ode_mem = CVodeCreate(CV_CRANI, CV_FUNCTIONAL);
+                ode_mem = CVodeCreate(CV_CRANI, scicos_sunctx);
                 break;
         }
 
-        /*    ode_mem = CVodeCreate(CV_ADAMS, CV_FUNCTIONAL);*/
+        /*    ode_mem = CVodeCreate(CV_ADAMS, CV_FUNCTIONAL, scicos_sunctx);*/
 
         if (check_flag((void *)ode_mem, "CVodeCreate", 0))
         {
@@ -1626,8 +1646,21 @@ static void cossim(double *told)
         /* Call CVDense to specify the CVDENSE dense linear solver, only for solvers needing CVode's Newton method */
         if (solver == CVode_BDF_Newton || solver == CVode_Adams_Newton)
         {
-            flag = CVDense(ode_mem, *neq);
+            /* Create dense SUNMatrix for use in linear solves */
+            m_A = SUNDenseMatrix(*neq, *neq, scicos_sunctx);
+            /* Create dense SUNLinearSolver object for use by CVode */
+            m_LS = SUNLinSol_Dense(y, m_A, scicos_sunctx);
+            /* Call CVodeSetLinearSolver to attach the matrix and linear solver to CVode */
+            flag = CVodeSetLinearSolver(ode_mem, m_LS, m_A);
         }
+        else if (solver == CVode_BDF_Functional)
+        {
+            /* create fixed point nonlinear solver object */
+            m_NLS = SUNNonlinSol_FixedPoint(y, 0, scicos_sunctx);
+            /* attach nonlinear solver object to CVode */
+            flag = CVodeSetNonlinearSolver(ode_mem, m_NLS);
+        }
+        
         if (check_flag(&flag, "CVDense", 1))
         {
             *ierr = 300 + (-flag);
@@ -2095,6 +2128,7 @@ L30:
         /*     end of main loop on time */
     }
     freeall;
+    SUNContext_Free(&scicos_sunctx); /* Free the SUNDIALS context */
 } /* cossim_ */
 
 /*--------------------------------------------------------------------------*/
@@ -2123,11 +2157,16 @@ static void cossimdaskr(double *told)
 
     int flag = 0, flagr = 0;
     N_Vector   yy = NULL, yp = NULL;
+
+    SUNMatrix m_A = NULL;
+    SUNLinearSolver m_LS = NULL;
+    SUNNonlinearSolver m_NLS = NULL;
+
     realtype reltol = 0., abstol = 0.;
     int Discrete_Jump = 0;
     N_Vector IDx = NULL;
     realtype *scicos_xproperty = NULL;
-    DlsMat TJacque = NULL;
+    SUNMatrix TJacque = NULL;
 
     void *dae_mem = NULL;
     UserData data = NULL;
@@ -2163,6 +2202,11 @@ static void cossimdaskr(double *told)
     int DAE_NORMAL = 0, DAE_ONE_STEP = 0;
     DAE_NORMAL   = (solver == IDA_BDF_Newton) ? 1 : 0;  /* IDA_NORMAL   = 1, DDAS_NORMAL   = 0 */
     DAE_ONE_STEP = (solver == IDA_BDF_Newton) ? 2 : 1;  /* IDA_ONE_STEP = 2, DDAS_ONE_STEP = 1 */
+    if (SUNContext_Create(NULL, &scicos_sunctx) < 0)
+    {
+        *ierr = 10000;
+        return;        
+    }
     switch (solver)
     {
         case IDA_BDF_Newton:
@@ -2263,7 +2307,7 @@ static void cossimdaskr(double *told)
     if (*neq > 0)
     {
         yy = NULL;
-        yy = N_VNewEmpty_Serial(*neq);
+        yy = N_VNewEmpty_Serial(*neq, scicos_sunctx);
         if (check_flag((void *)yy, "N_VNew_Serial", 0))
         {
             if (ng > 0)
@@ -2282,7 +2326,7 @@ static void cossimdaskr(double *told)
         NV_DATA_S(yy) = x;
 
         yp = NULL;
-        yp = N_VNewEmpty_Serial(*neq);
+        yp = N_VNewEmpty_Serial(*neq, scicos_sunctx);
         if (check_flag((void *)yp, "N_VNew_Serial", 0))
         {
             if (*neq > 0)
@@ -2306,7 +2350,7 @@ static void cossimdaskr(double *told)
         NV_DATA_S(yp) = xd;
 
         IDx = NULL;
-        IDx = N_VNew_Serial(*neq);
+        IDx = N_VNew_Serial(*neq, scicos_sunctx);
         if (check_flag((void *)IDx, "N_VNew_Serial", 0))
         {
             *ierr = 10000;
@@ -2341,7 +2385,7 @@ static void cossimdaskr(double *told)
         }
         else
         {
-            dae_mem = IDACreate();
+            dae_mem = IDACreate(scicos_sunctx);
         }
         if (check_flag((void *)dae_mem, "IDACreate", 0))
         {
@@ -2539,7 +2583,12 @@ static void cossimdaskr(double *told)
 
         if (solver == IDA_BDF_Newton)
         {
-            flag = IDADense(dae_mem, *neq);
+            /* Create dense SUNMatrix for use in linear solves */
+            m_A = SUNDenseMatrix(*neq, *neq, scicos_sunctx);    
+            /* Create dense SUNLinearSolver object */
+            m_LS = SUNLinSol_Dense(yy, m_A, scicos_sunctx);
+            /* Attach the matrix and linear solver */
+            flag = IDASetLinearSolver(dae_mem, m_LS, m_A);
         }
         if (check_flag(&flag, "IDADense", 1))
         {
@@ -2615,7 +2664,7 @@ static void cossimdaskr(double *told)
         data->rwork = NULL;
         data->gwork = NULL;
 
-        data->ewt   = N_VNew_Serial(*neq);
+        data->ewt   = N_VNew_Serial(*neq, scicos_sunctx);
         if (check_flag((void *)data->ewt, "N_VNew_Serial", 0))
         {
             *ierr = 200 + (-flag);
@@ -2761,16 +2810,16 @@ static void cossimdaskr(double *told)
 
         if (solver == IDA_BDF_Newton)
         {
-            flag = IDADlsSetDenseJacFn(dae_mem, Jacobians);
+            flag = IDASetJacFn(dae_mem, Jacobians);
         }
-        if (check_flag(&flag, "IDADlsSetDenseJacFn", 1))
+        if (check_flag(&flag, "IDASetJacFn", 1))
         {
             *ierr = 200 + (-flag);
             freeallx
             return;
         }
 
-        TJacque = (DlsMat) NewDenseMat(*neq, *neq);
+        TJacque = SUNDenseMatrix(*neq, *neq, scicos_sunctx);
 
         flag = DAESetUserData(dae_mem, data);
         if (check_flag(&flag, "IDASetUserData", 1))
@@ -3022,7 +3071,7 @@ L30:
                     /* CI=0.0;CJ=100.0; // for functions Get_Jacobian_ci and Get_Jacobian_cj
                     Jacobians(*neq, (realtype) (*told), yy, yp,	bidon, (realtype) CJ, data, TJacque, tempv1, tempv2, tempv3);
                     for (jj=0;jj<*neq;jj++){
-                    Jacque_col=DENSE_COL(TJacque,jj);
+                    Jacque_col=SUNDLS_DENSE_COL(TJacque,jj);
                     CI=ZERO;
                     for (kk=0;kk<*neq;kk++){
                     if ((Jacque_col[kk]-Jacque_col[kk]!=0)) {
@@ -3509,6 +3558,7 @@ L30:
         /*     end of main loop on time */
     }
     freeallx;
+    SUNContext_Free(&scicos_sunctx); /* Free the SUNDIALS context */
 } /* cossimdaskr_ */
 /*--------------------------------------------------------------------------*/
 /* Subroutine cosend */
@@ -6266,10 +6316,11 @@ double Get_Scicos_SQUR(void)
     return  SQuround;
 }
 /*--------------------------------------------------------------------------*/
-static int Jacobians(long int Neq, realtype tt, realtype cj, N_Vector yy,
-                     N_Vector yp, N_Vector resvec, DlsMat Jacque, void *jdata,
+static int Jacobians(realtype tt, realtype cj, N_Vector yy,
+                     N_Vector yp, N_Vector resvec, SUNMatrix Jacque, void *jdata,
                      N_Vector tempv1, N_Vector tempv2, N_Vector tempv3)
 {
+    int Neq =  NV_LENGTH_S(yy);
     double  ttx = 0;
     double *xc = NULL, *xcdot = NULL, *residual = NULL;
     /*  char chr;*/
@@ -6316,7 +6367,7 @@ static int Jacobians(long int Neq, realtype tt, realtype cj, N_Vector yy,
     // CJ=(double)cj;  // for fonction Get_Jacobian_cj
     CJJ = (double)cj;  // returned by Get_Jacobian_parameter
 
-    srur = (double) RSqrt(UNIT_ROUNDOFF);
+    srur = (double) SUNRsqrt(UNIT_ROUNDOFF);
 
     if (AJacobian_block > 0)
     {
@@ -6376,7 +6427,7 @@ static int Jacobians(long int Neq, realtype tt, realtype cj, N_Vector yy,
     {
         xi = xc[i];
         xpi = xcdot[i];
-        inc = MAX( srur * MAX( ABS(xi), ABS(hh * xpi)), ONE / ewt_data[i] );
+        inc = SUNMAX( srur * SUNMAX( SUNRabs(xi), SUNRabs(hh * xpi)), ONE / ewt_data[i] );
         if (hh * xpi < ZERO)
         {
             inc = -inc;
@@ -6384,7 +6435,7 @@ static int Jacobians(long int Neq, realtype tt, realtype cj, N_Vector yy,
         inc = (xi + inc) - xi;
 
         /* if (CI==0) {
-        inc = MAX( srur * ABS(hh*xpi),ONE );
+        inc = SUNMAX( srur * SUNRabs(hh*xpi),ONE );
         if (hh*xpi < ZERO) inc = -inc;
         inc = (xpi + inc) - xi;
         } */
@@ -6419,7 +6470,7 @@ static int Jacobians(long int Neq, realtype tt, realtype cj, N_Vector yy,
     {
         for (j = 0; j < m; j++)
         {
-            Jacque_col = DENSE_COL(Jacque, j);
+            Jacque_col = SM_COLUMN_D(Jacque, j);
             for (i = 0; i < m; i++)
             {
                 Jacque_col[i] = Hx[i + j * m];
@@ -6440,7 +6491,7 @@ static int Jacobians(long int Neq, realtype tt, realtype cj, N_Vector yy,
     for (i = 0; i < no; i++)
     {
         ysave = y[i][0];
-        inc = srur * MAX( ABS(ysave), 1);
+        inc = srur * SUNMAX( SUNRabs(ysave), 1);
         inc = (ysave + inc) - ysave;
         /*del=SQUR[0]* Max(1.0,abs(y[i][0]));
         del=(y[i][0]+del)-y[i][0];*/
@@ -6480,7 +6531,7 @@ static int Jacobians(long int Neq, realtype tt, realtype cj, N_Vector yy,
 
     for (j = 0; j < nx; j++)
     {
-        Jacque_col = DENSE_COL(Jacque, j + m);
+        Jacque_col = SM_COLUMN_D(Jacque, j + m);
         for (i = 0; i < nx; i++)
         {
             Jacque_col[i + m] = Fx[i + j * nx] + FuKuGx[i + j * nx];
@@ -6491,7 +6542,7 @@ static int Jacobians(long int Neq, realtype tt, realtype cj, N_Vector yy,
 
     for (i = 0; i < nx; i++)
     {
-        Jacque_col = DENSE_COL(Jacque, i + m);
+        Jacque_col = SM_COLUMN_D(Jacque, i + m);
         for (j = 0; j < m; j++)
         {
             Jacque_col[j] = HuGx[j + i * m];
@@ -6502,7 +6553,7 @@ static int Jacobians(long int Neq, realtype tt, realtype cj, N_Vector yy,
 
     for (i = 0; i < m; i++)
     {
-        Jacque_col = DENSE_COL(Jacque, i);
+        Jacque_col = SM_COLUMN_D(Jacque, i);
         for (j = 0; j < nx; j++)
         {
             Jacque_col[j + m] = FuKx[j + i * nx];
@@ -6515,7 +6566,7 @@ static int Jacobians(long int Neq, realtype tt, realtype cj, N_Vector yy,
 
     for (j = 0; j < m; j++)
     {
-        Jacque_col = DENSE_COL(Jacque, j);
+        Jacque_col = SM_COLUMN_D(Jacque, j);
         for (i = 0; i < m; i++)
         {
             Jacque_col[i] = Hx[i + j * m] + HuGuKx[i + j * m];
@@ -6824,12 +6875,12 @@ int C2F(hfjac)(double *x, double *jac, int *col)
         *ierr = 10000;
         return *ierr;
     }
-    srur = (double) RSqrt(UNIT_ROUNDOFF);
+    srur = (double) SUNRsqrt(UNIT_ROUNDOFF);
 
     fx_(x, work);
 
     xi = x[*col - 1];
-    inc = srur * MAX (ABS(xi), 1);
+    inc = srur * SUNMAX (SUNRabs(xi), 1);
     inc = (xi + inc) - xi;
     x[*col - 1] += inc;
     xdot = x + N;
@@ -6906,6 +6957,9 @@ static int CallKinsol(double *told)
     static int one = 1;
 
     N_Vector y = NULL, yscale = NULL, fscale = NULL;
+    SUNMatrix m_A = NULL;
+    SUNLinearSolver m_LS = NULL;
+    
     double *fsdata = NULL, *ysdata = NULL;
     int N = 0, strategy = 0, i = 0, j = 0, k = 0, status = 0;
     /* int mxiter, msbset, msbsetsub, etachoice, mxnbcf; */
@@ -6938,20 +6992,20 @@ static int CallKinsol(double *told)
         }
     }
 
-    y = N_VNewEmpty_Serial(N);
+    y = N_VNewEmpty_Serial(N, scicos_sunctx);
     if (y == NULL)
     {
         FREE(Mode_save);
         return -1;
     }
-    yscale = N_VNew_Serial(N);
+    yscale = N_VNew_Serial(N, scicos_sunctx);
     if (yscale == NULL)
     {
         FREE(Mode_save);
         N_VDestroy_Serial(y);
         return -1;
     }
-    fscale = N_VNew_Serial(N);
+    fscale = N_VNew_Serial(N, scicos_sunctx);
     if (fscale == NULL)
     {
         FREE(Mode_save);
@@ -6963,7 +7017,7 @@ static int CallKinsol(double *told)
     fsdata = NV_DATA_S(fscale);
 
     NV_DATA_S(y) = x;
-    kin_mem = KINCreate();
+    kin_mem = KINCreate(scicos_sunctx);
     if (kin_mem == NULL)
     {
         FREE(Mode_save);
@@ -6975,7 +7029,11 @@ static int CallKinsol(double *told)
 
     status = KINInit(kin_mem, simblkKinsol, y);
     strategy = KIN_NONE; /*without LineSearch */
-    status = KINDense(kin_mem, N);
+    m_A = SUNDenseMatrix(N, N, scicos_sunctx);
+    /* Create dense SUNLinearSolver object for use by KINSol */
+    m_LS = SUNLinSol_Dense(y, m_A, scicos_sunctx);
+    /* Call KINSetLinearSolver to attach the matrix and linear solver toKINSol */
+    status = KINSetLinearSolver(kin_mem, m_LS, m_A);
 
     status = KINSetNumMaxIters(kin_mem, 2000);  /* MaxNumIter=200->2000 */
     status = KINSetRelErrFunc(kin_mem, reltol); /* FuncRelErr=eps->RTOL */

@@ -610,7 +610,7 @@ lib /DEF:"$(ProjectDir)../elementary_functions_f_Import.def" /SUBSYSTEM:WINDOWS 
       <Project>{ecffeb0c-1eda-45ee-9a10-b18143852e17}</Project>
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
     </ProjectReference>
-    <ProjectReference Include="..\..\..\..\scicos\src\scicos_sundials\scicos_sundials.vcxproj">
+    <ProjectReference Include="..\..\..\..\differential_equations\src\patched_sundials\patched_sundials.vcxproj">
       <Project>{c781737a-7c97-4cf9-acbc-f68c2bbf0ffa}</Project>
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
     </ProjectReference>

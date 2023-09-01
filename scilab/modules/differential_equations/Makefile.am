@@ -1,13 +1,25 @@
 # Scilab ( https://www.scilab.org/ ) - This file is part of Scilab
 # Copyright (C) 2006 - INRIA - Sylvestre LEDRU
+# Copyright (C) 2023 - UTC - Stéphane MOTTELET
 #
 # This file is distributed under the same license as the Scilab package.
 
 DIFFERENTIAL_EQUATIONS_CPP_SOURCES = \
     src/cpp/scifunctions.cpp \
     src/cpp/checkodeerror.cpp \
-    src/cpp/differentialequationfunctions.cpp
-
+    src/cpp/differentialequationfunctions.cpp \
+    src/cpp/SUNDIALSManager.cpp \
+    src/cpp/CVODEManager.cpp \
+    src/cpp/KINSOLManager.cpp \
+    src/cpp/IDAManager.cpp \
+    src/cpp/ARKODEManager.cpp \
+    src/cpp/OdeManagerInit.cpp \
+    src/cpp/OdeManagerCompute.cpp \
+    src/cpp/OdeManagerParse.cpp \
+    src/cpp/OdeManagerHelpers.cpp \
+    src/cpp/OdeManagerSolve.cpp \
+    src/cpp/odeparameters.cpp \
+    src/cpp/complexHelpers.cpp
 
 DIFFERENTIAL_EQUATIONS_C_SOURCES = \
     src/c/colnewmsgs.c \
@@ -18,7 +30,8 @@ DIFFERENTIAL_EQUATIONS_C_SOURCES = \
     src/c/Ex-odedc.c \
     src/c/Ex-ode.c \
     src/c/Ex-daskr.c \
-    src/c/errmds.c
+    src/c/errmds.c \
+    src/c/externals_for_tests.c
 
 DIFFERENTIAL_EQUATIONS_FORTRAN_SOURCES = \
     src/fortran/rscar1.f \
@@ -101,12 +114,28 @@ GATEWAY_CPP_SOURCES = \
     sci_gateway/cpp/sci_impl.cpp \
     sci_gateway/cpp/sci_dassl.cpp \
     sci_gateway/cpp/sci_dasrt.cpp \
-    sci_gateway/cpp/sci_daskr.cpp
+    sci_gateway/cpp/sci_daskr.cpp \
+    sci_gateway/cpp/sci_cvode.cpp \
+    sci_gateway/cpp/sci_ida.cpp \
+    sci_gateway/cpp/sci_arkode.cpp \
+    sci_gateway/cpp/sci_kinsol.cpp \
+    sci_gateway/cpp/sci_percent_odeSolution.cpp
 
 libscidifferential_equations_la_CPPFLAGS= \
     -I$(srcdir)/includes/ \
     -I$(srcdir)/src/cpp/ \
     -I$(srcdir)/src/c/ \
+    -I$(srcdir)/src/patched_sundials/include/ \
+    -I$(srcdir)/src/patched_sundials/src/ \
+    -I$(srcdir)/src/patched_sundials/src/sundials \
+    -I$(top_srcdir)/modules/sparse/includes/ \
+    -I$(top_srcdir)/modules/sparse/src/ColPack/includes/ \
+    -I$(top_srcdir)/modules/sparse/src/ColPack/include/ \
+    -I$(top_srcdir)/modules/sparse/src/ColPack/src/Utilities/ \
+    -I$(top_srcdir)/modules/sparse/src/ColPack/src/Recovery/ \
+    -I$(top_srcdir)/modules/sparse/src/ColPack/src/GeneralGraphColoring \
+    -I$(top_srcdir)/modules/sparse/src/ColPack/src/BipartiteGraphPartialColoring \
+    -I$(top_srcdir)/modules/sparse/src/ColPack/src/BipartiteGraphBicoloring \
     -I$(top_srcdir)/modules/ast/includes/ast/ \
     -I$(top_srcdir)/modules/ast/includes/exps/ \
     -I$(top_srcdir)/modules/ast/includes/operations/ \
@@ -123,13 +152,152 @@ libscidifferential_equations_la_CPPFLAGS= \
     -I$(top_srcdir)/modules/threads/includes/ \
     -I$(top_srcdir)/modules/string/includes/ \
     -I$(top_srcdir)/modules/elementary_functions/includes/ \
-    $(AM_CPPFLAGS)
+    $(AM_CPPFLAGS) \
+    $(EIGEN_CPPFLAGS) \
+    $(OPENMP_CXXFLAGS)
 
+
+#### scicos : SUNDIALS STUFF ####
+libscisundials_la_SOURCES = \
+    src/patched_sundials/src/arkode/arkode_adapt_impl.h \
+    src/patched_sundials/src/arkode/arkode_arkstep_impl.h \
+    src/patched_sundials/src/arkode/arkode_bandpre_impl.h \
+    src/patched_sundials/src/arkode/arkode_bbdpre_impl.h \
+    src/patched_sundials/src/arkode/arkode_erkstep_impl.h \
+    src/patched_sundials/src/arkode/arkode_impl.h \
+    src/patched_sundials/src/arkode/arkode_interp_impl.h \
+    src/patched_sundials/src/arkode/arkode_ls_impl.h \
+    src/patched_sundials/src/arkode/arkode_mristep_impl.h \
+    src/patched_sundials/src/arkode/arkode_mri_tables_impl.h \
+    src/patched_sundials/src/arkode/arkode_relaxation_impl.h \
+    src/patched_sundials/src/arkode/arkode_root_impl.h \
+    src/patched_sundials/src/arkode/arkode_sprkstep_impl.h \
+    src/patched_sundials/src/arkode/arkode_types_impl.h \
+    src/patched_sundials/src/cvode/cvode_bandpre_impl.h \
+    src/patched_sundials/src/cvode/cvode_bbdpre_impl.h \
+    src/patched_sundials/src/cvode/cvode_diag_impl.h \
+    src/patched_sundials/src/cvode/cvode_impl.h \
+    src/patched_sundials/src/cvode/cvode_ls_impl.h \
+    src/patched_sundials/src/cvode/cvode_proj_impl.h \
+    src/patched_sundials/src/ida/ida_bbdpre_impl.h \
+    src/patched_sundials/src/ida/ida_impl.h \
+    src/patched_sundials/src/ida/ida_ls_impl.h \
+    src/patched_sundials/src/kinsol/kinsol_bbdpre_impl.h \
+    src/patched_sundials/src/kinsol/kinsol_impl.h \
+    src/patched_sundials/src/kinsol/kinsol_ls_impl.h \
+    src/patched_sundials/src/sundials/sundials_context_impl.h \
+    src/patched_sundials/src/sundials/sundials_debug.h \
+    src/patched_sundials/src/sundials/sundials_hashmap.h \
+    src/patched_sundials/src/sundials/sundials_hip.h \
+    src/patched_sundials/src/sundials/sundials_iterative_impl.h \
+    src/patched_sundials/src/sundials/sundials_lapack_defs.h \
+    src/patched_sundials/src/sundials/sundials_logger_impl.h \
+    src/patched_sundials/src/sundials/sundials_sycl.h \
+    src/patched_sundials/src/sundials/sundials_utils.h \
+    src/patched_sundials/src/arkode/arkode.c \
+    src/patched_sundials/src/arkode/arkode_adapt.c \
+    src/patched_sundials/src/arkode/arkode_arkstep.c \
+    src/patched_sundials/src/arkode/arkode_arkstep_io.c \
+    src/patched_sundials/src/arkode/arkode_arkstep_nls.c \
+    src/patched_sundials/src/arkode/arkode_bandpre.c \
+    src/patched_sundials/src/arkode/arkode_bbdpre.c \
+    src/patched_sundials/src/arkode/arkode_butcher.c \
+    src/patched_sundials/src/arkode/arkode_butcher_dirk.c \
+    src/patched_sundials/src/arkode/arkode_butcher_erk.c \
+    src/patched_sundials/src/arkode/arkode_erkstep.c \
+    src/patched_sundials/src/arkode/arkode_erkstep_io.c \
+    src/patched_sundials/src/arkode/arkode_interp.c \
+    src/patched_sundials/src/arkode/arkode_io.c \
+    src/patched_sundials/src/arkode/arkode_ls.c \
+    src/patched_sundials/src/arkode/arkode_mristep.c \
+    src/patched_sundials/src/arkode/arkode_mristep_io.c \
+    src/patched_sundials/src/arkode/arkode_mristep_nls.c \
+    src/patched_sundials/src/arkode/arkode_mri_tables.c \
+    src/patched_sundials/src/arkode/arkode_relaxation.c \
+    src/patched_sundials/src/arkode/arkode_root.c \
+    src/patched_sundials/src/arkode/arkode_sprk.c \
+    src/patched_sundials/src/arkode/arkode_sprkstep.c \
+    src/patched_sundials/src/arkode/arkode_sprkstep_io.c \
+    src/patched_sundials/src/cvode/cvode.c \
+    src/patched_sundials/src/cvode/cvode_bandpre.c \
+    src/patched_sundials/src/cvode/cvode_bbdpre.c \
+    src/patched_sundials/src/cvode/cvode_diag.c \
+    src/patched_sundials/src/cvode/cvode_direct.c \
+    src/patched_sundials/src/cvode/cvode_fused_stubs.c \
+    src/patched_sundials/src/cvode/cvode_io.c \
+    src/patched_sundials/src/cvode/cvode_ls.c \
+    src/patched_sundials/src/cvode/cvode_nls.c \
+    src/patched_sundials/src/cvode/cvode_proj.c \
+    src/patched_sundials/src/cvode/cvode_spils.c \
+    src/patched_sundials/src/ida/ida.c \
+    src/patched_sundials/src/ida/ida_bbdpre.c \
+    src/patched_sundials/src/ida/ida_direct.c \
+    src/patched_sundials/src/ida/ida_ic.c \
+    src/patched_sundials/src/ida/ida_io.c \
+    src/patched_sundials/src/ida/ida_ls.c \
+    src/patched_sundials/src/ida/ida_nls.c \
+    src/patched_sundials/src/ida/ida_spils.c \
+    src/patched_sundials/src/kinsol/kinsol.c \
+    src/patched_sundials/src/kinsol/kinsol_bbdpre.c \
+    src/patched_sundials/src/kinsol/kinsol_direct.c \
+    src/patched_sundials/src/kinsol/kinsol_io.c \
+    src/patched_sundials/src/kinsol/kinsol_ls.c \
+    src/patched_sundials/src/kinsol/kinsol_spils.c \
+    src/patched_sundials/src/nvector/openmp/nvector_openmp.c \
+    src/patched_sundials/src/nvector/serial/nvector_serial.c \
+    src/patched_sundials/src/sundials/sundials_band.c \
+    src/patched_sundials/src/sundials/sundials_context.c \
+    src/patched_sundials/src/sundials/sundials_dense.c \
+    src/patched_sundials/src/sundials/sundials_direct.c \
+    src/patched_sundials/src/sundials/sundials_extension.c \
+    src/patched_sundials/src/sundials/sundials_futils.c \
+    src/patched_sundials/src/sundials/sundials_iterative.c \
+    src/patched_sundials/src/sundials/sundials_linearsolver.c \
+    src/patched_sundials/src/sundials/sundials_logger.c \
+    src/patched_sundials/src/sundials/sundials_math.c \
+    src/patched_sundials/src/sundials/sundials_matrix.c \
+    src/patched_sundials/src/sundials/sundials_memory.c \
+    src/patched_sundials/src/sundials/sundials_nonlinearsolver.c \
+    src/patched_sundials/src/sundials/sundials_nvector.c \
+    src/patched_sundials/src/sundials/sundials_nvector_senswrapper.c \
+    src/patched_sundials/src/sundials/sundials_version.c \
+    src/patched_sundials/src/sunlinsol/band/sunlinsol_band.c \
+    src/patched_sundials/src/sunlinsol/dense/sunlinsol_dense.c \
+    src/patched_sundials/src/sunlinsol/lapackband/sunlinsol_lapackband.c \
+    src/patched_sundials/src/sunlinsol/lapackdense/sunlinsol_lapackdense.c \
+    src/patched_sundials/src/sunlinsol/pcg/sunlinsol_pcg.c \
+    src/patched_sundials/src/sunlinsol/klu/sunlinsol_klu.c \
+    src/patched_sundials/src/sunlinsol/spbcgs/sunlinsol_spbcgs.c \
+    src/patched_sundials/src/sunlinsol/spfgmr/sunlinsol_spfgmr.c \
+    src/patched_sundials/src/sunlinsol/spgmr/sunlinsol_spgmr.c \
+    src/patched_sundials/src/sunmatrix/band/sunmatrix_band.c \
+    src/patched_sundials/src/sunmatrix/dense/sunmatrix_dense.c \
+    src/patched_sundials/src/sunmatrix/sparse/sunmatrix_sparse.c \
+    src/patched_sundials/src/sunmemory/system/sundials_system_memory.c \
+    src/patched_sundials/src/sunnonlinsol/fixedpoint/sunnonlinsol_fixedpoint.c \
+    src/patched_sundials/src/sunnonlinsol/newton/sunnonlinsol_newton.c
+
+libscisundials_la_CPPFLAGS = -I$(top_srcdir)/modules/differential_equations/src/patched_sundials/include \
+    -I$(top_srcdir)/modules/differential_equations/src/patched_sundials/include/cvode \
+    -I$(top_srcdir)/modules/differential_equations/src/patched_sundials/include/ida \
+    -I$(top_srcdir)/modules/differential_equations/src/patched_sundials/include/arkode \
+    -I$(top_srcdir)/modules/differential_equations/src/patched_sundials/include/kinsol \
+    -I$(top_srcdir)/modules/differential_equations/src/patched_sundials/include/nvector \
+    -I$(top_srcdir)/modules/differential_equations/src/patched_sundials/include/sundials \
+    -I$(top_srcdir)/modules/differential_equations/src/patched_sundials/include/sunmatrix \
+    -I$(top_srcdir)/modules/differential_equations/src/patched_sundials/include/sunlinsol \
+    -I$(top_srcdir)/modules/differential_equations/src/patched_sundials/include/sunnonlinsol \
+    -I$(top_srcdir)/modules/differential_equations/src/patched_sundials/src/sundials \
+    -I$(top_srcdir)/modules/differential_equations/src/patched_sundials/src/cvode \
+    -I$(top_srcdir)/modules/differential_equations/src/patched_sundials/src/ida \
+    -I$(top_srcdir)/modules/differential_equations/src/patched_sundials/src/arkode \
+    -I$(top_srcdir)/modules/differential_equations/src/patched_sundials/src/kinsol \
+    $(OPENMP_CFLAGS) \
+    $(KLU_CFLAGS)
+
+pkglib_LTLIBRARIES = libscisundials.la libscidifferential_equations.la
 if MAINTAINER_MODE
-pkglib_LTLIBRARIES = libscidifferential_equations.la
 noinst_LTLIBRARIES = libscidifferential_equations-algo.la
-else
-noinst_LTLIBRARIES = libscidifferential_equations-algo.la libscidifferential_equations.la
 endif
 
 if IS_MACOSX
@@ -146,7 +314,12 @@ libscidifferential_equations_algo_la_CPPFLAGS = $(libscidifferential_equations_l
 CHECK_SRC= $(DIFFERENTIAL_EQUATIONS_C_SOURCES) $(DIFFERENTIAL_EQUATIONS_CPP_SOURCES)
 INCLUDE_FLAGS = $(libscidifferential_equations_la_CPPFLAGS)
 
-libscidifferential_equations_la_LIBADD = libscidifferential_equations-algo.la $(FLIBS)
+libscidifferential_equations_la_LIBADD = libscidifferential_equations-algo.la \
+    libscisundials.la \
+    $(KLU_LIBS) \
+    $(UMFPACK_LIBS) \
+    $(OPENMP_LIBS) \
+    $(FLIBS)
 
 
 #### Target ######

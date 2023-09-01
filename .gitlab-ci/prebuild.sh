@@ -271,6 +271,10 @@ make_binary_directory() {
     cp -d "$INSTALLUSRDIR"/lib/libccolamd.* "$LIBTHIRDPARTYDIR/"
     rm -f "$LIBTHIRDPARTYDIR"/libcamd.*
     cp -d "$INSTALLUSRDIR"/lib/libcamd.* "$LIBTHIRDPARTYDIR/"
+    rm -f "$LIBTHIRDPARTYDIR"/libbtf.*
+    cp -d "$INSTALLUSRDIR"/lib/libbtf.* "$LIBTHIRDPARTYDIR/"
+    rm -f "$LIBTHIRDPARTYDIR"/libklu.*
+    cp -d "$INSTALLUSRDIR"/lib/libklu.* "$LIBTHIRDPARTYDIR/"
 
     rm -f "$LIBTHIRDPARTYDIR"/libOpenXLSX.*
     cp -d "$INSTALLUSRDIR"/lib/libOpenXLSX.* "$LIBTHIRDPARTYDIR/"
@@ -789,6 +793,28 @@ build_suitesparse() {
     cp "libcholmod.so.${CHOLMOD_VERSION}" "$INSTALLUSRDIR/lib/"
     cd ../..
 
+    # libbtf.so
+    BTF_VERSION=$(grep -m1 VERSION BTF/Makefile | sed -e "s|\VERSION = ||")
+    BTF_MAJOR_VERSION=$(echo "$BTF_VERSION" | awk -F \. '{print $1}')
+    cd BTF/Lib/ || exit 1
+    # shellcheck disable=SC2046
+    gcc -shared "-Wl,-soname,libbtf.so.${BTF_MAJOR_VERSION}" -o "libbtf.so.${BTF_VERSION}" $(ls ./*.o)
+    rm -f "$INSTALLUSRDIR"/lib/libbtf.so*
+    cp "libbtf.so.${BTF_VERSION}" "$INSTALLUSRDIR/lib/"
+    cd ../..
+
+    # libklu.so
+    KLU_VERSION=$(grep -m1 VERSION KLU/Makefile | sed -e "s|\VERSION = ||")
+    KLU_MAJOR_VERSION=$(echo "$KLU_VERSION" | awk -F \. '{print $1}')
+    cd KLU/Lib/ || exit 1
+    # shellcheck disable=SC2046
+    gcc -shared "-Wl,-soname,libklu.so.${KLU_MAJOR_VERSION}" -o "libklu.so.${KLU_VERSION}" $(ls ./*.o) \
+        "$INSTALLUSRDIR/lib/libamd.so.${AMD_VERSION}" "$INSTALLUSRDIR/lib/libcolamd.so.${COLAMD_VERSION}" \
+        "$INSTALLUSRDIR/lib/libbtf.so.${BTF_VERSION}"
+    rm -f "$INSTALLUSRDIR"/lib/libklu.so*
+    cp "libklu.so.${KLU_VERSION}" "$INSTALLUSRDIR/lib/"
+    cd ../..
+
     # libumfpack.so
     UMFPACK_VERSION=$(grep -m1 VERSION UMFPACK/Makefile | sed -e "s|\VERSION = ||")
     UMFPACK_MAJOR_VERSION=$(echo "$UMFPACK_VERSION" | awk -F \. '{print $1}')
@@ -799,7 +825,9 @@ build_suitesparse() {
       /usr/local/lib/libscigfortran.so.5 /usr/local/lib/libsciquadmath.so.0 \
       "$INSTALLUSRDIR/lib/libblas.so.3" "$INSTALLUSRDIR/lib/liblapack.so.3" -lm -lrt \
       "$INSTALLUSRDIR/lib/libcholmod.so.${CHOLMOD_VERSION}" "$INSTALLUSRDIR/lib/libcolamd.so.${COLAMD_VERSION}" \
-      "$INSTALLUSRDIR/lib/libccolamd.so.${CCOLAMD_VERSION}" "$INSTALLUSRDIR/lib/libcamd.so.${CAMD_VERSION}"
+      "$INSTALLUSRDIR/lib/libccolamd.so.${CCOLAMD_VERSION}" "$INSTALLUSRDIR/lib/libcamd.so.${CAMD_VERSION}" \
+      "$INSTALLUSRDIR/lib/libbtf.so.${BTF_VERSION}" "$INSTALLUSRDIR/lib/libklu.so.${KLU_VERSION}" \
+      "$INSTALLUSRDIR/lib/libamd.so.${AMD_VERSION}"
     rm -f "$INSTALLUSRDIR"/lib/libumfpack.so*
     cp "libumfpack.so.${UMFPACK_VERSION}" "$INSTALLUSRDIR/lib/"
     cd ../..
@@ -815,6 +843,10 @@ build_suitesparse() {
     ln -fs "libccolamd.so.${CCOLAMD_VERSION}" "libccolamd.so.${CCOLAMD_MAJOR_VERSION}"
     ln -fs "libcholmod.so.${CHOLMOD_VERSION}" libcholmod.so
     ln -fs "libcholmod.so.${CHOLMOD_VERSION}" "libcholmod.so.${CHOLMOD_MAJOR_VERSION}"
+    ln -fs "libbtf.so.${BTF_VERSION}" libbtf.so
+    ln -fs "libbtf.so.${BTF_VERSION}" "libbtf.so.${BTF_MAJOR_VERSION}"
+    ln -fs "libklu.so.${KLU_VERSION}" libklu.so
+    ln -fs "libklu.so.${KLU_VERSION}" "libklu.so.${KLU_MAJOR_VERSION}"
     ln -fs "libumfpack.so.${UMFPACK_VERSION}" libumfpack.so
     ln -fs "libumfpack.so.${UMFPACK_VERSION}" "libumfpack.so.${UMFPACK_MAJOR_VERSION}"
 }
