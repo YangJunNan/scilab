@@ -32,7 +32,7 @@
 #include "setGraphicObjectProperty.h"
 #include "graphicObjectProperties.h"
 
-#define MAX_MARK_STYLE 14
+#define MAX_MARK_STYLE 19
 
 /*------------------------------------------------------------------------*/
 int set_mark_style_property(void* _pvCtx, int iObjUID, void* _pvData, int valueType, int nbRow, int nbCol)

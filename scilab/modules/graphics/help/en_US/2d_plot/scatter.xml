@@ -138,7 +138,7 @@
                 <listitem>
                     <para>
                         Selects the shape of the markers. The same shape is used for all
-                        specified points. The figure below shows the 15 different marker shapes.
+                        specified points. The figure below shows the different marker shapes.
                     </para>
                     <para>
                         <inlinemediaobject>
@@ -190,12 +190,12 @@
                             <tr>
                                 <td>6</td>
                                 <td><literal>"^"</literal></td>
-                                <td>Upward-pointing triangle</td>
+                                <td>Upward-pointing centered triangle</td>
                             </tr>
                             <tr>
                                 <td>7</td>
                                 <td><literal>"v"</literal></td>
-                                <td>Downward-pointing triangle</td>
+                                <td>Downward-pointing centered triangle</td>
                             </tr>
                             <tr>
                                 <td>8</td>
@@ -220,17 +220,42 @@
                             <tr>
                                 <td>12</td>
                                 <td><literal>">"</literal></td>
-                                <td>Right-pointing triangle</td>
+                                <td>Right-pointing centered triangle</td>
                             </tr>
                             <tr>
                                 <td>13</td>
                                 <td><literal>"&lt;"</literal></td>
-                                <td>Left-pointing triangle</td>
+                                <td>Left-pointing centered triangle</td>
                             </tr>
                             <tr>
                                 <td>14</td>
                                 <td><literal>"pentagram"</literal> or <literal>"p"</literal></td>
                                 <td>Five-pointed star</td>
+                            </tr>
+                            <tr>
+                                <td>15</td>
+                                <td><literal>"^."</literal></td>
+                                <td>Upward-pointing triangle</td>
+                            </tr>
+                            <tr>
+                                <td>16</td>
+                                <td><literal>"v."</literal></td>
+                                <td>Downward-pointing triangle</td>
+                            </tr>
+                            <tr>
+                                <td>17</td>
+                                <td><literal>">."</literal></td>
+                                <td>Right-pointing triangle</td>
+                            </tr>
+                            <tr>
+                                <td>18</td>
+                                <td><literal>"&lt;."</literal></td>
+                                <td>Left-pointing triangle</td>
+                            </tr>
+                            <tr>
+                                <td>19</td>
+                                <td><literal>"minus" or "m"</literal></td>
+                                <td>Minus sign</td>
                             </tr>
                         </informaltable>
                     </para>

@@ -36,6 +36,13 @@ public interface TextureDrawingTools {
     void drawPlus(int size, Appearance appearance);
 
     /**
+     * Draw a minus.
+     * @param size the minus size.
+     * @param appearance the used appearance.
+     */
+    void drawMinus(int size, Appearance appearance);
+
+    /**
      * Draw a polyline.
      * @param coordinates polyline's point coordinates.
      * @param appearance  the used appearance.
