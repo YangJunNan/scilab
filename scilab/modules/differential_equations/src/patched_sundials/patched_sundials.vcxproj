@@ -88,18 +88,6 @@
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <WarningLevel>Level3</WarningLevel>
     </ClCompile>
-    <PreLinkEvent>
-      <Message>Build $(ProjectName).def</Message>
-      <Command>setlocal EnableDelayedExpansion
-cd $(ConfigurationName)
-set LIST_OBJ=
-for %%f in (*.obj) do set LIST_OBJ=!LIST_OBJ! %%f
-"$(SolutionDir)bin\dumpexts" -o $(ProjectName).def $(ProjectName).dll %LIST_OBJ%
-copy $(ProjectName).def ..\$(ProjectName).def &gt;nul
-del *.def &gt;nul
-cd ..
-</Command>
-    </PreLinkEvent>
     <Link>
       <OutputFile>$(SolutionDir)bin\$(ProjectName).dll</OutputFile>
       <ModuleDefinitionFile>patched_sundials.def</ModuleDefinitionFile>
@@ -127,18 +115,6 @@ cd ..
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <WarningLevel>Level3</WarningLevel>
     </ClCompile>
-    <PreLinkEvent>
-      <Message>Build $(ProjectName).def</Message>
-      <Command>setlocal EnableDelayedExpansion
-cd $(ConfigurationName)
-set LIST_OBJ=
-for %%f in (*.obj) do set LIST_OBJ=!LIST_OBJ! %%f
-"$(SolutionDir)bin\dumpexts" -o $(ProjectName).def $(ProjectName).dll %LIST_OBJ%
-copy $(ProjectName).def ..\$(ProjectName).def &gt;nul
-del *.def &gt;nul
-cd ..
-</Command>
-    </PreLinkEvent>
     <Link>
       <OutputFile>$(SolutionDir)bin\$(ProjectName).dll</OutputFile>
       <ModuleDefinitionFile>patched_sundials.def</ModuleDefinitionFile>
@@ -166,18 +142,6 @@ cd ..
       <WarningLevel>Level3</WarningLevel>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
-    <PreLinkEvent>
-      <Message>Build $(ProjectName).def</Message>
-      <Command>setlocal EnableDelayedExpansion
-cd $(ConfigurationName)
-set LIST_OBJ=
-for %%f in (*.obj) do set LIST_OBJ=!LIST_OBJ! %%f
-"$(SolutionDir)bin\dumpexts" -o $(ProjectName).def $(ProjectName).dll %LIST_OBJ%
-copy $(ProjectName).def ..\$(ProjectName).def &gt;nul
-del *.def &gt;nul
-cd ..
-</Command>
-    </PreLinkEvent>
     <Link>
       <OutputFile>$(SolutionDir)bin\$(ProjectName).dll</OutputFile>
       <ModuleDefinitionFile>patched_sundials.def</ModuleDefinitionFile>
@@ -210,18 +174,6 @@ cd ..
       <WarningLevel>Level3</WarningLevel>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
-    <PreLinkEvent>
-      <Message>Build $(ProjectName).def</Message>
-      <Command>setlocal EnableDelayedExpansion
-cd $(ConfigurationName)
-set LIST_OBJ=
-for %%f in (*.obj) do set LIST_OBJ=!LIST_OBJ! %%f
-"$(SolutionDir)bin\dumpexts" -o $(ProjectName).def $(ProjectName).dll %LIST_OBJ%
-copy $(ProjectName).def ..\$(ProjectName).def &gt;nul
-del *.def &gt;nul
-cd ..
-</Command>
-    </PreLinkEvent>
     <Link>
       <OutputFile>$(SolutionDir)bin\$(ProjectName).dll</OutputFile>
       <ModuleDefinitionFile>patched_sundials.def</ModuleDefinitionFile>
