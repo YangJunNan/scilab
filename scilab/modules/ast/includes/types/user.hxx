@@ -19,6 +19,7 @@
 
 #include "types.hxx"
 #include "bool.hxx"
+#include "string.hxx"
 
 namespace types
 {
@@ -173,6 +174,18 @@ public :
         *_piSize = sizeof(UserType);
         *_piSizePlusType = *_piSize;
         return true;
+    }
+
+    //define if your type have a function callable to get filed for completion
+    virtual bool hasGetFields()
+    {
+        return false;
+    }
+
+    // overload this method if hasGetFields method return true
+    virtual types::String* getFields()
+    {
+        return NULL;
     }
 };
 }
