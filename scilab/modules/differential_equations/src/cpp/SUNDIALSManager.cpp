@@ -581,3 +581,10 @@ void SUNDIALSManager::parseMatrixPattern(types::optional_list &opt, const wchar_
     m_iNonZeros[what] = iNonZeros;
     opt.erase(_pwstLabel);
 }
+
+int SUNDIALSManager::DQJtimes(realtype tt, N_Vector yy, N_Vector yp, N_Vector rr,
+                  N_Vector v, N_Vector Jv, realtype c_j,
+                  N_Vector work1, N_Vector work2)
+{
+    return 1;
+}

@@ -28,7 +28,6 @@ public :
     {
         m_strSolver = "kinsol";
         m_wstrSolver = L"kinsol";
-        LsATimes = kinLsATimes;
     }
 
     ~KINSOLManager()
@@ -101,7 +100,7 @@ public :
 
     int DQJtimes(realtype tt, N_Vector yy, N_Vector yp, N_Vector rr,
                   N_Vector v, N_Vector Jv, realtype c_j,
-                  N_Vector work1, N_Vector work2);
+                  N_Vector work1, N_Vector work2) final;
     void parseMatrices(types::typed_list &in);
     void parseFunctionFromOption(types::optional_list &opt, const wchar_t * _pwstLabel, functionKind what);
     void parseOptions(types::optional_list &opt);

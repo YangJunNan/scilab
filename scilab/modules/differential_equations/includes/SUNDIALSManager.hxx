@@ -278,8 +278,6 @@ public:
         return m_prob_mem;
     }
 
-    int (*LsATimes)(void *, N_Vector, N_Vector);
-
     spCompJacobian *getColPackEngine()
     {
         return m_spJacEngine;
@@ -381,10 +379,11 @@ public:
         return false;
     }
 
-    // pure virtual methods
     virtual int DQJtimes(realtype tt, N_Vector yy, N_Vector yp, N_Vector rr,
                   N_Vector v, N_Vector Jv, realtype c_j,
-                  N_Vector work1, N_Vector work2) = 0;
+                  N_Vector work1, N_Vector work2);
+
+    // pure virtual methods
     virtual int getMaxNargin() = 0;
     virtual void parseMatrices(types::typed_list& in) = 0;
     virtual void parseOptions(types::optional_list& opt) = 0;

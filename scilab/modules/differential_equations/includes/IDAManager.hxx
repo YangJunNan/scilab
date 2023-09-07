@@ -58,7 +58,6 @@ class DIFFERENTIAL_EQUATIONS_IMPEXP IDAManager final : public OdeManager
         setErrHandlerFn = IDASetErrHandlerFn;
         getReturnFlagName = IDAGetReturnFlagName;
         getDky = IDAGetDky;
-        LsATimes = idaLsATimes;
 
         toODEReturn.emplace(IDA_SUCCESS, ODE_SUCCESS);
         toODEReturn.emplace(IDA_TSTOP_RETURN, ODE_TSTOP_RETURN);
@@ -145,7 +144,7 @@ class DIFFERENTIAL_EQUATIONS_IMPEXP IDAManager final : public OdeManager
 
     int DQJtimes(realtype tt, N_Vector yy, N_Vector yp, N_Vector rr,
                   N_Vector v, N_Vector Jv, realtype c_j,
-                  N_Vector work1, N_Vector work2);
+                  N_Vector work1, N_Vector work2) final;
 
     std::vector<std::wstring> getAvailableMethods()
     {

@@ -81,7 +81,6 @@ public :
         // getDky = CVodeGetDky;
         // getSens = CVodeGetSens;
         // getSensDky = CVodeGetSensDky;
-        // LsATimes = cvLsATimes;
 
         toODEReturn.emplace(CV_SUCCESS, ODE_SUCCESS);
         toODEReturn.emplace(CV_TSTOP_RETURN, ODE_TSTOP_RETURN);
@@ -161,10 +160,6 @@ public :
     void saveInterpBasisVectors();
     void getInterpVectors(double *pdblNS, int iOrderPlusOne, int iIndex, double dblt0, double dblTUser, double dblStep, double *pdblVect, double *pdblVectd);
     bool initSensitivity(char *errorMsg);
-
-    int DQJtimes(realtype tt, N_Vector yy, N_Vector yp, N_Vector rr,
-                  N_Vector v, N_Vector Jv, realtype c_j,
-                  N_Vector work1, N_Vector work2);
 
     types::Struct *getStats();
 

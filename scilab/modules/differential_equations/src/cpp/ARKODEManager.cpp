@@ -553,7 +553,7 @@ void ARKODEManager::saveInterpBasisVectors()
         if (m_iInterpolationDegree > 3)
         {
             // the call below just aims ensure that FA and FB exist
-            arkInterpEvaluate(ark_mem, ark_mem->interp, 0.0, 0, ARK_INTERP_MAX_DEGREE, m_N_VectorYTemp);
+            ark_mem->interp->ops->evaluate(ark_mem, ark_mem->interp, 0.0, 0, ARK_INTERP_MAX_DEGREE, m_N_VectorYTemp);
 
             basisVector.assign(N_VGetArrayPointer(HINT_FA(interp)), N_VGetArrayPointer(HINT_FA(interp)) + m_iNbRealEq);
             interpBasisVectorList.push_back(basisVector);

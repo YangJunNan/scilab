@@ -59,7 +59,6 @@ public :
         setErrHandlerFn = ARKStepSetErrHandlerFn;
         getReturnFlagName = ARKStepGetReturnFlagName;
         getDky = ARKStepGetDky;
-        LsATimes = arkLsATimes;
 
         toODEReturn.emplace(ARK_SUCCESS, ODE_SUCCESS);
         toODEReturn.emplace(ARK_TSTOP_RETURN, ODE_TSTOP_RETURN);
@@ -129,7 +128,7 @@ public :
 
     int DQJtimes(realtype tt, N_Vector yy, N_Vector yp, N_Vector rr,
                       N_Vector v, N_Vector Jv, realtype c_j,
-                      N_Vector work2, N_Vector work3);
+                      N_Vector work2, N_Vector work3) final;
 
     types::Struct *getStats();
 

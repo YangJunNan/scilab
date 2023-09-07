@@ -90,7 +90,6 @@
     </ClCompile>
     <Link>
       <OutputFile>$(SolutionDir)bin\$(ProjectName).dll</OutputFile>
-      <ModuleDefinitionFile>patched_sundials.def</ModuleDefinitionFile>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Windows</SubSystem>
       <ImportLibrary>$(SolutionDir)bin\$(ProjectName).lib</ImportLibrary>
@@ -117,7 +116,6 @@
     </ClCompile>
     <Link>
       <OutputFile>$(SolutionDir)bin\$(ProjectName).dll</OutputFile>
-      <ModuleDefinitionFile>patched_sundials.def</ModuleDefinitionFile>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Windows</SubSystem>
       <ImportLibrary>$(SolutionDir)bin\$(ProjectName).lib</ImportLibrary>
@@ -144,7 +142,6 @@
     </ClCompile>
     <Link>
       <OutputFile>$(SolutionDir)bin\$(ProjectName).dll</OutputFile>
-      <ModuleDefinitionFile>patched_sundials.def</ModuleDefinitionFile>
       <GenerateDebugInformation>false</GenerateDebugInformation>
       <SubSystem>Windows</SubSystem>
       <OptimizeReferences>true</OptimizeReferences>
@@ -176,7 +173,6 @@
     </ClCompile>
     <Link>
       <OutputFile>$(SolutionDir)bin\$(ProjectName).dll</OutputFile>
-      <ModuleDefinitionFile>patched_sundials.def</ModuleDefinitionFile>
       <GenerateDebugInformation>false</GenerateDebugInformation>
       <SubSystem>Windows</SubSystem>
       <OptimizeReferences>true</OptimizeReferences>
