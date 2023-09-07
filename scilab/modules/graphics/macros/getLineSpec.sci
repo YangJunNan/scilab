@@ -82,7 +82,7 @@ function [Color,Line,LineStyle,Marker,MarkerStyle,MarkerSize,fail]=getLineSpec(s
         c2 = part(str,2);
 
         switch c1
-        case c1=="b" // special case here : we have to distinguish between "black" and "blue" colors
+        case "b" // special case here : we have to distinguish between "black" and "blue" colors
             if (c2 == "l")
                 c3 = part(str,3);
                 if (c3 == "a")
@@ -93,31 +93,31 @@ function [Color,Line,LineStyle,Marker,MarkerStyle,MarkerSize,fail]=getLineSpec(s
             else
                 k=find(Table == "blue"); // k is set to blue color
             end
-        case c1=="m" // special case here : we have to distinguish between "minus" style and "magenta" color
+        case "m" // special case here : we have to distinguish between "minus" style and "magenta" color
             if c2 == "a" then
                 k = find(Table == "magenta")
             else
                 k = find(Table == "minus")
             end
-        case c1=="^" // special case here : we have to distinguish between "^" and "^." signs
+        case "^" // special case here : we have to distinguish between "^" and "^." signs
             if c2 == "." then
                 k = find(Table == "^.")
             else
                 k = find(Table == "^")
             end
-        case c1=="v" // special case here : we have to distinguish between "v" and "v." signs
+        case "v" // special case here : we have to distinguish between "v" and "v." signs
             if c2 == "." then
                 k = find(Table == "v.")
             else
                 k = find(Table == "v")
             end
-        case c1==">" // special case here : we have to distinguish between ">" and ">." signs
+        case ">" // special case here : we have to distinguish between ">" and ">." signs
             if c2 == "." then
                 k = find(Table == ">.")
             else
                 k = find(Table == ">")
             end
-        case c1=="<" // special case here : we have to distinguish between "<" and "<." signs
+        case "<" // special case here : we have to distinguish between "<" and "<." signs
             if c2 == "." then
                 k = find(Table == "<.")
             else
