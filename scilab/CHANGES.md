@@ -31,10 +31,11 @@ In summary, the main new features and additions are:
 * Add headers as optional input argument in `http_*` functions.
 * Add cookie management in webtools module.
 * [ColPack](https://github.com/CSCsw/ColPack) graph coloring algorithms have been integrated.
-* New markers types added for polylines:
+* New markers types added for graphic objects:
   - triangles pointing to data: upward, downward, left, right,
-  - minus sign centered on data.
-  - `errbar()` function now uses "Minus-sign" marks.
+  - horizontal line (minus sign) centered on data,
+  - vertical line centered on data.
+* `errbar()` function now uses horiontal line marks.
 * <TODO>
 
 

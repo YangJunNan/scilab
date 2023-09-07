@@ -52,8 +52,8 @@ function [Color,Line,LineStyle,Marker,MarkerStyle,MarkerSize,fail]=getLineSpec(s
     opt1=[];
 
     //Marks
-    MarkStyleTable = [ "+" "o" "*" "." "x" "square" "diamond" "^" "v" ">" "<" "pentagram" "^." "v." ">." "<." "minus"];
-    MarksStyleVal=[1 9 10 0 2 11 5 6 7 12 13 14 15 16 17 18 19];
+    MarkStyleTable = [ "+" "o" "*" "." "x" "square" "diamond" "^" "v" ">" "<" "pentagram" "^." "v." ">." "<." "minus", "|"];
+    MarksStyleVal=[1 9 10 0 2 11 5 6 7 12 13 14 15 16 17 18 19 20];
     //MarksSizeVal =[4 3 7  1 3  3 4 3 3  3  3  3];
     //MarksSizeVal =[6 6 6  6 6  6 6 6 6  6  6  6]; // size is given in points now (25.02.05)
 

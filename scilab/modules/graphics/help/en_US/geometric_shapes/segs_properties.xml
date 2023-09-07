@@ -157,7 +157,7 @@
                         to select the type of mark to use when
                         <literal>mark_mode</literal> property is
                         <literal>"on"</literal>. The value should be an integer
-                        in <literal>[0 19]</literal>. The figure
+                        in <literal>[0 20]</literal>. The figure
                         below shows the aspects of the marks depending on the
                         <literal>mark_style</literal> and the
                         <literal>mark_foreground</literal> and

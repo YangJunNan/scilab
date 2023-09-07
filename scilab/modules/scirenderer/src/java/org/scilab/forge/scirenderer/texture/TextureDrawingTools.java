@@ -43,6 +43,13 @@ public interface TextureDrawingTools {
     void drawMinus(int size, Appearance appearance);
 
     /**
+     * Draw a vertical line.
+     * @param size the vertical line size.
+     * @param appearance the used appearance.
+     */
+    void drawVerticalLine(int size, Appearance appearance);
+
+    /**
      * Draw a polyline.
      * @param coordinates polyline's point coordinates.
      * @param appearance  the used appearance.

@@ -128,7 +128,7 @@
                     <para>
                         The <literal>mark_style</literal> property value is used to select the
                         type of mark to use when <literal>mark_mode</literal> property is
-                        <literal>"on"</literal>. The value should be an integer in [0 19].
+                        <literal>"on"</literal>. The value should be an integer in [0 20].
                         The figure below shows the aspects of the marks depending on the <literal>mark_style</literal> and the
                         <literal>mark_foreground</literal> and
                         <literal>mark_background</literal> properties.

@@ -158,6 +158,8 @@ public class MarkSpriteFactory {
                     return new TriangleLeftPickSpriteDrawer(appearance, finalSize);
                 case  19:
                     return new MinusSpriteDrawer(appearance, finalSize);
+                case  20:
+                    return new VerticalLineSpriteDrawer(appearance, finalSize);
 
                 default:
                     return new PlusSpriteDrawer(appearance, finalSize);
@@ -188,7 +190,7 @@ public class MarkSpriteFactory {
         public Dimension getTextureSize() {
 
             /** Add a margin such that (0, 0) was pixel aligned. */
-			int s = (int)((double)size * 1.5);
+            int s = (int)((double)size * 1.5);
             int margin;
             if (s % 2 == 0) {
                 margin = 3;
@@ -230,22 +232,6 @@ public class MarkSpriteFactory {
         @Override
         public void draw(TextureDrawingTools textureDrawingTools) {
             textureDrawingTools.drawPlus(size, appearance);
-        }
-    }
-
-    /**
-     * Minus sprite
-     * Scilab ID = 19
-     */
-    private static class MinusSpriteDrawer extends ScilabSpriteDrawer {
-
-        public MinusSpriteDrawer(Appearance appearance, int size) {
-            super(appearance, size);
-        }
-
-        @Override
-        public void draw(TextureDrawingTools textureDrawingTools) {
-            textureDrawingTools.drawMinus(size, appearance);
         }
     }
 
@@ -590,6 +576,38 @@ public class MarkSpriteFactory {
             super(appearance, size);
 
             coordinates = new int[] {basey + r, basex, 0, 0, basey + r, -basex};
+        }
+    }
+
+    /**
+     * Minus sprite
+     * Scilab ID = 19
+     */
+    private static class MinusSpriteDrawer extends ScilabSpriteDrawer {
+
+        public MinusSpriteDrawer(Appearance appearance, int size) {
+            super(appearance, size);
+        }
+
+        @Override
+        public void draw(TextureDrawingTools textureDrawingTools) {
+            textureDrawingTools.drawMinus(size, appearance);
+        }
+    }
+
+    /**
+     * Vertical line sprite
+     * Scilab ID = 20
+     */
+    private static class VerticalLineSpriteDrawer extends ScilabSpriteDrawer {
+
+        public VerticalLineSpriteDrawer(Appearance appearance, int size) {
+            super(appearance, size);
+        }
+
+        @Override
+        public void draw(TextureDrawingTools textureDrawingTools) {
+            textureDrawingTools.drawVerticalLine(size, appearance);
         }
     }
 

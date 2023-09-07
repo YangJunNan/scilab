@@ -24,237 +24,247 @@
     ><g style="fill:white; text-rendering:optimizeLegibility; stroke:white;"
     ><rect x="0" width="800" height="125" y="0" style="stroke:none;"
     /></g
-    ><g style="text-rendering:geometricPrecision; font-size:10px; font-family:sans-serif;" transform="translate(33.5238,25.75)"
+    ><g style="text-rendering:geometricPrecision; font-size:10px; font-family:sans-serif;" transform="translate(32,25.75)"
     ><text x="1.5781" xml:space="preserve" y="12.0537" style="stroke:none;"
       >0    </text
     ></g
-    ><g style="text-rendering:geometricPrecision; font-size:10px; font-family:sans-serif;" transform="translate(38.0952,62.5)"
+    ><g style="text-rendering:geometricPrecision; font-size:10px; font-family:sans-serif;" transform="translate(36.3636,62.5)"
     ><circle r="7.5" style="stroke:none;" cx="0" cy="0"
     /></g
-    ><g transform="translate(38.0952,93.75)" style="fill:blue; text-rendering:geometricPrecision; font-size:10px; font-family:sans-serif; stroke:blue;"
+    ><g transform="translate(36.3636,93.75)" style="fill:blue; text-rendering:geometricPrecision; font-size:10px; font-family:sans-serif; stroke:blue;"
     ><circle r="7.5" style="stroke:none;" cx="0" cy="0"
     /></g
-    ><g style="text-rendering:geometricPrecision; font-size:10px; font-family:sans-serif;" transform="translate(71.619,25.75)"
+    ><g style="text-rendering:geometricPrecision; font-size:10px; font-family:sans-serif;" transform="translate(68.3636,25.75)"
     ><text x="0.9062" xml:space="preserve" y="12.0537" style="stroke:none;"
       >1    </text
     ></g
-    ><g style="text-rendering:geometricPrecision; font-size:10px; font-family:sans-serif; stroke-linecap:butt;" transform="translate(76.1905,62.5)"
+    ><g style="text-rendering:geometricPrecision; font-size:10px; font-family:sans-serif; stroke-linecap:butt;" transform="translate(72.7273,62.5)"
     ><path style="fill:none;" d="M-7 0 L7 0"
       /><path style="fill:none;" d="M0 -7 L0 7"
     /></g
-    ><g transform="translate(76.1905,93.75)" style="font-size:10px; stroke-linecap:butt; fill:blue; text-rendering:geometricPrecision; font-family:sans-serif; stroke:blue;"
+    ><g transform="translate(72.7273,93.75)" style="font-size:10px; stroke-linecap:butt; fill:blue; text-rendering:geometricPrecision; font-family:sans-serif; stroke:blue;"
     ><path style="fill:none;" d="M-7 0 L7 0"
       /><path style="fill:none;" d="M0 -7 L0 7"
     /></g
-    ><g style="text-rendering:geometricPrecision; font-size:10px; font-family:sans-serif;" transform="translate(109.7143,25.75)"
+    ><g style="text-rendering:geometricPrecision; font-size:10px; font-family:sans-serif;" transform="translate(104.7273,25.75)"
     ><text x="1.7031" xml:space="preserve" y="12.0537" style="stroke:none;"
       >2    </text
     ></g
-    ><g style="text-rendering:geometricPrecision; font-size:10px; font-family:sans-serif; stroke-linecap:butt;" transform="translate(114.2857,62.5)"
+    ><g style="text-rendering:geometricPrecision; font-size:10px; font-family:sans-serif; stroke-linecap:butt;" transform="translate(109.0909,62.5)"
     ><path style="fill:none;" d="M-10 -10 L10 10"
       /><path style="fill:none;" d="M-10 10 L10 -10"
     /></g
-    ><g transform="translate(114.2857,93.75)" style="font-size:10px; stroke-linecap:butt; fill:blue; text-rendering:geometricPrecision; font-family:sans-serif; stroke:blue;"
+    ><g transform="translate(109.0909,93.75)" style="font-size:10px; stroke-linecap:butt; fill:blue; text-rendering:geometricPrecision; font-family:sans-serif; stroke:blue;"
     ><path style="fill:none;" d="M-10 -10 L10 10"
       /><path style="fill:none;" d="M-10 10 L10 -10"
     /></g
-    ><g style="text-rendering:geometricPrecision; font-size:10px; font-family:sans-serif;" transform="translate(147.8095,25.75)"
+    ><g style="text-rendering:geometricPrecision; font-size:10px; font-family:sans-serif;" transform="translate(141.0909,25.75)"
     ><text x="1.5781" xml:space="preserve" y="12.0537" style="stroke:none;"
       >3    </text
     ></g
-    ><g style="text-rendering:geometricPrecision; font-size:10px; font-family:sans-serif; stroke-linecap:butt;" transform="translate(152.3809,62.5)"
+    ><g style="text-rendering:geometricPrecision; font-size:10px; font-family:sans-serif; stroke-linecap:butt;" transform="translate(145.4545,62.5)"
     ><circle r="7.5" style="fill:none;" cx="0" cy="0"
       /><path style="fill:none;" d="M-7 0 L7 0"
       /><path style="fill:none;" d="M0 -7 L0 7"
     /></g
-    ><g transform="translate(152.3809,93.75)" style="fill:yellow; text-rendering:geometricPrecision; font-size:10px; font-family:sans-serif; stroke:yellow;"
+    ><g transform="translate(145.4545,93.75)" style="fill:yellow; text-rendering:geometricPrecision; font-size:10px; font-family:sans-serif; stroke:yellow;"
     ><circle r="7.5" style="stroke:none;" cx="0" cy="0"
       /><circle style="fill:none; stroke-linecap:butt; stroke:blue;" r="7.5" cx="0" cy="0"
       /><path d="M-7 0 L7 0" style="fill:none; stroke-linecap:butt; stroke:blue;"
       /><path d="M0 -7 L0 7" style="fill:none; stroke-linecap:butt; stroke:blue;"
     /></g
-    ><g style="text-rendering:geometricPrecision; font-size:10px; font-family:sans-serif;" transform="translate(185.9048,25.75)"
+    ><g style="text-rendering:geometricPrecision; font-size:10px; font-family:sans-serif;" transform="translate(177.4545,25.75)"
     ><text x="1.875" xml:space="preserve" y="12.0537" style="stroke:none;"
       >4    </text
     ></g
-    ><g style="text-rendering:geometricPrecision; font-size:10px; font-family:sans-serif;" transform="translate(190.4762,62.5)"
+    ><g style="text-rendering:geometricPrecision; font-size:10px; font-family:sans-serif;" transform="translate(181.8182,62.5)"
     ><polygon style="stroke:none;" points=" -7 0 0 -7 7 0 0 7"
     /></g
-    ><g transform="translate(190.4762,93.75)" style="fill:blue; text-rendering:geometricPrecision; font-size:10px; font-family:sans-serif; stroke:blue;"
+    ><g transform="translate(181.8182,93.75)" style="fill:blue; text-rendering:geometricPrecision; font-size:10px; font-family:sans-serif; stroke:blue;"
     ><polygon style="stroke:none;" points=" -7 0 0 -7 7 0 0 7"
     /></g
-    ><g style="text-rendering:geometricPrecision; font-size:10px; font-family:sans-serif;" transform="translate(224,25.75)"
+    ><g style="text-rendering:geometricPrecision; font-size:10px; font-family:sans-serif;" transform="translate(213.8182,25.75)"
     ><text x="1.5781" xml:space="preserve" y="12.0537" style="stroke:none;"
       >5    </text
     ></g
-    ><g style="text-rendering:geometricPrecision; font-size:10px; font-family:sans-serif; stroke-linecap:butt;" transform="translate(228.5714,62.5)"
+    ><g style="text-rendering:geometricPrecision; font-size:10px; font-family:sans-serif; stroke-linecap:butt;" transform="translate(218.1818,62.5)"
     ><path style="fill:none;" d="M-7 0 L0 -7 L7 0 L0 7 L-7 0"
     /></g
-    ><g transform="translate(228.5714,93.75)" style="fill:yellow; text-rendering:geometricPrecision; font-size:10px; font-family:sans-serif; stroke:yellow;"
+    ><g transform="translate(218.1818,93.75)" style="fill:yellow; text-rendering:geometricPrecision; font-size:10px; font-family:sans-serif; stroke:yellow;"
     ><polygon style="stroke:none;" points=" -7 0 0 -7 7 0 0 7"
       /><path d="M-7 0 L0 -7 L7 0 L0 7 L-7 0" style="fill:none; stroke-linecap:butt; stroke:blue;"
     /></g
-    ><g style="text-rendering:geometricPrecision; font-size:10px; font-family:sans-serif;" transform="translate(262.0952,25.75)"
+    ><g style="text-rendering:geometricPrecision; font-size:10px; font-family:sans-serif;" transform="translate(250.1818,25.75)"
     ><text x="1.625" xml:space="preserve" y="12.0537" style="stroke:none;"
       >6    </text
     ></g
-    ><g style="text-rendering:geometricPrecision; font-size:10px; font-family:sans-serif; stroke-linecap:butt;" transform="translate(266.6667,62.5)"
+    ><g style="text-rendering:geometricPrecision; font-size:10px; font-family:sans-serif; stroke-linecap:butt;" transform="translate(254.5455,62.5)"
     ><path style="fill:none;" d="M-6 3 L0 -7 L6 3 L-6 3"
     /></g
-    ><g transform="translate(266.6667,93.75)" style="fill:yellow; text-rendering:geometricPrecision; font-size:10px; font-family:sans-serif; stroke:yellow;"
+    ><g transform="translate(254.5455,93.75)" style="fill:yellow; text-rendering:geometricPrecision; font-size:10px; font-family:sans-serif; stroke:yellow;"
     ><polygon style="stroke:none;" points=" -6 3 0 -7 6 3"
       /><path d="M-6 3 L0 -7 L6 3 L-6 3" style="fill:none; stroke-linecap:butt; stroke:blue;"
     /></g
-    ><g style="text-rendering:geometricPrecision; font-size:10px; font-family:sans-serif;" transform="translate(300.1905,25.75)"
+    ><g style="text-rendering:geometricPrecision; font-size:10px; font-family:sans-serif;" transform="translate(286.5455,25.75)"
     ><text x="1.5312" xml:space="preserve" y="12.0537" style="stroke:none;"
       >7    </text
     ></g
-    ><g style="text-rendering:geometricPrecision; font-size:10px; font-family:sans-serif; stroke-linecap:butt;" transform="translate(304.7619,62.5)"
+    ><g style="text-rendering:geometricPrecision; font-size:10px; font-family:sans-serif; stroke-linecap:butt;" transform="translate(290.9091,62.5)"
     ><path style="fill:none;" d="M-6 -3 L6 -3 L0 7 L-6 -3"
     /></g
-    ><g transform="translate(304.7619,93.75)" style="fill:yellow; text-rendering:geometricPrecision; font-size:10px; font-family:sans-serif; stroke:yellow;"
+    ><g transform="translate(290.9091,93.75)" style="fill:yellow; text-rendering:geometricPrecision; font-size:10px; font-family:sans-serif; stroke:yellow;"
     ><polygon style="stroke:none;" points=" -6 -3 6 -3 0 7"
       /><path d="M-6 -3 L6 -3 L0 7 L-6 -3" style="fill:none; stroke-linecap:butt; stroke:blue;"
     /></g
-    ><g style="text-rendering:geometricPrecision; font-size:10px; font-family:sans-serif;" transform="translate(338.2857,25.75)"
+    ><g style="text-rendering:geometricPrecision; font-size:10px; font-family:sans-serif;" transform="translate(322.9091,25.75)"
     ><text x="1.5938" xml:space="preserve" y="12.0537" style="stroke:none;"
       >8    </text
     ></g
-    ><g style="text-rendering:geometricPrecision; font-size:10px; font-family:sans-serif; stroke-linecap:butt;" transform="translate(342.8571,62.5)"
+    ><g style="text-rendering:geometricPrecision; font-size:10px; font-family:sans-serif; stroke-linecap:butt;" transform="translate(327.2727,62.5)"
     ><path style="fill:none;" d="M-7 0 L0 -7 L7 0 L0 7 L-7 0"
       /><path style="fill:none;" d="M-7 0 L7 0"
       /><path style="fill:none;" d="M0 -7 L0 7"
     /></g
-    ><g transform="translate(342.8571,93.75)" style="fill:yellow; text-rendering:geometricPrecision; font-size:10px; font-family:sans-serif; stroke:yellow;"
+    ><g transform="translate(327.2727,93.75)" style="fill:yellow; text-rendering:geometricPrecision; font-size:10px; font-family:sans-serif; stroke:yellow;"
     ><polygon style="stroke:none;" points=" -7 0 0 -7 7 0 0 7"
       /><path d="M-7 0 L0 -7 L7 0 L0 7 L-7 0" style="fill:none; stroke-linecap:butt; stroke:blue;"
       /><path d="M-7 0 L7 0" style="fill:none; stroke-linecap:butt; stroke:blue;"
       /><path d="M0 -7 L0 7" style="fill:none; stroke-linecap:butt; stroke:blue;"
     /></g
-    ><g style="text-rendering:geometricPrecision; font-size:10px; font-family:sans-serif;" transform="translate(376.381,25.75)"
+    ><g style="text-rendering:geometricPrecision; font-size:10px; font-family:sans-serif;" transform="translate(359.2727,25.75)"
     ><text x="1.5781" xml:space="preserve" y="12.0537" style="stroke:none;"
       >9    </text
     ></g
-    ><g style="text-rendering:geometricPrecision; font-size:10px; font-family:sans-serif; stroke-linecap:butt;" transform="translate(380.9524,62.5)"
+    ><g style="text-rendering:geometricPrecision; font-size:10px; font-family:sans-serif; stroke-linecap:butt;" transform="translate(363.6364,62.5)"
     ><circle r="7.5" style="fill:none;" cx="0" cy="0"
     /></g
-    ><g transform="translate(380.9524,93.75)" style="fill:yellow; text-rendering:geometricPrecision; font-size:10px; font-family:sans-serif; stroke:yellow;"
+    ><g transform="translate(363.6364,93.75)" style="fill:yellow; text-rendering:geometricPrecision; font-size:10px; font-family:sans-serif; stroke:yellow;"
     ><circle r="7.5" style="stroke:none;" cx="0" cy="0"
       /><circle style="fill:none; stroke-linecap:butt; stroke:blue;" r="7.5" cx="0" cy="0"
     /></g
-    ><g style="text-rendering:geometricPrecision; font-size:10px; font-family:sans-serif;" transform="translate(409.9048,25.75)"
+    ><g style="text-rendering:geometricPrecision; font-size:10px; font-family:sans-serif;" transform="translate(391.2727,25.75)"
     ><text x="0.9062" xml:space="preserve" y="12.0537" style="stroke:none;"
       >10   </text
     ></g
-    ><g style="text-rendering:geometricPrecision; font-size:10px; font-family:sans-serif; stroke-linecap:butt;" transform="translate(419.0476,62.5)"
+    ><g style="text-rendering:geometricPrecision; font-size:10px; font-family:sans-serif; stroke-linecap:butt;" transform="translate(400,62.5)"
     ><path style="fill:none;" d="M-7 0 L7 0"
       /><path style="fill:none;" d="M0 -7 L0 7"
       /><path style="fill:none;" d="M-4 -4 L4 4"
       /><path style="fill:none;" d="M-4 4 L4 -4"
     /></g
-    ><g transform="translate(419.0476,93.75)" style="font-size:10px; stroke-linecap:butt; fill:blue; text-rendering:geometricPrecision; font-family:sans-serif; stroke:blue;"
+    ><g transform="translate(400,93.75)" style="font-size:10px; stroke-linecap:butt; fill:blue; text-rendering:geometricPrecision; font-family:sans-serif; stroke:blue;"
     ><path style="fill:none;" d="M-7 0 L7 0"
       /><path style="fill:none;" d="M0 -7 L0 7"
       /><path style="fill:none;" d="M-4 -4 L4 4"
       /><path style="fill:none;" d="M-4 4 L4 -4"
     /></g
-    ><g style="text-rendering:geometricPrecision; font-size:10px; font-family:sans-serif;" transform="translate(448,25.75)"
+    ><g style="text-rendering:geometricPrecision; font-size:10px; font-family:sans-serif;" transform="translate(427.6364,25.75)"
     ><text x="0.9062" xml:space="preserve" y="12.0537" style="stroke:none;"
       >11   </text
     ></g
-    ><g style="text-rendering:geometricPrecision; font-size:10px; font-family:sans-serif; stroke-linecap:butt;" transform="translate(457.1429,62.5)"
+    ><g style="text-rendering:geometricPrecision; font-size:10px; font-family:sans-serif; stroke-linecap:butt;" transform="translate(436.3636,62.5)"
     ><path style="fill:none;" d="M-7 -7 L7 -7 L7 7 L-7 7 L-7 -7"
     /></g
-    ><g transform="translate(457.1429,93.75)" style="fill:yellow; text-rendering:geometricPrecision; font-size:10px; font-family:sans-serif; stroke:yellow;"
+    ><g transform="translate(436.3636,93.75)" style="fill:yellow; text-rendering:geometricPrecision; font-size:10px; font-family:sans-serif; stroke:yellow;"
     ><polygon style="stroke:none;" points=" -7 -7 7 -7 7 7 -7 7"
       /><path d="M-7 -7 L7 -7 L7 7 L-7 7 L-7 -7" style="fill:none; stroke-linecap:butt; stroke:blue;"
     /></g
-    ><g style="text-rendering:geometricPrecision; font-size:10px; font-family:sans-serif;" transform="translate(486.0952,25.75)"
+    ><g style="text-rendering:geometricPrecision; font-size:10px; font-family:sans-serif;" transform="translate(464,25.75)"
     ><text x="0.9062" xml:space="preserve" y="12.0537" style="stroke:none;"
       >12   </text
     ></g
-    ><g style="text-rendering:geometricPrecision; font-size:10px; font-family:sans-serif; stroke-linecap:butt;" transform="translate(495.2381,62.5)"
+    ><g style="text-rendering:geometricPrecision; font-size:10px; font-family:sans-serif; stroke-linecap:butt;" transform="translate(472.7273,62.5)"
     ><path style="fill:none;" d="M-3 6 L-3 -6 L7 0 L-3 6"
     /></g
-    ><g transform="translate(495.2381,93.75)" style="fill:yellow; text-rendering:geometricPrecision; font-size:10px; font-family:sans-serif; stroke:yellow;"
+    ><g transform="translate(472.7273,93.75)" style="fill:yellow; text-rendering:geometricPrecision; font-size:10px; font-family:sans-serif; stroke:yellow;"
     ><polygon style="stroke:none;" points=" -3 6 -3 -6 7 0"
       /><path d="M-3 6 L-3 -6 L7 0 L-3 6" style="fill:none; stroke-linecap:butt; stroke:blue;"
     /></g
-    ><g style="text-rendering:geometricPrecision; font-size:10px; font-family:sans-serif;" transform="translate(524.1905,25.75)"
+    ><g style="text-rendering:geometricPrecision; font-size:10px; font-family:sans-serif;" transform="translate(500.3636,25.75)"
     ><text x="0.9062" xml:space="preserve" y="12.0537" style="stroke:none;"
       >13   </text
     ></g
-    ><g style="text-rendering:geometricPrecision; font-size:10px; font-family:sans-serif; stroke-linecap:butt;" transform="translate(533.3333,62.5)"
+    ><g style="text-rendering:geometricPrecision; font-size:10px; font-family:sans-serif; stroke-linecap:butt;" transform="translate(509.0909,62.5)"
     ><path style="fill:none;" d="M3 6 L-7 0 L3 -6 L3 6"
     /></g
-    ><g transform="translate(533.3333,93.75)" style="fill:yellow; text-rendering:geometricPrecision; font-size:10px; font-family:sans-serif; stroke:yellow;"
+    ><g transform="translate(509.0909,93.75)" style="fill:yellow; text-rendering:geometricPrecision; font-size:10px; font-family:sans-serif; stroke:yellow;"
     ><polygon style="stroke:none;" points=" 3 6 -7 0 3 -6"
       /><path d="M3 6 L-7 0 L3 -6 L3 6" style="fill:none; stroke-linecap:butt; stroke:blue;"
     /></g
-    ><g style="text-rendering:geometricPrecision; font-size:10px; font-family:sans-serif;" transform="translate(562.2857,25.75)"
+    ><g style="text-rendering:geometricPrecision; font-size:10px; font-family:sans-serif;" transform="translate(536.7273,25.75)"
     ><text x="0.9062" xml:space="preserve" y="12.0537" style="stroke:none;"
       >14   </text
     ></g
-    ><g style="text-rendering:geometricPrecision; font-size:10px; font-family:sans-serif; stroke-linecap:butt;" transform="translate(571.4286,62.5)"
+    ><g style="text-rendering:geometricPrecision; font-size:10px; font-family:sans-serif; stroke-linecap:butt;" transform="translate(545.4545,62.5)"
     ><path style="fill:none;" d="M-4 5 L-2 0 L-6 -2 L-1 -2 L0 -7 L1 -2 L6 -2 L2 0 L4 5 L0 2 L-4 5"
     /></g
-    ><g transform="translate(571.4286,93.75)" style="fill:yellow; text-rendering:geometricPrecision; font-size:10px; font-family:sans-serif; stroke:yellow;"
+    ><g transform="translate(545.4545,93.75)" style="fill:yellow; text-rendering:geometricPrecision; font-size:10px; font-family:sans-serif; stroke:yellow;"
     ><polygon style="stroke:none;" points=" -4 5 -2 0 -6 -2 -1 -2 0 -7 1 -2 6 -2 2 0 4 5 0 2"
       /><path d="M-4 5 L-2 0 L-6 -2 L-1 -2 L0 -7 L1 -2 L6 -2 L2 0 L4 5 L0 2 L-4 5" style="fill:none; stroke-linecap:butt; stroke:blue;"
     /></g
-    ><g style="text-rendering:geometricPrecision; font-size:10px; font-family:sans-serif;" transform="translate(600.381,25.75)"
+    ><g style="text-rendering:geometricPrecision; font-size:10px; font-family:sans-serif;" transform="translate(573.0909,25.75)"
     ><text x="0.9062" xml:space="preserve" y="12.0537" style="stroke:none;"
       >15   </text
     ></g
-    ><g style="text-rendering:geometricPrecision; font-size:10px; font-family:sans-serif; stroke-linecap:butt;" transform="translate(609.5238,62.5)"
+    ><g style="text-rendering:geometricPrecision; font-size:10px; font-family:sans-serif; stroke-linecap:butt;" transform="translate(581.8182,62.5)"
     ><path style="fill:none;" d="M-6 10 L0 0 L6 10 L-6 10"
     /></g
-    ><g transform="translate(609.5238,93.75)" style="fill:yellow; text-rendering:geometricPrecision; font-size:10px; font-family:sans-serif; stroke:yellow;"
+    ><g transform="translate(581.8182,93.75)" style="fill:yellow; text-rendering:geometricPrecision; font-size:10px; font-family:sans-serif; stroke:yellow;"
     ><polygon style="stroke:none;" points=" -6 10 0 0 6 10"
       /><path d="M-6 10 L0 0 L6 10 L-6 10" style="fill:none; stroke-linecap:butt; stroke:blue;"
     /></g
-    ><g style="text-rendering:geometricPrecision; font-size:10px; font-family:sans-serif;" transform="translate(638.4762,25.75)"
+    ><g style="text-rendering:geometricPrecision; font-size:10px; font-family:sans-serif;" transform="translate(609.4545,25.75)"
     ><text x="0.9062" xml:space="preserve" y="12.0537" style="stroke:none;"
       >16   </text
     ></g
-    ><g style="text-rendering:geometricPrecision; font-size:10px; font-family:sans-serif; stroke-linecap:butt;" transform="translate(647.6191,62.5)"
+    ><g style="text-rendering:geometricPrecision; font-size:10px; font-family:sans-serif; stroke-linecap:butt;" transform="translate(618.1818,62.5)"
     ><path style="fill:none;" d="M-6 -10 L6 -10 L0 0 L-6 -10"
     /></g
-    ><g transform="translate(647.6191,93.75)" style="fill:yellow; text-rendering:geometricPrecision; font-size:10px; font-family:sans-serif; stroke:yellow;"
+    ><g transform="translate(618.1818,93.75)" style="fill:yellow; text-rendering:geometricPrecision; font-size:10px; font-family:sans-serif; stroke:yellow;"
     ><polygon style="stroke:none;" points=" -6 -10 6 -10 0 0"
       /><path d="M-6 -10 L6 -10 L0 0 L-6 -10" style="fill:none; stroke-linecap:butt; stroke:blue;"
     /></g
-    ><g style="text-rendering:geometricPrecision; font-size:10px; font-family:sans-serif;" transform="translate(676.5714,25.75)"
+    ><g style="text-rendering:geometricPrecision; font-size:10px; font-family:sans-serif;" transform="translate(645.8182,25.75)"
     ><text x="0.9062" xml:space="preserve" y="12.0537" style="stroke:none;"
       >17   </text
     ></g
-    ><g style="text-rendering:geometricPrecision; font-size:10px; font-family:sans-serif; stroke-linecap:butt;" transform="translate(685.7143,62.5)"
+    ><g style="text-rendering:geometricPrecision; font-size:10px; font-family:sans-serif; stroke-linecap:butt;" transform="translate(654.5455,62.5)"
     ><path style="fill:none;" d="M-10 6 L-10 -6 L0 0 L-10 6"
     /></g
-    ><g transform="translate(685.7143,93.75)" style="fill:yellow; text-rendering:geometricPrecision; font-size:10px; font-family:sans-serif; stroke:yellow;"
+    ><g transform="translate(654.5455,93.75)" style="fill:yellow; text-rendering:geometricPrecision; font-size:10px; font-family:sans-serif; stroke:yellow;"
     ><polygon style="stroke:none;" points=" -10 6 -10 -6 0 0"
       /><path d="M-10 6 L-10 -6 L0 0 L-10 6" style="fill:none; stroke-linecap:butt; stroke:blue;"
     /></g
-    ><g style="text-rendering:geometricPrecision; font-size:10px; font-family:sans-serif;" transform="translate(714.6667,25.75)"
+    ><g style="text-rendering:geometricPrecision; font-size:10px; font-family:sans-serif;" transform="translate(682.1818,25.75)"
     ><text x="0.9062" xml:space="preserve" y="12.0537" style="stroke:none;"
       >18   </text
     ></g
-    ><g style="text-rendering:geometricPrecision; font-size:10px; font-family:sans-serif; stroke-linecap:butt;" transform="translate(723.8095,62.5)"
+    ><g style="text-rendering:geometricPrecision; font-size:10px; font-family:sans-serif; stroke-linecap:butt;" transform="translate(690.9091,62.5)"
     ><path style="fill:none;" d="M10 6 L0 0 L10 -6 L10 6"
     /></g
-    ><g transform="translate(723.8095,93.75)" style="fill:yellow; text-rendering:geometricPrecision; font-size:10px; font-family:sans-serif; stroke:yellow;"
+    ><g transform="translate(690.9091,93.75)" style="fill:yellow; text-rendering:geometricPrecision; font-size:10px; font-family:sans-serif; stroke:yellow;"
     ><polygon style="stroke:none;" points=" 10 6 0 0 10 -6"
       /><path d="M10 6 L0 0 L10 -6 L10 6" style="fill:none; stroke-linecap:butt; stroke:blue;"
     /></g
-    ><g style="text-rendering:geometricPrecision; font-size:10px; font-family:sans-serif;" transform="translate(752.7619,25.75)"
+    ><g style="text-rendering:geometricPrecision; font-size:10px; font-family:sans-serif;" transform="translate(718.5455,25.75)"
     ><text x="0.9062" xml:space="preserve" y="12.0537" style="stroke:none;"
       >19   </text
     ></g
-    ><g style="text-rendering:geometricPrecision; font-size:10px; font-family:sans-serif; stroke-linecap:butt;" transform="translate(761.9048,62.5)"
+    ><g style="text-rendering:geometricPrecision; font-size:10px; font-family:sans-serif; stroke-linecap:butt;" transform="translate(727.2727,62.5)"
     ><path style="fill:none;" d="M-7 0 L7 0"
     /></g
-    ><g transform="translate(761.9048,93.75)" style="font-size:10px; stroke-linecap:butt; fill:blue; text-rendering:geometricPrecision; font-family:sans-serif; stroke:blue;"
+    ><g transform="translate(727.2727,93.75)" style="font-size:10px; stroke-linecap:butt; fill:blue; text-rendering:geometricPrecision; font-family:sans-serif; stroke:blue;"
     ><path style="fill:none;" d="M-7 0 L7 0"
+    /></g
+    ><g style="text-rendering:geometricPrecision; font-size:10px; font-family:sans-serif;" transform="translate(754.9091,25.75)"
+    ><text x="1.7031" xml:space="preserve" y="12.0537" style="stroke:none;"
+      >20   </text
+    ></g
+    ><g style="text-rendering:geometricPrecision; font-size:10px; font-family:sans-serif; stroke-linecap:butt;" transform="translate(763.6364,62.5)"
+    ><path style="fill:none;" d="M0 -7 L0 7"
+    /></g
+    ><g transform="translate(763.6364,93.75)" style="font-size:10px; stroke-linecap:butt; fill:blue; text-rendering:geometricPrecision; font-family:sans-serif; stroke:blue;"
+    ><path style="fill:none;" d="M0 -7 L0 7"
     /></g
   ></g
 ></svg

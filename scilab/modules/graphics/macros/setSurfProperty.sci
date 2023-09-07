@@ -180,8 +180,8 @@ function fail = setSurfProperty(PropertyName, PropertyValue, Surface, X, Y, Z, C
 
             str = convstr(PropertyValue);
             //Marks
-            Table = [ "+" "o" "*" "." "x" "square" "diamond" "^" "v" ">" "<" "pentagram" "^." "v." ">." "<." "minus" "none"];
-            MarksStyleVal=[1 9 10 0 2 11 5 6 7 12 13 14 15 16 17 18 19 -99];
+            Table = [ "+" "o" "*" "." "x" "square" "diamond" "^" "v" ">" "<" "pentagram" "^." "v." ">." "<." "minus" "|" "none"];
+            MarksStyleVal=[1 9 10 0 2 11 5 6 7 12 13 14 15 16 17 18 19 20 -99];
             //    MarksSizeVal =[4 3 7  1 3  3 4 3 3  3  3  3 -99];
 
             opt1=[];
