@@ -20,6 +20,9 @@ builder_linux:
     - docker image prune --force
     - docker logout "${CI_REGISTRY}"
   rules:
+    # do not rebuild on scheduled
+    - if: $CI_PIPELINE_SOURCE == "schedule"
+      when: never
     # rebuild on demand
     - changes:
         paths:
@@ -44,6 +47,9 @@ prebuild_linux:
     - docker image prune --force
     - docker logout "${CI_REGISTRY}"
   rules:
+    # do not rebuild on scheduled
+    - if: $CI_PIPELINE_SOURCE == "schedule"
+      when: never
     # rebuild on demand
     - changes:
         paths:
@@ -62,6 +68,9 @@ tester_linux:
     - .gitlab-ci/docker_setup.sh --registry "${CI_REGISTRY_IMAGE}" "${DOCKER_TAG}"
     - docker logout "${CI_REGISTRY}"
   rules:
+    # do not rebuild on scheduled
+    - if: $CI_PIPELINE_SOURCE == "schedule"
+      when: never
     # rebuild on demand
     - changes:
         paths:

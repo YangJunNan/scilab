@@ -70,6 +70,9 @@ linux_build_prereq:
       - prerequirements-${SCI_VERSION_STRING}.bin.${ARCH}.tar.xz
       - $SCI_VERSION_STRING
   rules:
+    # do not rebuild on scheduled
+    - if: $CI_PIPELINE_SOURCE == "schedule"
+      when: never
     # rebuild on demand
     - changes:
         paths:
