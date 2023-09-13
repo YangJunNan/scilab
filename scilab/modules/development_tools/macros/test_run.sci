@@ -1083,10 +1083,17 @@ function status = test_single(_module, _testPath, _testName)
     end
 
     // To get TMPDIR value
-    tmpdir1_line = grep(dia, "/^TMPDIR1=/", "r");
-    execstr(dia(tmpdir1_line));
-    tmpdir2_line = grep(dia, "/^TMPDIR2=/", "r");
-    execstr(dia(tmpdir2_line));
+    try
+        tmpdir1_line = grep(dia, "/^TMPDIR1=/", "r");
+        execstr(dia(tmpdir1_line));
+        tmpdir2_line = grep(dia, "/^TMPDIR2=/", "r");
+        execstr(dia(tmpdir2_line));
+    catch
+        status.id = 6;
+        status.message = "failed: Cannot grep the dia file: " + tmp_dia + "\nCheck its content";
+        status.details = checkthefile(tmp_dia);
+        return;
+    end
     
     //Check for execution errors
     if try_catch & grep(dia,"<--Error on the test script file-->") <> [] then
