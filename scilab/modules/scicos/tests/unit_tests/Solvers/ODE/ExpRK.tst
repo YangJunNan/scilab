@@ -23,12 +23,12 @@ for i=2:4  // 'max step size' = 5*10^-i, precision
 
     // Modify solver and 'max step size' + run ExpRK + save results
     scs_m.props.tol(7) = 5*10^-i; scs_m.props.tol(6) = 6;     // 'max step size' + solver
-    try scicos_simulate(scs_m, Info); catch disp(lasterror()); end;   // ExpRK
+    try scicos_simulate(scs_m, Info); catch disp(lasterror()); exit(1); end;   // ExpRK
     rkval = res.values;   // Results
 
     // Modify solver and 'max step size' + run CVode + save results
     scs_m.props.tol(7) = 0; scs_m.props.tol(6) = 1;
-    try scicos_simulate(scs_m, Info); catch disp(lasterror()); end;
+    try scicos_simulate(scs_m, Info); catch disp(lasterror()); exit(1); end;
     cvval = res.values;
 
     // Compare results

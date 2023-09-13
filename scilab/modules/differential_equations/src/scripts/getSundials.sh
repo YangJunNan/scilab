@@ -19,7 +19,7 @@ patch -p1 < ../lapack.patch
 # cd build
 # cmake -DENABLE_OPENMP=ON ..
 #cd ..
-cp build/include/sundials/*.h include/sundials
+#cp build/include/sundials/*.h include/sundials
 patch -p1 < ../sundials_export.h.patch
 #rm -rf build
 cd ..

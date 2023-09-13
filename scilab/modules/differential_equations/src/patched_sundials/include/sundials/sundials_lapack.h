@@ -178,10 +178,6 @@ extern void dgeqrf_f77(const sunindextype *m, const sunindextype *n, double *a,
                        const sunindextype *lda, double *tau, double *work,
                        const sunindextype *lwork, sunindextype *info);
 
-<<<<<<< HEAD
-
-=======
->>>>>>> upstream/sundials-mapping
 extern void dgetrf_f77(const sunindextype *m, const sunindextype *n, double *a,
                        sunindextype *lda, sunindextype *ipiv,
                        sunindextype *info);
@@ -191,10 +187,6 @@ extern void dgetrs_f77(const char *trans, const sunindextype *n,
                        const sunindextype *lda, sunindextype *ipiv, double *b,
                        const sunindextype *ldb, sunindextype *info);
 
-<<<<<<< HEAD
-=======
-
->>>>>>> upstream/sundials-mapping
 extern void dormqr_f77(const char *side, const char *trans,
                        const sunindextype *m, const sunindextype *n,
                        const sunindextype *k, double *a,

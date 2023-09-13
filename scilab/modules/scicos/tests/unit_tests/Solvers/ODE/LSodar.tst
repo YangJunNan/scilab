@@ -16,12 +16,12 @@ assert_checktrue(importXcosDiagram("SCI/modules/xcos/tests/unit_tests/Solvers/OD
 
 // Set solver to LSodar + run LSodar + save results
 scs_m.props.tol(6) = 0;                                    // Set solver to LSodar
-try scicos_simulate(scs_m); catch disp(lasterror()); end; // Run LSodar
+try scicos_simulate(scs_m); catch disp(lasterror()); exit(1); end; // Run LSodar
 lsodarval = res.values;  // Results
 
 // Set solver to CVode BDF/Newton + run + save results
 scs_m.props.tol(6) = 1;
-try scicos_simulate(scs_m); catch disp(lasterror()); end;
+try scicos_simulate(scs_m); catch disp(lasterror()); exit(1); end;
 cvval = res.values;
 
 // Compare results
@@ -43,12 +43,12 @@ assert_checktrue(importXcosDiagram("SCI/modules/xcos/tests/unit_tests/Solvers/OD
 
 // Set solver to LSodar + run LSodar + save results
 scs_m.props.tol(6) = 0;                                    // Set solver to LSodar
-try scicos_simulate(scs_m); catch disp(lasterror()); end; // Run LSodar
+try scicos_simulate(scs_m); catch disp(lasterror()); exit(1); end; // Run LSodar
 lsodarval = res.values;  // Results
 
 // Set solver to CVode BDF/Newton + run + save results
 scs_m.props.tol(6) = 1;
-try scicos_simulate(scs_m); catch disp(lasterror()); end;
+try scicos_simulate(scs_m); catch disp(lasterror()); exit(1); end;
 cvval = res.values;
 
 // Compare results

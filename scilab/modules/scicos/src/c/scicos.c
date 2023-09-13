@@ -1643,22 +1643,25 @@ static void cossim(double *told)
             return;
         }
 
-        /* Call CVDense to specify the CVDENSE dense linear solver, only for solvers needing CVode's Newton method */
-        if (solver == CVode_BDF_Newton || solver == CVode_Adams_Newton)
-        {
-            /* Create dense SUNMatrix for use in linear solves */
+        /* Call CVDense to specify the linear solver for solvers needing it, non-linear solver for others */
+        switch (solver) {
+          case CVode_BDF_Newton: // FALLTHROUGH 
+          case CVode_Adams_Newton:
             m_A = SUNDenseMatrix(*neq, *neq, scicos_sunctx);
-            /* Create dense SUNLinearSolver object for use by CVode */
             m_LS = SUNLinSol_Dense(y, m_A, scicos_sunctx);
-            /* Call CVodeSetLinearSolver to attach the matrix and linear solver to CVode */
             flag = CVodeSetLinearSolver(ode_mem, m_LS, m_A);
-        }
-        else if (solver == CVode_BDF_Functional)
-        {
-            /* create fixed point nonlinear solver object */
+            break;
+
+          case CVode_BDF_Functional: // FALLTHROUGH 
+          case CVode_Adams_Functional: // FALLTHROUGH 
+          case Dormand_Prince: // FALLTHROUGH 
+          case Runge_Kutta: // FALLTHROUGH 
+          case Implicit_Runge_Kutta: // FALLTHROUGH 
+          case Crank_Nicolson:
+            // use a 0 for basic fixed-point solver (not Anderson-accelerated)
             m_NLS = SUNNonlinSol_FixedPoint(y, 0, scicos_sunctx);
-            /* attach nonlinear solver object to CVode */
             flag = CVodeSetNonlinearSolver(ode_mem, m_NLS);
+            break;
         }
         
         if (check_flag(&flag, "CVDense", 1))

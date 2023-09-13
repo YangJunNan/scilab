@@ -11,9 +11,7 @@
 scicos_log("TRACE");
 loadXcosLibs
 // Loading a Superblock containing an mlist as subdiagram
-fname = ls("SCI/modules/scicos/palettes/Lookup_Tables.cosf")
- fname  = 
-  "SCI\modules\scicos\palettes\Lookup_Tables.cosf"
+fname = ls("SCI/modules/scicos/palettes/Lookup_Tables.cosf");
 exec(fname, -1);
 Xcos info:    objectCreated( 1 , DIAGRAM )
 Xcos trace:   objectReferenced( 1 , DIAGRAM ) : 1

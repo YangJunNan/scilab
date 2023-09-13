@@ -242,6 +242,9 @@ SUNDIALS_EXPORT booleantype SUNRCompareTol(sunrealtype a, sunrealtype b, sunreal
 
 SUNDIALS_EXPORT sunrealtype SUNStrToReal(const char* str);
 
+/* SUNDIALS EXTENSION */
+SUNDIALS_EXPORT realtype FLOOR(realtype x);
+
 #ifdef __cplusplus
 }
 #endif

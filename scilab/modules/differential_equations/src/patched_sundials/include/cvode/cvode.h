@@ -52,7 +52,7 @@ extern "C" {
 #define CV_SUCCESS               0
 #define CV_TSTOP_RETURN          1
 #define CV_ROOT_RETURN           2
-    /* SUNDIALS EXTENSION */
+/* SUNDIALS EXTENSION */
 #define CV_ZERO_DETACH_RETURN    3
 
 #define CV_WARNING              99

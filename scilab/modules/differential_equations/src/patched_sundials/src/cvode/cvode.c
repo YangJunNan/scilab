@@ -164,7 +164,7 @@ int cvEwtSetSV_fused(const booleantype atolmin0,
 
 static int cvHin(CVodeMem cv_mem, realtype tout);
 /* SUNDIALS EXTENSION */
-static int CVHinFixed(CVodeMem cv_mem, realtype tout, realtype *tret);
+static int cvHinFixed(CVodeMem cv_mem, realtype tout, realtype *tret);
 static realtype cvUpperBoundH0(CVodeMem cv_mem, realtype tdist);
 static int cvYddNorm(CVodeMem cv_mem, realtype hg, realtype *yddnrm);
 
@@ -1132,7 +1132,11 @@ int CVode(void *cvode_mem, realtype tout, N_Vector yout,
     }
 
     /* Set initial h (from H0 or cvHin). */
-
+    
+    /* SUNDIALS EXTENSION: If an RK-based method is selected, then we choose to set h to hmax (= 1/hmax_inv). */
+    if ((cv_mem->cv_lmm == CV_ADAMS) || (cv_mem->cv_lmm == CV_BDF))
+    {
+    
     cv_mem->cv_h = cv_mem->cv_hin;
     if ( (cv_mem->cv_h != ZERO) && ((tout-cv_mem->cv_tn)*cv_mem->cv_h < ZERO) ) {
       cvProcessError(cv_mem, CV_ILL_INPUT, "CVODE", "CVode", MSGCV_BAD_H0);
@@ -1158,6 +1162,14 @@ int CVode(void *cvode_mem, realtype tout, N_Vector yout,
     if (rh > ONE) cv_mem->cv_h /= rh;
     if (SUNRabs(cv_mem->cv_h) < cv_mem->cv_hmin)
       cv_mem->cv_h *= cv_mem->cv_hmin/SUNRabs(cv_mem->cv_h);
+
+    /* SUNDIALS EXTENSION: fixed step */
+    }
+    else   /* Compute the fixed step size h, and set the max number of steps */
+    {
+        cv_mem->cv_mxstep = cvHinFixed(cv_mem, tout, tret);
+    }
+
 
     /* Check for approach to tstop */
 
@@ -1261,15 +1273,16 @@ int CVode(void *cvode_mem, realtype tout, N_Vector yout,
           SUNDIALS_MARK_FUNCTION_END(CV_PROFILER);
           return(CV_RTFUNC_FAIL);
         }
+        
         /* SUNDIALS EXTENSION */
         if (is_sundials_with_extension())
         {
-            if (retval == ZERODETACHING)    /* Zero detaching */
-            {
-                cv_mem->cv_irfnd = 1;
-                cv_mem->cv_tretlast = *tret = cv_mem->cv_tlo;
-                return(CV_ZERO_DETACH_RETURN);
-            }
+          if (retval == ZERODETACHING)    /* Zero detaching */
+          {
+            cv_mem->cv_irfnd = 1;
+            cv_mem->cv_tretlast = *tret = cv_mem->cv_tlo;
+            return(CV_ZERO_DETACH_RETURN);
+          }
         }
       }
 
@@ -1325,6 +1338,12 @@ int CVode(void *cvode_mem, realtype tout, N_Vector yout,
         cv_mem->cv_eta = cv_mem->cv_hprime / cv_mem->cv_h;
       }
 
+    }
+
+    /* SUNDIALS EXTENSION */
+    if ((cv_mem->cv_lmm == CV_DOPRI) || (cv_mem->cv_lmm == CV_ExpRK) || (cv_mem->cv_lmm == CV_ImpRK) || (cv_mem->cv_lmm == CV_CRANI))
+    {
+        cv_mem->cv_mxstep = cvHinFixed(cv_mem, tout, tret);
     }
 
   } /* end stopping tests block */
@@ -1408,7 +1427,23 @@ int CVode(void *cvode_mem, realtype tout, N_Vector yout,
     }
 
     /* Call cvStep to take a step */
-    kflag = cvStep(cv_mem);
+    switch(cv_mem->cv_lmm) {
+      case CV_DOPRI:
+        kflag = cvStepDoPri(cv_mem);
+        break;
+      case CV_ExpRK:
+        kflag = cvStepExpRK(cv_mem);
+        break;
+      case CV_ImpRK:
+        kflag = cvStepImpRK(cv_mem);
+        break;
+      case CV_CRANI:
+        kflag = cvStepCRANI(cv_mem);
+        break;
+      default:
+        kflag = cvStep(cv_mem);
+        break;
+    }
 
     /* Process failed step cases, and exit loop */
     if (kflag != CV_SUCCESS) {
@@ -2101,6 +2136,51 @@ static int cvHin(CVodeMem cv_mem, realtype tout)
 }
 
 /*
+ * cvHinFixed
+ *
+ * This routine computes the fixed step size h.
+ * The objective is to approach hmax (= 1/hmax_inv) with h by trying to split the time interval (t-*told) into hmax-long parts.
+ * - if t-*told is smaller than hmax, then set h = t-*told (one iteration)
+ * - if it is divisible by hmax, then set h = hmax.
+ * - if it is not, then "add an integration point" by setting h < hmax, just enough to fit the interval
+ *
+ * RK-based methods using Fixed-size step, we know the maximum number of steps to take.
+ * This procedure returns that number (minus 2 because nstloc starts at 0).
+ */
+
+static int cvHinFixed(CVodeMem cv_mem, realtype tout, realtype *tret)
+{
+  long int n_points;
+  realtype interval_size, hmax, test_div, floor_test;
+
+  hmax = 1. / cv_mem->cv_hmax_inv;
+  interval_size = tout - *tret;
+
+  if (interval_size <= hmax)    /* "Small" interval, h is the size of it */
+  {
+      n_points = 2;
+      cv_mem->cv_h = interval_size;
+  }
+  else
+  {
+      test_div = interval_size / hmax;
+      floor_test = FLOOR(test_div);
+      if (test_div - floor_test <= TINY)  /* t-*told divisible by hmax, cutting the interval into hmax-long parts */
+      {
+          n_points = floor_test + 1;
+          cv_mem->cv_h = interval_size / (n_points - 1);
+      }
+      else    /* Adding a point and h < hmax to fit the interval */
+      {
+          n_points = floor_test + 2;
+          cv_mem->cv_h = interval_size / (n_points - 1);
+      }
+  }
+
+  return(CV_SUCCESS);
+}
+
+/*
  * cvUpperBoundH0
  *
  * This routine sets an upper bound on abs(h0) based on
@@ -2358,56 +2438,56 @@ static int cvStepDoPri(CVodeMem cv_mem)
 
     /* K1, K2 */
     retval = cv_mem->cv_f(cv_mem->cv_tn, cv_mem->cv_zn[0], cv_mem->cv_zn[2], cv_mem->cv_user_data);             /* cv_mem->cv_zn[2] = K1 = f(Tn, Yn)                 */
-    N_VLinearSum_Serial (a21 * cv_mem->cv_h, cv_mem->cv_zn[2], ONE, cv_mem->cv_zn[0], cv_mem->cv_y); /* y = K1*a21*h + Yn                      */
+    N_VLinearSum (a21 * cv_mem->cv_h, cv_mem->cv_zn[2], ONE, cv_mem->cv_zn[0], cv_mem->cv_y); /* y = K1*a21*h + Yn                      */
     retval = cv_mem->cv_f(cv_mem->cv_tn + c2 * cv_mem->cv_h, cv_mem->cv_y, cv_mem->cv_zn[3], cv_mem->cv_user_data);        /* cv_mem->cv_zn[3] = K2 = f(Tn+c2*cv_mem->cv_h, Yn + a21*h*K1) */
     N_VScale(b1, cv_mem->cv_zn[2], cv_mem->cv_y);                              /* y = b1*K1 + 0*K2                       */
     N_VScale(d1, cv_mem->cv_zn[2], cv_mem->cv_tempv);                          /* cv_mem->cv_tempv = d1*K1 + 0*K2                   */
 
     /* K3 */
-    N_VLinearSum_Serial (a31 * cv_mem->cv_h, cv_mem->cv_zn[2], ONE, cv_mem->cv_zn[0], cv_mem->cv_ftemp); /* cv_mem->cv_ftemp = Yn + K1*a31*h                             */
-    N_VLinearSum_Serial (a32 * cv_mem->cv_h, cv_mem->cv_zn[3], ONE, cv_mem->cv_ftemp, cv_mem->cv_ftemp); /* cv_mem->cv_ftemp += K2*a32*h                                 */
+    N_VLinearSum (a31 * cv_mem->cv_h, cv_mem->cv_zn[2], ONE, cv_mem->cv_zn[0], cv_mem->cv_ftemp); /* cv_mem->cv_ftemp = Yn + K1*a31*h                             */
+    N_VLinearSum (a32 * cv_mem->cv_h, cv_mem->cv_zn[3], ONE, cv_mem->cv_ftemp, cv_mem->cv_ftemp); /* cv_mem->cv_ftemp += K2*a32*h                                 */
     retval = cv_mem->cv_f(cv_mem->cv_tn + c3 * cv_mem->cv_h, cv_mem->cv_ftemp, cv_mem->cv_zn[4], cv_mem->cv_user_data);        /* cv_mem->cv_zn[4] = K3 = f(Tn+c3*cv_mem->cv_h, Yn + a31*h*K1 + a32*h*K2) */
-    N_VLinearSum_Serial (ONE, cv_mem->cv_y, b3, cv_mem->cv_zn[4], cv_mem->cv_y);              /* y = b1*K1 + 0*K2 + b3*K3                          */
-    N_VLinearSum_Serial (ONE, cv_mem->cv_tempv, d3, cv_mem->cv_zn[4], cv_mem->cv_tempv);      /* cv_mem->cv_tempv = d1*K1 + 0*K2 + d3*K3                      */
+    N_VLinearSum (ONE, cv_mem->cv_y, b3, cv_mem->cv_zn[4], cv_mem->cv_y);              /* y = b1*K1 + 0*K2 + b3*K3                          */
+    N_VLinearSum (ONE, cv_mem->cv_tempv, d3, cv_mem->cv_zn[4], cv_mem->cv_tempv);      /* cv_mem->cv_tempv = d1*K1 + 0*K2 + d3*K3                      */
 
     /* K4 */
-    N_VLinearSum_Serial (a41 * cv_mem->cv_h, cv_mem->cv_zn[2], ONE, cv_mem->cv_zn[0], cv_mem->cv_ftemp); /* cv_mem->cv_ftemp = Yn + K1*a41*h                                        */
-    N_VLinearSum_Serial (a42 * cv_mem->cv_h, cv_mem->cv_zn[3], ONE, cv_mem->cv_ftemp, cv_mem->cv_ftemp); /* cv_mem->cv_ftemp += K2*a42*h                                            */
-    N_VLinearSum_Serial (a43 * cv_mem->cv_h, cv_mem->cv_zn[4], ONE, cv_mem->cv_ftemp, cv_mem->cv_ftemp); /* cv_mem->cv_ftemp += K3*a43*h                                            */
+    N_VLinearSum (a41 * cv_mem->cv_h, cv_mem->cv_zn[2], ONE, cv_mem->cv_zn[0], cv_mem->cv_ftemp); /* cv_mem->cv_ftemp = Yn + K1*a41*h                                        */
+    N_VLinearSum (a42 * cv_mem->cv_h, cv_mem->cv_zn[3], ONE, cv_mem->cv_ftemp, cv_mem->cv_ftemp); /* cv_mem->cv_ftemp += K2*a42*h                                            */
+    N_VLinearSum (a43 * cv_mem->cv_h, cv_mem->cv_zn[4], ONE, cv_mem->cv_ftemp, cv_mem->cv_ftemp); /* cv_mem->cv_ftemp += K3*a43*h                                            */
     retval = cv_mem->cv_f(cv_mem->cv_tn + c4 * cv_mem->cv_h, cv_mem->cv_ftemp, cv_mem->cv_zn[5], cv_mem->cv_user_data);        /* cv_mem->cv_zn[5] = K4 = f(Tn+c4*cv_mem->cv_h, Yn + a41*h*K1 + a42*h*K2 + a43*h*K3) */
-    N_VLinearSum_Serial (ONE, cv_mem->cv_y, b4, cv_mem->cv_zn[5], cv_mem->cv_y);              /* y = b1*K1 + 0*K2 + b3*K3 + b4*K4                             */
-    N_VLinearSum_Serial (ONE, cv_mem->cv_tempv, d4, cv_mem->cv_zn[5], cv_mem->cv_tempv);      /* cv_mem->cv_tempv = d1*K1 + 0*K2 + d3*K3 + d4*K4                         */
+    N_VLinearSum (ONE, cv_mem->cv_y, b4, cv_mem->cv_zn[5], cv_mem->cv_y);              /* y = b1*K1 + 0*K2 + b3*K3 + b4*K4                             */
+    N_VLinearSum (ONE, cv_mem->cv_tempv, d4, cv_mem->cv_zn[5], cv_mem->cv_tempv);      /* cv_mem->cv_tempv = d1*K1 + 0*K2 + d3*K3 + d4*K4                         */
 
     /* K5 */
-    N_VLinearSum_Serial (a51 * cv_mem->cv_h, cv_mem->cv_zn[2], ONE, cv_mem->cv_zn[0], cv_mem->cv_ftemp); /* cv_mem->cv_ftemp = Yn + K1*a51*h                                                   */
-    N_VLinearSum_Serial (a52 * cv_mem->cv_h, cv_mem->cv_zn[3], ONE, cv_mem->cv_ftemp, cv_mem->cv_ftemp); /* cv_mem->cv_ftemp += K2*a52*h                                                       */
-    N_VLinearSum_Serial (a53 * cv_mem->cv_h, cv_mem->cv_zn[4], ONE, cv_mem->cv_ftemp, cv_mem->cv_ftemp); /* cv_mem->cv_ftemp += K3*a53*h                                                       */
-    N_VLinearSum_Serial (a54 * cv_mem->cv_h, cv_mem->cv_zn[5], ONE, cv_mem->cv_ftemp, cv_mem->cv_ftemp); /* cv_mem->cv_ftemp += K4*a54*h                                                       */
+    N_VLinearSum (a51 * cv_mem->cv_h, cv_mem->cv_zn[2], ONE, cv_mem->cv_zn[0], cv_mem->cv_ftemp); /* cv_mem->cv_ftemp = Yn + K1*a51*h                                                   */
+    N_VLinearSum (a52 * cv_mem->cv_h, cv_mem->cv_zn[3], ONE, cv_mem->cv_ftemp, cv_mem->cv_ftemp); /* cv_mem->cv_ftemp += K2*a52*h                                                       */
+    N_VLinearSum (a53 * cv_mem->cv_h, cv_mem->cv_zn[4], ONE, cv_mem->cv_ftemp, cv_mem->cv_ftemp); /* cv_mem->cv_ftemp += K3*a53*h                                                       */
+    N_VLinearSum (a54 * cv_mem->cv_h, cv_mem->cv_zn[5], ONE, cv_mem->cv_ftemp, cv_mem->cv_ftemp); /* cv_mem->cv_ftemp += K4*a54*h                                                       */
     retval = cv_mem->cv_f(cv_mem->cv_tn + c5 * cv_mem->cv_h, cv_mem->cv_ftemp, cv_mem->cv_zn[6], cv_mem->cv_user_data);        /* cv_mem->cv_zn[6] = K5 = f(Tn+c5*cv_mem->cv_h, Yn + a51*h*K1 + a52*h*K2 + a53*h*K3 + a54*h*K4) */
-    N_VLinearSum_Serial (ONE, cv_mem->cv_y, b5, cv_mem->cv_zn[6], cv_mem->cv_y);              /* y = b1*K1 + 0*K2 + b3*K3 + b4*K4 + b5*K5                                */
-    N_VLinearSum_Serial (ONE, cv_mem->cv_tempv, d5, cv_mem->cv_zn[6], cv_mem->cv_tempv);      /* cv_mem->cv_tempv = d1*K1 + 0*K2 + d3*K3 + d4*K4 + d5*K5                            */
+    N_VLinearSum (ONE, cv_mem->cv_y, b5, cv_mem->cv_zn[6], cv_mem->cv_y);              /* y = b1*K1 + 0*K2 + b3*K3 + b4*K4 + b5*K5                                */
+    N_VLinearSum (ONE, cv_mem->cv_tempv, d5, cv_mem->cv_zn[6], cv_mem->cv_tempv);      /* cv_mem->cv_tempv = d1*K1 + 0*K2 + d3*K3 + d4*K4 + d5*K5                            */
 
     /* K6 */
-    N_VLinearSum_Serial (a61 * cv_mem->cv_h, cv_mem->cv_zn[2], ONE, cv_mem->cv_zn[0], cv_mem->cv_ftemp); /* cv_mem->cv_ftemp = Yn + K1*a61*h                                                           */
-    N_VLinearSum_Serial (a62 * cv_mem->cv_h, cv_mem->cv_zn[3], ONE, cv_mem->cv_ftemp, cv_mem->cv_ftemp); /* cv_mem->cv_ftemp += K2*a62*h                                                               */
-    N_VLinearSum_Serial (a63 * cv_mem->cv_h, cv_mem->cv_zn[4], ONE, cv_mem->cv_ftemp, cv_mem->cv_ftemp); /* cv_mem->cv_ftemp += K3*a63*h                                                               */
-    N_VLinearSum_Serial (a64 * cv_mem->cv_h, cv_mem->cv_zn[5], ONE, cv_mem->cv_ftemp, cv_mem->cv_ftemp); /* cv_mem->cv_ftemp += K3*a64*h                                                               */
-    N_VLinearSum_Serial (a65 * cv_mem->cv_h, cv_mem->cv_zn[6], ONE, cv_mem->cv_ftemp, cv_mem->cv_ftemp); /* cv_mem->cv_ftemp += K3*a65*h                                                               */
+    N_VLinearSum (a61 * cv_mem->cv_h, cv_mem->cv_zn[2], ONE, cv_mem->cv_zn[0], cv_mem->cv_ftemp); /* cv_mem->cv_ftemp = Yn + K1*a61*h                                                           */
+    N_VLinearSum (a62 * cv_mem->cv_h, cv_mem->cv_zn[3], ONE, cv_mem->cv_ftemp, cv_mem->cv_ftemp); /* cv_mem->cv_ftemp += K2*a62*h                                                               */
+    N_VLinearSum (a63 * cv_mem->cv_h, cv_mem->cv_zn[4], ONE, cv_mem->cv_ftemp, cv_mem->cv_ftemp); /* cv_mem->cv_ftemp += K3*a63*h                                                               */
+    N_VLinearSum (a64 * cv_mem->cv_h, cv_mem->cv_zn[5], ONE, cv_mem->cv_ftemp, cv_mem->cv_ftemp); /* cv_mem->cv_ftemp += K3*a64*h                                                               */
+    N_VLinearSum (a65 * cv_mem->cv_h, cv_mem->cv_zn[6], ONE, cv_mem->cv_ftemp, cv_mem->cv_ftemp); /* cv_mem->cv_ftemp += K3*a65*h                                                               */
     retval = cv_mem->cv_f(cv_mem->cv_tn + cv_mem->cv_h, cv_mem->cv_ftemp, cv_mem->cv_zn[7], cv_mem->cv_user_data);             /* cv_mem->cv_zn[7] = K6 = f(Tn+cv_mem->cv_h, Yn + a61*h*K1 + a62*h*K2 + a63*h*K3 + a64*h*K4 + a65*h*K5) */
-    N_VLinearSum_Serial (ONE, cv_mem->cv_y, b6, cv_mem->cv_zn[7], cv_mem->cv_y);              /* y = b1*K1 + 0*K2 + b3*K3 + b4*K4 + b5*K5 + b6*K6                                */
-    N_VLinearSum_Serial (ONE, cv_mem->cv_tempv, d6, cv_mem->cv_zn[7], cv_mem->cv_tempv);      /* cv_mem->cv_tempv = d1*K1 + 0*K2 + d3*K3 + d4*K4 + d5*K5 + d6*K6                            */
+    N_VLinearSum (ONE, cv_mem->cv_y, b6, cv_mem->cv_zn[7], cv_mem->cv_y);              /* y = b1*K1 + 0*K2 + b3*K3 + b4*K4 + b5*K5 + b6*K6                                */
+    N_VLinearSum (ONE, cv_mem->cv_tempv, d6, cv_mem->cv_zn[7], cv_mem->cv_tempv);      /* cv_mem->cv_tempv = d1*K1 + 0*K2 + d3*K3 + d4*K4 + d5*K5 + d6*K6                            */
 
     /* K7 */
-    N_VLinearSum_Serial (a71 * cv_mem->cv_h, cv_mem->cv_zn[2], ONE, cv_mem->cv_zn[0], cv_mem->cv_ftemp); /* cv_mem->cv_ftemp = Yn + K1*a71*h                                                                    */
-    N_VLinearSum_Serial (a73 * cv_mem->cv_h, cv_mem->cv_zn[4], ONE, cv_mem->cv_ftemp, cv_mem->cv_ftemp); /* cv_mem->cv_ftemp += K3*a73*h                                                                        */
-    N_VLinearSum_Serial (a74 * cv_mem->cv_h, cv_mem->cv_zn[5], ONE, cv_mem->cv_ftemp, cv_mem->cv_ftemp); /* cv_mem->cv_ftemp += K3*a74*h                                                                        */
-    N_VLinearSum_Serial (a75 * cv_mem->cv_h, cv_mem->cv_zn[6], ONE, cv_mem->cv_ftemp, cv_mem->cv_ftemp); /* cv_mem->cv_ftemp += K3*a75*h                                                                        */
-    N_VLinearSum_Serial (a76 * cv_mem->cv_h, cv_mem->cv_zn[7], ONE, cv_mem->cv_ftemp, cv_mem->cv_ftemp); /* cv_mem->cv_ftemp += K3*a76*h                                                                        */
+    N_VLinearSum (a71 * cv_mem->cv_h, cv_mem->cv_zn[2], ONE, cv_mem->cv_zn[0], cv_mem->cv_ftemp); /* cv_mem->cv_ftemp = Yn + K1*a71*h                                                                    */
+    N_VLinearSum (a73 * cv_mem->cv_h, cv_mem->cv_zn[4], ONE, cv_mem->cv_ftemp, cv_mem->cv_ftemp); /* cv_mem->cv_ftemp += K3*a73*h                                                                        */
+    N_VLinearSum (a74 * cv_mem->cv_h, cv_mem->cv_zn[5], ONE, cv_mem->cv_ftemp, cv_mem->cv_ftemp); /* cv_mem->cv_ftemp += K3*a74*h                                                                        */
+    N_VLinearSum (a75 * cv_mem->cv_h, cv_mem->cv_zn[6], ONE, cv_mem->cv_ftemp, cv_mem->cv_ftemp); /* cv_mem->cv_ftemp += K3*a75*h                                                                        */
+    N_VLinearSum (a76 * cv_mem->cv_h, cv_mem->cv_zn[7], ONE, cv_mem->cv_ftemp, cv_mem->cv_ftemp); /* cv_mem->cv_ftemp += K3*a76*h                                                                        */
     retval = cv_mem->cv_f(cv_mem->cv_tn + cv_mem->cv_h, cv_mem->cv_ftemp, cv_mem->cv_zn[8], cv_mem->cv_user_data);             /* cv_mem->cv_zn[8] = K7 = f(Tn+cv_mem->cv_h, Yn + a71*h*K1 + 0*h*K2 + a73*h*K3 + a74*h*K4 + a75*h*K5 + a76*h*K6) */
-    N_VLinearSum_Serial (ONE, cv_mem->cv_tempv, d7, cv_mem->cv_zn[8], cv_mem->cv_tempv);      /* cv_mem->cv_tempv = d1*K1 + 0*K2 + d3*K3 + d4*K4 + d5*K5 + d6*K6 + d7*K7                             */
+    N_VLinearSum (ONE, cv_mem->cv_tempv, d7, cv_mem->cv_zn[8], cv_mem->cv_tempv);      /* cv_mem->cv_tempv = d1*K1 + 0*K2 + d3*K3 + d4*K4 + d5*K5 + d6*K6 + d7*K7                             */
 
     /* Yn+1 */
-    N_VLinearSum_Serial(ONE, cv_mem->cv_zn[0], cv_mem->cv_h, cv_mem->cv_y, cv_mem->cv_zn[0]); /* cv_mem->cv_zn[0] = Yn+1 = Yn + h*y */
+    N_VLinearSum(ONE, cv_mem->cv_zn[0], cv_mem->cv_h, cv_mem->cv_y, cv_mem->cv_zn[0]); /* cv_mem->cv_zn[0] = Yn+1 = Yn + h*y */
 
     /* Check for errors in the evaluations of f thanks to retval */
     if (retval < 0)
@@ -2452,19 +2532,19 @@ static int cvStepExpRK(CVodeMem cv_mem)
     int retval;
 
     retval = cv_mem->cv_f(cv_mem->cv_tn, cv_mem->cv_zn[0], cv_mem->cv_ftemp, cv_mem->cv_user_data);             /* cv_mem->cv_ftemp = K1                            */
-    N_VLinearSum_Serial (cv_mem->cv_h / TWO, cv_mem->cv_ftemp, ONE, cv_mem->cv_zn[0], cv_mem->cv_y); /* y = K1*h/2 + Yn                       */
+    N_VLinearSum (cv_mem->cv_h / TWO, cv_mem->cv_ftemp, ONE, cv_mem->cv_zn[0], cv_mem->cv_y); /* y = K1*h/2 + Yn                       */
     retval = cv_mem->cv_f(cv_mem->cv_tn + cv_mem->cv_h / TWO, cv_mem->cv_y, cv_mem->cv_tempv, cv_mem->cv_user_data);       /* cv_mem->cv_tempv = K2 = cv_mem->cv_f(Tn+h/2, Yn + (h/2)*K1) */
-    N_VLinearSum_Serial (ONE, cv_mem->cv_ftemp, TWO, cv_mem->cv_tempv, cv_mem->cv_y);     /* y = K1 + 2K2                          */
+    N_VLinearSum (ONE, cv_mem->cv_ftemp, TWO, cv_mem->cv_tempv, cv_mem->cv_y);     /* y = K1 + 2K2                          */
 
-    N_VLinearSum_Serial (cv_mem->cv_h / TWO, cv_mem->cv_tempv, ONE, cv_mem->cv_zn[0], cv_mem->cv_ftemp); /* cv_mem->cv_ftemp = Yn + K2*h/2                   */
+    N_VLinearSum (cv_mem->cv_h / TWO, cv_mem->cv_tempv, ONE, cv_mem->cv_zn[0], cv_mem->cv_ftemp); /* cv_mem->cv_ftemp = Yn + K2*h/2                   */
     retval = cv_mem->cv_f(cv_mem->cv_tn + cv_mem->cv_h / TWO, cv_mem->cv_ftemp, cv_mem->cv_tempv, cv_mem->cv_user_data);       /* cv_mem->cv_tempv = K3 = cv_mem->cv_f(Tn+h/2, Yn + (h/2)*K2) */
-    N_VLinearSum_Serial (ONE, cv_mem->cv_y, TWO, cv_mem->cv_tempv, cv_mem->cv_y);             /* y = K1 + 2K2 + 2K3                    */
+    N_VLinearSum (ONE, cv_mem->cv_y, TWO, cv_mem->cv_tempv, cv_mem->cv_y);             /* y = K1 + 2K2 + 2K3                    */
 
-    N_VLinearSum_Serial (cv_mem->cv_h, cv_mem->cv_tempv, ONE, cv_mem->cv_zn[0], cv_mem->cv_ftemp); /* cv_mem->cv_ftemp = Yn + K3*h                 */
+    N_VLinearSum (cv_mem->cv_h, cv_mem->cv_tempv, ONE, cv_mem->cv_zn[0], cv_mem->cv_ftemp); /* cv_mem->cv_ftemp = Yn + K3*h                 */
     retval = cv_mem->cv_f(cv_mem->cv_tn + cv_mem->cv_h, cv_mem->cv_ftemp, cv_mem->cv_tempv, cv_mem->cv_user_data);       /* cv_mem->cv_tempv = K4 = cv_mem->cv_f(Tn+h/2, Yn + h*K3) */
-    N_VLinearSum_Serial (ONE, cv_mem->cv_y, ONE, cv_mem->cv_tempv, cv_mem->cv_y);       /* y = K1 + 2K2 + 2K3 + K4           */
+    N_VLinearSum (ONE, cv_mem->cv_y, ONE, cv_mem->cv_tempv, cv_mem->cv_y);       /* y = K1 + 2K2 + 2K3 + K4           */
 
-    N_VLinearSum_Serial(ONE, cv_mem->cv_zn[0], cv_mem->cv_h / 6., cv_mem->cv_y, cv_mem->cv_zn[0]); /* cv_mem->cv_zn[0] = Yn+1 = Yn + y*h/6 */
+    N_VLinearSum(ONE, cv_mem->cv_zn[0], cv_mem->cv_h / 6., cv_mem->cv_y, cv_mem->cv_zn[0]); /* cv_mem->cv_zn[0] = Yn+1 = Yn + y*h/6 */
 
     /* Check for errors in the evaluations of f thanks to retval */
     if (retval < 0)
@@ -2526,42 +2606,54 @@ static int cvStepImpRK(CVodeMem cv_mem)
     N_VScale (ONE, cv_mem->cv_zn[1], cv_mem->cv_zn[3]);
     N_VScale (ONE, cv_mem->cv_zn[1], cv_mem->cv_zn[4]);
 
-    N_VLinearSum_Serial(ONE, cv_mem->cv_zn[0], cv_mem->cv_h * a11, cv_mem->cv_zn[2], cv_mem->cv_ftemp); /* cv_mem->cv_ftemp = a11hK1 + Yn         */
+    N_VLinearSum(ONE, cv_mem->cv_zn[0], cv_mem->cv_h * a11, cv_mem->cv_zn[2], cv_mem->cv_ftemp); /* cv_mem->cv_ftemp = a11hK1 + Yn         */
     retval = cv_mem->cv_f(cv_mem->cv_tn + c1 * cv_mem->cv_h, cv_mem->cv_ftemp, cv_mem->cv_zn[2], cv_mem->cv_user_data);       /* K1 = cv_mem->cv_f(cv_mem->cv_tn+c1cv_mem->cv_h, Yn + a11hK1) */
 
-    N_VLinearSum_Serial(cv_mem->cv_h * a21, cv_mem->cv_zn[2], cv_mem->cv_h * a22, cv_mem->cv_zn[3], cv_mem->cv_ftemp); /* K2 = a21hK1 + a22hK2 */
-    N_VLinearSum_Serial(ONE, cv_mem->cv_zn[0], ONE, cv_mem->cv_ftemp, cv_mem->cv_ftemp);         /* K2 = Yn + K2         */
+    N_VLinearSum(cv_mem->cv_h * a21, cv_mem->cv_zn[2], cv_mem->cv_h * a22, cv_mem->cv_zn[3], cv_mem->cv_ftemp); /* K2 = a21hK1 + a22hK2 */
+    N_VLinearSum(ONE, cv_mem->cv_zn[0], ONE, cv_mem->cv_ftemp, cv_mem->cv_ftemp);         /* K2 = Yn + K2         */
     retval = cv_mem->cv_f(cv_mem->cv_tn + c2 * cv_mem->cv_h, cv_mem->cv_ftemp, cv_mem->cv_zn[3], cv_mem->cv_user_data);           /* K2 = cv_mem->cv_f(cv_mem->cv_tn+c2cv_mem->cv_h, K2)   */
 
-    N_VLinearSum_Serial(cv_mem->cv_h * a32, cv_mem->cv_zn[3], cv_mem->cv_h * a33, cv_mem->cv_zn[4], cv_mem->cv_ftemp); /* K3 = a32hK2 + a33hK3 */
-    N_VLinearSum_Serial(cv_mem->cv_h * a31, cv_mem->cv_zn[2], ONE, cv_mem->cv_ftemp, cv_mem->cv_ftemp);     /* K3 = a31hK1 + K3     */
-    N_VLinearSum_Serial(ONE, cv_mem->cv_zn[0], ONE, cv_mem->cv_ftemp, cv_mem->cv_ftemp);         /* K3 = Yn + K3         */
+    N_VLinearSum(cv_mem->cv_h * a32, cv_mem->cv_zn[3], cv_mem->cv_h * a33, cv_mem->cv_zn[4], cv_mem->cv_ftemp); /* K3 = a32hK2 + a33hK3 */
+    N_VLinearSum(cv_mem->cv_h * a31, cv_mem->cv_zn[2], ONE, cv_mem->cv_ftemp, cv_mem->cv_ftemp);     /* K3 = a31hK1 + K3     */
+    N_VLinearSum(ONE, cv_mem->cv_zn[0], ONE, cv_mem->cv_ftemp, cv_mem->cv_ftemp);         /* K3 = Yn + K3         */
     retval = cv_mem->cv_f(cv_mem->cv_tn + c3 * cv_mem->cv_h, cv_mem->cv_ftemp, cv_mem->cv_zn[4], cv_mem->cv_user_data);           /* K3 = cv_mem->cv_f(cv_mem->cv_tn+c3cv_mem->cv_h, K3)   */
 
-    N_VLinearSum_Serial(b2, cv_mem->cv_zn[3], b3, cv_mem->cv_zn[4], cv_mem->cv_ftemp);  /* K3 = b2K2 + b3K3    */
-    N_VLinearSum_Serial(b1, cv_mem->cv_zn[2], ONE, cv_mem->cv_ftemp, cv_mem->cv_ftemp); /* K3 = b1K1 + K3      */
-    N_VLinearSum_Serial(ONE, cv_mem->cv_zn[0], cv_mem->cv_h, cv_mem->cv_ftemp, cv_mem->cv_tempv);  /* y = Yn+1 = Yn + hK3 */
+    N_VLinearSum(b2, cv_mem->cv_zn[3], b3, cv_mem->cv_zn[4], cv_mem->cv_ftemp);  /* K3 = b2K2 + b3K3    */
+    N_VLinearSum(b1, cv_mem->cv_zn[2], ONE, cv_mem->cv_ftemp, cv_mem->cv_ftemp); /* K3 = b1K1 + K3      */
+    N_VLinearSum(ONE, cv_mem->cv_zn[0], cv_mem->cv_h, cv_mem->cv_ftemp, cv_mem->cv_tempv);  /* y = Yn+1 = Yn + hK3 */
 
     while (nb_iter <= maxcor)    /* Same operations as above, but with K[i] updated and store result in y to compare with cv_mem->cv_tempv */
     {
 
-        N_VLinearSum_Serial(ONE, cv_mem->cv_zn[0], cv_mem->cv_h * a11, cv_mem->cv_zn[2], cv_mem->cv_ftemp);     /* cv_mem->cv_ftemp = a11hK1 + Yn         */
+        N_VLinearSum(ONE, cv_mem->cv_zn[0], cv_mem->cv_h * a11, cv_mem->cv_zn[2], cv_mem->cv_ftemp);     /* cv_mem->cv_ftemp = a11hK1 + Yn         */
         retval = cv_mem->cv_f(cv_mem->cv_tn + c1 * cv_mem->cv_h, cv_mem->cv_ftemp, cv_mem->cv_zn[2], cv_mem->cv_user_data);           /* K1 = cv_mem->cv_f(cv_mem->cv_tn+c1cv_mem->cv_h, Yn + a11hK1) */
-        N_VLinearSum_Serial(cv_mem->cv_h * a21, cv_mem->cv_zn[2], cv_mem->cv_h * a22, cv_mem->cv_zn[3], cv_mem->cv_ftemp); /* K2 = a21hK1 + a22hK2        */
-        N_VLinearSum_Serial(ONE, cv_mem->cv_zn[0], ONE, cv_mem->cv_ftemp, cv_mem->cv_ftemp);         /* K2 = Yn + K2                */
+        N_VLinearSum(cv_mem->cv_h * a21, cv_mem->cv_zn[2], cv_mem->cv_h * a22, cv_mem->cv_zn[3], cv_mem->cv_ftemp); /* K2 = a21hK1 + a22hK2        */
+        N_VLinearSum(ONE, cv_mem->cv_zn[0], ONE, cv_mem->cv_ftemp, cv_mem->cv_ftemp);         /* K2 = Yn + K2                */
         retval = cv_mem->cv_f(cv_mem->cv_tn + c2 * cv_mem->cv_h, cv_mem->cv_ftemp, cv_mem->cv_zn[3], cv_mem->cv_user_data);           /* K2 = cv_mem->cv_f(cv_mem->cv_tn+c2cv_mem->cv_h, cv_mem->cv_hK2)         */
 
-        N_VLinearSum_Serial(cv_mem->cv_h * a32, cv_mem->cv_zn[3], cv_mem->cv_h * a33, cv_mem->cv_zn[4], cv_mem->cv_ftemp); /* K3 = a32hK2 + a33hK3 */
-        N_VLinearSum_Serial(cv_mem->cv_h * a31, cv_mem->cv_zn[2], ONE, cv_mem->cv_ftemp, cv_mem->cv_ftemp);     /* K3 = a31K1 + K3      */
-        N_VLinearSum_Serial(ONE, cv_mem->cv_zn[0], ONE, cv_mem->cv_ftemp, cv_mem->cv_ftemp);         /* K3 = Yn + K3         */
+        N_VLinearSum(cv_mem->cv_h * a32, cv_mem->cv_zn[3], cv_mem->cv_h * a33, cv_mem->cv_zn[4], cv_mem->cv_ftemp); /* K3 = a32hK2 + a33hK3 */
+        N_VLinearSum(cv_mem->cv_h * a31, cv_mem->cv_zn[2], ONE, cv_mem->cv_ftemp, cv_mem->cv_ftemp);     /* K3 = a31K1 + K3      */
+        N_VLinearSum(ONE, cv_mem->cv_zn[0], ONE, cv_mem->cv_ftemp, cv_mem->cv_ftemp);         /* K3 = Yn + K3         */
         retval = cv_mem->cv_f(cv_mem->cv_tn + c3 * cv_mem->cv_h, cv_mem->cv_ftemp, cv_mem->cv_zn[4], cv_mem->cv_user_data);           /* K3 = cv_mem->cv_f(cv_mem->cv_tn+c3cv_mem->cv_h, K3)   */
 
-        N_VLinearSum_Serial(b2, cv_mem->cv_zn[3], b3, cv_mem->cv_zn[4], cv_mem->cv_ftemp);  /* K3 = b2K2 + b3K3    */
-        N_VLinearSum_Serial(b1, cv_mem->cv_zn[2], ONE, cv_mem->cv_ftemp, cv_mem->cv_ftemp); /* K3 = b1K1 + K3      */
-        N_VLinearSum_Serial(ONE, cv_mem->cv_zn[0], cv_mem->cv_h, cv_mem->cv_ftemp, cv_mem->cv_y);      /* y = Yn+1 = Yn + hK3 */
+        N_VLinearSum(b2, cv_mem->cv_zn[3], b3, cv_mem->cv_zn[4], cv_mem->cv_ftemp);  /* K3 = b2K2 + b3K3    */
+        N_VLinearSum(b1, cv_mem->cv_zn[2], ONE, cv_mem->cv_ftemp, cv_mem->cv_ftemp); /* K3 = b1K1 + K3      */
+        N_VLinearSum(ONE, cv_mem->cv_zn[0], cv_mem->cv_h, cv_mem->cv_ftemp, cv_mem->cv_y);      /* y = Yn+1 = Yn + hK3 */
+
+        /* Check for errors in the evaluations of f thanks to retval */
+        if (retval < 0)
+        {
+            cvProcessError(cv_mem, CV_RHSFUNC_FAIL, "Runge-Kutta", "cvStepImpRK", MSGCV_RHSFUNC_FAILED, cv_mem->cv_tn);
+            return(CV_RHSFUNC_FAIL);
+        }
+        if (retval > 0)
+        {
+            cvProcessError(cv_mem, CV_FIRST_RHSFUNC_ERR, "Runge-Kutta", "cvStepImpRK", MSGCV_RHSFUNC_FIRST);
+            return(CV_FIRST_RHSFUNC_ERR);
+        }
 
         /* Convergence test */
-        N_VLinearSum_Serial(ONE, cv_mem->cv_tempv, -ONE, cv_mem->cv_y, cv_mem->cv_ftemp); /* cv_mem->cv_ftemp = cv_mem->cv_tempv-y       */
+        N_VLinearSum(ONE, cv_mem->cv_tempv, -ONE, cv_mem->cv_y, cv_mem->cv_ftemp); /* cv_mem->cv_ftemp = cv_mem->cv_tempv-y       */
         difference = N_VMaxNorm(cv_mem->cv_ftemp);                  /* max = Max(ABS(cv_mem->cv_ftemp)) */
         if (difference < cv_mem->cv_reltol)    /* Converged */
         {
@@ -2612,37 +2704,50 @@ static int cvStepCRANI(CVodeMem cv_mem)
     N_VScale (ONE, cv_mem->cv_zn[1], cv_mem->cv_zn[2]);
     N_VScale (ONE, cv_mem->cv_zn[1], cv_mem->cv_zn[3]);
 
-    N_VLinearSum_Serial(ONE, cv_mem->cv_zn[0], cv_mem->cv_h * a11, cv_mem->cv_zn[2], cv_mem->cv_ftemp); /* cv_mem->cv_ftemp = a11hK1 + Yn          */
-    N_VLinearSum_Serial(ONE, cv_mem->cv_ftemp, cv_mem->cv_h * a12, cv_mem->cv_zn[3], cv_mem->cv_ftemp); /* cv_mem->cv_ftemp = a11hK1 + a12hK2 + Yn */
+    N_VLinearSum(ONE, cv_mem->cv_zn[0], cv_mem->cv_h * a11, cv_mem->cv_zn[2], cv_mem->cv_ftemp); /* cv_mem->cv_ftemp = a11hK1 + Yn          */
+    N_VLinearSum(ONE, cv_mem->cv_ftemp, cv_mem->cv_h * a12, cv_mem->cv_zn[3], cv_mem->cv_ftemp); /* cv_mem->cv_ftemp = a11hK1 + a12hK2 + Yn */
 
     retval = cv_mem->cv_f(cv_mem->cv_tn + c1 * cv_mem->cv_h, cv_mem->cv_ftemp, cv_mem->cv_zn[2], cv_mem->cv_user_data); /* K1 = f(cv_mem->cv_tn+c1cv_mem->cv_h, Yn + a11hK1 + a12hK2) */
     retval = cv_mem->cv_f(cv_mem->cv_tn, cv_mem->cv_zn[0], cv_mem->cv_zn[3], cv_mem->cv_user_data);          /* K2 = f(cv_mem->cv_tn, Yn)                       */
 
-    N_VLinearSum_Serial(b1, cv_mem->cv_zn[2], b2, cv_mem->cv_zn[3], cv_mem->cv_ftemp); /* cv_mem->cv_ftemp = b1K1 + b2K2            */
-    N_VLinearSum_Serial(ONE, cv_mem->cv_zn[0], cv_mem->cv_h, cv_mem->cv_ftemp, cv_mem->cv_tempv); /* y = Yn+1 = Yn + h(b1K1 + b2K2) */
+    N_VLinearSum(b1, cv_mem->cv_zn[2], b2, cv_mem->cv_zn[3], cv_mem->cv_ftemp); /* cv_mem->cv_ftemp = b1K1 + b2K2            */
+    N_VLinearSum(ONE, cv_mem->cv_zn[0], cv_mem->cv_h, cv_mem->cv_ftemp, cv_mem->cv_tempv); /* y = Yn+1 = Yn + h(b1K1 + b2K2) */
 
     while (nb_iter <= maxcor)    /* Same operations as above, but with K[i] updated and store result in y to compare with cv_mem->cv_tempv */
     {
 
-        N_VLinearSum_Serial(ONE, cv_mem->cv_zn[0], cv_mem->cv_h * a11, cv_mem->cv_zn[2], cv_mem->cv_ftemp); /* cv_mem->cv_ftemp = a11hK1 + Yn          */
-        N_VLinearSum_Serial(ONE, cv_mem->cv_ftemp, cv_mem->cv_h * a12, cv_mem->cv_zn[3], cv_mem->cv_ftemp); /* cv_mem->cv_ftemp = a11hK1 + a12hK2 + Yn */
+        N_VLinearSum(ONE, cv_mem->cv_zn[0], cv_mem->cv_h * a11, cv_mem->cv_zn[2], cv_mem->cv_ftemp); /* cv_mem->cv_ftemp = a11hK1 + Yn          */
+        N_VLinearSum(ONE, cv_mem->cv_ftemp, cv_mem->cv_h * a12, cv_mem->cv_zn[3], cv_mem->cv_ftemp); /* cv_mem->cv_ftemp = a11hK1 + a12hK2 + Yn */
 
         retval = cv_mem->cv_f(cv_mem->cv_tn + c1 * cv_mem->cv_h, cv_mem->cv_ftemp, cv_mem->cv_zn[2], cv_mem->cv_user_data); /* K1 = f(cv_mem->cv_tn+c1cv_mem->cv_h, Yn + a11hK1 + a12hK2) */
         retval = cv_mem->cv_f(cv_mem->cv_tn, cv_mem->cv_zn[0], cv_mem->cv_zn[3], cv_mem->cv_user_data);          /* K2 = f(cv_mem->cv_tn, Yn)                       */
 
-        N_VLinearSum_Serial(b1, cv_mem->cv_zn[2], b2, cv_mem->cv_zn[3], cv_mem->cv_ftemp); /* cv_mem->cv_ftemp = b1K1 + b2K2            */
-        N_VLinearSum_Serial(ONE, cv_mem->cv_zn[0], cv_mem->cv_h, cv_mem->cv_ftemp, cv_mem->cv_y);     /* y = Yn+1 = Yn + h(b1K1 + b2K2) */
+        N_VLinearSum(b1, cv_mem->cv_zn[2], b2, cv_mem->cv_zn[3], cv_mem->cv_ftemp); /* cv_mem->cv_ftemp = b1K1 + b2K2            */
+        N_VLinearSum(ONE, cv_mem->cv_zn[0], cv_mem->cv_h, cv_mem->cv_ftemp, cv_mem->cv_y);     /* y = Yn+1 = Yn + h(b1K1 + b2K2) */
+
+        /* Check for errors in the evaluations of f thanks to retval */
+        if (retval < 0)
+        {
+            cvProcessError(cv_mem, CV_RHSFUNC_FAIL, "Runge-Kutta", "cvStepCRANI", MSGCV_RHSFUNC_FAILED, cv_mem->cv_tn);
+            return(CV_RHSFUNC_FAIL);
+        }
+        if (retval > 0)
+        {
+            cvProcessError(cv_mem, CV_FIRST_RHSFUNC_ERR, "Runge-Kutta", "cvStepCRANI", MSGCV_RHSFUNC_FIRST);
+            return(CV_FIRST_RHSFUNC_ERR);
+        }
 
         /* Convergence test */
-        N_VLinearSum_Serial(ONE, cv_mem->cv_tempv, -ONE, cv_mem->cv_y, cv_mem->cv_ftemp); /* cv_mem->cv_ftemp = cv_mem->cv_tempv-y       */
+        N_VLinearSum(ONE, cv_mem->cv_tempv, -ONE, cv_mem->cv_y, cv_mem->cv_ftemp); /* cv_mem->cv_ftemp = cv_mem->cv_tempv-y       */
         difference = N_VMaxNorm(cv_mem->cv_ftemp);                  /* max = Max(ABS(cv_mem->cv_ftemp)) */
         if (difference < cv_mem->cv_reltol)    /* Converged */
         {
-            cv_mem->cv_tn += cv_mem->cv_h;                                 /* Increment cv_mem->cv_tn                             */
-            cv_mem->cv_nst++;                                   /* Increment solver calls (complete step)   */
-            N_VScale (ONE, cv_mem->cv_y, cv_mem->cv_zn[0]);                /* Update Nordsziek array: - cv_mem->cv_zn[0] = Yn+1   */
+            cv_mem->cv_tn += cv_mem->cv_h;                                                                  /* Increment cv_mem->cv_tn                             */
+            cv_mem->cv_nst++;                                                                               /* Increment solver calls (complete step)   */
+            N_VScale (ONE, cv_mem->cv_y, cv_mem->cv_zn[0]);                                                 /* Update Nordsziek array: - cv_mem->cv_zn[0] = Yn+1   */
             retval = cv_mem->cv_f(cv_mem->cv_tn, cv_mem->cv_zn[0], cv_mem->cv_zn[1], cv_mem->cv_user_data); /*                         - cv_mem->cv_zn[1] = Y'(cv_mem->cv_tn) */
-            N_VScale (cv_mem->cv_h, cv_mem->cv_zn[1], cv_mem->cv_zn[1]);              /* Scale cv_mem->cv_zn[1] by h                         */
+            N_VScale (cv_mem->cv_h, cv_mem->cv_zn[1], cv_mem->cv_zn[1]);                                    /* Scale cv_mem->cv_zn[1] by h                         */
+            
             return (CV_SUCCESS);
         }
         else    /* Not converged yet, put y in cv_mem->cv_tempv and reiterate */
@@ -4945,7 +5050,6 @@ void cvErrHandler(int error_code, const char *module,
 static int cvRcheck1Ext(CVodeMem cv_mem)
 {
     int i, retval;
-    booleantype zroot;
 
     for (i = 0; i < cv_mem->cv_nrtfn; i++)
     {
@@ -4962,7 +5066,6 @@ static int cvRcheck1Ext(CVodeMem cv_mem)
         return(CV_RTFUNC_FAIL);
     }
 
-    zroot = FALSE;
     for (i = 0; i < cv_mem->cv_nrtfn; i++)
     {
         if (SUNRabs(cv_mem->cv_glo[i]) == ZERO)
@@ -5482,13 +5585,11 @@ static int cvRcheck3(CVodeMem cv_mem)
 
 static int cvRootfind(CVodeMem cv_mem)
 {
-    /* SUNDIALS EXTENSION */
-    if (is_sundials_with_extension())
-    {
-        return cvRootfindExt(cv_mem);
-    }
-    else
-    {
-        return cvRootfindStd(cv_mem);
-    }
+  /* SUNDIALS EXTENSION */
+  if (is_sundials_with_extension())
+  {
+      return cvRootfindExt(cv_mem);
+  }
+
+  return cvRootfindStd(cv_mem);
 }
