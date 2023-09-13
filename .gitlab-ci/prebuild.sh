@@ -74,10 +74,11 @@ TCL_VERSION=8.5.15
 TK_VERSION=8.5.15
 BWIDGET_VERSION=1.9.16
 ZLIB_VERSION=1.2.11
-# PNG_VERSION=1.6.37
+XZ_VERSION=5.4.4
 JOGL_VERSION=2.5.0
 OPENXLSX_VERSION=0.3.2
 FOP_VERSION=2.0
+LIBARCHIVE_VERSION=3.7.1
 
 # Variables used by ant to build Java deps in Java 8
 export JAVA_HOME="$BUILDDIR/java/jdk-$JDK_VERSION/"
@@ -106,10 +107,11 @@ make_versions() {
     echo "TK_VERSION            = $TK_VERSION"
     echo "BWIDGET_VERSION       = $BWIDGET_VERSION"
     echo "ZLIB_VERSION          = $ZLIB_VERSION"
-    # echo "PNG_VERSION           = $PNG_VERSION"
+    echo "XZ_VERSION            = $XZ_VERSION"
     echo "JOGL_VERSION          = $JOGL_VERSION"
     echo "OPENXLSX_VERSION      = $OPENXLSX_VERSION"
     echo "FOP_VERSION           = $FOP_VERSION"
+    echo "LIBARCHIVE_VERSION    = $LIBARCHIVE_VERSION"
 }
 
 ####################
@@ -139,8 +141,8 @@ download_dependencies() {
     [ ! -f tk$TK_VERSION-src.tar.gz ] && curl -LO https://oos.eu-west-2.outscale.com/scilab-releases-dev/prerequirements-sources/tk$TK_VERSION-src.tar.gz
     [ ! -f bwidget-$BWIDGET_VERSION.tar.gz ] && curl -LO https://oos.eu-west-2.outscale.com/scilab-releases-dev/prerequirements-sources/bwidget-$BWIDGET_VERSION.tar.gz
     [ ! -f zlib-$ZLIB_VERSION.tar.gz ] && curl -LO https://oos.eu-west-2.outscale.com/scilab-releases-dev/prerequirements-sources/zlib-$ZLIB_VERSION.tar.gz
-    # [ ! -f libpng-$PNG_VERSION.tar.gz ] && curl -LO https://oos.eu-west-2.outscale.com/scilab-releases-dev/prerequirements-sources/libpng-$PNG_VERSION.tar.gz
-
+    [ ! -f xz-$XZ_VERSION.tar.gz ] && curl -LO https://oos.eu-west-2.outscale.com/scilab-releases-dev/prerequirements-sources/xz-$XZ_VERSION.tar.gz
+    
     [ ! -f gluegen-v$JOGL_VERSION.tar.xz ] && curl -LO https://oos.eu-west-2.outscale.com/scilab-releases-dev/prerequirements-sources/gluegen-v$JOGL_VERSION.tar.xz
     [ ! -f jcpp-v$JOGL_VERSION.tar.xz ] && curl -LO https://oos.eu-west-2.outscale.com/scilab-releases-dev/prerequirements-sources/jcpp-v$JOGL_VERSION.tar.xz
     [ ! -f jogl-v$JOGL_VERSION.tar.xz ] && curl -LO https://oos.eu-west-2.outscale.com/scilab-releases-dev/prerequirements-sources/jogl-v$JOGL_VERSION.tar.xz
@@ -154,6 +156,8 @@ download_dependencies() {
     # This archive contains .jar that have been copied from Scilab prerequirements thirdparty
     curl -LO --time-cond thirdparty-jar.zip https://oos.eu-west-2.outscale.com/scilab-releases-dev/prerequirements-sources/thirdparty-jar.zip
 
+    [ ! -f libarchive-$LIBARCHIVE_VERSION.tar.xz ] && curl -LO https://oos.eu-west-2.outscale.com/scilab-releases-dev/prerequirements-sources/libarchive-$LIBARCHIVE_VERSION.tar.xz
+
     true;
 }
 
@@ -165,6 +169,7 @@ make_all() {
     build_openblas
     build_eigen
     build_zlib
+    build_lzma
     build_hdf5
     build_pcre
     build_fftw
@@ -178,6 +183,7 @@ make_all() {
     build_curl
     build_ncurses
     build_openxlsx
+    build_libarchive
 }
 
 make_binary_directory() {
@@ -225,6 +231,9 @@ make_binary_directory() {
 
     rm -f "$LIBTHIRDPARTYDIR"/libcurl.*
     cp -d "$INSTALLUSRDIR"/lib/libcurl.* "$LIBTHIRDPARTYDIR/"
+
+    rm -f "$LIBTHIRDPARTYDIR"/libarchive.*
+    cp -d "$INSTALLUSRDIR"/lib/libarchive.* "$LIBTHIRDPARTYDIR/"
 
     rm -f "$LIBTHIRDPARTYDIR"/libfftw3.*
     cp -d "$INSTALLUSRDIR"/lib/libfftw3.* "$LIBTHIRDPARTYDIR/"
@@ -290,14 +299,14 @@ make_binary_directory() {
     rm -f "$LIBTHIRDPARTYDIR"/redist/libz.* "$LIBTHIRDPARTYDIR"/redist/libsciz.*
     cp -d "$INSTALLUSRDIR"/lib/libsciz.* "$LIBTHIRDPARTYDIR/redist/"
 
-    # do not re-ship libpng16 it is now present on most machines
-    # rm -f "$LIBTHIRDPARTYDIR"/libpng*
-    # rm -f "$LIBTHIRDPARTYDIR"/redist/libpng*
-    # cp -d "$INSTALLDIR"/lib/libpng* "$LIBTHIRDPARTYDIR/redist/"
+    rm -f "$LIBTHIRDPARTYDIR"/liblzma.* "$LIBTHIRDPARTYDIR"/libscilzma.*
+    rm -f "$LIBTHIRDPARTYDIR"/redist/liblzma.* "$LIBTHIRDPARTYDIR"/redist/libscilzma.*
+    cp -d "$INSTALLUSRDIR"/lib/libscilzma.* "$LIBTHIRDPARTYDIR/redist/"
 
     rm -f "$LIBTHIRDPARTYDIR"/libxml2.* "$LIBTHIRDPARTYDIR"/libscixml2.*
     rm -f "$LIBTHIRDPARTYDIR"/redist/libxml2.* "$LIBTHIRDPARTYDIR"/redist/libscixml2.*
     cp -d "$INSTALLUSRDIR"/lib/libscixml2.* "$LIBTHIRDPARTYDIR/redist/"
+    
     rm -f "$LIBTHIRDPARTYDIR"/libncurses.* "$LIBTHIRDPARTYDIR"/libscincurses.*
     rm -f "$LIBTHIRDPARTYDIR"/redist/libncurses.* "$LIBTHIRDPARTYDIR"/redist/libscincurses.*
     cp -d "$INSTALLUSRDIR"/lib/libscincurses.so* "$LIBTHIRDPARTYDIR/redist/"
@@ -532,16 +541,27 @@ build_zlib() {
     patchelf --set-soname libsciz.so.1 libsciz.so.$ZLIB_VERSION
 }
 
-# build_libpng() {
-#     # do not re-ship libpng16 it is now present on most machines
-#     cd $BUILDDIR
+build_lzma() {
+    cd "$BUILDDIR" || exit 1
 
-#     tar -xzf "$DOWNLOADDIR/libpng-$PNG_VERSION.tar.gz"
-#     cd libpng-$PNG_VERSION
-#     ./configure --prefix= LDFLAGS="-L$INSTALLUSRDIR/lib" CPPFLAGS="-I$INSTALLUSRDIR/include"
-#     make "-j$(nproc)" LDFLAGS="-L$INSTALLUSRDIR/lib -lsciz" CPPFLAGS="-I$INSTALLUSRDIR/include"
-#     make install DESTDIR="$INSTALLUSRDIR"
-# }
+    INSTALL_DIR=$BUILDDIR/xz-$XZ_VERSION/install_dir
+
+    tar -xzf "$DOWNLOADDIR/xz-$XZ_VERSION.tar.gz"
+    cd "xz-$XZ_VERSION" || exit 1
+    ./configure --prefix=
+    make "-j$(nproc)"
+    make install DESTDIR="$INSTALL_DIR"
+
+    cp -a "$INSTALL_DIR"/include/* "$INSTALLUSRDIR/include/"
+
+    # Rename liblzma to sciliblzma
+    cp "$INSTALL_DIR/lib/liblzma.so.$XZ_VERSION" "$INSTALLUSRDIR/lib/libscilzma.so.$XZ_VERSION"
+    cd "$INSTALLUSRDIR/lib" || exit 1
+    ln -sf "libscilzma.so.$XZ_VERSION" liblzma.so
+    ln -sf "libscilzma.so.$XZ_VERSION" libscilzma.so.1
+    ln -sf libscilzma.so.1 libscilzma.so
+    patchelf --set-soname libscilzma.so.1 "libscilzma.so.$XZ_VERSION"
+}
 
 build_openssl() {
     cd "$BUILDDIR" || exit 1
@@ -679,7 +699,7 @@ build_libxml2() {
     tar -xzf "$DOWNLOADDIR/libxml2-$LIBXML2_VERSION.tar.gz"
     cd libxml2-$LIBXML2_VERSION || exit 1
     rm -rf "$INSTALL_DIR" && mkdir "$INSTALL_DIR"
-    ./configure --without-python --with-zlib="$INSTALLUSRDIR" --prefix=
+    ./configure --without-python --with-zlib="$INSTALLUSRDIR" --without-lzma --prefix=
     make "-j$(nproc)"
     make install DESTDIR="$INSTALL_DIR"
 
@@ -694,6 +714,7 @@ build_libxml2() {
     ln -sf libscixml2.so.$LIBXML2_VERSION libxml2.so
     ln -sf libscixml2.so.$LIBXML2_VERSION libscixml2.so.2
     ln -sf libscixml2.so.2 libscixml2.so
+    ln -sf libscixml2.so.2 libxml2.so
     patchelf --set-soname libscixml2.so.2 libscixml2.so.$LIBXML2_VERSION
 }
 
@@ -717,6 +738,32 @@ build_curl() {
     # shellcheck disable=SC2016
     sed -i -e 's|^prefix=.*|prefix=$( cd -- "$(dirname "$0")" >/dev/null 2>\&1 ; pwd -P )/..|' "$INSTALL_DIR/bin/curl-config"
     cp "$INSTALL_DIR/bin/curl-config" "$INSTALLUSRDIR/bin/"
+
+    cp -a "$INSTALL_DIR"/lib/*.so* "$INSTALLUSRDIR/lib/"
+    cp -a "$INSTALL_DIR"/include/* "$INSTALLUSRDIR/include/"
+}
+
+build_libarchive() {
+    cd "$BUILDDIR" || exit 1
+
+    INSTALL_DIR=$BUILDDIR/libarchive-$LIBARCHIVE_VERSION/install_dir
+
+    tar -xf "$DOWNLOADDIR/libarchive-$LIBARCHIVE_VERSION.tar.xz"
+    cd libarchive-$LIBARCHIVE_VERSION || exit 1
+    
+    # this configure does not support passing path, overwrite variables
+    saved_CFLAGS="$CFLAGS"
+    saved_LDFLAGS="$LDFLAGS"
+    CFLAGS="$CFLAGS -I$INSTALLUSRDIR/include -I$INSTALLUSRDIR/include/libxml2"
+    LDFLAGS="$LDFLAGS -L$INSTALLUSRDIR/lib"
+
+    ./configure --prefix= \
+        --enable-posix-regex-lib=libpcreposix
+    make "-j$(nproc)"
+    make install DESTDIR="$INSTALL_DIR"
+
+    CFLAGS="$saved_CFLAGS"
+    LDFLAGS="$saved_LDFLAGS"
 
     cp -a "$INSTALL_DIR"/lib/*.so* "$INSTALLUSRDIR/lib/"
     cp -a "$INSTALL_DIR"/include/* "$INSTALLUSRDIR/include/"

@@ -36,6 +36,7 @@ In summary, the main new features and additions are:
   - horizontal line (minus sign) centered on data,
   - vertical line centered on data.
 * `errbar()` function now uses horiontal line marks.
+* Add compression and decompression functions to manage compressed archive.
 * <TODO>
 
 

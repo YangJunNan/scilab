@@ -1864,6 +1864,10 @@ fi
 AC_SUBST(MATIO_ENABLE)
 AM_CONDITIONAL(MATIO, test "$with_matio" != no)
 
+##############################################################
+# LIBARCHIVE LIBRARY (reading and writing compressed files)) #
+##############################################################
+AC_LIBARCHIVE()
 
 #############################
 ## Documentation management #
@@ -2341,6 +2345,12 @@ fi
 echo ""
 echo "Eigen3 Configuration:"
 echo "  EIGEN CPPFLAGS ...... = $EIGEN_CPPFLAGS"
+
+echo ""
+echo "libarchive Configuration:"
+echo "  LIBARCHIVE_CFLAGS ... = $LIBARCHIVE_CFLAGS"
+echo "  LIBARCHIVE_LIBS ..... = $LIBARCHIVE_LIBS"
+echo "  LIBARCHIVE_VERSION .. = $LIBARCHIVE_VERSION"
 
 echo ""
 if test $MATIO_ENABLE = yes;  then

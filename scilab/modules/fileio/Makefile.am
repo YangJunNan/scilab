@@ -85,7 +85,10 @@ GATEWAY_CPP_SOURCES = \
 	sci_gateway/cpp/sci_mfscanf.cpp \
 	sci_gateway/cpp/sci_mscanf.cpp \
 	sci_gateway/cpp/sci_msscanf.cpp \
-	sci_gateway/cpp/sci_getdrives.cpp
+	sci_gateway/cpp/sci_getdrives.cpp \
+	sci_gateway/cpp/sci_compress.cpp \
+	sci_gateway/cpp/sci_decompress.cpp \
+	sci_gateway/cpp/archive_utils.cpp
 
 FILEIO_CPP_SOURCES = \
 	src/cpp/expandPathVariable.cpp \
@@ -132,9 +135,8 @@ libscifileio_la_CPPFLAGS = \
 	-I$(top_srcdir)/modules/preferences/includes \
 	$(HDF5_CFLAGS) \
 	$(XML_FLAGS) \
-	$(CURL_CFLAGS) \
+	$(LIBARCHIVE_CFLAGS) \
 	$(AM_CPPFLAGS)
-
 
 if MAINTAINER_MODE
 pkglib_LTLIBRARIES = libscifileio.la
@@ -147,8 +149,9 @@ endif
 
 libscifileio_algo_la_SOURCES = $(FILEIO_C_SOURCES) $(FILEIO_CPP_SOURCES) $(FILEIO_FORTRAN_SOURCES)
 libscifileio_la_SOURCES = $(GATEWAY_C_SOURCES) $(GATEWAY_CPP_SOURCES)
+
 libscifileio_algo_la_CPPFLAGS = $(libscifileio_la_CPPFLAGS)
-libscifileio_algo_la_LDFLAGS = $(CURL_LIBS)
+libscifileio_la_LDFLAGS = $(LIBARCHIVE_LIBS)
 
 # For the code check (splint)
 CHECK_SRC= $(FILEIO_C_SOURCES) $(FILEIO_CPP_SOURCES) $(GATEWAY_C_SOURCES) $(GATEWAY_CPP_SOURCES)
