@@ -1,11 +1,8 @@
 //
 // Scilab ( http://www.scilab.org/ ) - This file is part of Scilab
-// Copyright (C) 2023 - UTC - Stéphane MOTTELET
+// Copyright (C) 2022 - UTC - Stéphane MOTTELET
 //
-// This file is hereby licensed under the terms of the GNU GPL v3.0,
-// For more information, see the COPYING file which you should have received
-//
-//--------------------------------------------------------------------------
+// This file is released under the 3-clause BSD license. See COPYING-BSD.
 
 function demo_springboard()
     function out = res(t, y, yd)

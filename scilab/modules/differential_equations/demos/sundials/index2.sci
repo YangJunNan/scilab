@@ -1,3 +1,9 @@
+//
+// Scilab ( http://www.scilab.org/ ) - This file is part of Scilab
+// Copyright (C) 2022 - UTC - Stéphane MOTTELET
+//
+// This file is released under the 3-clause BSD license. See COPYING-BSD.
+
 function out=res(t,y,yd)
     x=y(1:2);
     u=y(3:4);

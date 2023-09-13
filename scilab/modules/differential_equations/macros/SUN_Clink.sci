@@ -2,10 +2,12 @@
 // Scilab ( http://www.scilab.org/ ) - This file is part of Scilab
 // Copyright (C) 2022 - UTC - Stéphane MOTTELET
 //
-// This file is hereby licensed under the terms of the GNU GPL v3.0,
+// This file is hereby licensed under the terms of the GNU GPL v2.0,
+// pursuant to article 5.3.4 of the CeCILL v.2.1.
+// This file was originally licensed under the terms of the CeCILL v2.1,
+// and continues to be available under such terms.
 // For more information, see the COPYING file which you should have received
-//
-//--------------------------------------------------------------------------
+// along with this program.
 
 function _lib = SUN_Clink(names,files_in,p1,p2,p3,p4,p5,p6,p7,p8,p9)
     //

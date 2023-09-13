@@ -1,15 +1,8 @@
+//
 // Scilab ( http://www.scilab.org/ ) - This file is part of Scilab
-// Copyright (C) 2008 - INRIA
-// Copyright (C) 2010 - DIGITEO - Allan CORNET
 // Copyright (C) 2022 - UTC - Stéphane MOTTELET
 //
 // This file is released under the 3-clause BSD license. See COPYING-BSD.
-//
-// This demo is initially a demo of module "differential_equations"
-// In the index 1 case We show how to let IDA compute the initial
-// derivatives and algebratic state "lambda".
-// We compare with the solution by using CVODE and its projection
-// feature, which allows perfect norm conservation.
 
 function demo_pend3d1()
 
