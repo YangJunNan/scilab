@@ -290,7 +290,10 @@ void IDAManager::getInterpVectors(double *pdblNS, int iOrderPlusOne, int iIndex,
 
 int IDAManager::DQJtimes(realtype tt, N_Vector yy, N_Vector yp, N_Vector rr, N_Vector v, N_Vector Jv, realtype c_j, N_Vector work2, N_Vector work3)
 {
-    return idaLsDQJtimes(tt, yy, yp, rr, v, Jv, c_j, m_prob_mem, work2, work3);
+    IDAMem ida_mem = (IDAMem) m_prob_mem;
+    IDALsMem idals_mem = (IDALsMem) ida_mem->ida_lmem;
+
+    return idals_mem->jtimes(tt, yy, yp, rr, v, Jv, c_j, m_prob_mem, work2, work3);
 }
 
 types::Struct *IDAManager::getStats()

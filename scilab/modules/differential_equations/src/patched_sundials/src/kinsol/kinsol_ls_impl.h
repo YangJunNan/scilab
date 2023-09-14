@@ -113,7 +113,6 @@ int kinLsPSolve(void *kinmem, N_Vector r, N_Vector z,
                 realtype tol, int lr);
 
 /* Difference quotient approximation for Jacobian times vector */
-SUNDIALS_EXPORT
 int kinLsDQJtimes(N_Vector v, N_Vector Jv, N_Vector u,
                   booleantype *new_u, void *data);
 

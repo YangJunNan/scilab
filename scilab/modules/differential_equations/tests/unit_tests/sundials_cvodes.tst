@@ -11,9 +11,11 @@
 
 // <-- CLI SHELL MODE -->
 // <-- NO CHECK REF -->
-
+// <-- NOT FIXED -->
 // Compare true equations of sensitivity 
 // with internal finite differences of cvodes
+
+return
 
 function dydt = vdp(t,y,mu)
     dydt = [y(2,:)

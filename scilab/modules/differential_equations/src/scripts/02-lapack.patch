@@ -1,6 +1,8 @@
---- patched_sundials_new/include/sundials/sundials_lapack.h	2022-04-22 18:55:14.000000000 +0200
-+++ patched_sundials/include/sundials/sundials_lapack.h	2022-09-09 14:51:47.000000000 +0200
-@@ -105,150 +105,150 @@
+Index: patched_sundials/include/sundials/sundials_lapack.h
+===================================================================
+--- patched_sundials.orig/include/sundials/sundials_lapack.h
++++ patched_sundials/include/sundials/sundials_lapack.h
+@@ -105,150 +105,149 @@ extern "C" {
  
  /* Level-1 BLAS */
  
@@ -118,6 +120,7 @@
 -                       const sunindextype *nrhs, double *a,
 -                       const sunindextype *lda, sunindextype *ipiv, double *b,
 -                       const sunindextype *ldb, sunindextype *info);
+-
 +extern void dgbtrf_f77(const int *m, const int *n,
 +                       const int *kl, const int *ku,
 +                       double *ab, int *ldab, int *ipiv,
@@ -147,7 +150,6 @@
 +                       const int *nrhs, double *a,
 +                       const int *lda, int *ipiv, double *b,
 +                       const int *ldb, int *info);
- 
  
  extern void dormqr_f77(const char *side, const char *trans,
 -                       const sunindextype *m, const sunindextype *n,
@@ -270,171 +272,11 @@
  
  
  #ifdef __cplusplus
---- patched_sundials_new/src/sundials/sundials_lapack_defs.h	2022-04-22 18:55:15.000000000 +0200
-+++ patched_sundials/src/sundials/sundials_lapack_defs.h	2022-09-09 14:51:48.000000000 +0200
-@@ -55,46 +55,46 @@
- 
- /* LAPACK */
- 
--extern void dgbtrf_f77(const sunindextype *m, const sunindextype *n,
--                       const sunindextype *kl, const sunindextype *ku,
--                       double *ab, sunindextype *ldab, sunindextype *ipiv,
--                       sunindextype *info);
--
--extern void dgbtrs_f77(const char *trans, const sunindextype *n,
--                       const sunindextype *kl, const sunindextype *ku,
--                       const sunindextype *nrhs, double *ab,
--                       const sunindextype *ldab, sunindextype *ipiv,
--                       double *b, const sunindextype *ldb, sunindextype *info);
--
--
--extern void dgetrf_f77(const sunindextype *m, const sunindextype *n, double *a,
--                       sunindextype *lda, sunindextype *ipiv,
--                       sunindextype *info);
--
--extern void dgetrs_f77(const char *trans, const sunindextype *n,
--                       const sunindextype *nrhs, double *a,
--                       const sunindextype *lda, sunindextype *ipiv, double *b,
--                       const sunindextype *ldb, sunindextype *info);
--
--extern void sgbtrf_f77(const sunindextype *m, const sunindextype *n,
--                       const sunindextype *kl, const sunindextype *ku,
--                       float *ab, sunindextype *ldab, sunindextype *ipiv,
--                       sunindextype *info);
--
--extern void sgbtrs_f77(const char *trans, const sunindextype *n,
--                       const sunindextype *kl, const sunindextype *ku,
--                       const sunindextype *nrhs, float *ab,
--                       const sunindextype *ldab, sunindextype *ipiv,
--                       float *b, const sunindextype *ldb, sunindextype *info);
--
--extern void sgetrf_f77(const sunindextype *m, const sunindextype *n, float *a,
--                       sunindextype *lda, sunindextype *ipiv,
--                       sunindextype *info);
--
--extern void sgetrs_f77(const char *trans, const sunindextype *n,
--                       const sunindextype *nrhs, float *a,
--                       const sunindextype *lda, sunindextype *ipiv,
--                       float *b, const sunindextype *ldb, sunindextype *info);
-+extern void dgbtrf_f77(const int *m, const int *n,
-+                       const int *kl, const int *ku,
-+                       double *ab, int *ldab, int *ipiv,
-+                       int *info);
-+
-+extern void dgbtrs_f77(const char *trans, const int *n,
-+                       const int *kl, const int *ku,
-+                       const int *nrhs, double *ab,
-+                       const int *ldab, int *ipiv,
-+                       double *b, const int *ldb, int *info);
-+
-+
-+extern void dgetrf_f77(const int *m, const int *n, double *a,
-+                       int *lda, int *ipiv,
-+                       int *info);
-+
-+extern void dgetrs_f77(const char *trans, const int *n,
-+                       const int *nrhs, double *a,
-+                       const int *lda, int *ipiv, double *b,
-+                       const int *ldb, int *info);
-+
-+extern void sgbtrf_f77(const int *m, const int *n,
-+                       const int *kl, const int *ku,
-+                       float *ab, int *ldab, int *ipiv,
-+                       int *info);
-+
-+extern void sgbtrs_f77(const char *trans, const int *n,
-+                       const int *kl, const int *ku,
-+                       const int *nrhs, float *ab,
-+                       const int *ldab, int *ipiv,
-+                       float *b, const int *ldb, int *info);
-+
-+extern void sgetrf_f77(const int *m, const int *n, float *a,
-+                       int *lda, int *ipiv,
-+                       int *info);
-+
-+extern void sgetrs_f77(const char *trans, const int *n,
-+                       const int *nrhs, float *a,
-+                       const int *lda, int *ipiv,
-+                       float *b, const int *ldb, int *info);
- 
- #ifdef __cplusplus
- }
---- patched_sundials_new/src/sunlinsol/lapackdense/sunlinsol_lapackdense.c	2022-04-22 18:55:15.000000000 +0200
-+++ patched_sundials/src/sunlinsol/lapackdense/sunlinsol_lapackdense.c	2022-09-09 14:51:48.000000000 +0200
-@@ -106,7 +106,7 @@
-   content->pivots    = NULL;
- 
-   /* Allocate content */
--  content->pivots = (sunindextype *) malloc(MatrixRows * sizeof(sunindextype));
-+  content->pivots = (int *) malloc(MatrixRows * sizeof(sunindextype));
-   if (content->pivots == NULL) { SUNLinSolFree(S); return(NULL); }
- 
-   return(S);
-@@ -141,7 +141,7 @@
- 
- int SUNLinSolSetup_LapackDense(SUNLinearSolver S, SUNMatrix A)
- {
--  sunindextype n, ier;
-+  int n, ier;
- 
-   /* check for valid inputs */
-   if ( (A == NULL) || (S == NULL) )
-@@ -168,7 +168,7 @@
- int SUNLinSolSolve_LapackDense(SUNLinearSolver S, SUNMatrix A, N_Vector x,
-                                N_Vector b, realtype tol)
- {
--  sunindextype n, one, ier;
-+  int n, one, ier;
-   realtype *xdata;
- 
-   if ( (A == NULL) || (S == NULL) || (x == NULL) || (b == NULL) )
---- patched_sundials_new/src/sunlinsol/lapackband/sunlinsol_lapackband.c	2022-04-22 18:55:15.000000000 +0200
-+++ patched_sundials/src/sunlinsol/lapackband/sunlinsol_lapackband.c	2022-09-09 14:51:48.000000000 +0200
-@@ -106,7 +106,7 @@
-   content->pivots    = NULL;
- 
-   /* Allocate content */
--  content->pivots = (sunindextype *) malloc(MatrixRows * sizeof(sunindextype));
-+  content->pivots = (int *) malloc(MatrixRows * sizeof(sunindextype));
-   if (content->pivots == NULL) { SUNLinSolFree(S); return(NULL); }
- 
-   return(S);
-@@ -141,7 +141,7 @@
- 
- int SUNLinSolSetup_LapackBand(SUNLinearSolver S, SUNMatrix A)
- {
--  sunindextype n, ml, mu, ldim, ier;
-+  int n, ml, mu, ldim, ier;
- 
-   /* check for valid inputs */
-   if ( (A == NULL) || (S == NULL) )
-@@ -173,7 +173,7 @@
- int SUNLinSolSolve_LapackBand(SUNLinearSolver S, SUNMatrix A, N_Vector x,
-                               N_Vector b, realtype tol)
- {
--  sunindextype n, ml, mu, ldim, one, ier;
-+  int n, ml, mu, ldim, one, ier;
-   realtype *xdata;
- 
-   /* check for valid inputs */
---- patched_sundials_new/include/sunlinsol/sunlinsol_lapackdense.h	2022-04-22 18:55:14.000000000 +0200
-+++ patched_sundials/include/sunlinsol/sunlinsol_lapackdense.h	2022-09-09 14:51:47.000000000 +0200
-@@ -38,9 +38,9 @@
-  * ----------------------------------------------- */
- 
- struct _SUNLinearSolverContent_LapackDense {
--  sunindextype N;
--  sunindextype *pivots;
--  sunindextype last_flag;
-+  int N;
-+  int *pivots;
-+  int last_flag;
- };
- 
- typedef struct _SUNLinearSolverContent_LapackDense *SUNLinearSolverContent_LapackDense;
---- patched_sundials_new/include/sunlinsol/sunlinsol_lapackband.h	2022-04-22 18:55:14.000000000 +0200
-+++ patched_sundials/include/sunlinsol/sunlinsol_lapackband.h	2022-09-09 14:51:47.000000000 +0200
-@@ -38,9 +38,9 @@
+Index: patched_sundials/include/sunlinsol/sunlinsol_lapackband.h
+===================================================================
+--- patched_sundials.orig/include/sunlinsol/sunlinsol_lapackband.h
++++ patched_sundials/include/sunlinsol/sunlinsol_lapackband.h
+@@ -38,9 +38,9 @@ extern "C" {
   * ---------------------------------------------- */
  
  struct _SUNLinearSolverContent_LapackBand {
@@ -447,3 +289,82 @@
  };
  
  typedef struct _SUNLinearSolverContent_LapackBand *SUNLinearSolverContent_LapackBand;
+Index: patched_sundials/include/sunlinsol/sunlinsol_lapackdense.h
+===================================================================
+--- patched_sundials.orig/include/sunlinsol/sunlinsol_lapackdense.h
++++ patched_sundials/include/sunlinsol/sunlinsol_lapackdense.h
+@@ -38,9 +38,9 @@ extern "C" {
+  * ----------------------------------------------- */
+ 
+ struct _SUNLinearSolverContent_LapackDense {
+-  sunindextype N;
+-  sunindextype *pivots;
+-  sunindextype last_flag;
++  int N;
++  int *pivots;
++  int last_flag;
+ };
+ 
+ typedef struct _SUNLinearSolverContent_LapackDense *SUNLinearSolverContent_LapackDense;
+Index: patched_sundials/src/sunlinsol/lapackband/sunlinsol_lapackband.c
+===================================================================
+--- patched_sundials.orig/src/sunlinsol/lapackband/sunlinsol_lapackband.c
++++ patched_sundials/src/sunlinsol/lapackband/sunlinsol_lapackband.c
+@@ -106,7 +106,7 @@ SUNLinearSolver SUNLinSol_LapackBand(N_V
+   content->pivots    = NULL;
+ 
+   /* Allocate content */
+-  content->pivots = (sunindextype *) malloc(MatrixRows * sizeof(sunindextype));
++  content->pivots = (int *) malloc(MatrixRows * sizeof(int));
+   if (content->pivots == NULL) { SUNLinSolFree(S); return(NULL); }
+ 
+   return(S);
+@@ -141,7 +141,7 @@ int SUNLinSolInitialize_LapackBand(SUNLi
+ 
+ int SUNLinSolSetup_LapackBand(SUNLinearSolver S, SUNMatrix A)
+ {
+-  sunindextype n, ml, mu, ldim, ier;
++  int n, ml, mu, ldim, ier;
+ 
+   /* check for valid inputs */
+   if ( (A == NULL) || (S == NULL) )
+@@ -174,7 +174,7 @@ int SUNLinSolSetup_LapackBand(SUNLinearS
+ int SUNLinSolSolve_LapackBand(SUNLinearSolver S, SUNMatrix A, N_Vector x,
+                               N_Vector b, realtype tol)
+ {
+-  sunindextype n, ml, mu, ldim, one, ier;
++  int n, ml, mu, ldim, one, ier;
+   realtype *xdata;
+ 
+   /* check for valid inputs */
+Index: patched_sundials/src/sunlinsol/lapackdense/sunlinsol_lapackdense.c
+===================================================================
+--- patched_sundials.orig/src/sunlinsol/lapackdense/sunlinsol_lapackdense.c
++++ patched_sundials/src/sunlinsol/lapackdense/sunlinsol_lapackdense.c
+@@ -106,7 +106,7 @@ SUNLinearSolver SUNLinSol_LapackDense(N_
+   content->pivots    = NULL;
+ 
+   /* Allocate content */
+-  content->pivots = (sunindextype *) malloc(MatrixRows * sizeof(sunindextype));
++  content->pivots = (int *) malloc(MatrixRows * sizeof(int));
+   if (content->pivots == NULL) { SUNLinSolFree(S); return(NULL); }
+ 
+   return(S);
+@@ -141,7 +141,7 @@ int SUNLinSolInitialize_LapackDense(SUNL
+ 
+ int SUNLinSolSetup_LapackDense(SUNLinearSolver S, SUNMatrix A)
+ {
+-  sunindextype n, ier;
++  int n, ier;
+ 
+   /* check for valid inputs */
+   if ( (A == NULL) || (S == NULL) )
+@@ -169,7 +169,7 @@ int SUNLinSolSetup_LapackDense(SUNLinear
+ int SUNLinSolSolve_LapackDense(SUNLinearSolver S, SUNMatrix A, N_Vector x,
+                                N_Vector b, realtype tol)
+ {
+-  sunindextype n, one, ier;
++  int n, one, ier;
+   realtype *xdata;
+ 
+   if ( (A == NULL) || (S == NULL) || (x == NULL) || (b == NULL) )

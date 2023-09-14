@@ -206,7 +206,6 @@ int arkLsMPSolve(void* arkode_mem, N_Vector r, N_Vector z,
                  realtype tol, int lr);
 
 /* Difference quotient approximation for Jac times vector */
-SUNDIALS_EXPORT
 int arkLsDQJtimes(N_Vector v, N_Vector Jv, realtype t,
                   N_Vector y, N_Vector fy, void* data,
                   N_Vector work);

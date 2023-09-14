@@ -106,7 +106,7 @@ SUNLinearSolver SUNLinSol_LapackBand(N_Vector y, SUNMatrix A, SUNContext sunctx)
   content->pivots    = NULL;
 
   /* Allocate content */
-  content->pivots = (sunindextype *) malloc(MatrixRows * sizeof(sunindextype));
+  content->pivots = (int *) malloc(MatrixRows * sizeof(int));
   if (content->pivots == NULL) { SUNLinSolFree(S); return(NULL); }
 
   return(S);
@@ -141,7 +141,7 @@ int SUNLinSolInitialize_LapackBand(SUNLinearSolver S)
 
 int SUNLinSolSetup_LapackBand(SUNLinearSolver S, SUNMatrix A)
 {
-  sunindextype n, ml, mu, ldim, ier;
+  int n, ml, mu, ldim, ier;
 
   /* check for valid inputs */
   if ( (A == NULL) || (S == NULL) )
@@ -174,7 +174,7 @@ int SUNLinSolSetup_LapackBand(SUNLinearSolver S, SUNMatrix A)
 int SUNLinSolSolve_LapackBand(SUNLinearSolver S, SUNMatrix A, N_Vector x,
                               N_Vector b, realtype tol)
 {
-  sunindextype n, ml, mu, ldim, one, ier;
+  int n, ml, mu, ldim, one, ier;
   realtype *xdata;
 
   /* check for valid inputs */

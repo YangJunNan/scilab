@@ -326,6 +326,9 @@ libscidifferential_equations_la_LIBADD = libscidifferential_equations-algo.la \
     $(FLIBS)
 
 
+libscidifferential_equations_la_includedir=$(pkgincludedir)
+libscidifferential_equations_la_include_HEADERS =
+
 #### Target ######
 modulename=differential_equations
 
@@ -337,6 +340,39 @@ libscidifferential_equations_la_root_DATA =  license.txt
 #### differential_equations : init scripts ####
 libscidifferential_equations_la_etcdir = $(mydatadir)/etc
 libscidifferential_equations_la_etc_DATA = etc/differential_equations.quit etc/differential_equations.start
+
+#### sundials : include files ####
+# find src/patched_sundials/include  -type f -name '*.h' -or -name '*.hxx' -or -name '*.hpp' | sort |xargs printf '%s \\\n'
+
+libscidifferential_equations_nvector_la_includedir=$(includedir)/nvector/
+libscidifferential_equations_nvector_la_include_HEADERS = \
+src/patched_sundials/include/nvector/nvector_serial.h \
+src/patched_sundials/include/nvector/nvector_manyvector.h \
+src/patched_sundials/include/nvector/nvector_openmp.h
+
+libscidifferential_equations_sundials_la_includedir=$(includedir)/sundials/
+libscidifferential_equations_sundials_la_include_HEADERS = \
+src/patched_sundials/include/sundials/sundials_base.hpp \
+src/patched_sundials/include/sundials/sundials_config.h \
+src/patched_sundials/include/sundials/sundials_context.h \
+src/patched_sundials/include/sundials/sundials_context.hpp \
+src/patched_sundials/include/sundials/sundials_convertibleto.hpp \
+src/patched_sundials/include/sundials/sundials_export.h \
+src/patched_sundials/include/sundials/sundials_logger.h \
+src/patched_sundials/include/sundials/sundials_matrix.h \
+src/patched_sundials/include/sundials/sundials_matrix.hpp \
+src/patched_sundials/include/sundials/sundials_memory.h \
+src/patched_sundials/include/sundials/sundials_nvector.h \
+src/patched_sundials/include/sundials/sundials_nvector.hpp \
+src/patched_sundials/include/sundials/sundials_profiler.h \
+src/patched_sundials/include/sundials/sundials_types.h \
+src/patched_sundials/include/sundials/sundials_version.h
+
+libscidifferential_equations_sunmatrix_la_includedir=$(includedir)/sunmatrix/
+libscidifferential_equations_sunmatrix_la_include_HEADERS = \
+src/patched_sundials/include/sunmatrix/sunmatrix_band.h \
+src/patched_sundials/include/sunmatrix/sunmatrix_dense.h \
+src/patched_sundials/include/sunmatrix/sunmatrix_sparse.h
 
 #### differential_equations : gateway declaration ####
 libscidifferential_equations_la_sci_gatewaydir = $(mydatadir)/sci_gateway

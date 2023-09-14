@@ -514,7 +514,10 @@ void CVODEManager::getInterpVectors(double *pdblNS, int iOrderPlusOne, int iInde
 
 int CVODEManager::DQJtimes(realtype tt, N_Vector yy, N_Vector yp, N_Vector rr, N_Vector v, N_Vector Jv, realtype c_j, N_Vector work2, N_Vector work3)
 {
-    return cvLsDQJtimes(v, Jv, tt, yy, yp, m_prob_mem, work2);
+    CVodeMem cv_mem = (CVodeMem) m_prob_mem;
+    CVLsMem cvls_mem = (CVLsMem) cv_mem->cv_lmem;
+    
+    return cvls_mem->jtimes(v, Jv, tt, yy, yp, m_prob_mem, work2);
 }
 
 int CVODEManager::projFunction(realtype t, N_Vector N_VectorY, N_Vector N_VectorCorr, realtype epsProj, N_Vector N_VectorErr, void *pManager)

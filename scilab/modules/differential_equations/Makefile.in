@@ -40,6 +40,7 @@
 ##########
 
 
+
 VPATH = @srcdir@
 am__is_gnu_make = { \
   if test -z '$(MAKELEVEL)'; then \
@@ -137,7 +138,12 @@ am__aclocal_m4_deps = $(top_srcdir)/m4/ax_cxx_compile_stdcxx.m4 \
 	$(top_srcdir)/configure.ac
 am__configure_deps = $(am__aclocal_m4_deps) $(CONFIGURE_DEPENDENCIES) \
 	$(ACLOCAL_M4)
-DIST_COMMON = $(srcdir)/Makefile.am $(am__DIST_COMMON)
+DIST_COMMON = $(srcdir)/Makefile.am \
+	$(libscidifferential_equations_la_include_HEADERS) \
+	$(libscidifferential_equations_nvector_la_include_HEADERS) \
+	$(libscidifferential_equations_sundials_la_include_HEADERS) \
+	$(libscidifferential_equations_sunmatrix_la_include_HEADERS) \
+	$(am__DIST_COMMON)
 mkinstalldirs = $(SHELL) $(top_srcdir)/config/mkinstalldirs
 CONFIG_HEADER = $(top_builddir)/modules/core/includes/machine.h
 CONFIG_CLEAN_FILES =
@@ -172,7 +178,11 @@ am__uninstall_files_from_dir = { \
 am__installdirs = "$(DESTDIR)$(pkglibdir)" \
 	"$(DESTDIR)$(libscidifferential_equations_la_etcdir)" \
 	"$(DESTDIR)$(libscidifferential_equations_la_rootdir)" \
-	"$(DESTDIR)$(libscidifferential_equations_la_sci_gatewaydir)"
+	"$(DESTDIR)$(libscidifferential_equations_la_sci_gatewaydir)" \
+	"$(DESTDIR)$(libscidifferential_equations_la_includedir)" \
+	"$(DESTDIR)$(libscidifferential_equations_nvector_la_includedir)" \
+	"$(DESTDIR)$(libscidifferential_equations_sundials_la_includedir)" \
+	"$(DESTDIR)$(libscidifferential_equations_sunmatrix_la_includedir)"
 LTLIBRARIES = $(noinst_LTLIBRARIES) $(pkglib_LTLIBRARIES)
 libscidifferential_equations_algo_la_LIBADD =
 am__dirstamp = $(am__leading_dot)dirstamp
@@ -562,6 +572,10 @@ am__can_run_installinfo = \
 DATA = $(libscidifferential_equations_la_etc_DATA) \
 	$(libscidifferential_equations_la_root_DATA) \
 	$(libscidifferential_equations_la_sci_gateway_DATA)
+HEADERS = $(libscidifferential_equations_la_include_HEADERS) \
+	$(libscidifferential_equations_nvector_la_include_HEADERS) \
+	$(libscidifferential_equations_sundials_la_include_HEADERS) \
+	$(libscidifferential_equations_sunmatrix_la_include_HEADERS)
 am__tagged_files = $(HEADERS) $(SOURCES) $(TAGS_FILES) $(LISP)
 # Read a list of newline-separated strings from the standard input,
 # and print each of them once, without duplicates.  Input order is
@@ -1208,6 +1222,8 @@ libscidifferential_equations_la_LIBADD = libscidifferential_equations-algo.la \
     $(OPENMP_LIBS) \
     $(FLIBS)
 
+libscidifferential_equations_la_includedir = $(pkgincludedir)
+libscidifferential_equations_la_include_HEADERS = 
 
 #### Target ######
 modulename = differential_equations
@@ -1219,6 +1235,39 @@ libscidifferential_equations_la_root_DATA = license.txt
 #### differential_equations : init scripts ####
 libscidifferential_equations_la_etcdir = $(mydatadir)/etc
 libscidifferential_equations_la_etc_DATA = etc/differential_equations.quit etc/differential_equations.start
+
+#### sundials : include files ####
+# find src/patched_sundials/include  -type f -name '*.h' -or -name '*.hxx' -or -name '*.hpp' | sort |xargs printf '%s \\\n'
+libscidifferential_equations_nvector_la_includedir = $(includedir)/nvector/
+libscidifferential_equations_nvector_la_include_HEADERS = \
+src/patched_sundials/include/nvector/nvector_serial.h \
+src/patched_sundials/include/nvector/nvector_manyvector.h \
+src/patched_sundials/include/nvector/nvector_openmp.h
+
+libscidifferential_equations_sundials_la_includedir = $(includedir)/sundials/
+libscidifferential_equations_sundials_la_include_HEADERS = \
+src/patched_sundials/include/sundials/sundials_base.hpp \
+src/patched_sundials/include/sundials/sundials_config.h \
+src/patched_sundials/include/sundials/sundials_context.h \
+src/patched_sundials/include/sundials/sundials_context.hpp \
+src/patched_sundials/include/sundials/sundials_convertibleto.hpp \
+src/patched_sundials/include/sundials/sundials_export.h \
+src/patched_sundials/include/sundials/sundials_logger.h \
+src/patched_sundials/include/sundials/sundials_matrix.h \
+src/patched_sundials/include/sundials/sundials_matrix.hpp \
+src/patched_sundials/include/sundials/sundials_memory.h \
+src/patched_sundials/include/sundials/sundials_nvector.h \
+src/patched_sundials/include/sundials/sundials_nvector.hpp \
+src/patched_sundials/include/sundials/sundials_profiler.h \
+src/patched_sundials/include/sundials/sundials_types.h \
+src/patched_sundials/include/sundials/sundials_version.h
+
+libscidifferential_equations_sunmatrix_la_includedir = $(includedir)/sunmatrix/
+libscidifferential_equations_sunmatrix_la_include_HEADERS = \
+src/patched_sundials/include/sunmatrix/sunmatrix_band.h \
+src/patched_sundials/include/sunmatrix/sunmatrix_dense.h \
+src/patched_sundials/include/sunmatrix/sunmatrix_sparse.h
+
 
 #### differential_equations : gateway declaration ####
 libscidifferential_equations_la_sci_gatewaydir = $(mydatadir)/sci_gateway
@@ -3234,6 +3283,90 @@ uninstall-libscidifferential_equations_la_sci_gatewayDATA:
 	@list='$(libscidifferential_equations_la_sci_gateway_DATA)'; test -n "$(libscidifferential_equations_la_sci_gatewaydir)" || list=; \
 	files=`for p in $$list; do echo $$p; done | sed -e 's|^.*/||'`; \
 	dir='$(DESTDIR)$(libscidifferential_equations_la_sci_gatewaydir)'; $(am__uninstall_files_from_dir)
+install-libscidifferential_equations_la_includeHEADERS: $(libscidifferential_equations_la_include_HEADERS)
+	@$(NORMAL_INSTALL)
+	@list='$(libscidifferential_equations_la_include_HEADERS)'; test -n "$(libscidifferential_equations_la_includedir)" || list=; \
+	if test -n "$$list"; then \
+	  echo " $(MKDIR_P) '$(DESTDIR)$(libscidifferential_equations_la_includedir)'"; \
+	  $(MKDIR_P) "$(DESTDIR)$(libscidifferential_equations_la_includedir)" || exit 1; \
+	fi; \
+	for p in $$list; do \
+	  if test -f "$$p"; then d=; else d="$(srcdir)/"; fi; \
+	  echo "$$d$$p"; \
+	done | $(am__base_list) | \
+	while read files; do \
+	  echo " $(INSTALL_HEADER) $$files '$(DESTDIR)$(libscidifferential_equations_la_includedir)'"; \
+	  $(INSTALL_HEADER) $$files "$(DESTDIR)$(libscidifferential_equations_la_includedir)" || exit $$?; \
+	done
+
+uninstall-libscidifferential_equations_la_includeHEADERS:
+	@$(NORMAL_UNINSTALL)
+	@list='$(libscidifferential_equations_la_include_HEADERS)'; test -n "$(libscidifferential_equations_la_includedir)" || list=; \
+	files=`for p in $$list; do echo $$p; done | sed -e 's|^.*/||'`; \
+	dir='$(DESTDIR)$(libscidifferential_equations_la_includedir)'; $(am__uninstall_files_from_dir)
+install-libscidifferential_equations_nvector_la_includeHEADERS: $(libscidifferential_equations_nvector_la_include_HEADERS)
+	@$(NORMAL_INSTALL)
+	@list='$(libscidifferential_equations_nvector_la_include_HEADERS)'; test -n "$(libscidifferential_equations_nvector_la_includedir)" || list=; \
+	if test -n "$$list"; then \
+	  echo " $(MKDIR_P) '$(DESTDIR)$(libscidifferential_equations_nvector_la_includedir)'"; \
+	  $(MKDIR_P) "$(DESTDIR)$(libscidifferential_equations_nvector_la_includedir)" || exit 1; \
+	fi; \
+	for p in $$list; do \
+	  if test -f "$$p"; then d=; else d="$(srcdir)/"; fi; \
+	  echo "$$d$$p"; \
+	done | $(am__base_list) | \
+	while read files; do \
+	  echo " $(INSTALL_HEADER) $$files '$(DESTDIR)$(libscidifferential_equations_nvector_la_includedir)'"; \
+	  $(INSTALL_HEADER) $$files "$(DESTDIR)$(libscidifferential_equations_nvector_la_includedir)" || exit $$?; \
+	done
+
+uninstall-libscidifferential_equations_nvector_la_includeHEADERS:
+	@$(NORMAL_UNINSTALL)
+	@list='$(libscidifferential_equations_nvector_la_include_HEADERS)'; test -n "$(libscidifferential_equations_nvector_la_includedir)" || list=; \
+	files=`for p in $$list; do echo $$p; done | sed -e 's|^.*/||'`; \
+	dir='$(DESTDIR)$(libscidifferential_equations_nvector_la_includedir)'; $(am__uninstall_files_from_dir)
+install-libscidifferential_equations_sundials_la_includeHEADERS: $(libscidifferential_equations_sundials_la_include_HEADERS)
+	@$(NORMAL_INSTALL)
+	@list='$(libscidifferential_equations_sundials_la_include_HEADERS)'; test -n "$(libscidifferential_equations_sundials_la_includedir)" || list=; \
+	if test -n "$$list"; then \
+	  echo " $(MKDIR_P) '$(DESTDIR)$(libscidifferential_equations_sundials_la_includedir)'"; \
+	  $(MKDIR_P) "$(DESTDIR)$(libscidifferential_equations_sundials_la_includedir)" || exit 1; \
+	fi; \
+	for p in $$list; do \
+	  if test -f "$$p"; then d=; else d="$(srcdir)/"; fi; \
+	  echo "$$d$$p"; \
+	done | $(am__base_list) | \
+	while read files; do \
+	  echo " $(INSTALL_HEADER) $$files '$(DESTDIR)$(libscidifferential_equations_sundials_la_includedir)'"; \
+	  $(INSTALL_HEADER) $$files "$(DESTDIR)$(libscidifferential_equations_sundials_la_includedir)" || exit $$?; \
+	done
+
+uninstall-libscidifferential_equations_sundials_la_includeHEADERS:
+	@$(NORMAL_UNINSTALL)
+	@list='$(libscidifferential_equations_sundials_la_include_HEADERS)'; test -n "$(libscidifferential_equations_sundials_la_includedir)" || list=; \
+	files=`for p in $$list; do echo $$p; done | sed -e 's|^.*/||'`; \
+	dir='$(DESTDIR)$(libscidifferential_equations_sundials_la_includedir)'; $(am__uninstall_files_from_dir)
+install-libscidifferential_equations_sunmatrix_la_includeHEADERS: $(libscidifferential_equations_sunmatrix_la_include_HEADERS)
+	@$(NORMAL_INSTALL)
+	@list='$(libscidifferential_equations_sunmatrix_la_include_HEADERS)'; test -n "$(libscidifferential_equations_sunmatrix_la_includedir)" || list=; \
+	if test -n "$$list"; then \
+	  echo " $(MKDIR_P) '$(DESTDIR)$(libscidifferential_equations_sunmatrix_la_includedir)'"; \
+	  $(MKDIR_P) "$(DESTDIR)$(libscidifferential_equations_sunmatrix_la_includedir)" || exit 1; \
+	fi; \
+	for p in $$list; do \
+	  if test -f "$$p"; then d=; else d="$(srcdir)/"; fi; \
+	  echo "$$d$$p"; \
+	done | $(am__base_list) | \
+	while read files; do \
+	  echo " $(INSTALL_HEADER) $$files '$(DESTDIR)$(libscidifferential_equations_sunmatrix_la_includedir)'"; \
+	  $(INSTALL_HEADER) $$files "$(DESTDIR)$(libscidifferential_equations_sunmatrix_la_includedir)" || exit $$?; \
+	done
+
+uninstall-libscidifferential_equations_sunmatrix_la_includeHEADERS:
+	@$(NORMAL_UNINSTALL)
+	@list='$(libscidifferential_equations_sunmatrix_la_include_HEADERS)'; test -n "$(libscidifferential_equations_sunmatrix_la_includedir)" || list=; \
+	files=`for p in $$list; do echo $$p; done | sed -e 's|^.*/||'`; \
+	dir='$(DESTDIR)$(libscidifferential_equations_sunmatrix_la_includedir)'; $(am__uninstall_files_from_dir)
 
 ID: $(am__tagged_files)
 	$(am__define_uniq_tagged_files); mkid -fID $$unique
@@ -3322,9 +3455,9 @@ distdir-am: $(DISTFILES)
 check-am: all-am
 	$(MAKE) $(AM_MAKEFLAGS) check-local
 check: check-am
-all-am: Makefile $(LTLIBRARIES) $(DATA) all-local
+all-am: Makefile $(LTLIBRARIES) $(DATA) $(HEADERS) all-local
 installdirs:
-	for dir in "$(DESTDIR)$(pkglibdir)" "$(DESTDIR)$(libscidifferential_equations_la_etcdir)" "$(DESTDIR)$(libscidifferential_equations_la_rootdir)" "$(DESTDIR)$(libscidifferential_equations_la_sci_gatewaydir)"; do \
+	for dir in "$(DESTDIR)$(pkglibdir)" "$(DESTDIR)$(libscidifferential_equations_la_etcdir)" "$(DESTDIR)$(libscidifferential_equations_la_rootdir)" "$(DESTDIR)$(libscidifferential_equations_la_sci_gatewaydir)" "$(DESTDIR)$(libscidifferential_equations_la_includedir)" "$(DESTDIR)$(libscidifferential_equations_nvector_la_includedir)" "$(DESTDIR)$(libscidifferential_equations_sundials_la_includedir)" "$(DESTDIR)$(libscidifferential_equations_sunmatrix_la_includedir)"; do \
 	  test -z "$$dir" || $(MKDIR_P) "$$dir"; \
 	done
 install: install-am
@@ -3559,8 +3692,12 @@ info-am:
 
 install-data-am: install-data-local \
 	install-libscidifferential_equations_la_etcDATA \
+	install-libscidifferential_equations_la_includeHEADERS \
 	install-libscidifferential_equations_la_rootDATA \
-	install-libscidifferential_equations_la_sci_gatewayDATA
+	install-libscidifferential_equations_la_sci_gatewayDATA \
+	install-libscidifferential_equations_nvector_la_includeHEADERS \
+	install-libscidifferential_equations_sundials_la_includeHEADERS \
+	install-libscidifferential_equations_sunmatrix_la_includeHEADERS
 
 install-dvi: install-dvi-am
 
@@ -3730,8 +3867,12 @@ ps: ps-am
 ps-am:
 
 uninstall-am: uninstall-libscidifferential_equations_la_etcDATA \
+	uninstall-libscidifferential_equations_la_includeHEADERS \
 	uninstall-libscidifferential_equations_la_rootDATA \
 	uninstall-libscidifferential_equations_la_sci_gatewayDATA \
+	uninstall-libscidifferential_equations_nvector_la_includeHEADERS \
+	uninstall-libscidifferential_equations_sundials_la_includeHEADERS \
+	uninstall-libscidifferential_equations_sunmatrix_la_includeHEADERS \
 	uninstall-pkglibLTLIBRARIES
 
 .MAKE: check-am install-am install-strip
@@ -3747,8 +3888,12 @@ uninstall-am: uninstall-libscidifferential_equations_la_etcDATA \
 	install-exec-am install-html install-html-am \
 	install-html-local install-info install-info-am \
 	install-libscidifferential_equations_la_etcDATA \
+	install-libscidifferential_equations_la_includeHEADERS \
 	install-libscidifferential_equations_la_rootDATA \
 	install-libscidifferential_equations_la_sci_gatewayDATA \
+	install-libscidifferential_equations_nvector_la_includeHEADERS \
+	install-libscidifferential_equations_sundials_la_includeHEADERS \
+	install-libscidifferential_equations_sunmatrix_la_includeHEADERS \
 	install-man install-pdf install-pdf-am \
 	install-pkglibLTLIBRARIES install-ps install-ps-am \
 	install-strip installcheck installcheck-am installdirs \
@@ -3756,8 +3901,12 @@ uninstall-am: uninstall-libscidifferential_equations_la_etcDATA \
 	mostlyclean-compile mostlyclean-generic mostlyclean-libtool \
 	pdf pdf-am ps ps-am tags tags-am uninstall uninstall-am \
 	uninstall-libscidifferential_equations_la_etcDATA \
+	uninstall-libscidifferential_equations_la_includeHEADERS \
 	uninstall-libscidifferential_equations_la_rootDATA \
 	uninstall-libscidifferential_equations_la_sci_gatewayDATA \
+	uninstall-libscidifferential_equations_nvector_la_includeHEADERS \
+	uninstall-libscidifferential_equations_sundials_la_includeHEADERS \
+	uninstall-libscidifferential_equations_sunmatrix_la_includeHEADERS \
 	uninstall-pkglibLTLIBRARIES
 
 .PRECIOUS: Makefile

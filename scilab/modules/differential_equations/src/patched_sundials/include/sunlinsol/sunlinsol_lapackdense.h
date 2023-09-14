@@ -38,9 +38,9 @@ extern "C" {
  * ----------------------------------------------- */
 
 struct _SUNLinearSolverContent_LapackDense {
-  sunindextype N;
-  sunindextype *pivots;
-  sunindextype last_flag;
+  int N;
+  int *pivots;
+  int last_flag;
 };
 
 typedef struct _SUNLinearSolverContent_LapackDense *SUNLinearSolverContent_LapackDense;

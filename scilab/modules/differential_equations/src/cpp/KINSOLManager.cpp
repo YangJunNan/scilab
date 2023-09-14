@@ -225,7 +225,10 @@ bool KINSOLManager::create()
 
 int KINSOLManager::DQJtimes(realtype tt, N_Vector yy, N_Vector yp, N_Vector rr, N_Vector v, N_Vector Jv, realtype c_j, N_Vector work1, N_Vector work2)
 {
-    return kinLsDQJtimes(v, Jv, yy, NULL, m_prob_mem);
+    KINMem kin_mem = (KINMem) m_prob_mem;
+    KINLsMem kinls_mem = (KINLsMem) kin_mem->kin_lmem;
+
+    return kinls_mem->jtimes(v, Jv, yy, NULL, m_prob_mem);
 }
 
 void KINSOLManager::init()

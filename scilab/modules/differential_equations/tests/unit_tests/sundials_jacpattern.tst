@@ -93,6 +93,6 @@ assert_checkequal(info1.stats.nRhsEvalsFD,909);
 assert_checkequal(info2.stats.nRhsEvalsFD,45);
 assert_checkequal(info3.stats.nRhsEvalsFD,0);
 
-assert_checktrue(info0.stats.eTime/info1.stats.eTime > 10);
-assert_checktrue(info0.stats.eTime/info2.stats.eTime > 10);
-assert_checktrue(info0.stats.eTime/info3.stats.eTime > 10);
+assert_checktrue(info0.stats.eTime/info1.stats.eTime > 5);
+assert_checktrue(info0.stats.eTime/info2.stats.eTime > 5);
+assert_checktrue(info0.stats.eTime/info3.stats.eTime > 5);

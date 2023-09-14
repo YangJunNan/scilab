@@ -71,13 +71,13 @@
  *     #define SUNDIALS_INT64_T 1
  *     #define SUNDIALS_INT32_T 1
  */
-#define SUNDIALS_INT64_T 0
-#define SUNDIALS_INT32_T 1
+#define SUNDIALS_INT64_T 1
+#define SUNDIALS_INT32_T 0
 
 /* Define the type of vector indices in SUNDIALS 'sunindextype'.
  * The macro will be defined with a type of the appropriate size.
  */
-#define SUNDIALS_INDEX_TYPE int32_t
+#define SUNDIALS_INDEX_TYPE int64_t
 
 /* Use std-c math functions
  * DEPRECATED SUNDIALS_USE_GENERIC_MATH

@@ -694,7 +694,14 @@ void ARKODEManager::getInterpVectors(double *pdblNS, int iOrderPlusOne, int iInd
 
 int ARKODEManager::DQJtimes(realtype tt, N_Vector yy, N_Vector yp, N_Vector rr, N_Vector v, N_Vector Jv, realtype c_j, N_Vector work2, N_Vector work3)
 {
-    return arkLsDQJtimes(v, Jv, tt, yy, yp, m_prob_mem, work2);
+    ARKodeMem ark_mem = (ARKodeMem) m_prob_mem;
+    ARKLsMem arkls_mem;
+    void* ark_step_lmem;
+
+    ark_step_lmem = ark_mem->step_getlinmem(m_prob_mem);
+    arkls_mem = (ARKLsMem) ark_step_lmem;    
+
+    return arkls_mem->jtimes(v, Jv, tt, yy, yp, m_prob_mem, work2);
 }
 
 types::Struct *ARKODEManager::getStats()

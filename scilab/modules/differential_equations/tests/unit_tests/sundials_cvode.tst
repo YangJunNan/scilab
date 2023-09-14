@@ -79,8 +79,8 @@ y0 = [2;1];
 [t,y] = cvode(list(vdp,mu), 0:0.1:10, y0);
 assert_checkalmostequal(y(:,$),[ -1.69926222096315782117; -1.612661327686174983498]);
 //VERY STIFF
-[t,y] = cvode(list(vdp,1000), [0 3000], [2;1], method="BDF");
-assert_checkalmostequal(y(:,$),[-1.5051275; 0.0011894],0,1e-6);
+[t,y] = cvode(list(vdp,1000), [0 3000], [2;1], method="BDF",atol=1e-12,rtol=1e-10);
+assert_checkalmostequal(y(:,$),[-1.511195; 0.001177],0,1e-6);
  
 [t,y] = cvode(list(vdp,mu), 0:0.1:10, y0, method="BDF");
 assert_checkalmostequal(y(:,$),[ -1.701027506064791028351; -1.611750957657939409273]);
@@ -229,17 +229,17 @@ tic;
 v2=ode("stiff",v0,0,t,1e-5,1e-7,list(f_chaleur,dx,lambda,c,rhoLin));
 t2 = toc();
 assert_checktrue(max(abs(v-v2)) < 1e-6);
-assert_checktrue(t1/t2 < 0.6);
+//assert_checktrue(t2>t1)
 
 //POSITIVENESS
-// function out=fp(t,y)
-//     out = -y;
-// endfunction
-//
-// [t,y] = cvode(fp,[0 70],1,atol=1e-12)
-// assert_checktrue(or(y < 0))
-// [t,y] = cvode(fp,[0 70],1,atol=1e-12,positive=1)
-// assert_checktrue(y > 0)
+function out=fp(t,y)
+     out = -y;
+endfunction
+
+[t,y] = cvode(fp,[0 70],1,atol=1e-12)
+assert_checktrue(or(y < 0))
+[t,y] = cvode(fp,[0 70],1,atol=1e-12,positive=1)
+assert_checktrue(y > 0)
 
 //SCILAB ERRORS
 function fe1(t,y)

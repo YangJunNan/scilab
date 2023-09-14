@@ -273,13 +273,14 @@ types::Double *OdeManager::createYOut(types::Double *m_pDblYtempl, int iNbOut, i
     {
         // create a new arrray of native dimensions of m_pDblYtempl + one extra dimension for time
         int *piDimsArrayYtempl = m_pDblYtempl->getDimsArray();
-        int *piDimsArrayYOut = new int(iDimsYtempl+1);
+        int *piDimsArrayYOut = new int[iDimsYtempl+1];
         for (int i=0; i<iDimsYtempl; i++)
         {
             piDimsArrayYOut[i] = piDimsArrayYtempl[i];
         }
         piDimsArrayYOut[iDimsYtempl] = iSizeTSpan;
         pDblYOut = new types::Double(iDimsYtempl+1, piDimsArrayYOut, m_odeIsComplex);
+        delete[] piDimsArrayYOut;
     }
     else if (m_pDblYtempl->isVector() && bFlat == false)
     {

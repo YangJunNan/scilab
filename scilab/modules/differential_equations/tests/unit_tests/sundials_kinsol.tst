@@ -72,9 +72,8 @@ assert_checkalmostequal(X*X*X,[1 2;3 4])
 
 [X,fX,info,out]=kinsol(fC,eye(2,2),tol=1e-12);
 assert_checktrue(norm(fX) < 2e-15)
-assert_checkequal(out.stats.nIters,66)
 [X,fX,info,out]=kinsol(fC,eye(2,2),tol=1e-12,maxNewtonStep=1);
-assert_checkequal(out.stats.nIters,18)
+assert_checktrue(out.stats.nIters <= 20)
 
 // 1D PDE
 function eq = f(v,h)

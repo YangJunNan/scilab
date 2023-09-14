@@ -106,7 +106,7 @@ SUNLinearSolver SUNLinSol_LapackDense(N_Vector y, SUNMatrix A, SUNContext sunctx
   content->pivots    = NULL;
 
   /* Allocate content */
-  content->pivots = (sunindextype *) malloc(MatrixRows * sizeof(sunindextype));
+  content->pivots = (int *) malloc(MatrixRows * sizeof(int));
   if (content->pivots == NULL) { SUNLinSolFree(S); return(NULL); }
 
   return(S);
@@ -141,7 +141,7 @@ int SUNLinSolInitialize_LapackDense(SUNLinearSolver S)
 
 int SUNLinSolSetup_LapackDense(SUNLinearSolver S, SUNMatrix A)
 {
-  sunindextype n, ier;
+  int n, ier;
 
   /* check for valid inputs */
   if ( (A == NULL) || (S == NULL) )
@@ -169,7 +169,7 @@ int SUNLinSolSetup_LapackDense(SUNLinearSolver S, SUNMatrix A)
 int SUNLinSolSolve_LapackDense(SUNLinearSolver S, SUNMatrix A, N_Vector x,
                                N_Vector b, realtype tol)
 {
-  sunindextype n, one, ier;
+  int n, one, ier;
   realtype *xdata;
 
   if ( (A == NULL) || (S == NULL) || (x == NULL) || (b == NULL) )

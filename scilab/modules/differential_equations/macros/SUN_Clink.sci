@@ -104,6 +104,8 @@ function _lib = SUN_Clink(names,files_in,p1,p2,p3,p4,p5,p6,p7,p8,p9)
             error(msg)
         end
         LOAD = load;
+        // prevent internal "load" squash (used in ilib_for_link under Windows)
+        clear load
     end
 
     // all remaining options are invalid, raise an error for the first one
@@ -125,7 +127,10 @@ function _lib = SUN_Clink(names,files_in,p1,p2,p3,p4,p5,p6,p7,p8,p9)
 
     old_verb = ilib_verbose();
     ilib_verbose(VERBOSE);
+    
+    // ilib_for_link call
     _lib = ilib_for_link(names,files_tmp,[],"c","",LOADERNAME,LIBNAME,LDFLAGS,CFLAGS); //compile
+
     if LOAD
         exec(LOADERNAME,-1)
         _lib = fullpath(fullfile(TMPDIR,_lib));
