@@ -155,7 +155,7 @@
                 <link linkend="sundials_kinsol_options">Options (kinsol)</link>
             </member>
             <member>
-                <link linkend="sundials_clink">SUN_Clink</link>
+                <link linkend="SUN_Clink">SUN_Clink</link>
             </member>
         </simplelist>
     </refsection>

@@ -149,7 +149,7 @@
 
         <para>
 
-            <code>[status, message] = movefile(source, destination)</code>は,
+            <code>[status, msg] = movefile(source, destination)</code>は,
 
             <varname>source</varname>から<varname>destination</varname>
 
@@ -179,7 +179,7 @@
 
         <programlisting role="example"><![CDATA[
       copyfile(SCI+"/etc/scilab.start",TMPDIR+"/scilab.start")
-      [status,message] = movefile(TMPDIR+"/scilab.start",TMPDIR+"/renamed_scilab.start")
+      [status, msg] = movefile(TMPDIR+"/scilab.start",TMPDIR+"/renamed_scilab.start")
     ]]></programlisting>
 
     </refsection>

@@ -1458,6 +1458,11 @@ uninstall-am: uninstall-libscihelptools_la_data_configurationDATA \
 
 .PRECIOUS: Makefile
 
+# when these file are not present, generate them empty ; Scilab will populate them later
+data/configuration/scilab_macros.txt:
+	touch $@
+data/configuration/scilab_primitives.txt:
+	touch $@
 
 mostlyclean-local:
 	rm -rf web javaHelp html pdf

@@ -316,7 +316,7 @@
                 <link linkend="sundials_options">Options (ODE and DAE solvers)</link>
             </member>
             <member>
-                <link linkend="sundials_clink">SUN_Clink</link>
+                <link linkend="SUN_Clink">SUN_Clink</link>
             </member>
         </simplelist>
     </refsection>
