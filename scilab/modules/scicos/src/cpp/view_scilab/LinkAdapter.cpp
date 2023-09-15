@@ -531,7 +531,7 @@ void setLinkEnd(model::Link* linkObject, Controller& controller, const object_pr
     if (oldLink != ScicosID() && oldLink != linkObject->id())
     {
         // Disconnect the old link if it was indeed connected to the concerned port
-        ScicosID oldPort;
+        ScicosID oldPort = ScicosID();
         controller.getObjectProperty(oldLink, LINK, end, oldPort);
         if (concernedPort == oldPort)
         {

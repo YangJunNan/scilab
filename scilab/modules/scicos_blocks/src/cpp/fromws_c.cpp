@@ -118,14 +118,12 @@ SCICOS_BLOCKS_IMPEXP void fromws_c(scicos_block* block, int flag)
             if (pIT == nullptr)
             {
                 Coserror(_("The '%s' variable does not exist.\n"), FName);
-                set_block_error(-3);
                 return;
             }
 
             if (!pIT->isGenericType())
             {
                 Coserror(_("The '%s' variable does not have fields.\n"), FName);
-                set_block_error(-3);
                 return;
             }
             auto* pGT = pIT->getAs<types::GenericType>();
@@ -134,28 +132,24 @@ SCICOS_BLOCKS_IMPEXP void fromws_c(scicos_block* block, int flag)
             if(!pGT->extract(L"time", pITTime))
             {
                 Coserror(_("The '%s.time' field does not exist.\n"), FName);
-                set_block_error(-3);
                 return;
             }
             types::InternalType* pITValues = nullptr;
             if (!pGT->extract(L"values", pITValues))
             {
                 Coserror(_("The '%s.values' field does not exist.\n"), FName);
-                set_block_error(-3);
                 return;
             }
 
             if(!pITTime->isDouble())
             {
                 Coserror(_("The '%s.time' field should be of double type.\n"));
-                set_block_error(-3);
                 return;
             }
             auto* pdblTime = pITTime->getAs<types::Double>();
             if (pdblTime->isComplex())
             {
                 Coserror(_("The '%s.time' field should not be complex.\n"));
-                set_block_error(-3);
                 return;
             }
             int nPoints = pdblTime->getSize(); 
@@ -163,43 +157,36 @@ SCICOS_BLOCKS_IMPEXP void fromws_c(scicos_block* block, int flag)
             if((ytype == SCSREAL_N || ytype == SCSCOMPLEX_N) && !pITValues->isDouble())
             {
                 Coserror(_("The '%s.values' field should have double type.\n"));
-                set_block_error(-3);
                 return;
             }
             else if (ytype == SCSINT8_N && !pITValues->isInt8())
             {
                 Coserror(_("The '%s.values' field should have int8 type.\n"));
-                set_block_error(-3);
                 return;
             }
             else if (ytype == SCSINT16_N && !pITValues->isInt16())
             {
                 Coserror(_("The '%s.values' field should have int16 type.\n"));
-                set_block_error(-3);
                 return;
             }
             else if (ytype == SCSINT32_N && !pITValues->isInt32())
             {
                 Coserror(_("The '%s.values' field should have int32 type.\n"));
-                set_block_error(-3);
                 return;
             }
             else if (ytype == SCSUINT8_N && !pITValues->isUInt8())
             {
                 Coserror(_("The '%s.values' field should have uint8 type.\n"));
-                set_block_error(-3);
                 return;
             }
             else if (ytype == SCSUINT16_N && !pITValues->isUInt16())
             {
                 Coserror(_("The '%s.values' field should have uint16 type.\n"));
-                set_block_error(-3);
                 return;
             }
             else if (ytype == SCSUINT32_N && !pITValues->isUInt32())
             {
                 Coserror(_("The '%s.values' field should have uint32 type.\n"));
-                set_block_error(-3);
                 return;
             }
 
@@ -208,15 +195,15 @@ SCICOS_BLOCKS_IMPEXP void fromws_c(scicos_block* block, int flag)
             if (nPoints != dims[0])
             {
                 Coserror(_("The '%s.time' and '%s.values' fields does not have the same first dimension (resp. %d and %d length).\n"), nPoints, dims[0]);
-                set_block_error(-3);
                 return;
             }
             int mX = dims[1];
-            int nX = dims[2];
+            int nX = 1;
+            if (pGTValues->getDims() > 2)
+                nX = dims[2];
             if (my != mX || ny != nX)
             {
-                Coserror(_("Data dimensions are inconsistent:\n Variable size=[%d,%d] \nBlock output size=[%d,%d].\n"), mX, nX, my, ny);
-                set_block_error(-3);
+                Coserror(_("Data dimensions are inconsistent:\n Variable size=[%d,%d] \n Block output size=[%d,%d].\n"), mX, nX, my, ny);
                 return;
             }
 
@@ -235,7 +222,9 @@ SCICOS_BLOCKS_IMPEXP void fromws_c(scicos_block* block, int flag)
 
                 ptr->work = MALLOC((nPoints + 1) * mX * nX * sizeof(double));
                 ptr_d = (double*) ptr->work;
-                std::memcpy(ptr_d, pdblValues->getReal(), nPoints * mX * nX * sizeof(double));
+                double* pDataReal = pdblValues->getReal();
+                for (size_t j = 0; j < size_t(nPoints) * size_t(mX) * size_t(nX); ++j)
+                    ptr_d[j] = pDataReal[j];
                 ptr_d[nPoints * mX * nX] = 0;
             }
             else if (ytype == SCSCOMPLEX_N)
@@ -307,7 +296,7 @@ SCICOS_BLOCKS_IMPEXP void fromws_c(scicos_block* block, int flag)
             }
 
             /* Check Hmat */
-            if (dims[2] > 0)
+            if (nX > 1)
             {
                 ptr->Hmat = 1;
             }
@@ -318,8 +307,10 @@ SCICOS_BLOCKS_IMPEXP void fromws_c(scicos_block* block, int flag)
 
             ptr->workt = new double[nPoints + 1];
             ptr_T = (double*) ptr->workt;
-            std::memcpy(ptr_T, pITTime->getAs<types::Double>()->getReal(), nPoints * mX * nX * sizeof(double));
-            ptr_T[nPoints * mX * nX] = 0;
+            double* pTimeReal = pITTime->getAs<types::Double>()->getReal();
+            for (size_t j = 0; j < size_t(nPoints); ++j)
+                ptr_T[j] = pTimeReal[j];
+            ptr_T[nPoints] = 0;
 
             /*================================*/
             /* Check for an increasing time data */
@@ -328,7 +319,6 @@ SCICOS_BLOCKS_IMPEXP void fromws_c(scicos_block* block, int flag)
                 if (ptr_T[j] > ptr_T[j + 1])
                 {
                     Coserror(_("The time vector should be an increasing vector.\n"));
-                    /*set_block_error(-3);*/
                     *work = nullptr;
                     delete[] ptr->workt;
                     FREE(ptr->work);
