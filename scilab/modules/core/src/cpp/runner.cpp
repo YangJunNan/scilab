@@ -89,6 +89,8 @@ int StaticRunner::launch()
         ConfigVariable::setPromptMode(-1);
     }
 
+    int iPauseLvl = ConfigVariable::getPauseLevel();
+
     try
     {
         int level = ConfigVariable::getRecursionLevel();
@@ -207,7 +209,7 @@ int StaticRunner::launch()
     // even if resume is a console command, it must not release the prompt
     // because the prompt will be released at the end of the original console command
     // but it must be released if the original command is a callback.
-    if(!pRunSave || pRunSave->getCommandOrigin() != CONSOLE)
+    if(iPauseLvl == ConfigVariable::getPauseLevel() || (pRunSave && pRunSave->getCommandOrigin() != CONSOLE))
     {
         // send the good signal about the end of execution
         sendExecDoneSignal();
