@@ -17,7 +17,7 @@ AC_ARG_WITH(libarchive_library,
         AS_HELP_STRING([--with-libarchive-library=DIR],[Set the path to the libarchive libraries]),
         [with_libarchive_library="-L$withval"], [])
 
-AC_MSG_CHECKING([libarchive])
+# enforce a specific version
 if test "$with_libarchive_include" != '' -a "$libarchive_library" != 'no'; then
     LIBARCHIVE_CFLAGS="$with_libarchive_include"
     LIBARCHIVE_LIBS="$with_libarchive_library"
@@ -26,8 +26,6 @@ elif $WITH_DEVTOOLS; then # Scilab thirdparties
     LIBARCHIVE_CFLAGS="-I$DEVTOOLS_INCDIR"
     LIBARCHIVE_LIBS="-L$DEVTOOLS_LIBDIR -larchive"
     LIBARCHIVE_VERSION=""
-else
-    PKG_CHECK_MODULES(LIBARCHIVE, libarchive >= 3.1)
 fi
 
 saved_LIBS="$LIBS"
@@ -35,12 +33,19 @@ saved_CFLAGS="$CFLAGS"
 LIBS="$LIBARCHIVE_LIBS $LIBS"
 CFLAGS="$LIBARCHIVE_CFLAGS $CFLAGS"
 
-AC_CHECK_LIB([archive], [archive_read_new],
-               [],
-               [AC_MSG_ERROR([libarchive : library missing. (Cannot find symbol archive_read_new). Check if libarchive is installed and if the version is correct])]
-               )
-
 AC_CHECK_HEADERS([archive.h])
+AC_CHECK_LIB([archive], [archive_read_new])
+
+# try with pkg-config on preset failure
+if test "$ac_cv_header_archive_h" != yes && test "$ac_cv_search_archive_read_new" == no; then
+    PKG_CHECK_MODULES(LIBARCHIVE, libarchive >= 3.1)
+
+    LIBS="$LIBARCHIVE_LIBS $LIBS"
+    CFLAGS="$LIBARCHIVE_CFLAGS $CFLAGS"
+
+    AC_CHECK_HEADERS([archive.h])
+    AC_CHECK_LIB([archive], [archive_read_new])
+fi
 
 AC_RUN_IFELSE([AC_LANG_PROGRAM([
 #include <archive.h>
@@ -53,9 +58,8 @@ printf("%d.%d.%d\n", major, minor, rev);
 return 0;
 ])], [ LIBARCHIVE_VERSION=$(./conftest$EXEEXT) ])
 
-
 LIBS="$saved_LIBS"
-CFLAGS="$saved_cflags"
+CFLAGS="$saved_CFLAGS"
 
 AC_SUBST(LIBARCHIVE_CFLAGS)
 AC_SUBST(LIBARCHIVE_LIBS)
