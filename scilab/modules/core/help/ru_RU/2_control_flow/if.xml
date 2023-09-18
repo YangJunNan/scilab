@@ -114,11 +114,6 @@
         <programlisting role=""><![CDATA[
       if rand(1,1) > 0.5 then disp("True"); else disp("False"); end
 ]]></programlisting>
-      <warning>
-        число символов, используемых для определения тела любой инструкции условия
-        (<literal>if while for</literal> или <literal>select/case</literal>) должно быть ограничено
-        16К.
-      </warning>
     </refsection>
     <refsection>
         <title>Примеры</title>

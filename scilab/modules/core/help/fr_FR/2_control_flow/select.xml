@@ -124,11 +124,6 @@ end
         <programlisting role=""><![CDATA[
 A = 2;select A case 1 then disp(1); case 2 then disp(2); else  disp(3); end
 ]]></programlisting>
-        <para>
-            <warning>
-                Attention : le nombre de caractères constituant le corps d'une instruction conditionnelle (if while for ou select/case) est limité à 16k.
-            </warning>
-        </para>
     </refsection>
     <refsection>
         <title>Exemples</title>
@@ -166,8 +161,15 @@ end
             <revision>
                 <revnumber>6.0.0</revnumber>
                 <revdescription>
-                  <literal>select</literal> est maintenant protégé. Les affectations telles que
-                  <literal>select=1</literal> ne sont plus possibles.
+                    <itemizedlist>
+                        <listitem>
+                            <literal>select</literal> est maintenant protégé. Les affectations telles que
+                            <literal>select=1</literal> ne sont plus possibles.
+                        </listitem>
+                        <listitem>
+                            Le nombre de caractères constituant le corps d'une instruction conditionnelle (<literal>if</literal>, <literal>while</literal>, <literal>for</literal>, ou <literal>select/case</literal>) n'est plus limité à 16k.
+                        </listitem>
+                    </itemizedlist>
                 </revdescription>
             </revision>
         </revhistory>

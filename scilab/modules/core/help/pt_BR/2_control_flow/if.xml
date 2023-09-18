@@ -60,10 +60,6 @@
             A palavra-chave <literal>then </literal>pode ser substituída por um
             retorno de carro ou uma vírgula.
         </para>
-      <warning>
-        O número de caracteres utilizados para definir o corpo de qualquer instrução condicional
-        (if while for or select/case) deve ser limitado a 16k.
-      </warning>
     </refsection>
     <refsection>
         <title>Exemplos</title>

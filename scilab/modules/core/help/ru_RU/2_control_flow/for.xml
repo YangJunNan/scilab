@@ -136,11 +136,6 @@ end
         <screen><![CDATA[
 for i = 1:5, disp(i); end
 ]]></screen>
-        <warning>
-            Предупреждение: число символов, используемых для определения тела любой инструкции условия
-            (<literal>if while for</literal> или <literal>select/case</literal>) должно быть ограничено
-            16К.
-        </warning>
     </refsection>
     <refsection>
         <title>Примеры</title>

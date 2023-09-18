@@ -78,10 +78,6 @@ end
         <screen><![CDATA[
 for i = 1:5, disp(i); end
 ]]></screen>
-        <warning>
-            警告: 条件文(if while for または select/case)の本体を定義するために
-            使用できる文字の数は,16k に制限されています.
-        </warning>
     </refsection>
     <refsection>
         <title>例</title>

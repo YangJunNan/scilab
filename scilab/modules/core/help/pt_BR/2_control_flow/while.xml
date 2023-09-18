@@ -107,10 +107,6 @@ end
         <programlisting role=""><![CDATA[
 i = 0; while i<5, disp(i), i = i + 1; end
 ]]></programlisting>
-        <warning>
-            O número de caracateres usados para definir o corpo de  qualquer estrutura condicional
-            (if while for ou select/case) deve ser  limitado a 16k.
-        </warning>
     </refsection>
     <refsection>
         <title>Exemplos</title>

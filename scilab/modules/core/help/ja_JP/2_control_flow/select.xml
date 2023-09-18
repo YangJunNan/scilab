@@ -128,12 +128,6 @@ end
         <programlisting role=""><![CDATA[
 A = 2;select A case 1 then disp(1); case 2 then disp(2); else  disp(3); end
 ]]></programlisting>
-        <para>
-            <warning>
-                警告: 条件文(if while for または select/case)の本体の定義に使用できる
-                文字数は 16k に制限されています.
-            </warning>
-        </para>
     </refsection>
     <refsection>
         <title>例</title>
