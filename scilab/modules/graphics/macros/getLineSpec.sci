@@ -94,10 +94,10 @@ function [Color,Line,LineStyle,Marker,MarkerStyle,MarkerSize,fail]=getLineSpec(s
                 k=find(Table == "blue"); // k is set to blue color
             end
         case "m" // special case here : we have to distinguish between "minus" style and "magenta" color
-            if c2 == "a" then
-                k = find(Table == "magenta")
-            else
+            if c2 == "i" then
                 k = find(Table == "minus")
+            else
+                k = find(Table == "magenta")
             end
         case "^" // special case here : we have to distinguish between "^" and "^." signs
             if c2 == "." then
