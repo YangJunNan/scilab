@@ -318,7 +318,7 @@ detect_scilab_path() {
 detect_macos_vm() {
     # java_home -arch flag is broken on macOS Big Sur
     # we take the first JVM matching version and architecture
-    echo $(/usr/libexec/java_home -v 1.8 -X | xmllint --format  --xpath "(//string[preceding-sibling::key[text()='JVMHomePath']][1][preceding-sibling::string[text()='$ARCH']])[1]/text()" -)
+    echo $(/usr/libexec/java_home -v 17 -X | xmllint --format  --xpath "(//string[preceding-sibling::key[text()='JVMHomePath']][1][preceding-sibling::string[text()='$ARCH']])[1]/text()" -)
 }
 
 set_embedded_java_vm () {
@@ -345,7 +345,7 @@ set_embedded_java_vm () {
                 export ARCH=$(uname -m)
                 # If Scilab does not have an embedded jre we try to detect a system installed one
                 # if not found we prompt the user for installation
-                if test ! -f $SCIBINARYBASE/thirdparty/jre/lib/jli/libjli.dylib; then
+                if test ! -f $SCIBINARYBASE/thirdparty/jre/lib/libjli.dylib; then
                     JAVA_HOME=$(detect_macos_vm)
                     if test -z "$JAVA_HOME"; then
                         open -W "jre/Scilab JRE Install.app"
