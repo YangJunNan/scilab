@@ -490,7 +490,13 @@ int removeluptr (int sel)
  */
 void resetluptr()
 {
+    for (int i = 0; i < sci_luptr_index; i++) {
+        if (sci_luptr_table[i] != NULL) {
+            spDestroy(sci_luptr_table[i]);
+        }
+    }
     FREE(sci_luptr_table);
+    sci_luptr_table = NULL;
     sci_luptr_table_size = 0;/* allocated size for pointer table*/
     sci_luptr_index = 0;/* max index used (one based)*/
 }

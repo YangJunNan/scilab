@@ -286,6 +286,9 @@ types::Function::ReturnValue sci_int2d(types::typed_list &in, int _iRetCount, ty
         bCatch = false;
     }
 
+    pDblX->killMe();
+    pDblY->killMe();
+
     FREE(dwork);
     FREE(iwork);
     DifferentialEquation::removeDifferentialEquationFunctions();

@@ -205,6 +205,10 @@ types::Function::ReturnValue sci_qr(types::typed_list &in, int _iRetCount, types
     {
         out.push_back(pDblR);
     }
+    else
+    {
+        pDblR->killMe();
+    }
 
     if (_iRetCount == 3)
     {

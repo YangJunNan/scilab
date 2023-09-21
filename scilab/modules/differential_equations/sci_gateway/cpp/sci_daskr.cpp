@@ -1089,6 +1089,8 @@ types::Function::ReturnValue sci_daskr(types::typed_list &in, int _iRetCount, ty
         // free memory when error occurred
         if (iret == 1)
         {
+            for (types::Double* pIT : lpDblOut)
+                pIT->killMe();
             lpDblOut.clear();
             DifferentialEquation::removeDifferentialEquationFunctions();
             FREE(pdYdotData);
@@ -1158,6 +1160,7 @@ types::Function::ReturnValue sci_daskr(types::typed_list &in, int _iRetCount, ty
     {
         int pos = i * rowsOut;
         C2F(dcopy)(&rowsOut, lpDblOut.front()->get(), &iOne, pDblOut->get() + pos, &iOne);
+        lpDblOut.front()->killMe();
         lpDblOut.pop_front();
     }
     out.push_back(pDblOut);

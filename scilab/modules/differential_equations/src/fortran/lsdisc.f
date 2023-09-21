@@ -38,6 +38,8 @@ C
 c-----------------------------------------------------------------------
       integer  it,itout
       double precision tt
+cDEC$ ATTRIBUTES DLLIMPORT:: /ierode/
+      COMMON /ierode/ierror
 c
       it=int(t)
       itout=int(tout)

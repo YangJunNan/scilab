@@ -30,6 +30,8 @@ c     ====================================
       double precision rwork(*)
       character*80 messag
       integer lh,ly,lyscal,ldydx,lwork
+cDEC$ ATTRIBUTES DLLIMPORT:: /ierode/
+      COMMON /ierode/ierror
 c
       ly=1
       lh=ly+nvar

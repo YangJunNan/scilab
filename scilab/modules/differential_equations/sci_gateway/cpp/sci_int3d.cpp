@@ -366,6 +366,10 @@ types::Function::ReturnValue sci_int3d(types::typed_list &in, int _iRetCount, ty
         bCatch = true;
     }
 
+    pDblX->killMe();
+    pDblY->killMe();
+    pDblZ->killMe();
+
     FREE(pdData);
     FREE(dwork);
     FREE(iwork);
