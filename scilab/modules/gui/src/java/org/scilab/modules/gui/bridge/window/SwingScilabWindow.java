@@ -22,7 +22,6 @@ package org.scilab.modules.gui.bridge.window;
 import java.awt.Dimension;
 import java.awt.Frame;
 import java.awt.Point;
-import java.awt.Taskbar;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ComponentAdapter;
@@ -111,11 +110,6 @@ public abstract class SwingScilabWindow extends JFrame implements SimpleWindow {
         this.setDims(new Size(DEFAULTWIDTH, DEFAULTHEIGHT));
         this.setTitle("Scilab");
         setIconImage(new ImageIcon(FindIconHelper.findIcon("scilab", "256x256")).getImage());
-
-        if (MAC_OS_X) {
-            Taskbar macosTaskbar = Taskbar.getTaskbar();
-            macosTaskbar.setIconImage(new ImageIcon(FindIconHelper.findIcon("scilab", "256x256")).getImage());
-        }
 
         /* defining the Layout */
         super.setLayout(new java.awt.BorderLayout());
