@@ -15,6 +15,9 @@ function demo_ourworldindata()
         if a.children <> [] then
             delete(a.children);
         end
+        
+        // reset axes
+        a.data_bounds(2,2) = 0;
 
         // extract data to display
         data = listbox.userdata;
@@ -24,7 +27,7 @@ function demo_ourworldindata()
     else
         // without argument, this is the gui creation
         my_handle = figure(..
-            "figure_name", "getting data from OurWorldInData", ..
+            "figure_name", "COVID data from OurWorldInData", ..
             "background", -2, ..
             "default_axes", "off", ..
             "layout", "border", ..

@@ -15,7 +15,10 @@ function demo_ecdc()
         if a.children <> [] then
             delete(a.children);
         end
-
+        
+        // reset axes
+        a.data_bounds(2,2) = 0;
+        
         // extract data to display
         data = listbox.userdata;
         countries = unique(data.country);
@@ -24,7 +27,7 @@ function demo_ecdc()
     else
         // without argument, this is the gui creation
         my_handle = figure(..
-            "figure_name", "getting data from ECDC", ..
+            "figure_name", "COVID data from ECDC", ..
             "background", -2, ..
             "default_axes", "off", ..
             "layout", "border", ..
