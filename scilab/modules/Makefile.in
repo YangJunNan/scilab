@@ -213,9 +213,8 @@ libscilab_cli_la_LINK = $(LIBTOOL) $(AM_V_lt) --tag=CC \
 	-o $@
 @GUI_FALSE@am__DEPENDENCIES_3 = $(am__DEPENDENCIES_1)
 libscilab_la_DEPENDENCIES = $(am__append_7) $(am__DEPENDENCIES_3) \
-	$(top_builddir)/modules/libscilab-cli.la $(am__append_9) \
-	$(am__DEPENDENCIES_2) $(am__DEPENDENCIES_2) \
-	$(am__DEPENDENCIES_2)
+	libscilab-cli.la $(am__append_9) $(am__DEPENDENCIES_2) \
+	$(am__DEPENDENCIES_2) $(am__DEPENDENCIES_2)
 am_libscilab_la_OBJECTS =
 libscilab_la_OBJECTS = $(am_libscilab_la_OBJECTS)
 AM_V_P = $(am__v_P_@AM_V@)
@@ -769,10 +768,9 @@ ENGINE_LIBS_DYNAMIC_LOAD = \
 # Core modules
 
 # Core modules
-libscilab_la_LIBADD = $(am__append_7) $(am__append_8) \
-	$(top_builddir)/modules/libscilab-cli.la $(OTHER_LIBS) \
-	$(EXTERNAL_LIBS) $(am__append_9) $(FLIBS) $(LAPACK_LIBS) \
-	$(BLAS_LIBS)
+libscilab_la_LIBADD = $(am__append_7) $(am__append_8) libscilab-cli.la \
+	$(OTHER_LIBS) $(EXTERNAL_LIBS) $(am__append_9) $(FLIBS) \
+	$(LAPACK_LIBS) $(BLAS_LIBS)
 
 ################## libscilab-cli  ##################
 libscilab_cli_la_SOURCES = 

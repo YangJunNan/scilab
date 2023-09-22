@@ -240,7 +240,7 @@ else
 libscilab_la_LIBADD += $(NO_GUI_LIBS)
 endif
 
-libscilab_la_LIBADD += $(top_builddir)/modules/libscilab-cli.la
+libscilab_la_LIBADD += libscilab-cli.la
 
 # Core modules
 libscilab_la_LIBADD += $(OTHER_LIBS) $(EXTERNAL_LIBS)
