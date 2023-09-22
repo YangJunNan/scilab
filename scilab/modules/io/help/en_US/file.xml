@@ -239,8 +239,7 @@
                         properties and to get the associated unit number <varname>unit</varname>.
                         This unit number may be used for further actions on this file or as file
                         descriptor in <function>read</function>, <function>write</function>,
-                        <function>readb</function>,
-                        <function>writb</function>,<function>save</function>, <function>load</function>
+                        <function>save</function>, <function>load</function>
                         function calls.
                     </para>
                 </listitem>
@@ -332,13 +331,7 @@ mclose(u2);
                 <link linkend="read">read</link>
             </member>
             <member>
-                <link linkend="readb">readb</link>
-            </member>
-            <member>
                 <link linkend="write">write</link>
-            </member>
-            <member>
-                <link linkend="writb">writb</link>
             </member>
             <member>
                 <link linkend="mopen">mopen</link>
