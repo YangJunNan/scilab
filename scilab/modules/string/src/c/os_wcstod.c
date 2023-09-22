@@ -12,7 +12,10 @@
  * along with this program.
  *
  */
+
 #include <stddef.h>
+#include <stdlib.h>
+
 #include "os_string.h"
 #include "os_wcstod.h"
 #include "stdio.h"

@@ -21,6 +21,8 @@
 #ifndef AST_AST_HXX
 #define AST_AST_HXX
 
+#include <cstdint>
+
 #include "location.hxx"
 #include "visitor.hxx"
 
