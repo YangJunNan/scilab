@@ -51,8 +51,8 @@
             <varlistentry>
                 <term>abserr, relerr</term>
                 <listitem>
-                    real scalars: absolute and relative errors.
-                    Default values: <literal>1.d-13</literal> and <literal>1d-8</literal>.
+                    real scalars: absolute and relative numerical tolerances.
+                    Default values are <literal>1.d-13</literal> and <literal>1d-8</literal>.
                     <para/>
                 </listitem>
             </varlistentry>

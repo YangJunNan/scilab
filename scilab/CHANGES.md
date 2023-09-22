@@ -38,6 +38,7 @@ In summary, the main new features and additions are:
 * `errbar()` function now uses horiontal line marks.
 * Add compression and decompression functions to manage compressed archive.
 * The number of characters used to define the body of any conditional instruction (`if`, `while`, `for`, or `select/case`) is no more limited to 16k (Scilab 6.x improvement).
+* Add absolute and relative numerical tolerences in `intl()` input arguments.
 * <TODO>
 
 
