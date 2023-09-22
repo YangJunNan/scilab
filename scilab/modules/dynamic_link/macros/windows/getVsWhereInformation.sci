@@ -29,9 +29,9 @@ function vs = getVsWhereInformation()
             xi = x(i);
             vs($+1) = struct("name", xi.displayName, "version", strtod(xi.catalog.productLineVersion), "path", xi.installationPath);
         end
-    end
 
-    vers = list2vec(vs.version);
-    [_, i] = gsort(vers);
-    vs = vs(i);
+        vers = list2vec(vs.version);
+        [_, i] = gsort(vers);
+        vs = vs(i);
+    end
 endfunction
