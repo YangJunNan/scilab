@@ -108,7 +108,7 @@ void SLint::setFiles(const std::vector<std::wstring> & files)
             {
                 collectInDirectory(full);
             }
-            else if (hasSuffix(full, L".sci"))
+            else /* if (hasSuffix(full, L".sci") || hasSuffix(full, L".sce") || hasSuffix(full, L".start") || hasSuffix(full, L".quit") || hasSuffix(full, L".tst"))*/
             {
                 SciFilePtr sf = parseFile(full);
                 if (sf.get())
