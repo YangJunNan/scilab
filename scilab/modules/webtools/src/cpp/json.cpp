@@ -1360,16 +1360,22 @@ types::InternalType* fromJSON(const std::string& s)
         return nullptr;
     }
 
-    //reset parser
+    if (r > 1)
+    {
+        // test if its JSON data
+        jsmn_init(&p);
+        jsmntok_t test;
+        jsmn_parse(&p, json.data(), (int)json.size(), &test, 1);
+        if(test.type != JSMN_ARRAY && test.type != JSMN_OBJECT)
+        {
+            return nullptr;
+        }
+    }
+
+    // parse all JSON data
     jsmn_init(&p);
     jsmntok_t* t = new jsmntok_t[r];
     jsmn_parse(&p, json.data(), (int)json.size(), t, r);
-
-    if (r > 1 && t[0].type != JSMN_ARRAY && t[0].type != JSMN_OBJECT)
-    {
-        delete[] t;
-        return nullptr;
-    }
 
     token_offset = 0;
     JSONVar* v = import_data(t);
