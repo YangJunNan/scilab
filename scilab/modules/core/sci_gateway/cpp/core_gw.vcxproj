@@ -252,6 +252,7 @@
     <ClCompile Include="sci_pause.cpp" />
     <ClCompile Include="sci_quit.cpp" />
     <ClCompile Include="sci_debug.cpp" />
+    <ClCompile Include="sci_skipArguments.cpp" />
     <ClCompile Include="sci_type.cpp" />
     <ClCompile Include="sci_struct.cpp" />
     <ClCompile Include="sci_tlist.cpp" />

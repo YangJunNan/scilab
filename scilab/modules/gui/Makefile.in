@@ -200,7 +200,9 @@ am__objects_1 = src/c/libscigui_algo_la-buildMainWindowTitle.lo \
 	src/c/libscigui_algo_la-checkColorRange.lo \
 	src/c/libscigui_algo_la-messageboxoptions.lo \
 	src/c/libscigui_algo_la-ScilabTermination.lo \
-	src/jni/libscigui_algo_la-ScilabTermination_wrap.lo
+	src/jni/libscigui_algo_la-ScilabTermination_wrap.lo \
+	src/c/libscigui_algo_la-getHandleType.lo \
+	src/c/libscigui_algo_la-getUIStyle.lo
 am__objects_2 = src/cpp/libscigui_algo_la-InitializeGUI.lo \
 	src/cpp/libscigui_algo_la-InitUIMenu.lo \
 	src/jni/libscigui_algo_la-CallScilabBridge.lo \
@@ -421,7 +423,9 @@ am__depfiles_remade =  \
 	src/c/$(DEPDIR)/libscigui_algo_la-addmenu.Plo \
 	src/c/$(DEPDIR)/libscigui_algo_la-buildMainWindowTitle.Plo \
 	src/c/$(DEPDIR)/libscigui_algo_la-checkColorRange.Plo \
+	src/c/$(DEPDIR)/libscigui_algo_la-getHandleType.Plo \
 	src/c/$(DEPDIR)/libscigui_algo_la-getMainWindowTitle.Plo \
+	src/c/$(DEPDIR)/libscigui_algo_la-getUIStyle.Plo \
 	src/c/$(DEPDIR)/libscigui_algo_la-messageboxoptions.Plo \
 	src/c/$(DEPDIR)/libscigui_algo_la-setMainWindowTitle.Plo \
 	src/cpp/$(DEPDIR)/libscigui_algo_la-CallClipboard.Plo \
@@ -936,7 +940,9 @@ GUI_C_SOURCES = \
     src/c/checkColorRange.c \
     src/c/messageboxoptions.c \
     src/c/ScilabTermination.c \
-    src/jni/ScilabTermination_wrap.c
+    src/jni/ScilabTermination_wrap.c \
+    src/c/getHandleType.c \
+    src/c/getUIStyle.c
 
 GUI_CXX_SOURCES = \
     src/cpp/InitializeGUI.cpp \
@@ -1483,6 +1489,10 @@ src/jni/$(DEPDIR)/$(am__dirstamp):
 	@: > src/jni/$(DEPDIR)/$(am__dirstamp)
 src/jni/libscigui_algo_la-ScilabTermination_wrap.lo:  \
 	src/jni/$(am__dirstamp) src/jni/$(DEPDIR)/$(am__dirstamp)
+src/c/libscigui_algo_la-getHandleType.lo: src/c/$(am__dirstamp) \
+	src/c/$(DEPDIR)/$(am__dirstamp)
+src/c/libscigui_algo_la-getUIStyle.lo: src/c/$(am__dirstamp) \
+	src/c/$(DEPDIR)/$(am__dirstamp)
 src/cpp/$(am__dirstamp):
 	@$(MKDIR_P) src/cpp
 	@: > src/cpp/$(am__dirstamp)
@@ -1910,7 +1920,9 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@src/c/$(DEPDIR)/libscigui_algo_la-addmenu.Plo@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@src/c/$(DEPDIR)/libscigui_algo_la-buildMainWindowTitle.Plo@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@src/c/$(DEPDIR)/libscigui_algo_la-checkColorRange.Plo@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@src/c/$(DEPDIR)/libscigui_algo_la-getHandleType.Plo@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@src/c/$(DEPDIR)/libscigui_algo_la-getMainWindowTitle.Plo@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@src/c/$(DEPDIR)/libscigui_algo_la-getUIStyle.Plo@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@src/c/$(DEPDIR)/libscigui_algo_la-messageboxoptions.Plo@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@src/c/$(DEPDIR)/libscigui_algo_la-setMainWindowTitle.Plo@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@src/cpp/$(DEPDIR)/libscigui_algo_la-CallClipboard.Plo@am__quote@ # am--include-marker
@@ -2092,6 +2104,20 @@ src/jni/libscigui_algo_la-ScilabTermination_wrap.lo: src/jni/ScilabTermination_w
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='src/jni/ScilabTermination_wrap.c' object='src/jni/libscigui_algo_la-ScilabTermination_wrap.lo' libtool=yes @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libscigui_algo_la_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o src/jni/libscigui_algo_la-ScilabTermination_wrap.lo `test -f 'src/jni/ScilabTermination_wrap.c' || echo '$(srcdir)/'`src/jni/ScilabTermination_wrap.c
+
+src/c/libscigui_algo_la-getHandleType.lo: src/c/getHandleType.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libscigui_algo_la_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT src/c/libscigui_algo_la-getHandleType.lo -MD -MP -MF src/c/$(DEPDIR)/libscigui_algo_la-getHandleType.Tpo -c -o src/c/libscigui_algo_la-getHandleType.lo `test -f 'src/c/getHandleType.c' || echo '$(srcdir)/'`src/c/getHandleType.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) src/c/$(DEPDIR)/libscigui_algo_la-getHandleType.Tpo src/c/$(DEPDIR)/libscigui_algo_la-getHandleType.Plo
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='src/c/getHandleType.c' object='src/c/libscigui_algo_la-getHandleType.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libscigui_algo_la_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o src/c/libscigui_algo_la-getHandleType.lo `test -f 'src/c/getHandleType.c' || echo '$(srcdir)/'`src/c/getHandleType.c
+
+src/c/libscigui_algo_la-getUIStyle.lo: src/c/getUIStyle.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libscigui_algo_la_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT src/c/libscigui_algo_la-getUIStyle.lo -MD -MP -MF src/c/$(DEPDIR)/libscigui_algo_la-getUIStyle.Tpo -c -o src/c/libscigui_algo_la-getUIStyle.lo `test -f 'src/c/getUIStyle.c' || echo '$(srcdir)/'`src/c/getUIStyle.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) src/c/$(DEPDIR)/libscigui_algo_la-getUIStyle.Tpo src/c/$(DEPDIR)/libscigui_algo_la-getUIStyle.Plo
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='src/c/getUIStyle.c' object='src/c/libscigui_algo_la-getUIStyle.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libscigui_algo_la_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o src/c/libscigui_algo_la-getUIStyle.lo `test -f 'src/c/getUIStyle.c' || echo '$(srcdir)/'`src/c/getUIStyle.c
 
 src/nogui/libscigui_disable_la-nogui.lo: src/nogui/nogui.c
 @am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libscigui_disable_la_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT src/nogui/libscigui_disable_la-nogui.lo -MD -MP -MF src/nogui/$(DEPDIR)/libscigui_disable_la-nogui.Tpo -c -o src/nogui/libscigui_disable_la-nogui.lo `test -f 'src/nogui/nogui.c' || echo '$(srcdir)/'`src/nogui/nogui.c
@@ -3360,7 +3386,9 @@ distclean: distclean-am
 	-rm -f src/c/$(DEPDIR)/libscigui_algo_la-addmenu.Plo
 	-rm -f src/c/$(DEPDIR)/libscigui_algo_la-buildMainWindowTitle.Plo
 	-rm -f src/c/$(DEPDIR)/libscigui_algo_la-checkColorRange.Plo
+	-rm -f src/c/$(DEPDIR)/libscigui_algo_la-getHandleType.Plo
 	-rm -f src/c/$(DEPDIR)/libscigui_algo_la-getMainWindowTitle.Plo
+	-rm -f src/c/$(DEPDIR)/libscigui_algo_la-getUIStyle.Plo
 	-rm -f src/c/$(DEPDIR)/libscigui_algo_la-messageboxoptions.Plo
 	-rm -f src/c/$(DEPDIR)/libscigui_algo_la-setMainWindowTitle.Plo
 	-rm -f src/cpp/$(DEPDIR)/libscigui_algo_la-CallClipboard.Plo
@@ -3552,7 +3580,9 @@ maintainer-clean: maintainer-clean-am
 	-rm -f src/c/$(DEPDIR)/libscigui_algo_la-addmenu.Plo
 	-rm -f src/c/$(DEPDIR)/libscigui_algo_la-buildMainWindowTitle.Plo
 	-rm -f src/c/$(DEPDIR)/libscigui_algo_la-checkColorRange.Plo
+	-rm -f src/c/$(DEPDIR)/libscigui_algo_la-getHandleType.Plo
 	-rm -f src/c/$(DEPDIR)/libscigui_algo_la-getMainWindowTitle.Plo
+	-rm -f src/c/$(DEPDIR)/libscigui_algo_la-getUIStyle.Plo
 	-rm -f src/c/$(DEPDIR)/libscigui_algo_la-messageboxoptions.Plo
 	-rm -f src/c/$(DEPDIR)/libscigui_algo_la-setMainWindowTitle.Plo
 	-rm -f src/cpp/$(DEPDIR)/libscigui_algo_la-CallClipboard.Plo

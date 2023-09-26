@@ -77,22 +77,25 @@ public class SciCompletionManager implements CompletionManager {
             String commandLine = inputParsingManager.getCommandLine();
             String[] scilabFieldsDictionary = Completion.searchFieldsDictionary(commandLine, searchedPattern);
             if (scilabFieldsDictionary != null) {
-                addItemsToDictionary(Messages.gettext("Field"), scilabFieldsDictionary);
+                addItemsToDictionary(Messages.gettext("field"), scilabFieldsDictionary);
             } else {
                 String[] scilabCommandsDictionary = Completion.searchCommandsDictionary(searchedPattern);
-                addItemsToDictionary(Messages.gettext("Scilab Command"), scilabCommandsDictionary);
+                addItemsToDictionary(Messages.gettext("command"), scilabCommandsDictionary);
 
                 String[] scilabFunctionsDictionary = Completion.searchFunctionsDictionary(searchedPattern);
-                addItemsToDictionary(Messages.gettext("Scilab Function"), scilabFunctionsDictionary);
+                addItemsToDictionary(Messages.gettext("function"), scilabFunctionsDictionary);
 
                 String[] scilabHandlesDictionary = Completion.searchHandleGraphicsPropertiesDictionary(searchedPattern);
-                addItemsToDictionary(Messages.gettext("Graphics handle field"), scilabHandlesDictionary);
+                addItemsToDictionary(Messages.gettext("handle property"), scilabHandlesDictionary);
 
                 String[] scilabMacrosDictionary = Completion.searchMacrosDictionary(searchedPattern);
-                addItemsToDictionary(Messages.gettext("Scilab Macro"), scilabMacrosDictionary);
+                addItemsToDictionary(Messages.gettext("macro"), scilabMacrosDictionary);
 
                 String[] scilabVariablesDictionary = Completion.searchVariablesDictionary(searchedPattern);
-                addItemsToDictionary(Messages.gettext("Scilab Variable"), scilabVariablesDictionary);
+                addItemsToDictionary(Messages.gettext("variable"), scilabVariablesDictionary);
+
+                String[] scilabMustBeDictionary = Completion.searchMustBeDictionary(searchedPattern);
+                addItemsToDictionary(Messages.gettext("arguments validator"), scilabMustBeDictionary);
             }
         }
         return dictionary;

@@ -16,6 +16,9 @@
 #include <iostream>
 
 #include "checkers/PrintfChecker.hxx"
+#include "callexp.hxx"
+#include "simplevar.hxx"
+#include "stringexp.hxx"
 
 namespace slint
 {

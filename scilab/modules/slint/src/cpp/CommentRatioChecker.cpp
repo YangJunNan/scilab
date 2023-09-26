@@ -15,6 +15,7 @@
 
 #include "checkers/CommentRatioChecker.hxx"
 
+#include "commentexp.hxx"
 namespace slint
 {
 

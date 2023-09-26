@@ -14,6 +14,8 @@
  */
 
 #include "checkers/GlobalKeywordChecker.hxx"
+#include "callexp.hxx"
+#include "simplevar.hxx"
 
 namespace slint
 {

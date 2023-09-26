@@ -164,6 +164,16 @@ public";
 char **searchHandleGraphicsPropertiesDictionary(char *somechars);
 
 /* JavaDoc */
+%javamethodmodifiers searchMustBeDictionary(char *somechars) "
+/**
+* completion on MustBe helpers from arguments blocks
+* @param[in] somechars first characters of a word
+* @return an array of chars
+*/
+public";
+char **searchMustBeDictionary(char *somechars);
+
+/* JavaDoc */
 %javamethodmodifiers getPartLevel(char *line) "
 /**
 * pre parsing current line to search with completion

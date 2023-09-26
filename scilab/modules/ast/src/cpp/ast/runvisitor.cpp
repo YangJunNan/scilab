@@ -491,6 +491,12 @@ void RunVisitorT<T>::visitprivate(const FieldExp &e)
 }
 
 template <class T>
+void RunVisitorT<T>::visitprivate(const ArgumentsExp  &e)
+{
+    /* FIXME: Implement visitor for ArgumentsExp */
+}
+
+template <class T>
 void RunVisitorT<T>::visitprivate(const IfExp  &e)
 {
     CoverageInstance::invokeAndStartChrono((void*)&e);
@@ -980,189 +986,6 @@ void RunVisitorT<T>::visitprivate(const ReturnExp &e)
 }
 
 template <class T>
-void RunVisitorT<T>::visitprivate(const IntSelectExp &e)
-{
-    CoverageInstance::invokeAndStartChrono((void*)&e);
-    bool found = false;
-    //e.getSelect()->accept(*this);
-    //InternalType* pIT = getResult();
-    //setResult(nullptr);
-    //if (pIT && pIT->isDouble())
-    //{
-    //    Double * pDbl = static_cast<Double *>(pIT);
-    //    if (!pDbl->isComplex() && pDbl->getSize() == 1)
-    //    {
-    //        int64_t val;
-    //        if (analysis::tools::asInteger<int64_t>(pDbl->get(0), val))
-    //        {
-    //            Exp * exp = e.getExp(val);
-    //            found = true;
-    //            if (exp)
-    //            {
-    //                Exp * body = exp->isCaseExp() ? exp->getAs<CaseExp>()->getBody() : exp;
-    //                if (e.isBreakable())
-    //                {
-    //                    const_cast<IntSelectExp*>(&e)->resetBreak();
-    //                    body->setBreakable();
-    //                }
-
-    //                if (e.isContinuable())
-    //                {
-    //                    const_cast<IntSelectExp*>(&e)->resetContinue();
-    //                    body->setContinuable();
-    //                }
-
-    //                if (e.isReturnable())
-    //                {
-    //                    const_cast<IntSelectExp*>(&e)->resetReturn();
-    //                    body->setReturnable();
-    //                }
-
-    //                try
-    //                {
-    //                    //the good one
-    //                    body->accept(*this);
-    //                }
-    //                catch (const InternalError& ie)
-    //                {
-    //                    pIT->killMe();
-    //                    throw ie;
-    //                }
-
-    //                if (e.isBreakable() && body->isBreak())
-    //                {
-    //                    const_cast<IntSelectExp*>(&e)->setBreak();
-    //                    body->resetBreak();
-    //                }
-
-    //                if (e.isContinuable() && body->isContinue())
-    //                {
-    //                    const_cast<IntSelectExp*>(&e)->setContinue();
-    //                    body->resetContinue();
-    //                }
-
-    //                if (e.isReturnable() && body->isReturn())
-    //                {
-    //                    const_cast<IntSelectExp*>(&e)->setReturn();
-    //                    body->resetReturn();
-    //                }
-    //            }
-    //        }
-    //    }
-    //}
-
-    if (!found)
-    {
-        try
-        {
-            e.getOriginal()->accept(*this);
-        }
-        catch (ScilabException &)
-        {
-            CoverageInstance::stopChrono((void*)&e);
-            throw;
-        }
-    }
-    CoverageInstance::stopChrono((void*)&e);
-}
-
-template <class T>
-void RunVisitorT<T>::visitprivate(const StringSelectExp &e)
-{
-    CoverageInstance::invokeAndStartChrono((void*)&e);
-    try
-    {
-        e.getSelect()->accept(*this);
-    }
-    catch (ScilabException &)
-    {
-        CoverageInstance::stopChrono((void*)&e);
-        throw;
-    }
-    types::InternalType* pIT = getResult();
-    setResult(nullptr);
-    bool found = false;
-    if (pIT && pIT->isString())
-    {
-        types::String * pStr = static_cast<types::String *>(pIT);
-        if (pStr->getSize() == 1)
-        {
-            if (wchar_t * s = pStr->get(0))
-            {
-                const std::wstring ws(s);
-                Exp * exp = e.getExp(ws);
-                found = true;
-                if (exp)
-                {
-                    Exp * body = exp->isCaseExp() ? exp->getAs<CaseExp>()->getBody() : exp;
-                    if (e.isBreakable())
-                    {
-                        const_cast<StringSelectExp*>(&e)->resetBreak();
-                        body->setBreakable();
-                    }
-
-                    if (e.isContinuable())
-                    {
-                        const_cast<StringSelectExp*>(&e)->resetContinue();
-                        body->setContinuable();
-                    }
-
-                    if (e.isReturnable())
-                    {
-                        const_cast<StringSelectExp*>(&e)->resetReturn();
-                        body->setReturnable();
-                    }
-
-                    try
-                    {
-                        //the good one
-                        body->accept(*this);
-                    }
-                    catch (const InternalError& ie)
-                    {
-                        pIT->killMe();
-                        CoverageInstance::stopChrono((void*)&e);
-                        throw ie;
-                    }
-
-                    if (e.isBreakable() && body->isBreak())
-                    {
-                        const_cast<StringSelectExp*>(&e)->setBreak();
-                        body->resetBreak();
-                    }
-
-                    if (e.isContinuable() && body->isContinue())
-                    {
-                        const_cast<StringSelectExp*>(&e)->setContinue();
-                        body->resetContinue();
-                    }
-
-                    if (e.isReturnable() && body->isReturn())
-                    {
-                        const_cast<StringSelectExp*>(&e)->setReturn();
-                        body->resetReturn();
-                    }
-                }
-            }
-        }
-    }
-
-    if (!found)
-    {
-        try
-        {
-            e.getOriginal()->accept(*this);
-        }
-        catch (ScilabException &)
-        {
-            CoverageInstance::stopChrono((void*)&e);
-            throw;
-        }
-    }
-    CoverageInstance::stopChrono((void*)&e);
-}
-
-template <class T>
 void RunVisitorT<T>::visitprivate(const SelectExp &e)
 {
     // FIXME : exec select ... case ... else ... end
@@ -1436,7 +1259,7 @@ void RunVisitorT<T>::visitprivate(const FunctionDec & e)
     // funcprot(0) : do nothing
     // funcprot(1) && warning(on) : warning
     //get input parameters list
-    std::list<symbol::Variable*> *pVarList = new std::list<symbol::Variable*>();
+    std::vector<symbol::Variable*>* pVarList = new std::vector<symbol::Variable*>();
     const exps_t & vars = e.getArgs().getVars();
     for (const auto var : vars)
     {
@@ -1444,24 +1267,30 @@ void RunVisitorT<T>::visitprivate(const FunctionDec & e)
     }
 
     //get output parameters list
-    std::list<symbol::Variable*> *pRetList = new std::list<symbol::Variable*>();
+    std::vector<symbol::Variable*>* pRetList = new std::vector<symbol::Variable*>();
     const exps_t & rets = e.getReturns().getVars();
     for (const auto ret : rets)
     {
         pRetList->push_back(ret->getAs<SimpleVar>()->getStack());
     }
 
-    types::Macro *pMacro = new types::Macro(e.getSymbol().getName(), *pVarList, *pRetList,
-                                            const_cast<SeqExp&>(static_cast<const SeqExp&>(e.getBody())), L"script");
-    pMacro->setLines(e.getLocation().first_line, e.getLocation().last_line);
-    if (e.getMacro())
+    types::Macro* pMacro = const_cast<ast::FunctionDec&>(e).getMacro();
+    if (pMacro == nullptr)
     {
-        pMacro->setFileName(e.getMacro()->getFileName());
+        pMacro = new types::Macro(e.getSymbol().getName(), *pVarList, *pRetList, const_cast<SeqExp&>(static_cast<const SeqExp&>(e.getBody())), L"script");
+        pMacro->setLines(e.getLocation().first_line, e.getLocation().last_line);
+        if (e.getMacro())
+        {
+            pMacro->setFileName(e.getMacro()->getFileName());
+        }
+
+        pMacro->IncreaseRef();
+        const_cast<ast::FunctionDec&>(e).setMacro(pMacro);
     }
 
     if (ctx->isprotected(symbol::Symbol(pMacro->getName())))
     {
-        delete pMacro;
+        pMacro->killMe();
         std::wostringstream os;
         os << _W("Redefining permanent variable.\n");
         CoverageInstance::stopChrono((void*)&e);
@@ -1483,6 +1312,12 @@ void RunVisitorT<T>::visitprivate(const FunctionDec & e)
     }
 
     CoverageInstance::stopChrono((void*)&e);
+}
+
+template <class T>
+void RunVisitorT<T>::visitprivate(const ArgumentDec & e)
+{
+    /* FIXME: Implement Run Visitor for ArgumentDec */
 }
 
 template <class T>
@@ -1702,295 +1537,6 @@ void RunVisitorT<T>::visitprivate(const ListExp &e)
     setResult(out);
     cleanIn(in, out);
     CoverageInstance::stopChrono((void*)&e);
-}
-
-template <class T>
-void RunVisitorT<T>::visitprivate(const OptimizedExp &e)
-{
-}
-
-template <class T>
-void RunVisitorT<T>::visitprivate(const MemfillExp &e)
-{
-    CoverageInstance::invokeAndStartChrono((void*)&e);
-    try
-    {
-        e.getOriginal()->accept(*this);
-    }
-    catch (ScilabException &)
-    {
-        CoverageInstance::stopChrono((void*)&e);
-        throw;
-    }
-}
-
-template <class T>
-void RunVisitorT<T>::visitprivate(const DAXPYExp &e)
-{
-    CoverageInstance::invokeAndStartChrono((void*)&e);
-    types::InternalType* pIT = NULL;
-    types::Double* ad = NULL;
-    int ar = 0;
-    int ac = 0;
-
-    types::Double* xd = NULL;
-    int xr = 0;
-    int xc = 0;
-
-    types::Double* yd = NULL;
-    int yr = 0;
-    int yc = 0;
-
-    //check types and dimensions
-
-    //y must be double
-    const Exp &ye = e.getY();
-    try
-    {
-        ye.accept(*this);
-    }
-    catch (ScilabException &)
-    {
-        CoverageInstance::stopChrono((void*)&e);
-        throw;
-    }
-
-    pIT = getResult();
-    if (pIT->isDouble())
-    {
-        yd = pIT->getAs<types::Double>();
-        if (yd->getDims() == 2 && yd->isComplex() == false)
-        {
-            yr = yd->getRows();
-            yc = yd->getCols();
-        }
-        else
-        {
-            yd->killMe();
-            try
-            {
-                e.getOriginal()->accept(*this);
-            }
-            catch (ScilabException &)
-            {
-                CoverageInstance::stopChrono((void*)&e);
-                throw;
-            }
-            CoverageInstance::stopChrono((void*)&e);
-            return;
-        }
-    }
-    else
-    {
-        pIT->killMe();
-        try
-        {
-            e.getOriginal()->accept(*this);
-        }
-        catch (ScilabException &)
-        {
-            CoverageInstance::stopChrono((void*)&e);
-            throw;
-        }
-        CoverageInstance::stopChrono((void*)&e);
-        return;
-    }
-
-    //x
-    const Exp &xe = e.getX();
-    try
-    {
-        xe.accept(*this);
-    }
-    catch (ScilabException &)
-    {
-        CoverageInstance::stopChrono((void*)&e);
-        throw;
-    }
-    pIT = getResult();
-
-    if (pIT->isDouble())
-    {
-        xd = pIT->getAs<types::Double>();
-        if (xd->isScalar() && xd->isComplex() == false)
-        {
-            // x become a
-            ad = xd;
-            ar = 1;
-            ac = 1;
-        }
-        else if (xd->getDims() == 2 && xd->isComplex() == false)
-        {
-            xr = xd->getRows();
-            xc = xd->getCols();
-        }
-        else
-        {
-            yd->killMe();
-            xd->killMe();
-            try
-            {
-                e.getOriginal()->accept(*this);
-            }
-            catch (ScilabException &)
-            {
-                CoverageInstance::stopChrono((void*)&e);
-                throw;
-            }
-            CoverageInstance::stopChrono((void*)&e);
-            return;
-        }
-    }
-    else
-    {
-        pIT->killMe();
-        yd->killMe();
-        try
-        {
-            e.getOriginal()->accept(*this);
-        }
-        catch (ScilabException &)
-        {
-            CoverageInstance::stopChrono((void*)&e);
-            throw;
-        }
-        CoverageInstance::stopChrono((void*)&e);
-        return;
-    }
-
-    const Exp &ae = e.getA();
-    try
-    {
-        ae.accept(*this);
-    }
-    catch (ScilabException &)
-    {
-        CoverageInstance::stopChrono((void*)&e);
-        throw;
-    }
-    pIT = getResult();
-
-    if (pIT->isDouble())
-    {
-        if (ad)
-        {
-            xd = pIT->getAs<types::Double>();
-            //X is scalar it become A
-            //now use A as X
-            if (xd->getDims() == 2 && xd->isComplex() == false)
-            {
-                xr = xd->getRows();
-                xc = xd->getCols();
-            }
-            else
-            {
-                yd->killMe();
-                xd->killMe();
-                ad->killMe();
-                try
-                {
-                    e.getOriginal()->accept(*this);
-                }
-                catch (ScilabException &)
-                {
-                    CoverageInstance::stopChrono((void*)&e);
-                    throw;
-                }
-                CoverageInstance::stopChrono((void*)&e);
-                return;
-            }
-        }
-        else
-        {
-            //a is a and it must be scalar
-            ad = pIT->getAs<types::Double>();
-            if (/*ad->isScalar() && */ad->isComplex() == false)
-            {
-                ar = ad->getRows(); //1;
-                ac = ad->getCols();//1;
-            }
-            else
-            {
-                yd->killMe();
-                xd->killMe();
-                ad->killMe();
-                try
-                {
-                    e.getOriginal()->accept(*this);
-                }
-                catch (ScilabException &)
-                {
-                    CoverageInstance::stopChrono((void*)&e);
-                    throw;
-                }
-                throw;
-                return;
-            }
-        }
-    }
-    else
-    {
-        pIT->killMe();
-        yd->killMe();
-        xd->killMe();
-        try
-        {
-            e.getOriginal()->accept(*this);
-        }
-        catch (ScilabException &)
-        {
-            CoverageInstance::stopChrono((void*)&e);
-            throw;
-        }
-        CoverageInstance::stopChrono((void*)&e);
-        return;
-    }
-
-    // If we get here we are certain that ad, xd & yd have been set
-    if (ac == 1 &&
-            ar == 1 &&
-            xr == yr &&
-            xc == yc)
-    {
-        //go !
-        int one = 1;
-        int size = xc * xr;
-        //Double* od = (Double*)yd->clone();
-        C2F(daxpy)(&size, ad->get(), xd->get(), &one, yd->get(), &one);
-        //setResult(od);
-        //yd->killMe();
-        xd->killMe();
-        ad->killMe();
-        CoverageInstance::stopChrono((void*)&e);
-        return;
-    }
-    else if (ac == xr && ar == yr && xc == yc)
-    {
-        char n = 'n';
-        double one = 1;
-        C2F(dgemm)(&n, &n, &ar, &xc, &ac, &one, ad->get(), &ar, xd->get(), &ac, &one, yd->get(), &ar);
-        xd->killMe();
-        ad->killMe();
-        CoverageInstance::stopChrono((void*)&e);
-        return;
-    }
-
-    yd->killMe();
-    xd->killMe();
-    ad->killMe();
-
-    try
-    {
-        e.getOriginal()->accept(*this);
-    }
-    catch (ScilabException &)
-    {
-        CoverageInstance::stopChrono((void*)&e);
-        throw;
-    }
-    CoverageInstance::stopChrono((void*)&e);
-
-    return;
 }
 
 template <class T>

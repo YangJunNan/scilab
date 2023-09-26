@@ -24,11 +24,10 @@
 
 #include "CovHTMLCodePrinter.hxx"
 #include "CoverModule.hxx"
-#include "allexp.hxx"
-#include "alltypes.hxx"
-#include "allvar.hxx"
 #include "cover_tools.hxx"
 #include "coverage_instance.hxx"
+#include "parser.hxx"
+#include "macrofile.hxx"
 
 extern "C"
 {
@@ -801,8 +800,8 @@ const std::wstring CoverModule::getName(const std::wstring& path)
 
 void CoverModule::writeMacroHTMLReport(types::Macro* macro, std::map<MacroLoc, CoverResult>& results, const std::wstring& outputDir)
 {
-    std::list<symbol::Variable*>* in = macro->getInputs();
-    std::list<symbol::Variable*>* out = macro->getOutputs();
+    std::vector<symbol::Variable*>* in = macro->getInputs();
+    std::vector<symbol::Variable*>* out = macro->getOutputs();
     ast::SeqExp& body = *macro->getBody()->clone();
 
     ast::exps_t& _in = *new ast::exps_t();

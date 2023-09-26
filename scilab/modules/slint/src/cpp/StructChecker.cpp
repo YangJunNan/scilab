@@ -14,6 +14,11 @@
  */
 
 #include "checkers/StructChecker.hxx"
+#include "callexp.hxx"
+#include "simplevar.hxx"
+#include "assignexp.hxx"
+#include "stringexp.hxx"
+#include "fieldexp.hxx"
 
 namespace slint
 {

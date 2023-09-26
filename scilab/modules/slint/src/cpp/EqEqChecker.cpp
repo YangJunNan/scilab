@@ -14,7 +14,7 @@
  */
 
 #include "checkers/EqEqChecker.hxx"
-
+#include "opexp.hxx"
 namespace slint
 {
 

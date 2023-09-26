@@ -24,5 +24,6 @@
 #include "dec.hxx"
 #include "vardec.hxx"
 #include "functiondec.hxx"
+#include "argumentdec.hxx"
 
 #endif // ! AST_ALLDEC_HXX

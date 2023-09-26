@@ -26,6 +26,7 @@ extern "C"
 #include "FileBrowserChDir.h"
 #include "scicurdir.h"
 #include "Scierror.h"
+#include "Sciwarning.h"
 #include "InitializeJVM.h"
 }
 

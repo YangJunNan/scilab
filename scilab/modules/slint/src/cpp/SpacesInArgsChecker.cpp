@@ -14,6 +14,7 @@
  */
 
 #include "checkers/SpacesInArgsChecker.hxx"
+#include "callexp.hxx"
 
 namespace slint
 {

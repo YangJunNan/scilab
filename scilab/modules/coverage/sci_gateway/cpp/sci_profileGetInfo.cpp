@@ -24,6 +24,7 @@
 #include "scilabexception.hxx"
 #include "string.hxx"
 #include "struct.hxx"
+#include "tlist.hxx"
 
 #include <fstream>
 #include <iostream>

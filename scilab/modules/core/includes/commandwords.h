@@ -21,7 +21,8 @@
 * @param[out] size of returned array
 * @return array of strings
 */
-char **getcommandkeywords(int *sizearray);
+char** getcommandkeywords(int* sizearray);
+char** getmustbekeywords(int* sizearray);
 
 #endif /* __COMMANDWORDS_H__ */
 /*--------------------------------------------------------------------------*/

@@ -14,6 +14,7 @@
  */
 
 #include "checkers/TodoChecker.hxx"
+#include "commentexp.hxx"
 
 namespace slint
 {

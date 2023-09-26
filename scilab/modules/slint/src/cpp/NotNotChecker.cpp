@@ -14,6 +14,7 @@
  */
 
 #include "checkers/NotNotChecker.hxx"
+#include "notexp.hxx"
 
 namespace slint
 {

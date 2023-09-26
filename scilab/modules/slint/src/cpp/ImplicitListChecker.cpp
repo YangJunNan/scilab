@@ -16,6 +16,9 @@
 #include "core_math.h"
 
 #include "checkers/ImplicitListChecker.hxx"
+#include "listexp.hxx"
+#include "doubleexp.hxx"
+#include "simplevar.hxx"
 
 namespace slint
 {

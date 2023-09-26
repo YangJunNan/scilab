@@ -14,6 +14,9 @@
  */
 
 #include "checkers/ExpInCondChecker.hxx"
+#include "ifexp.hxx"
+#include "whileexp.hxx"
+#include "opexp.hxx"
 
 namespace slint
 {

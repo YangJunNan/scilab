@@ -577,12 +577,6 @@
     <ClInclude Include="includes\operations\types_dotdivide.hxx">
       <Filter>Header Files\operations</Filter>
     </ClInclude>
-    <ClInclude Include="includes\exps\optimizedexp.hxx">
-      <Filter>Header Files\exps</Filter>
-    </ClInclude>
-    <ClInclude Include="includes\exps\daxpyexp.hxx">
-      <Filter>Header Files\exps</Filter>
-    </ClInclude>
     <ClInclude Include="includes\system_env\configvariable_interface.h">
       <Filter>Header Files\system_env</Filter>
     </ClInclude>
@@ -609,9 +603,6 @@
     </ClInclude>
     <ClInclude Include="includes\system_env\numericconstants_interface.h">
       <Filter>Header Files\system_env</Filter>
-    </ClInclude>
-    <ClInclude Include="includes\exps\tableintselectexp.hxx">
-      <Filter>Header Files\exps</Filter>
     </ClInclude>
     <ClInclude Include="includes\ast\breakpoint.hxx">
       <Filter>Header Files\ast</Filter>
@@ -641,6 +632,18 @@
       <Filter>Header Files\ast</Filter>
     </ClInclude>
     <ClInclude Include="includes\types\dtoa.h">
+      <Filter>Header Files\ast</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\exps\argumentdec.hxx">
+      <Filter>Header Files\exps</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\exps\argumentsexp.hxx">
+      <Filter>Header Files\exps</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\exps\stepvisitor.hxx">
+      <Filter>Header Files\exps</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\ast\argumentvisitor.hxx">
       <Filter>Header Files\ast</Filter>
     </ClInclude>
   </ItemGroup>

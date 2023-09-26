@@ -75,6 +75,14 @@ char **searchFieldsDictionary(char *lineBeforeCaret, char *pattern);
 * @param[in] somechars first characters of a word
 * @return an array of chars
 */
-char **searchHandleGraphicsPropertiesDictionary(char *somechars);
+char** searchHandleGraphicsPropertiesDictionary(char* somechars);
+
+/**
+* completion on MustBe helpers from arguments blocks
+* @param[in] somechars first characters of a word
+* @return an array of chars
+*/
+char** searchMustBeDictionary(char* somechars);
+
 /*--------------------------------------------------------------------------*/
 #endif /* __COMPLETION_WRAP_JAVA_H__ */

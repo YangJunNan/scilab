@@ -259,7 +259,7 @@ private :
                 std::wstring* s = get_wstring();
                 exp = new CommentExp(loc, s);
                 //delete s;
-                break;
+                break; 
             }
             case 6:
             {
@@ -528,6 +528,18 @@ private :
                 Exp* name = get_exp();
                 exps_t* args = get_exps();
                 exp = new CellCallExp(loc, *name, *args);
+                break;
+            }
+            case 38:
+            {
+                exps_t* exps = get_exps();
+                exp = new ArgumentDec(loc, *(*exps)[0], *(*exps)[1], *(*exps)[2], *(*exps)[3], *(*exps)[4]);
+                break;
+            }
+            case 39:
+            {
+                exps_t* args = get_exps();
+                exp = new ArgumentsExp(loc, *args);
                 break;
             }
             default:

@@ -14,6 +14,7 @@
  */
 
 #include "checkers/UselessOpChecker.hxx"
+#include "opexp.hxx"
 
 namespace slint
 {

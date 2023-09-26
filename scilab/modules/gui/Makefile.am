@@ -59,7 +59,9 @@ GUI_C_SOURCES = \
     src/c/checkColorRange.c \
     src/c/messageboxoptions.c \
     src/c/ScilabTermination.c \
-    src/jni/ScilabTermination_wrap.c
+    src/jni/ScilabTermination_wrap.c \
+    src/c/getHandleType.c \
+    src/c/getUIStyle.c
 
 GUI_CXX_SOURCES = \
     src/cpp/InitializeGUI.cpp \

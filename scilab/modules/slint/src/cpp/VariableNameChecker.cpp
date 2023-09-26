@@ -14,6 +14,8 @@
  */
 
 #include "checkers/VariableNameChecker.hxx"
+#include "simplevar.hxx"
+#include "vardec.hxx"
 
 namespace slint
 {

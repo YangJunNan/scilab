@@ -81,6 +81,7 @@ int CoreModule::Load()
     symbol::Context::getInstance()->addFunction(types::Function::createFunction(L"fieldnames", &sci_fieldnames, MODULE_NAME));
     symbol::Context::getInstance()->addFunction(types::Function::createFunction(L"oldEmptyBehaviour", &sci_oldEmptyBehaviour, MODULE_NAME));
     symbol::Context::getInstance()->addFunction(types::Function::createFunction(L"checkNamedArguments", &sci_checkNamedArguments, MODULE_NAME));
+    symbol::Context::getInstance()->addFunction(types::Function::createFunction(L"skipArguments", &sci_skipArguments, MODULE_NAME));
 
 #ifndef NDEBUG
     symbol::Context::getInstance()->addFunction(types::Function::createFunction(L"inspectorGetItemCount", &sci_inspectorGetItemCount, MODULE_NAME));

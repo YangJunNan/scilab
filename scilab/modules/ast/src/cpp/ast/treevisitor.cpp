@@ -45,6 +45,11 @@ void TreeVisitor::visit(const SeqExp  &e)
         last_line = it->getLocation().last_line;
 
         it->accept(*this);
+        if (it->isArgumentsExp())
+        {
+            continue;
+        }
+
         if (it->isAssignExp() ||
                 it->isCommentExp() ||
                 it->isForExp() ||

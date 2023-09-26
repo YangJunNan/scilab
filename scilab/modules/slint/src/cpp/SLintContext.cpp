@@ -16,6 +16,7 @@
 #include "SciFile.hxx"
 #include "SLint.hxx"
 #include "SLintContext.hxx"
+#include "all.hxx"
 
 namespace slint
 {

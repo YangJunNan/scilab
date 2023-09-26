@@ -17,6 +17,7 @@
 #include <set>
 
 #include "checkers/FunctionArgsChecker.hxx"
+#include "simplevar.hxx"
 
 namespace slint
 {

@@ -118,6 +118,7 @@ public:
     virtual void visit (typename select_const<K, OpExp>::t & e) = 0;
     virtual void visit (typename select_const<K, LogicalOpExp>::t & e) = 0;
     virtual void visit (typename select_const<K, AssignExp>::t & e) = 0;
+    virtual void visit (typename select_const<K, ArgumentsExp>::t & e) = 0;
     virtual void visit (typename select_const<K, IfExp>::t & e) = 0;
     virtual void visit (typename select_const<K, WhileExp>::t & e) = 0;
     virtual void visit (typename select_const<K, ForExp>::t & e) = 0;
@@ -164,6 +165,7 @@ public:
 public:
     virtual void visit (typename select_const<K, VarDec>::t & e) = 0;
     virtual void visit (typename select_const<K, FunctionDec>::t & e) = 0;
+    virtual void visit (typename select_const<K, ArgumentDec>::t & e) = 0;
     /** \} */
 
     /** \name Visit Type dedicated Expressions related node.
@@ -171,16 +173,6 @@ public:
 public:
     virtual void visit (typename select_const<K, ListExp>::t & e) = 0;
     /** \} */
-
-public:
-    virtual void visit (typename select_const<K, OptimizedExp>::t & e) = 0;
-    virtual void visit (typename select_const<K, MemfillExp>::t & e) = 0;
-
-    /*optimized*/
-    virtual void visit (typename select_const<K, DAXPYExp>::t & e) = 0;
-
-    virtual void visit (typename select_const<K, IntSelectExp>::t & e) = 0;
-    virtual void visit (typename select_const<K, StringSelectExp>::t & e) = 0;
 };
 
 /** \brief Define shortand type for a const visitor */

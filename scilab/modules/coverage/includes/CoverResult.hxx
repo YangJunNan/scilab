@@ -23,10 +23,7 @@
 #include <map>
 #include <vector>
 
-#include "allexp.hxx"
-#include "allvar.hxx"
-#include "alltypes.hxx"
-#include "parser.hxx"
+#include "exp.hxx"
 
 #include "Counter.hxx"
 #include "CoverMacroInfo.hxx"

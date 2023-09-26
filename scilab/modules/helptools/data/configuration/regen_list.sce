@@ -12,8 +12,8 @@ mputl(macro_list, fullfile(folder, "scilab_macros.txt"));
 
 //builtins
 func_list = completion("", "functions");
-//must_list = completion("", "mustBe");
-//func_list = [func_list;must_list];
+must_list = completion("", "mustBe");
+func_list = [func_list;must_list];
 
 func_list(part(func_list, 1) == "%") = [];
 func_list(part(func_list, 1) == "!") = [];
