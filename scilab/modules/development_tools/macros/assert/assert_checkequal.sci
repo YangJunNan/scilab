@@ -160,7 +160,7 @@ function [flag, errmsg] = assert_checkequal(computed, expected)
         end
         //
         if or(typeof(computed) == ["sparse", "boolean sparse"])
-            cstr = full(computed(k))
+            cstr = string(full(computed(k)))
         else
             s = "computed(1)"
             if isdef("k","l") & k <> []
