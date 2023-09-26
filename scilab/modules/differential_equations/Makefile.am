@@ -173,15 +173,15 @@ libscisundials_la_SOURCES = \
     src/patched_sundials/src/arkode/arkode_root_impl.h \
     src/patched_sundials/src/arkode/arkode_sprkstep_impl.h \
     src/patched_sundials/src/arkode/arkode_types_impl.h \
-    src/patched_sundials/src/cvode/cvode_bandpre_impl.h \
-    src/patched_sundials/src/cvode/cvode_bbdpre_impl.h \
-    src/patched_sundials/src/cvode/cvode_diag_impl.h \
-    src/patched_sundials/src/cvode/cvode_impl.h \
-    src/patched_sundials/src/cvode/cvode_ls_impl.h \
-    src/patched_sundials/src/cvode/cvode_proj_impl.h \
-    src/patched_sundials/src/ida/ida_bbdpre_impl.h \
-    src/patched_sundials/src/ida/ida_impl.h \
-    src/patched_sundials/src/ida/ida_ls_impl.h \
+    src/patched_sundials/src/cvodes/cvodes_bandpre_impl.h \
+    src/patched_sundials/src/cvodes/cvodes_bbdpre_impl.h \
+    src/patched_sundials/src/cvodes/cvodes_diag_impl.h \
+    src/patched_sundials/src/cvodes/cvodes_impl.h \
+    src/patched_sundials/src/cvodes/cvodes_ls_impl.h \
+    src/patched_sundials/src/cvodes/cvodes_proj_impl.h \
+    src/patched_sundials/src/idas/ida_bbdpre_impl.h \
+    src/patched_sundials/src/idas/ida_impl.h \
+    src/patched_sundials/src/idas/ida_ls_impl.h \
     src/patched_sundials/src/kinsol/kinsol_bbdpre_impl.h \
     src/patched_sundials/src/kinsol/kinsol_impl.h \
     src/patched_sundials/src/kinsol/kinsol_ls_impl.h \
@@ -218,25 +218,33 @@ libscisundials_la_SOURCES = \
     src/patched_sundials/src/arkode/arkode_sprk.c \
     src/patched_sundials/src/arkode/arkode_sprkstep.c \
     src/patched_sundials/src/arkode/arkode_sprkstep_io.c \
-    src/patched_sundials/src/cvode/cvode.c \
-    src/patched_sundials/src/cvode/cvode_bandpre.c \
-    src/patched_sundials/src/cvode/cvode_bbdpre.c \
-    src/patched_sundials/src/cvode/cvode_diag.c \
-    src/patched_sundials/src/cvode/cvode_direct.c \
-    src/patched_sundials/src/cvode/cvode_fused_stubs.c \
-    src/patched_sundials/src/cvode/cvode_io.c \
-    src/patched_sundials/src/cvode/cvode_ls.c \
-    src/patched_sundials/src/cvode/cvode_nls.c \
-    src/patched_sundials/src/cvode/cvode_proj.c \
-    src/patched_sundials/src/cvode/cvode_spils.c \
-    src/patched_sundials/src/ida/ida.c \
-    src/patched_sundials/src/ida/ida_bbdpre.c \
-    src/patched_sundials/src/ida/ida_direct.c \
-    src/patched_sundials/src/ida/ida_ic.c \
-    src/patched_sundials/src/ida/ida_io.c \
-    src/patched_sundials/src/ida/ida_ls.c \
-    src/patched_sundials/src/ida/ida_nls.c \
-    src/patched_sundials/src/ida/ida_spils.c \
+    src/patched_sundials/src/cvodes/cvodea.c \
+    src/patched_sundials/src/cvodes/cvodea_io.c \
+    src/patched_sundials/src/cvodes/cvodes.c \
+    src/patched_sundials/src/cvodes/cvodes_bandpre.c \
+    src/patched_sundials/src/cvodes/cvodes_bbdpre.c \
+    src/patched_sundials/src/cvodes/cvodes_diag.c \
+    src/patched_sundials/src/cvodes/cvodes_direct.c \
+    src/patched_sundials/src/cvodes/cvodes_io.c \
+    src/patched_sundials/src/cvodes/cvodes_ls.c \
+    src/patched_sundials/src/cvodes/cvodes_nls.c \
+    src/patched_sundials/src/cvodes/cvodes_nls_sim.c \
+    src/patched_sundials/src/cvodes/cvodes_nls_stg.c \
+    src/patched_sundials/src/cvodes/cvodes_nls_stg1.c \
+    src/patched_sundials/src/cvodes/cvodes_proj.c \
+    src/patched_sundials/src/cvodes/cvodes_spils.c \
+    src/patched_sundials/src/idas/idaa.c \
+    src/patched_sundials/src/idas/idaa_io.c \
+    src/patched_sundials/src/idas/idas.c \
+    src/patched_sundials/src/idas/idas_bbdpre.c \
+    src/patched_sundials/src/idas/idas_direct.c \
+    src/patched_sundials/src/idas/idas_ic.c \
+    src/patched_sundials/src/idas/idas_io.c \
+    src/patched_sundials/src/idas/idas_ls.c \
+    src/patched_sundials/src/idas/idas_nls.c \
+    src/patched_sundials/src/idas/idas_nls_sim.c \
+    src/patched_sundials/src/idas/idas_nls_stg.c \
+    src/patched_sundials/src/idas/idas_spils.c \
     src/patched_sundials/src/kinsol/kinsol.c \
     src/patched_sundials/src/kinsol/kinsol_bbdpre.c \
     src/patched_sundials/src/kinsol/kinsol_direct.c \
@@ -278,8 +286,8 @@ libscisundials_la_SOURCES = \
     src/patched_sundials/src/sunnonlinsol/newton/sunnonlinsol_newton.c
 
 libscisundials_la_CPPFLAGS = -I$(top_srcdir)/modules/differential_equations/src/patched_sundials/include \
-    -I$(top_srcdir)/modules/differential_equations/src/patched_sundials/include/cvode \
-    -I$(top_srcdir)/modules/differential_equations/src/patched_sundials/include/ida \
+    -I$(top_srcdir)/modules/differential_equations/src/patched_sundials/include/cvodes \
+    -I$(top_srcdir)/modules/differential_equations/src/patched_sundials/include/idas \
     -I$(top_srcdir)/modules/differential_equations/src/patched_sundials/include/arkode \
     -I$(top_srcdir)/modules/differential_equations/src/patched_sundials/include/kinsol \
     -I$(top_srcdir)/modules/differential_equations/src/patched_sundials/include/nvector \
@@ -288,8 +296,8 @@ libscisundials_la_CPPFLAGS = -I$(top_srcdir)/modules/differential_equations/src/
     -I$(top_srcdir)/modules/differential_equations/src/patched_sundials/include/sunlinsol \
     -I$(top_srcdir)/modules/differential_equations/src/patched_sundials/include/sunnonlinsol \
     -I$(top_srcdir)/modules/differential_equations/src/patched_sundials/src/sundials \
-    -I$(top_srcdir)/modules/differential_equations/src/patched_sundials/src/cvode \
-    -I$(top_srcdir)/modules/differential_equations/src/patched_sundials/src/ida \
+    -I$(top_srcdir)/modules/differential_equations/src/patched_sundials/src/cvodes \
+    -I$(top_srcdir)/modules/differential_equations/src/patched_sundials/src/idas \
     -I$(top_srcdir)/modules/differential_equations/src/patched_sundials/src/arkode \
     -I$(top_srcdir)/modules/differential_equations/src/patched_sundials/src/kinsol \
     $(OPENMP_CFLAGS) \

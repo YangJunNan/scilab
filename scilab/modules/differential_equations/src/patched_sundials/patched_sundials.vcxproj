@@ -83,7 +83,7 @@
     </PreBuildEvent>
     <ClCompile>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>include;include/sundials;src/cvode;src/ida;src/kinsol;src/nvec_ser;src/sundials;../../../../libs/UMFPACK/includes/suitesparse;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>include;include/sundials;src/cvodes;src/idas;src/kinsol;src/nvec_ser;src/sundials;../../../../libs/UMFPACK/includes/suitesparse;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>_CRT_SECURE_NO_DEPRECATE;FORDLL;_DEBUG;_WINDOWS;_USRDLL;PATCHED_SUNDIALS_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <WarningLevel>Level3</WarningLevel>
@@ -109,7 +109,7 @@
     </Midl>
     <ClCompile>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>include;include/sundials;src/cvode;src/ida;src/kinsol;src/nvec_ser;src/sundials;../../../../libs/UMFPACK/includes/suitesparse;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>include;include/sundials;src/cvodes;src/idas;src/kinsol;src/nvec_ser;src/sundials;../../../../libs/UMFPACK/includes/suitesparse;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>_CRT_SECURE_NO_DEPRECATE;FORDLL;_DEBUG;_WINDOWS;_USRDLL;PATCHED_SUNDIALS_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <WarningLevel>Level3</WarningLevel>
@@ -133,7 +133,7 @@
     <ClCompile>
       <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
       <WholeProgramOptimization>false</WholeProgramOptimization>
-      <AdditionalIncludeDirectories>include;include/sundials;src/cvode;src/ida;src/kinsol;src/nvec_ser;src/sundials;../../../../libs/UMFPACK/includes/suitesparse;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>include;include/sundials;src/cvodes;src/idas;src/kinsol;src/nvec_ser;src/sundials;../../../../libs/UMFPACK/includes/suitesparse;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>_CRT_SECURE_NO_DEPRECATE;FORDLL;NDEBUG;_WINDOWS;_USRDLL;PATCHED_SUNDIALS_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <StringPooling>true</StringPooling>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
@@ -164,7 +164,7 @@
     <ClCompile>
       <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
       <WholeProgramOptimization>false</WholeProgramOptimization>
-      <AdditionalIncludeDirectories>include;include/sundials;src/cvode;src/ida;src/kinsol;src/nvec_ser;src/sundials;../../../../libs/UMFPACK/includes/suitesparse;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>include;include/sundials;src/cvodes;src/ida;src/kinsol;src/nvec_ser;src/sundials;../../../../libs/UMFPACK/includes/suitesparse;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>_CRT_SECURE_NO_DEPRECATE;FORDLL;NDEBUG;_WINDOWS;_USRDLL;PATCHED_SUNDIALS_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <StringPooling>true</StringPooling>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
@@ -200,19 +200,19 @@
     <ClInclude Include="include\arkode\arkode_sprk.h" />
     <ClInclude Include="include\arkode\arkode_sprkstep.h" />
     <ClInclude Include="include\arkode\arkode_xbraid.h" />
-    <ClInclude Include="include\cvode\cvode.h" />
-    <ClInclude Include="include\cvode\cvode_bandpre.h" />
-    <ClInclude Include="include\cvode\cvode_bbdpre.h" />
-    <ClInclude Include="include\cvode\cvode_diag.h" />
-    <ClInclude Include="include\cvode\cvode_direct.h" />
-    <ClInclude Include="include\cvode\cvode_ls.h" />
-    <ClInclude Include="include\cvode\cvode_proj.h" />
-    <ClInclude Include="include\cvode\cvode_spils.h" />
-    <ClInclude Include="include\ida\ida.h" />
-    <ClInclude Include="include\ida\ida_bbdpre.h" />
-    <ClInclude Include="include\ida\ida_direct.h" />
-    <ClInclude Include="include\ida\ida_ls.h" />
-    <ClInclude Include="include\ida\ida_spils.h" />
+    <ClInclude Include="include\cvodes\cvodes.h" />
+    <ClInclude Include="include\cvodes\cvodes_bandpre.h" />
+    <ClInclude Include="include\cvodes\cvodes_bbdpre.h" />
+    <ClInclude Include="include\cvodes\cvodes_diag.h" />
+    <ClInclude Include="include\cvodes\cvodes_direct.h" />
+    <ClInclude Include="include\cvodes\cvodes_ls.h" />
+    <ClInclude Include="include\cvodes\cvodes_proj.h" />
+    <ClInclude Include="include\cvodes\cvodes_spils.h" />
+    <ClInclude Include="include\idas\idas.h" />
+    <ClInclude Include="include\idas\idas_bbdpre.h" />
+    <ClInclude Include="include\idas\idas_direct.h" />
+    <ClInclude Include="include\idas\idas_ls.h" />
+    <ClInclude Include="include\idas\idas_spils.h" />
     <ClInclude Include="include\kinsol\kinsol.h" />
     <ClInclude Include="include\kinsol\kinsol_bbdpre.h" />
     <ClInclude Include="include\kinsol\kinsol_direct.h" />
@@ -275,15 +275,15 @@
     <ClInclude Include="src\arkode\arkode_root_impl.h" />
     <ClInclude Include="src\arkode\arkode_sprkstep_impl.h" />
     <ClInclude Include="src\arkode\arkode_types_impl.h" />
-    <ClInclude Include="src\cvode\cvode_bandpre_impl.h" />
-    <ClInclude Include="src\cvode\cvode_bbdpre_impl.h" />
-    <ClInclude Include="src\cvode\cvode_diag_impl.h" />
-    <ClInclude Include="src\cvode\cvode_impl.h" />
-    <ClInclude Include="src\cvode\cvode_ls_impl.h" />
-    <ClInclude Include="src\cvode\cvode_proj_impl.h" />
-    <ClInclude Include="src\ida\ida_bbdpre_impl.h" />
-    <ClInclude Include="src\ida\ida_impl.h" />
-    <ClInclude Include="src\ida\ida_ls_impl.h" />
+    <ClInclude Include="src\cvodes\cvodes_bandpre_impl.h" />
+    <ClInclude Include="src\cvodes\cvodes_bbdpre_impl.h" />
+    <ClInclude Include="src\cvodes\cvodes_diag_impl.h" />
+    <ClInclude Include="src\cvodes\cvodes_impl.h" />
+    <ClInclude Include="src\cvodes\cvodes_ls_impl.h" />
+    <ClInclude Include="src\cvodes\cvodes_proj_impl.h" />
+    <ClInclude Include="src\idas\idas_bbdpre_impl.h" />
+    <ClInclude Include="src\idas\idas_impl.h" />
+    <ClInclude Include="src\idas\idas_ls_impl.h" />
     <ClInclude Include="src\kinsol\kinsol_bbdpre_impl.h" />
     <ClInclude Include="src\kinsol\kinsol_impl.h" />
     <ClInclude Include="src\kinsol\kinsol_ls_impl.h" />
@@ -333,25 +333,33 @@
     <ClCompile Include="src\arkode\arkode_sprk.c" />
     <ClCompile Include="src\arkode\arkode_sprkstep.c" />
     <ClCompile Include="src\arkode\arkode_sprkstep_io.c" />
-    <ClCompile Include="src\cvode\cvode.c" />
-    <ClCompile Include="src\cvode\cvode_bandpre.c" />
-    <ClCompile Include="src\cvode\cvode_bbdpre.c" />
-    <ClCompile Include="src\cvode\cvode_diag.c" />
-    <ClCompile Include="src\cvode\cvode_direct.c" />
-    <ClCompile Include="src\cvode\cvode_fused_stubs.c" />
-    <ClCompile Include="src\cvode\cvode_io.c" />
-    <ClCompile Include="src\cvode\cvode_ls.c" />
-    <ClCompile Include="src\cvode\cvode_nls.c" />
-    <ClCompile Include="src\cvode\cvode_proj.c" />
-    <ClCompile Include="src\cvode\cvode_spils.c" />
-    <ClCompile Include="src\ida\ida.c" />
-    <ClCompile Include="src\ida\ida_bbdpre.c" />
-    <ClCompile Include="src\ida\ida_direct.c" />
-    <ClCompile Include="src\ida\ida_ic.c" />
-    <ClCompile Include="src\ida\ida_io.c" />
-    <ClCompile Include="src\ida\ida_ls.c" />
-    <ClCompile Include="src\ida\ida_nls.c" />
-    <ClCompile Include="src\ida\ida_spils.c" />
+    <ClCompile Include="src\cvodes\cvodea.c" />
+    <ClCompile Include="src\cvodes\cvodea_io.c" />
+    <ClCompile Include="src\cvodes\cvodes.c" />
+    <ClCompile Include="src\cvodes\cvodes_bandpre.c" />
+    <ClCompile Include="src\cvodes\cvodes_bbdpre.c" />
+    <ClCompile Include="src\cvodes\cvodes_diag.c" />
+    <ClCompile Include="src\cvodes\cvodes_direct.c" />
+    <ClCompile Include="src\cvodes\cvodes_io.c" />
+    <ClCompile Include="src\cvodes\cvodes_ls.c" />
+    <ClCompile Include="src\cvodes\cvodes_nls.c" />
+    <ClCompile Include="src\cvodes\cvodes_nls_sim.c" />
+    <ClCompile Include="src\cvodes\cvodes_nls_stg.c" />
+    <ClCompile Include="src\cvodes\cvodes_nls_stg1.c" />
+    <ClCompile Include="src\cvodes\cvodes_proj.c" />
+    <ClCompile Include="src\cvodes\cvodes_spils.c" />
+    <ClCompile Include="src\idas\idaa.c" />
+    <ClCompile Include="src\idas\idaa_io.c" />
+    <ClCompile Include="src\idas\idas.c" />
+    <ClCompile Include="src\idas\idas_bbdpre.c" />
+    <ClCompile Include="src\idas\idas_direct.c" />
+    <ClCompile Include="src\idas\idas_ic.c" />
+    <ClCompile Include="src\idas\idas_io.c" />
+    <ClCompile Include="src\idas\idas_ls.c" />
+    <ClCompile Include="src\idas\idas_nls.c" />
+    <ClCompile Include="src\idas\idas_nls_sim.c" />
+    <ClCompile Include="src\idas\idas_nls_stg.c" />
+    <ClCompile Include="src\idas\idas_spils.c" />
     <ClCompile Include="src\kinsol\kinsol.c" />
     <ClCompile Include="src\kinsol\kinsol_bbdpre.c" />
     <ClCompile Include="src\kinsol\kinsol_direct.c" />

@@ -11,7 +11,7 @@
 <refentry xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svg="http://www.w3.org/2000/svg" xmlns:ns5="http://www.w3.org/1999/xhtml" xmlns:mml="http://www.w3.org/1998/Math/MathML" xmlns:db="http://docbook.org/ns/docbook" xmlns:scilab="http://www.scilab.org" xml:id="kinsol" xml:lang="en" xmlns:m="http://www.w3.org/1998/Math/MathML">
     <refnamediv>
         <refname>kinsol</refname>
-        <refpurpose>Sundials general-purpose nonlinear system solver</refpurpose>
+        <refpurpose>SUNDIALS general-purpose nonlinear system solver</refpurpose>
     </refnamediv>
     <refsynopsisdiv>
         <title>Syntax</title>
@@ -82,7 +82,7 @@
         <para>
         </para>
         <para> 
-            It is an interface to kinsol solver of Sundials library with default inexact Newton method for classical form or fixed-point iterations
+            It is an interface to kinsol solver of SUNDIALS library with default inexact Newton method for classical form or fixed-point iterations
             with Anderson acceleration for fixed-point form.
             The solver has a specific feature which allows to constrain the sign of solution components (see the <link linkend="sundials_kinsol_options">options</link> page).
             Unlike the native implementation, the Scilab interface allows to solve the system when the function and/or solution is complex (see the  

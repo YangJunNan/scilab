@@ -59,18 +59,18 @@ assert_checktrue(t1/t4>10)
 // ARKODE
 
 tic;
-[t,v] = arkode(list(f_chaleur,dx,lambda,c,rhoLin,f),tspan,v0,method="DIRK");
+[t,v] = arkode(list(f_chaleur,dx,lambda,c,rhoLin,f),tspan,v0,method="DIRK",atol=1e-9);
 t1=toc();
 tic;
-[t,v] = arkode(list(f_chaleur,dx,lambda,c,rhoLin,f),tspan,v0,jacBand=[1,1]);
+[t,v] = arkode(list(f_chaleur,dx,lambda,c,rhoLin,f),tspan,v0,jacBand=[1,1],atol=1e-9);
 t2=toc();
 tic;
-[t,v] = arkode(list(f_chaleur,dx,lambda,c,rhoLin,f),tspan,v0,jacBand=[1,1],jacobian=jac_f_chaleur);
+[t,v] = arkode(list(f_chaleur,dx,lambda,c,rhoLin,f),tspan,v0,jacBand=[1,1],jacobian=jac_f_chaleur,atol=1e-9);
 t3=toc();
 tic;
-[tb,vb] = arkode(list(f_chaleur,dx,lambda,c,rhoLin,f),tspan,v0,jacBand=[1,1],jacobian=JCONSTBAND);
+[tb,vb] = arkode(list(f_chaleur,dx,lambda,c,rhoLin,f),tspan,v0,jacBand=[1,1],jacobian=JCONSTBAND,atol=1e-9);
 t4=toc();
-[ts,vs] = arkode(list(f_chaleur,dx,lambda,c,rhoLin,f),tspan,v0,jacobian=JCONSTSPARSE);
+[ts,vs] = arkode(list(f_chaleur,dx,lambda,c,rhoLin,f),tspan,v0,jacobian=JCONSTSPARSE,atol=1e-9);
 assert_checkalmostequal(vb,vs,1e-6)
 assert_checktrue(t1/t2>10)
 assert_checktrue(t1/t3>10)

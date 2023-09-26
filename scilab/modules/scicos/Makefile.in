@@ -1176,8 +1176,8 @@ libsciscicos_la_LDFLAGS = $(AM_LDFLAGS)
 @XCOS_TRUE@			-I$(top_srcdir)/modules/differential_equations/src/patched_sundials/include/ \
 @XCOS_TRUE@			-I$(top_srcdir)/modules/differential_equations/src/patched_sundials/include/sundials/ \
 @XCOS_TRUE@			-I$(top_srcdir)/modules/differential_equations/src/patched_sundials/src/sundials/ \
-@XCOS_TRUE@			-I$(top_srcdir)/modules/differential_equations/src/patched_sundials/src/ida/ \
-@XCOS_TRUE@			-I$(top_srcdir)/modules/differential_equations/src/patched_sundials/src/cvode/ \
+@XCOS_TRUE@			-I$(top_srcdir)/modules/differential_equations/src/patched_sundials/src/idas/ \
+@XCOS_TRUE@			-I$(top_srcdir)/modules/differential_equations/src/patched_sundials/src/cvodes/ \
 @XCOS_TRUE@			-I$(top_srcdir)/modules/output_stream/includes/ \
 @XCOS_TRUE@			-I$(top_srcdir)/modules/fileio/includes/ \
 @XCOS_TRUE@			-I$(top_srcdir)/modules/dynamic_link/includes/ \

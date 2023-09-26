@@ -63,137 +63,7 @@ void CVODEManager::parseMethodAndOrder(types::optional_list &opt)
     // order
     iDefaultMaxOrder = m_odeIsExtension ? m_prevManager->m_iMaxOrder : getMaxMethodOrder(m_wstrMethod);
     getIntInPlist(getSolverName().c_str(),opt, L"maxOrder", &m_iMaxOrder, iDefaultMaxOrder, {1, getMaxMethodOrder(m_wstrMethod)});
- 
-    // sensitivity
-    if (opt.find(L"sensPar") != opt.end())
-    {
-        // parameter w.r.t. which sensitivity is to be computed
-        if (opt[L"sensPar"]->isDouble())
-        {
-            types::Double *pDbl =  opt[L"sensPar"]->getAs<types::Double>();
-            if (pDbl->isComplex() == false)
-            {
-                m_pDblSensPar = pDbl;
-                m_pDblSensPar->IncreaseRef();
-                // add the parameter to parameters list for RHS, SENSRHS, JACY, JACYTIMES before eventual other parameters
-                for (auto& what : {RHS, SENSRHS, JACY, JACYTIMES})
-                {
-                    m_pParameters[what].insert(m_pParameters[what].begin(),m_pDblSensPar);                    
-                }
-                opt.erase(L"sensPar");
-            }
-        }
-        if (m_pDblSensPar == NULL)
-        {
-            sprintf(errorMsg, _("%s: Wrong type for option \"sensPar\": a real double vector is expected.\n"), getSolverName().c_str());
-            throw ast::InternalError(errorMsg);            
-        }
 
-        // parameter components w.r.t. which sensitivity is to be computed (default is 1:m_pDblSensPar->getSize())
-        getIntVectorInPlist(getSolverName().c_str(),opt, L"sensParIndex", m_iVecSensParIndex,
-            m_odeIsExtension ? m_prevManager->m_iVecSensParIndex : emptyVect, {1,m_pDblSensPar->getSize()}, {1,m_pDblSensPar->getSize()});
-
-        // Scaling vector (default is ones(getNbSensPar(),1))
-        getDoubleVectorInPlist(getSolverName().c_str(),opt, L"typicalPar", m_dblVecTypicalPar,
-            m_odeIsExtension ? m_prevManager->m_dblVecTypicalPar : std::vector<double>(getNbSensPar(),1.0), 
-            {0, std::numeric_limits<double>::infinity()}, getNbSensPar());
-
-        // initial condition of sensitivity (default is zeros(m_iNbEq,getNbSensPar()))
-        if (opt.find(L"yS0") != opt.end())
-        {
-            if (m_pDblSensPar == NULL)
-            {
-                sprintf(errorMsg, _("%s: sensitivity parameter \"sensPar\" has not been set.\n"), getSolverName().c_str());
-                throw ast::InternalError(errorMsg);         
-            }
-            if (opt[L"yS0"]->isDouble())
-            {
-                types::Double *pDbl = opt[L"yS0"]->getAs<types::Double>();
-                if (pDbl->isComplex() == false && pDbl->getDims()==2 && pDbl->getRows() == m_iNbEq && pDbl->getCols() == getNbSensPar())
-                {
-                    m_pDblSens0 = pDbl;
-                    m_pDblSens0->IncreaseRef();
-                    opt.erase(L"yS0");
-                }
-            }
-            if (m_pDblSens0 == NULL)
-            {
-                sprintf(errorMsg, _("%s: Wrong type and/or size for option \"yS0\": a real double matrix of size %d x %d is expected.\n"), 
-                    getSolverName().c_str(), m_iNbEq, getNbSensPar());
-                throw ast::InternalError(errorMsg);                
-            }
-        }
-        // default zero matrix
-        if (m_pDblSensPar != NULL && m_pDblSens0 == NULL)
-        {
-            m_pDblSens0 = new types::Double(m_iNbEq,getNbSensPar());
-            m_pDblSens0->setZeros();
-            m_pDblSens0->IncreaseRef();
-        }
-        // correction method 
-        wstrDefaultMethod = m_odeIsExtension ? m_prevManager->m_wstrMethod : getAvailableMethods()[0];
-        getStringInPlist(getSolverName().c_str(),opt, L"sensCorrStep", m_wstrSensCorrStep, 
-             m_odeIsExtension ? m_prevManager->m_wstrSensCorrStep : L"simultaneous", {L"simultaneous",L"staggered"});
-        // Sensitivity error control (include sensitivity variables in error test, default is false)
-        getBooleanInPlist(getSolverName().c_str(),opt, L"sensErrCon", &m_bSensErrCon, m_odeIsExtension ? m_prevManager->m_bSensErrCon : false);
-        
-        // sensitivity rhs, if user knows how to derive rhs w.r.t. parameter
-        parseFunctionFromOption(opt, L"sensRhs",SENSRHS);
-        m_iSizeOfInput[SENSRHS] = getNbSensPar()*m_iNbEq;
-    }
-    
-    // pure quadrature variables
-    if (opt.find(L"quadRhs") != opt.end())
-    {
-        // parse quadrature variables rhs function
-        parseFunctionFromOption(opt, L"quadRhs", QRHS);
-        if (opt.find(L"yQ0") != opt.end())
-        {
-            if (opt[L"yQ0"]->isDouble())
-            {
-                types::Double *pDbl = opt[L"yQ0"]->getAs<types::Double>();
-                m_pDblYQ0 = pDbl;
-                m_pDblYQ0->IncreaseRef();
-                m_iSizeOfInput[QRHS] = m_pDblYQ0->getSize();
-                opt.erase(L"yQ0");
-                m_odeIsComplex |= m_pDblYQ0->isComplex();
-            }
-            else
-            {
-                sprintf(errorMsg, _("%s: Wrong type for option \"yQ0\": a double matrix is expected.\n"), 
-                    getSolverName().c_str());
-                throw ast::InternalError(errorMsg);                
-            }
-        }
-        if (m_functionAPI[QRHS] == SCILAB_CALLABLE)
-        {
-            types::typed_list in;
-            if (m_pDblYQ0 == NULL)
-            {
-                // call will set m_iSizeOfInput[QRHS] from scilab function output
-                callOpening(QRHS, in, m_dblT0);
-                computeFunction(in, QRHS, NULL);
-                m_pDblYQ0 = new types::Double(m_iSizeOfInput[QRHS],1);
-                m_pDblYQ0->setZeros();
-                m_pDblYQ0->IncreaseRef();
-            }
-            else
-            {
-                // call will check that scilab function output has size m_iSizeOfInput[QRHS]
-                callOpening(QRHS, in, m_dblT0);                
-                computeFunction(in, QRHS, NULL);
-            }            
-        }
-        if (m_pDblYQ0 == NULL)
-        {
-            sprintf(errorMsg, _("%s: option \"yQ0\" has not been set.\n"), 
-                getSolverName().c_str());
-            throw ast::InternalError(errorMsg);                                
-        }
-        // security setting. ode can be turn to be complex due to quadrature variable only
-        // in that case we promote m_pDblY0.
-        m_pDblY0->setComplex(m_odeIsComplex);
-    }    
 }
 
 bool CVODEManager::initialize(char *errorMsg)
@@ -206,67 +76,67 @@ bool CVODEManager::initialize(char *errorMsg)
     // sensitivity
     if (computeSens())
     {
-        m_NVArraySens = N_VCloneVectorArray(getNbSensPar(), m_N_VectorY);
-        // copy each column of S(0) in vectors m_NVArraySens[j], j=0...
+        m_NVArrayYS = N_VCloneVectorArray(getNbSensPar(), m_N_VectorY);
+        // copy each column of S(0) in vectors m_NVArrayYS[j], j=0...
         for (int j=0; j<getNbSensPar(); j++)
         {
-            copyRealImgToComplexVector(m_pDblSens0->get()+j*m_iNbEq, m_pDblSens0->getImg()+j*m_iNbEq, 
-                N_VGetArrayPointer(m_NVArraySens[j]), m_iNbEq, m_odeIsComplex);
+            copyRealImgToComplexVector(m_pDblYS0->get()+j*m_iNbEq, m_pDblYS0->getImg()+j*m_iNbEq, 
+                N_VGetArrayPointer(m_NVArrayYS[j]), m_iNbEq, m_odeIsComplex);
         }
-        // initialize solver Sensitivity mode with user provided sensitivity rhs or finite difference mode :
-        // if (CVodeSensInit(m_prob_mem, getNbSensPar(), 
-        //     m_wstrSensCorrStep == L"simultaneous" ? CV_SIMULTANEOUS : CV_STAGGERED, 
-        //     m_bHas[SENSRHS] ? sensRhs: NULL,
-        //     m_NVArraySens) != CV_SUCCESS)
-        // {
-        //     sprintf(errorMsg, "CVodeSensInit error");
-        //     return true;            
-        // }
-        // if (m_iVecSensParIndex.size() == 0)
-        // {
-        //     CVodeSetSensParams(m_prob_mem,  m_pDblSensPar->get(), m_dblVecTypicalPar.data(), NULL);
-        // }
-        // else
-        // {
-        //     for(int& d : m_iVecSensParIndex) d--;
-        //     // CVodeSetSensParams does a copy of array elements of last argument
-        //     CVodeSetSensParams(m_prob_mem,  m_pDblSensPar->get(), m_dblVecTypicalPar.data(), m_iVecSensParIndex.data());
-        //     for(int& d : m_iVecSensParIndex) d++;
-        // }
-        // if (CVodeSensEEtolerances(m_prob_mem) != CV_SUCCESS)
-        // {
-        //     sprintf(errorMsg, "CVodeSensEEtolerances error");
-        //     return true;
-        // }
-        // if (CVodeSetSensErrCon(m_prob_mem, m_bSensErrCon) != CV_SUCCESS)
-        // {
-        //     sprintf(errorMsg, "CVodeSetSensErrCon error");
-        //     return true;             
-        // }
+        //initialize solver Sensitivity mode with user provided sensitivity rhs or finite difference mode :
+        if (CVodeSensInit(m_prob_mem, getNbSensPar(),
+            m_wstrSensCorrStep == L"simultaneous" ? CV_SIMULTANEOUS : CV_STAGGERED,
+            m_bHas[SENSRHS] ? sensRhs: NULL,
+            m_NVArrayYS) != CV_SUCCESS)
+        {
+            sprintf(errorMsg, "CVodeSensInit error");
+            return true;
+        }
+        if (m_iVecSensParIndex.size() == 0)
+        {
+            CVodeSetSensParams(m_prob_mem,  m_pDblSensPar->get(), m_dblVecTypicalPar.data(), NULL);
+        }
+        else
+        {
+            for(int& d : m_iVecSensParIndex) d--;
+            // CVodeSetSensParams does a copy of array elements of last argument
+            CVodeSetSensParams(m_prob_mem,  m_pDblSensPar->get(), m_dblVecTypicalPar.data(), m_iVecSensParIndex.data());
+            for(int& d : m_iVecSensParIndex) d++;
+        }
+        if (CVodeSensEEtolerances(m_prob_mem) != CV_SUCCESS)
+        {
+            sprintf(errorMsg, "CVodeSensEEtolerances error");
+            return true;
+        }
+        if (CVodeSetSensErrCon(m_prob_mem, m_bSensErrCon) != CV_SUCCESS)
+        {
+            sprintf(errorMsg, "CVodeSetSensErrCon error");
+            return true;
+        }
 
-         // there is nothing to do if m_wstrNonLinSolver = L"Newton" as this is the defaut sensitivity solver
-        // if (m_wstrNonLinSolver == L"fixedPoint")
-        // {
-        //     /* attach nonlinear solver object to CVode */
-        //     if (m_wstrSensCorrStep == L"simultaneous")
-        //     {
-        //         m_NLSsens = SUNNonlinSol_FixedPointSens(getNbSensPar()+1, m_N_VectorY, 0, m_sunctx);
-        //         if (CVodeSetNonlinearSolverSensSim(m_prob_mem, m_NLSsens) != CV_SUCCESS)
-        //         {
-        //             sprintf(errorMsg, "CVodeSetNonlinearSolverSensSim error");
-        //             return true;                          
-        //         }
-        //     }
-        //     else // CV_STAGGERED
-        //     {
-        //         m_NLSsens = SUNNonlinSol_FixedPointSens(getNbSensPar(), m_N_VectorY, 0, m_sunctx);
-        //         // if (CVodeSetNonlinearSolverSensStg(m_prob_mem, m_NLSsens) != CV_SUCCESS)
-        //         // {
-        //         //     sprintf(errorMsg, "CVodeSetNonlinearSolverSensStg error");
-        //         //     return true;                          
-        //         // }                 
-        //     }  
-        // }
+        // there is nothing to do if m_wstrNonLinSolver = L"Newton" as this is the defaut sensitivity solver
+        if (m_wstrNonLinSolver == L"fixedPoint")
+        {
+            /* attach nonlinear solver object to CVode */
+            if (m_wstrSensCorrStep == L"simultaneous")
+            {
+                m_NLSsens = SUNNonlinSol_FixedPointSens(getNbSensPar()+1, m_N_VectorY, 0, m_sunctx);
+                if (CVodeSetNonlinearSolverSensSim(m_prob_mem, m_NLSsens) != CV_SUCCESS)
+                {
+                    sprintf(errorMsg, "CVodeSetNonlinearSolverSensSim error");
+                    return true;
+                }
+            }
+            else // CV_STAGGERED
+            {
+                m_NLSsens = SUNNonlinSol_FixedPointSens(getNbSensPar(), m_N_VectorY, 0, m_sunctx);
+                if (CVodeSetNonlinearSolverSensStg(m_prob_mem, m_NLSsens) != CV_SUCCESS)
+                {
+                    sprintf(errorMsg, "CVodeSetNonlinearSolverSensStg error");
+                    return true;
+                }
+            }
+        }
     }
     // pure quadrature variables
     if (m_bHas[QRHS])
@@ -274,18 +144,19 @@ bool CVODEManager::initialize(char *errorMsg)
         m_iNbQuad = m_iSizeOfInput[QRHS];
         m_iNbRealQuad = m_odeIsComplex ? 2*m_iNbQuad : m_iNbQuad;
 
-        m_NVectorQuad = N_VNew_Serial(m_iNbRealQuad, m_sunctx);
+        m_NVectorYQ = N_VNew_Serial(m_iNbRealQuad, m_sunctx);
 
         // Load YQ0 into N_Serial vector
-        // When ODE is complex m_NVectorQuad has interlaced real and imaginary part of user YQ0 (equivalent to std::complex)
+        // When ODE is complex m_NVectorYQ has interlaced real and imaginary part of user YQ0 (equivalent to std::complex)
   
-        copyRealImgToComplexVector(m_pDblYQ0->get(), m_pDblYQ0->getImg(), N_VGetArrayPointer(m_NVectorQuad), m_iNbQuad, m_odeIsComplex);
+        copyRealImgToComplexVector(m_pDblYQ0->get(), m_pDblYQ0->getImg(), N_VGetArrayPointer(m_NVectorYQ), m_iNbQuad, m_odeIsComplex);
 
-        // if (CVodeQuadInit(m_prob_mem, quadratureRhs, m_NVectorQuad) != CV_SUCCESS)
-        // {
-        //     sprintf(errorMsg, "CVodeQuadInit error");
-        //     return true;            
-        // }
+        if (CVodeQuadInit(m_prob_mem, quadratureRhs, m_NVectorYQ) != CV_SUCCESS)
+        {
+            sprintf(errorMsg, "CVodeQuadInit error");
+            return true;
+        }
+
     }
     return false;
 }
@@ -408,21 +279,23 @@ void CVODEManager::saveAdditionalStates()
     {
         if (m_dblT0 == m_pDblTSpan->get(0) || m_iRetCount == 1)
         {
+            // sensitivity
             for (int j=0; j<getNbSensPar(); j++)
             {
-                m_vecSOut.push_back(std::vector<double>(N_VGetArrayPointer(m_NVArraySens[j]),N_VGetArrayPointer(m_NVArraySens[j]) + m_iNbRealEq));
+                m_vecYSOut.push_back(std::vector<double>(N_VGetArrayPointer(m_NVArrayYS[j]),N_VGetArrayPointer(m_NVArrayYS[j]) + m_iNbRealEq));
             }
+            // pure quadrature states
             if (m_bHas[QRHS])
             {
-                m_vecQuadOut.push_back(std::vector<double>(N_VGetArrayPointer(m_NVectorQuad),N_VGetArrayPointer(m_NVectorQuad) + m_iNbRealQuad));
+                m_vecYQOut.push_back(std::vector<double>(N_VGetArrayPointer(m_NVectorYQ),N_VGetArrayPointer(m_NVectorYQ) + m_iNbRealQuad));
             }
         }
     }
     else
     {
         // new values will be appended to previous ones
-        m_vecSOut = m_prevManager->m_vecSOut;
-        m_dblVecSEvent = m_prevManager->m_dblVecSEvent;
+        m_vecYSOut = m_prevManager->m_vecYSOut;
+        m_vecYSEvent = m_prevManager->m_vecYSEvent;
     } 
 }
 
@@ -430,16 +303,16 @@ void CVODEManager::saveAdditionalStates(double dblTime)
 {
     if (computeSens())
     {
-        // CVodeGetSensDky(m_prob_mem, dblTime, 0, m_NVArraySens);
+        CVodeGetSensDky(m_prob_mem, dblTime, 0, m_NVArrayYS);
         for (int j=0; j<getNbSensPar(); j++)
         {
-            m_vecSOut.push_back(std::vector<double>(N_VGetArrayPointer(m_NVArraySens[j]),N_VGetArrayPointer(m_NVArraySens[j]) + m_iNbRealEq));
+            m_vecYSOut.push_back(std::vector<double>(N_VGetArrayPointer(m_NVArrayYS[j]),N_VGetArrayPointer(m_NVArrayYS[j]) + m_iNbRealEq));
         }        
     }
     if (m_bHas[QRHS]) // pure quadrature variables are integrated
     {
-         // CVodeGetQuadDky(m_prob_mem, dblTime, 0, m_NVectorQuad);
-         m_vecQuadOut.push_back(std::vector<double>(N_VGetArrayPointer(m_NVectorQuad),N_VGetArrayPointer(m_NVectorQuad) + m_iNbRealQuad));
+		 CVodeGetQuadDky(m_prob_mem, dblTime, 0, m_NVectorYQ);
+         m_vecYQOut.push_back(std::vector<double>(N_VGetArrayPointer(m_NVectorYQ),N_VGetArrayPointer(m_NVectorYQ) + m_iNbRealQuad));
     }
 }
 
@@ -447,10 +320,10 @@ void CVODEManager::saveAdditionalEventStates(double dblTime)
 {
     if (computeSens())
     {
-        // CVodeGetSensDky(m_prob_mem, dblTime, 0, m_NVArraySens);
+        CVodeGetSensDky(m_prob_mem, dblTime, 0, m_NVArrayYS);
         for (int j=0; j<getNbSensPar(); j++)
         {
-            m_dblVecSEvent.push_back(std::vector<double>(N_VGetArrayPointer(m_NVArraySens[j]),N_VGetArrayPointer(m_NVArraySens[j]) + m_iNbRealEq));
+            m_vecYSEvent.push_back(std::vector<double>(N_VGetArrayPointer(m_NVArrayYS[j]),N_VGetArrayPointer(m_NVArrayYS[j]) + m_iNbRealEq));
         }        
     }
 }
@@ -461,11 +334,11 @@ std::vector<std::pair<std::wstring,types::Double *>> CVODEManager::getAdditional
     std::vector<std::pair<std::wstring,types::Double *>> out;
     if (computeSens())
     {
-        out.push_back(std::make_pair(L"s", getSOut()));
+        out.push_back(std::make_pair(L"s", getYSOut()));
     }
     if (m_bHas[QRHS])
     {
-        out.push_back(std::make_pair(L"q", getQuadOut()));        
+        out.push_back(std::make_pair(L"q", getYQOut()));        
     }
     return out;
 }
@@ -475,7 +348,7 @@ std::vector<std::pair<std::wstring,types::Double *>> CVODEManager::getAdditional
     std::vector<std::pair<std::wstring,types::Double *>> out;
     if (m_iNbEvents > 0 && computeSens())
     {
-        out.push_back(std::make_pair(L"se", getSEvent()));
+        out.push_back(std::make_pair(L"se", getYSEvent()));
     }
     return out;
 }
@@ -536,6 +409,11 @@ int CVODEManager::projFunction(realtype t, N_Vector N_VectorY, N_Vector N_Vector
             in.push_back(types::Double::Empty());
         }
         manager->computeFunction(in, what, N_VGetArrayPointer(N_VectorCorr), pdblErr);
+
+        for (types::InternalType* pIT : in)
+        {
+            pIT->killMe();
+        }
     }
     else if (fAPI == SUNDIALS_DLL)
     {
@@ -562,7 +440,7 @@ int CVODEManager::sensRhs(int Ns, realtype t, N_Vector N_VectorY, N_Vector N_Vec
         types::typed_list out;
 
         manager->callOpening(what, in, t, N_VGetArrayPointer(N_VectorY));
-        // copy each ySdot[j] in column j of S matrix, j=0...getNbSensPar()-1
+        // copy each yS[j] in column j of S matrix, j=0...getNbSensPar()-1
         types::Double *pDblS = new types::Double(iNbEq,manager->getNbSensPar(),manager->isComplex());
         for (int j=0; j<manager->getNbSensPar(); j++)
         {
@@ -599,14 +477,9 @@ int CVODEManager::sensRhs(int Ns, realtype t, N_Vector N_VectorY, N_Vector N_Vec
     return 0;
 }
 
-int CVODEManager::backwardRhs(realtype t, N_Vector N_VectorY, N_Vector N_VectorYB, N_Vector N_VectorYBDot, void *pManager)
+int CVODEManager::quadratureRhs(realtype t, N_Vector N_VectorY, N_Vector N_VectorYQDot, void *pManager)
 {
-    return function_t_Y1_Y2_Y3(BRHS, t, N_VectorY, N_VectorYB, N_VectorYBDot, pManager);
-}
-
-int CVODEManager::quadratureRhs(realtype t, N_Vector N_VectorYQ, N_Vector N_VectorYQDot, void *pManager)
-{
-    return function_t_Y1_Y2(QRHS, t, N_VectorYQ, N_VectorYQDot, pManager);
+    return function_t_Y1_Y2(QRHS, t, N_VectorY, N_VectorYQDot, pManager);
 }
 
 types::Struct *CVODEManager::getStats()
@@ -634,7 +507,7 @@ types::Struct *CVODEManager::getStats()
     if (computeSens())
     {
         long int li;
-        //CVodeGetNumRhsEvalsSens(m_prob_mem, &li);
+        CVodeGetNumRhsEvalsSens(m_prob_mem, &li);
         m_incStat[2] += li;
     }
 
@@ -655,7 +528,7 @@ types::Struct *CVODEManager::getStats()
     }
 
     // order of method for each step
-    types::Double *pDblOrder = new types::Double(1,m_iVecOrder.size());
+    types::Double *pDblOrder = new types::Double(1, (int) m_iVecOrder.size());
     std::copy(m_iVecOrder.begin(), m_iVecOrder.end(), pDblOrder->get());
     pSt->addField(fieldNames[9].c_str());
     pSt->get(0)->set(fieldNames[9].c_str(), pDblOrder);

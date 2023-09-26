@@ -73,8 +73,8 @@ mu = 1;
 y0 = [2;1];
 
 //BASIC
-[t,y] = arkode(list(vdp,mu), 0:0.1:10, y0);
-[tm,ym] = arkode(list(vdp,mu), 0:0.1:10, y0, method = "ZONNEVELD_5_3_4");
+[t,y] = arkode(list(vdp,mu), 0:0.1:10, y0,atol=1e-9);
+[tm,ym] = arkode(list(vdp,mu), 0:0.1:10, y0, method = "ZONNEVELD_5_3_4",atol=1e-9);
 assert_checkequal(y,ym);
 assert_checkalmostequal(y(:,$),[ -1.69930462064814413736; -1.613000392216833223102]);
 
@@ -117,8 +117,8 @@ assert_checkequal(info.ie,sol.ie);
 assert_checkalmostequal(sol(sol.t),(sol.y));
 
 // EXTEND SOLUTION
-sol = arkode(list(vdp,mu), [0 10], y0);
-solext = arkode(sol, 20);
+sol = arkode(list(vdp,mu), [0 10], y0, atol=1e-9);
+solext = arkode(sol, 20, atol=1e-9);
 assert_checkequal(size(sol.t),[1,178]);
 assert_checkequal(size(solext.t),[1,348]);
 assert_checkequal(sol(sol.t),solext(sol.t));
@@ -130,20 +130,20 @@ assert_checkequal(sol2(sol2.t),sol2ext(sol2.t));
 
 // MATRIX ODE
 disp(1)
-[t,y] = arkode(list(matmul,[1 1;0 2]), 1, eye(2,2), t0=0);
+[t,y] = arkode(list(matmul,[1 1;0 2]), 1, eye(2,2), t0=0, atol=1e-9);
 disp(2)
-sol3 = arkode(list(matmul,[1 1;0 2]), 1, eye(2,2), t0=0);
+sol3 = arkode(list(matmul,[1 1;0 2]), 1, eye(2,2), t0=0, atol=1e-9);
 disp(3)
 assert_checkequal(size(sol3.y),[2,2,30]);
 disp(4)
-[t,E] = arkode(list(matmul,[1 1;0 2]), 1, eye(2,2), t0=0);
+[t,E] = arkode(list(matmul,[1 1;0 2]), 1, eye(2,2), t0=0, atol=1e-9);
 disp(5)
 assert_checkalmostequal(E,[ 2.718281767 4.670543306; 0,7.388825073],1e-4);
 disp(6);
 
 // MATRIX ODE
 A=[1,1;0,2]; B=[1,0;0,1]; C=[1,0;0,1];
-[t,X]=arkode(list(ric,[1,1;0,2],[1,0;0,1],[1,0;0,1]), %pi, eye(A),t0=0);
+[t,X]=arkode(list(ric,[1,1;0,2],[1,0;0,1],[1,0;0,1]), %pi, eye(A),t0=0,atol=1e-9);
 assert_checkalmostequal(X,[  2.272713109   0.615508769; 0.615508769   4.41906588 ],1e-4);
 
 // COMPLEX ODE

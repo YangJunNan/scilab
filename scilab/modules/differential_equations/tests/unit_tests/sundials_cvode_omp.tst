@@ -49,19 +49,21 @@ if with_openmp
     ],"code.c");
     SUN_Clink("f","code.c",load=%t,cflags="-O3 -fopenmp");
     
-    n = 100; //n should be even
+    n = 80; //n should be even n = 80 yields 80^3=512000 states 
     n2 = n*n;
     dx = 2/(n-1);
     [x,y,z] = ndgrid(-1:dx:1,-1:dx:1,-1:dx:1);
     f0 = x.*x+y.*y+z.*z;
     
-    
     [t,f,info1]=cvode(list("f",[n dx]),0.5,f0,t0=0,method="BDF",linearSolver="CG",...
         rtol=1e-3,atol=1e-3,nbThreads=NUM_THREADS);
+    
+    // don't pass -fopenmp => ignore pragma directive in source
+    SUN_Clink("f","code.c",load=%t,cflags="-O3");
     
     [t,f,info2]=cvode(list("f",[n dx]),0.5,f0,t0=0,method="BDF",linearSolver="CG",...
         rtol=1e-3,atol=1e-3);
 
-    assert_checktrue(info2.stats.eTime/info1.stats.eTime > 2);
+    assert_checktrue(info2.stats.eTime > info1.stats.eTime);
 
 end

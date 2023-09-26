@@ -16,8 +16,6 @@
 #include "odeparameters.hxx"
 #include "arkode/arkode_interp_impl.h"
 
-#define MSGCV_HNIL_STOP "Internal " MSG_TIME_H " are such that t + h = t on the next step. Singularity likely."
-
 extern "C"
 {
     int ARKStepSetMaxOrd(void *m_prob_mem, int i)

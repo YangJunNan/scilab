@@ -29,10 +29,12 @@ class DIFFERENTIAL_EQUATIONS_IMPEXP OdeManager : public SUNDIALSManager
 
     virtual ~OdeManager() {
         if (m_N_VectorYp != NULL) N_VDestroy(m_N_VectorYp);
+        if (m_N_VectorYTemp != NULL) N_VDestroy(m_N_VectorYTemp);
         if (m_MASS != NULL) SUNMatDestroy(m_MASS);
         if (m_MASS_LS != NULL) SUNLinSolFree(m_MASS_LS);
         if (m_TempSUNMat != NULL) SUNMatDestroy(m_TempSUNMat);
         SUNDIALSMANAGER_KILLME(m_pDblInterpBasisVectors);
+        SUNDIALSMANAGER_KILLME(m_pDblTSpan);
     };
 
     enum solverTaskCode {ODE_NORMAL, ODE_ONE_STEP};
@@ -44,10 +46,10 @@ class DIFFERENTIAL_EQUATIONS_IMPEXP OdeManager : public SUNDIALSManager
 
     types::Double *getTOut()
     {
-            // time at the begining of each internal step of the method
-            types::Double *pDblTOut = new types::Double(1,m_dblVecTOut.size());
-            std::copy(m_dblVecTOut.begin(), m_dblVecTOut.end(), pDblTOut->get());
-            return pDblTOut;
+        // time at the begining of each internal step of the method
+        types::Double *pDblTOut = new types::Double(1,m_dblVecTOut.size());
+        std::copy(m_dblVecTOut.begin(), m_dblVecTOut.end(), pDblTOut->get());
+        return pDblTOut;
     }
 
     types::Double *getYOut()
@@ -145,7 +147,9 @@ class DIFFERENTIAL_EQUATIONS_IMPEXP OdeManager : public SUNDIALSManager
     int (*getRootInfo)(void *, int *);
     int (*setConstraints)(void *, N_Vector);
     int (*setVTolerances)(void *, realtype, N_Vector);
+    int (*setQuadSVTolerances)(void *, realtype, N_Vector);
     int (*setErrHandlerFn)(void *, SUNDIALSErrHandlerType, void *);
+    int (*setQuadErrCon)(void *, int);
     int (*getDky)(void *, realtype, int, N_Vector);
     int (*getSens)(void *, realtype *, N_Vector *);
     int (*getSensDky)(void *, realtype, int, N_Vector *);
@@ -166,7 +170,7 @@ class DIFFERENTIAL_EQUATIONS_IMPEXP OdeManager : public SUNDIALSManager
     void setupEvents(types::optional_list &opt);
     void createSolutionOutput(types::typed_list &out);
     types::Double *createYOut(types::Double *pDblTemplate, int iNbOut, int iSizeTSpan, bool bFlat = false);
-    types::Double *getArrayFromVectors(types::Double *pDblTemplate, std::vector<std::vector<double>> &m_vecY, int iTSpanSize);
+    types::Double *getArrayFromVectors(types::Double *pDblTemplate, std::vector<std::vector<double>> &m_vecY, size_t iTSpanSize);
     void errHandler(int error_code, const char *module, const char *function, char *msg);
 
     // static methods
@@ -221,6 +225,14 @@ class DIFFERENTIAL_EQUATIONS_IMPEXP OdeManager : public SUNDIALSManager
     {
         return 0;
     }
+    virtual bool hasSensFeature()
+    {
+        return false;
+    }
+    virtual bool hasQuadFeature()
+    {
+        return false;
+    }
 
     virtual int getBasisDimensionAtIndex(int iIndex);
     virtual double *getBasisAtIndex(int iIndex);
@@ -246,6 +258,7 @@ class DIFFERENTIAL_EQUATIONS_IMPEXP OdeManager : public SUNDIALSManager
   
     N_Vector m_N_VectorYp = NULL;
     N_Vector m_N_VectorYTemp = NULL;
+    N_Vector m_NVectorYQ = NULL;
 
     SUNMatrix m_MASS = NULL;
     SUNMatrix m_TempSUNMat = NULL;
@@ -255,8 +268,14 @@ class DIFFERENTIAL_EQUATIONS_IMPEXP OdeManager : public SUNDIALSManager
     types::Double *m_pDblYp0 = NULL;
     types::Double *m_pDblTOut = NULL;
     types::Double *m_pDblYpOut = NULL;
+    types::Double *m_pDblSensPar = NULL;
+    types::Double *m_pDblYS0 = NULL;
+    types::Double *m_pDblYpS0 = NULL;
+    types::Double *m_pDblYQ0 = NULL;
 
     std::vector<double> m_dblVecTypicalPar;
+    std::vector<double> m_dblVecQuadAtol;
+    std::vector<double> m_dblVecQuadRtol;
 
     std::vector<double> m_dblVecStep;
     std::vector<double> m_dblVecCurrTime;
@@ -288,6 +307,7 @@ class DIFFERENTIAL_EQUATIONS_IMPEXP OdeManager : public SUNDIALSManager
     bool m_bErrProj = false;
     bool m_bStabLimDet = false;
     bool m_bSensErrCon = false;
+    bool m_bQuadErrCon = false;
 
     double m_dblT0;
     double m_dblOptT0;
@@ -295,12 +315,15 @@ class DIFFERENTIAL_EQUATIONS_IMPEXP OdeManager : public SUNDIALSManager
     double m_dblInitialStep;
     double m_dblMaxStep;
     double m_dblMinStep;
+    double m_dblQuadRtol;
 
     int m_iMaxOrder;
     int m_iLastOrder;
     int m_iMaxNumSteps;
     int m_iNbEvents;
     int m_iNRefine;
+    int m_iNbQuad;
+    int m_iNbRealQuad;
  
     void *m_prob_mem = NULL;
 };

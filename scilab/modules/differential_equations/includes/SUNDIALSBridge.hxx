@@ -15,6 +15,7 @@ typedef void (*SUNDIALSErrHandlerType)(int error_code, const char *module, const
 typedef int (*SUN_DynFun)(realtype t, N_Vector y, N_Vector ydot, void *pManager);
 typedef int (*SUN_DynJacFun)(realtype t, N_Vector y, N_Vector fy, SUNMatrix J, void *user_data, N_Vector tmp1, N_Vector tmp2, N_Vector tmp3);
 typedef int (*SUN_DynRes)(realtype t, N_Vector y, N_Vector ydot, N_Vector res, void *pManager);
+typedef int (*SUN_DynSensRes)(int Ns, realtype t, N_Vector N_VectorY, N_Vector ydot, N_Vector resval, N_Vector *yS, N_Vector *ySdot, N_Vector *resvalS, void *pmanager, N_Vector tmp1, N_Vector tmp2, N_Vector tmp3);
 typedef int (*SUN_DynJacRes)(realtype t, realtype c, N_Vector y, N_Vector yp, N_Vector r, SUNMatrix J, void *user_data, N_Vector tmp1, N_Vector tmp2, N_Vector tmp3);
 typedef int (*SUN_DynMass)(realtype t, SUNMatrix M, void *user_data, N_Vector tmp1, N_Vector tmp2, N_Vector tmp3);
 typedef int (*SUN_DynProj)(realtype t, N_Vector N_VectorY, N_Vector N_VectorCorr, realtype epsProj, N_Vector N_VectorErr, void *pmanager);

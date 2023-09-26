@@ -19,7 +19,6 @@
 #include "sundials/sundials_extension.h"
 #include "sundials/sundials_types.h" // Definition of types 'realtype' and 'booleantype'
 #include "nvector/nvector_serial.h"  // Type 'N_Vector'
-#include "../src/ida/ida_impl.h" // Error handling
 
 #define MSG_BAD_KRY_INPUT  "One of the Krylov arguments is illegal (jacobian or psol functions)."
 #define MSG_SINGULAR       "The matrix of partial derivatives is singular."

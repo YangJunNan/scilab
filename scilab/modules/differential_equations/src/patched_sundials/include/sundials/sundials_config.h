@@ -161,10 +161,10 @@
  * -----------------------------------------------------------------*/
 
 #define SUNDIALS_ARKODE 1
-#define SUNDIALS_CVODE 1
-#define SUNDIALS_CVODES 0
-#define SUNDIALS_IDA 1
-#define SUNDIALS_IDAS 0
+#define SUNDIALS_CVODE 0
+#define SUNDIALS_CVODES 1
+#define SUNDIALS_IDA 0
+#define SUNDIALS_IDAS 1
 #define SUNDIALS_KINSOL 1
 #define SUNDIALS_NVECTOR_SERIAL 1
 #define SUNDIALS_NVECTOR_MANYVECTOR 1

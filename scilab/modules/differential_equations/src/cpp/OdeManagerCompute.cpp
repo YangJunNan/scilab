@@ -80,6 +80,7 @@ void OdeManager::setupEvents(types::optional_list &opt)
                 throw ast::InternalError(errorMsg);
             }
             m_iSizeOfInput[EVENTS] = m_iNbEvents;
+            out[i]->DecreaseRef();
             out[i]->killMe();
         }        
     }

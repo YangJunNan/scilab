@@ -109,7 +109,6 @@ void OdeManager::parseMatrices(types::typed_list &in)
 
     m_iSizeOfInput[RHS] = m_iNbEq;
     m_iSizeOfInput[SRHS] = m_iNbEq;
-    m_iSizeOfInput[FRHS] = m_iNbEq;
     m_iSizeOfInput[RES] = m_iNbEq;
     m_iSizeOfInput[PROJ] = m_iNbEq;
  
@@ -174,6 +173,7 @@ void OdeManager::parseOptions(types::optional_list &opt)
     std::vector<int> emptyVect = {};
     std::vector<double> defaultAtolVect = {m_dblDefaultAtol};
     OdeManager *prevManager = getPreviousManager();
+    std::wstring wstrDefaultMethod;
 
     // first process a struct of options
     if (opt.find(L"options") != opt.end())
@@ -239,6 +239,161 @@ void OdeManager::parseOptions(types::optional_list &opt)
     else
     {
         m_dblT0 = m_dblOptT0;
+    }
+
+    // parse eventual sensitivity parameter as it has to be added early in the list of parameters
+    // if callables have to be tested
+    if (hasSensFeature() && opt.find(L"sensPar") != opt.end())
+    {
+        // parameter w.r.t. which sensitivity is to be computed
+        if (opt[L"sensPar"]->isDouble())
+        {
+            types::Double *pDbl =  opt[L"sensPar"]->getAs<types::Double>();
+            if (pDbl->isComplex() == false)
+            {
+                m_pDblSensPar = pDbl;
+                m_pDblSensPar->IncreaseRef();
+                // add the parameter to parameters list for RHS, SENSRHS, JACY, JACYTIMES before eventual other parameters
+                if (isDAE() == true)
+                {
+                    for (auto& what : {RES, SENSRES, JACYYP, JACYYPTIMES})
+                    {
+                        m_pParameters[what].insert(m_pParameters[what].begin(),m_pDblSensPar);
+                    }
+                }
+                else
+                {
+                    for (auto& what : {RHS, SENSRHS, JACY, JACYTIMES})
+                    {
+                        m_pParameters[what].insert(m_pParameters[what].begin(),m_pDblSensPar);
+                    }
+                }
+            }
+        }
+        if (m_pDblSensPar == NULL)
+        {
+            sprintf(errorMsg, _("%s: Wrong type for option \"sensPar\": a real double vector is expected.\n"), getSolverName().c_str());
+            throw ast::InternalError(errorMsg);
+        }
+        opt.erase(L"sensPar");
+        
+        // parameter components w.r.t. which sensitivity is to be computed (default is 1:m_pDblSensPar->getSize())
+        getIntVectorInPlist(getSolverName().c_str(),opt, L"sensParIndex", m_iVecSensParIndex,
+            m_odeIsExtension ? prevManager->m_iVecSensParIndex : emptyVect, {1,m_pDblSensPar->getSize()}, {1,m_pDblSensPar->getSize()});
+
+        // Scaling vector (default is ones(getNbSensPar(),1))
+        getDoubleVectorInPlist(getSolverName().c_str(),opt, L"typicalPar", m_dblVecTypicalPar,
+            m_odeIsExtension ? prevManager->m_dblVecTypicalPar : std::vector<double>(getNbSensPar(),1.0), 
+            {0, std::numeric_limits<double>::infinity()}, getNbSensPar());
+
+        // initial condition of sensitivity (default is zeros(m_iNbEq,getNbSensPar()))
+        if (opt.find(L"yS0") != opt.end())
+        {
+            if (m_pDblSensPar == NULL)
+            {
+                sprintf(errorMsg, _("%s: sensitivity parameter \"sensPar\" has not been set.\n"), getSolverName().c_str());
+                throw ast::InternalError(errorMsg);         
+            }
+            if (opt[L"yS0"]->isDouble())
+            {
+                types::Double *pDbl = opt[L"yS0"]->getAs<types::Double>();
+                if (pDbl->isComplex() == false && pDbl->getDims()==2 && pDbl->getRows() == m_iNbEq && pDbl->getCols() == getNbSensPar())
+                {
+                    m_pDblYS0 = pDbl;
+                    m_pDblYS0->IncreaseRef();
+                    opt.erase(L"yS0");
+                }
+            }
+            if (m_pDblYS0 == NULL)
+            {
+                sprintf(errorMsg, _("%s: Wrong type and/or size for option \"yS0\": a real double matrix of size %d x %d is expected.\n"), 
+                    getSolverName().c_str(), m_iNbEq, getNbSensPar());
+                throw ast::InternalError(errorMsg);                
+            }
+        }
+        // default zero matrix
+        if (m_pDblSensPar != NULL && m_pDblYS0 == NULL)
+        {
+            m_pDblYS0 = new types::Double(m_iNbEq,getNbSensPar());
+            m_pDblYS0->setZeros();
+            m_pDblYS0->IncreaseRef();
+        }
+
+        // correction method 
+        wstrDefaultMethod = m_odeIsExtension ? prevManager->m_wstrMethod : getAvailableMethods()[0];
+        getStringInPlist(getSolverName().c_str(),opt, L"sensCorrStep", m_wstrSensCorrStep, 
+             m_odeIsExtension ? prevManager->m_wstrSensCorrStep : L"simultaneous", {L"simultaneous",L"staggered"});
+
+        // Sensitivity error control (include sensitivity variables in error test, default is false)
+        getBooleanInPlist(getSolverName().c_str(),opt, L"sensErrCon", &m_bSensErrCon, m_odeIsExtension ? prevManager->m_bSensErrCon : false);
+        
+        // sensitivity rhs or residual, if user knows how to derive rhs w.r.t. parameter
+        functionKind whatSENSEQ = isDAE() ? SENSRES : SENSRHS;
+        parseFunctionFromOption(opt, isDAE() ? L"sensRes" : L"sensRhs", whatSENSEQ);
+        m_iSizeOfInput[whatSENSEQ] = getNbSensPar()*m_iNbEq;            
+    }
+
+    // pure quadrature variables
+    if (hasQuadFeature() && opt.find(L"quadRhs") != opt.end())
+    {
+        // parse quadrature variables rhs function
+        parseFunctionFromOption(opt, L"quadRhs", QRHS);
+        if (opt.find(L"yQ0") != opt.end())
+        {
+            if (opt[L"yQ0"]->isDouble())
+            {
+                types::Double *pDbl = opt[L"yQ0"]->getAs<types::Double>();
+                m_pDblYQ0 = pDbl;
+                m_pDblYQ0->IncreaseRef();
+                m_iSizeOfInput[QRHS] = m_pDblYQ0->getSize();
+                opt.erase(L"yQ0");
+                m_odeIsComplex |= m_pDblYQ0->isComplex();
+            }
+            else
+            {
+                sprintf(errorMsg, _("%s: Wrong type for option \"yQ0\": a double matrix is expected.\n"), 
+                    getSolverName().c_str());
+                throw ast::InternalError(errorMsg);                
+            }
+        }
+        if (m_functionAPI[QRHS] == SCILAB_CALLABLE)
+        {
+            types::typed_list in;
+            if (m_pDblYQ0 == NULL)
+            {
+                // call will set m_iSizeOfInput[QRHS] from scilab function output
+                callOpening(QRHS, in, m_dblT0);
+                computeFunction(in, QRHS, NULL);
+                m_pDblYQ0 = new types::Double(m_iSizeOfInput[QRHS],1);
+                m_pDblYQ0->setZeros();
+                m_pDblYQ0->IncreaseRef();
+            }
+            else
+            {
+                // call will check that scilab function output has size m_iSizeOfInput[QRHS]
+                callOpening(QRHS, in, m_dblT0);                
+                computeFunction(in, QRHS, NULL);
+            }            
+        }
+        if (m_pDblYQ0 == NULL)
+        {
+            sprintf(errorMsg, _("%s: option \"yQ0\" has not been set.\n"), 
+                getSolverName().c_str());
+            throw ast::InternalError(errorMsg);                                
+        }
+        // security setting. ode can turn to be complex due to quadrature variable only
+        // in that case we promote m_pDblY0.
+        m_pDblY0->setComplex(m_odeIsComplex);
+        
+        // Quadrature states error control (include thems in error test, default is false)
+        getBooleanInPlist(getSolverName().c_str(),opt, L"quadErrCon", &m_bQuadErrCon, m_odeIsExtension ? prevManager->m_bQuadErrCon : false);
+        
+        // Common options
+        getDoubleInPlist(getSolverName().c_str(),opt, L"rtolQ", &m_dblQuadRtol,
+            m_odeIsExtension ? prevManager->m_dblQuadRtol : m_dblDefaultRtol, {1e-15, 1});
+        getDoubleVectorInPlist(getSolverName().c_str(),opt, L"atolQ", m_dblVecQuadAtol,
+            m_odeIsExtension ? prevManager->m_dblVecQuadAtol : defaultAtolVect, {1e-15, std::numeric_limits<double>::infinity()}, m_pDblYQ0->getSize());
+        
     }
 
     // Parse Jacobian first (as it restricts the possible methods and other stuff)

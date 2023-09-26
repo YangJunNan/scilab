@@ -86,13 +86,14 @@
                     <tr>
                         <td>rtol</td>
                         <td>    
-                            <para>The scalar relative tolerance to control the local error estimator</para>
+                            <para>The scalar relative tolerance to control the local error estimator (default value is 1e-4).</para>
                         </td>
                     </tr>
                     <tr>
                         <td>atol</td>
                         <td>    
-                            <para>The absolute tolerance controlling the local error. Can be a scalar or an array of the same dimension as the differential equation state.</para>
+                            <para>The absolute tolerance controlling the local error. It can be a scalar or an array of the same dimension as the differential equation state (default value is 1e-6).
+                           Note that unlike rtol, atol should take into account the scale of the solution components.</para>
                         </td>
                     </tr>
                     <tr>
@@ -250,6 +251,49 @@
     </refsection>
 
     <refsection role="description">
+        <title>cvode and ida options</title>
+        <para>cvode and ida accept the following specific options related to pure quadrature states and sensitivity computation:
+        </para>
+        <para>
+            <informaltable border='1'>
+                <tbody>
+                    <tr>
+                        <td>quadRhs, yQ0</td>
+                        <td>    
+                            <para>See the specific <link linkend="sundials_quadrature">pure quarature</link> help page.</para>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>sensPar, sensParIndex, sensRhs, sensRes, sensErrCon, sensCorrStep, typicalPar, yS0, ypS0</td>
+                        <td>    
+                            <para>These options allow to trigger and parametrize sensitivity computation. Please 
+                            see the dedicated <link linkend="cvodes">ODE Sensitivity</link> and <link linkend="idas">DAE Sensitivity</link> help pages.</para>
+                        </td>
+                    </tr>
+                </tbody>
+            </informaltable>
+        </para>
+    </refsection>
+
+    <refsection role="description">
+        <title>cvode options</title>
+        <para>cvode accept the following specific options:
+        </para>
+        <para>
+            <informaltable border='1'>
+                <tbody>
+                    <tr>
+                        <td>projection, projectError</td>
+                        <td>    
+                            <para>See the projection section of the <link linkend="cvode_proj">cvode help page</link>.</para>
+                        </td>
+                    </tr>
+                </tbody>
+            </informaltable>
+        </para>
+    </refsection>
+
+    <refsection role="description">
         <title>ida options</title>
         <para>ida accepts options that only make sense for differential-algebraic implicit equations:
         </para>
@@ -259,9 +303,9 @@
                     <tr>
                         <td>calcIC</td>
                         <td>    
-                            <para>A string specifying the type of initial condition to compute if <literal>y0,yp0</literal> vectors do not verify the equation.
-                            This string can be "yp0y0", in this case y'(0) and the algebraic (non-differential) states of y0 are computed, knowing the differential states of y0. 
-                            The algebraic states are specified with the <literal>yIsAlgebraic</literal> option. It can also be "y0" and in that case y(0) is computed knowing y'(0).
+                            <para>A string specifying the type of initial condition to compute if <literal>y0,yp0</literal> vectors do not verify the equation F(t0,y0,yp0)=0.
+                            This string can be "yp0y0", in this case yp0 and the algebraic (non-differential) states of y0 are computed, knowing the differential states. 
+                            The algebraic states are specified with the <literal>yIsAlgebraic</literal> option. It can also be "y0" and in that case y0 is computed knowing yp0.
                             The provided <literal>y0,yp0</literal> vectors in the <literal>ida</literal> call are used as inital guesses.</para>
                         </td>
                     </tr>
@@ -292,37 +336,6 @@
             yp0=0;
             [t,y]=ida(weissinger,[1 10],y0,yp0,calcIc="y0yp0");
             ]]></programlisting>
-        </para>
-    </refsection>
-
-    <refsection role="description">
-        <title>cvode options</title>
-        <para>cvode accepts the following specific options:
-        </para>
-        <para>
-            <informaltable border='1'>
-                <tbody>
-                    <tr>
-                        <td>quadRhs, quadErrCon</td>
-                        <td>    
-                            <para>See the projection section of the <link linkend="cvode_proj">cvode help page</link>.</para>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>projection, projectError</td>
-                        <td>    
-                            <para>See the projection section of the <link linkend="cvode_proj">cvode help page</link>.</para>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>sensPar, sensParIndex, sensRhs, sensErrCon, sensCorrStep, typicalPar, yS0</td>
-                        <td>    
-                            <para>These options allow to trigger and parametrize sensitivity computation. Please 
-                            see the dedicated <link linkend="sundials_sensitivity">Sensitivity</link> help page.</para>
-                        </td>
-                    </tr>
-                </tbody>
-            </informaltable>
         </para>
     </refsection>
 

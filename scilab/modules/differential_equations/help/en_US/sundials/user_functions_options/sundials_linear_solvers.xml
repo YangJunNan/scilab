@@ -10,8 +10,8 @@
 -->
 <refentry xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svg="http://www.w3.org/2000/svg" xmlns:ns5="http://www.w3.org/1999/xhtml" xmlns:mml="http://www.w3.org/1998/Math/MathML" xmlns:db="http://docbook.org/ns/docbook" xmlns:scilab="http://www.scilab.org" xml:id="sundials_linear_solvers" xml:lang="en" xmlns:m="http://www.w3.org/1998/Math/MathML">
     <refnamediv>
-        <refname>Sundials Linear Solvers</refname>
-        <refpurpose>Sundials direct and iterative, preconditionned linear solvers</refpurpose>
+        <refname>SUNDIALS Linear Solvers</refname>
+        <refpurpose>SUNDIALS direct and iterative, preconditionned linear solvers</refpurpose>
     </refnamediv>
     <refsynopsisdiv>
         <title>Syntax</title>
@@ -20,8 +20,8 @@
         </synopsis>
     </refsynopsisdiv>
     <refsection role="description">
-        <title>Linear solvers used by Sundials solvers</title>
-        <para>Sundials solvers may use underlying linear solvers when the selected method needs to solve a linear algebraic system during a 
+        <title>Linear solvers used by SUNDIALS solvers</title>
+        <para>SUNDIALS solvers may use underlying linear solvers when the selected method needs to solve a linear algebraic system during a 
             method step. This is the case when kinsol is used with the Newton or Picard method or when ODE/DAE solvers use an 
             implicit scheme (arkode uses such a solver with explicit schemes also when a mass matrix is present).
             When the Jacobian is explicitely provided by the user, either dense, banded or sparse, or implicitely by means of jacBand
@@ -30,7 +30,7 @@
         </para>
         <para>
             When very large scale problems are considered, matrix-free, scaled, preconditioned, iterative linear solvers are sometimes the
-            only way to go. Although Sundials allows to use this class of solver for ODEs, DAEs and nonlinear equations, for the time being the
+            only way to go. Although SUNDIALS allows to use this class of solver for ODEs, DAEs and nonlinear equations, for the time being the
             Scilab module only allows
             them for ODEs (cvode and arkode solvers) and built-in band preconditioning. The related options are the following:
         </para>

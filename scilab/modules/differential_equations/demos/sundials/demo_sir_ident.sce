@@ -44,33 +44,22 @@ function demo_sir_ident()
        28.         0.2550193
        30.         0.2244829
        32.         0.2091401
-       34.         0.1963063
-       36.         0.1687112
-       38.         0.1328981
-       40.         0.1224719
-       42.         0.0842777
-       44.         0.1003216
-       46.         0.0597533
-       48.         0.0689871
-       50.         0.0518397
-       52.         0.0591738
-       54.         0.0293348
-       56.         0.034996 
-       58.         0.0218051
-       60.         0.0126535]
+       34.         0.1963063]
     
-    tobs=data(1:14,1)';
-    Iobs=data(1:14,2)';
+    tobs=data(:,1)';
+    Iobs=data(:,2)';
     
     clf
     demo_viewCode("demo_sir_ident.sce")
     plot(tobs,Iobs,"o")
     gca().data_bounds=[0 60 0 1];
+    title("Identification of SIR model parameters")
     
     [Jopt, p, g]=optim(iprint=1,list(costgrad,tobs,Iobs),...
         'b',[0;0;0;0],[1;1;1;1],[.5;.5;.5;.5],"ar",200,100,1e-7);
 
-    mprintf("\n α = %g\n β = %g\n I0 = %g\n S0 = %g\n",p')
+    xstringb(17,0.8,"$\Large"+ ...
+     msprintf("α = %g\n β = %g\n S_0 = %g\n I_0 = %g\n",p')+"$",0,0)
     
     X0=[p(3);p(4)];
     [t,X,info]=cvode(list(sir,p),[tobs(1) 60] ,X0);

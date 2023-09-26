@@ -88,9 +88,11 @@ void OdeManager::init()
         }
         if (setConstraints(m_prob_mem, NVConstr) < 0)
         {
+            N_VDestroy(NVConstr);
             sprintf(errorMsg, "setConstraints error");
             throw ast::InternalError(errorMsg);
         }
+        N_VDestroy(NVConstr);
     }
 
     if (m_iMaxNumSteps > 0 && setMaxNumSteps(m_prob_mem, m_iMaxNumSteps))
@@ -142,6 +144,35 @@ void OdeManager::init()
     {
         sprintf(errorMsg,"setTolerances error\n");
         throw ast::InternalError(errorMsg);
+    }
+
+    if (hasQuadFeature() && m_bQuadErrCon == true)
+    {
+        if (setQuadErrCon(m_prob_mem, m_bQuadErrCon) < 0)
+        {
+            sprintf(errorMsg, "setQuadErrCon error");
+            throw ast::InternalError(errorMsg);
+        }
+        N_Vector m_N_VectorQuadAtol = N_VClone(m_NVectorYQ);
+        if (m_odeIsComplex)
+        {
+            m_dblVecQuadAtol.resize(m_iNbRealQuad);
+            // loop has to be done backward
+            for (int i=m_iNbQuad-1; i>=0; i--)
+            {
+                m_dblVecQuadAtol[2*i] = m_dblVecQuadAtol[i];
+                m_dblVecQuadAtol[2*i+1] = m_dblVecQuadAtol[i];
+            }
+        }
+        std::copy(m_dblVecQuadAtol.begin(), m_dblVecQuadAtol.end(), N_VGetArrayPointer(m_N_VectorQuadAtol));
+
+        if (setQuadSVTolerances(m_prob_mem, m_dblQuadRtol, m_N_VectorQuadAtol) < 0)
+        {
+            N_VDestroy(m_N_VectorQuadAtol);
+            sprintf(errorMsg,"setQuadSVtolerances error\n");
+            throw ast::InternalError(errorMsg);
+        }
+        N_VDestroy(m_N_VectorQuadAtol);            
     }
 
     if (setMaxOrd(m_prob_mem, m_iMaxOrder) < 0)
