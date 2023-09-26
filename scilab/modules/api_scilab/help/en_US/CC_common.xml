@@ -50,7 +50,7 @@
             int <varname>scilab_getType</varname>(<link linkend="api_types_scilabEnv"><command>scilabEnv</command></link> env, <link linkend="api_types_scilabVar"><command>scilabVar</command></link> var)
         </literal>
         <para>
-            Get type of <varname>var</varname>. see <link linkend="sci_types"><command>types</command></link> help page.
+            Get type of <varname>var</varname>.
         </para>
     </refsection>
     <refsection id="api_common_scilab_isDouble">
