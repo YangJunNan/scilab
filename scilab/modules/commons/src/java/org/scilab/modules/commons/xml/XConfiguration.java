@@ -192,6 +192,11 @@ public class XConfiguration {
             }
             transformer.setOutputProperty(OutputKeys.INDENT, "yes");
 
+            // Needed since Java 9, see:
+            // https://www.oracle.com/java/technologies/javase/9-notes.html#JDK-8087303
+            // https://bugs.openjdk.org/browse/JDK-8262285
+            ScilabXMLUtilities.removeEmptyLines(written);
+            
             StreamResult result = new StreamResult(new File(filename));
             DOMSource source = new DOMSource(written);
             try {
@@ -223,6 +228,11 @@ public class XConfiguration {
             return "";
         }
         transformer.setOutputProperty(OutputKeys.INDENT, "yes");
+
+        // Needed since Java 9, see:
+        // https://www.oracle.com/java/technologies/javase/9-notes.html#JDK-8087303
+        // https://bugs.openjdk.org/browse/JDK-8262285
+        ScilabXMLUtilities.removeEmptyLines(written);
 
         ByteArrayOutputStream stream = new ByteArrayOutputStream();
         StreamResult result = new StreamResult(new BufferedOutputStream(stream));

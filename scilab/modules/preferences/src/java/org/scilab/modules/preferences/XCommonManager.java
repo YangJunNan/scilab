@@ -65,6 +65,7 @@ import org.xml.sax.SAXException;
 import org.scilab.modules.commons.OS;
 import org.scilab.modules.commons.xml.ScilabDocumentBuilderFactory;
 import org.scilab.modules.commons.xml.ScilabTransformerFactory;
+import org.scilab.modules.commons.xml.ScilabXMLUtilities;
 import org.scilab.modules.commons.xml.XConfiguration;
 import org.scilab.modules.gui.console.ScilabConsole;
 import org.scilab.modules.localization.Messages;
@@ -383,6 +384,12 @@ public abstract class XCommonManager {
      */
     private static DOMResult generateViewDOM() {
         DOMResult result = new DOMResult();
+        
+        // Needed since Java 9, see:
+        // https://www.oracle.com/java/technologies/javase/9-notes.html#JDK-8087303
+        // https://bugs.openjdk.org/browse/JDK-8262285
+        ScilabXMLUtilities.removeEmptyLines(document.getDocumentElement());
+
         DOMSource source = new DOMSource(document);
         try {
             transformer.transform(source, result);
@@ -918,6 +925,11 @@ public abstract class XCommonManager {
             System.err.println(ERROR_WRITE + filename);
         }
         transformer.setOutputProperty(OutputKeys.INDENT, "yes");
+
+        // Needed since Java 9, see:
+        // https://www.oracle.com/java/technologies/javase/9-notes.html#JDK-8087303
+        // https://bugs.openjdk.org/browse/JDK-8262285
+        ScilabXMLUtilities.removeEmptyLines(written);
 
         StreamResult result = new StreamResult(new File(filename));
         DOMSource source = new DOMSource(written);
