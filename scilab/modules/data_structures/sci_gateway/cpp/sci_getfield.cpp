@@ -238,7 +238,7 @@ static types::Function::ReturnValue sci_getfieldStruct(types::typed_list &in, in
 
     if (_iRetCount != static_cast<int>(vectResult.size()))
     {
-        Scierror(78, _("%s: Wrong number of output argument(s): %d expected.\n"), "getfield", vectResult.size());
+        Scierror(78, _("%s: Wrong number of output argument(s): %d expected.\n"), "getfield", (int) vectResult.size());
         return types::Function::Error;
     }
 

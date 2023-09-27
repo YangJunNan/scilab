@@ -484,7 +484,7 @@ types::Function::ReturnValue sci_impl(types::typed_list &in, int _iRetCount, typ
 
     if (bFuncF == false)
     {
-        Scierror(77, _("%s: Wrong number of input argument(s): %d expected.\n"), "impl", in.size() + 1);
+        Scierror(77, _("%s: Wrong number of input argument(s): %d expected.\n"), "impl", (int) in.size() + 1);
         DifferentialEquation::removeDifferentialEquationFunctions();
         free(pdYData);
         free(YSize);
@@ -493,7 +493,7 @@ types::Function::ReturnValue sci_impl(types::typed_list &in, int _iRetCount, typ
 
     if (bFuncG == false)
     {
-        Scierror(77, _("%s: Wrong number of input argument(s): %d expected.\n"), "impl", in.size() + 1);
+        Scierror(77, _("%s: Wrong number of input argument(s): %d expected.\n"), "impl", (int) in.size() + 1);
         DifferentialEquation::removeDifferentialEquationFunctions();
         free(pdYData);
         free(YSize);

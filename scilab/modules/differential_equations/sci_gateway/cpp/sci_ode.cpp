@@ -560,7 +560,7 @@ types::Function::ReturnValue sci_ode(types::typed_list &in, int _iRetCount, type
     if (bFuncF == false)
     {
         int val = (meth == 3) ? 3 : 1;
-        Scierror(77, _("%s: Wrong number of input argument(s): %d expected.\n"), "ode", in.size() + val);
+        Scierror(77, _("%s: Wrong number of input argument(s): %d expected.\n"), "ode", (int) in.size() + val);
         DifferentialEquation::removeDifferentialEquationFunctions();
         FREE(pdYData);
         FREE(YSize);
@@ -568,7 +568,7 @@ types::Function::ReturnValue sci_ode(types::typed_list &in, int _iRetCount, type
     }
     if (pDblNg == NULL && meth == 3)
     {
-        Scierror(77, _("%s: Wrong number of input argument(s): %d expected.\n"), "ode", in.size() + 2);
+        Scierror(77, _("%s: Wrong number of input argument(s): %d expected.\n"), "ode", (int) in.size() + 2);
         DifferentialEquation::removeDifferentialEquationFunctions();
         FREE(pdYData);
         FREE(YSize);
@@ -576,7 +576,7 @@ types::Function::ReturnValue sci_ode(types::typed_list &in, int _iRetCount, type
     }
     if (bFuncG == false && meth == 3)
     {
-        Scierror(77, _("%s: Wrong number of input argument(s): %d expected.\n"), "ode", in.size() + 1);
+        Scierror(77, _("%s: Wrong number of input argument(s): %d expected.\n"), "ode", (int) in.size() + 1);
         DifferentialEquation::removeDifferentialEquationFunctions();
         FREE(pdYData);
         FREE(YSize);

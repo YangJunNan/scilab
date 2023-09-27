@@ -702,7 +702,7 @@ static void relink_cached(Controller& controller, model::BaseObject* adaptee, co
         // defensive programming: unable to relink as something goes wrong on the adapters
         std::string property_name, uid;
         resolve_log_information(controller, adaptee, p, property_name, uid);
-        get_or_allocate_logger()->log(LOG_ERROR, _("Wrong number of \"%s\" ports for Block #%d - \"%s\" : %d expected.\n"), property_name.c_str(), indexOf(adaptee->id(), children), uid.c_str(), cached_information.size());
+        get_or_allocate_logger()->log(LOG_ERROR, _("Wrong number of \"%s\" ports for Block #%d - \"%s\" : %d expected.\n"), property_name.c_str(), indexOf(adaptee->id(), children), uid.c_str(), (int) cached_information.size());
         return;
     }
 
@@ -728,13 +728,13 @@ static void relink_cached(Controller& controller, model::BaseObject* adaptee, co
             // TODO: is it already done ?
             std::string property_name, uid;
             resolve_log_information(controller, adaptee, p, property_name, uid);
-            get_or_allocate_logger()->log(LOG_ERROR, _("Partial information in \"%s(%d)\" is unset for Block #%d - \"%s\" : a value between 1 and %d expected.\n"), property_name.c_str(), i, indexOf(adaptee->id(), children), uid.c_str(), children.size());
+            get_or_allocate_logger()->log(LOG_ERROR, _("Partial information in \"%s(%d)\" is unset for Block #%d - \"%s\" : a value between 1 and %d expected.\n"), property_name.c_str(), i, indexOf(adaptee->id(), children), uid.c_str(), (int) children.size());
         }
         else
         {
             std::string property_name, uid;
             resolve_log_information(controller, adaptee, p, property_name, uid);
-            get_or_allocate_logger()->log(LOG_ERROR, _("Partial information in \"%s(%d)\" is invalid for Block #%d - \"%s\" : a value between 1 and %d expected.\n"), property_name.c_str(), i, indexOf(adaptee->id(), children), uid.c_str(), children.size());
+            get_or_allocate_logger()->log(LOG_ERROR, _("Partial information in \"%s(%d)\" is invalid for Block #%d - \"%s\" : a value between 1 and %d expected.\n"), property_name.c_str(), i, indexOf(adaptee->id(), children), uid.c_str(), (int) children.size());
         }
     }
 }

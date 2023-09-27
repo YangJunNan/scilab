@@ -50,7 +50,7 @@ types::Function::ReturnValue sci_spec(types::typed_list &in, int _iRetCount, typ
 
     if (_iRetCount > 2 * in.size())
     {
-        Scierror(78, _("%s: Wrong number of output argument(s): %d to %d expected.\n"), "spec", 1, 2 * in.size());
+        Scierror(78, _("%s: Wrong number of output argument(s): %d to %d expected.\n"), "spec", 1, 2 * (int) in.size());
         return types::Function::Error;
     }
 
