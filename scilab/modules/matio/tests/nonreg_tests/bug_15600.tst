@@ -22,7 +22,7 @@
 // Preparing data of various types
 // -------------------------------
 clear
-b = %t;                         // Skipped : https://gitlab.com/scilab/scilab/-/issues/15568
+b = %t;
 i = int8((rand(2,3)-0.5)*200);
 k = uint16(rand(1,4)*100);
 d = %pi;
@@ -49,7 +49,7 @@ File = TMPDIR+"/tmp.mat";
 fd = matfile_open(File, "r");
 [names, classes, types] = matfile_listvar(fd);
 matfile_close(fd);
-ref = ["Cell" "Sparse" "Struct" "c" "d" "h" "i" "k" "t"]';
+ref = ["Cell" "Sparse" "Struct" "b" "c" "d" "h" "i" "k" "t"]';
 assert_checkequal(names, ref);
 mdelete(File);
 
@@ -58,7 +58,7 @@ File = TMPDIR+"/tmp_73.mat";
 fd = matfile_open(File, "r");
 [names, classes, types] = matfile_listvar(fd);
 matfile_close(fd);
-ref = ["Cell" "Sparse" "Struct" "c" "d" "h" "i" "k" "t"]';
+ref = ["Cell" "Sparse" "Struct" "b" "c" "d" "h" "i" "k" "t"]';
 assert_checkequal(names, ref);
 mdelete(File);
 

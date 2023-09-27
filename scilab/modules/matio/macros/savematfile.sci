@@ -15,7 +15,7 @@
 function savematfile(varargin)
     // Save variables in a Matlab binary or ASCII file into Scilab
     // This function has been developed following the 'MAT-File Format' description:
-    // www.mathworks.com/access/helpdesk/help/pdf_doc/matlab/matfile_format.pdf
+    // https://www.mathworks.com/access/helpdesk/help/pdf_doc/matlab/matfile_format.pdf
 
     // INITIALIZATIONS
     // ===============
@@ -295,8 +295,7 @@ function savematfile(varargin)
         else
             // Filtering supported types
             // Unsupported : handles 9, macros 13, primitives 130, Others 128, 129
-            // Unsupported : booleans 4 : https://gitlab.com/scilab/scilab/-/issues/15568
-            mtlb_names = checkTypeBeforeMatSave(mtlb_names, [1 5 7 8 10 17], version)
+            mtlb_names = checkTypeBeforeMatSave(mtlb_names, [1 4 5 7 8 10 17], version)
             if mtlb_names==[]
                 msg = gettext("savematfile: No variable to save => No file written.")
                 warning(msg);

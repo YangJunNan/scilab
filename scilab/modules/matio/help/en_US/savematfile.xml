@@ -176,9 +176,8 @@
             <th>Data type</th>  <th>v4</th><th>v6</th><th>v7</th><th>v7.3</th><th>ASCII</th>
                 <th>Comments</th></tr>
             <tr valign="top">
-                <td>boolean</td><td>x</td><td>bug</td><td>bug</td><td>bug</td><td>x</td>
-                <td><ulink url="https://gitlab.com/scilab/scilab/-/issues/15568">Bug 15568</ulink>
-                </td>
+                <td>boolean</td><td>x</td><td>x</td><td>x</td><td>x</td><td>x</td>
+                <td></td>
             </tr>
             <tr valign="top">
                 <td>integer</td><td>x</td><td>X</td><td>X</td><td>X</td><td>no</td>

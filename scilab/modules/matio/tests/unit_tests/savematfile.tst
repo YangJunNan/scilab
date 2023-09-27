@@ -72,8 +72,6 @@ spcm = sparse(cm);
 
 // Booleans
 // ========
-// Supported only in version 4
-// Versions 6, 7, 7.3: https://gitlab.com/scilab/scilab/-/issues/15568 (missing support)
 bs = abs(ds)<25
 bv = abs(dv)<25
 bm = abs(dm)<25
@@ -232,10 +230,6 @@ only = ["savgg_mes"  "-v7.3"
         "structRow" "-v7.3"
         "structCol" "-v7.3"
         "structMat" "-v7.3"
-        "bs"        "-v4"     // https://gitlab.com/scilab/scilab/-/issues/15568
-        "bv"        "-v4"     //  "
-        "bm"        "-v4"     //  "
-        "bh"        "-v4"     //  "
     ];
 
 for n = varnames'

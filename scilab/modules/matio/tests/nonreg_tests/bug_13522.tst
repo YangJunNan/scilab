@@ -49,11 +49,8 @@ for it = [1 2 4 8 11 12 14 18]
     deletefile(testfile);
 end
 
-// Booleans: TO BE FIXED:
-//    https://gitlab.com/scilab/scilab/-/issues/15567
-//    https://gitlab.com/scilab/scilab/-/issues/15568
+// Booleans: TO BE FIXED: https://gitlab.com/scilab/scilab/-/issues/15574
 //h = rand(3,4,5,6)<0.5;
-//h = rand(3,4)<0.5;
 //savematfile(testfile, "h", "-v7.3");
 //h0 = h;
 //clear h
