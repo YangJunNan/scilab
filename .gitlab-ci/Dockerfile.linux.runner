@@ -1,0 +1,10 @@
+ARG DOCKER_LINUX_RUNNER=registry.gitlab.com/scilab/scilab/linux-runner
+ARG DOCKER_LINUX_BUILDER=registry.gitlab.com/scilab/scilab/linux-runner
+ARG DOCKER_TAG=
+ARG SCI_VERSION_STRING=
+
+FROM ${DOCKER_LINUX_BUILDER}:${DOCKER_TAG}
+
+# the "$SCI_VERSION_STRING.bin.$ARCH.tar.xz" tarball has been passed as context and extracted by docker
+CMD mv ${SCI_VERSION_STRING} 
+
