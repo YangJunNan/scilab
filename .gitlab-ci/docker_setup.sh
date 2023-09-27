@@ -15,7 +15,7 @@ where:
     -b, --builder DOCKER_LINUX_BUILDER    build the DOCKER_LINUX_BUILDER image, like CI_REGISTRY_IMAGE/linux-builder-BRANCH
     -p, --prebuild DOCKER_LINUX_PREBUILD  build the DOCKER_LINUX_PREBUILD image, like CI_REGISTRY_IMAGE/linux-prebuild-BRANCH
     -t, --testers                         build the CI_REGISTRY_IMAGE/{fedora, ubuntu, debian} images
-        --runner                          build the CI_REGISTRY_IMAGE/linux-runner image from the tarball
+        --runner BINARY                   build the CI_REGISTRY_IMAGE/linux-runner image from the tarball
     
 Example to push images for mr325:
  docker login registry.gitlab.com/scilab/scilab
@@ -29,7 +29,7 @@ DOCKER_LINUX_BUILDER=""
 DOCKER_LINUX_PREBUILD=""
 DOCKER_TAG=""
 TESTERS=""
-RUNNER=""
+BINARY=""
 while :
 do
   case "$1" in
@@ -39,18 +39,27 @@ do
       ;;
     -r | --registry)
       if [ $# -ne 0 ]; then
+        if test "$2" = -*; then
+          >&2 echo "Error: $1 expect a value"
+        fi
         CI_REGISTRY_IMAGE="$2"
       fi
       shift 2
       ;;
     -b | --builder)
       if [ $# -ne 0 ]; then
+        if test "$2" = -*; then
+          >&2 echo "Error: $1 expect a value"
+        fi
         DOCKER_LINUX_BUILDER="$2"
       fi
       shift 2
       ;;
     -p | --prebuild)
       if [ $# -ne 0 ]; then
+        if test "$2" = -*; then
+          >&2 echo "Error: $1 expect a value"
+        fi
         DOCKER_LINUX_PREBUILD="$2"
       fi
       shift 2
@@ -60,15 +69,20 @@ do
       shift 1
       ;;
     --runner)
-      RUNNER=runner
-      shift 1
+      if [ $# -ne 0 ]; then
+        if test "$2" = -*; then
+          >&2 echo "Error: $1 expect a value"
+        fi
+        BINARY="$2"
+      fi
+      shift 2
       ;;
     --) # End of all options
       shift
       break
       ;;
     -*)
-      echo "Error: Unknown option: $1" >&2
+      >&2 echo "Error: Unknown option: $1"
       exit 1 
       ;;
     *)  # No more options
@@ -80,7 +94,7 @@ done
 
 # check mandatory arguments
 if test ! -n "${DOCKER_TAG}"; then
-  echo "Error: undefined DOCKER_TAG argument" >&2
+  >&2 echo "Error: undefined DOCKER_TAG argument"
   exit 1
 fi
 
@@ -103,7 +117,13 @@ if test -n "${DOCKER_LINUX_PREBUILD}"; then
 fi
 
 # build linux distribution
-if test -n "${CI_REGISTRY_IMAGE}" && test -n "${TESTERS}"; then
+if test -n "${TESTERS}"; then
+
+  if test ! -n "${CI_REGISTRY_IMAGE}"; then
+    >&2 echo "Error: --registry argument is not set"
+    exit 1
+  fi
+
   docker build -t "${CI_REGISTRY_IMAGE}/ubuntu-18.04:${DOCKER_TAG}" \
     --build-arg DISTRO=ubuntu:18.04 \
     - <.gitlab-ci/linux-images/Dockerfile.ubuntu
@@ -134,14 +154,35 @@ if test -n "${CI_REGISTRY_IMAGE}" && test -n "${TESTERS}"; then
 fi
 
 # build a tagged docker image
-if test -n "${CI_REGISTRY_IMAGE}" && test -n "${RUNNER}"; then
-  docker build -t "${CI_REGISTRY_IMAGE}/linux-runner:${DOCKER_TAG}" \
-    --build-arg "DOCKER_LINUX_BUILDER=${DOCKER_LINUX_BUILDER}:${DOCKER_TAG}" \
+if test -n "${BINARY}"; then
+
+  if test ! -f "${BINARY}"; then
+    >&2 echo "Error: ${BINARY} does not exist"
+    exit 1
+  fi
+  if test ! -n "${CI_REGISTRY_IMAGE}"; then
+    >&2 echo "Error: --registry argument is not set"
+    exit 1
+  fi
+  if test ! -n "${DOCKER_LINUX_BUILDER}"; then
+    >&2 echo "Error: --builder argument is not set"
+    exit 1
+  fi
+
+  # create a Docker context
+  rm -fr linux-runner
+  mkdir linux-runner
+  cp .gitlab-ci/Dockerfile.linux.runner linux-runner/Dockerfile
+  cp "${BINARY}" linux-runner/
+
+  # build
+  docker build --progress=plain --no-cache -t "${CI_REGISTRY_IMAGE}/linux-runner:${DOCKER_TAG}" \
+    --build-arg "DOCKER_LINUX_BUILDER=${DOCKER_LINUX_BUILDER}" \
     --build-arg "DOCKER_LINUX_RUNNER=${CI_REGISTRY_IMAGE}/linux-runner" \
     --build-arg "DOCKER_TAG=${DOCKER_TAG}" \
-    --build-arg "SCI_VERSION_STRING=${SCI_VERSION_STRING}" \
-    -f .gitlab-ci/Dockerfile.linux.runner \
-    - < "$SCI_VERSION_STRING.bin.$ARCH.tar.xz"
+    linux-runner/
+  
+  # publish
   docker push "${CI_REGISTRY_IMAGE}/linux-runner:${DOCKER_TAG}"
   docker rmi "${CI_REGISTRY_IMAGE}/linux-runner:${DOCKER_TAG}"
 fi
