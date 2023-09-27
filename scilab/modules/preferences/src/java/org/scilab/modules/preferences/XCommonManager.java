@@ -367,7 +367,7 @@ public abstract class XCommonManager {
             if (OS.get() == OS.WINDOWS) {
                 transformer.setParameter("SCILAB_LANGUAGE", WindowsDefaultLanguage.getdefaultlanguage());
             } else {
-                transformer.setParameter("SCILAB_LANGUAGE", "");
+                transformer.setParameter("SCILAB_LANGUAGE", "en_US");
             }
         } catch (TransformerConfigurationException e1) {
             System.err.println(ERROR_READ + address);

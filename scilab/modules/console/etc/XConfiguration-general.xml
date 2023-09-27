@@ -10,7 +10,7 @@
             <polynomial-display code="0" format="_(ASCII)"/>
             <polynomial-display code="1" format="_(Unicode)"/>
         </environment>
-        <languages lang="en_US">
+        <languages lang=""> <!-- Will use Scilab default language by default -->
             <language code="en_US" desc="_(English)"/>
             <language code="fr_FR" desc="_(French)"/>
             <language code="pt_BR" desc="_(Portugese (Brazil))"/>
