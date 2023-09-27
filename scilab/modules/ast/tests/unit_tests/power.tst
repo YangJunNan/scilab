@@ -52,9 +52,9 @@ assert_checkalmostequal(c ^ R, expm(log(c) * R));
 assert_checkalmostequal(c ^ C, expm(log(c) * C));
 
 r1 = [1, -2.32, 1] .^ -1.123;
-r2 = [1, -2.32, 1] ^ -1.123;
 assert_checkalmostequal(r1, [1, -0.359991792326739168395+0.1464703519103459083972*%i, 1]);
-assert_checkalmostequal(r2, [1, -0.359991792326739168395+0.1464703519103459083972*%i, 1]);
+msg2 = msprintf(_("%s: Wrong size for input argument #%d: Square matrix expected.\n"), "%s_pow", 1);
+assert_checkerror("r2 = [1, -2.32, 1] ^ -1.123;", msg2);
 
 
 //POLY
@@ -82,7 +82,7 @@ assert_checkequal(PC ^ r, [%i*4+(%i*16)*%s^2+(%i*24)*%s^3+(%i*16)*%s^4+(%i*48)*%
 
 // Error handling for non-square matrices
 msg1 = msprintf(_("%s: Wrong size for input argument #%d: Square matrix expected.\n"), "%s_pow", 2);
-msg2= msprintf(_("%s: Wrong size for input argument #%d: Square matrix expected.\n"), "%s_pow", 1);
+msg2 = msprintf(_("%s: Wrong size for input argument #%d: Square matrix expected.\n"), "%s_pow", 1);
 
 NonSquare = [1 2; 3 4; 5 6];
 assert_checkerror("2^NonSquare", msg1);

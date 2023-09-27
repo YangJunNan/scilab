@@ -77,17 +77,7 @@
         <refsect3>
             <title>^ матричное возведение в степень</title>
             <para>
-                Оператор <literal>^</literal> эквивалентен поэлементному возведению
-                в степень <literal>.^</literal> в следующих случаях:
-                <itemizedlist>
-                    <listitem>
-                        <varname>A</varname> скаляр, а <varname>b</varname> вектор;
-                    </listitem>
-                    <listitem>
-                        <varname>A</varname> вектор, а <varname>b</varname> скаляр.
-                    </listitem>
-                </itemizedlist>
-                В противном случае <varname>A</varname> либо <varname>b</varname>
+                В случае <varname>A</varname> либо <varname>b</varname>
                 должен быть скаляром, а другой должен быть квадратной матрицей:
                 <itemizedlist>
                     <listitem>
@@ -197,7 +187,6 @@
 A = [1 2 ; 3 4];
 A ^ 2.5,
 A .^ 2.5
-(1:10) ^ 2
 (1:10) .^ 2
 
 A ^ %i
