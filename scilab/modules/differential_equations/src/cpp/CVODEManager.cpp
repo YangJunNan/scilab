@@ -409,11 +409,6 @@ int CVODEManager::projFunction(realtype t, N_Vector N_VectorY, N_Vector N_Vector
             in.push_back(types::Double::Empty());
         }
         manager->computeFunction(in, what, N_VGetArrayPointer(N_VectorCorr), pdblErr);
-
-        for (types::InternalType* pIT : in)
-        {
-            pIT->killMe();
-        }
     }
     else if (fAPI == SUNDIALS_DLL)
     {
