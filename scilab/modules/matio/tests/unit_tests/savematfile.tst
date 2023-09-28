@@ -141,11 +141,10 @@ th = cat(3,tv,tv);
 
 // CELLS ARRAYS
 // ============
-// Bug: Booleans not accepted in cells: https://gitlab.com/scilab/scilab/-/issues/15727
 EmptyC = {};
 ces = {rand(2,3)};
-cev = { "ABC", rand(1,3,2)};
-cem = {1.1, int8(-5); rand(10,10), "abc"};
+cev = { "ABC", rand(1,3,2), bs};
+cem = {1.1, int8(-5), bv; rand(10,10), "abc", bv};
 ceh = cat(3,cev, cev);
 ceNested = {cev, cem};
 ceWithSparse = {1.1, int8(-5); sprand(10,10,0.1), "abc"};
@@ -161,6 +160,7 @@ s0f.r = struct();
 ss.r = %pi;             // Scalar structure
 sv(1,2).r = rand(1,3);  // Vector of structures
 sm(2,3).r = %e;         // Matrix of structures
+sm(2,3).bm = bm;        // With booleans
 struc = struct("age",30, "type","software");
 // TODO: add more complex cases after fixing https://gitlab.com/scilab/scilab/-/issues/15730
 // Case from https://gitlab.com/scilab/scilab/-/issues/6372 : only with v7.3
