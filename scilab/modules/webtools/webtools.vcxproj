@@ -217,6 +217,8 @@
     <ClCompile Include="sci_gateway\cpp\sci_toJSON.cpp" />
     <ClCompile Include="sci_gateway\cpp\sci_http_upload.cpp" />
     <ClCompile Include="sci_gateway\c\sci_url_split.c" />
+    <ClCompile Include="sci_gateway\cpp\sci_url_decode.cpp" />
+    <ClCompile Include="sci_gateway\cpp\sci_url_encode.cpp" />
     <ClCompile Include="src\cpp\json.cpp" />
     <ClCompile Include="src\cpp\sciCurl.cpp" />
     <ClCompile Include="src\cpp\webtools.cpp" />
