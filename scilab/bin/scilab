@@ -127,7 +127,7 @@ start_profiling_visu() {
 
 find_docbook_path() {
     if test -z "$DOCBOOK_ROOT"; then
-        for dir in $SCI/thirdparty/docbook /usr/share/sgml/docbook/stylesheet/xsl/nwalsh /usr/share/docbook2X/xslt/man/ /usr/share/xml/docbook/stylesheet/nwalsh/ /usr/share/xml/docbook/stylesheet/nwalsh/current/ /sw/share/xml/xsl/docbook-xsl /usr/share/xml/docbook/xsl-stylesheets-*/ /usr/share/sgml/docbook/xsl-stylesheets-*/ /usr/share/sgml/docbook/xsl-stylesheets /usr/share/sgml/docbook/xsl-ns-stylesheets-*/ /usr/share/xml/docbook/stylesheet/docbook-xsl /opt/local/share/xsl/docbook-xsl; do
+        for dir in $SCI/thirdparty/docbook /usr/share/sgml/docbook/stylesheet/xsl/nwalsh /usr/share/docbook2X/xslt/man/ /usr/share/xml/docbook/stylesheet/nwalsh/ /usr/share/xml/docbook/stylesheet/nwalsh/current/ /usr/share/xml/docbook/xsl-stylesheets-*/ /usr/share/sgml/docbook/xsl-stylesheets-*/ /usr/share/sgml/docbook/xsl-stylesheets /usr/share/sgml/docbook/xsl-ns-stylesheets-*/ /usr/share/xml/docbook/stylesheet/docbook-xsl /opt/local/share/xsl/docbook-xsl; do
             if test -r "$dir/fo/docbook.xsl"; then
                 if test -z "$DOCBOOK_ROOT"; then
                     DOCBOOK_ROOT=$dir
@@ -792,8 +792,6 @@ fi
 
 case $OS in
     *darwin* | *Darwin*) # MacOS X
-        # When using some packaging tools like fink which are storing the info in /sw/lib
-        LD_LIBRARY_PATH="/sw/lib/${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}"
     # Export the path to the Scilab lib when Scilab has been install ...
     # to a Mac os x specific variable used by the linker before LD_LIBRARY_PATH
         DYLD_LIBRARY_PATH=$SCI/../../lib/scilab/${DYLD_LIBRARY_PATH:+:$DYLD_LIBRARY_PATH}:
