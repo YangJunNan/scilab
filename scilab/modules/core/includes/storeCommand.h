@@ -86,6 +86,12 @@ int GetCommand(char** command, int* piPrioritary, int* piInterruptible, enum com
 */
 int isEmptyCommandQueue(void);
 
+/**
+ * check if command queue prioritary is empty
+ * @return 1 if empty , 0 is not empty
+ */
+int isEmptyCommandQueuePrioritary(void);
+
 /*
  * Checks if there's something on the
  * commandQueue

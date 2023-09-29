@@ -17,6 +17,7 @@
 #include "os_string.h"
 #include "machine.h" // bsiz
 #include "getpipeline.h"
+#include "configvariable_interface.h"
 
 char* getPipeLine(void)
 {

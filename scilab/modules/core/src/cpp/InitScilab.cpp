@@ -168,7 +168,8 @@ int StartScilabEngine(ScilabEngineInfo* _pSEI)
 
     // ignore -quit if -e or -f are not given
     _pSEI->iForceQuit = _pSEI->iForceQuit && (_pSEI->pstExec || _pSEI->pstFile);
-    ConfigVariable::setForceQuit(_pSEI->iForceQuit == 1);
+    // Do not call ConfigVariable::setForceQuit() here to avoid Scilab to quit before executing callbacks, ...
+    // See exit condition in scilabReadAndExecCommand() loop
 
     // setup timeout delay
     if (_pSEI->iTimeoutDelay != 0)
@@ -432,6 +433,13 @@ int StartScilabEngine(ScilabEngineInfo* _pSEI)
         _pSEI->pstExec = NULL;
         _pSEI->pstFile = NULL;
         iScript = 1;
+    }
+
+    // If -quit argument is passed to Scilab, add a "quit" command to command queue.
+    // Setting ConfigVariable::setForceQuit() here avoids Scilab to quit before executing callbacks.
+    if (_pSEI->iForceQuit == 1)
+    {
+        StoreCommand("quit");
     }
 
     ConfigVariable::setUserMode(2);
@@ -831,8 +839,14 @@ void* scilabReadAndStore(void* param)
             continue;
         }
 
-        // store the command and wait for this execution ends.
-        StoreConsoleCommand(command, 1);
+        // when Scilab is executed in a pipe |
+        // quit can be already executed because of -quit,
+        // so the quit sent when closing the pipe must not be stored.
+        if(ConfigVariable::getForceQuit() == false)
+        {
+            // store the command and wait for this execution ends.
+            StoreConsoleCommand(command, 1);
+        }
 
         FREE(command);
         command = NULL;
