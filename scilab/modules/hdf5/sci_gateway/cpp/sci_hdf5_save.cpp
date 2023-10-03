@@ -806,7 +806,7 @@ static hid_t export_cell(hid_t parent, const std::string& name, types::Cell* dat
     hid_t dset = openList6(parent, name.data(), g_SCILAB_CLASS_CELL);
     //store cell dimensions
     std::vector<int> dims = {1, data->getDims()};
-    int hid_t = writeIntegerMatrix6(dset, "__dims__", H5T_NATIVE_INT32, "32", 2, dims.data(), data->getDimsArray(), xfer_plist_id);
+    hid_t ret = writeIntegerMatrix6(dset, "__dims__", H5T_NATIVE_INT32, "32", 2, dims.data(), data->getDimsArray(), xfer_plist_id);
     if (ret < 0)
     {
         return -1;
