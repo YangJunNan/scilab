@@ -47,7 +47,7 @@ static herr_t op_func_v1(hid_t loc_id, const char *name, const H5L_info_t *info,
 {
     H5O_info_t oinfo;
     herr_t status = 0;
-    int *pDataSetId = (int*)operator_data;
+    hid_t *pDataSetId = (hid_t*)operator_data;
     hid_t obj = H5Oopen(loc_id, name, H5P_DEFAULT);
     if (obj < 0)
     {
