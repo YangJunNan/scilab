@@ -49,6 +49,7 @@ windows_basic:
           - completion
           - core
           - data_structures
+          - development_tools
           - elementary_functions
           - fftw
           - fileio
@@ -79,7 +80,6 @@ windows_intermediate:
           - console
           - coverage
           - demo_tools
-          - development_tools
           - differential_equations
           - dynamic_link
           - helptools
