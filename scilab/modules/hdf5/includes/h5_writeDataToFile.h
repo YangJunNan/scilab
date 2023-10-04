@@ -70,7 +70,7 @@ HDF5_SCILAB_IMPEXP hid_t writeIntegerMatrix6(hid_t parent, const char* name, hid
 
 HDF5_SCILAB_IMPEXP hid_t openList6(hid_t parent, const char* name, const char* type);
 HDF5_SCILAB_IMPEXP hid_t closeList6(hid_t lst);
-HDF5_SCILAB_IMPEXP hid_t addItemStruct6(hid_t dataset, hobj_ref_t* refs, int pos, const char* name);
+HDF5_SCILAB_IMPEXP herr_t addItemStruct6(hid_t dataset, hobj_ref_t* refs, int pos, const char* name);
 HDF5_SCILAB_IMPEXP hid_t writeStructField6(hid_t parent, const char* name, int dims, int* pdims, hobj_ref_t* refs, hid_t xfer_plist);
 HDF5_SCILAB_IMPEXP hid_t writeVoid6(hid_t parent, const char* name, hid_t xfer_plist);
 HDF5_SCILAB_IMPEXP hid_t writeUndefined6(hid_t parent, const char* name, hid_t xfer_plist);

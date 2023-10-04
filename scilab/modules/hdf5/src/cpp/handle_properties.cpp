@@ -320,7 +320,7 @@ static void import_userdata(hid_t dataset, int uid)
 static void import_handle_tag(hid_t dataset, int uid)
 {
     char* tag = nullptr;
-    int node = getHandleString(dataset, "tag", &tag);
+    hid_t node = getHandleString(dataset, "tag", &tag);
     setGraphicObjectProperty(uid, __GO_TAG__, tag, jni_string, 1);
     freeStringMatrix(node, &tag);
 }

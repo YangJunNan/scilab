@@ -2431,7 +2431,7 @@ hid_t writeBooleanMatrix6(hid_t parent, const char* name, int dims, int* pdims, 
     return dset;
 }
 
-int writeIntegerMatrix6(hid_t parent, const char* name, hid_t type, const char* prec, int dims, int* pdims, void* data, hid_t xfer_plist_id)
+hid_t writeIntegerMatrix6(hid_t parent, const char* name, hid_t type, const char* prec, int dims, int* pdims, void* data, hid_t xfer_plist_id)
 {
     hsize_t* piDims = NULL;
     herr_t status = 0;
@@ -2553,7 +2553,7 @@ hid_t closeList6(hid_t lst)
     return 0;
 }
 
-hid_t addItemStruct6(hid_t dataset, hobj_ref_t * refs, int pos, const char *name)
+herr_t addItemStruct6(hid_t dataset, hobj_ref_t * refs, int pos, const char *name)
 {
     herr_t status = H5Rcreate(&refs[pos], dataset, name, H5R_OBJECT, -1);
     if (status < 0)
