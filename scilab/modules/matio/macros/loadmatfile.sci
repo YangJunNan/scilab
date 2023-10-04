@@ -167,7 +167,7 @@ function outStruct = loadmatfile(varargin)
         txt(emptyLines) = []; // Remove empty lines
 
         // Values read
-        Values = evstr(txt);
+        Values = list(evstr(txt)); // Values must be a list as declared at line 26
 
         // Output variable name generated from file name
         Names = fileparts(fil, "fname")
