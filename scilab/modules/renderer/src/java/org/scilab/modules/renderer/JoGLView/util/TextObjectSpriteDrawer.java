@@ -167,9 +167,9 @@ public class TextObjectSpriteDrawer implements TextureDrawer {
                     float ascent = 0;
                     if (isLatex(text)) {
                         try {
-                            TeXFormula formula = new TeXFormula(formatLaTeXString(text,font));
+                            TeXFormula formula = new TeXFormula(formatLaTeXString(text));
                             formula.setColor(textColor);
-                            icon = formula.createTeXIcon(TeXConstants.STYLE_DISPLAY, font.getSize());
+                            icon = formula.createTeXIcon(TeXConstants.STYLE_DISPLAY, (float)(1.17*font.getSize()));
                             ascent = ((TeXIcon) icon).getIconHeight() - ((TeXIcon) icon).getIconDepth();
                         } catch (Exception e) { }
                     } else if (isMathML(text)) {
@@ -222,15 +222,23 @@ public class TextObjectSpriteDrawer implements TextureDrawer {
      * @param string the given string.
      * @return the formatted string
      */
-    public String formatLaTeXString(String string, Font font) {
-        String fmtString = "";
-        String[] tokenArray = string.split("$");
-        boolean math = false;
-        for (String token : tokenArray) {
-            if (token.isEmpty() == false) {
-                fmtString += math ? token : "\\text{" + token + "}";
-            }
-            math = !math;
+    public String formatLaTeXString(String string) {
+        // displaystyle is added to match default MathML size of math symbols
+        String fmtString = "\\displaystyle ";
+        // Legacy 5.2 behavior: when string starts and ends with a dollar
+        // then no processing is done.
+        if (string.startsWith("$") && string.endsWith("$")) {
+            fmtString += string.substring(1,string.length()-1);
+        } else {
+            // string is splitted in pure math and text chunks
+            String[] tokenArray = string.split("\\$");
+            boolean math = false;
+            for (String token : tokenArray) {
+                if (token.isEmpty() == false) {
+                    fmtString += (math ? token : ("\\text{" + token + "}"));
+                }
+                math = !math;
+            }            
         }
         return fmtString;
     }

@@ -42,9 +42,9 @@ public class FormattedTextSpriteDrawer implements TextureDrawer {
         if (text != null && font != null) {
             if (isLatex(text)) {
                 LoadClassPath.loadOnUse("graphics_latex_textrendering");
-                TeXFormula formula = new TeXFormula(formatLaTeXString(text),font);
+                TeXFormula formula = new TeXFormula(formatLaTeXString(text));
                 formula.setColor(ColorFactory.createColor(colorMap, font.getColor()));
-                icon = formula.createTeXIcon(TeXConstants.STYLE_DISPLAY, FontManager.scilabSizeToAwtSize(font.getSize()));
+                icon = formula.createTeXIcon(TeXConstants.STYLE_DISPLAY, (float)(1.17*FontManager.scilabSizeToAwtSize(font.getSize())));
                 descent = ((TeXIcon) icon).getIconDepth();
             } else if (isMathML(text)) {
                 LoadClassPath.loadOnUse("graphics_mathml_textrendering");
@@ -119,15 +119,23 @@ public class FormattedTextSpriteDrawer implements TextureDrawer {
      * @param string the given string.
      * @return the formatted string
      */
-    public String formatLaTeXString(String string, Font font) {
-        String fmtString = "";
-        String[] tokenArray = string.split("$");
-        boolean math = false;
-        for (String token : tokenArray) {
-            if (token.isEmpty() == false) {
-                fmtString += math ? token : "\\text{" + token + "}";
-            }
-            math = !math;
+    public String formatLaTeXString(String string) {
+        // displaystyle is added to match default MathML size of math symbols
+        String fmtString = "\\displaystyle ";
+        // Legacy 5.2 behavior: when string starts and ends with a dollar
+        // then no processing is done.
+        if (string.startsWith("$") && string.endsWith("$")) {
+            fmtString += string.substring(1,string.length()-1);
+        } else {
+            // string is splitted in pure math and text chunks
+            String[] tokenArray = string.split("\\$");
+            boolean math = false;
+            for (String token : tokenArray) {
+                if (token.isEmpty() == false) {
+                    fmtString += (math ? token : ("\\text{" + token + "}"));
+                }
+                math = !math;
+            }            
         }
         return fmtString;
     }
