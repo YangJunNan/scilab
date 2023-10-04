@@ -1,5 +1,8 @@
 #!/bin/sh
 
+# exit script at the first error
+set -e
+
 ARCH=$(cc -print-multiarch)
 
 if test $# -eq 0; then
