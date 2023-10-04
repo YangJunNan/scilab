@@ -99,6 +99,14 @@ public final class ImageConverter {
     }
 
     /**
+     * Test if md5 cache exist (Scilab help build vs toolbox help build)
+     * @return true if md5 cache exist
+     */
+    public boolean hasMd5Cache() {
+        return md5s != null;
+    }
+
+    /**
      * Compare md5
      * @param code the code to compare
      * @param file the file name of the future image
@@ -248,7 +256,11 @@ public final class ImageConverter {
             if ((isLocalized != null && isLocalized.booleanValue()) || language.equals("en_US")) {
                 System.err.println("Info: Create image " + imageFile.getName() + " from line " + lineNumber + " in " + current.getName());
             } else if (!language.equals("en_US") && imageFile.exists()) {
-                conv.error(new SAXParseException("Overwrite image " + imageFile.getName() + " from line " + lineNumber + ". Check the code or use scilab:localized=\"true\" attribute.", null));
+                if (hasMd5Cache()) { // Scilab help build
+                    conv.error(new SAXParseException("Overwrite image " + imageFile.getName() + " from line " + lineNumber + ". Check the code or use scilab:localized=\"true\" attribute.", null));
+                } else { // Toolbox help build
+                    System.err.println("Warning: Overwrite image " + imageFile.getName() + " from line " + lineNumber + ". Check the code or use scilab:localized=\"true\" attribute.");
+                }
             }
 
             return imgConv.convertToImage(currentFile, code, attrs, imageFile, imageName);

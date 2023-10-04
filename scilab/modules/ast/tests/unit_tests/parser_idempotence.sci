@@ -21,9 +21,15 @@ function parser_idempotence(moduleName)
     for file = macroFiles'
         printf("%s\n", file)
         
-        unix_g(pathconvert(SCI + "/bin/scilab", %F) + " -nwni -nb --pretty-print --parse-file " + file + " > " + prettyPrint1);
-        unix_g(pathconvert(SCI + "/bin/scilab", %F) + " -nwni -nb --pretty-print --parse-file " + prettyPrint1 + " > " + prettyPrint2);
-
+        if getos() == "Windows" then
+            unix_g(pathconvert(SCI + "/bin/scilex", %F) + " -nb --pretty-print --parse-file " + file + " > " + prettyPrint1);
+            unix_g(pathconvert(SCI + "/bin/scilex", %F) + " -nb --pretty-print --parse-file " + prettyPrint1 + " > " + prettyPrint2);
+        else
+            unix_g(pathconvert(SCI + "/bin/scilab", %F) + " -nwni -nb --pretty-print --parse-file " + file + " > " + prettyPrint1);
+            unix_g(pathconvert(SCI + "/bin/scilab", %F) + " -nwni -nb --pretty-print --parse-file " + prettyPrint1 + " > " + prettyPrint2);
+        end
+    
+    
         txt1 = mgetl(prettyPrint1);
         txt2 = mgetl(prettyPrint2);
 

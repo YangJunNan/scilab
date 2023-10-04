@@ -177,10 +177,12 @@ function savematfile(varargin)
                 // perform changes on variables
                 execstr("__x__="+mtlb_names(mtlb_k))
 
-                // hypermatrix => we concatenate its pages horizontally:
+                // hypermatrix => Only the first page is saved (only 2-D arrays are supported by this format)
                 __s__ = size(__x__);
                 if length(__s__)>2    
-                    __x__ = matrix(__x__,__s__(1),-1);
+                    //__x__ = matrix(__x__,__s__(1),-1);
+                    //__x__ = __x__(1:prod(__s__(1:2)));
+                    __x__ = __x__(:, :, 1);
                 end
                 //
                 __it__ = 0  // == has imaginary part

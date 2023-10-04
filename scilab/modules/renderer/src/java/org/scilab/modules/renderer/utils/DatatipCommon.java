@@ -65,7 +65,7 @@ public class DatatipCommon {
      * Given a pixel coordinate return the transformed axis coordinate
      */
     public static double[] getTransformedPosition(Integer figure, Integer[] pos) {
-        Integer axes = AxesHandler.clickedAxes(figure, pos);
+        Integer axes = AxesHandler.clickedAxes(figure, pos)[0];
         double[] position = new double[] {pos[0].doubleValue(), pos[1].doubleValue(), 0.0};
         return CallRenderer.get2dViewFromPixelCoordinates(axes, position);
     }
@@ -75,7 +75,7 @@ public class DatatipCommon {
      * (don't transfor it back if log scale is used)
      */
     public static double[] getTransformedPositionInViewScale(Integer figure, Integer[] pos) {
-        Integer axes = AxesHandler.clickedAxes(figure, pos);
+        Integer axes = AxesHandler.clickedAxes(figure, pos)[0];
         double[] position = {pos[0].doubleValue(), pos[1].doubleValue(), 0.0};
         return CallRenderer.get2dViewFromPixelCoordinates(axes, position);
     }

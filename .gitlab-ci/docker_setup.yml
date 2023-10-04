@@ -24,13 +24,13 @@ builder_linux:
     - if: $CI_PIPELINE_SOURCE == "schedule"
       when: never
     # rebuild on demand
-    - changes:
+    - changes: &DOCKER_CHANGES
         paths:
           - .gitlab-ci.yml
           - .gitlab-ci/docker_setup.yml
           - .gitlab-ci/docker_setup.sh
-          - .gitlab-ci/Dockerfile.linux
-          - .gitlab-ci/Dockerfile.linux.prebuild
+          - .gitlab-ci/Dockerfile*
+          - .gitlab-ci/linux-images/Dockerfile*
       allow_failure: true
 
 prebuild_linux:
@@ -51,13 +51,7 @@ prebuild_linux:
     - if: $CI_PIPELINE_SOURCE == "schedule"
       when: never
     # rebuild on demand
-    - changes:
-        paths:
-          - .gitlab-ci.yml
-          - .gitlab-ci/docker_setup.yml
-          - .gitlab-ci/docker_setup.sh
-          - .gitlab-ci/Dockerfile.linux
-          - .gitlab-ci/Dockerfile.linux.prebuild
+    - changes: *DOCKER_CHANGES
 
 tester_linux:
   stage: docker_setup
@@ -72,12 +66,7 @@ tester_linux:
     - if: $CI_PIPELINE_SOURCE == "schedule"
       when: never
     # rebuild on demand
-    - changes:
-        paths:
-          - .gitlab-ci.yml
-          - .gitlab-ci/docker_setup.yml
-          - .gitlab-ci/docker_setup.sh
-          - .gitlab-ci/linux-images/Dockerfile*
+    - changes: *DOCKER_CHANGES
       allow_failure: true
 
 # builder_windows:

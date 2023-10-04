@@ -24,6 +24,8 @@ GATEWAY_CPP_SOURCES = \
     sci_gateway/cpp/sci_http_put_post.cpp \
     sci_gateway/cpp/sci_http_delete.cpp \
     sci_gateway/cpp/sci_http_upload.cpp \
+    sci_gateway/cpp/sci_url_encode.cpp \
+    sci_gateway/cpp/sci_url_decode.cpp \
     sci_gateway/cpp/sci_toJSON.cpp \
     sci_gateway/cpp/sci_fromJSON.cpp \
     sci_gateway/cpp/checkCommonOpt.cpp \

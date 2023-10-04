@@ -20,7 +20,6 @@ Please report anything we could have missed, on the [mailing lists][2] or the [b
 
 New features
 ------------
-
 For a high-level description of the main new features of this release, please consult the [embedded help][4]. It is also available as the "What's new" page of the help, by simply typing `help` in the Scilab console.
 
 [4]: modules/helptools/data/pages/homepage-en_US.html
@@ -39,6 +38,7 @@ In summary, the main new features and additions are:
 * Add compression and decompression functions to manage compressed archive.
 * The number of characters used to define the body of any conditional instruction (`if`, `while`, `for`, or `select/case`) is no more limited to 16k (Scilab 6.x improvement).
 * Add absolute and relative numerical tolerences in `intl()` input arguments.
+* `url_encode()` and `url_decode()` are added to the webtools module.
 * <TODO>
 
 

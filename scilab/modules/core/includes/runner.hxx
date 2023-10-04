@@ -87,7 +87,7 @@ public:
     static bool isInterruptibleCommand(void);
     static command_origin_t getCommandOrigin();
     static void execAndWait(ast::Exp* _theProgram, ast::RunVisitor *_visitor,
-                            bool _isInterruptible, bool _isPrioritary, command_origin_t _iCommandOrigin);
+                            bool _isPrioritary, bool _isInterruptible, command_origin_t _iCommandOrigin);
     static bool exec(ast::Exp* _theProgram, ast::RunVisitor *_visitor);
     static void sendExecDoneSignal();
     static void setCommandOrigin(command_origin_t _origin);

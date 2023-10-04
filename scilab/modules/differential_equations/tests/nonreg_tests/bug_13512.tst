@@ -28,7 +28,7 @@ t  = 1;
 // With initial yprime computation
 
 // The evaluation function purposely lacks the output argument 'ires'
-deff("ydot = f1(t, y, ydot)", "ydot = y^2 - y*sin(t) + cos(t)")
+deff("ydot = f1(t, y, ydot)", "ydot = y.^2 - y*sin(t) + cos(t)")
 
 refMsg = [msprintf(_("%s: Wrong number of output argument(s): %d expected.\n"), "f1", 2);
 msprintf(_("%ls: An error occurred in ''%ls'' subroutine.\n"), "dassl", "dassl")];
@@ -36,7 +36,7 @@ msprintf(_("%ls: An error occurred in ''%ls'' subroutine.\n"), "dassl", "dassl")
 assert_checkerror("y = dae(y0, t0, t, f1);", refMsg);
 
 // The evaluation function purposely lacks the input argument 'ydot'
-deff("[ydot,ires] = f2(t, y)", "ydot = y^2 - y*sin(t) + cos(t)");
+deff("[ydot,ires] = f2(t, y)", "ydot = y.^2 - y*sin(t) + cos(t)");
 
 refMsg = [msprintf(_("Wrong number of input arguments.\n"));
 msprintf(_("%ls: An error occurred in ''%ls'' subroutine.\n"), "dassl", "dassl")];

@@ -171,44 +171,6 @@ AC_ARG_ENABLE(build-parser,
 AC_PROG_CPP
 AC_PROG_GREP
 
-######
-#### Mac OS X set of fink path with provided
-######
-
-AC_ARG_WITH(fink_prefix,
-AS_HELP_STRING([--with-fink-prefix],[Provide a fink prefix. Default: /sw/ ]))
-# Need MacosX Version to specify some path.
-case "$host_os" in
-     *Darwin* | *darwin*)
-               AC_GET_MACOSX_VERSION
-     ;;
-esac
-
-case "$host" in
-    *darwin*)
-        if test -n "$with_fink_prefix"; then
-            # If with-fink-prefix is provided, use the provided path to make sure that we will
-            # use it to detect dependencies (for example, gfortran is not provided in xcode.
-            # Therefor, we use the one in fink)
-            FINK_PREFIX="$with_fink_prefix/"
-
-            # Exec the init script of fink to make sure that the env is set
-            if test -f $with_fink_prefix/bin/init.sh; then
-                echo "source $with_fink_prefix/bin/init.sh executed to set the env"
-                source $with_fink_prefix/bin/init.sh
-            else
-                AC_MSG_WARN([Could not find the fink init.sh script: $with_fink_prefix/bin/init.sh])
-            fi
-        else
-            FINK_PREFIX="/sw/"
-        fi
-
-        #Append to the default flags on Apple machines
-        CPPFLAGS="$CPPFLAGS -I$FINK_PREFIX/include/"
-        LDFLAGS="$LDFLAGS -L$FINK_PREFIX/lib/"
-        ;;
-esac
-
 AC_ARG_WITH(min_macosx_version,
 AS_HELP_STRING([--with-min-macosx-version],[Force compilers to generate binaries compatible with MacOSX minimal version.]))
 case "$host" in
