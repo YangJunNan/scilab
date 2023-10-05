@@ -122,21 +122,15 @@ public class FormattedTextSpriteDrawer implements TextureDrawer {
     public String formatLaTeXString(String string) {
         // displaystyle is added to match default MathML size of math symbols
         String fmtString = "\\displaystyle ";
-        // Legacy 5.2 behavior: when string starts and ends with a dollar
-        // then no processing is done.
-        if (string.startsWith("$") && string.endsWith("$")) {
-            fmtString += string.substring(1,string.length()-1);
-        } else {
-            // string is splitted in pure math and text chunks
-            String[] tokenArray = string.split("\\$");
-            boolean math = false;
-            for (String token : tokenArray) {
-                if (token.isEmpty() == false) {
-                    fmtString += (math ? token : ("\\text{" + token + "}"));
-                }
-                math = !math;
-            }            
-        }
+        // string is splitted in pure math and text chunks
+        String[] tokenArray = string.split("\\$");
+        boolean math = false;
+        for (String token : tokenArray) {
+            if (token.isEmpty() == false) {
+                fmtString += (math ? token : ("\\text{" + token + "}"));
+            }
+            math = !math;
+        }            
         return fmtString;
     }
 
