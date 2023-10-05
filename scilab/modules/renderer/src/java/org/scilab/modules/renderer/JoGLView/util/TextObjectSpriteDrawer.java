@@ -169,7 +169,7 @@ public class TextObjectSpriteDrawer implements TextureDrawer {
                         try {
                             TeXFormula formula = new TeXFormula(formatLaTeXString(text));
                             formula.setColor(textColor);
-                            icon = formula.createTeXIcon(TeXConstants.STYLE_DISPLAY, (float)(1.1*font.getSize()));
+                            icon = formula.createTeXIcon(TeXConstants.STYLE_DISPLAY, font.getSize());
                             ascent = ((TeXIcon) icon).getIconHeight() - ((TeXIcon) icon).getIconDepth();
                         } catch (Exception e) { }
                     } else if (isMathML(text)) {
