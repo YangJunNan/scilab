@@ -44,7 +44,7 @@ public class FormattedTextSpriteDrawer implements TextureDrawer {
                 LoadClassPath.loadOnUse("graphics_latex_textrendering");
                 TeXFormula formula = new TeXFormula(formatLaTeXString(text));
                 formula.setColor(ColorFactory.createColor(colorMap, font.getColor()));
-                icon = formula.createTeXIcon(TeXConstants.STYLE_DISPLAY, (float)(1.17*FontManager.scilabSizeToAwtSize(font.getSize())));
+                icon = formula.createTeXIcon(TeXConstants.STYLE_DISPLAY, (float)(1.1*FontManager.scilabSizeToAwtSize(font.getSize())));
                 descent = ((TeXIcon) icon).getIconDepth();
             } else if (isMathML(text)) {
                 LoadClassPath.loadOnUse("graphics_mathml_textrendering");
