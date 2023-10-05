@@ -240,7 +240,7 @@ Axes
         <title>История</title>
         <revhistory>
             <revision>
-                <revnumber>2023.1</revnumber>
+                <revnumber>2024.0</revnumber>
                 <revdescription>
                     <literal>subplot(…)</literal> can be used on uicontrol frames.
                 </revdescription>

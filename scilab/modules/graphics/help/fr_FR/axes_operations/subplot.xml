@@ -236,7 +236,7 @@ Axes
         <title>Historique</title>
         <revhistory>
             <revision>
-                <revnumber>2023.1</revnumber>
+                <revnumber>2024.0</revnumber>
                 <revdescription>
                     <literal>subplot(…)</literal> peut être utilisé sur des composants uicontrol
                     de style frame.
