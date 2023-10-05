@@ -1441,7 +1441,7 @@ Callable::ReturnValue Macro::call(typed_list& in, optional_list& opt, int _iRetC
 
                 if (in.size() < expected || in.size() > m_arguments.size())
                 {
-                    Scierror(999, _("%s: Wrong number of input argument(s): %ld expected.\n"), scilab::UTF8::toUTF8(m_wstName).data(), m_arguments.size());
+                    Scierror(999, _("%s: Wrong number of input argument(s): %d expected.\n"), scilab::UTF8::toUTF8(m_wstName).data(), (int)m_arguments.size());
                     return types::Function::Error;
                 }
             }
@@ -2205,7 +2205,7 @@ void Macro::updateArguments()
                                 }
                                 else //use position of variable as message information
                                 {
-                                    int pos = std::get<0>(argValidator.inputs[std::get<0>(args[k])]);
+                                    int pos = std::get<0>(argValidator.inputs[std::get<0>(args[k])]) + 1;
                                     argValidator.errorArgs.push_back(std::to_string(pos));
                                 }
                             }

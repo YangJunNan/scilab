@@ -19,13 +19,10 @@
 
 function Rep=isLeapYear(year)
 
-    lhs=argn(1);
-    rhs=argn(2);
-
-    if rhs==1 & type(year)==1 then
-        Rep = ((modulo(year,100)<>0) & (modulo(year,4)==0)) | (modulo(year,400)== 0);
-    else
-        error(msprintf(gettext("%s: Wrong number of input argument: %d expected.\n"),"isLeapYear",1));
+    arguments
+        year {mustBeA(year, "double")}
     end
+
+    Rep = ((modulo(year,100)<>0) & (modulo(year,4)==0)) | (modulo(year,400)== 0);
 
 endfunction
