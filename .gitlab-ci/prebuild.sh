@@ -1,5 +1,8 @@
 #!/bin/sh
 
+# exit script at the first error
+set -e
+
 ARCH=$(cc -print-multiarch)
 
 if test $# -eq 0; then
@@ -63,7 +66,7 @@ ARPACK_VERSION=3.1.5
 CURL_VERSION=7.64.1
 EIGEN_VERSION=3.3.2
 FFTW_VERSION=3.3.3
-HDF5_VERSION=1.8.14
+HDF5_VERSION=1.10.10
 NCURSES_VERSION=6.4
 LIBXML2_VERSION=2.9.9
 MATIO_VERSION=1.5.2
@@ -499,7 +502,6 @@ build_hdf5() {
         -DHDF5_BUILD_HL_LIB=ON
     cmake --build . --parallel --target install
 
-    cp "$INSTALL_DIR/share/cmake/hdf5/libhdf5.settings" "$INSTALLUSRDIR/lib/"
     cp -a "$INSTALL_DIR"/lib/*.so* "$INSTALLUSRDIR/lib/"
     cp -a "$INSTALL_DIR"/include/* "$INSTALLUSRDIR/include/"
 }
