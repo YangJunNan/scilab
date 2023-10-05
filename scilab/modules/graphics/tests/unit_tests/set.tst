@@ -70,8 +70,8 @@ assert_checkequal(e.display_function_data, []);
 
 // Scalar property value (curve.thickness): repeated assignment
 L = list(e(1:3) , 2, [2 2 2]', ..
-         e(1:3)', 3, [3 3 3]', ..
-         matrix(e(1:6),2,3), 2, [2 2 2 2 2 2]');
+         e(1:3)', 3, [3 3 3], ..
+         matrix(e(1:6),2,3), 2, [2 2 2; 2 2 2]);
 for i = 0:(size(L)/3-1)
     h = L(1+3*i);
     v = L(2+3*i);
@@ -85,10 +85,10 @@ for i = 0:(size(L)/3-1)
 end
 // Scalar property value (curve.thickness): distributive assignment
 L = list(e(1:3) , [2 3 4]', [2 3 4]', ..
-         e(1:3)', [1 2 3],  [1 2 3]', ..
-         matrix(e(1:6),2,3), [2 4 6; 3 5 7], (2:7)', ..
-         matrix(e(1:6),2,3), 1:6, (1:6)', ..
-         matrix(e(1:6),2,3), (1:6)', (1:6)', ..
+         e(1:3)', [1 2 3],  [1 2 3], ..
+         matrix(e(1:6),2,3), [2 4 6; 3 5 7], [2 4 6; 3 5 7], ..
+         matrix(e(1:6),2,3), 1:6, [1 3 5;2 4 6], ..
+         matrix(e(1:6),2,3), (1:6)', [1 3 5;2 4 6], ..
          );
 for i = 0:(size(L)/3-1)
     h = L(1+3*i);
