@@ -223,7 +223,6 @@ public class TextObjectSpriteDrawer implements TextureDrawer {
      * @return the formatted string
      */
     public String formatLaTeXString(String string) {
-        // displaystyle is added to match default MathML size of math symbols
         String fmtString = "";
         // string is splitted in pure math and text chunks
         String[] tokenArray = string.split("\\$");
