@@ -190,10 +190,10 @@ am__CONFIG_DISTCLEAN_FILES = config.status config.cache config.log \
  configure.lineno config.status.lineno
 mkinstalldirs = $(SHELL) $(top_srcdir)/config/mkinstalldirs
 CONFIG_HEADER = $(top_builddir)/modules/core/includes/machine.h
-CONFIG_CLEAN_FILES = scilab.pc etc/modules.xml etc/classpath.xml \
-	etc/Info.plist etc/logging.properties scilab.properties \
-	scilab-lib.properties scilab-lib-doc.properties \
-	modules/helptools/etc/SciDocConf.xml \
+CONFIG_CLEAN_FILES = scilab.pc build.incl.xml etc/modules.xml \
+	etc/classpath.xml etc/Info.plist etc/logging.properties \
+	scilab.properties scilab-lib.properties \
+	scilab-lib-doc.properties modules/helptools/etc/SciDocConf.xml \
 	modules/core/includes/version.h modules/atoms/etc/repositories \
 	modules/atoms/tests/unit_tests/repositories.orig
 CONFIG_CLEAN_VPATH_FILES =
@@ -496,7 +496,7 @@ am__tty_colors = { \
   fi; \
 }
 DIST_SUBDIRS = $(SUBDIRS)
-am__DIST_COMMON = $(srcdir)/Makefile.in \
+am__DIST_COMMON = $(srcdir)/Makefile.in $(srcdir)/build.incl.xml.in \
 	$(srcdir)/scilab-lib-doc.properties.in \
 	$(srcdir)/scilab-lib.properties.in $(srcdir)/scilab.pc.in \
 	$(srcdir)/scilab.properties.in \
@@ -667,6 +667,9 @@ JAVA = @JAVA@
 JAVAC = @JAVAC@
 JAVAC_DEBUG = @JAVAC_DEBUG@
 JAVADOC = @JAVADOC@
+JAVAFX_BASE = @JAVAFX_BASE@
+JAVAFX_GRAPHICS = @JAVAFX_GRAPHICS@
+JAVAFX_SWING = @JAVAFX_SWING@
 JAVASCI_ENABLE = @JAVASCI_ENABLE@
 JAVAX_ANNOTATION = @JAVAX_ANNOTATION@
 JAVA_ENABLE = @JAVA_ENABLE@
@@ -1107,6 +1110,8 @@ $(top_srcdir)/modules/core/includes/machine.h.in: @MAINTAINER_MODE_TRUE@ $(am__c
 distclean-hdr:
 	-rm -f modules/core/includes/machine.h modules/core/includes/stamp-h1
 scilab.pc: $(top_builddir)/config.status $(srcdir)/scilab.pc.in
+	cd $(top_builddir) && $(SHELL) ./config.status $@
+build.incl.xml: $(top_builddir)/config.status $(srcdir)/build.incl.xml.in
 	cd $(top_builddir) && $(SHELL) ./config.status $@
 etc/modules.xml: $(top_builddir)/config.status $(top_srcdir)/etc/modules.xml.in
 	cd $(top_builddir) && $(SHELL) ./config.status $@

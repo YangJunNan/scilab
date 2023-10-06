@@ -850,6 +850,9 @@ FREEHEP_GRAPHICSIO_EMF
 FREEHEP_GRAPHICSIO
 FREEHEP_GRAPHICS2D
 FOP
+JAVAFX_GRAPHICS
+JAVAFX_SWING
+JAVAFX_BASE
 JEUCLID_CORE
 JROSETTA_ENGINE
 JROSETTA_API
@@ -10238,11 +10241,11 @@ if test x$ac_prog_cxx_stdcxx = xno
 then :
   { printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking for $CXX option to enable C++11 features" >&5
 printf %s "checking for $CXX option to enable C++11 features... " >&6; }
-if test ${ac_cv_prog_cxx_11+y}
+if test ${ac_cv_prog_cxx_cxx11+y}
 then :
   printf %s "(cached) " >&6
 else $as_nop
-  ac_cv_prog_cxx_11=no
+  ac_cv_prog_cxx_cxx11=no
 ac_save_CXX=$CXX
 cat confdefs.h - <<_ACEOF >conftest.$ac_ext
 /* end confdefs.h.  */
@@ -10284,11 +10287,11 @@ if test x$ac_prog_cxx_stdcxx = xno
 then :
   { printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking for $CXX option to enable C++98 features" >&5
 printf %s "checking for $CXX option to enable C++98 features... " >&6; }
-if test ${ac_cv_prog_cxx_98+y}
+if test ${ac_cv_prog_cxx_cxx98+y}
 then :
   printf %s "(cached) " >&6
 else $as_nop
-  ac_cv_prog_cxx_98=no
+  ac_cv_prog_cxx_cxx98=no
 ac_save_CXX=$CXX
 cat confdefs.h - <<_ACEOF >conftest.$ac_ext
 /* end confdefs.h.  */
@@ -13458,7 +13461,7 @@ printf "%s\n" "$ac_java_classpath" >&6; }
 printf %s "checking to see if the java compiler works... " >&6; }
 
     cat << \EOF > conftest.java
-// #line 13461 "configure"
+// #line 13464 "configure"
 import java.util.regex.Pattern;
 
 
@@ -13545,7 +13548,7 @@ printf %s "checking type of jvm... " >&6; }
     if test "x$ac_java_jvm_name" = "x" ; then
 
     cat << \EOF > conftest.java
-// #line 13548 "configure"
+// #line 13551 "configure"
 import java.util.regex.Pattern;
 
 import gnu.java.io.EncodingManager;
@@ -13629,7 +13632,7 @@ printf %s "checking java API version... " >&6; }
     # The class java.nio.charset.Charset is new in Java 1.4
 
     cat << \EOF > conftest.java
-// #line 13632 "configure"
+// #line 13635 "configure"
 import java.util.regex.Pattern;
 
 import java.nio.charset.Charset;
@@ -13694,7 +13697,7 @@ EOF
     # The class java.lang.StringBuilder is new in Java 1.5
 
     cat << \EOF > conftest.java
-// #line 13697 "configure"
+// #line 13700 "configure"
 import java.util.regex.Pattern;
 
 import java.lang.StringBuilder;
@@ -13759,7 +13762,7 @@ EOF
     # The class java.util.ArrayDeque is new in Java 1.6
 
     cat << \EOF > conftest.java
-// #line 13762 "configure"
+// #line 13765 "configure"
 import java.util.regex.Pattern;
 
 import java.util.ArrayDeque;
@@ -13824,7 +13827,7 @@ EOF
     # The class java.nio.file.Path is new in Java 1.7
 
     cat << \EOF > conftest.java
-// #line 13827 "configure"
+// #line 13830 "configure"
 import java.util.regex.Pattern;
 
 import java.nio.file.Path;
@@ -13889,7 +13892,7 @@ EOF
     # The class java.util.stream.DoubleStream is new in Java 1.8
 
     cat << \EOF > conftest.java
-// #line 13892 "configure"
+// #line 13895 "configure"
 import java.util.regex.Pattern;
 
 import java.util.stream.DoubleStream;
@@ -13954,7 +13957,7 @@ EOF
     # The class java.lang.ProcessHandle is new in Java 1.9
 
     cat << \EOF > conftest.java
-// #line 13957 "configure"
+// #line 13960 "configure"
 import java.util.regex.Pattern;
 
 import java.lang.ProcessHandle;
@@ -14019,7 +14022,7 @@ EOF
     # The class jdk.jfr.events.FileForceEvent is new in Java 10
 
     cat << \EOF > conftest.java
-// #line 14022 "configure"
+// #line 14025 "configure"
 import java.util.regex.Pattern;
 
 import jdk.jfr.events.FileForceEvent;
@@ -14084,7 +14087,7 @@ EOF
     # The class java.net.http.HttpClient is new in Java 11
 
     cat << \EOF > conftest.java
-// #line 14087 "configure"
+// #line 14090 "configure"
 import java.util.regex.Pattern;
 
 import java.net.http.HttpClient;
@@ -14149,7 +14152,7 @@ EOF
     # The class java.lang.constant.ClassDesc is new in Java 12
 
     cat << \EOF > conftest.java
-// #line 14152 "configure"
+// #line 14155 "configure"
 import java.util.regex.Pattern;
 
 import java.lang.constant.ClassDesc;
@@ -14214,7 +14217,7 @@ EOF
     # Method newFileSystem(Path) was added to java.nio.file.FileSystems in Java 13
 
     cat << \EOF > conftest.java
-// #line 14217 "configure"
+// #line 14220 "configure"
 import java.util.regex.Pattern;
 
 
@@ -14286,7 +14289,7 @@ EOF
     # Switch expressions are a standard feature of Java 14 (were a preview feature in 12 & 13)
 
     cat << \EOF > conftest.java
-// #line 14289 "configure"
+// #line 14292 "configure"
 import java.util.regex.Pattern;
 
 
@@ -14363,7 +14366,7 @@ EOF
     # Text blocks are a standard feature of Java 15 (were a preview feature in 13 & 14)
 
     cat << \EOF > conftest.java
-// #line 14366 "configure"
+// #line 14369 "configure"
 import java.util.regex.Pattern;
 
 
@@ -14433,7 +14436,7 @@ EOF
     # The class java.net.UnixDomainSocketAddress is new in Java 16
 
     cat << \EOF > conftest.java
-// #line 14436 "configure"
+// #line 14439 "configure"
 import java.util.regex.Pattern;
 
 import java.net.UnixDomainSocketAddress;
@@ -14498,7 +14501,7 @@ EOF
     # The class java.util.random.RandomGenerator is new in Java 17
 
     cat << \EOF > conftest.java
-// #line 14501 "configure"
+// #line 14504 "configure"
 import java.util.regex.Pattern;
 
 import java.util.random.RandomGenerator;
@@ -15983,7 +15986,7 @@ fi
                 # Checked before activation.jar to avoid false detection
 
     cat << \EOF > conftestSharedChecker.java
-// #line 15986 "configure"
+// #line 15989 "configure"
 import java.util.regex.Pattern;
 import java.io.File;
 import java.io.IOException;
@@ -16184,7 +16187,7 @@ printf %s "checking jakarta.activation... " >&6; }
     if test ! -f conftestSharedChecker.class ; then
 
     cat << \EOF > conftestSharedChecker.java
-// #line 16187 "configure"
+// #line 16190 "configure"
 import java.util.regex.Pattern;
 import java.io.File;
 import java.io.IOException;
@@ -16419,7 +16422,7 @@ printf %s "checking jgraphx... " >&6; }
     if test ! -f conftestSharedChecker.class ; then
 
     cat << \EOF > conftestSharedChecker.java
-// #line 16422 "configure"
+// #line 16425 "configure"
 import java.util.regex.Pattern;
 import java.io.File;
 import java.io.IOException;
@@ -16653,7 +16656,7 @@ printf %s "checking jaxb-api... " >&6; }
     if test ! -f conftestSharedChecker.class ; then
 
     cat << \EOF > conftestSharedChecker.java
-// #line 16656 "configure"
+// #line 16659 "configure"
 import java.util.regex.Pattern;
 import java.io.File;
 import java.io.IOException;
@@ -16887,7 +16890,7 @@ printf %s "checking jaxb-runtime... " >&6; }
     if test ! -f conftestSharedChecker.class ; then
 
     cat << \EOF > conftestSharedChecker.java
-// #line 16890 "configure"
+// #line 16893 "configure"
 import java.util.regex.Pattern;
 import java.io.File;
 import java.io.IOException;
@@ -17121,7 +17124,7 @@ printf %s "checking jaxb-impl... " >&6; }
     if test ! -f conftestSharedChecker.class ; then
 
     cat << \EOF > conftestSharedChecker.java
-// #line 17124 "configure"
+// #line 17127 "configure"
 import java.util.regex.Pattern;
 import java.io.File;
 import java.io.IOException;
@@ -17355,7 +17358,7 @@ printf %s "checking activation... " >&6; }
     if test ! -f conftestSharedChecker.class ; then
 
     cat << \EOF > conftestSharedChecker.java
-// #line 17358 "configure"
+// #line 17361 "configure"
 import java.util.regex.Pattern;
 import java.io.File;
 import java.io.IOException;
@@ -17589,7 +17592,7 @@ printf %s "checking istack-commons-runtime... " >&6; }
     if test ! -f conftestSharedChecker.class ; then
 
     cat << \EOF > conftestSharedChecker.java
-// #line 17592 "configure"
+// #line 17595 "configure"
 import java.util.regex.Pattern;
 import java.io.File;
 import java.io.IOException;
@@ -17825,7 +17828,7 @@ printf %s "checking scirenderer... " >&6; }
     if test ! -f conftestSharedChecker.class ; then
 
     cat << \EOF > conftestSharedChecker.java
-// #line 17828 "configure"
+// #line 17831 "configure"
 import java.util.regex.Pattern;
 import java.io.File;
 import java.io.IOException;
@@ -18067,7 +18070,7 @@ printf %s "checking flexdock... " >&6; }
     if test ! -f conftestSharedChecker.class ; then
 
     cat << \EOF > conftestSharedChecker.java
-// #line 18070 "configure"
+// #line 18073 "configure"
 import java.util.regex.Pattern;
 import java.io.File;
 import java.io.IOException;
@@ -18301,7 +18304,7 @@ printf %s "checking looks... " >&6; }
     if test ! -f conftestSharedChecker.class ; then
 
     cat << \EOF > conftestSharedChecker.java
-// #line 18304 "configure"
+// #line 18307 "configure"
 import java.util.regex.Pattern;
 import java.io.File;
 import java.io.IOException;
@@ -18535,7 +18538,7 @@ printf %s "checking jgoodies-looks... " >&6; }
     if test ! -f conftestSharedChecker.class ; then
 
     cat << \EOF > conftestSharedChecker.java
-// #line 18538 "configure"
+// #line 18541 "configure"
 import java.util.regex.Pattern;
 import java.io.File;
 import java.io.IOException;
@@ -18770,7 +18773,7 @@ printf %s "checking skinlf... " >&6; }
     if test ! -f conftestSharedChecker.class ; then
 
     cat << \EOF > conftestSharedChecker.java
-// #line 18773 "configure"
+// #line 18776 "configure"
 import java.util.regex.Pattern;
 import java.io.File;
 import java.io.IOException;
@@ -19004,7 +19007,7 @@ printf %s "checking javax.annotation-api... " >&6; }
     if test ! -f conftestSharedChecker.class ; then
 
     cat << \EOF > conftestSharedChecker.java
-// #line 19007 "configure"
+// #line 19010 "configure"
 import java.util.regex.Pattern;
 import java.io.File;
 import java.io.IOException;
@@ -19238,7 +19241,7 @@ printf %s "checking jakarta.activation-api... " >&6; }
     if test ! -f conftestSharedChecker.class ; then
 
     cat << \EOF > conftestSharedChecker.java
-// #line 19241 "configure"
+// #line 19244 "configure"
 import java.util.regex.Pattern;
 import java.io.File;
 import java.io.IOException;
@@ -19472,7 +19475,7 @@ printf %s "checking jogl... " >&6; }
     if test ! -f conftestSharedChecker.class ; then
 
     cat << \EOF > conftestSharedChecker.java
-// #line 19475 "configure"
+// #line 19478 "configure"
 import java.util.regex.Pattern;
 import java.io.File;
 import java.io.IOException;
@@ -19812,7 +19815,7 @@ printf %s "checking gluegen... " >&6; }
     if test ! -f conftestSharedChecker.class ; then
 
     cat << \EOF > conftestSharedChecker.java
-// #line 19815 "configure"
+// #line 19818 "configure"
 import java.util.regex.Pattern;
 import java.io.File;
 import java.io.IOException;
@@ -20103,7 +20106,7 @@ printf %s "checking jhall... " >&6; }
     if test ! -f conftestSharedChecker.class ; then
 
     cat << \EOF > conftestSharedChecker.java
-// #line 20106 "configure"
+// #line 20109 "configure"
 import java.util.regex.Pattern;
 import java.io.File;
 import java.io.IOException;
@@ -20335,7 +20338,7 @@ printf %s "checking javahelp2... " >&6; }
     if test ! -f conftestSharedChecker.class ; then
 
     cat << \EOF > conftestSharedChecker.java
-// #line 20338 "configure"
+// #line 20341 "configure"
 import java.util.regex.Pattern;
 import java.io.File;
 import java.io.IOException;
@@ -20570,7 +20573,7 @@ printf %s "checking lucene-core... " >&6; }
     if test ! -f conftestSharedChecker.class ; then
 
     cat << \EOF > conftestSharedChecker.java
-// #line 20573 "configure"
+// #line 20576 "configure"
 import java.util.regex.Pattern;
 import java.io.File;
 import java.io.IOException;
@@ -20804,7 +20807,7 @@ printf %s "checking lucene-analyzers-common... " >&6; }
     if test ! -f conftestSharedChecker.class ; then
 
     cat << \EOF > conftestSharedChecker.java
-// #line 20807 "configure"
+// #line 20810 "configure"
 import java.util.regex.Pattern;
 import java.io.File;
 import java.io.IOException;
@@ -21038,7 +21041,7 @@ printf %s "checking lucene-queryparser... " >&6; }
     if test ! -f conftestSharedChecker.class ; then
 
     cat << \EOF > conftestSharedChecker.java
-// #line 21041 "configure"
+// #line 21044 "configure"
 import java.util.regex.Pattern;
 import java.io.File;
 import java.io.IOException;
@@ -21272,7 +21275,7 @@ printf %s "checking jrosetta-API... " >&6; }
     if test ! -f conftestSharedChecker.class ; then
 
     cat << \EOF > conftestSharedChecker.java
-// #line 21275 "configure"
+// #line 21278 "configure"
 import java.util.regex.Pattern;
 import java.io.File;
 import java.io.IOException;
@@ -21503,7 +21506,7 @@ printf %s "checking jrosetta-api... " >&6; }
     if test ! -f conftestSharedChecker.class ; then
 
     cat << \EOF > conftestSharedChecker.java
-// #line 21506 "configure"
+// #line 21509 "configure"
 import java.util.regex.Pattern;
 import java.io.File;
 import java.io.IOException;
@@ -21738,7 +21741,7 @@ printf %s "checking jrosetta-engine... " >&6; }
     if test ! -f conftestSharedChecker.class ; then
 
     cat << \EOF > conftestSharedChecker.java
-// #line 21741 "configure"
+// #line 21744 "configure"
 import java.util.regex.Pattern;
 import java.io.File;
 import java.io.IOException;
@@ -21974,7 +21977,7 @@ printf %s "checking jeuclid-core... " >&6; }
     if test ! -f conftestSharedChecker.class ; then
 
     cat << \EOF > conftestSharedChecker.java
-// #line 21977 "configure"
+// #line 21980 "configure"
 import java.util.regex.Pattern;
 import java.io.File;
 import java.io.IOException;
@@ -22193,6 +22196,710 @@ printf "%s\n" "$as_me: WARNING: Could not find or use the Java package/jar jeucl
                 JEUCLID_CORE=$PACKAGE_JAR_FILE
 
 
+                # JavaFX base
+                # Used in native file chooser
+
+
+
+    { printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking javafx.base" >&5
+printf %s "checking javafx.base... " >&6; }
+    PACKAGE_JAR_FILE=
+
+    DEFAULT_JAR_DIR="$(pwd)/thirdparty/ $(pwd)/jar/ /usr/local/java/ /usr/local/java/jar /usr/local/share/java/ /usr/local/share/java/jar/ /usr/local/lib/java/ $(find /usr/share/java/ -maxdepth 1 -type d 2>/dev/null | sort) $(find /usr/lib64/ -maxdepth 1 -type d 2>/dev/null) $(find  /usr/lib/ -maxdepth 1 -type d 2>/dev/null) $(find /usr/share/*/lib -maxdepth 1 -type d 2>/dev/null) /opt/java/lib/"
+
+    jar_resolved="$(find $DEFAULT_JAR_DIR -maxdepth 1 \( -type f -name 'javafx.base.jar' -or -name 'libjavafx.base.jar' -or -name 'libjavafx.base-java.jar' -or -name 'javafx.base*.jar' \) 2>/dev/null |tr '\n' ':')."
+
+    if test ! -f conftestSharedChecker.class ; then
+
+    cat << \EOF > conftestSharedChecker.java
+// #line 22215 "configure"
+import java.util.regex.Pattern;
+import java.io.File;
+import java.io.IOException;
+import java.lang.reflect.Field;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+import java.net.URL;
+import java.net.URLClassLoader;
+import java.util.ArrayList;
+
+public class conftestSharedChecker {
+
+    /**
+     * Required arguments :
+     *  argv[0]: name of the jar package
+     *  argv[1]: name of the class (with the package prefix)
+     *  argv[2]: possible paths of the jar package (separated by ':')
+     *
+     * Optional arguments:
+     *  argv[3]: field or method used to retrieve the version
+     *  argv[4]: expected version
+     *  argv[5]: String comparator :
+     *      "="  for exact version
+     */
+    public static void main(String[] argv) {
+        final String packageName = argv[0];
+        final String className = argv[1];
+        final String[] jarList = argv[2].split(":");
+
+        ArrayList<URL> found = new ArrayList<>();
+        for(String jar : jarList)
+        {
+            try {
+                File f = new File(jar);
+                if (f.exists()) {
+                    found.add(f.toURI().toURL());
+                }
+            } catch (IOException ex) {
+                System.err.println(ex.toString());
+            }
+        }
+
+        URLClassLoader localClassLoader = new URLClassLoader(found.toArray(new URL[found.size()]));
+        URL klassURL = null;
+        Class<?> klass = null;
+        try {
+            String resourceName = className.replace(".", "/") + ".class";
+            klassURL = localClassLoader.getResource(resourceName);
+            klass = localClassLoader.loadClass(className);
+        } catch (ClassNotFoundException ex) {
+            System.err.println(className + " not found");
+            System.exit(-1);
+        }
+
+        String pathURL = klassURL.getPath().substring(0, klassURL.getPath().indexOf('!'));
+        String path = pathURL.substring(pathURL.indexOf(':') + 1);
+        System.err.println("found: " + path);
+
+        String version;
+        if (!"".equals(argv[3])) {
+            version = checkVersion(klass, argv);
+        } else {
+            version = klass.getPackage().getSpecificationVersion();
+        }
+
+        System.out.println(path + " " + version);
+    }
+
+    private static String checkVersion(Class<?> klass, String[] argv) throws SecurityException, IllegalArgumentException {
+        final String versionMethod = argv[3];
+        final String expected = argv[4];
+        final String atLeastOrEqual;
+        if (!"".equals(argv[5])) {
+            atLeastOrEqual = argv[5];
+        } else {
+            atLeastOrEqual = "<=";
+        }
+
+        String value = "";
+        if (versionMethod.isEmpty()) {
+            value = klass.getPackage().getSpecificationVersion();
+            compareAndDisplay(atLeastOrEqual, expected, value);
+            return value;
+        }
+
+        try {
+            try {
+                Field field = klass.getField(versionMethod);
+                value = String.valueOf(field.get(null));
+                compareAndDisplay(atLeastOrEqual, expected, value);
+            } catch (NoSuchFieldException fe) {
+                Method method = null;
+                try {
+                    method = klass.getMethod(versionMethod);
+                } catch (NoSuchMethodException ex) {
+                    System.err.println(ex.toString());
+                    System.exit(-3);
+                }
+
+                try {
+                    value = String.valueOf(method.invoke(null));
+                    compareAndDisplay(atLeastOrEqual, expected, value);
+                } catch (NullPointerException ex) {
+                    value = String.valueOf(method.invoke(klass.newInstance()));
+                    compareAndDisplay(atLeastOrEqual, expected, value);
+                }
+            }
+        } catch (IllegalAccessException ex) {
+            System.err.println(ex);
+            System.exit(-2);
+        } catch (InvocationTargetException ex) {
+            System.err.println(ex);
+            System.exit(-2);
+        } catch (InstantiationException ex) {
+            System.err.println(ex);
+            System.exit(-2);
+        }
+        return value;
+    }
+
+    private static void compareAndDisplay(String atLeastOrEqual, String expected, String value) {
+        int cmp = compare(expected, value);
+
+        switch(atLeastOrEqual) {
+            case ">":
+                if (cmp > 0) {
+                    return;
+                } else {
+                    System.err.println("expected "+atLeastOrEqual+""+expected+" but got "+value);
+                    System.exit(-4);
+                }
+            case "==":
+                if (cmp == 0) {
+                    return;
+                } else {
+                    System.err.println("expected "+atLeastOrEqual+""+expected+" but got "+value);
+                    System.exit(-4);
+                }
+            case "<=":
+                if (cmp <= 0) {
+                    return;
+                } else {
+                    System.err.println("expected "+atLeastOrEqual+""+expected+" but got "+value);
+                    System.exit(-4);
+                }
+            default:
+                System.err.println("unable to compare with "+atLeastOrEqual);
+                System.exit(-4);
+        }
+    }
+
+    private static int compare(String v1, String v2) {
+        String s1 = normalisedVersion(v1);
+        String s2 = normalisedVersion(v2);
+
+        System.err.println("compare: " + v1 + " normalised to " + s1);
+        System.err.println("compare: " + v2 + " normalised to " + s2);
+        return s1.compareTo(s2);
+    }
+
+    private static String normalisedVersion(String version) {
+        return normalisedVersion(version, ".", 4);
+    }
+
+    private static String normalisedVersion(String version, String sep, int maxWidth) {
+        String[] split = Pattern.compile(sep, Pattern.LITERAL).split(version);
+        StringBuilder sb = new StringBuilder();
+        for (String s : split) {
+            sb.append(String.format("%" + maxWidth + 's', s));
+        }
+        return sb.toString();
+    }
+}
+EOF
+
+    CLASSPATH=$ac_java_classpath
+    export CLASSPATH
+    cmd="$JAVAC ${JAVAC_FLAGS} conftestSharedChecker.java"
+    if (echo $cmd >&5 ; eval $cmd >conftestSharedChecker.java.output 2>&5) ; then
+        echo "configure: conftestSharedChecker.class available" >&5
+    else
+        echo "configure: failed program was:" >&5
+        cat conftestSharedChecker.java >&5
+        echo "configure: CLASSPATH was $CLASSPATH" >&5
+    fi
+
+    fi
+
+    CLASSPATH=$ac_java_classpath
+    export CLASSPATH
+    echo "CLASSPATH="$CLASSPATH >&5
+    cmd="$JAVA conftestSharedChecker \"javafx.base\" \"javafx.collections.ObservableList\" \"$jar_resolved\" \"\" \"\" \"\""
+    if (echo $cmd >&5 ; eval $cmd >conftestSharedChecker.java.output 2>&5); then
+        read PACKAGE_JAR_FILE PACKAGE_JAR_VERSION << EOF
+$(tail -n 1 conftestSharedChecker.java.output)
+EOF
+        { printf "%s\n" "$as_me:${as_lineno-$LINENO}: result:  $PACKAGE_JAR_FILE $PACKAGE_JAR_VERSION " >&5
+printf "%s\n" " $PACKAGE_JAR_FILE $PACKAGE_JAR_VERSION " >&6; }
+        echo "yes" >&5
+        # append the found file to the classpath to manage jar dependency
+        ac_java_classpath="$ac_java_classpath:$PACKAGE_JAR_FILE"
+    else
+      { printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: no" >&5
+printf "%s\n" "no" >&6; }
+      if test "" = "yes"; then
+         { printf "%s\n" "$as_me:${as_lineno-$LINENO}: WARNING: Could not find or use the Java package/jar javafx.base used by JavaFX base (looking for package javafx.collections.ObservableList)" >&5
+printf "%s\n" "$as_me: WARNING: Could not find or use the Java package/jar javafx.base used by JavaFX base (looking for package javafx.collections.ObservableList)" >&2;}
+      else
+          as_fn_error $? "Could not find or use the Java package/jar javafx.base used by JavaFX base (looking for package javafx.collections.ObservableList)" "$LINENO" 5
+      fi
+    fi
+    if test -f conftestSharedChecker.java.output; then
+        rm conftestSharedChecker.java.output
+    fi
+
+                JAVAFX_BASE=$PACKAGE_JAR_FILE
+
+
+                # JavaFX Swing
+                # Used in native file chooser
+
+
+
+    { printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking javafx.swing" >&5
+printf %s "checking javafx.swing... " >&6; }
+    PACKAGE_JAR_FILE=
+
+    DEFAULT_JAR_DIR="$(pwd)/thirdparty/ $(pwd)/jar/ /usr/local/java/ /usr/local/java/jar /usr/local/share/java/ /usr/local/share/java/jar/ /usr/local/lib/java/ $(find /usr/share/java/ -maxdepth 1 -type d 2>/dev/null | sort) $(find /usr/lib64/ -maxdepth 1 -type d 2>/dev/null) $(find  /usr/lib/ -maxdepth 1 -type d 2>/dev/null) $(find /usr/share/*/lib -maxdepth 1 -type d 2>/dev/null) /opt/java/lib/"
+
+    jar_resolved="$(find $DEFAULT_JAR_DIR -maxdepth 1 \( -type f -name 'javafx.swing.jar' -or -name 'libjavafx.swing.jar' -or -name 'libjavafx.swing-java.jar' -or -name 'javafx.swing*.jar' \) 2>/dev/null |tr '\n' ':')."
+
+    if test ! -f conftestSharedChecker.class ; then
+
+    cat << \EOF > conftestSharedChecker.java
+// #line 22450 "configure"
+import java.util.regex.Pattern;
+import java.io.File;
+import java.io.IOException;
+import java.lang.reflect.Field;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+import java.net.URL;
+import java.net.URLClassLoader;
+import java.util.ArrayList;
+
+public class conftestSharedChecker {
+
+    /**
+     * Required arguments :
+     *  argv[0]: name of the jar package
+     *  argv[1]: name of the class (with the package prefix)
+     *  argv[2]: possible paths of the jar package (separated by ':')
+     *
+     * Optional arguments:
+     *  argv[3]: field or method used to retrieve the version
+     *  argv[4]: expected version
+     *  argv[5]: String comparator :
+     *      "="  for exact version
+     */
+    public static void main(String[] argv) {
+        final String packageName = argv[0];
+        final String className = argv[1];
+        final String[] jarList = argv[2].split(":");
+
+        ArrayList<URL> found = new ArrayList<>();
+        for(String jar : jarList)
+        {
+            try {
+                File f = new File(jar);
+                if (f.exists()) {
+                    found.add(f.toURI().toURL());
+                }
+            } catch (IOException ex) {
+                System.err.println(ex.toString());
+            }
+        }
+
+        URLClassLoader localClassLoader = new URLClassLoader(found.toArray(new URL[found.size()]));
+        URL klassURL = null;
+        Class<?> klass = null;
+        try {
+            String resourceName = className.replace(".", "/") + ".class";
+            klassURL = localClassLoader.getResource(resourceName);
+            klass = localClassLoader.loadClass(className);
+        } catch (ClassNotFoundException ex) {
+            System.err.println(className + " not found");
+            System.exit(-1);
+        }
+
+        String pathURL = klassURL.getPath().substring(0, klassURL.getPath().indexOf('!'));
+        String path = pathURL.substring(pathURL.indexOf(':') + 1);
+        System.err.println("found: " + path);
+
+        String version;
+        if (!"".equals(argv[3])) {
+            version = checkVersion(klass, argv);
+        } else {
+            version = klass.getPackage().getSpecificationVersion();
+        }
+
+        System.out.println(path + " " + version);
+    }
+
+    private static String checkVersion(Class<?> klass, String[] argv) throws SecurityException, IllegalArgumentException {
+        final String versionMethod = argv[3];
+        final String expected = argv[4];
+        final String atLeastOrEqual;
+        if (!"".equals(argv[5])) {
+            atLeastOrEqual = argv[5];
+        } else {
+            atLeastOrEqual = "<=";
+        }
+
+        String value = "";
+        if (versionMethod.isEmpty()) {
+            value = klass.getPackage().getSpecificationVersion();
+            compareAndDisplay(atLeastOrEqual, expected, value);
+            return value;
+        }
+
+        try {
+            try {
+                Field field = klass.getField(versionMethod);
+                value = String.valueOf(field.get(null));
+                compareAndDisplay(atLeastOrEqual, expected, value);
+            } catch (NoSuchFieldException fe) {
+                Method method = null;
+                try {
+                    method = klass.getMethod(versionMethod);
+                } catch (NoSuchMethodException ex) {
+                    System.err.println(ex.toString());
+                    System.exit(-3);
+                }
+
+                try {
+                    value = String.valueOf(method.invoke(null));
+                    compareAndDisplay(atLeastOrEqual, expected, value);
+                } catch (NullPointerException ex) {
+                    value = String.valueOf(method.invoke(klass.newInstance()));
+                    compareAndDisplay(atLeastOrEqual, expected, value);
+                }
+            }
+        } catch (IllegalAccessException ex) {
+            System.err.println(ex);
+            System.exit(-2);
+        } catch (InvocationTargetException ex) {
+            System.err.println(ex);
+            System.exit(-2);
+        } catch (InstantiationException ex) {
+            System.err.println(ex);
+            System.exit(-2);
+        }
+        return value;
+    }
+
+    private static void compareAndDisplay(String atLeastOrEqual, String expected, String value) {
+        int cmp = compare(expected, value);
+
+        switch(atLeastOrEqual) {
+            case ">":
+                if (cmp > 0) {
+                    return;
+                } else {
+                    System.err.println("expected "+atLeastOrEqual+""+expected+" but got "+value);
+                    System.exit(-4);
+                }
+            case "==":
+                if (cmp == 0) {
+                    return;
+                } else {
+                    System.err.println("expected "+atLeastOrEqual+""+expected+" but got "+value);
+                    System.exit(-4);
+                }
+            case "<=":
+                if (cmp <= 0) {
+                    return;
+                } else {
+                    System.err.println("expected "+atLeastOrEqual+""+expected+" but got "+value);
+                    System.exit(-4);
+                }
+            default:
+                System.err.println("unable to compare with "+atLeastOrEqual);
+                System.exit(-4);
+        }
+    }
+
+    private static int compare(String v1, String v2) {
+        String s1 = normalisedVersion(v1);
+        String s2 = normalisedVersion(v2);
+
+        System.err.println("compare: " + v1 + " normalised to " + s1);
+        System.err.println("compare: " + v2 + " normalised to " + s2);
+        return s1.compareTo(s2);
+    }
+
+    private static String normalisedVersion(String version) {
+        return normalisedVersion(version, ".", 4);
+    }
+
+    private static String normalisedVersion(String version, String sep, int maxWidth) {
+        String[] split = Pattern.compile(sep, Pattern.LITERAL).split(version);
+        StringBuilder sb = new StringBuilder();
+        for (String s : split) {
+            sb.append(String.format("%" + maxWidth + 's', s));
+        }
+        return sb.toString();
+    }
+}
+EOF
+
+    CLASSPATH=$ac_java_classpath
+    export CLASSPATH
+    cmd="$JAVAC ${JAVAC_FLAGS} conftestSharedChecker.java"
+    if (echo $cmd >&5 ; eval $cmd >conftestSharedChecker.java.output 2>&5) ; then
+        echo "configure: conftestSharedChecker.class available" >&5
+    else
+        echo "configure: failed program was:" >&5
+        cat conftestSharedChecker.java >&5
+        echo "configure: CLASSPATH was $CLASSPATH" >&5
+    fi
+
+    fi
+
+    CLASSPATH=$ac_java_classpath
+    export CLASSPATH
+    echo "CLASSPATH="$CLASSPATH >&5
+    cmd="$JAVA conftestSharedChecker \"javafx.swing\" \"javafx.embed.swing.JFXPanel\" \"$jar_resolved\" \"\" \"\" \"\""
+    if (echo $cmd >&5 ; eval $cmd >conftestSharedChecker.java.output 2>&5); then
+        read PACKAGE_JAR_FILE PACKAGE_JAR_VERSION << EOF
+$(tail -n 1 conftestSharedChecker.java.output)
+EOF
+        { printf "%s\n" "$as_me:${as_lineno-$LINENO}: result:  $PACKAGE_JAR_FILE $PACKAGE_JAR_VERSION " >&5
+printf "%s\n" " $PACKAGE_JAR_FILE $PACKAGE_JAR_VERSION " >&6; }
+        echo "yes" >&5
+        # append the found file to the classpath to manage jar dependency
+        ac_java_classpath="$ac_java_classpath:$PACKAGE_JAR_FILE"
+    else
+      { printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: no" >&5
+printf "%s\n" "no" >&6; }
+      if test "" = "yes"; then
+         { printf "%s\n" "$as_me:${as_lineno-$LINENO}: WARNING: Could not find or use the Java package/jar javafx.swing used by JavaFX Swing (looking for package javafx.embed.swing.JFXPanel)" >&5
+printf "%s\n" "$as_me: WARNING: Could not find or use the Java package/jar javafx.swing used by JavaFX Swing (looking for package javafx.embed.swing.JFXPanel)" >&2;}
+      else
+          as_fn_error $? "Could not find or use the Java package/jar javafx.swing used by JavaFX Swing (looking for package javafx.embed.swing.JFXPanel)" "$LINENO" 5
+      fi
+    fi
+    if test -f conftestSharedChecker.java.output; then
+        rm conftestSharedChecker.java.output
+    fi
+
+                JAVAFX_SWING=$PACKAGE_JAR_FILE
+
+
+                # JavaFX graphics
+                # Used in native file chooser
+
+
+
+    { printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking javafx.graphics" >&5
+printf %s "checking javafx.graphics... " >&6; }
+    PACKAGE_JAR_FILE=
+
+    DEFAULT_JAR_DIR="$(pwd)/thirdparty/ $(pwd)/jar/ /usr/local/java/ /usr/local/java/jar /usr/local/share/java/ /usr/local/share/java/jar/ /usr/local/lib/java/ $(find /usr/share/java/ -maxdepth 1 -type d 2>/dev/null | sort) $(find /usr/lib64/ -maxdepth 1 -type d 2>/dev/null) $(find  /usr/lib/ -maxdepth 1 -type d 2>/dev/null) $(find /usr/share/*/lib -maxdepth 1 -type d 2>/dev/null) /opt/java/lib/"
+
+    jar_resolved="$(find $DEFAULT_JAR_DIR -maxdepth 1 \( -type f -name 'javafx.graphics.jar' -or -name 'libjavafx.graphics.jar' -or -name 'libjavafx.graphics-java.jar' -or -name 'javafx.graphics*.jar' \) 2>/dev/null |tr '\n' ':')."
+
+    if test ! -f conftestSharedChecker.class ; then
+
+    cat << \EOF > conftestSharedChecker.java
+// #line 22685 "configure"
+import java.util.regex.Pattern;
+import java.io.File;
+import java.io.IOException;
+import java.lang.reflect.Field;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+import java.net.URL;
+import java.net.URLClassLoader;
+import java.util.ArrayList;
+
+public class conftestSharedChecker {
+
+    /**
+     * Required arguments :
+     *  argv[0]: name of the jar package
+     *  argv[1]: name of the class (with the package prefix)
+     *  argv[2]: possible paths of the jar package (separated by ':')
+     *
+     * Optional arguments:
+     *  argv[3]: field or method used to retrieve the version
+     *  argv[4]: expected version
+     *  argv[5]: String comparator :
+     *      "="  for exact version
+     */
+    public static void main(String[] argv) {
+        final String packageName = argv[0];
+        final String className = argv[1];
+        final String[] jarList = argv[2].split(":");
+
+        ArrayList<URL> found = new ArrayList<>();
+        for(String jar : jarList)
+        {
+            try {
+                File f = new File(jar);
+                if (f.exists()) {
+                    found.add(f.toURI().toURL());
+                }
+            } catch (IOException ex) {
+                System.err.println(ex.toString());
+            }
+        }
+
+        URLClassLoader localClassLoader = new URLClassLoader(found.toArray(new URL[found.size()]));
+        URL klassURL = null;
+        Class<?> klass = null;
+        try {
+            String resourceName = className.replace(".", "/") + ".class";
+            klassURL = localClassLoader.getResource(resourceName);
+            klass = localClassLoader.loadClass(className);
+        } catch (ClassNotFoundException ex) {
+            System.err.println(className + " not found");
+            System.exit(-1);
+        }
+
+        String pathURL = klassURL.getPath().substring(0, klassURL.getPath().indexOf('!'));
+        String path = pathURL.substring(pathURL.indexOf(':') + 1);
+        System.err.println("found: " + path);
+
+        String version;
+        if (!"".equals(argv[3])) {
+            version = checkVersion(klass, argv);
+        } else {
+            version = klass.getPackage().getSpecificationVersion();
+        }
+
+        System.out.println(path + " " + version);
+    }
+
+    private static String checkVersion(Class<?> klass, String[] argv) throws SecurityException, IllegalArgumentException {
+        final String versionMethod = argv[3];
+        final String expected = argv[4];
+        final String atLeastOrEqual;
+        if (!"".equals(argv[5])) {
+            atLeastOrEqual = argv[5];
+        } else {
+            atLeastOrEqual = "<=";
+        }
+
+        String value = "";
+        if (versionMethod.isEmpty()) {
+            value = klass.getPackage().getSpecificationVersion();
+            compareAndDisplay(atLeastOrEqual, expected, value);
+            return value;
+        }
+
+        try {
+            try {
+                Field field = klass.getField(versionMethod);
+                value = String.valueOf(field.get(null));
+                compareAndDisplay(atLeastOrEqual, expected, value);
+            } catch (NoSuchFieldException fe) {
+                Method method = null;
+                try {
+                    method = klass.getMethod(versionMethod);
+                } catch (NoSuchMethodException ex) {
+                    System.err.println(ex.toString());
+                    System.exit(-3);
+                }
+
+                try {
+                    value = String.valueOf(method.invoke(null));
+                    compareAndDisplay(atLeastOrEqual, expected, value);
+                } catch (NullPointerException ex) {
+                    value = String.valueOf(method.invoke(klass.newInstance()));
+                    compareAndDisplay(atLeastOrEqual, expected, value);
+                }
+            }
+        } catch (IllegalAccessException ex) {
+            System.err.println(ex);
+            System.exit(-2);
+        } catch (InvocationTargetException ex) {
+            System.err.println(ex);
+            System.exit(-2);
+        } catch (InstantiationException ex) {
+            System.err.println(ex);
+            System.exit(-2);
+        }
+        return value;
+    }
+
+    private static void compareAndDisplay(String atLeastOrEqual, String expected, String value) {
+        int cmp = compare(expected, value);
+
+        switch(atLeastOrEqual) {
+            case ">":
+                if (cmp > 0) {
+                    return;
+                } else {
+                    System.err.println("expected "+atLeastOrEqual+""+expected+" but got "+value);
+                    System.exit(-4);
+                }
+            case "==":
+                if (cmp == 0) {
+                    return;
+                } else {
+                    System.err.println("expected "+atLeastOrEqual+""+expected+" but got "+value);
+                    System.exit(-4);
+                }
+            case "<=":
+                if (cmp <= 0) {
+                    return;
+                } else {
+                    System.err.println("expected "+atLeastOrEqual+""+expected+" but got "+value);
+                    System.exit(-4);
+                }
+            default:
+                System.err.println("unable to compare with "+atLeastOrEqual);
+                System.exit(-4);
+        }
+    }
+
+    private static int compare(String v1, String v2) {
+        String s1 = normalisedVersion(v1);
+        String s2 = normalisedVersion(v2);
+
+        System.err.println("compare: " + v1 + " normalised to " + s1);
+        System.err.println("compare: " + v2 + " normalised to " + s2);
+        return s1.compareTo(s2);
+    }
+
+    private static String normalisedVersion(String version) {
+        return normalisedVersion(version, ".", 4);
+    }
+
+    private static String normalisedVersion(String version, String sep, int maxWidth) {
+        String[] split = Pattern.compile(sep, Pattern.LITERAL).split(version);
+        StringBuilder sb = new StringBuilder();
+        for (String s : split) {
+            sb.append(String.format("%" + maxWidth + 's', s));
+        }
+        return sb.toString();
+    }
+}
+EOF
+
+    CLASSPATH=$ac_java_classpath
+    export CLASSPATH
+    cmd="$JAVAC ${JAVAC_FLAGS} conftestSharedChecker.java"
+    if (echo $cmd >&5 ; eval $cmd >conftestSharedChecker.java.output 2>&5) ; then
+        echo "configure: conftestSharedChecker.class available" >&5
+    else
+        echo "configure: failed program was:" >&5
+        cat conftestSharedChecker.java >&5
+        echo "configure: CLASSPATH was $CLASSPATH" >&5
+    fi
+
+    fi
+
+    CLASSPATH=$ac_java_classpath
+    export CLASSPATH
+    echo "CLASSPATH="$CLASSPATH >&5
+    cmd="$JAVA conftestSharedChecker \"javafx.graphics\" \"javafx.stage.Stage\" \"$jar_resolved\" \"\" \"\" \"\""
+    if (echo $cmd >&5 ; eval $cmd >conftestSharedChecker.java.output 2>&5); then
+        read PACKAGE_JAR_FILE PACKAGE_JAR_VERSION << EOF
+$(tail -n 1 conftestSharedChecker.java.output)
+EOF
+        { printf "%s\n" "$as_me:${as_lineno-$LINENO}: result:  $PACKAGE_JAR_FILE $PACKAGE_JAR_VERSION " >&5
+printf "%s\n" " $PACKAGE_JAR_FILE $PACKAGE_JAR_VERSION " >&6; }
+        echo "yes" >&5
+        # append the found file to the classpath to manage jar dependency
+        ac_java_classpath="$ac_java_classpath:$PACKAGE_JAR_FILE"
+    else
+      { printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: no" >&5
+printf "%s\n" "no" >&6; }
+      if test "" = "yes"; then
+         { printf "%s\n" "$as_me:${as_lineno-$LINENO}: WARNING: Could not find or use the Java package/jar javafx.graphics used by JavaFX graphics (looking for package javafx.stage.Stage)" >&5
+printf "%s\n" "$as_me: WARNING: Could not find or use the Java package/jar javafx.graphics used by JavaFX graphics (looking for package javafx.stage.Stage)" >&2;}
+      else
+          as_fn_error $? "Could not find or use the Java package/jar javafx.graphics used by JavaFX graphics (looking for package javafx.stage.Stage)" "$LINENO" 5
+      fi
+    fi
+    if test -f conftestSharedChecker.java.output; then
+        rm conftestSharedChecker.java.output
+    fi
+
+                JAVAFX_GRAPHICS=$PACKAGE_JAR_FILE
+
 
                 ################ Mandatory for graphic_export features #####
                 # XML to PDF/other Translator
@@ -22210,7 +22917,7 @@ printf %s "checking fop... " >&6; }
     if test ! -f conftestSharedChecker.class ; then
 
     cat << \EOF > conftestSharedChecker.java
-// #line 22213 "configure"
+// #line 22920 "configure"
 import java.util.regex.Pattern;
 import java.io.File;
 import java.io.IOException;
@@ -22452,7 +23159,7 @@ printf %s "checking freehep-graphics2d... " >&6; }
     if test ! -f conftestSharedChecker.class ; then
 
     cat << \EOF > conftestSharedChecker.java
-// #line 22455 "configure"
+// #line 23162 "configure"
 import java.util.regex.Pattern;
 import java.io.File;
 import java.io.IOException;
@@ -22686,7 +23393,7 @@ printf %s "checking freehep-graphicsio... " >&6; }
     if test ! -f conftestSharedChecker.class ; then
 
     cat << \EOF > conftestSharedChecker.java
-// #line 22689 "configure"
+// #line 23396 "configure"
 import java.util.regex.Pattern;
 import java.io.File;
 import java.io.IOException;
@@ -22920,7 +23627,7 @@ printf %s "checking freehep-graphicsio-emf... " >&6; }
     if test ! -f conftestSharedChecker.class ; then
 
     cat << \EOF > conftestSharedChecker.java
-// #line 22923 "configure"
+// #line 23630 "configure"
 import java.util.regex.Pattern;
 import java.io.File;
 import java.io.IOException;
@@ -23154,7 +23861,7 @@ printf %s "checking freehep-io... " >&6; }
     if test ! -f conftestSharedChecker.class ; then
 
     cat << \EOF > conftestSharedChecker.java
-// #line 23157 "configure"
+// #line 23864 "configure"
 import java.util.regex.Pattern;
 import java.io.File;
 import java.io.IOException;
@@ -23388,7 +24095,7 @@ printf %s "checking freehep-util... " >&6; }
     if test ! -f conftestSharedChecker.class ; then
 
     cat << \EOF > conftestSharedChecker.java
-// #line 23391 "configure"
+// #line 24098 "configure"
 import java.util.regex.Pattern;
 import java.io.File;
 import java.io.IOException;
@@ -23623,7 +24330,7 @@ printf %s "checking batik-all... " >&6; }
     if test ! -f conftestSharedChecker.class ; then
 
     cat << \EOF > conftestSharedChecker.java
-// #line 23626 "configure"
+// #line 24333 "configure"
 import java.util.regex.Pattern;
 import java.io.File;
 import java.io.IOException;
@@ -23857,7 +24564,7 @@ printf %s "checking batik... " >&6; }
     if test ! -f conftestSharedChecker.class ; then
 
     cat << \EOF > conftestSharedChecker.java
-// #line 23860 "configure"
+// #line 24567 "configure"
 import java.util.regex.Pattern;
 import java.io.File;
 import java.io.IOException;
@@ -24092,7 +24799,7 @@ printf %s "checking commons-io... " >&6; }
     if test ! -f conftestSharedChecker.class ; then
 
     cat << \EOF > conftestSharedChecker.java
-// #line 24095 "configure"
+// #line 24802 "configure"
 import java.util.regex.Pattern;
 import java.io.File;
 import java.io.IOException;
@@ -24326,7 +25033,7 @@ printf %s "checking xmlgraphics-commons... " >&6; }
     if test ! -f conftestSharedChecker.class ; then
 
     cat << \EOF > conftestSharedChecker.java
-// #line 24329 "configure"
+// #line 25036 "configure"
 import java.util.regex.Pattern;
 import java.io.File;
 import java.io.IOException;
@@ -24560,7 +25267,7 @@ printf %s "checking avalon-framework... " >&6; }
     if test ! -f conftestSharedChecker.class ; then
 
     cat << \EOF > conftestSharedChecker.java
-// #line 24563 "configure"
+// #line 25270 "configure"
 import java.util.regex.Pattern;
 import java.io.File;
 import java.io.IOException;
@@ -24794,7 +25501,7 @@ printf %s "checking xml-apis-ext... " >&6; }
     if test ! -f conftestSharedChecker.class ; then
 
     cat << \EOF > conftestSharedChecker.java
-// #line 24797 "configure"
+// #line 25504 "configure"
 import java.util.regex.Pattern;
 import java.io.File;
 import java.io.IOException;
@@ -25028,7 +25735,7 @@ printf %s "checking xml-commons-apis-ext... " >&6; }
     if test ! -f conftestSharedChecker.class ; then
 
     cat << \EOF > conftestSharedChecker.java
-// #line 25031 "configure"
+// #line 25738 "configure"
 import java.util.regex.Pattern;
 import java.io.File;
 import java.io.IOException;
@@ -25266,7 +25973,7 @@ printf %s "checking commons-logging... " >&6; }
     if test ! -f conftestSharedChecker.class ; then
 
     cat << \EOF > conftestSharedChecker.java
-// #line 25269 "configure"
+// #line 25976 "configure"
 import java.util.regex.Pattern;
 import java.io.File;
 import java.io.IOException;
@@ -25500,7 +26207,7 @@ printf %s "checking jlatexmath... " >&6; }
     if test ! -f conftestSharedChecker.class ; then
 
     cat << \EOF > conftestSharedChecker.java
-// #line 25503 "configure"
+// #line 26210 "configure"
 import java.util.regex.Pattern;
 import java.io.File;
 import java.io.IOException;
@@ -25734,7 +26441,7 @@ printf %s "checking jlatexmath-fop... " >&6; }
     if test ! -f conftestSharedChecker.class ; then
 
     cat << \EOF > conftestSharedChecker.java
-// #line 25737 "configure"
+// #line 26444 "configure"
 import java.util.regex.Pattern;
 import java.io.File;
 import java.io.IOException;
@@ -25974,7 +26681,7 @@ printf %s "checking checkstyle... " >&6; }
     if test ! -f conftestSharedChecker.class ; then
 
     cat << \EOF > conftestSharedChecker.java
-// #line 25977 "configure"
+// #line 26684 "configure"
 import java.util.regex.Pattern;
 import java.io.File;
 import java.io.IOException;
@@ -26208,7 +26915,7 @@ printf %s "checking commons-beanutils... " >&6; }
     if test ! -f conftestSharedChecker.class ; then
 
     cat << \EOF > conftestSharedChecker.java
-// #line 26211 "configure"
+// #line 26918 "configure"
 import java.util.regex.Pattern;
 import java.io.File;
 import java.io.IOException;
@@ -26442,7 +27149,7 @@ printf %s "checking antlr... " >&6; }
     if test ! -f conftestSharedChecker.class ; then
 
     cat << \EOF > conftestSharedChecker.java
-// #line 26445 "configure"
+// #line 27152 "configure"
 import java.util.regex.Pattern;
 import java.io.File;
 import java.io.IOException;
@@ -26676,7 +27383,7 @@ printf %s "checking junit4... " >&6; }
     if test ! -f conftestSharedChecker.class ; then
 
     cat << \EOF > conftestSharedChecker.java
-// #line 26679 "configure"
+// #line 27386 "configure"
 import java.util.regex.Pattern;
 import java.io.File;
 import java.io.IOException;
@@ -26907,7 +27614,7 @@ printf %s "checking junit... " >&6; }
     if test ! -f conftestSharedChecker.class ; then
 
     cat << \EOF > conftestSharedChecker.java
-// #line 26910 "configure"
+// #line 27617 "configure"
 import java.util.regex.Pattern;
 import java.io.File;
 import java.io.IOException;
@@ -27145,7 +27852,7 @@ printf %s "checking hamcrest-all... " >&6; }
     if test ! -f conftestSharedChecker.class ; then
 
     cat << \EOF > conftestSharedChecker.java
-// #line 27148 "configure"
+// #line 27855 "configure"
 import java.util.regex.Pattern;
 import java.io.File;
 import java.io.IOException;
@@ -27376,7 +28083,7 @@ printf %s "checking hamcrest/all... " >&6; }
     if test ! -f conftestSharedChecker.class ; then
 
     cat << \EOF > conftestSharedChecker.java
-// #line 27379 "configure"
+// #line 28086 "configure"
 import java.util.regex.Pattern;
 import java.io.File;
 import java.io.IOException;
@@ -27611,7 +28318,7 @@ printf %s "checking cobertura... " >&6; }
     if test ! -f conftestSharedChecker.class ; then
 
     cat << \EOF > conftestSharedChecker.java
-// #line 27614 "configure"
+// #line 28321 "configure"
 import java.util.regex.Pattern;
 import java.io.File;
 import java.io.IOException;
@@ -27845,7 +28552,7 @@ printf %s "checking asm3... " >&6; }
     if test ! -f conftestSharedChecker.class ; then
 
     cat << \EOF > conftestSharedChecker.java
-// #line 27848 "configure"
+// #line 28555 "configure"
 import java.util.regex.Pattern;
 import java.io.File;
 import java.io.IOException;
@@ -28076,7 +28783,7 @@ printf %s "checking asm... " >&6; }
     if test ! -f conftestSharedChecker.class ; then
 
     cat << \EOF > conftestSharedChecker.java
-// #line 28079 "configure"
+// #line 28786 "configure"
 import java.util.regex.Pattern;
 import java.io.File;
 import java.io.IOException;
@@ -28310,7 +29017,7 @@ printf %s "checking ecj... " >&6; }
     if test ! -f conftestSharedChecker.class ; then
 
     cat << \EOF > conftestSharedChecker.java
-// #line 28313 "configure"
+// #line 29020 "configure"
 import java.util.regex.Pattern;
 import java.io.File;
 import java.io.IOException;
@@ -55116,7 +55823,7 @@ SCI_LDFLAGS=$(echo                                            \
 
 
 
-ac_config_files="$ac_config_files contrib/Makefile desktop/images/icons/Makefile desktop/Makefile modules/threads/Makefile modules/ast/Makefile modules/functions_manager/Makefile modules/helptools/Makefile modules/data_structures/Makefile modules/differential_equations/Makefile modules/optimization/Makefile modules/elementary_functions/Makefile modules/special_functions/Makefile modules/io/Makefile modules/completion/Makefile modules/history_manager/Makefile modules/jvm/Makefile modules/commons/Makefile modules/sound/Makefile modules/statistics/Makefile modules/mexlib/Makefile modules/sparse/Makefile modules/linear_algebra/Makefile modules/polynomials/Makefile modules/signal_processing/Makefile modules/arnoldi/Makefile modules/interpolation/Makefile modules/localization/Makefile modules/cacsd/Makefile modules/boolean/Makefile modules/integer/Makefile modules/fileio/Makefile modules/spreadsheet/Makefile modules/string/Makefile modules/time/Makefile modules/graphics/Makefile modules/graphic_export/Makefile modules/graphic_objects/Makefile modules/renderer/Makefile modules/action_binding/Makefile modules/gui/Makefile modules/mpi/Makefile modules/randlib/Makefile modules/tclsci/Makefile modules/windows_tools/Makefile modules/core/Makefile modules/prebuildjava/Makefile modules/api_scilab/Makefile modules/call_scilab/Makefile modules/types/Makefile modules/hdf5/Makefile modules/fftw/Makefile modules/umfpack/Makefile modules/scicos/Makefile modules/scicos_blocks/Makefile modules/functions/Makefile modules/dynamic_link/Makefile modules/overloading/Makefile modules/javasci/Makefile modules/m2sci/Makefile modules/development_tools/Makefile modules/output_stream/Makefile modules/console/Makefile modules/demo_tools/Makefile modules/parameters/Makefile modules/matio/Makefile modules/atoms/Makefile modules/xcos/Makefile modules/scinotes/Makefile modules/ui_data/Makefile modules/graph/Makefile modules/parallel/Makefile modules/modules_manager/Makefile modules/history_browser/Makefile modules/preferences/Makefile modules/xml/Makefile modules/external_objects/Makefile modules/external_objects_java/Makefile modules/slint/Makefile modules/coverage/Makefile modules/webtools/Makefile modules/Makefile Makefile scilab.pc etc/modules.xml etc/classpath.xml etc/Info.plist etc/logging.properties scilab.properties scilab-lib.properties scilab-lib-doc.properties modules/helptools/etc/SciDocConf.xml modules/core/includes/version.h modules/atoms/etc/repositories modules/atoms/tests/unit_tests/repositories.orig"
+ac_config_files="$ac_config_files contrib/Makefile desktop/images/icons/Makefile desktop/Makefile modules/threads/Makefile modules/ast/Makefile modules/functions_manager/Makefile modules/helptools/Makefile modules/data_structures/Makefile modules/differential_equations/Makefile modules/optimization/Makefile modules/elementary_functions/Makefile modules/special_functions/Makefile modules/io/Makefile modules/completion/Makefile modules/history_manager/Makefile modules/jvm/Makefile modules/commons/Makefile modules/sound/Makefile modules/statistics/Makefile modules/mexlib/Makefile modules/sparse/Makefile modules/linear_algebra/Makefile modules/polynomials/Makefile modules/signal_processing/Makefile modules/arnoldi/Makefile modules/interpolation/Makefile modules/localization/Makefile modules/cacsd/Makefile modules/boolean/Makefile modules/integer/Makefile modules/fileio/Makefile modules/spreadsheet/Makefile modules/string/Makefile modules/time/Makefile modules/graphics/Makefile modules/graphic_export/Makefile modules/graphic_objects/Makefile modules/renderer/Makefile modules/action_binding/Makefile modules/gui/Makefile modules/mpi/Makefile modules/randlib/Makefile modules/tclsci/Makefile modules/windows_tools/Makefile modules/core/Makefile modules/prebuildjava/Makefile modules/api_scilab/Makefile modules/call_scilab/Makefile modules/types/Makefile modules/hdf5/Makefile modules/fftw/Makefile modules/umfpack/Makefile modules/scicos/Makefile modules/scicos_blocks/Makefile modules/functions/Makefile modules/dynamic_link/Makefile modules/overloading/Makefile modules/javasci/Makefile modules/m2sci/Makefile modules/development_tools/Makefile modules/output_stream/Makefile modules/console/Makefile modules/demo_tools/Makefile modules/parameters/Makefile modules/matio/Makefile modules/atoms/Makefile modules/xcos/Makefile modules/scinotes/Makefile modules/ui_data/Makefile modules/graph/Makefile modules/parallel/Makefile modules/modules_manager/Makefile modules/history_browser/Makefile modules/preferences/Makefile modules/xml/Makefile modules/external_objects/Makefile modules/external_objects_java/Makefile modules/slint/Makefile modules/coverage/Makefile modules/webtools/Makefile modules/Makefile Makefile scilab.pc build.incl.xml etc/modules.xml etc/classpath.xml etc/Info.plist etc/logging.properties scilab.properties scilab-lib.properties scilab-lib-doc.properties modules/helptools/etc/SciDocConf.xml modules/core/includes/version.h modules/atoms/etc/repositories modules/atoms/tests/unit_tests/repositories.orig"
 
 
 # This script is used by Xcos in order to regenerate the function/block list
@@ -56552,6 +57259,7 @@ do
     "modules/Makefile") CONFIG_FILES="$CONFIG_FILES modules/Makefile" ;;
     "Makefile") CONFIG_FILES="$CONFIG_FILES Makefile" ;;
     "scilab.pc") CONFIG_FILES="$CONFIG_FILES scilab.pc" ;;
+    "build.incl.xml") CONFIG_FILES="$CONFIG_FILES build.incl.xml" ;;
     "etc/modules.xml") CONFIG_FILES="$CONFIG_FILES etc/modules.xml" ;;
     "etc/classpath.xml") CONFIG_FILES="$CONFIG_FILES etc/classpath.xml" ;;
     "etc/Info.plist") CONFIG_FILES="$CONFIG_FILES etc/Info.plist" ;;
