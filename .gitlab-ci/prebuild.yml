@@ -60,7 +60,7 @@ windows_set_env:
 linux_build_prereq:
   image: ${DOCKER_LINUX_PREBUILD}:${DOCKER_TAG}
   stage: prebuild
-  tags: [x86_64-linux-gnu, docker, scilab]
+  tags: [x86_64-linux-gnu, docker, scilab, build]
   needs:
     - linux_set_env
   before_script: bash .gitlab-ci/prebuild.sh versions
