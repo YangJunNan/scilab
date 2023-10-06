@@ -583,7 +583,11 @@ void ImplicitList::extractFullMatrix(Double *_p)
     {
         p[i] = dblStart + i * dblStep;
     }
-    p[m_iSize-1] = dblStep > 0 ? std::min(dblEnd,p[m_iSize-1]) : std::max(dblEnd,p[m_iSize-1]);
+
+    if (m_iSize > 0)
+    {
+        p[m_iSize - 1] = dblStep > 0 ? std::min(dblEnd, p[m_iSize - 1]) : std::max(dblEnd, p[m_iSize - 1]);
+    }
 }
 
 template<typename T>
