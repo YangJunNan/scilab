@@ -39,6 +39,7 @@ In summary, the main new features and additions are:
 * The number of characters used to define the body of any conditional instruction (`if`, `while`, `for`, or `select/case`) is no more limited to 16k (Scilab 6.x improvement).
 * Add absolute and relative numerical tolerences in `intl()` input arguments.
 * `url_encode()` and `url_decode()` are added to the webtools module.
+* `angle()` computes the argument of complex numbers, in radians.
 * <TODO>
 
 
