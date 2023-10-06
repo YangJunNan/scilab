@@ -53,11 +53,17 @@ endfunction
 function n = %datenum(y, m, d, h, mn, s)
     arguments
         y {mustBeA(y, "double")}
-        m {mustBeA(m, "double"), mustBeEqualDims(m, y), mustBeInRange(m, 1, 12)}
-        d {mustBeA(d, "double"), mustBeEqualDims(d, y), mustBeInRange(d, 1, 31)}
-        h {mustBeA(h, "double"), mustBeEqualDims(h, y),  mustBeInRange(h, 0, 59)} = 0
-        mn {mustBeA(mn, "double"), mustBeEqualDims(mn, y),  mustBeInRange(mn, 0, 59)} = 0
-        s {mustBeA(s, "double"), mustBeEqualDims(s, y), mustBeInRange(s, 0, 60)} = 0
+        m {mustBeA(m, "double"), mustBeInRange(m, 1, 12)}
+        d {mustBeA(d, "double"), mustBeInRange(d, 1, 31)}
+        h {mustBeA(h, "double"),  mustBeInRange(h, 0, 23)} = 0
+        mn {mustBeA(mn, "double"),  mustBeInRange(mn, 0, 59)} = 0
+        s {mustBeA(s, "double"), mustBeInRange(s, 0, 60)} = 0
+    end
+
+    vecSize = [size(y); size(m); size(d); size(h); size(mn); size(s)]
+    sizeMax = max(vecSize, "r");
+    if ~(and((sizeMax(1) == vecSize(:, 1) & sizeMax(2) == vecSize(:, 2)) | (vecSize(:,1) == 1 & vecSize(:,2) == 1))) then
+        error(msprintf(gettext("%s: Wrong size for input arguments: Same size expected.\n"),"datenum"));
     end
 
     decimal_part = (((s / 60 + mn) / 60) + h) / 24;
