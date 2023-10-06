@@ -10,6 +10,9 @@
  * along with this program.
 *
 */
+
+#define H5_NO_DEPRECATED_SYMBOLS
+
 #include <list>
 #include <unordered_map>
 

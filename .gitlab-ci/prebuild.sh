@@ -63,10 +63,10 @@ ARPACK_VERSION=3.1.5
 CURL_VERSION=7.64.1
 EIGEN_VERSION=3.3.2
 FFTW_VERSION=3.3.3
-HDF5_VERSION=1.8.14
+HDF5_VERSION=1.10.10
 NCURSES_VERSION=6.4
 LIBXML2_VERSION=2.9.9
-MATIO_VERSION=1.5.2
+MATIO_VERSION=1.5.9
 OPENSSL_VERSION=1.1.1c
 PCRE_VERSION=8.38
 SUITESPARSE_VERSION=4.4.5
@@ -499,7 +499,6 @@ build_hdf5() {
         -DHDF5_BUILD_HL_LIB=ON
     cmake --build . --parallel --target install
 
-    cp "$INSTALL_DIR/share/cmake/hdf5/libhdf5.settings" "$INSTALLUSRDIR/lib/"
     cp -a "$INSTALL_DIR"/lib/*.so* "$INSTALLUSRDIR/lib/"
     cp -a "$INSTALL_DIR"/include/* "$INSTALLUSRDIR/include/"
 }
@@ -640,8 +639,11 @@ build_matio() {
 
     INSTALL_DIR=$BUILDDIR/matio-$MATIO_VERSION/install_dir
 
+    rm -rf matio-$MATIO_VERSION
     tar -xzf "$DOWNLOADDIR/matio-$MATIO_VERSION.tar.gz"
     cd matio-$MATIO_VERSION || exit 1
+
+    ./autogen.sh
     ./configure --enable-shared --with-hdf5="$INSTALLUSRDIR" --with-zlib="$INSTALLUSRDIR" --prefix=
     make "-j$(nproc)"
     make install DESTDIR="$INSTALL_DIR"
