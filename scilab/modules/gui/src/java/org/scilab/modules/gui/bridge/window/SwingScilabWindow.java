@@ -116,7 +116,7 @@ public abstract class SwingScilabWindow extends JFrame implements SimpleWindow {
         if (MAC_OS_X) {
             Desktop desktop = Desktop.getDesktop();
             Taskbar taskbar = Taskbar.getTaskbar();
-            taskbar.setIconImage(new ImageIcon(FindIconHelper.findIcon("scilab", "256x256")).getImage());
+            taskbar.setIconImage(new ImageIcon(FindIconHelper.findIcon("scilabMacOS", "256x256")).getImage());
             desktop.setAboutHandler(e->InterpreterManagement.requestScilabExec("about();"));
             desktop.setPreferencesHandler(e ->InterpreterManagement.requestScilabExec("preferences();"));
             desktop.setQuitHandler((e,r)->InterpreterManagement.requestScilabExec("exit();"));
