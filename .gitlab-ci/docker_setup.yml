@@ -11,7 +11,7 @@
 builder_linux:
   stage: docker_setup
   image: docker:20.10.16
-  tags: [x86_64-linux-gnu, docker, scilab, build]
+  tags: [x86_64-linux-gnu, docker, build]
   script:
     - docker login -u "${CI_REGISTRY_USER}" -p "${CI_JOB_TOKEN}" "${CI_REGISTRY}"
     - echo "Build image ${DOCKER_LINUX_BUILDER}:${DOCKER_TAG}"
@@ -36,7 +36,7 @@ builder_linux:
 prebuild_linux:
   stage: docker_setup
   image: docker:20.10.16
-  tags: [x86_64-linux-gnu, docker, scilab, build]
+  tags: [x86_64-linux-gnu, docker, build]
   needs:
     - builder_linux
   script:
@@ -56,7 +56,7 @@ prebuild_linux:
 tester_linux:
   stage: docker_setup
   image: docker:20.10.16
-  tags: [x86_64-linux-gnu, docker, scilab]
+  tags: [x86_64-linux-gnu, docker, build]
   script:
     - docker login -u "${CI_REGISTRY_USER}" -p "${CI_JOB_TOKEN}" "${CI_REGISTRY}"
     - .gitlab-ci/docker_setup.sh --registry "${CI_REGISTRY_IMAGE}" "${DOCKER_TAG}"

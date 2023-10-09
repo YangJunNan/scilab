@@ -11,7 +11,7 @@
 # build scilab using a windows runner
 .windows_build:
   stage: build
-  tags: [x64_windows, scilab, shell, build]
+  tags: [x64_windows, shell, build]
   before_script:
     # The first time create base folders
     - New-Item -ItemType Directory -Force -Path "$SCILAB_COMMON_PATH/"
@@ -67,7 +67,7 @@ windows_build_release:
 .linux_build:
   stage: build
   image: ${DOCKER_LINUX_BUILDER}:${DOCKER_TAG}
-  tags: [x86_64-linux-gnu, docker, scilab, build]
+  tags: [x86_64-linux-gnu, docker, build]
   before_script:
     - echo -e "\e[0Ksection_start:$(date +%s):cleanup\r\e[0KCleaning $CI_PROJECT_DIR"
     # Remove logs older than 3 days

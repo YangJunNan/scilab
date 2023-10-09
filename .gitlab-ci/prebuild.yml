@@ -11,7 +11,7 @@
 linux_set_env:
   image: ${DOCKER_LINUX_BUILDER}:${DOCKER_TAG}
   stage: prebuild
-  tags: [x86_64-linux-gnu, docker, scilab]
+  tags: [x86_64-linux-gnu, docker, build]
   variables:
     GIT_STRATEGY: none
   script:
@@ -37,7 +37,7 @@ linux_set_env:
 # define x64 windows env
 windows_set_env:
   stage: prebuild
-  tags: [x64_windows, shell, scilab]
+  tags: [x64_windows, shell, build]
   variables:
     GIT_STRATEGY: none
   script:
@@ -60,7 +60,7 @@ windows_set_env:
 linux_build_prereq:
   image: ${DOCKER_LINUX_PREBUILD}:${DOCKER_TAG}
   stage: prebuild
-  tags: [x86_64-linux-gnu, docker, scilab, build]
+  tags: [x86_64-linux-gnu, docker, build]
   needs:
     - linux_set_env
   before_script: bash .gitlab-ci/prebuild.sh versions
