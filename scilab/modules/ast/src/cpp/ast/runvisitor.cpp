@@ -1028,15 +1028,29 @@ void RunVisitorT<T>::visitprivate(const SelectExp &e)
             setResult(NULL);
             if (pITCase)
             {
-                if (pITCase->isContainer()) //WARNING ONLY FOR CELL
+                bool bEqual = false;
+                if (pITCase->isCell()) //WARNING ONLY FOR CELL
                 {
-                    //check each item
+                    types::Cell* pC = pITCase->getAs<types::Cell>();
+                    for (int i = 0; i < pC->getSize(); ++i)
+                    {
+                        if (*pC->get()[i] == *pIT)
+                        {
+                            bEqual = true;
+                            break;
+                        }
+                    }
                 }
                 else if (*pITCase == *pIT)
                 {
+                    bEqual = true;
+                }
+
+                if (bEqual)
+                {
                     try
                     {
-                        //the good one
+                        // the good one
                         pCase->getBody()->accept(*this);
                     }
                     catch (const InternalError& ie)
