@@ -22,7 +22,7 @@ function %ce_p(ce)
             case 14 //lib
                 str(i) = "lib";
             case 15 //list
-                str(i) = sprintf("list of %d items");
+                str(i) = sprintf("list of %d items",size(val));
             case 16 //tlist
                 str(i) = typeof(val);
             case 17 //mlist
