@@ -97,13 +97,6 @@ if test -n "${CI_REGISTRY_IMAGE}"; then
   docker push "${CI_REGISTRY_IMAGE}/ubuntu-22.04:${DOCKER_TAG}"
   docker push "${CI_REGISTRY_IMAGE}/fedora-37:${DOCKER_TAG}"
   docker push "${CI_REGISTRY_IMAGE}/debian-11:${DOCKER_TAG}"
-  
-  docker rmi "${CI_REGISTRY_IMAGE}/ubuntu-18.04:${DOCKER_TAG}"
-  docker rmi "${CI_REGISTRY_IMAGE}/ubuntu-20.04:${DOCKER_TAG}"
-  docker rmi "${CI_REGISTRY_IMAGE}/ubuntu-22.04:${DOCKER_TAG}"
-  docker rmi "${CI_REGISTRY_IMAGE}/fedora-37:${DOCKER_TAG}"
-  docker rmi "${CI_REGISTRY_IMAGE}/debian-11:${DOCKER_TAG}"
-  docker image prune --force
 fi
 
 exit 0

@@ -16,8 +16,6 @@ builder_linux:
     - docker login -u "${CI_REGISTRY_USER}" -p "${CI_JOB_TOKEN}" "${CI_REGISTRY}"
     - echo "Build image ${DOCKER_LINUX_BUILDER}:${DOCKER_TAG}"
     - .gitlab-ci/docker_setup.sh --builder "${DOCKER_LINUX_BUILDER}" "${DOCKER_TAG}"
-    - docker rmi "${DOCKER_LINUX_BUILDER}:${DOCKER_TAG}"
-    - docker image prune --force
     - docker logout "${CI_REGISTRY}"
   rules:
     # do not rebuild on scheduled
@@ -43,8 +41,6 @@ prebuild_linux:
     - docker login -u "${CI_REGISTRY_USER}" -p "${CI_JOB_TOKEN}" "${CI_REGISTRY}"
     - echo "Build image ${DOCKER_LINUX_PREBUILD}:${DOCKER_TAG}"
     - .gitlab-ci/docker_setup.sh --prebuild "${DOCKER_LINUX_PREBUILD}" "${DOCKER_TAG}"
-    - docker rmi "${DOCKER_LINUX_PREBUILD}:${DOCKER_TAG}"
-    - docker image prune --force
     - docker logout "${CI_REGISTRY}"
   rules:
     # do not rebuild on scheduled
