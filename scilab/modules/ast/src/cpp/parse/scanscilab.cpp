@@ -2624,7 +2624,7 @@ YY_RULE_SETUP
         yylval.str = new std::wstring(pwText);
 	FREE(pwText);
 	types::InternalType * pIT = symbol::Context::getInstance()->get(symbol::Symbol(*yylval.str));
-        if (pIT && pIT->isCallable())
+        if (pIT && pIT->isCallable() && ParserSingleInstance::getControlStatus() != Parser::WithinArguments)
         {
             BEGIN(SHELLMODE);
         }
