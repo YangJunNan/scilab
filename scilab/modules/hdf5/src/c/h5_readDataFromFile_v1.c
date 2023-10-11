@@ -13,8 +13,6 @@
 *
 */
 
-#define H5_NO_DEPRECATED_SYMBOLS
-
 #ifndef _MSC_VER
 #include <sys/time.h>
 #else

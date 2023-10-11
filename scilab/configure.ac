@@ -2355,6 +2355,19 @@ else
    echo "Not using UMFPACK"
 fi
 
+echo ""
+if test $KLU_ENABLE = yes;  then
+   echo "KLU Configuration:"
+   echo "  KLU LIBS ....... = $KLU_LIBS"
+   echo "  KLU CFLAGS ..... = $KLU_CFLAGS"
+   if test "$SUITESPARSE" = "yes"; then
+      echo "  KLU SUITESPARSE  = Yes"
+   else
+      echo "  KLU SUITESPARSE  = No"
+   fi
+else
+   echo "Not using KLU"
+fi
 
 echo ""
 echo "BLAS/LAPACK/ATLAS Configuration:"

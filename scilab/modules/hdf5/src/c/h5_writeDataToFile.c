@@ -13,8 +13,6 @@
 *
 */
 
-#define H5_USE_16_API
-
 #include <hdf5.h>
 #include <sci_malloc.h>
 #include <math.h>

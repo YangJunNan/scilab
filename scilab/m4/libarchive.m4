@@ -58,6 +58,9 @@ printf("%d.%d.%d\n", major, minor, rev);
 return 0;
 ])], [ LIBARCHIVE_VERSION=$(./conftest$EXEEXT) ], [ AC_MSG_FAILURE("Unable to detect libarchive") ] )
 
+LIBARCHIVE_LIBS="$LIBS"
+LIBARCHIVE_CFLAGS="$CFLAGS"
+
 LIBS="$saved_LIBS"
 CFLAGS="$saved_CFLAGS"
 

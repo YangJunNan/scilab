@@ -814,7 +814,7 @@ FORCE_HDF_API = \
     -DH5Tget_array_dims_vers=2 \
     -DH5Acreate_vers=2 \
     -DH5Rdereference_vers=2 \
-    -DNO_DEPRECATED_SYMBOLS
+    -DH5Eset_auto_vers=2
 
 libscihdf5_la_CPPFLAGS = \
     -I$(srcdir)/includes/ \

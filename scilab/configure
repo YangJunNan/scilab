@@ -12677,7 +12677,7 @@ fi
 else
     HDF5_CFLAGS=""
     if $WITH_DEVTOOLS; then # Scilab thirdparties
-        HDF5_CFLAGS="-I$DEVTOOLS_INCDIR"
+        HDF5_CFLAGS="-I$DEVTOOLS_INCDIR -DH5_NO_DEPRECATED_SYMBOLS"
     else
         if test -d /usr/include/hdf5/serial; then # New Debian packaging layout since hdf5-1.8.13
             ac_fn_c_check_header_compile "$LINENO" "hdf5/serial/hdf5.h" "ac_cv_header_hdf5_serial_hdf5_h" "$ac_includes_default"
@@ -40253,6 +40253,9 @@ rm -f core *.core core.conftest.* gmon.out bb.out conftest$ac_exeext \
 fi
 
 
+LIBARCHIVE_LIBS="$LIBS"
+LIBARCHIVE_CFLAGS="$CFLAGS"
+
 LIBS="$saved_LIBS"
 CFLAGS="$saved_CFLAGS"
 
@@ -59134,6 +59137,19 @@ else
    echo "Not using UMFPACK"
 fi
 
+echo ""
+if test $KLU_ENABLE = yes;  then
+   echo "KLU Configuration:"
+   echo "  KLU LIBS ....... = $KLU_LIBS"
+   echo "  KLU CFLAGS ..... = $KLU_CFLAGS"
+   if test "$SUITESPARSE" = "yes"; then
+      echo "  KLU SUITESPARSE  = Yes"
+   else
+      echo "  KLU SUITESPARSE  = No"
+   fi
+else
+   echo "Not using KLU"
+fi
 
 echo ""
 echo "BLAS/LAPACK/ATLAS Configuration:"
