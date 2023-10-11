@@ -181,7 +181,8 @@ am__objects_1 = sci_gateway/cpp/libscifunctions_la-sci_exec.lo \
 	sci_gateway/cpp/libscifunctions_la-sci_execstr.lo \
 	sci_gateway/cpp/libscifunctions_la-sci_macrovar.lo \
 	sci_gateway/cpp/libscifunctions_la-sci_libraryinfo.lo \
-	sci_gateway/cpp/libscifunctions_la-sci_librarieslist.lo
+	sci_gateway/cpp/libscifunctions_la-sci_librarieslist.lo \
+	sci_gateway/cpp/libscifunctions_la-sci_idempotence.lo
 am_libscifunctions_la_OBJECTS = $(am__objects_1)
 libscifunctions_la_OBJECTS = $(am_libscifunctions_la_OBJECTS)
 AM_V_lt = $(am__v_lt_@AM_V@)
@@ -207,6 +208,7 @@ am__depfiles_remade =  \
 	sci_gateway/cpp/$(DEPDIR)/libscifunctions_la-sci_exec.Plo \
 	sci_gateway/cpp/$(DEPDIR)/libscifunctions_la-sci_execstr.Plo \
 	sci_gateway/cpp/$(DEPDIR)/libscifunctions_la-sci_functionlist.Plo \
+	sci_gateway/cpp/$(DEPDIR)/libscifunctions_la-sci_idempotence.Plo \
 	sci_gateway/cpp/$(DEPDIR)/libscifunctions_la-sci_librarieslist.Plo \
 	sci_gateway/cpp/$(DEPDIR)/libscifunctions_la-sci_libraryinfo.Plo \
 	sci_gateway/cpp/$(DEPDIR)/libscifunctions_la-sci_macrovar.Plo \
@@ -584,7 +586,8 @@ GATEWAY_CPP_SOURCES = \
     sci_gateway/cpp/sci_execstr.cpp \
     sci_gateway/cpp/sci_macrovar.cpp \
     sci_gateway/cpp/sci_libraryinfo.cpp \
-    sci_gateway/cpp/sci_librarieslist.cpp
+    sci_gateway/cpp/sci_librarieslist.cpp \
+    sci_gateway/cpp/sci_idempotence.cpp
 
 libscifunctions_la_CPPFLAGS = \
     -I$(srcdir)/includes/ \
@@ -801,6 +804,9 @@ sci_gateway/cpp/libscifunctions_la-sci_libraryinfo.lo:  \
 sci_gateway/cpp/libscifunctions_la-sci_librarieslist.lo:  \
 	sci_gateway/cpp/$(am__dirstamp) \
 	sci_gateway/cpp/$(DEPDIR)/$(am__dirstamp)
+sci_gateway/cpp/libscifunctions_la-sci_idempotence.lo:  \
+	sci_gateway/cpp/$(am__dirstamp) \
+	sci_gateway/cpp/$(DEPDIR)/$(am__dirstamp)
 
 libscifunctions.la: $(libscifunctions_la_OBJECTS) $(libscifunctions_la_DEPENDENCIES) $(EXTRA_libscifunctions_la_DEPENDENCIES) 
 	$(AM_V_CXXLD)$(CXXLINK) -rpath $(pkglibdir) $(libscifunctions_la_OBJECTS) $(libscifunctions_la_LIBADD) $(LIBS)
@@ -816,6 +822,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@sci_gateway/cpp/$(DEPDIR)/libscifunctions_la-sci_exec.Plo@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@sci_gateway/cpp/$(DEPDIR)/libscifunctions_la-sci_execstr.Plo@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@sci_gateway/cpp/$(DEPDIR)/libscifunctions_la-sci_functionlist.Plo@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@sci_gateway/cpp/$(DEPDIR)/libscifunctions_la-sci_idempotence.Plo@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@sci_gateway/cpp/$(DEPDIR)/libscifunctions_la-sci_librarieslist.Plo@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@sci_gateway/cpp/$(DEPDIR)/libscifunctions_la-sci_libraryinfo.Plo@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@sci_gateway/cpp/$(DEPDIR)/libscifunctions_la-sci_macrovar.Plo@am__quote@ # am--include-marker
@@ -899,6 +906,13 @@ sci_gateway/cpp/libscifunctions_la-sci_librarieslist.lo: sci_gateway/cpp/sci_lib
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='sci_gateway/cpp/sci_librarieslist.cpp' object='sci_gateway/cpp/libscifunctions_la-sci_librarieslist.lo' libtool=yes @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libscifunctions_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o sci_gateway/cpp/libscifunctions_la-sci_librarieslist.lo `test -f 'sci_gateway/cpp/sci_librarieslist.cpp' || echo '$(srcdir)/'`sci_gateway/cpp/sci_librarieslist.cpp
+
+sci_gateway/cpp/libscifunctions_la-sci_idempotence.lo: sci_gateway/cpp/sci_idempotence.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libscifunctions_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT sci_gateway/cpp/libscifunctions_la-sci_idempotence.lo -MD -MP -MF sci_gateway/cpp/$(DEPDIR)/libscifunctions_la-sci_idempotence.Tpo -c -o sci_gateway/cpp/libscifunctions_la-sci_idempotence.lo `test -f 'sci_gateway/cpp/sci_idempotence.cpp' || echo '$(srcdir)/'`sci_gateway/cpp/sci_idempotence.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) sci_gateway/cpp/$(DEPDIR)/libscifunctions_la-sci_idempotence.Tpo sci_gateway/cpp/$(DEPDIR)/libscifunctions_la-sci_idempotence.Plo
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='sci_gateway/cpp/sci_idempotence.cpp' object='sci_gateway/cpp/libscifunctions_la-sci_idempotence.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libscifunctions_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o sci_gateway/cpp/libscifunctions_la-sci_idempotence.lo `test -f 'sci_gateway/cpp/sci_idempotence.cpp' || echo '$(srcdir)/'`sci_gateway/cpp/sci_idempotence.cpp
 
 mostlyclean-libtool:
 	-rm -f *.lo
@@ -1103,6 +1117,7 @@ distclean: distclean-am
 		-rm -f sci_gateway/cpp/$(DEPDIR)/libscifunctions_la-sci_exec.Plo
 	-rm -f sci_gateway/cpp/$(DEPDIR)/libscifunctions_la-sci_execstr.Plo
 	-rm -f sci_gateway/cpp/$(DEPDIR)/libscifunctions_la-sci_functionlist.Plo
+	-rm -f sci_gateway/cpp/$(DEPDIR)/libscifunctions_la-sci_idempotence.Plo
 	-rm -f sci_gateway/cpp/$(DEPDIR)/libscifunctions_la-sci_librarieslist.Plo
 	-rm -f sci_gateway/cpp/$(DEPDIR)/libscifunctions_la-sci_libraryinfo.Plo
 	-rm -f sci_gateway/cpp/$(DEPDIR)/libscifunctions_la-sci_macrovar.Plo
@@ -1157,6 +1172,7 @@ maintainer-clean: maintainer-clean-am
 		-rm -f sci_gateway/cpp/$(DEPDIR)/libscifunctions_la-sci_exec.Plo
 	-rm -f sci_gateway/cpp/$(DEPDIR)/libscifunctions_la-sci_execstr.Plo
 	-rm -f sci_gateway/cpp/$(DEPDIR)/libscifunctions_la-sci_functionlist.Plo
+	-rm -f sci_gateway/cpp/$(DEPDIR)/libscifunctions_la-sci_idempotence.Plo
 	-rm -f sci_gateway/cpp/$(DEPDIR)/libscifunctions_la-sci_librarieslist.Plo
 	-rm -f sci_gateway/cpp/$(DEPDIR)/libscifunctions_la-sci_libraryinfo.Plo
 	-rm -f sci_gateway/cpp/$(DEPDIR)/libscifunctions_la-sci_macrovar.Plo
