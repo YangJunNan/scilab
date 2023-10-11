@@ -435,11 +435,11 @@ int StartScilabEngine(ScilabEngineInfo* _pSEI)
         iScript = 1;
     }
 
-    // If -quit argument is passed to Scilab, add a "quit" command to command queue.
+    // If -quit argument is passed to Scilab, add a "exit" command to command queue.
     // Setting ConfigVariable::setForceQuit() here avoids Scilab to quit before executing callbacks.
     if (_pSEI->iForceQuit == 1)
     {
-        StoreCommand("quit");
+        StoreCommand("[_,__err__]=lasterror();exit(__err__);");
     }
 
     ConfigVariable::setUserMode(2);
