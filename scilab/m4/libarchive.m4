@@ -56,7 +56,7 @@ int minor = (ARCHIVE_VERSION_NUMBER % 1000000) / 1000;
 int rev = ARCHIVE_VERSION_NUMBER % 1000;
 printf("%d.%d.%d\n", major, minor, rev);
 return 0;
-])], [ LIBARCHIVE_VERSION=$(./conftest$EXEEXT) ])
+])], [ LIBARCHIVE_VERSION=$(./conftest$EXEEXT) ], [ AC_MSG_FAILURE("Unable to detect libarchive") ] )
 
 LIBS="$saved_LIBS"
 CFLAGS="$saved_CFLAGS"
