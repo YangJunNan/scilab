@@ -2935,7 +2935,8 @@ static bool export_handle_polyline_shift(hid_t parent, int uid, const std::strin
         dims[1] = count;
         writeDoubleMatrix6(parent, name.data(), 2, dims, data, xfer_plist_id);
 
-        releaseGraphicObjectProperty(uid, data, jni_double_vector, count);
+        //data from __GO_DATA_MODEL_XXX does not need to be delete
+        //releaseGraphicObjectProperty(uid, data, jni_double_vector, count);
     }
     else
     {
