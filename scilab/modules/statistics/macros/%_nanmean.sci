@@ -13,7 +13,7 @@
 //
 
 
-function [m]=nanmean(x,orient)
+function [m]=%_nanmean(x,orient)
     //
     //This function returns in scalar m the mean of the values (ignoring the
     //NANs) of  a  vector  or  matrix  x.

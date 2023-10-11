@@ -12,7 +12,7 @@
 // along with this program.
 //
 
-function s=nansum(x,orient)
+function s = %_nansum(x,orient)
     //
     //This function returns in scalar or vector s the sum of the
     //values (ignoring the NANs) of a vector or matrix x.
