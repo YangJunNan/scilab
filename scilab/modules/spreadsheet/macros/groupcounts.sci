@@ -1,0 +1,182 @@
+// Scilab ( http://www.scilab.org/ ) - This file is part of Scilab
+// Copyright (C) 2022 - 3DS - Adeline CARNIS
+// Copyright (C) 2022 - 3DS - Antoine ELIAS
+//
+// This file is hereby licensed under the terms of the GNU GPL v2.0,
+// pursuant to article 5.3.4 of the CeCILL v.2.1.
+// This file was originally licensed under the terms of the CeCILL v2.1,
+// and continues to be available under such terms.
+// For more information, see the COPYING file which you should have received
+// along with this program.
+
+function g = groupcounts(varargin)
+
+    rhs = nargin;
+    fname = "groupcounts";
+
+    if nargin < 2 then
+        error(msprintf(_("%s: Wrong number of input arguments: At least %d expected.\n"), fname, 2));
+    end
+    
+    includeEmpty = %f;
+    includePercent = %f;
+    percent = [];
+    groupbins = "none";
+
+    if nargin > 3 then
+        // test des Name-Value Arguments
+        for i = nargin-1:-2:3
+            if type(varargin(i)) <> 10 then
+                break;
+            end
+
+            select varargin(i)
+            case "IncludeEmptyGroups"
+                includeEmpty = varargin(i + 1);
+                if type(includeEmpty) <> 4 then
+                    error(msprintf(_("%s: Wrong type for input argument #%d: boolean expected.\n"), fname, i));
+                end
+            case "IncludePercentGroups"
+                includePercent = varargin(i + 1);
+                if type(includePercent) <> 4 then
+                    error(msprintf(_("%s: Wrong type for input argument #%d: boolean expected.\n"), fname, i));
+                end
+            else
+                error(msprintf(_("%s: Wrong value for input argument #%d: ''%s'' not allowed.\n"), fname, i, varargin(i)));
+            end
+            rhs = rhs - 2;
+        end
+    end
+
+    t = varargin(1);
+    if ~istable(t) && ~istimeseries(t) then
+        error(msprintf(_("%s: Wrong type for input argument #%d: table or timeseries expected.\n"), fname, 1));
+    end
+
+    groupvars = varargin(2);
+    varnames = t.props.variableNames;
+    previousname = "";
+
+    // check groupvars
+    select type(groupvars)
+    case 1
+        if or(groupvars > size(t, 2)) then
+            error(msprintf(_("%s: Wrong value for input argument #%d: valid index expected.\n"), fname, 2));
+        end
+
+        if istimeseries(t) then
+            groupvars = groupvars + 1;
+        end
+    case 10
+        [a, index] = members(groupvars, varnames);
+        if or(index == 0) then
+            error(msprintf(_("%s: Wrong value for input argument #%d: valid grouping variable name expected.\n"), fname, 2));
+        end
+        groupvars = index;
+    else
+        error(msprintf(_("%s: Wrong type for input argument #%d: string or double vector expected.\n"), fname, 2));
+    end
+
+    
+    if rhs == 3 then
+        // groupbins
+        // groupcounts(t, groupvars, groupbins, opts)
+        groupbins = varargin(3);
+        defaultGroupbins = ["none","second", "minute", "hour", "day", "month", "year", "dayname", "monthname"];
+        previousname = emptystr(1, size(groupbins, "*"));
+
+        if typeof(groupbins) == "constant" then
+            for i = groupvars
+                if type(t.vars(i).data) <> 1 then
+                    error(msprintf(_("%s: Wrong data type for #%d: double expected.\n"), fname, 3))
+                end
+            end
+            previousname = "disc_";
+
+        else
+            if size(groupbins, "*") <> 1 && size(groupbins, "*") <> size(groupvars, "*") then
+                error(msprintf(_("%s: Wrong size for input argument #%d: Must be the same size as #%d.\n"), fname, 3, 2));
+            end
+
+            if typeof(groupbins) == "string" then
+                [tmp, idx] = members(groupbins, defaultGroupbins);
+                if or(idx == 0) then
+                    errargs = sci2exp(defaultGroupbins);
+                    error(msprintf(_("%s: Wrong value for input argument #%d: %s expected.\n"), fname, 3, errargs));
+                end
+                
+                if idx(idx <> 1) <> [] then
+                    previousname(idx <> 1) = defaultGroupbins(idx(idx <> 1)) + "_";
+                end
+
+            elseif typeof(groupbins) == "ce" then
+                for k = 1:size(groupbins, "*")
+                    bins = groupbins{k};
+                    if typeof(bins) == "constant" then
+                        if type(t.vars(groupvars(k)).data) <> 1 then
+                            error(msprintf(_("%s: Wrong data type for #%d: double expected.\n"), fname, 3))
+                        end
+                        previousname(k) = "disc_";
+
+                    elseif typeof(bins) == "string" then
+                        if and(bins <> defaultGroupbins) then
+                            errargs = sci2exp(defaultGroupbins);
+                            error(msprintf(_("%s: Wrong value for input argument #%d: %s expected.\n"), fname, 3, errargs));
+                        end
+                        if bins <> "none" then
+                            previousname(k) = bins + "_";
+                        end
+                    end
+                end
+            end
+        end
+    end
+
+    if isdef("index", "l") & (rhs == 2 || (rhs == 3 && size(groupbins, "*") == 1)) then
+        groupvars = unique(index, "keepOrder");
+    end
+
+    [uniqueGroupvars, ki2] = unique(groupvars, "keepOrder");
+    if typeof(groupbins) <> "ce" then
+        [uniqueGroupbins, ki1] = unique(groupbins, "keepOrder");
+        
+    else
+        uniqueGroupbins = {};
+        ki1 = [];
+        tmp = groupbins;
+        //pause
+        while tmp <> {}
+            val = tmp{1};
+            for k = 1:size(groupbins, "*")
+                if find(val == groupbins{k}) then
+                    ki1 = [ki1, k];
+                    break;
+                end
+            end
+
+            jdx = 1;
+            for j = 2:size(tmp, "*")
+                if find(val == tmp{j}) then
+                    jdx = [jdx j];
+                end
+            end
+            tmp(jdx) = [];
+            uniqueGroupbins{1,$+1} = val;
+        end
+    end
+
+    if size(uniqueGroupbins) == size(uniqueGroupvars) & and(ki1 == ki2) then
+        groupbins = uniqueGroupbins;
+        groupvars = uniqueGroupvars;
+        previousname = previousname(ki1);
+    end
+
+    [val, count, vindex] = %_groupcounts(t, groupvars, groupbins, includeEmpty)
+
+    g = table(val(:), count, "VariableNames", [previousname + varnames(groupvars) "GroupCount"]); 
+     
+    if includePercent then
+        percent = count ./sum(count)*100;
+        g = [g table(percent, "VariableNames", "Percent")];
+    end  
+endfunction

@@ -17,12 +17,12 @@
 // Si l'année est divisible par 400 => Année bissextile
 // =============================================================================
 
-function Rep=isLeapYear(year)
+function res = isLeapYear(y)
 
     arguments
-        year {mustBeA(year, "double")}
+        y {mustBeA(y, "double")}
     end
 
-    Rep = ((modulo(year,100)<>0) & (modulo(year,4)==0)) | (modulo(year,400)== 0);
+    res = ((modulo(y, 100) <> 0) & (modulo(y, 4) == 0)) | (modulo(y, 400) == 0);
 
 endfunction

@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ *
+ * This file is released under the 3-clause BSD license. See COPYING-BSD.
+ *
+ -->
+<refentry xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" 
+          xmlns:svg="http://www.w3.org/2000/svg" xmlns:ns3="http://www.w3.org/1999/xhtml" 
+          xmlns:mml="http://www.w3.org/1998/Math/MathML" xmlns:db="http://docbook.org/ns/docbook" 
+          version="5.0-subset Scilab" xml:id="groupsummary" xml:lang="en">
+    <refnamediv>
+        <refname>groupsummary</refname>
+        <refpurpose>create groups in table or timeseries and apply functions to variables within groups</refpurpose>
+    </refnamediv>
+    <refsynopsisdiv>
+        <title>Syntax</title>
+        <synopsis>
+            g = groupsummary(t, groupvars)
+            g = groupsummary(t, groupvars, method)
+            g = groupsummary(t, groupvars, method, inputvar)
+
+            g = groupsummary(t, groupvars, groupbins)
+            g = groupsummary(t, groupvars, groupbins, method)
+            g = groupsummary(t, groupvars, groupbins, method, inputvar)
+
+            g = groupsummary(..., Name, Value)
+        </synopsis>
+    </refsynopsisdiv>
+    <refsection>
+        <title>Arguments</title>
+        <variablelist>
+            <varlistentry>
+                <term>t</term>
+                <listitem>
+                    <para>table or timeseries object</para>
+                    <para/>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term>groupvars</term>
+                <listitem>
+                    <para>specifies the variable used to form the groups.</para>
+                    <para>data type expected: vector of strings containing the variable names 
+                        or vector of indices corresponding to the positions of the variable names in the table/timeseries.</para>
+                    <para/>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term>groupbins</term>
+                <listitem>
+                    <para>indicates how the data is grouped, by data interval or time interval.</para>
+                    <para>data type expected: vector of doubles vector containing the data interval
+                        or available string among: "year", "month", "day", "hour", "minute", "second", "monthname" and "dayname".</para>
+                    <para>Depending on the type of the variables contained in groupvars, groupbins will be a cell of the same size
+                         as groupvars, where each element will be applied to each variable.</para>
+                    <para/>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term>method</term>
+                <listitem>
+                    <para>function to apply with prototype: y = f(x), z = f(x, ..., y)</para>
+                    <para>Available methods: "sum", "mean", "median", "mode", "var" (variance), "std" (standard deviation), 
+                        "min", "max", "range", "nummissing", "numunique, "nnz", "all" (all previous computations) and user function.</para>
+                    <para/>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term>inputvar</term>
+                <listitem>
+                    <para>variable names or variable indices, the method will be apply only on this specified variables.</para>
+                    <para>If the method has multiple inputs, the variable names or indices will be contained in a cell: 
+                        {[x1, .., xN], [y1, ..., yN]} if the method expects two input arguments</para>
+                    <para/>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term>Name, Value</term>
+                <listitem>
+                    <para><emphasis role="bold">Name: 'IncludeEmptyGroups', Value: boolean (default value: %f) </emphasis>: 
+                        returns only the combinations of groups present in the table t. When %t, the result contains also empty group.
+                    </para>
+                    <para/>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term>g</term>
+                <listitem>
+                    <para>table object.</para>
+                    <para/>
+                </listitem>
+            </varlistentry>
+        </variablelist>
+    </refsection>
+    <refsection>
+        <title>Description</title>
+        <para>
+            The <emphasis role="bold">groupsummary</emphasis> function provides a convenient way to group variables of the table 
+            and apply functions to variables within groups.
+        </para>
+        <para>
+            <emphasis role="bold">g = groupsummary(t, groupvars)</emphasis> creates a table where each row corresponds to a unique group of 
+            data present in t(:, groupvars).
+        </para>
+        <para>
+            <emphasis role="bold">g = groupsummary(t, groupvars, method)</emphasis> specifies the variables used to group. The method will be applied to 
+            each group in each ungrouped variable of t.
+        </para>
+        <para>
+            <emphasis role="bold">g = groupsummary(t, groupvars, groupbins, ...)</emphasis> extracts data from t(:, groupvars); these data are then grouped according 
+            to groupbins, either group by time interval (one year, one hour, ...) or group by data interval.
+        </para>
+        <para>
+            The IncludeEmptyGroups option allows to return all possible combinations.
+        </para>
+        <para/>
+    </refsection>
+    <refsection>
+        <title>Examples</title>
+        <para><emphasis role="bold">g = groupsummary(t, groupvars)</emphasis></para>
+        <para>
+        <programlisting role="example"><![CDATA[
+            Countries = ["France"; "France"; "France"; "France"; "Spain"; "Spain"; "Italy"; "Italy"];
+            Cereals = ["wheat"; "maize"; "sunflower"; "rapeseed"; "wheat"; "maize"; "wheat"; "sunflower"];
+            Production = [20; 18; 10; 5; 14; 7; 12; 9];
+            t = table(Countries, Cereals, Production, "VariableNames", ["Countries", "Cereals", "Production"])
+            
+            g = groupsummary(t, "Countries")
+        ]]>
+        </programlisting>
+        </para>
+        <para><emphasis role="bold">v = groupsummary(t, groupvars, method)</emphasis></para>
+        <para>
+        <programlisting role="example"><![CDATA[
+            function y = f(x)
+                y = x'*x;
+            endfunction
+
+            rand("seed", 0)
+            x = ["a"; "b"; "b"; "c"; "a"];
+            x1 = floor(rand(5,1)*5)-1.5;
+            x2 = -floor(rand(5,1)*5)+0.5;
+            t = table(x, x1, x2, "VariableNames", ["x", "x1", "x2"])
+            
+            v = groupsummary(t, "x", f)
+
+            v = groupsummary(t, "x", "sum")
+            v = groupsummary(t, "x", "all")
+            v = groupsummary(t, "x", {min, max})
+        ]]>
+        </programlisting>
+        </para>
+        <para><emphasis role="bold">v = groupsummary(t, groupvars, method, inputvar)</emphasis></para>
+        <para>
+        <programlisting role="example"><![CDATA[
+            rand("seed", 0)
+            x = ["a"; "b"; "b"; "c"; "a"];
+            x1 = floor(rand(5,1)*5)-1.5;
+            x2 = -floor(rand(5,1)*5)+0.5;
+            t = table(x, x1, x2, "VariableNames", ["x", "x1", "x2"])
+            
+            v = groupsummary(t, "x", "sum", "x1")
+
+            // With timeseries
+            timestamp = hours([1 2 2 3 3])';
+            ts = timeseries(timestamp, x1, x2, "VariableNames", ["timestamp", "x1", "x2"])
+
+            v = groupsummary(ts, "timestamp", sum, "x1")
+        ]]>
+        </programlisting>
+        </para>
+        <para>
+            <programlisting role="example"><![CDATA[
+            function z = f(x,y)
+                z = x' * y;
+            endfunction
+
+            rand("seed", 0)
+            x = ["a"; "b"; "b"; "c"; "a"];
+            x1 = floor(rand(5,1)*5)-1.5;
+            x2 = -floor(rand(5,1)*5)+0.5;
+            x3 = [1:5]';
+            x4 = 2 * x3;
+            t = table(x, x1, x2, x3, x4, "VariableNames", ["x", "x1", "x2", "x3", "x4"])
+            
+            v = groupsummary(t, "x", f, {["x1", "x3"], ["x2", "x4"]})
+            ]]>
+            </programlisting>
+            </para>
+        <para><emphasis role="bold">v = groupsummary(t, groupvars, groupbins, method, inputvar)</emphasis></para>
+        <para>
+        <programlisting role="example"><![CDATA[
+            rand("seed", 0)
+            x1 = floor(rand(5,1)*5)-1.5;
+            x2 = -floor(rand(5,1)*5)+0.5;
+            x3 = [1:5]';
+            x4 = 2 * x3;
+            t = table(x1, x2, x3, x4, "VariableNames", ["x1", "x2", "x3", "x4"])
+            
+            v = groupsummary(t, ["x1", "x2"], {[-2 -0.5 0.5 2], [-4 -2 0 2]}, "sum", "x3")
+
+            // With IncludeEmptyGroups
+            v = groupsummary(t, ["x1", "x2"], {[-2 -0.5 0.5 2], [-4 -2 0 2]}, "sum", "x3", "IncludeEmptyGroups", %t)
+        ]]>
+        </programlisting>
+        </para>
+    </refsection>
+    <refsection role="see also">
+        <title>See also</title>
+        <simplelist type="inline">
+            <member>
+                <link linkend="table">table</link>
+            </member>
+            <member>
+                <link linkend="timeseries">timeseries</link>
+            </member>
+            <member>
+                <link linkend="groupcounts">groupcounts</link>
+            </member>
+            <member>
+                <link linkend="varfun">varfun</link>
+            </member>
+            <member>
+                <link linkend="rowfun">rowfun</link>
+            </member>
+            <member>
+                <link linkend="pivot">pivot</link>
+            </member>
+        </simplelist>
+    </refsection>
+</refentry>
