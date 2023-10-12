@@ -17,7 +17,7 @@ function out = pivot(t, Columns, Rows, DataVariable, Method, ColumnsBinMethod, R
     groupbins = {};
 
     if ~istable(t) & ~istimeseries(t) then
-        error(msprintf(_("%s: Wrong type for input argument #%d: table or timeseries expected.\n"), fname, 1));
+        error(msprintf(_("%s: Wrong type for input argument #%d: A table or timeseries expected.\n"), fname, 1));
     end
 
     varnames = t.props.variableNames;
@@ -31,8 +31,8 @@ function out = pivot(t, Columns, Rows, DataVariable, Method, ColumnsBinMethod, R
         groupvars = [groupvars, Rows];
 
         if isdef("RowsBinMethod", "l") then
-            if or(typeof(RowsBinMethod) == ["string", "constant"]) then
-                RowsBinMethod = num2cell(RowsBinMethod);
+            if or(typeof(RowsBinMethod) == ["string", "constant", "ce"]) then
+                RowsBinMethod = {RowsBinMethod};
             end
         else
             RowsBinMethod = num2cell("none" + emptystr(Rows));
@@ -49,8 +49,8 @@ function out = pivot(t, Columns, Rows, DataVariable, Method, ColumnsBinMethod, R
         groupvars = [groupvars, Columns];
 
         if isdef("ColumnsBinMethod", "l") then
-            if or(typeof(ColumnsBinMethod) == ["string", "constant"]) then
-                ColumnsBinMethod = num2cell(ColumnsBinMethod);
+            if or(typeof(ColumnsBinMethod) == ["string", "constant", "ce"]) then
+                ColumnsBinMethod = {ColumnsBinMethod};
             end
         else
             ColumnsBinMethod = num2cell("none" + emptystr(Columns));
@@ -93,7 +93,7 @@ function out = pivot(t, Columns, Rows, DataVariable, Method, ColumnsBinMethod, R
 
     if isdef("IncludeTotals", "l") then
         if type(IncludeTotals) <> 4 then
-            error(msprintf(_("%s: Wrong type for ""%"" argument: a boolean expected.\n"), fname, "IncludeTotals"));
+            error(msprintf(_("%s: Wrong type for ""%"" argument: A boolean expected.\n"), fname, "IncludeTotals"));
         end
     else
         IncludeTotals = %f;
@@ -101,14 +101,26 @@ function out = pivot(t, Columns, Rows, DataVariable, Method, ColumnsBinMethod, R
 
     if isdef("IncludeEmptyGroups", "l") then
         if type(IncludeEmptyGroups) <> 4 then
-            error(msprintf(_("%s: Wrong type for ""%"" argument: a boolean expected.\n"), fname, "IncludeTotals"));
+            error(msprintf(_("%s: Wrong type for ""%"" argument: A boolean expected.\n"), fname, "IncludeTotals"));
         end
     else
         IncludeEmptyGroups = %f;
     end
+
+    if isdef("IncludedEdge", "l") then
+        if type(IncludedEdge) <> 10 then
+            error(msprintf(_("%s: Wrong type for ""%"" argument #%d: A string expected.\n"), fname, "IncludedEdge"));
+        end
+
+        if and(IncludedEdge <> ["left", "right"]) then
+            error(msprintf(_("%s: Wrong value for ""%"" argument: ""%s"" or ""%s"" expected.\n"), fname, "IncludedEdge", "left", "right"));
+        end
+    else
+        IncludedEdge = "left";
+    end
     
     if Method == "" then
-        g = groupcounts(t, groupvars, groupbins, "IncludeEmptyGroups", IncludeEmptyGroups, "IncludePercentGroups", includePercent);
+        g = groupcounts(t, groupvars, groupbins, "IncludeEmptyGroups", IncludeEmptyGroups, "IncludePercentGroups", includePercent, "IncludedEdge", IncludedEdge);
         if includePercent then
             res = g.Percent;
         else
@@ -116,10 +128,9 @@ function out = pivot(t, Columns, Rows, DataVariable, Method, ColumnsBinMethod, R
         end
     else
         //pause
-        g = groupsummary(t, groupvars, groupbins, Method, DataVariable, "IncludeEmptyGroups", IncludeEmptyGroups);
+        g = groupsummary(t, groupvars, groupbins, Method, DataVariable, "IncludeEmptyGroups", IncludeEmptyGroups, "IncludedEdge", IncludedEdge);
         res = g(g.Properties.VariableNames($));
-    end
-    
+    end    
 
     if ~isdef("Columns", "l") then
         // pivot(t, Rows = ["var1", "var2"], ...) but not Columns
@@ -128,7 +139,7 @@ function out = pivot(t, Columns, Rows, DataVariable, Method, ColumnsBinMethod, R
         end
         if or(IncludeTotals) then
             if size(IncludeTotals, "*") <> 1 then
-                error(msprintf(_("%s: Wrong value for %s argument: a scalar boolean expected.\n"), fname, "IncludeTotals"));
+                error(msprintf(_("%s: Wrong value for %s argument: A scalar boolean expected.\n"), fname, "IncludeTotals"));
             end
             val = {};
             for i = 1:size(groupvars,"*")
@@ -179,12 +190,12 @@ function out = pivot(t, Columns, Rows, DataVariable, Method, ColumnsBinMethod, R
     elseif ~isdef("Rows", "l") then
         // pivot(t, Columns = ["var1", "var2"], ...) but not Rows
         if size(IncludeTotals, "*") <> 1 then
-            error(msprintf(_("%s: Wrong value for %s argument: a scalar boolean expected.\n"), fname, "IncludeTotals"));
+            error(msprintf(_("%s: Wrong value for %s argument: A scalar boolean expected.\n"), fname, "IncludeTotals"));
         end
         
         [tmp, index] = members(groupvars, varnames);
         groupvars = index;
-        [combinationsCol, count, index, u] = %_groupcounts(t, groupvars, groupbins, IncludeEmptyGroups);
+        [combinationsCol, count, index, u] = %_groupcounts(t, groupvars, groupbins, IncludeEmptyGroups, IncludedEdge);
 
         colnames = [];
         for i = 1:size(u)
@@ -204,7 +215,7 @@ function out = pivot(t, Columns, Rows, DataVariable, Method, ColumnsBinMethod, R
 
         [tmp, index] = members(groupvars, varnames);
         groupvars = index;
-        [val, count, index, u] = %_groupcounts(t, groupvars, groupbins, %t);
+        [val, count, index, u] = %_groupcounts(t, groupvars, groupbins, %t, IncludedEdge);
 
         r = size(Rows, "*");
         uv = list(u(1:r));
@@ -268,7 +279,7 @@ function out = pivot(t, Columns, Rows, DataVariable, Method, ColumnsBinMethod, R
                     colnames = [colnames; "Total"];
                 end
              else
-                error(msprintf(_("%s: Wrong value for %s argument: a boolean or 1x2 or 2x1 boolean vector expected.\n"), fname, "IncludeTotals"));
+                error(msprintf(_("%s: Wrong value for %s argument: A boolean or 1x2 or 2x1 boolean vector expected.\n"), fname, "IncludeTotals"));
             end
         end
 
@@ -278,7 +289,6 @@ function out = pivot(t, Columns, Rows, DataVariable, Method, ColumnsBinMethod, R
         if or(nb > 0) then
             var = "Var_" + Rows;
             Rows(nb==1) = var(nb==1);
-            disp(Rows)
             warning(msprintf(_("Duplicate variable names: add ""%s"" prefix."), "Var_"));
         end
 

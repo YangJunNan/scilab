@@ -15,6 +15,12 @@ function out = %_rowvarfun(fname, t, groupingVariables, opts, varargin)
     method = opts.method;
     nameMethod = opts.nameMethod;
 
+    if or(fieldnames(opts) == "includedEdge") then
+        includedEdge = opts.includedEdge;
+    else
+        includedEdge = "left";
+    end
+
     out = [];
     isT = istimeseries(t);
     varnames = t.props.variableNames;
@@ -115,7 +121,7 @@ function out = %_rowvarfun(fname, t, groupingVariables, opts, varargin)
         previousname = previousname(ki1);
     end
 
-    [val, count, vindex] = %_groupcounts(t, groupingVariables, groupbins, includeEmpty)
+    [val, count, vindex] = %_groupcounts(t, groupingVariables, groupbins, includeEmpty, includedEdge)
 
     newval = list();
     newcount = [];

@@ -83,6 +83,32 @@ expected = ["7" "10" "20" "30"; "8" "10" "30" "0"];
 assert_checkequal(P.Properties.VariableNames, varnames);
 assert_checkequal(string(P), expected);
 
+// With IncludedEdge
+// -----------------------------------------------------------------
+P = pivot(A, Rows="x", Columns="v1", ColumnsBinMethod=[-1.5 0 1.5]);
+expected = ["a" "1" "1"; "b" "1" "1"; "c" "1" "0"];
+varnames = ["x", "[-1.5, 0)", "[0, 1.5]"];
+assert_checkequal(P.Properties.VariableNames, varnames);
+assert_checkequal(string(P), expected);
+
+P = pivot(A, Rows="x", Columns="v1", ColumnsBinMethod=[-1.5 0 1.5], IncludedEdge="right");
+expected = ["a" "1" "1"; "b" "1" "1"; "c" "1" "0"];
+varnames = ["x", "[-1.5, 0]", "(0, 1.5]"];
+assert_checkequal(P.Properties.VariableNames, varnames);
+assert_checkequal(string(P), expected);
+
+P = pivot(A, Rows="v1", Columns="x", RowsBinMethod=[-1.5 0 1.5]);
+expected = ["[-1.5, 0)" "1" "1" "1"; "[0, 1.5]" "1" "1" "0"];
+varnames = ["v1", "a", "b", "c"];
+assert_checkequal(P.Properties.VariableNames, varnames);
+assert_checkequal(string(P), expected);
+
+P = pivot(A, Rows="v1", Columns="x", RowsBinMethod=[-1.5 0 1.5], IncludedEdge="right");
+expected = ["[-1.5, 0]" "1" "1" "1"; "(0, 1.5]" "1" "1" "0"];
+varnames = ["v1", "a", "b", "c"];
+assert_checkequal(P.Properties.VariableNames, varnames);
+assert_checkequal(string(P), expected);
+
 // -----------------------------------------------------------------
 clear t;
 t.time = [1;1;2;2];

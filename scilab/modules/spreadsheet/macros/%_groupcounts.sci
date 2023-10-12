@@ -9,7 +9,7 @@
 // For more information, see the COPYING file which you should have received
 // along with this program.
 
-function [val, count, vindex, uniqueVal] = %_groupcounts(t, groupvars, groupbins, includeEmpty)
+function [val, count, vindex, uniqueVal] = %_groupcounts(t, groupvars, groupbins, includeEmpty, includedEdge)
     sizeGroupbins = size(groupbins, "*")
     sizeGroupvars = size(groupvars, "*");
     val = list();
@@ -29,22 +29,43 @@ function [val, count, vindex, uniqueVal] = %_groupcounts(t, groupvars, groupbins
             count = zeros(size(val, 1), 1);
             vindex = zeros(size(d, 1), 1);
 
-            for i = 1:size(val, 1)
-                index = %t;
-                if val(i,2) == max(val)
-                    f = d >= val(i,1) & d <= val(i,2);
-                else
-                    f = d >= val(i,1) & d < val(i,2);
+            if includedEdge == "left" then
+                for i = 1:size(val, 1)
+                    index = %t;
+                    if val(i,2) == max(val)
+                        f = d >= val(i,1) & d <= val(i,2);
+                    else
+                        f = d >= val(i,1) & d < val(i,2);
+                    end
+                    index = index & f;
+                    count(i) = sum(index);
+                    vindex = vindex + index * i;
                 end
-                index = index & f;
-                count(i) = sum(index);
-                vindex = vindex + index * i;
-            end
 
-            // transform val to print
-            str = "[" + string(val(:,1))+ ", "+ string(val(:,2)) + ")";
-            str($) = strsubst(str($), ")", "]");   
-            val = str;
+                // transform val to print
+                str = "[" + string(val(:,1))+ ", "+ string(val(:,2)) + ")";
+                str($) = strsubst(str($), ")", "]");   
+                val = str;
+
+            else
+                // includedEdge = "right"
+                for i = 1:size(val, 1)
+                    index = %t;
+                    if val(i,1) == min(val)
+                        f = d >= val(i,1) & d <= val(i,2);
+                    else
+                        f = d > val(i,1) & d <= val(i,2);
+                    end
+                    index = index & f;
+                    count(i) = sum(index);
+                    vindex = vindex + index * i;
+                end
+
+                // transform val to print
+                str = "(" + string(val(:,1))+ ", "+ string(val(:,2)) + "]";
+                str(1) = strsubst(str(1), "(", "[");   
+                val = str;
+            end
 
             if ~includeEmpty then
                 idx = count == 0;
@@ -122,39 +143,74 @@ function [val, count, vindex, uniqueVal] = %_groupcounts(t, groupvars, groupbins
             end
 
             count = zeros(size(mat, 1) * sizeGroupvars, 1);
-            vindex = zeros(size(t, 1), 1)
+            vindex = zeros(size(t, 1), 1);
 
-            for i = 1:p
-                index = %t;
-                for j = 1:sizeGroupvars
-                    d = t.vars(groupvars(j)).data;
-                    if val(j)(i,2) == max(val(j))
-                        f = d >= val(j)(i,1) & d <= val(j)(i,2);
-                    else
-                        f = d >= val(j)(i,1) & d < val(j)(i,2);
+            if includedEdge == "left" then
+                for i = 1:p
+                    index = %t;
+                    for j = 1:sizeGroupvars
+                        d = t.vars(groupvars(j)).data;
+                        if val(j)(i,2) == max(val(j))
+                            f = d >= val(j)(i,1) & d <= val(j)(i,2);
+                        else
+                            f = d >= val(j)(i,1) & d < val(j)(i,2);
+                        end
+                        index = index & f;
                     end
-                    index = index & f;
+                    count(i) = sum(index);
+                    vindex = vindex + index * i;
                 end
-                count(i) = sum(index);
-                vindex = vindex + index * i;
+
+                // transform val to print
+                l = list();
+                for i = 1:sizeGroupvars
+                    v = val(i);
+                    a = [];
+                    for j = 1:p
+                        if val(i)(j,2) == max(val(i))
+                            str = "]";
+                        else
+                            str = ")";
+                        end
+                        a = [a; "[" + string(v(j, 1)) + ", "+ string(v(j, 2)) + str];
+                    end
+                    l(i) = a
+                    uniqueVal(i) = a(count <> 0)
+                end
+            else
+                for i = 1:p
+                    index = %t;
+                    for j = 1:sizeGroupvars
+                        d = t.vars(groupvars(j)).data;
+                        if val(j)(i,1) == min(val(j))
+                            f = d >= val(j)(i,1) & d <= val(j)(i,2);
+                        else
+                            f = d > val(j)(i,1) & d <= val(j)(i,2);
+                        end
+                        index = index & f;
+                    end
+                    count(i) = sum(index);
+                    vindex = vindex + index * i;
+                end
+
+                // transform val to print
+                l = list();
+                for i = 1:sizeGroupvars
+                    v = val(i);
+                    a = [];
+                    for j = 1:p
+                        if val(i)(j,1) == min(val(i))
+                            str = "[";
+                        else
+                            str = "(";
+                        end
+                        a = [a; str + string(v(j, 1)) + ", "+ string(v(j, 2)) + "]"];
+                    end
+                    l(i) = a
+                    uniqueVal(i) = a(count <> 0)
+                end
             end
 
-            // transform val to print
-            l = list();
-            for i = 1:sizeGroupvars
-                v = val(i);
-                a = [];
-                for j = 1:p
-                    if val(i)(j,2) == max(val(i))
-                        str = "]";
-                    else
-                        str = ")";
-                    end
-                    a = [a; "[" + string(v(j, 1)) + ", "+ string(v(j, 2)) + str];
-                end
-                l(i) = a
-                uniqueVal(i) = a(count <> 0)
-            end
             val = l;    
 
             if ~includeEmpty then
@@ -229,19 +285,37 @@ function [val, count, vindex, uniqueVal] = %_groupcounts(t, groupvars, groupbins
                             km = [];
                             
                             bins = [minbounds' maxbounds'];
-                            str = "[" + string(bins(:,1))+ ", "+ string(bins(:,2)) + ")";
-                            str($) = strsubst(str($), ")", "]");
-                            mat = "<undefined>" + emptystr(d);
 
-                            for i = 1:size(bins, 1)
-                                if i == size(bins, 1) then
-                                    test = d>=bins(i,1) & d <= bins(i,2);
-                                else
-                                    test = d>=bins(i,1) & d < bins(i,2);
+                            if includedEdge == "left" then
+                                str = "[" + string(bins(:,1))+ ", "+ string(bins(:,2)) + ")";
+                                str($) = strsubst(str($), ")", "]");
+                                mat = "<undefined>" + emptystr(d);
+
+                                for i = 1:size(bins, 1)
+                                    if i == size(bins, 1) then
+                                        test = d>=bins(i,1) & d <= bins(i,2);
+                                    else
+                                        test = d>=bins(i,1) & d < bins(i,2);
+                                    end
+                                    mat(test) = str(i)
+                                    V(:,k) = V(:,k) + test * i;
+                                    km(i) = find(test, 1)
                                 end
-                                mat(test) = str(i)
-                                V(:,k) = V(:,k) + test*i;
-                                km(i) = find(test, 1)
+                            else
+                                str = "(" + string(bins(:,1))+ ", "+ string(bins(:,2)) + "]";
+                                str(1) = strsubst(str(1), "(", "[");
+                                mat = "<undefined>" + emptystr(d);
+
+                                for i = 1:size(bins, 1)
+                                    if i == 1 then
+                                        test = d >= bins(i,1) & d <= bins(i,2);
+                                    else
+                                        test = d > bins(i,1) & d <= bins(i,2);
+                                    end
+                                    mat(test) = str(i)
+                                    V(:,k) = V(:,k) + test * i;
+                                    km(i) = find(test, 1)
+                                end
                             end
 
                             idx = find(mat == "<undefined>")

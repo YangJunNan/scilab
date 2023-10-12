@@ -96,6 +96,16 @@
                     </para>
                     <para/>
                 </listitem>
+                <listitem>
+                    <para><emphasis role="bold">Name: IncludedEdge, Value: "left" or "right"</emphasis>: 
+                        (default value: 'left'): this option must use only if RowsBinMethod or/and ColumnsBinMethod are specified (i.e RowsBinMethod = [0 2 4]). 
+                        When IncludedEdge is equal to 'left', data will be contained in the groups
+                        [bins(1), bins(2)), [bins(2), bins(3)), ..., [bins(n-1), bins(n)]. The last bins(n) is included. 
+                        If IncludedEdge is equal to 'right', the intervals will be: [bins(1), bins(2)], (bins(2), bins(3)], ... (bins(n-1), bins(n)]. 
+                        In this case, the first bins(1) is included. The values in RowsBinMethod or/and ColumnsBinMethod must be in strictly increasing order.
+                    </para>
+                    <para/>
+                </listitem>
             </varlistentry>
             <varlistentry>
                 <term>p</term>
@@ -152,6 +162,31 @@
         <programlisting role="example"><![CDATA[
             t = readtable(fullfile(SCI, "modules", "spreadsheet", "tests", "unit_tests","meteo_data_bordeaux.csv"));
             p = pivot(t, Columns="OPINION", Rows="UV_INDEX", Method="max", DataVariable="SUNHOUR")
+        ]]>
+        </programlisting>
+        </para>
+        <para><emphasis role="bold">With IncludedEdge</emphasis></para>
+        <para>
+        <programlisting role="example"><![CDATA[
+            rand("seed", 0)
+            x1 = floor(rand(5,1)*5)-1.5;
+            x2 = -floor(rand(5,1)*5)+0.5;
+            x = ["a"; "b"; "b"; "c"; "a"];
+            y = ["x"; "x"; "x"; "y"; "y"];
+
+            A = table(x, y, x1, x2, "VariableNames", ["x", "y", "v1", "v2"])
+
+            // With ColumnsBinMethod and IncludedEdge = "left" (default value so no need to specify it)
+            P = pivot(A, Rows="x", Columns="v1", ColumnsBinMethod=[-1.5 0 1.5])
+
+            // With ColumnsBinMethod and IncludedEdge = "right"
+            P = pivot(A, Rows="x", Columns="v1", ColumnsBinMethod=[-1.5 0 1.5], IncludedEdge="right")
+
+            // With RowsBinMethod and IncludedEdge = "left" (default value so no need to specify it)
+            P = pivot(A, Rows="v1", Columns="x", RowsBinMethod=[-1.5 0 1.5])
+
+            // With RowsBinMethod and IncludedEdge = "right"
+            P = pivot(A, Rows="v1", Columns="x", RowsBinMethod=[-1.5 0 1.5], IncludedEdge="right")
         ]]>
         </programlisting>
         </para>

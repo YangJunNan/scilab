@@ -116,6 +116,26 @@ expected = ["[-5, 0)" "[-5, 0)" "3"; "[0, 5]" "[-5, 0)" "1"; "[0, 5]" "[0, 5]" "
 assert_checkequal(G.Properties.VariableNames, varnames);
 assert_checkequal(string(G), expected);
 
+// With IncludedEdge - right
+G = groupsummary(A, "x1", [-1.5 -0.5 0.5 1.5], "IncludedEdge", "right");
+varnames = ["disc_x1", "GroupCount"];
+expected = ["[-1.5, -0.5]" "3"; "(0.5, 1.5]" "2"];
+assert_checkequal(G.Properties.VariableNames, varnames);
+assert_checkequal(string(G), expected);
+
+G = groupsummary(A, "x1", [-1.5 -0.5 0.5 1.5], sum, "x2", "IncludedEdge", "right");
+varnames = ["disc_x1", "GroupCount", "fun_x2"];
+expected = ["[-1.5, -0.5]" "3" "-8.5"; "(0.5, 1.5]" "2" "-3"];
+assert_checkequal(G.Properties.VariableNames, varnames);
+assert_checkequal(string(G), expected);
+
+G = groupsummary(A, ["x1", "x2"], {[-1.5 -0.5 0.5 1.5], [-4 -1.5 0 1.5]}, "IncludedEdge", "right");
+varnames = ["disc_x1", "disc_x2", "GroupCount"];
+expected = ["[-1.5, -0.5]" "[-4, -1.5]" "3"; "(0.5, 1.5]" "[-4, -1.5]" "1"; "(0.5, 1.5]" "(0, 1.5]" "1"];
+assert_checkequal(G.Properties.VariableNames, varnames);
+assert_checkequal(string(G), expected);
+
+
 timestamp = hours([1 3 2 2 3])';
 A = timeseries(timestamp, x1, x2, "VariableNames", ["hours", "x1", "x2"]);
 
@@ -123,6 +143,7 @@ G = groupsummary(A, "hours", sum);
 expected = [string(hours(1:3))' string([1;2;2]), string([-0.5;-2; 3]), string([-2.5; -6; -3])];
 assert_checkequal(G.Properties.VariableNames, ["hours", "GroupCount", "fun_x1", "fun_x2"]);
 assert_checkequal(string(G), expected);
+
 
 // -----------------------------------------------------------------------------
 // Data from www.historique-meteo.net

@@ -82,6 +82,16 @@
                     </para>
                     <para/>
                 </listitem>
+                <listitem>
+                    <para>
+                        <emphasis role="bold">Name: 'IncludedEdge', Value: 'left' or 'right'</emphasis> (default value: 'left'): this option must 
+                        use only if groupbins is specified (i.e groupbins = [0 2 4]). When IncludedEdge is equal to 'left', data will be contained in the groups
+                        [groupbins(1), groupbins(2)), [groupbins(2), groupbins(3)), ..., [groupbins(n-1), groupbins(n)]. The last groupbins(n) is included. 
+                        If IncludedEdge is equal to 'right', the intervals will be: [groupbins(1), groupbins(2)], (groupbins(2), groupbins(3)], ... (groupbins(n-1), groupbins(n)]. 
+                        In this case, the first groupbins(1) is included. The values in groupbins must be in strictly increasing order.
+                    </para>
+                    <para/>
+                </listitem>
             </varlistentry>
             <varlistentry>
                 <term>g</term>
@@ -108,7 +118,9 @@
         </para>
         <para>
             <emphasis role="bold">g = groupsummary(t, groupvars, groupbins, ...)</emphasis> extracts data from t(:, groupvars); these data are then grouped according 
-            to groupbins, either group by time interval (one year, one hour, ...) or group by data interval.
+            to groupbins, either group by time interval (one year, one hour, ...) or group by data interval.The "IncludedEdge" option can be added to specify 
+            the included bounds (left or right) in the case where groupbins is a data interval. For example, if groupbins = [0 2 4] and "IncludedEdge" = "left", 
+            then the intervals created are [0 2), [2 4]. If "IncludeEdge" = "right", the intervals are [0 2], (2, 4].
         </para>
         <para>
             The IncludeEmptyGroups option allows to return all possible combinations.
@@ -201,6 +213,30 @@
 
             // With IncludeEmptyGroups
             v = groupsummary(t, ["x1", "x2"], {[-2 -0.5 0.5 2], [-4 -2 0 2]}, "sum", "x3", "IncludeEmptyGroups", %t)
+        ]]>
+        </programlisting>
+        </para>
+        <para><emphasis role="bold">With IncludedEdge = "right"</emphasis></para>
+        <para>
+        <programlisting role="example"><![CDATA[
+            rand("seed", 0)
+            x1 = floor(rand(5,1)*5)-1.5;
+            x2 = [2.5; 3.5; 2.5; 3.5; 2.5];
+            x3 = [1:5]';
+            t = table(x1, x2, x3, "VariableNames", ["x1", "x2", "x3"])
+            
+            // By default, IncludedEdge is equal to "left"
+            // intervals created: [-1.5, -0.5), [-0.5, 0.5), [0.5, 1.5] (last left edge included)
+            // x1 = [-0.5 1.5 -1.5 -0.5 1.5]
+            // Goal: Find for each value of x1 the interval to which it belongs
+            // -0.5 in [-0.5 0.5), 1.5 in [0.5, 1.5], -1.5 in [-1.5, -0.5), -0.5 in [-0.5 0.5), 1.5 in [0.5, 1.5]
+            // sum is applied on the values of "x3" contained in this groups
+            v = groupsummary(t, "x1", [-1.5 -0.5 0.5 1.5], "sum", "x3")
+
+            // IncludedEdge = "right"
+            // intervals created for x1: [-1.5, -0.5], (-0.5, 0.5], (0.5, 1.5] (first left edge included)
+            // and x2: [2.5 3], (3 3.5] (first left edge included)
+            v = groupsummary(t, ["x1", "x2"], {[-1.5 -0.5 0.5 1.5], [2.5 3 3.5]}, "sum", "x3", "IncludedEdge", "right")
         ]]>
         </programlisting>
         </para>
