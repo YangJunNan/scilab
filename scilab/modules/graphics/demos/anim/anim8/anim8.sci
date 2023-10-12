@@ -35,11 +35,11 @@ function demo_riemann()
 
     // Compute
     // =========================================================================
-    [z,s]               = cplxroot(4,35);
+    [z,s]               = cplxroot(4,20);
 
     // Draw
     // =========================================================================
-    cplxmap(z,s,163,69);  //draw
+    cplxmap(z,s);  //draw
 
     // Adjust some graphical parameters
     // =========================================================================
@@ -49,8 +49,10 @@ function demo_riemann()
     // my_handle.axes_size  = [ 600 650 ];
 
     my_handle.background = -2;                 // white
-    my_axe.background    = -1;                 // gray
-    my_axe.foreground    = 14;                 // white
+    my_axe.background    = -2;                 // gray
+    my_axe.foreground    = -1;                 // white
+    my_axe.isoview = "on";  
+    my_axe.auto_stretch  = "off";
     my_fac3d.color_mode  =  1;                 // no lines
 
     // Drawnow
