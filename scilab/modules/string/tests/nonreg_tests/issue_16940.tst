@@ -14,6 +14,6 @@
 // string of cell, struct, list does not call overload
 // -------------------------------------------------------------
 
-assert_checktrue(execstr("string({})", "errcatch") <> 0);
-assert_checktrue(execstr("string(list())", "errcatch") <> 0);
-assert_checktrue(execstr("string(struct())", "errcatch") <> 0);
+assert_checkequal(string({}), "{}");
+assert_checkequal(string(list()), []);
+assert_checkequal(string(struct()), "0x0 struct with no field");

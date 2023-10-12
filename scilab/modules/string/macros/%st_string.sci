@@ -1,8 +1,4 @@
 // Scilab ( https://www.scilab.org/ ) - This file is part of Scilab
-// Copyright (C) INRIA
-// Copyright (C) 2010 - DIGITEO - Vincent COUVERT <vincent.couvert@scilab.org>
-// Copyright (C) 2012 - 2016 - Scilab Enterprises
-// Copyright (C) 2018 - UTC - Stéphane MOTTELET
 // Copyright (C) 2019 - 2020 - Samuel GOUGEON
 //
 // This file is hereby licensed under the terms of the GNU GPL v2.0,
@@ -12,6 +8,12 @@
 // For more information, see the COPYING file which you should have received
 // along with this program.
 
-function %st_p(s)
-    mprintf("  %s\n", %st_string(s));
+function t = %st_string(s)
+    recursive = 0
+    tmp = xmlGetValues("//general/body/environment","container_disp_max_depth")
+    maxDisplayDepth = evstr(tmp)
+    consoleWidth = lines()(1)
+    //l_p_compacity = "";   // "" vspacing of blocks
+    l_p_compacity = [];      // for compact display
+    t = %l_string_inc(s, "st")
 endfunction

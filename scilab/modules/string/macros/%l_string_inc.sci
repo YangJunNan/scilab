@@ -8,8 +8,8 @@
 // For more information, see the COPYING file which you should have received
 // along with this program.
 
-function t = %l_p_inc(s, parentType)
-    // Internal function called by %st_p, %l_p, and %l_p_inc itself
+function t = %l_string_inc(s, parentType)
+    // Internal function called by %st_p, %l_p, and %l_string_inc itself
     // Can be called with s = struct | Tlist | list
 
     ll    = lines()
@@ -83,7 +83,7 @@ function t = %l_p_inc(s, parentType)
 
         elseif tp == "st" then
             recursive = recursive + 1
-            str = %l_p_inc(value, "st")
+            str = %l_string_inc(value, "st")
 
         elseif tp == "implicitlist"
             str = sci2exp(value)
@@ -122,7 +122,7 @@ function t = %l_p_inc(s, parentType)
             else
                 if recursive < maxDisplayDepth
                     recursive = recursive + 1
-                    tmp = %l_p_inc(value, "list")
+                    tmp = %l_string_inc(value, "list")
                     str = ["list:" ; tmp]
                 else
                     str = msprintf("list with %d elements.\n", length(value))
@@ -150,7 +150,7 @@ function t = %l_p_inc(s, parentType)
                 str = msprintf(_("[%s] %s with fields:"), signature, listType);
                 if recursive < maxDisplayDepth
                     recursive = recursive + 1
-                    tmp = %l_p_inc(value, "mtlist")
+                    tmp = %l_string_inc(value, "mtlist")
                     str = [str ; tmp]
                 else
                     tmp = sci2exp(Tfields', consoleWidth-10)
