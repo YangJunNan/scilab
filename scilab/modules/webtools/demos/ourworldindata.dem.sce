@@ -43,18 +43,17 @@ function demo_ourworldindata()
         // reformat data as vectors stored in a single struct
         my_handle.info_message = "Reformat the data";
         fields = ["icu_patients_per_million" "excess_mortality_cumulative_per_million" "hosp_patients_per_million"]
-        if ~isdef("data") then
-            [S, header] = csvRead("TMPDIR/owid-covid-data.csv", ',', [], 'string', [], [], [], 1);
-            header = strsplit(header, ',')';
 
-            data = struct();
-            for c=unique(S(:, 3))'
-                mask = S(:,3) == c;
-                data(c).date = datenum(csvTextScan(S(mask, "date" == header), "-"));
-                for f=fields
-                    data(c)(f) = strtod(S(mask, f == header));
-                    data(c)(f)(isnan(data(c)(f))) = 0;
-                end
+        [S, header] = csvRead("TMPDIR/owid-covid-data.csv", ',', [], 'string', [], [], [], 1);
+        header = strsplit(header, ',')';
+
+        data = struct();
+        for c=unique(S(:, 3))'
+            mask = S(:,3) == c;
+            data(c).date = datenum(csvTextScan(S(mask, "date" == header), "-"));
+            for f=fields
+                data(c)(f) = strtod(S(mask, f == header));
+                data(c)(f)(isnan(data(c)(f))) = 0;
             end
         end
         my_handle.info_message = "Setup UI";

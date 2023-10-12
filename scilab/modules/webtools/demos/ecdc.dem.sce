@@ -36,29 +36,29 @@ function demo_ecdc()
     
         // load the data
         my_handle.info_message = "Downloading data";
-        if ~isdef("data") then
-            data = http_get("https://opendata.ecdc.europa.eu/covid19/nationalcasedeath/json/");
 
-            // reformat data as vectors stored in a single struct, this is not needed if your data have always the same fields.
-            my_handle.info_message = "Reformat the data";
-            default_values.country = "";
-            default_values.country_code = "";
-            default_values.continent = "";
-            default_values.population = 0;
-            default_values.indicator = "";
-            default_values.weekly_count = 0;
-            default_values.year_week = "";
-            default_values.cumulative_count = 0;
-            default_values.source = "";
-            default_values.note = "";
-            vars = fieldnames(default_values);
-            execstr(vars + "(1:length(data)) =  default_values(""" + vars + """)");
-            for i=1:length(data)
-                fields = intersect(fieldnames(data(i)), vars)';
-                execstr(fields + "(i) = data(i)." + fields);
-            end
-            execstr("data = struct("+strcat(""""+vars+""", "+vars, ', ') + ")");
+        data = http_get("https://opendata.ecdc.europa.eu/covid19/nationalcasedeath/json/");
+
+        // reformat data as vectors stored in a single struct, this is not needed if your data have always the same fields.
+        my_handle.info_message = "Reformat the data";
+        default_values.country = "";
+        default_values.country_code = "";
+        default_values.continent = "";
+        default_values.population = 0;
+        default_values.indicator = "";
+        default_values.weekly_count = 0;
+        default_values.year_week = "";
+        default_values.cumulative_count = 0;
+        default_values.source = "";
+        default_values.note = "";
+        vars = fieldnames(default_values);
+        execstr(vars + "(1:length(data)) =  default_values(""" + vars + """)");
+        for i=1:length(data)
+            fields = intersect(fieldnames(data(i)), vars)';
+            execstr(fields + "(i) = data(i)." + fields);
         end
+        execstr("data = struct("+strcat(""""+vars+""", "+vars, ', ') + ")");
+
         my_handle.info_message = "Setup UI";
 
         // define variables
