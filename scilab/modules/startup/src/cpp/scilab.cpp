@@ -81,7 +81,7 @@ static void usage(void)
     std::cerr << "      -f File          : Execute the scilab script given in File argument." << std::endl;
     std::cerr << "                         -e and -f arguments are mutually exclusive." << std::endl;
     std::cerr << "      -quit            : Force scilab exit after execution of script from -e or -f argument." << std::endl;
-    std::cerr << "                         Flag ignored if it is not used with -e or -f argument." << std::endl;
+    std::cerr << "                         Flag ignored if it is not used with -e or -f argument and when Scilab is in a pipe." << std::endl;
     std::cerr << "      -l lang          : Change the language of scilab (default : en_US)." << std::endl;
     std::cerr << "      -nw              : Enable console mode." << std::endl;
     std::cerr << "      -nwni            : Enable terminal mode." << std::endl;

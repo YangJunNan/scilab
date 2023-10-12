@@ -19,12 +19,10 @@
 
 //scilab path
 if (getos() <> "Windows") & ~isfile(SCI+"/bin/scilab") then
-    SCI_BIN = strsubst(SCI,"share/scilab","");
+    scilabBin = WSCI + "\bin\scilex ";
 else
-    SCI_BIN = SCI;
+    scilabBin = strsplit(SCI, "share/scilab")(1) + "/bin/scilab-cli ";
 end
-
-scilabBin = SCI_BIN + "/bin/scilab -nwni ";
 
 //With -quit argument
 err = unix(scilabBin + "-e ""exit()"" -quit");

@@ -7,7 +7,6 @@
 //
 // <-- Non-regression test for bug 14901 -->
 // <-- TEST WITH GRAPHIC -->
-// <-- WINDOWS ONLY -->
 // <-- NO CHECK REF -->
 //
 //
@@ -16,6 +15,11 @@
 //
 // <-- Short Description -->
 
+if getos() == "Windows"
+    sciBin = WSCI + "\bin\scilex";
+else
+    sciBin = strsplit(SCI, "share/scilab")(1) + "/bin/scilab-cli";
+end
 
 txt = [...
 "import java.io.IOException;"
@@ -23,8 +27,8 @@ txt = [...
 ""
 "public class Test_Exec_Scilab {"
 "    public static void main(String[] args) throws IOException, InterruptedException {"
-"    String[] cmd = {""" + SCI + "/bin/scilab.bat"", ""-nw"", ""-e"", ""a=string(1:10);mputl(a, \\\"""" + args[0] + ""\\\"");"", ""-quit""};"
-"    Process p = Runtime.getRuntime().exec(cmd, null, null);"
+"    String cmd = """ + sciBin + " -e a=string(1:10);mputl(a,''"" + args[0] + ""'');quit"";"
+"    Process p = Runtime.getRuntime().exec(cmd);"
 "    p.waitFor();"
 "    }"
 "}"];
