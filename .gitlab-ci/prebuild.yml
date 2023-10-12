@@ -38,6 +38,7 @@ linux_set_env:
 windows_set_env:
   stage: prebuild
   tags: [x64_windows, shell, scilab]
+  needs: []
   variables:
     GIT_STRATEGY: none
   script:

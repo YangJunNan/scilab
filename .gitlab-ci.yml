@@ -11,6 +11,8 @@ stages:
   - build
   # run the tests
   - test
+  # run the ATOMS tests on a dedicated stage / Scilab install
+  - test_atoms
   # extract some content
   - postbuild
   # publish and make it available to the community
@@ -47,7 +49,7 @@ variables:
     value: "latest"
     description: "Docker tag to publish image on"
   SCILAB_COMMON_PATH:
-    value: "${CI_PROJECT_DIR}/../../../../scilab/"
+    value: "${CI_PROJECT_DIR}\\..\\..\\..\\..\\scilab"
     description: "common windows path for persistency"
 workflow:
   rules:

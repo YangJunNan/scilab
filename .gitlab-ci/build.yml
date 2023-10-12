@@ -14,11 +14,11 @@
   tags: [x64_windows, scilab, shell, build]
   before_script:
     # The first time create base folders
-    - New-Item -ItemType Directory -Force -Path "$SCILAB_COMMON_PATH/"
-    - New-Item -ItemType Directory -Force -Path "$SCILAB_COMMON_PATH/$SCI_VERSION_STRING/"
-    - New-Item -ItemType Directory -Force -Path "$SCILAB_COMMON_PATH/$SCI_VERSION_STRING/scihome/"
-    - New-Item -ItemType Directory -Force -Path "$SCILAB_COMMON_PATH/$SCI_VERSION_STRING/log/"
-    - New-Item -ItemType Directory -Force -Path "$SCILAB_COMMON_PATH/$SCI_VERSION_STRING/test/"
+    - New-Item -ItemType Directory -Force -Path "$SCILAB_COMMON_PATH"
+    - New-Item -ItemType Directory -Force -Path "$SCILAB_COMMON_PATH\$SCI_VERSION_STRING\"
+    - New-Item -ItemType Directory -Force -Path "$SCILAB_COMMON_PATH\$SCI_VERSION_STRING\scihome\"
+    - New-Item -ItemType Directory -Force -Path "$SCILAB_COMMON_PATH\$SCI_VERSION_STRING\log\"
+    - New-Item -ItemType Directory -Force -Path "$SCILAB_COMMON_PATH\$SCI_VERSION_STRING\test\"
 
     # $null is used to reset the command status $?
     - echo "cleaning $CI_PROJECT_DIR"
@@ -26,9 +26,9 @@
     - $scilab_to_kill=(Get-Process *scilex* | Where StartTime -lt (Get-Date).AddHours(-4))
     - if($scilab_to_kill.length) { $scilab_to_kill.kill() }
     # Uninstall Scilab older than 2 day
-    - Get-ChildItem -Path "$SCILAB_COMMON_PATH/*/install/unins000.exe" -Erroraction 'Continue' | Where-Object {($_.LastWriteTime -lt (Get-Date).AddHours(-48))} | foreach { Start-Process $_ -ArgumentList /VERYSILENT,SP-,/SUPPRESSMSGBOXES,/FORCECLOSEAPPLICATIONS  -NoNewWindow -Wait -Erroraction 'Continue'} ; $null
+    - Get-ChildItem -Path "$SCILAB_COMMON_PATH\*\install\unins000.exe" -Erroraction 'Continue' | Where-Object {($_.LastWriteTime -lt (Get-Date).AddHours(-48))} | foreach { Start-Process $_ -ArgumentList /VERYSILENT,SP-,/SUPPRESSMSGBOXES,/FORCECLOSEAPPLICATIONS  -NoNewWindow -Wait -Erroraction 'Continue'} ; $null
     # Remove folder older than 3 day
-    - Get-ChildItem -Path "$SCILAB_COMMON_PATH/*" -Erroraction 'Continue' | Where-Object {($_.LastWriteTime -lt (Get-Date).AddHours(-72))} | Remove-Item -Recurse -Erroraction 'Continue'; $null
+    - Get-ChildItem -Path "$SCILAB_COMMON_PATH\*" -Erroraction 'Continue' | Where-Object {($_.LastWriteTime -lt (Get-Date).AddHours(-72))} | Remove-Item -Recurse -Erroraction 'Continue'; $null
     # Remove TMPDIR older than 3 day
     - Get-ChildItem -Path "$env:TEMP/SCI_TMP*" -ErrorAction 'Continue' | Where-Object {($_.LastWriteTime -lt (Get-Date).AddHours(-72))} | Remove-Item -Recurse -ErrorAction 'Continue'; $null
 
