@@ -1160,43 +1160,22 @@ types::List* TreeVisitor::matrixOrCellExp(const exps_t& lines, TreeVisitor& me, 
 {
     types::List* sub = createOperation();
     types::List* ope = new types::List();
-
-    int idx = 0;
-    for (auto it : lines)
+    ast::exps_t::const_iterator	i, j;
+    
+    for (i = lines.begin() ; i != lines.end() ; )
     {
-        it->accept(me);
-
-        if (idx >= 2)
+        (*i)->accept(me);
+        types::InternalType* tmp = me.getList();
+        ope->append(tmp);
+        tmp->killMe();
+        j = i;
+        ++i;
+        if (i != lines.end() && (*i)->getLocation().first_line != (*j)->getLocation().first_line)
         {
-            sub->append(ope);
-            ope->killMe();
-            sub->append(new types::String(what.data()));
-
-            //create a new operation
-            //put previous stage in lhs and
-            //result in rhs
-            types::List* subcolcatOperation = createOperation();
-            types::List* subcolcatOperands = new types::List();
-            subcolcatOperands->append(sub);
-            sub->killMe();
-            //add EOL
-            //subcolcatOperands->append(getEOL());
-            types::InternalType* tmp = me.getList();
-            subcolcatOperands->append(tmp);
-            tmp->killMe();
-
-            ope = subcolcatOperands;
-            sub = subcolcatOperation;
+            ope->append(me.getEOL());
         }
-        else
-        {
-            types::InternalType* tmp = me.getList();
-            ope->append(tmp);
-            tmp->killMe();
-        }
-
-        ++idx;
     }
+
     sub->append(ope);
     ope->killMe();
     sub->append(new types::String(what.data()));
