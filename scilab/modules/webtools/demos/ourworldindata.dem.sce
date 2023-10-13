@@ -64,7 +64,14 @@ function demo_ourworldindata()
         selected_countries = countries(selected);
 
         // change colormap
-        my_handle.color_map = grand(1, "prm", hsvcolormap(size(countries, 1)));
+        my_handle.color_map =[0 0 1;
+            0 0.5 0;
+            1 0 0;
+            0 0.75 0.75;
+            .75 0 .75;
+            .75 .75 0;
+            .25 .25 .25;
+            0 0 0];
         // insert axes
         cframe = uicontrol(my_handle, "style", "frame", 'constraints', createConstraints('border', 'center'));
         a = newaxes(cframe);
@@ -94,6 +101,7 @@ function demo_ourworldindata()
     
     // plot the selected countries
     my_handle.info_message = "Plotting";
+    nbCol = size(my_handle.color_map,1);
     sca(a);
     indicators = findobj('groupname', "indicator");
     indicator = indicators.string(indicators.value <> 0);
@@ -104,10 +112,10 @@ function demo_ourworldindata()
         
         t = t(kv);
         v = n(kv);
-
-        plot2d(t, v, i);
+        plot2d(t, v, modulo(i-1,nbCol)+1);
         [?, j] = max(v);
         xstring(t(j), v(j), countries(i));
+        gce().clip_state = "off";
     end
     
     my_handle.info_message = "";

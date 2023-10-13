@@ -66,6 +66,15 @@ function demo_ecdc()
         selected = 1:min(5, size(countries, 1));
         selected_countries = countries(selected);
 
+        // change colormap
+        my_handle.color_map =[0 0 1;
+            0 0.5 0;
+            1 0 0;
+            0 0.75 0.75;
+            .75 0 .75;
+            .75 .75 0;
+            .25 .25 .25;
+            0 0 0];
         // insert axes
         cframe = uicontrol(my_handle, "style", "frame", 'constraints', createConstraints('border', 'center'));
         a = newaxes(cframe);
@@ -96,7 +105,9 @@ function demo_ecdc()
     
     // plot the selected countries
     my_handle.info_message = "Plotting";
+    nbCol = size(my_handle.color_map,1);
     sca(a);
+    
     for i=selected
         indicators = findobj('groupname', "indicator");
         mask = data.country == countries(i) & data.indicator == indicators.string(indicators.value <> 0);
@@ -108,8 +119,9 @@ function demo_ecdc()
         t = t(kv);
         s = cumsum(n(kv)) ./ data.population(mask);
 
-        plot2d(t, s, i);
+        plot2d(t, s, modulo(i-1,nbCol)+1);
         xstring(t($), s($), countries(i));
+        gce().clip_state = "off"
     end
     
     my_handle.info_message = "";
