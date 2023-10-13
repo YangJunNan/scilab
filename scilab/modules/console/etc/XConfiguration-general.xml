@@ -263,7 +263,7 @@
     </shortcuts>
     <documentation title="_(Help and demos)">
       <body>
-        <demos demoGUIisDockable="checked"/>
+        <demos demoGUIisDockable="unchecked"/>
         <help redirectMatlab2Scilab="unchecked"/>
       </body>
     </documentation>
