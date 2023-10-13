@@ -136,7 +136,7 @@ tv = ["a" "bc" "def" "ghij"];
 tm = ["a" "bc" "def" ; "ghij" "klm" "no"];
 th = cat(3,tv,tv);
 // v4: row, matrix, hypermatrix => column (right-padded with spaces)
-// TODO: Add tests with UTF8 (after fixing https://gitlab.com/scilab/scilab/-/issues/15570 )
+// TODO: Add tests with UTF8
 // Issues for Text columns in v7: https://gitlab.com/scilab/scilab/-/issues/15569
 
 // CELLS ARRAYS
