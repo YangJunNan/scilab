@@ -38,6 +38,8 @@ function str = %ce_string(ce)
                 str(i) = typeof(val);
             case 130 //builtin
                 str(i) = "function";
+            case 9 //handles
+                str(i) = sprintf("[%dx%d handle]", size(val, 1), size(val, 2));
             else
                 [n1, m1] = size(val);
                 if n1 == 0 && m1 == 0 then
