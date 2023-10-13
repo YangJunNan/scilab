@@ -753,7 +753,7 @@ public class HTMLDocbookTagConverter extends DocbookTagConverter implements Temp
      */
     public String handleRefentry(final Map<String, String> attributes, final String contents) throws SAXException {
         String id = attributes.get("id");
-        if ((id != null) && (currentId != null)) {
+        if (id != null) {
             currentId = id;
         }
         String fileName = mapId.get(currentId);
@@ -1008,7 +1008,7 @@ public class HTMLDocbookTagConverter extends DocbookTagConverter implements Temp
      */
     public String handleRefnamediv(final Map<String, String> attributes, final String contents) throws SAXException {
         String id = attributes.get("id");
-        if (id != null) {
+        if (id != null && currentId != null) {
             currentId = id;
         }
 
