@@ -815,6 +815,11 @@ int mustBeEqualDims(types::typed_list& x)
 
 int mustBeSameType(types::typed_list& x)
 {
+    if (x[0]->isInt() && x[1]->isInt())
+    {
+        return 0;
+    }
+
     return (x[0]->getType() == x[1]->getType()) ? 0 : 1;
 }
 

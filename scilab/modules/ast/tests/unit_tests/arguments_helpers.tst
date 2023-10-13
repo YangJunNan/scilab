@@ -361,6 +361,7 @@ function foo(a, b)
 endfunction
 
 foo(1, 1);
+foo(int8(1), int16(1));
 
 assert_checkerror("foo(1, %t);", [], 999);
 clear foo;
