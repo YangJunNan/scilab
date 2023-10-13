@@ -53,7 +53,7 @@ while(ido <> 99)
   // Repeatedly call the routine DSAUPD and take actions indicated by parameter IDO until
   // either convergence is indicated or maxitr has been exceeded.
 
-  [ido, resid, v, iparam, ipntr, workd, workl, info_dsaupd] = dsaupd(ido, bmat, nx, which, nev, tol, resid, ncv, v, iparam, ipntr, workd, workl, info_dsaupd);
+  [ido, resid, v, iparam, ipntr, workd, workl, info_dsaupd] = %_dsaupd(ido, bmat, nx, which, nev, tol, resid, ncv, v, iparam, ipntr, workd, workl, info_dsaupd);
 
   if(info_dsaupd < 0)
     printf('\nError with dsaupd, info = %d\n',info_dsaupd);
@@ -71,13 +71,7 @@ rvec    = 1;
 howmany = 'A';
 info_dseupd = 0;
 
-[d, z, resid, v, iparam, ipntr, workd, workl, info_dseupd] = dseupd(rvec, howmany, _select, d, z, sigma, bmat, nx, which, nev, tol, resid, ncv, v, ...
+[d, z, resid, v, iparam, ipntr, workd, workl, info_dseupd] = %_dseupd(rvec, howmany, _select, d, z, sigma, bmat, nx, which, nev, tol, resid, ncv, v, ...
                                                                     iparam, ipntr, workd, workl, info_dseupd);
-
-if(info_dseupd < 0)
-  printf('\nError with dseupd, info = %d\n', info_dseupd);
-  printf('Check the documentation of dseupd.\n\n');
-end
-
 
 assert_checkalmostequal(A * z, z * diag(d), sqrt(%eps), 1.e-10);

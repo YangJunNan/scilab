@@ -6,7 +6,6 @@
 // =============================================================================
 
 // <-- CLI SHELL MODE -->
-// <-- WINDOWS ONLY -->
 // <-- NO CHECK REF -->
 
 nx    = 10;
@@ -53,7 +52,7 @@ while(ido <> 99)
   // Repeatedly call the routine ZNAUPD and take actions indicated by parameter IDO until
   // either convergence is indicated or maxitr has been exceeded.
 
-  [ido, resid, v, iparam, ipntr, workd, workl, rwork, info_znaupd] = znaupd(ido, bmat, nx, which, nev, tol, resid, ncv, v, iparam, ipntr, workd, workl, rwork, info_znaupd);
+  [ido, resid, v, iparam, ipntr, workd, workl, rwork, info_znaupd] = %_znaupd(ido, bmat, nx, which, nev, tol, resid, ncv, v, iparam, ipntr, workd, workl, rwork, info_znaupd);
 
   if(info_znaupd < 0)
     printf('\nError with znaupd, info = %d\n', info_znaupd);
@@ -72,7 +71,7 @@ rvec    = 1;
 howmany = 'A';
 info_zneupd = 0;
 
-[d, z, resid, iparam, ipntr, workd, workl, rwork, info_zneupd] = zneupd(rvec, howmany, _select, d, z, sigma, workev, bmat, nx, which, nev, tol, resid, ncv, v, ...
+[d, z, resid, iparam, ipntr, workd, workl, rwork, info_zneupd] = %_zneupd(rvec, howmany, _select, d, z, sigma, workev, bmat, nx, which, nev, tol, resid, ncv, v, ...
                                                                     iparam, ipntr, workd, workl, rwork, info_zneupd);
 
 assert_checkalmostequal(A * z, z * diag(d(1:3)), sqrt(%eps), 1.e-10);
