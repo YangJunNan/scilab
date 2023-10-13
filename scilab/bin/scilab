@@ -932,8 +932,12 @@ do_scilex()
         if test "$SCILAB_MODE" = "scinotes"; then
             do_scinotes "$@"
         else
-            if test "$OS" = "Darwin" -a $IS_SCILAB_BINARY -eq 1 -a "$(lipo -archs $BINPATH/$SCILABBIN)" -eq "arm64"; then
-                arch -arch arm64 "$SCILABBIN" "$@"
+            if test "$OS" = "Darwin" -a $IS_SCILAB_BINARY -eq 1; then
+                if test "$(lipo -archs $BINPATH/$SCILABBIN)" -eq "arm64"; then
+                    arch -arch arm64 "$SCILABBIN" "$@"
+                else
+                    "$SCILABBIN" "$@"
+                fi
             else
                 "$SCILABBIN" "$@"
             fi
