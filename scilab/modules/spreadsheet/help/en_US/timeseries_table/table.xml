@@ -50,7 +50,7 @@
             <varlistentry>
                 <term>Name, Value</term>
                 <listitem>
-                    <para><emphasis role="bold">'VariableNames'</emphasis>: matrix of strings that contains the name of each t'column. Default value: ["Var1", ..., "VarN"]</para>
+                    <para><emphasis role="bold">'VariableNames'</emphasis>: matrix of strings that contains the name of each column of <literal>t</literal>. Default value: ["Var1", ..., "VarN"]</para>
                     <para/>
                 </listitem>
                 <listitem>
@@ -78,11 +78,11 @@
             Regarding the extraction and insertion of data, a table is like a matrix: t(i,j) where i and j are indices.
             In addition to indices, it is possible to use the names of variables and rows to access the data: t.Var1 or t("Var1") where 
             "Var1" is a variable name; t("Row1", "Var1") where "Row1" is a row name and "Var1" is a variable name. It is also possible to 
-            mix indices and variable name or row name: t(1,["Var1", "Var3"]) ort("Row1", [1 3]). The data being generally heterogeneous, it will be 
-            neccesary to use {} or table to insert data. If they are the same type, the [] will suffice.
+            mix indices and variable name or row name: t(1,["Var1", "Var3"]) or t("Row1", [1 3]). The data being generally heterogeneous, it will be
+            neccesary to use {} or table to insert data. If they are of the same type, the [] will preferred.
         </para>
         <para>
-            Use the readtable function to create a table from a file. If you data contains a timestamp, use the timeseries function.
+            Use the <link linkend="readtable"></link> function to create a table from a file. If data contains a timestamp, use the <link linkend="timeseries">timeseries</link> function instead.
         </para>
         <para>
             <emphasis role="bold">t = table(var1, ..., varN)</emphasis> creates a table from the data variables <emphasis role="bold">var1, ..., varN</emphasis>.
@@ -90,11 +90,11 @@
         </para>
         <para>
             <emphasis role="bold">t = table(m)</emphasis> creates a table from a matrix <emphasis role="bold">m</emphasis>.
-            This syntaxe corresponds to <emphasis role="bold">t = matrix2table(st)</emphasis>.
+            This syntaxe corresponds to <emphasis role="bold">t = <link linkend="matrix2table"></link>(st)</emphasis>.
         </para>
         <para>
             <emphasis role="bold">t = table(st)</emphasis> creates a table from a structure <emphasis role="bold">st</emphasis>.
-            This syntaxe corresponds to <emphasis role="bold">t = struct2table(st)</emphasis>.
+            This syntaxe corresponds to <emphasis role="bold">t = <link linkend="struct2table"></link>(st)</emphasis>.
         </para>
         <para>
             <emphasis role="bold">t = table(..., Name, Value)</emphasis> can be used to specify the variable names or the row names.
@@ -108,7 +108,7 @@
             </listitem>
             <listitem>
                 <para><emphasis role="bold">'RowNames'</emphasis>: specify the name of rows. The number of names 
-                must be equal the number of table rows. This data is stored in the properties of the table <emphasis role="bold">r</emphasis> in the 'RowNames' field. 
+                must be equal the number of table rows. This data is stored in the properties of the table <emphasis role="bold">t</emphasis> in the 'RowNames' field.
                 For more information, see the Properties section below.</para>
                 <para/>
             </listitem>

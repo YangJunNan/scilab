@@ -46,7 +46,7 @@
                 <listitem>
                     <para>indicates how the data is grouped, by data interval or time interval.</para>
                     <para>data type expected: vector of doubles vector containing the data interval
-                        or available string among: "year", "month", "day", "hour", "minute", "second", "monthname" and "dayname". Default value: "none".</para>
+                        or available string values: "year", "month", "day", "hour", "minute", "second", "monthname" and "dayname". Default value: "none".</para>
                     <para>Depending on the type of the variables contained in groupvars, groupbins will be a cell of the same size
                          as groupvars, where each element will be applied to each variable.</para>
                     <para/>

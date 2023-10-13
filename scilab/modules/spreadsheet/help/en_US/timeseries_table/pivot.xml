@@ -123,9 +123,9 @@
             data by allowing them to be grouped, compared and combined.
         </para>
         <para>
-            <emphasis role="bold">p = pivot(t, Columns=colvarnames, Rows=rowvarnames)</emphasis> creates a pivoted table. From colvarnames, the groups 
-            found form the variables of p. Each row corresponds to one group of data present in t(:, rowvarnames). The content of p is the number of occurrences 
-            for each unique combination of rowvarnames and colvarnames.            
+            <emphasis role="bold">p = pivot(t, Columns=colvarnames, Rows=rowvarnames)</emphasis> creates a pivoted table.
+            The <literal>p</literal> columns names are generated using the unique combination between given <literal>colvarnames</literal> data.
+            Each row corresponds to one group of data present in t(:, rowvarnames). The content of <literal>p</literal> is the unique combination of rowvarnames and colvarnames.
         </para>
         <para>
             Specifying only colvarnames, the pivot table contains one row of group counts. And if only rowvarnames is specified, the pivot table contains one variable 

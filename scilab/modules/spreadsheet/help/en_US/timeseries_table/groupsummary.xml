@@ -60,7 +60,7 @@
                 <term>method</term>
                 <listitem>
                     <para>function to apply with prototype: y = f(x), z = f(x, ..., y)</para>
-                    <para>Available methods: "sum", "mean", "median", "mode", "var" (variance), "std" (standard deviation), 
+                    <para>String, method name. Available values: "sum", "mean", "median", "mode", "var" (variance), "std" (standard deviation),
                         "min", "max", "range", "nummissing", "numunique, "nnz", "all" (all previous computations) and user function.</para>
                     <para/>
                 </listitem>
@@ -113,8 +113,8 @@
             data present in t(:, groupvars).
         </para>
         <para>
-            <emphasis role="bold">g = groupsummary(t, groupvars, method)</emphasis> specifies the variables used to group. The method will be applied to 
-            each group in each ungrouped variable of t.
+            <emphasis role="bold">g = groupsummary(t, groupvars, method)</emphasis>: <emphasis role="bold">groupvars</emphasis> specifies the variables used to group data.
+            The <emphasis role="bold">method</emphasis> will be applied to each variable of <emphasis role="bold">t</emphasis> except those contained in the <emphasis role="bold">groupvars</emphasis>.
         </para>
         <para>
             <emphasis role="bold">g = groupsummary(t, groupvars, groupbins, ...)</emphasis> extracts data from t(:, groupvars); these data are then grouped according 
