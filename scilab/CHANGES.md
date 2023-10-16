@@ -96,8 +96,8 @@ Packaging & Supported Operating Systems
     - Support of macOS Monterey & Ventura added in Scilab 2023.0.0
   - Linux (amd64):
     - debian:11
-    - ubuntu:18.04, 20.04, 22.04
-    - fedora:37
+    - ubuntu:18.04, 20.04, 22.04; 23.10
+    - fedora:38
 
 API/ABI modification
 --------------------
