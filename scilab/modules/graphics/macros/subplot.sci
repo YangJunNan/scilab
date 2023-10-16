@@ -36,7 +36,6 @@ function subplot(m ,n, p)
     // Determining the subplot' substrate
     // ----------------------------------
     e = gcf()
-    t = e.children.type
     k = findobj(e, "type","Axes");
     if k <> []
         e = gce();
@@ -58,13 +57,13 @@ function subplot(m ,n, p)
 
     na = 0
     if f.children <> []
-        na = sum(f.children.type=="Axes")
+        na = sum(f.children.type=="Axes");
     end
     if f.type=="Figure" & na==1 then
         // an axes is automatically created when a figure is created
         // do not create a new axes if we have just this one
-        a = f.children
-        da = gda()
+        a = f.children(f.children.type == "Axes")(1);
+        da = gda();
         if a.children==[] & and(a.axes_bounds==da.axes_bounds) & ..
            a.title.text==da.title.text & ..
            a.x_label.text==da.x_label.text & a.y_label.text==da.y_label.text
