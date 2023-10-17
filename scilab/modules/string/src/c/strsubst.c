@@ -274,7 +274,7 @@ wchar_t *wcssub_reg(const wchar_t* _pwstInput, const wchar_t* _pwstSearch, const
     }
 
     // early return, empty strings will not be modified
-    if (_pwstSearch[0] == L'\0' || _pwstReplace[0] == L'\0')
+    if (_pwstSearch[0] == L'\0' || _pwstInput[0] == L'\0')
     {
         return os_wcsdup(_pwstInput);
     }
