@@ -81,6 +81,7 @@ types::Function::ReturnValue sci_checkNamedArguments(types::typed_list &in, int 
     lst.remove_if([](const lst_entry_t& p) -> bool { return p.first == L"nargin"; });
     lst.remove_if([](const lst_entry_t& p) -> bool { return p.first == L"nargout"; });
     lst.remove_if([](const lst_entry_t& p) -> bool { return p.first == L"varargin"; });
+    lst.remove_if([](const lst_entry_t& p) -> bool { return p.first == L"varargout"; });
 
     for (int i = 0; i < size; ++i)
     {
