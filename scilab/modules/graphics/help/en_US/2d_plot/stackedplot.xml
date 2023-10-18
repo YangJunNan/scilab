@@ -15,6 +15,7 @@
     <refsynopsisdiv>
         <title>Syntax</title>
         <synopsis>
+            stackedplot // demo
             stackedplot(ts)
             stackedplot(ts1, ..., tsN)
             stackedplot(..., vars)

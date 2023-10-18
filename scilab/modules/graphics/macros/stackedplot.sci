@@ -9,7 +9,7 @@
 // For more information, see the COPYING file which you should have received
 // along with this program.
 
-function f = stackedplot(varargin)
+function varargout = stackedplot(varargin)
     combineMatchingNames = %t;
     tss = list();
     linespec = [];
@@ -60,7 +60,7 @@ function f = stackedplot(varargin)
     function update_margins(f)
         k = size(f.children, "*");
         margins = f.children.margins;
-// disp(k)
+
         if k > 2 then
             axes_bounds = f.children.axes_bounds;           
 
@@ -76,7 +76,6 @@ function f = stackedplot(varargin)
             margins(1, 4) = 0.25;
             margins(k, 3) = 0.25;
             f.children.axes_bounds = axes_bounds;
-            // disp(margins, axes_bounds)
             
         elseif k == 2 then
             margins(:, 3:4) = [0.05 0.2;0.2 0.05];
@@ -84,6 +83,21 @@ function f = stackedplot(varargin)
 
         f.children.margins = margins;
     endfunction
+
+    if nargin == 0 then
+        n = 100;
+        t = seconds(1:n)';
+        y1 = floor(10 * rand(n, 3)) + 10;
+        ts1 = timeseries(t, y1(:, 1), y1(:, 2), y1(:, 3), "VariableNames", ["Time", "Var 1", "Var 2", "Var3"]);
+
+        y2 = floor(10 * rand(n, 2)) + 20;
+        ts2 = timeseries(t, y2(:, 1), y2(:, 2), "VariableNames", ["Time", "Var 1", "Var 2"]);
+        f = stackedplot(ts1, ts2);
+        if nargout
+            varargout(1) = f;
+        end
+        return
+    end
 
     //list of ts
     for i = 1:size(varargin)
@@ -215,7 +229,7 @@ function f = stackedplot(varargin)
     if typeof(tss(1).vars(1).data) == "duration" then
         x = tss(1).vars(1).data.duration;
         isDuration = %t;
-    else //datatime
+    else //datetime
         x = tss(1).vars(1).data.date * 24*60*60 + tss(1).vars(1).data.time;
         isDuration = %f;
     end
@@ -244,20 +258,13 @@ function f = stackedplot(varargin)
                                 vars = varnames{k};
                                 idx = find(st.ylabel == vars);
                                 if idx <> [] then
-                                    //disp(idx, idx + size(vars, "*")*(i-1))
                                     if definedfields(stacked) == [] || and(definedfields(stacked) <> k) then 
-                                        //disp(st)
                                         if size(tss) > 1 then
                                             st.line_style = idx;
                                         end
                                         stacked(k) = [];
                                         stacked(k)(idx + size(vars, "*")*(i-1)) = st;
                                     else
-                                        // s = size(stacked(inSameAxe(index)), "*");
-                                        // if stacked(inSameAxe(index)).ts(s) == st.ts then
-                                        //     st.line_style = stacked(inSameAxe(index)).line_style(s) + 1;
-                                        // end
-                                        //stacked(inSameAxe(index)) = [stacked(inSameAxe(index)) st];
                                         if size(tss) > 1 then
                                             if i == 1 then
                                                 st.line_style = idx;
@@ -273,24 +280,6 @@ function f = stackedplot(varargin)
                             // varnames is string or indices
                             idx = find(st.ylabel == varnames);
                             if idx <> [] then
-                            // disp(idx, st.ylabel)
-                            // if idx <> [] then
-                            //     if inSameAxe <> [] then
-                            //         // st.ylabel is contained multiple times in varnames
-                            //         for k = 1:length(idx)
-                            //             index = idx(k);
-                            //             labels(st.ylabel) = inSameAxe(index);
-                            //             if definedfields(stacked) == [] || and(definedfields(stacked) <> inSameAxe(index)) then 
-                            //                 stacked(inSameAxe(index)) = st;
-                            //             else
-                            //                 s = size(stacked(inSameAxe(index)), "*");
-                            //                 if stacked(inSameAxe(index)).ts(s) == st.ts then
-                            //                     st.line_style = stacked(inSameAxe(index)).line_style(s) + 1;
-                            //                 end
-                            //                 stacked(inSameAxe(index)) = [stacked(inSameAxe(index)) st];
-                            //             end
-                            //         end
-                            //     else
                                 if labels == [] | ~isfield(labels, st.ylabel) then
                                     stacked(idx) = st;
                                     labels(st.ylabel) = idx //length(stacked);
@@ -333,7 +322,6 @@ function f = stackedplot(varargin)
             end
         end
     end
-    //disp(stacked)
 
     if yLabels <> [] then
         if inSameAxe <> [] then
@@ -359,7 +347,7 @@ function f = stackedplot(varargin)
 
     //open a new plot
     f = scf();
-    f.visible = "off";
+    f.immediate_drawing = "off";
 
     stackedsize = size(stacked);
     for i = 1:stackedsize
@@ -471,6 +459,10 @@ function f = stackedplot(varargin)
 
     f.axes_size = f.axes_size + 1;
     f.axes_size = f.axes_size - 1;
-    f.visible = "on";
+    f.immediate_drawing = "on";
+
+    if nargout
+        varargout(1) = f;
+    end
     
 endfunction
