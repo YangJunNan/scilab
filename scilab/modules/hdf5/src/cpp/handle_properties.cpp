@@ -1724,7 +1724,7 @@ static int import_handle_figure(hid_t dataset, int parent, int version)
     int notmenu = menu == 0;
     int info = 0;
     getHandleBool(dataset, "infobar_visible", &info);
-    int notinfo = info = 0;
+    int notinfo = info == 0;
     int tool = 0;
     getHandleBool(dataset, "toolbar_visible", &tool);
     int nottool = tool == 0;
