@@ -1207,6 +1207,11 @@ interface for JOGL2 - or libGL (OpenGL library) are installed and if the version
                 JLATEXMATH_FOP=$PACKAGE_JAR_FILE
                 AC_SUBST(JLATEXMATH_FOP)
 
+                # Saxon 9 HE
+                AC_JAVA_CHECK_JAR([saxon9he],[net.sf.saxon.TransformerFactoryImpl],[Saxon processor for XSLT, XQuery, and XML Schema])
+                SAXON=$PACKAGE_JAR_FILE
+                AC_SUBST(SAXON)
+
                 AC_DEFINE([WITH_GUI],[],[With the JAVA stuff (GUI, Console, JOGL...)])
 
         fi

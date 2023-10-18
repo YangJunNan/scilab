@@ -153,7 +153,7 @@ download_dependencies() {
     # Batik is included within FOP
     [ ! -f fop-$FOP_VERSION-bin.zip ] && curl -LO https://oos.eu-west-2.outscale.com/scilab-releases-dev/prerequirements-sources/fop-$FOP_VERSION-bin.zip
 
-    # This archive contains .jar that have been copied from Scilab prerequirements thirdparty
+    # This archive contains .jar and directories that have been copied from Scilab prerequirements
     # JavaFX/openjfx is only shipped as JARs, no rebuild is needed for now
     curl -LO --time-cond thirdparty-jar.zip https://oos.eu-west-2.outscale.com/scilab-releases-dev/prerequirements-sources/thirdparty-jar.zip
 
