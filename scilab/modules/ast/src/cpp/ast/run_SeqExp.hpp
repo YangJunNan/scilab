@@ -56,7 +56,6 @@ void RunVisitorT<T>::visitprivate(const SeqExp  &e)
             }
 
             StorePrioritaryCommand("pause");
-            ThreadManagement::WaitForRunMeSignal();
         }
 
         // interrupt me to execute a prioritary command
@@ -90,7 +89,6 @@ void RunVisitorT<T>::visitprivate(const SeqExp  &e)
             }
 
             StorePrioritaryCommand("pause");
-            ThreadManagement::WaitForRunMeSignal();
         }
 
         // interrupt me to execute a prioritary command
