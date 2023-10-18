@@ -177,9 +177,6 @@ static int get_option(const int argc, char *argv[], ScilabEngineInfo* _pSEI)
         else if (!strcmp("-quit", argv[i]))
         {
             _pSEI->iForceQuit = 1;
-            // by default, dont start the console thread 
-            // when scilab is call with -quit
-            _pSEI->iStartConsoleThread = 0;
         }
         else if (!strcmp("-version", argv[i]))
         {
@@ -342,6 +339,15 @@ static int get_option(const int argc, char *argv[], ScilabEngineInfo* _pSEI)
         }
     }
 
+    // ignore -quit if -e or -f are not given
+    _pSEI->iForceQuit = _pSEI->iForceQuit && (_pSEI->pstExec || _pSEI->pstFile);
+    if(_pSEI->iForceQuit)
+    {
+        // by default, dont start the console thread
+        // when scilab is call with -quit
+        _pSEI->iStartConsoleThread = 0;
+    }
+
     ConfigVariable::setCommandLineArgs(argc, argv);
     return 0;
 }
@@ -494,6 +500,7 @@ int main(int argc, char *argv[])
     if (!isatty(fileno(stdin)) && getScilabMode() != SCILAB_STD)
 #endif
     {
+        ConfigVariable::setisatty(true);
         // We are in a pipe
         setScilabInputMethod(&getPipeLine);
         // force start the console thread when scilab is 

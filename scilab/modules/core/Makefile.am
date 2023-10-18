@@ -97,6 +97,7 @@ GATEWAY_CPP_SOURCES = \
 	sci_gateway/cpp/sci_error.cpp \
 	sci_gateway/cpp/sci_exists.cpp \
 	sci_gateway/cpp/sci_exit.cpp \
+	sci_gateway/cpp/sci_isatty.cpp \
 	sci_gateway/cpp/sci_fieldnames.cpp \
 	sci_gateway/cpp/sci_format.cpp \
 	sci_gateway/cpp/sci_funcprot.cpp \

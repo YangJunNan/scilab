@@ -166,11 +166,6 @@ int StartScilabEngine(ScilabEngineInfo* _pSEI)
         _pSEI->pstExec = NULL;
     }
 
-    // ignore -quit if -e or -f are not given
-    _pSEI->iForceQuit = _pSEI->iForceQuit && (_pSEI->pstExec || _pSEI->pstFile);
-    // Do not call ConfigVariable::setForceQuit() here to avoid Scilab to quit before executing callbacks, ...
-    // See exit condition in scilabReadAndExecCommand() loop
-
     // setup timeout delay
     if (_pSEI->iTimeoutDelay != 0)
     {

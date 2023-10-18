@@ -15,30 +15,37 @@
 // https://gitlab.com/scilab/scilab/-/issues/14225
 //
 // <-- Short Description -->
-// command-line option "-quit" should set the processs Exit status
+// 1. command-line option "-quit" should set the processs Exit status
+// 2. piping to Scilab will exit without "-quit" and set the Exit status
 
 //scilab path
-if (getos() <> "Windows") & ~isfile(SCI+"/bin/scilab") then
+if getos() == "Windows" then
     scilabBin = WSCI + "\bin\scilex ";
 else
     scilabBin = strsplit(SCI, "share/scilab")(1) + "/bin/scilab-cli ";
 end
 
-//With -quit argument
-err = unix(scilabBin + "-e ""exit()"" -quit");
-assert_checkequal(err, 0);
-err = unix(scilabBin + "-e ""1+1;"" -quit");
-assert_checkequal(err, 0);
-err = unix(scilabBin + "-e ""1+1; exit(12)"" -quit");
-assert_checkequal(err, 12);
-err = unix(scilabBin + "-e ""error(\""error_test\"");"" -quit");
-assert_checktrue(err <> 0);
-err = unix(scilabBin + "-e ""error(\""error_test\"");exit(12)"" -quit");
-assert_checktrue(err <> 12 && err <> 0);
-err = unix(scilabBin + "-e ""try, error(\""error_test\""); catch, disp(lasterror()),end"" -quit");
-assert_checkequal(err, 0);
-err = unix(scilabBin + "-e ""try, error(\""error_test\""); catch,disp(lasterror());exit(12), end"" -quit");
-assert_checkequal(err, 12);
+// log isatty() output
+disp(isatty());
+
+// -quit is only discarded when standart input is redirected (piped mode)
+if isatty() == %f then
+    //With -quit argument
+    err = unix(scilabBin + "-e ""exit()"" -quit");
+    assert_checkequal(err, 0);
+    err = unix(scilabBin + "-e ""1+1;"" -quit");
+    assert_checkequal(err, 0);
+    err = unix(scilabBin + "-e ""1+1; exit(12)"" -quit");
+    assert_checkequal(err, 12);
+    err = unix(scilabBin + "-e ""error(\""error_test\"");"" -quit");
+    assert_checktrue(err <> 0);
+    err = unix(scilabBin + "-e ""error(\""error_test\"");exit(12)"" -quit");
+    assert_checktrue(err <> 12 && err <> 0);
+    err = unix(scilabBin + "-e ""try, error(\""error_test\""); catch, disp(lasterror()),end"" -quit");
+    assert_checkequal(err, 0);
+    err = unix(scilabBin + "-e ""try, error(\""error_test\""); catch,disp(lasterror());exit(12), end"" -quit");
+    assert_checkequal(err, 12);
+end
 
 //Without -quit argument
 err = unix(scilabBin + "-e ""exit()""");
@@ -47,4 +54,3 @@ err = unix(scilabBin + "-e ""1+1; exit(12)""");
 assert_checkequal(err, 12);
 err = unix(scilabBin + "-e ""try, error(\""error_test\""); catch,disp(lasterror());exit(12), end""");
 assert_checkequal(err, 12);
-
