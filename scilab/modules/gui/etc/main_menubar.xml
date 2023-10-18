@@ -135,7 +135,7 @@
             <callback instruction="help();" type="10"/>
         </submenu>
         <separator/>
-        <submenu label="Scilab &amp;Demonstrations" icon="applications-system">
+        <submenu label="Scilab &amp;Demonstrations" icon="x-office-presentation">
             <callback instruction="demo_gui();" type="10"/>
         </submenu>
         <separator/>
