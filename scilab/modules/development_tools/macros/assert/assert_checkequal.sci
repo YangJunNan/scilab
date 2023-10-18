@@ -202,7 +202,8 @@ function [flag, errmsg] = assert_checkequal(computed, expected)
 endfunction
 // ---------------------------------------------------------------------------
 function [flag, k] = comparedoubles ( computed , expected )
-    rand("seed",getdate("s"))
+    seed = rand("seed");
+    rand("seed", getdate("s"));
     joker = rand(1);
     while find(expected==joker | computed==joker,1)<>[]
         joker = rand(1);
@@ -211,6 +212,7 @@ function [flag, k] = comparedoubles ( computed , expected )
     expected(isnan(expected)) = joker;
     k = find(expected<>computed,1);
     flag = k==[];
+    rand("seed", seed);
 endfunction
 // ---------------------------------------------------------------------------
 function [areEqual, k] = compareContainers(computed , expected)
