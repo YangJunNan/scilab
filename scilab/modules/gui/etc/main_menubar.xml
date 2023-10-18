@@ -161,6 +161,9 @@
             <submenu label="&amp;File Exchange">
                 <callback instruction="org.scilab.modules.gui.bridge.CallScilabBridge.openFileExchange" type="3"/>
             </submenu>
+            <submenu label="&amp;Discourse">
+                <callback instruction="org.scilab.modules.gui.bridge.CallScilabBridge.openDiscourse" type="3"/>
+            </submenu>
             <submenu label="&amp;Mailing Lists">
                 <callback instruction="org.scilab.modules.gui.bridge.CallScilabBridge.openMailingList" type="3"/>
             </submenu>
