@@ -69,17 +69,6 @@ body = [...
 
 checkbody(body)
 
-// varargin
-body = [...
-"function test1(x, varargin)"
-"    arguments"
-"        x"
-"        varargin"
-"    end"
-"end"];
-
-checkbody(body)
-
 // dims
 body = [...
 "function test1(x)"
@@ -384,3 +373,36 @@ test_bool(int64(vref), vref == 1)
 test_bool(uint64(vref), vref == 1)
 test_bool(vref == 1, vref == 1)
 test_bool(string(vref == 1), vref == 1)
+
+//varargin
+function test_varargin(a, b, varargin)
+    arguments
+        a
+        b
+        varargin
+    end
+endfunction
+
+
+code = [
+    "function test_varargin(a, b, varargin)"
+    "    arguments"
+    "        a"
+    "        b"
+    "    end"
+    "endfunction"
+];
+
+checkbody(code);
+
+code = [
+    "function test_varargin(a, b, varargin)"
+    "    arguments"
+    "        a"
+    "        b"
+    "        varargin (3)"
+    "    end"
+    "endfunction"
+];
+
+checkbody(code);

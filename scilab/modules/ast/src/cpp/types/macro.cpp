@@ -2081,6 +2081,7 @@ void Macro::updateArguments()
     }
 
     bool needDefaultValue = false;
+    bool bvarargin = false;
     for (auto&& e : m_body->getExps())
     {
         if (e->isCommentExp()) continue;
@@ -2118,6 +2119,7 @@ void Macro::updateArguments()
                 }
                 else // FieldExp
                 {
+                    /*
                     const ast::FieldExp* f = dec->getArgumentName()->getAs<ast::FieldExp>();
                     name = f->getHead()->getAs<ast::SimpleVar>()->getSymbol().getName();
                     if (m_arguments.size() >= inputNames.size() || inputNames[m_arguments.size()] != name)
@@ -2137,13 +2139,28 @@ void Macro::updateArguments()
 
                     name += L".";
                     name += f->getTail()->getAs<ast::SimpleVar>()->getSymbol().getName();
+                    */
+
+                    char msg[128];
+                    os_sprintf(msg, _("%s: Expression with field are not managed.\n"), "arguments");
+                    throw ast::InternalError(scilab::UTF8::toWide(msg), 999, dec->getArgumentType()->getLocation());
                 }
 
                 if (name == L"varargin")
                 {
-                    char msg[128];
-                    os_sprintf(msg, _("%s: varargin cannot be used with arguments block.\n"), scilab::UTF8::toUTF8(m_wstName).data());
-                    throw ast::InternalError(scilab::UTF8::toWide(msg), 999, m_body->getLocation());
+                    //check that there is no information !
+                    if (dec->getArgumentDims()->getExps().size() != 0 ||
+                        dec->getArgumentDefaultValue()->getExps().size() != 0 ||
+                        dec->getArgumentType()->getExps().size() != 0 ||
+                        dec->getArgumentValidators()->getExps().size() != 0)
+                    {
+                        char msg[128];
+                        os_sprintf(msg, _("%s: varargin must be declared without parameter.\n"), "arguments");
+                        throw ast::InternalError(scilab::UTF8::toWide(msg), 999, dec->getArgumentType()->getLocation());
+                    }
+
+                    bvarargin = true;
+                    continue;
                 }
 
 
@@ -2454,7 +2471,7 @@ void Macro::updateArguments()
                 m_arguments[name] = arg;
             } //for
 
-            if (m_arguments.size() != m_inputArgs->size())
+            if (m_arguments.size() + (bvarargin ? 1 : 0) != m_inputArgs->size())
             {
                 char msg[128];
                 os_sprintf(msg, _("%s: All parameters must be specified in arguments block.\n"), scilab::UTF8::toUTF8(m_wstName).data());
