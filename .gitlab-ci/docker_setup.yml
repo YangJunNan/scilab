@@ -82,3 +82,11 @@ tester_linux:
 #     - docker build --memory 4GB --file .gitlab-ci/Dockerfile.windows -t $DOCKER_WINDOWS_BUILDER .
 #     - docker push $DOCKER_WINDOWS_BUILDER
 #     - docker logout "${CI_REGISTRY}"
+
+# display the applicable env. useful for debug
+docker_display_env:
+  stage: docker_setup
+  image: docker:20.10.16
+  tags: [x86_64-linux-gnu, docker, scilab, build]
+  script:
+    - env
