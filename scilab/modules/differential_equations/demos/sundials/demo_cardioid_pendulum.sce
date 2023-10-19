@@ -28,6 +28,7 @@ function demo_cardioid_pendulum()
     function term=cbFn(t,y,yp,flag,stats,h)
         term=%f;
         realtime(t)
+        if get("stop") == [] then term=%t; return; end
         try
             if get("stop") == [] then
                 term=%t;

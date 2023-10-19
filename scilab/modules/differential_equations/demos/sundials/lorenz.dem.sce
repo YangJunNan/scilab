@@ -37,10 +37,8 @@ function sundials_lorenz()
             realtimeinit(1)
             realtime(0)
         else
-            if get("stop") == [] then
-                term=%t
-                return
-            end
+            if get("stop") == [] then term=%t; return; end
+            
             a=gca();
             a.children.data=X';
             a.title.text=msprintf("t=%5.2f",t)

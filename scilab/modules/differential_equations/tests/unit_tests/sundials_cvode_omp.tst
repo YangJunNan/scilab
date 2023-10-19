@@ -46,8 +46,8 @@ if with_openmp
     "    }"
     "    return 0;"
     "}"
-    ],"code.c");
-    SUN_Clink("f","code.c",load=%t,cflags="-O3 -fopenmp");
+    ],TMPDIR+"/code.c");
+    SUN_Clink("f",TMPDIR+"/code.c",load=%t,cflags="-O3 -fopenmp");
     
     n = 80; //n should be even n = 80 yields 80^3=512000 states 
     n2 = n*n;

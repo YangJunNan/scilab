@@ -122,8 +122,8 @@ heatcode=[
 "}"
 ]
 
-mputl(heatcode,"heat.c")
-SUN_Clink(["heatRhs";"heatJac"],"heat.c",load=%t);
+mputl(heatcode,TMPDIR+"/heat.c")
+SUN_Clink(["heatRhs";"heatJac"],TMPDIR+"/heat.c",load=%t);
 
 [t,v,info] = cvode(list("heatRhs",[dx,lambda,c,rhoLin]),tspan,v0,jacBand=[1 1]);
 [t1,v1,info1] = cvode(list(f_chaleur,dx,lambda,c,rhoLin,f),tspan,v0,jacBand=[1,1]);
