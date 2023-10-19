@@ -95,7 +95,7 @@ workflow:
     - if: $CI_COMMIT_TAG
       variables:
         SCI_VERSION_STRING: "scilab-${CI_COMMIT_TAG}"
-        BRANCH: "${CI_DEFAULT_BRANCH}"
+        BRANCH: "main"
         DOCKER_LINUX_BUILDER: "${CI_REGISTRY_IMAGE}/linux-builder-${BRANCH}"
         DOCKER_LINUX_PREBUILD: "${CI_REGISTRY_IMAGE}/linux-prebuild-${BRANCH}"
         DOCKER_WINDOWS_BUILDER: "${CI_REGISTRY_IMAGE}/windows-builder-${BRANCH}"
