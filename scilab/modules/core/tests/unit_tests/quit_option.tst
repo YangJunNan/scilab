@@ -6,6 +6,7 @@
 // =============================================================================
 
 // <-- CLI SHELL MODE -->
+// <-- INTERACTIVE TEST -->
 // <-- NO CHECK REF -->
 // <-- NO CHECK ERROR OUTPUT -->
 
