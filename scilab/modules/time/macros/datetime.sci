@@ -574,8 +574,10 @@ function out = datetime(varargin)
                 c6 = strcat([comb; comb2], " ", "c");
                 truncInputFormat = tokens(inputFormat, " ")(1);
 
+                UTCGMTformat = strindex(input1(1), "+") <> [];
+
                 // yyyyMMdd + hours..
-                if "yyyyMMdd" == truncInputFormat then
+                if ~UTCGMTformat && "yyyyMMdd" == truncInputFormat then
                     [row, col] = size(input1);
                     if size(input1, 1) >=1 & size(input1, 2) > 1 then
                         input1 = input1(:);
@@ -605,27 +607,30 @@ function out = datetime(varargin)
                     dt = matrix(d, row, col);
 
                 // [yy / yyyy]-[M / MM / MMM]-[d / dd] (+ hour, min and sec)
-                elseif or(c == truncInputFormat) | or(c == tokens(inputFormat, "T")(1)) then
+                elseif ~UTCGMTformat && (or(c == truncInputFormat) | or(c == tokens(inputFormat, "T")(1))) then
                     [dt, input1] = datetimeWithInputFormat(inputFormat, input1, ["T"; "Z"; "-"; ":"], [" "; ""; " "; " "], index)
 
                     // [d / dd]/[M / MM]/[yy / yyyy] or [M / MM]/[d / dd]/[yy / yyyy] (+ hour, min and sec)
-                elseif or(c1 == truncInputFormat) | or(c2 == truncInputFormat) then
+                elseif ~UTCGMTformat && (or(c1 == truncInputFormat) | or(c2 == truncInputFormat)) then
                     [dt, input1] = datetimeWithInputFormat(inputFormat, input1, ["/"; ":"], [" "; " "], index)
 
                 // [d / dd].[M / MM].[yyyy] + (hour, min and sec)
-                elseif or(c3 == truncInputFormat) then
+                elseif ~UTCGMTformat && or(c3 == truncInputFormat) then
                     [dt, input1] = datetimeWithInputFormat(inputFormat, input1, ["."; ":"], [" "; " "], index)
 
                 // dd MMM yy dd-MMM-yy "/([0-9]{1,2})([\s-])([a-zA-Z]{3})([\s-])([0-9]{2,4})/" + hours, ...
-                elseif or(c4 == tokens(inputFormat, " ")(1)) | or(c5 == tokens(inputFormat, " ")(1)) then
+                elseif ~UTCGMTformat && (or(c4 == tokens(inputFormat, " ")(1)) | or(c5 == tokens(inputFormat, " ")(1))) then
                     [dt, input1] = datetimeWithInputFormat(inputFormat, input1, ["-"; ":"], [" "; " "], index)
 
                     //MMM d yyyy MMM d, yyyy "/([a-zA-Z]{3})\s])([0-9]{1,2})([,\s]+)([0-9]{4})/" + hours, ...
-                elseif or(c6 == tokens(inputFormat, " ")(1)) then
+                elseif ~UTCGMTformat && or(c6 == tokens(inputFormat, " ")(1)) then
                     [dt, input1] = datetimeWithInputFormat(inputFormat, input1, [","; ":"], [""; " "], index)
 
                 else
-
+                    if UTCGMTformat then
+                        warning(msprintf(_("UTC/GMT format is not managed. The result does not take it into account.\n")));
+                    end
+                    
                     for i = 1:size(index, 1)
                         if index(i, 3) <> -1 then
                             inputFormat = strsubst(inputFormat, "/" + reg_list(index(i, 1))(index(i, 2)) + "/", "(" + reg_replace(index(i, 1))(index(i, 2)) + ")", "r");
