@@ -46,9 +46,9 @@
         <ul>
             <li>New functions:
                 <ul>
-                    <li>Timeseries introduced a large set of function and features to simplify the management of timed data and data tables in Scilab.</li>
+                    <li>Timeseries introduces a large set of functions and features to simplify the management of timed data and data tables in Scilab.</li>
                     <li><code>angle()</code> computes the argument of complex numbers, in radians.</li>
-                    <li><code>compress()</code> and <code>decompress()</code> functions manage compressed archive (ZIP, tar.gz and tar.xz files).</li>
+                    <li><code>compress()</code> and <code>decompress()</code> functions manage compressed archives (ZIP, tar.gz and tar.xz files).</li>
                     <li><code>cvode()</code>, <code>arkode()</code>, <code>ida()</code> and <code>kinsol()</code> from <a href="https://computing.llnl.gov/projects/sundials">SUNDIALS</a>.</li>
                 </ul>
             </li>
@@ -57,8 +57,8 @@
                     <li><code>arguments/end</code> keywords added: validate function input arguments in a standard way (using standard error messages) and faster than using Scilab code (<code>type</code>, <code>typeof</code>, ...).
                     Some helpers have been added for this new block: <code>mustBeSameType</code>, <code>mustBeEqualDimsOrScalar</code>, ...
                     Some Scilab functions (<code>modulo</code>, <code>pmodulo</code>, ...) and modules (<code>time</code>, ...) have been updated to use this new block hence enhancing theirs performances.</li>
-                    <li><code>select/case</code> now supports multiple cases with <code>cells</code>.</li>
-                    <li>When calling a function or extracting values, it is now possible to skip an output argument. If a variable is named <code>_</code> the output value will not be assigned (e.g. <code>[r1, _, r3,...] = func(...)</code>).</li>
+                    <li><code>select/case</code> supports multiple cases with <code>cells</code>.</li>
+                    <li>When calling a function or extracting values, it is possible to skip an output argument. If a variable is named <code>_</code> the output value will not be assigned (e.g. <code>[r1, _, r3,...] = func(...)</code>).</li>
                 </ul>
             </li>
             <li>Web Tools:
@@ -76,8 +76,10 @@
                 <li>triangles pointing to data: upward, downward, left, right,</li>
                 <li>horizontal line (minus sign) centered on data,</li>
                 <li>vertical line centered on data.</li>
+                </li>
+                <li><code>errbar()</code> function uses horiontal line marks.</li>
+                <li><code>subplot()</code> manages <code>frame</code> uicontrols.</li>
                 </ul>
-            </li>
             <li>Differential equations:
                 <ul>
                 <li><a href="https://github.com/CSCsw/ColPack">ColPack</a> graph coloring algorithms for sparse jacobian computation have been integrated.</li>
@@ -87,8 +89,8 @@
             </li>
             <li>Other Improvements:
                 <ul>
-                    <li><code>strsubst()</code> now manages group in replacement.</li>
-                    <li><code>string()</code> accepts list, cell and struct.</li>
+                    <li><code>strsubst()</code> manages group in replacement.</li>
+                    <li><code>string()</code> accepts <code>lists</code>, <code>cells</code> and <code>structs</code>.</li>
                 </ul>
             </li>
         </ul>

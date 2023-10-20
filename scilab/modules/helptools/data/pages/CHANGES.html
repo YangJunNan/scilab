@@ -42,7 +42,7 @@ For changelogs of earlier releases, please see <a href="https://help.scilab.org/
 <ul>
 <li>Timeseries introduces a large set of functions and features to simplify the management of timed data and data tables in Scilab.</li>
 <li><code>angle()</code> computes the argument of complex numbers, in radians.</li>
-<li><code>compress()</code> and <code>decompress()</code> functions manage compressed archive (ZIP, tar.gz and tar.xz files).</li>
+<li><code>compress()</code> and <code>decompress()</code> functions manage compressed archives (ZIP, tar.gz and tar.xz files).</li>
 <li><code>cvode()</code>, <code>arkode()</code>, <code>ida()</code> and <code>kinsol()</code> from <a href="https://computing.llnl.gov/projects/sundials">SUNDIALS</a>.</li>
 </ul>
 <h3>Language changes</h3>
@@ -50,8 +50,8 @@ For changelogs of earlier releases, please see <a href="https://help.scilab.org/
 <li><code>arguments/end</code> keywords added: validate function input arguments in a standard way (using standard error messages) and faster than using Scilab code (<code>type</code>, <code>typeof</code>, ...).
 Some helpers have been added for this new block: <code>mustBeSameType</code>, <code>mustBeEqualDimsOrScalar</code>, ...
 Some Scilab functions (<code>modulo</code>, <code>pmodulo</code>, ...) and modules (<code>time</code>, ...) have been updated to use this new block hence enhancing theirs performances.</li>
-<li><code>select/case</code> now supports multiple cases with <code>cells</code>.</li>
-<li>When calling a function or extracting values, it is now possible to skip an output argument. If a variable is named <code>_</code> the output value will not be assigned (e.g. <code>[r1, _, r3,...] = func(...)</code>).</li>
+<li><code>select/case</code> supports multiple cases with <code>cells</code>.</li>
+<li>When calling a function or extracting values, it is possible to skip an output argument. If a variable is named <code>_</code> the output value will not be assigned (e.g. <code>[r1, _, r3,...] = func(...)</code>).</li>
 </ul>
 <h3>Webtools</h3>
 <ul>
@@ -69,8 +69,8 @@ Some Scilab functions (<code>modulo</code>, <code>pmodulo</code>, ...) and modul
 <li>vertical line centered on data.</li>
 </ul>
 </li>
-<li><code>errbar()</code> function now uses horiontal line marks.</li>
-<li><code>subplot()</code> now manages <code>frame</code> uicontrols.</li>
+<li><code>errbar()</code> function uses horiontal line marks.</li>
+<li><code>subplot()</code> manages <code>frame</code> uicontrols.</li>
 </ul>
 <h3>Differential equations</h3>
 <ul>
@@ -80,15 +80,15 @@ Some Scilab functions (<code>modulo</code>, <code>pmodulo</code>, ...) and modul
 </ul>
 <h3>String</h3>
 <ul>
-<li><code>strsubst()</code> now manages group in replacement.</li>
-<li><code>string()</code> accepts list, cell and struct.</li>
+<li><code>strsubst()</code> manages group in replacement.</li>
+<li><code>string()</code> accepts <code>lists</code>, <code>cells</code> and <code>structs</code>.</li>
 </ul>
 <h2>Obsolete functions or features</h2>
 <p>All these functions and features will be removed in Scilab 2025.0.0 (October 2024):</p>
 <ul>
-<li><code>splitURL()</code>: please use <code>url_split()</code> instead.</li>
-<li><code>getURL()</code>: please use <code>http_get()</code> instead.</li>
-<li><code>sound()</code>: please use <code>playsnd()</code> instead.</li>
+<li><code>splitURL()</code>: Please use <code>url_split()</code> instead.</li>
+<li><code>getURL()</code>: Please use <code>http_get()</code> instead.</li>
+<li><code>sound()</code>: Please use <code>playsnd()</code> instead.</li>
 </ul>
 <h2>Removed Functions</h2>
 <p>The following functions have been removed:</p>

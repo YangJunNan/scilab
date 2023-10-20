@@ -31,7 +31,7 @@ In summary, the main new features and additions are:
 
 - Timeseries introduces a large set of functions and features to simplify the management of timed data and data tables in Scilab.
 - `angle()` computes the argument of complex numbers, in radians.
-- `compress()` and `decompress()` functions manage compressed archive (ZIP, tar.gz and tar.xz files).
+- `compress()` and `decompress()` functions manage compressed archives (ZIP, tar.gz and tar.xz files).
 - `cvode()`, `arkode()`, `ida()` and `kinsol()` from [SUNDIALS](https://computing.llnl.gov/projects/sundials).
 
 ### Language changes
@@ -39,8 +39,8 @@ In summary, the main new features and additions are:
 - `arguments/end` keywords added: validate function input arguments in a standard way (using standard error messages) and faster than using Scilab code (`type`, `typeof`, ...).
   Some helpers have been added for this new block: `mustBeSameType`, `mustBeEqualDimsOrScalar`, ...
   Some Scilab functions (`modulo`, `pmodulo`, ...) and modules (`time`, ...) have been updated to use this new block hence enhancing theirs performances.
-- `select/case` now supports multiple cases with `cells`.
-- When calling a function or extracting values, it is now possible to skip an output argument. If a variable is named `_` the output value will not be assigned (e.g. `[r1, _, r3,...] = func(...)`).
+- `select/case` supports multiple cases with `cells`.
+- When calling a function or extracting values, it is possible to skip an output argument. If a variable is named `_` the output value will not be assigned (e.g. `[r1, _, r3,...] = func(...)`).
 
 ### Webtools
 
@@ -55,8 +55,8 @@ In summary, the main new features and additions are:
   - triangles pointing to data: upward, downward, left, right,
   - horizontal line (minus sign) centered on data,
   - vertical line centered on data.
-- `errbar()` function now uses horiontal line marks.
-- `subplot()` now manages `frame` uicontrols.
+- `errbar()` function uses horiontal line marks.
+- `subplot()` manages `frame` uicontrols.
 
 ### Differential equations
 
@@ -66,17 +66,17 @@ In summary, the main new features and additions are:
 
 ### String
 
-- `strsubst()` now manages group in replacement.
-- `string()` accepts list, cell and struct.
+- `strsubst()` manages group in replacement.
+- `string()` accepts `lists`, `cells` and `structs`.
 
 Obsolete functions or features
 ------------------------------
 
 All these functions and features will be removed in Scilab 2025.0.0 (October 2024):
 
-- `splitURL()`: please use `url_split()` instead.
-- `getURL()`: please use `http_get()` instead.
-- `sound()`: please use `playsnd()` instead.
+- `splitURL()`: Please use `url_split()` instead.
+- `getURL()`: Please use `http_get()` instead.
+- `sound()`: Please use `playsnd()` instead.
 
 Removed Functions
 -----------------
