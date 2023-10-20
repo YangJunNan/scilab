@@ -47,9 +47,9 @@
             <li>New functions:
                 <ul>
                     <li>Timeseries introduces a large set of functions and features to simplify the management of timed data and data tables in Scilab.</li>
-                    <li><code>angle()</code> computes the argument of complex numbers, in radians.</li>
-                    <li><code>compress()</code> and <code>decompress()</code> functions manage compressed archives (ZIP, tar.gz and tar.xz files).</li>
                     <li><code>cvode()</code>, <code>arkode()</code>, <code>ida()</code> and <code>kinsol()</code> from <a href="https://computing.llnl.gov/projects/sundials">SUNDIALS</a>.</li>
+                    <li><code>compress()</code> and <code>decompress()</code> functions manage compressed archives (ZIP, tar.gz and tar.xz files).</li>
+                    <li><code>angle()</code> computes the argument of complex numbers, in radians.</li>
                 </ul>
             </li>
             <li>Language changes:
@@ -65,8 +65,8 @@
                 <ul>
                 <li>Use <code>curl</code> as default in <code>atomsDownload()</code> for all OS to handle local file repositories.</li>
                 <li><code>url_encode()</code> and <code>url_decode()</code> are added.</li>
-                <li>Add headers as optional input argument in <code>http_*</code> functions.</li>
-                <li>Add cookie management in webtools module.</li>
+                <li>Headers added as optional input argument to <code>http_*</code> functions.</li>
+                <li>Cookie management added to webtools module.</li>
                 </ul>
             </li>
             <li>Graphics:
@@ -82,9 +82,13 @@
                 </ul>
             <li>Differential equations:
                 <ul>
+                <li>Several features added to <code>cvode()</code>, <code>arkode()</code>, <code>ida()</code> and <code>kinsol()</code> through optional arguments (<code>cvode()</code> and <code>ida()</code> have specific sensitivity features).</li>
+                <li>Absolute and relative numerical tolerances added to <code>intl()</code> input arguments.</li>
+                </ul>
+            </li>
+            <li>Sparse matrices:
+                <ul>
                 <li><a href="https://github.com/CSCsw/ColPack">ColPack</a> graph coloring algorithms for sparse jacobian computation have been integrated.</li>
-                <li>The <code>cvode()</code> and <code>ida()</code> functions have optional sensitivity features through extra arguments.</li>
-                <li>Add absolute and relative numerical tolerances in <code>intl()</code> input arguments.</li>
                 </ul>
             </li>
             <li>Other Improvements:

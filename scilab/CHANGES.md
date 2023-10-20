@@ -30,9 +30,9 @@ In summary, the main new features and additions are:
 ### New functions
 
 - Timeseries introduces a large set of functions and features to simplify the management of timed data and data tables in Scilab.
-- `angle()` computes the argument of complex numbers, in radians.
-- `compress()` and `decompress()` functions manage compressed archives (ZIP, tar.gz and tar.xz files).
 - `cvode()`, `arkode()`, `ida()` and `kinsol()` from [SUNDIALS](https://computing.llnl.gov/projects/sundials).
+- `compress()` and `decompress()` functions manage compressed archives (ZIP, tar.gz and tar.xz files).
+- `angle()` computes the argument of complex numbers, in radians.
 
 ### Language changes
 
@@ -46,8 +46,8 @@ In summary, the main new features and additions are:
 
 - Use `curl` as default in `atomsDownload()` for all OS to handle local file repositories.
 - `url_encode()` and `url_decode()` are added.
-- Add headers as optional input argument in `http_*` functions.
-- Add cookie management in webtools module.
+- Headers added as optional input argument to `http_*` functions.
+- Cookie management added to webtools module.
 
 ### Graphics
 
@@ -60,9 +60,12 @@ In summary, the main new features and additions are:
 
 ### Differential equations
 
+- Several features added to `cvode()`, `arkode()`, `ida()` and `kinsol()` through optional arguments (`cvode()` and `ida()` have specific sensitivity features).
+- Absolute and relative numerical tolerances added to `intl()` input arguments.
+
+### Sparse matrices
+
 - [ColPack](https://github.com/CSCsw/ColPack) graph coloring algorithms for sparse jacobian computation have been integrated.
-- The `cvode()` and `ida()` functions have optional sensitivity features through extra arguments.
-- Add absolute and relative numerical tolerances in `intl()` input arguments.
 
 ### String
 
@@ -111,6 +114,8 @@ Packaging & Supported Operating Systems
 
 - 32-bit platforms are not supported (no binary versions released).
 
+- Native macOS M1/arm64 build is provided (at least 2 x faster than Intel build using Rosetta emulation).
+
 - Scilab embedded JVM is Java 17.
 
 - To run or compile Scilab, you might need:
@@ -118,9 +123,9 @@ Packaging & Supported Operating Systems
     - Windows 11 (Desktop)
     - Windows 10 (Desktop)
     - Windows 8 (Desktop)
-  - macOS (amd64):
-    - Intel-based Mac running macOS 10.9+ (run) and 10.14+ with Conda (compile)
-    - Support of macOS Sonoma added
+  - macOS:
+    - Intel-based Mac running macOS 10.9+ (run) and 10.14+ (compile)
+    - M1-based Mac running macOS 11+ (run, compile).
   - Linux (amd64):
     - debian:11
     - ubuntu:18.04, 20.04, 22.04, 23.10

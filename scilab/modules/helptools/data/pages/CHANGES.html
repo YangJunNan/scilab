@@ -41,9 +41,9 @@ For changelogs of earlier releases, please see <a href="https://help.scilab.org/
 <h3>New functions</h3>
 <ul>
 <li>Timeseries introduces a large set of functions and features to simplify the management of timed data and data tables in Scilab.</li>
-<li><code>angle()</code> computes the argument of complex numbers, in radians.</li>
-<li><code>compress()</code> and <code>decompress()</code> functions manage compressed archives (ZIP, tar.gz and tar.xz files).</li>
 <li><code>cvode()</code>, <code>arkode()</code>, <code>ida()</code> and <code>kinsol()</code> from <a href="https://computing.llnl.gov/projects/sundials">SUNDIALS</a>.</li>
+<li><code>compress()</code> and <code>decompress()</code> functions manage compressed archives (ZIP, tar.gz and tar.xz files).</li>
+<li><code>angle()</code> computes the argument of complex numbers, in radians.</li>
 </ul>
 <h3>Language changes</h3>
 <ul>
@@ -57,8 +57,8 @@ Some Scilab functions (<code>modulo</code>, <code>pmodulo</code>, ...) and modul
 <ul>
 <li>Use <code>curl</code> as default in <code>atomsDownload()</code> for all OS to handle local file repositories.</li>
 <li><code>url_encode()</code> and <code>url_decode()</code> are added.</li>
-<li>Add headers as optional input argument in <code>http_*</code> functions.</li>
-<li>Add cookie management in webtools module.</li>
+<li>Headers added as optional input argument to <code>http_*</code> functions.</li>
+<li>Cookie management added to webtools module.</li>
 </ul>
 <h3>Graphics</h3>
 <ul>
@@ -74,9 +74,12 @@ Some Scilab functions (<code>modulo</code>, <code>pmodulo</code>, ...) and modul
 </ul>
 <h3>Differential equations</h3>
 <ul>
+<li>Several features added to <code>cvode()</code>, <code>arkode()</code>, <code>ida()</code> and <code>kinsol()</code> through optional arguments (<code>cvode()</code> and <code>ida()</code> have specific sensitivity features).</li>
+<li>Absolute and relative numerical tolerances added to <code>intl()</code> input arguments.</li>
+</ul>
+<h3>Sparse matrices</h3>
+<ul>
 <li><a href="https://github.com/CSCsw/ColPack">ColPack</a> graph coloring algorithms for sparse jacobian computation have been integrated.</li>
-<li>The <code>cvode()</code> and <code>ida()</code> functions have optional sensitivity features through extra arguments.</li>
-<li>Add absolute and relative numerical tolerances in <code>intl()</code> input arguments.</li>
 </ul>
 <h3>String</h3>
 <ul>
@@ -119,6 +122,9 @@ Some Scilab functions (<code>modulo</code>, <code>pmodulo</code>, ...) and modul
 <p>32-bit platforms are not supported (no binary versions released).</p>
 </li>
 <li>
+<p>Native macOS M1/arm64 build is provided (at least 2 x faster than Intel build using Rosetta emulation).</p>
+</li>
+<li>
 <p>Scilab embedded JVM is Java 17.</p>
 </li>
 <li>
@@ -131,10 +137,10 @@ Some Scilab functions (<code>modulo</code>, <code>pmodulo</code>, ...) and modul
 <li>Windows 8 (Desktop)</li>
 </ul>
 </li>
-<li>macOS (amd64):
+<li>macOS:
 <ul>
-<li>Intel-based Mac running macOS 10.9+ (run) and 10.14+ with Conda (compile)</li>
-<li>Support of macOS Sonoma added</li>
+<li>Intel-based Mac running macOS 10.9+ (run) and 10.14+ (compile)</li>
+<li>M1-based Mac running macOS 11+ (run, compile).</li>
 </ul>
 </li>
 <li>Linux (amd64):
