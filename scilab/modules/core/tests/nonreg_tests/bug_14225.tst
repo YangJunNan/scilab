@@ -20,9 +20,9 @@
 
 //scilab path
 if getos() == "Windows" then
-    scilabBin = WSCI + "\bin\scilex ";
+    scilabBin = """" + WSCI + "\bin\scilex""";
 else
-    scilabBin = strsplit(SCI, "share/scilab")(1) + "/bin/scilab-cli ";
+    scilabBin = strsplit(SCI, "share/scilab")(1) + "/bin/scilab-cli";
 end
 
 // log isatty() output
@@ -31,26 +31,26 @@ disp(isatty());
 // -quit is only discarded when standart input is redirected (piped mode)
 if isatty() == %f then
     //With -quit argument
-    err = unix(scilabBin + "-e ""exit()"" -quit");
+    err = unix(scilabBin + " -e ""exit()"" -quit --timeout 2m");
     assert_checkequal(err, 0);
-    err = unix(scilabBin + "-e ""1+1;"" -quit");
+    err = unix(scilabBin + " -e ""1+1;"" -quit --timeout 2m");
     assert_checkequal(err, 0);
-    err = unix(scilabBin + "-e ""1+1; exit(12)"" -quit");
+    err = unix(scilabBin + " -e ""1+1; exit(12)"" -quit --timeout 2m");
     assert_checkequal(err, 12);
-    err = unix(scilabBin + "-e ""error(\""error_test\"");"" -quit");
-    assert_checktrue(err <> 0);
-    err = unix(scilabBin + "-e ""error(\""error_test\"");exit(12)"" -quit");
-    assert_checktrue(err <> 12 && err <> 0);
-    err = unix(scilabBin + "-e ""try, error(\""error_test\""); catch, disp(lasterror()),end"" -quit");
+    err = unix(scilabBin + " -e ""error(\""error_test\"");"" -quit --timeout 2m");
+    assert_checktrue(err <> 0 && err <> 22 && err <> 258);
+    err = unix(scilabBin + " -e ""error(\""error_test\"");exit(12)"" -quit --timeout 2m");
+    assert_checktrue(err <> 12 && err <> 0 && err <> 22 && err <> 258);
+    err = unix(scilabBin + " -e ""try, error(\""error_test\""); catch, disp(lasterror()),end"" -quit --timeout 2m");
     assert_checkequal(err, 0);
-    err = unix(scilabBin + "-e ""try, error(\""error_test\""); catch,disp(lasterror());exit(12), end"" -quit");
+    err = unix(scilabBin + " -e ""try, error(\""error_test\""); catch,disp(lasterror());exit(12), end"" -quit --timeout 2m");
     assert_checkequal(err, 12);
 end
 
 //Without -quit argument
-err = unix(scilabBin + "-e ""exit()""");
+err = unix(scilabBin + " -e ""exit()"" --timeout 2m");
 assert_checkequal(err, 0);
-err = unix(scilabBin + "-e ""1+1; exit(12)""");
+err = unix(scilabBin + " -e ""1+1; exit(12)"" --timeout 2m");
 assert_checkequal(err, 12);
-err = unix(scilabBin + "-e ""try, error(\""error_test\""); catch,disp(lasterror());exit(12), end""");
+err = unix(scilabBin + " -e ""try, error(\""error_test\""); catch,disp(lasterror());exit(12), end"" --timeout 2m");
 assert_checkequal(err, 12);
