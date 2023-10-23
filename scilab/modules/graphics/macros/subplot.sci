@@ -36,8 +36,7 @@ function subplot(m ,n, p)
     // Determining the subplot' substrate
     // ----------------------------------
     e = gcf()
-    k = findobj(e, "type","Axes");
-    if k <> []
+    if e.children <> [] & or(e.children.type == "Axes") then
         e = gce();
     else
         k = findobj(e, "type","uicontrol", "-and", "style","frame");
@@ -45,6 +44,7 @@ function subplot(m ,n, p)
             e = k(1)
         end
     end
+
     if e.type=="Figure" | (e.type=="uicontrol" & e.style=="frame") then
         f = e
     else
