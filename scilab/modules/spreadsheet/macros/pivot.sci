@@ -9,8 +9,14 @@
 // For more information, see the COPYING file which you should have received
 // along with this program.
 
-function out = pivot(t, Columns, Rows, DataVariable, Method, ColumnsBinMethod, RowsBinMethod, IncludeTotals, IncludeEmptyGroups)
+function out = pivot(t, Columns, Rows, DataVariable, Method, ColumnsBinMethod, RowsBinMethod, IncludeTotals, IncludeEmptyGroups, IncludedEdge)
 
+    n = checkNamedArguments()
+    if n <> [] then
+        n = sci2exp(n);
+        error(msprintf(_("%s: Wrong named arguments used: %s.\n"), "pivot", n));
+    end
+    
     fname = "pivot";
     out = [];
     groupvars = [];
@@ -119,7 +125,7 @@ function out = pivot(t, Columns, Rows, DataVariable, Method, ColumnsBinMethod, R
         IncludedEdge = "left";
     end
     
-    if Method == "" then
+    if typeof(Method) == "string" && Method == "" then
         g = groupcounts(t, groupvars, groupbins, "IncludeEmptyGroups", IncludeEmptyGroups, "IncludePercentGroups", includePercent, "IncludedEdge", IncludedEdge);
         if includePercent then
             res = g.Percent;
@@ -127,7 +133,6 @@ function out = pivot(t, Columns, Rows, DataVariable, Method, ColumnsBinMethod, R
             res = g.GroupCount;
         end
     else
-        //pause
         g = groupsummary(t, groupvars, groupbins, Method, DataVariable, "IncludeEmptyGroups", IncludeEmptyGroups, "IncludedEdge", IncludedEdge);
         res = g(g.Properties.VariableNames($));
     end    
@@ -153,37 +158,6 @@ function out = pivot(t, Columns, Rows, DataVariable, Method, ColumnsBinMethod, R
                 g.vars(i).data = val;  
             end
             g.vars($).data($+1) = max(size(t));
-            // for i = 1:size(groupvars,"*")
-            //     select typeof(g.vars(i).data)
-            //     case "string"
-            //         if i == 1 then
-            //             v = "Total";
-            //         else
-            //             v = "";
-            //         end
-            //     case "constant"
-            //         v = %nan;
-            //     case "boolean"
-            //         v = %f;
-            //     case "datetime"
-            //         if i == 1 then
-            //             g(:,1) = string(g(:,1))
-            //             v = "Total";
-            //         else
-            //             v = Nat();
-            //         end
-            //     case "duration"
-            //         if i == 1 then
-            //             g(:,1) = string(g(:,1))
-            //             v = "Total";
-            //         else
-            //             v = hours(0);
-            //         end
-            //     end
-            //     val{1, i} = v;
-            // end
-            // val{1, $+1} = max(size(t))
-            // g($+1, :) = val
         end  
         out = g
 
