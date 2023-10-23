@@ -116,7 +116,7 @@ Packaging & Supported Operating Systems
 
 - Native macOS M1/arm64 build is provided (at least 2 x faster than Intel build using Rosetta emulation).
 
-- Scilab embedded JVM is Java 17.
+- Scilab embedded JVM is Java 17 without memory usage limit. Java heap size limit can still be set in Preferences (General / Java Heap Memory).
 
 - To run or compile Scilab, you might need:
   - Windows (amd64):
