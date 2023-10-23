@@ -266,27 +266,24 @@ int StartScilabEngine(ScilabEngineInfo* _pSEI)
     InitializeWindows_tools();
 #endif
 
-    BOOL bRet = TRUE;
+    BOOL bTCLStartupSucceeded = TRUE;
+    BOOL bJVMStartupSucceeded = TRUE;
+    BOOL bGUIStartupSucceeded = TRUE;
+    BOOL bClasspathStartupSucceeded = TRUE;
+    BOOL bConsoleStartupSucceeded = TRUE;
     if (_pSEI->iNoJvm == 0) // With JVM
     {
-        bRet = InitializeTclTk();
-        InitializeJVM();
-        InitializeGUI();
+        bTCLStartupSucceeded = InitializeTclTk();
+        bJVMStartupSucceeded = InitializeJVM();
+        bGUIStartupSucceeded = InitializeGUI();
 
         /* create needed data structure if not already created */
         loadGraphicModule();
 
-        loadBackGroundClassPath();
+        bClasspathStartupSucceeded = loadBackGroundClassPath();
 
         //update %gui to true
         Add_Boolean_Constant(L"%gui", true);
-    }
-
-    if(bRet == FALSE)
-    {
-        std::wcerr << "TCL Initialization failed." << std::endl;
-        std::wcerr << ConfigVariable::getLastErrorMessage() << std::endl;
-        return 1;
     }
 
     // Make sure the default locale is applied at startup
@@ -296,13 +293,47 @@ int StartScilabEngine(ScilabEngineInfo* _pSEI)
     if (_pSEI->iConsoleMode == 0)
     {
         /* Initialize console: lines... */
-        InitializeConsole();
+        bConsoleStartupSucceeded = InitializeConsole();
     }
     else
     {
 #ifndef _MSC_VER
-        initConsoleMode(RAW);
+        bConsoleStartupSucceeded = (BOOL) (initConsoleMode(RAW) >= 0);
 #endif
+    }
+
+    // Report initialization failure after startup but before user commands
+    {
+        if(bTCLStartupSucceeded == FALSE)
+        {
+            std::wcerr << "TCL Initialization failed." << std::endl;
+            std::wcerr << ConfigVariable::getLastErrorMessage() << std::endl;
+            // do not exit, this is an acceptable error on some systems
+        }
+        if(bJVMStartupSucceeded == FALSE)
+        {
+            std::wcerr << "JVM Initialization failed." << std::endl;
+            std::wcerr << ConfigVariable::getLastErrorMessage() << std::endl;
+            exit(-1);
+        }
+        if(bGUIStartupSucceeded == FALSE)
+        {
+            std::wcerr << "GUI Initialization failed." << std::endl;
+            std::wcerr << ConfigVariable::getLastErrorMessage() << std::endl;
+            exit(-1);
+        }
+        if(bClasspathStartupSucceeded == FALSE)
+        {
+            std::wcerr << "Classpath Initialization failed." << std::endl;
+            std::wcerr << ConfigVariable::getLastErrorMessage() << std::endl;
+            exit(-1);
+        }
+        if(bConsoleStartupSucceeded == FALSE)
+        {
+            std::wcerr << "Console Initialization failed." << std::endl;
+            std::wcerr << ConfigVariable::getLastErrorMessage() << std::endl;
+            exit(-1);
+        }
     }
 
     //set prompt value
