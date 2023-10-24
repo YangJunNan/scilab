@@ -933,7 +933,7 @@ do_scilex()
             do_scinotes "$@"
         else
             if test "$OS" = "Darwin" -a $IS_SCILAB_BINARY -eq 1; then
-                if test "$(lipo -archs $BINPATH/$SCILABBIN)" =  "arm64"; then
+                if test "$(file $BINPATH/$SCILABBIN | awk '{print $NF}')" =  "arm64"; then
                     arch -arch arm64 "$SCILABBIN" "$@"
                 else
                     "$SCILABBIN" "$@"
