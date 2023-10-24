@@ -38,24 +38,24 @@ In summary, the main new features and additions are:
 
 - `arguments/end` keywords added: validate function input arguments in a standard way (using standard error messages) and faster than using Scilab code (`type`, `typeof`, ...).
   Some helpers have been added for this new block: `mustBeSameType`, `mustBeEqualDimsOrScalar`, ...
-  Some Scilab functions (`modulo`, `pmodulo`, ...) and modules (`time`, ...) have been updated to use this new block hence enhancing theirs performances.
+  Some Scilab functions (`modulo`, `pmodulo`, ...) and modules (`time`, ...) have been updated to use this new block hence enhancing their performances.
 - `select/case` supports multiple cases with `cells`.
 - When calling a function or extracting values, it is possible to skip an output argument. If a variable is named `_` the output value will not be assigned (e.g. `[r1, _, r3,...] = func(...)`).
 
-### Webtools
+### Web tools
 
 - Use `curl` as default in `atomsDownload()` for all OS to handle local file repositories.
 - `url_encode()` and `url_decode()` are added.
-- Headers added as optional input argument to `http_*` functions.
+- Headers added as optional input arguments to `http_*` functions.
 - Cookie management added to webtools module.
 
 ### Graphics
 
-- New markers types added for graphic objects:
+- New marker types added for graphic objects:
   - triangles pointing to data: upward, downward, left, right,
-  - horizontal line (minus sign) centered on data,
-  - vertical line centered on data.
-- `errbar()` function uses horiontal line marks.
+  - horizontal line (minus sign) centred on data,
+  - vertical line centred on data.
+- `errbar()` function uses horizontal line marks.
 - `subplot()` manages `frame` uicontrols.
 
 ### Differential equations
@@ -65,7 +65,7 @@ In summary, the main new features and additions are:
 
 ### Sparse matrices
 
-- [ColPack](https://github.com/CSCsw/ColPack) graph coloring algorithms for sparse jacobian computation have been integrated.
+- [ColPack](https://github.com/CSCsw/ColPack) graph colouring algorithms for sparse Jacobian computation have been integrated.
 
 ### String
 
@@ -89,7 +89,7 @@ The following functions have been removed:
 - `dnaupd()`, `dneupd()`, `dsaupd()`, `dseupd()`, `znaupd()`, `zneupd()`, obsolete since Scilab 2023.0.0. Please use `eigs()` instead.
 - `plotframe()`, obsolete since Scilab 2023.0.0. Please use `plot2d([], [], 0, "011", " ", [xmin ymin ymax ymax])` instead.
 - `svd(X, 0)`, obsolete since Scilab 2023.0.0. Please use `svd(X, "e")` instead.
-- `xget('fpf')` and `xset('fpf')`, obsolete since Scilab 2023.0.0. Please use `fpf` argument of `contour()`, `contourf()`, `contour2d()` instead.
+- `xget('fpf')` and `xset('fpf')`, obsolete since Scilab 2023.0.0. Please use the `fpf` argument of `contour()`, `contourf()` and `contour2d()` instead.
 
 Removed Features
 ----------------
@@ -116,7 +116,7 @@ Packaging & Supported Operating Systems
 
 - Native macOS M1/arm64 build is provided (at least 2 x faster than Intel build using Rosetta emulation).
 
-- Scilab embedded JVM is Java 17 without memory usage limit. Java heap size limit can still be set in Preferences (General / Java Heap Memory).
+- Scilab embedded JVM is Java 17 without a memory usage limit. Java heap size limit can still be set in Preferences (General / Java Heap Memory).
 
 - To run or compile Scilab, you might need:
   - Windows (amd64):
@@ -135,7 +135,7 @@ API/ABI modification
 --------------------
 
 - Javasci source/target version switched from 6 to 7 (minimal version supported by Java 17).
-- Windows F2C compiler is no more used due to its limited COMMON support, please use Intel Fortran Compiler Classic.
+- Windows F2C compiler is no longer used due to its limited COMMON support, please use Intel Fortran Compiler Classic.
 
 Issue Fixes
 -----------
@@ -148,8 +148,8 @@ Issue Fixes
 - [#11979](https://gitlab.com/scilab/scilab/-/issues/11979): `csvTextScan()` returned unexpected results with blank space separators.
 - [#12280](https://gitlab.com/scilab/scilab/-/issues/12280): `atomsExtract()` (`unzip` & `untar`) features are now available in other functions using new `compress` and `decompress` functions.
 - [#13579](https://gitlab.com/scilab/scilab/-/issues/13579): `bar()` and `barh()` no more display useless and annoying warnings about data transpose.
-- [#13601](https://gitlab.com/scilab/scilab/-/issues/13601): New `angle()` function has been added for calculating argument (angle) for a complex number.
-- [#13841](https://gitlab.com/scilab/scilab/-/issues/13841): `toolbox_skeleton` no more contains a version requirement (considering it is given for current Scilab version).
+- [#13601](https://gitlab.com/scilab/scilab/-/issues/13601): New `angle()` function has been added for calculating the argument (angle) for a complex number.
+- [#13841](https://gitlab.com/scilab/scilab/-/issues/13841): `toolbox_skeleton` no more contains a version requirement (considering it is given for the current Scilab version).
 - [#14037](https://gitlab.com/scilab/scilab/-/issues/14037): `light()` made graphics very unstable (`java.lang.NullPointerException`).
 - [#14053](https://gitlab.com/scilab/scilab/-/issues/14053): Display of cell arrays with scalar components had regressed compared to Scilab 5.x.
 - [#14068](https://gitlab.com/scilab/scilab/-/issues/14068): SciNotes not more backuped files on closing.
@@ -166,7 +166,7 @@ Issue Fixes
 - [#15767](https://gitlab.com/scilab/scilab/-/issues/15767): `test_run("cacsd", "bug_13359")` randomly failed (graphics related issues).
 - [#15790](https://gitlab.com/scilab/scilab/-/issues/15790): The label of a datatip customized with `polyline.display_function` and created in a batch session opened with the `-quit` option was not rendered.
 - [#15837](https://gitlab.com/scilab/scilab/-/issues/15837): It was not possible to get reliable big integers (`int64`, `uint64`) from literal inputs.
-- [#16256](https://gitlab.com/scilab/scilab/-/issues/16256): `loadmatfile()` trimed the value of a character string in a structure field to its first character with version greater than 6.
+- [#16256](https://gitlab.com/scilab/scilab/-/issues/16256): `loadmatfile()` trimmed the value of a character string in a structure field to its first character with version greater than 6.
 - [#16285](https://gitlab.com/scilab/scilab/-/issues/16285): `Matlab sparse` type (7) has been removed (was almost not used).
 - [#16317](https://gitlab.com/scilab/scilab/-/issues/16317): `sci2exp(complex([1 1], [%nan %inf]))` was not correctly evaluable.
 - [#16333](https://gitlab.com/scilab/scilab/-/issues/16333): `tree_show(Xcos_diagram)` crashed Scilab.
@@ -189,7 +189,7 @@ Issue Fixes
 - [#16947](https://gitlab.com/scilab/scilab/-/issues/16947): `NOR_Gate.zcos` Xcos demonstration failed to simulate.
 - [#16950](https://gitlab.com/scilab/scilab/-/issues/16950): `tree_show()` now manages visualization of heterogenous object leaves.
 - [#16973](https://gitlab.com/scilab/scilab/-/issues/16973): New `urlencode()` & `urldecode()` functions have been added.
-- [#16974](https://gitlab.com/scilab/scilab/-/issues/16974): `scilab_macros.txt` and `scilab_primitives.txt` files contents is now sorted and files are no more part of Scilab source tree.
+- [#16974](https://gitlab.com/scilab/scilab/-/issues/16974): `scilab_macros.txt` and `scilab_primitives.txt` files contents are now sorted and files are no more part of Scilab source tree.
 - [#17003](https://gitlab.com/scilab/scilab/-/issues/17003): `slint()` now focuses on code maintenance and actual errors by default (instead of on code style).
 - [#17004](https://gitlab.com/scilab/scilab/-/issues/17004): `L = list(mode, lines), L(2)()` returned an error instead of running `lines()`.
 - [#17009](https://gitlab.com/scilab/scilab/-/issues/17009): Legacy API help pages have been removed (these functions must no more be used).
@@ -201,7 +201,7 @@ Issue Fixes
 - [#17053](https://gitlab.com/scilab/scilab/-/issues/17053): `arl2()` documentation example did not work.
 - [#17058](https://gitlab.com/scilab/scilab/-/issues/17058): Redirection of <https://help.scilab.org/docs/current/LANG/index.html> was not up-to-date.
 - [#17061](https://gitlab.com/scilab/scilab/-/issues/17061): `cdfnor()` crashed Scilab macOS/arm64 build.
-- [#17063](https://gitlab.com/scilab/scilab/-/issues/17063): The 16kB limit for the content of `if/for/while/select` was still documented but the limit no more existed since Scilab 6.0.0.
+- [#17063](https://gitlab.com/scilab/scilab/-/issues/17063): The 16kB limit for the content of `if/for/while/select` was still documented but the limit no longer existed since Scilab 6.0.0.
 - [#17067](https://gitlab.com/scilab/scilab/-/issues/17067): `config.sub` was outdated.
 - [#17068](https://gitlab.com/scilab/scilab/-/issues/17068): Under macOS, arm64 CPU architecture was wrongly detected during configuration of `ilib_build()`.
 - [#17070](https://gitlab.com/scilab/scilab/-/issues/17070): The `xlabel()` web help page contained references to `zlabel()` in its title.
@@ -218,6 +218,6 @@ Issue Fixes
 - [#17110](https://gitlab.com/scilab/scilab/-/issues/17110): Under macOS, SciNotes save dialog selected parent of current directory as default.
 - [#17120](https://gitlab.com/scilab/scilab/-/issues/17120): Display of cells was broken.
 - [#17122](https://gitlab.com/scilab/scilab/-/issues/17122): Scilab crashed after `xsave()` on closing specific `bar()` figure.
-- [#17127](https://gitlab.com/scilab/scilab/-/issues/17127): The "Acknowledgements" window (in Scilab About Box) was not readonly.
+- [#17127](https://gitlab.com/scilab/scilab/-/issues/17127): The "Acknowledgements" window (in Scilab About Box) was not read-only.
 - [#17129](https://gitlab.com/scilab/scilab/-/issues/17129): `checkNamedArguments()` wrongly listed `varargout`.
 - [#17130](https://gitlab.com/scilab/scilab/-/issues/17130): File Browser toolbar buttons generated spurious display in console.
