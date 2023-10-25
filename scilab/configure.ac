@@ -43,7 +43,7 @@ else
 fi
 
 # Change version here, other files will be updated at the end of configure
-SCILAB_VERSION_MAJOR=2024
+SCILAB_VERSION_MAJOR=2025
 SCILAB_VERSION_MINOR=0
 SCILAB_VERSION_MAINTENANCE=0
 AC_SUBST(SCILAB_VERSION_MAJOR)
