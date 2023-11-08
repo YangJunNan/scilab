@@ -156,7 +156,7 @@ if test -n "${BINARY}"; then
   cp "${BINARY}" linux-runner/
 
   # build and publish
-  docker build --progress=plain --no-cache -t "${CI_REGISTRY_IMAGE}/linux-runner:${DOCKER_TAG}" --build-arg "DOCKER_LINUX_BUILDER=${DOCKER_LINUX_BUILDER}" --build-arg "DOCKER_LINUX_RUNNER=${CI_REGISTRY_IMAGE}/linux-runner" --build-arg "DOCKER_TAG=${DOCKER_TAG}" linux-runner/
+  docker build -t "${CI_REGISTRY_IMAGE}/linux-runner:${DOCKER_TAG}" --build-arg "DOCKER_LINUX_BUILDER=${DOCKER_LINUX_BUILDER}" --build-arg "DOCKER_LINUX_RUNNER=${CI_REGISTRY_IMAGE}/linux-runner" --build-arg "DOCKER_TAG=${DOCKER_TAG}" linux-runner/
   docker push "${CI_REGISTRY_IMAGE}/linux-runner:${DOCKER_TAG}"
 fi
 
