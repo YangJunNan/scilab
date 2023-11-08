@@ -53,10 +53,10 @@
                         Matrix form (4, [3 6 10]) can be used to except size of <literal>4 x 3</literal> or <literal>4 x 6</literal> or <literal>4 x 10</literal>.
                     </para>
                     <para>
-                        If input argument is a scalar and expected dimensions are bigger, input argument will be expand to mathc the expected dimensions.
+                        If input argument is a scalar and expected dimensions are bigger, input argument will be expand to match the expected dimensions.
                     </para>
                     <para>
-                        If expected dimensions is a vector (1xn or nx1) and input argument is a vector, input will be transposed to mathc expected form.
+                        If expected dimensions is a vector (1xn or nx1) and input argument is a vector, input will be transposed to match expected form.
                     </para>
                 </listitem>
             </varlistentry>

@@ -8,6 +8,9 @@ set INSTALL_FAIL=%SCILAB_COMMON_PATH%\%SCI_VERSION_STRING%\install.failed
 set SCIHOME=%SCILAB_COMMON_PATH%\%SCI_VERSION_STRING%\scihome\%SCI_VERSION_STRING%-%TEST%-%CI_CONCURRENT_ID%
 set LOG_PATH=%SCI_VERSION_STRING%
 
+REM Create log folder
+if not exist %LOG_PATH% mkdir %LOG_PATH%
+
 REM check if installation is running
 :wait_install
 if exist "%INSTALL_LOCK%" (
@@ -39,6 +42,7 @@ if errorlevel 1 (
 call "%INSTALLER_DIR%\%SCI_VERSION_STRING%.bin.%ARCH%.exe" ^
   /TASKS=!desktopicon,!AssociateSCESCI,!AssociateTSTDEM,!AssociateSCICOS,!AssociateSOD ^
   /NOICONS /SUPPRESSMSGBOXES /SILENT /SP- ^
+  /LOG="%LOG_PATH%\log_iss_install_%CI_COMMIT_SHORT_SHA%.txt" ^
   /DIR="%INSTALL_DIR%"
 
 if errorlevel 1 (
@@ -52,8 +56,6 @@ del "%INSTALL_LOCK%"
 
 :installed
 
-REM Create log folder
-if not exist %LOG_PATH% mkdir %LOG_PATH%
 
 @echo on
 setlocal EnableExtensions
@@ -77,3 +79,8 @@ if errorlevel 1 (
 
 rem fail without xml report
 copy "%LOG_PATH%\%TEST%.xml" "%SCILAB_COMMON_PATH%\%SCI_VERSION_STRING%\test\"
+if errorlevel 1 exit 1
+
+rem copy the logs
+if exist "%LOG_PATH%\log_iss_install_%CI_COMMIT_SHORT_SHA%.txt" copy "%LOG_PATH%\log_iss_install_%CI_COMMIT_SHORT_SHA%.txt" "%SCILAB_COMMON_PATH%\%SCI_VERSION_STRING%\log\"
+if errorlevel 1 exit 1

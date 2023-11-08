@@ -20,6 +20,10 @@ jgraphx.jar=${thirdparty.dir}/jgraphx.jar
 
 jogl2.jar=${thirdparty.dir}/jogl-all.jar
 
+javafx.base.jar=${thirdparty.dir}/javafx.base.jar
+javafx.swing.jar=${thirdparty.dir}/javafx.swing.jar
+javafx.graphics.jar=${thirdparty.dir}/javafx.graphics.jar
+
 jhall.jar=${thirdparty.dir}/jhall.jar
 
 lucene-core.jar=${thirdparty.dir}/lucene-core-8.4.0.jar

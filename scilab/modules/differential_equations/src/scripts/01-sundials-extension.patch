@@ -1,8 +1,8 @@
-Index: patched_sundials/include/cvode/cvode.h
+Index: patched_sundials/include/cvodes/cvodes.h
 ===================================================================
---- patched_sundials.orig/include/cvode/cvode.h
-+++ patched_sundials/include/cvode/cvode.h
-@@ -36,6 +36,11 @@ extern "C" {
+--- patched_sundials.orig/include/cvodes/cvodes.h
++++ patched_sundials/include/cvodes/cvodes.h
+@@ -35,6 +35,11 @@ extern "C" {
  /* lmm */
  #define CV_ADAMS          1
  #define CV_BDF            2
@@ -14,7 +14,7 @@ Index: patched_sundials/include/cvode/cvode.h
  
  /* itask */
  #define CV_NORMAL         1
-@@ -47,6 +52,8 @@ extern "C" {
+@@ -58,6 +63,8 @@ extern "C" {
  #define CV_SUCCESS               0
  #define CV_TSTOP_RETURN          1
  #define CV_ROOT_RETURN           2
@@ -23,11 +23,11 @@ Index: patched_sundials/include/cvode/cvode.h
  
  #define CV_WARNING              99
  
-Index: patched_sundials/include/ida/ida.h
+Index: patched_sundials/include/idas/idas.h
 ===================================================================
---- patched_sundials.orig/include/ida/ida.h
-+++ patched_sundials/include/ida/ida.h
-@@ -45,6 +45,8 @@ extern "C" {
+--- patched_sundials.orig/include/idas/idas.h
++++ patched_sundials/include/idas/idas.h
+@@ -56,6 +56,8 @@ extern "C" {
  #define IDA_SUCCESS          0
  #define IDA_TSTOP_RETURN     1
  #define IDA_ROOT_RETURN      2
@@ -50,11 +50,11 @@ Index: patched_sundials/include/sundials/sundials_math.h
  #ifdef __cplusplus
  }
  #endif
-Index: patched_sundials/src/cvode/cvode.c
+Index: patched_sundials/src/cvodes/cvodes.c
 ===================================================================
---- patched_sundials.orig/src/cvode/cvode.c
-+++ patched_sundials/src/cvode/cvode.c
-@@ -28,6 +28,9 @@
+--- patched_sundials.orig/src/cvodes/cvodes.c
++++ patched_sundials/src/cvodes/cvodes.c
+@@ -194,6 +194,9 @@
  #include <sundials/sundials_types.h>
  #include <sunnonlinsol/sunnonlinsol_newton.h>
  
@@ -64,7 +64,7 @@ Index: patched_sundials/src/cvode/cvode.c
  /*=================================================================*/
  /* CVODE Private Constants                                         */
  /*=================================================================*/
-@@ -77,6 +80,10 @@
+@@ -243,6 +246,10 @@
  #define RTFOUND          +1
  #define CLOSERT          +3
  
@@ -73,9 +73,9 @@ Index: patched_sundials/src/cvode/cvode.c
 +#define MASKED           55
 +
  /*
-  * Control constants for tolerances
-  * --------------------------------
-@@ -156,6 +163,8 @@ int cvEwtSetSV_fused(const booleantype a
+  * Control constants for sensitivity DQ
+  * ------------------------------------
+@@ -348,6 +355,8 @@ static int cvQuadSensEwtSetSV(CVodeMem c
  /* Initial stepsize calculation */
  
  static int cvHin(CVodeMem cv_mem, realtype tout);
@@ -84,7 +84,7 @@ Index: patched_sundials/src/cvode/cvode.c
  static realtype cvUpperBoundH0(CVodeMem cv_mem, realtype tdist);
  static int cvYddNorm(CVodeMem cv_mem, realtype hg, realtype *yddnrm);
  
-@@ -163,6 +172,12 @@ static int cvYddNorm(CVodeMem cv_mem, re
+@@ -355,6 +364,12 @@ static int cvYddNorm(CVodeMem cv_mem, re
  
  static int cvStep(CVodeMem cv_mem);
  
@@ -97,19 +97,19 @@ Index: patched_sundials/src/cvode/cvode.c
  /* Function called at beginning of step */
  
  static void cvAdjustParams(CVodeMem cv_mem);
-@@ -259,7 +274,10 @@ void *CVodeCreate(int lmm, SUNContext su
+@@ -468,8 +483,9 @@ void *CVodeCreate(int lmm, SUNContext su
+   CVodeMem cv_mem;
  
    /* Test inputs */
- 
+-
 -  if ((lmm != CV_ADAMS) && (lmm != CV_BDF)) {
 +  /* Integration mode: ADAMS, BDF or RK-based */
 +  /* SUNDIALS EXTENSION */
 +  if ((lmm != CV_ADAMS) && (lmm != CV_BDF) && (lmm != CV_DOPRI) && (lmm != CV_ExpRK) && (lmm != CV_ImpRK) && (lmm != CV_CRANI)) {
-+
-     cvProcessError(NULL, 0, "CVODE", "CVodeCreate", MSGCV_BAD_LMM);
+     cvProcessError(NULL, 0, "CVODES", "CVodeCreate", MSGCV_BAD_LMM);
      return(NULL);
    }
-@@ -281,6 +299,22 @@ void *CVodeCreate(int lmm, SUNContext su
+@@ -491,6 +507,22 @@ void *CVodeCreate(int lmm, SUNContext su
  
    maxord = (lmm == CV_ADAMS) ? ADAMS_Q_MAX : BDF_Q_MAX;
  
@@ -132,7 +132,7 @@ Index: patched_sundials/src/cvode/cvode.c
    /* Copy input parameters into cv_mem */
    cv_mem->cv_sunctx = sunctx;
    cv_mem->cv_lmm  = lmm;
-@@ -1098,7 +1132,11 @@ int CVode(void *cvode_mem, realtype tout
+@@ -2892,7 +2924,11 @@ int CVode(void *cvode_mem, realtype tout
      }
  
      /* Set initial h (from H0 or cvHin). */
@@ -144,8 +144,8 @@ Index: patched_sundials/src/cvode/cvode.c
 +    
      cv_mem->cv_h = cv_mem->cv_hin;
      if ( (cv_mem->cv_h != ZERO) && ((tout-cv_mem->cv_tn)*cv_mem->cv_h < ZERO) ) {
-       cvProcessError(cv_mem, CV_ILL_INPUT, "CVODE", "CVode", MSGCV_BAD_H0);
-@@ -1125,6 +1163,14 @@ int CVode(void *cvode_mem, realtype tout
+       cvProcessError(cv_mem, CV_ILL_INPUT, "CVODES", "CVode", MSGCV_BAD_H0);
+@@ -2919,6 +2955,14 @@ int CVode(void *cvode_mem, realtype tout
      if (SUNRabs(cv_mem->cv_h) < cv_mem->cv_hmin)
        cv_mem->cv_h *= cv_mem->cv_hmin/SUNRabs(cv_mem->cv_h);
  
@@ -160,7 +160,7 @@ Index: patched_sundials/src/cvode/cvode.c
      /* Check for approach to tstop */
  
      if (cv_mem->cv_tstopset) {
-@@ -1227,7 +1273,17 @@ int CVode(void *cvode_mem, realtype tout
+@@ -3053,7 +3097,17 @@ int CVode(void *cvode_mem, realtype tout
            SUNDIALS_MARK_FUNCTION_END(CV_PROFILER);
            return(CV_RTFUNC_FAIL);
          }
@@ -179,7 +179,7 @@ Index: patched_sundials/src/cvode/cvode.c
        }
  
      } /* end of root stop check */
-@@ -1284,6 +1340,12 @@ int CVode(void *cvode_mem, realtype tout
+@@ -3110,6 +3164,12 @@ int CVode(void *cvode_mem, realtype tout
  
      }
  
@@ -192,7 +192,7 @@ Index: patched_sundials/src/cvode/cvode.c
    } /* end stopping tests block */
  
    /*
-@@ -1365,7 +1427,23 @@ int CVode(void *cvode_mem, realtype tout
+@@ -3235,7 +3295,23 @@ int CVode(void *cvode_mem, realtype tout
      }
  
      /* Call cvStep to take a step */
@@ -217,7 +217,7 @@ Index: patched_sundials/src/cvode/cvode.c
  
      /* Process failed step cases, and exit loop */
      if (kflag != CV_SUCCESS) {
-@@ -2058,6 +2136,51 @@ static int cvHin(CVodeMem cv_mem, realty
+@@ -5138,6 +5214,51 @@ static int cvHin(CVodeMem cv_mem, realty
  }
  
  /*
@@ -269,7 +269,7 @@ Index: patched_sundials/src/cvode/cvode.c
   * cvUpperBoundH0
   *
   * This routine sets an upper bound on abs(h0) based on
-@@ -2259,6 +2382,384 @@ static int cvStep(CVodeMem cv_mem)
+@@ -5668,6 +5789,384 @@ static int cvStep(CVodeMem cv_mem)
    return(CV_SUCCESS);
  }
  
@@ -654,7 +654,7 @@ Index: patched_sundials/src/cvode/cvode.c
  /*
   * -----------------------------------------------------------------
   * Function called at beginning of step
-@@ -3902,7 +4403,7 @@ static int cvSLdet(CVodeMem cv_mem)
+@@ -7962,7 +8461,7 @@ static int cvSLdet(CVodeMem cv_mem)
   *  CV_SUCCESS     = 0 otherwise.
   */
  
@@ -663,7 +663,7 @@ Index: patched_sundials/src/cvode/cvode.c
  {
    int i, retval;
    realtype smallh, hratio, tplus;
-@@ -3970,7 +4471,7 @@ static int cvRcheck1(CVodeMem cv_mem)
+@@ -8030,7 +8529,7 @@ static int cvRcheck1(CVodeMem cv_mem)
   *     CV_SUCCESS      = 0 otherwise.
   */
  
@@ -672,7 +672,7 @@ Index: patched_sundials/src/cvode/cvode.c
  {
    int i, retval;
    realtype smallh, hratio, tplus;
-@@ -4042,7 +4543,7 @@ static int cvRcheck2(CVodeMem cv_mem)
+@@ -8102,7 +8601,7 @@ static int cvRcheck2(CVodeMem cv_mem)
   *     CV_SUCCESS      = 0 otherwise.
   */
  
@@ -681,7 +681,7 @@ Index: patched_sundials/src/cvode/cvode.c
  {
    int i, ier, retval;
  
-@@ -4166,7 +4667,7 @@ static int cvRcheck3(CVodeMem cv_mem)
+@@ -8226,7 +8725,7 @@ static int cvRcheck3(CVodeMem cv_mem)
   *      CV_SUCCESS      = 0 otherwise.
   */
  
@@ -690,7 +690,7 @@ Index: patched_sundials/src/cvode/cvode.c
  {
    realtype alph, tmid, gfrac, maxfrac, fracint, fracsub;
    int i, retval, imax, side, sideprev;
-@@ -4528,3 +5029,567 @@ void cvErrHandler(int error_code, const
+@@ -9297,3 +9796,567 @@ void cvErrHandler(int error_code, const
  
    return;
  }
@@ -1258,12 +1258,12 @@ Index: patched_sundials/src/cvode/cvode.c
 +
 +  return cvRootfindStd(cv_mem);
 +}
-Index: patched_sundials/src/ida/ida.c
+Index: patched_sundials/src/idas/idas.c
 ===================================================================
---- patched_sundials.orig/src/ida/ida.c
-+++ patched_sundials/src/ida/ida.c
-@@ -88,6 +88,9 @@
- #include <sundials/sundials_math.h>
+--- patched_sundials.orig/src/idas/idas.c
++++ patched_sundials/src/idas/idas.c
+@@ -146,6 +146,9 @@
+ #include <sundials/sundials_nvector_senswrapper.h>
  #include <sunnonlinsol/sunnonlinsol_newton.h>
  
 +/* SUNDIALS EXTENSION */
@@ -1271,8 +1271,8 @@ Index: patched_sundials/src/ida/ida.c
 +
  /*
   * =================================================================
-  * IDA PRIVATE CONSTANTS
-@@ -154,6 +157,10 @@
+  * IDAS PRIVATE CONSTANTS
+@@ -212,6 +215,10 @@
  #define RTFOUND          +1
  #define CLOSERT          +3
  
@@ -1281,28 +1281,45 @@ Index: patched_sundials/src/ida/ida.c
 +#define MASKED           55
 +
  /*
-  * Control constants for tolerances
-  * --------------------------------
-@@ -1303,6 +1310,18 @@ int IDASolve(void *ida_mem, realtype tou
+  * Control constants for sensitivity DQ
+  * ------------------------------------
+@@ -2540,6 +2547,16 @@ int IDASolve(void *ida_mem, realtype tou
+           SUNDIALS_MARK_FUNCTION_END(IDA_PROFILER);
+           return(IDA_RTFUNC_FAIL);
+         }
++        /* SUNDIALS EXTENSION */
++        if (is_sundials_with_extension())
++        {
++          if (ier == ZERODETACHING)    /* Zero detaching */
++          {
++            IDA_mem->ida_irfnd = 1;
++            IDA_mem->ida_tretlast = *tret = IDA_mem->ida_tlo;
++            return(IDA_ZERO_DETACH_RETURN);
++          }
++        }
+       }
+ 
+     } /* end of root stop check */
+@@ -2701,6 +2718,18 @@ int IDASolve(void *ida_mem, realtype tou
          break;
        }
  
 +      /* SUNDIALS EXTENSION */
 +      if (is_sundials_with_extension())
 +      {
-+          if (ier == ZERODETACHING)    /* Zero detaching */
-+          {
-+              IDA_mem->ida_irfnd = 1;
-+              istate = IDA_ZERO_DETACH_RETURN;
-+              IDA_mem->ida_tretlast = *tret = IDA_mem->ida_tlo;
-+              break;
-+          }
++        if (ier == ZERODETACHING)    /* Zero detaching */
++        {
++          IDA_mem->ida_irfnd = 1;
++          istate = IDA_ZERO_DETACH_RETURN;
++          IDA_mem->ida_tretlast = *tret = IDA_mem->ida_tlo;
++          break;
++        }
 +      }
 +
        /* If we are at the end of the first step and we still have
         * some event functions that are inactive, issue a warning
         * as this may indicate a user error in the implementation
-@@ -3251,7 +3270,7 @@ realtype IDAWrmsNorm(IDAMem IDA_mem, N_V
+@@ -7245,7 +7274,7 @@ static realtype IDAQuadSensWrmsNormUpdat
   *  IDA_SUCCESS     = 0 otherwise.
   */
  
@@ -1311,7 +1328,7 @@ Index: patched_sundials/src/ida/ida.c
  {
    int i, retval;
    realtype smallh, hratio, tplus;
-@@ -3320,7 +3339,7 @@ static int IDARcheck1(IDAMem IDA_mem)
+@@ -7314,7 +7343,7 @@ static int IDARcheck1(IDAMem IDA_mem)
   *     IDA_SUCCESS     = 0 otherwise.
   */
  
@@ -1320,7 +1337,7 @@ Index: patched_sundials/src/ida/ida.c
  {
    int i, retval;
    realtype smallh, hratio, tplus;
-@@ -3394,7 +3413,7 @@ static int IDARcheck2(IDAMem IDA_mem)
+@@ -7388,7 +7417,7 @@ static int IDARcheck2(IDAMem IDA_mem)
   *     IDA_SUCCESS     = 0 otherwise.
   */
  
@@ -1329,7 +1346,7 @@ Index: patched_sundials/src/ida/ida.c
  {
    int i, ier, retval;
  
-@@ -3516,7 +3535,7 @@ static int IDARcheck3(IDAMem IDA_mem)
+@@ -7510,7 +7539,7 @@ static int IDARcheck3(IDAMem IDA_mem)
   *
   */
  
@@ -1338,7 +1355,7 @@ Index: patched_sundials/src/ida/ida.c
  {
    realtype alph, tmid, gfrac, maxfrac, fracint, fracsub;
    int i, retval, imax, side, sideprev;
-@@ -3758,3 +3777,461 @@ void IDAErrHandler(int error_code, const
+@@ -8105,3 +8134,461 @@ void IDAErrHandler(int error_code, const
  
    return;
  }
@@ -1821,3 +1838,22 @@ Index: patched_sundials/src/sundials/sundials_math.c
 +    return(floor(x));
 +#endif
 +}
+Index: patched_sundials/src/idas/idas_ic.c
+===================================================================
+--- patched_sundials.orig/src/idas/idas_ic.c
++++ patched_sundials/src/idas/idas_ic.c
+@@ -319,6 +319,14 @@ int IDACalcIC(void *ida_mem, int icopt,
+ 
+   }   /* End of nwt loop */
+ 
++  /* SUNDIALS EXTENSION */
++  if (is_sundials_with_extension())
++  {
++      /* in order to return computed new values even if they are not consistent*/
++      N_VScale(ONE, IDA_mem->ida_yy0, IDA_mem->ida_phi[0]);
++      N_VScale(ONE, IDA_mem->ida_yp0, IDA_mem->ida_phi[1]);
++  }
++
+   /* Load the optional outputs. */
+ 
+   if(icopt == IDA_YA_YDP_INIT)   IDA_mem->ida_hused = hic;

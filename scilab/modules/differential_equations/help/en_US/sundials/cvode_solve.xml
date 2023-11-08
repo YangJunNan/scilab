@@ -11,7 +11,7 @@
 <refentry xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svg="http://www.w3.org/2000/svg" xmlns:ns5="http://www.w3.org/1999/xhtml" xmlns:mml="http://www.w3.org/1998/Math/MathML" xmlns:db="http://docbook.org/ns/docbook" xmlns:scilab="http://www.scilab.org" xml:id="cvode" xml:lang="en" xmlns:m="http://www.w3.org/1998/Math/MathML">
     <refnamediv>
         <refname>cvode</refname>
-        <refpurpose>Sundials ordinary differential equation solver</refpurpose>
+        <refpurpose>SUNDIALS ordinary differential equation solver</refpurpose>
     </refnamediv>
     <refsynopsisdiv>
         <title>Syntax</title>
@@ -97,9 +97,9 @@
         <latex style="display">y' = f(t,y),\,y(t_0)=y_0</latex>
     </para>
     <para> 
-        It is an interface to the cvodeS solver of Sundials library with default ADAMS method (BDF method can be chosen in <term>options</term>). 
+        It is an interface to the cvodes solver of SUNDIALS library with default ADAMS method (BDF method can be chosen in <term>options</term>). 
         The solver has a specific feature which allows to compute the sensitivity with respect to a vector of parameters present in the
-        initial condition and/or the right hand side (see the <link linkend="cvode_sens">dedicated section</link> below).
+        initial condition and/or the right hand side (see the <link linkend="cvodes">ODE Sensitivity</link> dedicated help page).
     </para>
     <para>
         The solver can also keep the solution in a given constraint manifold by projection (see the <link linkend="cvode_proj">dedicated section</link> below).
@@ -120,8 +120,8 @@
     <para>
         where <literal>y0</literal> is the
         initial condition, <literal>t0, tf</literal> are the initial and final time, <literal>y</literal> is the
-        array of solutions <literal>[y(t(1)),y(t(2)),...]</literal> at time values in t, where concatenation is done on
-        next dimension if <literal>y0</literal> is not a vector (e.g. a matrix). The time values in <literal>t</literal>
+        array of solution values <literal>[y(t(1)),y(t(2)),...]</literal> at time values in t, where concatenation is done on
+        next dimension if <literal>y0</literal> is not a column vector (e.g. a matrix with at least 2 columns). The time values in <literal>t</literal>
         are those used by the solver to meet default relative and absolute estimated local error (which can be changed in <term>options</term>). 
         In the simplest case the right hand side is computed by a Scilab function with two arguments, for example for the ode <latex>y' = -y+t</latex>
         the right hand side is coded as
@@ -129,7 +129,7 @@
     <para>
         <programlisting role="no-scilab-exec"><![CDATA[
             function yprime = f(t,y)
-            yprime = t+y
+                yprime = t+y
             end]]>
         </programlisting></para>
         <para>
@@ -153,7 +153,7 @@
             <programlisting role="no-scilab-exec"><![CDATA[[t,y,te,ye,ie] = cvode(f,tspan,y0,options)]]>
             </programlisting></para>
             <para>
-                allows to recover <latex>(t,y)</latex> values in <literal>te,ye</literal> and in <literal>ie</literal> the number(s) of the vanishing function.
+                allows to recover <latex>(t,y)</latex> values in <literal>info.te, info.ye, info.ype</literal> and in <literal>info.ie</literal> the number(s) of the vanishing function.
             </para>
             <para>
                 When solution has to be further evaluated at arbitrary points which are not known in advance, then the syntax
@@ -180,7 +180,7 @@
                 <latex>y''-\mu(1-y^2)y'+y =0</latex> with the initial
                 condition <latex>y(0)=2,\,y'(0)=0</latex> and <latex>\mu=1</latex>. Since the original equation is of second order
                 we define the state of the equivalent first order equation as <latex>v=(y,y')</latex>. The right hand side is computed by the
-                function <literal>%SUN_vdp1</literal> (defined in the Sundials module):
+                function <literal>%SUN_vdp1</literal> (defined in the SUNDIALS module):
             </para>
             <para>
                 <programlisting role="no-scilab-exec"><![CDATA[
@@ -238,10 +238,10 @@
                 <para>
                 <programlisting><![CDATA[
                 function Xd = f(t,X,alpha)
-                Xd = alpha*[-X(2);X(1)];
+                    Xd = alpha*[-X(2);X(1)];
                 end
                 function corr = proj(t,X,err)
-                corr = X/norm(X) - X;
+                    corr = X/norm(X) - X;
                 end
 
                 alpha = 1;
@@ -318,7 +318,7 @@
                     </para>
                     <para>
                         where the sensitivity function is  <latex style="inline">s={\partial y}/{\partial p</latex>. The right hand side of the sensitivity equation can be provided
-                        by the user (see the <code>sensRhs</code> option in the <link linkend="sundials_sensitivity">Sensitiviy</link> help page) but by default the directional
+                        by the user (see the <code>sensRhs</code> option in the <link linkend="cvodes">ODE Sensitivtiy</link> help page) but by default the directional
                         derivatives are approximated by finite differences. The call to cvode takes the form
                     </para>
                     <para><programlisting role="no-scilab-exec"><![CDATA[cvode(fun, tspan, y0, sensPar = p)]]>
@@ -349,7 +349,7 @@
                     </scilab:image>
                 </para>
                 <para>
-                   Several options are available, see the <link linkend="sundials_sensitivity">Sensitiviy</link> help page.
+                   Several options are available, see the <link linkend="cvodes">ODE Sensitivity</link> help page.
                 </para>
                 </refsection>
 
@@ -357,11 +357,8 @@
                     <title>See also</title>
                     <simplelist type="inline">
                         <member>
-                            <link linkend="sundials_sensitivity">Sensitivity</link>
+                            <link linkend="cvodes">ODE Sensitivity</link>
                         </member>
-                        <!-- <member>
-                            <link linkend="cvodeB">cvodeB solver</link>
-                        </member> -->
                         <member>
                             <link linkend="arkode">arkode</link>
                         </member>

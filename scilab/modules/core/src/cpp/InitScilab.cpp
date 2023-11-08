@@ -166,10 +166,6 @@ int StartScilabEngine(ScilabEngineInfo* _pSEI)
         _pSEI->pstExec = NULL;
     }
 
-    // ignore -quit if -e or -f are not given
-    _pSEI->iForceQuit = _pSEI->iForceQuit && (_pSEI->pstExec || _pSEI->pstFile);
-    ConfigVariable::setForceQuit(_pSEI->iForceQuit == 1);
-
     // setup timeout delay
     if (_pSEI->iTimeoutDelay != 0)
     {
@@ -270,27 +266,24 @@ int StartScilabEngine(ScilabEngineInfo* _pSEI)
     InitializeWindows_tools();
 #endif
 
-    BOOL bRet = TRUE;
+    BOOL bTCLStartupSucceeded = TRUE;
+    BOOL bJVMStartupSucceeded = TRUE;
+    BOOL bGUIStartupSucceeded = TRUE;
+    BOOL bClasspathStartupSucceeded = TRUE;
+    BOOL bConsoleStartupSucceeded = TRUE;
     if (_pSEI->iNoJvm == 0) // With JVM
     {
-        bRet = InitializeTclTk();
-        InitializeJVM();
-        InitializeGUI();
+        bTCLStartupSucceeded = InitializeTclTk();
+        bJVMStartupSucceeded = InitializeJVM();
+        bGUIStartupSucceeded = InitializeGUI();
 
         /* create needed data structure if not already created */
         loadGraphicModule();
 
-        loadBackGroundClassPath();
+        bClasspathStartupSucceeded = loadBackGroundClassPath();
 
         //update %gui to true
         Add_Boolean_Constant(L"%gui", true);
-    }
-
-    if(bRet == FALSE)
-    {
-        std::wcerr << "TCL Initialization failed." << std::endl;
-        std::wcerr << ConfigVariable::getLastErrorMessage() << std::endl;
-        return 1;
     }
 
     // Make sure the default locale is applied at startup
@@ -300,13 +293,47 @@ int StartScilabEngine(ScilabEngineInfo* _pSEI)
     if (_pSEI->iConsoleMode == 0)
     {
         /* Initialize console: lines... */
-        InitializeConsole();
+        bConsoleStartupSucceeded = InitializeConsole();
     }
     else
     {
 #ifndef _MSC_VER
-        initConsoleMode(RAW);
+        bConsoleStartupSucceeded = (BOOL) (initConsoleMode(RAW) >= 0);
 #endif
+    }
+
+    // Report initialization failure after startup but before user commands
+    {
+        if(bTCLStartupSucceeded == FALSE)
+        {
+            std::wcerr << "TCL Initialization failed." << std::endl;
+            std::wcerr << ConfigVariable::getLastErrorMessage() << std::endl;
+            // do not exit, this is an acceptable error on some systems
+        }
+        if(bJVMStartupSucceeded == FALSE)
+        {
+            std::wcerr << "JVM Initialization failed." << std::endl;
+            std::wcerr << ConfigVariable::getLastErrorMessage() << std::endl;
+            exit(-1);
+        }
+        if(bGUIStartupSucceeded == FALSE)
+        {
+            std::wcerr << "GUI Initialization failed." << std::endl;
+            std::wcerr << ConfigVariable::getLastErrorMessage() << std::endl;
+            exit(-1);
+        }
+        if(bClasspathStartupSucceeded == FALSE)
+        {
+            std::wcerr << "Classpath Initialization failed." << std::endl;
+            std::wcerr << ConfigVariable::getLastErrorMessage() << std::endl;
+            exit(-1);
+        }
+        if(bConsoleStartupSucceeded == FALSE)
+        {
+            std::wcerr << "Console Initialization failed." << std::endl;
+            std::wcerr << ConfigVariable::getLastErrorMessage() << std::endl;
+            exit(-1);
+        }
     }
 
     //set prompt value
@@ -432,6 +459,13 @@ int StartScilabEngine(ScilabEngineInfo* _pSEI)
         _pSEI->pstExec = NULL;
         _pSEI->pstFile = NULL;
         iScript = 1;
+    }
+
+    // If -quit argument is passed to Scilab, add a "exit" command to command queue.
+    // Setting ConfigVariable::setForceQuit() here avoids Scilab to quit before executing callbacks.
+    if (_pSEI->iForceQuit == 1)
+    {
+        StoreCommand("[_,__err__]=lasterror();exit(__err__);");
     }
 
     ConfigVariable::setUserMode(2);
@@ -831,8 +865,14 @@ void* scilabReadAndStore(void* param)
             continue;
         }
 
-        // store the command and wait for this execution ends.
-        StoreConsoleCommand(command, 1);
+        // when Scilab is executed in a pipe |
+        // quit can be already executed because of -quit,
+        // so the quit sent when closing the pipe must not be stored.
+        if(ConfigVariable::getForceQuit() == false)
+        {
+            // store the command and wait for this execution ends.
+            StoreConsoleCommand(command, 1);
+        }
 
         FREE(command);
         command = NULL;

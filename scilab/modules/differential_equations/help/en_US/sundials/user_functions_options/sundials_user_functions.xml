@@ -16,7 +16,7 @@
     <refsection role="description">
         <title>Introduction</title>
         <para>
-            To solve nonlinear equationss (Nonlinear Algebraic Equations), ODEs (Ordinary Differential Equations) or DAEs (Differential Algebraic Equations)
+            To solve nonlinear equations, ODEs (Ordinary Differential Equations) or DAEs (Differential Algebraic Equations)
             different functions have to be provided to the solver. The right hand side (which denotes a different function depending on the kind
             of equations) has to be computed by the user and is the only mandatory function.
             In addition, all solvers allow to give a user <link linkend="sundials_jacobian">Jacobian</link> to help the solver and 
@@ -25,7 +25,7 @@
         <para>For ODEs and DAEs only, the roots of a set of user <link linkend="sundials_event">Events</link>
             functions can be determined during the iterations, 
             <!--><link linkend="cvode_proj">projection</link> on a constraint manifold can be performed during the integration (cvode only)-->
-            <link linkend="sundials_sensitivity">Sensitivity</link> with respect to a parameter can be computed during the integration (cvode only) 
+            sensitivity with respect to a parameter can be computed during the integration (cvode and ida only) 
             and a <link linkend="arkode_mass">Mass</link> matrix can be provided (arkode only).            
         </para>
         <para>

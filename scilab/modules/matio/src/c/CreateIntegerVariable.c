@@ -343,7 +343,7 @@ int CreateIntegerVariable(void *pvApiCtx, int iVar, int integerType, matvar_t *m
         piDims = (int*) MALLOC(matVariable->rank * sizeof(int));
         if (piDims == NULL)
         {
-            Scierror(999, _("%s: No more memory.\n"), "CreateBooleanVariable");
+            Scierror(999, _("%s: No more memory.\n"), "CreateIntegerVariable");
             return FALSE;
         }
         for (i = 0; i < matVariable->rank; i++)

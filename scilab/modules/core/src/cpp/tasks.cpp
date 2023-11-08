@@ -203,7 +203,7 @@ void execAstTask(ast::Exp* tree, bool serialize, bool timed, bool ASTtimed, bool
         exec = (ast::RunVisitor*)ConfigVariable::getDefaultVisitor();
     }
 
-    StaticRunner::execAndWait(newTree, exec, isInterruptibleThread, isPrioritaryThread, iCommandOrigin);
+    StaticRunner::execAndWait(newTree, exec, isPrioritaryThread, isInterruptibleThread, iCommandOrigin);
     //DO NOT DELETE tree or newTree, they was deleted by Runner or previously;
 
     if (timed)

@@ -26,7 +26,7 @@
           <tbody>
             <tr>
               <td><term>names</term></td>
-              <td>    <para>a string matrix giving the entry point names which are to be linked.
+              <td>    <para>a string matrix giving the entry point names which are to be linked
                     </para>
                 </td>
             </tr>
@@ -57,13 +57,10 @@
         <title>Description</title>
         <para>
             This function aims to simplify the compilation and dynamic link of SUNDIALS entrypoints. It is a wrapper to
-            an <link linkend="ilib_for_link">ilib_for_link</link> call with the adequate compiler flags and allows to immediately
+            <link linkend="ilib_for_link">ilib_for_link</link> with the adequate compiler flags and allows to immediately
             do the dynamic link or copy the DLL and the loading script in the current directory. In that case the default name
-            of the library is defined with the following Scilab code:
+            of the library is defined with the following Scilab code: <code>"lib" + names(1) + getdynlibext()</code>
         </para>
-        <synopsis>
-            "lib" + names(1) + getdynlibext() 
-        </synopsis>
         <para>
             The options are the following:
         </para>
@@ -88,7 +85,7 @@
                     <td>
                         <para>A boolean value. Set this option to %t if you want to load the library just after compilation. In that 
                             case the library and the loading script remain in TMPDIR. If set to %f (the default) the library is not
-                            loaded but moved in the current directory (the loading script is also moved).</para>
+                            loaded but moved in the current directory with the loading script.</para>
                     </td>
                 </tr>
             </tbody>

@@ -16,8 +16,8 @@
     <refsynopsisdiv>
         <title>Syntax</title>
         <synopsis>
-            [t,y,info] = cvode( ... , quadRhs = fun, options)
-            sol = cvode( ... , quadRhs = fun, options)
+            ... = cvode( ... , quadRhs = fun, options)
+            ... = ida( ... , quadRhs = fun, options)
         </synopsis>
     </refsynopsisdiv>
     <refsection role="parameters">
@@ -69,33 +69,87 @@
     <refsection role="description">
         <title>Description</title>
 
-        <para>While integrating an ODE cvode can compute simultaneously quadratures/integrals of a function g(t,y) depending on time t and solution y,
+        <para>During integration, the solver can compute simultaneously quadratures/integrals of a function g depending on time t and solution when solving an ODE or a DAE:
         </para>
             <para>
                 <latex style="display">
-                    y_q(t) = \int_{t_0}^t g(u,y(u))\,du.
+                    y_q(t) = y_q(t_0)+\int_{t_0}^t g(u,y(u))\,du.
+                </latex>
+            </para>
+            and depending also on y' when solving a DAE
+            <para>
+                <latex style="display">
+                    y_q(t) =  y_q(t_0)+\int_{t_0}^t g(u,y(u),y'(u))\,du.
                 </latex>
             </para>
             <para>
-                These quantities could be added as new states and trivial equations in the original ODE, since <latex style="text">y_q'(t) =  g(t,y)</latex>
+                These quantities could be added as new states and trivial equations in the original problem since <latex style="text">y_q'= g</latex>
                 but giving them separately avoids computing useless Jacobians and saves the solver effort. 
-                The value of g(t,y) is given by the output of <term>intFn</term>, which has the same prototype as a classical ode rhs. After the solver call
+                The value of g is given by the output of <term>fun</term>, which has the same prototype as a classical ODE rhs or DAE residual. After the solver call
                 the quadrature variables are retrieved in the "q" field of either the <term>info</term> or <term>sol</term> output argument, 
-                as in the following example (typically, only the final value will be of interest).
+                as in the following examples (typically, only the final value of q will be of interest). The initial values of the quadrature variables are zero 
+                by default but can be set with the option <term>yQ0</term>. Note 
+
             </para>
     </refsection>
 
     <refsection role="example">
-        <title>Example</title>
+        <title>Examples</title>
         <para>
             <programlisting><![CDATA[
                 function dyqdt = g(t,y)
                     dyqdt = t*y(1);
                 end
-                [t,y,info] = cvode(%SUN_vdp1,[0 1],[1 2],quadRhs=g);
+                [t,y,info] = cvode(%SUN_vdp1, [0 1], [1 2], quadRhs=g);
                 info.q
                 ]]>
             </programlisting>
+        </para>
+        <para>
+            <programlisting><![CDATA[
+                function dyqdt = g(t,y,yp)
+                    dyqdt = y(2);
+                end
+                y0  = [1-1e-6; 1e-6; 0];
+                yp0 = [-2e-7; 1.5e-7; 5e-8];
+                [t,y,info] = ida(%SUN_sir, [0,200], y0, yp0, quadRhs=g);
+                info.q
+                ]]>
+            </programlisting>
+        </para>
+    </refsection>
+    
+    <refsection role="description">
+        <title>Options</title>
+        <para>
+            <informaltable border='1'>
+                <tbody>
+                    <tr>
+                        <td>yQ0</td>
+                        <td>    
+                            <para>a double array giving the initial state of the quadrature variable.</para>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>quadErrCon</td>
+                        <td>    
+                            <para>By default, QuadErrCon is set to %f. If quadErrCon=%t then quadrature variables are included in the error tests.</para>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>rtolQ</td>
+                        <td>    
+                            <para>The scalar relative tolerance to control the local error estimator when quadErrCon=%t (default value is 1e-4).</para>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>atolQ</td>
+                        <td>    
+                            <para>The absolute tolerance controlling the local error when quadErrCon=%t. It can be a scalar or an array of the same dimension as the quadrature variable (default value is 1e-6).</para>
+                        </td>
+                    </tr>
+                </tbody>
+            </informaltable>
         </para>
     </refsection>
     

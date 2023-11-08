@@ -15,24 +15,19 @@
 
 package org.scilab.modules.preferences.Component;
 
-import java.awt.Dimension;
 import java.io.StringWriter;
 
 import javax.swing.BorderFactory;
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
 import javax.swing.JTextPane;
 import javax.xml.transform.Transformer;
 import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 
+import org.scilab.modules.commons.xml.ScilabXMLUtilities;
+import org.scilab.modules.preferences.XComponent;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
-
-import org.scilab.modules.preferences.XCommonManager;
-import org.scilab.modules.preferences.XComponent;
-import org.scilab.modules.preferences.XConfigManager;
 
 /**
  * Implementation of Label compliant with extended management.
@@ -85,6 +80,12 @@ public class HTMLTextArea extends JTextPane implements XComponent {
             try {
                 Transformer serializer = TransformerFactory.newInstance().newTransformer();
                 StringWriter writer = new StringWriter();
+
+                // Needed since Java 9, see:
+                // https://www.oracle.com/java/technologies/javase/9-notes.html#JDK-8087303
+                // https://bugs.openjdk.org/browse/JDK-8262285
+                ScilabXMLUtilities.removeEmptyLines(nodeToDump);
+
                 serializer.transform(new DOMSource(nodeToDump), new StreamResult(writer));
                 return writer.toString();
             } catch (Exception e) {

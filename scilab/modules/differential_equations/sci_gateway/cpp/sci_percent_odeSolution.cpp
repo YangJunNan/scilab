@@ -151,14 +151,16 @@ types::Function::ReturnValue sci_percent_odeSolution_e(types::typed_list &in, in
                 if (pIn->isDouble() && pIn->getAs<types::Double>()->isComplex() == false)
                 {
                     types::Double *pDblUserTSpan = pIn->getAs<types::Double>();
+                    types::Double* pDblUserTOut = manager->getTOut();
                     double *pdblUserTSpan = pDblUserTSpan->get();
-                    double *pdblTout = manager->getTOut()->get();
-                    int iSizeTout = manager->getTOut()->getSize();
+                    double *pdblTout = pDblUserTOut->get();
                     int iSizeUserTSpan = pDblUserTSpan->getSize();
+                    int iSizeTout = pDblUserTOut->getSize();
 
                     if (*std::min_element(pdblUserTSpan, pdblUserTSpan + iSizeUserTSpan) < pdblTout[0]
                             || *std::max_element(pdblUserTSpan, pdblUserTSpan + iSizeUserTSpan) > pdblTout[iSizeTout - 1])
                     {
+                        pDblUserTOut->killMe();
                         Scierror(999, _("%s: solution cannot be evaluated outside the interval [%g,%g].\n"), "%_odeSolution_e", pdblTout[0], pdblTout[iSizeTout - 1]);
                         return types::Function::Error;
                     }
@@ -344,6 +346,7 @@ types::Function::ReturnValue sci_percent_odeSolution_e(types::typed_list &in, in
                     {
                         out.push_back(pDblYDOut);
                     }
+                    pDblUserTOut->killMe();
                 }
                 else
                 {

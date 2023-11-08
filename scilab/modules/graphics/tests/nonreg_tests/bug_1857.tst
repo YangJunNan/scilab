@@ -26,7 +26,7 @@ axes = gca();
 if (axes.log_flags <> "lnn") then pause; end
 
 // mtlb_semilogy
-x=[1:0.1:10];y=2*x^2;
+x=[1:0.1:10];y=2*x.^2;
 mtlb_semilogy(x,y)
 
 // check that current axes has log flags "nl";
@@ -34,7 +34,7 @@ axes = gca();
 if (axes.log_flags <> "nln") then pause; end
 
 // mtlb_loglog
-x=[1:0.1:10];y=2*x^2;
+x=[1:0.1:10];y=2*x.^2;
 mtlb_loglog(x,y)
 
 // check that current axes has log flags "ll";

@@ -236,6 +236,11 @@ int getForceQuit()
     return ConfigVariable::getForceQuit();
 }
 
+void setForceQuit(int force)
+{
+    ConfigVariable::setForceQuit(force != 0);
+}
+
 int isEnableDebug()
 {
     return ConfigVariable::getEnableDebug() ? 1 : 0;
@@ -284,4 +289,3 @@ int getWebMode()
 {
     return ConfigVariable::getWebMode() ? 1 : 0;
 }
-

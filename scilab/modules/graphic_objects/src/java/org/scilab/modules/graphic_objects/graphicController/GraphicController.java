@@ -390,6 +390,10 @@ public class GraphicController {
             return;
         }
 
+        // Invalidate object to avoid other views to try to redraw the object while being deleted in model.
+        // As an example, __GO_VALID__ property is tested before redrawing in DrawerVisitor.java
+        setProperty(id, GraphicObjectProperties.__GO_VALID__, false);
+
         //Datatips are not listed as "children", then they must be deleted separately
         if (killMe.getType() == GraphicObjectProperties.__GO_POLYLINE__) {
             Integer[] datatips = ((Polyline)killMe).getDatatips();
@@ -411,7 +415,6 @@ public class GraphicController {
             //objectUpdate(id, GraphicObjectProperties.__GO_PARENT__);
         }
 
-        killMe.setValid(false);
         recursiveDeleteChildren(killMe);
 
         deleteObject(id);

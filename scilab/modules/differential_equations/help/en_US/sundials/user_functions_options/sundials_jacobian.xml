@@ -64,8 +64,8 @@
 
     <refsection role="description">
         <title>Description</title>
-        <para>When a nonlinear equations (Nonlinear Algebraic Equations), ODE (Ordinary Differential Equations) or DAE (Differential Algebraic Equations) method 
-            needs to solve a linear system with a direct method, the Jacobian matrix of the right hand side of the system
+        <para>When an ODE, DAE or nonlinear equations solver method 
+            need to solve a linear system with a direct method, the Jacobian matrix of the right hand side of the system
             is by default approximated by finite differences. When the Jacobian is unknown but has a band structure, setting the <literal>jacBand</literal> 
             option will allow the approximation scheme to use only mu+ml+1 calls of the right hand side, which can help the solver effort if the number of
             equations is large.
@@ -93,7 +93,7 @@
                   option is set, the KLU sparse linear solver (from SuiteSparse) is selected.</para>
               </listitem>
               <listitem>
-                  <para>when <literal>jacBand</literal> or  <literal>jacPattern</literal> options are given, the Jacobian is approximated with
+                  <para>when <literal>jacBand</literal> or <literal>jacPattern</literal> options are given, the Jacobian is approximated with
                   finite differences quotients by taking into account the particular structure (band, or general sparse, respectively).</para>
               </listitem>
               <listitem>
@@ -299,10 +299,10 @@
             In that case the user function is supposed to compute
         </para>
         <para>
-            <latex style="display">J=\frac{\partial f}{\partial y}(t,y,y^\prime)+c\frac{\partial f}{\partial y^\prime}(t,y,y^\prime)</latex> 
+            <latex style="display">J=\frac{\partial F}{\partial y}(t,y,y^\prime)+c\frac{\partial F}{\partial y^\prime}(t,y,y^\prime)</latex> 
         </para>
         <para>
-            where the DAE is given by <latex>f(t,t,y^\prime)=0</latex> and c is an arbitrary scalar. The option value <term>jacFn</term> can be:
+            where the DAE is given by <latex>F(t,t,y^\prime)=0</latex> and c is an arbitrary scalar. The option value <term>jacFn</term> can be:
         </para>
         <itemizedlist>
             <listitem>

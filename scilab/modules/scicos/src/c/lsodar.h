@@ -19,7 +19,7 @@
 #include "sundials/sundials_extension.h"
 #include "sundials/sundials_types.h" // Definition of types 'realtype' and 'booleantype'
 #include "nvector/nvector_serial.h"  // Type 'N_Vector'
-#include "../src/cvode/cvode_impl.h" // Error handling
+#include "../src/cvodes/cvodes_impl.h" // Error handling
 
 #define MSGCV_BAD_INPUT      "One of the arguments is illegal."
 

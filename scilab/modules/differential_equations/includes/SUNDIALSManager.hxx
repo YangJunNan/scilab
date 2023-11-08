@@ -110,6 +110,10 @@ public:
             SUNLinSolFree(m_LS);
         if (m_NLS != NULL)
             SUNNonlinSolFree(m_NLS);
+        for (char* fname : m_pCallFunctionName)
+        {
+            FREE(fname);
+        }
         for (auto pDbl : m_pIConstFunction)
         {
             SUNDIALSMANAGER_KILLME(pDbl);
@@ -118,30 +122,27 @@ public:
         {
             delete m_spJacEngine;
         }
+        SUNDIALSMANAGER_KILLME(m_pDblY0);
         SUNContext_Free(&m_sunctx);  /* Free the SUNDIALS context */
     };
 
     enum functionKind
     {
         RHS = 0, // basic rhs (ode)
-        SRHS, // stiff rhs (ode)
-        FRHS, // fast rhs (ode)
-        QRHS, // quadrature variables rhs (ode)
-        QBRHS, // quadrature variables rhs (ode, backward problem)
+        SRHS, // stiff rhs for IMEX method (arkode)
+        QRHS, // quadrature variables rhs (ode), 
         SENSRHS, // sensitivity equation rhs (ode)
-        BRHS, // backward problem rhs (ode)
         JACY, // jacobian (ode)
         JACYTIMES, // jacobian times vector (ode)
         RES, // residual (dae)
+        SENSRES, // sensitivity equation residual (dae)
         JACYYP, // jacobian (dae)
         JACYYPTIMES, // jacobian times vector (dae)
-        MASS, // mass matrix
-        MASSTIMES, // mass matrix times vector
+        MASS, // mass matrix (arkode)
+        MASSTIMES, // mass matrix times vector (arkode)
         EVENTS, // event function
         INTCB, // callback function
         PROJ, // projection function (ode)
-        PRECL, // left preconditionner
-        PRECR, // right preconditionner
         NBKIND
     };
     enum functionAPI
@@ -153,7 +154,7 @@ public:
         NBAPI
     };
 
-    char pstrArgName[NBKIND][16] = {"\"f\"", "\"stiffRhs\"", "\"fastRhs\"", "\"sensRhs\"", "\"jacobian\"", "\"jacTimes\"", "\"residual\"",
+    char pstrArgName[NBKIND][16] = {"\"f\"", "\"stiffRhs\"", "\"quadRhs\"", "\"sensRhs\"", "\"jacobian\"", "\"jacTimes\"", "\"res\"", "\"sensRes\"",
                                     "\"jacobian\"", "\"jacTimes\"", "\"mass\"", "\"massTimes\"", "\"events\"", "\"callback\"", "\"projection\""};
 
     std::map<std::wstring, dynlibFunPtr> m_staticFunctionMap;
@@ -196,7 +197,7 @@ public:
 
     types::Double* getATol()
     {
-        types::Double* pDblATol = new types::Double(1, m_dblVecAtol.size());
+        types::Double* pDblATol = new types::Double(1, (int) m_dblVecAtol.size());
         std::copy(m_dblVecAtol.begin(), m_dblVecAtol.end(), pDblATol->get());
         return pDblATol;
     }

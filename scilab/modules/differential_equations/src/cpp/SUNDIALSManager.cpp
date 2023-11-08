@@ -180,7 +180,6 @@ void SUNDIALSManager::callClosing(functionKind what, types::typed_list &in, std:
     {
         in.push_back(pIn);
     }
-
     for (auto pIn : in)
     {
         pIn->IncreaseRef();
@@ -197,6 +196,12 @@ void SUNDIALSManager::callClosing(functionKind what, types::typed_list &in, std:
         for (auto pIn :  m_pParameters[what])
         {
             pIn->DecreaseRef();
+            pIn->killMe();
+        }
+        for (auto pOut :  out)
+        {
+            pOut->DecreaseRef();
+            pOut->killMe();
         }
         if (ConfigVariable::getLastErrorFunction() == L"")
         {
@@ -207,7 +212,9 @@ void SUNDIALSManager::callClosing(functionKind what, types::typed_list &in, std:
         }
         else
         {
-            sprintf(errorMsg, "%s", wide_string_to_UTF8(ie.GetErrorMessage().c_str()));
+            char* pStr = wide_string_to_UTF8(ie.GetErrorMessage().c_str());
+            sprintf(errorMsg, "%s", pStr);
+            FREE(pStr);
             throw ast::InternalError(errorMsg);
         }
     }
@@ -220,16 +227,20 @@ void SUNDIALSManager::callClosing(functionKind what, types::typed_list &in, std:
     for (auto pIn : in)
     {
         pIn->DecreaseRef();
-        if (pIn->isDeletable())
-        {
-            delete pIn;
-        }
+        pIn->killMe();
     }
 
     if (iRetCount.size() == 1)
     {
         if (out.size() != iRetCount[0])
         {
+
+            for (auto pOut : out) // safety DecreaseRef
+            {
+                pOut->DecreaseRef();
+                pOut->killMe();
+            }
+
             sprintf(errorMsg, _("%s: Wrong number of output argument(s): %d expected.\n"), m_pCallFunctionName[what], iRetCount[0]);
             throw ast::InternalError(errorMsg);
         }
@@ -238,6 +249,11 @@ void SUNDIALSManager::callClosing(functionKind what, types::typed_list &in, std:
     {
         if (out.size() < iRetCount[0] || out.size() > iRetCount[1])
         {
+            for (auto pOut : out) // safety DecreaseRef
+            {
+                pOut->DecreaseRef();
+                pOut->killMe();
+            }
             sprintf(errorMsg, _("%s: Wrong number of output argument(s): %d to %d expected.\n"), m_pCallFunctionName[what], iRetCount[0],iRetCount[1]);
             throw ast::InternalError(errorMsg);
         }

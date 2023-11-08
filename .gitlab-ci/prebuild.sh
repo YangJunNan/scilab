@@ -63,10 +63,10 @@ ARPACK_VERSION=3.1.5
 CURL_VERSION=7.64.1
 EIGEN_VERSION=3.3.2
 FFTW_VERSION=3.3.3
-HDF5_VERSION=1.8.14
+HDF5_VERSION=1.10.10
 NCURSES_VERSION=6.4
 LIBXML2_VERSION=2.9.9
-MATIO_VERSION=1.5.2
+MATIO_VERSION=1.5.9
 OPENSSL_VERSION=1.1.1c
 PCRE_VERSION=8.38
 SUITESPARSE_VERSION=4.4.5
@@ -123,7 +123,7 @@ download_dependencies() {
 
     [ ! -f jre-$JRE_VERSION.tar.gz ] && curl -L -o jre-$JRE_VERSION.tar.gz "https://oos.eu-west-2.outscale.com/scilab-releases-dev/prerequirements-sources/OpenJDK17U-jre_x64_linux_hotspot_$(echo ${JRE_VERSION} |sed 's/-//g').tar.gz"
     [ ! -f jdk-$JDK_VERSION.tar.gz ] && curl -L -o jdk-$JDK_VERSION.tar.gz "https://oos.eu-west-2.outscale.com/scilab-releases-dev/prerequirements-sources/ibm-semeru-open-jdk_x64_linux_$(echo ${JDK_VERSION} |sed 's/+/_/g')_openj9-0.38.0.tar.gz"
-
+    
     [ ! -f OpenBLAS-$OPENBLAS_VERSION.tar.gz ] && curl -LO https://oos.eu-west-2.outscale.com/scilab-releases-dev/prerequirements-sources/OpenBLAS-$OPENBLAS_VERSION.tar.gz
     [ ! -f apache-ant-$ANT_VERSION-bin.tar.gz ] && curl -LO https://oos.eu-west-2.outscale.com/scilab-releases-dev/prerequirements-sources/apache-ant-$ANT_VERSION-bin.tar.gz
     [ ! -f arpack-ng-$ARPACK_VERSION.tar.gz ] && curl -LO https://oos.eu-west-2.outscale.com/scilab-releases-dev/prerequirements-sources/arpack-ng-$ARPACK_VERSION.tar.gz
@@ -153,7 +153,8 @@ download_dependencies() {
     # Batik is included within FOP
     [ ! -f fop-$FOP_VERSION-bin.zip ] && curl -LO https://oos.eu-west-2.outscale.com/scilab-releases-dev/prerequirements-sources/fop-$FOP_VERSION-bin.zip
 
-    # This archive contains .jar that have been copied from Scilab prerequirements thirdparty
+    # This archive contains .jar and directories that have been copied from Scilab prerequirements
+    # JavaFX/openjfx is only shipped as JARs, no rebuild is needed for now
     curl -LO --time-cond thirdparty-jar.zip https://oos.eu-west-2.outscale.com/scilab-releases-dev/prerequirements-sources/thirdparty-jar.zip
 
     [ ! -f libarchive-$LIBARCHIVE_VERSION.tar.xz ] && curl -LO https://oos.eu-west-2.outscale.com/scilab-releases-dev/prerequirements-sources/libarchive-$LIBARCHIVE_VERSION.tar.xz
@@ -499,7 +500,6 @@ build_hdf5() {
         -DHDF5_BUILD_HL_LIB=ON
     cmake --build . --parallel --target install
 
-    cp "$INSTALL_DIR/share/cmake/hdf5/libhdf5.settings" "$INSTALLUSRDIR/lib/"
     cp -a "$INSTALL_DIR"/lib/*.so* "$INSTALLUSRDIR/lib/"
     cp -a "$INSTALL_DIR"/include/* "$INSTALLUSRDIR/include/"
 }
@@ -640,8 +640,11 @@ build_matio() {
 
     INSTALL_DIR=$BUILDDIR/matio-$MATIO_VERSION/install_dir
 
+    rm -rf matio-$MATIO_VERSION
     tar -xzf "$DOWNLOADDIR/matio-$MATIO_VERSION.tar.gz"
     cd matio-$MATIO_VERSION || exit 1
+
+    ./autogen.sh
     ./configure --enable-shared --with-hdf5="$INSTALLUSRDIR" --with-zlib="$INSTALLUSRDIR" --prefix=
     make "-j$(nproc)"
     make install DESTDIR="$INSTALL_DIR"

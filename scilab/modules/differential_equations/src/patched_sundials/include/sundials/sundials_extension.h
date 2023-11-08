@@ -26,4 +26,9 @@ SUNDIALS_EXPORT BOOL is_sundials_with_extension(void);
 */
 SUNDIALS_EXPORT BOOL set_sundials_with_extension(BOOL _mode);
 
+/*
+* Reset IDA / BDF internal order
+*/
+SUNDIALS_EXPORT int IDAResetCurrentBDFMethodOrder(void *ida_mem);
+
 #endif /* __SUNDIALS_EXTENSION_H__ */

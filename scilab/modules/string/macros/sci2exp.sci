@@ -1,7 +1,7 @@
 // Scilab ( https://www.scilab.org/ ) - This file is part of Scilab
 // Copyright (C) INRIA -
 // Copyright (C) 2012 - 2016 - Scilab Enterprises
-// Copyright (C) 2016, 2017, 2019 - Samuel GOUGEON
+// Copyright (C) 2016, 2017, 2019, 2021 - Samuel GOUGEON
 //
 // This file is hereby licensed under the terms of the GNU GPL v2.0,
 // pursuant to article 5.3.4 of the CeCILL v.2.1.
@@ -50,6 +50,7 @@ function t=sci2exp(a,nom,lmax)
             [lmax,nom]=(nom,lmax)
         end
     end
+
     // For an hypermatrix, we concatenate all components in a single row:
     hyperMat = or(type(a)==[1 2 4 8 10]) && ndims(a) > 2;
     if hyperMat then
@@ -135,8 +136,8 @@ function t=sci2exp(a,nom,lmax)
             t = "matrix(" + t + ", ["+s+"])";
         end
     end
-    if named&and(type(a)<>13) then
-        t(1)=nom+" = "+t(1)
+    if named & and(type(a)<>13) then
+        t(1) = nom + " = " + t(1)
     end
 endfunction
 
@@ -193,20 +194,47 @@ function t=str2exp(a,lmax)
     end
 endfunction
 
-function t=mat2exp(a,lmax)
+function t = mat2exp(a,lmax)
     if rhs<2 then lmax=0,end
     [lhs,rhs]=argn(0)
     if size(a,"*")==0 then t="[]",return,end
     [m,n]=size(a);
+
+    // Special case #1: eye() and its multiples
     if m<0 then
-        t=mat2exp(a+0);
+        t = mat2exp(a(1));
         if t=="1" then
             t="eye()";
         else
-            t="("+t+")*eye()";
+            if imag(a(1))<>0 & part(t,1:8)<>"complex("
+                t = "(" + t + ")"
+            end
+            t = t + "*eye()"
         end
         return
     end
+
+    // Special case #2: Complex with Inf or Nan parts
+    // Process issue 16317
+    if or(isinf(imag(a))) | or(isnan(imag(a)))
+        ar = sci2exp(real(a),lmax)
+        ai = sci2exp(imag(a),lmax)
+        if ~lmax | 10+length(ar)+length(ai) <= lmax
+            t = "complex("+ar+"," + ai +")"
+        else
+            if 7+length(ar(1)) <= lmax
+                ar(1) = "complex(" + ar(1);
+            else
+                ar = ["complex(.." ; ar]
+            end
+            ar($) = ar($) + ","
+            ai($) = ai($) + ")"
+            t = [ar ; ai]
+        end
+        return
+    end
+
+    // Regular case
     a=String(a);
     dots="."+"."
     t="";
@@ -245,7 +273,8 @@ function t=mat2exp(a,lmax)
                 k1=k2+1
                 l=ind(k2)
             end
-            x=strsplit(x,I);x(1:$-1)=x(1:$-1)+dots;
+            x=strsplit(x,I);
+            x(1:$-1)=x(1:$-1)+dots;
             t=[t;x]
         end
     else
@@ -294,11 +323,14 @@ function t=pol2exp(a,lmax)
     lvar=length(var);
     while part(var,lvar)==" " then lvar=lvar-1,end
     var=part(var,1:lvar);
+
+    // polynomial eye()
     if m<0 then
-        t=pol2exp(a+0)
-        t="("+t+")*eye()"
+        t = pol2exp(a(1))
+        t = "(" + t + ")*eye()"
         return
     end
+
     t=[];
     for i=1:m
         x=emptystr(1)
@@ -602,6 +634,7 @@ function t=sp2exp(a,lmax)
     if lmax==0|length(t($))+length(v(1))+1<lmax then
         t($)=t($)+","+v(1)
         t=[t;v(2:$)]
+
     else
         t($)=t($)+","+dots
         t=[t;v]
@@ -617,11 +650,14 @@ function t=sp2exp(a,lmax)
 endfunction
 
 
-function t=int2exp(a,lmax)
+function t = int2exp(a,lmax)
     it=inttype(a)
     if it>10 then f="uint",else f="int",end
     f=f+string(8*modulo(it,10))
-    t=mat2exp(double(a),lmax)
+    tmp = format()
+    format("v",22)    // be sure to not truncate big uint64
+    t = mat2exp(double(a),lmax)
+    format(tmp([2 1]))
     t(1)=f+"("+t(1)
     t($)=t($)+")"
 endfunction

@@ -36,6 +36,8 @@ extern "C"
 
 matvar_t* GetDoubleMatVar(types::Double* pDblIn, const char* name, int matfile_version);
 
+matvar_t* GetBooleanMatVar(types::Bool* pITIn, const char* name);
+
 matvar_t* GetIntegerMatVar(types::InternalType* pITIn, const char* name);
 
 matvar_t* GetCharMatVar(types::String* pStr, const char* name);

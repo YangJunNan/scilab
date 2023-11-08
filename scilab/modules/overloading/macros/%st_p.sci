@@ -13,5 +13,5 @@
 // along with this program.
 
 function %st_p(s)
-    %l_p(s, "st")
+    mprintf("  %s\n", %st_string(s));
 endfunction

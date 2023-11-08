@@ -382,7 +382,7 @@ bool set_ports_property(const Adaptor& adaptor, const object_properties_t port_k
                 {
                     std::string adapter = adapterName<p>(port_kind);
                     std::string field = adapterFieldName<p>(port_kind);
-                    get_or_allocate_logger()->log(LOG_ERROR, _("Wrong dimension for field %s.%s: %d-by-%d expected.\n"), adapter.data(), field.data(), ids.size(), 1);
+                    get_or_allocate_logger()->log(LOG_ERROR, _("Wrong dimension for field %s.%s: %d-by-%d expected.\n"), adapter.data(), field.data(), (int) ids.size(), 1);
                     return false;
                 }
 

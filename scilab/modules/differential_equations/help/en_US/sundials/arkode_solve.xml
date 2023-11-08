@@ -11,7 +11,7 @@
 <refentry xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svg="http://www.w3.org/2000/svg" xmlns:ns5="http://www.w3.org/1999/xhtml" xmlns:mml="http://www.w3.org/1998/Math/MathML" xmlns:db="http://docbook.org/ns/docbook" xmlns:scilab="http://www.scilab.org" xml:id="arkode" xml:lang="en" xmlns:m="http://www.w3.org/1998/Math/MathML">
     <refnamediv>
         <refname>arkode</refname>
-        <refpurpose>Sundials ordinary differential equation additive Runge-Kutta solver</refpurpose>
+        <refpurpose>SUNDIALS ordinary differential equation additive Runge-Kutta solver</refpurpose>
     </refnamediv>
     <refsynopsisdiv>
         <title>Syntax</title>
@@ -107,12 +107,13 @@
         <para>
             The mass matrix M(t) is by default the identity matrix. It can be changed to any non-singular matrix by giving a constant
             matrix to the <literal>mass</literal> option or a user function if the matrix is time-dependent. See the  
-            <link linkend="arkode_mass">mass matrix</link> section below).
+            <link linkend="arkode_mass">mass matrix</link> section below). If the mass matrix depends on solution y then the problem
+            has to be reformulated as a DAE and can be solved by <link linkend="ida">ida</link>.
         </para>
         <para>
             As arkode shares with cvode most of its features (syntax, specification of user function) please refer to the Description section of 
-            <link linkend="cvode">cvode help page</link> for basic usage. We will give below and example where the solution is computed
-            first with the default explicit method, then with a implicit/explicit method.             
+            <link linkend="cvode">cvode help page</link> for basic usage (events handling, solution output, callback). We will give below an example where the solution is computed
+            first with the default explicit method, then with an implicit/explicit method.             
         </para>
 </refsection>
 <refsection role="example">
@@ -126,7 +127,7 @@
         </latex>
     </para> 
     <para>
-        The right hand side is computed by the  function <literal>%SUN_bruss</literal> (already defined in the Sundials module):
+        The right hand side is computed by the  function <literal>%SUN_bruss</literal> (already defined in the SUNDIALS module):
     </para>
     <para>
         <programlisting role="no-scilab-exec"><![CDATA[

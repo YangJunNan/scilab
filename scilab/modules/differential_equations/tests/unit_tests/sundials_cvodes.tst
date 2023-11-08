@@ -11,11 +11,8 @@
 
 // <-- CLI SHELL MODE -->
 // <-- NO CHECK REF -->
-// <-- NOT FIXED -->
 // Compare true equations of sensitivity 
 // with internal finite differences of cvodes
-
-return
 
 function dydt = vdp(t,y,mu)
     dydt = [y(2,:)
@@ -90,7 +87,7 @@ data = [
    12.75   0.0524342   0.05     
    13.5    0.0400235   0.05     
    14.25   0.          0.05     
-   15.     0.0521208   0.05]
+   15.     0.0521208   0.05];
 t_mesure=data(:,1);
 CA_mesure=data(:,2);
 sigma_mesure=data(:,3);
@@ -99,9 +96,9 @@ sigma_mesure=data(:,3);
 param=[CA_mesure(1);20;80];
 CA0=param(1);
 
-sol = cvode(michaelis, t_mesure, CA0, sensPar=param, yS0=[1 0 0]) 
-sol = cvode(michaelis, t_mesure, CA0, sensPar=param, sensParIndex=[1 2], yS0=[1 0]) 
-[t,y,s] = cvode(michaelis, t_mesure, CA0, sensPar=param, sensParIndex=[1 2], yS0=[1 0]) 
+sol = cvode(michaelis, t_mesure, CA0, sensPar=param, yS0=[1 0 0]);
+sol = cvode(michaelis, t_mesure, CA0, sensPar=param, sensParIndex=[1 2], yS0=[1 0]);
+[t,y,s] = cvode(michaelis, t_mesure, CA0, sensPar=param, sensParIndex=[1 2], yS0=[1 0]);
 
 // SIR model
 

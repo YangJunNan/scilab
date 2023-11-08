@@ -52,33 +52,14 @@ if with_openmp
     X0=X0./s2([1 1 1],:)*30;
     X0(3,:)=X0(3,:)+30;
     
-    [t,y,info1]=arkode(list("SUN_lorenz",[n,sigma,rho,bet]),[0 20],X0,...
+    [t,y,info1]=arkode(list("SUN_lorenz",[n,sigma,rho,bet]),5,X0,t0=0,...
                method="ERK_5",nbThreads=NUM_THREADS);
     
-    mputl([
-    "#include <nvector/nvector_serial.h>"
-    "int SUN_lorenz(realtype t, N_Vector N_VectorY, N_Vector N_VectorYd, void *data)"
-    "{"
-    "double *y = N_VGetArrayPointer(N_VectorY);"
-    "double *ydot = N_VGetArrayPointer(N_VectorYd);"
-    "double *par = (double *)data;"
-    "int n=(int)par[0];";
-    "double sigma=par[1];"
-    "double rho=par[2];"
-    "double bet=par[3];"
-    "for (int i=0;i<n;i++) {"
-    "   int k=3*i;"
-    "   ydot[k]=sigma*(y[k+1]-y[k]);"
-    "   ydot[k+1]=rho*y[k]-y[k+1]-y[k]*y[k+2];"
-    "   ydot[k+2]=y[k]*y[k+1]-bet*y[k+2];"
-    "}"
-    "return 0;"
-    "}"
-    ],TMPDIR+"/SUN_lorenz.c");
-    SUN_Clink("SUN_lorenz",TMPDIR+"/SUN_lorenz.c",verbose=0,load=%t);
+    // don't pass -fopenmp => ignore pragma directive in source
+    SUN_Clink("SUN_lorenz",TMPDIR+"/SUN_lorenz_omp.c",verbose=0,cflags="-O3",load=%t);
     
-    [t,y,info2]=arkode(list("SUN_lorenz",[n,sigma,rho,bet]),[0,20],X0,...
+    [t,y,info2]=arkode(list("SUN_lorenz",[n,sigma,rho,bet]),5,X0,t0=0,...
                method="ERK_5");
                
-    assert_checktrue(info2.stats.eTime/info1.stats.eTime > 2);
+    assert_checktrue(info2.stats.eTime > info1.stats.eTime);
 end

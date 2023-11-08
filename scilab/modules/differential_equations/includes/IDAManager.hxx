@@ -14,10 +14,10 @@
 
 #include "OdeManager.hxx"
 
-#include <ida/ida_impl.h>
-#include <ida/ida_ls_impl.h>
-#include <ida/ida.h>            /* prototypes for IDA fcts. and consts. */
-#include <ida/ida_direct.h>    /* prototypes for various DlsMat operations */
+#include <idas/idas_impl.h>
+#include <idas/idas_ls_impl.h>
+#include <idas/idas.h>            /* prototypes for IDA fcts. and consts. */
+#include <idas/idas_direct.h>    /* prototypes for various DlsMat operations */
 
 extern "C"
 {
@@ -55,6 +55,8 @@ class DIFFERENTIAL_EQUATIONS_IMPEXP IDAManager final : public OdeManager
         getRootInfo = IDAGetRootInfo;
         setConstraints = IDASetConstraints;
         setVTolerances = IDASVtolerances;
+        setQuadSVTolerances = IDAQuadSVtolerances;
+        setQuadErrCon = IDASetQuadErrCon;
         setErrHandlerFn = IDASetErrHandlerFn;
         getReturnFlagName = IDAGetReturnFlagName;
         getDky = IDAGetDky;
@@ -82,6 +84,24 @@ class DIFFERENTIAL_EQUATIONS_IMPEXP IDAManager final : public OdeManager
             if (m_prob_mem != NULL) IDAFree(&m_prob_mem);
             m_prob_mem = NULL;
         }
+        if (m_NVArrayYS != NULL)
+        {
+            for (int i=0; i<getNbSensPar(); i++)
+            {
+                N_VDestroy(m_NVArrayYS[i]);
+                N_VDestroy(m_NVArrayYpS[i]);
+            }
+            //N_VDestroyVectorArray_Serial(m_NVArrayYS, getNbSensPar());
+            m_NVArrayYS = NULL;
+        }
+        if (m_NVectorYQ != NULL)
+        {
+            N_VDestroy(m_NVectorYQ);
+        }
+        SUNDIALSMANAGER_KILLME(m_pDblSensPar);
+        SUNDIALSMANAGER_KILLME(m_pDblYS0);
+        SUNDIALSMANAGER_KILLME(m_pDblYpS0);
+        SUNDIALSMANAGER_KILLME(m_pDblYQ0);
     }
 
     void setPreviousManager(void *p)
@@ -108,8 +128,40 @@ class DIFFERENTIAL_EQUATIONS_IMPEXP IDAManager final : public OdeManager
 
     types::Double *getYpEvent()
     {
-        return getArrayFromVectors(m_pDblY0, m_dblVecYpEvent, m_dblVecEventTime.size());
+        // yp at time of event
+        return getArrayFromVectors(m_pDblY0, m_vecYpEvent, m_dblVecEventTime.size());
     }
+
+    types::Double *getYSOut()
+    {
+        // sensitivity of y at user prescribed timesteps or at each internal step of the method
+        return getArrayFromVectors(m_pDblYS0, m_vecYSOut, m_dblVecTOut.size());
+    }
+
+    types::Double *getYpSOut()
+    {
+        // sensitivity of y' at user prescribed timesteps or at each internal step of the method
+        return getArrayFromVectors(m_pDblYpS0, m_vecYpSOut, m_dblVecTOut.size());
+    }
+
+    types::Double *getYQOut()
+    {
+        // pure quadrature variable at user prescribed timesteps or at each internal step of the method
+        return getArrayFromVectors(m_pDblYQ0, m_vecYQOut, m_dblVecTOut.size());
+    }
+
+    types::Double *getYSEvent()
+    {
+        // sensitivity of y at time of event
+        return getArrayFromVectors(m_pDblYS0, m_vecYSEvent, m_dblVecEventTime.size());
+    }
+
+    types::Double *getYpSEvent()
+    {
+        // sensitivity of y' at time of event
+        return getArrayFromVectors(m_pDblYpS0, m_vecYpSEvent, m_dblVecEventTime.size());
+    }
+
 
     std::vector<std::pair<std::wstring,types::Double *>> getAdditionalFields();
     std::vector<std::pair<std::wstring,types::Double *>> getAdditionalEventFields();
@@ -146,6 +198,12 @@ class DIFFERENTIAL_EQUATIONS_IMPEXP IDAManager final : public OdeManager
                   N_Vector v, N_Vector Jv, realtype c_j,
                   N_Vector work1, N_Vector work2) final;
 
+    // static methods
+    static int sensRes(int Ns, realtype t, N_Vector N_VectorY, N_Vector N_VectorYp, N_Vector resval, N_Vector *yS, N_Vector *ySdot, N_Vector *resvalS,
+        void *pManager, N_Vector tmp1, N_Vector tmp2, N_Vector tmp3);
+    static int quadratureRhs(realtype t, N_Vector N_VectorY, N_Vector N_VectorYdot, N_Vector N_VectorYQdot, void *pManager);
+
+
     std::vector<std::wstring> getAvailableMethods()
     {
         std::vector<std::wstring> availableMethods = {L"BDF"};
@@ -155,6 +213,26 @@ class DIFFERENTIAL_EQUATIONS_IMPEXP IDAManager final : public OdeManager
     int getMaxMethodOrder(std::wstring wstrMethod)
     {
         return 5;
+    }
+
+    bool hasQuadFeature()
+    {
+        return true;
+    }
+
+    bool hasSensFeature()
+    {
+        return true;
+    }
+
+    bool computeSens()
+    {
+        return m_pDblSensPar != NULL;
+    }
+
+    int getNbSensPar()
+    {
+        return m_pDblSensPar == NULL ? 0 : (m_iVecSensParIndex.size()==0 ? m_pDblSensPar->getSize() : m_iVecSensParIndex.size());
     }
 
     std::vector<std::wstring> getAvailablePrecondType()
@@ -180,7 +258,17 @@ class DIFFERENTIAL_EQUATIONS_IMPEXP IDAManager final : public OdeManager
     IDAManager* m_prevManager = NULL;
 
     std::vector<std::vector<double>> m_vecYpOut;
-    std::vector<std::vector<double>> m_dblVecYpEvent;
+    std::vector<std::vector<double>> m_vecYpEvent;
+
+    N_Vector *m_NVArrayYS = NULL;
+    N_Vector *m_NVArrayYpS = NULL;
+
+    std::vector<std::vector<double>> m_vecYQOut;
+
+    std::vector<std::vector<double>> m_vecYSOut;
+    std::vector<std::vector<double>> m_vecYSEvent;
+    std::vector<std::vector<double>> m_vecYpSOut;
+    std::vector<std::vector<double>> m_vecYpSEvent;
 
     long int m_incStat[9] = {0,0,0,0,0,0,0,0,0};
 };

@@ -47,7 +47,7 @@ types::Function::ReturnValue sci_percent_cov(types::typed_list& in, int _iRetCou
 
     if (in[in.size() - 1]->getAs<types::Double>()->getSize() != 1)
     {
-        Scierror(999, _("%s: Wrong dimensions for input argument #%d: A scalar expected.\n"), "cov", in.size());
+        Scierror(999, _("%s: Wrong dimensions for input argument #%d: A scalar expected.\n"), "cov", (int) in.size());
         return types::Function::Error;
     }
 

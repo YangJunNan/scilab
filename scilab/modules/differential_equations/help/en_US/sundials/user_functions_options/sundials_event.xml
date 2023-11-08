@@ -35,7 +35,7 @@
             <tr>
                <td><term>nb</term></td>
                 <td>
-                    <para>The size of the vector yieled by the DLL entrypoint when <term>evFn</term> is a string.</para>
+                    <para>The size of the vector yielded by the DLL entrypoint when <term>evFn</term> is a string.</para>
                 </td>
             </tr>
             <tr>
@@ -51,8 +51,8 @@
     <refsection role="description">
         <title>Description</title>
         <para>While integrating an ODE or a DAE, the solver can also find the roots of a set of <term>nb</term> user-defined functions that depend both
-             on t and on the solution vector y (and also y' for a DAE). The number of these root or event functions is arbitrary, 
-             and if more than function is found to have a root in any given interval, the various root locations are found and reported in the order 
+             on t and on the solution vector y (and also y' for a DAE). The number of these roots or event functions is arbitrary, 
+             and if more than one function is found to have a root in any given interval, the various root locations are found and reported in the order 
              that they occur on the t axis, in the direction of integration. The syntax
             </para>
             <para><programlisting role="no-scilab-exec"><![CDATA[
@@ -128,7 +128,8 @@
                     </scilab:image>
                 </para>
                 <para>
-                    In this other example, we find the time and value of the maximum of y2 in SIR model:
+                    In this other example, we find the time and value of the maximum of  <latex style="text">y_2</latex> in SIR model by finding the
+                    time when <latex style="text">y_2'</latex> vanishes:
                 </para>
                 <para>
                        <programlisting role="example"><![CDATA[
@@ -157,7 +158,7 @@
             </para>
         </refsection>
         <refsection role="description">
-            <title>Event function given as a  SUNDIALS DLL entrypoint</title>    
+            <title>Event function given as a SUNDIALS DLL entrypoint</title>    
         
                 <para>In that case <term>evFn</term> must have the C prototype</para> 
                 <para><programlisting role="no-scilab-exec"><![CDATA[
@@ -171,7 +172,7 @@
                     the direction of the events have to be set or if some events should
                     terminate the solver iterations, the <literal>evDir</literal> and <literal>evTerm</literal> can be used
                     and the values of <term>dir</term> and <term>term</term> follow the same convention as when <term>evFn</term> is
-                    a Scilab function. See the examples below (Van Der Pol ODE then the SIR model DAE):
+                    a Scilab function. See the examples below (Van Der Pol ODE and SIR model DAE):
                 </para>
                 <para>
                     <programlisting><![CDATA[

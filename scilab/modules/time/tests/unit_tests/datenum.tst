@@ -32,3 +32,15 @@ one_hour_ref = 1/24;
 if  abs( (one_hour - one_hour_ref) / one_hour ) > 1e-8 then pause,end
 
 if floor(datenum(2005,12,28)) <> datenum(2005,12,28) then pause,end
+
+// Check dims
+assert_checkequal(datenum(2023, 10, 1), 739160);
+assert_checkequal(datenum(2023, 10, [1:2]'), [739160; 739161]);
+assert_checkequal(datenum(2023, 10, [1:2]), [739160 739161]);
+assert_checkequal(datenum(2023, [9 10; 11 12], 1), [739130 739160; 739191 739221]);
+
+msg = msprintf(_("%s: Wrong size for input arguments: Same size expected.\n"),"datenum");
+assert_checkerror("datenum(2023, 10, 6, [1;2], [1;2;3], 0)", msg);
+assert_checkerror("datenum(2023, 10, [6 7 8], [1 2], 0, 0)", msg);
+assert_checkerror("datenum(2023, [10 11], 6, [1;2], 0, 0)", msg);
+assert_checkerror("datenum(2023, [9 10; 11 12], [6 7 8])", msg);

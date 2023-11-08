@@ -42,7 +42,6 @@ public :
         {
             ARKODEMethods[it.first]=it.second;
         }
-        m_dblDefaultAtol = 1e-9;
         setUserData = ARKStepSetUserData;
         setInitStep = ARKStepSetInitStep;
         setMinStep = ARKStepSetMinStep;

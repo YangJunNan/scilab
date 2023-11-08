@@ -150,12 +150,11 @@ am__aclocal_m4_deps = $(top_srcdir)/m4/ax_cxx_compile_stdcxx.m4 \
 	$(top_srcdir)/m4/libtool.m4 $(top_srcdir)/m4/libxml2.m4 \
 	$(top_srcdir)/m4/ltoptions.m4 $(top_srcdir)/m4/ltsugar.m4 \
 	$(top_srcdir)/m4/ltversion.m4 $(top_srcdir)/m4/lt~obsolete.m4 \
-	$(top_srcdir)/m4/macosx.m4 $(top_srcdir)/m4/mpi.m4 \
-	$(top_srcdir)/m4/ocaml.m4 $(top_srcdir)/m4/pcre.m4 \
-	$(top_srcdir)/m4/pkg.m4 $(top_srcdir)/m4/relocatable.m4 \
-	$(top_srcdir)/m4/swig.m4 $(top_srcdir)/m4/symlinks.m4 \
-	$(top_srcdir)/m4/tcltk.m4 $(top_srcdir)/m4/umfpack.m4 \
-	$(top_srcdir)/configure.ac
+	$(top_srcdir)/m4/mpi.m4 $(top_srcdir)/m4/ocaml.m4 \
+	$(top_srcdir)/m4/pcre.m4 $(top_srcdir)/m4/pkg.m4 \
+	$(top_srcdir)/m4/relocatable.m4 $(top_srcdir)/m4/swig.m4 \
+	$(top_srcdir)/m4/symlinks.m4 $(top_srcdir)/m4/tcltk.m4 \
+	$(top_srcdir)/m4/umfpack.m4 $(top_srcdir)/configure.ac
 am__configure_deps = $(am__aclocal_m4_deps) $(CONFIGURE_DEPENDENCIES) \
 	$(ACLOCAL_M4)
 DIST_COMMON = $(srcdir)/Makefile.am $(libscicore_la_include_HEADERS) \
@@ -276,7 +275,7 @@ am__libscicore_la_SOURCES_DIST = sci_gateway/c/sci_getdebuginfo.c \
 	sci_gateway/cpp/sci_clearglobal.cpp \
 	sci_gateway/cpp/sci_debug.cpp sci_gateway/cpp/sci_errclear.cpp \
 	sci_gateway/cpp/sci_error.cpp sci_gateway/cpp/sci_exists.cpp \
-	sci_gateway/cpp/sci_exit.cpp \
+	sci_gateway/cpp/sci_exit.cpp sci_gateway/cpp/sci_isatty.cpp \
 	sci_gateway/cpp/sci_fieldnames.cpp \
 	sci_gateway/cpp/sci_format.cpp \
 	sci_gateway/cpp/sci_funcprot.cpp \
@@ -338,6 +337,7 @@ am__objects_7 = sci_gateway/cpp/libscicore_la-core_gw.lo \
 	sci_gateway/cpp/libscicore_la-sci_error.lo \
 	sci_gateway/cpp/libscicore_la-sci_exists.lo \
 	sci_gateway/cpp/libscicore_la-sci_exit.lo \
+	sci_gateway/cpp/libscicore_la-sci_isatty.lo \
 	sci_gateway/cpp/libscicore_la-sci_fieldnames.lo \
 	sci_gateway/cpp/libscicore_la-sci_format.lo \
 	sci_gateway/cpp/libscicore_la-sci_funcprot.lo \
@@ -443,6 +443,7 @@ am__depfiles_remade =  \
 	sci_gateway/cpp/$(DEPDIR)/libscicore_la-sci_inspectorShowItem.Plo \
 	sci_gateway/cpp/$(DEPDIR)/libscicore_la-sci_inspectorShowUnreferencedItem.Plo \
 	sci_gateway/cpp/$(DEPDIR)/libscicore_la-sci_intppty.Plo \
+	sci_gateway/cpp/$(DEPDIR)/libscicore_la-sci_isatty.Plo \
 	sci_gateway/cpp/$(DEPDIR)/libscicore_la-sci_isfield.Plo \
 	sci_gateway/cpp/$(DEPDIR)/libscicore_la-sci_isglobal.Plo \
 	sci_gateway/cpp/$(DEPDIR)/libscicore_la-sci_lasterror.Plo \
@@ -705,6 +706,9 @@ JAVA = @JAVA@
 JAVAC = @JAVAC@
 JAVAC_DEBUG = @JAVAC_DEBUG@
 JAVADOC = @JAVADOC@
+JAVAFX_BASE = @JAVAFX_BASE@
+JAVAFX_GRAPHICS = @JAVAFX_GRAPHICS@
+JAVAFX_SWING = @JAVAFX_SWING@
 JAVASCI_ENABLE = @JAVASCI_ENABLE@
 JAVAX_ANNOTATION = @JAVAX_ANNOTATION@
 JAVA_ENABLE = @JAVA_ENABLE@
@@ -810,6 +814,7 @@ PYTHON = @PYTHON@
 RANLIB = @RANLIB@
 RELOCATABLE = @RELOCATABLE@
 RT_LIB = @RT_LIB@
+SAXON = @SAXON@
 SCILAB_BINARY_VERSION = @SCILAB_BINARY_VERSION@
 SCILAB_LIBRARY_VERSION = @SCILAB_LIBRARY_VERSION@
 SCILAB_VERSION_MAINTENANCE = @SCILAB_VERSION_MAINTENANCE@
@@ -998,7 +1003,7 @@ GATEWAY_CPP_SOURCES = sci_gateway/cpp/core_gw.cpp \
 	sci_gateway/cpp/sci_clearglobal.cpp \
 	sci_gateway/cpp/sci_debug.cpp sci_gateway/cpp/sci_errclear.cpp \
 	sci_gateway/cpp/sci_error.cpp sci_gateway/cpp/sci_exists.cpp \
-	sci_gateway/cpp/sci_exit.cpp \
+	sci_gateway/cpp/sci_exit.cpp sci_gateway/cpp/sci_isatty.cpp \
 	sci_gateway/cpp/sci_fieldnames.cpp \
 	sci_gateway/cpp/sci_format.cpp \
 	sci_gateway/cpp/sci_funcprot.cpp \
@@ -1491,6 +1496,9 @@ sci_gateway/cpp/libscicore_la-sci_exists.lo:  \
 sci_gateway/cpp/libscicore_la-sci_exit.lo:  \
 	sci_gateway/cpp/$(am__dirstamp) \
 	sci_gateway/cpp/$(DEPDIR)/$(am__dirstamp)
+sci_gateway/cpp/libscicore_la-sci_isatty.lo:  \
+	sci_gateway/cpp/$(am__dirstamp) \
+	sci_gateway/cpp/$(DEPDIR)/$(am__dirstamp)
 sci_gateway/cpp/libscicore_la-sci_fieldnames.lo:  \
 	sci_gateway/cpp/$(am__dirstamp) \
 	sci_gateway/cpp/$(DEPDIR)/$(am__dirstamp)
@@ -1700,6 +1708,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@sci_gateway/cpp/$(DEPDIR)/libscicore_la-sci_inspectorShowItem.Plo@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@sci_gateway/cpp/$(DEPDIR)/libscicore_la-sci_inspectorShowUnreferencedItem.Plo@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@sci_gateway/cpp/$(DEPDIR)/libscicore_la-sci_intppty.Plo@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@sci_gateway/cpp/$(DEPDIR)/libscicore_la-sci_isatty.Plo@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@sci_gateway/cpp/$(DEPDIR)/libscicore_la-sci_isfield.Plo@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@sci_gateway/cpp/$(DEPDIR)/libscicore_la-sci_isglobal.Plo@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@sci_gateway/cpp/$(DEPDIR)/libscicore_la-sci_lasterror.Plo@am__quote@ # am--include-marker
@@ -2293,6 +2302,13 @@ sci_gateway/cpp/libscicore_la-sci_exit.lo: sci_gateway/cpp/sci_exit.cpp
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='sci_gateway/cpp/sci_exit.cpp' object='sci_gateway/cpp/libscicore_la-sci_exit.lo' libtool=yes @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libscicore_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o sci_gateway/cpp/libscicore_la-sci_exit.lo `test -f 'sci_gateway/cpp/sci_exit.cpp' || echo '$(srcdir)/'`sci_gateway/cpp/sci_exit.cpp
+
+sci_gateway/cpp/libscicore_la-sci_isatty.lo: sci_gateway/cpp/sci_isatty.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libscicore_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT sci_gateway/cpp/libscicore_la-sci_isatty.lo -MD -MP -MF sci_gateway/cpp/$(DEPDIR)/libscicore_la-sci_isatty.Tpo -c -o sci_gateway/cpp/libscicore_la-sci_isatty.lo `test -f 'sci_gateway/cpp/sci_isatty.cpp' || echo '$(srcdir)/'`sci_gateway/cpp/sci_isatty.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) sci_gateway/cpp/$(DEPDIR)/libscicore_la-sci_isatty.Tpo sci_gateway/cpp/$(DEPDIR)/libscicore_la-sci_isatty.Plo
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='sci_gateway/cpp/sci_isatty.cpp' object='sci_gateway/cpp/libscicore_la-sci_isatty.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libscicore_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o sci_gateway/cpp/libscicore_la-sci_isatty.lo `test -f 'sci_gateway/cpp/sci_isatty.cpp' || echo '$(srcdir)/'`sci_gateway/cpp/sci_isatty.cpp
 
 sci_gateway/cpp/libscicore_la-sci_fieldnames.lo: sci_gateway/cpp/sci_fieldnames.cpp
 @am__fastdepCXX_TRUE@	$(AM_V_CXX)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libscicore_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT sci_gateway/cpp/libscicore_la-sci_fieldnames.lo -MD -MP -MF sci_gateway/cpp/$(DEPDIR)/libscicore_la-sci_fieldnames.Tpo -c -o sci_gateway/cpp/libscicore_la-sci_fieldnames.lo `test -f 'sci_gateway/cpp/sci_fieldnames.cpp' || echo '$(srcdir)/'`sci_gateway/cpp/sci_fieldnames.cpp
@@ -2923,6 +2939,7 @@ distclean: distclean-am
 	-rm -f sci_gateway/cpp/$(DEPDIR)/libscicore_la-sci_inspectorShowItem.Plo
 	-rm -f sci_gateway/cpp/$(DEPDIR)/libscicore_la-sci_inspectorShowUnreferencedItem.Plo
 	-rm -f sci_gateway/cpp/$(DEPDIR)/libscicore_la-sci_intppty.Plo
+	-rm -f sci_gateway/cpp/$(DEPDIR)/libscicore_la-sci_isatty.Plo
 	-rm -f sci_gateway/cpp/$(DEPDIR)/libscicore_la-sci_isfield.Plo
 	-rm -f sci_gateway/cpp/$(DEPDIR)/libscicore_la-sci_isglobal.Plo
 	-rm -f sci_gateway/cpp/$(DEPDIR)/libscicore_la-sci_lasterror.Plo
@@ -3085,6 +3102,7 @@ maintainer-clean: maintainer-clean-am
 	-rm -f sci_gateway/cpp/$(DEPDIR)/libscicore_la-sci_inspectorShowItem.Plo
 	-rm -f sci_gateway/cpp/$(DEPDIR)/libscicore_la-sci_inspectorShowUnreferencedItem.Plo
 	-rm -f sci_gateway/cpp/$(DEPDIR)/libscicore_la-sci_intppty.Plo
+	-rm -f sci_gateway/cpp/$(DEPDIR)/libscicore_la-sci_isatty.Plo
 	-rm -f sci_gateway/cpp/$(DEPDIR)/libscicore_la-sci_isfield.Plo
 	-rm -f sci_gateway/cpp/$(DEPDIR)/libscicore_la-sci_isglobal.Plo
 	-rm -f sci_gateway/cpp/$(DEPDIR)/libscicore_la-sci_lasterror.Plo

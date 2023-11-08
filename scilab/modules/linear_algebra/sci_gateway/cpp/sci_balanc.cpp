@@ -44,7 +44,7 @@ types::Function::ReturnValue sci_balanc(types::typed_list &in, int _iRetCount, t
 
     if (_iRetCount != 2 * in.size())
     {
-        Scierror(78, _("%s: Wrong number of output argument(s): %d expected.\n"), "balanc", 2 * in.size());
+        Scierror(78, _("%s: Wrong number of output argument(s): %d expected.\n"), "balanc", 2 * (int) in.size());
         return types::Function::Error;
     }
 

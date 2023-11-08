@@ -124,33 +124,19 @@ if test -n "${TESTERS}"; then
     exit 1
   fi
 
-  docker build -t "${CI_REGISTRY_IMAGE}/ubuntu-18.04:${DOCKER_TAG}" \
-    --build-arg DISTRO=ubuntu:18.04 \
-    - <.gitlab-ci/linux-images/Dockerfile.ubuntu
-  docker build -t "${CI_REGISTRY_IMAGE}/ubuntu-20.04:${DOCKER_TAG}" \
-    --build-arg DISTRO=ubuntu:20.04 \
-    - <.gitlab-ci/linux-images/Dockerfile.ubuntu
-  docker build -t "${CI_REGISTRY_IMAGE}/ubuntu-22.04:${DOCKER_TAG}" \
-    --build-arg DISTRO=ubuntu:22.04 \
-    - <.gitlab-ci/linux-images/Dockerfile.ubuntu
-  docker build -t "${CI_REGISTRY_IMAGE}/fedora-37:${DOCKER_TAG}" \
-    --build-arg DISTRO=fedora:37 \
-    - <.gitlab-ci/linux-images/Dockerfile.fedora
-  docker build -t "${CI_REGISTRY_IMAGE}/debian-11:${DOCKER_TAG}" \
-    --build-arg DISTRO=debian:11 \
-    - <.gitlab-ci/linux-images/Dockerfile.ubuntu
+  docker build -t "${CI_REGISTRY_IMAGE}/ubuntu-18.04:${DOCKER_TAG}" --build-arg DISTRO=ubuntu:18.04 - <.gitlab-ci/linux-images/Dockerfile.ubuntu
+  docker build -t "${CI_REGISTRY_IMAGE}/ubuntu-20.04:${DOCKER_TAG}" --build-arg DISTRO=ubuntu:20.04 - <.gitlab-ci/linux-images/Dockerfile.ubuntu
+  docker build -t "${CI_REGISTRY_IMAGE}/ubuntu-22.04:${DOCKER_TAG}" --build-arg DISTRO=ubuntu:22.04 - <.gitlab-ci/linux-images/Dockerfile.ubuntu
+  docker build -t "${CI_REGISTRY_IMAGE}/ubuntu-23.10:${DOCKER_TAG}" --build-arg DISTRO=ubuntu:23.10 - <.gitlab-ci/linux-images/Dockerfile.ubuntu
+  docker build -t "${CI_REGISTRY_IMAGE}/fedora-37:${DOCKER_TAG}" --build-arg DISTRO=fedora:37 - <.gitlab-ci/linux-images/Dockerfile.fedora
+  docker build -t "${CI_REGISTRY_IMAGE}/debian-11:${DOCKER_TAG}" --build-arg DISTRO=debian:11 - <.gitlab-ci/linux-images/Dockerfile.ubuntu
   
   docker push "${CI_REGISTRY_IMAGE}/ubuntu-18.04:${DOCKER_TAG}"
   docker push "${CI_REGISTRY_IMAGE}/ubuntu-20.04:${DOCKER_TAG}"
   docker push "${CI_REGISTRY_IMAGE}/ubuntu-22.04:${DOCKER_TAG}"
-  docker push "${CI_REGISTRY_IMAGE}/fedora-37:${DOCKER_TAG}"
+  docker push "${CI_REGISTRY_IMAGE}/ubuntu-23.10:${DOCKER_TAG}"
+  docker push "${CI_REGISTRY_IMAGE}/fedora-38:${DOCKER_TAG}"
   docker push "${CI_REGISTRY_IMAGE}/debian-11:${DOCKER_TAG}"
-  
-  docker rmi "${CI_REGISTRY_IMAGE}/ubuntu-18.04:${DOCKER_TAG}"
-  docker rmi "${CI_REGISTRY_IMAGE}/ubuntu-20.04:${DOCKER_TAG}"
-  docker rmi "${CI_REGISTRY_IMAGE}/ubuntu-22.04:${DOCKER_TAG}"
-  docker rmi "${CI_REGISTRY_IMAGE}/fedora-37:${DOCKER_TAG}"
-  docker rmi "${CI_REGISTRY_IMAGE}/debian-11:${DOCKER_TAG}"
 fi
 
 # build a tagged docker image
@@ -184,8 +170,6 @@ if test -n "${BINARY}"; then
   
   # publish
   docker push "${CI_REGISTRY_IMAGE}/linux-runner:${DOCKER_TAG}"
-  docker rmi "${CI_REGISTRY_IMAGE}/linux-runner:${DOCKER_TAG}"
 fi
 
-docker image prune --force
 exit 0

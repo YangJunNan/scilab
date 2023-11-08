@@ -37,7 +37,9 @@ $SCILAB : scilab path (SCI in Scilab)
     <option value="-Djava.util.logging.config.file=$SCILAB/etc/logging.properties"/>
 
     <!-- Set Java Heap space to 256mb -->
+    <!--
     <option value="-Xmx256m"/>
+    -->
     <!-- Avoid jvm to handle sigint (& other signals)  -->
     <option value="-Xrs"/>
     <!--option value="-Djogl.debug=all"/-->

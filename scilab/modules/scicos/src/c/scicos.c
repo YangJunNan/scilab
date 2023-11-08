@@ -41,10 +41,10 @@
 #include <math.h>
 
 /* Sundials includes */
-#include <cvode/cvode.h>            /* prototypes for CVODE fcts. and consts. */
-#include <cvode/cvode_direct.h>    /* prototypes for various SUNDlsMat operations */
-#include <ida/ida.h>
-#include <ida/ida_direct.h>
+#include <cvodes/cvodes.h>            /* prototypes for CVODE fcts. and consts. */
+#include <cvodes/cvodes_direct.h>    /* prototypes for various SUNDlsMat operations */
+#include <idas/idas.h>
+#include <idas/idas_direct.h>
 #include <nvector/nvector_serial.h>   /* serial N_Vector types, fcts., and macros */
 #include <sundials/sundials_context.h>  /* prototypes for SUNDIALS context */
 #include <sundials/sundials_dense.h>  /* prototypes for various SUNDlsMat operations */
@@ -2173,7 +2173,6 @@ static void cossimdaskr(double *told)
 
     void *dae_mem = NULL;
     UserData data = NULL;
-    IDAMem copy_IDA_mem = NULL;
     int maxnj = 0, maxnit = 0, maxnh = 0;
     /*-------------------- Analytical Jacobian memory allocation ----------*/
     int  Jn = 0, Jnx = 0, Jno = 0, Jni = 0, Jactaille = 0;
@@ -2417,10 +2416,6 @@ static void cossimdaskr(double *told)
                 FREE(Mode_save);
             }
             return;
-        }
-        if (C2F(cmsolver).solver == 100)
-        {
-            copy_IDA_mem = (IDAMem) dae_mem;
         }
 
         if (solver == DDaskr_BDF_Newton || solver == DDaskr_BDF_GMRes)
@@ -3161,7 +3156,7 @@ L30:
                         phase = 2; /* IDACalcIC: PHI-> yy0: if (ok) yy0_cic-> PHI*/
                         if (C2F(cmsolver).solver == 100)
                         {
-                            copy_IDA_mem->ida_kk = 1;
+                            IDAResetCurrentBDFMethodOrder(dae_mem);
                         }
                         // the initial conditons y0 and yp0 do not satisfy the DAE
                         flagr = DAECalcIC(dae_mem, DAE_YA_YDP_INIT, (realtype)(t));
@@ -3240,7 +3235,7 @@ L30:
                         phase = 1;
                         if (C2F(cmsolver).solver == 100)
                         {
-                            copy_IDA_mem->ida_kk = 1;
+                            IDAResetCurrentBDFMethodOrder(dae_mem);
                         }
                         flagr = DAECalcIC(dae_mem, DAE_YA_YDP_INIT, (realtype)(t));
                         phase = 1;

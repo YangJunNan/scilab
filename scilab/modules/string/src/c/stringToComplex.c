@@ -205,7 +205,7 @@ doublecomplex stringToComplexWInPlace(wchar_t* start, wchar_t* end,
 
         // remove any space
         wchar_t* withoutLeadingSpaces = start;
-        while (*withoutLeadingSpaces == L' ')
+        while (*withoutLeadingSpaces == L' ' && start != end)
         {
             withoutLeadingSpaces++;
         }

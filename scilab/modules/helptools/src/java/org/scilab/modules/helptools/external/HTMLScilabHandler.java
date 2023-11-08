@@ -107,7 +107,11 @@ public class HTMLScilabHandler extends ExternalXMLHandler {
 
             if ((isLocalized != null && isLocalized.booleanValue()) || (existing = getExistingFile(outputDir, fileName)) == null) {
                 if (!language.equals("en_US") && !getConverter().getImageConverter().compareMD5(buffer.toString(), fileName) && (isLocalized == null)) {
-                    getConverter().error(new SAXParseException("Overwrite image " + f.getName() + " from line " + line + ". Check the code or use localized=\"true\" attribute.", null));
+                    if (getConverter().getImageConverter().hasMd5Cache()) { // Scilab help build
+                        getConverter().error(new SAXParseException("Overwrite image " + f.getName() + " from line " + line + ". Check the code or use localized=\"true\" attribute.", null));
+                    } else {
+                        System.err.println("Warning: Overwrite image " + f.getName() + " from line " + line + ". Check the code or use localized=\"true\" attribute.");
+                    }
                 }
                 ret = getConverter().getImageConverter().getImageByCode(currentFileName, buffer.toString(), attributes, "image/scilab", f, baseDir + f.getName(), baseImagePath, line, language, isLocalized);
             } else {

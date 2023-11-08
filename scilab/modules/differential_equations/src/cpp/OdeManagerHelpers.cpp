@@ -269,7 +269,7 @@ types::Double *OdeManager::createYOut(types::Double *m_pDblYtempl, int iNbOut, i
     types::Double *pDblYOut;
     int iDimsYtempl = m_pDblYtempl->getDims();
 
-    if (bFlat == false && m_pDblYtempl->isVector()==false)
+    if (bFlat == false && m_pDblYtempl->getCols() > 1)
     {
         // create a new arrray of native dimensions of m_pDblYtempl + one extra dimension for time
         int *piDimsArrayYtempl = m_pDblYtempl->getDimsArray();
@@ -385,9 +385,9 @@ void OdeManager::createSolutionOutput(types::typed_list &out)
     out.push_back(pObj);
 }
 
-types::Double *OdeManager::getArrayFromVectors(types::Double *m_pDblYtempl, std::vector<std::vector<double>> &m_vecY, int iTSpanSize)
+types::Double *OdeManager::getArrayFromVectors(types::Double *m_pDblYtempl, std::vector<std::vector<double>> &m_vecY, size_t iTSpanSize)
 {
-    types::Double *pDblY = createYOut(m_pDblYtempl, m_iNbEq, iTSpanSize);
+    types::Double *pDblY = createYOut(m_pDblYtempl, m_iNbEq, (int) iTSpanSize);
     int iSize = m_vecY[0].size();
     for (int i = 0; i < m_vecY.size(); i++)
     {

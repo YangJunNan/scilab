@@ -31,6 +31,8 @@ CPP_OPT_GATEWAY_PROTOTYPE_EXPORT(sci_http_put, WEBTOOLS_IMPEXP);
 CPP_OPT_GATEWAY_PROTOTYPE_EXPORT(sci_http_patch, WEBTOOLS_IMPEXP);
 CPP_OPT_GATEWAY_PROTOTYPE_EXPORT(sci_http_delete, WEBTOOLS_IMPEXP);
 CPP_OPT_GATEWAY_PROTOTYPE_EXPORT(sci_http_upload, WEBTOOLS_IMPEXP);
+CPP_GATEWAY_PROTOTYPE_EXPORT(sci_url_encode, WEBTOOLS_IMPEXP);
+CPP_GATEWAY_PROTOTYPE_EXPORT(sci_url_decode, WEBTOOLS_IMPEXP);
 
 types::Function::ReturnValue sci_http_put_post(types::typed_list& in, types::optional_list& opt, int _iRetCount, types::typed_list& out, const char* fname);
 int checkCommonOpt(SciCurl& curl, types::optional_list& opt, const char* fname);

@@ -27,7 +27,7 @@
 
 struct ARG_VALIDATOR
 {
-    std::function<bool(std::vector<types::InternalType*>&)> validator;
+    std::function<int(std::vector<types::InternalType*>&)> validator;
     std::vector<std::tuple<int, types::InternalType*>> inputs;
     std::tuple<std::string, int> error;
     std::vector<std::string> errorArgs;

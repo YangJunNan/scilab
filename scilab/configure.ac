@@ -44,7 +44,7 @@ fi
 
 # Change version here, other files will be updated at the end of configure
 SCILAB_VERSION_MAJOR=2024
-SCILAB_VERSION_MINOR=0
+SCILAB_VERSION_MINOR=1
 SCILAB_VERSION_MAINTENANCE=0
 AC_SUBST(SCILAB_VERSION_MAJOR)
 AC_SUBST(SCILAB_VERSION_MINOR)
@@ -170,44 +170,6 @@ AC_ARG_ENABLE(build-parser,
 
 AC_PROG_CPP
 AC_PROG_GREP
-
-######
-#### Mac OS X set of fink path with provided
-######
-
-AC_ARG_WITH(fink_prefix,
-AS_HELP_STRING([--with-fink-prefix],[Provide a fink prefix. Default: /sw/ ]))
-# Need MacosX Version to specify some path.
-case "$host_os" in
-     *Darwin* | *darwin*)
-               AC_GET_MACOSX_VERSION
-     ;;
-esac
-
-case "$host" in
-    *darwin*)
-        if test -n "$with_fink_prefix"; then
-            # If with-fink-prefix is provided, use the provided path to make sure that we will
-            # use it to detect dependencies (for example, gfortran is not provided in xcode.
-            # Therefor, we use the one in fink)
-            FINK_PREFIX="$with_fink_prefix/"
-
-            # Exec the init script of fink to make sure that the env is set
-            if test -f $with_fink_prefix/bin/init.sh; then
-                echo "source $with_fink_prefix/bin/init.sh executed to set the env"
-                source $with_fink_prefix/bin/init.sh
-            else
-                AC_MSG_WARN([Could not find the fink init.sh script: $with_fink_prefix/bin/init.sh])
-            fi
-        else
-            FINK_PREFIX="/sw/"
-        fi
-
-        #Append to the default flags on Apple machines
-        CPPFLAGS="$CPPFLAGS -I$FINK_PREFIX/include/"
-        LDFLAGS="$LDFLAGS -L$FINK_PREFIX/lib/"
-        ;;
-esac
 
 AC_ARG_WITH(min_macosx_version,
 AS_HELP_STRING([--with-min-macosx-version],[Force compilers to generate binaries compatible with MacOSX minimal version.]))
@@ -1135,6 +1097,23 @@ interface for JOGL2 - or libGL (OpenGL library) are installed and if the version
                 JEUCLID_CORE=$PACKAGE_JAR_FILE
                 AC_SUBST(JEUCLID_CORE)
 
+                # JavaFX base
+                # Used in native file chooser
+                AC_JAVA_CHECK_JAR([javafx.base],[javafx.collections.ObservableList],[JavaFX base])
+                JAVAFX_BASE=$PACKAGE_JAR_FILE
+                AC_SUBST(JAVAFX_BASE)
+
+                # JavaFX Swing
+                # Used in native file chooser
+                AC_JAVA_CHECK_JAR([javafx.swing],[javafx.embed.swing.JFXPanel],[JavaFX Swing])
+                JAVAFX_SWING=$PACKAGE_JAR_FILE
+                AC_SUBST(JAVAFX_SWING)
+
+                # JavaFX graphics
+                # Used in native file chooser
+                AC_JAVA_CHECK_JAR([javafx.graphics],[javafx.stage.Stage],[JavaFX graphics])
+                JAVAFX_GRAPHICS=$PACKAGE_JAR_FILE
+                AC_SUBST(JAVAFX_GRAPHICS)
 
                 ################ Mandatory for graphic_export features #####
                 # XML to PDF/other Translator
@@ -1227,6 +1206,11 @@ interface for JOGL2 - or libGL (OpenGL library) are installed and if the version
                 AC_JAVA_CHECK_JAR([jlatexmath-fop],[org.scilab.forge.jlatexmath.fop.JLaTeXMathObj],[LaTex Rendering - FOP plugin])
                 JLATEXMATH_FOP=$PACKAGE_JAR_FILE
                 AC_SUBST(JLATEXMATH_FOP)
+
+                # Saxon 9 HE
+                AC_JAVA_CHECK_JAR([saxon9he],[net.sf.saxon.TransformerFactoryImpl],[Saxon processor for XSLT, XQuery, and XML Schema])
+                SAXON=$PACKAGE_JAR_FILE
+                AC_SUBST(SAXON)
 
                 AC_DEFINE([WITH_GUI],[],[With the JAVA stuff (GUI, Console, JOGL...)])
 
@@ -2213,6 +2197,7 @@ modules/webtools/Makefile
 modules/Makefile
 Makefile
 scilab.pc
+build.incl.xml
 etc/modules.xml
 etc/classpath.xml
 etc/Info.plist
@@ -2375,6 +2360,19 @@ else
    echo "Not using UMFPACK"
 fi
 
+echo ""
+if test $KLU_ENABLE = yes;  then
+   echo "KLU Configuration:"
+   echo "  KLU LIBS ....... = $KLU_LIBS"
+   echo "  KLU CFLAGS ..... = $KLU_CFLAGS"
+   if test "$SUITESPARSE" = "yes"; then
+      echo "  KLU SUITESPARSE  = Yes"
+   else
+      echo "  KLU SUITESPARSE  = No"
+   fi
+else
+   echo "Not using KLU"
+fi
 
 echo ""
 echo "BLAS/LAPACK/ATLAS Configuration:"

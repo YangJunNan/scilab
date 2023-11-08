@@ -78,7 +78,7 @@ public class ScilabClipboard {
             CommonHandler.cut(object);
         }
 
-        Integer axesTo = AxesHandler.clickedAxes(figure, position);
+        Integer axesTo = AxesHandler.clickedAxes(figure, position)[0];
         if (axesTo != null) { /* If there is an axes in the clicked position then adjust the bounds, make the axes visible and paste */
             AxesHandler.setAxesVisible(axesTo);
             CommonHandler.insert(axesTo, object);

@@ -104,7 +104,7 @@ void OdeManager::solve()
         {
             if (dblTime == dblPrevTime)
             {
-                sprintf(errorMsg,"singularity likely at t = %g", dblTime);
+                sprintf(errorMsg,"singularity likely at t = %g\n", dblTime);
                 errHandler(fromODEReturn[dblTime == m_dblT0 ? ODE_CONV_FAILURE : ODE_WARNING], NULL, NULL, errorMsg);
                 break;
             }

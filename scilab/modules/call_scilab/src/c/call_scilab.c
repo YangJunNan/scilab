@@ -141,6 +141,7 @@ int Call_ScilabOpen(char *SCIpath, BOOL advancedMode, char *ScilabStartup, int S
 
     pGlobalSEI->iNoJvm = getScilabMode() == SCILAB_NWNI;
 
+    setForceQuit(0);
     ierr = StartScilabEngine(pGlobalSEI);
 
     if (InitStringToScilab)

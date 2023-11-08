@@ -1,6 +1,6 @@
 //
 // Scilab ( http://www.scilab.org/ ) - This file is part of Scilab
-// Copyright (C) 2022 - UTC - Stéphane MOTTELET
+// Copyright (C) 2022-2023 - UTC - Stéphane MOTTELET
 //
 // This file is released under the 3-clause BSD license. See COPYING-BSD.
 
@@ -20,7 +20,7 @@ function demo_springboard()
         end 
     end
     function y=f(x)
-        y = -x.^3+2*x.^2;
+        y = -x.^3+2*x.^2+0.1;
     endfunction
     function g=grad(x)
         // gradient of F(x,y)=y-f(x) with complex step
@@ -41,10 +41,11 @@ function demo_springboard()
     // nonPositive option allows to keep lambda <= 0, allowing ball takeoff 
     sol = ida(res,[0 T],y0,yd0,yIsAlgebraic=5,suppressAlg=%t,nonPositive=5)
 
-    clf
-    demo_viewCode("springboard.dem.sce")
+    my_handle = scf(100001);
+    clf(my_handle,"reset");
+    demo_viewCode("springboard.dem.sce");
 
-    x=linspace(min(sol.y(1,:)),2,100);
+    x=linspace(min(sol.y(1,:)),3,100);
     plot(x,f(x),x0(1),x0(2),'o');
     h = gce().children(1);
     isoview on
@@ -57,6 +58,7 @@ function demo_springboard()
     for t = linspace(0,sol.t($),500)
         realtime(t)
         y = sol(t);
+        if ~is_handle_valid(h) then break; end
         h.data = y(1:2)';
         ht.text = msprintf("$\\lambda = %4.1f$",y(5));
     end

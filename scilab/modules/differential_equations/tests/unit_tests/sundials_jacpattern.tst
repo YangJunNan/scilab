@@ -77,10 +77,13 @@ assert_checktrue(info0.stats.eTime/info1.stats.eTime > 10);
 assert_checktrue(info0.stats.eTime/info2.stats.eTime > 30);
 assert_checktrue(info0.stats.eTime/info3.stats.eTime > 30);
 
-[t,y0,info0]=arkode(fun,tspan,f0,method="DIRK_5",rtol=1e-12);
-[t,y1,info1]=arkode(fun,tspan,f0,jacBand=[n n],method="DIRK_5",rtol=1e-12);
-[t,y2,info2]=arkode(fun,tspan,f0,jacPattern=LAP,method="DIRK_5",rtol=1e-12);
-[t,y3,info3]=arkode(fun,tspan,f0,jacobian=jac,method="DIRK_5",rtol=1e-12);
+OPT.method="DIRK_5";
+OPT.rtol=1e-12;
+OPT.atol=1e-9;
+[t,y0,info0]=arkode(fun,tspan,f0,options=OPT);
+[t,y1,info1]=arkode(fun,tspan,f0,jacBand=[n n],options=OPT);
+[t,y2,info2]=arkode(fun,tspan,f0,jacPattern=LAP,options=OPT);
+[t,y3,info3]=arkode(fun,tspan,f0,jacobian=jac,options=OPT);
 
 assert_checkalmostequal(y0,y1,1e-7);
 assert_checkalmostequal(y0,y2,1e-7);

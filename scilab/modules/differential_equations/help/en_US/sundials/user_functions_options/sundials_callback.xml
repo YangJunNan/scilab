@@ -58,7 +58,7 @@
         for nonlinear equations, ODEs or DAEs, respectively. The <literal>flag</literal> input argument can take the string values 
         <literal>"init"</literal>, <literal>"step"</literal>, <literal>"event"</literal> (ODE and DAE only) or <literal>"done"</literal> 
         and <literal>stats</literal> is a structure gathering the solver statistics. The function has to return
-        <literal>%f</literal> to continue integration whereas returning <literal>%t</literal> will stop the solver. 
+        <literal>%f</literal> to continue iterations whereas returning <literal>%t</literal> will stop the solver. 
         Here is a basic example displaying a progressbar when solving an ODE with solver time synchronization:
         </para>
         <para>

@@ -17,7 +17,7 @@
         <title>Basic complex solution</title>
         <para>
         Unlike the native implementation, the SUNDIALS solvers Scilab interface allows to solve a system of equations,  ODEs or DAEs if the solution is complex, 
-        when the user functions (right hand side or residual, Jacobian) are given by Scilab functions (or if the Jacobian is constant).
+        when the user functions (right hand side or residual, Jacobian) are given by Scilab functions.
         For example, for an ODE, the solution is complex when the right hand side always yields complex values
         or when the initial condition is complex, even if the right hand side is a real function. Here is a basic example:
         </para>
@@ -47,10 +47,10 @@
             at given time points is typically used when you need to solve identification problems where the model
             involves an ODE or a DAE. Using the complex step technique allows to compute, up to machine precision, the
             derivative of the solution with respect to a chosen parameter, which can appear in the computation of the right hand side
-            or in the initial condition, and more generally, a directional derivative. The cvode solver already includes a built in feature
-            (see the <link linkend="sundials_sensitivity">Sensitivity</link> help page)
+            or in the initial condition, and more generally, a directional derivative. The cvode and ida solvers already includes a built in feature
+            (see the <link linkend="cvodes">ODE Sensitivity</link> and <link linkend="idas">DAE Sensitivity</link> help pages)
             that allows to compute the sensitivity function by adding its derivative (user provided or approximated with finite difference
-            quotients) to the original ODE rhs. However, when such a feature is not available (for example with arkode) and when the rhs is computed by a Scilab function,
+            quotients) to the original ODE rhs or DAE residual. However, when such a feature is not available (for example with arkode) and when the rhs is computed by a Scilab function,
             the sensititivity with respect to a single parameter can be computed by using a complex step. In the following example, we compute
             the derivative of the solution of the Van Der Pol equation with respect to mu. Note that the real part of the complex
             solution gives the solution of the equation itself:
@@ -113,7 +113,10 @@
             <link linkend="kinsol">kinsol</link>
         </member>
         <member>
-            <link linkend="sundials_sensitivity">Sensitivity</link>
+            <link linkend="cvodes">ODE Sensitivity</link>
+        </member>
+        <member>
+            <link linkend="idas">DAE Sensitivity</link>
         </member>
     </simplelist>
 </refsection>

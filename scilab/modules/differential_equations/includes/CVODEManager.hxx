@@ -14,12 +14,12 @@
 
 #include "OdeManager.hxx"
 
-#include <cvode/cvode_impl.h>
-#include <cvode/cvode_ls_impl.h>
-#include <cvode/cvode.h>            /* prototypes for CVODE fcts. and consts. */
-#include <cvode/cvode_direct.h>    /* prototypes for various DlsMat operations */
-#include <cvode/cvode_proj.h>
-#include <cvode/cvode_bandpre.h>
+#include <cvodes/cvodes_impl.h>
+#include <cvodes/cvodes_ls_impl.h>
+#include <cvodes/cvodes.h>            /* prototypes for CVODE fcts. and consts. */
+#include <cvodes/cvodes_direct.h>    /* prototypes for various DlsMat operations */
+#include <cvodes/cvodes_proj.h>
+#include <cvodes/cvodes_bandpre.h>
 
 extern "C"
 {
@@ -63,6 +63,8 @@ public :
         getRootInfo = CVodeGetRootInfo;
         setConstraints = CVodeSetConstraints;
         setVTolerances = CVodeSVtolerances;
+        setQuadSVTolerances = CVodeQuadSVtolerances;
+        setQuadErrCon = CVodeSetQuadErrCon;
         setErrHandlerFn = CVodeSetErrHandlerFn;
         getReturnFlagName = CVodeGetReturnFlagName;
         getDky = CVodeGetDky;
@@ -93,21 +95,21 @@ public :
             CVodeFree(&m_prob_mem);
         }
         m_prob_mem = NULL;
-        if (m_NVArraySens != NULL)
+        if (m_NVArrayYS != NULL)
         {
             for (int i=0; i<getNbSensPar(); i++)
             {
-                N_VDestroy(m_NVArraySens[i]);
+                N_VDestroy(m_NVArrayYS[i]);
             }
-            //N_VDestroyVectorArray_Serial(m_NVArraySens, getNbSensPar());
-            m_NVArraySens = NULL;
+            //N_VDestroyVectorArray_Serial(m_NVArrayYS, getNbSensPar());
+            m_NVArrayYS = NULL;
         }
-        if (m_NVectorQuad != NULL)
+        if (m_NVectorYQ != NULL)
         {
-            N_VDestroy(m_NVectorQuad);
+            N_VDestroy(m_NVectorYQ);
         }
         SUNDIALSMANAGER_KILLME(m_pDblSensPar);
-        SUNDIALSMANAGER_KILLME(m_pDblSens0);
+        SUNDIALSMANAGER_KILLME(m_pDblYS0);
         SUNDIALSMANAGER_KILLME(m_pDblYQ0);
     };
 
@@ -127,21 +129,21 @@ public :
         return true;
     }
 
-    types::Double *getSOut()
+    types::Double *getYSOut()
     {
         // sensitivity at user prescribed timesteps or at each internal step of the method
-        return getArrayFromVectors(m_pDblSens0, m_vecSOut, m_dblVecTOut.size());
+        return getArrayFromVectors(m_pDblYS0, m_vecYSOut, m_dblVecTOut.size());
     }
 
-    types::Double *getQuadOut()
+    types::Double *getYQOut()
     {
         // pure quadrature variable at user prescribed timesteps or at each internal step of the method
-        return getArrayFromVectors(m_pDblYQ0, m_vecQuadOut, m_dblVecTOut.size());
+        return getArrayFromVectors(m_pDblYQ0, m_vecYQOut, m_dblVecTOut.size());
     }
 
-    types::Double *getSEvent()
+    types::Double *getYSEvent()
     {
-        return getArrayFromVectors(m_pDblSens0, m_dblVecSEvent, m_dblVecEventTime.size());
+        return getArrayFromVectors(m_pDblYS0, m_vecYSEvent, m_dblVecEventTime.size());
     }
 
     std::vector<std::pair<std::wstring,types::Double *>> getAdditionalFields();
@@ -172,8 +174,7 @@ public :
     // static methods
     static int sensRhs(int Ns, realtype t, N_Vector N_VectorY, N_Vector N_VectorYp, N_Vector *yS, N_Vector *ySdot, void *pManager,
         N_Vector tmp1, N_Vector tmp2);
-    static int backwardRhs(realtype t, N_Vector N_VectorY, N_Vector N_VectorYB, N_Vector N_VectorYBDot, void *pManager);
-    static int quadratureRhs(realtype t, N_Vector N_VectorYQ, N_Vector N_VectorYQDot, void *pManager);
+    static int quadratureRhs(realtype t, N_Vector N_VectorY, N_Vector N_VectorYQDot, void *pManager);
     static int projFunction(realtype t, N_Vector N_VectorY, N_Vector N_VectorCorr, realtype epsProj, N_Vector N_VectorErr, void *pManager);
 
     types::Struct *getStats();
@@ -194,13 +195,23 @@ public :
         return wstrMethod == L"ADAMS" ? 12 : 5;
     }
 
+    bool hasQuadFeature()
+    {
+        return true;
+    }
+
+    bool hasSensFeature()
+    {
+        return true;
+    }
+
     bool computeSens()
     {
         return m_pDblSensPar != NULL;
     }
     int getNbSensPar()
     {
-        return m_pDblSensPar == NULL ? 0 : (m_iVecSensParIndex.size()==0 ? m_pDblSensPar->getSize() : m_iVecSensParIndex.size());
+        return (int) (m_pDblSensPar == NULL ? 0 : (m_iVecSensParIndex.size()==0 ? m_pDblSensPar->getSize() : m_iVecSensParIndex.size()));
     }
 
     bool hasBandPrec()
@@ -213,19 +224,11 @@ private :
 
     functionKind m_defaultFunctionKind = RHS;
 
-    types::Double *m_pDblSensPar = NULL;
-    types::Double *m_pDblSens0 = NULL;
-    types::Double *m_pDblYQ0 = NULL;
+    N_Vector *m_NVArrayYS = NULL;
 
-    N_Vector *m_NVArraySens = NULL;
-    N_Vector m_NVectorQuad = NULL;
-
-    std::vector<std::vector<double>> m_vecQuadOut;
-    std::vector<std::vector<double>> m_vecSOut;
-    std::vector<std::vector<double>> m_dblVecSEvent;
-
-    int m_iNbQuad;
-    int m_iNbRealQuad;
+    std::vector<std::vector<double>> m_vecYQOut;
+    std::vector<std::vector<double>> m_vecYSOut;
+    std::vector<std::vector<double>> m_vecYSEvent;
 
     long int m_incStat[9] = {0, 0, 0, 0, 0, 0, 0, 0, 0};
 };

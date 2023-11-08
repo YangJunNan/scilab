@@ -21,35 +21,34 @@
 cd('\');
 
 if getos() == 'Windows' 
-  
-	if ~or(getdrives() == pwd()) then pause,end
+	assert_checktrue(or(getdrives() == pwd()));
 else
-	if pwd() <> '/' then pause,end
+	assert_checkequal(pwd(), '/');
 end
 
 // ================== Test 2 ==================
 
 cd home;
-if pwd() <> home then pause,end
+assert_checkequal(pwd(), home);
 
 // ================== Test 3 ==================
 
 if getos() == 'Windows' then
 	cd WSCI;
-	if pwd() <> WSCI then pause,end
+	assert_checkequal(pwd(), WSCI);
 end
 
 // ================== Test 4 ==================
 
 cd SCIHOME;
-if pwd() <> SCIHOME then pause,end
+assert_checkequal(pwd(), fullpath(SCIHOME)); // fullpath needed in case -scihome parameter is used at Scilab startup and contains relative paths (cf CI)
 
 // ================== Test 5 ==================
 
 cd SCIHOME;
-if pwd() <> SCIHOME then pause,end
+assert_checkequal(pwd(), fullpath(SCIHOME)); // fullpath needed in case -scihome parameter is used at Scilab startup and contains relative paths (cf CI)
 
 // ================== Test 6 ==================
 
 cd PWD;
-if pwd() <> PWD then pause,end
+assert_checkequal(pwd(), PWD);
