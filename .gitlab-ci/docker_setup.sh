@@ -100,20 +100,14 @@ fi
 
 # build the linux builder image
 if test -n "${DOCKER_LINUX_BUILDER}"; then
-  docker build -t "${DOCKER_LINUX_BUILDER}:${DOCKER_TAG}" \
-    - <.gitlab-ci/Dockerfile.linux
+  docker build -t "${DOCKER_LINUX_BUILDER}:${DOCKER_TAG}" - <.gitlab-ci/Dockerfile.linux
   docker push "${DOCKER_LINUX_BUILDER}:${DOCKER_TAG}"
-  docker rmi "${DOCKER_LINUX_BUILDER}:${DOCKER_TAG}"
 fi
 
 # build the linux dependencies image
 if test -n "${DOCKER_LINUX_PREBUILD}"; then
-  docker build -t "${DOCKER_LINUX_PREBUILD}:${DOCKER_TAG}" \
-    --build-arg DOCKER_LINUX_BUILDER=$(echo $DOCKER_LINUX_PREBUILD | sed s/prebuild/builder/) \
-    --build-arg DOCKER_TAG=${DOCKER_TAG} \
-    - <.gitlab-ci/Dockerfile.linux.prebuild
+  docker build -t "${DOCKER_LINUX_PREBUILD}:${DOCKER_TAG}" --build-arg DOCKER_LINUX_BUILDER=$(echo $DOCKER_LINUX_PREBUILD | sed s/prebuild/builder/) --build-arg DOCKER_TAG=${DOCKER_TAG} - <.gitlab-ci/Dockerfile.linux.prebuild
   docker push "${DOCKER_LINUX_PREBUILD}:${DOCKER_TAG}"
-  docker rmi "${DOCKER_LINUX_PREBUILD}:${DOCKER_TAG}"
 fi
 
 # build linux distribution
@@ -161,14 +155,8 @@ if test -n "${BINARY}"; then
   cp .gitlab-ci/Dockerfile.linux.runner linux-runner/Dockerfile
   cp "${BINARY}" linux-runner/
 
-  # build
-  docker build --progress=plain --no-cache -t "${CI_REGISTRY_IMAGE}/linux-runner:${DOCKER_TAG}" \
-    --build-arg "DOCKER_LINUX_BUILDER=${DOCKER_LINUX_BUILDER}" \
-    --build-arg "DOCKER_LINUX_RUNNER=${CI_REGISTRY_IMAGE}/linux-runner" \
-    --build-arg "DOCKER_TAG=${DOCKER_TAG}" \
-    linux-runner/
-  
-  # publish
+  # build and publish
+  docker build --progress=plain --no-cache -t "${CI_REGISTRY_IMAGE}/linux-runner:${DOCKER_TAG}" --build-arg "DOCKER_LINUX_BUILDER=${DOCKER_LINUX_BUILDER}" --build-arg "DOCKER_LINUX_RUNNER=${CI_REGISTRY_IMAGE}/linux-runner" --build-arg "DOCKER_TAG=${DOCKER_TAG}" linux-runner/
   docker push "${CI_REGISTRY_IMAGE}/linux-runner:${DOCKER_TAG}"
 fi
 
