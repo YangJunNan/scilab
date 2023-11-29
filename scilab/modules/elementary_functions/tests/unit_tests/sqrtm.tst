@@ -18,7 +18,8 @@ assert_checkalmostequal(norm(w*w-x, 1), 0, [], 15*%eps);
 
 
 // Error checks
-refMsg = msprintf(_("%s: Wrong type for input argument #%d: A real or complex matrix expected.\n"),"sqrtm", 1);
+errarg = sci2exp("double");
+refMsg = msprintf(_("%s: Wrong type for input argument #%d: Must be in %s.\n"),"sqrtm", 1, errarg);
 assert_checkerror("sqrtm(list())", refMsg);
 assert_checkerror("sqrtm(%s)", refMsg);
 assert_checkerror("sqrtm(%t)", refMsg);

@@ -29,7 +29,6 @@ macros_error_type_1 = ["isscalar"; ..
 "asecd"; ..
 "asech"; ..
 "asind"; ..
-"atand"; ..
 "bin2dec"; ..
 "cat"; ..
 "convertindex"; ..
@@ -90,7 +89,7 @@ for i=1:size(macros_error_type_3, "*")
     assert_checkerror (macros_error_type_3(i) + "()" , msg_error_ref_3 , [] , macros_error_type_3(i) , 1, 2);
 end
 // =============================================================================
-macros_error_type_3_1 = ["toeplitz"];
+macros_error_type_3_1 = ["toeplitz", "atand"];
 msg_error_ref_3_1 = _("%s: Wrong number of input argument(s): %d to %d expected.\n");
 for i=1:size(macros_error_type_3_1, "*")
     assert_checkerror (macros_error_type_3_1(i) + "()" , msg_error_ref_3_1 , [] , macros_error_type_3_1(i) , 1, 2);
