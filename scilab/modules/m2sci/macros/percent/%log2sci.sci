@@ -74,7 +74,7 @@ function tree = %log2sci(tree)
     if is_sparse(A)>0 | is_sparse(B)>0
         tree.type = Type(Boolean, Sparse)
     else
-        [tA, tB] = (A.type, B.type)
+        [tA, tB] = deal(A.type, B.type)
         if tA.vtype==Unknown | tB.vtype==Unknown |..
            (tA.vtype==Boolean & tA.property==Unknown) | ..
            (tB.vtype==Boolean & tB.property==Unknown)

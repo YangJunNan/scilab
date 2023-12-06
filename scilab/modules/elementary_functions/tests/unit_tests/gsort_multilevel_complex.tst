@@ -182,7 +182,7 @@ function checkComplexOrder(C, Cs, ks, method, order, crits)
 endfunction
 
 clc
-[nr, nc] = (6,6);
+[nr, nc] = deal(6,6);
 r = grand(nr, nc, "uin", -1, 1);
 i = grand(nr, nc, "uin", -1, 1);
 C = r + i*%i;
@@ -207,7 +207,7 @@ end
 // ============
 // TWO CRITERIA
 // ============
-[nr, nc] = (10,3);
+[nr, nc] = deal(10,3);
 r = grand(nr, nc, "uin",-1,1);
 i = grand(nr, nc, "uin",-1,1);
 C = r+i*%i;

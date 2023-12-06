@@ -65,7 +65,7 @@ assert_checkequal(intersect(A,B),[" "  "ر"  "م"  "ه"  "و"]);
 
 // With booleans
 // -------------
-[T, F] = (%t, %f);
+[T, F] = deal(%t, %f);
 assert_checkequal(intersect([F F],F), F);
 assert_checkequal(intersect([T T],T), T);
 assert_checkequal(intersect(T,F), []);
@@ -153,7 +153,7 @@ assert_checkequal(v, uint32([0,1;0,1;2,1;0,2;2,1;0,3]'));
 assert_checkequal(intersect(%nan,%nan), []);
 assert_checkequal(intersect([1 -2 %nan 3 6], [%nan 1:3]), [1 3]);
 
-[A, B] = (A.', B.');
+[A, B] = deal(A.', B.');
 A($) = %nan;
 B(6,1) = %nan;
 [v,ka,kb] = intersect(A,B,'c');
@@ -186,7 +186,7 @@ m2 = m($/2+1:$,:);
    0. + 0.i   0. + 0.i   12    0. + i     0. + 0.i
 */
 // by element
-[x, y] = (m1(1:6,1), m2(1:6,2));
+[x, y] = deal(m1(1:6,1), m2(1:6,2));
 i = intersect(x, y);
 ref = [1 %i 1+%i];
 
@@ -218,7 +218,7 @@ assert_checkequal(k1, [4  5  7  3  6  1]);
 assert_checkequal(k2, [10 6  9  8  1  4]);
 
 // "c": common columns
-[m1, m2, ref] = (m1.', m2.', ref.');
+[m1, m2, ref] = deal(m1.', m2.', ref.');
 i = intersect(m1, m2, "c");
 assert_checkequal(i, ref);
 [i, k1, k2] = intersect(m1, m2, "c");

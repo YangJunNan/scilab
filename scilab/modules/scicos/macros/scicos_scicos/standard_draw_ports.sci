@@ -28,7 +28,7 @@ function standard_draw_ports(o)
     clkin  = size(o.model.evtin,1);
     clkout = size(o.model.evtout,1);
 
-    [orig,sz]=(o.graphics.orig,o.graphics.sz)
+    [orig,sz]=deal(o.graphics.orig,o.graphics.sz)
     orient=%t;
     style=graphics.style;
     subStr=strstr(style,"flip=");

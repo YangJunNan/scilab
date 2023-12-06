@@ -135,7 +135,7 @@ function tree = default_trad(tree)
     if m2sci_Mtoolboxes_funs_db==[] then
         m2sci_Mtoolboxes_funs_db = csvRead(SCI+"/modules/m2sci/Mtbxfun_db.txt",",",[],"string");
     end
-    [mtlbpath, ismtlbtoolfun] = (gettext("not matlab path"), %f);
+    [mtlbpath, ismtlbtoolfun] = deal(gettext("not matlab path"), %f);
     k = find(name==m2sci_Mtoolboxes_funs_db(:,1), 1); // ,1 added 2020
     if k<>[] then
         mtlbpath = m2sci_Mtoolboxes_funs_db(k,2)

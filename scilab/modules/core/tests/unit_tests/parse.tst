@@ -40,7 +40,9 @@ a(2)=44
 clear c;c(5)=9
 
 [m,k]=max(1:3)
-[d1f d2f d3f d4f] = (1,2,3,4)
+// Obsolete 2024.1.0 => deal
+// Removed 2025.0.0
+[d1f d2f d3f d4f] = deal(1,2,3,4)
 
 //if 10<>3 then x=disp('abcd'),end
 if 10<>3 then disp("abcd"),end
@@ -63,16 +65,17 @@ for k=1:2,[1,2],end
 for k=1:3 k,end //matlab syntax
 
 //nouvelles syntaxes
+// Obsolete 2024.1.0 => deal
+// Removed 2025.0.0
+[a(1),b(2)]=deal(3,4)
 
-[a(1),b(2)]=(3,4)
-
-[a(1),x,b(2)]=(3,4,5)
-[a(1),b(1,2),x]=(3,4,5)
+[a(1),x,b(2)]=deal(3,4,5)
+[a(1),b(1,2),x]=deal(3,4,5)
 
 I1=list(2,3);I2=list(1,2);
-clear x y;[x,y(I2(:))]=(11,12)
-clear x y;[x(I1(:)),y]=(11,12)
-clear x y;[x(I1(:)),y(I2(:))]=(11,12)
+clear x y;[x,y(I2(:))]=deal(11,12)
+clear x y;[x(I1(:)),y]=deal(11,12)
+clear x y;[x(I1(:)),y(I2(:))]=deal(11,12)
 
 
 str_l=list();str_l(1)=1;str_l(1)
@@ -107,11 +110,12 @@ deff("t1=foo()","t1=list();t1(1)= 44;");foo()
 deff("[a,b,x]=foo()","[a(1),b(1,2),x]=(3,4,5);");[a,b,x]=foo()
 
 
-
-function [a,b,x]=foo(),u=5;[a(1),b(1,2),x]=(3,4,u),a(2)=44,endfunction
+// Obsolete 2024.1.0 => deal
+// Removed 2025.0.0
+function [a,b,x]=foo(),u=5;[a(1),b(1,2),x]=deal(3,4,u),a(2)=44,endfunction
 [a,b,x]=foo()
 
-function [a,b,x]=foo(),[a,b,x]=(3,4,5),endfunction
+function [a,b,x]=foo(),[a,b,x]=deal(3,4,5),endfunction
 [a,b,x]=foo()
 
 
@@ -120,7 +124,7 @@ function x=foo(),INDX=list(2,3); x(INDX(:))=11; endfunction
 foo()
 
 I1=list(2,3);I2=list(1,2);
-function foo(),[x(I1(:)),y(I2(:))]=(11,12);disp(x,y), endfunction
+function foo(),[x(I1(:)),y(I2(:))]=deal(11,12);disp(x,y), endfunction
 foo()
 
 

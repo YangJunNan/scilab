@@ -24,7 +24,7 @@ function [x, err] = diophant(p1p2, b)
         msg = _("%s: Argument #%d: Inf or NaN coefficients not supported.\n")
         error(msprintf(msg, "diophant", 1))
     end
-    [p1, p2] = (p1p2(1), p1p2(2))
+    [p1, p2] = deal(p1p2(1), p1p2(2))
 
     if or(type(b)==[1 2 5]) & (isinf(b) | isnan(b)) then
         msg = _("%s: Argument #%d: Inf or NaN coefficients not supported.\n")

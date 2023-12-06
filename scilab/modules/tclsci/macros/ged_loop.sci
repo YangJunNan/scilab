@@ -43,7 +43,7 @@ function h = ged_loop(a,pt)
 
         case "Rectangle"
             xy = ck.data;
-            [x0, y0, w, h] = (xy(1), xy(2), xy(3), xy(4))
+            [x0, y0, w, h] = deal(xy(1), xy(2), xy(3), xy(4))
             x = [x0  x0+w  x0+w  x0  x0]
             y = [y0   y0   y0-h y0-h y0]
             [xn, yn] = ged_get_normalized_axes_xy(x,y)
@@ -57,7 +57,7 @@ function h = ged_loop(a,pt)
             // The area of detection is not the whole enclosing rectangle, but
             // only the given arc.
             xy = ck.data;
-            [x, y, w, h, a0, da] = (xy(1), xy(2), xy(3), xy(4), xy(5)/64, xy(6)/64)
+            [x, y, w, h, a0, da] = deal(xy(1), xy(2), xy(3), xy(4), xy(5)/64, xy(6)/64)
             pax = ck.parent
             xc = x + w/2
             yc = y - h/2
@@ -155,7 +155,7 @@ function h = ged_loop(a,pt)
                     yp = log10(yp)
                     db(3:4) = log10(db(3:4))
                 end
-                [Xmin, Xmax, Ymin, Ymax] = (db(1), db(2), db(3), db(4))
+                [Xmin, Xmax, Ymin, Ymax] = deal(db(1), db(2), db(3), db(4))
                 Dx = Xmax - Xmin
                 Dy = Ymax - Ymin
                 Xreversed = ck.axes_reverse(1)=="on"
@@ -197,7 +197,7 @@ function h = ged_loop(a,pt)
             else
                 // "points" case: to be implemented
             end
-            [x0, y0, w, h] = (xy(1), wh(2)-xy(2)-xy(4), xy(3), xy(4))
+            [x0, y0, w, h] = deal(xy(1), wh(2)-xy(2)-xy(4), xy(3), xy(4))
             // y0: position of the top-left corner of the uicontrol, wrt to the
             //     top-left corner of the figure
             // [xn, yn] = ged_get_normalized_axes_xy(x,y)

@@ -209,9 +209,9 @@ function yi = interp1(varargin)
     // ==========
     if ~isreal(y) then
         if extraVal==[]
-            [extraR, extraI] = (extra, extra);
+            [extraR, extraI] = deal(extra, extra);
         else
-            [extraR, extraI] = (real(extraVal), imag(extraVal));
+            [extraR, extraI] = deal(real(extraVal), imag(extraVal));
         end
         yir = interp1(x, real(y), xi, method, extraR)
         yii = interp1(x, imag(y), xi, method, extraI)

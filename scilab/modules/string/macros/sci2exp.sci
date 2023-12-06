@@ -47,7 +47,7 @@ function t=sci2exp(a,nom,lmax)
     case 3 then
         named=%t
         if type(nom)==1 then
-            [lmax,nom]=(nom,lmax)
+            [lmax,nom] = deal(nom,lmax)
         end
     end
 

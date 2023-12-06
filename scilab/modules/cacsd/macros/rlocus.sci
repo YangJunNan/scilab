@@ -51,8 +51,8 @@ function [kk,ol_poles,ol_zeros,cl_poles,AsymptotesOrigin,AsymptotesAngles]=rlocu
 
     inproper=degree(num)>degree(den)
     if inproper then
-        [num, den]=(den, num);
-        [ol_zeros,ol_poles]=(ol_poles,ol_zeros);
+        [num, den] = deal(den, num);
+        [ol_zeros,ol_poles] = deal(ol_poles,ol_zeros);
     end
 
 

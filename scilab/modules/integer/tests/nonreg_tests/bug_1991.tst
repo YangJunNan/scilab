@@ -16,14 +16,14 @@
 //                      !--error 78
 //    convert: wrong number of lhs arguments
 
-[a,b]  = (3,int32(5));
+[a,b]  = deal(3,int32(5));
 if a<>3        then pause,end
 if b<>int32(5) then pause,end
 
 a=(3 + int32(5));
 if a<>int32(8) then pause,end
 
-[a,b,c]=(3,(2),sin(5));
+[a,b,c] = deal(3,(2),sin(5));
 if a<>3        then pause,end
 if b<>2        then pause,end
 if c<>sin(5)   then pause,end

@@ -126,7 +126,7 @@ function sgrid(varargin)
     end
 
     db = data_bounds;
-    [xmin, xmax, ymin, ymax] = (db(1), db(2), db(3),db(4));
+    [xmin, xmax, ymin, ymax] = deal(db(1), db(2), db(3),db(4));
 
     //iso natural frequency curves (circles centered on (0,0))
     // -------------------------------------------------------

@@ -292,7 +292,7 @@ function C=build_truck()
 endfunction
 
 function draw_truck(C,pos)
-    [x,y,theta1,theta2,theta3,phi]=(pos(1),pos(2),pos(3),pos(4),pos(5),pos(6))
+    [x,y,theta1,theta2,theta3,phi]=deal(pos(1),pos(2),pos(3),pos(4),pos(5),pos(6))
     bigL = 1 ; d1 = 1.5 ; d2 = 1;
     Rc=[cos(theta1) sin(theta1);-sin(theta1) cos(theta1)]
     // the car

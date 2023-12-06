@@ -102,7 +102,7 @@ function Info = scicos_simulate(scs_m, Info, updated_vars, flag, Ignb)
         //scicos_simulate(scs_m, Info,"nw",updated_vars)
         ku=3;kf=4
         if type(updated_vars) == 10 then
-            [updated_vars,flag]=(flag,updated_vars)
+            [updated_vars,flag]=deal(flag,updated_vars)
             kf=3;ku=4
         end
         if argn(2) == 4 then Ignb = "",end

@@ -14,8 +14,8 @@
 // ===============
 // Sparse booleans
 // ===============
-[T, F] = (%t, %f);
-[esp, espb] = (sparse([]), sparse(F)); espb(1) = []
+[T, F] = deal(%t, %f);
+[esp, espb] = deal(sparse([]), sparse(F)); espb(1) = []
 
 // With an empty
 assert_checkequal(intersect(T, espb), []);
@@ -35,7 +35,7 @@ B = [F T F T F
 ref = [F F T
        T T F
        F T F ];
-[spA, spB, spref] = (sparse(A), sparse(B), sparse(ref));
+[spA, spB, spref] = deal(sparse(A), sparse(B), sparse(ref));
 assert_checkequal(intersect(spA, B), sparse([F T]));
 assert_checkequal(intersect(A, spB), sparse([F T]));
 assert_checkequal(intersect(spA, spB), sparse([F T]));

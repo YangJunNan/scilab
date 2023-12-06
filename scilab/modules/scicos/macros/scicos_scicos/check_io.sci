@@ -62,10 +62,10 @@ function [model,graphics,ok]=check_io(model,graphics,in,out,clkin,clkout,in_impl
     end
 
 
-    [label,ip1,op1,cip1,cop1]=(graphics.exprs,graphics.pin,graphics.pout,..
+    [label,ip1,op1,cip1,cop1]=deal(graphics.exprs,graphics.pin,graphics.pout,..
     graphics.pein,graphics.peout)
 
-    [in1,out1,clkin1,clkout1]=(model.in,model.out,model.evtin,model.evtout)
+    [in1,out1,clkin1,clkout1]=deal(model.in,model.out,model.evtin,model.evtout)
 
     n1=size(in1(:,1),"*");n=size(in(:,1),"*")
     if n1>n then

@@ -100,7 +100,7 @@ function [m, k] = %sp_min(varargin)
         ind = gsort([ij(:,1) v ij(:,2)], "lr", "i") // Row  Val  Col
         [tmp, kk] = unique(ind(:,1))
         tab = ind(kk,:)
-        [i v K] = (tab(:,1), tab(:,2), tab(:,3))
+        [i v K] = deal(tab(:,1), tab(:,2), tab(:,3))
         ind = find(v>0)
         for j = ind
             kk = find(A1(i(j),:)==0,1)

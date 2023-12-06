@@ -16,7 +16,7 @@ function [m,n]=%xlssheet_size(sheet,opt)
     else
         m=size(sheet.value)
         if argn(1)>1 then
-            [m,n]=(m(1),m(2))
+            [m,n] = deal(m(1),m(2))
         end
     end
 endfunction

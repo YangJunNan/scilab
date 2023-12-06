@@ -28,7 +28,7 @@ function [ok,tt,dep_ut]=genfunc2(tt,inp,out,nci,nco,nx,nz,nrp,type_)
 
     mac=[];ok=%f,dep_ut=[]
     if size(tt)<>7 then
-        [txt1,txt0,txt2,txt3,txt4,txt5,txt6]=(" "," "," "," "," "," "," ")
+        [txt1,txt0,txt2,txt3,txt4,txt5,txt6]=deal(" "," "," "," "," "," "," ")
     else
         [txt1,txt0,txt2,txt3,txt4,txt5,txt6]=tt(1:7)
     end

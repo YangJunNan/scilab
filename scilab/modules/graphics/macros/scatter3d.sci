@@ -156,18 +156,18 @@ function varargout = scatter3d(varargin)
                 if size(v,"*") == 1
                    v = convstr(v)
                    if v=="fill"
-                       [fill, step, iarg] = (%t, 3.5, iarg+1)
+                       [fill, step, iarg] = deal(%t, 3.5, iarg+1)
                        varargin(1) = null()
                        continue
                    end
                    if v=="smallontop"
-                       [fill, step, iarg] = (%t, 4, iarg+1)
+                       [fill, step, iarg] = deal(%t, 4, iarg+1)
                        varargin(1) = null()
                        continue
                    end
                    if or(v==markersT)
                        markers = markersN(find(v==markersT, 1))
-                       [step, iarg] = (5, iarg+1)
+                       [step, iarg] = deal(5, iarg+1)
                        varargin(1) = null()
                        continue
                    end
@@ -184,7 +184,7 @@ function varargout = scatter3d(varargin)
 
            elseif type(v) == 1
                if v==[]
-                   [step, iarg] = (2, iarg+1)
+                   [step, iarg] = deal(2, iarg+1)
                    varargin(1) = null()
                    continue
                end
@@ -201,7 +201,7 @@ function varargout = scatter3d(varargin)
                    msg = _("%s: Arguments #%d and #%d: Same numbers of elements expected.\n")
                    error(msprintf(msg, fname, nh+1, iarg));
                end
-               [msizes, step, iarg] = (v, 2, iarg+1)
+               [msizes, step, iarg] = deal(v, 2, iarg+1)
                varargin(1) = null()
 
            else
@@ -217,13 +217,13 @@ function varargout = scatter3d(varargin)
                end
                v = real(v)
                if v==[]
-                   [step, iarg] = (3, iarg+1)
+                   [step, iarg] = deal(3, iarg+1)
                    varargin(1) = null()
                    continue
                end
                if length(v) == length(X)
                     // Whole colormap scaled to data
-                    [cMin, cMax] = (min(v), max(v));
+                    [cMin, cMax] = deal(min(v), max(v));
                     cmap = gcf().color_map;
                     numColors = size(cmap,1);
                     if ((cMax-cMin)/abs(cMin+cMax) > %eps) then
@@ -231,7 +231,7 @@ function varargout = scatter3d(varargin)
                     else
                         mcolors = cMin;
                     end
-                    [step, iarg] = (3, iarg+1)
+                    [step, iarg] = deal(3, iarg+1)
                     varargin(1) = null()
                     continue
                 end
@@ -248,7 +248,7 @@ function varargout = scatter3d(varargin)
                else
                    mcolors = c
                end
-               [step, iarg] = (3, iarg+1)
+               [step, iarg] = deal(3, iarg+1)
                varargin(1) = null()
            else
                step = 3
@@ -258,7 +258,7 @@ function varargout = scatter3d(varargin)
            if type(v)==10 & size(v,"*")==1
                v = convstr(v)
                if v=="fill"
-                   [fill, iarg] = (%t, iarg+1)
+                   [fill, iarg] = deal(%t, iarg+1)
                    varargin(1) = null()
                end
             end
@@ -268,7 +268,7 @@ function varargout = scatter3d(varargin)
            if type(v)==10 & size(v,"*")==1
                v = convstr(v)
                if v=="smallontop"
-                   [smallOnTop, iarg] = (%t, iarg+1)
+                   [smallOnTop, iarg] = deal(%t, iarg+1)
                    varargin(1) = null()
                end
             end
@@ -291,14 +291,14 @@ function varargout = scatter3d(varargin)
                    error(msprintf(msg, fname, iarg))
                end
                markers = v
-               [step, iarg] = (5, iarg+1)
+               [step, iarg] = deal(5, iarg+1)
                varargin(1) = null()
            else
                v = convstr(v)
                tmp = find(v==markersT, 1)
                if tmp <> []
                    markers = markersN(tmp)
-                   [step, iarg] = (5, iarg+1)
+                   [step, iarg] = deal(5, iarg+1)
                    varargin(1) = null()
                end
                step = 5

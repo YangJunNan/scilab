@@ -122,8 +122,8 @@ function varargout = hallchart(modules, args, colors)
     c = cos(w)
     s = sin(w)
     chart_handles = []
-    [gainLines, gainLabels] = ([],[])
-    [phaseLines, phaseLabels] = ([],[])
+    [gainLines, gainLabels] = deal([],[])
+    [phaseLines, phaseLabels] = deal([],[])
 
     // Best diagonal angles for positive and negative gain labels:
     // (we assume xmin<-1, xmax>0, ymin<0, ymax>0. Full adaptative automatic

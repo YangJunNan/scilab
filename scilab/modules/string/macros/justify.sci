@@ -84,7 +84,7 @@ function t = justify(t, job)
         L = length(t)
         mx = max(L,"r")
         paddN = ones(st(1),1)*mx - L
-        [paddL, paddR] = ("","")
+        [paddL, paddR] = deal("","")
         paddNL = int(paddN/2); cs = cumsum(paddNL);
         if cs($) <> 0
             paddL = strsplit(blanks(cs($)+2),[1 ; 1+cs(:)])

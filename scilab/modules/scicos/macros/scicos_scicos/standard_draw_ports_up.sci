@@ -26,7 +26,7 @@ function standard_draw_ports_up(o)
     inporttype=o.graphics.in_implicit
     nout=size(o.model.out,1);
     outporttype=o.graphics.out_implicit
-    [orig,sz]=(o.graphics.orig,o.graphics.sz)
+    [orig,sz]=deal(o.graphics.orig,o.graphics.sz)
     gca().foreground = default_color(0);
 
     // set port shape

@@ -132,7 +132,7 @@ assert_checkerror("a(2,4,1)", msprintf(_("Invalid index.\n")));
 assert_checkerror("a(11)", msprintf(_("Invalid index.\n")));
 
 A = rand(6, 4, 2, 8);
-[S(:,:,1), k(:,:,1)] = (A(:,:,1), A(:,:,2));
+[S(:,:,1), k(:,:,1)] = deal(A(:,:,1), A(:,:,2));
 assert_checkequal(S(:,:,1), A(:,:,1));
 
 function [a,b]=toto()

@@ -126,7 +126,7 @@ function [Axes, hcurves] = cutaxes(varargin)
         ymax = max(y)
     else
         db = x0.data_bounds
-        [xmin, xmax, ymin, ymax] = (db(1),db(2),db(3),db(4));
+        [xmin, xmax, ymin, ymax] = deal(db(1),db(2),db(3),db(4));
     end
 
     fig = gcf();

@@ -11,7 +11,7 @@
 
 function files = getsubfiles(path, ext)
 	files = [];
-	folders = ls(path + filesep() + "*.");
+	folders = ls(path + filesep() + "*");
 	for i = 1:size(folders, "*")
 		if isdir(folders(i)) then
 			files = [files; getsubfiles(folders(i), ext)];
@@ -22,7 +22,11 @@ function files = getsubfiles(path, ext)
 endfunction
 
 function files = getfiles(subpath, ext)
-	path = sprintf(strsubst(fullfile(SCI, "modules", "%s", subpath), "\", "\\") + "\n", getmodules());
+	//modules = getmodules();
+	modules = ls(fullfile(SCI, "modules"));
+	path = sprintf(strsubst(fullfile(SCI, "modules", "%s", subpath), "\", "\\") + "\n", modules);
+	
+	
 	files = getsubfiles(path, ext);
 
 	files(grep(files, "parser_idempotence.tst")) = [];
@@ -43,6 +47,26 @@ endfunction
 totalsize = 0;
 // macros
 files = getfiles("macros", "*.sci");
+parser_idempotence(files);
+totalsize = totalsize + size(files, "*");
+
+// start
+files = getfiles("etc", "*.start");
+parser_idempotence(files);
+totalsize = totalsize + size(files, "*");
+
+// quit
+files = getfiles("etc", "*.quit");
+parser_idempotence(files);
+totalsize = totalsize + size(files, "*");
+
+// demos
+files = getfiles("demos", "*.sci");
+parser_idempotence(files);
+totalsize = totalsize + size(files, "*");
+
+// demos
+files = getfiles("demos", "*.sce");
 parser_idempotence(files);
 totalsize = totalsize + size(files, "*");
 

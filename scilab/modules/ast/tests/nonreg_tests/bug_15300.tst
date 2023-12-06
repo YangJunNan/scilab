@@ -16,5 +16,5 @@
 // Crash when the function name is forgotten!
 // Test updated after issue #14372 fix
 
-A=(1,1);
-assert_checkequal(A, 1);
+ierr = execstr("A=(1,1)", "errcatch");
+assert_checkequal(ierr, 999);

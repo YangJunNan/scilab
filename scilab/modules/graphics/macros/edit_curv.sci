@@ -69,7 +69,7 @@ function [x, y, ok, gc] = edit_curv(varargin)
     // x and y, or axes or hcurve
     // --------------------------
     if rhs==0 then
-        [x, y] = ([], [])
+        [x, y] = deal([], [])
         //scf()
     else
         // hAxes
@@ -124,11 +124,11 @@ function [x, y, ok, gc] = edit_curv(varargin)
             if length(varargin) > 0
                 c = varargin(1)
                 if ~isdef("c","l")   // skipped
-                    [x, y] = ([], [])
+                    [x, y] = deal([], [])
                     varargin(1) = null(), i = i+1
                 elseif type(c)==10
                     if x <> x // %nan
-                        [x, y] = ([], [])
+                        [x, y] = deal([], [])
                     else
                         y = x
                         x = (1:length(y))'
@@ -142,7 +142,7 @@ function [x, y, ok, gc] = edit_curv(varargin)
                 end
             else
                 if x <> x // %nan
-                    [x, y] = ([], [])
+                    [x, y] = deal([], [])
                 else
                     y = x
                     x = (1:length(y))'
@@ -217,7 +217,7 @@ function [x, y, ok, gc] = edit_curv(varargin)
         end
         if type(gc(1)) <> 0
             rect = gc(1)
-            [xmn ymn xmx ymx] = (rect(1), rect(2), rect(3), rect(4));
+            [xmn ymn xmx ymx] = deal(rect(1), rect(2), rect(3), rect(4));
             dx  = xmx - xmn;
             dy  = ymx - ymn;
         end
@@ -231,7 +231,7 @@ function [x, y, ok, gc] = edit_curv(varargin)
             mark_style = gc(3)(4)
         else
             [lineStyle, lineColor, lineThickness, mark_style] = ..
-                                                  (%nan,%nan,%nan,%nan)
+                                                  deal(%nan,%nan,%nan,%nan)
         end
     end
 
@@ -248,10 +248,10 @@ function [x, y, ok, gc] = edit_curv(varargin)
     if ~isdef("rect","l") then
         if length(x)<>0 then
             if db==[]
-                [xmn xmx ymn ymx]= (min(x), max(x), min(y), max(y));
+                [xmn xmx ymn ymx]= deal(min(x), max(x), min(y), max(y));
             else
-                [xmn xmx] = (min([x(:); db(1)]), max([x(:); db(2)]));
-                [ymn ymx] = (min([y(:); db(3)]), max([y(:); db(4)]));
+                [xmn xmx] = deal(min([x(:); db(1)]), max([x(:); db(2)]));
+                [ymn ymx] = deal(min([y(:); db(3)]), max([y(:); db(4)]));
             end
             dx = xmx - xmn;
             dy = ymx - ymn;
@@ -269,7 +269,7 @@ function [x, y, ok, gc] = edit_curv(varargin)
             if db==[]
                 xmn=0; ymn=0; xmx=1; ymx=1; dx=1; dy=1
             else
-                [xmn xmx ymn ymx] = (db(1), db(2), db(3), db(4));
+                [xmn xmx ymn ymx] = deal(db(1), db(2), db(3), db(4));
                 dx = xmx - xmn;
                 dy = ymx - ymn;
             end
@@ -282,7 +282,7 @@ function [x, y, ok, gc] = edit_curv(varargin)
     if ~isdef("lineStyle","l") then
         lineStyles = [%nan %nan %nan %nan] // style, color, thickness, markStyle]
         [lineStyle, lineColor, lineThickness, mark_style] = ..
-                                              (%nan,%nan,%nan,%nan)
+                                              deal(%nan,%nan,%nan,%nan)
     end
     if ~isdef("gc", "l") then
         gc = list(rect, ticksNumb, lineStyles);
@@ -302,7 +302,7 @@ function [x, y, ok, gc] = edit_curv(varargin)
     menu_d = ["Load", "Save", "Clear", "Reframe", "Bounds"]
     menu_e = ["Ok","Undo (Ctrl-Z)","Redo (Ctrl-Y)","Abort"]
     menus  = list(["Control","Data"],menu_e,menu_d)
-    [w, rpar] = ("menus(2)(", ")")
+    [w, rpar] = deal("menus(2)(", ")")
     Control = w(ones(menu_e))+string(1:size(menu_e,"*")) + rpar(ones(menu_e))
     w = "menus(3)("
     Data = w(ones(menu_d))+string(1:size(menu_d,"*")) + rpar(ones(menu_d))
@@ -362,7 +362,7 @@ function [x, y, ok, gc] = edit_curv(varargin)
     hdl.mark_size = 2
 
     // Initialize the historization for undo/redo actions
-    [xInit, yInit] = (x,y);
+    [xInit, yInit] = deal(x,y);
     hdl.userdata = list([x y])
     iHistory = 1;   // index in history of actions
     
@@ -420,9 +420,9 @@ function [x, y, ok, gc] = edit_curv(varargin)
             if iHistory > 1
                 iHistory = iHistory - 1
                 tmp = hdl.userdata(iHistory)
-                [x, y] = (tmp(:,1), tmp(:,2))
+                [x, y] = deal(tmp(:,1), tmp(:,2))
             else
-                [x, y] = (xInit, yInit)
+                [x, y] = deal(xInit, yInit)
             end
             hdl.data = [x y];
 
@@ -430,7 +430,7 @@ function [x, y, ok, gc] = edit_curv(varargin)
             if iHistory < length(hdl.userdata)
                 iHistory = iHistory + 1
                 tmp = hdl.userdata(iHistory)
-                [x, y] = (tmp(:,1), tmp(:,2))
+                [x, y] = deal(tmp(:,1), tmp(:,2))
                 hdl.data = [x y];
             end
 
@@ -461,7 +461,7 @@ function [x, y, ok, gc] = edit_curv(varargin)
 
         case "Clear" then
             hdl.data = []
-            [x, y] = ([],[])
+            [x, y] = deal([],[])
             iHistory = addToHistory(x, y)
 
         case "Read" then
@@ -484,7 +484,7 @@ function [x, y, ok, gc] = edit_curv(varargin)
                 hdl.data = [x y];
             else
                 hdl.data = []
-                [x, y] = ([], [])
+                [x, y] = deal([], [])
             end
 
         case "Save" then
@@ -493,7 +493,7 @@ function [x, y, ok, gc] = edit_curv(varargin)
         case "edit" then
             npt = size(x, "*")
             if npt<>0 then
-                dist=((x-ones(npt,1)*c1(1))/dx).^2+((y-ones(npt,1)*c1(2))/dy).^2
+                dist = deal((x-ones(npt,1)*c1(1))/dx).^2+((y-ones(npt,1)*c1(2))/dy).^2
                 [m,k]=min(dist);
                 m = sqrt(m)
             else
@@ -555,7 +555,7 @@ function [x,y] = addpt(c1,x,y)
     hdl;
     // Curve's initialization
     if x==[] then
-        [x, y] = (c1(1), c1(2))
+        [x, y] = deal(c1(1), c1(2))
         return
     end
 
@@ -570,7 +570,7 @@ function [x,y] = addpt(c1,x,y)
     end
     if  kk <> [] then
         //    recherche du segment sur lequel on a designé un point
-        [pp, d, i] = ([], [], 0)
+        [pp, d, i] = deal([], [], 0)
         for k = kk
             i = i+1
             pr = projaff(x(k:k+1),y(k:k+1),c1)
@@ -681,7 +681,7 @@ function [x,y] = readxy()
                 xy = findPolyline(loaded_figure.children);
                 delete(loaded_figure);
                 if xy <> [] then
-                    [x, y] = (xy(:,1), xy(:,2))
+                    [x, y] = deal(xy(:,1), xy(:,2))
                 else
                     msg = _("%s: The file "'%s"' does not contains any "'Polyline"' graphic entity.\n")
                     messagebox(msprintf(msg, "edit_curve", flname))
@@ -694,7 +694,7 @@ function [x,y] = readxy()
             end
         case ".xy" then
             if execstr("xy = read(fn,-1,2)","errcatch") == 0 then
-                [x, y] = (xy(:,1), xy(:,2))
+                [x, y] = deal(xy(:,1), xy(:,2))
             else
                 msg = _("%s: Cannot open file "'%s"' for reading.\n")
                 messagebox(msprintf(msg, "edit_curv", flname), "modal")
@@ -702,7 +702,7 @@ function [x,y] = readxy()
             end
         case ".sod" then
             if execstr("load(fn)","errcatch") == 0 then
-                [x, y] = (xy(:,1), xy(:,2))
+                [x, y] = deal(xy(:,1), xy(:,2))
             else
                 msg = _("%s: Cannot open file "'%s"' for reading.\n")
                 messagebox(msprintf(msg, "edit_curv", flname), "modal")
