@@ -6,10 +6,11 @@
 // =============================================================================
 //
 // <-- CLI SHELL MODE -->
+// <-- NO CHECK REF -->
 //
 variables_names_1 = predef('names');
-assert_checkequal(size(grep(variables_names_1,'jnull'), '*'), 1);
-assert_checkequal(size(grep(variables_names_1,'evoid'), '*'), 1);
+assert_checkequal(size(grep(variables_names_1,'SCIHOME'), '*'), 1);
+assert_checkequal(size(grep(variables_names_1,'%eps'), '*'), 1);
 
 clear
 // we add 3 variables
