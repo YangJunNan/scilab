@@ -5,6 +5,8 @@
 //  This file is distributed under the same license as the Scilab package.
 // =============================================================================
 
+// <-- CLI SHELL MODE -->
+
 //for version after 3.0 the comments are no more handled by a preprocessor,
 //but by the parser itself
 
