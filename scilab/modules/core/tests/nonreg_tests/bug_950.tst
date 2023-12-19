@@ -4,7 +4,9 @@
 //
 //  This file is distributed under the same license as the Scilab package.
 // =============================================================================
-// <-- NOT FIXED -->
+// <-- CLI SHELL MODE -->
+// <-- ENGLISH IMPOSED -->
+// <-- NO CHECK REF -->
 // <-- Non-regression test for bug 950 -->
 //
 // <-- GitLab URL -->
@@ -14,18 +16,14 @@
 //    extra character in "select" line crashes Scilab instead of 
 //    issuing a "syntax error" message.
 
-try
-	function [] = Select (Type)
-	select Type, n
-		case 1 then
-			disp ("1")
-		case 2 then
-			disp ("2")
-	end;
-	endfunction;
-	
-	if %T then pause,end
-	
-catch
-	
-end
+execstr([
+	"function [] = Select (Type)"
+		"select Type, n"
+			"case 1 then"
+				"disp (""1"")"
+			"case 2 then"
+				"disp (""2"")"
+		"end;"
+	"endfunction;"], "errcatch");
+msg = lasterror(%t)
+assert_checktrue(grep(msg, "syntax error") <> []);
