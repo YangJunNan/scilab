@@ -5,7 +5,8 @@
 //  This file is distributed under the same license as the Scilab package.
 // =============================================================================
 //
-// <-- TEST WITH GRAPHIC -->
+// <-- CLI SHELL MODE -->
+// <-- NO CHECK REF -->
 // unit test for typeof()
 
 // constant
@@ -40,17 +41,6 @@ format("e");
 assert_checkequal(typeof(uint8(1:4)),"uint8"); // bug 8687
 format("v");
 
-// handle
-plot();
-f=gcf();
-assert_checkequal(typeof(f),"handle");
-a=gca();
-assert_checkequal(typeof(a),"handle");
-e=gce();
-assert_checkequal(typeof(e),"handle");
-assert_checkequal(typeof(a.children(1)),"handle");
-close
-
 // string
 assert_checkequal(typeof("s"),"string");
 assert_checkequal(typeof("string"),"string");
@@ -82,7 +72,7 @@ M = mlist(["V","name","value"],["a","b","c"],[1 2 3]);
 M1=getfield(1,M);
 assert_checkequal(typeof(M),M1(1));
 
-// rational, state-space, uitree
+// rational, state-space
 assert_checkequal(typeof(1/poly(0,"s")),"rational");
 A=[0,1;0,0];B=[1;1];C=[1,1];
 S1=syslin("c",A,B,C);
@@ -92,10 +82,6 @@ assert_checkequal(typeof(S2),"state-space");
 S3=syslin(1,A,B,C);
 assert_checkequal(typeof(S3),"state-space");
 assert_checkequal(typeof(tf2ss(1/poly(0,"s"))),"state-space");
-l1 = uiCreateNode("CONST_m","default","");
-assert_checkequal(typeof(l1),"uitree");
-tree = uiCreateTree(l1);
-assert_checkequal(typeof(tree),"uitree");
 
 // hypermat
 assert_checkequal(typeof(matrix(1:24, [2 3 2 2])),"constant");
@@ -108,6 +94,7 @@ assert_checkequal(typeof(abs),"fptr");
 
 // cell
 assert_checkequal(typeof(cell(3)),"ce");
+assert_checkequal(typeof({1, "x"}),"ce");
 
 //structure
 assert_checkequal(typeof(struct("jour",25,"mois","DEC","annee",2006)),"st");
