@@ -71,7 +71,7 @@ if not exist "%INSTALL_DIR%\bin\Scilex.exe" (
 )
 
 @echo on
-call "%INSTALL_DIR%\bin\Scilex.exe" -scihome "%SCIHOME%" -quit -e "test_run('%TEST%',[],[],'%LOG_PATH%\%TEST%.xml')"
+call "%INSTALL_DIR%\bin\Scilex.exe" -scihome "%SCIHOME%" -quit -e "test_run('%TEST%',[],[],'%LOG_PATH%\%TEST%.xml'); [__msg__, __err__] = lasterror(), exit(__err__)"
 if errorlevel 1 (
   echo "Scilab exit with code %errorlevel%"
   exit 1
