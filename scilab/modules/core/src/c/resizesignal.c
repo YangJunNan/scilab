@@ -16,7 +16,7 @@
 #include "configvariable_interface.h"
 
 /* Set the console width read from the term size. */
-void resize_handler(int sig)
+void resize_handler(int, siginfo_t *, void *)
 {
     // save the number of lines
     int lines = getConsoleLines();

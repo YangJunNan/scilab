@@ -137,8 +137,8 @@ BOOL setlanguage(const wchar_t *lang)
                 if (pstRet == NULL)
                 {
                     fprintf(stderr,
-                            "Warning: Localization issue. Failed to change the LC_CTYPE locale category. Does not support the locale '%s' %ls %s.\nDid you install the system locales?\n",
-                            pstLang, ret, setlocale(LC_CTYPE, NULL));
+                            "Warning: Localization issue. Failed to change the LC_CTYPE locale category. Does not support the locale '%s' %s.\nDid you install the system locales?\n",
+                            pstLang, setlocale(LC_CTYPE, NULL));
                     newlang = (char*)MALLOC(LengthAlphacode);
                     
                     char* defaultLang = wide_string_to_UTF8(SCILABDEFAULTLANGUAGE);

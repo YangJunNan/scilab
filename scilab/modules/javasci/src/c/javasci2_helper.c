@@ -159,7 +159,7 @@ BOOL *getBoolean(char *variableName, int *nbRow, int *nbCol)
     matrixOfBoolean = (BOOL *) malloc(((*nbRow) * (*nbCol)) * sizeof(BOOL));
 
     /* Load the matrix */
-    sciErr = readNamedMatrixOfBoolean(NULL, variableName, nbRow, nbCol, matrixOfBoolean);
+    sciErr = readNamedMatrixOfBoolean(NULL, variableName, nbRow, nbCol, (int *) matrixOfBoolean);
 
     if (sciErr.iErr)
     {
@@ -174,7 +174,7 @@ int putBoolean(char *variableName, BOOL * variable, int nbRow, int nbCol)
 {
     SciErr sciErr;
 
-    sciErr = createNamedMatrixOfBoolean(NULL, variableName, nbRow, nbCol, variable);
+    sciErr = createNamedMatrixOfBoolean(NULL, variableName, nbRow, nbCol, (const int *) variable);
     if (sciErr.iErr)
     {
         printError(&sciErr, 0);
@@ -449,7 +449,7 @@ int putLong(char *variableName, long *variable, int nbRow, int nbCol)
 {
     SciErr sciErr;
 
-    sciErr = createNamedMatrixOfInteger64(NULL, variableName, nbRow, nbCol, variable);
+    sciErr = createNamedMatrixOfInteger64(NULL, variableName, nbRow, nbCol, (const long long int *) variable);
     if (sciErr.iErr)
     {
         printError(&sciErr, 0);
@@ -458,10 +458,10 @@ int putLong(char *variableName, long *variable, int nbRow, int nbCol)
     return 0;
 }
 
-unsigned long *getUnsignedLong(char *variableName, int *nbRow, int *nbCol)
+unsigned long long *getUnsignedLong(char *variableName, int *nbRow, int *nbCol)
 {
     SciErr sciErr;
-    long *matrixOfLong = NULL;
+    unsigned long long *matrixOfLong = NULL;
 
     sciErr = readNamedMatrixOfUnsignedInteger64(NULL, variableName, nbRow, nbCol, NULL);
     if (sciErr.iErr)
@@ -470,7 +470,7 @@ unsigned long *getUnsignedLong(char *variableName, int *nbRow, int *nbCol)
     }
 
     /* Alloc the memory */
-    matrixOfLong = (long *)malloc(((*nbRow) * (*nbCol)) * sizeof(long));
+    matrixOfLong = (unsigned long long*)malloc(((*nbRow) * (*nbCol)) * sizeof(unsigned long long));
 
     /* Load the matrix */
     sciErr = readNamedMatrixOfUnsignedInteger64(NULL, variableName, nbRow, nbCol, matrixOfLong);
@@ -483,7 +483,7 @@ unsigned long *getUnsignedLong(char *variableName, int *nbRow, int *nbCol)
 
 }
 
-int putUnsignedLong(char *variableName, unsigned long *variable, int nbRow, int nbCol)
+int putUnsignedLong(char *variableName, unsigned long long *variable, int nbRow, int nbCol)
 {
     SciErr sciErr;
 
@@ -544,7 +544,7 @@ int putString(char *variableName, char **variable, int nbRow, int nbCol)
 {
     SciErr sciErr;
 
-    sciErr = createNamedMatrixOfString(NULL, variableName, nbRow, nbCol, variable);
+    sciErr = createNamedMatrixOfString(NULL, variableName, nbRow, nbCol, (const char * const*) variable);
     if (sciErr.iErr)
     {
         printError(&sciErr, 0);
@@ -596,7 +596,7 @@ int putPolynomial(char * variableName, char * polyVarName, double ** data, int n
 {
     SciErr sciErr;
 
-    sciErr = createNamedMatrixOfPoly(NULL, variableName, polyVarName, nbRow, nbCol, nbCoef, data);
+    sciErr = createNamedMatrixOfPoly(NULL, variableName, polyVarName, nbRow, nbCol, nbCoef, (const double* const*) data);
     if (sciErr.iErr)
     {
         printError(&sciErr, 0);
@@ -609,7 +609,7 @@ int putComplexPolynomial(char * variableName, char * polyVarName, double ** data
 {
     SciErr sciErr;
 
-    sciErr = createNamedComplexMatrixOfPoly(NULL, variableName, polyVarName, nbRow, nbCol, nbCoef, data, imag);
+    sciErr = createNamedComplexMatrixOfPoly(NULL, variableName, polyVarName, nbRow, nbCol, nbCoef, (const double* const*) data, (const double* const*) imag);
     if (sciErr.iErr)
     {
         printError(&sciErr, 0);

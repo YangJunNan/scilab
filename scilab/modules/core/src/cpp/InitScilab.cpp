@@ -1026,6 +1026,7 @@ static int batchMain(ScilabEngineInfo* _pSEI)
     int ret = parser->getExitStatus();
     delete parser;
     FREE(pwstFileName);
+
     return ret;
 }
 

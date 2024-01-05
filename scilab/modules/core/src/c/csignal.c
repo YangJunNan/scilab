@@ -20,7 +20,7 @@
 #include "configvariable_interface.h"
 #include "getKey.h"
 /* If CTRL-C was pressed. */
-void controlC_handler(int sig)
+void controlC_handler(int, siginfo_t *, void *)
 {
     setTokenInteruptExecution(DO_NOT_SEND_COMMAND);
     setExecutionBreak();

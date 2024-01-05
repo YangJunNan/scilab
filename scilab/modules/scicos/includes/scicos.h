@@ -90,7 +90,7 @@ typedef void (*ScicosF4) (ARGS_scicos4);
 typedef struct
 {
     char const* name;
-    ScicosF fonc;
+    void* fonc;
 } OpTab;
 
 /**
