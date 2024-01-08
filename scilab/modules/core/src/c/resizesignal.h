@@ -19,7 +19,7 @@
 /**
  * Set the console width read from the term size.
  */
-void resize_handler(int, siginfo_t *, void *);
+void resize_handler(int sig, siginfo_t *info, void *ucontext);
 
 
 /**

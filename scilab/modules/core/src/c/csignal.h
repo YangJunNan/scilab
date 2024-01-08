@@ -21,7 +21,7 @@
  * TODO : comment
  * @param sig
  */
-void controlC_handler (int, siginfo_t *, void *);
+void controlC_handler(int sig, siginfo_t *info, void *ucontext);
 
 
 /**

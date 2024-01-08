@@ -54,7 +54,7 @@ jmp_buf ScilabJmpEnv;
  * Handle a fatal signal (such as SIGFPE or SIGSEGV)
  *----------------------------------------------------------------------------*/
 #define HOSTFORMAT "[%s:%05d] "
-static void sig_fatal(int signum, siginfo_t * info, void *p)
+static void sig_fatal(int signum, siginfo_t *info, void *ucontext)
 {
     char *si_code_str = "";
 
