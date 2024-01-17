@@ -11,7 +11,7 @@
 // =============================================================================
 
 assert_checkfalse(execstr("meanf()"   ,"errcatch") == 0);
-refMsg = msprintf(_("%s: Wrong number of input argument: %d to %d expected.\n"), "meanf", 2, 3);
+refMsg = msprintf(_("%s: Wrong number of input arguments: %d to %d expected.\n"), "meanf", 2, 3);
 assert_checkerror("meanf()", refMsg);
 
 assert_checkequal(meanf([], 1), %nan);
@@ -26,7 +26,7 @@ assert_checkequal(meanf(x, 5), 55);
 assert_checkequal(meanf(x', 5), 55);
 
 assert_checkfalse(execstr("meanf(x, ''r'')"   ,"errcatch") == 0);
-refMsg = msprintf(_("%s: Wrong type for input argument #%d: A full or sparse matrix, or an integer matrix, or an hypermat expected.\n"), "meanf", 2);
+refMsg = msprintf(_("%s: Wrong type for input argument #%d: Must be in %s.\n"), "meanf", 2, sci2exp(["double", "sparse", "int"]));
 assert_checkerror("meanf(x, ''r'')", refMsg);
 
 assert_checkequal(meanf(x, x), 7);

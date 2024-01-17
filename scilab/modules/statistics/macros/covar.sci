@@ -26,14 +26,16 @@ function [s]=covar(x,y,fre)
     //
     //small correction (bug number 1072) date : 8 nov 2004
     //
-    [lhs,rhs]=argn(0)
-    if rhs <> 3 then error(msprintf(gettext("%s: Wrong number of input arguments: %d expected.\n"),"covar",3)), end
+    arguments
+        x {mustBeVector}
+        y {mustBeVector}
+        fre
+    end
+    
     if x==[] | y==[] then s=%nan; return, end
     [lfre cfre]=size(fre);
     [lx cx]=size(x)
     [ly cy]=size(y)
-    if lx<>1 & cx<>1 then error(msprintf(gettext("%s: Wrong type for input argument #%d: Vector expected.\n"),"covar",1)), end
-    if ly<>1 & cy<>1 then error(msprintf(gettext("%s: Wrong type for input argument #%d: Vector expected.\n"),"covar",2)), end
     fre(isnan(fre))=0
     lx=lx*cx;
     cy=ly*cy;

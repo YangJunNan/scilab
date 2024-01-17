@@ -11,7 +11,7 @@
 // =============================================================================
 
 assert_checkfalse(execstr("iqr()"   ,"errcatch") == 0);
-refMsg = msprintf(_("%s: Wrong number of input argument: At least %d expected.\n"), "iqr", 1);
+refMsg = msprintf(_("%s: Wrong number of input arguments: %d to %d expected.\n"), "iqr", 1, 2);
 assert_checkerror("iqr()", refMsg);
 
 assert_checkequal(iqr([]), %nan);
