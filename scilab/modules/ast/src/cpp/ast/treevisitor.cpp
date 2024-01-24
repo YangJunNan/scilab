@@ -702,11 +702,8 @@ void TreeVisitor::visit(const CallExp &e)
 
     // operator
     operation->append(new types::String(L"ext"));
-    types::List* lst = new types::List();
-    lst->append(operation);
-    operation->killMe();
 
-    l = lst;
+    l = operation;
 }
 
 void TreeVisitor::visit(const ForExp &e)
