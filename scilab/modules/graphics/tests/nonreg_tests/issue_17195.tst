@@ -19,6 +19,6 @@
 gcf().color_map = jetcolormap(256);
 Matplot(floor(256 * rand(100, 100)));
 e = gce();
-for j = 1:5000
+for j = 1:10000
     e.data = floor(256 * rand(100, 100));
 end
