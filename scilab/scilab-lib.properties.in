@@ -12,6 +12,8 @@ freehep-graphicsio.jar=@FREEHEP_GRAPHICSIO@
 
 commons-logging.jar=@COMMONS_LOGGING@
 
+flatlaf.jar=${thirdparty.dir}/flatlaf-3.3.jar
+
 flexdock.jar=@FLEXDOCK@
 
 jakarta.activation-api.jar=@JAKARTA_ACTIVATION_API@
