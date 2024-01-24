@@ -27,6 +27,9 @@ import java.util.List;
 
 import javax.swing.JPopupMenu;
 import javax.swing.SwingUtilities;
+import javax.swing.UIManager;
+
+import com.formdev.flatlaf.FlatLightLaf;
 
 import org.flexdock.docking.DockingConstants;
 import org.flexdock.docking.DockingManager;
@@ -182,10 +185,14 @@ public class Scilab {
                 if (!GraphicsEnvironment.isHeadless()) {
                     LookAndFeelManager lookAndFeel = new LookAndFeelManager();
 
-                    if (lookAndFeel.isSupportedLookAndFeel(scilabLookAndFeel)) {
-                        lookAndFeel.setLookAndFeel(scilabLookAndFeel);
-                    } else {
-                        lookAndFeel.setSystemLookAndFeel();
+                    try {
+                        UIManager.setLookAndFeel(new FlatLightLaf());
+                    } catch( Exception ex ) {
+                        if (lookAndFeel.isSupportedLookAndFeel(scilabLookAndFeel)) {
+                            lookAndFeel.setLookAndFeel(scilabLookAndFeel);
+                        } else {
+                            lookAndFeel.setSystemLookAndFeel();
+                        }
                     }
                 }
             } catch (java.lang.NoClassDefFoundError exception) {
