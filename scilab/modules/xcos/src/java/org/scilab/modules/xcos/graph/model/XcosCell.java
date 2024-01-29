@@ -129,8 +129,8 @@ public class XcosCell extends mxCell {
                 }
                 String description = String.valueOf(value);
                 if (validCIdentifier.matcher(description).matches()) {
-                    // a block description should be a valid C / Scilab identifier to ease codegeneration
-                    controller.setObjectProperty(getUID(), getKind(), ObjectProperties.DESCRIPTION, description);
+                    // a block name should be a valid C / Scilab identifier to ease codegeneration
+                    controller.setObjectProperty(getUID(), getKind(), ObjectProperties.NAME, description);
                 }
                 break;
             case ANNOTATION:

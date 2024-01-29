@@ -50,6 +50,7 @@ XCOS_CXX_SOURCES =	\
     src/jni/JavaController_wrap.cxx \
     src/cpp/xcosUtilities.cpp \
     src/cpp/loadStatus.cpp \
+    src/jni/JavaSSPResource_wrap.cxx \
     src/jni/JavaXMIResource_wrap.cxx
 
 GIWS_WRAPPERS = \

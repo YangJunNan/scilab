@@ -24,6 +24,9 @@ src/cpp/vec2var.cpp \
 src/cpp/XMIResource.cpp \
 src/cpp/XMIResource_load.cpp \
 src/cpp/XMIResource_save.cpp \
+src/cpp/SSPResource.cpp \
+src/cpp/SSPResource_load.cpp \
+src/cpp/SSPResource_save.cpp \
 src/cpp/Controller.cpp \
 src/cpp/controller_helpers.cpp \
 src/cpp/LoggerView.cpp \

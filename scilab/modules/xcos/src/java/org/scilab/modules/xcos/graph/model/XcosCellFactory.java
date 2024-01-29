@@ -477,7 +477,7 @@ public final class XcosCellFactory {
             double minimalWidth = Math.max((properties.get(ObjectProperties.EVENT_INPUTS) + 1) * BasicPort.DEFAULT_PORTSIZE, (properties.get(ObjectProperties.EVENT_OUTPUTS) + 1) * BasicPort.DEFAULT_PORTSIZE);
 
             convertGeometry = h < minimalHeight | w < minimalWidth;
-            convertGeometry |= h * w < minimalHeight * minimalWidth;
+            convertGeometry |= h * w < minimalHeight * minimalWidth / 4;
         }
 
         if (convertGeometry) {
