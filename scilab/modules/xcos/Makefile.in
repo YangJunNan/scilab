@@ -209,10 +209,11 @@ libscixcos_disable_la_LIBADD =
 am__objects_2 = src/noxcos/libscixcos_disable_la-noxcos.lo
 am_libscixcos_disable_la_OBJECTS = $(am__objects_2)
 libscixcos_disable_la_OBJECTS = $(am_libscixcos_disable_la_OBJECTS)
+am__DEPENDENCIES_1 =
 libscixcos_la_DEPENDENCIES = libscixcos-algo.la \
 	$(top_builddir)/modules/scicos/libsciscicos.la \
 	$(top_builddir)/modules/commons/libscicommons.la \
-	$(top_builddir)/modules/jvm/libscijvm.la
+	$(top_builddir)/modules/jvm/libscijvm.la $(am__DEPENDENCIES_1)
 am__objects_3 =
 am__objects_4 = sci_gateway/cpp/libscixcos_la-sci_Xcos.lo \
 	sci_gateway/cpp/libscixcos_la-sci_warnBlockByUID.lo \
@@ -766,6 +767,7 @@ libscixcos_la_CPPFLAGS = \
     -I$(top_srcdir)/modules/fileio/includes/ \
     -I$(top_srcdir)/modules/api_scilab/includes/ \
     $(XML_FLAGS) \
+    $(LIBARCHIVE_CFLAGS) \
     $(JAVA_JNI_INCLUDE) \
     $(AM_CPPFLAGS)
 
@@ -783,6 +785,7 @@ libscixcos_disable_la_CPPFLAGS = \
     -I$(top_srcdir)/modules/localization/includes/ \
     -I$(top_srcdir)/modules/output_stream/includes \
     $(XML_FLAGS) \
+    $(LIBARCHIVE_CFLAGS) \
     $(AM_CPPFLAGS)
 
 XCOS_DISABLE_C_SOURCES = src/noxcos/noxcos.c
@@ -800,7 +803,8 @@ libscixcos_la_LIBADD = libscixcos-algo.la \
 		$(top_builddir)/modules/scicos/libsciscicos.la \
 		$(top_builddir)/modules/commons/libscicommons.la \
 		$(top_builddir)/modules/jvm/libscijvm.la \
-		$(LIBXML_LIBS)
+		$(LIBXML_LIBS) \
+		$(LIBARCHIVE_LIBS)
 
 
 #### xcos : gateway declaration ####
