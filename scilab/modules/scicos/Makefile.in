@@ -221,7 +221,8 @@ am__uninstall_files_from_dir = { \
   }
 LTLIBRARIES = $(noinst_LTLIBRARIES) $(pkglib_LTLIBRARIES)
 am__DEPENDENCIES_1 =
-libsciscicos_algo_la_DEPENDENCIES = $(am__DEPENDENCIES_1)
+libsciscicos_algo_la_DEPENDENCIES = $(am__DEPENDENCIES_1) \
+	$(am__DEPENDENCIES_1)
 am__libsciscicos_algo_la_SOURCES_DIST = src/c/noscicos/noscicos.c \
 	src/cpp/il_state.cpp src/cpp/il_sim.cpp src/cpp/var2vec.cpp \
 	src/cpp/vec2var.cpp src/cpp/XMIResource.cpp \
@@ -1181,6 +1182,7 @@ libsciscicos_la_LDFLAGS = $(AM_LDFLAGS)
 @XCOS_FALSE@			-I$(top_srcdir)/modules/api_scilab/includes/ \
 @XCOS_FALSE@			-I$(top_srcdir)/modules/scicos/includes/ \
 @XCOS_FALSE@			$(XML_FLAGS) \
+@XCOS_FALSE@			$(LIBARCHIVE_CFLAGS) \
 @XCOS_FALSE@			$(AM_CPPFLAGS)
 
 @XCOS_TRUE@libsciscicos_algo_la_CPPFLAGS = -I$(srcdir)/includes/ \
@@ -1210,6 +1212,7 @@ libsciscicos_la_LDFLAGS = $(AM_LDFLAGS)
 @XCOS_TRUE@			-I$(top_srcdir)/modules/console/includes/ \
 @XCOS_TRUE@			-I$(top_srcdir)/modules/differential_equations/includes/ \
 @XCOS_TRUE@			$(XML_FLAGS) \
+@XCOS_TRUE@			$(LIBARCHIVE_CFLAGS) \
 @XCOS_TRUE@			$(AM_CPPFLAGS)
 
 libsciscicos_cli_la_CPPFLAGS = $(libsciscicos_algo_la_CPPFLAGS)
@@ -1222,7 +1225,8 @@ libsciscicos_la_CPPFLAGS = $(libsciscicos_algo_la_CPPFLAGS)
 @XCOS_TRUE@libsciscicos_la_SOURCES = $(GATEWAY_CXX_SOURCES) $(GATEWAY_C_SOURCES) $(GATEWAY_FORTRAN_SOURCES)
 libsciscicos_algo_la_LIBADD = \
 		$(RT_LIB) \
-		$(LIBXML_LIBS)
+		$(LIBXML_LIBS) \
+		$(LIBARCHIVE_LIBS)
 
 libsciscicos_cli_la_LIBADD = libsciscicos-algo.la $(FLIBS) \
 	$(am__append_2)
