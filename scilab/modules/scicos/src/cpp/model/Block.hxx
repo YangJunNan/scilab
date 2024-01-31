@@ -527,8 +527,8 @@ class Block : public BaseObject
     template<typename NamedParameters, typename T>
     update_status_t setNP(const std::vector<T>& data, T NamedParameters::*field)
     {
-        auto& data_it = data.begin();
-        auto& param_it = m_parameters.begin();
+        typename std::vector<T>::const_iterator data_it = data.begin();
+        typename std::vector<NamedParameters>::iterator param_it = m_parameters.begin();
 
         if (data.size() == m_parameters.size())
         {
