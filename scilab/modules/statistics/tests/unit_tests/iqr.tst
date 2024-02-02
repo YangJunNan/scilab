@@ -24,6 +24,8 @@ assert_checkequal(iqr([%nan %nan]), %nan);
 x = 1:10;
 assert_checkequal(iqr(x), 5);
 assert_checkequal(iqr(x'), 5);
+assert_checkequal(iqr(x, "*"), 5);
+assert_checkequal(iqr(x', "*"), 5);
 
 assert_checkfalse(execstr("iqr(x, ''r'')"   ,"errcatch") == 0);
 refMsg = msprintf(_("%s: Wrong dimensions for input argument #%d: A column vector or matrix expected.\n"), "iqr", 1);
@@ -63,6 +65,7 @@ assert_checkerror("iqr(x, [])", refMsg);
 A=[1,2,10;7,7.1,7.01];
 
 assert_checkequal(iqr(A), 5.1);
+assert_checkequal(iqr(A, "*"), 5.1);
 assert_checkequal(iqr(A, "r"), [6 5.1 2.99]);
 assert_checkalmostequal(iqr(A, "c"), [6.75; 0.075], [], %eps);
 assert_checkequal(iqr(A, 1), [6 5.1 2.99]);
