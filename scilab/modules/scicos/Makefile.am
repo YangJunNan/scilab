@@ -159,12 +159,14 @@ libsciscicos_algo_la_CPPFLAGS= -I$(srcdir)/includes/ \
 			-I$(top_srcdir)/modules/console/includes/ \
 			-I$(top_srcdir)/modules/differential_equations/includes/ \
 			$(XML_FLAGS) \
+			$(LIBARCHIVE_CFLAGS) \
 			$(AM_CPPFLAGS)
 else
 libsciscicos_algo_la_CPPFLAGS= -I$(top_srcdir)/modules/output_stream/includes/ \
 			-I$(top_srcdir)/modules/api_scilab/includes/ \
 			-I$(top_srcdir)/modules/scicos/includes/ \
 			$(XML_FLAGS) \
+			$(LIBARCHIVE_CFLAGS) \
 			$(AM_CPPFLAGS)
 endif
 libsciscicos_cli_la_CPPFLAGS = $(libsciscicos_algo_la_CPPFLAGS)
@@ -182,7 +184,8 @@ endif
 
 libsciscicos_algo_la_LIBADD =  \
 		$(RT_LIB) \
-		$(LIBXML_LIBS)
+		$(LIBXML_LIBS) \
+		$(LIBARCHIVE_LIBS)
 libsciscicos_cli_la_LIBADD = libsciscicos-algo.la $(FLIBS)
 libsciscicos_la_LIBADD = libsciscicos-algo.la $(FLIBS)
 if XCOS

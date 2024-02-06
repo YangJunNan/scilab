@@ -12,6 +12,7 @@
 
 #include <algorithm>
 #include <cassert>
+#include <cmath>   // for fabs
 #include <cstdlib> // for atoi and atof
 #include <cstring> // for strcmp and strchr
 #include <string>
