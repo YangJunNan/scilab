@@ -23,6 +23,7 @@
 #include "SSPResource.hxx"
 #include "base64.hxx"
 #include "utilities.hxx"
+#include "expandPathVariable.h"
 
 // units are stored in the model without being mapped on the Controller yet
 #include "Model.hxx"
@@ -2261,16 +2262,21 @@ int SSPResource::loadComponent(xmlTextReaderPtr reader, model::BaseObject* o)
             case e_source:
             {
                 std::string source = to_string(xmlTextReaderConstValue(reader));
-
+                
                 const std::string fullPathname = std::string("TMPDIR/") + source;
                 const std::string resourcesPathname = source.substr(strlen("resources/"));
 
                 auto pFullPathname = std::filesystem::path(fullPathname);
-                std::filesystem::path workdir = pFullPathname.replace_filename(pFullPathname.stem());
-                std::filesystem::create_directory(workdir.parent_path());
-                std::filesystem::create_directory(workdir);
+                std::string workdir = pFullPathname.replace_filename(pFullPathname.stem()).string();
 
-                std::vector<std::string> v = {resourcesPathname, workdir.string()};
+                // create the directories
+                char* pStrWorkdir = expandPathVariable(workdir.c_str());
+                auto pPathWorkdir = std::filesystem::path(pStrWorkdir);
+                FREE(pStrWorkdir);
+                std::filesystem::create_directories(pPathWorkdir.parent_path());
+                std::filesystem::create_directories(pPathWorkdir);
+
+                std::vector<std::string> v = {resourcesPathname, workdir};
                 controller.setObjectProperty(o, EXPRS, v);
                 break;
             }
@@ -2621,7 +2627,7 @@ int SSPResource::processElement(xmlTextReaderPtr reader)
             {
                 innerBlock = controller.createBaseObject(BLOCK);
                 controller.setObjectProperty(innerBlock, PARENT_DIAGRAM, root);
-                controller.setObjectProperty(innerBlock, PARENT_BLOCK, parent);
+                controller.setObjectProperty(innerBlock, PARENT_BLOCK, parent->id());
                 innerPort = controller.createBaseObject(PORT);
                 controller.setObjectProperty(innerPort, SOURCE_BLOCK, innerBlock);
 

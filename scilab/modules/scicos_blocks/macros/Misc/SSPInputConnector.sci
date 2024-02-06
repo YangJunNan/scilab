@@ -34,7 +34,13 @@ function [x, y, typ] = SSPInputConnector(job,arg1,arg2)
             objs(1) = FROMWS_c("define");
             objs(1).graphics.exprs(1) = x.graphics.exprs; // label
             objs(2) = OUT_f("define");
-            objs(3) = scicos_link(from=[1 1 0],to=[2 1 1]);
+            objs(3) = scicos_link(from=[1 1 0], to=[2 1 1]);
+            objs(2).graphics.pin = 3;
+            objs(1).graphics.pout = 3;
+            objs(4) = scicos_link(ct=[5 -1], from=[1 1 0], to=[1 1 1]);
+            objs(1).graphics.pein = 4;
+            objs(1).graphics.peout = 4;
+            
             
             model.rpar = do_eval(scicos_diagram(objs=objs),list(),%scicos_context);
             model.in = 1;
@@ -55,7 +61,10 @@ function [x, y, typ] = SSPInputConnector(job,arg1,arg2)
         objs(1) = FROMWS_c("define");
         objs(1).graphics.exprs(1) = exprs(1); // varname
         objs(2) = OUT_f("define");
+
         objs(3) = scicos_link(from=[1 1 0],to=[2 1 1]);
+        objs(2).graphics.pin = 3;
+        objs(1).graphics.pout = 3;
         
         model.rpar = scicos_diagram(objs=objs)
         model.in = 1;
