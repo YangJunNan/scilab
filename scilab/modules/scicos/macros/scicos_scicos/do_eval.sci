@@ -156,6 +156,7 @@ function [scs_m,cpr,needcompile,ok]=do_eval(scs_m,cpr,%scicos_context)
                 end
 
                 %scicos_prob=%f
+                execstr("o="+o.gui+"(''set'',o)")
                 ier=execstr("o="+o.gui+"(''set'',o)","errcatch", "m")
                 if ier==0& %scicos_prob==%f then
                     needcompile1=max(needcompile1,needcompile) // for scifunc_block

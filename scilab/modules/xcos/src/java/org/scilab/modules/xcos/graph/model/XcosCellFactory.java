@@ -608,7 +608,7 @@ public final class XcosCellFactory {
         controller.getObjectProperty(uid, Kind.PORT, ObjectProperties.STYLE, style);
 
         String[] value = new String[] { "" };
-        controller.getObjectProperty(uid, Kind.PORT, ObjectProperties.LABEL, value);
+        controller.getObjectProperty(uid, Kind.PORT, ObjectProperties.NAME, value);
 
         switch (property) {
             case INPUTS:

@@ -140,7 +140,7 @@ public class XcosCell extends mxCell {
                 controller.setObjectProperty(getUID(), getKind(), ObjectProperties.DESCRIPTION, String.valueOf(value));
                 break;
             case PORT:
-                controller.setObjectProperty(getUID(), getKind(), ObjectProperties.LABEL, String.valueOf(value));
+                controller.setObjectProperty(getUID(), getKind(), ObjectProperties.NAME, String.valueOf(value));
                 break;
             default:
                 break;

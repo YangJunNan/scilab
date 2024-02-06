@@ -96,11 +96,11 @@ private:
     // intern known string to speedup and simplify comparaison 
     void internPredefinedStrings(xmlTextReaderPtr reader);
     template<typename T> inline
-    update_status_t copy_property(model::BaseObject* src, model::BaseObject* dest, object_properties_t p)
+    update_status_t copy_property(model::BaseObject* src, object_properties_t src_prop, model::BaseObject* dest, object_properties_t dest_prop)
     {
         T v;
-        controller.getObjectProperty(src, p, v);
-        return controller.setObjectProperty(dest, p, v);
+        controller.getObjectProperty(src, src_prop, v);
+        return controller.setObjectProperty(dest, dest_prop, v);
     };
     void assignPortIndexes(model::BaseObject* parent);
 

@@ -316,6 +316,7 @@ public final class XcosMessages {
     public static final String TOOLTIP_BLOCK = Messages.gettext("Block name: ");
     public static final String TOOLTIP_BLOCK_SIMULATION = Messages.gettext("Simulation: ");
     public static final String TOOLTIP_BLOCK_UID = Messages.gettext("UID: ");
+    public static final String TOOLTIP_BLOCK_EXPRS = Messages.gettext("Exprs: ");
     public static final String TOOLTIP_BLOCK_RPAR = Messages.gettext("Rpar: ");
     public static final String TOOLTIP_BLOCK_IPAR = Messages.gettext("Ipar: ");
     public static final String TOOLTIP_BLOCK_OPAR = Messages.gettext("Opar: ");

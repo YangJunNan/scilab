@@ -2194,6 +2194,7 @@ public class XcosDiagram extends ScilabGraph {
     private String getToolTipForCell(final BasicBlock o) {
         JavaController controller = new JavaController();
         String[] strValue = {""};
+        VectorOfString vecString = new VectorOfString();
         VectorOfDouble vecValue = new VectorOfDouble();
         VectorOfInt vecInteger = new VectorOfInt();
 
@@ -2235,6 +2236,21 @@ public class XcosDiagram extends ScilabGraph {
         .append(ScilabGraphConstants.HTML_END_CODE).append(ScilabGraphConstants.HTML_NEWLINE);
 
         result.append(ScilabGraphConstants.HTML_NEWLINE);
+
+        controller.getObjectProperty(o.getUID(), o.getKind(), ObjectProperties.EXPRS, vecString);
+        if (!vecString.isEmpty())
+        {
+            result.append(XcosMessages.TOOLTIP_BLOCK_EXPRS).append(ScilabGraphConstants.HTML_BEGIN_CODE);
+            if (!vecString.isEmpty())
+            {
+                appendReduced(result, "\"" + vecString.get(0) + "\"");
+            }
+            for (int i = 1; i < vecString.size(); ++i)
+            {
+                appendReduced(result, " \"" + vecString.get(i) + "\"");
+            }
+            result.append(ScilabGraphConstants.HTML_END_CODE).append(ScilabGraphConstants.HTML_NEWLINE);
+        }
 
         controller.getObjectProperty(o.getUID(), o.getKind(), ObjectProperties.RPAR, vecValue);
         if (!vecValue.isEmpty())

@@ -94,9 +94,8 @@ struct State
 
     struct archive_entry* ac;
 
-    State() : ar(archive_read_new()), ext(archive_write_disk_new()), ac(archive_entry_new()){
-                                                                         // TODO: switch to TMPDIR before extracting everything
-                                                                     };
+    State() : ar(archive_read_new()), ext(archive_write_disk_new()), ac(archive_entry_new())
+    { };
 
     ~State()
     {
@@ -388,6 +387,16 @@ int SSPResource::load(const char* uri)
             archive_entry_set_pathname(st.entry(), fullPathname.c_str());
 
             res = archive_write_header(st.directory(), st.entry());
+            if (res < ARCHIVE_WARN)
+            {
+                sciprint("Unable to load %s: %s\n", uri, archive_error_string(st.directory()));
+                return -1;
+            }
+            if (res == ARCHIVE_WARN)
+            {
+                Sciwarning("Warning on %s loading: %s\n", uri, archive_error_string(st.directory()));
+            }
+            res = copy_data(st.input(), st.directory());
             if (res < ARCHIVE_WARN)
             {
                 sciprint("Unable to load %s: %s\n", uri, archive_error_string(st.directory()));
@@ -1462,16 +1471,12 @@ int SSPResource::loadSystemGeometry(xmlTextReaderPtr reader, model::BaseObject* 
     // helper lambda function
     auto set_ioblock_geometry = [this, x1, y1, x2, y2](const Reference& ioBlock)
     {
-        std::vector<double> absoluteGeom = {0, 0, 20, 20};
+        std::vector<double> absoluteGeom = {0, 0, 40, 20};
 
         // x
         absoluteGeom[0] = (x1 + ioBlock.x * (x2 - x1)  + 10) * ASPECT_RATIO;
         // y
         absoluteGeom[1] = ((1.0 - ioBlock.y) * (y2 - y1)  - 10 - y2) * ASPECT_RATIO;
-        // w
-        absoluteGeom[2] = 20;
-        // h
-        absoluteGeom[3] = 20;
 
         if (controller.setObjectProperty(ioBlock.block, GEOMETRY, absoluteGeom) == FAIL)
         {
@@ -2256,14 +2261,13 @@ int SSPResource::loadComponent(xmlTextReaderPtr reader, model::BaseObject* o)
             {
                 std::string source = to_string(xmlTextReaderConstValue(reader));
 
-                char* tmpdir = getTMPDIR();
-                const std::string fullPathname = tmpdir + std::string("/") + source;
-                ;
-                FREE(tmpdir);
+                const std::string fullPathname = std::string("TMPDIR/") + source;
                 const std::string resourcesPathname = source.substr(strlen("resources/"));
 
                 auto pFullPathname = std::filesystem::path(fullPathname);
                 std::filesystem::path workdir = pFullPathname.replace_filename(pFullPathname.stem());
+                std::filesystem::create_directory(workdir.parent_path());
+                std::filesystem::create_directory(workdir);
 
                 std::vector<std::string> v = {resourcesPathname, workdir.string()};
                 controller.setObjectProperty(o, EXPRS, v);
@@ -2272,7 +2276,7 @@ int SSPResource::loadComponent(xmlTextReaderPtr reader, model::BaseObject* o)
 
             case e_implementation:
             {
-                // not loaded, the
+                // not loaded, the FMU is detected
                 break;
             }
 
@@ -2372,21 +2376,27 @@ int SSPResource::processNode(xmlTextReaderPtr reader)
     return -1;
 }
 
-static std::string interface_function(enum portKind kind, bool isImplicit)
+static std::string interface_function(enum portKind kind, bool isImplicit, bool isMainDiagram)
 {
-
     std::string interfaceBlock[] = {"", "OUT_f", "IN_f", "CLKOUTV_f", "CLKINV_f"};
 
     if (isImplicit)
     {
-        interfaceBlock[PORT_OUT] = "OUTIMPL_f";
         interfaceBlock[PORT_IN] = "INIMPL_f";
+        interfaceBlock[PORT_OUT] = "OUTIMPL_f";
+    }
+
+    if (isMainDiagram)
+    {
+        // corner case, this is implemented as fake subsystem
+        interfaceBlock[PORT_IN] = "SSPOutputConnector";
+        interfaceBlock[PORT_OUT] = "SSPInputConnector";
     }
 
     return interfaceBlock[kind];
 }
 
-static std::string simulation_function(enum portKind kind, bool isImplicit)
+static std::string simulation_function(enum portKind kind, bool isImplicit, bool isMainDiagram)
 {
     std::string simulationFunction[] = {"", "output", "input", "output", "input"};
 
@@ -2394,6 +2404,13 @@ static std::string simulation_function(enum portKind kind, bool isImplicit)
     {
         simulationFunction[PORT_OUT] = "outimpl";
         simulationFunction[PORT_IN] = "inimpl";
+    }
+
+    if (isMainDiagram)
+    {
+        // corner case, this is implemented as fake subsystem
+        simulationFunction[PORT_IN] = "csuper";
+        simulationFunction[PORT_OUT] = "csuper";
     }
 
     return simulationFunction[kind];
@@ -2478,13 +2495,31 @@ void SSPResource::assignPortIndexes(model::BaseObject* parent)
         }
 
         // layer computes its port number from its already decoded children
-        if (!ioBlocks[(portKind)kind].empty())
+        for (int i = 0; i < ioBlocks[(portKind)kind].size(); ++i)
         {
-            for (int i = 0; i < ioBlocks[(portKind)kind].size(); ++i)
-            {
-                model::BaseObject* innerBlock = ioBlocks[(portKind)kind][i]->block;
-                int index = i + 1;
+            model::BaseObject* innerBlock = ioBlocks[(portKind)kind][i]->block;
+            int index = i + 1;
 
+            if (parent->kind() == DIAGRAM)
+            {
+                // on an SSPInputConnector or SSPOutputConnector
+                std::vector<std::string> exprs;
+                if (kind == PORT_IN)
+                {
+                    exprs = { ioBlocks[(portKind)kind][i]->connector, "256"};
+                }
+                else
+                {
+                    exprs = { ioBlocks[(portKind)kind][i]->connector};
+                }
+                
+                controller.setObjectProperty(innerBlock, EXPRS, exprs);
+                std::vector<int> ipar = { 1 };
+                controller.setObjectProperty(innerBlock, IPAR, ipar);
+            }
+            else
+            {
+                // on a subsystem input/output
                 std::vector<int> ipar = {(int)index};
                 controller.setObjectProperty(innerBlock, IPAR, index);
                 controller.setObjectProperty(innerBlock, EXPRS, std::to_string(index));
@@ -2502,12 +2537,6 @@ int SSPResource::processElement(xmlTextReaderPtr reader)
         "LINK",
         "ANNOTATION",
         "PORT"};
-    if (!processed.empty())
-    {
-        xmlNodePtr curNode = xmlTextReaderCurrentNode(reader);
-        int line = xmlGetLineNo(curNode);
-        sciprint("decoding %s into %s %lld at line %d\n", name, kind_str[processed.back()->kind()], processed.back()->id(), line);
-    }
 
     // ignore elements within annotation
     if (annotated)
@@ -2653,12 +2682,10 @@ int SSPResource::processElement(xmlTextReaderPtr reader)
             controller.getObjectProperty(port, IMPLICIT, isImplicit);
 
             const enum portKind opposite[] = {PORT_UNDEF, PORT_OUT, PORT_IN, PORT_EOUT, PORT_EIN};
-            if (outterPort != nullptr && innerPort != nullptr)
+            if (innerPort != nullptr && innerPort != port)
             {
-                // sync outterPort information to innerPort
-                copy_property<std::string>(outterPort, innerPort, NAME);
-                copy_property<std::string>(outterPort, innerPort, DESCRIPTION);
-                copy_property<bool>(outterPort, innerPort, IMPLICIT);
+                // sync port information to the inner block
+                copy_property<bool>(port, IMPLICIT, innerPort, IMPLICIT);
                 if (controller.setObjectProperty(innerPort, PORT_KIND, opposite[kind]) == FAIL)
                 {
                     sciprint("unable to set Connector on innerPort\n");
@@ -2674,12 +2701,12 @@ int SSPResource::processElement(xmlTextReaderPtr reader)
                 controller.setObjectProperty(innerBlock, property_from_port(innerKind), ports);
 
                 // this is the connector block, loaded as I/O block inside the inner layer
-                copy_property<std::string>(innerPort, innerBlock, NAME);
-                copy_property<std::string>(innerPort, innerBlock, DESCRIPTION);
+                copy_property<std::string>(port, NAME, innerBlock, NAME);
+                copy_property<std::string>(port, DESCRIPTION, innerBlock, DESCRIPTION);
 
-                controller.setObjectProperty(innerBlock, INTERFACE_FUNCTION, interface_function(innerKind, isImplicit));
-                controller.setObjectProperty(innerBlock, SIM_FUNCTION_NAME, simulation_function(innerKind, isImplicit));
-                controller.setObjectProperty(innerBlock, STYLE, interface_function(innerKind, isImplicit));
+                controller.setObjectProperty(innerBlock, INTERFACE_FUNCTION, interface_function(innerKind, isImplicit, isMainDiagram));
+                controller.setObjectProperty(innerBlock, SIM_FUNCTION_NAME, simulation_function(innerKind, isImplicit, isMainDiagram));
+                controller.setObjectProperty(innerBlock, STYLE, interface_function(innerKind, isImplicit, isMainDiagram));
             }
 
             // refresh the outter connector to connect it later
@@ -2813,8 +2840,7 @@ int SSPResource::processEndElement(xmlTextReaderPtr reader)
         "LINK",
         "ANNOTATION",
         "PORT"};
-    sciprint("end decoding %s into %s %lld\n", name, kind_str[processed.back()->kind()], processed.back()->id());
-
+    
     // ignore annotations
     if (annotated)
     {

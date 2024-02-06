@@ -278,6 +278,27 @@ bool Model::getObjectProperty(model::BaseObject* object, object_properties_t p, 
             case SIM_BLOCKTYPE:
                 o->getSimBlocktype(v);
                 return true;
+            case EXPRS:
+                {
+                    std::vector<double> exprs;
+                    o->getExprs(exprs);
+                    
+                    //  * type
+                    //  * number of dims
+                    //  * scalar 1x1
+                    //  * string lengths
+                    //  * utf8 content \0 terminated
+                    if (exprs.size() < 6) return false;
+                    if (exprs[0] != sci_strings) return false;
+                    if (exprs[1] < 2) return false;
+                    if (exprs[2] < 1) return false;
+                    if (exprs[3] < 1) return false;
+                    size_t len = (size_t) exprs[4];
+                    
+                    char* data = (char*) &(exprs[5]);
+                    v.assign((char*) data, len);
+                    return true;
+                }
             case STYLE:
                 o->getStyle(v);
                 return true;
@@ -719,6 +740,33 @@ bool Model::getObjectProperty(model::BaseObject* object, object_properties_t p, 
             case DIAGRAM_CONTEXT:
                 o->getContext(v);
                 return true;
+            case EXPRS:
+                {
+                    std::vector<double> exprs;
+                    o->getExprs(exprs);
+                    
+                    //  * type
+                    //  * number of dims
+                    //  * scalar 1x1
+                    //  * string lengths
+                    //  * utf8 content \0 terminated
+                    if (exprs.size() < 6) return false;
+                    if (exprs[0] != sci_strings) return false;
+                    if (exprs[1] < 2) return false;
+                    if (exprs[2] < 1) return false;
+                    if (exprs[3] < 1) return false;
+                    
+                    size_t N = (size_t) (exprs[2] * exprs[3]);
+                    v.resize(N);
+                    v[0].assign((char*) &(exprs[4+N]), (size_t) exprs[4] * sizeof(double) / sizeof(char));
+                    for (size_t i = 1; i < N; ++i)
+                    {
+                        size_t len_in_double = (size_t) exprs[4+i-1];
+                        char* data = (char*) &(exprs[4 + N + len_in_double]);
+                        v[i].assign((char*) data, (size_t) exprs[4+i] * sizeof(double) / sizeof(char));
+                    }
+                    return true;
+                }
             case PARAMETER_NAME:
                 o->getNamedParameters(v);
                 return true;

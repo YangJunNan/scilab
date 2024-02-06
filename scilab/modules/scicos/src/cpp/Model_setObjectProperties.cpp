@@ -698,32 +698,39 @@ update_status_t Model::setObjectProperty(model::BaseObject* object, object_prope
         {
             case EXPRS:
             {
+                if (v.empty())
+                    {return FAIL;}
+
                 std::vector<double> exprs;
                 // var2vec enconding for scalar string:
                 //  * type
                 //  * number of dims
                 //  * scalar 1x1
-                //  * string lengths
+                //  * string len as offset
                 //  * utf8 content \0 terminated
                 exprs.push_back(sci_strings);
                 exprs.push_back(2);
                 exprs.push_back((int) v.size());
                 exprs.push_back(1);
+
                 // Adding the '\0' byte to the lengths and compute the needed size
-                std::vector<int> offset_cur = { 0 };
-                for (size_t i = 0; i < v.size(); ++i)
+                size_t content_offset_idx = exprs.size();
+                size_t len = v[0].length() + 1;
+                exprs.push_back(static_cast<int>((len * sizeof(char) + sizeof(double) - 1) / sizeof(double)));
+                for (size_t i = 1; i < v.size(); ++i)
                 {
-                    size_t len = v[i].length();
-                    offset_cur.push_back(offset_cur[i] + static_cast<int>((len * sizeof(char) + sizeof(double) - 1) / sizeof(double)));
-                    exprs.push_back(offset_cur.back());
+                    size_t len = v[i].length() + 1;
+                    exprs.push_back(exprs.back() + static_cast<int>((len * sizeof(char) + sizeof(double) - 1) / sizeof(double)));
                 }
                 // resize
-                size_t size = exprs.size();
-                exprs.resize(size + offset_cur.back());
+                size_t header_size = exprs.size();
+                exprs.resize(header_size + (size_t) exprs.back());
                 // assign utf8 content
-                for (size_t i = 0; i < v.size(); ++i)
+                double* data = exprs.data() + header_size;
+                memcpy(data, v[0].data(), v[0].size() * sizeof(char));
+                for (size_t i = 1; i < v.size(); ++i)
                 {
-                    double* data = exprs.data() + size + offset_cur[i];
+                    data = exprs.data() + header_size + (size_t) exprs[content_offset_idx + i - 1];
                     memcpy(data, v[i].data(), v[i].size() * sizeof(char));
                 }
                 return o->setExprs(exprs);
