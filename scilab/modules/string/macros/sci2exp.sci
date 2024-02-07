@@ -149,7 +149,7 @@ function t=str2exp(a,lmax)
 
     [m,n]=size(a),
     dots="."+"."
-    t="";
+    t=[];
     quote="''"
 
     a=strsubst(a,quote,quote+quote)
@@ -183,6 +183,8 @@ function t=str2exp(a,lmax)
         if i<m then x($)=x($)+";",end
         if lmax>0 then
             t=[t;x]
+        elseif isempty(t) then
+            t = x;
         else
             t=t+x
         end
@@ -250,9 +252,15 @@ function t = mat2exp(a,lmax)
             k1=1;l=0;I=[];
             while %t
                 if lx-l<lmax|k1>length(ind) then,break,end
-                k2=k1-1+max(find(ind(k1:$)<l+lmax))
+                found = find(ind(k1:$)<l+lmax);
+                if found then
+                    k2=k1-1+max(found);
+                else
+                    // keep the element size in case where
+                    // the element is bigger than lmax
+                    k2=k1
+                end
                 I=[I ind(k2)];
-                //	t=[t;part(x,l+1:ind(k2))]
                 k1=k2+1
                 l=ind(k2)
             end
@@ -263,15 +271,20 @@ function t = mat2exp(a,lmax)
         lx=length(x)
         if lmax==0|lx<lmax then
             t=x;
-
         else
             ind=strindex(x,",");
             k1=1;l=0;I=[];
             while %t
                 if lx-l<lmax|k1>length(ind) then break,end
-                k2=k1-1+max(find(ind(k1:$)<l+lmax))
+                found = find(ind(k1:$)<l+lmax);
+                if found then
+                    k2=k1-1+max(found);
+                else
+                    // keep the element size in case where
+                    // the element is bigger than lmax
+                    k2=k1
+                end
                 I=[I ind(k2)];
-                //	t=[t;part(x,l+1:ind(k2))+dots]
                 k1=k2+1
                 l=ind(k2)
             end
