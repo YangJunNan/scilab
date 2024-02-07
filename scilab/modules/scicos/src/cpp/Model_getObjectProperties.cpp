@@ -286,14 +286,14 @@ bool Model::getObjectProperty(model::BaseObject* object, object_properties_t p, 
                     //  * type
                     //  * number of dims
                     //  * scalar 1x1
-                    //  * string lengths
+                    //  * string length
                     //  * utf8 content \0 terminated
                     if (exprs.size() < 6) return false;
                     if (exprs[0] != sci_strings) return false;
                     if (exprs[1] < 2) return false;
                     if (exprs[2] < 1) return false;
                     if (exprs[3] < 1) return false;
-                    size_t len = (size_t) exprs[4];
+                    size_t len = (size_t)exprs[4] * sizeof(double) / sizeof(char);
                     
                     char* data = (char*) &(exprs[5]);
                     v.assign((char*) data, len);
@@ -748,7 +748,7 @@ bool Model::getObjectProperty(model::BaseObject* object, object_properties_t p, 
                     //  * type
                     //  * number of dims
                     //  * scalar 1x1
-                    //  * string lengths
+                    //  * strings offset in double
                     //  * utf8 content \0 terminated
                     if (exprs.size() < 6) return false;
                     if (exprs[0] != sci_strings) return false;
@@ -758,12 +758,15 @@ bool Model::getObjectProperty(model::BaseObject* object, object_properties_t p, 
                     
                     size_t N = (size_t) (exprs[2] * exprs[3]);
                     v.resize(N);
-                    v[0].assign((char*) &(exprs[4+N]), (size_t) exprs[4] * sizeof(double) / sizeof(char));
+                    size_t len = (size_t)exprs[4] * sizeof(double) / sizeof(char);
+                    char* data = (char*) &(exprs[4+N]);
+                    v[0].assign(data, len);
                     for (size_t i = 1; i < N; ++i)
                     {
-                        size_t len_in_double = (size_t) exprs[4+i-1];
-                        char* data = (char*) &(exprs[4 + N + len_in_double]);
-                        v[i].assign((char*) data, (size_t) exprs[4+i] * sizeof(double) / sizeof(char));
+                        size_t offset = (size_t) exprs[4+i-1];
+                        len = ((size_t)exprs[4+i] - (size_t)exprs[4+i-1]) * sizeof(double) / sizeof(char);
+                        data = (char*) &(exprs[4 + N + offset]);
+                        v[i].assign(data, len);
                     }
                     return true;
                 }
