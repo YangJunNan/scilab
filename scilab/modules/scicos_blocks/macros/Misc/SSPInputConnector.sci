@@ -41,9 +41,12 @@ function [x, y, typ] = SSPInputConnector(job,arg1,arg2)
             objs(1).graphics.pein = 4;
             objs(1).graphics.peout = 4;
             
-            
             model.rpar = do_eval(scicos_diagram(objs=objs),list(),%scicos_context);
-            model.in = 1;
+            
+            // propagate type from the port
+            model.rpar.objs(1).model.out = model.out;
+            model.rpar.objs(1).model.out2 = model.out2;
+            model.rpar.objs(1).model.outtyp = model.outtyp;
             
             x.model = model;
             x.graphics = graphics;

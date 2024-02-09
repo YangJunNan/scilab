@@ -788,7 +788,15 @@ int SSPResource::loadReal(xmlTextReaderPtr reader, model::BaseObject* o)
         case PORT:
         {
             // set the type
-            if (controller.setObjectProperty(o, DATATYPE_TYPE, 1))
+            if (controller.setObjectProperty(o, DATATYPE_ROWS, 1) == FAIL)
+            {
+                return -1;
+            }
+            if (controller.setObjectProperty(o, DATATYPE_COLS, 1) == FAIL)
+            {
+                return -1;
+            }
+            if (controller.setObjectProperty(o, DATATYPE_TYPE, 1) == FAIL)
             {
                 return -1;
             }
@@ -895,7 +903,15 @@ int SSPResource::loadInteger(xmlTextReaderPtr reader, model::BaseObject* o)
         case PORT:
         {
             // set the type
-            if (controller.setObjectProperty(o, DATATYPE_TYPE, 3))
+            if (controller.setObjectProperty(o, DATATYPE_ROWS, 1) == FAIL)
+            {
+                return -1;
+            }
+            if (controller.setObjectProperty(o, DATATYPE_COLS, 1) == FAIL)
+            {
+                return -1;
+            }
+            if (controller.setObjectProperty(o, DATATYPE_TYPE, 3) == FAIL)
             {
                 return -1;
             }
@@ -973,7 +989,15 @@ int SSPResource::loadBoolean(xmlTextReaderPtr reader, model::BaseObject* o)
         case PORT:
         {
             // set the type
-            if (controller.setObjectProperty(o, DATATYPE_TYPE, 5))
+            if (controller.setObjectProperty(o, DATATYPE_ROWS, 1) == FAIL)
+            {
+                return -1;
+            }
+            if (controller.setObjectProperty(o, DATATYPE_COLS, 1) == FAIL)
+            {
+                return -1;
+            }
+            if (controller.setObjectProperty(o, DATATYPE_TYPE, 5) == FAIL)
             {
                 return -1;
             }
@@ -1050,8 +1074,16 @@ int SSPResource::loadString(xmlTextReaderPtr reader, model::BaseObject* o)
         case PORT:
         {
             // set the type
+            if (controller.setObjectProperty(o, DATATYPE_ROWS, 1) == FAIL)
+            {
+                return -1;
+            }
+            if (controller.setObjectProperty(o, DATATYPE_COLS, 1) == FAIL)
+            {
+                return -1;
+            }
             // string can be passed around as a pointer to a string
-            if (controller.setObjectProperty(o, DATATYPE_TYPE, 1))
+            if (controller.setObjectProperty(o, DATATYPE_TYPE, 1) == FAIL)
             {
                 return -1;
             }
@@ -1129,7 +1161,15 @@ int SSPResource::loadEnumeration(xmlTextReaderPtr reader, model::BaseObject* o)
         case PORT:
         {
             // set the type
-            if (controller.setObjectProperty(o, DATATYPE_TYPE, 3))
+            if (controller.setObjectProperty(o, DATATYPE_ROWS, 1) == FAIL)
+            {
+                return -1;
+            }
+            if (controller.setObjectProperty(o, DATATYPE_COLS, 1) == FAIL)
+            {
+                return -1;
+            }
+            if (controller.setObjectProperty(o, DATATYPE_TYPE, 3) == FAIL)
             {
                 return -1;
             }
@@ -1207,8 +1247,16 @@ int SSPResource::loadBinary(xmlTextReaderPtr reader, model::BaseObject* o)
         case PORT:
         {
             // set the type
+            if (controller.setObjectProperty(o, DATATYPE_ROWS, 1) == FAIL)
+            {
+                return -1;
+            }
+            if (controller.setObjectProperty(o, DATATYPE_COLS, 1) == FAIL)
+            {
+                return -1;
+            }
             // from the specification: a length-terminated binary data type
-            if (controller.setObjectProperty(o, DATATYPE_TYPE, 5))
+            if (controller.setObjectProperty(o, DATATYPE_TYPE, 5) == FAIL)
             {
                 return -1;
             }
@@ -1505,6 +1553,12 @@ int SSPResource::loadSystemGeometry(xmlTextReaderPtr reader, model::BaseObject* 
         {
             return ret;
         }
+        if (copy_property<std::vector<int>>(outter->port, ioBlock->port, DATATYPE) == FAIL)
+        {
+            return FAIL;
+        }
+
+
         outter += 2;
         ioBlock += 2;
     }
@@ -2551,6 +2605,13 @@ int SSPResource::processElement(xmlTextReaderPtr reader)
         return 1;
     }
 
+    // verbose for debugging
+//#ifndef NDEBUG
+//    xmlNodePtr curNode = xmlTextReaderCurrentNode(reader);
+//    int line = xmlGetLineNo(curNode);
+//    sciprint("parsing line %d\n", line);
+//#endif
+
     // lookup for known node names
     // thanks to the string intern-ing, the pointer comparison could be used
     auto found = std::find(constXcosNames.begin(), constXcosNames.end(), name);
@@ -2642,7 +2703,7 @@ int SSPResource::processElement(xmlTextReaderPtr reader)
                 references.emplace_back(Reference{"", "", 0, 0, parent, outterPort});
                 references.emplace_back(Reference{"", "", 0, 0, innerBlock, innerPort});
 
-                processed.push_back(innerBlock);
+                processed.push_back(outterPort);
                 port = outterPort;
             }
             else if (isMainDiagram)
@@ -2659,7 +2720,7 @@ int SSPResource::processElement(xmlTextReaderPtr reader)
 
                 references.emplace_back(Reference{"", "", 0, 0, innerBlock, innerPort});
 
-                processed.push_back(innerBlock);
+                processed.push_back(innerPort);
                 port = innerPort;
             }
             else // a regular FMU block
@@ -2692,7 +2753,7 @@ int SSPResource::processElement(xmlTextReaderPtr reader)
             if (innerPort != nullptr && innerPort != port)
             {
                 // sync port information to the inner block
-                copy_property<bool>(port, IMPLICIT, innerPort, IMPLICIT);
+                copy_property<bool>(port, innerPort, IMPLICIT);
                 if (controller.setObjectProperty(innerPort, PORT_KIND, opposite[kind]) == FAIL)
                 {
                     sciprint("unable to set Connector on innerPort\n");
@@ -2708,8 +2769,8 @@ int SSPResource::processElement(xmlTextReaderPtr reader)
                 controller.setObjectProperty(innerBlock, property_from_port(innerKind), ports);
 
                 // this is the connector block, loaded as I/O block inside the inner layer
-                copy_property<std::string>(port, NAME, innerBlock, NAME);
-                copy_property<std::string>(port, DESCRIPTION, innerBlock, DESCRIPTION);
+                copy_property<std::string>(port, innerBlock, NAME);
+                copy_property<std::string>(port, innerBlock, DESCRIPTION);
 
                 controller.setObjectProperty(innerBlock, INTERFACE_FUNCTION, interface_function(innerKind, isImplicit, isMainDiagram));
                 controller.setObjectProperty(innerBlock, SIM_FUNCTION_NAME, simulation_function(innerKind, isImplicit, isMainDiagram));

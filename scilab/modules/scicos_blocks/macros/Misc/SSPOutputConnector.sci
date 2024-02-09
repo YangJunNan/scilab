@@ -48,9 +48,13 @@ function [x, y, typ] = SSPOutputConnector(job,arg1,arg2)
             objs(3) = scicos_link(from=[2 1 0],to=[1 1 1]);
             objs(1).graphics.pin = 3;
             objs(2).graphics.pout = 3;
-            
+
             model.rpar = do_eval(scicos_diagram(objs=objs),list(),%scicos_context);
-            model.in = 1;
+            
+            // propagate type from the porte
+            model.rpar.objs(1).model.in = model.in;
+            model.rpar.objs(1).model.in2 = model.in2;
+            model.rpar.objs(1).model.intyp = model.intyp;
 
             x.model = model;
             x.graphics = graphics;
@@ -77,7 +81,6 @@ function [x, y, typ] = SSPOutputConnector(job,arg1,arg2)
         objs(2).graphics.pout = 3;
 
         model.rpar = scicos_diagram(objs=objs)
-        model.in = 1;
         x = standard_define([9 5],model,exprs,[]);
         x.graphics.style = ["SSPOutputConnector"];
     end
