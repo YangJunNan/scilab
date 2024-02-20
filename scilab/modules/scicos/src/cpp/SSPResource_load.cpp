@@ -2285,14 +2285,12 @@ int SSPResource::loadComponent(xmlTextReaderPtr reader, model::BaseObject* o)
                     continue;
                 }
                 enum xcosNames t = static_cast<enum xcosNames>(std::distance(constXcosNames.begin(), found));
-                switch (current)
+                switch (t)
                 {
                     case e_application_x_fmu_sharedlibrary: // fallthrough
                     default:
                     {
                         controller.setObjectProperty(o, INTERFACE_FUNCTION, std::string("SimpleFMU"));
-
-                        // TODO setup other properties
                         break;
                     }
 
@@ -2337,7 +2335,37 @@ int SSPResource::loadComponent(xmlTextReaderPtr reader, model::BaseObject* o)
 
             case e_implementation:
             {
-                // not loaded, the FMU is detected
+                // the implementation is mapped to a specific simulation function
+                const xmlChar* implementation = xmlTextReaderConstString(reader, xmlTextReaderConstValue(reader));
+                std::string functionName;
+                auto found = std::find(constXcosNames.begin(), constXcosNames.end(), implementation);
+                if (found == constXcosNames.end())
+                {
+                    continue;
+                }
+                enum xcosNames impl = static_cast<enum xcosNames>(std::distance(constXcosNames.begin(), found));
+                switch (impl)
+                {
+                case e_ModelExchange:
+                    functionName = "fmu2_simulate_me";
+                    break;
+                case e_CoSimulation:
+                    functionName = "fmu2_simulate_cs";
+                    break;
+                case e_any:
+                    break;
+                default:
+                    sciprint("Component implementation \"%s\" is not supported\n", xmlTextReaderConstValue(reader));
+                    break;
+                }
+                if (controller.setObjectProperty(o, SIM_FUNCTION_NAME, functionName) == FAIL)
+                {
+                    return -1;
+                }
+                if (controller.setObjectProperty(o, SIM_FUNCTION_API, 4) == FAIL)
+                {
+                    return -1;
+                }
                 break;
             }
 
