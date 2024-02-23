@@ -418,6 +418,8 @@ computed = dt + c;
 expected = string(datetime(2022,2,1:29,0,0,0));
 checkstring(computed, expected);
 
+assert_checkequal(dt(1):dt($), dt(1));
+
 dt = datetime("2/3/24", "InputFormat", "M/d/yy");
 assert_checkequal(string(dt), "2024-02-03");
 dt = datetime("12/3/24", "InputFormat", "M/d/yy");
