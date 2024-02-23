@@ -29,7 +29,7 @@
 #include "list.hxx"
 #include "tlist.hxx"
 #include "mlist.hxx"
-//#include "struct.hxx"
+#include "struct.hxx"
 
 extern "C"
 {
@@ -239,39 +239,33 @@ static void encode(types::List* input, std::vector<double> &ret)
     // An empty list input will return [22; 0], a tlist [23; 0] and an mlist [24; 0]
 }
 
-// Structs are not used yet
-//static void encode(types::Struct* input, std::vector<double> &ret)
-//{
-//    const bool isEmpty = input->getSize() == 0;
+static void encode(types::Struct* input, std::vector<double> &ret)
+{
+    const bool isEmpty = input->getSize() == 0;
+    types::String* fields = nullptr;
+    int iElements = 0;
+    if (!isEmpty)
+    {
+        fields = input->getFieldNames();
+        iElements = fields->getSize();
+    }
+    ret.push_back(input->getType());
+    ret.push_back(iElements);
+    if (!isEmpty)
+    {
+        // Call var2vec on the struct's fields to extract a header
+        var2vec(fields, ret);
+        // Now extract the fields' content, assuming this is not a multidimensional struct
+        types::SingleStruct* content = input->get(0);
+        for (int i = 0; i < iElements; ++i)
+        {
+            var2vec(content->get(fields->get(i)), ret);
+        }
+        fields->killMe();
+    }
 
-//    types::String* fields = nullptr;
-//    int iElements = 0;
-//    if (!isEmpty)
-//    {
-//        fields = input->getFieldNames();
-//        iElements = fields->getSize();
-//    }
-
-//    ret.push_back(input->getType());
-//    ret.push_back(iElements);
-//    if (!isEmpty)
-//    {
-//        // Call var2vec on the struct's fields to extract a header
-//        var2vec(fields, ret);
-
-//        // Now extract the fields' content, assuming this is not a multidimensional struct
-//        types::SingleStruct* content = input->get(0);
-//        for (int i = 0; i < iElements; ++i)
-//        {
-//            var2vec(content->get(fields->get(i)), ret);
-//        }
-
-
-//        fields->killMe();
-//    }
-
-//    // An empty struct input will return [26; 0]
-//}
+    // An empty struct input will return [26; 0]
+}
 
 bool var2vec(types::InternalType* in, std::vector<double> &out)
 {
@@ -325,7 +319,7 @@ bool var2vec(types::InternalType* in, std::vector<double> &out)
             break;
 
         case sci_list    :
-            encode(in->getAs<types::List>(), out);
+            encode(in->getAs<types::List>(), out);  
             break;
         case sci_tlist   :
             encode(in->getAs<types::List>(), out);
@@ -335,22 +329,23 @@ bool var2vec(types::InternalType* in, std::vector<double> &out)
             {
                 case types::InternalType::ScilabMList :
                     encode(in->getAs<types::List>(), out);
-                    if (out.back() == -1)
-                    {
-                        Scierror(999, _("%s: Wrong value for input argument #%d: Could not read its content.\n"), var2vecName.c_str(), 1);
-                        return false;
-                    }
                     break;
-                default : // types::InternalType::ScilabStruct
-                    //encode(in->getAs<types::Struct>(), out);
+                case types::InternalType::ScilabStruct :
+                    encode(in->getAs<types::Struct>(), out);
+                    break;
+                default :
                     Scierror(999, _("%s: Wrong type for input argument #%d: %s, %s, %s, %s or %s type.\n"), var2vecName.c_str(), 1, "Double", "Integer", "Boolean", "String", "List");
                     return false;
+            }
+            if (out.back() == -1)
+            {
+                Scierror(999, _("%s: Wrong value for input argument #%d: Could not read its content.\n"), var2vecName.c_str(), 1);
+                return false;
             }
             break;
 
         default :
-            //Scierror(999, _("%s: Wrong type for input argument #%d: %s, %s, %s, %s, %s or %s type.\n"), var2vecName.c_str(), 1, "Double", "Integer", "Boolean", "String", "List", "Struct");
-            Scierror(999, _("%s: Wrong type for input argument #%d: %s, %s, %s, %s or %s type.\n"), var2vecName.c_str(), 1, "Double", "Integer", "Boolean", "String", "List");
+            Scierror(999, _("%s: Wrong type for input argument #%d: %s, %s, %s, %s, %s or %s type.\n"), var2vecName.c_str(), 1, "Double", "Integer", "Boolean", "String", "List", "Struct");
             return false;
     }
 
