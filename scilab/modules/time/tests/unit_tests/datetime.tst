@@ -418,6 +418,15 @@ computed = dt + c;
 expected = string(datetime(2022,2,1:29,0,0,0));
 checkstring(computed, expected);
 
+dt = datetime("2/3/24", "InputFormat", "M/d/yy");
+assert_checkequal(string(dt), "2024-02-03");
+dt = datetime("12/3/24", "InputFormat", "M/d/yy");
+assert_checkequal(string(dt), "2024-12-03");
+dt = datetime("2/13/24", "InputFormat", "M/d/yy");
+assert_checkequal(string(dt), "2024-02-13");
+dt = datetime("12/13/24", "InputFormat", "M/d/yy");
+assert_checkequal(string(dt), "2024-12-13");
+
 // check error
 msg = msprintf(_("%s: Wrong number of input argument: %d to %d expected, except %d, %d and %d.\n"), "datetime", 0, 7, 2, 4, 5);
 assert_checkerror("datetime(1, 2, 3, 4, 5, 6, 7, 8)", msg);
