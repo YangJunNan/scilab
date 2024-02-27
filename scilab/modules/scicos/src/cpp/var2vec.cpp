@@ -236,35 +236,39 @@ static void encode(types::List* input, std::vector<double> &ret)
         }
     }
 
-    // An empty list input will return [22; 0], a tlist [23; 0] and an mlist [24; 0]
+    // An empty list input will return [15; 0], a tlist [16; 0] and an mlist [17; 0]
 }
 
 static void encode(types::Struct* input, std::vector<double> &ret)
 {
-    const bool isEmpty = input->getSize() == 0;
-    types::String* fields = nullptr;
-    int iElements = 0;
-    if (!isEmpty)
-    {
-        fields = input->getFieldNames();
-        iElements = fields->getSize();
-    }
-    ret.push_back(input->getType());
-    ret.push_back(iElements);
-    if (!isEmpty)
-    {
-        // Call var2vec on the struct's fields to extract a header
-        var2vec(fields, ret);
-        // Now extract the fields' content, assuming this is not a multidimensional struct
-        types::SingleStruct* content = input->get(0);
-        for (int i = 0; i < iElements; ++i)
-        {
-            var2vec(content->get(fields->get(i)), ret);
-        }
-        fields->killMe();
-    }
+    // this method modify the header to encode as an mlist-baked st
+    types::Struct* modified = input->clone();
+    
+    // insert a fake dims field, preserving struct size
+    modified->addFieldFront(L"dims");
+    types::Int32* dims = new types::Int32(1, input->getDims());
+    dims->set(input->getDimsArray());
+    modified->get(0)->set(L"dims", dims);
 
-    // An empty struct input will return [26; 0]
+    // insert a fake st header field
+    modified->addFieldFront(L"st");
+    types::String* fields = modified->getFieldNames();
+    int iElements = fields->getSize();
+    modified->get(0)->set(L"st", fields);
+    
+    ret.push_back(sci_mlist);
+    ret.push_back(iElements);
+
+    // create fields' content
+    types::SingleStruct* content = modified->get(0);
+    for (int i = 0; i < iElements; ++i)
+    {
+        var2vec(content->get(fields->get(i)), ret);
+    }
+    fields->killMe();
+    modified->killMe();
+
+    // An empty struct input will return [17; 0]
 }
 
 bool var2vec(types::InternalType* in, std::vector<double> &out)

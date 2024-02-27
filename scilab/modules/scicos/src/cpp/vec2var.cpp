@@ -483,9 +483,9 @@ static bool readElement(const double* const input, const int iType, const int iD
                     types::Int32* pDims = nullptr;
                     for (int i = 1; i < header->getSize(); ++i)
                     {
-                        if (wcscmp(header->get(i), L"dims") == 0 && pList->get(i + 1)->isInt())
+                        if (wcscmp(header->get(i), L"dims") == 0 && pList->get(i)->isInt())
                         {
-                            pDims = pList->get(i + 1)->getAs<types::Int32>();
+                            pDims = pList->get(i)->getAs<types::Int32>();
                             dims.resize(pDims->getSize());
                             memcpy(dims.data(), pDims->get(), dims.size() * sizeof(int));
                             break;
@@ -503,11 +503,11 @@ static bool readElement(const double* const input, const int iType, const int iD
                     types::Struct* pStruct = new types::Struct((int) dims.size(), dims.data());
                     for (int i = 1; i < header->getSize(); ++i)
                     {
-                        types::InternalType* fieldValue = pList->get(i + 1);
+                        types::InternalType* fieldValue = pList->get(i);
                         if (pDims != fieldValue)
                         {
                             pStruct->get(0)->addField(header->get(i));
-                            pStruct->get(0)->set(header->get(i), pList->get(i + 1));
+                            pStruct->get(0)->set(header->get(i), pList->get(i));
                         }
                     }
 
@@ -521,79 +521,6 @@ static bool readElement(const double* const input, const int iType, const int iD
             if (pList != nullptr)
                 res = pList;
             break;
-        }
-
-        case types::InternalType::ScilabStruct :
-        {
-           if (inputRows < 2)
-           {
-               Scierror(999, _("%s: Wrong size for input argument #%d: At least %dx%d expected.\n"), vec2varName.c_str(), 1, offset + 2, 1);
-               return false;
-           }
-
-           if (iDims <= 0)
-           {
-               res = new types::Struct();
-               offset += 2;
-               break;
-           }
-
-           int offsetSave = 0;
-           if (offset == 0)
-           {
-               offset += 2;
-           }
-           else
-           {
-               // If reading a sublist, start off with a new offset
-               offsetSave = offset;
-               offset = 2;
-           }
-           // Read the header...
-           int elementType = static_cast<int>(*(input + offset));
-           if (elementType != sci_strings)
-           {
-               Scierror(999, _("%s: Wrong value for input argument #%d: %d (String) expected.\n"), vec2varName.c_str(), 1, 11);
-               return false;
-           }
-           int elementDims = static_cast<int>(*(input + offset + 1));
-           types::InternalType* element;
-           if (!readElement(input + offset, elementType, elementDims, inputRows - offset, offset, element))
-           {
-               return false;
-           }
-
-           types::Struct* pStruct = new types::Struct(1, 1);
-           types::String* header = element->getAs<types::String>();
-           // ... and copy it in 'pStruct'
-           for (int i = 0; i < header->getSize(); ++i)
-           {
-               pStruct->get(0)->addField(header->get(i));
-           }
-
-           for (int i = 1; i < iDims + 1; ++i)
-           {
-               if (inputRows < 2 + offset)
-               {
-                   delete pStruct;
-                   Scierror(999, _("%s: Wrong size for input argument #%d: At least %dx%d expected.\n"), vec2varName.c_str(), 1, offset + 2, 1);
-                   return false;
-               }
-               // Extract the fields content infos and recursively call readElement
-               elementType = static_cast<int>(*(input + offset));
-               elementDims = static_cast<int>(*(input + offset + 1));
-               if (!readElement(input + offset, elementType, elementDims, inputRows - offset, offset, element))
-               {
-                   delete pStruct;
-                   return false;
-               }
-               pStruct->get(0)->set(header->get(i - 1), element);
-           }
-
-           header->killMe();
-           offset += offsetSave;
-           res = pStruct;
-           break;
         }
 
         default :
