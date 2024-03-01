@@ -166,6 +166,13 @@ types::Function::ReturnValue sci_impl(types::typed_list &in, int _iRetCount, typ
         return types::Function::Error;
     }
 
+    // y0 and ydot0 must have the same size
+    if(pDblY0->getSize() != pDblYdot0->getSize())
+    {
+        Scierror(999, _("%s: Wrong size for input argument #%d and #%d: Same size expected.\n"), "impl", iPos, iPos + 1);
+        return types::Function::Error;
+    }
+
     // t0
     iPos++;
     if (in[iPos]->isDouble() == false)
