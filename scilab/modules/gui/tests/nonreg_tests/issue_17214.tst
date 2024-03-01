@@ -8,7 +8,7 @@
 // <-- NO CHECK REF -->
 // <-- TEST WITH GRAPHIC -->
 
-// <-- Non-regression test for bug 17127 -->
+// <-- Non-regression test for bug 17214 -->
 //
 // <-- Bugzilla URL -->
 // https://gitlab.com/scilab/scilab/-/issues/17214
