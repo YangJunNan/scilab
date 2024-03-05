@@ -43,11 +43,11 @@ assert_checkequal(meanf(x', x', 1), 7);
 assert_checkequal(meanf(x', x', "*"), 7);
 
 assert_checkfalse(execstr("meanf(x, x, ''t'')"   ,"errcatch") == 0);
-refMsg = msprintf(gettext("%s: Wrong value for input argument #%d: ''%s'', ''%s'', %d or %d expected.\n"),"meanf",3,"r","c",1,2);
+refMsg = msprintf(gettext("%s: Wrong value for input argument #%d: Must be in %s.\n"),"meanf", 3, sci2exp({1, 2,"r", "c", "*"}));
 assert_checkerror("meanf(x, x, ''t'')", refMsg);
 
 assert_checkfalse(execstr("meanf(x, x, 4)"   ,"errcatch") == 0);
-refMsg = msprintf(gettext("%s: Wrong value for input argument #%d: ''%s'', ''%s'', %d or %d expected.\n"),"meanf",3,"r","c",1,2);
+refMsg = msprintf(gettext("%s: Wrong value for input argument #%d: Must be in %s.\n"),"meanf", 3, sci2exp({1, 2,"r", "c", "*"}));
 assert_checkerror("meanf(x, x, 4)", refMsg);
 
 // Matrix

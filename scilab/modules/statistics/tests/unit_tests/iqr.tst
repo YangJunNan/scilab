@@ -50,15 +50,15 @@ assert_checkequal(iqr(x', "r"), 5);
 assert_checkequal(iqr(x', 1), 5);
 
 assert_checkfalse(execstr("iqr(x, 3)"   ,"errcatch") == 0);
-refMsg = msprintf(_("%s: Wrong value for input argument #%d: ''%s'', %d, ''%s'' or %d expected.\n"), "iqr", 2, "r", 1, "c", 2);
+refMsg = msprintf(_("%s: Wrong value for input argument #%d: Must be in %s.\n"), "iqr", 2, sci2exp({1, 2,"r", "c", "*"}));
 assert_checkerror("iqr(x, 3)", refMsg);
 
 assert_checkfalse(execstr("iqr(x, ''t'')"   ,"errcatch") == 0);
-refMsg = msprintf(_("%s: Wrong value for input argument #%d: ''%s'', %d, ''%s'' or %d expected.\n"), "iqr", 2, "r", 1, "c", 2);
+refMsg = msprintf(_("%s: Wrong value for input argument #%d: Must be in %s.\n"), "iqr", 2, sci2exp({1, 2,"r", "c", "*"}));
 assert_checkerror("iqr(x, ''t'')", refMsg);
 
 assert_checkfalse(execstr("iqr(x, [])"   ,"errcatch") == 0);
-refMsg = msprintf(_("%s: Wrong value for input argument #%d: ''%s'', %d, ''%s'' or %d expected.\n"), "iqr", 2, "r", 1, "c", 2);
+refMsg = msprintf(_("%s: Wrong size of input argument #%d: %d x %d expected.\n"), "iqr", 2, 1, 1);
 assert_checkerror("iqr(x, [])", refMsg);
 
 // Matrix

@@ -39,7 +39,7 @@ function [mom]= moment(x,ord,orien)
     arguments
         x 
         ord
-        orien (1, 1) {mustBeA(orien, ["double", "string"]), mustBeMember(orient, {1, 2, "r", "c", "*"})} = "*"
+        orien (1, 1) {mustBeA(orien, ["double", "string"]), mustBeMember(orien, {1, 2, "r", "c", "*"})} = "*"
     end
 
     if x==[] then mom=%nan, return, end
