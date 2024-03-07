@@ -58,8 +58,8 @@ export PATH="/usr/local/bin:$INSTALLUSRDIR/bin:$PATH"
 JDK_VERSION=17.0.7+7
 JRE_VERSION=17.0.7_7
 ANT_VERSION=1.10.5
-OPENBLAS_VERSION=0.3.7
-ARPACK_VERSION=3.1.5
+OPENBLAS_VERSION=0.3.26
+ARPACK_VERSION=3.9.1
 CURL_VERSION=7.64.1
 EIGEN_VERSION=3.3.2
 FFTW_VERSION=3.3.3
@@ -124,9 +124,11 @@ download_dependencies() {
     [ ! -f jre-$JRE_VERSION.tar.gz ] && curl -L -o jre-$JRE_VERSION.tar.gz "https://oos.eu-west-2.outscale.com/scilab-releases-dev/prerequirements-sources/OpenJDK17U-jre_x64_linux_hotspot_$(echo ${JRE_VERSION} |sed 's/-//g').tar.gz"
     [ ! -f jdk-$JDK_VERSION.tar.gz ] && curl -L -o jdk-$JDK_VERSION.tar.gz "https://oos.eu-west-2.outscale.com/scilab-releases-dev/prerequirements-sources/ibm-semeru-open-jdk_x64_linux_$(echo ${JDK_VERSION} |sed 's/+/_/g')_openj9-0.38.0.tar.gz"
     
-    [ ! -f OpenBLAS-$OPENBLAS_VERSION.tar.gz ] && curl -LO https://oos.eu-west-2.outscale.com/scilab-releases-dev/prerequirements-sources/OpenBLAS-$OPENBLAS_VERSION.tar.gz
+    # [ ! -f OpenBLAS-$OPENBLAS_VERSION.tar.gz ] && curl -LO https://oos.eu-west-2.outscale.com/scilab-releases-dev/prerequirements-sources/OpenBLAS-$OPENBLAS_VERSION.tar.gz
+    [ ! -f OpenBLAS-$OPENBLAS_VERSION.tar.gz ] && curl -LO https://github.com/OpenMathLib/OpenBLAS/releases/download/v$OPENBLAS_VERSION/OpenBLAS-$OPENBLAS_VERSION.tar.gz
     [ ! -f apache-ant-$ANT_VERSION-bin.tar.gz ] && curl -LO https://oos.eu-west-2.outscale.com/scilab-releases-dev/prerequirements-sources/apache-ant-$ANT_VERSION-bin.tar.gz
-    [ ! -f arpack-ng-$ARPACK_VERSION.tar.gz ] && curl -LO https://oos.eu-west-2.outscale.com/scilab-releases-dev/prerequirements-sources/arpack-ng-$ARPACK_VERSION.tar.gz
+    # [ ! -f arpack-ng-$ARPACK_VERSION.tar.gz ] && curl -LO https://oos.eu-west-2.outscale.com/scilab-releases-dev/prerequirements-sources/arpack-ng-$ARPACK_VERSION.tar.gz
+    [ ! -f arpack-ng-$ARPACK_VERSION.zip ] && curl -L -o arpack-ng-$ARPACK_VERSION.zip https://github.com/opencollab/arpack-ng/archive/refs/tags/$ARPACK_VERSION.zip
     [ ! -f curl-$CURL_VERSION.tar.gz ] && curl -LO https://oos.eu-west-2.outscale.com/scilab-releases-dev/prerequirements-sources/curl-$CURL_VERSION.tar.gz
     [ ! -f eigen-$EIGEN_VERSION.tar.gz ] && curl -LO https://oos.eu-west-2.outscale.com/scilab-releases-dev/prerequirements-sources/eigen-$EIGEN_VERSION.tar.gz
     [ ! -f fftw-$FFTW_VERSION.tar.gz ] && curl -LO https://oos.eu-west-2.outscale.com/scilab-releases-dev/prerequirements-sources/fftw-$FFTW_VERSION.tar.gz
@@ -458,19 +460,13 @@ build_ant() {
 
 build_arpack() {
     cd "$BUILDDIR" || exit 1
-
-    INSTALL_DIR=$BUILDDIR/arpack-ng-$ARPACK_VERSION/install_dir
-
-    tar -xzf "$DOWNLOADDIR/arpack-ng-$ARPACK_VERSION.tar.gz"
+    rm -rf arpack-ng-$ARPACK_VERSION
+    unzip "$DOWNLOADDIR/arpack-ng-$ARPACK_VERSION.zip"
     cd arpack-ng-$ARPACK_VERSION || exit 1
-    rm -rf "$INSTALL_DIR" && mkdir "$INSTALL_DIR"
-    ./configure --prefix=  F77=gfortran \
-        --with-blas="$INSTALLUSRDIR/lib/libblas.so" \
-        --with-lapack="$INSTALLUSRDIR/lib/liblapack.so"
+    mkdir build && cd build
+    cmake -D BLAS_LIBRARIES="$INSTALLUSRDIR/lib/libblas.so" -D LAPACK_LIBRARIES="$INSTALLUSRDIR/lib/liblapack.so"  ..
     make "-j$(nproc)"
-    make install DESTDIR="$INSTALL_DIR"
-
-    cp -a "$INSTALL_DIR"/lib/libarpack.so* "$INSTALLUSRDIR/lib/"
+    cp -a lib/libarpack.so* "$INSTALLUSRDIR/lib/"
 }
 
 build_eigen() {
