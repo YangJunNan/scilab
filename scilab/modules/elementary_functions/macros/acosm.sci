@@ -14,13 +14,7 @@ function t=acosm(x)
     // Matrix wise Arccosine Cosine-inverse
 
     arguments
-        x {mustBeA(x, "double")}
-    end
-    
-    [m,n]=size(x);
-
-    if m<>n then
-        error(msprintf(gettext("%s: Wrong size for input argument #%d: A square matrix expected.\n"),"acosm",1));
+        x {mustBeA(x, "double"), mustBeSquare}
     end
 
     t=-%i*logm(x+%i*sqrtm(eye()-x*x));

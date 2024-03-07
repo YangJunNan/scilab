@@ -21,7 +21,7 @@ function [f, e] = log2(x)
         f = log(x) / log(2)
     else
         if ~isreal(x,0)
-            msg = gettext("%s: Argument #%d: Complex numbers not supported.\n")
+            msg = gettext("%s: Wrong value for input argument #%d: Real numbers expected.\n")
             error(msprintf(msg, "log2", 1))
         else
             x = real(x)

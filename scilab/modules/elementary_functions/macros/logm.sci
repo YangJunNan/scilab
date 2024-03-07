@@ -22,13 +22,7 @@ function x=logm(a)
     //computes X=logm(A), matrix log of A
 
     arguments
-        a {mustBeA(a, "double")}
-    end
-
-    [m ,n] = size(a);
-
-    if m <> n then
-        error(msprintf(gettext("%s: Wrong size for input argument #%d: Square matrix expected.\n"),"logm",1));
+        a {mustBeA(a, "double"), mustBeSquare}
     end
 
     flag = or(a<>a');

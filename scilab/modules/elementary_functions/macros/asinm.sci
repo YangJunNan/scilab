@@ -13,13 +13,7 @@
 function t=asinm(x)
     //Matrix wise Sine-inverse of x
     arguments
-        x {mustBeA(x, "double")}
-    end
-
-    [m,n]=size(x);
-
-    if m<>n then
-        error(msprintf(gettext("%s: Wrong size for input argument #%d: A square matrix expected.\n"),"asinm",1));
+        x {mustBeA(x, "double"), mustBeSquare}
     end
 
     t=-%i*logm(%i*x+sqrtm(eye()-x*x));

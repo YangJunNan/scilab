@@ -21,11 +21,7 @@ function x = sqrtm(a)
     //!
 
     arguments
-        a {mustBeA(a, "double")}
-    end
-    
-    if ~issquare(a) then
-        error(msprintf(_("%s: Wrong size for input argument #%d: A square matrix expected.\n"),"sqrtm", 1));
+        a {mustBeA(a, "double"), mustBeSquare}
     end
 
     x = %s_pow(a, 0.5);

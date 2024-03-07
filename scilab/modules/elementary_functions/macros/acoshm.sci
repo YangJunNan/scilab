@@ -15,12 +15,7 @@ function t=acoshm(x)
     //Matrix wise Hyberbolic cosine inverse of x
 
     arguments
-        x {mustBeA(x, "double")}
-    end
-
-    [m,n]=size(x);
-    if m<>n then
-        error(msprintf(gettext("%s: Wrong size for input argument #%d: A square matrix expected.\n"),"acoshm",1));
+        x {mustBeA(x, "double"), mustBeSquare}
     end
 
     t=logm(x+(x+eye())*sqrtm((x-eye())/(x+eye())));

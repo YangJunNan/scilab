@@ -9,15 +9,21 @@
 // along with this program.
 
 function y = bitset(x, pos, v)
+
+    arguments
+        x {mustBeA(x, ["double", "int"]), mustBeReal, mustBeInteger, mustBeNonnegative}
+        pos {mustBeA(x, ["double", "int"]), mustBeReal, mustBeInteger, mustBeNonnegative, mustBeGreaterThanOrEqual(pos, 1)}
+        v {mustBeA(v, "double"), mustBeInteger, mustBeInRange(v, 0, 1)} = ones(pos)
+    end
     fname = "bitset"
-    rhs = argn(2)
+    // rhs = argn(2)
 
     // CHECKING AND FORMATTING INPUT ARGUMENTS
     // =======================================
-    if rhs < 2 | rhs > 3 then
-        msg = _("%s: Wrong number of input arguments: %d or %d expected.\n")
-        error(msprintf(msg, fname, 2, 3))
-    end
+    // if rhs < 2 | rhs > 3 then
+    //     msg = _("%s: Wrong number of input arguments: %d or %d expected.\n")
+    //     error(msprintf(msg, fname, 2, 3))
+    // end
 
     // Check x
     // -------
@@ -25,22 +31,22 @@ function y = bitset(x, pos, v)
         y = []
         return
     end
-    if  and(type(x)<>[1 8]) | (type(x)==1 & (~isreal(x)|or((x-floor(x))<>0))) | or(x<0)
-        msg = gettext("%s: Argument #%d: Non-negative real integers expected.\n")
-        error(msprintf(msg, fname, 1))
-    end
+    // if  and(type(x)<>[1 8]) | (type(x)==1 & (~isreal(x)|or((x-floor(x))<>0))) | or(x<0)
+    //     msg = gettext("%s: Argument #%d: Non-negative real integers expected.\n")
+    //     error(msprintf(msg, fname, 1))
+    // end
 
     // Check pos
     // ---------
-    if ~isdef("pos","l") | pos==[] then     // do nothing, keep it as is
+    if pos == [] then     // do nothing, keep it as is
         y = x
         return
     end
-    if  (type(pos)<>1  & type(pos)<>8) |  ..
-        (type(pos)==1  & (or((pos-floor(pos))<>0) | ~isreal(pos))) | or(pos<1)
-        msg = gettext("%s: Argument #%d: integers > 0 expected.\n")
-        error(msprintf(msg, fname, 2))
-    else
+    // if  (type(pos)<>1  & type(pos)<>8) |  ..
+    //     (type(pos)==1  & (or((pos-floor(pos))<>0) | ~isreal(pos))) | or(pos<1)
+    //     msg = gettext("%s: Argument #%d: integers > 0 expected.\n")
+    //     error(msprintf(msg, fname, 2))
+    // else
         // max value
         icode = inttype(x)
         select modulo(icode,10)
@@ -57,7 +63,7 @@ function y = bitset(x, pos, v)
             msg = gettext("%s: Argument #%d: Integers <= %d expected.\n")
             error(msprintf(msg, fname, 2, posmax))
         end
-    end
+    // end
     pos = double(pos)
 
    // Check consistency between x and pos sizes
@@ -71,7 +77,7 @@ function y = bitset(x, pos, v)
             msg = gettext("%s: Arguments #%d and #%d: Incompatible sizes.\n")
             error(msprintf(msg, fname, 1, 2))
         end
-        if ~isdef("v","l") | size(v,"*")==1
+        if size(v,"*") < 2
             pos = unique(pos)
             // we can't do that if an array v is provided, because then
             // its length must match the pos one.
@@ -91,20 +97,20 @@ function y = bitset(x, pos, v)
     // -------
     // At the end, v must be either a vector with the pos's length (sameBits case)
     // or an array with same sizes as pos (element-wise case)
-    if ~isdef("v","l") || v==[] then
-        v = ones(pos)
-    else
-        if  (type(v)<>1  & type(v)<>8) || or(v~=0 & v~=1)
-            msg = _("%s: Argument #%d: Must be in the set {%s}.\n")
-            error(msprintf(msg, fname, 3, "0,1"))
-        end
+    // if ~isdef("v","l") || v==[] then
+    //     v = ones(pos)
+    // else
+    //     if  (type(v)<>1  & type(v)<>8) || or(v~=0 & v~=1)
+    //         msg = _("%s: Argument #%d: Must be in the set {%s}.\n")
+    //         error(msprintf(msg, fname, 3, "0,1"))
+    //     end
         if prod(size(v)(1:min(ndims(v),ndims(pos)))) == 1 // scalar or hypercolumn cases
             v = v .*. ones(pos)
         elseif prod(size(v)(1:ndims(pos))) ~= length(pos)
             msg = gettext("%s: Arguments #%d and #%d: Incompatible sizes.\n")
             error(msprintf(msg, fname, 2, 3))
         end
-    end
+    // end
 
     // PROCESSING
     // ==========

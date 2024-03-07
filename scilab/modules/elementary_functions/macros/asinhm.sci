@@ -17,13 +17,7 @@ function t=asinhm(x)
     //                             ]-inf, 0 ] x [-pi/2]
     //                      and    [ 0  ,inf[ x [ pi/2]
     arguments
-        x {mustBeA(x, "double")}
-    end
-
-    [m,n]=size(x);
-
-    if m<>n then
-        error(msprintf(gettext("%s: Wrong size for input argument #%d: A square matrix expected.\n"),"asinhm",1));
+        x {mustBeA(x, "double"), mustBeSquare}
     end
 
     t=logm(x+sqrtm(x*x+eye()));
