@@ -447,9 +447,7 @@ bool orBool(types::InternalType* ret)
 
 int mustBePositive(types::typed_list& x)
 {
-    types::Double* tmp = new types::Double(0);
-    types::InternalType* tmp2 = callComparison(GenericGreater, ast::OpExp::Oper::gt, x[0], tmp);
-    tmp->killMe();
+    types::InternalType* tmp2 = callComparison(GenericGreater, ast::OpExp::Oper::gt, x[0], new types::Double(0));
     if (tmp2)
     {
         bool res = andBool(tmp2);
@@ -462,9 +460,7 @@ int mustBePositive(types::typed_list& x)
 
 int mustBeNonpositive(types::typed_list& x)
 {
-    types::Double* tmp = new types::Double(0);
-    types::InternalType* tmp2 = callComparison(GenericLessEqual, ast::OpExp::Oper::le, L"<=", x[0], tmp);
-    tmp->killMe();
+    types::InternalType* tmp2 = callComparison(GenericLessEqual, ast::OpExp::Oper::le, L"<=", x[0], new types::Double(0));
     if (tmp2)
     {
         bool res = andBool(tmp2);
@@ -477,9 +473,7 @@ int mustBeNonpositive(types::typed_list& x)
 
 int mustBeNonnegative(types::typed_list& x)
 {
-    types::Double* tmp = new types::Double(0);
-    types::InternalType* tmp2 = callComparison(GenericGreaterEqual, ast::OpExp::Oper::ge, x[0], tmp);
-    tmp->killMe();
+    types::InternalType* tmp2 = callComparison(GenericGreaterEqual, ast::OpExp::Oper::ge, x[0], new types::Double(0)); 
     if (tmp2)
     {
         bool res = andBool(tmp2);
@@ -492,9 +486,7 @@ int mustBeNonnegative(types::typed_list& x)
 
 int mustBeNegative(types::typed_list& x)
 {
-    types::Double* tmp = new types::Double(0);
-    types::InternalType* tmp2 = callComparison(GenericLess, ast::OpExp::Oper::le, L"<", x[0], tmp);
-    tmp->killMe();
+    types::InternalType* tmp2 = callComparison(GenericLess, ast::OpExp::Oper::le, L"<", x[0], new types::Double(0));
     if (tmp2)
     {
         bool res = andBool(tmp2);
