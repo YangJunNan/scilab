@@ -36,7 +36,7 @@ function [s]=nancumsum(x,orient)
     //
 
     arguments
-        x {mustBeA(x, ["double", "polynomial", "boolean", "sparse", "integer"])}
+        x {mustBeA(x, ["double", "polynomial", "boolean", "sparse", "int"])}
         orient (1, 1) {mustBeA(orient, ["double", "string"]), mustBeMember(orient, {1, 2, "r", "c", "*"})} = "*"
     end
     

@@ -113,8 +113,7 @@ harmean(x, 2)
 // Hypermatrice
 x = grand(3,4,2, "uin",-10, 10)
 harmean(x)
-harmean(x, "r") // erreur: syntaxe exclue avec les hypermatrices
-harmean(x, 3)   // idem
+// attention: harmean(x, "r") et harmean(x, 3) génère une erreur: syntaxe exclue avec les hypermatrices
 
 harmean([%z 0])
 harmean([%z %z/2])

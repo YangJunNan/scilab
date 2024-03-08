@@ -15,7 +15,7 @@ refMsg = msprintf(_("%s: Wrong number of input arguments: %d to %d expected.\n")
 assert_checkerror("nancumsum()", refMsg);
 
 assert_checkfalse(execstr("nancumsum(""s"")"   ,"errcatch") == 0);
-refMsg = msprintf(_("%s: Wrong type for input argument #%d: Must be in %s.\n"), "nancumsum", 1, sci2exp(["double", "polynomial", "boolean", "sparse", "integer"]));
+refMsg = msprintf(_("%s: Wrong type for input argument #%d: Must be in %s.\n"), "nancumsum", 1, sci2exp(["double", "polynomial", "boolean", "sparse", "int"]));
 assert_checkerror("nancumsum(""s"")", refMsg);
 
 assert_checkfalse(execstr("nancumsum(1, ""p"")"   ,"errcatch") == 0);

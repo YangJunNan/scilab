@@ -28,7 +28,7 @@ function [P] = binomial(p, N)
     //
 
     arguments
-        p (1, 1) {mustBeA(p, "double"), mustBeInRange(p, 0, 1, "exclusive")}
+        p (1, 1) {mustBeA(p, "double"), mustBeInRange(p, 0, 1)}
         N (1, 1) {mustBeA(N, "double"), mustBeInteger, mustBeGreaterThanOrEqual(N, 1)}
     end
 
