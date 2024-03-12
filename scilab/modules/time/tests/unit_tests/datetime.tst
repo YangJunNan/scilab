@@ -28,8 +28,10 @@ function checkstring(d, v)
     assert_checkequal(%datetime_string(d), v);
 endfunction
 
-assert_checktrue(datetime() == datetime(datevec(now())));
-assert_checktrue(datetime("now") == datetime(datevec(now())));
+d = datetime();
+assert_checktrue(modulo(d.time, 1) >= 0);
+d = datetime("now");
+assert_checktrue(modulo(d.time, 1) >= 0);
 expected = floor(datenum());
 checkdatetime1(datetime("today"), expected, 0);
 checkdatetime1(datetime("yesterday"), expected - 1, 0);
@@ -156,7 +158,10 @@ checkdatetime2(datetime(2022, 10, [6 7; 8 9], 12, 30, 45), 2022 * ones(2, 2), 10
 //checkdatetime2(datetime(2022, 10, [6 7; 8 9], 12, 30, 45, 300), 2022, 10, [6 7; 8 9], dura6 * ones(2, 2));
 
 // datetime(x, "ConvertFrom", dateType)
-assert_checktrue(datetime(datenum(), "ConvertFrom", "datenum") == datetime());
+d = datetime(datenum(), "ConvertFrom", "datenum", "OutputFormat", "yyyy-MM-dd HH:mm:ss");
+dexpected = datetime("now", "OutputFormat", "yyyy-MM-dd HH:mm:ss");
+assert_checktrue(string(d) == string(dexpected));
+assert_checktrue(modulo(d.time, 1) >= 0);
 checkstring(datetime([44819.3834418981 44819.3834418981;44819.3834418981 44819.3834418981], "ConvertFrom", "excel"), ["2022-09-15 09:12:09.380" "2022-09-15 09:12:09.380"; "2022-09-15 09:12:09.380" "2022-09-15 09:12:09.380"]);
 
 // datetime([1663226303.936;1663226303.936], "ConvertFrom", "posixtime") == ["2022-09-15 09:18:23.936"; "2022-09-15 09:18:23.936"]
@@ -222,6 +227,30 @@ checkdatetime2(datetime(2022, 10, 6:10) + caldays(6:10), 2022, 10, (6:10) + (6:1
 checkdatetime2(datetime(2022, 10, (6:10)') + caldays(6:10)', 2022, 10, (6:10)' + (6:10)', d2);
 checkdatetime2(caldays(6:10) + datetime(2022, 10, 6:10), 2022, 10, (6:10) + (6:10), d1);
 checkdatetime2(caldays(6:10)' + datetime(2022, 10, (6:10)'), 2022, 10, (6:10)' + (6:10)', d2);
+
+checkstring(datetime(2023, 1, 29) + caldays(29), "2023-02-27");
+checkstring(datetime(2023, 1, 29) + caldays(30), "2023-02-28");
+
+checkstring(datetime(2023, 1, 30) + caldays(29), "2023-02-28");
+checkstring(datetime(2023, 1, 30) + caldays(30), "2023-03-01");
+
+checkstring(datetime(2023, 1, 31) + caldays(29), "2023-03-01");
+checkstring(datetime(2023, 1, 31) + caldays(30), "2023-03-02");
+
+checkstring(datetime(2024, 1, 29) + caldays(29), "2024-02-27");
+checkstring(datetime(2024, 1, 29) + caldays(30), "2024-02-28");
+
+checkstring(datetime(2024, 1, 30) + caldays(29), "2024-02-28");
+checkstring(datetime(2024, 1, 30) + caldays(30), "2024-02-29");
+
+checkstring(datetime(2024, 1, 31) + caldays(29), "2024-02-29");
+checkstring(datetime(2024, 1, 31) + caldays(30), "2024-03-01");
+
+checkstring(datetime(2023, 3, 1) - caldays(29), "2023-01-31");
+checkstring(datetime(2023, 3, 1) - caldays(30), "2023-01-30");
+
+checkstring(datetime(2024, 3, 1) - caldays(29), "2024-02-01");
+checkstring(datetime(2024, 3, 1) - caldays(30), "2024-01-31");
 
 // datetime - datetime
 computed = datetime("2022-10-6") - datetime("2022-10-5");
@@ -393,6 +422,17 @@ c = caldays(0:28);
 computed = dt + c;
 expected = string(datetime(2022,2,1:29,0,0,0));
 checkstring(computed, expected);
+
+assert_checkequal(dt(1):dt($), dt(1));
+
+dt = datetime("2/3/24", "InputFormat", "M/d/yy");
+assert_checkequal(string(dt), "2024-02-03");
+dt = datetime("12/3/24", "InputFormat", "M/d/yy");
+assert_checkequal(string(dt), "2024-12-03");
+dt = datetime("2/13/24", "InputFormat", "M/d/yy");
+assert_checkequal(string(dt), "2024-02-13");
+dt = datetime("12/13/24", "InputFormat", "M/d/yy");
+assert_checkequal(string(dt), "2024-12-13");
 
 // check error
 msg = msprintf(_("%s: Wrong number of input argument: %d to %d expected, except %d, %d and %d.\n"), "datetime", 0, 7, 2, 4, 5);
