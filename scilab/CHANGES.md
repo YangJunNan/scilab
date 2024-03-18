@@ -134,5 +134,6 @@ Packaging & Supported Operating Systems
 API/ABI modification
 --------------------
 
+- External toolboxes can use C++14, C++17, C++20 or more recent versions
 - Javasci source/target version switched from 6 to 7 (minimal version supported by Java 17).
 - Windows F2C compiler is no longer used due to its limited COMMON support, please use Intel Fortran Compiler Classic.
