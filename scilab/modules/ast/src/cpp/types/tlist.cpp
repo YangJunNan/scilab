@@ -327,7 +327,7 @@ bool TList::toString(std::wostringstream& ostr)
 
     IncreaseRef();
     in.push_back(this);
-    switch (Overload::generateNameAndCall(L"p", in, 1, out, false, false)) {
+    switch (Overload::generateNameAndCall(L"p", in, 0, out, false, false)) {
         case Function::OK_NoResult:
             // unresolved function, fallback to a basic display
             break;
