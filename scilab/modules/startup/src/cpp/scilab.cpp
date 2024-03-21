@@ -519,15 +519,13 @@ int main(int argc, char *argv[])
     int val = setjmp(ScilabJmpEnv);
     if (!val)
     {
-        iRet = StartScilabEngine(pSEI);
-        if (iRet == 0)
+        val = StartScilabEngine(pSEI);
+        if (val == 0)
         {
-            iRet = RunScilabEngine(pSEI);
+            val = RunScilabEngine(pSEI);
         }
 
         StopScilabEngine(pSEI);
-        FREE(pSEI);
-        return iRet;
     }
     else
     {
@@ -535,6 +533,9 @@ int main(int argc, char *argv[])
         std::wcerr << getLastErrorMessage() << std::endl;
         return val;
     }
+
+    FREE(pSEI);
+    return val;
 
 #if defined(_WIN32) && !defined(WITHOUT_GUI) && defined(WITH_CONSOLE_JAVA)
     LocalFree(szArglist);
