@@ -116,18 +116,10 @@ void RunVisitorT<T>::visitprivate(const AssignExp  &e)
             if (e.isVerbose() && ConfigVariable::isPrintOutput())
             {
                 std::wstring wstrName = pVar->getSymbol().getName();
-                std::wostringstream ostr;
-                ostr << L" " << wstrName << L"  = ";
-                ostr << printTypeDimsInfo(pIT);
-                ostr << std::endl;
-                if (ConfigVariable::isPrintCompact() == false)
-                {
-                    ostr << std::endl;
-                }
-                scilabWriteW(ostr.str().c_str());
-                std::wostringstream ostrName;
-                ostrName << wstrName;
-                VariableToString(pIT, ostrName.str().c_str());
+
+                scilabWriteW(printVarEqualTypeDimsInfo(pIT, wstrName).c_str());
+
+                VariableToString(pIT, wstrName.c_str());
             }
             CoverageInstance::stopChrono((void*)&e);
             return;
@@ -228,17 +220,10 @@ void RunVisitorT<T>::visitprivate(const AssignExp  &e)
             {
                 if (e.isVerbose() && ConfigVariable::isPrintOutput())
                 {
-                    std::wostringstream ostr;
-                    ostr << L" " << *getStructNameFromExp(pCell) << L"  = ";
-                    ostr << printTypeDimsInfo(pOut);
-                    ostr << std::endl;
-                    if (ConfigVariable::isPrintCompact() == false)
-                    {
-                        ostr << std::endl;
-                    }
-                    scilabWriteW(ostr.str().c_str());
+                    const std::wstring *pwstName = getStructNameFromExp(pCell);
+                    scilabWriteW(printVarEqualTypeDimsInfo(pOut, *pwstName).c_str());
 
-                    VariableToString(pOut, ostr.str().c_str());
+                    VariableToString(pOut, pwstName->c_str());
                 }
             }
             else
@@ -405,19 +390,11 @@ void RunVisitorT<T>::visitprivate(const AssignExp  &e)
 
             if (e.isVerbose() && ConfigVariable::isPrintOutput())
             {
-                std::wostringstream ostr;
-                ostr << L" " << *getStructNameFromExp(&pCall->getName()) << L"  = ";
-                ostr << printTypeDimsInfo(pOut);
-                ostr << std::endl;
-                if (ConfigVariable::isPrintCompact() == false)
-                {
-                    ostr << std::endl;
-                }
-                scilabWriteW(ostr.str().c_str());
+                const std::wstring *pwstName = getStructNameFromExp(&pCall->getName());
 
-                std::wostringstream ostrName;
-                ostrName << *getStructNameFromExp(&pCall->getName());
-                VariableToString(pOut, ostrName.str().c_str());
+                scilabWriteW(printVarEqualTypeDimsInfo(pOut, *pwstName).c_str());
+
+                VariableToString(pOut, pwstName->c_str());
             }
 
             clearResult();
@@ -561,22 +538,13 @@ void RunVisitorT<T>::visitprivate(const AssignExp  &e)
 
             if (e.isVerbose() && ConfigVariable::isPrintOutput())
             {
-                const std::wstring *pstName = getStructNameFromExp(pField);
+                const std::wstring *pwstName = getStructNameFromExp(pField);
 
-                types::InternalType* pPrint = ctx->get(symbol::Symbol(*pstName));
-                std::wostringstream ostr;
-                ostr << L" " << *pstName << L"  = ";
-                ostr << printTypeDimsInfo(pPrint);
-                ostr << std::endl;
-                if (ConfigVariable::isPrintCompact() == false)
-                {
-                    ostr << std::endl;
-                }
-                scilabWriteW(ostr.str().c_str());
+                types::InternalType* pPrint = ctx->get(symbol::Symbol(*pwstName));
 
-                std::wostringstream ostrName;
-                ostrName << *pstName;
-                VariableToString(pPrint, ostrName.str().c_str());
+                scilabWriteW(printVarEqualTypeDimsInfo(pPrint, *pwstName).c_str());
+
+                VariableToString(pPrint, pwstName->c_str());
             }
 
             clearResult();

@@ -2575,9 +2575,14 @@ void printLine(const std::string& _stPrompt, const std::string& _stLine, bool _b
     scilabWrite(st.c_str());
 }
 
-std::wstring printTypeDimsInfo(types::InternalType *pIT)
+std::wstring printVarEqualTypeDimsInfo(types::InternalType *pIT, std::wstring wstName)
 {
     std::wostringstream ostr;
+
+    ostr << L" " << wstName << L"  = ";
+#ifndef NDEBUG
+    ostr << L"(" << pIT->getRef() << L")";
+#endif
     if (pIT->isGenericType())
     {
         types::GenericType * pGT = pIT->getAs<types::GenericType>();
@@ -2617,9 +2622,13 @@ std::wstring printTypeDimsInfo(types::InternalType *pIT)
             }
         }
     }
+    ostr << std::endl;
+    if (ConfigVariable::isPrintCompact() == false)
+    {
+        ostr << std::endl;
+    }
+
     return  ostr.str();
 }
-
-
 
 /*--------------------------------------------------------------------------*/
