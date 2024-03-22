@@ -2596,6 +2596,7 @@ std::wstring printVarEqualTypeDimsInfo(types::InternalType *pIT, std::wstring ws
                 {
                     if (iSize > 1 || pGT->isCell())
                     {
+                        ostr << L" ";
                         int *piDims = pGT->getDimsArray();
                         for (int i=0; i<iDims; i++)
                         {
