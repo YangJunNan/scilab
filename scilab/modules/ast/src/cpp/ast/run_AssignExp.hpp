@@ -229,7 +229,9 @@ void RunVisitorT<T>::visitprivate(const AssignExp  &e)
                 if (e.isVerbose() && ConfigVariable::isPrintOutput())
                 {
                     std::wostringstream ostr;
-                    ostr << L" " << *getStructNameFromExp(pCell) << L"  = " << std::endl;
+                    ostr << L" " << *getStructNameFromExp(pCell) << L"  = ";
+                    ostr << printTypeDimsInfo(pOut);
+                    ostr << std::endl;
                     if (ConfigVariable::isPrintCompact() == false)
                     {
                         ostr << std::endl;
@@ -404,7 +406,9 @@ void RunVisitorT<T>::visitprivate(const AssignExp  &e)
             if (e.isVerbose() && ConfigVariable::isPrintOutput())
             {
                 std::wostringstream ostr;
-                ostr << L" " << *getStructNameFromExp(&pCall->getName()) << L"  = " << std::endl;
+                ostr << L" " << *getStructNameFromExp(&pCall->getName()) << L"  = ";
+                ostr << printTypeDimsInfo(pOut);
+                ostr << std::endl;
                 if (ConfigVariable::isPrintCompact() == false)
                 {
                     ostr << std::endl;
@@ -561,7 +565,9 @@ void RunVisitorT<T>::visitprivate(const AssignExp  &e)
 
                 types::InternalType* pPrint = ctx->get(symbol::Symbol(*pstName));
                 std::wostringstream ostr;
-                ostr << L" " << *pstName << L"  = " << std::endl;
+                ostr << L" " << *pstName << L"  = ";
+                ostr << printTypeDimsInfo(pPrint);
+                ostr << std::endl;
                 if (ConfigVariable::isPrintCompact() == false)
                 {
                     ostr << std::endl;
