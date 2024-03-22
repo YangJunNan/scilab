@@ -67,7 +67,7 @@ EXTERN_AST ast::Exp* callTyper(ast::Exp* _tree, std::wstring _msg = std::wstring
 
 void printLine(const std::string& _stPrompt, const std::string& _stLine, bool _bLF);
 std::string printExp(std::ifstream& _File, ast::Exp* _pExp, const std::string& _stPrompt, int* _piLine /* in/out */, int* _piCol /* in/out */, std::string& _stPreviousBuffer);
-void printTypeDimsInfo(std::wostringstream &ostr, types::InternalType *pIT);
+std::wstring printTypeDimsInfo(types::InternalType *pIT);
 
 
 #endif //!AST_VISITOR_COMMON_HXX

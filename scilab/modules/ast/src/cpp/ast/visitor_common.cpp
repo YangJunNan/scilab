@@ -2575,8 +2575,9 @@ void printLine(const std::string& _stPrompt, const std::string& _stLine, bool _b
     scilabWrite(st.c_str());
 }
 
-void printTypeDimsInfo(std::wostringstream &ostr, types::InternalType *pIT)
+std::wstring printTypeDimsInfo(types::InternalType *pIT)
 {
+    std::wostringstream ostr;
     if (pIT->isGenericType())
     {
         types::GenericType * pGT = pIT->getAs<types::GenericType>();
@@ -2615,7 +2616,8 @@ void printTypeDimsInfo(std::wostringstream &ostr, types::InternalType *pIT)
                 }
             }
         }
-    }    
+    }
+    return  ostr.str();
 }
 
 

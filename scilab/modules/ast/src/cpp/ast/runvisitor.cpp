@@ -125,6 +125,7 @@ void RunVisitorT<T>::visitprivate(const SimpleVar & e)
 #ifndef NDEBUG
             ostr << L"(" << pI->getRef() << L")";
 #endif
+            ostr << printTypeDimsInfo(pI);
             ostr << std::endl;
             if (ConfigVariable::isPrintCompact() == false)
             {
