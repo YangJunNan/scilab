@@ -2574,4 +2574,50 @@ void printLine(const std::string& _stPrompt, const std::string& _stLine, bool _b
 
     scilabWrite(st.c_str());
 }
+
+void printTypeDimsInfo(std::wostringstream &ostr, types::InternalType *pIT)
+{
+    if (pIT->isGenericType())
+    {
+        types::GenericType * pGT = pIT->getAs<types::GenericType>();
+        int iDims = pGT->getDims();
+        int iSize = pGT->getSize();
+        if (pGT->isArrayOf())
+        {
+            if (iSize > 1 || pGT->isCell() || pIT->isInt())
+            {
+                if (pIT->isDouble() == false)
+                {
+                    if (iSize > 1 || pGT->isCell())
+                    {
+                        int *piDims = pGT->getDimsArray();
+                        for (int i=0; i<iDims; i++)
+                        {
+                            ostr << piDims[i];
+                            if (i<iDims-1)
+                            {
+                                ostr << L"x";
+                            }
+                        }                                    
+                    }
+                    ostr << L" " << pIT->getTypeStr();
+                    if (iDims == 2 && pIT->isInt())
+                    {
+                        if (iSize > 1)
+                        {
+                            ostr << L" matrix";                       
+                        }
+                    }
+                    else
+                    {
+                        ostr << L" array";
+                    }
+                }
+            }
+        }
+    }    
+}
+
+
+
 /*--------------------------------------------------------------------------*/

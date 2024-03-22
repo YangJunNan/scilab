@@ -117,7 +117,9 @@ void RunVisitorT<T>::visitprivate(const AssignExp  &e)
             {
                 std::wstring wstrName = pVar->getSymbol().getName();
                 std::wostringstream ostr;
-                ostr << L" " << wstrName << L"  = " << std::endl;
+                ostr << L" " << wstrName << L"  = ";
+                printTypeDimsInfo(ostr, pIT);
+                ostr << std::endl;
                 if (ConfigVariable::isPrintCompact() == false)
                 {
                     ostr << std::endl;
