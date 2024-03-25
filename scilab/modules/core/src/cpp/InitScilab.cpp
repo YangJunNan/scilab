@@ -637,12 +637,9 @@ void StopScilabEngine(ScilabEngineInfo* _pSEI)
     ConfigVariable::clearLastError();
     ConfigVariable::setEndProcessing(false);
 
-    // wait for thread ends before leaving (and free _pSEI)
-    if (_pSEI->iStartConsoleThread)
-    {
-        __WaitThreadDie(threadIdConsole);
-    }
-
+    // wait for the "command" thread end before leaving (and free _pSEI)
+    // the "console" thread may be waiting for a command, so don't wait for it to die
+    // ie: exit in a callback will not release the console
     __WaitThreadDie(threadIdCommand);
 }
 
