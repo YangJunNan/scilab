@@ -2592,33 +2592,30 @@ std::wstring printVarEqualTypeDimsInfo(types::InternalType *pIT, std::wstring ws
         {
             if (iSize > 1 || pGT->isCell() || pIT->isInt())
             {
-                if (pIT->isDouble() == false)
+                if (iSize > 1 || pGT->isCell())
                 {
-                    if (iSize > 1 || pGT->isCell())
+                    ostr << L" ";
+                    int *piDims = pGT->getDimsArray();
+                    for (int i=0; i<iDims; i++)
                     {
-                        ostr << L" ";
-                        int *piDims = pGT->getDimsArray();
-                        for (int i=0; i<iDims; i++)
+                        ostr << piDims[i];
+                        if (i<iDims-1)
                         {
-                            ostr << piDims[i];
-                            if (i<iDims-1)
-                            {
-                                ostr << L"x";
-                            }
-                        }                                    
-                    }
-                    ostr << L" " << pIT->getTypeStr();
-                    if (iDims == 2 && pIT->isInt())
-                    {
-                        if (iSize > 1)
-                        {
-                            ostr << L" matrix";                       
+                            ostr << L"x";
                         }
-                    }
-                    else
+                    }                                    
+                }
+                ostr << L" " << (pIT->getTypeStr() == L"constant" ? L"double" : pIT->getTypeStr());
+                if (iDims == 2 && (pIT->isInt() || pIT->isDouble() || pIT->isBool() ))
+                {
+                    if (iSize > 1)
                     {
-                        ostr << L" array";
+                        ostr << L" matrix";                       
                     }
+                }
+                else
+                {
+                    ostr << L" array";
                 }
             }
         }
