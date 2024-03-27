@@ -18,10 +18,16 @@ if test -x "$(which gcc 2>/dev/null)"; then
 fi
 
 # Relaunch configure if files are missing
-if test ! -s Makefile.orig -o ! -s libtool; then 
+if test ! -s Makefile.orig -o ! -s libtool; then
     echo "Detection of C/C++/Fortran Compilers"
     ./configure --disable-static --disable-dependency-tracking "$@"
-    mv Makefile Makefile.orig
-else 
+    configure_exit_status = $?
+    if [ $configure_exit_status -ne 0 ]; then
+        cat config.log
+        exit $configure_exit_status
+    else
+        mv Makefile Makefile.orig
+    fi
+else
     echo "Detection of compilers already done"
 fi
