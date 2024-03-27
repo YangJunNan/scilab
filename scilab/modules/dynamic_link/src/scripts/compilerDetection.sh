@@ -1,7 +1,6 @@
 #!/bin/sh
 
-PROGNAME="$0"
-PATHTOCONFIGURE=`dirname "$PROGNAME"`
+PATHTOCONFIGURE=${BASH_SOURCE[0]%/*}/
 cd $PATHTOCONFIGURE
 if test -x "$(which gcc 2>/dev/null)"; then
     # Detect the actual path to the libstdc++ library. For the dynamic link
