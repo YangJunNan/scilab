@@ -1298,7 +1298,6 @@ void RunVisitorT<T>::visitprivate(const FunctionDec & e)
             pMacro->setFileName(e.getMacro()->getFileName());
         }
 
-        pMacro->IncreaseRef();
         const_cast<ast::FunctionDec&>(e).setMacro(pMacro);
     }
 
