@@ -729,7 +729,7 @@ void* scilabReadAndExecCommand(void* param)
         processCommand(_pSEI);
         FREE(command);
     }
-    while (ConfigVariable::getForceQuit() == false);
+    while (ConfigVariable::getForceQuit() == false || isEmptyCommandQueue() == false);
 
     return NULL;
 }
@@ -977,7 +977,7 @@ static int interactiveMain(ScilabEngineInfo* _pSEI)
 
         ThreadManagement::SendAwakeRunnerSignal();
     }
-    while (ConfigVariable::getForceQuit() == false);
+    while (ConfigVariable::getForceQuit() == false || isEmptyCommandQueue() == false);
 
     return iRet;
 }
