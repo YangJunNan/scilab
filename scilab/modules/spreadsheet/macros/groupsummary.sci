@@ -77,6 +77,7 @@ function out = groupsummary(varargin)
             groupbins = varargin(3);
             isGroupBins = %t;
         catch
+            errclear();
             inputVariables = v;
             if and(typeof(inputVariables) <> ["constant", "string", "ce"]) then
                 error(msprintf(_("%s: Wrong type for input argument #%d: A string, double or cell of strings expected.\n"), fname, rhs));
@@ -88,6 +89,7 @@ function out = groupsummary(varargin)
         try
             [method, nameMethod] = groupsummary_method(v);
         catch
+            errclear();
             groupbins = v;
             isGroupBins = %t;
         end
@@ -152,6 +154,7 @@ function out = groupsummary(varargin)
                     "nameMethod", nameMethod);
                 out = %_rowvarfun("varfun", t, groupvars, opts, groupbins)
             catch
+                errclear();
                 try
                     nb = 1;
                     [tmp, jdx] = members(groupvars, varnames);
