@@ -833,7 +833,7 @@ int ConstructLight(char* fname, int iSubwin, int type, BOOL visible, double * po
     int * piType = &type;
     int hType = 0;
     int * pihType = &hType;
-    int * piVisible = &visible;
+    int * piVisible = (int*) &visible;
 
     if (iSubwin == 0)
     {

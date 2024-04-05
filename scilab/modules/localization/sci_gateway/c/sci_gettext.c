@@ -120,7 +120,7 @@ int sci_gettext(char *fname, void* pvApiCtx)
     freeAllocatedMatrixOfString(m, n, StringsToTranslate);
     StringsToTranslate = NULL;
 
-    sciErr = createMatrixOfString(pvApiCtx, Rhs + 1, m, n, TranslatedStrings);
+    sciErr = createMatrixOfString(pvApiCtx, Rhs + 1, m, n, (const char* const *) TranslatedStrings);
     freeArrayOfString(TranslatedStrings, m * n);
     TranslatedStrings = NULL;
 
