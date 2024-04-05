@@ -71,7 +71,7 @@ function tt = readtable(varargin)
         variableNames(idx) = "Var" + string(idx);
     end
 
-    mat = csvTextScan(f(opts.datalines(1):opts.datalines(2), :), opts.delimiter, ".", "string");//(:,_kk);
+    mat = csvTextScan(f(opts.datalines, :), opts.delimiter, opts.decimal, "string");//(:,_kk);
     mat(:, emptyCol) = [];
     mat = mat(:, _kk);
 

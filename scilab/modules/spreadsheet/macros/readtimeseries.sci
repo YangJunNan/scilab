@@ -135,7 +135,7 @@ function tt = readtimeseries(varargin)
         error(msprintf(_("%s: A variable time expected.\n"), "readtimeseries"));
     end
 
-    mat = csvTextScan(f(opts.datalines(1):opts.datalines(2), :), opts.delimiter, ".", "string");//(:,_kk);
+    mat = csvTextScan(f(opts.datalines, :), opts.delimiter, opts.decimal, "string");//(:,_kk);
 
     mat(:, emptyCol) = [];
     mat = mat(:, _kk);

@@ -27,7 +27,7 @@ function delim = detectDelimiter(str, delimiters)
     //newdelimiters = unique([newdelimiters; split], "keepOrder")
 
     tmp = strsubst(str(1:r), "/"".*?""/g", "", "r");
-    tmp = strsubst(tmp, "/[""a-zA-Z0-9\.]+/g", "", "r");
+    tmp = strsubst(tmp, "/[""a-zA-Z0-9\.\-\+]+/g", "", "r");
     split = list()
     for i = 1:r
         split(i) = strsplit(tmp(i));
@@ -63,7 +63,6 @@ function delim = detectDelimiter(str, delimiters)
                 end
             end
         end
-        
     end
 
     if delim == [] then
@@ -71,7 +70,7 @@ function delim = detectDelimiter(str, delimiters)
     else
         nb = sum(bool2s(tab>0), "r");
         if modulo(max(nb), r) == 0 then
-            delim = delimiters(nb == max(nb));
+            delim = delimiters(nb == max(nb))(1);
         else
             [m, k] = max(count);
             delim = delimiters(k)
