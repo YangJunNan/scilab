@@ -24,34 +24,34 @@
     <refsynopsisdiv>
         <title>Syntaxe</title>
         <synopsis>
-            for element = source, instruction ; .. ; instruction; end
+            for variable = expression, instruction ; .. ; instruction; end
 
-            for element = source
-                instruction
-                ..
-                instruction
+            for variable = expression
+                instruction
+                ..
+                instruction
             end
 
-            for element = source do
-                instruction,
-                ..
-                instruction
+            for variable = expression do
+                instruction,
+                ..
+                instruction
             end
         </synopsis>
     </refsynopsisdiv>
     <refsection>
         <title>Description</title>
         <para>
-            Si <literal>source</literal> est un tableau (homogène ou non),
-            <literal>element</literal> prend les valeurs successives de chaque colonne du
-            tableau (ou de <literal>matrix(source, size(source,1), -1))</literal>).
+            Si <literal>expression</literal> est un tableau (homogène ou non),
+            <literal>variable</literal> prend les valeurs successives de chaque colonne du
+            tableau (ou de <literal>matrix(expression, size(expression,1), -1))</literal>).
         </para>
         <para>
-            Un exemple utile : <literal>for element = n1:pas:n2,  ...,end</literal>
+            Un exemple utile : <literal>for variable = n1:pas:n2,  ...,end</literal>
         </para>
         <para>
-            Si <literal>source</literal> est une liste, <function>for</function> itère
-            sur les éléments de la liste : <literal>element</literal> prend chaque
+            Si <literal>expression</literal> est une liste, <function>for</function> itère
+            sur les éléments de la liste : <literal>variable</literal> prend chaque
             élément de la liste comme valeurs successives.
         </para>
         <para>
@@ -219,8 +219,8 @@ for j = 1:n, v = a(:,j), write(%io(2),v), end
             <revision>
                 <revnumber>2023.0.0</revnumber>
                 <revdescription>
-                    <literal>source</literal> peut être une hypermatrice. Il est alors traité
-                    par colonne comme <literal>matrix(source, size(source,1), -1)</literal>.
+                    <literal>expression</literal> peut être une hypermatrice. Il est alors traité
+                    par colonne comme <literal>matrix(expression, size(expression,1), -1)</literal>.
                 </revdescription>
             </revision>
         </revhistory>

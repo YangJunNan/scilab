@@ -85,7 +85,7 @@
                 <term>X</term>
                 <listitem>
                     <para>
-                        次元(つまり<literal>m × n</literal>) のみ使用される行列
+                        次元(つまり<literal>m x n</literal>) のみ使用される行列
                     </para>
                 </listitem>
             </varlistentry>
@@ -148,14 +148,14 @@ Y = grand(m, n, "unf", Low, High)
 Y = grand(m, n, "uin", Low, High)
 Y = grand(m, n, "lgi")
 ]]></screen>
-            produce a <varname>m</varname> × <varname>n</varname> matrix with random entries.
+            produce a <varname>m</varname> x <varname>n</varname> matrix with random entries.
         </para>
         <para>
             The syntax
             <screen><![CDATA[
 Y = grand(m, n, o, …, PDFname, …)
 ]]></screen>
-            yields a <varname>m</varname> × <varname>n</varname> × <varname>o</varname> ×… hypermatrix
+            yields a <varname>m</varname> x <varname>n</varname> x <varname>o</varname> ×… hypermatrix
             with random entries.
         </para>
         <para>
@@ -215,7 +215,7 @@ grand("advnst", K)
                     </latex>
                     <para>
                         <varname>A</varname> および <varname>B</varname> は
-                        実数で >10<superscript>-37</superscript>とします.  関係する関数は
+                        実数で &gt; 10<superscript>-37</superscript>とします.  関係する関数は
                         : <link linkend="cdfbet">cdfbet</link>です.
                     </para>
                 </listitem>
@@ -266,7 +266,7 @@ grand("advnst", K)
                     <para>
                         <code>Y = grand(m,n, 'nch', Df,Xnon)</code> は,
                         自由度<varname>Df</varname>(実数 &gt; 0.0)および
-                        非心度パラメータ<varname>Xnonc</varname> (実数 ≥ 0.0)
+                        非心度パラメータ<varname>Xnonc</varname> (実数 &gt;= 0.0)
                         を指定した非心カイ二乗分布に基づくランダム変量を生成します.
                         関係する関数 : <link linkend="cdfchn">cdfchn</link>.
                     </para>
@@ -277,7 +277,7 @@ grand("advnst", K)
                 <listitem>
                     <para>
                         <code>Y = grand(m,n, 'exp', Av)</code> は
-                        平均<varname>Av</varname>(実数 ≥ 0.0)
+                        平均<varname>Av</varname>(実数 &gt;= 0.0)
                         を指定した指数分布に基づくランダム変量を生成します.
                     </para>
                 </listitem>
@@ -301,10 +301,10 @@ grand("advnst", K)
                     <para>
                         <code>Y = grand(m,n, 'nf', Dfn,Dfd,Xnon)</code>は,
                         分子の自由度<varname>Dfn</varname> (実数
-                        ≥ 1), および
+                        &gt;= 1), および
                         分母の自由度<varname>Dfd</varname> (実数 &gt; 0) ,
                         および非心パラメータ
-                        <varname>Xnonc</varname> (実数 ≥ 0)を指定して
+                        <varname>Xnonc</varname> (実数 &gt;= 0)を指定して
                         非心F分布に基づくランダム変量を生成します.
                         関係する関数 : <link linkend="cdffnc">cdffnc</link>.
                     </para>
@@ -335,7 +335,7 @@ grand("advnst", K)
                     <para>
                         <code>Y = grand(m,n, 'nor', Av,Sd)</code> は
                         平均<varname>Av</varname> (実数) および標準偏差
-                        <varname>Sd</varname> (実数 ≥ 0)の
+                        <varname>Sd</varname> (実数 &gt;= 0)の
                         正規分布に基づくランダム変量を生成します.
                         関係する関数
                         : <link linkend="cdfnor">cdfnor</link>.
@@ -349,10 +349,10 @@ grand("advnst", K)
                         <code>Y = grand(n, 'mn', Mean,Cov)</code>は,
                         <varname>n</varname>次の多変量正規ランダム変量を
                         生成します;
-                        <varname>Mean</varname> は <literal>m × 1</literal>
-                        行列, <varname>Cov</varname>は <literal>m × m</literal>
+                        <varname>Mean</varname> は <literal>m x 1</literal>
+                        行列, <varname>Cov</varname>は <literal>m x m</literal>
                         対称正定行列です.
-                        <varname>Y</varname> はこの場合 <literal>m × n</literal>
+                        <varname>Y</varname> はこの場合 <literal>m x n</literal>
                         行列となります.
                     </para>
                 </listitem>
@@ -382,7 +382,7 @@ grand("advnst", K)
                         <varname>n</varname>個の一連の状態量を生成します.
                         状態量の初期値は<varname>x0</varname>で指定されます.
                         <varname>x0</varname>が大きさ<literal>m=size(x0,'*')</literal>の
-                        行列の場合,<varname>Y</varname>は大きさ<literal>m × n</literal>
+                        行列の場合,<varname>Y</varname>は大きさ<literal>m x n</literal>
                         の行列となります.
                         <literal>Y(i,:)</literal> は初期状態量<literal>x0(i)</literal>
                         から得られるサンプルパスです.
@@ -401,7 +401,7 @@ grand("advnst", K)
                         <literal>P(i)</literal>はあるイベントがカテゴリ i に分類される確率です.
                         確率ベクトル<varname>P</varname>の大きさは<literal>m-1</literal>です
                         (カテゴリ<literal>m</literal>の確率は<literal>1-sum(P)</literal>となります).
-                        <varname>Y</varname> の大きさは <literal>m × n</literal>で,
+                        <varname>Y</varname> の大きさは <literal>m x n</literal>で,
                         各列 <literal>Y(:,j)</literal> は多項分布の観測量,
                         <literal>Y(i,j)</literal>は(
                         <literal>j</literal>番目の観測値に関する)カテゴリ<literal>i</literal>に
@@ -415,7 +415,7 @@ grand("advnst", K)
                 <listitem>
                     <para>
                         <code>Y = grand(m,n, 'poi', mu)</code>は,
-                        平均 <varname>mu (実数 ≥ 0.0)</varname>のポワソン分布に基づき
+                        平均 <varname>mu (実数 &gt;= 0.0)</varname>のポワソン分布に基づき
                         乱数を生成します. 関係する機能
                         : <link linkend="cdfpoi">cdfpoi</link>.
                     </para>
@@ -432,20 +432,20 @@ grand("advnst", K)
                         complex numbers, of integers, booleans, polynomials or strings; full or sparse.
                         <itemizedlist>
                             <listitem>
-                                If <varname>array</varname> is a <literal>1 × m</literal> row vector,
-                                <varname>Y</varname> is a <literal>n × m</literal> matrix.
+                                If <varname>array</varname> is a <literal>1 x m</literal> row vector,
+                                <varname>Y</varname> is a <literal>n x m</literal> matrix.
                             </listitem>
                             <listitem>
-                                If <varname>array</varname> is a <literal>m × 1</literal> column vector,
-                                <varname>Y</varname> is a <literal>m × n</literal> matrix.
+                                If <varname>array</varname> is a <literal>m x 1</literal> column vector,
+                                <varname>Y</varname> is a <literal>m x n</literal> matrix.
                             </listitem>
                             <listitem>
-                                If <varname>array</varname> is a <literal>m × p</literal> matrix,
-                                <varname>Y</varname> is a <literal>m × p × n</literal> hypermatrix.
+                                If <varname>array</varname> is a <literal>m x p</literal> matrix,
+                                <varname>Y</varname> is a <literal>m x p x n</literal> hypermatrix.
                             </listitem>
                             <listitem>
-                                If <varname>array</varname> is a <literal>m × p × q…</literal> hypermatrix,
-                                <varname>Y</varname> is a <literal>m × p × q… × n</literal> hypermatrix.
+                                If <varname>array</varname> is a <literal>m x p x q…</literal> hypermatrix,
+                                <varname>Y</varname> is a <literal>m x p x q… x n</literal> hypermatrix.
                             </listitem>
                         </itemizedlist>
                     </para>
@@ -704,7 +704,7 @@ grand("advnst", K)
                     <para>
                         <code>Sd = grand('phr2sd', phrase)</code> は,
                         基底生成器(clcg2に適しています)の状態を変更するシードとして使用可能な
-                        <literal>1 × 2</literal> ベクトル <literal>Sd</literal>を生成する
+                        <literal>1 x 2</literal> ベクトル <literal>Sd</literal>を生成する
                         <literal>phrase</literal> (文字列)を指定します.
                     </para>
                 </listitem>
@@ -813,7 +813,7 @@ grand("advnst", K)
             plot the associated histograms.
         </para>
         <programlisting role="example"><![CDATA[
-// Returns a 400 × 800 matrix of random doubles,
+// Returns a 400 x 800 matrix of random doubles,
 // with normal distribution and average 0 and standard deviation 1.
 R = grand(400,800,"nor",0,1);
 scf();
@@ -827,7 +827,7 @@ xtitle("Normal random numbers from grand","X","Frequency");
         </scilab:image>
 
         <programlisting role="example"><![CDATA[
-// Returns a 400 × 800 matrix of random doubles,
+// Returns a 400 x 800 matrix of random doubles,
 // uniform in [0,1).
 R = grand(400,800,"def");
 scf();
@@ -841,7 +841,7 @@ xtitle("Uniform random numbers from grand","X","Frequency");
         </scilab:image>
 
         <programlisting role="example"><![CDATA[
-// Returns a 400 × 800 matrix of random doubles,
+// Returns a 400 x 800 matrix of random doubles,
 // with Poisson distribution and average equal to 5.
 R = grand(400,800,"poi",5);
 scf();
@@ -935,7 +935,7 @@ grand(12,"prm",(1:7)')
             Showing the first and last layers.
         </para>
         <programlisting role="example"><![CDATA[
-// Returns a 10 × 10 × 10 hypermatrix of random doubles,
+// Returns a 10 x 10 x 10 hypermatrix of random doubles,
 // with normal distribution, average 0 and standard deviation 1.
 // Showing the first and last layers.
 R = grand(10,10,10,"nor",0,1);

@@ -32,7 +32,7 @@
             <varlistentry>
                 <term>n</term>
                 <listitem>
-                    <para>Entier positif : nombre d'échantillons à tirer.</para>
+                    <para>Entier positif (taille de l'échantillon)</para>
                 </listitem>
             </varlistentry>
             <varlistentry>
@@ -88,13 +88,13 @@
         <para>
             <emphasis role="bold">s = sample(n, X, 'r')</emphasis>
             ou <emphasis role="bold">s = sample(n, X, 1)</emphasis>
-            produit une matrice ou un tableau de taille <literal>n × size(X,'c')</literal> de
+            produit une matrice ou un tableau de taille <literal>n x size(X,'c')</literal> de
             <varname>n</varname> Rangées de <literal>X</literal> tirées aléatoirement avec remise.
         </para>
         <para>
             <emphasis role="bold">s = sample(n, X, 'c')</emphasis>
             ou <emphasis role="bold">s = sample(n, X, 2)</emphasis>
-            produit une matrice ou un tableau de taille <literal>size(X,'r') × n</literal> de
+            produit une matrice ou un tableau de taille <literal>size(X,'r') x n</literal> de
             <varname>n</varname> Colonnes de <literal>X</literal> tirées aléatoirement avec remise.
         </para>
     </refsection>

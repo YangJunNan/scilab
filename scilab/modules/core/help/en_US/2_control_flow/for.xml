@@ -24,35 +24,35 @@
     <refsynopsisdiv>
         <title>Syntax</title>
         <synopsis>
-            for element = source, instruction ; .. ; instruction; end
+            for variable = expression, instruction ; .. ; instruction; end
 
-            for element = source
-                instruction
-                ..
-                instruction
+            for variable = expression
+                instruction
+                ..
+                instruction
             end
 
-            for element = source do
-                instruction,
-                ..
-                instruction
+            for variable = expression do
+                instruction,
+                ..
+                instruction
             end
         </synopsis>
     </refsynopsisdiv>
     <refsection>
         <title>Description</title>
         <para>
-            If <literal>source</literal> is an array (homogeneous or not), <literal>element</literal>
+            If <literal>expression</literal> is an array (homogeneous or not), <literal>variable</literal>
             is set to each of its columns (for a hypermatrix, as
-            <literal>matrix(source, size(source,1), -1))</literal>), one by one.
+            <literal>matrix(expression, size(expression,1), -1))</literal>), one by one.
         </para>
         <para>
             A particular case uses the <link linkend="colon">colon</link> operator to create regularly
             spaced row vectors, and is similar to traditional for loop forms:
-            <literal>for element = n1:step:n2, ...,end</literal>
+            <literal>for variable = n1:step:n2, ...,end</literal>
         </para>
         <para>
-            If <literal>source</literal> is a list, <literal>element</literal> takes as values the
+            If <literal>expression</literal> is a list, <literal>variable</literal> takes as values the
             successive entries of the list.
         </para>
         <para>
@@ -219,8 +219,8 @@ for j = 1:n, v = a(:,j), write(%io(2),v), end
             <revision>
                 <revnumber>2023.0.0</revnumber>
                 <revdescription>
-                    The <literal>source</literal> can be a hypermatrix. It is then processed
-                    by column as <literal>matrix(source, size(source,1), -1)</literal>.
+                    The <literal>expression</literal> can be a hypermatrix. It is then processed
+                    by column as <literal>matrix(expression, size(expression,1), -1)</literal>.
                 </revdescription>
             </revision>
         </revhistory>

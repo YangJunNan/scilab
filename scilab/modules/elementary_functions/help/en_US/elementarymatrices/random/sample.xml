@@ -31,7 +31,7 @@
             <varlistentry>
                 <term>n</term>
                 <listitem>
-                    <para>positive integer: number of samples.</para>
+                    <para>positive integer (size of sample).</para>
                 </listitem>
             </varlistentry>
             <varlistentry>
@@ -87,13 +87,13 @@
         <para>
             <emphasis role="bold">s = sample(n, X, 'r')</emphasis>
             (or <emphasis role="bold">s = sample(n, X, 1)</emphasis>)
-            returns  a matrix  of size <literal>n × size(X,'c')</literal> of randomly chosen Rows
+            returns  a matrix  of size <literal>n x size(X,'c')</literal> of randomly chosen Rows
             of <literal>X</literal>, with replacement.
         </para>
         <para>
             <emphasis role="bold">s = sample(n, X, 'c')</emphasis>
             (or <emphasis role="bold">s = sample(n, X, 2)</emphasis>)
-            returns  a matrix  of size <literal>size(X,'r') × n</literal> of randomly chosen Columns
+            returns  a matrix  of size <literal>size(X,'r') x n</literal> of randomly chosen Columns
             of <literal>X</literal>, with replacement.
         </para>
     </refsection>

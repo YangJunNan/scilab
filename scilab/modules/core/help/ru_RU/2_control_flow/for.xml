@@ -24,18 +24,18 @@
     <refsynopsisdiv>
         <title>Синтаксис</title>
         <synopsis>
-            for element = source, instruction ; .. ; instruction; end
+            for variable = expression, instruction ; .. ; instruction; end
 
-            for element = source
-                instruction
-                ..
-                instruction
+            for variable = expression
+                instruction
+                ..
+                instruction
             end
 
-            for element = source do
-                instruction
-                ..
-                instruction
+            for variable = expression do
+                instruction
+                ..
+                instruction
             end
         </synopsis>
     </refsynopsisdiv>
@@ -43,7 +43,7 @@
         <title>Аргументы</title>
         <variablelist>
             <varlistentry>
-                <term>element</term>
+                <term>variable</term>
                 <listitem>
                     <para>
                         переменная, по которой ведётся цикл;
@@ -51,10 +51,10 @@
                 </listitem>
             </varlistentry>
             <varlistentry>
-                <term>source</term>
+                <term>expression</term>
                 <listitem>
                     <para>
-                        выражение, описывающее закон изменения переменной <literal>element</literal>
+                        выражение, описывающее закон изменения переменной <literal>variable</literal>
                         в заданных пределах; может быть вектором, матрицей, списком;
                     </para>
                 </listitem>
@@ -71,7 +71,7 @@
                 <term>do</term>
                 <listitem>
                     <para>
-                        ключевое слово, отделяющее блок определения переменной цикла <literal>element</literal>
+                        ключевое слово, отделяющее блок определения переменной цикла <literal>variable</literal>
                         от блока инструкций <literal>instruction</literal>
                     </para>
                 </listitem>
@@ -83,15 +83,15 @@
         <para>
             Если <literal>источник</literal> является массивом (однородным или нет), то
             <literal>элемент</literal> устанавливается в каждый из его столбцов (для гиперматрицы,
-            как <literal>matrix(source, size(source,1), -1))</literal>), один за другим.
+            как <literal>matrix(expression, size(expression,1), -1))</literal>), один за другим.
         </para>
         <para>
             Оператор двоеточие <link linkend="colon">colon</link> используется для создания вектор-столбцов с регулярным
             шагом между элементами и похож на традиционные циклы <literal>for</literal>:
-            <literal>for element = n1:step:n2, ..., end</literal>
+            <literal>for variable = n1:step:n2, ..., end</literal>
         </para>
         <para>
-            Если <literal>source</literal> является списком, то <literal>element</literal>
+            Если <literal>expression</literal> является списком, то <literal>variable</literal>
             принимает значения списка одно за другим.
         </para>
         <para>
@@ -247,7 +247,7 @@ for j = 1:n, v = a(:,j), write(%io(2),v), end
             <revision>
                 <revnumber>6.0.0</revnumber>
                 <revdescription>
-                    Теперь for <literal>source</literal> может быть вектором указателей на графические окна.
+                    Теперь for <literal>expression</literal> может быть вектором указателей на графические окна.
                     <literal>for</literal> is now protected:
                     Assignments like <literal>for=1</literal> are no longer possible.
                 </revdescription>
@@ -255,8 +255,8 @@ for j = 1:n, v = a(:,j), write(%io(2),v), end
             <revision>
                 <revnumber>2023.0.0</revnumber>
                 <revdescription>
-                    The <literal>source</literal> can be a hypermatrix. It is then processed
-                    by column as <literal>matrix(source, size(source,1), -1)</literal>.
+                    The <literal>expression</literal> can be a hypermatrix. It is then processed
+                    by column as <literal>matrix(expression, size(expression,1), -1)</literal>.
                 </revdescription>
             </revision>
         </revhistory>

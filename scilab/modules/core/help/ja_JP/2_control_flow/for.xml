@@ -24,25 +24,25 @@
     <refsynopsisdiv>
         <title>呼出し手順</title>
         <synopsis>
-            for element = source, instruction ; .. ; instruction; end
+            for element = expression, instruction ; .. ; instruction; end
 
-            for element = source
-                instruction
-                ..
-                instruction
+            for element = expression
+                instruction
+                ..
+                instruction
             end
 
-            for element = source do
-                instruction,
-                ..
-                instruction
+            for element = expression do
+                instruction,
+                ..
+                instruction
             end
         </synopsis>
     </refsynopsisdiv>
     <refsection>
         <title>説明</title>
         <para>
-            <literal>source</literal>が配列（同質か否かを問わない）の場合、<literal>element</literal>とする はその各列に設定される（超行列の場合、as <literal>matrix(source, size(source,1), -1))</literal>）を1つずつ.
+            <literal>expression</literal>が配列（同質か否かを問わない）の場合、<literal>element</literal>とする はその各列に設定される（超行列の場合、as <literal>matrix(expression, size(expression,1), -1))</literal>）を1つずつ.
         </para>
         <para>
             具体例として,一定間隔の行ベクトルを作成するために
@@ -51,7 +51,7 @@
             <literal>for element = n1:step:n2, ...,end</literal>
         </para>
         <para>
-            <literal>source</literal> が リストの場合,
+            <literal>expression</literal> が リストの場合,
             <literal>element</literal>はこのリストの連続するエントリを
             値とします.
         </para>
@@ -223,8 +223,8 @@ for j = 1:n, v = a(:,j), write(%io(2),v), end
             <revision>
                 <revnumber>2023.0.0</revnumber>
                 <revdescription>
-                    The <literal>source</literal> can be a hypermatrix. It is then processed
-                    by column as <literal>matrix(source, size(source,1), -1)</literal>.
+                    The <literal>expression</literal> can be a hypermatrix. It is then processed
+                    by column as <literal>matrix(expression, size(expression,1), -1)</literal>.
                 </revdescription>
             </revision>
         </revhistory>
