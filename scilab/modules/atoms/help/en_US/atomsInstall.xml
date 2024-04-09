@@ -207,7 +207,7 @@
     <refsection>
         <title>Description</title>
         <para>
-            <literal>atomsInstall</literal> installes one or several external modules.
+            <literal>atomsInstall</literal> installs one or several external modules.
         </para>
     </refsection>
     <!-- ===================================================================== -->
