@@ -15,7 +15,7 @@ function checkdatetime1(dt, d, t)
 endfunction
 
 function checkdatetime2(dt, y, m, d, t)
-    
+
     dexptected = datenum(y, m, d);
     assert_checkequal(dt.date, dexptected);
 
@@ -77,7 +77,7 @@ for i = 1:2
         for k = 1:2
             d = strd(k);
             vd = vald(k);
-            
+
             fmt = y + "-" + m + "-" + d;
             str = vy + "-" + vm + "-" + vd;
             checkdatetime2(datetime(str, "InputFormat", fmt), 2022, 10, 6, d0);
@@ -473,6 +473,9 @@ d = datetime("01/18/2022 00:13:00 AM", "InputFormat", fmt, "OutputFormat", fmt);
 assert_checkequal(string(d), "01/18/2022 12:13:00 AM");
 d = datetime("01/18/2022 00:13:00 PM", "InputFormat", fmt, "OutputFormat", fmt);
 assert_checkequal(string(d), "01/18/2022 12:13:00 PM");
+
+dt = datetime("4/5/2024", "InputFormat", "M/d/yyyy", "OutputFormat", "dd-MM-yy");
+assert_checkequal(string(dt), "05-04-24");
 
 // check error
 msg = msprintf(_("%s: Wrong number of input argument: %d to %d expected, except %d, %d and %d.\n"), "datetime", 0, 7, 2, 4, 5);

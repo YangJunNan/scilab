@@ -234,6 +234,8 @@ function out = %datetime_string(dt)
                     args(i) = mount_list2(datetime_items(:, order(i)));
                 elseif order(i) == 2  && index(i, 2) == 2 then //MMM
                     args(i) = mount_list1(datetime_items(:, order(i)));
+                elseif order(i) == 1 && index(i, 2) == 2 then //yy
+                    args(i) = modulo(datetime_items(:, order(i)), 100);
                 else
                     args(i) = datetime_items(:, order(i));
                 end
