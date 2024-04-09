@@ -20,6 +20,9 @@ function demo_ising()
     // Load the crossover and mutation operators for the Ising 2D problem
     getd(path + "/.");
 
+    rand("seed", 0);
+    rand("uniform")
+
     J     = 1.1;
     H     = 0.7;
     Magnet  = "%T";

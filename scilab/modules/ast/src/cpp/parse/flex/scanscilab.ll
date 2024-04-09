@@ -5,6 +5,7 @@
  * Copyright (C) 2008-2012 - Scilab Enterprises - Bruno JOFRET
  * Copyright (C) 2012 - 2016 - Scilab Enterprises
  * Copyright (C) 2018 - Dirk Reusch, Kybernetik Dr. Reusch
+ * Copyright (C) 2023 - Dassault Systemes - Bruno JOFRET
  *
  * This file is hereby licensed under the terms of the GNU GPL v2.0,
  * pursuant to article 5.3.4 of the CeCILL v.2.1.
@@ -189,6 +190,16 @@ assign			"="
 <INITIAL,BEGINID>{boolfalse}    {
     BEGIN(INITIAL);
     return scan_throw(BOOLFALSE);
+}
+
+<INITIAL,BEGINID>"arguments"    {
+  if (last_token != DOT)
+    {
+        ParserSingleInstance::pushControlStatus(Parser::WithinArguments);
+    }
+    DEBUG("BEGIN(INITIAL)");
+    BEGIN(INITIAL);
+    return scan_throw(ARGUMENTS);
 }
 
 <INITIAL,BEGINID>"if"            {
@@ -379,7 +390,7 @@ assign			"="
         yylval.str = new std::wstring(pwText);
 	FREE(pwText);
 	types::InternalType * pIT = symbol::Context::getInstance()->get(symbol::Symbol(*yylval.str));
-        if (pIT && pIT->isCallable())
+        if (pIT && pIT->isCallable() && ParserSingleInstance::getControlStatus() != Parser::WithinArguments)
         {
             BEGIN(SHELLMODE);
         }
@@ -774,6 +785,7 @@ assign			"="
   {newline} {
       yylloc.last_line += 1;
       yylloc.last_column = 1;
+      scan_step();
       if(last_token != DOTS && last_token != EOL)
       {
           return scan_throw(EOL);
@@ -1130,7 +1142,6 @@ assign			"="
     if (comment_level == 0) {
       ParserSingleInstance::popControlStatus();
       yy_pop_state();
-      delete yylval.comment;
       //return scan_throw(BLOCKCOMMENT);
     }
   }
@@ -1144,7 +1155,7 @@ assign			"="
     yylloc.last_line += 1;
     yylloc.last_column = 1;
     scan_step();
-    *yylval.comment += L"\n//";
+    *yylval.comment += L"\n";
   }
 
   {char_in_comment}				|

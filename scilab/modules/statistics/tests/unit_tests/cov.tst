@@ -1,6 +1,6 @@
 // Copyright (C) 2012-2013 - Michael Baudin
 // Copyright (C) 2010 - INRIA - Michael Baudin
-// Copyright (C) 2019 - Stéphane MOTTELET
+// Copyright (C) 2019 - UTC - Stéphane MOTTELET
 //
 // This file must be used under the terms of the GNU Lesser General Public License license :
 // http://www.gnu.org/copyleft/lesser.html

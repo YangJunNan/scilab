@@ -31,4 +31,4 @@ execstr("exec(TMPDIR + filesep() + ""bug_10773.sci"",-1)", "errcatch");
 assert_checkequal(a, msprintf(_("%s: Wrong value for input argument #%d: existing file(s) expected.\n"), "ilib_mex_build", 3));
 assert_checkequal(b, 10000);
 assert_checkequal(c, 3);
-assert_checkequal(d, "exec");
+assert_checkequal(d, "bug_10773");

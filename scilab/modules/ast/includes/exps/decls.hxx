@@ -60,6 +60,7 @@ class TryCatchExp;
 class ReturnExp;
 class SelectExp;
 class CaseExp;
+class ArgumentsExp;
 
 // Single operations expressions
 class NotExp;
@@ -80,19 +81,10 @@ class CellExp;
 // Decs
 class VarDec;
 class FunctionDec;
+class ArgumentDec;
 
 // Type dedicated Exp
 class ListExp;
-
-class OptimizedExp;
-class MemfillExp;
-class DAXPYExp;
-class FastSelectExp;
-class IntSelectExp;
-class MapIntSelectExp;
-class SmallIntSelectExp;
-class StringSelectExp;
-class TableIntSelectExp;
 
 } // namespace ast
 

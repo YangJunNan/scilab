@@ -289,12 +289,15 @@ public class ScilabJavaObject {
      */
     public static final String[] getInfos() {
         try {
-            Class c = Class.forName("sun.misc.Version");
-            Method m = c.getMethod("print", new Class[] { PrintStream.class });
+            Class c = Class.forName("java.lang.VersionProps");
+            Method m = c.getMethod("print", boolean.class);
+            m.setAccessible(true);
             ByteArrayOutputStream baos = new ByteArrayOutputStream();
             PrintStream out = new PrintStream(baos);
-            m.invoke(null, out);
+            System.setOut(out);
+            m.invoke(null, false);
             out.flush();
+            System.setOut(System.out);
             String[] ret = baos.toString().split("\n");
             out.close();
             baos.close();

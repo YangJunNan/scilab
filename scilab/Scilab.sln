@@ -212,6 +212,8 @@ Project("{6989167D-11E4-40FE-8C1A-2192A86A7E90}") = "special_functions_f", "modu
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "differential_equations", "modules\differential_equations\src\c\differential_equations.vcxproj", "{F0190B5D-FB21-47A2-99AC-06627CDD0F8A}"
 	ProjectSection(ProjectDependencies) = postProject
+		{51240B08-5E4E-439B-B745-C870D5B513BF} = {51240B08-5E4E-439B-B745-C870D5B513BF}
+		{C781737A-7C97-4CF9-ACBC-F68C2BBF0FFA} = {C781737A-7C97-4CF9-ACBC-F68C2BBF0FFA}
 		{F0F55692-0355-4BC3-BE9D-552C8AAC5238} = {F0F55692-0355-4BC3-BE9D-552C8AAC5238}
 	EndProjectSection
 EndProject
@@ -279,7 +281,7 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "graphic_export", "modules\g
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "nographic_export", "modules\graphic_export\src\nographic_export\nographic_export.vcxproj", "{3411652C-2879-48D0-B5C1-18D546E0A683}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "scicos_sundials", "modules\scicos\src\scicos_sundials\scicos_sundials.vcxproj", "{C781737A-7C97-4CF9-ACBC-F68C2BBF0FFA}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "patched_sundials", "modules\differential_equations\src\patched_sundials\patched_sundials.vcxproj", "{C781737A-7C97-4CF9-ACBC-F68C2BBF0FFA}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Modelicac", "modules\scicos\src\modelica_compiler\Modelicac.vcxproj", "{BB476641-07F4-488E-AA87-21795FFA8F4A}"
 EndProject
@@ -419,6 +421,10 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ant-all", "Visual-Studio-se
 	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "differential_equations_gw", "modules\differential_equations\sci_gateway\differential_equations_gw.vcxproj", "{99D6BDD6-2226-43A1-B0FA-9D412BBCA6DD}"
+	ProjectSection(ProjectDependencies) = postProject
+		{51240B08-5E4E-439B-B745-C870D5B513BF} = {51240B08-5E4E-439B-B745-C870D5B513BF}
+		{C781737A-7C97-4CF9-ACBC-F68C2BBF0FFA} = {C781737A-7C97-4CF9-ACBC-F68C2BBF0FFA}
+	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "preferences", "modules\preferences\src\c\preferences.vcxproj", "{7B893E9F-D032-44DE-9B71-197A29C4989B}"
 EndProject
@@ -444,6 +450,7 @@ EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "sparse_gw", "modules\sparse\sci_gateway\cpp\sparse_gw.vcxproj", "{7FC7AEC9-4922-4864-83F1-EAED67981AAC}"
 	ProjectSection(ProjectDependencies) = postProject
 		{13082624-97F9-47DB-A9A1-AD7D6BF3856A} = {13082624-97F9-47DB-A9A1-AD7D6BF3856A}
+		{ECFFEB0C-1EDA-45EE-9A10-B18143852E17} = {ECFFEB0C-1EDA-45EE-9A10-B18143852E17}
 	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "core_gw", "modules\core\sci_gateway\cpp\core_gw.vcxproj", "{3E933EB6-D427-4828-9B30-B6B9987491F6}"
@@ -470,6 +477,9 @@ EndProject
 Project("{6989167D-11E4-40FE-8C1A-2192A86A7E90}") = "scicos_blocks-cli_f", "modules\scicos_blocks\src\fortran\cli\scicos_blocks-cli_f.vfproj", "{3E0FF981-B5FB-4FC2-B6D8-8C1091FBB23A}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "webtools", "modules\webtools\webtools.vcxproj", "{8DBF9BA7-ABB8-4C35-A82A-0ADBEB7E5331}"
+	ProjectSection(ProjectDependencies) = postProject
+		{EF5402DA-29FD-4F1B-B98B-D284D4E27C15} = {EF5402DA-29FD-4F1B-B98B-D284D4E27C15}
+	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "WScilex-cli", "modules\windows_tools\src\c\WScilex\WScilex-cli.vcxproj", "{1633D502-8B08-442B-923F-F83F3213EEF3}"
 EndProject

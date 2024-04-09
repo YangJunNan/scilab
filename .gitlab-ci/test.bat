@@ -8,6 +8,9 @@ set INSTALL_FAIL=%SCILAB_COMMON_PATH%\%SCI_VERSION_STRING%\install.failed
 set SCIHOME=%SCILAB_COMMON_PATH%\%SCI_VERSION_STRING%\scihome\%SCI_VERSION_STRING%-%TEST%-%CI_CONCURRENT_ID%
 set LOG_PATH=%SCI_VERSION_STRING%
 
+REM Create log folder
+if not exist %LOG_PATH% mkdir %LOG_PATH%
+
 REM check if installation is running
 :wait_install
 if exist "%INSTALL_LOCK%" (
@@ -17,9 +20,11 @@ if exist "%INSTALL_LOCK%" (
 )
 
 if exist "%INSTALL_FAIL%" (
-  echo "Installation failed - Skip test"
+  echo "Skip test - Installation failed - check the test job of "
+  rem display the module name that fails the install
+  cat %INSTALL_FAIL%
   rem return job success to ease finding the one that failed the installation
-  exit 0
+  exit 1
 )
 
 REM already Installed
@@ -30,15 +35,19 @@ if exist "%INSTALL_DIR%" (
 
 REM create lock file
 type nul > "%INSTALL_LOCK%"
+if errorlevel 1 (
+  goto :wait_install
+)
 
 call "%INSTALLER_DIR%\%SCI_VERSION_STRING%.bin.%ARCH%.exe" ^
   /TASKS=!desktopicon,!AssociateSCESCI,!AssociateTSTDEM,!AssociateSCICOS,!AssociateSOD ^
   /NOICONS /SUPPRESSMSGBOXES /SILENT /SP- ^
+  /LOG="%LOG_PATH%\log_iss_install_%CI_COMMIT_SHORT_SHA%.txt" ^
   /DIR="%INSTALL_DIR%"
 
 if errorlevel 1 (
   echo "Scilab Installation failed"
-  type nul > "%INSTALL_FAIL%"
+  echo "%TEST%" > "%INSTALL_FAIL%"
   del "%INSTALL_LOCK%"
   exit 1
 )
@@ -47,8 +56,6 @@ del "%INSTALL_LOCK%"
 
 :installed
 
-REM Create log folder
-if not exist %LOG_PATH% mkdir %LOG_PATH%
 
 @echo on
 setlocal EnableExtensions
@@ -57,18 +64,23 @@ rem can append in case of restarting a test job with same conccurency
 if exist -d "%SCIHOME%" rmdir "%SCIHOME%" 
 mkdir "%SCIHOME%"
 
-REM check if scilab.bat exists
-if not exist "%INSTALL_DIR%\bin\scilab.bat" (
-  echo "%INSTALL_DIR%\bin\scilab.bat does not exist."
+REM check if Scilex exists
+if not exist "%INSTALL_DIR%\bin\Scilex.exe" (
+  echo "%INSTALL_DIR%\bin\Scilex.exe does not exist."
   exit 1
 )
 
 @echo on
-call "%INSTALL_DIR%\bin\scilab.bat" -nwni -scihome "%SCIHOME%" -quit -e "test_run('%TEST%',[],[],'%LOG_PATH%\%TEST%.xml')"
+call "%INSTALL_DIR%\bin\Scilex.exe" -scihome "%SCIHOME%" -quit -e "test_run('%TEST%',[],[],'%LOG_PATH%\%TEST%.xml'); [__msg__, __err__] = lasterror(), exit(__err__)"
 if errorlevel 1 (
-  echo "Scilab failed to start tests"
+  echo "Scilab exit with code %errorlevel%"
   exit 1
-) 
+)
 
 rem fail without xml report
 copy "%LOG_PATH%\%TEST%.xml" "%SCILAB_COMMON_PATH%\%SCI_VERSION_STRING%\test\"
+if errorlevel 1 exit 1
+
+rem copy the logs
+if exist "%LOG_PATH%\log_iss_install_%CI_COMMIT_SHORT_SHA%.txt" copy "%LOG_PATH%\log_iss_install_%CI_COMMIT_SHORT_SHA%.txt" "%SCILAB_COMMON_PATH%\%SCI_VERSION_STRING%\log\"
+if errorlevel 1 exit 1

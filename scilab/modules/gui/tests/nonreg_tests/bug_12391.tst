@@ -25,3 +25,10 @@ scf(f);
 findobj("tag", "otherfigure");
 
 assert_checkequal(get(gcf(), "tag"), "currentfigure");
+
+close(winsid())
+scf(1); plot2d; scf(2); plot2d; scf(3); plot2d; scf(2);
+curr = gcf().figure_id;
+o = findobj("figure_id",3);
+assert_checkequal(o.figure_id, 3);
+assert_checkequal(gcf().figure_id, curr);

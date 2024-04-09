@@ -127,7 +127,7 @@ start_profiling_visu() {
 
 find_docbook_path() {
     if test -z "$DOCBOOK_ROOT"; then
-        for dir in $SCI/thirdparty/docbook /usr/share/sgml/docbook/stylesheet/xsl/nwalsh /usr/share/docbook2X/xslt/man/ /usr/share/xml/docbook/stylesheet/nwalsh/ /usr/share/xml/docbook/stylesheet/nwalsh/current/ /sw/share/xml/xsl/docbook-xsl /usr/share/xml/docbook/xsl-stylesheets-*/ /usr/share/sgml/docbook/xsl-stylesheets-*/ /usr/share/sgml/docbook/xsl-stylesheets /usr/share/sgml/docbook/xsl-ns-stylesheets-*/ /usr/share/xml/docbook/stylesheet/docbook-xsl /opt/local/share/xsl/docbook-xsl; do
+        for dir in $SCI/thirdparty/docbook /usr/share/sgml/docbook/stylesheet/xsl/nwalsh /usr/share/docbook2X/xslt/man/ /usr/share/xml/docbook/stylesheet/nwalsh/ /usr/share/xml/docbook/stylesheet/nwalsh/current/ /usr/share/xml/docbook/xsl-stylesheets-*/ /usr/share/sgml/docbook/xsl-stylesheets-*/ /usr/share/sgml/docbook/xsl-stylesheets /usr/share/sgml/docbook/xsl-ns-stylesheets-*/ /usr/share/xml/docbook/stylesheet/docbook-xsl /opt/local/share/xsl/docbook-xsl; do
             if test -r "$dir/fo/docbook.xsl"; then
                 if test -z "$DOCBOOK_ROOT"; then
                     DOCBOOK_ROOT=$dir
@@ -153,7 +153,7 @@ detect_type_of_scilab(){
         SCILABBIN="scilab-bin"
     fi
 
-    if (echo "$progname"|grep "scilab-cli$" 2>&1 > /dev/null;) || (echo "$@"|grep "\-nwni" 2>&1 > /dev/null;) then
+    if (echo "$progname"|grep "scilab-cli$" 2>&1 > /dev/null;) || (echo "$@"|grep "\-nwni" 2>&1 > /dev/null;) || (echo "$@"|grep "\-nogui" 2>&1 > /dev/null;) then
         SCILAB_MODE="nwni"
         SCILABBIN="scilab-cli-bin"
         DISABLE_JAVA_DETECTION=1
@@ -318,7 +318,7 @@ detect_scilab_path() {
 detect_macos_vm() {
     # java_home -arch flag is broken on macOS Big Sur
     # we take the first JVM matching version and architecture
-    echo $(/usr/libexec/java_home -v 1.8 -X | xmllint --format  --xpath "(//string[preceding-sibling::key[text()='JVMHomePath']][1][preceding-sibling::string[text()='$ARCH']])[1]/text()" -)
+    echo $(/usr/libexec/java_home -v 17 -X | xmllint --format  --xpath "(//string[preceding-sibling::key[text()='JVMHomePath']][1][preceding-sibling::string[text()='$ARCH']])[1]/text()" -)
 }
 
 set_embedded_java_vm () {
@@ -345,7 +345,7 @@ set_embedded_java_vm () {
                 export ARCH=$(uname -m)
                 # If Scilab does not have an embedded jre we try to detect a system installed one
                 # if not found we prompt the user for installation
-                if test ! -f $SCIBINARYBASE/thirdparty/jre/lib/jli/libjli.dylib; then
+                if test ! -f $SCIBINARYBASE/thirdparty/jre/lib/libjli.dylib; then
                     JAVA_HOME=$(detect_macos_vm)
                     if test -z "$JAVA_HOME"; then
                         open -W "jre/Scilab JRE Install.app"
@@ -455,7 +455,7 @@ detect_java_vm() {
 # Browse "default directory" (if it means anything under Unix/Linux) of Java
 # to find where it could be !
             if test -z "$JAVA_HOME"; then
-                JAVA_DEFAULT_DIR="/usr/java/jdk1.8.*/ /usr/lib/jvm/java-1.8.0-*/ /usr/lib/jvm/java-8-*/ /etc/alternatives/java_sdk /etc/alternatives/jre /usr/java/jdk*/ /usr/lib/jvm/java-*/"
+                JAVA_DEFAULT_DIR="/usr/java/jdk17.*/ /usr/lib/jvm/java-1.17.0-*/ /usr/lib/jvm/java-17-*/ /etc/alternatives/java_sdk /etc/alternatives/jre /usr/java/jdk*/ /usr/lib/jvm/java-*/"
                 for DIR in $JAVA_DEFAULT_DIR ; do
                     if test $SCIVERBOSE -ne 0; then
                         echo "Trying to find Java in $DIR "
@@ -620,7 +620,7 @@ detect_java_vm() {
     fi # IS_SCILAB_BINARY
 
     # Check if the lib exists
-    LIBJAVA="$JRE_HOME/lib/$proc/$JAVA_SHLIB"
+    LIBJAVA="$JRE_HOME/lib/$JAVA_SHLIB"
     if test ! -f "$LIBJAVA"; then
         if test $SCIVERBOSE -ne 0; then
             echo "Cannot find $LIBJAVA"
@@ -629,7 +629,7 @@ detect_java_vm() {
         CLASSPATH="${CLASSPATH:+:$CLASSPATH}$SCI/modules/core/jar/org.scilab.modules.core.jar"
         # @TODO This is the default path of the official sun JVM.
         # It is different for other implementation of the JVM....
-        LD_LIBRARY_PATH="$JRE_HOME/lib/$proc/:$JRE_HOME/lib/$proc/server/:$JRE_HOME/lib/$proc/native_threads/${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}"
+        LD_LIBRARY_PATH="$JRE_HOME/lib/:$JRE_HOME/lib/server/:$JRE_HOME/lib/native_threads/${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}"
     fi
 
     # Bug https://gitlab.com/scilab/scilab/-/issues/14290 -
@@ -758,7 +758,7 @@ dialog_try_or_exit()
 
 fail_macosx_version()
 {
-    dialog_try_or_exit "This version of Scilab may fail on this system ($macosxVersion): Scilab is currently supported from 10.9 (Mavericks) to 13 (Ventura)."
+    dialog_try_or_exit "This version of Scilab may fail on this system ($macosxVersion): Scilab is currently supported from 10.9 (Mavericks) to 14 (Sonoma)."
 }
 check_macosx_version()
 {
@@ -772,7 +772,7 @@ check_macosx_version()
                     ;;
             esac
             ;;
-        11|12|13)
+        11|12|13|14)
             ;;
         *)
             fail_macosx_version
@@ -792,8 +792,6 @@ fi
 
 case $OS in
     *darwin* | *Darwin*) # MacOS X
-        # When using some packaging tools like fink which are storing the info in /sw/lib
-        LD_LIBRARY_PATH="/sw/lib/${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}"
     # Export the path to the Scilab lib when Scilab has been install ...
     # to a Mac os x specific variable used by the linker before LD_LIBRARY_PATH
         DYLD_LIBRARY_PATH=$SCI/../../lib/scilab/${DYLD_LIBRARY_PATH:+:$DYLD_LIBRARY_PATH}:
@@ -934,7 +932,15 @@ do_scilex()
         if test "$SCILAB_MODE" = "scinotes"; then
             do_scinotes "$@"
         else
-            "$SCILABBIN" "$@"
+            if test "$OS" = "Darwin" -a $IS_SCILAB_BINARY -eq 1; then
+                if test "$(file $BINPATH/$SCILABBIN | awk '{print $NF}')" =  "arm64"; then
+                    arch -arch arm64 "$SCILABBIN" "$@"
+                else
+                    "$SCILABBIN" "$@"
+                fi
+            else
+                "$SCILABBIN" "$@"
+            fi
             exit $?
         fi
     fi
@@ -1040,8 +1046,7 @@ if test "$OS" = "Darwin"; then
 fi
 
 MORE_OPT=""
-echo " $@ " | grep " \-nw " 2>&1 > /dev/null
-if ([ $? != 0 ];) && (test "$SCILAB_MODE" = "nw";) then
+if (echo "$@"|grep -v "\-nw" 2>&1 > /dev/null;) && (test "$SCILAB_MODE" = "nw";) then
     MORE_OPT="-nw"
 fi
 
@@ -1078,7 +1083,7 @@ if test "$rest" = "yes"; then
         fi
 
         case $sciarg in
-            -nogui|-version|-ns|-nb|-nouserstartup|-noatomsautoload|-nocolor|--texmacs)
+            -version|-ns|-nb|-nouserstartup|-noatomsautoload|-nocolor|--texmacs)
                 ;;
             -nw)
                 if test "$SCILAB_MODE" = "nwni"; then
@@ -1086,9 +1091,9 @@ if test "$rest" = "yes"; then
                     exit 5
                 fi
                 ;;
-            -nwni)
+            -nwni|-nogui)
                 if test "$SCILAB_MODE" = "nw"; then
-                    echo "Cannot use scilab-adv-cli with option -nwni"
+                    echo "Cannot use scilab-adv-cli with option -nwni or -nogui"
                     exit 5
                 fi
                 ;;

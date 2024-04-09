@@ -6,39 +6,11 @@
 # extract artifacts and publish them to other websites.
 #
 
-.publish_job:
-  stage: publish
-  tags: [x86_64-linux-gnu, docker, scilab]
-  script:
-    - echo "nothing to deploy"
-publish_branch:
-  extends: .publish_job
-  dependencies: []
-  rules:
-    - if: $CI_COMMIT_TAG
-      when: never
-    - if: $CI_PIPELINE_SOURCE == 'merge_request_event' || $CI_PIPELINE_SOURCE == 'push'
-publish_nightly:
-  extends: .publish_job
-  dependencies: []
-  rules:
-    - if: $CI_PIPELINE_SOURCE == 'schedule'
-publish_release:
-  extends: .publish_job
-  dependencies: []
-  rules:
-    - if: $CI_COMMIT_TAG
-
 # generate index.html files for each directory in public/
 index_gitlab_pages:
   stage: publish
   tags: [x86_64-linux-gnu, docker, scilab]
-  image: $DOCKER_LINUX_BUILDER
-  dependencies:
-    - publish_help_jar
-    - build_doxygen
-    - build_help_web
-    - build_javadoc
+  image: ${DOCKER_LINUX_BUILDER}:${DOCKER_TAG}
   script:
     - mkdir public ||true
     - |

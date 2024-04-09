@@ -1,6 +1,6 @@
 // =============================================================================
 // Scilab ( https://www.scilab.org/ ) - This file is part of Scilab
-// Copyright (C) 2019 - Stéphane MOTTELET
+// Copyright (C) 2019 - UTC - Stéphane MOTTELET
 //
 //  This file is distributed under the same license as the Scilab package.
 // =============================================================================
@@ -17,13 +17,13 @@
 // Deleting rows or columns from a matrix is slow
 
 X = rand(1e5,5);
-tic();
+timer();
 X(:,3)=[];
-T1 = toc();
+T1 = timer()
 
-tic();
+timer();
 X(:)=[];
-T2 = toc();
+T2 = timer()
 
 assert_checkalmostequal(T1, T2, 1E-4, 1E-3);
 

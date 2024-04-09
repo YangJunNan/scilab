@@ -271,23 +271,71 @@ Maybe JAVA_HOME is pointing to a JRE (Java Runtime Environment) instead of a JDK
 
     AC_MSG_CHECKING([java API version])
 
-    # The class java.nio.charset.Charset is new to 1.4
+    # The class java.nio.charset.Charset is new in Java 1.4
     AC_JAVA_TRY_COMPILE([import java.nio.charset.Charset;], , "no", ac_java_jvm_version=1.4)
 
-    # The class java.lang.StringBuilder is new to 1.5
+    # The class java.lang.StringBuilder is new in Java 1.5
     AC_JAVA_TRY_COMPILE([import java.lang.StringBuilder;], , "no", ac_java_jvm_version=1.5)
 
-    # The class java.util.ArrayDeque is new to 1.6
+    # The class java.util.ArrayDeque is new in Java 1.6
     AC_JAVA_TRY_COMPILE([import java.util.ArrayDeque;], , "no", ac_java_jvm_version=1.6)
 
-    # The class java.nio.file.Path is new to 1.7
+    # The class java.nio.file.Path is new in Java 1.7
     AC_JAVA_TRY_COMPILE([import java.nio.file.Path;], , "no", ac_java_jvm_version=1.7)
 
-    # The class java.util.stream.DoubleStream is new to 1.8
+    # The class java.util.stream.DoubleStream is new in Java 1.8
     AC_JAVA_TRY_COMPILE([import java.util.stream.DoubleStream;], , "no", ac_java_jvm_version=1.8)
 
-    # The class java.lang.ProcessHandle is new to 1.9
+    # The class java.lang.ProcessHandle is new in Java 1.9
     AC_JAVA_TRY_COMPILE([import java.lang.ProcessHandle;], , "no", ac_java_jvm_version=1.9)
+
+    # The class jdk.jfr.events.FileForceEvent is new in Java 10
+    AC_JAVA_TRY_COMPILE([import jdk.jfr.events.FileForceEvent;], , "no", ac_java_jvm_version=10)
+
+    # The class java.net.http.HttpClient is new in Java 11
+    AC_JAVA_TRY_COMPILE([import java.net.http.HttpClient;], , "no", ac_java_jvm_version=11)
+
+    # The class java.lang.constant.ClassDesc is new in Java 12
+    AC_JAVA_TRY_COMPILE([import java.lang.constant.ClassDesc;], , "no", ac_java_jvm_version=12)
+
+    # Method newFileSystem(Path) was added to java.nio.file.FileSystems in Java 13
+    AC_JAVA_TRY_COMPILE([
+            import java.nio.file.FileSystems;
+            import java.nio.file.Paths;
+        ], [
+            try {
+                FileSystems.newFileSystem(Paths.get(""));
+            } catch (Exception e) {}
+        ], "no", ac_java_jvm_version=13)
+
+    # Switch expressions are a standard feature of Java 14 (were a preview feature in 12 & 13)
+    AC_JAVA_TRY_COMPILE([], [
+            class java14Test {
+                private static String toString(int n) {
+                    String s = switch (n) {
+                        case 1:
+                            yield "1";
+                        default:
+                            yield "?";
+                    };
+                    return s;
+                }
+            }
+        ], "no", ac_java_jvm_version=14)
+
+    # Text blocks are a standard feature of Java 15 (were a preview feature in 13 & 14)
+    AC_JAVA_TRY_COMPILE([], [
+            String textBlock = """
+                                Line1
+                                Line2
+                                """;
+        ], "no", ac_java_jvm_version=15)
+
+    # The class java.net.UnixDomainSocketAddress is new in Java 16
+    AC_JAVA_TRY_COMPILE([import java.net.UnixDomainSocketAddress;], , "no", ac_java_jvm_version=16)
+
+    # The class java.util.random.RandomGenerator is new in Java 17
+    AC_JAVA_TRY_COMPILE([import java.util.random.RandomGenerator;], , "no", ac_java_jvm_version=17)
 
     if test "x$ac_java_jvm_version" = "x" ; then
         AC_MSG_ERROR([Could not detect Java version, 1.4 or newer is required])
@@ -392,19 +440,25 @@ AC_DEFUN([AC_JAVA_JNI_INCLUDE], [
 
     AC_REQUIRE([AC_PROG_CC])
 
-    AC_CACHE_CHECK(if jni.h can be included,
-        ac_cv_java_jvm_jni_working,[
+    AC_CACHE_CHECK([if jni.h can be included],
+        ac_cv_java_jvm_jni_working, [
         AC_LANG_PUSH(C)
         ac_saved_cflags=$CFLAGS
         CFLAGS="$CFLAGS $ac_java_jvm_jni_include_flags"
-        AC_TRY_COMPILE([
-            #include <jni.h>
-        ],[return 0;],
-        ac_cv_java_jvm_jni_working=yes,
-        AC_MSG_ERROR([could not compile file that includes jni.h. If you run Mac OS X please make sure you have 'Java developer package'. This is available on http://connect.apple.com/ ]))
+        AC_COMPILE_IFELSE([AC_LANG_SOURCE([
+#include <jni.h>
+
+int main (void)
+{
+    return 0;
+}
+])],
+            ac_cv_java_jvm_jni_working=yes,
+            AC_MSG_ERROR([could not compile file that includes jni.h. If you run Mac OS X please make sure you have 'Java developer package'. This is available on http://connect.apple.com])
+        )
         AC_LANG_POP()
         CFLAGS=$ac_saved_cflags
-    ])
+    ] )
 
     # FIXME: should we look for or require a include/native_threads dir?
 ])
@@ -549,13 +603,13 @@ AC_DEFUN([AC_JAVA_JNI_LIBS], [
 
         # OpenJDK for macOS
 
-        F=jre/lib/jli/libjli.dylib
+        F=lib/libjli.dylib
         if test "x$ac_java_jvm_jni_lib_flags" = "x" ; then
             AC_MSG_LOG([Looking for $ac_java_jvm_dir/$F])
             if test -f $ac_java_jvm_dir/$F ; then
                 AC_MSG_LOG([Found $ac_java_jvm_dir/$F])
 
-                D=$ac_java_jvm_dir/jre/lib/jli
+                D=$ac_java_jvm_dir/lib
                 ac_java_jvm_jni_lib_runtime_path="${ac_java_jvm_jni_lib_runtime_path}:$D"
                 ac_java_jvm_jni_lib_flags="$ac_java_jvm_jni_lib_flags -L$D -ljli -Wl,-rpath,$D"
             fi
@@ -671,11 +725,18 @@ AC_DEFUN([AC_JAVA_JNI_LIBS], [
         ac_saved_libs=$LIBS
         CFLAGS="$CFLAGS $ac_java_jvm_jni_include_flags"
         LIBS="$LIBS $ac_java_jvm_jni_lib_flags"
-        AC_TRY_LINK([
-            #include <jni.h>
-        ],[$libSymbolToTest(NULL,0,NULL);],
+        AC_LINK_IFELSE([AC_LANG_SOURCE([
+#include <jni.h>
+
+int main (void)
+{
+    $libSymbolToTest(NULL,0,NULL);
+    return 0;
+}
+])],
             ac_cv_java_jvm_working_jni_link=yes,
-            ac_cv_java_jvm_working_jni_link=no)
+            ac_cv_java_jvm_working_jni_link=no
+        )
         AC_LANG_POP()
         CFLAGS=$ac_saved_cflags
         LIBS=$ac_saved_libs
@@ -691,11 +752,18 @@ AC_DEFUN([AC_JAVA_JNI_LIBS], [
         ac_saved_libs=$LIBS
         CFLAGS="$CFLAGS $ac_java_jvm_jni_include_flags"
         LIBS="$LIBS -L$srcdir/win -ljvm"
-        AC_TRY_LINK([
-            #include <jni.h>
-        ],[$libSymbolToTest(NULL,0,NULL);],
+        AC_LINK_IFELSE([AC_LANG_SOURCE([
+#include <jni.h>
+
+int main (void)
+{
+    $libSymbolToTest(NULL,0,NULL);
+    return 0;
+}
+])],
             ac_cv_java_jvm_working_jni_link=yes,
-            ac_cv_java_jvm_working_jni_link=no)
+            ac_cv_java_jvm_working_jni_link=no
+        )
         AC_LANG_POP()
         CFLAGS=$ac_saved_cflags
         LIBS=$ac_saved_libs
@@ -730,7 +798,7 @@ AC_DEFUN([AC_JAVA_JNI_LIBS], [
 
 AC_DEFUN([AC_JAVA_WITH_JDK], [
     AC_ARG_WITH(jdk,
-    AC_HELP_STRING([--with-jdk=DIR],[use JDK from DIR]))
+    AS_HELP_STRING([--with-jdk=DIR],[use JDK from DIR]))
 
     if test "$with_jdk" = "no" -o -z "$with_jdk"; then
         NO=op
@@ -818,7 +886,7 @@ AC_DEFUN([AC_JAVA_TOOLS], [
 
 AC_DEFUN([AC_JAVA_ANT], [
     AC_ARG_WITH(ant,
-    AC_HELP_STRING([--with-ant=DIR],[Use ant from DIR]),
+    AS_HELP_STRING([--with-ant=DIR],[Use ant from DIR]),
     ANTPATH=$withval, ANTPATH=no)
     if test "$ANTPATH" = "no" ; then
         if test -d "$SCI_SRCDIR_FULL/java/ant"; then # Scilab thirdparties

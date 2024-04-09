@@ -94,6 +94,9 @@ Building gateway...
    Generate a cleaner file
 Generating loader_gateway.sce...
 Generating cleaner_gateway.sce...
+WARNING: tbx_build_localization (toolbox_skeleton\locales\): 
+WARNING:    - The msgid have been updated in '*.po' files.
+WARNING:    - fr_FR.po : 0 untranslated messages.
 Generating localization
 -- Building for "en_US" --
 -- Building for "fr_FR" --
@@ -120,10 +123,10 @@ Start Toolbox Skeleton
 	Load demos
 test_run("TMPDIR/toolbox_skeleton/", [], "short_summary");
  Module  001/001 - [TMPDIR/toolbox_skeleton/] : 
-   001/004 - [TMPDIR/toolbox_skeleton/] c_sum...................passed
-   002/004 - [TMPDIR/toolbox_skeleton/] fortran_sum.............passed
-   003/004 - [TMPDIR/toolbox_skeleton/] java_sum................passed
-   004/004 - [TMPDIR/toolbox_skeleton/] scilab_sum..............passed
+   001/004 - [TMPDIR/toolbox_skeleton/] c_sum ................. passed
+   002/004 - [TMPDIR/toolbox_skeleton/] fortran_sum ........... passed
+   003/004 - [TMPDIR/toolbox_skeleton/] java_sum .............. passed
+   004/004 - [TMPDIR/toolbox_skeleton/] scilab_sum ............ passed
    --------------------------------------------------------------------------
    Tests:    4,    Passed:    4,    Failed:    0,    Skipped:    0
    --------------------------------------------------------------------------

@@ -12,6 +12,7 @@
 // --------------------------------------------------------------------------
 // <-- NO CHECK REF -->
 // <-- ENGLISH IMPOSED -->
+// <-- NO ASSERT FAILURE -->
 
 // ====================================
 // Unitary tests of assert_checkequal()
@@ -183,7 +184,7 @@ t = s;
 s(1)=12;
 instr="assert_checkequal(s, t)";
 ierr=execstr(instr,"errcatch");
-MY_assert_equal(ierr, 999);
+MY_assert_equal(ierr, 10000);
 
 //
 // Boolean
@@ -200,7 +201,7 @@ assert_checkequal(s, t);
 s(1)=%f;
 instr="assert_checkequal(s, t)";
 ierr=execstr(instr,"errcatch");
-MY_assert_equal(ierr, 999);
+MY_assert_equal(ierr, 10000);
 
 //
 // Integer 8

@@ -19,7 +19,6 @@ function check_memleaks(diary_id)
     log = mgetl(TMPDIR + "/mvc_leak.log");
     log = log(grep(log, ["objectCreated", "objectDeleted"]));
 
-
     objects = strtod(csvTextScan(log, " ", ".", "string")(:, 7));
     objects = gsort(objects);
 

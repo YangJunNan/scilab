@@ -78,7 +78,12 @@ c     &       (stk(li+j*m),j=0,n-1)
 
 c     crash in windows debug mode
 c     mimic writestringfile
-c     write(buf,form,err=20) dat
+c     empty string => display empty line
+      if(len(dat) == 0) then
+        call basout(io, 6, "")
+        return
+      end if
+
       do 99 i=1,len(dat),lch
         lb1=lch
         if(len(dat) < (i+lch-1)) then
@@ -106,6 +111,12 @@ c     write(buf,form,err=20) dat
       integer ID,ierr
       character form*(*)
       character dat*(*)
+
+c     empty string => write empty line
+      if(len(dat) == 0) then
+        write(ID,form,err=20) ""
+        return
+      end if
 
       do 99 i=1,len(dat),lch
           if(len(dat) < (i+lch-1)) then

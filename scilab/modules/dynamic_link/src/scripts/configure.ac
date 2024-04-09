@@ -63,16 +63,6 @@ case "$host" in
     ;;
 esac
 
-# Mac OS >= 10.6 need -arch xx
-case "$host" in
-  *-*-darwin*)
-    CFLAGS=" $CFLAGS -I/sw/include "
-    CPPFLAGS=" $CPPFLAGS -I/sw/include "
-    LDFLAGS=" $LDFLAGS -L/sw/lib/ "
-    CC=" $CC -arch x86_64 "
-    CXX=" $CXX -arch x86_64 "
-esac
-
 # Configure the Makefile
 AC_OUTPUT
 

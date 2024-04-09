@@ -7,6 +7,7 @@
 
 // <-- ENGLISH IMPOSED -->
 // <-- CLI SHELL MODE -->
+// <-- NO CHECK REF -->
 // <-- TEST WITH ATOMS -->
 //
 // <-- Non-regression test for bug 9805 -->

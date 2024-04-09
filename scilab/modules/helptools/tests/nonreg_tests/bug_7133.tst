@@ -133,7 +133,7 @@ refHelptxt = [
 "   ]]></programlisting>"
 "</refsection>"
 ""
-"<refsection>"
+"<refsection role=""see also"">"
 "   <title>See also</title>"
 "   <simplelist type=""inline"">"
 "   <member><link linkend=""help_from_sci"">help_from_sci</link></member>"

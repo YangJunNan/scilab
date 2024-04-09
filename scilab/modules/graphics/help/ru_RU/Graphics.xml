@@ -637,19 +637,6 @@
                     <para>Структурная градуировка оси</para>
                 </listitem>
             </varlistentry>
-            <varlistentry>
-                <term>
-                    <link linkend="plotframe">plotframe</link>
-                </term>
-                <listitem>
-                    <para>
-                        Рисование рамки с масштабированием и сетками
-                        <warning>
-                            Эта функция устарела.
-                        </warning>
-                    </para>
-                </listitem>
-            </varlistentry>
         </variablelist>
     </refsection>
     <refsection>

@@ -14,6 +14,7 @@
  */
 
 #include "checkers/SelectChecker.hxx"
+#include "selectexp.hxx"
 
 namespace slint
 {

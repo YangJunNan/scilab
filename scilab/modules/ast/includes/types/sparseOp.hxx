@@ -50,7 +50,7 @@ cplxFun_t const mostSignificant (&std::real);
 cplxFun_t const leastSignificant(&std::imag);
 #endif
 
-template<> struct less<std::complex<double> >: std::binary_function<std::complex<double>, std::complex<double>, bool>
+template<> struct less<std::complex<double> >
 {
     bool operator()(std::complex<double> const& op1, std::complex<double> const& op2) const
     {
@@ -65,7 +65,7 @@ template<> struct less<std::complex<double> >: std::binary_function<std::complex
         return leastSignificant(op1) < leastSignificant(op2);
     }
 };
-template<> struct greater<std::complex<double> >: std::binary_function<std::complex<double>, std::complex<double>, bool>
+template<> struct greater<std::complex<double> >
 {
     bool operator()(std::complex<double> const& op1, std::complex<double> const& op2) const
     {
@@ -81,14 +81,14 @@ template<> struct greater<std::complex<double> >: std::binary_function<std::comp
     }
 };
 
-template<> struct less_equal<std::complex<double> >: std::binary_function<std::complex<double>, std::complex<double>, bool>
+template<> struct less_equal<std::complex<double> >
 {
     bool operator()(std::complex<double> const& op1, std::complex<double> const& op2) const
     {
         return !std::greater<std::complex<double> >()(op2, op1);
     }
 };
-template<> struct greater_equal<std::complex<double> >: std::binary_function<std::complex<double>, std::complex<double>, bool>
+template<> struct greater_equal<std::complex<double> >
 {
     bool operator()(std::complex<double> const& op1, std::complex<double> const& op2) const
     {

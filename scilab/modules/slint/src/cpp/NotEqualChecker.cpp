@@ -11,6 +11,7 @@
  */
 
 #include "checkers/NotEqualChecker.hxx"
+#include "opexp.hxx"
 
 namespace slint
 {

@@ -49,7 +49,7 @@ public:
 
     static enum LogLevel indexOf(const wchar_t* name);
     static const wchar_t* toString(enum LogLevel level);
-    static const char* toDisplay(enum LogLevel level);
+    static const std::string toDisplay(enum LogLevel level);
 
     enum LogLevel getLevel() const
     {

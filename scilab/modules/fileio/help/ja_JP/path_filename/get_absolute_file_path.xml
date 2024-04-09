@@ -81,7 +81,7 @@ mclose(a);
                 <link linkend="dispfiles">dispfiles</link>
             </member>
             <member>
-                <link linkend="file">file()</link>
+                <link linkend="file">file(id)</link>
             </member>
             <member>
                 <link linkend="getshortpathname">getshortpathname</link>

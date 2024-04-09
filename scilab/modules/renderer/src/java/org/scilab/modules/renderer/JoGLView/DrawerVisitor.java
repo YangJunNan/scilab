@@ -294,9 +294,13 @@ public class DrawerVisitor implements Visitor, Drawer, GraphicView {
     public void draw(DrawingTools drawingTools) {
         this.drawingTools = drawingTools;
         if (figure instanceof Figure) {
-            visit((Figure) figure);
+            if (((Figure) figure).isValid() == true) {
+                visit((Figure) figure);
+            }
         } else {
-            visit((Frame) figure);
+            if (((Frame) figure).isValid() == true) {
+                visit((Frame) figure);
+            }
         }
 
         for (PostRendered postRendered : postRenderedList) {

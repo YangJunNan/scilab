@@ -10,6 +10,7 @@
  * along with this program.
 *
 */
+
 #include <list>
 #include <unordered_map>
 
@@ -1022,8 +1023,8 @@ static types::InternalType* import_macro(hid_t dataset)
     int size = 0;
     std::vector<int> d(2);
 
-    std::list<symbol::Variable*>* inputList = new std::list<symbol::Variable*>();
-    std::list<symbol::Variable*>* outputList = new std::list<symbol::Variable*>();
+    std::vector<symbol::Variable*>* inputList = new std::vector<symbol::Variable*>();
+    std::vector<symbol::Variable*>* outputList = new std::vector<symbol::Variable*>();
     ast::Exp* body = nullptr;
 
     symbol::Context* ctx = symbol::Context::getInstance();

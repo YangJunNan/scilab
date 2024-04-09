@@ -14,7 +14,7 @@
  */
 
 #include "CodePrinterVisitor.hxx"
-
+#include "all.hxx"
 namespace coverage
 {
 
@@ -451,6 +451,11 @@ void CodePrinterVisitor::visit(const ast::CallExp & e)
     printer.handleExpEnd(&e);
 }
 
+void CodePrinterVisitor::visit(const ast::ArgumentsExp & e)
+{
+    /* FIXME : Implement CodePrinterVisitor for ArgumentsExp */
+}
+
 void CodePrinterVisitor::visit(const ast::IfExp & e)
 {
     printer.handleExpStart(&e);
@@ -785,6 +790,11 @@ void CodePrinterVisitor::visit(const ast::FunctionDec & e)
     printer.handleExpEnd(&e);
 }
 
+void CodePrinterVisitor::visit(const ast::ArgumentDec & e)
+{
+    /* FIXME : Implement CodePrinterVisitor for ArgumentDec */
+}
+
 void CodePrinterVisitor::visit(const ast::ListExp & e)
 {
     printer.handleExpStart(&e);
@@ -825,41 +835,6 @@ void CodePrinterVisitor::visit(const ast::ListExp & e)
     {
         e.getEnd().accept(*this);
     }
-    printer.handleExpEnd(&e);
-}
-
-void CodePrinterVisitor::visit(const ast::OptimizedExp & e)
-{
-    printer.handleExpStart(&e);
-    e.getOriginal()->accept(*this);
-    printer.handleExpEnd(&e);
-}
-
-void CodePrinterVisitor::visit(const ast::DAXPYExp & e)
-{
-    printer.handleExpStart(&e);
-    e.getOriginal()->accept(*this);
-    printer.handleExpEnd(&e);
-}
-
-void CodePrinterVisitor::visit(const ast::MemfillExp & e)
-{
-    printer.handleExpStart(&e);
-    e.getOriginal()->accept(*this);
-    printer.handleExpEnd(&e);
-}
-
-void CodePrinterVisitor::visit(const ast::IntSelectExp & e)
-{
-    printer.handleExpStart(&e);
-    e.getOriginal()->accept(*this);
-    printer.handleExpEnd(&e);
-}
-
-void CodePrinterVisitor::visit(const ast::StringSelectExp & e)
-{
-    printer.handleExpStart(&e);
-    e.getOriginal()->accept(*this);
     printer.handleExpEnd(&e);
 }
 }

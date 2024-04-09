@@ -538,22 +538,18 @@ html = ["<!doctype html>"
         "<body>"
         ];
 // List of objects:
+if type(L($)) == 10, L($+1) = linsys; end
 for obj = L
     if type(obj)<>10 | part(obj,$)<>":"
-        obj = prettyprint(obj, "html", "|");
+        obj = prettyprint(obj, "html4", "|");
         html = [html ; obj ; "<br/><br/>"];
     else
         html = [html ; obj + " <br/>"];
     end
 end
-html = [html ; prettyprint(linsys, "html", "|4")];
 // Footer:
 html = [html ; "</body>" ; "</html>"];
-File = TMPDIR + filesep() + "prettyprint_HTML.html"
-mputl(html, File);
-
-edit(File)     // See the HTML code
-winopen(File)  // Display the page in your browser
+// Display:
 messagebox(html, "prettyprint() test => messagebox(HTML.4)");
  ]]></programlisting>
     <para/>

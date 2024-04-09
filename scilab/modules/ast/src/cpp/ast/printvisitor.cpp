@@ -28,7 +28,7 @@ void PrintVisitor::visit (const MatrixExp &e)
     ast::exps_t::const_iterator	i, j;
     *ostr << SCI_OPEN_MATRIX;
     ++indent;
-    this->is_last_matrix_line = false;
+    bool is_last_matrix_line = false;
     ast::exps_t lines = e.getLines();
     for (i = lines.begin() ; i != lines.end() ; )
     {
@@ -36,11 +36,11 @@ void PrintVisitor::visit (const MatrixExp &e)
         j = i;
         if (++j == lines.end())
         {
-            this->is_last_matrix_line = true;
+            is_last_matrix_line = true;
         }
         else
         {
-            if ((*i)->getLocation().last_line != (*j)->getLocation().first_line)
+            if ((*i)->getLocation().first_line != (*j)->getLocation().first_line)
             {
                 addIndent = true;
             }
@@ -55,10 +55,18 @@ void PrintVisitor::visit (const MatrixExp &e)
             (*i)->accept(*this);
         }
 
+        if (!this->is_last_column_comment && is_last_matrix_line == false)
+        {
+            *ostr << SCI_LINE_SEPARATOR;
+        }
+        
         //if (lines.size() > 1 || this->is_last_column_comment)
-        if (addIndent)
+        if (addIndent || this->is_last_column_comment)
         {
             *ostr << std::endl;
+        }
+        if (addIndent)
+        {
             this->apply_indent();
         }
 
@@ -97,11 +105,6 @@ void PrintVisitor::visit (const MatrixLineExp &e)
             }
             *ostr << " ";
         }
-    }
-
-    if (!this->is_last_column_comment && this->is_last_matrix_line == false)
-    {
-        *ostr << SCI_LINE_SEPARATOR;
     }
 }
 /** \} */
@@ -255,7 +258,16 @@ void PrintVisitor::visit (const DoubleExp  &e)
     }
     else
     {
-        *ostr << e.getValue();
+        double dblValue = e.getValue();
+        if (dblValue < 0) {
+            *ostr << L"(";
+            *ostr << dblValue;
+            *ostr << L")";
+        }
+        else 
+        {
+            *ostr << dblValue;
+        }
     }
 }
 
@@ -381,7 +393,7 @@ void PrintVisitor::visit(const OpExp &e)
         *ostr << SCI_LPAREN;
     }
 
-    if (e.getOper() != OpExp::unaryMinus)
+    if (e.getOper() != OpExp::unaryMinus && e.getOper() != OpExp::unaryPlus)
     {
         // Getting Left Operand
         this->enable_force_parenthesis();
@@ -400,6 +412,7 @@ void PrintVisitor::visit(const OpExp &e)
     switch (e.getOper())
     {
         // Arithmetics.
+        case OpExp::unaryPlus:
         case OpExp::plus:
             *ostr << SCI_PLUS;
             break;
@@ -475,7 +488,10 @@ void PrintVisitor::visit(const OpExp &e)
             // FIXME : This case should never happend.
             break;
     }
-    *ostr << " ";
+    if (e.getOper() != OpExp::unaryMinus && e.getOper() != OpExp::unaryPlus)
+    {
+        *ostr << " ";
+    }
 
     // Now getting right operand
     this->enable_force_parenthesis();
@@ -631,6 +647,29 @@ void PrintVisitor::visit(const CallExp &e)
         }
     }
     *ostr << SCI_CLOSE_CALL;
+}
+
+void PrintVisitor::visit (const ArgumentsExp  &e)
+{
+    *ostr << SCI_ARGUMENTS << std::endl;
+    ++indent;
+    for (exps_t::const_iterator it = e.getExps().begin (), itEnd = e.getExps().end(); it != itEnd; /**/)
+    {
+        if ((*it)->isCommentExp())
+        {
+            this->apply_indent();
+        }
+        (*it)->accept(*this);
+        if ((*it)->isCommentExp())
+        {
+            // Force EOL
+            *ostr << std::endl;
+        }
+        ++it;
+    }
+    --indent;
+    this->apply_indent();
+    *ostr << SCI_ARGUMENTS_END;
 }
 
 void PrintVisitor::visit (const IfExp  &e)
@@ -1088,6 +1127,36 @@ void PrintVisitor::visit (const FunctionDec  &e)
     // Close function declaration
     *ostr << SCI_ENDFUNCTION;
 }
+
+void PrintVisitor::visit (const ArgumentDec  &e)
+{
+    this->apply_indent();
+    e.getArgumentName()->accept(*this);
+    if (e.getArgumentDims()->getExps().size() != 0)
+    {
+        *ostr << L" " << SCI_LPAREN;
+        e.getArgumentDims()->accept(*this);
+        *ostr << SCI_RPAREN;
+    }
+    if (!e.getArgumentType()->isNilExp())
+    {
+        *ostr << L" ";
+        e.getArgumentType()->accept(*this);
+    }
+    if (e.getArgumentValidators()->getExps().size() != 0)
+    {
+        *ostr << L" " << SCI_LBRACE;
+        e.getArgumentValidators()->accept(*this);
+        *ostr << SCI_RBRACE;
+    }
+    if (!e.getArgumentDefaultValue()->isNilExp())
+    {
+        *ostr << L" " << SCI_ASSIGN << L" ";
+        e.getArgumentDefaultValue()->accept(*this);
+    }
+    *ostr << std::endl;
+}
+
 /** \} */
 
 /** \name Visit Type dedicated Expressions related node.
@@ -1127,32 +1196,6 @@ void PrintVisitor::visit(const ListExp &e)
     *ostr << SCI_RPAREN;
 }
 /** \} */
-
-
-void PrintVisitor::visit(const OptimizedExp &e)
-{
-    e.getOriginal()->accept(*this);
-}
-
-void PrintVisitor::visit(const MemfillExp &e)
-{
-    e.getOriginal()->accept(*this);
-}
-
-void PrintVisitor::visit(const DAXPYExp &e)
-{
-    e.getOriginal()->accept(*this);
-}
-
-void PrintVisitor::visit(const IntSelectExp &e)
-{
-    e.getOriginal()->accept(*this);
-}
-
-void PrintVisitor::visit(const StringSelectExp &e)
-{
-    e.getOriginal()->accept(*this);
-}
 
 void PrintVisitor::apply_indent()
 {

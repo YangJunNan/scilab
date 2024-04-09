@@ -418,31 +418,35 @@ public class WindowsConfigurationManager implements XConfigurationListener {
         }
         window.setUUID(localUUID);
 
+        boolean positionned = false;
+        GraphicsDevice[] gds = GraphicsEnvironment.getLocalGraphicsEnvironment().getScreenDevices();
         if (containsX) {
-            boolean positionned = false;
             Point p = new Point(((Integer) attrs.get("x")).intValue(), ((Integer) attrs.get("y")).intValue());
 
             // We check that the coordinates are valid
-            GraphicsDevice[] gds = GraphicsEnvironment.getLocalGraphicsEnvironment().getScreenDevices();
-            if (gds != null) {
-                for (GraphicsDevice gd : gds) {
-                    Rectangle r = gd.getDefaultConfiguration().getBounds();
-                    if (r != null) {
-                        if (r.contains(p)) {
-                            positionned = true;
-                            window.setLocation(p.x, p.y);
-                            break;
-                        }
+            for (GraphicsDevice gd : gds) {
+                Rectangle r = gd.getDefaultConfiguration().getBounds();
+                if (r != null) {
+                    if (r.contains(p)) {
+                        positionned = true;
+                        window.setLocation(p.x, p.y);
+                        break;
                     }
                 }
             }
-
-            if (!positionned) {
-                window.setLocation(DEFAULTX, DEFAULTY);
-            }
         }
-
-        window.setSize(((Integer) attrs.get("width")).intValue(), ((Integer) attrs.get("height")).intValue());
+        
+        int width = (Integer) attrs.get("width");
+        int height = (Integer) attrs.get("height");
+        if (!positionned) {
+            Rectangle def = gds[0].getDefaultConfiguration().getBounds();
+            
+            int x = (int) (def.getX() + def.getWidth()/2 - ((double) width)/2);
+            int y = (int) (def.getY() + def.getHeight()/2 - ((double) height)/2);
+            window.setBounds(x, y, width, height);
+        } else {
+            window.setSize(width, height);
+        }
 
         /* remove ICONIFIED at restoration */
         int state = ((Integer)attrs.get("state")).intValue();
@@ -1159,6 +1163,7 @@ public class WindowsConfigurationManager implements XConfigurationListener {
             try {
                 startRestoration(uuid);
             } catch (Exception e) {
+                e.printStackTrace();
                 killScilab();
             }
         } else {
@@ -1169,6 +1174,7 @@ public class WindowsConfigurationManager implements XConfigurationListener {
                     }
                 });
             } catch (Exception e) {
+                e.printStackTrace();
                 killScilab();
             }
         }

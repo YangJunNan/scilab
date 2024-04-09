@@ -20,3 +20,6 @@ getScilabVersionMajor
 getScilabVersionMinor
 getScilabVersionMaintenance
 getScilabVersionAsString
+hasUIControlStyle
+hasHandleType
+isEmptyCommandQueuePrioritary

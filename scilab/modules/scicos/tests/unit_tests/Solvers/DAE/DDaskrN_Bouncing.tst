@@ -8,13 +8,12 @@
 // <-- ENGLISH IMPOSED -->
 // <-- NO CHECK REF -->
 //
-// <-- XCOS TEST -->
-//
 
+loadXcosLibs();
 ilib_verbose(0); //to remove ilib_* traces
 
 // Import diagram
-assert_checktrue(importXcosDiagram("SCI/modules/xcos/tests/unit_tests/Solvers/DAE/Bouncing.zcos"));
+exec("SCI/modules/scicos/tests/unit_tests/Solvers/DAE/Bouncing.sce");
 
 Info = scicos_simulate(scs_m, list());
 

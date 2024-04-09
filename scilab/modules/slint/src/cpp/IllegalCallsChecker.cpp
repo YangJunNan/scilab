@@ -14,6 +14,7 @@
  */
 
 #include "checkers/IllegalCallsChecker.hxx"
+#include "simplevar.hxx"
 
 namespace slint
 {

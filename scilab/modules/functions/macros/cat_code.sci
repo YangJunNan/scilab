@@ -26,7 +26,7 @@ function t = cat_code(a,b)
     elseif stripblanks(b)=="" then // b=="" then add a new line
         t = [a ; ""];
     else
-        if a($) <> "" & part(a($),$-1:$)<>"; " & grep(b(1), "|^\s*//|","r")==[]
+        if a($) <> "" & part(a($),$)<>";" & grep(b(1), "|^\s*//|","r")==[]
             a($) = a($) + ", "  // Separating instructions on the same line
         end                     //  without endsymbol
         t = [a(1:$-1) ; a($)+b(1) ; b(2:$)]

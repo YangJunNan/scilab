@@ -56,7 +56,7 @@ public final class PaletteDragGestureListener implements DragGestureListener {
         blockCtrl.setSelected(true);
 
         if (PaletteManagerView.get() == null) {
-            PaletteManagerView.restore(null);
+            PaletteManagerView.restore();
         }
         final PaletteManagerView winView = PaletteManagerView.get();
 

@@ -21,6 +21,7 @@
 #include "macrofile.hxx"
 #include "threadId.hxx"
 #include "threadmanagement.hxx"
+
 #include <iomanip>
 #include <list>
 #include <vector>
@@ -1338,7 +1339,7 @@ void ConfigVariable::whereErrorToString(std::wostringstream& ostr)
 
 void ConfigVariable::fillWhereError(int _iErrorLine)
 {
-    if (m_WhereError.empty())
+    if (m_WhereError.empty() && m_Where.empty() == false)
     {
         int iTmp = 0;
         if (_iErrorLine != 0)
@@ -1361,6 +1362,10 @@ void ConfigVariable::fillWhereError(int _iErrorLine)
 
             iTmp = where->m_line;
         }
+
+        // fill lasterror function name and line
+        setLastErrorFunction(m_WhereError[0].m_function_name);
+        setLastErrorLine(m_WhereError[0].m_line);
     }
 }
 
@@ -1638,4 +1643,16 @@ bool ConfigVariable::getWebMode()
 void ConfigVariable::setWebMode(bool _mode)
 {
     webMode = _mode;
+}
+
+// stdin redirected
+bool ConfigVariable::m_isatty = false;
+bool ConfigVariable::isatty()
+{
+    return m_isatty;
+}
+
+void ConfigVariable::setisatty(bool _isatty)
+{
+    m_isatty = _isatty;
 }

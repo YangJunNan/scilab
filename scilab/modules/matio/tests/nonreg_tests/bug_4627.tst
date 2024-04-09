@@ -6,6 +6,7 @@
 // =============================================================================
 
 // <-- CLI SHELL MODE -->
+// <-- NO CHECK REF -->
 
 // <-- Non-regression test for bug 4627 -->
 //
@@ -15,8 +16,9 @@
 // <-- Short Description -->
 //    The function matfile2sci does not manage 7.x format.
 
-ierr = execstr("matfile2sci(""SCI/modules/m2sci/tests/nonreg_tests/bug_4627.mat"", ""TMPDIR/bug_4627.bin"");", "errcatch");
-if ierr<>0 then pause;end
+ierr = execstr("matfile2sci(""SCI/modules/matio/tests/nonreg_tests/bug_4627.mat"", ""TMPDIR/bug_4627.bin"");", "errcatch");
+assert_checktrue(ierr==0);
 ierr = execstr("load(""TMPDIR/bug_4627.bin"");", "errcatch");
-if ierr<>0 then pause;end
-if a<>10 | b<>20 then pause;end
+assert_checktrue(ierr==0);
+assert_checkequal(a, 10);
+assert_checkequal(b, 20);

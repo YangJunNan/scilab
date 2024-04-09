@@ -168,7 +168,7 @@ function ret = tbx_generate_pofile(tbx_name, tbx_path)
     deletefile(TARGETDIR + "en_US.po.tmp");
 
     cd(old);
-    ret = tbx_path + filesep() + TARGETDIR + filesep() + "en_US.po";
+    ret = fullfile(tbx_path, TARGETDIR, "en_US.po");
 endfunction
 
 function result = sedLoc(str, findExp, replaceExp)

@@ -89,7 +89,6 @@
                 <tr><td>inteiro</td>            <td><literal>i</literal></td>   </tr>
                 <tr><td>número decimal</td>     <td><literal>s</literal></td>   </tr>
                 <tr><td>matriz esparsa</td>     <td><literal>sp</literal></td>  </tr>
-                <tr><td>matriz esparsa do Matlab</td><td><literal>msp</literal></td></tr>
                 <tr><td>polinômio</td>          <td><literal>p</literal></td>   </tr>
                 <tr><td>fração racional</td>    <td><literal>r</literal></td>   </tr>
                 <tr><td>texto</td>              <td><literal>c</literal></td>   </tr>

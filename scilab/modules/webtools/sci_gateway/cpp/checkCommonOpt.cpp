@@ -12,31 +12,20 @@
 */
 /*--------------------------------------------------------------------------*/
 
-#include <curl/curl.h>
 #include "webtools_gw.hxx"
 #include "function.hxx"
 #include "string.hxx"
-#include "sciCurl.hxx"
 
 extern "C"
 {
 #include "localization.h"
 #include "Scierror.h"
-#include "sciprint.h"
 #include "sci_malloc.h"
 }
 
-static int debug_callback(CURL *handle,
-                   curl_infotype type,
-                   char *data,
-                   size_t size,
-                   void *clientp);
-
 /*--------------------------------------------------------------------------*/
-int checkCommonOpt(void* _curl, types::optional_list &opt, const char* fname)
+int checkCommonOpt(SciCurl& query, types::optional_list& opt, const char* fname)
 {
-    CURL* curl = (CURL*)_curl;
-
     // get optional argument if necessary
     for (const auto& o : opt)
     {
@@ -44,96 +33,95 @@ int checkCommonOpt(void* _curl, types::optional_list &opt, const char* fname)
         {
             if(o.second->isString() == false || o.second->getAs<types::String>()->isScalar() == false)
             {
-                Scierror(999, _("%s: Wrong type for input argument #%s: A scalar string expected.\n"), fname, o.first.data());
+                Scierror(999, _("%s: Wrong type for input argument #%s: A scalar string expected.\n"), fname, "cert");
                 return 1;
             }
 
             wchar_t* pCert = o.second->getAs<types::String>()->get(0);
             if(wcscmp(pCert, L"none") == 0)
             {
-                curl_easy_setopt(curl, CURLOPT_SSL_VERIFYPEER, false);
-                return 0;
+                query.ssl(false);
+                continue;
             }
             // TODO management of cert file
             // else if cert is file
 
-            Scierror(999, _("%s: Wrong value for input argument #%s: 'none' expected.\n"), fname, o.first.data());
+            Scierror(999, _("%s: Wrong value for input argument #%s: 'none' expected.\n"), fname, "cert");
             return 1;
         }
         else if(o.first == L"follow")
         {
             if(o.second->isBool() == false || o.second->getAs<types::Bool>()->isScalar() == false)
             {
-                Scierror(999, _("%s: Wrong type for input argument #%s: A scalar boolean expected.\n"), fname, o.first.data());
+                Scierror(999, _("%s: Wrong type for input argument #%s: A scalar boolean expected.\n"), fname, "follow");
                 return 1;
             }
 
             if(o.second->getAs<types::Bool>()->get(0) == 1)
             {
-                curl_easy_setopt(curl, CURLOPT_FOLLOWLOCATION, 1);
+                query.follow(1);
             }
         }
         else if(o.first == L"auth")
         {
             if(o.second->isString() == false || o.second->getAs<types::String>()->isScalar() == false)
             {
-                Scierror(999, _("%s: Wrong type for input argument #%s: A scalar string expected.\n"), fname, o.first.data());
+                Scierror(999, _("%s: Wrong type for input argument #%s: A scalar string expected.\n"), fname, "auth");
                 return 1;
             }
 
             char* pAuth = wide_string_to_UTF8(o.second->getAs<types::String>()->get(0));
-            curl_easy_setopt(curl, CURLOPT_HTTPAUTH, CURLAUTH_ANY);
-            curl_easy_setopt(curl, CURLOPT_USERPWD, pAuth);
+            query.auth(pAuth);
             FREE(pAuth);
         }
         else if(o.first == L"verbose")
         {
             if(o.second->isBool() == false || o.second->getAs<types::Bool>()->isScalar() == false)
             {
-                Scierror(999, _("%s: Wrong type for input argument #%s: A scalar boolean expected.\n"), fname, o.first.data());
+                Scierror(999, _("%s: Wrong type for input argument #%s: A scalar boolean expected.\n"), fname, "verbose");
                 return 1;
             }
 
             if(o.second->getAs<types::Bool>()->get(0) == 1)
             {
-                curl_easy_setopt(curl, CURLOPT_VERBOSE, 1L);
-
-                curl_easy_setopt(curl, CURLOPT_DEBUGDATA, fname); 
-                curl_easy_setopt(curl, CURLOPT_DEBUGFUNCTION, debug_callback); 
+                query.verbose(true, fname);
             }
         }
-    }
+        else if(o.first == L"headers")
+        {
+            if(o.second->isString() == false)
+            {
+                Scierror(999, _("%s: Wrong type for input argument #%s: String expected.\n"), fname, "headers");
+                return 1;
+            }
 
-    return 0;
-}
+            types::String* pStr = o.second->getAs<types::String>();
+            for(int i = 0; i < pStr->getSize(); ++i)
+            {
+                char* pcHeader = wide_string_to_UTF8(pStr->get(i));
+                query.addHTTPHeader(pcHeader);
+                FREE(pcHeader);
+            }
+        }
+        else if(o.first == L"cookies")
+        {
+            if(o.second->isString() == false)
+            {
+                Scierror(999, _("%s: Wrong type for input argument #%s: String expected.\n"), fname, "cookies");
+                return 1;
+            }
 
-static int debug_callback(CURL* handle, curl_infotype type, char* data, size_t size, void* clientp)
-{
-    const char* fname = (char*) clientp;
+            types::String* pStr = o.second->getAs<types::String>();
+            std::stringstream cookies;
+            for(int i = 0; i < pStr->getSize(); ++i)
+            {
+                char* pcCookies = wide_string_to_UTF8(pStr->get(i));
+                cookies << pcCookies << ";";
+                FREE(pcCookies);
+            }
 
-    switch(type)
-    {
-        case CURLINFO_TEXT:
-            //sciprint("%s: %.*s", fname, size, data);
-            break;
-        case CURLINFO_HEADER_IN:
-            sciprint("%s: header in: %.*s", fname, size, data);
-            break;
-        case CURLINFO_HEADER_OUT:
-            sciprint("%s: header out: %.*s", fname, size, data);
-            break;
-        case CURLINFO_DATA_IN:
-            sciprint("%s: data in: %d bytes\n", fname, size);
-            break;
-        case CURLINFO_DATA_OUT:
-            sciprint("%s: data out: %d bytes\n", fname, size);
-            break;
-        case CURLINFO_SSL_DATA_IN:
-            sciprint("%s: SSL data in: %d bytes\n", fname, size);
-            break;
-        case CURLINFO_SSL_DATA_OUT:
-            sciprint("%s: SSL data out: %d bytes\n", fname, size);
-            break;
+            query.setCustomCookies(cookies.str().data());
+        }
     }
 
     return 0;

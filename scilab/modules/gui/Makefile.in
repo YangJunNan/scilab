@@ -20,7 +20,7 @@
 # Copyright (C) INRIA   - 2007 - Vincent COUVERT
 # Copyright (C) DIGITEO - 2009 - Sylvestre Ledru
 # Copyright (C) DIGITEO - 2009 - Pierre MARECHAL
-# Copyright (C) DIGITEO - 2010 - Cl�ment DAVID
+# Copyright (C) DIGITEO - 2010 - Clément DAVID
 #
 # Copyright (C) 2012 - 2016 - Scilab Enterprises
 #
@@ -134,17 +134,16 @@ subdir = modules/gui
 ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
 am__aclocal_m4_deps = $(top_srcdir)/m4/ax_cxx_compile_stdcxx.m4 \
 	$(top_srcdir)/m4/backtrace.m4 $(top_srcdir)/m4/compiler.m4 \
-	$(top_srcdir)/m4/curl.m4 $(top_srcdir)/m4/docbook.m4 \
-	$(top_srcdir)/m4/doxygen.m4 $(top_srcdir)/m4/eigen.m4 \
-	$(top_srcdir)/m4/fftw.m4 $(top_srcdir)/m4/fortran.m4 \
-	$(top_srcdir)/m4/giws.m4 $(top_srcdir)/m4/hdf5.m4 \
-	$(top_srcdir)/m4/intel_compiler.m4 \
+	$(top_srcdir)/m4/curl.m4 $(top_srcdir)/m4/doxygen.m4 \
+	$(top_srcdir)/m4/eigen.m4 $(top_srcdir)/m4/fftw.m4 \
+	$(top_srcdir)/m4/fortran.m4 $(top_srcdir)/m4/giws.m4 \
+	$(top_srcdir)/m4/hdf5.m4 $(top_srcdir)/m4/intel_compiler.m4 \
 	$(top_srcdir)/m4/java-thirdparty.m4 $(top_srcdir)/m4/java.m4 \
-	$(top_srcdir)/m4/largefile.m4 $(top_srcdir)/m4/lib-ld.m4 \
-	$(top_srcdir)/m4/libsmath.m4 $(top_srcdir)/m4/libtool.m4 \
-	$(top_srcdir)/m4/libxml2.m4 $(top_srcdir)/m4/ltoptions.m4 \
-	$(top_srcdir)/m4/ltsugar.m4 $(top_srcdir)/m4/ltversion.m4 \
-	$(top_srcdir)/m4/lt~obsolete.m4 $(top_srcdir)/m4/macosx.m4 \
+	$(top_srcdir)/m4/klu.m4 $(top_srcdir)/m4/lib-ld.m4 \
+	$(top_srcdir)/m4/libarchive.m4 $(top_srcdir)/m4/libsmath.m4 \
+	$(top_srcdir)/m4/libtool.m4 $(top_srcdir)/m4/libxml2.m4 \
+	$(top_srcdir)/m4/ltoptions.m4 $(top_srcdir)/m4/ltsugar.m4 \
+	$(top_srcdir)/m4/ltversion.m4 $(top_srcdir)/m4/lt~obsolete.m4 \
 	$(top_srcdir)/m4/mpi.m4 $(top_srcdir)/m4/ocaml.m4 \
 	$(top_srcdir)/m4/pcre.m4 $(top_srcdir)/m4/pkg.m4 \
 	$(top_srcdir)/m4/relocatable.m4 $(top_srcdir)/m4/swig.m4 \
@@ -200,7 +199,9 @@ am__objects_1 = src/c/libscigui_algo_la-buildMainWindowTitle.lo \
 	src/c/libscigui_algo_la-checkColorRange.lo \
 	src/c/libscigui_algo_la-messageboxoptions.lo \
 	src/c/libscigui_algo_la-ScilabTermination.lo \
-	src/jni/libscigui_algo_la-ScilabTermination_wrap.lo
+	src/jni/libscigui_algo_la-ScilabTermination_wrap.lo \
+	src/c/libscigui_algo_la-getHandleType.lo \
+	src/c/libscigui_algo_la-getUIStyle.lo
 am__objects_2 = src/cpp/libscigui_algo_la-InitializeGUI.lo \
 	src/cpp/libscigui_algo_la-InitUIMenu.lo \
 	src/jni/libscigui_algo_la-CallScilabBridge.lo \
@@ -421,7 +422,9 @@ am__depfiles_remade =  \
 	src/c/$(DEPDIR)/libscigui_algo_la-addmenu.Plo \
 	src/c/$(DEPDIR)/libscigui_algo_la-buildMainWindowTitle.Plo \
 	src/c/$(DEPDIR)/libscigui_algo_la-checkColorRange.Plo \
+	src/c/$(DEPDIR)/libscigui_algo_la-getHandleType.Plo \
 	src/c/$(DEPDIR)/libscigui_algo_la-getMainWindowTitle.Plo \
+	src/c/$(DEPDIR)/libscigui_algo_la-getUIStyle.Plo \
 	src/c/$(DEPDIR)/libscigui_algo_la-messageboxoptions.Plo \
 	src/c/$(DEPDIR)/libscigui_algo_la-setMainWindowTitle.Plo \
 	src/cpp/$(DEPDIR)/libscigui_algo_la-CallClipboard.Plo \
@@ -581,6 +584,7 @@ am__DIST_COMMON = $(srcdir)/Makefile.in $(top_srcdir)/Makefile.incl.am \
 	$(top_srcdir)/config/mkinstalldirs
 DISTFILES = $(DIST_COMMON) $(DIST_SOURCES) $(TEXINFOS) $(EXTRA_DIST)
 ACLOCAL = @ACLOCAL@
+ACTIVATION = @ACTIVATION@
 ALL_LINGUAS = @ALL_LINGUAS@
 ALL_LINGUAS_DOC = @ALL_LINGUAS_DOC@
 AMTAR = @AMTAR@
@@ -598,6 +602,7 @@ AWK = @AWK@
 BATIK = @BATIK@
 BLAS_CFLAGS = @BLAS_CFLAGS@
 BLAS_LIBS = @BLAS_LIBS@
+CAIROSVG = @CAIROSVG@
 CC = @CC@
 CCACHE = @CCACHE@
 CCDEPMODE = @CCDEPMODE@
@@ -624,7 +629,6 @@ DEFS = @DEFS@
 DEMOTOOLS_ENABLE = @DEMOTOOLS_ENABLE@
 DEPDIR = @DEPDIR@
 DLLTOOL = @DLLTOOL@
-DOCBOOK_ROOT = @DOCBOOK_ROOT@
 DOXYGEN_BIN = @DOXYGEN_BIN@
 DSYMUTIL = @DSYMUTIL@
 DUMPBIN = @DUMPBIN@
@@ -641,6 +645,7 @@ FFLAGS = @FFLAGS@
 FFTW3_LIB = @FFTW3_LIB@
 FFTW_ENABLE = @FFTW_ENABLE@
 FGREP = @FGREP@
+FILECMD = @FILECMD@
 FLEXDOCK = @FLEXDOCK@
 FLIBS = @FLIBS@
 FOP = @FOP@
@@ -671,17 +676,27 @@ INSTALL_SCRIPT = @INSTALL_SCRIPT@
 INSTALL_STRIP_PROGRAM = @INSTALL_STRIP_PROGRAM@
 INTLLIBS = @INTLLIBS@
 INTL_MACOSX_LIBS = @INTL_MACOSX_LIBS@
+ISTACK_COMMONS_RUNTIME = @ISTACK_COMMONS_RUNTIME@
+JAKARTA_ACTIVATION = @JAKARTA_ACTIVATION@
+JAKARTA_ACTIVATION_API = @JAKARTA_ACTIVATION_API@
 JAR = @JAR@
 JAVA = @JAVA@
 JAVAC = @JAVAC@
 JAVAC_DEBUG = @JAVAC_DEBUG@
 JAVADOC = @JAVADOC@
+JAVAFX_BASE = @JAVAFX_BASE@
+JAVAFX_GRAPHICS = @JAVAFX_GRAPHICS@
+JAVAFX_SWING = @JAVAFX_SWING@
 JAVASCI_ENABLE = @JAVASCI_ENABLE@
+JAVAX_ANNOTATION = @JAVAX_ANNOTATION@
 JAVA_ENABLE = @JAVA_ENABLE@
 JAVA_G = @JAVA_G@
 JAVA_HOME = @JAVA_HOME@
 JAVA_JNI_INCLUDE = @JAVA_JNI_INCLUDE@
 JAVA_JNI_LIBS = @JAVA_JNI_LIBS@
+JAXB_API = @JAXB_API@
+JAXB_IMPL = @JAXB_IMPL@
+JAXB_RUNTIME = @JAXB_RUNTIME@
 JDB = @JDB@
 JEUCLID_CORE = @JEUCLID_CORE@
 JGRAPHX = @JGRAPHX@
@@ -692,6 +707,9 @@ JOGL2 = @JOGL2@
 JROSETTA_API = @JROSETTA_API@
 JROSETTA_ENGINE = @JROSETTA_ENGINE@
 JUNIT4 = @JUNIT4@
+KLU_CFLAGS = @KLU_CFLAGS@
+KLU_ENABLE = @KLU_ENABLE@
+KLU_LIBS = @KLU_LIBS@
 LAPACK_LIBS = @LAPACK_LIBS@
 LCOV = @LCOV@
 LD = @LD@
@@ -699,6 +717,9 @@ LDFLAGS = @LDFLAGS@
 LEX = @LEX@
 LEXLIB = @LEXLIB@
 LEX_OUTPUT_ROOT = @LEX_OUTPUT_ROOT@
+LIBARCHIVE_CFLAGS = @LIBARCHIVE_CFLAGS@
+LIBARCHIVE_LIBS = @LIBARCHIVE_LIBS@
+LIBARCHIVE_VERSION = @LIBARCHIVE_VERSION@
 LIBICONV = @LIBICONV@
 LIBINTL = @LIBINTL@
 LIBM = @LIBM@
@@ -799,7 +820,7 @@ TCL_INC_PATH = @TCL_INC_PATH@
 TK_INC_PATH = @TK_INC_PATH@
 UMFPACK_CFLAGS = @UMFPACK_CFLAGS@
 UMFPACK_ENABLE = @UMFPACK_ENABLE@
-UMFPACK_LIB = @UMFPACK_LIB@
+UMFPACK_LIBS = @UMFPACK_LIBS@
 USE_NLS = @USE_NLS@
 VALGRIND_CFLAGS = @VALGRIND_CFLAGS@
 VALGRIND_LIBS = @VALGRIND_LIBS@
@@ -922,7 +943,9 @@ GUI_C_SOURCES = \
     src/c/checkColorRange.c \
     src/c/messageboxoptions.c \
     src/c/ScilabTermination.c \
-    src/jni/ScilabTermination_wrap.c
+    src/jni/ScilabTermination_wrap.c \
+    src/c/getHandleType.c \
+    src/c/getUIStyle.c
 
 GUI_CXX_SOURCES = \
     src/cpp/InitializeGUI.cpp \
@@ -1169,6 +1192,7 @@ images/icons/16x16/actions/edit-undo.png \
 images/icons/16x16/actions/execute-all.png \
 images/icons/16x16/actions/filter.png \
 images/icons/16x16/actions/format-text-bold.png \
+images/icons/16x16/actions/ged_move.png \
 images/icons/16x16/actions/go-bottom.png \
 images/icons/16x16/actions/go-next.png \
 images/icons/16x16/actions/go-previous.png \
@@ -1220,6 +1244,7 @@ images/icons/16x16/mimetypes/text-csv.png \
 images/icons/16x16/mimetypes/text-html.png \
 images/icons/16x16/mimetypes/text-x-generic.png \
 images/icons/16x16/mimetypes/text-xml.png \
+images/icons/16x16/mimetypes/x-office-presentation.png \
 images/icons/16x16/mimetypes/application-mat.png \
 images/icons/16x16/places/folder.png \
 images/icons/16x16/places/folder-saved-search.png \
@@ -1247,7 +1272,7 @@ images/icons/48x48/emblems/emblem-readonly.png \
 images/icons/64x40/mimetypes/application-x-scilab-champ.png \
 images/icons/64x40/mimetypes/application-x-scilab-contour2d.png \
 images/icons/64x40/mimetypes/application-x-scilab-grayplot.png \
-images/icons/64x40/mimetypes/application-x-scilab-hist3d.png \
+images/icons/64x40/mimetypes/application-x-scilab-bar3d.png \
 images/icons/64x40/mimetypes/application-x-scilab-histplot.png \
 images/icons/64x40/mimetypes/application-x-scilab-Matplot.png \
 images/icons/64x40/mimetypes/application-x-scilab-mesh.png \
@@ -1258,7 +1283,6 @@ images/icons/64x40/mimetypes/application-x-scilab-Sgrayplot.png \
 images/icons/64x40/mimetypes/application-x-scilab-surf.png \
 images/icons/256x256/apps/accessories-text-editor.png \
 images/icons/256x256/apps/puffin.png \
-images/icons/256x256/apps/scilabMacOS.png \
 images/icons/256x256/apps/rrze_table.png \
 images/icons/256x256/apps/system-search.png \
 images/icons/256x256/apps/utilities-system-monitor.png \
@@ -1468,6 +1492,10 @@ src/jni/$(DEPDIR)/$(am__dirstamp):
 	@: > src/jni/$(DEPDIR)/$(am__dirstamp)
 src/jni/libscigui_algo_la-ScilabTermination_wrap.lo:  \
 	src/jni/$(am__dirstamp) src/jni/$(DEPDIR)/$(am__dirstamp)
+src/c/libscigui_algo_la-getHandleType.lo: src/c/$(am__dirstamp) \
+	src/c/$(DEPDIR)/$(am__dirstamp)
+src/c/libscigui_algo_la-getUIStyle.lo: src/c/$(am__dirstamp) \
+	src/c/$(DEPDIR)/$(am__dirstamp)
 src/cpp/$(am__dirstamp):
 	@$(MKDIR_P) src/cpp
 	@: > src/cpp/$(am__dirstamp)
@@ -1895,7 +1923,9 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@src/c/$(DEPDIR)/libscigui_algo_la-addmenu.Plo@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@src/c/$(DEPDIR)/libscigui_algo_la-buildMainWindowTitle.Plo@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@src/c/$(DEPDIR)/libscigui_algo_la-checkColorRange.Plo@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@src/c/$(DEPDIR)/libscigui_algo_la-getHandleType.Plo@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@src/c/$(DEPDIR)/libscigui_algo_la-getMainWindowTitle.Plo@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@src/c/$(DEPDIR)/libscigui_algo_la-getUIStyle.Plo@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@src/c/$(DEPDIR)/libscigui_algo_la-messageboxoptions.Plo@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@src/c/$(DEPDIR)/libscigui_algo_la-setMainWindowTitle.Plo@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@src/cpp/$(DEPDIR)/libscigui_algo_la-CallClipboard.Plo@am__quote@ # am--include-marker
@@ -2077,6 +2107,20 @@ src/jni/libscigui_algo_la-ScilabTermination_wrap.lo: src/jni/ScilabTermination_w
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='src/jni/ScilabTermination_wrap.c' object='src/jni/libscigui_algo_la-ScilabTermination_wrap.lo' libtool=yes @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libscigui_algo_la_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o src/jni/libscigui_algo_la-ScilabTermination_wrap.lo `test -f 'src/jni/ScilabTermination_wrap.c' || echo '$(srcdir)/'`src/jni/ScilabTermination_wrap.c
+
+src/c/libscigui_algo_la-getHandleType.lo: src/c/getHandleType.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libscigui_algo_la_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT src/c/libscigui_algo_la-getHandleType.lo -MD -MP -MF src/c/$(DEPDIR)/libscigui_algo_la-getHandleType.Tpo -c -o src/c/libscigui_algo_la-getHandleType.lo `test -f 'src/c/getHandleType.c' || echo '$(srcdir)/'`src/c/getHandleType.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) src/c/$(DEPDIR)/libscigui_algo_la-getHandleType.Tpo src/c/$(DEPDIR)/libscigui_algo_la-getHandleType.Plo
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='src/c/getHandleType.c' object='src/c/libscigui_algo_la-getHandleType.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libscigui_algo_la_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o src/c/libscigui_algo_la-getHandleType.lo `test -f 'src/c/getHandleType.c' || echo '$(srcdir)/'`src/c/getHandleType.c
+
+src/c/libscigui_algo_la-getUIStyle.lo: src/c/getUIStyle.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libscigui_algo_la_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT src/c/libscigui_algo_la-getUIStyle.lo -MD -MP -MF src/c/$(DEPDIR)/libscigui_algo_la-getUIStyle.Tpo -c -o src/c/libscigui_algo_la-getUIStyle.lo `test -f 'src/c/getUIStyle.c' || echo '$(srcdir)/'`src/c/getUIStyle.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) src/c/$(DEPDIR)/libscigui_algo_la-getUIStyle.Tpo src/c/$(DEPDIR)/libscigui_algo_la-getUIStyle.Plo
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='src/c/getUIStyle.c' object='src/c/libscigui_algo_la-getUIStyle.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libscigui_algo_la_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o src/c/libscigui_algo_la-getUIStyle.lo `test -f 'src/c/getUIStyle.c' || echo '$(srcdir)/'`src/c/getUIStyle.c
 
 src/nogui/libscigui_disable_la-nogui.lo: src/nogui/nogui.c
 @am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libscigui_disable_la_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT src/nogui/libscigui_disable_la-nogui.lo -MD -MP -MF src/nogui/$(DEPDIR)/libscigui_disable_la-nogui.Tpo -c -o src/nogui/libscigui_disable_la-nogui.lo `test -f 'src/nogui/nogui.c' || echo '$(srcdir)/'`src/nogui/nogui.c
@@ -3345,7 +3389,9 @@ distclean: distclean-am
 	-rm -f src/c/$(DEPDIR)/libscigui_algo_la-addmenu.Plo
 	-rm -f src/c/$(DEPDIR)/libscigui_algo_la-buildMainWindowTitle.Plo
 	-rm -f src/c/$(DEPDIR)/libscigui_algo_la-checkColorRange.Plo
+	-rm -f src/c/$(DEPDIR)/libscigui_algo_la-getHandleType.Plo
 	-rm -f src/c/$(DEPDIR)/libscigui_algo_la-getMainWindowTitle.Plo
+	-rm -f src/c/$(DEPDIR)/libscigui_algo_la-getUIStyle.Plo
 	-rm -f src/c/$(DEPDIR)/libscigui_algo_la-messageboxoptions.Plo
 	-rm -f src/c/$(DEPDIR)/libscigui_algo_la-setMainWindowTitle.Plo
 	-rm -f src/cpp/$(DEPDIR)/libscigui_algo_la-CallClipboard.Plo
@@ -3537,7 +3583,9 @@ maintainer-clean: maintainer-clean-am
 	-rm -f src/c/$(DEPDIR)/libscigui_algo_la-addmenu.Plo
 	-rm -f src/c/$(DEPDIR)/libscigui_algo_la-buildMainWindowTitle.Plo
 	-rm -f src/c/$(DEPDIR)/libscigui_algo_la-checkColorRange.Plo
+	-rm -f src/c/$(DEPDIR)/libscigui_algo_la-getHandleType.Plo
 	-rm -f src/c/$(DEPDIR)/libscigui_algo_la-getMainWindowTitle.Plo
+	-rm -f src/c/$(DEPDIR)/libscigui_algo_la-getUIStyle.Plo
 	-rm -f src/c/$(DEPDIR)/libscigui_algo_la-messageboxoptions.Plo
 	-rm -f src/c/$(DEPDIR)/libscigui_algo_la-setMainWindowTitle.Plo
 	-rm -f src/cpp/$(DEPDIR)/libscigui_algo_la-CallClipboard.Plo

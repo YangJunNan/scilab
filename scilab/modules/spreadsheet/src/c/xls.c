@@ -705,7 +705,7 @@ static void getSST(int *fd, short Len, int BIFF, int *ns, char ***sst, int *err)
             {
                 goto ErrL;
             }
-            memset(*sst, NULL, nm * sizeof(char*));
+            memset(*sst, 0, nm * sizeof(char*));
 
             for (i = 0; i < nm; i++) /* LOOP ON STRINGS */
             {
@@ -1068,12 +1068,12 @@ static void getBoundsheets(int * fd, char ***Sheetnames, int** Abspos, int *nshe
     {
         goto ErrL;
     }
-    memset(*Sheetnames, NULL, ns * sizeof(char*));
+    memset(*Sheetnames, 0, ns * sizeof(char*));
     if ( (*Abspos = (int *)MALLOC(ns * sizeof(int))) == NULL)
     {
         goto ErrL;
     }
-    memset(*Abspos, NULL, ns * sizeof(int));
+    memset(*Abspos, 0, ns * sizeof(int));
 
     /* rescan boundsheet sequence to get the data */
     *cur_pos = pos;

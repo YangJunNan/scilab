@@ -14,6 +14,9 @@
  */
 
 #include "checkers/DeprecatedChecker.hxx"
+#include "callexp.hxx"
+#include "simplevar.hxx"
+#include "doubleexp.hxx"
 
 namespace slint
 {
@@ -92,10 +95,17 @@ std::unordered_map<std::wstring, std::wstring> DeprecatedChecker::initDep()
     // TODO: get this list from a conf file
     std::unordered_map<std::wstring, std::wstring> map;
 
+    // Scilab 2024.0.0 => 2025.0.0
+
+    // Scilab 2023.1.0 => 2025.0.0
+    map.emplace(L"getURL", L"http_get");
+    map.emplace(L"splitURL", L"url_split");
+    map.emplace(L"sound", L"playsnd");
+
     // Scilab 2023.0.0 => 2024.0.0
-    map.emplace(L"xget()", L"");
-    map.emplace(L"xset()", L"");
-    map.emplace(L"svd(X,0)", L"svd(X,\"e\")");
+    map.emplace(L"xget", L"");
+    map.emplace(L"xset", L"");
+    //map.emplace(L"svd(X,0)", L"svd(X,\"e\")"); // will never be detected as is
     map.emplace(L"plotframe", L"plot2d");
 
     // Scilab 6.1.x => 2023.0.0

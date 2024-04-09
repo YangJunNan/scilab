@@ -571,7 +571,7 @@ std::string toJSON(scilabEnv env, scilabVar var, int indent)
 std::string toJSON(types::InternalType* it, int indent)
 {
     std::wostringstream os;
-    scilabVar var = (int*)it;
+    scilabVar var = (scilabVar)it;
 
     export_data(nullptr, var, indent, os);
 
@@ -820,49 +820,47 @@ scilabVar createScilabVar(scilabEnv env, const JSONVar* v)
                         scilab_setStructMatrix2dData(env, ret, fields[i], 0, 0, var);
                     }
                     break;
-
-                    case 1:
+                }
+                case 1:
+                {
+                    if (v->dims[0] == 1) //single struct [{"toto":42}]
                     {
-                        if (v->dims[0] == 1) //single struct [{"toto":42}]
-                        {
-                            ret = scilab_createStruct(env);
-                            for (size_t i = 0; i < fsize; ++i)
-                            {
-                                scilab_addField(env, ret, fields[i]);
-                                scilabVar var = createScilabVar(env, v->o.at(v->fields[i])[0]);
-                                scilab_setStructMatrix2dData(env, ret, fields[i], 0, 0, var);
-                            }
-                        }
-                        else //row vector [{"toto":1},{"toto":2}]
-                        {
-                            ret = scilab_createStructMatrix2d(env, 1, size);
-                            for (size_t i = 0; i < fsize; ++i)
-                            {
-                                scilab_addField(env, ret, fields[i]);
-                                for (int x = 0; x < size; ++x)
-                                {
-                                    scilabVar var = createScilabVar(env, v->o.at(v->fields[i])[x]);
-                                    scilab_setStructMatrix2dData(env, ret, fields[i], 0, x, var);
-                                }
-                            }
-                        }
-
-                        break;
-                    }
-
-                    default: //2 and more
-                    {
-                        ret = scilab_createStructMatrix(env, (int)v->dims.size(), v->dims.data());
+                        ret = scilab_createStruct(env);
                         for (size_t i = 0; i < fsize; ++i)
                         {
                             scilab_addField(env, ret, fields[i]);
-                            std::vector<int> index(v->dims.size());
+                            scilabVar var = createScilabVar(env, v->o.at(v->fields[i])[0]);
+                            scilab_setStructMatrix2dData(env, ret, fields[i], 0, 0, var);
+                        }
+                    }
+                    else //row vector [{"toto":1},{"toto":2}]
+                    {
+                        ret = scilab_createStructMatrix2d(env, 1, size);
+                        for (size_t i = 0; i < fsize; ++i)
+                        {
+                            scilab_addField(env, ret, fields[i]);
                             for (int x = 0; x < size; ++x)
                             {
-                                getIndexArray(x, v->dims, index);
                                 scilabVar var = createScilabVar(env, v->o.at(v->fields[i])[x]);
-                                scilab_setStructMatrixData(env, ret, fields[i], index.data(), var);
+                                scilab_setStructMatrix2dData(env, ret, fields[i], 0, x, var);
                             }
+                        }
+                    }
+
+                    break;
+                }
+                default: //2 and more
+                {
+                    ret = scilab_createStructMatrix(env, (int)v->dims.size(), v->dims.data());
+                    for (size_t i = 0; i < fsize; ++i)
+                    {
+                        scilab_addField(env, ret, fields[i]);
+                        std::vector<int> index(v->dims.size());
+                        for (int x = 0; x < size; ++x)
+                        {
+                            getIndexArray(x, v->dims, index);
+                            scilabVar var = createScilabVar(env, v->o.at(v->fields[i])[x]);
+                            scilab_setStructMatrixData(env, ret, fields[i], index.data(), var);
                         }
                     }
                 }
@@ -1329,6 +1327,11 @@ JSONVar* import_data(const jsmntok_t* t)
                         v->kind = JSON_STRUCT;
                         break;
                     }
+                    default:
+                    {
+                        //heterogeneous -> list
+                        v->kind = JSON_LIST;
+                    }
                 }
             }
             else
@@ -1360,16 +1363,22 @@ types::InternalType* fromJSON(const std::string& s)
         return nullptr;
     }
 
-    //reset parser
+    if (r > 1)
+    {
+        // test if its JSON data
+        jsmn_init(&p);
+        jsmntok_t test;
+        jsmn_parse(&p, json.data(), (int)json.size(), &test, 1);
+        if(test.type != JSMN_ARRAY && test.type != JSMN_OBJECT)
+        {
+            return nullptr;
+        }
+    }
+
+    // parse all JSON data
     jsmn_init(&p);
     jsmntok_t* t = new jsmntok_t[r];
     jsmn_parse(&p, json.data(), (int)json.size(), t, r);
-
-    if (r > 1 && t[0].type != JSMN_ARRAY && t[0].type != JSMN_OBJECT)
-    {
-        delete[] t;
-        return nullptr;
-    }
 
     token_offset = 0;
     JSONVar* v = import_data(t);

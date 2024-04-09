@@ -100,6 +100,10 @@
 #define SCI_CLOSE_CALL		        SCI_RPAREN
 #define SCI_ARGS_SEPARATOR	        SCI_COMMA
 
+// Syntax to have arguments control structure
+#define SCI_ARGUMENTS               L"arguments"
+#define SCI_ARGUMENTS_END           L"end"
+
 // Syntax to have if control structure
 #define SCI_IF			            L"if"
 #define SCI_THEN		            L"then"

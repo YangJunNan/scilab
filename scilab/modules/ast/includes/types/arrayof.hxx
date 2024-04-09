@@ -192,7 +192,7 @@ public :
         return m_pImgData != NULL;
     }
 
-    virtual bool isComplexElement(int idx)
+    virtual bool isComplexElement(int /*idx*/)
     {
         return isComplex();
     }
@@ -246,8 +246,9 @@ public :
         {
             if (m_pImgData == NULL)
             {
-                m_pImgData = allocData(m_iSize);
-                memset(m_pImgData, 0x00, sizeof(T) * m_iSize);
+                // m_iSizeMax = m_iSize + 10%
+                m_pImgData = allocData(m_iSizeMax);
+                memset(m_pImgData, 0x00, sizeof(T) * m_iSizeMax);
             }
         }
 

@@ -14,6 +14,10 @@
  */
 
 #include "checkers/VariablesChecker.hxx"
+#include "assignlistexp.hxx"
+#include "simplevar.hxx"
+#include "fieldexp.hxx"
+#include "vardec.hxx"
 
 namespace slint
 {

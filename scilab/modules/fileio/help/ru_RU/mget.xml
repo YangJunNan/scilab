@@ -314,12 +314,6 @@ end
                 <link linkend="meof">meof</link>
             </member>
             <member>
-                <link linkend="readb">readb</link>
-            </member>
-            <member>
-                <link linkend="read4b">read4b</link>
-            </member>
-            <member>
                 <link linkend="inttype">inttype</link>
             </member>
         </simplelist>

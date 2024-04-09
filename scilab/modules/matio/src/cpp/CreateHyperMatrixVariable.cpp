@@ -71,11 +71,26 @@ int CreateHyperMatrixVariable(void *pvApiCtx, int iVar, int type, int *iscomplex
         break;
         case MAT_C_UINT8: /* 9 */
         {
-            types::UInt8* pUInt8 = new types::UInt8(rank[0], dims);
+            if (matVariable->isLogical)
+            {
+                types::Bool* pBool = new types::Bool(rank[0], dims);
 
-            pUInt8->set((unsigned char*)matVariable->data);
+                int iSize = pBool->getSize();
+                for (int i = 0; i < iSize; i++)
+                {
+                    pBool->set(i, ((unsigned char*)matVariable->data)[i]);
+                }
 
-            out[rhs - 1] = pUInt8;
+                out[rhs - 1] = pBool;
+            }
+            else
+            {
+                types::UInt8* pUInt8 = new types::UInt8(rank[0], dims);
+
+                pUInt8->set((unsigned char*)matVariable->data);
+
+                out[rhs - 1] = pUInt8;
+            }
         }
         break;
         case MAT_C_INT16: /* 10 */
@@ -89,11 +104,26 @@ int CreateHyperMatrixVariable(void *pvApiCtx, int iVar, int type, int *iscomplex
         break;
         case MAT_C_UINT16: /* 11 */
         {
-            types::UInt16* pUInt16 = new types::UInt16(rank[0], dims);
+            if (matVariable->isLogical)
+            {
+                types::Bool* pBool = new types::Bool(rank[0], dims);
 
-            pUInt16->set((unsigned short*)matVariable->data);
+                int iSize = pBool->getSize();
+                for (int i = 0; i < iSize; i++)
+                {
+                    pBool->set(i, ((unsigned short*)matVariable->data)[i]);
+                }
 
-            out[rhs - 1] = pUInt16;
+                out[rhs - 1] = pBool;
+            }
+            else
+            {
+                types::UInt16* pUInt16 = new types::UInt16(rank[0], dims);
+
+                pUInt16->set((unsigned short*)matVariable->data);
+
+                out[rhs - 1] = pUInt16;
+            }
         }
         break;
         case MAT_C_INT32: /* 12 */
@@ -107,11 +137,26 @@ int CreateHyperMatrixVariable(void *pvApiCtx, int iVar, int type, int *iscomplex
         break;
         case MAT_C_UINT32: /* 13 */
         {
-            types::UInt32* pUInt32 = new types::UInt32(rank[0], dims);
+            if (matVariable->isLogical)
+            {
+                types::Bool* pBool = new types::Bool(rank[0], dims);
 
-            pUInt32->set((unsigned int*)matVariable->data);
+                int iSize = pBool->getSize();
+                for (int i = 0; i < iSize; i++)
+                {
+                    pBool->set(i, ((unsigned int*)matVariable->data)[i]);
+                }
 
-            out[rhs - 1] = pUInt32;
+                out[rhs - 1] = pBool;
+            }
+            else
+            {
+                types::UInt32* pUInt32 = new types::UInt32(rank[0], dims);
+
+                pUInt32->set((unsigned int*)matVariable->data);
+
+                out[rhs - 1] = pUInt32;
+            }
         }
         break;
 #ifdef __SCILAB_INT64__

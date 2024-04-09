@@ -11,10 +11,11 @@
 // <-- XCOS TEST -->
 //
 
+loadXcosLibs();
 ilib_verbose(0); //to remove ilib_* traces
 
 // Import diagram
-assert_checktrue(importXcosDiagram("SCI/modules/xcos/tests/unit_tests/Solvers/DAE/Bouncing.zcos"));
+exec("SCI/modules/scicos/tests/unit_tests/Solvers/DAE/Bouncing.sce");
 
 IDA_val_ref = [ 10.
 11.3875

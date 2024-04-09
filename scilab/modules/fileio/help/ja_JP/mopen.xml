@@ -157,7 +157,7 @@
                         </tr>
 
                     </informaltable>
-
+                    <warning>When this output argument is given, no error will be raised by the function.</warning>
                 </listitem>
 
             </varlistentry>
@@ -632,4 +632,3 @@ mclose(fd_rb)
     </refsection>
 
 </refentry>
-

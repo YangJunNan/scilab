@@ -50,7 +50,7 @@
                     </itemizedlist>
                     </para>
                     <para>この関数はUTFのファイル名をオープンすることができません.
-                        この場合は <link linkend="file">mopen</link> を使用してください.
+                        この場合は <link linkend="file">file</link> を使用してください.
                     </para>
                 </listitem>
             </varlistentry>
@@ -147,9 +147,6 @@ write('foo',A)
                 <link linkend="save">save</link>
             </member>
             <member>
-                <link linkend="writb">writb</link>
-            </member>
-            <member>
                 <link linkend="file">file</link>
             </member>
             <member>
@@ -168,5 +165,16 @@ write('foo',A)
                 <link linkend="fprintfMat">fprintfMat</link>
             </member>
         </simplelist>
+    </refsection>
+    <refsection role="history">
+        <title>履歴</title>
+        <revhistory>
+            <revision>
+                <revnumber>2023.1</revnumber>
+                <revdescription>
+                    write(…) overwrites existing file.
+                </revdescription>
+            </revision>
+        </revhistory>
     </refsection>
 </refentry>

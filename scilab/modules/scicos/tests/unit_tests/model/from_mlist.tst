@@ -6,14 +6,15 @@
 // =============================================================================
 //
 // <-- XCOS TEST -->
-//
 // <-- CLI SHELL MODE -->
+//
 
 scicos_log("TRACE");
 loadXcosLibs
 
 // Loading a Superblock containing an mlist as subdiagram
-exec("SCI/modules/scicos/palettes/Lookup_Tables.cosf", -1);
+fname = ls("SCI/modules/scicos/palettes/Lookup_Tables.cosf");
+exec(fname, -1);
 
 // Check that all the model items are freed
 clear

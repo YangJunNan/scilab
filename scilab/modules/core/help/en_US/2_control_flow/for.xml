@@ -87,10 +87,6 @@ end
 
 for i = 1:5, disp(i); end
 ]]></programlisting>
-        <warning>
-            The number of characters used to define the body of any loop or conditional instruction
-            (if while for or select/case) must be limited to 16 kB.
-        </warning>
     </refsection>
 
     <refsection>
@@ -208,9 +204,16 @@ for j = 1:n, v = a(:,j), write(%io(2),v), end
             <revision>
                 <revnumber>6.0.0</revnumber>
                 <revdescription>
-                  The for <literal>source</literal> can now be a vector of graphic handles.
-                  <literal>for</literal> is now protected:
-                  Assignments like <literal>for=1</literal> are no longer possible.
+                    <itemizedlist>
+                        <listitem>
+                            The for <literal>expression</literal> can now be a vector of graphic handles.
+                            <literal>for</literal> is now protected:
+                            Assignments like <literal>for=1</literal> are no longer possible.
+                        </listitem>
+                        <listitem>
+                            The number of characters used to define the body of any conditional instruction (<literal>if</literal>, <literal>while</literal>, <literal>for</literal>, or <literal>select/case</literal>) is no more limited to 16k.
+                        </listitem>
+                    </itemizedlist>
                 </revdescription>
             </revision>
             <revision>

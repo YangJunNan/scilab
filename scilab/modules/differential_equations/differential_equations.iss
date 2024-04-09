@@ -20,13 +20,20 @@
 ;--------------------------------------------------------------------------------------------------------------
 ;
 #define DIFFEQU "differential_equations"
+#define PATCHSUN "patched_sundials"
 ;
 Source: bin\{#DIFFEQU}_f.dll; DestDir: {app}\bin; Components: {#COMPN_SCILAB}
 Source: bin\{#DIFFEQU}_f.lib; DestDir: {app}\bin; Components: {#COMPN_SCILAB}
 Source: bin\{#DIFFEQU}.dll; DestDir: {app}\bin; Components: {#COMPN_SCILAB}
 Source: bin\{#DIFFEQU}_gw.dll; DestDir: {app}\bin; Components: {#COMPN_SCILAB}
+Source: bin\{#PATCHSUN}.dll; DestDir: {app}\bin; Components: {#COMPN_SCILAB}
+Source: bin\{#PATCHSUN}.lib; DestDir: {app}\bin; Components: {#COMPN_SCILAB}
 ;
 Source: modules\{#DIFFEQU}\license.txt; DestDir: {app}\modules\{#DIFFEQU}; Components: {#COMPN_SCILAB}
+;
+Source: modules\{#DIFFEQU}\src\patched_sundials\include\sundials\*.*; DestDir: {app}\modules\{#DIFFEQU}\includes\sundials; Flags: recursesubdirs; Components: {#COMPN_SCILAB}
+Source: modules\{#DIFFEQU}\src\patched_sundials\include\sunmatrix\*.*; DestDir: {app}\modules\{#DIFFEQU}\includes\sunmatrix; Flags: recursesubdirs; Components: {#COMPN_SCILAB}
+Source: modules\{#DIFFEQU}\src\patched_sundials\include\nvector\*.*; DestDir: {app}\modules\{#DIFFEQU}\includes\nvector; Flags: recursesubdirs; Components: {#COMPN_SCILAB}
 ;
 Source: modules\{#DIFFEQU}\sci_gateway\{#DIFFEQU}_gateway.xml; DestDir: {app}\modules\{#DIFFEQU}\sci_gateway; Components: {#COMPN_SCILAB}
 ;

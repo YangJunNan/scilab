@@ -24,6 +24,7 @@ extern "C"
 #include "matrix_power.h"
 #include "localization.h"
 #include "charEncoding.h"
+#include "sciprint.h"
 }
 
 using namespace types;
@@ -237,60 +238,7 @@ int PowerDoubleByDouble(Double* _pDouble1, Double* _pDouble2, Double** _pDoubleO
 
     if (bScalar2)
     {
-        if (_pDouble1->isVector())
-        {
-            //_pDouble1 is a vector and _pDouble is a scalar
-            *_pDoubleOut = new Double(_pDouble1->getDims(), _pDouble1->getDimsArray(), true);
-
-            if (bComplex1 == false && bComplex2 == false)
-            {
-                for (int i = 0 ; i < (*_pDoubleOut)->getSize() ; i++)
-                {
-                    iPowerRealScalarByRealScalar(
-                        _pDouble1->get(i),
-                        _pDouble2->get(0),
-                        &(*_pDoubleOut)->get()[i], &(*_pDoubleOut)->getImg()[i], &iComplex);
-                }
-            }
-            else if (bComplex1 == false && bComplex2 == true)
-            {
-                for (int i = 0 ; i < (*_pDoubleOut)->getSize() ; i++)
-                {
-                    iPowerRealScalarByComplexScalar(
-                        _pDouble1->get(i),
-                        _pDouble2->get(0), _pDouble2->getImg(0),
-                        &(*_pDoubleOut)->get()[i], &(*_pDoubleOut)->getImg()[i]);
-                }
-            }
-            else if (bComplex1 == true && bComplex2 == false)
-            {
-                for (int i = 0 ; i < (*_pDoubleOut)->getSize() ; i++)
-                {
-                    iPowerComplexScalarByRealScalar(
-                        _pDouble1->get(i), _pDouble1->getImg(i),
-                        _pDouble2->get(0),
-                        &(*_pDoubleOut)->get()[i], &(*_pDoubleOut)->getImg()[i]);
-                }
-            }
-            else if (bComplex1 == true && bComplex2 == true)
-            {
-                for (int i = 0 ; i < (*_pDoubleOut)->getSize() ; i++)
-                {
-                    iPowerComplexScalarByComplexScalar(
-                        _pDouble1->get(i), _pDouble1->getImg(i),
-                        _pDouble2->get(0), _pDouble2->getImg(0),
-                        &(*_pDoubleOut)->get()[i], &(*_pDoubleOut)->getImg()[i]);
-                }
-            }
-
-            if (iComplex == 0)
-            {
-                (*_pDoubleOut)->setComplex(false);
-            }
-
-            return 0;
-        }
-        else if (_pDouble1->getRows() == _pDouble1->getCols() && _pDouble1->getDims() == 2)
+        if (_pDouble1->getRows() == _pDouble1->getCols() && _pDouble1->getDims() == 2)
         {
             //power of a square matrix by a scalar exponent.
             int iRet = 0;

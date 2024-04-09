@@ -14,6 +14,7 @@
  */
 
 #include "checkers/UselessArgChecker.hxx"
+#include "simplevar.hxx"
 
 namespace slint
 {

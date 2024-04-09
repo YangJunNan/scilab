@@ -20,5 +20,5 @@
 
 dest = TMPDIR+"/test space";
 copyfile(SCI+"/contrib/toolbox_skeleton", dest);
-assert_checkequal(tbx_generate_pofile(dest), TMPDIR+"/test space/locales/en_US.po");
+assert_checkequal(tbx_generate_pofile(dest), fullfile(TMPDIR, "test space/locales/en_US.po"));
 removedir(dest);

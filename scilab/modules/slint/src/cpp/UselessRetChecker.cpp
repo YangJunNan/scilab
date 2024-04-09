@@ -14,6 +14,7 @@
  */
 
 #include "checkers/UselessRetChecker.hxx"
+#include "simplevar.hxx"
 
 namespace slint
 {

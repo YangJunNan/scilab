@@ -14,6 +14,7 @@ ilib_verbose(0); //to remove ilib_* traces
 
 // Import diagram
 assert_checktrue(importXcosDiagram("SCI/modules/xcos/tests/unit_tests/Solvers/DAE/RLC.zcos"));
+title = scs_m.props.title(1);
 
 for i=2:3
 
@@ -21,11 +22,13 @@ for i=2:3
     scs_m.props.context = "per = 5*10^-"+string(i);
 
     // Modify solver + run DDaskr + save results
+    scs_m.props.title(1) = title + "_ddaskr" + string(i);
     scs_m.props.tol(6) = 102;     // Solver
     scicos_simulate(scs_m); // DDaskr
     ddaskrval = res.values;       // Results
 
     // Modify solver + run IDA + save results
+    scs_m.props.title(1) = title + "_ida" + string(i);
     scs_m.props.tol(6) = 100;     // Solver
     scicos_simulate(scs_m); // IDA
     idaval = res.values;          // Results

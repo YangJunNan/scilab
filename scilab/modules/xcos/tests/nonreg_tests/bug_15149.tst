@@ -20,6 +20,8 @@
 
 loadXcosLibs();
 
+H = 1 / (1 + %s);
+
 // load and save
 scs_m1 = xcosDiagramToScilab("SCI/modules/xcos/tests/nonreg_tests/bug_15149.zcos");
 xcosDiagramToScilab("TMPDIR/foo.zcos", scs_m1);
@@ -64,7 +66,6 @@ end
 
 
 // simulate scs_m1 and scs_m2
-// warnings are possible but scs_m2 simulation should pass and should not
 // destroy scs_m1 nor scs_m3 objects
 
 scicos_simulate(scs_m1, "nw");

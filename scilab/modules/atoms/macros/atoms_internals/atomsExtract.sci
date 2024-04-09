@@ -68,37 +68,9 @@ function dir_created = atomsExtract(archive_in,dir_out)
     // =========================================================================
     dirs_before = atomsListDir(dir_out);
 
-    // Build the extract command
+    // Extract the toolbox
     // =========================================================================
-
-    if regexp(archive_in,"/(\.tar\.gz|\.tgz)$/","o") <> [] then
-
-        extract_cmd = "tar xzf "+ archive_in + " -C """+ pathconvert(dir_out,%F) + """";
-
-    elseif regexp(archive_in,"/\.zip$/","o") <> [] then
-
-        if getos() == "Windows" then
-            extract_cmd = """" + getshortpathname(pathconvert(SCI+"/tools/zip/unzip.exe",%F)) + """";
-        else
-            extract_cmd = "unzip";
-        end
-
-        extract_cmd = extract_cmd + " -q -o """ + archive_in + """ -d """ + pathconvert(dir_out,%F) +"""";
-
-        if getos() == "Darwin"
-            extract_cmd = extract_cmd + " -x __MACOSX/*"
-        end
-    // else unsupported format is filtered out at the start of the function
-    end
-
-    [rep,stat,err] = unix_g(extract_cmd);
-
-    if stat ~= 0 then
-        atomsError("error", ..
-        msprintf(gettext("%s: The extraction of the archive ''%s'' has failed.\n"), ..
-        "atomsExtract", ..
-            strsubst(archive_in,"\","\\") ));
-    end
+    decompress(archive_in, pathconvert(dir_out,%F));
 
     // Get the list of directories after the extraction
     // =========================================================================

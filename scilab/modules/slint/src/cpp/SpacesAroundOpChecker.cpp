@@ -14,6 +14,7 @@
  */
 
 #include "checkers/SpacesAroundOpChecker.hxx"
+#include "assignexp.hxx"
 
 namespace slint
 {

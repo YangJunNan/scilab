@@ -48,6 +48,7 @@ import org.scilab.modules.commons.ScilabCommons;
 
 import org.scilab.modules.commons.xml.ScilabDocumentBuilderFactory;
 import org.scilab.modules.commons.xml.ScilabTransformerFactory;
+import org.scilab.modules.commons.xml.ScilabXMLUtilities;
 import org.scilab.modules.commons.xml.ScilabXPathFactory;
 import org.scilab.modules.types.ScilabList;
 import org.scilab.modules.xcos.graph.XcosDiagram;
@@ -339,6 +340,11 @@ public class XcosPackage {
             aTransformer.setOutputProperty(OutputKeys.INDENT, "yes");
             aTransformer.setOutputProperty("{http://xml.apache.org/xslt}indent-amount", "1");
 
+            // Needed since Java 9, see:
+            // https://www.oracle.com/java/technologies/javase/9-notes.html#JDK-8087303
+            // https://bugs.openjdk.org/browse/JDK-8262285
+            ScilabXMLUtilities.removeEmptyLines(manifest.getDocumentElement());
+
             final DOMSource src = new DOMSource(manifest);
             final StreamResult result = new StreamResult(zout);
             aTransformer.transform(src, result);
@@ -358,6 +364,7 @@ public class XcosPackage {
 
     public void setContent(XcosDiagram content) {
         this.content = content;
+        content.setSavedFile(file);
     }
 
     public XcosDiagram getContent() {

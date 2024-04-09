@@ -10,9 +10,6 @@ function demo_wheel2()
 
     thispath = get_absolute_file_path("wheel2.dem.sce");
 
-    my_handle = scf(100001);
-    clf(my_handle,"reset");
-
     exec(thispath+"wheel_show.sci");
 
     if ~(haveacompiler()) then
@@ -44,26 +41,39 @@ function demo_wheel2()
 
     x=ode(x0,tmin,times,"wheel");
 
+    my_handle = scf(100001);
     clf(my_handle,"reset");
-    wheel_show(x);
+
+    try
+        wheel_show(x);
+    catch
+        close(100001);
+        return
+    end
+
+    if ~is_handle_valid(my_handle) then
+        close(100001);
+        return;
+    end
 
     ystr = [ "phi";"theta";"psi";"Dpsi";"Dtheta";"Dpsi";"x";"y"];
     flag = 2;
-
-    if ~is_handle_valid(my_handle) then
-        break;
-    end
-
-    while flag==2, [n1,n2]=size(x);
-        if is_handle_valid(my_handle) then
-            flag=x_choose(["Stop";"Go on"],"Choose");
-            if flag==2 then
-                x0 = evstr(x_mdialog(["Initial conditions"],ystr,string(x(:,n2))));
-                x  = ode(x0,tmin,times,"wheel");
-                clf(my_handle,"reset");
-                if is_handle_valid(my_handle) then
-                    wheel_show(x);
-                end
+    while flag==2 then
+        [n1,n2]=size(x);
+        flag=x_choose(["Stop";"Go on"],"Choose");
+        if flag==2 then
+            x0 = evstr(x_mdialog(["Initial conditions"],ystr,string(x(:,n2))));
+            x  = ode(x0,tmin,times,"wheel");
+            clf(my_handle,"reset");
+            try
+                wheel_show(x);
+            catch
+                close(100001)
+                return
+            end
+            if ~is_handle_valid(my_handle) then
+                close(100001)
+                return;
             end
         end
     end

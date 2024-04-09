@@ -17,11 +17,11 @@
 
 if getos() == 'Windows' then
 
-    if fileinfo(SCI+'\bin\jogl_cg.dll') == [] then pause,end
-    if fileinfo(SCI+'\bin\gluegen2-rt.dll') == [] then pause,end
+    if fileinfo(SCI+'\bin\jogl_desktop.dll') == [] then pause,end
+    if fileinfo(SCI+'\bin\gluegen_rt.dll') == [] then pause,end
 
-    if fileinfo(SCI+'\thirdparty\gluegen2-rt.jar') == [] then pause,end
-    if fileinfo(SCI+'\thirdparty\jogl2.jar') == [] then pause,end
+    if fileinfo(SCI+'\thirdparty\gluegen-rt.jar') == [] then pause,end
+    if fileinfo(SCI+'\thirdparty\jogl-all.jar') == [] then pause,end
 
 end
 

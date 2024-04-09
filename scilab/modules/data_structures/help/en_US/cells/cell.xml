@@ -167,9 +167,8 @@ size(b)
             <revision>
                 <revnumber>6.0.0</revnumber>
                 <revremark>
-                    <para>
-                        Fields "entries" and "dims" do not exist anymore. To assign or extract an element, use {}.
-                    </para>
+                    Fields "entries" and "dims" do not exist anymore.
+                    To assign or extract an element, use {}.
                 </revremark>
             </revision>
         </revhistory>

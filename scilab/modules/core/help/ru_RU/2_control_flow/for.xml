@@ -126,11 +126,6 @@ end
 
 for i = 1:5, disp(i); end
 ]]></programlisting>
-        <warning>
-            Предупреждение: число символов, используемых для определения тела любой инструкции условия
-            (<literal>if while for</literal> или <literal>select/case</literal>) должно быть ограничено
-            16К.
-        </warning>
     </refsection>
 
     <refsection>

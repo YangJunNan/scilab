@@ -291,7 +291,7 @@
                     <para>
                         This argument is used when the second character <literal>y</literal>
                         of argument <varname>strf</varname> is <literal>1</literal>,
-                        <literal>3</literal> or <literal>5</literal>. It is a row vector of
+                        <literal>3</literal>, <literal>5</literal> or <literal>7</literal>. It is a row vector of
                         size 4 and gives the dimension of the frame:
                         <literal>rect = [xmin, ymin, xmax, ymax]</literal>.
                     </para>

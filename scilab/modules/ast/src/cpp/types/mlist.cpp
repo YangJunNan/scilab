@@ -117,33 +117,22 @@ bool MList::invoke(typed_list & in, optional_list & /*opt*/, int _iRetCount, typ
 
     std::wstring wstrFuncName = L"%" + getShortTypeStr() + L"_e";
 
-    try
+    ret = Overload::call(wstrFuncName, in, _iRetCount, out, false, false, e.getLocation());
+    if(ret == types::Callable::OK_NoResult)
     {
+        // overload not defined, try with the short name.
+        // to compatibility with scilab 5 code.
+        // tlist/mlist name are truncated to 8 first character
+        std::wstring stType = getShortTypeStr();
+        wstrFuncName = L"%" + stType.substr(0, 8) + L"_e";
         ret = Overload::call(wstrFuncName, in, _iRetCount, out, false, false, e.getLocation());
-        if(ret == types::Callable::OK_NoResult)
-        {
-            // overload not defined, try with the short name.
-            // to compatibility with scilab 5 code.
-            // tlist/mlist name are truncated to 8 first character
-            std::wstring stType = getShortTypeStr();
-            wstrFuncName = L"%" + stType.substr(0, 8) + L"_e";
-            ret = Overload::call(wstrFuncName, in, _iRetCount, out, false, true, e.getLocation());
-        }
     }
-    catch (const ast::InternalError& ie)
+
+    if(ret == types::Callable::OK_NoResult)
     {
-        // last error is not empty when the error have been
-        // setted by the overload itself.
-        if (ConfigVariable::getLastErrorFunction().empty())
-        {
-            wstrFuncName = L"%l_e";
-            ret = Overload::call(wstrFuncName, in, _iRetCount, out, false, true, e.getLocation());
-        }
-        else
-        {
-            // throw the exception in case where the overload have not been defined.
-            throw ie;
-        }
+        // last try that will throw an error if it not exists
+        wstrFuncName = L"%l_e";
+        ret = Overload::call(wstrFuncName, in, _iRetCount, out, false, true, e.getLocation());
     }
 
     // Remove this from "in" for keep "in" unchanged.

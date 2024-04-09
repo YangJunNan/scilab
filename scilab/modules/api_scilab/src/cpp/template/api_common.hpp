@@ -69,9 +69,6 @@ int API_PROTO(getType)(scilabEnv env, scilabVar var)
         case types::InternalType::ScilabSparseBool:
             return sci_boolean_sparse;
             break;
-            //case types::InternalType::RealMatlabSparse :
-            //    return sci_matlab_sparse;
-            //    break;
         case types::InternalType::ScilabInt8:
         case types::InternalType::ScilabUInt8:
         case types::InternalType::ScilabInt16:

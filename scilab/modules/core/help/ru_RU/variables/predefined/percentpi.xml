@@ -25,6 +25,7 @@
         <title>Синтаксис</title>
         <synopsis>%pi</synopsis>
     </refsynopsisdiv>
+    <refnamediv xml:id="pi"/>
     <refsection>
         <title>Описание</title>
         <para>

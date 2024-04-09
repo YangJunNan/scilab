@@ -98,7 +98,16 @@ public :
     {
         return true;
     }
-    bool                subMatrixToString(std::wostringstream& ostr, int* _piDims, int _iDims) override;
+
+    bool subMatrixToString(std::wostringstream& ostr, int* _piDims, int _iDims) override
+    {
+        return true;
+    }
+
+    virtual bool hasToString() override
+    {
+        return false;
+    }
 
     bool isTrue() override
     {

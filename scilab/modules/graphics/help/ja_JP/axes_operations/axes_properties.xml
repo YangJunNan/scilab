@@ -399,6 +399,16 @@
                             </listitem>
                         </varlistentry>
                         <varlistentry>
+                            <term>sub_ticks: </term>
+                            <listitem>
+                                <para>このフィールドは主目盛の間に描画される目盛の数を設定します.
+                                    このフィールドの値はベクトル <literal>[nx,ny]</literal>で,
+                                    <literal>nx</literal>はx軸の副目盛の数,
+                                    <literal>ny</literal>はy軸の副目盛の数となります.
+                                </para>
+                            </listitem>
+                        </varlistentry>
+                        <varlistentry>
                             <term>box: </term>
                             <listitem>
                                 <para>このプロパティは軸を箱で囲うかどうかを指定します.
@@ -435,16 +445,6 @@
                                     このプロパティが <literal>"off"</literal>の場合,
                                     <literal>background</literal>プロパティで指定された色により
                                     背景が描画されます.
-                                </para>
-                            </listitem>
-                        </varlistentry>
-                        <varlistentry>
-                            <term>sub_ticks: </term>
-                            <listitem>
-                                <para>このフィールドは主目盛の間に描画される目盛の数を設定します.
-                                    このフィールドの値はベクトル <literal>[nx,ny]</literal>で,
-                                    <literal>nx</literal>はx軸の副目盛の数,
-                                    <literal>ny</literal>はy軸の副目盛の数となります.
                                 </para>
                             </listitem>
                         </varlistentry>

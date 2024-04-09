@@ -439,9 +439,6 @@
 /* Define to the sub-directory where libtool stores uninstalled libraries. */
 #undef LT_OBJDIR
 
-/* Define to 0 if your system does not have the O_LARGEFILE flag */
-#undef O_LARGEFILE
-
 /* Name of package */
 #undef PACKAGE
 
@@ -475,9 +472,6 @@
 /* PCRE version */
 #undef PCRE_VERSION
 
-/* Define as the return type of signal handlers (`int' or `void'). */
-#undef RETSIGTYPE
-
 /* Extension of a shared library */
 #undef SHARED_LIB_EXT
 
@@ -495,15 +489,14 @@
    backward compatibility; new code need not use it. */
 #undef STDC_HEADERS
 
-/* Define to 1 if you can safely include both <sys/time.h> and <time.h>. This
-   macro is obsolete. */
-#undef TIME_WITH_SYS_TIME
-
 /* Define to 1 if your <sys/time.h> declares `struct tm'. */
 #undef TM_IN_SYS_TIME
 
 /* If it is UMFPACK/Suitesparse or UMFPACK standalone */
 #undef UMFPACK_SUITESPARSE
+
+/* If it is KLU/Suitesparse or KLU standalone */
+#undef KLU_SUITESPARSE
 
 /* Enable valgrind specific tweaks */
 #undef VALGRIND_ENABLE
@@ -534,6 +527,9 @@
 
 /* With the UMFPACK library */
 #undef WITH_UMFPACK
+
+/* With the KLU library */
+#undef WITH_KLU
 
 /* with XCos */
 #undef WITH_XCOS

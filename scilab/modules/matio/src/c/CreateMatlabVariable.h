@@ -146,12 +146,13 @@ int CreateDoubleVariable(void *pvApiCtx, int iVar, matvar_t *matVariable, int * 
  *
  * @param pvApiCtx Scilab context
  * @param iVar position on the stack
+ * @param integerType type of integer stored in file
  * @param matVariable Matlab variable (See MATIO library)
  * @param parent parent mlist. If NULL, a normal variable is created.
  * @param item_position position of the variable in the mlist. Only effective if parent !=NULL
  *
  * @return TRUE if the variable has been written without problem
  */
-int CreateBooleanVariable(void *pvApiCtx, int iVar, matvar_t *matVariable, int * parent, int item_position);
+int CreateBooleanVariable(void *pvApiCtx, int iVar, int integerType, matvar_t *matVariable, int * parent, int item_position);
 
 #endif /* !__CREATEMATLABVARIABLE_H__ */

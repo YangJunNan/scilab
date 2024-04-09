@@ -119,17 +119,16 @@ subdir = modules/matio
 ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
 am__aclocal_m4_deps = $(top_srcdir)/m4/ax_cxx_compile_stdcxx.m4 \
 	$(top_srcdir)/m4/backtrace.m4 $(top_srcdir)/m4/compiler.m4 \
-	$(top_srcdir)/m4/curl.m4 $(top_srcdir)/m4/docbook.m4 \
-	$(top_srcdir)/m4/doxygen.m4 $(top_srcdir)/m4/eigen.m4 \
-	$(top_srcdir)/m4/fftw.m4 $(top_srcdir)/m4/fortran.m4 \
-	$(top_srcdir)/m4/giws.m4 $(top_srcdir)/m4/hdf5.m4 \
-	$(top_srcdir)/m4/intel_compiler.m4 \
+	$(top_srcdir)/m4/curl.m4 $(top_srcdir)/m4/doxygen.m4 \
+	$(top_srcdir)/m4/eigen.m4 $(top_srcdir)/m4/fftw.m4 \
+	$(top_srcdir)/m4/fortran.m4 $(top_srcdir)/m4/giws.m4 \
+	$(top_srcdir)/m4/hdf5.m4 $(top_srcdir)/m4/intel_compiler.m4 \
 	$(top_srcdir)/m4/java-thirdparty.m4 $(top_srcdir)/m4/java.m4 \
-	$(top_srcdir)/m4/largefile.m4 $(top_srcdir)/m4/lib-ld.m4 \
-	$(top_srcdir)/m4/libsmath.m4 $(top_srcdir)/m4/libtool.m4 \
-	$(top_srcdir)/m4/libxml2.m4 $(top_srcdir)/m4/ltoptions.m4 \
-	$(top_srcdir)/m4/ltsugar.m4 $(top_srcdir)/m4/ltversion.m4 \
-	$(top_srcdir)/m4/lt~obsolete.m4 $(top_srcdir)/m4/macosx.m4 \
+	$(top_srcdir)/m4/klu.m4 $(top_srcdir)/m4/lib-ld.m4 \
+	$(top_srcdir)/m4/libarchive.m4 $(top_srcdir)/m4/libsmath.m4 \
+	$(top_srcdir)/m4/libtool.m4 $(top_srcdir)/m4/libxml2.m4 \
+	$(top_srcdir)/m4/ltoptions.m4 $(top_srcdir)/m4/ltsugar.m4 \
+	$(top_srcdir)/m4/ltversion.m4 $(top_srcdir)/m4/lt~obsolete.m4 \
 	$(top_srcdir)/m4/mpi.m4 $(top_srcdir)/m4/ocaml.m4 \
 	$(top_srcdir)/m4/pcre.m4 $(top_srcdir)/m4/pkg.m4 \
 	$(top_srcdir)/m4/relocatable.m4 $(top_srcdir)/m4/swig.m4 \
@@ -185,9 +184,9 @@ am__libscimatio_algo_la_SOURCES_DIST = src/c/matfile_manager.c \
 	src/cpp/GetCellVariable.cpp src/cpp/GetStructVariable.cpp \
 	src/cpp/CreateStructVariable.cpp \
 	src/cpp/ConvertSciVarToMatVar.cpp \
-	src/cpp/GetIntegerVariable.cpp src/cpp/GetCharVariable.cpp \
-	src/cpp/GetDoubleVariable.cpp src/cpp/GetSparseVariable.cpp \
-	src/cpp/GetMlistVariable.cpp
+	src/cpp/GetIntegerVariable.cpp src/cpp/GetBooleanVariable.cpp \
+	src/cpp/GetCharVariable.cpp src/cpp/GetDoubleVariable.cpp \
+	src/cpp/GetSparseVariable.cpp src/cpp/GetMlistVariable.cpp
 am__dirstamp = $(am__leading_dot)dirstamp
 @MATIO_TRUE@am__objects_1 =  \
 @MATIO_TRUE@	src/c/libscimatio_algo_la-matfile_manager.lo \
@@ -207,6 +206,7 @@ am__dirstamp = $(am__leading_dot)dirstamp
 @MATIO_TRUE@	src/cpp/libscimatio_algo_la-CreateStructVariable.lo \
 @MATIO_TRUE@	src/cpp/libscimatio_algo_la-ConvertSciVarToMatVar.lo \
 @MATIO_TRUE@	src/cpp/libscimatio_algo_la-GetIntegerVariable.lo \
+@MATIO_TRUE@	src/cpp/libscimatio_algo_la-GetBooleanVariable.lo \
 @MATIO_TRUE@	src/cpp/libscimatio_algo_la-GetCharVariable.lo \
 @MATIO_TRUE@	src/cpp/libscimatio_algo_la-GetDoubleVariable.lo \
 @MATIO_TRUE@	src/cpp/libscimatio_algo_la-GetSparseVariable.lo \
@@ -272,6 +272,7 @@ am__depfiles_remade =  \
 	src/cpp/$(DEPDIR)/libscimatio_algo_la-CreateHyperMatrixVariable.Plo \
 	src/cpp/$(DEPDIR)/libscimatio_algo_la-CreateMatlabTreeVariable.Plo \
 	src/cpp/$(DEPDIR)/libscimatio_algo_la-CreateStructVariable.Plo \
+	src/cpp/$(DEPDIR)/libscimatio_algo_la-GetBooleanVariable.Plo \
 	src/cpp/$(DEPDIR)/libscimatio_algo_la-GetCellVariable.Plo \
 	src/cpp/$(DEPDIR)/libscimatio_algo_la-GetCharVariable.Plo \
 	src/cpp/$(DEPDIR)/libscimatio_algo_la-GetDoubleVariable.Plo \
@@ -348,6 +349,7 @@ am__DIST_COMMON = $(srcdir)/Makefile.in $(top_srcdir)/Makefile.incl.am \
 	$(top_srcdir)/config/mkinstalldirs
 DISTFILES = $(DIST_COMMON) $(DIST_SOURCES) $(TEXINFOS) $(EXTRA_DIST)
 ACLOCAL = @ACLOCAL@
+ACTIVATION = @ACTIVATION@
 ALL_LINGUAS = @ALL_LINGUAS@
 ALL_LINGUAS_DOC = @ALL_LINGUAS_DOC@
 AMTAR = @AMTAR@
@@ -365,6 +367,7 @@ AWK = @AWK@
 BATIK = @BATIK@
 BLAS_CFLAGS = @BLAS_CFLAGS@
 BLAS_LIBS = @BLAS_LIBS@
+CAIROSVG = @CAIROSVG@
 CC = @CC@
 CCACHE = @CCACHE@
 CCDEPMODE = @CCDEPMODE@
@@ -391,7 +394,6 @@ DEFS = @DEFS@
 DEMOTOOLS_ENABLE = @DEMOTOOLS_ENABLE@
 DEPDIR = @DEPDIR@
 DLLTOOL = @DLLTOOL@
-DOCBOOK_ROOT = @DOCBOOK_ROOT@
 DOXYGEN_BIN = @DOXYGEN_BIN@
 DSYMUTIL = @DSYMUTIL@
 DUMPBIN = @DUMPBIN@
@@ -408,6 +410,7 @@ FFLAGS = @FFLAGS@
 FFTW3_LIB = @FFTW3_LIB@
 FFTW_ENABLE = @FFTW_ENABLE@
 FGREP = @FGREP@
+FILECMD = @FILECMD@
 FLEXDOCK = @FLEXDOCK@
 FLIBS = @FLIBS@
 FOP = @FOP@
@@ -438,17 +441,27 @@ INSTALL_SCRIPT = @INSTALL_SCRIPT@
 INSTALL_STRIP_PROGRAM = @INSTALL_STRIP_PROGRAM@
 INTLLIBS = @INTLLIBS@
 INTL_MACOSX_LIBS = @INTL_MACOSX_LIBS@
+ISTACK_COMMONS_RUNTIME = @ISTACK_COMMONS_RUNTIME@
+JAKARTA_ACTIVATION = @JAKARTA_ACTIVATION@
+JAKARTA_ACTIVATION_API = @JAKARTA_ACTIVATION_API@
 JAR = @JAR@
 JAVA = @JAVA@
 JAVAC = @JAVAC@
 JAVAC_DEBUG = @JAVAC_DEBUG@
 JAVADOC = @JAVADOC@
+JAVAFX_BASE = @JAVAFX_BASE@
+JAVAFX_GRAPHICS = @JAVAFX_GRAPHICS@
+JAVAFX_SWING = @JAVAFX_SWING@
 JAVASCI_ENABLE = @JAVASCI_ENABLE@
+JAVAX_ANNOTATION = @JAVAX_ANNOTATION@
 JAVA_ENABLE = @JAVA_ENABLE@
 JAVA_G = @JAVA_G@
 JAVA_HOME = @JAVA_HOME@
 JAVA_JNI_INCLUDE = @JAVA_JNI_INCLUDE@
 JAVA_JNI_LIBS = @JAVA_JNI_LIBS@
+JAXB_API = @JAXB_API@
+JAXB_IMPL = @JAXB_IMPL@
+JAXB_RUNTIME = @JAXB_RUNTIME@
 JDB = @JDB@
 JEUCLID_CORE = @JEUCLID_CORE@
 JGRAPHX = @JGRAPHX@
@@ -459,6 +472,9 @@ JOGL2 = @JOGL2@
 JROSETTA_API = @JROSETTA_API@
 JROSETTA_ENGINE = @JROSETTA_ENGINE@
 JUNIT4 = @JUNIT4@
+KLU_CFLAGS = @KLU_CFLAGS@
+KLU_ENABLE = @KLU_ENABLE@
+KLU_LIBS = @KLU_LIBS@
 LAPACK_LIBS = @LAPACK_LIBS@
 LCOV = @LCOV@
 LD = @LD@
@@ -466,6 +482,9 @@ LDFLAGS = @LDFLAGS@
 LEX = @LEX@
 LEXLIB = @LEXLIB@
 LEX_OUTPUT_ROOT = @LEX_OUTPUT_ROOT@
+LIBARCHIVE_CFLAGS = @LIBARCHIVE_CFLAGS@
+LIBARCHIVE_LIBS = @LIBARCHIVE_LIBS@
+LIBARCHIVE_VERSION = @LIBARCHIVE_VERSION@
 LIBICONV = @LIBICONV@
 LIBINTL = @LIBINTL@
 LIBM = @LIBM@
@@ -566,7 +585,7 @@ TCL_INC_PATH = @TCL_INC_PATH@
 TK_INC_PATH = @TK_INC_PATH@
 UMFPACK_CFLAGS = @UMFPACK_CFLAGS@
 UMFPACK_ENABLE = @UMFPACK_ENABLE@
-UMFPACK_LIB = @UMFPACK_LIB@
+UMFPACK_LIBS = @UMFPACK_LIBS@
 USE_NLS = @USE_NLS@
 VALGRIND_CFLAGS = @VALGRIND_CFLAGS@
 VALGRIND_LIBS = @VALGRIND_LIBS@
@@ -753,6 +772,7 @@ HELP_CHAPTERLANG = en_US fr_FR pt_BR
 @MATIO_TRUE@    src/cpp/CreateStructVariable.cpp \
 @MATIO_TRUE@	src/cpp/ConvertSciVarToMatVar.cpp \
 @MATIO_TRUE@    src/cpp/GetIntegerVariable.cpp \
+@MATIO_TRUE@	src/cpp/GetBooleanVariable.cpp \
 @MATIO_TRUE@    src/cpp/GetCharVariable.cpp \
 @MATIO_TRUE@	src/cpp/GetDoubleVariable.cpp \
 @MATIO_TRUE@    src/cpp/GetSparseVariable.cpp \
@@ -929,6 +949,8 @@ src/cpp/libscimatio_algo_la-ConvertSciVarToMatVar.lo:  \
 	src/cpp/$(am__dirstamp) src/cpp/$(DEPDIR)/$(am__dirstamp)
 src/cpp/libscimatio_algo_la-GetIntegerVariable.lo:  \
 	src/cpp/$(am__dirstamp) src/cpp/$(DEPDIR)/$(am__dirstamp)
+src/cpp/libscimatio_algo_la-GetBooleanVariable.lo:  \
+	src/cpp/$(am__dirstamp) src/cpp/$(DEPDIR)/$(am__dirstamp)
 src/cpp/libscimatio_algo_la-GetCharVariable.lo:  \
 	src/cpp/$(am__dirstamp) src/cpp/$(DEPDIR)/$(am__dirstamp)
 src/cpp/libscimatio_algo_la-GetDoubleVariable.lo:  \
@@ -995,6 +1017,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@src/cpp/$(DEPDIR)/libscimatio_algo_la-CreateHyperMatrixVariable.Plo@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@src/cpp/$(DEPDIR)/libscimatio_algo_la-CreateMatlabTreeVariable.Plo@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@src/cpp/$(DEPDIR)/libscimatio_algo_la-CreateStructVariable.Plo@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@src/cpp/$(DEPDIR)/libscimatio_algo_la-GetBooleanVariable.Plo@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@src/cpp/$(DEPDIR)/libscimatio_algo_la-GetCellVariable.Plo@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@src/cpp/$(DEPDIR)/libscimatio_algo_la-GetCharVariable.Plo@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@src/cpp/$(DEPDIR)/libscimatio_algo_la-GetDoubleVariable.Plo@am__quote@ # am--include-marker
@@ -1203,6 +1226,13 @@ src/cpp/libscimatio_algo_la-GetIntegerVariable.lo: src/cpp/GetIntegerVariable.cp
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='src/cpp/GetIntegerVariable.cpp' object='src/cpp/libscimatio_algo_la-GetIntegerVariable.lo' libtool=yes @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libscimatio_algo_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o src/cpp/libscimatio_algo_la-GetIntegerVariable.lo `test -f 'src/cpp/GetIntegerVariable.cpp' || echo '$(srcdir)/'`src/cpp/GetIntegerVariable.cpp
+
+src/cpp/libscimatio_algo_la-GetBooleanVariable.lo: src/cpp/GetBooleanVariable.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libscimatio_algo_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT src/cpp/libscimatio_algo_la-GetBooleanVariable.lo -MD -MP -MF src/cpp/$(DEPDIR)/libscimatio_algo_la-GetBooleanVariable.Tpo -c -o src/cpp/libscimatio_algo_la-GetBooleanVariable.lo `test -f 'src/cpp/GetBooleanVariable.cpp' || echo '$(srcdir)/'`src/cpp/GetBooleanVariable.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) src/cpp/$(DEPDIR)/libscimatio_algo_la-GetBooleanVariable.Tpo src/cpp/$(DEPDIR)/libscimatio_algo_la-GetBooleanVariable.Plo
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='src/cpp/GetBooleanVariable.cpp' object='src/cpp/libscimatio_algo_la-GetBooleanVariable.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libscimatio_algo_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o src/cpp/libscimatio_algo_la-GetBooleanVariable.lo `test -f 'src/cpp/GetBooleanVariable.cpp' || echo '$(srcdir)/'`src/cpp/GetBooleanVariable.cpp
 
 src/cpp/libscimatio_algo_la-GetCharVariable.lo: src/cpp/GetCharVariable.cpp
 @am__fastdepCXX_TRUE@	$(AM_V_CXX)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libscimatio_algo_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT src/cpp/libscimatio_algo_la-GetCharVariable.lo -MD -MP -MF src/cpp/$(DEPDIR)/libscimatio_algo_la-GetCharVariable.Tpo -c -o src/cpp/libscimatio_algo_la-GetCharVariable.lo `test -f 'src/cpp/GetCharVariable.cpp' || echo '$(srcdir)/'`src/cpp/GetCharVariable.cpp
@@ -1456,6 +1486,7 @@ distclean: distclean-am
 	-rm -f src/cpp/$(DEPDIR)/libscimatio_algo_la-CreateHyperMatrixVariable.Plo
 	-rm -f src/cpp/$(DEPDIR)/libscimatio_algo_la-CreateMatlabTreeVariable.Plo
 	-rm -f src/cpp/$(DEPDIR)/libscimatio_algo_la-CreateStructVariable.Plo
+	-rm -f src/cpp/$(DEPDIR)/libscimatio_algo_la-GetBooleanVariable.Plo
 	-rm -f src/cpp/$(DEPDIR)/libscimatio_algo_la-GetCellVariable.Plo
 	-rm -f src/cpp/$(DEPDIR)/libscimatio_algo_la-GetCharVariable.Plo
 	-rm -f src/cpp/$(DEPDIR)/libscimatio_algo_la-GetDoubleVariable.Plo
@@ -1528,6 +1559,7 @@ maintainer-clean: maintainer-clean-am
 	-rm -f src/cpp/$(DEPDIR)/libscimatio_algo_la-CreateHyperMatrixVariable.Plo
 	-rm -f src/cpp/$(DEPDIR)/libscimatio_algo_la-CreateMatlabTreeVariable.Plo
 	-rm -f src/cpp/$(DEPDIR)/libscimatio_algo_la-CreateStructVariable.Plo
+	-rm -f src/cpp/$(DEPDIR)/libscimatio_algo_la-GetBooleanVariable.Plo
 	-rm -f src/cpp/$(DEPDIR)/libscimatio_algo_la-GetCellVariable.Plo
 	-rm -f src/cpp/$(DEPDIR)/libscimatio_algo_la-GetCharVariable.Plo
 	-rm -f src/cpp/$(DEPDIR)/libscimatio_algo_la-GetDoubleVariable.Plo

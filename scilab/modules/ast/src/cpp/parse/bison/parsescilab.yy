@@ -2,8 +2,8 @@
 /*
  *  Scilab ( https://www.scilab.org/ ) - This file is part of Scilab
  *  Copyright (C) 2008-2010 - DIGITEO - Bruno JOFRET
- *
- * Copyright (C) 2012 - 2016 - Scilab Enterprises
+ *  Copyright (C) 2012 - 2016 - Scilab Enterprises
+ *  Copyright (C) 2023 - Dassault Systemes - Bruno JOFRET
  *
  * This file is hereby licensed under the terms of the GNU GPL v2.0,
  * pursuant to article 5.3.4 of the CeCILL v.2.1.
@@ -149,6 +149,7 @@ static void print_rules(const std::string& _parent, const double _value)
     ast::SeqExp*                t_seq_exp;
     ast::ReturnExp*             t_return_exp;
 
+    ast::ArgumentsExp*          t_arguments_exp;
     ast::IfExp*                 t_if_exp;
     ast::WhileExp*              t_while_exp;
     ast::ForExp*                t_for_exp;
@@ -180,6 +181,7 @@ static void print_rules(const std::string& _parent, const double _value)
     ast::CellCallExp*           t_cell_call_exp;
 
     ast::FunctionDec*           t_function_dec;
+    ast::ArgumentDec*           t_argument_dec;
 
     ast::ArrayListExp*          t_arraylist_exp;
     ast::AssignListExp*         t_assignlist_exp;
@@ -251,6 +253,8 @@ static void print_rules(const std::string& _parent, const double _value)
 %token OROR             "||"
 %token ASSIGN           "="
 
+%token ARGUMENTS        "arguments"
+
 %token IF               "if"
 %token THEN             "then"
 %token ELSE             "else"
@@ -302,6 +306,15 @@ static void print_rules(const std::string& _parent, const double _value)
 %type <t_op_exp>            rightComparable
 %type <t_exp>               operation
 %type <t_op_exp>            rightOperand
+
+// ARGUMENTS Control
+%type <t_arguments_exp>     argumentsControl
+%type <t_arguments_exp>     argumentsDeclarations
+%type <t_argument_dec>      argumentDeclaration
+%type <t_exp>               argumentName
+%type <t_exp>               argumentDimension
+%type <t_exp>               argumentValidators
+%type <t_exp>               argumentDefaultValue
 
  // IF Control
 %type <t_if_exp>            ifControl
@@ -534,6 +547,7 @@ expression :
 functionDeclaration                         { $$ = $1; print_rules("expression", "functionDeclaration");}
 | functionCall            %prec TOPLEVEL    { $$ = $1; print_rules("expression", "functionCall");}
 | variableDeclaration                       { $$ = $1; print_rules("expression", "variableDeclaration");}
+| argumentsControl                          { $$ = $1; print_rules("expression", "argumentsControl");}
 | ifControl                                 { $$ = $1; print_rules("expression", "ifControl");}
 | selectControl                             { $$ = $1; print_rules("expression", "selectControl");}
 | forControl                                { $$ = $1; print_rules("expression", "forControl");}
@@ -687,8 +701,8 @@ variable                                    {$$ = new ast::exps_t;$$->push_back(
 */
 /* How to declare a function */
 functionDeclaration :
-FUNCTION ID ASSIGN ID functionDeclarationArguments functionDeclarationBreak functionBody ENDFUNCTION {
-                  print_rules("functionDeclaration", "FUNCTION ID ASSIGN ID functionDeclarationArguments functionDeclarationBreak functionBody ENDFUNCTION");
+FUNCTION ID ASSIGN ID functionDeclarationArguments functionDeclarationBreak functionBody endfunction {
+                  print_rules("functionDeclaration", "FUNCTION ID ASSIGN ID functionDeclarationArguments functionDeclarationBreak functionBody endfunction");
                   ast::exps_t* tmp = new ast::exps_t;
                   tmp->push_back(new ast::SimpleVar(@2, symbol::Symbol(*$2)));
                   $$ = new ast::FunctionDec(@$,
@@ -699,8 +713,8 @@ FUNCTION ID ASSIGN ID functionDeclarationArguments functionDeclarationBreak func
                   delete $2;
                   delete $4;
                 }
-| FUNCTION LBRACK functionDeclarationReturns RBRACK ASSIGN ID functionDeclarationArguments functionDeclarationBreak functionBody ENDFUNCTION {
-                  print_rules("functionDeclaration", "FUNCTION LBRACK functionDeclarationReturns RBRACK ASSIGN ID functionDeclarationArguments functionDeclarationBreak functionBody ENDFUNCTION");
+| FUNCTION LBRACK functionDeclarationReturns RBRACK ASSIGN ID functionDeclarationArguments functionDeclarationBreak functionBody endfunction {
+                  print_rules("functionDeclaration", "FUNCTION LBRACK functionDeclarationReturns RBRACK ASSIGN ID functionDeclarationArguments functionDeclarationBreak functionBody endfunction");
                   $$ = new ast::FunctionDec(@$,
                                 symbol::Symbol(*$6),
                                 *new ast::ArrayListVar(@7, *$7),
@@ -708,8 +722,8 @@ FUNCTION ID ASSIGN ID functionDeclarationArguments functionDeclarationBreak func
                                 *$9);
                   delete $6;
                 }
-| FUNCTION LBRACK RBRACK ASSIGN ID functionDeclarationArguments functionDeclarationBreak functionBody ENDFUNCTION {
-                  print_rules("functionDeclaration", "FUNCTION LBRACK RBRACK ASSIGN ID functionDeclarationArguments functionDeclarationBreak functionBody ENDFUNCTION");
+| FUNCTION LBRACK RBRACK ASSIGN ID functionDeclarationArguments functionDeclarationBreak functionBody endfunction {
+                  print_rules("functionDeclaration", "FUNCTION LBRACK RBRACK ASSIGN ID functionDeclarationArguments functionDeclarationBreak functionBody endfunction");
                   ast::exps_t* tmp = new ast::exps_t;
                   $$ = new ast::FunctionDec(@$,
                                 symbol::Symbol(*$5),
@@ -718,8 +732,8 @@ FUNCTION ID ASSIGN ID functionDeclarationArguments functionDeclarationBreak func
                                 *$8);
                   delete $5;
                 }
-| FUNCTION ID functionDeclarationArguments functionDeclarationBreak functionBody ENDFUNCTION {
-                  print_rules("functionDeclaration", "FUNCTION ID functionDeclarationArguments functionDeclarationBreak functionBody ENDFUNCTION");
+| FUNCTION ID functionDeclarationArguments functionDeclarationBreak functionBody endfunction {
+                  print_rules("functionDeclaration", "FUNCTION ID functionDeclarationArguments functionDeclarationBreak functionBody endfunction");
                   ast::exps_t* tmp = new ast::exps_t;
                   $$ = new ast::FunctionDec(@$,
                                 symbol::Symbol(*$2),
@@ -728,47 +742,26 @@ FUNCTION ID ASSIGN ID functionDeclarationArguments functionDeclarationBreak func
                                 *$5);
                   delete $2;
                 }
-| FUNCTION ID ASSIGN ID functionDeclarationArguments functionDeclarationBreak functionBody END {
-                  print_rules("functionDeclaration", "FUNCTION ID ASSIGN ID functionDeclarationArguments functionDeclarationBreak functionBody END ");
-                  ast::exps_t* tmp = new ast::exps_t;
-                  tmp->push_back(new ast::SimpleVar(@2, symbol::Symbol(*$2)));
-                  $$ = new ast::FunctionDec(@$,
-                                symbol::Symbol(*$4),
-                                *new ast::ArrayListVar(@5, *$5),
-                                *new ast::ArrayListVar(@2, *tmp),
-                                *$7);
-                  delete $2;
-                  delete $4;
-                }
-| FUNCTION LBRACK functionDeclarationReturns RBRACK ASSIGN ID functionDeclarationArguments functionDeclarationBreak functionBody END {
-                  print_rules("functionDeclaration", "FUNCTION LBRACK functionDeclarationReturns RBRACK ASSIGN ID functionDeclarationArguments functionDeclarationBreak functionBody END");
-                  $$ = new ast::FunctionDec(@$,
-                                symbol::Symbol(*$6),
-                                *new ast::ArrayListVar(@7, *$7),
-                                *new ast::ArrayListVar(@3 ,*$3),
-                                *$9);
-                  delete $6;
-                }
-| FUNCTION LBRACK RBRACK ASSIGN ID functionDeclarationArguments functionDeclarationBreak functionBody END {
-                  print_rules("functionDeclaration", "FUNCTION LBRACK RBRACK ASSIGN ID functionDeclarationArguments functionDeclarationBreak functionBody END");
-                  ast::exps_t* tmp = new ast::exps_t;
-                  $$ = new ast::FunctionDec(@$,
-                                symbol::Symbol(*$5),
-                                *new ast::ArrayListVar(@6, *$6),
-                                *new ast::ArrayListVar(@2, *tmp),
-                                *$8);
-                  delete $5;
-                }
-| FUNCTION ID functionDeclarationArguments functionDeclarationBreak functionBody END {
+/*
+| FUNCTION ID functionDeclarationArguments functionDeclarationBreak argumentsControl EOL functionBody END {
                   print_rules("functionDeclaration", "FUNCTION ID functionDeclarationArguments functionDeclarationBreak functionBody END");
                   ast::exps_t* tmp = new ast::exps_t;
                   $$ = new ast::FunctionDec(@$,
                                 symbol::Symbol(*$2),
                                 *new ast::ArrayListVar(@3, *$3),
                                 *new ast::ArrayListVar(@$, *tmp),
-                                *$5);
+                                *$7);
                   delete $2;
                 }
+*/
+;
+
+/*
+** -*- ENDFUNCTION or END -*-
+*/
+endfunction :
+ENDFUNCTION
+| END
 ;
 
 /*
@@ -1057,6 +1050,7 @@ NOT variable                %prec NOT       { $$ = new ast::NotExp(@$, *$2); pri
 | comparison                                { $$ = $1; print_rules("variable", "comparison");}
 | variable LPAREN functionArgs RPAREN       { $$ = new ast::CallExp(@$, *$1, *$3); print_rules("variable", "variable LPAREN functionArgs RPAREN");}
 | functionCall LPAREN functionArgs RPAREN   { $$ = new ast::CallExp(@$, *$1, *$3); print_rules("variable", "functionCall LPAREN functionArgs RPAREN");}
+| functionCall LPAREN RPAREN                { $$ = new ast::CallExp(@$, *$1, *new ast::exps_t); print_rules("variable", "functionCall LPAREN RPAREN");}
 ;
 
 /*
@@ -1245,6 +1239,104 @@ multipleResults :
 LBRACK matrixOrCellColumns RBRACK   { $$ = new ast::AssignListExp(@$, *$2); print_rules("multipleResults", "LBRACK matrixOrCellColumns RBRACK");}
 ;
 
+/*
+** -*- ARGUMENTS CONTROL -*-
+*/
+/* Arguments End control block */
+argumentsControl :
+ARGUMENTS EOL argumentsDeclarations END           { $$ = $3; print_rules("argumentsControl", "ARGUMENTS EOL argumentsDeclarations END");}
+| ARGUMENTS EOL /* Epsilon */ END {
+    print_rules("argumentsControl", "ARGUMENTS EOL argumentsDeclarations END");
+    ast::exps_t* tmp = new ast::exps_t;
+    #ifdef BUILD_DEBUG_AST
+    tmp->push_back(new ast::CommentExp(@$, new std::wstring(L"Empty arguments")));
+    #endif
+    $$ = new ast::ArgumentsExp(@$, *tmp);
+};
+
+/*
+** -*- ARGUMENTS DECLARATIONS -*-
+*/
+argumentsDeclarations :
+argumentsDeclarations argumentDeclaration lineEnd       { 
+        $$->getExps().push_back($2);
+        $$ = $1;
+        print_rules("argumentsDeclarations", "argumentsDeclarations EOL argumentDeclaration EOL");
+    }
+| argumentsDeclarations COMMENT EOL                     { 
+        $$->getExps().push_back(new ast::CommentExp(@2, $2));
+        $$ = $1;
+        print_rules("argumentsDeclarations", "argumentsDeclarations EOL argumentDeclaration EOL");
+    }
+| argumentDeclaration lineEnd                           { 
+        ast::exps_t* tmp = new ast::exps_t;
+        tmp->push_back($1);
+        $$ = new ast::ArgumentsExp(@$, *tmp); 
+        print_rules("argumentsDeclarations", "argumentDeclaration EOL");
+    }
+| COMMENT EOL                                           { 
+        ast::exps_t* tmp = new ast::exps_t;
+        tmp->push_back(new ast::CommentExp(@1, $1));
+        $$ = new ast::ArgumentsExp(@$, *tmp); 
+    }
+;
+
+/*
+** -*- SINGLE ARGUMENT DECLARATION -*-
+*/
+argumentDeclaration :
+argumentName argumentDimension argumentValidators argumentDefaultValue           { 
+    $$ = new ast::ArgumentDec(@$,
+                                *$1,
+                                *$2,
+                                *new ast::NilExp(@$),
+                                *$3,
+                                *$4);
+                                print_rules("argumentDeclaration", "ID LPAREN RPAREN ID");
+}
+| argumentName argumentDimension ID argumentValidators argumentDefaultValue       { 
+    $$ = new ast::ArgumentDec(@$,
+                                *$1,
+                                *$2,
+                                *new ast::SimpleVar(@3, symbol::Symbol(*$3)),
+                                *$4,
+                                *$5);
+                                print_rules("argumentDeclaration", "ID LPAREN RPAREN ID");
+}
+;
+
+/*
+** -*- ARGUMENT NAME -*-
+*/
+argumentName :
+ID          { $$ = new ast::SimpleVar(@$, symbol::Symbol(*$1)); print_rules("argumentName", "ID");} 
+| ID DOT ID { $$ = new ast::FieldExp(@$, *new ast::SimpleVar(@1, symbol::Symbol(*$1)), *new ast::SimpleVar(@3, symbol::Symbol(*$3))); print_rules("argumentName", "ID DOT ID");} 
+;
+
+/*
+** -*- ARGUMENT DIMENSION -*-
+*/
+argumentDimension :
+LPAREN functionArgs RPAREN              { $$ = new ast::ArrayListVar(@$, *$2); }
+| /* Epsilon */                         { $$ = new ast::NilExp(@$); }
+;
+
+/*
+** -*- ARGUMENT DIMENSION -*-
+*/
+argumentValidators : 
+LBRACE functionArgs RBRACE              { $$ = new ast::ArrayListVar(@$, *$2); }
+| /* Epsilon */                         { $$ = new ast::NilExp(@$); }
+;
+
+/*
+** -*- ARGUMENT DEFAULT VALUE -*-
+*/
+argumentDefaultValue :
+ASSIGN variable                         { $$ = $2; }
+| ASSIGN functionCall                   { $$ = $2; }
+| /* Epsilon */                         { $$ = new ast::NilExp(@$); }
+;
 
 /*
 ** -*- IF CONTROL -*-

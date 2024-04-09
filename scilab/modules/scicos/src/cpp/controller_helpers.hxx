@@ -19,7 +19,6 @@
 
 #include "LoggerView.hxx"
 
-
 namespace org_scilab_modules_scicos
 {
 

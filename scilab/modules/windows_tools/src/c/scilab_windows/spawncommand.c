@@ -26,6 +26,7 @@
 #include "charEncoding.h"
 #include "getshortpathname.h"
 #include "os_string.h"
+#include "sciprint.h"
 /*--------------------------------------------------------------------------*/
 #define BUFSIZE 4096
 #define LF_STR "\n"
@@ -492,12 +493,8 @@ int CallWindowsShellW(wchar_t* _pstCommand)
 
     PROCESS_INFORMATION piProcInfo;
     STARTUPINFOW siStartInfo;
-    SECURITY_ATTRIBUTES saAttr;
 
     DWORD ExitCode = 0;
-
-    wchar_t *TMPDir = NULL;
-    wchar_t FileTMPDir[PATH_MAX];
 
     if (wcscmp(_pstCommand, L"") == 0)
     {
@@ -517,19 +514,12 @@ int CallWindowsShellW(wchar_t* _pstCommand)
     siStartInfo.hStdError       = GetStdHandle(STD_ERROR_HANDLE);
 
     GetEnvironmentVariableW(L"ComSpec", shellCmd, PATH_MAX);
-    TMPDir = getTMPDIRW();
-    os_swprintf(FileTMPDir, PATH_MAX, L"%ls\\DOS.OK", TMPDir);
-    if (TMPDir)
-    {
-        FREE(TMPDir);
-        TMPDir = NULL;
-    }
 
-    iCmdSize    = (wcslen(shellCmd) + wcslen(_pstCommand) + wcslen(FileTMPDir) + wcslen(L"%ls /a /c \"%ls\" && echo DOS>%ls") + 1);
+    iCmdSize    = (wcslen(shellCmd) + wcslen(_pstCommand) + wcslen(L"%ls /a /c \"%ls\"") + 1);
     CmdLine     = (wchar_t*)MALLOC(iCmdSize * sizeof(wchar_t));
-    os_swprintf(CmdLine, iCmdSize, L"%ls /a /c \"%ls\" && echo DOS>%ls", shellCmd, _pstCommand, FileTMPDir);
+    os_swprintf(CmdLine, iCmdSize, L"%ls /a /c \"%ls\"", shellCmd, _pstCommand);
 
-    if (CreateProcessW(NULL, CmdLine, NULL, NULL, FALSE, 0, NULL, NULL, &siStartInfo, &piProcInfo))
+    if (CreateProcessW(NULL, CmdLine, NULL, NULL, TRUE, 0, NULL, NULL, &siStartInfo, &piProcInfo))
     {
         WaitForSingleObject(piProcInfo.hProcess, INFINITE);
 
@@ -544,11 +534,6 @@ int CallWindowsShellW(wchar_t* _pstCommand)
         {
             FREE(CmdLine);
             CmdLine = NULL;
-        }
-
-        if (FileExistW(FileTMPDir))
-        {
-            DeleteFileW(FileTMPDir);
         }
 
         returnedExitCode = (int)ExitCode;

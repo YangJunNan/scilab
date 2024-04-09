@@ -26,6 +26,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -681,11 +682,12 @@ public final class SuperblockMaskCustomizeAction extends DefaultAction {
                  * doesn't need to be checked as the operation doesn't depend on
                  * it
                  */
-                @SuppressWarnings("unchecked")
-                final List < List<? >> data = model.getDataVector();
+                @SuppressWarnings("rawtypes")
+                final Vector<Vector> data = model.getDataVector();
 
                 /* Inverting data */
-                List<?> tmp = data.get(row2);
+                @SuppressWarnings("rawtypes")
+                Vector tmp = data.get(row2);
                 data.set(row2, data.get(row1));
                 data.set(row1, tmp);
             }

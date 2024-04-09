@@ -53,7 +53,7 @@
                     </para>
                     <para>
                         Esta função não consegue abrir um arquivo UTF.
-                        Neste caso, por favor use  <link linkend="file">mopen</link>.
+                        Neste caso, por favor use  <link linkend="file">file</link>.
                     </para>
                 </listitem>
             </varlistentry>
@@ -147,9 +147,6 @@ write('foo',A)
                 <link linkend="save">save</link>
             </member>
             <member>
-                <link linkend="writb">writb</link>
-            </member>
-            <member>
                 <link linkend="file">file</link>
             </member>
             <member>
@@ -168,5 +165,16 @@ write('foo',A)
                 <link linkend="fprintfMat">fprintfMat</link>
             </member>
         </simplelist>
+    </refsection>
+    <refsection role="history">
+        <title>Histórico</title>
+        <revhistory>
+            <revision>
+                <revnumber>2023.1</revnumber>
+                <revdescription>
+                    write(…) overwrites existing file.
+                </revdescription>
+            </revision>
+        </revhistory>
     </refsection>
 </refentry>

@@ -68,11 +68,11 @@ h = [ax.title ax.x_label ax.y_label]
 1 by 3 matrix of handles:
 =========================
 Label Label Label 
-assert_checkequal(h.text, ["$x^2+y^2=1$", "$x$", "$y$"]');
-assert_checkequal(h.font_size, [4 4 4]');
+assert_checkequal(h.text, ["$x^2+y^2=1$", "$x$", "$y$"]);
+assert_checkequal(h.font_size, [4 4 4]);
 xlabel("x");
 assert_checkequal(execstr("plotimplicit(""x^2+y^2-2"")", "errcatch"), 0);
-assert_checkequal(h.text, ["$x^2+y^2=1$", "x", "$y$"]');
+assert_checkequal(h.text, ["$x^2+y^2=1$", "x", "$y$"]);
 clear fun
 function result = fun(x, y, a, b, c)
     result = a * x.^2 .* exp(x) - x .* y.^2 +  exp(y) ./ (y.^2 + b) - c

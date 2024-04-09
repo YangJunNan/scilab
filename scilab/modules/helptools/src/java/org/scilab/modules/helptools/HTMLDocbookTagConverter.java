@@ -42,6 +42,7 @@ import org.scilab.modules.helptools.scilab.ScilabLexer;
 import org.scilab.modules.localization.Messages;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
+import org.xml.sax.SAXParseException;
 
 /**
  * Class to convert DocBook to HTML
@@ -157,7 +158,12 @@ public class HTMLDocbookTagConverter extends DocbookTagConverter implements Temp
                     if (id.length() > 0 && id.charAt(0) == '%') {
                         id = id.replace("%", "percent");
                     }
-                    return mapId.get(id);
+                    
+                    String link = mapId.get(id);
+                    if (link == null) {
+                        error(new SAXParseException("The function " + id + " is used in an example and is undocumented.", getDocumentLocator()));
+                    }
+                    return link;
                 }
             });
         }
@@ -1002,7 +1008,7 @@ public class HTMLDocbookTagConverter extends DocbookTagConverter implements Temp
      */
     public String handleRefnamediv(final Map<String, String> attributes, final String contents) throws SAXException {
         String id = attributes.get("id");
-        if (id != null) {
+        if (id != null && currentId != null) {
             currentId = id;
         }
 
@@ -1017,7 +1023,9 @@ public class HTMLDocbookTagConverter extends DocbookTagConverter implements Temp
      * @throws SAXEception if an error is encountered
      */
     public String handleRefname(final Map<String, String> attributes, final String contents) throws SAXException {
-        refname = contents;
+        if (refname == "") { 
+        	refname = contents;
+        }
         return encloseContents("h1", "refname", contents);
     }
 
@@ -1029,7 +1037,9 @@ public class HTMLDocbookTagConverter extends DocbookTagConverter implements Temp
      * @throws SAXEception if an error is encountered
      */
     public String handleRefpurpose(final Map<String, String> attributes, final String contents) throws SAXException {
-        refpurpose = contents;
+        if (refpurpose == "") { 
+        	refpurpose = contents;
+        }
         return encloseContents("p", "refpurpose", contents);
     }
 
@@ -1318,9 +1328,7 @@ public class HTMLDocbookTagConverter extends DocbookTagConverter implements Temp
                     id = urlBase + link;
                 }
             } else {
-                warnings++;
-                System.err.println("Warning (should be fixed): invalid internal link to " + link + " in " + currentFileName + String.format(":%d:%d", getDocumentLocator().getLineNumber(), getDocumentLocator().getColumnNumber()));
-                return null;
+                error(new SAXParseException("Invalid internal link to " + link, getDocumentLocator()));
             }
         }
 
@@ -1334,8 +1342,7 @@ public class HTMLDocbookTagConverter extends DocbookTagConverter implements Temp
         }
 
         if (str == null) {
-            warnings++;
-            System.err.println("Warning (should be fixed): empty link (no text will be printed) to " + link + " in " + currentFileName + "\nat line " + locator.getLineNumber());
+            error(new SAXParseException("Empty link to " + link, locator));
         }
 
         String href = encloseContents("a", new String[] {"href", id, "class", "link"}, str);
@@ -1428,9 +1435,7 @@ public class HTMLDocbookTagConverter extends DocbookTagConverter implements Temp
 
         String id = mapId.get(link);
         if (id == null) {
-            warnings++;
-            System.err.println("Warning (should be fixed): invalid internal link to " + link + " in " + currentFileName + String.format(":%d:%d", getDocumentLocator().getLineNumber(), getDocumentLocator().getColumnNumber()));
-            return null;
+            error(new SAXParseException("Invalid internal link to " + link, getDocumentLocator()));
         }
 
         return encloseContents("a", new String[] {"href", id, "class", "xref"}, contents);

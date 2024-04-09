@@ -57,6 +57,7 @@ public:
     enum ControlStatus
     {
         AllControlClosed,
+        WithinArguments,
         WithinFor,
         WithinWhile,
         WithinIf,

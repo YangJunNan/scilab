@@ -154,7 +154,7 @@ qstring = (\"|\'){string}(\"|\')
 gnirtsq = \"{string}(\"|\')
 transp = ({spec} | ")" | "]" | "}") "'"
 
-openK = ("if" | "for" | "while" | "select" | "try" | "function" | "switch")
+openK = ("if" | "for" | "while" | "select" | "try" | "function" | "switch" | "arguments")
 openKx = {openK}{spec}+
 
 elseif = "elseif" | "else"
@@ -165,7 +165,7 @@ closeKx = {closeK}{spec}+
 xcloseK = ({spec} | "%" ){closeK}
 closeS =  ")" | "]" | "}"
 
-esolcK = ("fi" | "rof" | "elihw" | "tceles" | "yrt" | "noitcnuf" | "hctiws")
+esolcK = ("fi" | "rof" | "elihw" | "tceles" | "yrt" | "noitcnuf" | "hctiws" | "stnemugra")
 esolcKx = {spec}{esolcK}
 xesolcK = {esolcK}{spec}
 nepoK = ("dne" | "noitcnufdne")

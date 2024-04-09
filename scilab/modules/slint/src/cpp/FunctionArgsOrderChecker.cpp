@@ -16,6 +16,9 @@
 #include <map>
 
 #include "checkers/FunctionArgsOrderChecker.hxx"
+#include "callexp.hxx"
+#include "assignexp.hxx"
+#include "simplevar.hxx"
 
 namespace slint
 {

@@ -18,7 +18,7 @@ Xcos trace:   propertyUpdated( 1 , DIAGRAM , PROPERTIES ) : NO_CHANGES
 Xcos trace:   propertyUpdated( 1 , DIAGRAM , CONTEXT ) : NO_CHANGES
 Xcos trace:   objectUnreferenced( 1 , DIAGRAM ) : 0
 Xcos trace:   propertyUpdated( 1 , DIAGRAM , CHILDREN ) : NO_CHANGES
-Xcos debug:   propertyUpdated( 1 , DIAGRAM , VERSION_NUMBER ) : SUCCESS
+Xcos trace:   propertyUpdated( 1 , DIAGRAM , VERSION_NUMBER ) : NO_CHANGES
 Xcos trace:   objectReferenced( 1 , DIAGRAM ) : 1
 Xcos trace:   objectUnreferenced( 1 , DIAGRAM ) : 0
 Xcos trace:   objectReferenced( 1 , DIAGRAM ) : 1
@@ -205,11 +205,11 @@ Xcos debug:   propertyUpdated( 6 , BLOCK , OUTPUTS ) : SUCCESS
 Xcos trace:   propertyUpdated( 6 , BLOCK , EVENT_INPUTS ) : NO_CHANGES
 Xcos trace:   propertyUpdated( 6 , BLOCK , EVENT_OUTPUTS ) : NO_CHANGES
 Xcos trace:   propertyUpdated( 6 , BLOCK , PARENT_BLOCK ) : NO_CHANGES
-Xcos trace:   propertyUpdated( 7 , PORT , CONNECTED_SIGNALS ) : NO_CHANGES
 Xcos trace:   propertyUpdated( 6 , BLOCK , CHILDREN ) : NO_CHANGES
 Xcos trace:   objectReferenced( 6 , BLOCK ) : 1
 Xcos debug:   propertyUpdated( 6 , BLOCK , PARENT_DIAGRAM ) : SUCCESS
 Xcos trace:   propertyUpdated( 6 , BLOCK , PARENT_BLOCK ) : NO_CHANGES
+Xcos trace:   propertyUpdated( 7 , PORT , CONNECTED_SIGNALS ) : NO_CHANGES
 Xcos debug:   propertyUpdated( 1 , DIAGRAM , CHILDREN ) : SUCCESS
 Xcos trace:   objectUnreferenced( 6 , BLOCK ) : 0
 Xcos trace:   objectReferenced( 6 , BLOCK ) : 1
@@ -253,11 +253,11 @@ Xcos trace:   propertyUpdated( 8 , BLOCK , OUTPUTS ) : NO_CHANGES
 Xcos trace:   propertyUpdated( 8 , BLOCK , EVENT_INPUTS ) : NO_CHANGES
 Xcos trace:   propertyUpdated( 8 , BLOCK , EVENT_OUTPUTS ) : NO_CHANGES
 Xcos trace:   propertyUpdated( 8 , BLOCK , PARENT_BLOCK ) : NO_CHANGES
-Xcos trace:   propertyUpdated( 9 , PORT , CONNECTED_SIGNALS ) : NO_CHANGES
 Xcos trace:   propertyUpdated( 8 , BLOCK , CHILDREN ) : NO_CHANGES
 Xcos trace:   objectReferenced( 8 , BLOCK ) : 1
 Xcos debug:   propertyUpdated( 8 , BLOCK , PARENT_DIAGRAM ) : SUCCESS
 Xcos trace:   propertyUpdated( 8 , BLOCK , PARENT_BLOCK ) : NO_CHANGES
+Xcos trace:   propertyUpdated( 9 , PORT , CONNECTED_SIGNALS ) : NO_CHANGES
 Xcos debug:   propertyUpdated( 1 , DIAGRAM , CHILDREN ) : SUCCESS
 Xcos trace:   objectUnreferenced( 8 , BLOCK ) : 0
 Xcos trace:   objectUnreferenced( 6 , BLOCK ) : 0
@@ -336,7 +336,6 @@ Xcos debug:   propertyUpdated( 13 , BLOCK , OUTPUTS ) : SUCCESS
 Xcos trace:   propertyUpdated( 13 , BLOCK , EVENT_INPUTS ) : NO_CHANGES
 Xcos trace:   propertyUpdated( 13 , BLOCK , EVENT_OUTPUTS ) : NO_CHANGES
 Xcos trace:   propertyUpdated( 13 , BLOCK , PARENT_BLOCK ) : NO_CHANGES
-Xcos trace:   propertyUpdated( 14 , PORT , CONNECTED_SIGNALS ) : NO_CHANGES
 Xcos trace:   propertyUpdated( 13 , BLOCK , CHILDREN ) : NO_CHANGES
 Xcos info:    objectCreated( 15 , BLOCK )
 Xcos info:    objectCloned( 8 , 15 , BLOCK )
@@ -378,8 +377,6 @@ Xcos trace:   propertyUpdated( 15 , BLOCK , OUTPUTS ) : NO_CHANGES
 Xcos trace:   propertyUpdated( 15 , BLOCK , EVENT_INPUTS ) : NO_CHANGES
 Xcos trace:   propertyUpdated( 15 , BLOCK , EVENT_OUTPUTS ) : NO_CHANGES
 Xcos trace:   propertyUpdated( 15 , BLOCK , PARENT_BLOCK ) : NO_CHANGES
-Xcos trace:   propertyUpdated( 14 , PORT , CONNECTED_SIGNALS ) : NO_CHANGES
-Xcos trace:   propertyUpdated( 16 , PORT , CONNECTED_SIGNALS ) : NO_CHANGES
 Xcos trace:   propertyUpdated( 15 , BLOCK , CHILDREN ) : NO_CHANGES
 Xcos trace:   objectReferenced( 13 , BLOCK ) : 1
 Xcos trace:   propertyUpdated( 13 , BLOCK , PARENT_DIAGRAM ) : NO_CHANGES
@@ -387,6 +384,8 @@ Xcos debug:   propertyUpdated( 13 , BLOCK , PARENT_BLOCK ) : SUCCESS
 Xcos trace:   objectReferenced( 15 , BLOCK ) : 1
 Xcos trace:   propertyUpdated( 15 , BLOCK , PARENT_DIAGRAM ) : NO_CHANGES
 Xcos debug:   propertyUpdated( 15 , BLOCK , PARENT_BLOCK ) : SUCCESS
+Xcos trace:   propertyUpdated( 14 , PORT , CONNECTED_SIGNALS ) : NO_CHANGES
+Xcos trace:   propertyUpdated( 16 , PORT , CONNECTED_SIGNALS ) : NO_CHANGES
 Xcos debug:   propertyUpdated( 10 , BLOCK , CHILDREN ) : SUCCESS
 Xcos trace:   objectUnreferenced( 13 , BLOCK ) : 0
 Xcos trace:   objectUnreferenced( 15 , BLOCK ) : 0
@@ -1090,7 +1089,7 @@ Xcos trace:   propertyUpdated( 26 , DIAGRAM , PROPERTIES ) : NO_CHANGES
 Xcos trace:   propertyUpdated( 26 , DIAGRAM , CONTEXT ) : NO_CHANGES
 Xcos trace:   objectUnreferenced( 26 , DIAGRAM ) : 0
 Xcos trace:   propertyUpdated( 26 , DIAGRAM , CHILDREN ) : NO_CHANGES
-Xcos debug:   propertyUpdated( 26 , DIAGRAM , VERSION_NUMBER ) : SUCCESS
+Xcos trace:   propertyUpdated( 26 , DIAGRAM , VERSION_NUMBER ) : NO_CHANGES
 Xcos info:    objectCreated( 27 , BLOCK )
 Xcos info:    objectCloned( 20 , 27 , BLOCK )
 Xcos trace:   propertyUpdated( 27 , BLOCK , SIM_FUNCTION_API ) : NO_CHANGES
@@ -1131,11 +1130,11 @@ Xcos trace:   propertyUpdated( 28 , PORT , CONNECTED_SIGNALS ) : NO_CHANGES
 Xcos debug:   propertyUpdated( 27 , BLOCK , EVENT_INPUTS ) : SUCCESS
 Xcos trace:   propertyUpdated( 27 , BLOCK , EVENT_OUTPUTS ) : NO_CHANGES
 Xcos trace:   propertyUpdated( 27 , BLOCK , PARENT_BLOCK ) : NO_CHANGES
-Xcos trace:   propertyUpdated( 28 , PORT , CONNECTED_SIGNALS ) : NO_CHANGES
 Xcos trace:   propertyUpdated( 27 , BLOCK , CHILDREN ) : NO_CHANGES
 Xcos trace:   objectReferenced( 27 , BLOCK ) : 1
 Xcos debug:   propertyUpdated( 27 , BLOCK , PARENT_DIAGRAM ) : SUCCESS
 Xcos trace:   propertyUpdated( 27 , BLOCK , PARENT_BLOCK ) : NO_CHANGES
+Xcos trace:   propertyUpdated( 28 , PORT , CONNECTED_SIGNALS ) : NO_CHANGES
 Xcos debug:   propertyUpdated( 26 , DIAGRAM , CHILDREN ) : SUCCESS
 Xcos trace:   objectUnreferenced( 27 , BLOCK ) : 0
 Xcos trace:   objectReferenced( 27 , BLOCK ) : 1
@@ -1190,12 +1189,12 @@ Xcos debug:   propertyUpdated( 31 , PORT , SOURCE_BLOCK ) : SUCCESS
 Xcos trace:   propertyUpdated( 31 , PORT , CONNECTED_SIGNALS ) : NO_CHANGES
 Xcos debug:   propertyUpdated( 29 , BLOCK , EVENT_OUTPUTS ) : SUCCESS
 Xcos trace:   propertyUpdated( 29 , BLOCK , PARENT_BLOCK ) : NO_CHANGES
-Xcos trace:   propertyUpdated( 30 , PORT , CONNECTED_SIGNALS ) : NO_CHANGES
-Xcos trace:   propertyUpdated( 31 , PORT , CONNECTED_SIGNALS ) : NO_CHANGES
 Xcos trace:   propertyUpdated( 29 , BLOCK , CHILDREN ) : NO_CHANGES
 Xcos trace:   objectReferenced( 29 , BLOCK ) : 1
 Xcos debug:   propertyUpdated( 29 , BLOCK , PARENT_DIAGRAM ) : SUCCESS
 Xcos trace:   propertyUpdated( 29 , BLOCK , PARENT_BLOCK ) : NO_CHANGES
+Xcos trace:   propertyUpdated( 30 , PORT , CONNECTED_SIGNALS ) : NO_CHANGES
+Xcos trace:   propertyUpdated( 31 , PORT , CONNECTED_SIGNALS ) : NO_CHANGES
 Xcos debug:   propertyUpdated( 26 , DIAGRAM , CHILDREN ) : SUCCESS
 Xcos trace:   objectUnreferenced( 29 , BLOCK ) : 0
 Xcos trace:   objectUnreferenced( 27 , BLOCK ) : 0
@@ -1224,7 +1223,8 @@ Xcos trace:   propertyUpdated( 33 , LINK , DESTINATION_PORT ) : NO_CHANGES
 Xcos trace:   objectReferenced( 33 , LINK ) : 1
 Xcos debug:   propertyUpdated( 33 , LINK , PARENT_DIAGRAM ) : SUCCESS
 Xcos trace:   propertyUpdated( 33 , LINK , PARENT_BLOCK ) : NO_CHANGES
-Xcos trace:   propertyUpdated( 31 , PORT , CONNECTED_SIGNALS ) : NO_CHANGES
+Xcos trace:   propertyUpdated( 33 , LINK , SOURCE_PORT ) : NO_CHANGES
+Xcos trace:   propertyUpdated( 33 , LINK , DESTINATION_PORT ) : NO_CHANGES
 Xcos debug:   propertyUpdated( 31 , PORT , CONNECTED_SIGNALS ) : SUCCESS
 Xcos debug:   propertyUpdated( 33 , LINK , SOURCE_PORT ) : SUCCESS
 Xcos debug:   propertyUpdated( 26 , DIAGRAM , CHILDREN ) : SUCCESS
@@ -1297,14 +1297,18 @@ Xcos debug:   propertyUpdated( 37 , PORT , SOURCE_BLOCK ) : SUCCESS
 Xcos trace:   propertyUpdated( 37 , PORT , CONNECTED_SIGNALS ) : NO_CHANGES
 Xcos debug:   propertyUpdated( 34 , BLOCK , EVENT_OUTPUTS ) : SUCCESS
 Xcos trace:   propertyUpdated( 34 , BLOCK , PARENT_BLOCK ) : NO_CHANGES
-Xcos trace:   propertyUpdated( 35 , PORT , CONNECTED_SIGNALS ) : NO_CHANGES
-Xcos trace:   propertyUpdated( 36 , PORT , CONNECTED_SIGNALS ) : NO_CHANGES
-Xcos trace:   propertyUpdated( 37 , PORT , CONNECTED_SIGNALS ) : NO_CHANGES
 Xcos trace:   propertyUpdated( 34 , BLOCK , CHILDREN ) : NO_CHANGES
 Xcos trace:   objectReferenced( 34 , BLOCK ) : 1
 Xcos debug:   propertyUpdated( 34 , BLOCK , PARENT_DIAGRAM ) : SUCCESS
 Xcos trace:   propertyUpdated( 34 , BLOCK , PARENT_BLOCK ) : NO_CHANGES
+Xcos trace:   propertyUpdated( 35 , PORT , CONNECTED_SIGNALS ) : NO_CHANGES
+Xcos trace:   propertyUpdated( 36 , PORT , CONNECTED_SIGNALS ) : NO_CHANGES
+Xcos trace:   propertyUpdated( 37 , PORT , CONNECTED_SIGNALS ) : NO_CHANGES
 Xcos debug:   propertyUpdated( 35 , PORT , CONNECTED_SIGNALS ) : SUCCESS
+Xcos trace:   propertyUpdated( 31 , PORT , CONNECTED_SIGNALS ) : NO_CHANGES
+Xcos trace:   propertyUpdated( 33 , LINK , SOURCE_PORT ) : NO_CHANGES
+Xcos trace:   propertyUpdated( 35 , PORT , CONNECTED_SIGNALS ) : NO_CHANGES
+Xcos debug:   propertyUpdated( 33 , LINK , DESTINATION_PORT ) : SUCCESS
 Xcos debug:   propertyUpdated( 26 , DIAGRAM , CHILDREN ) : SUCCESS
 Xcos trace:   objectUnreferenced( 34 , BLOCK ) : 0
 Xcos trace:   objectUnreferenced( 27 , BLOCK ) : 0
@@ -1337,10 +1341,10 @@ Xcos trace:   propertyUpdated( 39 , LINK , DESTINATION_PORT ) : NO_CHANGES
 Xcos trace:   objectReferenced( 39 , LINK ) : 1
 Xcos debug:   propertyUpdated( 39 , LINK , PARENT_DIAGRAM ) : SUCCESS
 Xcos trace:   propertyUpdated( 39 , LINK , PARENT_BLOCK ) : NO_CHANGES
-Xcos trace:   propertyUpdated( 36 , PORT , CONNECTED_SIGNALS ) : NO_CHANGES
+Xcos trace:   propertyUpdated( 39 , LINK , SOURCE_PORT ) : NO_CHANGES
+Xcos trace:   propertyUpdated( 39 , LINK , DESTINATION_PORT ) : NO_CHANGES
 Xcos debug:   propertyUpdated( 36 , PORT , CONNECTED_SIGNALS ) : SUCCESS
 Xcos debug:   propertyUpdated( 39 , LINK , SOURCE_PORT ) : SUCCESS
-Xcos trace:   propertyUpdated( 28 , PORT , CONNECTED_SIGNALS ) : NO_CHANGES
 Xcos debug:   propertyUpdated( 28 , PORT , CONNECTED_SIGNALS ) : SUCCESS
 Xcos debug:   propertyUpdated( 39 , LINK , DESTINATION_PORT ) : SUCCESS
 Xcos debug:   propertyUpdated( 26 , DIAGRAM , CHILDREN ) : SUCCESS
@@ -1378,10 +1382,10 @@ Xcos trace:   propertyUpdated( 41 , LINK , DESTINATION_PORT ) : NO_CHANGES
 Xcos trace:   objectReferenced( 41 , LINK ) : 1
 Xcos debug:   propertyUpdated( 41 , LINK , PARENT_DIAGRAM ) : SUCCESS
 Xcos trace:   propertyUpdated( 41 , LINK , PARENT_BLOCK ) : NO_CHANGES
-Xcos trace:   propertyUpdated( 37 , PORT , CONNECTED_SIGNALS ) : NO_CHANGES
+Xcos trace:   propertyUpdated( 41 , LINK , SOURCE_PORT ) : NO_CHANGES
+Xcos trace:   propertyUpdated( 41 , LINK , DESTINATION_PORT ) : NO_CHANGES
 Xcos debug:   propertyUpdated( 37 , PORT , CONNECTED_SIGNALS ) : SUCCESS
 Xcos debug:   propertyUpdated( 41 , LINK , SOURCE_PORT ) : SUCCESS
-Xcos trace:   propertyUpdated( 30 , PORT , CONNECTED_SIGNALS ) : NO_CHANGES
 Xcos debug:   propertyUpdated( 30 , PORT , CONNECTED_SIGNALS ) : SUCCESS
 Xcos debug:   propertyUpdated( 41 , LINK , DESTINATION_PORT ) : SUCCESS
 Xcos debug:   propertyUpdated( 26 , DIAGRAM , CHILDREN ) : SUCCESS
@@ -1612,7 +1616,6 @@ Xcos trace:   propertyUpdated( 45 , PORT , CONNECTED_SIGNALS ) : NO_CHANGES
 Xcos debug:   propertyUpdated( 44 , BLOCK , EVENT_INPUTS ) : SUCCESS
 Xcos trace:   propertyUpdated( 44 , BLOCK , EVENT_OUTPUTS ) : NO_CHANGES
 Xcos trace:   propertyUpdated( 44 , BLOCK , PARENT_BLOCK ) : NO_CHANGES
-Xcos trace:   propertyUpdated( 45 , PORT , CONNECTED_SIGNALS ) : NO_CHANGES
 Xcos trace:   propertyUpdated( 44 , BLOCK , CHILDREN ) : NO_CHANGES
 Xcos info:    objectCreated( 46 , BLOCK )
 Xcos info:    objectCloned( 29 , 46 , BLOCK )
@@ -1665,9 +1668,6 @@ Xcos debug:   propertyUpdated( 48 , PORT , SOURCE_BLOCK ) : SUCCESS
 Xcos trace:   propertyUpdated( 48 , PORT , CONNECTED_SIGNALS ) : NO_CHANGES
 Xcos debug:   propertyUpdated( 46 , BLOCK , EVENT_OUTPUTS ) : SUCCESS
 Xcos trace:   propertyUpdated( 46 , BLOCK , PARENT_BLOCK ) : NO_CHANGES
-Xcos trace:   propertyUpdated( 45 , PORT , CONNECTED_SIGNALS ) : NO_CHANGES
-Xcos trace:   propertyUpdated( 47 , PORT , CONNECTED_SIGNALS ) : NO_CHANGES
-Xcos trace:   propertyUpdated( 48 , PORT , CONNECTED_SIGNALS ) : NO_CHANGES
 Xcos trace:   propertyUpdated( 46 , BLOCK , CHILDREN ) : NO_CHANGES
 Xcos info:    objectCreated( 49 , LINK )
 Xcos info:    objectCloned( 33 , 49 , LINK )
@@ -1744,14 +1744,6 @@ Xcos debug:   propertyUpdated( 53 , PORT , SOURCE_BLOCK ) : SUCCESS
 Xcos trace:   propertyUpdated( 53 , PORT , CONNECTED_SIGNALS ) : NO_CHANGES
 Xcos debug:   propertyUpdated( 50 , BLOCK , EVENT_OUTPUTS ) : SUCCESS
 Xcos trace:   propertyUpdated( 50 , BLOCK , PARENT_BLOCK ) : NO_CHANGES
-Xcos trace:   propertyUpdated( 51 , PORT , CONNECTED_SIGNALS ) : NO_CHANGES
-Xcos trace:   propertyUpdated( 52 , PORT , CONNECTED_SIGNALS ) : NO_CHANGES
-Xcos trace:   propertyUpdated( 45 , PORT , CONNECTED_SIGNALS ) : NO_CHANGES
-Xcos trace:   propertyUpdated( 47 , PORT , CONNECTED_SIGNALS ) : NO_CHANGES
-Xcos debug:   propertyUpdated( 48 , PORT , CONNECTED_SIGNALS ) : SUCCESS
-Xcos trace:   propertyUpdated( 49 , LINK , SOURCE_PORT ) : NO_CHANGES
-Xcos trace:   propertyUpdated( 49 , LINK , DESTINATION_PORT ) : NO_CHANGES
-Xcos trace:   propertyUpdated( 53 , PORT , CONNECTED_SIGNALS ) : NO_CHANGES
 Xcos trace:   propertyUpdated( 50 , BLOCK , CHILDREN ) : NO_CHANGES
 Xcos info:    objectCreated( 54 , LINK )
 Xcos info:    objectCloned( 39 , 54 , LINK )
@@ -1799,16 +1791,34 @@ Xcos trace:   propertyUpdated( 55 , LINK , PARENT_DIAGRAM ) : NO_CHANGES
 Xcos debug:   propertyUpdated( 55 , LINK , PARENT_BLOCK ) : SUCCESS
 Xcos debug:   propertyUpdated( 45 , PORT , CONNECTED_SIGNALS ) : SUCCESS
 Xcos debug:   propertyUpdated( 47 , PORT , CONNECTED_SIGNALS ) : SUCCESS
-Xcos trace:   propertyUpdated( 48 , PORT , CONNECTED_SIGNALS ) : NO_CHANGES
+Xcos debug:   propertyUpdated( 48 , PORT , CONNECTED_SIGNALS ) : SUCCESS
+Xcos trace:   propertyUpdated( 49 , LINK , SOURCE_PORT ) : NO_CHANGES
+Xcos debug:   propertyUpdated( 49 , LINK , DESTINATION_PORT ) : SUCCESS
 Xcos trace:   propertyUpdated( 51 , PORT , CONNECTED_SIGNALS ) : NO_CHANGES
 Xcos debug:   propertyUpdated( 52 , PORT , CONNECTED_SIGNALS ) : SUCCESS
 Xcos debug:   propertyUpdated( 53 , PORT , CONNECTED_SIGNALS ) : SUCCESS
-Xcos debug:   propertyUpdated( 48 , PORT , CONNECTED_SIGNALS ) : SUCCESS
-Xcos debug:   propertyUpdated( 48 , PORT , CONNECTED_SIGNALS ) : SUCCESS
+Xcos trace:   propertyUpdated( 54 , LINK , SOURCE_PORT ) : NO_CHANGES
+Xcos trace:   propertyUpdated( 54 , LINK , DESTINATION_PORT ) : NO_CHANGES
+Xcos trace:   propertyUpdated( 55 , LINK , SOURCE_PORT ) : NO_CHANGES
+Xcos trace:   propertyUpdated( 55 , LINK , DESTINATION_PORT ) : NO_CHANGES
+Xcos trace:   propertyUpdated( 45 , PORT , CONNECTED_SIGNALS ) : NO_CHANGES
+Xcos trace:   propertyUpdated( 52 , PORT , CONNECTED_SIGNALS ) : NO_CHANGES
+Xcos trace:   propertyUpdated( 54 , LINK , SOURCE_PORT ) : NO_CHANGES
+Xcos trace:   propertyUpdated( 45 , PORT , CONNECTED_SIGNALS ) : NO_CHANGES
+Xcos trace:   propertyUpdated( 54 , LINK , DESTINATION_PORT ) : NO_CHANGES
+Xcos trace:   propertyUpdated( 47 , PORT , CONNECTED_SIGNALS ) : NO_CHANGES
+Xcos trace:   propertyUpdated( 48 , PORT , CONNECTED_SIGNALS ) : NO_CHANGES
+Xcos trace:   propertyUpdated( 53 , PORT , CONNECTED_SIGNALS ) : NO_CHANGES
+Xcos trace:   propertyUpdated( 55 , LINK , SOURCE_PORT ) : NO_CHANGES
+Xcos trace:   propertyUpdated( 47 , PORT , CONNECTED_SIGNALS ) : NO_CHANGES
+Xcos trace:   propertyUpdated( 55 , LINK , DESTINATION_PORT ) : NO_CHANGES
+Xcos trace:   propertyUpdated( 48 , PORT , CONNECTED_SIGNALS ) : NO_CHANGES
 Xcos trace:   propertyUpdated( 49 , LINK , SOURCE_PORT ) : NO_CHANGES
-Xcos debug:   propertyUpdated( 51 , PORT , CONNECTED_SIGNALS ) : SUCCESS
-Xcos debug:   propertyUpdated( 51 , PORT , CONNECTED_SIGNALS ) : SUCCESS
-Xcos debug:   propertyUpdated( 49 , LINK , DESTINATION_PORT ) : SUCCESS
+Xcos trace:   propertyUpdated( 51 , PORT , CONNECTED_SIGNALS ) : NO_CHANGES
+Xcos trace:   propertyUpdated( 49 , LINK , DESTINATION_PORT ) : NO_CHANGES
+Xcos trace:   propertyUpdated( 51 , PORT , CONNECTED_SIGNALS ) : NO_CHANGES
+Xcos trace:   propertyUpdated( 52 , PORT , CONNECTED_SIGNALS ) : NO_CHANGES
+Xcos trace:   propertyUpdated( 53 , PORT , CONNECTED_SIGNALS ) : NO_CHANGES
 Xcos debug:   propertyUpdated( 42 , BLOCK , CHILDREN ) : SUCCESS
 Xcos trace:   objectUnreferenced( 44 , BLOCK ) : 0
 Xcos trace:   objectUnreferenced( 46 , BLOCK ) : 0
@@ -1866,6 +1876,7 @@ Xcos debug:   propertyUpdated( 29 , BLOCK , EVENT_OUTPUTS ) : SUCCESS
 Xcos debug:   propertyUpdated( 33 , LINK , SOURCE_PORT ) : SUCCESS
 Xcos info:    objectDeleted( 31 , PORT )
 Xcos info:    objectDeleted( 29 , BLOCK )
+Xcos debug:   propertyUpdated( 35 , PORT , CONNECTED_SIGNALS ) : SUCCESS
 Xcos info:    objectDeleted( 33 , LINK )
 Xcos trace:   propertyUpdated( 34 , BLOCK , INPUTS ) : NO_CHANGES
 Xcos trace:   propertyUpdated( 34 , BLOCK , OUTPUTS ) : NO_CHANGES
@@ -2483,19 +2494,19 @@ Xcos debug:   propertyUpdated( 10 , BLOCK , OUTPUTS ) : SUCCESS
 Xcos trace:   propertyUpdated( 10 , BLOCK , EVENT_INPUTS ) : NO_CHANGES
 Xcos trace:   propertyUpdated( 10 , BLOCK , EVENT_OUTPUTS ) : NO_CHANGES
 Xcos info:    objectDeleted( 12 , PORT )
-Xcos debug:   propertyUpdated( 10 , BLOCK , CHILDREN ) : SUCCESS
 Xcos trace:   propertyUpdated( 13 , BLOCK , INPUTS ) : NO_CHANGES
 Xcos debug:   propertyUpdated( 13 , BLOCK , OUTPUTS ) : SUCCESS
 Xcos trace:   propertyUpdated( 13 , BLOCK , EVENT_INPUTS ) : NO_CHANGES
 Xcos trace:   propertyUpdated( 13 , BLOCK , EVENT_OUTPUTS ) : NO_CHANGES
 Xcos info:    objectDeleted( 14 , PORT )
-Xcos info:    objectDeleted( 13 , BLOCK )
 Xcos debug:   propertyUpdated( 10 , BLOCK , CHILDREN ) : SUCCESS
+Xcos info:    objectDeleted( 13 , BLOCK )
 Xcos debug:   propertyUpdated( 15 , BLOCK , INPUTS ) : SUCCESS
 Xcos trace:   propertyUpdated( 15 , BLOCK , OUTPUTS ) : NO_CHANGES
 Xcos trace:   propertyUpdated( 15 , BLOCK , EVENT_INPUTS ) : NO_CHANGES
 Xcos trace:   propertyUpdated( 15 , BLOCK , EVENT_OUTPUTS ) : NO_CHANGES
 Xcos info:    objectDeleted( 16 , PORT )
+Xcos debug:   propertyUpdated( 10 , BLOCK , CHILDREN ) : SUCCESS
 Xcos info:    objectDeleted( 15 , BLOCK )
 Xcos info:    objectDeleted( 10 , BLOCK )
 Xcos trace:   propertyUpdated( 42 , BLOCK , INPUTS ) : NO_CHANGES
@@ -2503,15 +2514,14 @@ Xcos trace:   propertyUpdated( 42 , BLOCK , OUTPUTS ) : NO_CHANGES
 Xcos trace:   propertyUpdated( 42 , BLOCK , EVENT_INPUTS ) : NO_CHANGES
 Xcos debug:   propertyUpdated( 42 , BLOCK , EVENT_OUTPUTS ) : SUCCESS
 Xcos info:    objectDeleted( 43 , PORT )
-Xcos debug:   propertyUpdated( 42 , BLOCK , CHILDREN ) : SUCCESS
 Xcos trace:   propertyUpdated( 44 , BLOCK , INPUTS ) : NO_CHANGES
 Xcos trace:   propertyUpdated( 44 , BLOCK , OUTPUTS ) : NO_CHANGES
 Xcos debug:   propertyUpdated( 44 , BLOCK , EVENT_INPUTS ) : SUCCESS
 Xcos trace:   propertyUpdated( 44 , BLOCK , EVENT_OUTPUTS ) : NO_CHANGES
 Xcos debug:   propertyUpdated( 54 , LINK , DESTINATION_PORT ) : SUCCESS
 Xcos info:    objectDeleted( 45 , PORT )
-Xcos info:    objectDeleted( 44 , BLOCK )
 Xcos debug:   propertyUpdated( 42 , BLOCK , CHILDREN ) : SUCCESS
+Xcos info:    objectDeleted( 44 , BLOCK )
 Xcos trace:   propertyUpdated( 46 , BLOCK , INPUTS ) : NO_CHANGES
 Xcos trace:   propertyUpdated( 46 , BLOCK , OUTPUTS ) : NO_CHANGES
 Xcos debug:   propertyUpdated( 46 , BLOCK , EVENT_INPUTS ) : SUCCESS
@@ -2524,11 +2534,11 @@ Xcos trace:   propertyUpdated( 46 , BLOCK , EVENT_INPUTS ) : NO_CHANGES
 Xcos debug:   propertyUpdated( 46 , BLOCK , EVENT_OUTPUTS ) : SUCCESS
 Xcos debug:   propertyUpdated( 49 , LINK , SOURCE_PORT ) : SUCCESS
 Xcos info:    objectDeleted( 48 , PORT )
+Xcos debug:   propertyUpdated( 42 , BLOCK , CHILDREN ) : SUCCESS
 Xcos info:    objectDeleted( 46 , BLOCK )
-Xcos debug:   propertyUpdated( 42 , BLOCK , CHILDREN ) : SUCCESS
 Xcos debug:   propertyUpdated( 51 , PORT , CONNECTED_SIGNALS ) : SUCCESS
-Xcos info:    objectDeleted( 49 , LINK )
 Xcos debug:   propertyUpdated( 42 , BLOCK , CHILDREN ) : SUCCESS
+Xcos info:    objectDeleted( 49 , LINK )
 Xcos trace:   propertyUpdated( 50 , BLOCK , INPUTS ) : NO_CHANGES
 Xcos trace:   propertyUpdated( 50 , BLOCK , OUTPUTS ) : NO_CHANGES
 Xcos debug:   propertyUpdated( 50 , BLOCK , EVENT_INPUTS ) : SUCCESS
@@ -2546,6 +2556,7 @@ Xcos trace:   propertyUpdated( 50 , BLOCK , EVENT_INPUTS ) : NO_CHANGES
 Xcos debug:   propertyUpdated( 50 , BLOCK , EVENT_OUTPUTS ) : SUCCESS
 Xcos debug:   propertyUpdated( 55 , LINK , SOURCE_PORT ) : SUCCESS
 Xcos info:    objectDeleted( 53 , PORT )
+Xcos debug:   propertyUpdated( 42 , BLOCK , CHILDREN ) : SUCCESS
 Xcos info:    objectDeleted( 50 , BLOCK )
 Xcos debug:   propertyUpdated( 42 , BLOCK , CHILDREN ) : SUCCESS
 Xcos info:    objectDeleted( 54 , LINK )

@@ -17,6 +17,7 @@
 #define __SLINT_SPACES_AROUND_OP_CHECKER_HXX__
 
 #include "SLintChecker.hxx"
+#include "opexp.hxx"
 
 namespace slint
 {

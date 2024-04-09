@@ -4,7 +4,7 @@ Scilab
 Open source, cross-platform numerical computational package and a high-level, numerically oriented programming language.
 
 [![Latest Release](https://gitlab.com/scilab/scilab/-/badges/release.svg)](https://gitlab.com/scilab/scilab/-/releases)
-[![Pipeline Status](https://gitlab.com/scilab/scilab/badges/minor/pipeline.svg)](https://gitlab.com/scilab/scilab/-/commits/minor)
+[![Pipeline Status](https://gitlab.com/scilab/scilab/badges/main/pipeline.svg)](https://gitlab.com/scilab/scilab/-/commits/main)
 
 COPYRIGHT NOTICE
 ----------------

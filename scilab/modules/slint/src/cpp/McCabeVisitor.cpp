@@ -182,25 +182,4 @@ void McCabeVisitor::visit(const ast::AssignListExp & e)
 void McCabeVisitor::visit(const ast::VarDec & e)
 {
 }
-
-void McCabeVisitor::visit(const ast::OptimizedExp & e)
-{
-}
-
-void McCabeVisitor::visit(const ast::DAXPYExp & e)
-{
-}
-
-void McCabeVisitor::visit(const ast::IntSelectExp & e)
-{
-}
-
-void McCabeVisitor::visit(const ast::StringSelectExp & e)
-{
-}
-
-void McCabeVisitor::visit(const ast::MemfillExp & e)
-{
-}
-
 } // namespace mcCabe

@@ -13,18 +13,28 @@
 // <-- Short Description -->
 // fix some invalid dependencies on external libraries
 
-// <-- INTERACTIVE TEST -->
+// <-- CLI SHELL MODE -->
+// <-- NO CHECK REF -->
 
 // checks that we don't have a dependency on libmmd.dll
 
-// dumpbin /IMPORTS hashtable.dll
-// dumpbin /IMPORTS integer.dll
-// dumpbin /IMPORTS interpolation.dll
-// dumpbin /IMPORTS randlib.dll
-// dumpbin /IMPORTS scicos.dll
-// dumpbin /IMPORTS scicos_blocks.dll
-// dumpbin /IMPORTS scicos_sundials.dll
-// dumpbin /IMPORTS scigraphic_export.dll
+allDLLs = ls("SCI/bin/*.dll");
+fortran = grep(allDLLs, ["libmmd", "libifcore", "lapack", "arpack"]);
+nonFortran = setdiff(1:size(allDLLs, 1), fortran);
+
+for dll = allDLLs(nonFortran)'
+    stdout = unix_g("dumpbin /IMPORTS "+dll);
+    found = grep(stdout, "libmmd.dll");
+    if found then pause, end
+end
 
 // checks that we don't have a dependency on user32.dll
-// dumpbin /IMPORTS io.dll
+
+windowsOnly = grep(allDLLs, ["tk85", "tcl85", "sound", "scilocalization", "sciconsole", "noconsole", "newt", "nativewindow", "libjvm", "Windows", "windows", "core", "ast"]);
+genericCode = setdiff(1:size(allDLLs, 1), windowsOnly);
+
+for dll = allDLLs(genericCode)'
+    stdout = unix_g("dumpbin /IMPORTS "+dll);
+    found = grep(stdout, "USER32.dll");
+    if found then pause, end
+end

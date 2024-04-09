@@ -91,6 +91,11 @@ libscihelptools_la_sci_gateway_DATA = sci_gateway/helptools_gateway.xml
 libscihelptools_la_data_configurationdir = $(mydatadir)/data/configuration
 libscihelptools_la_data_configuration_DATA = data/configuration/scilab_primitives.txt \
 data/configuration/scilab_macros.txt
+# when these file are not present, generate them empty ; Scilab will populate them later
+data/configuration/scilab_macros.txt:
+	touch $@
+data/configuration/scilab_primitives.txt:
+	touch $@
 
 libscihelptools_la_data_templatedir = $(mydatadir)/data/template
 libscihelptools_la_data_template_DATA = data/template/template_chm.html \

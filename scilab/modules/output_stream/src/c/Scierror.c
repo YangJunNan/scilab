@@ -52,7 +52,7 @@ int  Scierror(int iv, const char *fmt, ...)
     va_end(ap);
 
     pwstError = to_wide_string(s_buf);
-    setLastError(iv, pwstError, 0, NULL);
+    setLastError(iv, pwstError);
 
     FREE(pwstError);
     return retval;
@@ -78,7 +78,7 @@ int  Scierror(int iv, const char *fmt, ...)
 //  va_end(ap);
 //
 //
-//    setLastError(iv, s_buf, 0, NULL);
+//    setLastError(iv, s_buf);
 //    scilabErrorW(s_buf);
 //    scilabErrorW(L"\n");
 //

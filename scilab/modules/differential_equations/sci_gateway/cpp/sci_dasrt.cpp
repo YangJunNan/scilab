@@ -551,7 +551,7 @@ types::Function::ReturnValue sci_dasrt(types::typed_list &in, int _iRetCount, ty
 
     if (bFuncF == false)
     {
-        Scierror(77, _("%s: Wrong number of input argument(s): %d expected.\n"), "dasrt", in.size() + 3);
+        Scierror(77, _("%s: Wrong number of input argument(s): %d expected.\n"), "dasrt", (int) in.size() + 3);
         DifferentialEquation::removeDifferentialEquationFunctions();
         FREE(pdYdotData);
         FREE(pdYData);
@@ -561,7 +561,7 @@ types::Function::ReturnValue sci_dasrt(types::typed_list &in, int _iRetCount, ty
 
     if (pDblNg == NULL)
     {
-        Scierror(77, _("%s: Wrong number of input argument(s): %d expected.\n"), "dasrt", in.size() + 2);
+        Scierror(77, _("%s: Wrong number of input argument(s): %d expected.\n"), "dasrt", (int) in.size() + 2);
         DifferentialEquation::removeDifferentialEquationFunctions();
         FREE(pdYdotData);
         FREE(pdYData);
@@ -571,7 +571,7 @@ types::Function::ReturnValue sci_dasrt(types::typed_list &in, int _iRetCount, ty
 
     if (bFuncG == false)
     {
-        Scierror(77, _("%s: Wrong number of input argument(s): %d expected.\n"), "dasrt", in.size() + 1);
+        Scierror(77, _("%s: Wrong number of input argument(s): %d expected.\n"), "dasrt", (int) in.size() + 1);
         DifferentialEquation::removeDifferentialEquationFunctions();
         FREE(pdYdotData);
         FREE(pdYData);
@@ -674,7 +674,7 @@ types::Function::ReturnValue sci_dasrt(types::typed_list &in, int _iRetCount, ty
     {
         if (iworksize + rworksize != pDblHd->getSize())
         {
-            Scierror(77, _("%s: Wrong size for input argument(s) %d: %d expected.\n"), "dasrt", in.size(), iworksize + rworksize);
+            Scierror(77, _("%s: Wrong size for input argument(s) %d: %d expected.\n"), "dasrt", (int) in.size(), iworksize + rworksize);
             DifferentialEquation::removeDifferentialEquationFunctions();
             FREE(pdYdotData);
             FREE(pdYData);

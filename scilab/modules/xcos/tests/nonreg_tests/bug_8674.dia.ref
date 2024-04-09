@@ -29,5 +29,6 @@ funcprot(prot);
   "messagebox: I try to find the problem."                
   "<html><body><em>Please update the diagram to avoid this warning.</em><br />Block output port has a non-determined size:<ul><li>Output port 1 size is: 1</li><li>Input port 1 size is: 1</li></ul></body></html>"
   "<html><body><em>Please update the diagram to avoid this warning.</em><br />Block input port has a non-determined size:<ul><li>Output port 1 size is: 1</li><li>Input port 1 size is: 1</li></ul></body></html>"
-  "The 'V' variable does not exist."
-  "<html><body>Initialisation problem: <br/>The 'V' variable does not exist.</body></html>"
+  "at block #1 "2d3388c2:189685b6ddf:-7ffc""
+  "The 'V' variable does not exist."        
+  "<html><body>Initialisation problem: <br/>at block #1 "2d3388c2:189685b6ddf:-7ffc"<br/>The 'V' variable does not exist.</body></html>"

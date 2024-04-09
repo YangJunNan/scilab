@@ -20,6 +20,7 @@
 #include "coverage_gw.hxx"
 #include "scilabWrite.hxx"
 #include "scilabexception.hxx"
+#include "macrofile.hxx"
 
 #include <fstream>
 #include <iostream>

@@ -60,7 +60,7 @@
             </warning>
         </para>
         <para>
-            <code>[status, message] = copyfile(source,destination)</code>
+            <code>[status, msg] = copyfile(source,destination)</code>
             копирует из источника <varname>source</varname> в назначение <varname>destination</varname>,
             возвращая статус <varname>status</varname> и сообщение <varname>message</varname>.
         </para>
@@ -76,7 +76,7 @@
         <title>Примеры</title>
         <programlisting role="example">
             copyfile(SCI+"/etc/scilab.start",TMPDIR+"/scilab.start")
-            [status,message] = copyfile(SCI+"/etc/scilab.start",TMPDIR);
+            [status, msg] = copyfile(SCI+"/etc/scilab.start",TMPDIR);
         </programlisting>
     </refsection>
     <refsection role="see also">

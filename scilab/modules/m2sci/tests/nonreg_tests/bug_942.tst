@@ -41,7 +41,7 @@ SCIFILECONTENTSREF=[
         "function [a] = bug942(x) // bug942";
         "";
         "// Output variables initialisation (not found in input variables)";
-        "a=[];";
+        "a = [];";
         "";
         "// help line";
         "// help line";

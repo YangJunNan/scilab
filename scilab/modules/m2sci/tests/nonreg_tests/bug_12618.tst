@@ -22,4 +22,4 @@ path = TMPDIR+"/bug_12618.m";
 mputl(txt, path);
 mfile2sci(path, TMPDIR);
 res = mgetl(TMPDIR+"/bug_12618.sci");
-assert_checkequal(res($), "r = 1;ab8i = (2*%i)*r;s = ""now 3i as text"";// 4i in comment");
+assert_checkequal(res($), "r = 1;ab8i = 2*%i*r;s = ""now 3i as text"";  // 4i in comment");

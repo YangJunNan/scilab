@@ -13,6 +13,11 @@
 *
 */
 
+#ifdef _WIN32
+    #include <fcntl.h>
+    #include <io.h>
+#endif
+
 //#include "AnalysisVisitor.hxx"
 #include "tasks.hxx"
 #include "timer.hxx"
@@ -123,8 +128,14 @@ void printAstTask(ast::Exp *tree, bool timed)
 
     if (tree)
     {
+#ifdef _WIN32
+        int iOldMode = _setmode(_fileno(stdout), _O_U8TEXT);
+#endif
         ast::PrintVisitor printMe (std::wcout);
         tree->accept(printMe);
+#ifdef _WIN32
+        _setmode(_fileno(stdout), iOldMode);
+#endif
     }
 
     if (timed)
@@ -192,7 +203,7 @@ void execAstTask(ast::Exp* tree, bool serialize, bool timed, bool ASTtimed, bool
         exec = (ast::RunVisitor*)ConfigVariable::getDefaultVisitor();
     }
 
-    StaticRunner::execAndWait(newTree, exec, isInterruptibleThread, isPrioritaryThread, iCommandOrigin);
+    StaticRunner::execAndWait(newTree, exec, isPrioritaryThread, isInterruptibleThread, iCommandOrigin);
     //DO NOT DELETE tree or newTree, they was deleted by Runner or previously;
 
     if (timed)

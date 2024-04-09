@@ -461,6 +461,12 @@
     <ClCompile Include="..\cpp\SetUicontrolSnapToTicks.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="getHandleType.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="getUIStyle.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="core_import.def">
@@ -522,9 +528,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\cpp\CallJxgetmouse.hxx">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\cpp\CallMainWindow.hxx">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\cpp\CallMessageBox.hxx">
@@ -666,6 +669,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\..\includes\gui_gw.hxx">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\includes\getHandleType.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\includes\getUIStyle.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

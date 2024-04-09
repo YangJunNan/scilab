@@ -66,6 +66,17 @@
         <para>
             More information about Tcl/Tk: <ulink url="http://www.tcl.tk/doc/">http://www.tcl.tk/doc/</ulink>
         </para>
+        <para>
+            Note: TCL variables are not saved by <link linkend="save">save</link> function since they are not Scilab variables.
+        </para>
+        <programlisting role="example"><![CDATA[
+TCL_SetVar("myPi", 3.14);   // Creates the myPi variable in the TCL session
+myPi    // => error: the variable is a TCL one, not a Scilab one => It can't be saved
+        ]]></programlisting>
+        <screen><![CDATA[
+--> myPi
+Undefined variable: myPi
+        ]]></screen>
     </refsection>
     <refsection>
         <title>Examples</title>

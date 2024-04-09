@@ -37,6 +37,7 @@ MATIO_CPP_SOURCES = \
     src/cpp/CreateStructVariable.cpp \
 	src/cpp/ConvertSciVarToMatVar.cpp \
     src/cpp/GetIntegerVariable.cpp \
+	src/cpp/GetBooleanVariable.cpp \
     src/cpp/GetCharVariable.cpp \
 	src/cpp/GetDoubleVariable.cpp \
     src/cpp/GetSparseVariable.cpp \

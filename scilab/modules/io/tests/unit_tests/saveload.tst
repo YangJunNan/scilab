@@ -94,10 +94,6 @@ a=1:100;a(35)=%i;a(1)=%s;assert_checktrue(Check(a));
 a=%t;assert_checktrue(Check(a));
 a=rand(100,100)>0.5;assert_checktrue(Check(a));
 
-//a=mtlb_sparse(sparse(1));assert_checktrue(Check(a)); // Deactivated: See bug #11795
-//a=mtlb_sparse(sprand(100,100,0.1));assert_checktrue(Check(a)); // Deactivated: See bug #11795
-//a=mtlb_sparse(sparse(zeros(100,100)));assert_checktrue(Check(a)); // Deactivated: See bug #11795
-
 a=sparse(1)==1;assert_checktrue(Check(a));
 a=sprand(100,100,0.1)<0.5;assert_checktrue(Check(a));
 a=sparse(zeros(100,100))==1;assert_checktrue(Check(a));

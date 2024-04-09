@@ -27,9 +27,8 @@ types::InternalType* get_il_state(void)
     return il_state_save;
 }
 /*--------------------------------------------------------------------------*/
-types::InternalType* set_il_state(types::InternalType* _state)
+void set_il_state(types::InternalType* _state)
 {
     il_state_save = _state;
-    return il_state_save;
 }
 /*--------------------------------------------------------------------------*/
