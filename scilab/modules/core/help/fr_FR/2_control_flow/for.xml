@@ -76,15 +76,15 @@
             </listitem>
         </itemizedlist>
         <para>
-            Par exemple, préférer
+            Par exemple, préférer:
         </para>
         <programlisting><![CDATA[
 for i = 1:5
     disp(i);
 end
-
-// à
-
+]]></programlisting>
+        <para>à :</para>
+        <programlisting><![CDATA[
 for i = 1:5, disp(i); end
 ]]></programlisting>
     </refsection>

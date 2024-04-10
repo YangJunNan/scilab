@@ -83,7 +83,7 @@ for i = 1:5
     disp(i);
 end
 ]]></programlisting>
-        以下は推奨されません
+        <para>以下は推奨されません</para>
         <programlisting><![CDATA[
 for i = 1:5, disp(i); end
 ]]></programlisting>

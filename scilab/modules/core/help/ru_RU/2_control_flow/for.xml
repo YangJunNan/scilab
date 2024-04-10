@@ -121,9 +121,9 @@
 for i = 1:5
     disp(i);
 end
-
-// а не
-
+]]></programlisting>
+        <para>а не:</para>
+        <programlisting><![CDATA[
 for i = 1:5, disp(i); end
 ]]></programlisting>
     </refsection>

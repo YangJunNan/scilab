@@ -25,35 +25,35 @@
     <refsynopsisdiv>
         <title>Seqüência de Chamamento</title>
         <synopsis>
-            for element = source, instruction ; .. ; instruction; end
+            for variable = expression, instruction ; .. ; instruction; end
 
-            for element = source
-                instruction
-                ..
-                instruction
+            for variable = expression
+                instruction
+                ..
+                instruction
             end
 
-            for element = source do
-                instruction,
-                ..
-                instruction
+            for variable = expression do
+                instruction,
+                ..
+                instruction
             end
         </synopsis>
     </refsynopsisdiv>
     <refsection>
         <title>Descrição</title>
         <para>
-            Se <literal>source</literal> for um array (homogêneo ou não), <literal>element</literal>
+            Se <literal>expression</literal> for um array (homogêneo ou não), <literal>variable</literal>
             é definido para cada uma de suas colunas (para uma hipermatriz, como em
-            <literal>matrix(source, size(source ,1), -1))</literal>), um por um.
+            <literal>matrix(expression, size(expression ,1), -1))</literal>), um por um.
         </para>
         <para>
             Um caso particular utiliza o operador <link linkend="colon">colon</link> para criar
             vetores linhas regularmente espaçados, e remonta a formas de laço "for" tradicionais : 
-            <literal>for element = n1:step:n2, ..., end</literal>
+            <literal>for variable = n1:step:n2, ..., end</literal>
         </para>
         <para>
-            Se <literal>source</literal> é uma lista, <literal>element</literal> toma como valores
+            Se <literal>expression</literal> é uma lista, <literal>variable</literal> toma como valores
             as entradas sucessivas da lista.
         </para>
         <warning>
@@ -184,7 +184,7 @@ for j = 1:n, v = a(:,j), write(%io(2),v), end
             <revision>
                 <revnumber>6.0.0</revnumber>
                 <revdescription>
-                    The for <literal>source</literal> can now be a vector of graphic handles.
+                    The for <literal>expression</literal> can now be a vector of graphic handles.
                     <literal>for</literal> is now protected:
                     Assignments like <literal>for=1</literal> are no longer possible.
                 </revdescription>
@@ -192,8 +192,8 @@ for j = 1:n, v = a(:,j), write(%io(2),v), end
             <revision>
                 <revnumber>2023.0.0</revnumber>
                 <revdescription>
-                    The <literal>source</literal> can be a hypermatrix. It is then processed
-                    by column as <literal>matrix(source, size(source,1), -1)</literal>.
+                    The <literal>expression</literal> can be a hypermatrix. It is then processed
+                    by column as <literal>matrix(expression, size(expression,1), -1)</literal>.
                 </revdescription>
             </revision>
         </revhistory>

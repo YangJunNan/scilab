@@ -58,12 +58,12 @@
         <para>
             <literal>res = strcspn(Strings, forbiddenChars)</literal> lê
             <varname>Strings</varname> para a primeira ocorrência de qualquer caractere que esteja em
-            <varnname>forbiddenChars</varnname>, retornando o número de caracteres de Strings
+            <varname>forbiddenChars</varname>, retornando o número de caracteres de Strings
 			lidos antes da primeira ocorrência.
         </para>
         <para>
 			<varname>Strings</varname> deve ter as mesmas dimensões que 
-			<varnname>forbiddenChars</varnname>, ou <varname>Strings</varname> deve ser um string.
+			<varname>forbiddenChars</varname>, ou <varname>Strings</varname> deve ser um string.
         </para>
     </refsection>
     <refsection>

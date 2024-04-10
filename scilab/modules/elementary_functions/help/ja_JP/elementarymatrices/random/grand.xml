@@ -155,14 +155,14 @@ Y = grand(m, n, "lgi")
             <screen><![CDATA[
 Y = grand(m, n, o, …, PDFname, …)
 ]]></screen>
-            yields a <varname>m</varname> x <varname>n</varname> x <varname>o</varname> ×… hypermatrix
+            produces a <varname>m</varname> x <varname>n</varname> x <varname>o</varname> x... hypermatrix
             with random entries.
         </para>
         <para>
             <screen><![CDATA[
 Y = grand(X, PDFname, …)
 ]]></screen>
-            yields a scalar, vector, matrix or hypermatrix of size <literal>size(X)</literal>,
+            produces a scalar, vector, matrix or hypermatrix of size <literal>size(X)</literal>,
             with random entries. <varname>X</varname> is used only as template to size the result.
         </para>
         <para>
@@ -210,7 +210,7 @@ grand("advnst", K)
                         を指定したベータ分布からランダム変量を生成します.
                         ベータ分布の密度は (0 &lt; x &lt; 1) です:
                     </para>
-                    <latex alt="x^{A-1}.(1-x)^{B-1} / β(A,B)">
+                    <latex>
                         \dfrac{x^{A-1}(1-x)^{B-1}}{\beta(A,B)}
                     </latex>
                     <para>
@@ -320,7 +320,7 @@ grand("advnst", K)
                         ガンマ分布に基づくランダム変量を生成します.
                         ガンマの密度は以下となります :
                     </para>
-                    <latex alt="rate^shape . x^(shape-1).exp(-x.rate) / γ(shape)">
+                    <latex>
                         \dfrac{ \textrm{rate}^{\textrm{shape}} x^{\textrm{shape}-1} e^{-x.\textrm{rate}}}{\gamma(\textrm{shape}) }
                     </latex>
                     <para>
@@ -448,11 +448,6 @@ grand("advnst", K)
                                 <varname>Y</varname> is a <literal>m x p x q… x n</literal> hypermatrix.
                             </listitem>
                         </itemizedlist>
-                    </para>
-                    <para>
-                        Octave's <literal>randperm(n)</literal> function is equivalent to
-                        <literal>grand(1,'prm', 1:n)</literal>, and <literal>randperm(n, k)</literal>
-                        is equivalent to <literal>grand(1,'prm', 1:n)(1:k)</literal>.
                     </para>
                 </listitem>
             </varlistentry>

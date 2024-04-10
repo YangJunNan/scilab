@@ -76,15 +76,15 @@
             </listitem>
         </itemizedlist>
         <para>
-            For example, preferably use
+            For example, preferably use:
         </para>
         <programlisting><![CDATA[
 for i = 1:5
     disp(i);
 end
-
-//  instead of
-
+]]></programlisting>
+        <para>rather than:</para>
+        <programlisting><![CDATA[
 for i = 1:5, disp(i); end
 ]]></programlisting>
     </refsection>
@@ -126,7 +126,7 @@ for  c = M, c, end
    5.
    6.
 ]]></screen>
-        <para>Iterate on the columns of a cells array :</para>
+        <para>Iterate on the columns of a cell array:</para>
         <programlisting role="example"><![CDATA[
 C = {%pi, "This is πι" ; %z^2, %t}
 for  c = C, c, end

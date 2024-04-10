@@ -19,7 +19,7 @@
     <refnamediv>
         <refname>strncpy</refname>
         <refpurpose>
-            обрезать заданные строки до N первых символов
+            Получает и указывает первые N символов в указанных текстах
         </refpurpose>
     </refnamediv>
     <refsynopsisdiv>

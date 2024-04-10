@@ -28,7 +28,7 @@
             <varlistentry>
                 <term>n</term>
                 <listitem>
-                    <para>正の整数: サンプル数</para>
+                    <para>正の整数 (標本の大きさ)</para>
                 </listitem>
             </varlistentry>
             <varlistentry>
@@ -49,11 +49,11 @@
                                 are sampled.
                             </listitem>
                             <listitem>
-                                <literal>1</literal> or <literal>'r'</literal>: Rows of
+                                <literal>1</literal> or <literal>'r'</literal>: rows of
                                 <varname>X</varname> are sampled.
                             </listitem>
                             <listitem>
-                                <literal>2</literal> or <literal>'c'</literal>: Columns of
+                                <literal>2</literal> or <literal>'c'</literal>: rolumns of
                                 <varname>X</varname> are sampled.
                             </listitem>
                         </itemizedlist>

@@ -19,7 +19,7 @@
           xml:id="strncpy" xml:lang="pt">
     <refnamediv>
         <refname>strncpy</refname>
-        <refpurpose>trunca as strings fornecidas para seus N primeiros caracteres</refpurpose>
+        <refpurpose>Obtém e fornece os N primeiros caracteres dos textos fornecidos</refpurpose>
     </refnamediv>
     <refsynopsisdiv>
         <title>Seqüência de Chamamento</title>

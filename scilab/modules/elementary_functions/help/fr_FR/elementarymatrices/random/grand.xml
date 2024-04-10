@@ -97,7 +97,7 @@
                 <term>PDFname</term>
                 <listitem>
                     <para>
-                        Name of the chosen probability Density Function:
+                        Nom de la fonction de densité de probabilité choisie :
                         <literal>"def", "unf", "uin", "bet", "gam","exp", "nor", "geo", "poi",
                         "bin", "chi", "nbn", "nch", "f", "nf",  "lgi"</literal>.
                     </para>
@@ -156,7 +156,7 @@ Y = grand(m, n, "lgi")
 Y = grand(m, n, o, …, PDFname, …)
 ]]></screen>
             produit une hypermatrice de nombres réels aléatoires, de taille
-            <varname>m</varname> x <varname>n</varname> x <varname>o</varname> ×… .
+            <varname>m</varname> x <varname>n</varname> x <varname>o</varname> x... .
         </para>
         <para>
             <screen><![CDATA[
@@ -212,12 +212,12 @@ grand("advnst", K)
                         La densité de cette loi est (0 &lt; x &lt; 1) :
                     </para>
                     <para>
-                        <latex alt="x^{A-1}.(1-x)^{B-1} / β(A,B)">
+                        <latex>
                             \dfrac{x^{A-1}(1-x)^{B-1}}{\beta(A,B)}
                         </latex>
                     </para>
                     <para>
-                        <varname>A</varname> et <varname>B</varname> devant être des réels >
+                        <varname>A</varname> et <varname>B</varname> devant être des réels &gt;
                         10<superscript>-37</superscript>.
                         Fonction(s) associée(s) : <link linkend="cdfbet">cdfbet</link>.
                     </para>
@@ -317,7 +317,7 @@ grand("advnst", K)
                         (réel &gt; 0) et <varname>scale</varname> (réel &gt; 0). La densité est :
                     </para>
                     <para>
-                        <latex alt="rate^shape . x^(shape-1).exp(-x.rate) / γ(shape)">
+                        <latex>
                             \dfrac{ \textrm{rate}^{\textrm{shape}} x^{\textrm{shape}-1} e^{-x.\textrm{rate}}}{\gamma(\textrm{shape}) }
                         </latex>
                     </para>
@@ -914,12 +914,12 @@ grand(10, 1, "uin", 1, 365)
 grand(12, "prm", (1:7)')
  ]]></programlisting>
         <para>
-            L'exemple suivant génère une hypermatrice <varname>10</varname> x <varname>10</varname> x <varname>10</varname>
+            L'exemple suivant génère une hypermatrice <varname>10</varname>-par-<varname>10</varname>-par-<varname>10</varname>
             de nombre aléatoires provenant de la distribution "normale" et affiche les histogrammes associés.
             Le graphes montrent les première et dernière couches de la matrice.
         </para>
         <programlisting role="example"><![CDATA[
-// Retounrne une hypermatrice 400 x 800 x 10 de nombre aléatoires,
+// Retourne une hypermatrice 400 x 800 x 10 de nombre aléatoires,
 // avec la distribution normale, une moyenne de 0 et un écart-type de 1.
 // Affichage de la première et dernière couches.
 R = grand(10,10,10,"nor",0,1);
