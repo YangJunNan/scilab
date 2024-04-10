@@ -26,6 +26,10 @@ function uiimport(action)
             return
         case "variable"
             uiimport_variable();
+            if isdef("names","l") then
+                str = msprintf("[%s] = resume(d)\n", names)
+                execstr(str)
+            end
             return
         case "function"
             uiimport_function();
@@ -389,37 +393,56 @@ function uiimport_variable()
     end
 
     p = progressionbar("Import variable to workspace...");
-    str = x(1) + " = resume(d)";
+    names = x(1)
+    str = "[d, names] = resume(d, names)";
+    // str = x(1) + " = resume(d)";
 
     opts = data.opts;
-    varNames = opts.variableNames(data.keepcols)
+    varNames = data.varnames(data.keepcols);
+    varNamesRef = opts.variableNames(data.keepcols);
+    convert = data.convert(data.keepcols);
+    outputfmt = data.outputFormat(data.keepcols);
+
     if data.rowtimes == "No" then
-        d = readtable(path, data.opts, "VariableNames", varNames);
+        d = readtable(path, data.opts, "VariableNames", varNamesRef);
     else
         idx = find(data.rowtimes == varNames);
-        if data.convert(idx) <> "" then
-            convert_fcn = get("uiimport_convert", "userdata")(idx)
-            d = readtimeseries(path, data.opts, "VariableNames", varNames, "RowTimes", data.rowtimes, "ConvertTime", convert_fcn);
-            data.convert(idx) = "";
+        if convert(idx) <> "" then
+            convert_fcn = get("uiimport_convert", "userdata");
+            jdx = find(convert(idx) == get("uiimport_convert", "string"));
+            d = readtimeseries(path, data.opts, "VariableNames", varNamesRef, "RowTimes", varNamesRef(idx), "ConvertTime", convert_fcn(jdx));
+            convert(idx) = "";
         else
-            d = readtimeseries(path, data.opts, "RowTimes", data.rowtimes);
+            if opts.variableTypes(idx) == "double" then
+                m = messagebox("Unable to create a variable. You must choose the conversion method.", "Warning", "warning", "Ok", "modal");
+                return
+            end
+            d = readtimeseries(path, data.opts, "VariableNames", varNamesRef, "RowTimes", varNamesRef(idx));
         end
+        [a, k] = members(d.Properties.VariableNames, varNamesRef);
+        varNames = varNames(k);
+        convert = convert(k);
+        outputfmt = outputfmt(k);
     end
-    idx = find(data.convert <> "")
+    
+    if or(varNamesRef <> varNames) then
+        d.Properties.VariableNames = varNames;
+    end
+    
+    idx = find(convert <> "")
     if idx <> [] then
-        convert_fcn_list = get("uiimport_convert", "userdata")
         for i = idx
-            d(:,i) = convert_fcn_list(i)(d(:,i));
+            jdx = find(convert(idx) == get("uiimport_convert", "string"));
+            d(varNames(i)) = convert_fcn(jdx)(d(varNames(i)));
         end
     end
 
-    idx = find(data.outputFormat <> "")
+    idx = find(outputfmt <> "")
     if idx <> [] then
         for i = idx
-            d(varNames(i)).format = data.outputFormat(i);
+            d(varNames(i)).format = outputfmt(i);
         end
     end
-    disp(d)
     execstr(str);
     delete(p);
 
@@ -454,7 +477,7 @@ function uiimport_function()
     data = get("uiimport", "userdata");
     path = data.path;
 
-    x = basename(path);
+    x = "import_" + basename(path);
     filename = fullfile(fileparts(path), x + ".sce");
 
     if isfile(filename) then
@@ -467,7 +490,10 @@ function uiimport_function()
     end
 
     opts = data.opts;
-    varNames = opts.variableNames(data.keepcols);
+    varNames = data.varnames(data.keepcols);
+    varNamesRef = opts.variableNames(data.keepcols);
+    convert = data.convert(data.keepcols);
+    outputfmt = data.outputFormat(data.keepcols);
 
     str = [];
     str($+1) = sprintf("clear %s;", x(1));
@@ -485,33 +511,54 @@ function uiimport_function()
     end
     
     if data.rowtimes == "No" then
-        str($+1) = sprintf("    data = readtable(filename, opts, ""VariableNames"", %s);", sci2exp(varNames));
+        str($+1) = sprintf("    data = readtable(filename, opts, ""VariableNames"", %s);", sci2exp(varNamesRef));
     else
         idx = find(data.rowtimes == varNames);
-        if data.convert(idx) <> "" then
-            str($+1) = sprintf("    data = readtimeseries(filename, opts, ""VariableNames"", %s, ""RowTimes"", ""%s"", ""ConvertTime"", %s);", sci2exp(varNames), data.rowtimes, data.convert(idx));
-            data.convert(idx) = "";
+        if convert(idx) <> "" then
+            str($+1) = sprintf("    data = readtimeseries(filename, opts, ""VariableNames"", %s, ""RowTimes"", ""%s"", ""ConvertTime"", %s);", sci2exp(varNamesRef), varNamesRef(idx), convert(idx));
+            convert(idx) = "";
         else
-            str($+1) = sprintf("    data = readtimeseries(filename, opts, ""VariableNames"", %s, ""RowTimes"", ""%s"");", sci2exp(varNames), data.rowtimes);
+            if opts.variableTypes(idx) == "double" then
+                m = messagebox("Unable to create a variable. You must choose the conversion method.", "Warning", "warning", "Ok", "modal");
+                return
+            end
+            str($+1) = sprintf("    data = readtimeseries(filename, opts, ""VariableNames"", %s, ""RowTimes"", ""%s"");", sci2exp(varNamesRef), varNamesRef(idx));
+        end
+        variableNames = varNamesRef;
+        vartime = variableNames(idx);
+        variableNames(idx) = [];
+        variableNames = [vartime variableNames];
+        [a, k] = members(variableNames, varNamesRef);
+        
+        varNames = varNames(k);
+        convert = convert(k);
+        outputfmt = outputfmt(k);
+    end
+
+    // rename columns
+    if or(varNamesRef <> varNames) then
+        str($+1) = sprintf("    data.Properties.VariableNames = %s;", sci2exp(varNames));
+    end
+
+    idx = find(convert <> "")
+    if idx <> [] then
+        for i = idx
+            str($+1) = sprintf("    data(%s) = %s(data(%s));", sci2exp(varNames(i)), convert(i), sci2exp(varNames(i)));
         end
     end
 
-    idx = find(data.convert <> "")
+    idx = find(outputfmt <> "")
     if idx <> [] then
         for i = idx
-            str($+1) = sprintf("    data(:, %s) = %s(data(:, %s));", string(i), data.convert(i), string(i));
-        end
-    end
-
-    idx = find(data.outputFormat <> "")
-    if idx <> [] then
-        for i = idx
-            str($+1) = sprintf("    data.%s.format = ""%s"";", varNames(i), data.outputFormat(i));
+            str($+1) = sprintf("    data.%s.format = ""%s"";", varNames(i), outputfmt(i));
         end
     end
 
     str($+1) = "endfunction";
     str($+1) = "";
+
+    str($+1) = sprintf("data = %s(""%s"");", x(1), path);
+
 
     filename = fullfile(fileparts(path), x + ".sce");
     mputl(str, filename);
@@ -543,7 +590,7 @@ function uiimport_selectcolumn()
 
     // update time reference
     opts = data.opts;
-    varNames = opts.variableNames(keepcols);
+    varNames = data.varnames(keepcols);
     varTypes = opts.variableTypes(keepcols);
 
     varTypes_idx = varTypes == "double" | varTypes == "datetime" | varTypes == "duration";
@@ -553,7 +600,6 @@ function uiimport_selectcolumn()
     idx = find(timevar == timecol_obj.string(timecol_obj.value))
     if idx == [] then
         enable = "on";
-        data.rowtimes = "No";
         if size(timevar, "*") == 1 then
             enable = "off";
         end
@@ -566,6 +612,11 @@ function uiimport_selectcolumn()
 
     // update preview
     set("uiimport_col" + string(index), "visible", value);
+
+    if get("uiimport_btnvariable", "enable") == "off" then
+        set("uiimport_btnvariable", "enable", "on");
+        set("uiimport_btnfunction", "enable", "on");
+    end
 
     set("uiimport", "userdata", data);
 
@@ -581,20 +632,22 @@ function uiimport_changecolname()
 
     // update name in opts
     opts = data.opts;
-    varNames = opts.variableNames;
+    varNames = data.varnames;
     oldvarName = varNames(index)
     varNames(index) = str;
-    data.opts.variableNames = varNames;
+    data.varnames = varNames;
 
-    // update time variable
+    // update timevar popupmenu
     timevar = get("uiimport_timevar", "string")
     idx = find(timevar == oldvarName);
     if idx <> [] then
-        data.rowtimes = str;
-
         timevar(idx) = str;
         value = get("uiimport_timevar", "value");
         set("uiimport_timevar", "string", timevar, "value", value);
+    end
+
+    if data.rowtimes == oldvarName then
+        data.rowtimes = str;
     end
 
     // update preview
@@ -617,13 +670,12 @@ function uiimport_allselect()
     end
 
     opts = data.opts;
-    varNames = opts.variableNames;
+    varNames = data.varnames;
     varTypes = opts.variableTypes;
     timevar = ["No", varNames(varTypes == "double" | varTypes == "datetime" | varTypes == "duration")];
     timecol_obj = get("uiimport_timevar");
     idx = find(timevar == timecol_obj.string(timecol_obj.value))
     if idx == [] then
-        data.rowtimes = timevar;
         set("uiimport_timevar", "string", timevar, "value", 1, "enable", "on");
         // hide convert to or input format
         set("uiimport_timereflayer", "value", 1);
@@ -637,6 +689,9 @@ function uiimport_allselect()
         set("uiimport_col" + string(i), "visible", "on");
     end
     set("uiimport_preview", "visible", "on");
+
+    set("uiimport_btnvariable", "enable", "on");
+    set("uiimport_btnfunction", "enable", "on");
 
     set("uiimport", "userdata", data);
     
@@ -655,11 +710,6 @@ function uiimport_noneselect()
     end
 
     timevar = ["No"];
-
-    opts = data.opts;
-    varNames = opts.variableNames;
-    varTypes = opts.variableTypes;
-    data.rowtimes = timevar;
     
     set("uiimport_timevar", "string", timevar, "value", 1, "enable", "on");
     set("uiimport_timereflayer", "value", 1);
@@ -672,6 +722,8 @@ function uiimport_noneselect()
     end
 
     set("uiimport_preview", "visible", "on");
+    set("uiimport_btnvariable", "enable", "off");
+    set("uiimport_btnfunction", "enable", "off");
 
     set("uiimport", "userdata", data);
     
@@ -691,7 +743,7 @@ function uiimport_timevar()
     end
     
     opts = data.opts;
-    idx = find(opts.variableNames == timevar);
+    idx = find(data.varnames == timevar);
 
     varType = opts.variableTypes(idx);
 
@@ -720,13 +772,15 @@ endfunction
 // -----------------------------------------------------------------------------
 function uiimport_timeref()
     timevar = get("uiimport_timevar", "string")(get("uiimport_timevar", "value"));
+    data = get("uiimport", "userdata");
 
     value = gcbo.value;
     if value then
-        data = get("uiimport", "userdata");
         data.rowtimes = timevar;
-        set("uiimport", "userdata", data);
+    else
+        data.rowtimes = "No";
     end
+    set("uiimport", "userdata", data);
     
 endfunction
 
@@ -740,7 +794,7 @@ function uiimport_updateinputformat()
     // data structure
     data = get("uiimport", "userdata");
     opts = data.opts;
-    idx = find(opts.variableNames == timevar);
+    idx = find(data.varnames == timevar);
 
     if inputfmt == opts.inputFormat(idx) then
         return
@@ -771,7 +825,9 @@ function uiimport_updateinputformat()
 
     catch
         errclear();
-        m = messagebox(["The input format " + inputfmt + "cannot be applied."; "The previous input format is reapplied."], "Warning", "warning", "Ok", "modal");
+        m = messagebox(["The input format """ + inputfmt + """ cannot be applied."; "The previous input format is reapplied."], "Warning", "warning", "Ok", "modal");
+        set("uiimport_inputformat", "string", opts.inputFormat(idx))
+        uicontrol(get("uiimport_format"));
     end
 endfunction
 
@@ -781,7 +837,7 @@ function uiimport_resetinputformat()
     timevar = get("uiimport_timevar", "string")(get("uiimport_timevar", "value"));
     data = get("uiimport", "userdata");
     opts = data.opts;
-    idx = find(opts.variableNames == timevar);
+    idx = find(data.varnames == timevar);
 
     fmtRef = data.formatRef(idx);
     vartype = opts.variableTypes(idx);
@@ -814,7 +870,7 @@ function uiimport_resetoutputformat()
     timevar = get("uiimport_timevar", "string")(get("uiimport_timevar", "value"));
     data = get("uiimport", "userdata");
     opts = data.opts;
-    idx = find(opts.variableNames == timevar);
+    idx = find(data.varnames == timevar);
 
     fmtRef = data.formatRef(idx);
     vartype = opts.variableTypes(idx);
@@ -851,7 +907,7 @@ function uiimport_updateoutputformat()
     data = get("uiimport", "userdata");
 
     opts = data.opts;
-    idx = find(opts.variableNames == timevar);
+    idx = find(data.varnames == timevar);
 
     if outputfmt == data.outputFormat(idx) then
         return
@@ -881,7 +937,9 @@ function uiimport_updateoutputformat()
         set("uiimport", "userdata", data);
     catch
         errclear();
-        m = messagebox(["The output format " + outputfmt + "cannot be applied."; "The previous output format is reapplied."], "Warning", "warning", "Ok", "modal");
+        m = messagebox(["The output format """ + outputfmt + """ccannot be applied."; "The previous output format is reapplied."], "Warning", "warning", "Ok", "modal");
+        set("uiimport_outputformat", "string", data.outputFormat(idx))
+        uicontrol(get("uiimport_format"));
     end
 
 endfunction
@@ -897,7 +955,7 @@ function uiimport_convertto()
     
 
     opts = data.opts;
-    idx = find(opts.variableNames == timevar);
+    idx = find(data.varnames == timevar);
 
     x = data.x;
     p = x(:, idx);
@@ -1008,8 +1066,7 @@ function uiimport_preview()
     //     "callback", "global %uiimport_cancel;%uiimport_cancel=%t;", ...
     //     "constraints", createConstraints("gridbag", [1 1 1 1], [1, 1]));
 
-
-    header = opts.variableNames;
+    varnames = opts.variableNames;
     l = opts.datalines;
 
     dots = %f;
@@ -1036,7 +1093,7 @@ function uiimport_preview()
     end
 
     hasHeader = %f;
-    if opts.variableNames <> [] then
+    if varnames <> [] then
         hasHeader = %t;
     end
 
@@ -1046,10 +1103,11 @@ function uiimport_preview()
 
     data.x = x;
 
-    timevar = ["No", opts.variableNames(opts.variableTypes == "double" | opts.variableTypes == "datetime" | opts.variableTypes == "duration")];
+    timevar = ["No", varnames(opts.variableTypes == "double" | opts.variableTypes == "datetime" | opts.variableTypes == "duration")];
     data.rowtimes = timevar(1);
+    data.varnames = varnames;
 
-    limit = size(header, "c");
+    limit = size(varnames, "c");
 
     fc = get("uiimport_import");
     set("uiimport_frimport", "visible", "off");
@@ -1084,7 +1142,7 @@ function uiimport_preview()
         uicontrol(fcheckbox, ...
             "style", "edit", ...
             "tag", "edit" + string(i), ...
-            "string", header(i), ...
+            "string", varnames(i), ...
             "margins", [3 0 0 4], ...
             "callback", "uiimport(""changename"")", ...
             "userdata", i, ...
@@ -1219,7 +1277,7 @@ function uiimport_preview()
         constraints = createConstraints("gridbag", [i 1 1 1], [1, 0], "horizontal", "upper");
 
         if hasHeader then
-            h = header(i);
+            h = varnames(i);
         else
             h = sprintf("col%d", i);
         end
