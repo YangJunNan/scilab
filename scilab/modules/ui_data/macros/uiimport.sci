@@ -633,7 +633,13 @@ function uiimport_changecolname()
     // update name in opts
     opts = data.opts;
     varNames = data.varnames;
-    oldvarName = varNames(index)
+    oldvarName = varNames(index);
+    
+    if str == "" then
+        set(tag, "string", oldvarName);
+        return
+    end
+
     varNames(index) = str;
     data.varnames = varNames;
 
