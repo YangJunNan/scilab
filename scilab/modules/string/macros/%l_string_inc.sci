@@ -23,28 +23,28 @@ function t = %l_string_inc(s, parentType)
 
     if  typeof(s)=="st"
         // No fields
-        if isempty(fieldnames(s)) then
-            t = msprintf(_("%s struct with no field"), ..
-                         strcat(msprintf("%d\n",size(s)'), "x"));
-            return
-        end
+//        if isempty(fieldnames(s)) then
+//            t = msprintf(_("%s struct with no field"), ..
+//                         strcat(msprintf("%d\n",size(s)'), "x"));
+//            return
+//        end
 
         multi = size(s,"*")
 
         // 0x0 struct with fields
-        if multi == 0 then
-            t = _("0x0 struct with fields:")
-            for field = fieldnames(s)'
-                t = [t ; "   "+field]
-            end
-            return
-        end
+//        if multi == 0 then
+//            t = _("0x0 struct with fields:")
+//            for field = fieldnames(s)'
+//                t = [t ; "   "+field]
+//            end
+//            return
+//        end
 
         // axb struct where a<>0 & b<>0
         if multi > 1 | recursive > maxDisplayDepth then
             if ~recursive
-                t = msprintf(_("%s struct with fields:"), ..
-                     strcat(msprintf("%d\n", size(s)'), "x"));
+//                t = msprintf(_("%s struct with fields:"), ..
+//                     strcat(msprintf("%d\n", size(s)'), "x"));
             end
             tmp = sci2exp(fieldnames(s)', consoleWidth-10)
             tmp = strsubst(strsubst(tmp, """""", """"), ",", ", ")

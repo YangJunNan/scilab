@@ -2579,47 +2579,58 @@ std::wstring printVarEqualTypeDimsInfo(types::InternalType *pIT, std::wstring ws
 {
     std::wostringstream ostr;
 
-    ostr << L" " << wstName << L"  = ";
+    if (ConfigVariable::isPrintCompact() == false)
+    {
+        ostr << std::endl;
+    }
+    ostr << L" " << wstName << L" = ";
 #ifndef NDEBUG
     ostr << L"(" << pIT->getRef() << L")";
 #endif
-    if (pIT->isGenericType())
+    // if (pIT->isGenericType() && pIT->isStruct()==false)
+    // {
+    //     types::GenericType * pGT = pIT->getAs<types::GenericType>();
+    //     int iDims = pGT->getDims();
+    //     int iSize = pGT->getSize();
+    //     if (pGT->isArrayOf())
+    //     {
+    //         if (iSize > 1 || pGT->isCell() || pIT->isInt() || pGT->isPoly() )
+    //         {
+    //             ostr << L"(";
+    //             if (iSize > 1 || pGT->isCell())
+    //             {
+    //                 int *piDims = pGT->getDimsArray();
+    //                 for (int i=0; i<iDims; i++)
+    //                 {
+    //                     ostr << piDims[i];
+    //                     if (i<iDims-1)
+    //                     {
+    //                         ostr << L"x";
+    //                     }
+    //                 }
+    //                 ostr << L" ";
+    //             }
+    //             ostr << (pIT->getTypeStr() == L"constant" ? L"double" : pIT->getTypeStr());
+    //             ostr << L")";
+    //         }
+    //     }
+    // }
+    types::typed_list in;
+    types::typed_list out;
+
+    pIT->IncreaseRef();
+    in.push_back(pIT);
+    types::Function::ReturnValue ret = Overload::generateNameAndCall(L"outline", in, 1, out, false, false);
+    pIT->DecreaseRef();
+    if (ret != types::Function::OK_NoResult)
     {
-        types::GenericType * pGT = pIT->getAs<types::GenericType>();
-        int iDims = pGT->getDims();
-        int iSize = pGT->getSize();
-        if (pGT->isArrayOf())
+        if (out[0]->isString())
         {
-            if (iSize > 1 || pGT->isCell() || pIT->isInt())
-            {
-                if (iSize > 1 || pGT->isCell())
-                {
-                    ostr << L" ";
-                    int *piDims = pGT->getDimsArray();
-                    for (int i=0; i<iDims; i++)
-                    {
-                        ostr << piDims[i];
-                        if (i<iDims-1)
-                        {
-                            ostr << L"x";
-                        }
-                    }                                    
-                }
-                ostr << L" " << (pIT->getTypeStr() == L"constant" ? L"double" : pIT->getTypeStr());
-                if (iDims == 2 && (pIT->isInt() || pIT->isDouble() || pIT->isBool() ))
-                {
-                    if (iSize > 1)
-                    {
-                        ostr << L" matrix";                       
-                    }
-                }
-                else
-                {
-                    ostr << L" array";
-                }
-            }
+            types::String *pStr = out[0]->getAs<types::String>();
+            ostr << pStr->get(0);
         }
     }
+
     ostr << std::endl;
     if (ConfigVariable::isPrintCompact() == false)
     {

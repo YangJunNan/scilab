@@ -1,9 +1,5 @@
 // Scilab ( https://www.scilab.org/ ) - This file is part of Scilab
-// Copyright (C) INRIA
-// Copyright (C) 2010 - DIGITEO - Vincent COUVERT <vincent.couvert@scilab.org>
-// Copyright (C) 2012 - 2016 - Scilab Enterprises
-// Copyright (C) 2018 - UTC - Stéphane MOTTELET
-// Copyright (C) 2019 - 2020 - Samuel GOUGEON
+// Copyright (C) 2024 - UTC - Stéphane MOTTELET
 //
 // This file is hereby licensed under the terms of the GNU GPL v2.0,
 // pursuant to article 5.3.4 of the CeCILL v.2.1.
@@ -12,9 +8,16 @@
 // For more information, see the COPYING file which you should have received
 // along with this program.
 
-function %st_p(s)
-    str = %st_string(s);
-    if ~isempty(str)
-        mprintf("  %s\n", str);
+function s = %type_dims_outline(x,typeStr,forceDims)
+    if ~isdef("typeStr","local")
+        typeStr = typeof(x);
+    end 
+    if ~isdef("forceDims","local")
+        forceDims = %f;
+    end
+    if forceDims || size(x,"*") > 1 
+        s = sprintf("[%s %s]",strcat(string(size(x)),'x'),typeStr);
+    else
+         s = sprintf("[%s]",typeStr);
     end
 endfunction
