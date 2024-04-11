@@ -90,6 +90,7 @@ extern "C"
 #endif
 
 #include "InitializeTclTk.h"
+#include "TerminateTclTk.h"
 #include "dynamic_link.h"
 
     /* Defined without include to avoid useless header dependency */
@@ -578,6 +579,7 @@ void StopScilabEngine(ScilabEngineInfo* _pSEI)
     {
         TerminateGraphics();
         TerminateJVM();
+        TerminateTclTk();
     }
 
     // reset struct to prevent the use of deleted objects
@@ -729,7 +731,7 @@ void* scilabReadAndExecCommand(void* param)
         processCommand(_pSEI);
         FREE(command);
     }
-    while (ConfigVariable::getForceQuit() == false);
+    while (ConfigVariable::getForceQuit() == false || isEmptyCommandQueue() == false);
 
     return NULL;
 }
@@ -977,7 +979,7 @@ static int interactiveMain(ScilabEngineInfo* _pSEI)
 
         ThreadManagement::SendAwakeRunnerSignal();
     }
-    while (ConfigVariable::getForceQuit() == false);
+    while (ConfigVariable::getForceQuit() == false || isEmptyCommandQueue() == false);
 
     return iRet;
 }
