@@ -80,6 +80,13 @@ OPENXLSX_VERSION=0.3.2
 FOP_VERSION=2.0
 LIBARCHIVE_VERSION=3.7.1
 
+# CppServer and its deps
+CPPSERVER_VERSION=1.0.4.1
+ASIO_VERSION=1.29.0
+CPPCOMMON_VERSION=1.0.4.0
+CPPSERVER_FMT_VERSION=10.2.1
+CPPSERVER_CMAKE_VERSION=1.0.0.0
+
 # Variables used by ant to build Java deps in Java 8
 export JAVA_HOME="$BUILDDIR/java/jdk-$JDK_VERSION/"
 export ANT_HOME="$INSTALLROOTDIR/java/ant"
@@ -112,6 +119,10 @@ make_versions() {
     echo "OPENXLSX_VERSION      = $OPENXLSX_VERSION"
     echo "FOP_VERSION           = $FOP_VERSION"
     echo "LIBARCHIVE_VERSION    = $LIBARCHIVE_VERSION"
+    echo "CPPSERVER_VERSION     = $CPPSERVER_VERSION"
+    echo "ASIO_VERSION          = $ASIO_VERSION"
+    echo "CPPCOMMON_VERSION     = $CPPCOMMON_VERSION"
+    echo "CPPSERVER_FMT_VERSION = $CPPSERVER_FMT_VERSION"
 }
 
 ####################
@@ -158,6 +169,13 @@ download_dependencies() {
     curl -LO --time-cond thirdparty-jar.zip https://oos.eu-west-2.outscale.com/scilab-releases-dev/prerequirements-sources/thirdparty-jar.zip
 
     [ ! -f libarchive-$LIBARCHIVE_VERSION.tar.xz ] && curl -LO https://oos.eu-west-2.outscale.com/scilab-releases-dev/prerequirements-sources/libarchive-$LIBARCHIVE_VERSION.tar.xz
+
+    # CppServer and its deps
+    [ ! -f cppserver-$CPPSERVER_VERSION.zip ] && curl -L -o cppserver-$CPPSERVER_VERSION.zip https://github.com/chronoxor/CppServer/archive/refs/tags/$CPPSERVER_VERSION.zip
+    [ ! -f asio-$ASIO_VERSION.zip ] && curl -L -o asio-$ASIO_VERSION.zip https://github.com/chriskohlhoff/asio/archive/refs/tags/asio-$(echo $ASIO_VERSION | tr "." "-").zip
+    [ ! -f cppcommon-$CPPCOMMON_VERSION.zip ] && curl -L -o cppcommon-$CPPCOMMON_VERSION.zip https://github.com/chronoxor/CppCommon/archive/refs/tags/$CPPCOMMON_VERSION.zip
+    [ ! -f cppserverfmt-$CPPSERVER_FMT_VERSION.zip ] && curl -L -o cppserverfmt-$CPPSERVER_FMT_VERSION.zip https://github.com/fmtlib/fmt/archive/refs/tags/$CPPSERVER_FMT_VERSION.zip
+    [ ! -f cppservercmake-$CPPSERVER_FMT_VERSION.zip ] && curl -L -o cppservercmake-$CPPSERVER_CMAKE_VERSION.zip https://github.com/chronoxor/CppCMakeScripts/archive/refs/tags/$CPPSERVER_CMAKE_VERSION.zip
 
     true;
 }
@@ -958,6 +976,70 @@ build_openxlsx() {
         -Wl,--no-whole-archive
 
     cp -a libOpenXLSX.so "$INSTALLUSRDIR/lib/"
+}
+
+build_cppserver() {
+    cd $BUILDDIR
+
+    rm -rf cppserver
+    unzip $DOWNLOADDIR/cppserver-$CPPSERVER_VERSION.zip
+    mv CppServer-$CPPSERVER_VERSION cppserver
+    cd cppserver
+    # add cmake files
+    unzip $DOWNLOADDIR/cppservercmake-$CPPSERVER_CMAKE_VERSION.zip
+    mv CppCMakeScripts-$CPPSERVER_CMAKE_VERSION cmake
+
+    # add cppserver needed modules
+    cd modules
+    unzip $DOWNLOADDIR/asio-$ASIO_VERSION.zip
+    mv asio-asio-$(echo $ASIO_VERSION | tr "." "-") asio
+    unzip $DOWNLOADDIR/cppcommon-$CPPCOMMON_VERSION.zip
+    mv CppCommon-$CPPCOMMON_VERSION CppCommon
+    cd CppCommon/modules
+    unzip $DOWNLOADDIR/cppserverfmt-$CPPSERVER_FMT_VERSION.zip
+    mv fmt-$CPPSERVER_FMT_VERSION fmt
+    cd ../../../
+
+    # link against our openssl
+    export OPENSSL_ROOT_DIR=$INSTALLUSRDIR
+
+    ln -s /prebuild/builds/cppserver/cmake modules/CppCommon/cmake 
+
+    # update cmake files to include only needed sources
+    sed -i '/Catch2/s/^/#/' modules/CMakeLists.txt
+    sed -i '/CppBenchmark/s/^/#/' modules/CMakeLists.txt
+    sed -i '/cpp-optparse/s/^/#/' modules/CMakeLists.txt
+    sed -i '/Catch2/s/^/#/' modules/CppCommon/modules/CMakeLists.txt
+    sed -i '/CppBenchmark/s/^/#/' modules/CppCommon/modules/CMakeLists.txt
+    sed -i '/vld/s/^/#/' modules/CppCommon/modules/CMakeLists.txt
+
+    # generate makefile
+    mkdir build
+    cd build
+    # DCPPSERVER_MODULE: remove execution of benchmarks and tests from build
+    cmake -DCPPSERVER_MODULE=true -DBUILD_SHARED_LIBS=true -DCMAKE_BUILD_TYPE=Debug -DCMAKE_INSTALL_PREFIX=./build/install -G "Unix Makefiles" ..
+
+    # build cppserver
+    make "-j$(nproc)"
+
+    # copy libs
+    cd ../
+    cp $(find . -name *.so) "$INSTALLUSRDIR/lib/"
+
+    # copy includes
+    rm -rf "$INSTALLUSRDIR/include/cppserver/"
+    mkdir -p "$INSTALLUSRDIR/include/cppserver/cppserver"
+    mkdir -p "$INSTALLUSRDIR/include/cppserver/cppcommon"
+    mkdir -p "$INSTALLUSRDIR/include/cppserver/asio"
+    mkdir -p "$INSTALLUSRDIR/include/cppserver/fmt"
+
+    cp -r include/server "$INSTALLUSRDIR/include/cppserver/cppserver"
+
+    rm modules/asio/asio/include/Makefile.am
+    cp -r modules/asio/asio/include/* "$INSTALLUSRDIR/include/cppserver/asio/"
+
+    cp -r modules/CppCommon/include/* "$INSTALLUSRDIR/include/cppserver/cppcommon/"
+    cp -r modules/CppCommon/modules/fmt/include/* "$INSTALLUSRDIR/include/cppserver/fmt/"
 }
 
 #########################
