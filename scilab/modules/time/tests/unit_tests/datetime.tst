@@ -15,7 +15,7 @@ function checkdatetime1(dt, d, t)
 endfunction
 
 function checkdatetime2(dt, y, m, d, t)
-    
+
     dexptected = datenum(y, m, d);
     assert_checkequal(dt.date, dexptected);
 
@@ -77,7 +77,7 @@ for i = 1:2
         for k = 1:2
             d = strd(k);
             vd = vald(k);
-            
+
             fmt = y + "-" + m + "-" + d;
             str = vy + "-" + vm + "-" + vd;
             checkdatetime2(datetime(str, "InputFormat", fmt), 2022, 10, 6, d0);
@@ -433,6 +433,49 @@ dt = datetime("2/13/24", "InputFormat", "M/d/yy");
 assert_checkequal(string(dt), "2024-02-13");
 dt = datetime("12/13/24", "InputFormat", "M/d/yy");
 assert_checkequal(string(dt), "2024-12-13");
+
+h = sprintf("%02d\n", [12 1:11]')';
+mn = sprintf("%02d\n", [0:15:45]')';
+res = string(12:23);
+fmt = "MM/dd/yyyy hh:mm:ss a";
+for i = h
+    for j = mn
+        d = datetime("01/18/2022 " + i + ":" + j + ":00 AM", "InputFormat", fmt);
+        if i == "12"
+            if j == "00" then
+                assert_checkequal(string(d), "2022-01-18");
+            else
+                assert_checkequal(string(d), "2022-01-18 00:" + j + ":00");
+            end
+        else
+            assert_checkequal(string(d), "2022-01-18 " + i + ":" + j + ":00");
+        end
+    end
+end
+for i = 1:size(h, "*")
+    for j = mn
+        d = datetime("01/18/2022 " + h(i) + ":" + j + ":00 PM", "InputFormat", fmt);
+        assert_checkequal(string(d), "2022-01-18 " + res(i) + ":" + j + ":00");
+    end
+end
+
+for ampm = ["AM" "PM"]
+    for i = h
+        for j = mn
+            str = "01/18/2022 " + i + ":" + j + ":00 "+ ampm;
+            d = datetime(str, "InputFormat", fmt, "OutputFormat", fmt);
+            assert_checkequal(string(d), str);
+        end
+    end
+end
+
+d = datetime("01/18/2022 00:13:00 AM", "InputFormat", fmt, "OutputFormat", fmt);
+assert_checkequal(string(d), "01/18/2022 12:13:00 AM");
+d = datetime("01/18/2022 00:13:00 PM", "InputFormat", fmt, "OutputFormat", fmt);
+assert_checkequal(string(d), "01/18/2022 12:13:00 PM");
+
+dt = datetime("4/5/2024", "InputFormat", "M/d/yyyy", "OutputFormat", "dd-MM-yy");
+assert_checkequal(string(dt), "05-04-24");
 
 // check error
 msg = msprintf(_("%s: Wrong number of input argument: %d to %d expected, except %d, %d and %d.\n"), "datetime", 0, 7, 2, 4, 5);
