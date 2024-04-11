@@ -29,26 +29,6 @@ function rho=correl(x, y, fre)
         y {mustBeA(y, "double"), mustBeVector}
         fre {mustBeA(fre, "double")} = []
     end
-    // rhs = argn(2);
-    // if rhs < 2 | rhs > 3 then
-    //     error(msprintf(gettext("%s: Wrong number of input arguments: %d to %d expected.\n"),"correl",2,3));
-    // end
-
-    // x = varargin(1);
-    // y = varargin(2);
-
-    // if type(x) <> 1 | ~isvector(x) then
-    //     error(msprintf(gettext("%s: Wrong type for input argument #%d: Vector expected.\n"),"correl",1));
-    // end
-
-    // if type(y) <> 1 | ~isvector(y) then
-    //     error(msprintf(gettext("%s: Wrong type for input argument #%d: Vector expected.\n"),"correl",2));
-    // end
-
-    // if isempty(x) | isempty(y) then
-    //     rho = %nan
-    //     return;
-    // end
 
     cx = size(x, "*");
     ly = size(y, "*");
