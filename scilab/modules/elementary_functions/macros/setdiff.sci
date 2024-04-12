@@ -24,27 +24,14 @@ function [a, ka] = setdiff(a, b, orien)
         orien {mustBeA(orien, ["double", "string"]), mustBeMember(orien, {1, 2, "r", "c", "*"})}= "*"
     end
 
-    // [lhs, rhs] = argn();
-    if a == [] then
+    ka = [];
+    if size(a, "*") == 0 then
         return
     end
-    ka = []
-
-    // ========================
-    // CHECKING INPUT ARGUMENTS
-    // ========================
-    // if rhs < 2 | rhs > 3 then
-    //     msg = _("%s: Wrong number of input argument(s): %d or %d expected.\n")
-    //     error(msprintf(msg, "setdiff", 2, 3))
-    // end
+    
     typa = type(a)
-    // if ~or(typa == [1 4 5 6 8 10]) then
-    //     msg = _("%s: Argument #%d: Unsupported type %s.\n")
-    //     error(msprintf(msg, "setdiff", 1, typeof(a)))
-    // end
 
-    //if size(a,"*") <> 0 & size(b,"*") <> 0 & typa==10 & type(b) <> 10 then
-    if typa == 10 & type(b) <> 10 then
+    if typa == 10 & size(b, "*") <> 0 & type(b) <> 10 then
         msg = _("%s: Wrong type for input argument #%d: Must be same type of #%d.\n")
         error(msprintf(msg, "setdiff", 2, 1))
     end
@@ -60,11 +47,7 @@ function [a, ka] = setdiff(a, b, orien)
     elseif orien == "c" then
         orien = 2
     end
-    // Trivial case, whatever is b
-    // if size(a,"*")==0
-    //     return
-    // end
-    //
+
     if orien==1 & size(b,"*")<>0 & size(a,2)~=size(b,2) then
         msg = _("%s: Wrong size for input arguments #%d and #%d: Same numbers of columns expected.\n")
         error(msprintf(msg, "setdiff", 1, 2))
@@ -89,7 +72,7 @@ function [a, ka] = setdiff(a, b, orien)
         if ndims(b) > 2 then
             b = serialize_hypermat(b, orien)
         end
-        if lhs > 1
+        if nargout > 1
             [a, ka] = unique(a, orien)
         else
             a = unique(a, orien)
@@ -110,7 +93,7 @@ function [a, ka] = setdiff(a, b, orien)
         k = find(and(c(1:$-1,:) == c(2:$,:), "c"))
         if k <> []
             a(kc([k k+1]),:) = []
-            if lhs > 1
+            if nargout > 1
                 ka(kc([k k+1])) = []
             end
         end
@@ -122,7 +105,7 @@ function [a, ka] = setdiff(a, b, orien)
     else
         // by element
         // ==========
-        if lhs > 1
+        if nargout > 1
             [a, ka] = unique(a);
         else
             a = unique(a);
@@ -139,7 +122,7 @@ function [a, ka] = setdiff(a, b, orien)
         e = find(x(2:$)==x(1:$-1));
         if e <> []
             a(k([e e+1])) = []
-            if lhs > 1
+            if nargout > 1
                 ka(k([e e+1])) = []
             end
         end

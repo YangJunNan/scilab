@@ -32,35 +32,14 @@ function y = flipdim(x, dim, sb)
         dim (1, 1) {mustBeA(dim, ["double", "int"]), mustBePositive}
         sb (1,1) {mustBeA(sb, ["double", "int"]), mustBePositive} = 1
     end
-    // rhs = argn(2);
-    // if rhs < 2 then
-    //     msg = _("%s: Wrong number of input argument(s): %d to %d expected.\n");
-    //     error(msprintf(msg, "flipdim", 2, 3));
-    // end
 
-    // if size(dim, "*") <> 1 then
-    //     msg = _("%s: Wrong size for input argument #%d: A scalar expected.\n")
-    //     error(msprintf(msg, "flipdim", 2));
-    // elseif type(dim) <> 8 & (type(dim) <> 1 | dim < 1 ) then
-    //     msg = _("%s: Wrong type for input argument #%d: A positive integer expected.\n");
-    //     error(msprintf(msg, "flipdim", 2));
-    // elseif dim > ndims(x) then
     if dim > ndims(x) then
         msg = _("%s: Argument #%d: Must be <= %d.\n");
         error(msprintf(msg, "flipdim", 2, ndims(x)));
     end
-    // else
-    //     dim = floor(dim);
-    // end
+
     dim = floor(dim);
-    // if rhs >= 3 then
-    //     if size(sb, "*") <> 1 then
-    //         msg = _("%s: Wrong size for input argument #%d: A scalar expected.\n")
-    //         error(msprintf(msg, "flipdim", 3));
-    //     elseif and(type(sb) <> [1 8]) | sb < 1 then
-    //         msg = _("%s: Wrong value for input argument #%d: A positive integer expected.\n");
-    //         error(msprintf(msg, "flipdim", 3));
-    //     elseif modulo(size(x, dim), sb) ~= 0 then
+    
     if modulo(size(x, dim), sb) ~= 0 then
         msg = _("%s: Wrong value for input argument #%d: A divisor of the selected dimension size expected.\n");
         error(msprintf(msg, "flipdim", 3));
@@ -73,12 +52,10 @@ function y = flipdim(x, dim, sb)
     for k = 1:ndims(x)
         l(k) = 1:1:$
     end
-    //if rhs>2 then
-        sb  = floor(sb);
-        nb = size(x, dim)/sb; // Number of blocks.
-        l(dim) = ((nb:-1:1).*.ones(1,sb))*sb + ones(1, nb).*.(1-sb:0);
-    // else
-    //     l(dim) = $:-1:1
-    // end
+
+    sb  = floor(sb);
+    nb = size(x, dim)/sb; // Number of blocks.
+    l(dim) = ((nb:-1:1).*.ones(1,sb))*sb + ones(1, nb).*.(1-sb:0);
+
     y = x(l(:));
 endfunction

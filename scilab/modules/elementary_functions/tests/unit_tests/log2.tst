@@ -26,5 +26,5 @@ assert_checkerror("[f, e] = log2();", msprintf(msg, "log2", 1));
 errarg = sci2exp(["double"]);
 msg = gettext("%s: Wrong type for input argument #%d: Must be in %s.\n");
 assert_checkerror("[f, e] = log2(""a"");", msprintf(msg, "log2", 1, errarg));
-msg = gettext("%s: Argument #%d: Complex numbers not supported.\n");
+msg = gettext("%s: Wrong value for input argument #%d: Real numbers expected.\n");
 assert_checkerror("[f, e] = log2(%i);", msprintf(msg, "log2", 1));
