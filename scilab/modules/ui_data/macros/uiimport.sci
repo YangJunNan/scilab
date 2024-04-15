@@ -395,7 +395,6 @@ function uiimport_variable()
     p = progressionbar("Import variable to workspace...");
     names = x(1)
     str = "[d, names] = resume(d, names)";
-    // str = x(1) + " = resume(d)";
 
     opts = data.opts;
     varNames = data.varnames(data.keepcols);
@@ -443,6 +442,7 @@ function uiimport_variable()
             d(varNames(i)).format = outputfmt(i);
         end
     end
+    disp(d);
     execstr(str);
     delete(p);
 
@@ -452,11 +452,13 @@ endfunction
 
 function uiimport_cbselect()
 
-    path = pwd();
     data = get("uiimport", "userdata");
-    f = data.path;
-    if ~isempty(f) then
-        path = fileparts(f);
+    path = data.path;
+    
+    if path == "" then
+        path = pwd();
+    else
+        path = fileparts(path);
     end
 
     path = uigetfile(["*.txt" "Text files";"*.csv" "CSV files"], path, "Choose a file", %f);
