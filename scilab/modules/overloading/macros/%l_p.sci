@@ -19,10 +19,7 @@ function %l_p(s, parentType)
     //l_p_compacity = "";   // "" vspacing of blocks
     l_p_compacity = [];      // for compact display
     t = %l_string(s, parentType)
-    if t<>[] then
+    if ~isempty(t) then
         mprintf("  %s\n", t)
-    else
-        mprintf("  empty list()\n")
     end
-    mprintf("\n")
 endfunction
