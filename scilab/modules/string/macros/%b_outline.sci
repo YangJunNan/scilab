@@ -8,7 +8,7 @@
 // For more information, see the COPYING file which you should have received
 // along with this program.
 
-function s=%b_outline(x)
+function s=%b_outline(x,verbose)
     s= "";
     if size(x,"*") > 1
         s = %type_dims_outline(x);

@@ -8,6 +8,6 @@
 // For more information, see the COPYING file which you should have received
 // along with this program.
 
-function s=%i_outline(x,verbose)
-    s = %type_dims_outline(x);
+function s=%table_outline(x,verbose)
+    s = %type_dims_outline(x, typeStr="table",forceDims=%t);
 endfunction

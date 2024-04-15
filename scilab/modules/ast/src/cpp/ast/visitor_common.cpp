@@ -2579,6 +2579,8 @@ std::wstring printVarEqualTypeDimsInfo(types::InternalType *pIT, std::wstring ws
 {
     std::wostringstream ostr;
 
+    types::Double *pDblOne = new types::Double(1);
+
     if (ConfigVariable::isPrintCompact() == false)
     {
         ostr << std::endl;
@@ -2587,41 +2589,17 @@ std::wstring printVarEqualTypeDimsInfo(types::InternalType *pIT, std::wstring ws
 #ifndef NDEBUG
     ostr << L"(" << pIT->getRef() << L")";
 #endif
-    // if (pIT->isGenericType() && pIT->isStruct()==false)
-    // {
-    //     types::GenericType * pGT = pIT->getAs<types::GenericType>();
-    //     int iDims = pGT->getDims();
-    //     int iSize = pGT->getSize();
-    //     if (pGT->isArrayOf())
-    //     {
-    //         if (iSize > 1 || pGT->isCell() || pIT->isInt() || pGT->isPoly() )
-    //         {
-    //             ostr << L"(";
-    //             if (iSize > 1 || pGT->isCell())
-    //             {
-    //                 int *piDims = pGT->getDimsArray();
-    //                 for (int i=0; i<iDims; i++)
-    //                 {
-    //                     ostr << piDims[i];
-    //                     if (i<iDims-1)
-    //                     {
-    //                         ostr << L"x";
-    //                     }
-    //                 }
-    //                 ostr << L" ";
-    //             }
-    //             ostr << (pIT->getTypeStr() == L"constant" ? L"double" : pIT->getTypeStr());
-    //             ostr << L")";
-    //         }
-    //     }
-    // }
     types::typed_list in;
     types::typed_list out;
 
     pIT->IncreaseRef();
+    pDblOne->IncreaseRef();
     in.push_back(pIT);
+    in.push_back(pDblOne);
     types::Function::ReturnValue ret = Overload::generateNameAndCall(L"outline", in, 1, out, false, false);
     pIT->DecreaseRef();
+    pDblOne->DecreaseRef();
+    pDblOne->killMe();
     if (ret != types::Function::OK_NoResult)
     {
         if (out[0]->isString())

@@ -8,7 +8,7 @@
 // For more information, see the COPYING file which you should have received
 // along with this program.
 
-function s=%spb_outline(x)
+function s=%spb_outline(x, verbose)
     str = typeof(x);
     if nnz(x) == 0 & size(x,"*") >0
         str = "zero " + str;

@@ -8,6 +8,10 @@
 // For more information, see the COPYING file which you should have received
 // along with this program.
 
-function s=%l_outline(x)
-    s = sprintf("(%d-element list)",size(x));
+function s=%l_outline(x,verbose)
+    if size(x) > 0
+        s = sprintf("(%d-element list)",size(x));
+    else
+        s = "(empty list)";
+    end    
 endfunction

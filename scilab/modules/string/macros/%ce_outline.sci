@@ -8,6 +8,6 @@
 // For more information, see the COPYING file which you should have received
 // along with this program.
 
-function s=%ce_outline(x)
+function s=%ce_outline(x, verbose)
     s = %type_dims_outline(x,typeStr="cell",forceDims=%t);
 endfunction

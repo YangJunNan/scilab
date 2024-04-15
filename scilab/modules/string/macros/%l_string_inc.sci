@@ -1,5 +1,6 @@
 // Scilab ( https://www.scilab.org/ ) - This file is part of Scilab
 // Copyright (C) 2020 - Samuel GOUGEON
+// Copyright (C) 2024 - UTC - Stéphane MOTTELET
 //
 // This file is hereby licensed under the terms of the GNU GPL v2.0,
 // pursuant to article 5.3.4 of the CeCILL v.2.1.
@@ -22,33 +23,11 @@ function t = %l_string_inc(s, parentType)
     end
 
     if  typeof(s)=="st"
-        // No fields
-//        if isempty(fieldnames(s)) then
-//            t = msprintf(_("%s struct with no field"), ..
-//                         strcat(msprintf("%d\n",size(s)'), "x"));
-//            return
-//        end
-
         multi = size(s,"*")
-
-        // 0x0 struct with fields
-//        if multi == 0 then
-//            t = _("0x0 struct with fields:")
-//            for field = fieldnames(s)'
-//                t = [t ; "   "+field]
-//            end
-//            return
-//        end
 
         // axb struct where a<>0 & b<>0
         if multi > 1 | recursive > maxDisplayDepth then
-            if ~recursive
-//                t = msprintf(_("%s struct with fields:"), ..
-//                     strcat(msprintf("%d\n", size(s)'), "x"));
-            end
-            tmp = sci2exp(fieldnames(s)', consoleWidth-10)
-            tmp = strsubst(strsubst(tmp, """""", """"), ",", ", ")
-            t = [t ; tmp]
+            t = [t ; fieldnames(s)]
             return
         end
     end
@@ -99,66 +78,50 @@ function t = %l_string_inc(s, parentType)
             txt = fieldn + ": " + str
 
         elseif tp == "rational"
-            str = strcat(msprintf("%d\n", size(value)'), "x")
-            tmp = _("rational")
-            if ~isreal(value,0)
-                tmp = _("complex rational")
-            end
-            str = msprintf(_("[%s %s] of %s"), str, tmp, varn(value));
+            str = %r_outline(value); 
 
         elseif tp == "ce"
             if length(value)==0 then
                 str = "{}"
                 txt = fieldn + eq + str
             else
-                str = strcat(msprintf("%d\n", size(value)'), "x")
-                str = msprintf("[%s %s]", str, _("cell"));
+                str = %ce_outline(value);
                 txt = fieldn + ": " + str
             end
 
         elseif type(value)==15
-            if length(value)==0 then
-                str = _("empty list()")
+            if recursive < maxDisplayDepth
+                recursive = recursive + 1
+                tmp = %l_string_inc(value, "list")
+                str = [%l_outline(value) ; tmp]
             else
-                if recursive < maxDisplayDepth
-                    recursive = recursive + 1
-                    tmp = %l_string_inc(value, "list")
-                    str = ["list:" ; tmp]
-                else
-                    str = msprintf("list with %d elements.\n", length(value))
-                end
+                str = %l_outline(value);
             end
-
         elseif or(type(value)==[16 17])
             // Tlists or Mlists
             Tfields = fieldnames(value);
-            sz = []
-            try
-                sz = size(value)
-            end
-            signature = tp
-            if length(sz) > 1
-                signature = strcat(msprintf("%d\n", sz'), "x") + " " + tp
-            end
-            listType = "tlist"
-            if type(value)==17
-                listType = "mlist"
-            end
-            if Tfields==[]
-                str = msprintf(_("[%s] %s without field."), signature, listType);
-            else
-                str = msprintf(_("[%s] %s with fields:"), signature, listType);
-                if recursive < maxDisplayDepth
-                    recursive = recursive + 1
-                    tmp = %l_string_inc(value, "mtlist")
-                    str = [str ; tmp]
+            err = 0;
+            [str,err] = evstr("%"+tp+"_outline(value,1)");
+            if err <> 0
+                listType = "tlist"
+                if type(value)==17
+                    listType = "mlist"
+                end
+                if Tfields==[]
+                    str = msprintf(_("[%s] %s without field"), tp, listType);
                 else
-                    tmp = sci2exp(Tfields', consoleWidth-10)
-                    tmp = strsubst(strsubst(tmp, """", ""), ",", ", ")
-                    str = [str ; tmp]
+                    str = msprintf(_("[%s] %s with fields:"), tp, listType);
+                    if recursive < maxDisplayDepth
+                        recursive = recursive + 1
+                        tmp = %l_string_inc(value, "mtlist")
+                        str = [str ; tmp]
+                    else
+                        tmp = sci2exp(Tfields', consoleWidth-10)
+                        tmp = strsubst(strsubst(tmp, """", ""), ",", ", ")
+                        str = [str ; tmp]
+                    end
                 end
             end
-
         elseif type(value)==14  // Library
             tmp = string(value)
             p = tmp(1)
@@ -168,7 +131,6 @@ function t = %l_string_inc(s, parentType)
 
         elseif type(value)> 10 then
             str = tp
-
         else
             sz = size(value)
             // If number of elements in value is greater than ll(1) (current
@@ -182,7 +144,8 @@ function t = %l_string_inc(s, parentType)
                 str = sci2exp(value, ll(1))
                 sep = eq
             else
-                str = "[" + strcat(msprintf("%d\n",sz'), "x") + " " + tp + "]"
+                [otype, oname] = typename();
+                str = evstr("%"+oname(otype==type(value))+"_outline(value,0)")
             end
         end
         // ---------------------------
@@ -199,22 +162,11 @@ function t = %l_string_inc(s, parentType)
             end
             if tp == "st"
                 txt = fieldn + ": "
-                if size(value,"*")==0
-                    txt = txt + _("[0x0 struct] with no field")
-                else
-                    sv = size(value)'
-                    if prod(sv)==1 then
-                        txt = txt + "struct with fields:"
-                    else
-                        txt = txt + msprintf(_("[%s struct] with fields:"), ..
-                                  strcat(msprintf("%d\n", sv), "x"));
-                    end
-                    txt = [txt ; txt0 + str]
-                    if stripblanks(t($)) <> ""
+                txt = txt + %st_outline(value, 1);
+                txt = [txt ; txt0 + str]
+                if stripblanks(t($)) <> ""
                         txt = [l_p_compacity ; txt]
-                    end
                 end
-
             elseif or(type(value)==[15 16 17])
                 txt = fieldn + ": " + str(1)
                 if size(str,1)>1
@@ -223,11 +175,9 @@ function t = %l_string_inc(s, parentType)
                 if stripblanks(t($)) <> ""
                     txt = [l_p_compacity ; txt]
                 end
-
             else
-                txt = txt0 + ..
-                  ": " + "[" + strcat(msprintf("%d\n",size(value)'), "x") ..
-                       + " " + tp + "]"
+                [otype, onames] = typename();
+                txt = txt0 + ": " + evstr("%"+onames(otype==type(value))+"_outline(value,0)");
             end
         end
         t = [t ; txt]

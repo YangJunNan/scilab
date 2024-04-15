@@ -8,9 +8,9 @@
 // For more information, see the COPYING file which you should have received
 // along with this program.
 
-function s=%c_outline(x)
+function s=%c_outline(x,verbose)
     s = "";
     if size(x,"*") > 1
-        s = %type_dims_outline(x, array=%t);
+        s = %type_dims_outline(x);
     end
 endfunction

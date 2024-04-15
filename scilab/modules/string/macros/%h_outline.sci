@@ -8,10 +8,10 @@
 // For more information, see the COPYING file which you should have received
 // along with this program.
 
-function s=%h_outline(x)
-    if size(x,"*")>1 then
-        s = %type_dims_outline(x);
-    else
-        s = %type_dims_outline(x, typeStr=x.type+" handle")+" with properties:";
-    end
+function s=%h_outline(x,verbose)
+   if size(x,"*")>1 then
+       s = %type_dims_outline(x);
+   elseif verbose == 1
+       s = %type_dims_outline(x, typeStr=x.type+" handle")+" with properties:";
+   end
 endfunction

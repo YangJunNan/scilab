@@ -8,6 +8,9 @@
 // For more information, see the COPYING file which you should have received
 // along with this program.
 
-function s=%r_outline(x)
+function s=%r_outline(x,verbose)
     s = %type_dims_outline(x);
+    if verbose == 1
+        s = s + " of " + varn(x);
+    end
 endfunction

@@ -8,11 +8,13 @@
 // For more information, see the COPYING file which you should have received
 // along with this program.
 
-function s=%st_outline(x)
+function s=%st_outline(x, verbose)
     s = %type_dims_outline(x,typeStr="struct",forceDims=size(x,"*")~=1);
-    if isempty(fieldnames(x))
-        s = s + " with no field";
-    else
-        s = s + " with fields:";        
+    if verbose == 1
+        if isempty(fieldnames(x))
+            s = s + " with no field";
+        else
+            s = s + " with fields:";        
+        end
     end
 endfunction

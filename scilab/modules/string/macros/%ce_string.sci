@@ -1,5 +1,6 @@
 // Scilab ( https://www.scilab.org/ ) - This file is part of Scilab
 // Copyright (C) 2023 - 3DS - Antoine ELIAS
+// Copyright (C) 2024 - UTC - Stéphane MOTTELET
 //
 // This file is hereby licensed under the terms of the GNU GPL v2.0,
 // pursuant to article 5.3.4 of the CeCILL v.2.1.
@@ -22,38 +23,43 @@ function str = %ce_string(ce)
             case 14 //lib
                 str(i) = "lib";
             case 15 //list
-                str(i) = sprintf("list of %d items");
-            case 16 //tlist
-                str(i) = typeof(val);
-            case 17 //mlist
+                str(i) = %l_outline(val,0);
+            case {16,17} //list,tlist,mlist,struct
                 select typeof(val)
                 case "st"
-                    str(i) = sprintf("[%dx%d struct]", size(val, 1), size(val, 2));
+                    str(i) =  %st_outline(val,0);
                 case "ce"
-                    str(i) = sprintf("{%dx%d cell}", size(val, 1), size(val, 2));
+                    str(i) = %ce_outline(val,0);
+                case "rational"
+                    str(i) = %r_outline(val,0);
                 else
-                    str(i) = typeof(val);
+                    [str(i),err] = evstr("%"+typeof(val)+"_outline(val,0)");
+                    if err <> 0
+                        str(i) = typeof(val);
+                    end
                 end
             case 128 //pointer
                 str(i) = typeof(val);
             case 130 //builtin
                 str(i) = "function";
             case 9 //handles
-                str(i) = sprintf("[%dx%d handle]", size(val, 1), size(val, 2));
-            else
-                [n1, m1] = size(val);
-                if n1 == 0 && m1 == 0 then
+               str(i) = %l_outline(val,0);
+            else //native arrayOf types
+                if isempty(val)
                     str(i) = "[]";
-                elseif n1 == 1 then
-                    x = sci2exp(val);
-                    if size(x, "*") <> 1 || length(x) > 15 then
-                        str(i) = sprintf("[%dx%d %s]", size(val, 1), size(val, 2), typeof(val));
-                    else
-                        str(i) = x;
-                    end
                 else
-                    str(i) = sprintf("[%dx%d %s]", size(val, 1), size(val, 2), typeof(val));
-                end
+                    s = size(val);
+                    if length(s) == 2 & s(1) == 1
+                        x = sci2exp(val);
+                        if size(x, "*") == 1 && length(x) <= 15 then
+                            str(i) = x;
+                        end
+                    end
+                    if str(i) == ""
+                        [otype, onames] = typename();
+                        str(i) = evstr("%"+onames(otype==type(val))+"_outline(val,0)");
+                    end
+                 end
             end
         end
     end
