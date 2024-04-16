@@ -9,8 +9,10 @@
 // along with this program.
 
 function s=%l_outline(x,verbose)
-    if size(x) > 0
-        s = sprintf("(%d-element list)",size(x));
+    if size(x) > 1
+        s = sprintf("(%d-elements list)",size(x));
+    elseif size(x) > 0
+        s = "(1-element list)";
     else
         s = "(empty list)";
     end    

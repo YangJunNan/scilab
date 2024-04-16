@@ -17,4 +17,5 @@ function s=%st_outline(x, verbose)
             s = s + " with fields:";        
         end
     end
+    
 endfunction

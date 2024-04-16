@@ -10,7 +10,7 @@
 
 function s=%c_outline(x,verbose)
     s = "";
-    if size(x,"*") > 1
-        s = %type_dims_outline(x);
+    if size(x,"*") > 1 || verbose == 0
+        s = %type_dims_outline(x,forceDims=%t);
     end
 endfunction

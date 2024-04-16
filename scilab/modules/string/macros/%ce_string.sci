@@ -16,7 +16,7 @@ function str = %ce_string(ce)
         str = emptystr(ce);
         for i = 1:size(ce, "*")
             val = ce{i};
-            t = type(val)
+            t = type(ce{i})
             select t
             case 13 //macro
                 str(i) = "function";
@@ -43,7 +43,9 @@ function str = %ce_string(ce)
             case 130 //builtin
                 str(i) = "function";
             case 9 //handles
-               str(i) = %l_outline(val,0);
+               str(i) = %h_outline(val,0);
+            case 0
+               str(i) = "void";
             else //native arrayOf types
                 if isempty(val)
                     str(i) = "[]";

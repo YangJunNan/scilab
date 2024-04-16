@@ -11,18 +11,13 @@
 
 function %h_p(h)
     if size(h,"*")>1 then
+        t="";
         T=matrix(h.type,size(h))
-        t=""
         for k=1:size(h,2)
             t=t+part(T(:,k),1:max(length(T(:,k)))+1)
         end
-        t1=string(size(h,1))+" by "+string(size(h,2))+" matrix of handles:"
-        t1=[t1;part("=",ones(1,length(t1)))]
-        t=[t1;t]
     else
-        t="Handle of type """+h.type+""" with properties:"
-        t=[t;part("=",ones(1,length(t)))]
-
+        t=[];
         select h.type
 
             // Polyline
@@ -1065,8 +1060,9 @@ function %h_p(h)
             "tag = "+sci2exp(h.tag)
             ]
         end
+        t = ["type: "+h.type;t];
     end
-    printf("%s\n", t);
+    printf("%s\n", "  "+t);
 endfunction
 
 

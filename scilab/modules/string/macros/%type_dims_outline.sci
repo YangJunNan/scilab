@@ -8,16 +8,19 @@
 // For more information, see the COPYING file which you should have received
 // along with this program.
 
-function s = %type_dims_outline(x,typeStr,forceDims)
+function s = %type_dims_outline(x,typeStr,forceDims,brack)
     if ~isdef("typeStr","local")
         typeStr = typeof(x);
     end 
     if ~isdef("forceDims","local")
         forceDims = %f;
     end
+    if ~isdef("brack","local")
+        brack = ["[","]"];
+    end
     if forceDims || size(x,"*") > 1 
-        s = sprintf("[%s %s]",strcat(string(size(x)),'x'),typeStr);
+        s = sprintf("%s%s %s%s",brack(1),strcat(string(size(x)),'x'),typeStr,brack(2));
     else
-         s = sprintf("[%s]",typeStr);
+         s = sprintf("%s%s%s",brack(1),typeStr,brack(2));
     end
 endfunction

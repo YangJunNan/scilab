@@ -941,6 +941,47 @@ int getIndexWithDims(int* _piIndexes, const int* _piDims, int _iDims)
 
 types::Function::ReturnValue VariableToString(types::InternalType* pIT, const wchar_t* wcsVarName)
 {
+    std::wostringstream ostr;
+
+    // print outline (dims + type)
+    types::Double* pDblOne = new types::Double(1);
+
+    if (ConfigVariable::isPrintCompact() == false)
+    {
+        ostr << std::endl;
+    }
+    ostr << L" " << wcsVarName << L" = ";
+#ifndef NDEBUG
+    ostr << L"(" << pIT->getRef() << L")";
+#endif
+    types::typed_list in;
+    types::typed_list out;
+
+    pIT->IncreaseRef();
+    pDblOne->IncreaseRef();
+    in.push_back(pIT);
+    in.push_back(pDblOne);
+    types::Function::ReturnValue ret = Overload::generateNameAndCall(L"outline", in, 1, out, false, false);
+    pIT->DecreaseRef();
+    pDblOne->DecreaseRef();
+    pDblOne->killMe();
+    if (ret != types::Function::OK_NoResult)
+    {
+        if (out[0]->isString())
+        {
+            types::String* pStr = out[0]->getAs<types::String>();
+            ostr << pStr->get(0);
+        }
+    }
+
+    ostr << std::endl;
+    if (ConfigVariable::isPrintCompact() == false)
+    {
+        ostr << std::endl;
+    }
+    scilabForcedWriteW(ostr.str().c_str());
+    ostr.str(L"");
+    
     if (pIT->hasToString() == false)
     {
         types::Function::ReturnValue ret = types::Function::Error;
@@ -965,7 +1006,6 @@ types::Function::ReturnValue VariableToString(types::InternalType* pIT, const wc
     }
     else
     {
-        std::wostringstream ostr;
         if (pIT->isFunction())
         {
             pIT->getAs<types::Function>()->toString(ostr);
@@ -973,41 +1013,6 @@ types::Function::ReturnValue VariableToString(types::InternalType* pIT, const wc
         else if (pIT->isList() || pIT->isCallable())
         {
             ostr << wcsVarName;
-        }
-
-        // print outline (dims + type)
-        { 
-            types::Double* pDblOne = new types::Double(1);
-
-            ostr << L" " << wcsVarName << L" = ";
-#ifndef NDEBUG
-            ostr << L"(" << pIT->getRef() << L")";
-#endif
-            types::typed_list in;
-            types::typed_list out;
-
-            pIT->IncreaseRef();
-            pDblOne->IncreaseRef();
-            in.push_back(pIT);
-            in.push_back(pDblOne);
-            types::Function::ReturnValue ret = Overload::generateNameAndCall(L"outline", in, 1, out, false, false);
-            pIT->DecreaseRef();
-            pDblOne->DecreaseRef();
-            pDblOne->killMe();
-            if (ret != types::Function::OK_NoResult)
-            {
-                if (out[0]->isString())
-                {
-                    types::String* pStr = out[0]->getAs<types::String>();
-                    ostr << pStr->get(0);
-                }
-            }
-
-            ostr << std::endl;
-            if (ConfigVariable::isPrintCompact() == false)
-            {
-                ostr << std::endl;
-            }
         }
 
         //to manage lines information

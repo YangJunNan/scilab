@@ -9,5 +9,5 @@
 // along with this program.
 
 function s=%ce_outline(x, verbose)
-    s = %type_dims_outline(x,typeStr="cell",forceDims=%t);
+    s = %type_dims_outline(x,typeStr="cell",forceDims=%t,brack=["{","}"]);
 endfunction

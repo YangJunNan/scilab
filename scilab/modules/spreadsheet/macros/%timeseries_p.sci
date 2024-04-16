@@ -35,10 +35,15 @@ function %timeseries_p(ts)
 
         current_len = current_len + max_len + 3;
         if current_len >= l(1) then
-            printf("\n         column %d to %d\n\n", col_s, c - 1);
-
+            printf("         column %d to %d\n", col_s, c - 1);
+            if mode() > 1
+                printf("\n");
+            end
             res = strcat(res, "", "c");
             mprintf("%s\n", res);
+            if mode() > 1
+                printf("\n");
+            end
 
             res = [];
             col_s = c;
@@ -69,7 +74,10 @@ function %timeseries_p(ts)
     end
 
     if col_s <> 1 then
-        printf("         column %d to %d\n\n", col_s, c);
+        printf("         column %d to %d\n", col_s, c);
+    end
+    if mode() > 1
+        printf("\n");
     end
 
     res = strcat(res, "", "c");
