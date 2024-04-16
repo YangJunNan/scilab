@@ -2581,10 +2581,6 @@ std::wstring printVarEqualTypeDimsInfo(types::InternalType *pIT, std::wstring ws
 
     types::Double *pDblOne = new types::Double(1);
 
-    if (ConfigVariable::isPrintCompact() == false)
-    {
-        ostr << std::endl;
-    }
     ostr << L" " << wstName << L" = ";
 #ifndef NDEBUG
     ostr << L"(" << pIT->getRef() << L")";
@@ -2615,7 +2611,7 @@ std::wstring printVarEqualTypeDimsInfo(types::InternalType *pIT, std::wstring ws
         ostr << std::endl;
     }
 
-    return  ostr.str();
+    return ostr.str();
 }
 
 /*--------------------------------------------------------------------------*/

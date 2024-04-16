@@ -11,7 +11,6 @@
 
 function %table_p(t)
     if t.vars == [] then
-        printf("%dx%d table\n", size(t.vars, 1), size(t.vars, 2));
         return;
     end
 
@@ -33,8 +32,6 @@ function %table_p(t)
     else
         output = [rowNames string(t)];
     end
-
-    printf("%dx%d table\n", size(t, 1), size(t, 2));
 
     for c = 1:size(output, 2)
         name = variableNames(c);

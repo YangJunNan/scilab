@@ -11,7 +11,6 @@
 
 function %timeseries_p(ts)
     if ts.vars == [] then
-        printf("%dx%d timeseries\n", size(ts.vars, 1), size(ts.vars, 2));
         return;
     end
 
@@ -27,8 +26,6 @@ function %timeseries_p(ts)
     else
         output = string(ts);
     end
-
-    printf("%dx%d timeseries\n", size(ts, 1), size(ts, 2));
 
     for c = 1:size(ts.vars, "*")
         name = ts.props.variableNames(c);
