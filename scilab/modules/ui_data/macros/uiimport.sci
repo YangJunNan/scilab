@@ -401,6 +401,7 @@ function uiimport_variable()
     varNamesRef = opts.variableNames(data.keepcols);
     convert = data.convert(data.keepcols);
     outputfmt = data.outputFormat(data.keepcols);
+    variableTypes = opts.variableTypes(data.keepcols)
 
     if data.rowtimes == "No" then
         d = readtable(path, data.opts, "VariableNames", varNamesRef);
@@ -412,8 +413,9 @@ function uiimport_variable()
             d = readtimeseries(path, data.opts, "VariableNames", varNamesRef, "RowTimes", varNamesRef(idx), "ConvertTime", convert_fcn(jdx));
             convert(idx) = "";
         else
-            if opts.variableTypes(idx) == "double" then
+            if variableTypes(idx) == "double" then
                 m = messagebox("Unable to create a variable. You must choose the conversion method.", "Warning", "warning", "Ok", "modal");
+                delete(p)
                 return
             end
             d = readtimeseries(path, data.opts, "VariableNames", varNamesRef, "RowTimes", varNamesRef(idx));
@@ -430,6 +432,7 @@ function uiimport_variable()
     
     idx = find(convert <> "")
     if idx <> [] then
+        convert_fcn = get("uiimport_convert", "userdata");
         for i = idx
             jdx = find(convert(idx) == get("uiimport_convert", "string"));
             d(varNames(i)) = convert_fcn(jdx)(d(varNames(i)));
@@ -496,6 +499,7 @@ function uiimport_function()
     varNamesRef = opts.variableNames(data.keepcols);
     convert = data.convert(data.keepcols);
     outputfmt = data.outputFormat(data.keepcols);
+    variableTypes = opts.variableTypes(data.keepcols)
 
     str = [];
     str($+1) = sprintf("clear %s;", x(1));
@@ -520,7 +524,7 @@ function uiimport_function()
             str($+1) = sprintf("    data = readtimeseries(filename, opts, ""VariableNames"", %s, ""RowTimes"", ""%s"", ""ConvertTime"", %s);", sci2exp(varNamesRef), varNamesRef(idx), convert(idx));
             convert(idx) = "";
         else
-            if opts.variableTypes(idx) == "double" then
+            if variableTypes(idx) == "double" then
                 m = messagebox("Unable to create a variable. You must choose the conversion method.", "Warning", "warning", "Ok", "modal");
                 return
             end
@@ -1006,6 +1010,9 @@ function uiimport_preview()
     if data.opts == [] then
         try
             opts = detectImportOptions(path);
+            if opts.variableNames <> [] & size(opts.variableNames, "*") <> size(opts.variableTypes, "*") then
+                return
+            end
         catch
             errclear();
             fc = get("uiimport_import");
@@ -1027,6 +1034,9 @@ function uiimport_preview()
         val = find(get("uiimport_delim", "userdata") == delim)
         if val == 1 then
             set("uiimport_decim", "value", 1);
+        else
+            value = find(get("uiimport_decim", "userdata") == decim)
+            set("uiimport_decim", "value", value)
         end
         set("uiimport_delim", "value", val);
         set("uiimport_nbrows", "string", string(nbrows));
@@ -1037,6 +1047,9 @@ function uiimport_preview()
         decim = get("uiimport_decim", "userdata")(decim);
         try
             opts = detectImportOptions(path, "Delimiter", delim, "Decimal", decim);
+            if opts.variableNames <> [] & size(opts.variableNames, "*") <> size(opts.variableTypes, "*") then
+                return
+            end
         catch
             fc = get("uiimport_import");
             delete(fc.children);
@@ -1044,6 +1057,10 @@ function uiimport_preview()
             delete(fp.children)
             return;
         end
+    end
+
+    if opts.variableNames == [] then
+        opts.variableNames = "Var" + string(1:size(opts.variableTypes, "*"));
     end
 
     nbcols = size(opts.variableNames, "*");
