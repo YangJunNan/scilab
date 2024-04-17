@@ -37,14 +37,16 @@ function [a, b] = nanreglin(x, y, dflag)
     for i=1:p1
         // A column of x defines an element of y, but each line of y defines an independent problem.
         // If x2(:, j) or y2(i, j) contains a %nan, then both x2(:, j) and y2(j) are removed.
-        y2 = y(i, find(~isnan(y(i,:))));
-        x2 = x(:, find(~isnan(y(i,:))));
-        nanX = isnan(x);
-        if or(isnan(x)) then // At least one NaN is x or y.
-            columns = floor((find(nanX==%t)-1)./(n1+1)+1);
-            x2(:, columns) = [];
-            y2(1, columns) = [];
+        noNanY = ~(isnan(y(i,:)));
+        y2 = y(i, noNanY);
+        x2 = x(:, noNanY);
+        nanX = isnan(x2);
+        if or(nanX) then // At least one NaN is x or y.
+            [k, j] = find(nanX);
+            x2(k, j) = [];
+            y2(1, j) = [];
         end
+
         [a(i, :), b(i)] = reglin(x2, y2, dflag);
     end
 
