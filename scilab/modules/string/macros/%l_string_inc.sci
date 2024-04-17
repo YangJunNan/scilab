@@ -50,6 +50,11 @@ function [head,str]=%l_field_format(x,i,level,maxlevel)
         if level > 0 & size(x(i),"*")>0
             str = blanks(4) + %l_string_inc(x(i), level-1);
         end
+    elseif or(type(x(i)) == [16,17]) & ~isdef("%"+typeof(x(i))+"_outline")
+        head = %tlist_outline(x(i), 0+(level>0));
+        if level > 0 & ~isempty(x(i))
+            str = blanks(4) + %l_string_inc(x(i), level-1);
+        end        
     elseif or(type(x(i)) == [1,2,4,5,6,8,10]) | iscell(x(i))
         // almost-native arrayOf types
         if ismatrix(x(i)) & size(x(i),1) == 1
