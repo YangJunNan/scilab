@@ -93,7 +93,7 @@ end
   type: Figure
   children: "Axes"
   figure_position = [200,200]
-  figure_size = [626,588]
+  figure_size = [610,562]
   axes_size = [610,460]
   auto_resize = "on"
   viewport = [0,0]
