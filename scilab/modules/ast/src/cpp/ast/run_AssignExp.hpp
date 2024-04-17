@@ -116,6 +116,7 @@ void RunVisitorT<T>::visitprivate(const AssignExp  &e)
             if (e.isVerbose() && ConfigVariable::isPrintOutput())
             {
                 std::wstring wstrName = pVar->getSymbol().getName();
+                scilabWriteW(printVarEqualTypeDimsInfo(pIT, wstrName).c_str());
                 VariableToString(pIT, wstrName.c_str());
             }
             CoverageInstance::stopChrono((void*)&e);
@@ -218,6 +219,7 @@ void RunVisitorT<T>::visitprivate(const AssignExp  &e)
                 if (e.isVerbose() && ConfigVariable::isPrintOutput())
                 {
                     const std::wstring *pwstName = getStructNameFromExp(pCell);
+                    scilabWriteW(printVarEqualTypeDimsInfo(pOut, *pwstName).c_str());
                     VariableToString(pOut, pwstName->c_str());
                 }
             }
@@ -386,6 +388,7 @@ void RunVisitorT<T>::visitprivate(const AssignExp  &e)
             if (e.isVerbose() && ConfigVariable::isPrintOutput())
             {
                 const std::wstring *pwstName = getStructNameFromExp(&pCall->getName());
+                scilabWriteW(printVarEqualTypeDimsInfo(pOut, *pwstName).c_str());
                 VariableToString(pOut, pwstName->c_str());
             }
 
@@ -533,6 +536,7 @@ void RunVisitorT<T>::visitprivate(const AssignExp  &e)
                 const std::wstring *pwstName = getStructNameFromExp(pField);
 
                 types::InternalType* pPrint = ctx->get(symbol::Symbol(*pwstName));
+                scilabWriteW(printVarEqualTypeDimsInfo(pPrint, *pwstName).c_str());
                 VariableToString(pPrint, pwstName->c_str());
             }
 

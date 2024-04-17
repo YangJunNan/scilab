@@ -222,6 +222,7 @@ void RunVisitorT<T>::visitprivate(const SeqExp  &e)
                         //TODO manage multiple returns
                         std::wostringstream ostrName;
                         ostrName << L"ans";
+                        scilabWriteW(printVarEqualTypeDimsInfo(pITAns, L"ans").c_str());
                         VariableToString(pITAns, ostrName.str().c_str());
                     }
                 }

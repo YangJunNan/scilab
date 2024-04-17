@@ -121,6 +121,7 @@ void RunVisitorT<T>::visitprivate(const SimpleVar & e)
         if (e.isVerbose() && pI->isCallable() == false && ConfigVariable::isPrintOutput())
         {
             std::wstring wstrName = e.getSymbol().getName();
+            scilabWriteW(printVarEqualTypeDimsInfo(pI, wstrName).c_str());
             VariableToString(pI, wstrName.c_str());
         }
 
