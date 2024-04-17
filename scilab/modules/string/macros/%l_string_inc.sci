@@ -17,10 +17,10 @@ function t = %l_string_inc(x, level)
         level = maxlevel;
     end
 
-    fmt = "%s ";
+    fmt = "%s";
     fields = fieldnames(x)';
     if type(x) == 15
-        fmt = "(%d) ";
+        fmt = "(%d)";
         fields = 1:length(x);
     end
 
@@ -57,11 +57,13 @@ function [head,str]=%l_field_format(x,i,level,maxlevel)
             if size(head, "*") > 1 || length(head) > lines()/2 then
                 head = emptystr();
             else
-                char = "= ";
+                char = " = ";
             end
         end
     elseif type(x(i)) == 0
         head = "void";
+    elseif or(type(x(i)) == [13 130])
+        head = "function";
     end
     if isempty(head)
         [otype, onames] = typename();

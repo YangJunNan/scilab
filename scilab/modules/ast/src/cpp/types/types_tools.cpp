@@ -962,6 +962,16 @@ types::Function::ReturnValue VariableToString(types::InternalType* pIT, const wc
     in.push_back(pIT);
     in.push_back(pDblOne);
     types::Function::ReturnValue ret = Overload::generateNameAndCall(L"outline", in, 1, out, false, false);
+    if(ret == types::Callable::OK_NoResult)
+    {
+        // fallthrough: call generic %tlist_outline
+        if (pIT->isMList() | pIT->isTList())
+        {
+            std::wstring wstrFuncName = L"%tlist_outline";
+            ret = Overload::call(wstrFuncName, in, 1, out, false, false);
+        }
+    }
+
     pIT->DecreaseRef();
     pDblOne->DecreaseRef();
     pDblOne->killMe();
