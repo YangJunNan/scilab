@@ -45,7 +45,7 @@ struct CommandRec
     int     m_isInterruptible;      /* 1 if the command execution can be interrupted */
     command_origin_t     m_iCommandOrigin;       /* Indicate who have stored the command (ie: console, tcl) */
     CommandRec(char* command, int isPrioritary, int isInterruptible, command_origin_t iCmdOrigin) :
-        m_command(command), m_isInterruptible(isInterruptible), m_isPrioritary(isPrioritary), m_iCommandOrigin(iCmdOrigin) {}
+        m_command(command), m_isPrioritary(isPrioritary), m_isInterruptible(isInterruptible), m_iCommandOrigin(iCmdOrigin) {}
 };
 /*--------------------------------------------------------------------------*/
 static std::list<CommandRec> commandQueue;

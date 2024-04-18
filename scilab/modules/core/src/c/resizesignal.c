@@ -11,11 +11,14 @@
  *
  */
 #include <stdio.h>
+#include <signal.h>
+
 #include "resizesignal.h"
 #include "scilines.h"
 #include "configvariable_interface.h"
 
 /* Set the console width read from the term size. */
+static
 void resize_handler(int sig, siginfo_t *info, void *p)
 {
     // save the number of lines

@@ -14,12 +14,15 @@
  *
  */
 #include <stdio.h>
+#include <signal.h>
 #include <string.h>
 #include <wchar.h>
 #include "csignal.h"
 #include "configvariable_interface.h"
 #include "getKey.h"
+
 /* If CTRL-C was pressed. */
+static
 void controlC_handler(int sig, siginfo_t *info, void *p)
 {
     setTokenInteruptExecution(DO_NOT_SEND_COMMAND);

@@ -1208,12 +1208,6 @@ static void Add_Boolean_Constant(const std::wstring& _szName, bool _bBool)
     symbol::Context::getInstance()->put(symbol::Symbol(_szName), pVal);
 }
 
-static void Add_String_Constant(const std::wstring& _szName, const char *_pstString)
-{
-    types::String * ps = new types::String(_pstString);
-    symbol::Context::getInstance()->put(symbol::Symbol(_szName), ps);
-}
-
 // manage debugger commands
 static void executeDebuggerCommand(std::string _command)
 {
@@ -1317,7 +1311,7 @@ static void executeDebuggerCommand(std::string _command)
                 int iFileFuncLine = std::stoi(vCommand[2].data());
                 isFile ? bp->setFileLine(iFileFuncLine) : bp->setMacroLine(iFileFuncLine);
             }
-            catch(std::invalid_argument e) // std::stoi
+            catch(const std::invalid_argument& e) // std::stoi
             {
                 sciprint(_("%s: Wrong type for input argument #%d: Integer expected.\n"), "breakpoint", 2);
                 sciprint("use 'h' for more information\n\n");
@@ -1398,7 +1392,7 @@ static void executeDebuggerCommand(std::string _command)
                 }
                 manager->disableBreakPoint(bp);
             }
-            catch(std::invalid_argument e) // std::stoi
+            catch(const std::invalid_argument& e) // std::stoi
             {
                 sciprint(_("%s: Wrong type for input argument #%d: Integer expected.\n"), "disable", 1);
                 sciprint("use 'h' for more information\n\n");
@@ -1427,7 +1421,7 @@ static void executeDebuggerCommand(std::string _command)
                 }
                 manager->enableBreakPoint(bp);
             }
-            catch(std::invalid_argument e) // std::stoi
+            catch(const std::invalid_argument& e) // std::stoi
             {
                 sciprint(_("%s: Wrong type for input argument #%d: Integer expected.\n"), "enable", 1);
                 sciprint("use 'h' for more information\n\n");
@@ -1457,7 +1451,7 @@ static void executeDebuggerCommand(std::string _command)
                 }
                 manager->removeBreakPoint(bp);
             }
-            catch(std::invalid_argument e) // std::stoi
+            catch(const std::invalid_argument& e) // std::stoi
             {
                 sciprint(_("%s: Wrong type for input argument #%d: Integer expected.\n"), "delete", 1);
                 sciprint("use 'h' for more information\n\n");
@@ -1572,7 +1566,7 @@ static void executeDebuggerCommand(std::string _command)
                 }
                 manager->show(bp);
             }
-            catch(std::invalid_argument e) // std::stoi
+            catch(const std::invalid_argument& e) // std::stoi
             {
                 sciprint(_("%s: Wrong type for input argument #%d: Integer expected.\n"), "show", 1);
                 sciprint("use 'h' for more information\n\n");
