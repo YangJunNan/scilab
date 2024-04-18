@@ -81,6 +81,7 @@ public class SciInputCommandView extends ConsoleTextPane implements InputCommand
     private static BlockingQueue<Boolean> displayQueue = new LinkedBlockingQueue<Boolean>();
 
     private Thread concurrentThread = null;
+    private boolean disableLock = false;
 
     private SciConsole console;
     private int height = -1;
@@ -166,6 +167,21 @@ public class SciInputCommandView extends ConsoleTextPane implements InputCommand
      */
     public String getCmdBuffer() {
         String command = null;
+
+        // concurrent access at exit, the cmd buffer will be released empty after some time
+        synchronized(this)
+        {
+            if (disableLock)
+            {
+                try {
+                    Thread.sleep(100);
+                } catch (InterruptedException e) {
+                }
+                return "";
+            }
+        }
+
+        // lock the current store-command thread
         try {
             if (concurrentThread == null) {
                 concurrentThread = Thread.currentThread();
@@ -190,9 +206,13 @@ public class SciInputCommandView extends ConsoleTextPane implements InputCommand
     }
 
     /**
-     * Interrupt the 'await input commant' queue. This will throw an {@link InterruptedException} back to the Scilab engine.
+     * Interrupt the 'await input command' queue and discard further commands. This will send an empty command "" back to the Scilab engine.
      */
-    final public void interrupt() {
+    final public void interruptAndDisable() {
+        synchronized(this)
+        {
+            disableLock = true;
+        }
         if (concurrentThread != null) {
             concurrentThread.interrupt();
         }
