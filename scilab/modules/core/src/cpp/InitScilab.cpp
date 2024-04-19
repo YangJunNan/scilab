@@ -117,7 +117,6 @@ static void Add_All_Variables(void);
 static void Add_Double_Constant(const std::wstring& _szName, double _dblReal, double _dblImg, bool _bComplex);
 static void Add_Poly_Constant(const std::wstring& _szName, const std::wstring& _szPolyVar, int _iRank, types::Double * _pdblReal);
 static void Add_Boolean_Constant(const std::wstring& _szName, bool _bBool);
-static void Add_String_Constant(const std::wstring& _szName, const char *_pstString);
 static void checkForLinkerErrors(void);
 
 static int batchMain(ScilabEngineInfo* _pSEI);

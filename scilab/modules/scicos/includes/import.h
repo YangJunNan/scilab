@@ -85,7 +85,7 @@ typedef struct
     int *noord;       /*  */
     int *zord;        /*  */
     int *nzord;       /*  */
-    int *funptr;      /* block indexes */
+    voidg* funptr;    /* block function pointers */
     int *funtyp;      /* block types */
     int *ztyp;        /* block types */
     int *cord;        /* block types */

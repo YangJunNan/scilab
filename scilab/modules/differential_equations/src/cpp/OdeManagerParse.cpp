@@ -133,7 +133,8 @@ types::Double *OdeManager::parseInitialCondition(types::typed_list &in, bool bIs
             types::Double *pDbl =  in[iPos]->getAs<types::Double>();
             if (pDbl->isVector() && pDbl->getRows() == 1)
             {
-                pDbl->transpose((types::InternalType *&)pDblY);
+                types::InternalType* pIT = pDblY;
+                pDbl->transpose(pIT);
             }
             else
             {

@@ -88,7 +88,7 @@ int sci_uiwait(char *fname, void* pvApiCtx)
     nbRow = (int)strlen(result);
     nbCol = 1;
 
-    if (allocSingleString(pvApiCtx, nbInputArgument(pvApiCtx) + 1, nbRow * nbCol, (const char**) &strAdr))
+    if (allocSingleString(pvApiCtx, nbInputArgument(pvApiCtx) + 1, nbRow * nbCol, &strAdr))
     {
         Scierror(999, _("%s: Memory allocation error.\n"), fname);
         return 1;

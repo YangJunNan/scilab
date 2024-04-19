@@ -116,7 +116,7 @@ public:
     inline static hid_t getBaseType(char ** data)
     {
         hid_t type = H5Tcopy(H5T_C_S1);
-        herr_t err = H5Tset_size(type, H5T_VARIABLE);
+        H5Tset_size(type, H5T_VARIABLE);
 
         return type;
     }

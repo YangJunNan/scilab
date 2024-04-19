@@ -64,7 +64,7 @@ H5StringData::~H5StringData()
         herr_t err = H5Dvlen_reclaim(type, space, H5P_DEFAULT, _data);
         if (err < 0)
         {
-            throw H5Exception(__LINE__, __FILE__, _("Cannot free the memory associated with String data"));
+            Scierror(999, "%s:%d\t%s\n", __LINE__, __FILE__, _("Cannot free the memory associated with String data"));
         }
 
         H5Tclose(type);

@@ -527,13 +527,7 @@ g++-* | g++ | ccache*g++ | ccache*g++-* )
         DEBUG_CXXFLAGS="-DNDEBUG -g1 -O2"
     fi
 
-    WARNING_CFLAGS="-Wall "
-    # Valid ISO C and ISO C++ programs
-    WARNING_CFLAGS="$WARNINGS_CFLAGS -pedantic "
-    # all functions should be declared in defined
-    WARNING_CFLAGS="$WARNING_CFLAGS -Werror=implicit "
-    # function pointers should match
-    WARNING_CFLAGS="$WARNING_CFLAGS -Werror=incompatible-pointer-types "
+    WARNING_CXXFLAGS="-Wall -pedantic "
     
     COMPILER_CXXFLAGS="$COMPILER_CXXFLAGS -fno-stack-protector " # bug 3131
     # add the extra filesystem library if needed
@@ -553,13 +547,7 @@ g++-* | g++ | ccache*g++ | ccache*g++-* )
         DEBUG_CXXFLAGS="-DNDEBUG -g1 -O2"
     fi
     
-    WARNING_CFLAGS="-Wall "
-    # Valid ISO C and ISO C++ programs
-    WARNING_CFLAGS="$WARNINGS_CFLAGS -pedantic "
-    # all functions should be declared in defined
-    WARNING_CFLAGS="$WARNING_CFLAGS -Werror=implicit "
-    # function pointers should match
-    WARNING_CFLAGS="$WARNING_CFLAGS -Werror=incompatible-pointer-types "
+    WARNING_CXXFLAGS="-Wall -pedantic "
 
     COMPILER_CXXFLAGS="$COMPILER_CXXFLAGS -fno-stack-protector " # bug 3131
     # allow to compile under macOS < Catalina with c++17 enabled clang
@@ -619,10 +607,6 @@ gcc-* | gcc | ccache*gcc | ccache*gcc-* )
     WARNING_CFLAGS="-Wall "
     # Valid ISO C and ISO C++ programs
     WARNING_CFLAGS="$WARNINGS_CFLAGS -pedantic "
-    # all functions should be declared in defined
-    WARNING_CFLAGS="$WARNING_CFLAGS -Werror=implicit "
-    # function pointers should match
-    WARNING_CFLAGS="$WARNING_CFLAGS -Werror=incompatible-pointer-types "
 
     COMPILER_CFLAGS="$COMPILER_CFLAGS -fno-stack-protector " # bug 3131
     # Explictly disable the as needed. It was disable by default but Ubuntu
@@ -705,10 +689,6 @@ gcc-* | gcc | ccache*gcc | ccache*gcc-* )
     WARNING_CFLAGS="-Wall "
     # Valid ISO C and ISO C++ programs
     WARNING_CFLAGS="$WARNINGS_CFLAGS -pedantic "
-    # all functions should be declared in defined
-    WARNING_CFLAGS="$WARNING_CFLAGS -Werror=implicit "
-    # function pointers should match
-    WARNING_CFLAGS="$WARNING_CFLAGS -Werror=incompatible-pointer-types "
 
     COMPILER_CFLAGS="$COMPILER_CFLAGS -fno-stack-protector " # bug 3131
     # prevent dll optimizations in the final binary
@@ -2098,8 +2078,22 @@ AC_CHECK_ADDRESS_SANTIZER()
 ## stop on warning: default warning declaration and stop compilation when a warning is found
 #################
 if test "$enable_stop_on_warning" = yes; then
-    WARNING_CFLAGS="$WARNING_CFLAGS -Werror "
+    # all functions should be declared in defined
+    WARNING_CFLAGS="$WARNING_CFLAGS -Werror=implicit "
+    # function pointers should match
+    WARNING_CFLAGS="$WARNING_CFLAGS -Werror=incompatible-pointer-types "
+
     WARNING_CXXFLAGS="$WARNING_CXXFLAGS -Werror "
+    # Scilab indexes are int, standard containers are size_t: do not error when comparing them
+    WARNING_CXXFLAGS="$WARNING_CXXFLAGS -Wno-error=sign-compare"
+    # on graphics_object we cast user_data InternalType pointer depending on 32bits, 64bits alignement
+    WARNING_CXXFLAGS="$WARNING_CXXFLAGS -Wno-error=int-to-pointer-cast"
+    # FIXME: sundials contains unused static functions
+    WARNING_CXXFLAGS="$WARNING_CXXFLAGS -Wno-error=unused-function"
+    # FIXME: Eigen/src/Core/AssignEvaluator.h:86:63: error: enum constant in boolean context
+    WARNING_CXXFLAGS="$WARNING_CXXFLAGS -Wno-error=int-in-bool-context"
+    # snprintf can truncate by design, this warning is opinionated
+    WARNING_CXXFLAGS="$WARNING_CXXFLAGS -Wno-error=format-truncation "
 fi
 
 # SCI_*FLAGS contains all defaults values detected on configure
