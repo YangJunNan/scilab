@@ -18,35 +18,8 @@ function str = %ce_string(ce)
             val = ce{i};
             t = type(ce{i})
             select t
-            case 13 //macro
-                str(i) = "function";
-            case 14 //lib
-                str(i) = "lib";
-            case 15 //list
-                str(i) = %l_outline(val,0);
-            case {16,17} //list,tlist,mlist,struct
-                select typeof(val)
-                case "st"
-                    str(i) =  %st_outline(val,0);
-                case "ce"
-                    str(i) = %ce_outline(val,0);
-                case "rational"
-                    str(i) = %r_outline(val,0);
-                else
-                    [str(i),err] = evstr("%"+typeof(val)+"_outline(val,0)");
-                    if err <> 0
-                        str(i) = typeof(val);
-                    end
-                end
-            case 128 //pointer
-                str(i) = typeof(val);
-            case 130 //builtin
-                str(i) = "function";
-            case 9 //handles
-               str(i) = %h_outline(val,0);
-            case 0
-               str(i) = "void";
-            else //native arrayOf types
+            case {1,2,4,5,6,8,10}
+                //native arrayOf types wich can be displayed by sci2exp()
                 if isempty(val)
                     str(i) = "[]";
                 else
@@ -62,10 +35,14 @@ function str = %ce_string(ce)
                         str(i) = evstr("%"+onames(otype==type(val))+"_outline(val,0)");
                     end
                  end
+            else
+                [str(i),err] = evstr("%"+typeof(val)+"_outline(val,0)");
+                if err <> 0
+                    str(i) = typeof(val);
+                end
             end
         end
     end
-
     s = max(length(str), "r");
 
     for j = 1:size(str, 2)
