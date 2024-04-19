@@ -35,10 +35,12 @@ function str = %ce_string(ce)
                         str(i) = evstr("%"+onames(otype==type(val))+"_outline(val,0)");
                     end
                  end
+            case 15
+                str(i) = %l_outline(ce{i},0);                 
             else
-                [str(i),err] = evstr("%"+typeof(val)+"_outline(val,0)");
+                [str(i),err] = evstr("%"+typeof(val)+"_outline(ce{i},0)");
                 if err <> 0
-                    str(i) = typeof(val);
+                    str(i) = typeof(ce{i});
                 end
             end
         end
