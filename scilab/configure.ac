@@ -516,7 +516,7 @@ g++-* | g++ | ccache*g++ | ccache*g++-* )
     fi
 
     if test "$enable_debug_CXX" = yes; then
-        DEBUG_CXXFLAGS="-O0 -g3"
+        DEBUG_CXXFLAGS="-Wall -Wextra -O0 -g3"
         case "$host" in
         *-linux-gnu )
             # Only doing that under Linux
@@ -526,9 +526,6 @@ g++-* | g++ | ccache*g++ | ccache*g++-* )
     else
         DEBUG_CXXFLAGS="-DNDEBUG -g1 -O2"
     fi
-
-    WARNING_CXXFLAGS="-Wall -pedantic "
-    
     COMPILER_CXXFLAGS="$COMPILER_CXXFLAGS -fno-stack-protector " # bug 3131
     # add the extra filesystem library if needed
     if test "$($CXX -dumpversion |cut -d\. -f1)" -lt "9" ; then
@@ -542,13 +539,10 @@ g++-* | g++ | ccache*g++ | ccache*g++-* )
         CODECOVERAGE_CXXFLAGS="-fprofile-arcs -ftest-coverage"
     fi
     if test "$enable_debug_CXX" = yes; then
-        DEBUG_CXXFLAGS="-O0 -g3"
+        DEBUG_CXXFLAGS="-Wall -Wextra -O0 -g3"
     else
         DEBUG_CXXFLAGS="-DNDEBUG -g1 -O2"
     fi
-    
-    WARNING_CXXFLAGS="-Wall -pedantic "
-
     COMPILER_CXXFLAGS="$COMPILER_CXXFLAGS -fno-stack-protector " # bug 3131
     # allow to compile under macOS < Catalina with c++17 enabled clang
     case "$host_os" in
@@ -575,9 +569,7 @@ case "$host" in
     ;;
 esac
 
-############
-## C
-############
+##########"
 
 case "$CC" in
 gcc-* | gcc | ccache*gcc | ccache*gcc-* )
@@ -589,7 +581,7 @@ gcc-* | gcc | ccache*gcc | ccache*gcc-* )
     fi
 
     if test "$enable_debug_C" = yes; then
-        DEBUG_CFLAGS="-O0 -g3"
+        DEBUG_CFLAGS="-Wall -Wextra -O0 -g3"
         # used to be -O0
         case "$host" in
         *-linux-gnu )
@@ -603,10 +595,6 @@ gcc-* | gcc | ccache*gcc | ccache*gcc-* )
     else
         DEBUG_CFLAGS="-DNDEBUG -g1 -O2"
     fi
-    
-    WARNING_CFLAGS="-Wall "
-    # Valid ISO C and ISO C++ programs
-    WARNING_CFLAGS="$WARNINGS_CFLAGS -pedantic "
 
     COMPILER_CFLAGS="$COMPILER_CFLAGS -fno-stack-protector " # bug 3131
     # Explictly disable the as needed. It was disable by default but Ubuntu
@@ -680,16 +668,11 @@ gcc-* | gcc | ccache*gcc | ccache*gcc-* )
         CODECOVERAGE_CFLAGS="-fprofile-arcs -ftest-coverage"
     fi
     if test "$enable_debug_C" = yes; then
-        DEBUG_CFLAGS="-O0 -g3"
+        DEBUG_CFLAGS="-Wall -Wextra -O0 -g3"
         # used to be -O0
     else
         DEBUG_CFLAGS="-DNDEBUG -g1 -O2"
     fi
-    
-    WARNING_CFLAGS="-Wall "
-    # Valid ISO C and ISO C++ programs
-    WARNING_CFLAGS="$WARNINGS_CFLAGS -pedantic "
-
     COMPILER_CFLAGS="$COMPILER_CFLAGS -fno-stack-protector " # bug 3131
     # prevent dll optimizations in the final binary
     case "$host_os" in
@@ -2075,25 +2058,16 @@ AC_CHECK_STDCPP_STATIC()
 AC_CHECK_ADDRESS_SANTIZER()
 
 #################
-## stop on warning: default warning declaration and stop compilation when a warning is found
+## stop on warning
 #################
-if test "$enable_stop_on_warning" = yes; then
-    # all functions should be declared in defined
-    WARNING_CFLAGS="$WARNING_CFLAGS -Werror=implicit "
-    # function pointers should match
-    WARNING_CFLAGS="$WARNING_CFLAGS -Werror=incompatible-pointer-types "
 
-    WARNING_CXXFLAGS="$WARNING_CXXFLAGS -Werror "
-    # Scilab indexes are int, standard containers are size_t: do not error when comparing them
-    WARNING_CXXFLAGS="$WARNING_CXXFLAGS -Wno-error=sign-compare"
-    # on graphics_object we cast user_data InternalType pointer depending on 32bits, 64bits alignement
-    WARNING_CXXFLAGS="$WARNING_CXXFLAGS -Wno-error=int-to-pointer-cast"
-    # FIXME: sundials contains unused static functions
-    WARNING_CXXFLAGS="$WARNING_CXXFLAGS -Wno-error=unused-function"
-    # FIXME: Eigen/src/Core/AssignEvaluator.h:86:63: error: enum constant in boolean context
-    WARNING_CXXFLAGS="$WARNING_CXXFLAGS -Wno-error=int-in-bool-context"
-    # snprintf can truncate by design, this warning is opinionated
-    WARNING_CXXFLAGS="$WARNING_CXXFLAGS -Wno-error=format-truncation "
+# Stop to compile scilab when a warning is found ...
+# This stuff is at the end of the configure.ac because it causes some
+# problem with AC_COMPILE (the -Werror is added to the test)
+#
+if test "$enable_stop_on_warning" = yes; then
+    WARNING_CFLAGS="-Werror=implicit-function-declaration -Werror=declaration-after-statement "
+    WARNING_CXXFLAGS="-Werror=implicit-function-declaration "
 fi
 
 # SCI_*FLAGS contains all defaults values detected on configure
