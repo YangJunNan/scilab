@@ -75,7 +75,7 @@ protected:
                         const int listPosition = 0,
                         const bool flip = true) const
     {
-        static const char *hypermat[3] = {"hm", "dims", "entries"};
+        static char const* hypermat[3] = {"hm", "dims", "entries"};
 
         int *list = 0;
         SciErr err;
