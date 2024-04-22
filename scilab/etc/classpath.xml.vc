@@ -29,6 +29,7 @@ The option is "disableUnderMode" and can be:
 
     <!-- Mandatory on startup -->
     <path value="$SCILAB/thirdparty/flexdock-1.2.4.jar"/>
+    <path value="$SCILAB/thirdparty/flatlaf-3.3.jar"/>
     <path value="$SCILAB/thirdparty/skinlf.jar"/>
     <path value="$SCILAB/thirdparty/looks-2.1.1.jar"/>
     <path value="$SCILAB/thirdparty/commons-logging.jar"/>

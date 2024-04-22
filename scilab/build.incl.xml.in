@@ -63,6 +63,7 @@
         <pathelement location="${library.javasci.dir}/${library.javasci-v1.name}"/>
         <pathelement location="${commons-logging.jar}"/>
         <pathelement location="${flexdock.jar}"/>
+        <pathelement location="${flatlaf.jar}"/>
         <pathelement location="${gluegen2.jar}"/>
         <pathelement location="${jrosetta-API.jar}"/>
         <pathelement location="${jrosetta-engine.jar}"/>

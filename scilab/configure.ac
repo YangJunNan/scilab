@@ -988,6 +988,11 @@ if test "$with_javasci" != no -o "$with_gui" != no -o "$enable_build_help" != no
                 fi
                 AC_SUBST(LOOKS)
 
+                #  FlatLaf Look and Feel
+                AC_JAVA_CHECK_JAR([flatlaf],[com.formdev.flatlaf.FlatLightLaf],[Scilab Gui - FlatLaf Look and Feel])
+                FLATLAF=$PACKAGE_JAR_FILE
+                AC_SUBST(FLATLAF)
+
                 #  Skin Look and Feel
                 AC_JAVA_CHECK_JAR([skinlf],[com.l2fprod.util.AccessUtils],[Scilab Gui - Skin Look and Feel])
                 SKINLF=$PACKAGE_JAR_FILE
