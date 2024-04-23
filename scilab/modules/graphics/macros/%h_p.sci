@@ -18,8 +18,8 @@ function %h_p(h)
         end
     else
         t = %l_string_inc(h);
-        if ~isempty(t) then
-            printf("  %s\n",t)
-        end
+    end
+    if ~isempty(t) then
+        printf("  %s\n",t)
     end
 endfunction

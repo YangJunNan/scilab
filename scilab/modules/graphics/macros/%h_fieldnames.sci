@@ -9,9 +9,9 @@
 // along with this program.
 
 
-function fields = %h_getfields(h)
+function fields = %h_fieldnames(h)
     select (h.type)
-    case "Coumpound"
+    case "Compound"
         fields = [
         "parent"
         "children"
@@ -38,12 +38,9 @@ function fields = %h_getfields(h)
         "y_label"
         "z_label"
         "auto_ticks"
-        "x_ticks.locations"
-        "y_ticks.locations"
-        "z_ticks.locations"
-        "x_ticks.labels"
-        "y_ticks.labels"
-        "z_ticks.labels"
+        "x_ticks"
+        "y_ticks"
+        "z_ticks"
         "ticks_format"
         "ticks_st"
         "box"

@@ -9,11 +9,13 @@
 // along with this program.
 
 function s=%h_outline(x,verbose)
-   if verbose == 0
-       s = %type_dims_outline(x);
-   elseif isscalar(x)        
-       s = %type_dims_outline(x, typeStr=x.type+" handle")+" with properties:";
+    if isscalar(x)        
+        if verbose == 0
+            s = %type_dims_outline(x, typeStr=x.type);    
+        else
+            s = %type_dims_outline(x, typeStr=x.type)+" with properties:";
+        end
     else
-       s = %type_dims_outline(x);    
+         s = %type_dims_outline(x);
     end
 endfunction

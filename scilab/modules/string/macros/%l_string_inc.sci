@@ -22,6 +22,8 @@ function t = %l_string_inc(x, level)
     if type(x) == 15
         fmt = "(%d)";
         fields = 1:length(x);
+    elseif type(x) == 9
+        fields = %h_fieldnames(h)';      
     end
 
     if isstruct(x) && ~isscalar(x)
@@ -29,9 +31,13 @@ function t = %l_string_inc(x, level)
     else
         t = [];
         for i = fields
-            prehead = sprintf(fmt,i);
-            [head,str]=%l_field_format(x,i,level,maxlevel);
-            t = [t;prehead+head;str];
+            if type(x) == 9 && i == " "
+                t = [t;""];
+            else
+                prehead = sprintf(fmt,i);
+                [head,str]=%l_field_format(x,i,level,maxlevel);
+                t = [t;prehead+head;str];
+            end
         end
     end
 endfunction
@@ -52,13 +58,14 @@ function [head,str]=%l_field_format(x,i,level,maxlevel)
         end
     elseif or(type(x(i)) == [16,17]) & ~isdef("%"+typeof(x(i))+"_outline")
         head = %tlist_outline(x(i), 0+(level>0));
-        if level > 0 & ~isempty(x(i))
+        if level > 0
             str = blanks(4) + %l_string_inc(x(i), level-1);
         end        
     elseif or(type(x(i)) == [1,2,4,5,6,8,10]) || iscell(x(i))
         // almost-native arrayOf types
-        if (ismatrix(x(i)) & size(x(i),1) == 1) || (x(i) == [])
-            head = sci2exp(x(i));
+        temphead = sci2exp(x(i));
+        if (ismatrix(x(i)) & size(x(i),1) == 1) || (x(i) == []) || size(temphead,"*") == 1
+            head = temphead;
             if size(head, "*") > 1 || length(head) > lines()/2 then
                 head = emptystr();
             else
