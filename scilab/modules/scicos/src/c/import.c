@@ -320,7 +320,7 @@ void C2F(clearscicosimport)()
  * 08/02/07, Alan : update
  */
 
-int getscicosvarsfromimport(char *what, void **v, int *nv, int *mv)
+int getscicosvarsfromimport(const char *what, void **v, int *nv, int *mv)
 /*char *what;   data structure selection -see import.h for definition-*/
 /*void **v;     Pointer to the beginning of the imported data */
 /*int *nv;      size 1 of the imported data */

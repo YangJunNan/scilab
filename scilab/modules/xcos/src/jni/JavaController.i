@@ -31,6 +31,7 @@
 #include "Controller.hxx"
 
 #include "scicos.h"
+
 %}
 
 %include <enums.swg>

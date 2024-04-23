@@ -56041,12 +56041,10 @@ if test "$enable_stop_on_warning" = yes; then
     WARNING_CXXFLAGS="$WARNING_CXXFLAGS -Wno-error=sign-compare"
     # on graphics_object we cast user_data InternalType pointer depending on 32bits, 64bits alignement
     WARNING_CXXFLAGS="$WARNING_CXXFLAGS -Wno-error=int-to-pointer-cast"
-    # FIXME: sundials contains unused function static
+    # FIXME: sundials contains unused static functions
     WARNING_CXXFLAGS="$WARNING_CXXFLAGS -Wno-error=unused-function"
     # FIXME: Eigen/src/Core/AssignEvaluator.h:86:63: error: enum constant in boolean context
-    WARNING_CXXFLAGS="$WARNING_CXXFLAGS -Wno-error=int-in-bool-context -Wno-int-in-bool-context"
-    # snprintf can truncate by design, this warning is opinionated
-    WARNING_CXXFLAGS="$WARNING_CXXFLAGS -Wno-error=format-truncation -Wno-format-truncation"
+    WARNING_CXXFLAGS="$WARNING_CXXFLAGS -Wno-error=int-in-bool-context"
 fi
 
 # SCI_*FLAGS contains all defaults values detected on configure

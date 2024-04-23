@@ -33,7 +33,7 @@ extern "C" {
     {
         char * varName = (char*)(*jenv)->GetStringUTFChars(jenv, jvarName, 0);
         SciErr sciErr = sendList(jenv, list, 0, 0, varName, (char)type);
-        (*jenv)->ReleaseStringUTFChars(jenv, jvarName, (const char *)varName);
+        (*jenv)->ReleaseStringUTFChars(jenv, jvarName, varName);
 
         if (sciErr.iErr)
         {
@@ -251,7 +251,7 @@ extern "C" {
                         }
                         (*jenv)->DeleteLocalRef(jenv, data);
 
-                        sciErr = createMatrixOfPolyInNamedList(NULL, varName, currentList, i + 1, polyVarName, nbRow, nbCol, nbCoef, (const double * const*)real);
+                        sciErr = createMatrixOfPolyInNamedList(NULL, varName, currentList, i + 1, polyVarName, nbRow, nbCol, nbCoef, real);
                         for (j = 0; j < nbRow * nbCol; j++)
                         {
                             FREE(real[j]);
@@ -302,7 +302,7 @@ extern "C" {
                         (*jenv)->DeleteLocalRef(jenv, data);
                         (*jenv)->DeleteLocalRef(jenv, imagData);
 
-                        sciErr = createComplexMatrixOfPolyInNamedList(NULL, varName, currentList, i + 1, polyVarName, nbRow, nbCol, nbCoef, (const double * const*)real, (const double * const*)imag);
+                        sciErr = createComplexMatrixOfPolyInNamedList(NULL, varName, currentList, i + 1, polyVarName, nbRow, nbCol, nbCoef, real, imag);
                         for (j = 0; j < nbRow * nbCol; j++)
                         {
                             FREE(real[j]);
@@ -360,7 +360,7 @@ extern "C" {
                     }
                     (*jenv)->DeleteLocalRef(jenv, data);
 
-                    sciErr = createMatrixOfBooleanInNamedList(NULL, varName, currentList, i + 1, nbRow, nbCol, (const int *)b);
+                    sciErr = createMatrixOfBooleanInNamedList(NULL, varName, currentList, i + 1, nbRow, nbCol, b);
                     FREE(b);
                     break;
                 }
@@ -890,7 +890,7 @@ extern "C" {
                             strcpy(strings[k * nbRow + j], str);
                             if (isCopy1)
                             {
-                                (*jenv)->ReleaseStringUTFChars(jenv, j_string, (const char *)str);
+                                (*jenv)->ReleaseStringUTFChars(jenv, j_string, str);
                             }
                             (*jenv)->DeleteLocalRef(jenv, j_string);
                         }
@@ -898,7 +898,7 @@ extern "C" {
                     }
                     (*jenv)->DeleteLocalRef(jenv, data);
 
-                    sciErr = createMatrixOfStringInNamedList(NULL, varName, currentList, i + 1, nbRow, nbCol, (const char * const*)strings);
+                    sciErr = createMatrixOfStringInNamedList(NULL, varName, currentList, i + 1, nbRow, nbCol, strings);
                     for (j = 0; j < nbRow * nbCol; j++)
                     {
                         FREE(strings[j]);

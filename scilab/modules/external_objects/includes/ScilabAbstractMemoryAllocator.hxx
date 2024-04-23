@@ -47,7 +47,7 @@ public:
 
     ScilabStackAllocator(void * pvCtx, int _position) : position(_position), pvCtx(pvCtx) { }
 
-    ~ScilabStackAllocator() { }
+    virtual ~ScilabStackAllocator() { }
 
 protected:
 

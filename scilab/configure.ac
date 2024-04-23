@@ -528,7 +528,7 @@ g++-* | g++ | ccache*g++ | ccache*g++-* )
     fi
 
     WARNING_CXXFLAGS="-Wall -pedantic "
-    
+
     COMPILER_CXXFLAGS="$COMPILER_CXXFLAGS -fno-stack-protector " # bug 3131
     # add the extra filesystem library if needed
     if test "$($CXX -dumpversion |cut -d\. -f1)" -lt "9" ; then
@@ -2092,8 +2092,6 @@ if test "$enable_stop_on_warning" = yes; then
     WARNING_CXXFLAGS="$WARNING_CXXFLAGS -Wno-error=unused-function"
     # FIXME: Eigen/src/Core/AssignEvaluator.h:86:63: error: enum constant in boolean context
     WARNING_CXXFLAGS="$WARNING_CXXFLAGS -Wno-error=int-in-bool-context"
-    # snprintf can truncate by design, this warning is opinionated
-    WARNING_CXXFLAGS="$WARNING_CXXFLAGS -Wno-error=format-truncation "
 fi
 
 # SCI_*FLAGS contains all defaults values detected on configure

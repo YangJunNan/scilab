@@ -159,7 +159,7 @@ BOOL *getBoolean(char *variableName, int *nbRow, int *nbCol)
     matrixOfBoolean = (BOOL *) malloc(((*nbRow) * (*nbCol)) * sizeof(BOOL));
 
     /* Load the matrix */
-    sciErr = readNamedMatrixOfBoolean(NULL, variableName, nbRow, nbCol, matrixOfBoolean);
+    sciErr = readNamedMatrixOfBoolean(NULL, variableName, nbRow, nbCol, (int *) matrixOfBoolean);
 
     if (sciErr.iErr)
     {
@@ -174,7 +174,7 @@ int putBoolean(char *variableName, BOOL * variable, int nbRow, int nbCol)
 {
     SciErr sciErr;
 
-    sciErr = createNamedMatrixOfBoolean(NULL, variableName, nbRow, nbCol, variable);
+    sciErr = createNamedMatrixOfBoolean(NULL, variableName, nbRow, nbCol, (int*) variable);
     if (sciErr.iErr)
     {
         printError(&sciErr, 0);
@@ -449,7 +449,7 @@ int putLong(char *variableName, long *variable, int nbRow, int nbCol)
 {
     SciErr sciErr;
 
-    sciErr = createNamedMatrixOfInteger64(NULL, variableName, nbRow, nbCol, variable);
+    sciErr = createNamedMatrixOfInteger64(NULL, variableName, nbRow, nbCol, (long long*) variable);
     if (sciErr.iErr)
     {
         printError(&sciErr, 0);
@@ -461,7 +461,7 @@ int putLong(char *variableName, long *variable, int nbRow, int nbCol)
 unsigned long *getUnsignedLong(char *variableName, int *nbRow, int *nbCol)
 {
     SciErr sciErr;
-    long *matrixOfLong = NULL;
+    unsigned long *matrixOfLong = NULL;
 
     sciErr = readNamedMatrixOfUnsignedInteger64(NULL, variableName, nbRow, nbCol, NULL);
     if (sciErr.iErr)
@@ -470,10 +470,10 @@ unsigned long *getUnsignedLong(char *variableName, int *nbRow, int *nbCol)
     }
 
     /* Alloc the memory */
-    matrixOfLong = (long *)malloc(((*nbRow) * (*nbCol)) * sizeof(long));
+    matrixOfLong = (unsigned long *)malloc(((*nbRow) * (*nbCol)) * sizeof(long));
 
     /* Load the matrix */
-    sciErr = readNamedMatrixOfUnsignedInteger64(NULL, variableName, nbRow, nbCol, matrixOfLong);
+    sciErr = readNamedMatrixOfUnsignedInteger64(NULL, variableName, nbRow, nbCol, (unsigned long long*) matrixOfLong);
     if (sciErr.iErr)
     {
         printError(&sciErr, 0);
@@ -487,7 +487,7 @@ int putUnsignedLong(char *variableName, unsigned long *variable, int nbRow, int 
 {
     SciErr sciErr;
 
-    sciErr = createNamedMatrixOfUnsignedInteger64(NULL, variableName, nbRow, nbCol, variable);
+    sciErr = createNamedMatrixOfUnsignedInteger64(NULL, variableName, nbRow, nbCol, (unsigned long long*) variable);
     if (sciErr.iErr)
     {
         printError(&sciErr, 0);
