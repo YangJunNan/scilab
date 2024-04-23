@@ -7,7 +7,6 @@
 //
 // <-- CLI SHELL MODE -->
 // <-- NO CHECK REF -->
-// <-- LINUX ONLY -->
 //
 // <-- Short Description -->
 // This test is used to execute other tests
@@ -16,7 +15,7 @@
 if isdir("SCI/../../share") then
     cd(SCI + "/modules/call_scilab/tests/nonreg_tests")
     assert_checkequal(unix("make clean all"), 0);
-    //assert_checkequal(unix("./bug_7601"), 255);
+    assert_checkequal(unix("./bug_7601"), 255);
     assert_checkequal(unix("./bug_7602"), 0);
     assert_checkequal(unix("./bug_8115"), 0);
     assert_checkequal(unix("./bug_8830"), 0);

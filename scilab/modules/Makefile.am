@@ -171,7 +171,7 @@ NO_GUI_LIBS = $(top_builddir)/modules/gui/libscigui-disable.la \
 	$(top_builddir)/modules/tclsci/libscitclsci-disable.la
 endif
 
-ENGINE_LIBS =	$(top_builddir)/modules/fileio/libscifileio.la \
+ENGINE_LIBS = $(top_builddir)/modules/fileio/libscifileio.la \
 	$(top_builddir)/modules/mexlib/libmex.la \
 	$(top_builddir)/modules/functions/libscifunctions.la \
 	$(top_builddir)/modules/parameters/libsciparameters.la \
@@ -240,10 +240,8 @@ else
 libscilab_la_LIBADD += $(NO_GUI_LIBS)
 endif
 
-libscilab_la_LIBADD += libscilab-cli.la
-
 # Core modules
-libscilab_la_LIBADD += $(OTHER_LIBS) $(EXTERNAL_LIBS)
+libscilab_la_LIBADD += $(ENGINE_LIBS) $(OTHER_LIBS) $(EXTERNAL_LIBS)
 
 if FORCE_LINK
 # This should never be used in production. It forces the explicit link
