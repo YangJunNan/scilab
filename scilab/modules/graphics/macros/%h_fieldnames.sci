@@ -11,6 +11,46 @@
 
 function fields = %h_fieldnames(h)
     select (h.type)
+    case "Polyline"
+        fields = [
+          "parent"
+            "children"
+            "datatips"
+            "datatip_display_mode"
+            "display_function"
+            "display_function_data"
+            "visible"
+            "data"
+            "closed"
+            "line_mode"
+            "fill_mode"
+            "line_style"
+            "thickness"
+            "arrow_size_factor"
+            "polyline_style"
+            "foreground"
+            "background"
+            "interp_color_vector" 
+            "interp_color_mode"
+            "colors"
+            "mark_mode"
+            "mark_style"
+            "mark_size_unit"
+            "mark_size"
+            "mark_foreground"
+            "mark_background"
+            "mark_offset"
+            "mark_stride"
+            "x_shift"
+            "y_shift"
+            "z_shift"
+            "bar_width"
+            "clip_state"
+            "clip_box"
+            "user_data"
+            "tag"
+
+        ]
     case "Compound"
         fields = [
         "parent"
@@ -498,82 +538,82 @@ function fields = %h_fieldnames(h)
         fields=[];
 
         showHiddenProperties = get(get(0), "ShowHiddenProperties") == "on";
-        fields($ + 1) = "Parent"
-        fields($ + 1) = "Children"
-        fields($ + 1) = "Style"
+        fields($ + 1)="Parent"
+        fields($ + 1)="Children"
+        fields($ + 1)="Style"
         if and(h.style <> ["popupmenu"]) | showHiddenProperties then
-            fields($ + 1) = "BackgroundColor"
+            fields($ + 1)="BackgroundColor"
         end
         if h.style == "frame" | showHiddenProperties then
-            fields($ + 1) = "Border"
+            fields($ + 1)="Border"
         end
         if and(h.style <> ["frame", "layer", "text"]) | showHiddenProperties then
-            fields($ + 1) = "Callback"
-            fields($ + 1) = "Callback_Type"
+            fields($ + 1)="Callback"
+            fields($ + 1)="Callback_Type"
         end
-        fields($ + 1) = "Constraints"
-        fields($ + 1) = "Enable"
+        fields($ + 1)="Constraints"
+        fields($ + 1)="Enable"
         if and(h.style <> ["image", "slider", "layer"]) | showHiddenProperties then
-            fields($ + 1) = "FontAngle"
-            fields($ + 1) = "FontName"
-            fields($ + 1) = "FontSize"
-            fields($ + 1) = "FontUnits"
-            fields($ + 1) = "FontWeight"
+            fields($ + 1)="FontAngle"
+            fields($ + 1)="FontName"
+            fields($ + 1)="FontSize"
+            fields($ + 1)="FontUnits"
+            fields($ + 1)="FontWeight"
         end
         if and(h.style <> ["frame", "layer", "tab", "slider", "image", "popupmenu"]) | showHiddenProperties then
-            fields($ + 1) = "ForegroundColor"
+            fields($ + 1)="ForegroundColor"
         end
         if or(h.style == ["radiobutton", "checkbox"]) | showHiddenProperties then
-            fields($ + 1) = "Groupname"
+            fields($ + 1)="Groupname"
         end
         if and(h.style <> ["frame", "layer", "tab", "listbox", "popupmenu"]) | showHiddenProperties then
-            fields($ + 1) = "HorizontalAlignment"
+            fields($ + 1)="HorizontalAlignment"
         end
         if or(h.style == ["text", "pushbutton", "frame"]) | showHiddenProperties then
-            fields($ + 1) = "Icon"
+            fields($ + 1)="Icon"
         end
         if h.style == "frame" | showHiddenProperties then
-            fields($ + 1) = "Layout"
-            fields($ + 1) = "Layout_options"
+            fields($ + 1)="Layout"
+            fields($ + 1)="Layout_options"
         end
         if h.style == "listbox" | showHiddenProperties then
-            fields($ + 1) = "ListboxTop"
+            fields($ + 1)="ListboxTop"
         end
-        fields($ + 1) = "Margins"
+        fields($ + 1)="Margins"
         if or(h.style == ["checkbox", "radiobutton", "slider", "spinner", "listbox", "edit"]) | showHiddenProperties then
-            fields($ + 1) = "Max"
-            fields($ + 1) = "Min"
+            fields($ + 1)="Max"
+            fields($ + 1)="Min"
         end
-        fields($ + 1) = "Position"
-        fields($ + 1) = "Relief"
+        fields($ + 1)="Position"
+        fields($ + 1)="Relief"
         if or(h.style == ["frame", "edit"]) | showHiddenProperties then
-            fields($ + 1) = "Scrollable"
+            fields($ + 1)="Scrollable"
         end
         if or(h.style == ["slider", "spinner"]) | showHiddenProperties then
-            fields($ + 1) = "SliderStep"
+            fields($ + 1)="SliderStep"
         end
         if h.style=="slider" | showHiddenProperties then
-            fields($ + 1) = "SnapToTicks"
+            fields($ + 1)="SnapToTicks"
         end
         if h.style <> "slider" | showHiddenProperties then
-            fields($ + 1) = "String"
+            fields($ + 1)="String"
         end
-        fields($ + 1) = "Tag"
+        fields($ + 1)="Tag"
         if h.style == "tab" | showHiddenProperties then
-            fields($ + 1) = "Title_position"
-            fields($ + 1) = "Title_scroll"
+            fields($ + 1)="Title_position"
+            fields($ + 1)="Title_scroll"
         end
-        fields($ + 1) = "TooltipString"
-        fields($ + 1) = "Units"
-        fields($ + 1) = "Userdata"
+        fields($ + 1)="TooltipString"
+        fields($ + 1)="Units"
+        fields($ + 1)="Userdata"
         if or(h.style == ["checkbox", "radiobutton", "slider", "spinner", "listbox", "edit", "layer", "tab", "popupmenu"]) | showHiddenProperties then
-            fields($ + 1) = "Value"
+            fields($ + 1)="Value"
         end
 
         if and(h.style <> ["frame", "layer", "tab", "listbox", "popupmenu"]) | showHiddenProperties then
-            fields($ + 1) = "VerticalAlignment"
+            fields($ + 1)="VerticalAlignment"
         end
-        fields($ + 1) = "Visible"
+        fields($ + 1)="Visible"
     case "Console"
         fields=[
         "Children"
