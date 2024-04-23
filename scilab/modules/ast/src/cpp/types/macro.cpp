@@ -210,11 +210,13 @@ types::InternalType* toDouble(types::InternalType* val, const std::wstring& name
 
             return out;
         }
+        default:
+        {
+            char msg[128];
+            os_sprintf(msg, _("%ls: Unable to convert '%ls' to double.\n"), name.data(), val->getTypeStr().data());
+            throw ast::InternalError(scilab::UTF8::toWide(msg));
+        }
     }
-
-    char msg[128];
-    os_sprintf(msg, _("%ls: Unable to convert '%ls' to double.\n"), name.data(), val->getTypeStr().data());
-    throw ast::InternalError(scilab::UTF8::toWide(msg));
 }
 
 template<class T>
@@ -254,11 +256,13 @@ types::InternalType* toInt(types::InternalType* val, const std::wstring& name)
 
             return out;
         }
+        default:
+        {
+            char msg[128];
+            os_sprintf(msg, _("%ls: Unable to convert '%ls' to int.\n"), name.data(), val->getTypeStr().data());
+            throw ast::InternalError(scilab::UTF8::toWide(msg));
+        }
     }
-
-    char msg[128];
-    os_sprintf(msg, _("%ls: Unable to convert '%ls' to int.\n"), name.data(), val->getTypeStr().data());
-    throw ast::InternalError(scilab::UTF8::toWide(msg));
 }
 
 types::InternalType* toBool(types::InternalType* val, const std::wstring& name)
@@ -289,11 +293,13 @@ types::InternalType* toBool(types::InternalType* val, const std::wstring& name)
 
             return out;
         }
+        default:
+        {
+            char msg[128];
+            os_sprintf(msg, _("%ls: Unable to convert '%ls' to boolean.\n"), name.data(), val->getTypeStr().data());
+            throw ast::InternalError(scilab::UTF8::toWide(msg));
+        }
     }
-
-    char msg[128];
-    os_sprintf(msg, _("%ls: Unable to convert '%ls' to boolean.\n"), name.data(), val->getTypeStr().data());
-    throw ast::InternalError(scilab::UTF8::toWide(msg));
 }
 
 template <class T>
@@ -385,11 +391,13 @@ types::InternalType* toString(types::InternalType* val, const std::wstring& name
             return toStringBool(val->getAs<types::Bool>());
         case types::InternalType::ScilabString:
             return val;
+        default:
+        {
+            char msg[128];
+            os_sprintf(msg, _("%ls: Unable to convert '%ls' to string.\n"), name.data(), val->getTypeStr().data());
+            throw ast::InternalError(scilab::UTF8::toWide(msg));
+        }
     }
-
-    char msg[128];
-    os_sprintf(msg, _("%ls: Unable to convert '%ls' to string.\n"), name.data(), val->getTypeStr().data());
-    throw ast::InternalError(scilab::UTF8::toWide(msg));
 }
 
 std::map<std::wstring, std::function<types::InternalType*(types::InternalType*, const std::wstring& name)>> typeConvertors = {
@@ -921,7 +929,7 @@ int mustBeEqualDims(types::typed_list& x)
     }
     else
     {
-        if (iDims2 != iDims2)
+        if (iDims1 != iDims2)
         {
             return 1;
         }
@@ -2074,7 +2082,6 @@ void Macro::updateArguments()
 {
     // build a map of inputs argument name and position
     std::vector<std::wstring> inputNames;
-    int i = 0;
     for (auto&& in : *m_inputArgs)
     {
         inputNames.push_back(in->getSymbol().getName());

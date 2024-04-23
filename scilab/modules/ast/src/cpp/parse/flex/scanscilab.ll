@@ -30,13 +30,16 @@ extern "C"
 #include "sci_malloc.h"
 }
 
+#ifdef __GNUC__
+#pragma GCC diagnostic ignored "-Wmisleading-indentation"
+#endif
+
 static std::stack<int> paren_levels;
 
 static int comment_level = 0;
 static int last_token = 0;
 static int linebreak_stored_token = 0;
 static bool linebreak_stored_space = FALSE;
-static int exit_status = PARSE_ERROR;
 static int str_opener_column = 0;
 static std::string current_file;
 static std::string program_name;
@@ -941,7 +944,7 @@ assign			"="
    * Scilab can perform a line continuation with the ..
    * In matrices as space may be coding extra care must be taken when parsing {next}
    * Some states must be preserved to parse next line and to revert to a proper state
-   * after the ... // comments or ... \/* comments *\/
+   * after the ... /NO_SPACE/ comments or ... /NO_SPACE* comments *NO_SPACE/
    */
 
   {spaces}*{plus}{next} {

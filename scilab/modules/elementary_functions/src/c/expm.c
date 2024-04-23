@@ -24,6 +24,8 @@
 #include "matrix_multiplication.h"
 #include "matrix_right_division.h"
 
+static double spdblExpmC[41] = {0};
+static double sdblExpmN = 0;
 
 /*
 purpose
@@ -1961,7 +1963,6 @@ L1000:
     return 0;
 }
 /*--------------------------------------------------------------------------*/
-
 int dpades(double *_pdblVal, int _iLeadDimIn, int _iSize, double *_pdblExp, int _iLeadDimOut, double *_pdblAlpha, double *_pdblWS, int *_piWS)
 {
     int iErr		= 0;

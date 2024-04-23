@@ -760,6 +760,11 @@ static types::InternalType* import_sparse(hid_t dataset)
     int complex = 0;
     std::vector<int> pdims;
     int size = getDimsNode(dataset, &complex, pdims);
+    if (size <= 0)
+    {
+        closeList6(dataset);
+        return nullptr;
+    }
 
     //get non zeros count
     int nnz = 0;
@@ -860,6 +865,11 @@ static types::InternalType* import_boolean_sparse(hid_t dataset)
     int complex = 0;
     std::vector<int> pdims;
     int size = getDimsNode(dataset, &complex, pdims);
+    if (size <= 0)
+    {
+        closeList6(dataset);
+        return nullptr;
+    }
 
     //get non zeros count
     int nnz = 0;
@@ -923,8 +933,7 @@ static types::InternalType* import_cell(hid_t dataset)
     int complex = 0;
     std::vector<int> pdims;
     int size = getDimsNode(dataset, &complex, pdims);
-
-    if (size == 0)
+    if (size <= 0)
     {
         closeList6(dataset);
         return new types::Cell();
@@ -1147,6 +1156,13 @@ static types::InternalType* import_usertype(hid_t dataset)
 
     types::InternalType* data = ss->get(L"data");
     if (data == nullptr)
+    {
+        delete it;
+        return nullptr;
+    }
+
+    // ensure the stored type is the same as the actual datatype
+    if (data->getShortTypeStr() != std::wstring(type))
     {
         delete it;
         return nullptr;

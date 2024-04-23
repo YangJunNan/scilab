@@ -49,10 +49,8 @@ static void print_nan_or_inf(wchar_t* pwstTemp, double dblVal, const wchar_t* to
 wchar_t** scilab_sprintf(const std::string& funcname, const wchar_t* _pwstInput, types::typed_list& in, int* _piOutputRows, int* _piNewLine)
 {
     wchar_t** pwstOutput = nullptr;
-    int rhs = static_cast<int>(in.size());
     wchar_t* pwstFirstOutput = nullptr;
     *_piNewLine = 0;
-    int col = 0;
 
     int first = 1;
     if (funcname == "mfprintf")
@@ -827,17 +825,6 @@ static void updatel(TokenDef* token)
     wchar_t* newToken = replace_with_ls(token);
     delete[] token->pwstToken;
     token->pwstToken = newToken;
-}
-/*--------------------------------------------------------------------------*/
-static wchar_t* replace(const wchar_t* s, const wchar_t* r, int pos, const wchar_t* token)
-{
-    std::wstring h(token);
-    //find r
-    h.replace(pos - 1, wcslen(s), r);
-
-    wchar_t* res = new wchar_t[h.size() + 1];
-    wcscpy(res, h.data());
-    return res;
 }
 /*--------------------------------------------------------------------------*/
 static void replace_lu_llu(TokenDef* token)
