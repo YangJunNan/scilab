@@ -7,6 +7,7 @@
     <refsynopsisdiv>
         <title>Syntax</title>
         <synopsis>[err, stdout, stderr] = scilab(code, file, mode, quit, args)</synopsis>
+        <synopsis>scilab(..., background)</synopsis>
     </refsynopsisdiv>
     <refsection>
         <title>Arguments</title>
@@ -40,6 +41,13 @@
                 <term>args</term>
                 <listitem>
                     <para>Other arguments to pass to the new scilab, they can be get via <link linkend="sciargs">sciargs</link>.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term>background</term>
+                <listitem>
+                    <para>The process will be launched in a detached process without waiting for end to continue.</para>
+                    <warning><para>In <literal>background</literal> is <literal>%T</literal> the function will not return parameter</para></warning>
                 </listitem>
             </varlistentry>
             <varlistentry>

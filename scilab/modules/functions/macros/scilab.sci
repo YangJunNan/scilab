@@ -1,7 +1,7 @@
 // Scilab ( https://www.scilab.org/ ) - This file is part of Scilab
 // Copyright (C) 2024 - 3DS - Antoine ELIAS
 
-function [err, stdout, stderr] = scilab(code, file, mode, quit, args)
+function varargout = scilab(code, file, mode, quit, args, background)
     if isdef("code", "l") && isdef("file", "l") then
         error(sprintf(_("%s: code and file cannot both be defined."), "scilab"));
     end
@@ -38,7 +38,7 @@ function [err, stdout, stderr] = scilab(code, file, mode, quit, args)
         quit = "-quit";
     else
         if type(quit) <> 4 then
-            error(sprintf(_("%s: quit must be a boolean."), "scilab"));
+            error(sprintf(_("%s: ''%s'' must be a boolean."), "scilab", "quit"));
         end
 
         if quit then
@@ -52,13 +52,30 @@ function [err, stdout, stderr] = scilab(code, file, mode, quit, args)
         args = "";
     end
 
+    if ~isdef("background", "l") then
+        background = %f;
+    else
+        if type(background) <> 4 then
+            error(sprintf(_("%s: ''%s'' must be a boolean."), "scilab", "background"));
+        end
+    end
+
+    start = "";
     if getos() == "Windows" then
+        if background then
+            start = "start /B "
+        end
+
         if mode == "nwni" then
             bin = "scilex"
         else
             bin = "wscilex-cli"
         end
     else
+        if background then
+            args = args + " &";
+        end
+
         if mode == "nwni" then
             bin = "scilab-cli";
         else
@@ -69,10 +86,15 @@ function [err, stdout, stderr] = scilab(code, file, mode, quit, args)
     if code <> [] then
         code = strsubst(code, """", "\""");
         code = strsubst(code, "''", "\''");
-        cmd = sprintf("%s -nb %s -e ""%s"" %s", fullfile(SCI, "bin", bin), quit, code, args);
+        cmd = sprintf("%s%s -nb %s -e ""%s"" %s", start, fullfile(SCI, "bin", bin), quit, code, args);
     else
-        cmd = sprintf("%s -nb %s -f %s %s", fullfile(SCI, "bin", bin), quit, file, args);
+        cmd = sprintf("%s%s -nb %s -f %s %s", start, fullfile(SCI, "bin", bin), quit, file, args);
     end
 
-    [stdout, err, stderr] = unix_g(cmd);
+    printf("cmd: ""%s""\n", cmd);
+    [varargout(2), varargout(1), varargout(3)] = unix_g(cmd);
+
+    if background then
+        varargout = list();
+    end
 endfunction
