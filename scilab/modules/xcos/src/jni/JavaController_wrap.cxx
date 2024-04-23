@@ -1346,22 +1346,28 @@ SWIGEXPORT jint JNICALL Java_org_scilab_modules_xcos_JavaControllerJNI_property_
 
 SWIGEXPORT jlong JNICALL Java_org_scilab_modules_xcos_JavaControllerJNI_new_1View(JNIEnv *jenv, jclass jcls) {
   jlong jresult = 0 ;
+  org_scilab_modules_scicos::View **pArg ;
   org_scilab_modules_scicos::View *result = 0 ;
   
   (void)jenv;
   (void)jcls;
   result = (org_scilab_modules_scicos::View *)new SwigDirector_View(jenv);
-  *(org_scilab_modules_scicos::View **)&jresult = result; 
+  // fix -fstrict-aliasing - typemap(out)
+  pArg = (org_scilab_modules_scicos::View **) &jresult;
+  *pArg = result;
   return jresult;
 }
 
 
 SWIGEXPORT void JNICALL Java_org_scilab_modules_xcos_JavaControllerJNI_delete_1View(JNIEnv *jenv, jclass jcls, jlong jarg1) {
   org_scilab_modules_scicos::View *arg1 = (org_scilab_modules_scicos::View *) 0 ;
+  org_scilab_modules_scicos::View **pArg1 ;
   
   (void)jenv;
   (void)jcls;
-  arg1 = *(org_scilab_modules_scicos::View **)&jarg1; 
+  // fix -fstrict-aliasing - typemap(in)
+  pArg1 = (org_scilab_modules_scicos::View **) &jarg1;
+  arg1 = *pArg1;
   delete arg1;
 }
 
@@ -1370,12 +1376,15 @@ SWIGEXPORT void JNICALL Java_org_scilab_modules_xcos_JavaControllerJNI_View_1obj
   org_scilab_modules_scicos::View *arg1 = (org_scilab_modules_scicos::View *) 0 ;
   ScicosID *arg2 = 0 ;
   kind_t arg3 ;
+  org_scilab_modules_scicos::View **pArg1 ;
   ScicosID temp2 ;
   
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(org_scilab_modules_scicos::View **)&jarg1; 
+  // fix -fstrict-aliasing - typemap(in)
+  pArg1 = (org_scilab_modules_scicos::View **) &jarg1;
+  arg1 = *pArg1;
   temp2 = (ScicosID)jarg2; 
   arg2 = &temp2; 
   arg3 = (kind_t)jarg3; 
@@ -1388,12 +1397,15 @@ SWIGEXPORT void JNICALL Java_org_scilab_modules_xcos_JavaControllerJNI_View_1obj
   ScicosID *arg2 = 0 ;
   kind_t arg3 ;
   unsigned int arg4 ;
+  org_scilab_modules_scicos::View **pArg1 ;
   ScicosID temp2 ;
   
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(org_scilab_modules_scicos::View **)&jarg1; 
+  // fix -fstrict-aliasing - typemap(in)
+  pArg1 = (org_scilab_modules_scicos::View **) &jarg1;
+  arg1 = *pArg1;
   temp2 = (ScicosID)jarg2; 
   arg2 = &temp2; 
   arg3 = (kind_t)jarg3; 
@@ -1407,12 +1419,15 @@ SWIGEXPORT void JNICALL Java_org_scilab_modules_xcos_JavaControllerJNI_View_1obj
   ScicosID *arg2 = 0 ;
   kind_t arg3 ;
   unsigned int arg4 ;
+  org_scilab_modules_scicos::View **pArg1 ;
   ScicosID temp2 ;
   
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(org_scilab_modules_scicos::View **)&jarg1; 
+  // fix -fstrict-aliasing - typemap(in)
+  pArg1 = (org_scilab_modules_scicos::View **) &jarg1;
+  arg1 = *pArg1;
   temp2 = (ScicosID)jarg2; 
   arg2 = &temp2; 
   arg3 = (kind_t)jarg3; 
@@ -1425,12 +1440,15 @@ SWIGEXPORT void JNICALL Java_org_scilab_modules_xcos_JavaControllerJNI_View_1obj
   org_scilab_modules_scicos::View *arg1 = (org_scilab_modules_scicos::View *) 0 ;
   ScicosID *arg2 = 0 ;
   kind_t arg3 ;
+  org_scilab_modules_scicos::View **pArg1 ;
   ScicosID temp2 ;
   
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(org_scilab_modules_scicos::View **)&jarg1; 
+  // fix -fstrict-aliasing - typemap(in)
+  pArg1 = (org_scilab_modules_scicos::View **) &jarg1;
+  arg1 = *pArg1;
   temp2 = (ScicosID)jarg2; 
   arg2 = &temp2; 
   arg3 = (kind_t)jarg3; 
@@ -1443,13 +1461,16 @@ SWIGEXPORT void JNICALL Java_org_scilab_modules_xcos_JavaControllerJNI_View_1obj
   ScicosID *arg2 = 0 ;
   ScicosID *arg3 = 0 ;
   kind_t arg4 ;
+  org_scilab_modules_scicos::View **pArg1 ;
   ScicosID temp2 ;
   ScicosID temp3 ;
   
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(org_scilab_modules_scicos::View **)&jarg1; 
+  // fix -fstrict-aliasing - typemap(in)
+  pArg1 = (org_scilab_modules_scicos::View **) &jarg1;
+  arg1 = *pArg1;
   temp2 = (ScicosID)jarg2; 
   arg2 = &temp2; 
   temp3 = (ScicosID)jarg3; 
@@ -1465,12 +1486,15 @@ SWIGEXPORT void JNICALL Java_org_scilab_modules_xcos_JavaControllerJNI_View_1pro
   kind_t arg3 ;
   object_properties_t arg4 ;
   update_status_t arg5 ;
+  org_scilab_modules_scicos::View **pArg1 ;
   ScicosID temp2 ;
   
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(org_scilab_modules_scicos::View **)&jarg1; 
+  // fix -fstrict-aliasing - typemap(in)
+  pArg1 = (org_scilab_modules_scicos::View **) &jarg1;
+  arg1 = *pArg1;
   temp2 = (ScicosID)jarg2; 
   arg2 = &temp2; 
   arg3 = (kind_t)jarg3; 
@@ -1507,22 +1531,28 @@ SWIGEXPORT void JNICALL Java_org_scilab_modules_xcos_JavaControllerJNI_Controlle
 
 SWIGEXPORT jlong JNICALL Java_org_scilab_modules_xcos_JavaControllerJNI_new_1Controller(JNIEnv *jenv, jclass jcls) {
   jlong jresult = 0 ;
+  org_scilab_modules_scicos::Controller **pArg ;
   org_scilab_modules_scicos::Controller *result = 0 ;
   
   (void)jenv;
   (void)jcls;
   result = (org_scilab_modules_scicos::Controller *)new org_scilab_modules_scicos::Controller();
-  *(org_scilab_modules_scicos::Controller **)&jresult = result; 
+  // fix -fstrict-aliasing - typemap(out)
+  pArg = (org_scilab_modules_scicos::Controller **) &jresult;
+  *pArg = result;
   return jresult;
 }
 
 
 SWIGEXPORT void JNICALL Java_org_scilab_modules_xcos_JavaControllerJNI_delete_1Controller(JNIEnv *jenv, jclass jcls, jlong jarg1) {
   org_scilab_modules_scicos::Controller *arg1 = (org_scilab_modules_scicos::Controller *) 0 ;
+  org_scilab_modules_scicos::Controller **pArg1 ;
   
   (void)jenv;
   (void)jcls;
-  arg1 = *(org_scilab_modules_scicos::Controller **)&jarg1; 
+  // fix -fstrict-aliasing - typemap(in)
+  pArg1 = (org_scilab_modules_scicos::Controller **) &jarg1;
+  arg1 = *pArg1;
   delete arg1;
 }
 
@@ -1531,12 +1561,15 @@ SWIGEXPORT jlong JNICALL Java_org_scilab_modules_xcos_JavaControllerJNI_Controll
   jlong jresult = 0 ;
   org_scilab_modules_scicos::Controller *arg1 = (org_scilab_modules_scicos::Controller *) 0 ;
   kind_t arg2 ;
+  org_scilab_modules_scicos::Controller **pArg1 ;
   ScicosID result;
   
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(org_scilab_modules_scicos::Controller **)&jarg1; 
+  // fix -fstrict-aliasing - typemap(in)
+  pArg1 = (org_scilab_modules_scicos::Controller **) &jarg1;
+  arg1 = *pArg1;
   arg2 = (kind_t)jarg2; 
   result = (ScicosID)(arg1)->createObject(arg2);
   jresult = (jlong)result; 
@@ -1548,12 +1581,15 @@ SWIGEXPORT jlong JNICALL Java_org_scilab_modules_xcos_JavaControllerJNI_Controll
   jlong jresult = 0 ;
   org_scilab_modules_scicos::Controller *arg1 = (org_scilab_modules_scicos::Controller *) 0 ;
   ScicosID arg2 ;
+  org_scilab_modules_scicos::Controller **pArg1 ;
   unsigned int result;
   
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(org_scilab_modules_scicos::Controller **)&jarg1; 
+  // fix -fstrict-aliasing - typemap(in)
+  pArg1 = (org_scilab_modules_scicos::Controller **) &jarg1;
+  arg1 = *pArg1;
   arg2 = (ScicosID)jarg2; 
   result = (unsigned int)((org_scilab_modules_scicos::Controller const *)arg1)->referenceObject(arg2);
   jresult = (jlong)result; 
@@ -1564,11 +1600,14 @@ SWIGEXPORT jlong JNICALL Java_org_scilab_modules_xcos_JavaControllerJNI_Controll
 SWIGEXPORT void JNICALL Java_org_scilab_modules_xcos_JavaControllerJNI_Controller_1deleteObject(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2) {
   org_scilab_modules_scicos::Controller *arg1 = (org_scilab_modules_scicos::Controller *) 0 ;
   ScicosID arg2 ;
+  org_scilab_modules_scicos::Controller **pArg1 ;
   
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(org_scilab_modules_scicos::Controller **)&jarg1; 
+  // fix -fstrict-aliasing - typemap(in)
+  pArg1 = (org_scilab_modules_scicos::Controller **) &jarg1;
+  arg1 = *pArg1;
   arg2 = (ScicosID)jarg2; 
   (arg1)->deleteObject(arg2);
 }
@@ -1580,12 +1619,15 @@ SWIGEXPORT jlong JNICALL Java_org_scilab_modules_xcos_JavaControllerJNI_Controll
   ScicosID arg2 ;
   bool arg3 ;
   bool arg4 ;
+  org_scilab_modules_scicos::Controller **pArg1 ;
   ScicosID result;
   
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(org_scilab_modules_scicos::Controller **)&jarg1; 
+  // fix -fstrict-aliasing - typemap(in)
+  pArg1 = (org_scilab_modules_scicos::Controller **) &jarg1;
+  arg1 = *pArg1;
   arg2 = (ScicosID)jarg2; 
   arg3 = jarg3 ? true : false; 
   arg4 = jarg4 ? true : false; 
@@ -1599,12 +1641,15 @@ SWIGEXPORT jint JNICALL Java_org_scilab_modules_xcos_JavaControllerJNI_Controlle
   jint jresult = 0 ;
   org_scilab_modules_scicos::Controller *arg1 = (org_scilab_modules_scicos::Controller *) 0 ;
   ScicosID arg2 ;
+  org_scilab_modules_scicos::Controller **pArg1 ;
   kind_t result;
   
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(org_scilab_modules_scicos::Controller **)&jarg1; 
+  // fix -fstrict-aliasing - typemap(in)
+  pArg1 = (org_scilab_modules_scicos::Controller **) &jarg1;
+  arg1 = *pArg1;
   arg2 = (ScicosID)jarg2; 
   result = (kind_t)((org_scilab_modules_scicos::Controller const *)arg1)->getKind(arg2);
   jresult = (jint)result; 
@@ -1616,12 +1661,15 @@ SWIGEXPORT jlong JNICALL Java_org_scilab_modules_xcos_JavaControllerJNI_Controll
   jlong jresult = 0 ;
   org_scilab_modules_scicos::Controller *arg1 = (org_scilab_modules_scicos::Controller *) 0 ;
   kind_t arg2 ;
+  org_scilab_modules_scicos::Controller **pArg1 ;
   std::vector< ScicosID > result;
   
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(org_scilab_modules_scicos::Controller **)&jarg1; 
+  // fix -fstrict-aliasing - typemap(in)
+  pArg1 = (org_scilab_modules_scicos::Controller **) &jarg1;
+  arg1 = *pArg1;
   arg2 = (kind_t)jarg2; 
   result = ((org_scilab_modules_scicos::Controller const *)arg1)->getAll(arg2);
   *(std::vector< ScicosID > **)&jresult = new std::vector< ScicosID >(result); 
@@ -1633,13 +1681,16 @@ SWIGEXPORT void JNICALL Java_org_scilab_modules_xcos_JavaControllerJNI_Controlle
   org_scilab_modules_scicos::Controller *arg1 = (org_scilab_modules_scicos::Controller *) 0 ;
   std::vector< ScicosID > *arg2 = 0 ;
   std::vector< int > *arg3 = 0 ;
+  org_scilab_modules_scicos::Controller **pArg1 ;
   
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
   (void)jarg2_;
   (void)jarg3_;
-  arg1 = *(org_scilab_modules_scicos::Controller **)&jarg1; 
+  // fix -fstrict-aliasing - typemap(in)
+  pArg1 = (org_scilab_modules_scicos::Controller **) &jarg1;
+  arg1 = *pArg1;
   arg2 = *(std::vector< ScicosID > **)&jarg2;
   if (!arg2) {
     SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "std::vector< ScicosID > & is null");
@@ -1661,13 +1712,16 @@ SWIGEXPORT jboolean JNICALL Java_org_scilab_modules_xcos_JavaControllerJNI_Contr
   kind_t arg3 ;
   object_properties_t arg4 ;
   double *arg5 = 0 ;
+  org_scilab_modules_scicos::Controller **pArg1 ;
   double temp5 ;
   bool result;
   
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(org_scilab_modules_scicos::Controller **)&jarg1; 
+  // fix -fstrict-aliasing - typemap(in)
+  pArg1 = (org_scilab_modules_scicos::Controller **) &jarg1;
+  arg1 = *pArg1;
   arg2 = (ScicosID)jarg2; 
   arg3 = (kind_t)jarg3; 
   arg4 = (object_properties_t)jarg4; 
@@ -1701,13 +1755,16 @@ SWIGEXPORT jboolean JNICALL Java_org_scilab_modules_xcos_JavaControllerJNI_Contr
   kind_t arg3 ;
   object_properties_t arg4 ;
   int *arg5 = 0 ;
+  org_scilab_modules_scicos::Controller **pArg1 ;
   int temp5 ;
   bool result;
   
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(org_scilab_modules_scicos::Controller **)&jarg1; 
+  // fix -fstrict-aliasing - typemap(in)
+  pArg1 = (org_scilab_modules_scicos::Controller **) &jarg1;
+  arg1 = *pArg1;
   arg2 = (ScicosID)jarg2; 
   arg3 = (kind_t)jarg3; 
   arg4 = (object_properties_t)jarg4; 
@@ -1741,13 +1798,16 @@ SWIGEXPORT jboolean JNICALL Java_org_scilab_modules_xcos_JavaControllerJNI_Contr
   kind_t arg3 ;
   object_properties_t arg4 ;
   bool *arg5 = 0 ;
+  org_scilab_modules_scicos::Controller **pArg1 ;
   bool temp5 ;
   bool result;
   
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(org_scilab_modules_scicos::Controller **)&jarg1; 
+  // fix -fstrict-aliasing - typemap(in)
+  pArg1 = (org_scilab_modules_scicos::Controller **) &jarg1;
+  arg1 = *pArg1;
   arg2 = (ScicosID)jarg2; 
   arg3 = (kind_t)jarg3; 
   arg4 = (object_properties_t)jarg4; 
@@ -1781,13 +1841,16 @@ SWIGEXPORT jboolean JNICALL Java_org_scilab_modules_xcos_JavaControllerJNI_Contr
   kind_t arg3 ;
   object_properties_t arg4 ;
   std::string *arg5 = 0 ;
+  org_scilab_modules_scicos::Controller **pArg1 ;
   std::string temp5 ;
   bool result;
   
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(org_scilab_modules_scicos::Controller **)&jarg1; 
+  // fix -fstrict-aliasing - typemap(in)
+  pArg1 = (org_scilab_modules_scicos::Controller **) &jarg1;
+  arg1 = *pArg1;
   arg2 = (ScicosID)jarg2; 
   arg3 = (kind_t)jarg3; 
   arg4 = (object_properties_t)jarg4; 
@@ -1819,13 +1882,16 @@ SWIGEXPORT jboolean JNICALL Java_org_scilab_modules_xcos_JavaControllerJNI_Contr
   kind_t arg3 ;
   object_properties_t arg4 ;
   ScicosID *arg5 = 0 ;
+  org_scilab_modules_scicos::Controller **pArg1 ;
   ScicosID temp5 ;
   bool result;
   
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(org_scilab_modules_scicos::Controller **)&jarg1; 
+  // fix -fstrict-aliasing - typemap(in)
+  pArg1 = (org_scilab_modules_scicos::Controller **) &jarg1;
+  arg1 = *pArg1;
   arg2 = (ScicosID)jarg2; 
   arg3 = (kind_t)jarg3; 
   arg4 = (object_properties_t)jarg4; 
@@ -1859,13 +1925,16 @@ SWIGEXPORT jboolean JNICALL Java_org_scilab_modules_xcos_JavaControllerJNI_Contr
   kind_t arg3 ;
   object_properties_t arg4 ;
   std::vector< double > *arg5 = 0 ;
+  org_scilab_modules_scicos::Controller **pArg1 ;
   bool result;
   
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
   (void)jarg5_;
-  arg1 = *(org_scilab_modules_scicos::Controller **)&jarg1; 
+  // fix -fstrict-aliasing - typemap(in)
+  pArg1 = (org_scilab_modules_scicos::Controller **) &jarg1;
+  arg1 = *pArg1;
   arg2 = (ScicosID)jarg2; 
   arg3 = (kind_t)jarg3; 
   arg4 = (object_properties_t)jarg4; 
@@ -1887,13 +1956,16 @@ SWIGEXPORT jboolean JNICALL Java_org_scilab_modules_xcos_JavaControllerJNI_Contr
   kind_t arg3 ;
   object_properties_t arg4 ;
   std::vector< int > *arg5 = 0 ;
+  org_scilab_modules_scicos::Controller **pArg1 ;
   bool result;
   
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
   (void)jarg5_;
-  arg1 = *(org_scilab_modules_scicos::Controller **)&jarg1; 
+  // fix -fstrict-aliasing - typemap(in)
+  pArg1 = (org_scilab_modules_scicos::Controller **) &jarg1;
+  arg1 = *pArg1;
   arg2 = (ScicosID)jarg2; 
   arg3 = (kind_t)jarg3; 
   arg4 = (object_properties_t)jarg4; 
@@ -1915,13 +1987,16 @@ SWIGEXPORT jboolean JNICALL Java_org_scilab_modules_xcos_JavaControllerJNI_Contr
   kind_t arg3 ;
   object_properties_t arg4 ;
   std::vector< bool > *arg5 = 0 ;
+  org_scilab_modules_scicos::Controller **pArg1 ;
   bool result;
   
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
   (void)jarg5_;
-  arg1 = *(org_scilab_modules_scicos::Controller **)&jarg1; 
+  // fix -fstrict-aliasing - typemap(in)
+  pArg1 = (org_scilab_modules_scicos::Controller **) &jarg1;
+  arg1 = *pArg1;
   arg2 = (ScicosID)jarg2; 
   arg3 = (kind_t)jarg3; 
   arg4 = (object_properties_t)jarg4; 
@@ -1943,13 +2018,16 @@ SWIGEXPORT jboolean JNICALL Java_org_scilab_modules_xcos_JavaControllerJNI_Contr
   kind_t arg3 ;
   object_properties_t arg4 ;
   std::vector< std::string > *arg5 = 0 ;
+  org_scilab_modules_scicos::Controller **pArg1 ;
   bool result;
   
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
   (void)jarg5_;
-  arg1 = *(org_scilab_modules_scicos::Controller **)&jarg1; 
+  // fix -fstrict-aliasing - typemap(in)
+  pArg1 = (org_scilab_modules_scicos::Controller **) &jarg1;
+  arg1 = *pArg1;
   arg2 = (ScicosID)jarg2; 
   arg3 = (kind_t)jarg3; 
   arg4 = (object_properties_t)jarg4; 
@@ -1971,13 +2049,16 @@ SWIGEXPORT jboolean JNICALL Java_org_scilab_modules_xcos_JavaControllerJNI_Contr
   kind_t arg3 ;
   object_properties_t arg4 ;
   std::vector< ScicosID > *arg5 = 0 ;
+  org_scilab_modules_scicos::Controller **pArg1 ;
   bool result;
   
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
   (void)jarg5_;
-  arg1 = *(org_scilab_modules_scicos::Controller **)&jarg1; 
+  // fix -fstrict-aliasing - typemap(in)
+  pArg1 = (org_scilab_modules_scicos::Controller **) &jarg1;
+  arg1 = *pArg1;
   arg2 = (ScicosID)jarg2; 
   arg3 = (kind_t)jarg3; 
   arg4 = (object_properties_t)jarg4; 
@@ -1999,12 +2080,15 @@ SWIGEXPORT jint JNICALL Java_org_scilab_modules_xcos_JavaControllerJNI_Controlle
   kind_t arg3 ;
   object_properties_t arg4 ;
   double arg5 ;
+  org_scilab_modules_scicos::Controller **pArg1 ;
   update_status_t result;
   
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(org_scilab_modules_scicos::Controller **)&jarg1; 
+  // fix -fstrict-aliasing - typemap(in)
+  pArg1 = (org_scilab_modules_scicos::Controller **) &jarg1;
+  arg1 = *pArg1;
   arg2 = (ScicosID)jarg2; 
   arg3 = (kind_t)jarg3; 
   arg4 = (object_properties_t)jarg4; 
@@ -2022,12 +2106,15 @@ SWIGEXPORT jint JNICALL Java_org_scilab_modules_xcos_JavaControllerJNI_Controlle
   kind_t arg3 ;
   object_properties_t arg4 ;
   int arg5 ;
+  org_scilab_modules_scicos::Controller **pArg1 ;
   update_status_t result;
   
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(org_scilab_modules_scicos::Controller **)&jarg1; 
+  // fix -fstrict-aliasing - typemap(in)
+  pArg1 = (org_scilab_modules_scicos::Controller **) &jarg1;
+  arg1 = *pArg1;
   arg2 = (ScicosID)jarg2; 
   arg3 = (kind_t)jarg3; 
   arg4 = (object_properties_t)jarg4; 
@@ -2045,12 +2132,15 @@ SWIGEXPORT jint JNICALL Java_org_scilab_modules_xcos_JavaControllerJNI_Controlle
   kind_t arg3 ;
   object_properties_t arg4 ;
   bool arg5 ;
+  org_scilab_modules_scicos::Controller **pArg1 ;
   update_status_t result;
   
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(org_scilab_modules_scicos::Controller **)&jarg1; 
+  // fix -fstrict-aliasing - typemap(in)
+  pArg1 = (org_scilab_modules_scicos::Controller **) &jarg1;
+  arg1 = *pArg1;
   arg2 = (ScicosID)jarg2; 
   arg3 = (kind_t)jarg3; 
   arg4 = (object_properties_t)jarg4; 
@@ -2068,12 +2158,15 @@ SWIGEXPORT jint JNICALL Java_org_scilab_modules_xcos_JavaControllerJNI_Controlle
   kind_t arg3 ;
   object_properties_t arg4 ;
   ScicosID arg5 ;
+  org_scilab_modules_scicos::Controller **pArg1 ;
   update_status_t result;
   
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(org_scilab_modules_scicos::Controller **)&jarg1; 
+  // fix -fstrict-aliasing - typemap(in)
+  pArg1 = (org_scilab_modules_scicos::Controller **) &jarg1;
+  arg1 = *pArg1;
   arg2 = (ScicosID)jarg2; 
   arg3 = (kind_t)jarg3; 
   arg4 = (object_properties_t)jarg4; 
@@ -2091,12 +2184,15 @@ SWIGEXPORT jint JNICALL Java_org_scilab_modules_xcos_JavaControllerJNI_Controlle
   kind_t arg3 ;
   object_properties_t arg4 ;
   std::string *arg5 = 0 ;
+  org_scilab_modules_scicos::Controller **pArg1 ;
   update_status_t result;
   
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(org_scilab_modules_scicos::Controller **)&jarg1; 
+  // fix -fstrict-aliasing - typemap(in)
+  pArg1 = (org_scilab_modules_scicos::Controller **) &jarg1;
+  arg1 = *pArg1;
   arg2 = (ScicosID)jarg2; 
   arg3 = (kind_t)jarg3; 
   arg4 = (object_properties_t)jarg4; 
@@ -2117,13 +2213,16 @@ SWIGEXPORT jint JNICALL Java_org_scilab_modules_xcos_JavaControllerJNI_Controlle
   kind_t arg3 ;
   object_properties_t arg4 ;
   std::vector< double > *arg5 = 0 ;
+  org_scilab_modules_scicos::Controller **pArg1 ;
   update_status_t result;
   
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
   (void)jarg5_;
-  arg1 = *(org_scilab_modules_scicos::Controller **)&jarg1; 
+  // fix -fstrict-aliasing - typemap(in)
+  pArg1 = (org_scilab_modules_scicos::Controller **) &jarg1;
+  arg1 = *pArg1;
   arg2 = (ScicosID)jarg2; 
   arg3 = (kind_t)jarg3; 
   arg4 = (object_properties_t)jarg4; 
@@ -2145,13 +2244,16 @@ SWIGEXPORT jint JNICALL Java_org_scilab_modules_xcos_JavaControllerJNI_Controlle
   kind_t arg3 ;
   object_properties_t arg4 ;
   std::vector< int > *arg5 = 0 ;
+  org_scilab_modules_scicos::Controller **pArg1 ;
   update_status_t result;
   
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
   (void)jarg5_;
-  arg1 = *(org_scilab_modules_scicos::Controller **)&jarg1; 
+  // fix -fstrict-aliasing - typemap(in)
+  pArg1 = (org_scilab_modules_scicos::Controller **) &jarg1;
+  arg1 = *pArg1;
   arg2 = (ScicosID)jarg2; 
   arg3 = (kind_t)jarg3; 
   arg4 = (object_properties_t)jarg4; 
@@ -2173,13 +2275,16 @@ SWIGEXPORT jint JNICALL Java_org_scilab_modules_xcos_JavaControllerJNI_Controlle
   kind_t arg3 ;
   object_properties_t arg4 ;
   std::vector< bool > *arg5 = 0 ;
+  org_scilab_modules_scicos::Controller **pArg1 ;
   update_status_t result;
   
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
   (void)jarg5_;
-  arg1 = *(org_scilab_modules_scicos::Controller **)&jarg1; 
+  // fix -fstrict-aliasing - typemap(in)
+  pArg1 = (org_scilab_modules_scicos::Controller **) &jarg1;
+  arg1 = *pArg1;
   arg2 = (ScicosID)jarg2; 
   arg3 = (kind_t)jarg3; 
   arg4 = (object_properties_t)jarg4; 
@@ -2201,13 +2306,16 @@ SWIGEXPORT jint JNICALL Java_org_scilab_modules_xcos_JavaControllerJNI_Controlle
   kind_t arg3 ;
   object_properties_t arg4 ;
   std::vector< std::string > *arg5 = 0 ;
+  org_scilab_modules_scicos::Controller **pArg1 ;
   update_status_t result;
   
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
   (void)jarg5_;
-  arg1 = *(org_scilab_modules_scicos::Controller **)&jarg1; 
+  // fix -fstrict-aliasing - typemap(in)
+  pArg1 = (org_scilab_modules_scicos::Controller **) &jarg1;
+  arg1 = *pArg1;
   arg2 = (ScicosID)jarg2; 
   arg3 = (kind_t)jarg3; 
   arg4 = (object_properties_t)jarg4; 
@@ -2229,13 +2337,16 @@ SWIGEXPORT jint JNICALL Java_org_scilab_modules_xcos_JavaControllerJNI_Controlle
   kind_t arg3 ;
   object_properties_t arg4 ;
   std::vector< ScicosID > *arg5 = 0 ;
+  org_scilab_modules_scicos::Controller **pArg1 ;
   update_status_t result;
   
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
   (void)jarg5_;
-  arg1 = *(org_scilab_modules_scicos::Controller **)&jarg1; 
+  // fix -fstrict-aliasing - typemap(in)
+  pArg1 = (org_scilab_modules_scicos::Controller **) &jarg1;
+  arg1 = *pArg1;
   arg2 = (ScicosID)jarg2; 
   arg3 = (kind_t)jarg3; 
   arg4 = (object_properties_t)jarg4; 
@@ -2252,12 +2363,15 @@ SWIGEXPORT jint JNICALL Java_org_scilab_modules_xcos_JavaControllerJNI_Controlle
 
 SWIGEXPORT jlong JNICALL Java_org_scilab_modules_xcos_JavaControllerJNI_new_1VectorOfInt_1_1SWIG_10(JNIEnv *jenv, jclass jcls) {
   jlong jresult = 0 ;
+  std::vector< int > **pArg ;
   std::vector< int > *result = 0 ;
   
   (void)jenv;
   (void)jcls;
   result = (std::vector< int > *)new std::vector< int >();
-  *(std::vector< int > **)&jresult = result; 
+  // fix -fstrict-aliasing - typemap(out)
+  pArg = (std::vector< int > **) &jresult;
+  *pArg = result;
   return jresult;
 }
 
@@ -2265,13 +2379,16 @@ SWIGEXPORT jlong JNICALL Java_org_scilab_modules_xcos_JavaControllerJNI_new_1Vec
 SWIGEXPORT jlong JNICALL Java_org_scilab_modules_xcos_JavaControllerJNI_new_1VectorOfInt_1_1SWIG_11(JNIEnv *jenv, jclass jcls, jlong jarg1) {
   jlong jresult = 0 ;
   std::vector< int >::size_type arg1 ;
+  std::vector< int > **pArg ;
   std::vector< int > *result = 0 ;
   
   (void)jenv;
   (void)jcls;
   arg1 = (std::vector< int >::size_type)jarg1; 
   result = (std::vector< int > *)new std::vector< int >(arg1);
-  *(std::vector< int > **)&jresult = result; 
+  // fix -fstrict-aliasing - typemap(out)
+  pArg = (std::vector< int > **) &jresult;
+  *pArg = result;
   return jresult;
 }
 
@@ -2279,11 +2396,14 @@ SWIGEXPORT jlong JNICALL Java_org_scilab_modules_xcos_JavaControllerJNI_new_1Vec
 SWIGEXPORT void JNICALL Java_org_scilab_modules_xcos_JavaControllerJNI_VectorOfInt_1ensureCapacity(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2) {
   std::vector< int > *arg1 = (std::vector< int > *) 0 ;
   std::vector< int >::size_type arg2 ;
+  std::vector< int > **pArg1 ;
   
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(std::vector< int > **)&jarg1; 
+  // fix -fstrict-aliasing - typemap(in)
+  pArg1 = (std::vector< int > **) &jarg1;
+  arg1 = *pArg1;
   arg2 = (std::vector< int >::size_type)jarg2; 
   (arg1)->reserve(arg2);
 }
@@ -2292,11 +2412,14 @@ SWIGEXPORT void JNICALL Java_org_scilab_modules_xcos_JavaControllerJNI_VectorOfI
 SWIGEXPORT void JNICALL Java_org_scilab_modules_xcos_JavaControllerJNI_VectorOfInt_1resize(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2) {
   std::vector< int > *arg1 = (std::vector< int > *) 0 ;
   std::vector< int >::size_type arg2 ;
+  std::vector< int > **pArg1 ;
   
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(std::vector< int > **)&jarg1; 
+  // fix -fstrict-aliasing - typemap(in)
+  pArg1 = (std::vector< int > **) &jarg1;
+  arg1 = *pArg1;
   arg2 = (std::vector< int >::size_type)jarg2; 
   (arg1)->resize(arg2);
 }
@@ -2305,12 +2428,15 @@ SWIGEXPORT void JNICALL Java_org_scilab_modules_xcos_JavaControllerJNI_VectorOfI
 SWIGEXPORT jint JNICALL Java_org_scilab_modules_xcos_JavaControllerJNI_VectorOfInt_1size(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jint jresult = 0 ;
   std::vector< int > *arg1 = (std::vector< int > *) 0 ;
+  std::vector< int > **pArg1 ;
   int result;
   
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(std::vector< int > **)&jarg1; 
+  // fix -fstrict-aliasing - typemap(in)
+  pArg1 = (std::vector< int > **) &jarg1;
+  arg1 = *pArg1;
   result = (int)((std::vector< int > const *)arg1)->size();
   jresult = (jint)result; 
   return jresult;
@@ -2320,12 +2446,15 @@ SWIGEXPORT jint JNICALL Java_org_scilab_modules_xcos_JavaControllerJNI_VectorOfI
 SWIGEXPORT jboolean JNICALL Java_org_scilab_modules_xcos_JavaControllerJNI_VectorOfInt_1isEmpty(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jboolean jresult = 0 ;
   std::vector< int > *arg1 = (std::vector< int > *) 0 ;
+  std::vector< int > **pArg1 ;
   bool result;
   
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(std::vector< int > **)&jarg1; 
+  // fix -fstrict-aliasing - typemap(in)
+  pArg1 = (std::vector< int > **) &jarg1;
+  arg1 = *pArg1;
   result = (bool)((std::vector< int > const *)arg1)->empty();
   jresult = (jboolean)result; 
   return jresult;
@@ -2334,11 +2463,14 @@ SWIGEXPORT jboolean JNICALL Java_org_scilab_modules_xcos_JavaControllerJNI_Vecto
 
 SWIGEXPORT void JNICALL Java_org_scilab_modules_xcos_JavaControllerJNI_VectorOfInt_1clear(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   std::vector< int > *arg1 = (std::vector< int > *) 0 ;
+  std::vector< int > **pArg1 ;
   
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(std::vector< int > **)&jarg1; 
+  // fix -fstrict-aliasing - typemap(in)
+  pArg1 = (std::vector< int > **) &jarg1;
+  arg1 = *pArg1;
   (arg1)->clear();
 }
 
@@ -2346,12 +2478,15 @@ SWIGEXPORT void JNICALL Java_org_scilab_modules_xcos_JavaControllerJNI_VectorOfI
 SWIGEXPORT void JNICALL Java_org_scilab_modules_xcos_JavaControllerJNI_VectorOfInt_1add_1_1SWIG_10(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2) {
   std::vector< int > *arg1 = (std::vector< int > *) 0 ;
   std::vector< int >::value_type *arg2 = 0 ;
+  std::vector< int > **pArg1 ;
   std::vector< int >::value_type temp2 ;
   
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(std::vector< int > **)&jarg1; 
+  // fix -fstrict-aliasing - typemap(in)
+  pArg1 = (std::vector< int > **) &jarg1;
+  arg1 = *pArg1;
   temp2 = (std::vector< int >::value_type)jarg2; 
   arg2 = &temp2; 
   (arg1)->push_back((std::vector< int >::value_type const &)*arg2);
@@ -2362,13 +2497,16 @@ SWIGEXPORT jboolean JNICALL Java_org_scilab_modules_xcos_JavaControllerJNI_Vecto
   jboolean jresult = 0 ;
   std::vector< int > *arg1 = (std::vector< int > *) 0 ;
   int *arg2 = 0 ;
+  std::vector< int > **pArg1 ;
   int temp2 ;
   bool result;
   
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(std::vector< int > **)&jarg1; 
+  // fix -fstrict-aliasing - typemap(in)
+  pArg1 = (std::vector< int > **) &jarg1;
+  arg1 = *pArg1;
   temp2 = (int)jarg2; 
   arg2 = &temp2; 
   result = (bool)std_vector_Sl_int_Sg__contains(arg1,(int const &)*arg2);
@@ -2381,13 +2519,16 @@ SWIGEXPORT jint JNICALL Java_org_scilab_modules_xcos_JavaControllerJNI_VectorOfI
   jint jresult = 0 ;
   std::vector< int > *arg1 = (std::vector< int > *) 0 ;
   int *arg2 = 0 ;
+  std::vector< int > **pArg1 ;
   int temp2 ;
   int result;
   
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(std::vector< int > **)&jarg1; 
+  // fix -fstrict-aliasing - typemap(in)
+  pArg1 = (std::vector< int > **) &jarg1;
+  arg1 = *pArg1;
   temp2 = (int)jarg2; 
   arg2 = &temp2; 
   result = (int)std_vector_Sl_int_Sg__indexOf(arg1,(int const &)*arg2);
@@ -2400,12 +2541,15 @@ SWIGEXPORT jint JNICALL Java_org_scilab_modules_xcos_JavaControllerJNI_VectorOfI
   jint jresult = 0 ;
   std::vector< int > *arg1 = (std::vector< int > *) 0 ;
   int arg2 ;
+  std::vector< int > **pArg1 ;
   std::vector< int >::value_type *result = 0 ;
   
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(std::vector< int > **)&jarg1; 
+  // fix -fstrict-aliasing - typemap(in)
+  pArg1 = (std::vector< int > **) &jarg1;
+  arg1 = *pArg1;
   arg2 = (int)jarg2; 
   try {
     result = (std::vector< int >::value_type *) &std_vector_Sl_int_Sg__get(arg1,arg2);
@@ -2422,12 +2566,15 @@ SWIGEXPORT void JNICALL Java_org_scilab_modules_xcos_JavaControllerJNI_VectorOfI
   std::vector< int > *arg1 = (std::vector< int > *) 0 ;
   int arg2 ;
   std::vector< int >::value_type *arg3 = 0 ;
+  std::vector< int > **pArg1 ;
   std::vector< int >::value_type temp3 ;
   
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(std::vector< int > **)&jarg1; 
+  // fix -fstrict-aliasing - typemap(in)
+  pArg1 = (std::vector< int > **) &jarg1;
+  arg1 = *pArg1;
   arg2 = (int)jarg2; 
   temp3 = (std::vector< int >::value_type)jarg3; 
   arg3 = &temp3; 
@@ -2444,12 +2591,15 @@ SWIGEXPORT void JNICALL Java_org_scilab_modules_xcos_JavaControllerJNI_VectorOfI
   std::vector< int > *arg1 = (std::vector< int > *) 0 ;
   int arg2 ;
   std::vector< int >::value_type *arg3 = 0 ;
+  std::vector< int > **pArg1 ;
   std::vector< int >::value_type temp3 ;
   
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(std::vector< int > **)&jarg1; 
+  // fix -fstrict-aliasing - typemap(in)
+  pArg1 = (std::vector< int > **) &jarg1;
+  arg1 = *pArg1;
   arg2 = (int)jarg2; 
   temp3 = (std::vector< int >::value_type)jarg3; 
   arg3 = &temp3; 
@@ -2466,13 +2616,16 @@ SWIGEXPORT jboolean JNICALL Java_org_scilab_modules_xcos_JavaControllerJNI_Vecto
   jboolean jresult = 0 ;
   std::vector< int > *arg1 = (std::vector< int > *) 0 ;
   std::vector< int >::value_type *arg2 = 0 ;
+  std::vector< int > **pArg1 ;
   std::vector< int >::value_type temp2 ;
   bool result;
   
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(std::vector< int > **)&jarg1; 
+  // fix -fstrict-aliasing - typemap(in)
+  pArg1 = (std::vector< int > **) &jarg1;
+  arg1 = *pArg1;
   temp2 = (std::vector< int >::value_type)jarg2; 
   arg2 = &temp2; 
   result = (bool)std_vector_Sl_int_Sg__remove(arg1,(int const &)*arg2);
@@ -2486,12 +2639,15 @@ SWIGEXPORT jobject JNICALL Java_org_scilab_modules_xcos_JavaControllerJNI_Vector
   std::vector< int > *arg1 = (std::vector< int > *) 0 ;
   int arg2 ;
   int arg3 ;
+  std::vector< int > **pArg1 ;
   void *result = 0 ;
   
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(std::vector< int > **)&jarg1; 
+  // fix -fstrict-aliasing - typemap(in)
+  pArg1 = (std::vector< int > **) &jarg1;
+  arg1 = *pArg1;
   arg2 = (int)jarg2; 
   arg3 = (int)jarg3; 
   result = (void *)std_vector_Sl_int_Sg__asByteBuffer(arg1,arg2,arg3);
@@ -2509,22 +2665,28 @@ SWIGEXPORT jobject JNICALL Java_org_scilab_modules_xcos_JavaControllerJNI_Vector
 
 SWIGEXPORT void JNICALL Java_org_scilab_modules_xcos_JavaControllerJNI_delete_1VectorOfInt(JNIEnv *jenv, jclass jcls, jlong jarg1) {
   std::vector< int > *arg1 = (std::vector< int > *) 0 ;
+  std::vector< int > **pArg1 ;
   
   (void)jenv;
   (void)jcls;
-  arg1 = *(std::vector< int > **)&jarg1; 
+  // fix -fstrict-aliasing - typemap(in)
+  pArg1 = (std::vector< int > **) &jarg1;
+  arg1 = *pArg1;
   delete arg1;
 }
 
 
 SWIGEXPORT jlong JNICALL Java_org_scilab_modules_xcos_JavaControllerJNI_new_1VectorOfBool_1_1SWIG_10(JNIEnv *jenv, jclass jcls) {
   jlong jresult = 0 ;
+  std::vector< bool > **pArg ;
   std::vector< bool > *result = 0 ;
   
   (void)jenv;
   (void)jcls;
   result = (std::vector< bool > *)new std::vector< bool >();
-  *(std::vector< bool > **)&jresult = result; 
+  // fix -fstrict-aliasing - typemap(out)
+  pArg = (std::vector< bool > **) &jresult;
+  *pArg = result;
   return jresult;
 }
 
@@ -2532,13 +2694,16 @@ SWIGEXPORT jlong JNICALL Java_org_scilab_modules_xcos_JavaControllerJNI_new_1Vec
 SWIGEXPORT jlong JNICALL Java_org_scilab_modules_xcos_JavaControllerJNI_new_1VectorOfBool_1_1SWIG_11(JNIEnv *jenv, jclass jcls, jlong jarg1) {
   jlong jresult = 0 ;
   std::vector< bool >::size_type arg1 ;
+  std::vector< bool > **pArg ;
   std::vector< bool > *result = 0 ;
   
   (void)jenv;
   (void)jcls;
   arg1 = (std::vector< bool >::size_type)jarg1; 
   result = (std::vector< bool > *)new std::vector< bool >(arg1);
-  *(std::vector< bool > **)&jresult = result; 
+  // fix -fstrict-aliasing - typemap(out)
+  pArg = (std::vector< bool > **) &jresult;
+  *pArg = result;
   return jresult;
 }
 
@@ -2546,11 +2711,14 @@ SWIGEXPORT jlong JNICALL Java_org_scilab_modules_xcos_JavaControllerJNI_new_1Vec
 SWIGEXPORT void JNICALL Java_org_scilab_modules_xcos_JavaControllerJNI_VectorOfBool_1ensureCapacity(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2) {
   std::vector< bool > *arg1 = (std::vector< bool > *) 0 ;
   std::vector< bool >::size_type arg2 ;
+  std::vector< bool > **pArg1 ;
   
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(std::vector< bool > **)&jarg1; 
+  // fix -fstrict-aliasing - typemap(in)
+  pArg1 = (std::vector< bool > **) &jarg1;
+  arg1 = *pArg1;
   arg2 = (std::vector< bool >::size_type)jarg2; 
   (arg1)->reserve(arg2);
 }
@@ -2559,11 +2727,14 @@ SWIGEXPORT void JNICALL Java_org_scilab_modules_xcos_JavaControllerJNI_VectorOfB
 SWIGEXPORT void JNICALL Java_org_scilab_modules_xcos_JavaControllerJNI_VectorOfBool_1resize(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2) {
   std::vector< bool > *arg1 = (std::vector< bool > *) 0 ;
   std::vector< bool >::size_type arg2 ;
+  std::vector< bool > **pArg1 ;
   
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(std::vector< bool > **)&jarg1; 
+  // fix -fstrict-aliasing - typemap(in)
+  pArg1 = (std::vector< bool > **) &jarg1;
+  arg1 = *pArg1;
   arg2 = (std::vector< bool >::size_type)jarg2; 
   (arg1)->resize(arg2);
 }
@@ -2572,12 +2743,15 @@ SWIGEXPORT void JNICALL Java_org_scilab_modules_xcos_JavaControllerJNI_VectorOfB
 SWIGEXPORT jint JNICALL Java_org_scilab_modules_xcos_JavaControllerJNI_VectorOfBool_1size(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jint jresult = 0 ;
   std::vector< bool > *arg1 = (std::vector< bool > *) 0 ;
+  std::vector< bool > **pArg1 ;
   int result;
   
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(std::vector< bool > **)&jarg1; 
+  // fix -fstrict-aliasing - typemap(in)
+  pArg1 = (std::vector< bool > **) &jarg1;
+  arg1 = *pArg1;
   result = (int)((std::vector< bool > const *)arg1)->size();
   jresult = (jint)result; 
   return jresult;
@@ -2587,12 +2761,15 @@ SWIGEXPORT jint JNICALL Java_org_scilab_modules_xcos_JavaControllerJNI_VectorOfB
 SWIGEXPORT jboolean JNICALL Java_org_scilab_modules_xcos_JavaControllerJNI_VectorOfBool_1isEmpty(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jboolean jresult = 0 ;
   std::vector< bool > *arg1 = (std::vector< bool > *) 0 ;
+  std::vector< bool > **pArg1 ;
   bool result;
   
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(std::vector< bool > **)&jarg1; 
+  // fix -fstrict-aliasing - typemap(in)
+  pArg1 = (std::vector< bool > **) &jarg1;
+  arg1 = *pArg1;
   result = (bool)((std::vector< bool > const *)arg1)->empty();
   jresult = (jboolean)result; 
   return jresult;
@@ -2601,11 +2778,14 @@ SWIGEXPORT jboolean JNICALL Java_org_scilab_modules_xcos_JavaControllerJNI_Vecto
 
 SWIGEXPORT void JNICALL Java_org_scilab_modules_xcos_JavaControllerJNI_VectorOfBool_1clear(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   std::vector< bool > *arg1 = (std::vector< bool > *) 0 ;
+  std::vector< bool > **pArg1 ;
   
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(std::vector< bool > **)&jarg1; 
+  // fix -fstrict-aliasing - typemap(in)
+  pArg1 = (std::vector< bool > **) &jarg1;
+  arg1 = *pArg1;
   (arg1)->clear();
 }
 
@@ -2613,12 +2793,15 @@ SWIGEXPORT void JNICALL Java_org_scilab_modules_xcos_JavaControllerJNI_VectorOfB
 SWIGEXPORT void JNICALL Java_org_scilab_modules_xcos_JavaControllerJNI_VectorOfBool_1add_1_1SWIG_10(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jboolean jarg2) {
   std::vector< bool > *arg1 = (std::vector< bool > *) 0 ;
   std::vector< bool >::value_type *arg2 = 0 ;
+  std::vector< bool > **pArg1 ;
   std::vector< bool >::value_type temp2 ;
   
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(std::vector< bool > **)&jarg1; 
+  // fix -fstrict-aliasing - typemap(in)
+  pArg1 = (std::vector< bool > **) &jarg1;
+  arg1 = *pArg1;
   temp2 = jarg2 ? true : false; 
   arg2 = &temp2; 
   (arg1)->push_back((std::vector< bool >::value_type const &)*arg2);
@@ -2629,12 +2812,15 @@ SWIGEXPORT jboolean JNICALL Java_org_scilab_modules_xcos_JavaControllerJNI_Vecto
   jboolean jresult = 0 ;
   std::vector< bool > *arg1 = (std::vector< bool > *) 0 ;
   int arg2 ;
+  std::vector< bool > **pArg1 ;
   bool result;
   
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(std::vector< bool > **)&jarg1; 
+  // fix -fstrict-aliasing - typemap(in)
+  pArg1 = (std::vector< bool > **) &jarg1;
+  arg1 = *pArg1;
   arg2 = (int)jarg2; 
   try {
     result = (bool)std_vector_Sl_bool_Sg__get(arg1,arg2);
@@ -2651,12 +2837,15 @@ SWIGEXPORT void JNICALL Java_org_scilab_modules_xcos_JavaControllerJNI_VectorOfB
   std::vector< bool > *arg1 = (std::vector< bool > *) 0 ;
   int arg2 ;
   std::vector< bool >::value_type *arg3 = 0 ;
+  std::vector< bool > **pArg1 ;
   std::vector< bool >::value_type temp3 ;
   
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(std::vector< bool > **)&jarg1; 
+  // fix -fstrict-aliasing - typemap(in)
+  pArg1 = (std::vector< bool > **) &jarg1;
+  arg1 = *pArg1;
   arg2 = (int)jarg2; 
   temp3 = jarg3 ? true : false; 
   arg3 = &temp3; 
@@ -2673,12 +2862,15 @@ SWIGEXPORT void JNICALL Java_org_scilab_modules_xcos_JavaControllerJNI_VectorOfB
   std::vector< bool > *arg1 = (std::vector< bool > *) 0 ;
   int arg2 ;
   std::vector< bool >::value_type *arg3 = 0 ;
+  std::vector< bool > **pArg1 ;
   std::vector< bool >::value_type temp3 ;
   
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(std::vector< bool > **)&jarg1; 
+  // fix -fstrict-aliasing - typemap(in)
+  pArg1 = (std::vector< bool > **) &jarg1;
+  arg1 = *pArg1;
   arg2 = (int)jarg2; 
   temp3 = jarg3 ? true : false; 
   arg3 = &temp3; 
@@ -2695,13 +2887,16 @@ SWIGEXPORT jboolean JNICALL Java_org_scilab_modules_xcos_JavaControllerJNI_Vecto
   jboolean jresult = 0 ;
   std::vector< bool > *arg1 = (std::vector< bool > *) 0 ;
   std::vector< bool >::value_type *arg2 = 0 ;
+  std::vector< bool > **pArg1 ;
   std::vector< bool >::value_type temp2 ;
   bool result;
   
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(std::vector< bool > **)&jarg1; 
+  // fix -fstrict-aliasing - typemap(in)
+  pArg1 = (std::vector< bool > **) &jarg1;
+  arg1 = *pArg1;
   temp2 = jarg2 ? true : false; 
   arg2 = &temp2; 
   result = (bool)std_vector_Sl_bool_Sg__remove(arg1,(bool const &)*arg2);
@@ -2712,22 +2907,28 @@ SWIGEXPORT jboolean JNICALL Java_org_scilab_modules_xcos_JavaControllerJNI_Vecto
 
 SWIGEXPORT void JNICALL Java_org_scilab_modules_xcos_JavaControllerJNI_delete_1VectorOfBool(JNIEnv *jenv, jclass jcls, jlong jarg1) {
   std::vector< bool > *arg1 = (std::vector< bool > *) 0 ;
+  std::vector< bool > **pArg1 ;
   
   (void)jenv;
   (void)jcls;
-  arg1 = *(std::vector< bool > **)&jarg1; 
+  // fix -fstrict-aliasing - typemap(in)
+  pArg1 = (std::vector< bool > **) &jarg1;
+  arg1 = *pArg1;
   delete arg1;
 }
 
 
 SWIGEXPORT jlong JNICALL Java_org_scilab_modules_xcos_JavaControllerJNI_new_1VectorOfDouble_1_1SWIG_10(JNIEnv *jenv, jclass jcls) {
   jlong jresult = 0 ;
+  std::vector< double > **pArg ;
   std::vector< double > *result = 0 ;
   
   (void)jenv;
   (void)jcls;
   result = (std::vector< double > *)new std::vector< double >();
-  *(std::vector< double > **)&jresult = result; 
+  // fix -fstrict-aliasing - typemap(out)
+  pArg = (std::vector< double > **) &jresult;
+  *pArg = result;
   return jresult;
 }
 
@@ -2735,13 +2936,16 @@ SWIGEXPORT jlong JNICALL Java_org_scilab_modules_xcos_JavaControllerJNI_new_1Vec
 SWIGEXPORT jlong JNICALL Java_org_scilab_modules_xcos_JavaControllerJNI_new_1VectorOfDouble_1_1SWIG_11(JNIEnv *jenv, jclass jcls, jlong jarg1) {
   jlong jresult = 0 ;
   std::vector< double >::size_type arg1 ;
+  std::vector< double > **pArg ;
   std::vector< double > *result = 0 ;
   
   (void)jenv;
   (void)jcls;
   arg1 = (std::vector< double >::size_type)jarg1; 
   result = (std::vector< double > *)new std::vector< double >(arg1);
-  *(std::vector< double > **)&jresult = result; 
+  // fix -fstrict-aliasing - typemap(out)
+  pArg = (std::vector< double > **) &jresult;
+  *pArg = result;
   return jresult;
 }
 
@@ -2749,11 +2953,14 @@ SWIGEXPORT jlong JNICALL Java_org_scilab_modules_xcos_JavaControllerJNI_new_1Vec
 SWIGEXPORT void JNICALL Java_org_scilab_modules_xcos_JavaControllerJNI_VectorOfDouble_1ensureCapacity(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2) {
   std::vector< double > *arg1 = (std::vector< double > *) 0 ;
   std::vector< double >::size_type arg2 ;
+  std::vector< double > **pArg1 ;
   
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(std::vector< double > **)&jarg1; 
+  // fix -fstrict-aliasing - typemap(in)
+  pArg1 = (std::vector< double > **) &jarg1;
+  arg1 = *pArg1;
   arg2 = (std::vector< double >::size_type)jarg2; 
   (arg1)->reserve(arg2);
 }
@@ -2762,11 +2969,14 @@ SWIGEXPORT void JNICALL Java_org_scilab_modules_xcos_JavaControllerJNI_VectorOfD
 SWIGEXPORT void JNICALL Java_org_scilab_modules_xcos_JavaControllerJNI_VectorOfDouble_1resize(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2) {
   std::vector< double > *arg1 = (std::vector< double > *) 0 ;
   std::vector< double >::size_type arg2 ;
+  std::vector< double > **pArg1 ;
   
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(std::vector< double > **)&jarg1; 
+  // fix -fstrict-aliasing - typemap(in)
+  pArg1 = (std::vector< double > **) &jarg1;
+  arg1 = *pArg1;
   arg2 = (std::vector< double >::size_type)jarg2; 
   (arg1)->resize(arg2);
 }
@@ -2775,12 +2985,15 @@ SWIGEXPORT void JNICALL Java_org_scilab_modules_xcos_JavaControllerJNI_VectorOfD
 SWIGEXPORT jint JNICALL Java_org_scilab_modules_xcos_JavaControllerJNI_VectorOfDouble_1size(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jint jresult = 0 ;
   std::vector< double > *arg1 = (std::vector< double > *) 0 ;
+  std::vector< double > **pArg1 ;
   int result;
   
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(std::vector< double > **)&jarg1; 
+  // fix -fstrict-aliasing - typemap(in)
+  pArg1 = (std::vector< double > **) &jarg1;
+  arg1 = *pArg1;
   result = (int)((std::vector< double > const *)arg1)->size();
   jresult = (jint)result; 
   return jresult;
@@ -2790,12 +3003,15 @@ SWIGEXPORT jint JNICALL Java_org_scilab_modules_xcos_JavaControllerJNI_VectorOfD
 SWIGEXPORT jboolean JNICALL Java_org_scilab_modules_xcos_JavaControllerJNI_VectorOfDouble_1isEmpty(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jboolean jresult = 0 ;
   std::vector< double > *arg1 = (std::vector< double > *) 0 ;
+  std::vector< double > **pArg1 ;
   bool result;
   
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(std::vector< double > **)&jarg1; 
+  // fix -fstrict-aliasing - typemap(in)
+  pArg1 = (std::vector< double > **) &jarg1;
+  arg1 = *pArg1;
   result = (bool)((std::vector< double > const *)arg1)->empty();
   jresult = (jboolean)result; 
   return jresult;
@@ -2804,11 +3020,14 @@ SWIGEXPORT jboolean JNICALL Java_org_scilab_modules_xcos_JavaControllerJNI_Vecto
 
 SWIGEXPORT void JNICALL Java_org_scilab_modules_xcos_JavaControllerJNI_VectorOfDouble_1clear(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   std::vector< double > *arg1 = (std::vector< double > *) 0 ;
+  std::vector< double > **pArg1 ;
   
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(std::vector< double > **)&jarg1; 
+  // fix -fstrict-aliasing - typemap(in)
+  pArg1 = (std::vector< double > **) &jarg1;
+  arg1 = *pArg1;
   (arg1)->clear();
 }
 
@@ -2816,12 +3035,15 @@ SWIGEXPORT void JNICALL Java_org_scilab_modules_xcos_JavaControllerJNI_VectorOfD
 SWIGEXPORT void JNICALL Java_org_scilab_modules_xcos_JavaControllerJNI_VectorOfDouble_1add_1_1SWIG_10(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jdouble jarg2) {
   std::vector< double > *arg1 = (std::vector< double > *) 0 ;
   std::vector< double >::value_type *arg2 = 0 ;
+  std::vector< double > **pArg1 ;
   std::vector< double >::value_type temp2 ;
   
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(std::vector< double > **)&jarg1; 
+  // fix -fstrict-aliasing - typemap(in)
+  pArg1 = (std::vector< double > **) &jarg1;
+  arg1 = *pArg1;
   temp2 = (std::vector< double >::value_type)jarg2; 
   arg2 = &temp2; 
   (arg1)->push_back((std::vector< double >::value_type const &)*arg2);
@@ -2832,13 +3054,16 @@ SWIGEXPORT jboolean JNICALL Java_org_scilab_modules_xcos_JavaControllerJNI_Vecto
   jboolean jresult = 0 ;
   std::vector< double > *arg1 = (std::vector< double > *) 0 ;
   double *arg2 = 0 ;
+  std::vector< double > **pArg1 ;
   double temp2 ;
   bool result;
   
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(std::vector< double > **)&jarg1; 
+  // fix -fstrict-aliasing - typemap(in)
+  pArg1 = (std::vector< double > **) &jarg1;
+  arg1 = *pArg1;
   temp2 = (double)jarg2; 
   arg2 = &temp2; 
   result = (bool)std_vector_Sl_double_Sg__contains(arg1,(double const &)*arg2);
@@ -2851,13 +3076,16 @@ SWIGEXPORT jint JNICALL Java_org_scilab_modules_xcos_JavaControllerJNI_VectorOfD
   jint jresult = 0 ;
   std::vector< double > *arg1 = (std::vector< double > *) 0 ;
   double *arg2 = 0 ;
+  std::vector< double > **pArg1 ;
   double temp2 ;
   int result;
   
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(std::vector< double > **)&jarg1; 
+  // fix -fstrict-aliasing - typemap(in)
+  pArg1 = (std::vector< double > **) &jarg1;
+  arg1 = *pArg1;
   temp2 = (double)jarg2; 
   arg2 = &temp2; 
   result = (int)std_vector_Sl_double_Sg__indexOf(arg1,(double const &)*arg2);
@@ -2870,12 +3098,15 @@ SWIGEXPORT jdouble JNICALL Java_org_scilab_modules_xcos_JavaControllerJNI_Vector
   jdouble jresult = 0 ;
   std::vector< double > *arg1 = (std::vector< double > *) 0 ;
   int arg2 ;
+  std::vector< double > **pArg1 ;
   std::vector< double >::value_type *result = 0 ;
   
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(std::vector< double > **)&jarg1; 
+  // fix -fstrict-aliasing - typemap(in)
+  pArg1 = (std::vector< double > **) &jarg1;
+  arg1 = *pArg1;
   arg2 = (int)jarg2; 
   try {
     result = (std::vector< double >::value_type *) &std_vector_Sl_double_Sg__get(arg1,arg2);
@@ -2892,12 +3123,15 @@ SWIGEXPORT void JNICALL Java_org_scilab_modules_xcos_JavaControllerJNI_VectorOfD
   std::vector< double > *arg1 = (std::vector< double > *) 0 ;
   int arg2 ;
   std::vector< double >::value_type *arg3 = 0 ;
+  std::vector< double > **pArg1 ;
   std::vector< double >::value_type temp3 ;
   
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(std::vector< double > **)&jarg1; 
+  // fix -fstrict-aliasing - typemap(in)
+  pArg1 = (std::vector< double > **) &jarg1;
+  arg1 = *pArg1;
   arg2 = (int)jarg2; 
   temp3 = (std::vector< double >::value_type)jarg3; 
   arg3 = &temp3; 
@@ -2914,12 +3148,15 @@ SWIGEXPORT void JNICALL Java_org_scilab_modules_xcos_JavaControllerJNI_VectorOfD
   std::vector< double > *arg1 = (std::vector< double > *) 0 ;
   int arg2 ;
   std::vector< double >::value_type *arg3 = 0 ;
+  std::vector< double > **pArg1 ;
   std::vector< double >::value_type temp3 ;
   
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(std::vector< double > **)&jarg1; 
+  // fix -fstrict-aliasing - typemap(in)
+  pArg1 = (std::vector< double > **) &jarg1;
+  arg1 = *pArg1;
   arg2 = (int)jarg2; 
   temp3 = (std::vector< double >::value_type)jarg3; 
   arg3 = &temp3; 
@@ -2936,13 +3173,16 @@ SWIGEXPORT jboolean JNICALL Java_org_scilab_modules_xcos_JavaControllerJNI_Vecto
   jboolean jresult = 0 ;
   std::vector< double > *arg1 = (std::vector< double > *) 0 ;
   std::vector< double >::value_type *arg2 = 0 ;
+  std::vector< double > **pArg1 ;
   std::vector< double >::value_type temp2 ;
   bool result;
   
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(std::vector< double > **)&jarg1; 
+  // fix -fstrict-aliasing - typemap(in)
+  pArg1 = (std::vector< double > **) &jarg1;
+  arg1 = *pArg1;
   temp2 = (std::vector< double >::value_type)jarg2; 
   arg2 = &temp2; 
   result = (bool)std_vector_Sl_double_Sg__remove(arg1,(double const &)*arg2);
@@ -2956,12 +3196,15 @@ SWIGEXPORT jobject JNICALL Java_org_scilab_modules_xcos_JavaControllerJNI_Vector
   std::vector< double > *arg1 = (std::vector< double > *) 0 ;
   int arg2 ;
   int arg3 ;
+  std::vector< double > **pArg1 ;
   void *result = 0 ;
   
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(std::vector< double > **)&jarg1; 
+  // fix -fstrict-aliasing - typemap(in)
+  pArg1 = (std::vector< double > **) &jarg1;
+  arg1 = *pArg1;
   arg2 = (int)jarg2; 
   arg3 = (int)jarg3; 
   result = (void *)std_vector_Sl_double_Sg__asByteBuffer(arg1,arg2,arg3);
@@ -2979,22 +3222,28 @@ SWIGEXPORT jobject JNICALL Java_org_scilab_modules_xcos_JavaControllerJNI_Vector
 
 SWIGEXPORT void JNICALL Java_org_scilab_modules_xcos_JavaControllerJNI_delete_1VectorOfDouble(JNIEnv *jenv, jclass jcls, jlong jarg1) {
   std::vector< double > *arg1 = (std::vector< double > *) 0 ;
+  std::vector< double > **pArg1 ;
   
   (void)jenv;
   (void)jcls;
-  arg1 = *(std::vector< double > **)&jarg1; 
+  // fix -fstrict-aliasing - typemap(in)
+  pArg1 = (std::vector< double > **) &jarg1;
+  arg1 = *pArg1;
   delete arg1;
 }
 
 
 SWIGEXPORT jlong JNICALL Java_org_scilab_modules_xcos_JavaControllerJNI_new_1VectorOfString_1_1SWIG_10(JNIEnv *jenv, jclass jcls) {
   jlong jresult = 0 ;
+  std::vector< std::string > **pArg ;
   std::vector< std::string > *result = 0 ;
   
   (void)jenv;
   (void)jcls;
   result = (std::vector< std::string > *)new std::vector< std::string >();
-  *(std::vector< std::string > **)&jresult = result; 
+  // fix -fstrict-aliasing - typemap(out)
+  pArg = (std::vector< std::string > **) &jresult;
+  *pArg = result;
   return jresult;
 }
 
@@ -3002,13 +3251,16 @@ SWIGEXPORT jlong JNICALL Java_org_scilab_modules_xcos_JavaControllerJNI_new_1Vec
 SWIGEXPORT jlong JNICALL Java_org_scilab_modules_xcos_JavaControllerJNI_new_1VectorOfString_1_1SWIG_11(JNIEnv *jenv, jclass jcls, jlong jarg1) {
   jlong jresult = 0 ;
   std::vector< std::string >::size_type arg1 ;
+  std::vector< std::string > **pArg ;
   std::vector< std::string > *result = 0 ;
   
   (void)jenv;
   (void)jcls;
   arg1 = (std::vector< std::string >::size_type)jarg1; 
   result = (std::vector< std::string > *)new std::vector< std::string >(arg1);
-  *(std::vector< std::string > **)&jresult = result; 
+  // fix -fstrict-aliasing - typemap(out)
+  pArg = (std::vector< std::string > **) &jresult;
+  *pArg = result;
   return jresult;
 }
 
@@ -3016,11 +3268,14 @@ SWIGEXPORT jlong JNICALL Java_org_scilab_modules_xcos_JavaControllerJNI_new_1Vec
 SWIGEXPORT void JNICALL Java_org_scilab_modules_xcos_JavaControllerJNI_VectorOfString_1ensureCapacity(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2) {
   std::vector< std::string > *arg1 = (std::vector< std::string > *) 0 ;
   std::vector< std::string >::size_type arg2 ;
+  std::vector< std::string > **pArg1 ;
   
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(std::vector< std::string > **)&jarg1; 
+  // fix -fstrict-aliasing - typemap(in)
+  pArg1 = (std::vector< std::string > **) &jarg1;
+  arg1 = *pArg1;
   arg2 = (std::vector< std::string >::size_type)jarg2; 
   (arg1)->reserve(arg2);
 }
@@ -3029,11 +3284,14 @@ SWIGEXPORT void JNICALL Java_org_scilab_modules_xcos_JavaControllerJNI_VectorOfS
 SWIGEXPORT void JNICALL Java_org_scilab_modules_xcos_JavaControllerJNI_VectorOfString_1resize(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2) {
   std::vector< std::string > *arg1 = (std::vector< std::string > *) 0 ;
   std::vector< std::string >::size_type arg2 ;
+  std::vector< std::string > **pArg1 ;
   
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(std::vector< std::string > **)&jarg1; 
+  // fix -fstrict-aliasing - typemap(in)
+  pArg1 = (std::vector< std::string > **) &jarg1;
+  arg1 = *pArg1;
   arg2 = (std::vector< std::string >::size_type)jarg2; 
   (arg1)->resize(arg2);
 }
@@ -3042,12 +3300,15 @@ SWIGEXPORT void JNICALL Java_org_scilab_modules_xcos_JavaControllerJNI_VectorOfS
 SWIGEXPORT jint JNICALL Java_org_scilab_modules_xcos_JavaControllerJNI_VectorOfString_1size(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jint jresult = 0 ;
   std::vector< std::string > *arg1 = (std::vector< std::string > *) 0 ;
+  std::vector< std::string > **pArg1 ;
   int result;
   
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(std::vector< std::string > **)&jarg1; 
+  // fix -fstrict-aliasing - typemap(in)
+  pArg1 = (std::vector< std::string > **) &jarg1;
+  arg1 = *pArg1;
   result = (int)((std::vector< std::string > const *)arg1)->size();
   jresult = (jint)result; 
   return jresult;
@@ -3057,12 +3318,15 @@ SWIGEXPORT jint JNICALL Java_org_scilab_modules_xcos_JavaControllerJNI_VectorOfS
 SWIGEXPORT jboolean JNICALL Java_org_scilab_modules_xcos_JavaControllerJNI_VectorOfString_1isEmpty(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jboolean jresult = 0 ;
   std::vector< std::string > *arg1 = (std::vector< std::string > *) 0 ;
+  std::vector< std::string > **pArg1 ;
   bool result;
   
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(std::vector< std::string > **)&jarg1; 
+  // fix -fstrict-aliasing - typemap(in)
+  pArg1 = (std::vector< std::string > **) &jarg1;
+  arg1 = *pArg1;
   result = (bool)((std::vector< std::string > const *)arg1)->empty();
   jresult = (jboolean)result; 
   return jresult;
@@ -3071,11 +3335,14 @@ SWIGEXPORT jboolean JNICALL Java_org_scilab_modules_xcos_JavaControllerJNI_Vecto
 
 SWIGEXPORT void JNICALL Java_org_scilab_modules_xcos_JavaControllerJNI_VectorOfString_1clear(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   std::vector< std::string > *arg1 = (std::vector< std::string > *) 0 ;
+  std::vector< std::string > **pArg1 ;
   
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(std::vector< std::string > **)&jarg1; 
+  // fix -fstrict-aliasing - typemap(in)
+  pArg1 = (std::vector< std::string > **) &jarg1;
+  arg1 = *pArg1;
   (arg1)->clear();
 }
 
@@ -3083,11 +3350,14 @@ SWIGEXPORT void JNICALL Java_org_scilab_modules_xcos_JavaControllerJNI_VectorOfS
 SWIGEXPORT void JNICALL Java_org_scilab_modules_xcos_JavaControllerJNI_VectorOfString_1add_1_1SWIG_10(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
   std::vector< std::string > *arg1 = (std::vector< std::string > *) 0 ;
   std::vector< std::string >::value_type *arg2 = 0 ;
+  std::vector< std::string > **pArg1 ;
   
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(std::vector< std::string > **)&jarg1; 
+  // fix -fstrict-aliasing - typemap(in)
+  pArg1 = (std::vector< std::string > **) &jarg1;
+  arg1 = *pArg1;
   Swig::JavaString javaString(jenv, jarg2);
   std::string arg2_str(javaString.c_str());
   arg2 = &arg2_str;
@@ -3100,12 +3370,15 @@ SWIGEXPORT jboolean JNICALL Java_org_scilab_modules_xcos_JavaControllerJNI_Vecto
   jboolean jresult = 0 ;
   std::vector< std::string > *arg1 = (std::vector< std::string > *) 0 ;
   std::string *arg2 = 0 ;
+  std::vector< std::string > **pArg1 ;
   bool result;
   
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(std::vector< std::string > **)&jarg1; 
+  // fix -fstrict-aliasing - typemap(in)
+  pArg1 = (std::vector< std::string > **) &jarg1;
+  arg1 = *pArg1;
   Swig::JavaString javaString(jenv, jarg2);
   std::string arg2_str(javaString.c_str());
   arg2 = &arg2_str;
@@ -3120,12 +3393,15 @@ SWIGEXPORT jint JNICALL Java_org_scilab_modules_xcos_JavaControllerJNI_VectorOfS
   jint jresult = 0 ;
   std::vector< std::string > *arg1 = (std::vector< std::string > *) 0 ;
   std::string *arg2 = 0 ;
+  std::vector< std::string > **pArg1 ;
   int result;
   
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(std::vector< std::string > **)&jarg1; 
+  // fix -fstrict-aliasing - typemap(in)
+  pArg1 = (std::vector< std::string > **) &jarg1;
+  arg1 = *pArg1;
   Swig::JavaString javaString(jenv, jarg2);
   std::string arg2_str(javaString.c_str());
   arg2 = &arg2_str;
@@ -3140,12 +3416,15 @@ SWIGEXPORT jstring JNICALL Java_org_scilab_modules_xcos_JavaControllerJNI_Vector
   jstring jresult = 0 ;
   std::vector< std::string > *arg1 = (std::vector< std::string > *) 0 ;
   int arg2 ;
+  std::vector< std::string > **pArg1 ;
   std::vector< std::string >::value_type *result = 0 ;
   
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(std::vector< std::string > **)&jarg1; 
+  // fix -fstrict-aliasing - typemap(in)
+  pArg1 = (std::vector< std::string > **) &jarg1;
+  arg1 = *pArg1;
   arg2 = (int)jarg2; 
   try {
     result = (std::vector< std::string >::value_type *) &std_vector_Sl_std_string_Sg__get(arg1,arg2);
@@ -3162,11 +3441,14 @@ SWIGEXPORT void JNICALL Java_org_scilab_modules_xcos_JavaControllerJNI_VectorOfS
   std::vector< std::string > *arg1 = (std::vector< std::string > *) 0 ;
   int arg2 ;
   std::vector< std::string >::value_type *arg3 = 0 ;
+  std::vector< std::string > **pArg1 ;
   
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(std::vector< std::string > **)&jarg1; 
+  // fix -fstrict-aliasing - typemap(in)
+  pArg1 = (std::vector< std::string > **) &jarg1;
+  arg1 = *pArg1;
   arg2 = (int)jarg2; 
   Swig::JavaString javaString(jenv, jarg3);
   std::string arg3_str(javaString.c_str());
@@ -3185,11 +3467,14 @@ SWIGEXPORT void JNICALL Java_org_scilab_modules_xcos_JavaControllerJNI_VectorOfS
   std::vector< std::string > *arg1 = (std::vector< std::string > *) 0 ;
   int arg2 ;
   std::vector< std::string >::value_type *arg3 = 0 ;
+  std::vector< std::string > **pArg1 ;
   
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(std::vector< std::string > **)&jarg1; 
+  // fix -fstrict-aliasing - typemap(in)
+  pArg1 = (std::vector< std::string > **) &jarg1;
+  arg1 = *pArg1;
   arg2 = (int)jarg2; 
   Swig::JavaString javaString(jenv, jarg3);
   std::string arg3_str(javaString.c_str());
@@ -3208,12 +3493,15 @@ SWIGEXPORT jboolean JNICALL Java_org_scilab_modules_xcos_JavaControllerJNI_Vecto
   jboolean jresult = 0 ;
   std::vector< std::string > *arg1 = (std::vector< std::string > *) 0 ;
   std::vector< std::string >::value_type *arg2 = 0 ;
+  std::vector< std::string > **pArg1 ;
   bool result;
   
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(std::vector< std::string > **)&jarg1; 
+  // fix -fstrict-aliasing - typemap(in)
+  pArg1 = (std::vector< std::string > **) &jarg1;
+  arg1 = *pArg1;
   Swig::JavaString javaString(jenv, jarg2);
   std::string arg2_str(javaString.c_str());
   arg2 = &arg2_str;
@@ -3229,12 +3517,15 @@ SWIGEXPORT jobject JNICALL Java_org_scilab_modules_xcos_JavaControllerJNI_Vector
   std::vector< std::string > *arg1 = (std::vector< std::string > *) 0 ;
   int arg2 ;
   int arg3 ;
+  std::vector< std::string > **pArg1 ;
   void *result = 0 ;
   
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(std::vector< std::string > **)&jarg1; 
+  // fix -fstrict-aliasing - typemap(in)
+  pArg1 = (std::vector< std::string > **) &jarg1;
+  arg1 = *pArg1;
   arg2 = (int)jarg2; 
   arg3 = (int)jarg3; 
   result = (void *)std_vector_Sl_std_string_Sg__asByteBuffer(arg1,arg2,arg3);
@@ -3252,22 +3543,28 @@ SWIGEXPORT jobject JNICALL Java_org_scilab_modules_xcos_JavaControllerJNI_Vector
 
 SWIGEXPORT void JNICALL Java_org_scilab_modules_xcos_JavaControllerJNI_delete_1VectorOfString(JNIEnv *jenv, jclass jcls, jlong jarg1) {
   std::vector< std::string > *arg1 = (std::vector< std::string > *) 0 ;
+  std::vector< std::string > **pArg1 ;
   
   (void)jenv;
   (void)jcls;
-  arg1 = *(std::vector< std::string > **)&jarg1; 
+  // fix -fstrict-aliasing - typemap(in)
+  pArg1 = (std::vector< std::string > **) &jarg1;
+  arg1 = *pArg1;
   delete arg1;
 }
 
 
 SWIGEXPORT jlong JNICALL Java_org_scilab_modules_xcos_JavaControllerJNI_new_1VectorOfScicosID_1_1SWIG_10(JNIEnv *jenv, jclass jcls) {
   jlong jresult = 0 ;
+  std::vector< ScicosID > **pArg ;
   std::vector< ScicosID > *result = 0 ;
   
   (void)jenv;
   (void)jcls;
   result = (std::vector< ScicosID > *)new std::vector< ScicosID >();
-  *(std::vector< ScicosID > **)&jresult = result; 
+  // fix -fstrict-aliasing - typemap(out)
+  pArg = (std::vector< ScicosID > **) &jresult;
+  *pArg = result;
   return jresult;
 }
 
@@ -3275,13 +3572,16 @@ SWIGEXPORT jlong JNICALL Java_org_scilab_modules_xcos_JavaControllerJNI_new_1Vec
 SWIGEXPORT jlong JNICALL Java_org_scilab_modules_xcos_JavaControllerJNI_new_1VectorOfScicosID_1_1SWIG_11(JNIEnv *jenv, jclass jcls, jlong jarg1) {
   jlong jresult = 0 ;
   std::vector< long long >::size_type arg1 ;
+  std::vector< ScicosID > **pArg ;
   std::vector< ScicosID > *result = 0 ;
   
   (void)jenv;
   (void)jcls;
   arg1 = (std::vector< long long >::size_type)jarg1; 
   result = (std::vector< ScicosID > *)new std::vector< ScicosID >(arg1);
-  *(std::vector< ScicosID > **)&jresult = result; 
+  // fix -fstrict-aliasing - typemap(out)
+  pArg = (std::vector< ScicosID > **) &jresult;
+  *pArg = result;
   return jresult;
 }
 
@@ -3289,11 +3589,14 @@ SWIGEXPORT jlong JNICALL Java_org_scilab_modules_xcos_JavaControllerJNI_new_1Vec
 SWIGEXPORT void JNICALL Java_org_scilab_modules_xcos_JavaControllerJNI_VectorOfScicosID_1ensureCapacity(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2) {
   std::vector< ScicosID > *arg1 = (std::vector< ScicosID > *) 0 ;
   std::vector< long long >::size_type arg2 ;
+  std::vector< ScicosID > **pArg1 ;
   
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(std::vector< ScicosID > **)&jarg1; 
+  // fix -fstrict-aliasing - typemap(in)
+  pArg1 = (std::vector< ScicosID > **) &jarg1;
+  arg1 = *pArg1;
   arg2 = (std::vector< long long >::size_type)jarg2; 
   (arg1)->reserve(arg2);
 }
@@ -3302,11 +3605,14 @@ SWIGEXPORT void JNICALL Java_org_scilab_modules_xcos_JavaControllerJNI_VectorOfS
 SWIGEXPORT void JNICALL Java_org_scilab_modules_xcos_JavaControllerJNI_VectorOfScicosID_1resize(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2) {
   std::vector< ScicosID > *arg1 = (std::vector< ScicosID > *) 0 ;
   std::vector< long long >::size_type arg2 ;
+  std::vector< ScicosID > **pArg1 ;
   
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(std::vector< ScicosID > **)&jarg1; 
+  // fix -fstrict-aliasing - typemap(in)
+  pArg1 = (std::vector< ScicosID > **) &jarg1;
+  arg1 = *pArg1;
   arg2 = (std::vector< long long >::size_type)jarg2; 
   (arg1)->resize(arg2);
 }
@@ -3315,12 +3621,15 @@ SWIGEXPORT void JNICALL Java_org_scilab_modules_xcos_JavaControllerJNI_VectorOfS
 SWIGEXPORT jint JNICALL Java_org_scilab_modules_xcos_JavaControllerJNI_VectorOfScicosID_1size(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jint jresult = 0 ;
   std::vector< ScicosID > *arg1 = (std::vector< ScicosID > *) 0 ;
+  std::vector< ScicosID > **pArg1 ;
   int result;
   
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(std::vector< ScicosID > **)&jarg1; 
+  // fix -fstrict-aliasing - typemap(in)
+  pArg1 = (std::vector< ScicosID > **) &jarg1;
+  arg1 = *pArg1;
   result = (int)((std::vector< ScicosID > const *)arg1)->size();
   jresult = (jint)result; 
   return jresult;
@@ -3330,12 +3639,15 @@ SWIGEXPORT jint JNICALL Java_org_scilab_modules_xcos_JavaControllerJNI_VectorOfS
 SWIGEXPORT jboolean JNICALL Java_org_scilab_modules_xcos_JavaControllerJNI_VectorOfScicosID_1isEmpty(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jboolean jresult = 0 ;
   std::vector< ScicosID > *arg1 = (std::vector< ScicosID > *) 0 ;
+  std::vector< ScicosID > **pArg1 ;
   bool result;
   
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(std::vector< ScicosID > **)&jarg1; 
+  // fix -fstrict-aliasing - typemap(in)
+  pArg1 = (std::vector< ScicosID > **) &jarg1;
+  arg1 = *pArg1;
   result = (bool)((std::vector< ScicosID > const *)arg1)->empty();
   jresult = (jboolean)result; 
   return jresult;
@@ -3344,11 +3656,14 @@ SWIGEXPORT jboolean JNICALL Java_org_scilab_modules_xcos_JavaControllerJNI_Vecto
 
 SWIGEXPORT void JNICALL Java_org_scilab_modules_xcos_JavaControllerJNI_VectorOfScicosID_1clear(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   std::vector< ScicosID > *arg1 = (std::vector< ScicosID > *) 0 ;
+  std::vector< ScicosID > **pArg1 ;
   
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(std::vector< ScicosID > **)&jarg1; 
+  // fix -fstrict-aliasing - typemap(in)
+  pArg1 = (std::vector< ScicosID > **) &jarg1;
+  arg1 = *pArg1;
   (arg1)->clear();
 }
 
@@ -3356,12 +3671,15 @@ SWIGEXPORT void JNICALL Java_org_scilab_modules_xcos_JavaControllerJNI_VectorOfS
 SWIGEXPORT void JNICALL Java_org_scilab_modules_xcos_JavaControllerJNI_VectorOfScicosID_1add_1_1SWIG_10(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2) {
   std::vector< ScicosID > *arg1 = (std::vector< ScicosID > *) 0 ;
   std::vector< long long >::value_type *arg2 = 0 ;
+  std::vector< ScicosID > **pArg1 ;
   std::vector< long long >::value_type temp2 ;
   
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(std::vector< ScicosID > **)&jarg1; 
+  // fix -fstrict-aliasing - typemap(in)
+  pArg1 = (std::vector< ScicosID > **) &jarg1;
+  arg1 = *pArg1;
   temp2 = (std::vector< long long >::value_type)jarg2; 
   arg2 = &temp2; 
   (arg1)->push_back((std::vector< long long >::value_type const &)*arg2);
@@ -3372,13 +3690,16 @@ SWIGEXPORT jboolean JNICALL Java_org_scilab_modules_xcos_JavaControllerJNI_Vecto
   jboolean jresult = 0 ;
   std::vector< ScicosID > *arg1 = (std::vector< ScicosID > *) 0 ;
   long long *arg2 = 0 ;
+  std::vector< ScicosID > **pArg1 ;
   long long temp2 ;
   bool result;
   
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(std::vector< ScicosID > **)&jarg1; 
+  // fix -fstrict-aliasing - typemap(in)
+  pArg1 = (std::vector< ScicosID > **) &jarg1;
+  arg1 = *pArg1;
   temp2 = (long long)jarg2; 
   arg2 = &temp2; 
   result = (bool)std_vector_Sl_ScicosID_Sg__contains(arg1,(long long const &)*arg2);
@@ -3391,13 +3712,16 @@ SWIGEXPORT jint JNICALL Java_org_scilab_modules_xcos_JavaControllerJNI_VectorOfS
   jint jresult = 0 ;
   std::vector< ScicosID > *arg1 = (std::vector< ScicosID > *) 0 ;
   long long *arg2 = 0 ;
+  std::vector< ScicosID > **pArg1 ;
   long long temp2 ;
   int result;
   
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(std::vector< ScicosID > **)&jarg1; 
+  // fix -fstrict-aliasing - typemap(in)
+  pArg1 = (std::vector< ScicosID > **) &jarg1;
+  arg1 = *pArg1;
   temp2 = (long long)jarg2; 
   arg2 = &temp2; 
   result = (int)std_vector_Sl_ScicosID_Sg__indexOf(arg1,(long long const &)*arg2);
@@ -3410,12 +3734,15 @@ SWIGEXPORT jlong JNICALL Java_org_scilab_modules_xcos_JavaControllerJNI_VectorOf
   jlong jresult = 0 ;
   std::vector< ScicosID > *arg1 = (std::vector< ScicosID > *) 0 ;
   int arg2 ;
+  std::vector< ScicosID > **pArg1 ;
   std::vector< long long >::value_type *result = 0 ;
   
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(std::vector< ScicosID > **)&jarg1; 
+  // fix -fstrict-aliasing - typemap(in)
+  pArg1 = (std::vector< ScicosID > **) &jarg1;
+  arg1 = *pArg1;
   arg2 = (int)jarg2; 
   try {
     result = (std::vector< long long >::value_type *) &std_vector_Sl_ScicosID_Sg__get(arg1,arg2);
@@ -3432,12 +3759,15 @@ SWIGEXPORT void JNICALL Java_org_scilab_modules_xcos_JavaControllerJNI_VectorOfS
   std::vector< ScicosID > *arg1 = (std::vector< ScicosID > *) 0 ;
   int arg2 ;
   std::vector< long long >::value_type *arg3 = 0 ;
+  std::vector< ScicosID > **pArg1 ;
   std::vector< long long >::value_type temp3 ;
   
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(std::vector< ScicosID > **)&jarg1; 
+  // fix -fstrict-aliasing - typemap(in)
+  pArg1 = (std::vector< ScicosID > **) &jarg1;
+  arg1 = *pArg1;
   arg2 = (int)jarg2; 
   temp3 = (std::vector< long long >::value_type)jarg3; 
   arg3 = &temp3; 
@@ -3454,12 +3784,15 @@ SWIGEXPORT void JNICALL Java_org_scilab_modules_xcos_JavaControllerJNI_VectorOfS
   std::vector< ScicosID > *arg1 = (std::vector< ScicosID > *) 0 ;
   int arg2 ;
   std::vector< long long >::value_type *arg3 = 0 ;
+  std::vector< ScicosID > **pArg1 ;
   std::vector< long long >::value_type temp3 ;
   
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(std::vector< ScicosID > **)&jarg1; 
+  // fix -fstrict-aliasing - typemap(in)
+  pArg1 = (std::vector< ScicosID > **) &jarg1;
+  arg1 = *pArg1;
   arg2 = (int)jarg2; 
   temp3 = (std::vector< long long >::value_type)jarg3; 
   arg3 = &temp3; 
@@ -3476,13 +3809,16 @@ SWIGEXPORT jboolean JNICALL Java_org_scilab_modules_xcos_JavaControllerJNI_Vecto
   jboolean jresult = 0 ;
   std::vector< ScicosID > *arg1 = (std::vector< ScicosID > *) 0 ;
   std::vector< long long >::value_type *arg2 = 0 ;
+  std::vector< ScicosID > **pArg1 ;
   std::vector< long long >::value_type temp2 ;
   bool result;
   
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(std::vector< ScicosID > **)&jarg1; 
+  // fix -fstrict-aliasing - typemap(in)
+  pArg1 = (std::vector< ScicosID > **) &jarg1;
+  arg1 = *pArg1;
   temp2 = (std::vector< long long >::value_type)jarg2; 
   arg2 = &temp2; 
   result = (bool)std_vector_Sl_ScicosID_Sg__remove(arg1,(long long const &)*arg2);
@@ -3496,12 +3832,15 @@ SWIGEXPORT jobject JNICALL Java_org_scilab_modules_xcos_JavaControllerJNI_Vector
   std::vector< ScicosID > *arg1 = (std::vector< ScicosID > *) 0 ;
   int arg2 ;
   int arg3 ;
+  std::vector< ScicosID > **pArg1 ;
   void *result = 0 ;
   
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(std::vector< ScicosID > **)&jarg1; 
+  // fix -fstrict-aliasing - typemap(in)
+  pArg1 = (std::vector< ScicosID > **) &jarg1;
+  arg1 = *pArg1;
   arg2 = (int)jarg2; 
   arg3 = (int)jarg3; 
   result = (void *)std_vector_Sl_ScicosID_Sg__asByteBuffer(arg1,arg2,arg3);
@@ -3519,10 +3858,13 @@ SWIGEXPORT jobject JNICALL Java_org_scilab_modules_xcos_JavaControllerJNI_Vector
 
 SWIGEXPORT void JNICALL Java_org_scilab_modules_xcos_JavaControllerJNI_delete_1VectorOfScicosID(JNIEnv *jenv, jclass jcls, jlong jarg1) {
   std::vector< ScicosID > *arg1 = (std::vector< ScicosID > *) 0 ;
+  std::vector< ScicosID > **pArg1 ;
   
   (void)jenv;
   (void)jcls;
-  arg1 = *(std::vector< ScicosID > **)&jarg1; 
+  // fix -fstrict-aliasing - typemap(in)
+  pArg1 = (std::vector< ScicosID > **) &jarg1;
+  arg1 = *pArg1;
   delete arg1;
 }
 
@@ -3530,6 +3872,7 @@ SWIGEXPORT void JNICALL Java_org_scilab_modules_xcos_JavaControllerJNI_delete_1V
 SWIGEXPORT void JNICALL Java_org_scilab_modules_xcos_JavaControllerJNI_register_1view(JNIEnv *jenv, jclass jcls, jstring jarg1, jlong jarg2, jobject jarg2_) {
   std::string *arg1 = 0 ;
   org_scilab_modules_scicos::View *arg2 = (org_scilab_modules_scicos::View *) 0 ;
+  org_scilab_modules_scicos::View **pArg2 ;
   
   (void)jenv;
   (void)jcls;
@@ -3537,7 +3880,9 @@ SWIGEXPORT void JNICALL Java_org_scilab_modules_xcos_JavaControllerJNI_register_
   Swig::JavaString javaString(jenv, jarg1);
   std::string arg1_str(javaString.c_str());
   arg1 = &arg1_str;
-  arg2 = *(org_scilab_modules_scicos::View **)&jarg2; 
+  // fix -fstrict-aliasing - typemap(in)
+  pArg2 = (org_scilab_modules_scicos::View **) &jarg2;
+  arg2 = *pArg2;
   register_view((std::string const &)*arg1,arg2);
   
 }
@@ -3545,11 +3890,14 @@ SWIGEXPORT void JNICALL Java_org_scilab_modules_xcos_JavaControllerJNI_register_
 
 SWIGEXPORT void JNICALL Java_org_scilab_modules_xcos_JavaControllerJNI_unregister_1view(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   org_scilab_modules_scicos::View *arg1 = (org_scilab_modules_scicos::View *) 0 ;
+  org_scilab_modules_scicos::View **pArg1 ;
   
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(org_scilab_modules_scicos::View **)&jarg1; 
+  // fix -fstrict-aliasing - typemap(in)
+  pArg1 = (org_scilab_modules_scicos::View **) &jarg1;
+  arg1 = *pArg1;
   unregister_view(arg1);
 }
 
