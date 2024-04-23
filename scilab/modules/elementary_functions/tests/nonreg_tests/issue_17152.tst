@@ -14,6 +14,7 @@
 // https://gitlab.com/scilab/scilab/-/issues/17152
 //
 // <-- Short Description -->
+// clean function uses max(abs(A)) for relative tolerance.
 // update clean help page to accord function and doc
 
 A = [1 2;3 4];
@@ -25,4 +26,4 @@ Ac = clean(A, epsAbs);
 assert_checkequal(Ac, [0 2; 3 4]);
 
 Ac = clean(A, epsAbs, epsRel);
-assert_checkequal(Ac, [0 0; 0 4]);
+assert_checkequal(Ac, [0 2; 3 4]);
