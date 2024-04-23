@@ -2619,7 +2619,7 @@ std::wstring printVarEqualTypeDimsInfo(types::InternalType *pIT, std::wstring wc
         }
     }
 
-    //ostr << std::endl;
+    ostr << std::endl;
     if (ConfigVariable::isPrintCompact() == false)
     {
         ostr << std::endl;

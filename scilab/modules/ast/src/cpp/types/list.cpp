@@ -159,9 +159,7 @@ bool List::toString(std::wostringstream& ostr)
 
     IncreaseRef();
     in.push_back(this);
-    scilabForcedWriteW(L"\n");
-    switch (Overload::generateNameAndCall(L"p", in, 1, out, false, false))
-    {
+    switch (Overload::generateNameAndCall(L"p", in, 1, out, false, false)) {
         case Function::OK_NoResult:
             // unresolved function, fallback to a basic display
             break;
