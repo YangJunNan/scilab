@@ -953,6 +953,7 @@ types::Function::ReturnValue VariableToString(types::InternalType* pIT, const wc
 
         try
         {
+            scilabForcedWriteW(L"\n");
             ret = Overload::generateNameAndCall(L"p", in, 1, out);
             pIT->DecreaseRef();
             return ret;
@@ -997,8 +998,12 @@ types::Function::ReturnValue VariableToString(types::InternalType* pIT, const wc
                 bFinish = linesmore() == 1;
             }
 
-            scilabForcedWriteW(ostr.str().c_str());
-            ostr.str(L"");
+            if (ostr.str() != L"")
+            {
+                scilabForcedWriteW(L"\n");
+                scilabForcedWriteW(ostr.str().c_str());
+                ostr.str(L"");
+            }
         }
         while (bFinish == false && ConfigVariable::isExecutionBreak() == false);
 
