@@ -9,5 +9,5 @@
 // along with this program.
 
 function s = %_EClass_outline(x,verbose)
-     s = %type_dims_outline(x, typeStr="Java Class", brack=["",""]);   
+     s = %type_dims_outline(x, typeStr="Java Class", brack=["(",")"]);   
 endfunction

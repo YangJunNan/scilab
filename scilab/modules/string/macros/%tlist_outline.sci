@@ -13,7 +13,7 @@ function s=%tlist_outline(x, verbose)
     if type(x) == 17
         tStr = " mlist";
     end    
-    s = %type_dims_outline(x,typeStr = typeof(x)+tStr);
+    s = %type_dims_outline(x,typeStr = typeof(x)+tStr, brack=["(",")"]);
     if verbose == 1
         if isempty(fieldnames(x))
             s = s + " with no field";

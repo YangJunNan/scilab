@@ -9,5 +9,5 @@
 // along with this program.
 
 function s = %_EObj_outline(x,verbose)
-     s = %type_dims_outline(x, typeStr="Java Object", brack=["",""]);   
+     s = %type_dims_outline(x, typeStr="Java Object", brack=["(",")"]);   
 endfunction

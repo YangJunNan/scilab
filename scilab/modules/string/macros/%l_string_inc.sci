@@ -18,12 +18,15 @@ function t = %l_string_inc(x, level)
     end
 
     fmt = "%s";
-    fields = fieldnames(x)';
-    if type(x) == 15
-        fmt = "(%d)";
-        fields = 1:length(x);
-    elseif type(x) == 9
-        fields = %h_fieldnames(h)';      
+    [fields, err] = evstr("%"+typeof(x)+"_fieldnames(x)");
+    if err <> 0 
+        fields = fieldnames(x)';
+        if type(x) == 15
+            fmt = "(%d)";
+            fields = 1:length(x);
+        end
+    else
+       fields = fields'; 
     end
 
     if isstruct(x) && ~isscalar(x)
@@ -56,7 +59,7 @@ function [head,str]=%l_field_format(x,i,level,maxlevel)
         if level > 0 & size(x(i),"*")>0
             str = blanks(4) + %l_string_inc(x(i), level-1);
         end
-    elseif or(type(x(i)) == [16,17]) & ~isdef("%"+typeof(x(i))+"_outline")
+    elseif or(type(x(i)) == [16,17,128]) & ~isdef("%"+typeof(x(i))+"_outline")
         head = %tlist_outline(x(i), 0+(level>0));
         if level > 0 & ~isempty(fieldnames(x(i)))
             str = blanks(4) + %l_string_inc(x(i), level-1);
