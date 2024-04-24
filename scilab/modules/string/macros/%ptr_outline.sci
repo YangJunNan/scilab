@@ -8,13 +8,11 @@
 // For more information, see the COPYING file which you should have received
 // along with this program.
 
-function %diagram_p(scs_m)
-    t =  %l_string_inc(scs_m);
-    i = grep(t,"objs:");
-    j = grep(t,"version =");
-    i_blocks = grep(t(i+1:j-1),"Block");
-    t = [t(1:i); t(i+1:j-1)(i_blocks); t(j:$)];
-    mprintf("  %s\n",t);
+function s=%ptr_outline(x, verbose)
+    s = %type_dims_outline(x,typeStr = typeof(x), brack=["(",")"]);
+    if verbose == 1
+        if ~isempty(fieldnames(x))
+            s = s + " with fields:";        
+        end
+    end    
 endfunction
-
-
