@@ -9,7 +9,7 @@
 // along with this program.
 
 function fields = %model_fieldnames(model)
-    fields = fieldnames(model)
+    fields = getfield(1,model)(2:$)(:);
     if size(fields, "*") > 4 then // Rule out the Annotations
         if or(fields == "rpar") && typeof(model.rpar) == "diagram" then // Do nothing if model("rpar") is already a mlist
             fields = [

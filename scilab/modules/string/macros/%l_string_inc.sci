@@ -29,7 +29,7 @@ function t = %l_string_inc(x, level)
     end
 
     if isstruct(x) && ~isscalar(x)
-        t = fields;
+        t = fields(:);
     else
         t = [];
         for i = fields
@@ -48,18 +48,19 @@ function [head,str]=%l_field_format(x,i,level,maxlevel)
     str = [];
     head = emptystr();
     char = ": ";
+    verb =  0+(level>0);
     if type(x(i)) == 15
-        head = %l_outline(x(i), 0+(level>0));
+        head = %l_outline(x(i), verb);
         if level > 0  & size(x(i))>0
             str = blanks(4) + %l_string_inc(x(i), level-1);
         end
     elseif isstruct(x(i))
-        head = %st_outline(x(i), 0+(level>0));
+        head = %st_outline(x(i), verb);
         if level > 0 & size(x(i),"*")>0
             str = blanks(4) + %l_string_inc(x(i), level-1);
         end
     elseif or(type(x(i)) == [16,17]) & ~isdef("%"+typeof(x(i))+"_outline")
-        head = %tlist_outline(x(i), 0+(level>0));
+        head = %tlist_outline(x(i), verb);
         if level > 0 & ~isempty(fieldnames(x(i)))
             str = blanks(4) + %l_string_inc(x(i), level-1);
         end        
@@ -80,9 +81,9 @@ function [head,str]=%l_field_format(x,i,level,maxlevel)
         head = "function";
     end
     if isempty(head)
-        [otype, onames] = typename();
         [head,err] = evstr("%"+typeof(x(i))+"_outline(x(i),0)")
         if err <> 0
+            [otype, onames] = typename();
             [head,err] = evstr("%"+onames(otype==type(x(i)))+"_outline(x(i),0)");
             if err <> 0
                 head = typeof(x(i));
