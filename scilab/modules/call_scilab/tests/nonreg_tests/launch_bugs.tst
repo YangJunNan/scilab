@@ -7,6 +7,7 @@
 //
 // <-- CLI SHELL MODE -->
 // <-- NO CHECK REF -->
+// <-- LINUX ONLY -->
 //
 // <-- Short Description -->
 // This test is used to execute other tests
