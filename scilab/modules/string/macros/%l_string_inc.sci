@@ -18,19 +18,18 @@ function t = %l_string_inc(x, level)
     end
 
     fmt = "%s";
-    [fields, err] = evstr("%"+typeof(x)+"_fieldnames(x)");
-    if err <> 0 
-        fields = fieldnames(x)';
-        if type(x) == 15
-            fmt = "(%d)";
-            fields = 1:length(x);
-        end
+
+    if type(x) == 15
+        fields = 1:length(x);
     else
-       fields = fields'; 
+        fields = fieldnames(x)(:)';        
+    end
+    if type(fields) == 1
+        fmt = "(%d)";
     end
 
     if isstruct(x) && ~isscalar(x)
-        t = fields';
+        t = fields;
     else
         t = [];
         for i = fields

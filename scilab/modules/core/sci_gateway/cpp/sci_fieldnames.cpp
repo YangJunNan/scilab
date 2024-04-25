@@ -20,6 +20,7 @@
 #include "string.hxx"
 #include "list.hxx"
 #include "user.hxx"
+#include "overload.hxx"
 
 extern "C"
 {
@@ -84,6 +85,23 @@ types::Function::ReturnValue sci_fieldnames(types::typed_list &in, int _iRetCoun
             // FIXME : iso-functionnal to Scilab < 6
             // Works on other types except userType, {m,t}list and struct
             out.push_back(types::Double::Empty());
+            return types::Function::OK;
+        }
+
+        types::typed_list out2;
+        types::Function::ReturnValue ret = Overload::generateNameAndCall(L"fieldnames", in, 1, out2, false, false);
+        if(ret != types::Callable::OK_NoResult)
+        {
+            if (out2[0]->isString())
+            {
+                types::String* pStr = out2[0]->getAs<types::String>();
+                out.push_back(pStr);
+            } 
+            else if (out2[0]->isDouble())
+            {
+                types::Double* pDbl = out2[0]->getAs<types::Double>();
+                out.push_back(pDbl);
+            }
             return types::Function::OK;
         }
     }
