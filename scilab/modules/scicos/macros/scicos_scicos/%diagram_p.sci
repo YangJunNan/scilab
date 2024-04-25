@@ -11,8 +11,9 @@
 function %diagram_p(scs_m)
     t =  %l_string_inc(scs_m);
     i = grep(t,"objs:");
-    i_blocks = grep(t(i+1:$),"Block");
-    t = [t(1:i); t(i+1:$)(i_blocks)];
+    j = grep(t,"version =");
+    i_blocks = grep(t(i+1:j-1),"Block");
+    t = [t(1:i); t(i+1:j-1)(i_blocks); t(j:$)];
     mprintf("  %s\n",t);
 endfunction
 
