@@ -118,6 +118,12 @@ if ENABLE_DEBUG
 libsciast_la_SOURCES += src/cpp/types/inspector.cpp
 endif
 
+if IS_MACOSX
+if BUILD_FMEMOPEN
+libsciast_la_SOURCES += src/cpp/parse/fmemopen.c
+endif
+endif
+
 
 libsciast_la_CPPFLAGS = \
 	-I$(srcdir)/includes/ast \
