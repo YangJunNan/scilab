@@ -119,7 +119,7 @@ libsciast_la_SOURCES += src/cpp/types/inspector.cpp
 endif
 
 if IS_MACOSX
-if BUILD_FMEMOPEN
+if !IS_SYS_FMEMOPEN
 libsciast_la_SOURCES += src/cpp/parse/fmemopen.c
 endif
 endif
@@ -150,6 +150,12 @@ libsciast_la_CPPFLAGS = \
 	-I$(top_srcdir)/modules/graphic_objects/includes \
 	$(EIGEN_CPPFLAGS) \
 	$(AM_CPPFLAGS)
+
+if IS_MACOSX
+if IS_SYS_FMEMOPEN
+libsciast_la_CPPFLAGS += -DHAVE_SYS_FMEMOPEN
+endif
+endif
 
 
 libsciast_la_includedir=$(pkgincludedir)
