@@ -27,6 +27,8 @@ data.st = struct("a", [1 2 3]);
 data.ST = [struct("a", [1 2 3]) struct("a", [1 2 3]) struct("a", [1 2 3])];
 data.h = gcf();
 data.H = [gcf() gcf()];
+jimport java.lang.String;
+data.j = String.new("Hello world");
 //mode cannot be check in test, test_run remove empty lines in dia.ref
 for i = fieldnames(data)'
 	data(i)
@@ -44,7 +46,6 @@ end
  ans = [2x2 boolean]
   T F
   F T
- 
  ans = 
   "outline"
  ans = [2x2 string]
@@ -92,7 +93,7 @@ end
  ans = [Figure] with properties:
   children: [Axes]
   figure_position = [200,200]
-  figure_size = [610,562]
+  figure_size = [626,588]
   axes_size = [610,460]
   auto_resize = "on"
   viewport = [0,0]
@@ -125,3 +126,5 @@ end
   tag = ""
  ans = [1x2 handle]
   Figure Figure 
+ ans = (Java Object)
+Hello world

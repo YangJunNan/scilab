@@ -3,8 +3,8 @@
 // Copyright (C) 2024 - UTC - Stephane MOTTELET
 //
 
-data.x = 1;
-data.X = rand(5, 5);
+data.d = 1;
+data.D = rand(5, 5);
 data.b = %t;
 data.B = [%t %f;%f %t];
 data.s = "outline";
@@ -28,6 +28,9 @@ data.st = struct("a", [1 2 3]);
 data.ST = [struct("a", [1 2 3]) struct("a", [1 2 3]) struct("a", [1 2 3])];
 data.h = gcf();
 data.H = [gcf() gcf()];
+jimport java.lang.String;
+data.j = String.new("Hello world");
+data.x = xmlReadStr("<root><a att=""foo"" rib=""bar""><b>Hello</b></a></root>");
 
 //mode cannot be check in test, test_run remove empty lines in dia.ref
 for i = fieldnames(data)'
