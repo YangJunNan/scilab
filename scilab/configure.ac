@@ -559,9 +559,15 @@ g++-* | g++ | ccache*g++ | ccache*g++-* )
                *)
                    if test -n "$with_min_macosx_version"; then
                         min_macosx_version_major=`echo $with_min_macosx_version | awk -F\. {'print $1'}`
-                        if [[ $min_macosx_version_major -lt 11 ]]; then
+                        min_macosx_version_minor=`echo $with_min_macosx_version | awk -F\. {'print $2'}`
+                        if [[ $min_macosx_version_major -eq 10 ]]; then
                             COMPILER_CXXFLAGS="$COMPILER_CXXFLAGS -D_LIBCPP_DISABLE_AVAILABILITY"
+                            if [[ $min_macosx_version_minor -ge 13 ]]; then
+                                # fmemopen() appeared in macos >= 10.13
+                                SYS_FMEMOPEN=1
+                            fi
                         fi
+                        
                     fi
                 ;;
            esac
@@ -569,6 +575,9 @@ g++-* | g++ | ccache*g++ | ccache*g++-* )
     esac    
     ;;
 esac
+
+AM_CONDITIONAL(IS_SYS_FMEMOPEN, test -n "$SYS_FMEMOPEN")
+
 
 #### 64 bits detection
 IS_64_BITS_CPU=false
