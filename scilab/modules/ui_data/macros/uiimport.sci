@@ -25,11 +25,8 @@ function uiimport(action)
             uiimport_cbselect();
             return
         case "variable"
-            uiimport_variable();
-            if isdef("names","l") then
-                str = msprintf("[%s] = resume(d)\n", names)
-                execstr(str)
-            end
+            data = uiimport_variable();
+            ans = resume(data);
             return
         case "function"
             uiimport_function();
@@ -380,22 +377,14 @@ endfunction
 
 // -----------------------------------------------------------------------------
 
-function uiimport_variable()
+function res = uiimport_variable()
     data = get("uiimport", "userdata");
     path = data.path;
     if isempty(path) || ~isfile(path) then
         return;
     end
 
-    x = x_mdialog("Import Data", ["Variable name"], ["data"]);
-    if isempty(x) then
-        return;
-    end
-
     p = progressionbar("Import variable to workspace...");
-    names = x(1)
-    str = "[d, names] = resume(d, names)";
-
     opts = data.opts;
     varNames = data.varnames(data.keepcols);
     varNamesRef = opts.variableNames(data.keepcols);
@@ -446,9 +435,8 @@ function uiimport_variable()
         end
     end
     disp(d);
-    execstr(str);
     delete(p);
-
+    res = d;
 endfunction
 
 // -----------------------------------------------------------------------------
