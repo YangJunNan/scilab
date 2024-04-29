@@ -922,6 +922,8 @@ CODE_COVERAGE_FALSE
 CODE_COVERAGE_TRUE
 GENHTML
 LCOV
+IS_SYS_FMEMOPEN_FALSE
+IS_SYS_FMEMOPEN_TRUE
 IS_MIPS_SGI_IRIX_FALSE
 IS_MIPS_SGI_IRIX_TRUE
 IS_SOLARIS_FALSE
@@ -10909,9 +10911,15 @@ g++-* | g++ | ccache*g++ | ccache*g++-* )
                *)
                    if test -n "$with_min_macosx_version"; then
                         min_macosx_version_major=`echo $with_min_macosx_version | awk -F\. {'print $1'}`
-                        if [ $min_macosx_version_major -lt 11 ]; then
+                        min_macosx_version_minor=`echo $with_min_macosx_version | awk -F\. {'print $2'}`
+                        if [ $min_macosx_version_major -eq 10 ]; then
                             COMPILER_CXXFLAGS="$COMPILER_CXXFLAGS -D_LIBCPP_DISABLE_AVAILABILITY"
+                            if [ $min_macosx_version_minor -ge 13 ]; then
+                                # fmemopen() appeared in macos >= 10.13
+                                SYS_FMEMOPEN=1
+                            fi
                         fi
+
                     fi
                 ;;
            esac
@@ -10919,6 +10927,16 @@ g++-* | g++ | ccache*g++ | ccache*g++-* )
     esac
     ;;
 esac
+
+ if test -n "$SYS_FMEMOPEN"; then
+  IS_SYS_FMEMOPEN_TRUE=
+  IS_SYS_FMEMOPEN_FALSE='#'
+else
+  IS_SYS_FMEMOPEN_TRUE='#'
+  IS_SYS_FMEMOPEN_FALSE=
+fi
+
+
 
 #### 64 bits detection
 IS_64_BITS_CPU=false
@@ -13475,7 +13493,7 @@ printf "%s\n" "$ac_java_classpath" >&6; }
 printf %s "checking to see if the java compiler works... " >&6; }
 
     cat << \EOF > conftest.java
-// #line 13478 "configure"
+// #line 13496 "configure"
 import java.util.regex.Pattern;
 
 
@@ -13562,7 +13580,7 @@ printf %s "checking type of jvm... " >&6; }
     if test "x$ac_java_jvm_name" = "x" ; then
 
     cat << \EOF > conftest.java
-// #line 13565 "configure"
+// #line 13583 "configure"
 import java.util.regex.Pattern;
 
 import gnu.java.io.EncodingManager;
@@ -13646,7 +13664,7 @@ printf %s "checking java API version... " >&6; }
     # The class java.nio.charset.Charset is new in Java 1.4
 
     cat << \EOF > conftest.java
-// #line 13649 "configure"
+// #line 13667 "configure"
 import java.util.regex.Pattern;
 
 import java.nio.charset.Charset;
@@ -13711,7 +13729,7 @@ EOF
     # The class java.lang.StringBuilder is new in Java 1.5
 
     cat << \EOF > conftest.java
-// #line 13714 "configure"
+// #line 13732 "configure"
 import java.util.regex.Pattern;
 
 import java.lang.StringBuilder;
@@ -13776,7 +13794,7 @@ EOF
     # The class java.util.ArrayDeque is new in Java 1.6
 
     cat << \EOF > conftest.java
-// #line 13779 "configure"
+// #line 13797 "configure"
 import java.util.regex.Pattern;
 
 import java.util.ArrayDeque;
@@ -13841,7 +13859,7 @@ EOF
     # The class java.nio.file.Path is new in Java 1.7
 
     cat << \EOF > conftest.java
-// #line 13844 "configure"
+// #line 13862 "configure"
 import java.util.regex.Pattern;
 
 import java.nio.file.Path;
@@ -13906,7 +13924,7 @@ EOF
     # The class java.util.stream.DoubleStream is new in Java 1.8
 
     cat << \EOF > conftest.java
-// #line 13909 "configure"
+// #line 13927 "configure"
 import java.util.regex.Pattern;
 
 import java.util.stream.DoubleStream;
@@ -13971,7 +13989,7 @@ EOF
     # The class java.lang.ProcessHandle is new in Java 1.9
 
     cat << \EOF > conftest.java
-// #line 13974 "configure"
+// #line 13992 "configure"
 import java.util.regex.Pattern;
 
 import java.lang.ProcessHandle;
@@ -14036,7 +14054,7 @@ EOF
     # The class jdk.jfr.events.FileForceEvent is new in Java 10
 
     cat << \EOF > conftest.java
-// #line 14039 "configure"
+// #line 14057 "configure"
 import java.util.regex.Pattern;
 
 import jdk.jfr.events.FileForceEvent;
@@ -14101,7 +14119,7 @@ EOF
     # The class java.net.http.HttpClient is new in Java 11
 
     cat << \EOF > conftest.java
-// #line 14104 "configure"
+// #line 14122 "configure"
 import java.util.regex.Pattern;
 
 import java.net.http.HttpClient;
@@ -14166,7 +14184,7 @@ EOF
     # The class java.lang.constant.ClassDesc is new in Java 12
 
     cat << \EOF > conftest.java
-// #line 14169 "configure"
+// #line 14187 "configure"
 import java.util.regex.Pattern;
 
 import java.lang.constant.ClassDesc;
@@ -14231,7 +14249,7 @@ EOF
     # Method newFileSystem(Path) was added to java.nio.file.FileSystems in Java 13
 
     cat << \EOF > conftest.java
-// #line 14234 "configure"
+// #line 14252 "configure"
 import java.util.regex.Pattern;
 
 
@@ -14303,7 +14321,7 @@ EOF
     # Switch expressions are a standard feature of Java 14 (were a preview feature in 12 & 13)
 
     cat << \EOF > conftest.java
-// #line 14306 "configure"
+// #line 14324 "configure"
 import java.util.regex.Pattern;
 
 
@@ -14380,7 +14398,7 @@ EOF
     # Text blocks are a standard feature of Java 15 (were a preview feature in 13 & 14)
 
     cat << \EOF > conftest.java
-// #line 14383 "configure"
+// #line 14401 "configure"
 import java.util.regex.Pattern;
 
 
@@ -14450,7 +14468,7 @@ EOF
     # The class java.net.UnixDomainSocketAddress is new in Java 16
 
     cat << \EOF > conftest.java
-// #line 14453 "configure"
+// #line 14471 "configure"
 import java.util.regex.Pattern;
 
 import java.net.UnixDomainSocketAddress;
@@ -14515,7 +14533,7 @@ EOF
     # The class java.util.random.RandomGenerator is new in Java 17
 
     cat << \EOF > conftest.java
-// #line 14518 "configure"
+// #line 14536 "configure"
 import java.util.regex.Pattern;
 
 import java.util.random.RandomGenerator;
@@ -16000,7 +16018,7 @@ fi
                 # Checked before activation.jar to avoid false detection
 
     cat << \EOF > conftestSharedChecker.java
-// #line 16003 "configure"
+// #line 16021 "configure"
 import java.util.regex.Pattern;
 import java.io.File;
 import java.io.IOException;
@@ -16201,7 +16219,7 @@ printf %s "checking jakarta.activation... " >&6; }
     if test ! -f conftestSharedChecker.class ; then
 
     cat << \EOF > conftestSharedChecker.java
-// #line 16204 "configure"
+// #line 16222 "configure"
 import java.util.regex.Pattern;
 import java.io.File;
 import java.io.IOException;
@@ -16436,7 +16454,7 @@ printf %s "checking jgraphx... " >&6; }
     if test ! -f conftestSharedChecker.class ; then
 
     cat << \EOF > conftestSharedChecker.java
-// #line 16439 "configure"
+// #line 16457 "configure"
 import java.util.regex.Pattern;
 import java.io.File;
 import java.io.IOException;
@@ -16670,7 +16688,7 @@ printf %s "checking jaxb-api... " >&6; }
     if test ! -f conftestSharedChecker.class ; then
 
     cat << \EOF > conftestSharedChecker.java
-// #line 16673 "configure"
+// #line 16691 "configure"
 import java.util.regex.Pattern;
 import java.io.File;
 import java.io.IOException;
@@ -16904,7 +16922,7 @@ printf %s "checking jaxb-runtime... " >&6; }
     if test ! -f conftestSharedChecker.class ; then
 
     cat << \EOF > conftestSharedChecker.java
-// #line 16907 "configure"
+// #line 16925 "configure"
 import java.util.regex.Pattern;
 import java.io.File;
 import java.io.IOException;
@@ -17138,7 +17156,7 @@ printf %s "checking jaxb-impl... " >&6; }
     if test ! -f conftestSharedChecker.class ; then
 
     cat << \EOF > conftestSharedChecker.java
-// #line 17141 "configure"
+// #line 17159 "configure"
 import java.util.regex.Pattern;
 import java.io.File;
 import java.io.IOException;
@@ -17372,7 +17390,7 @@ printf %s "checking activation... " >&6; }
     if test ! -f conftestSharedChecker.class ; then
 
     cat << \EOF > conftestSharedChecker.java
-// #line 17375 "configure"
+// #line 17393 "configure"
 import java.util.regex.Pattern;
 import java.io.File;
 import java.io.IOException;
@@ -17606,7 +17624,7 @@ printf %s "checking istack-commons-runtime... " >&6; }
     if test ! -f conftestSharedChecker.class ; then
 
     cat << \EOF > conftestSharedChecker.java
-// #line 17609 "configure"
+// #line 17627 "configure"
 import java.util.regex.Pattern;
 import java.io.File;
 import java.io.IOException;
@@ -17842,7 +17860,7 @@ printf %s "checking scirenderer... " >&6; }
     if test ! -f conftestSharedChecker.class ; then
 
     cat << \EOF > conftestSharedChecker.java
-// #line 17845 "configure"
+// #line 17863 "configure"
 import java.util.regex.Pattern;
 import java.io.File;
 import java.io.IOException;
@@ -18084,7 +18102,7 @@ printf %s "checking flexdock... " >&6; }
     if test ! -f conftestSharedChecker.class ; then
 
     cat << \EOF > conftestSharedChecker.java
-// #line 18087 "configure"
+// #line 18105 "configure"
 import java.util.regex.Pattern;
 import java.io.File;
 import java.io.IOException;
@@ -18318,7 +18336,7 @@ printf %s "checking looks... " >&6; }
     if test ! -f conftestSharedChecker.class ; then
 
     cat << \EOF > conftestSharedChecker.java
-// #line 18321 "configure"
+// #line 18339 "configure"
 import java.util.regex.Pattern;
 import java.io.File;
 import java.io.IOException;
@@ -18552,7 +18570,7 @@ printf %s "checking jgoodies-looks... " >&6; }
     if test ! -f conftestSharedChecker.class ; then
 
     cat << \EOF > conftestSharedChecker.java
-// #line 18555 "configure"
+// #line 18573 "configure"
 import java.util.regex.Pattern;
 import java.io.File;
 import java.io.IOException;
@@ -18787,7 +18805,7 @@ printf %s "checking skinlf... " >&6; }
     if test ! -f conftestSharedChecker.class ; then
 
     cat << \EOF > conftestSharedChecker.java
-// #line 18790 "configure"
+// #line 18808 "configure"
 import java.util.regex.Pattern;
 import java.io.File;
 import java.io.IOException;
@@ -19021,7 +19039,7 @@ printf %s "checking javax.annotation-api... " >&6; }
     if test ! -f conftestSharedChecker.class ; then
 
     cat << \EOF > conftestSharedChecker.java
-// #line 19024 "configure"
+// #line 19042 "configure"
 import java.util.regex.Pattern;
 import java.io.File;
 import java.io.IOException;
@@ -19255,7 +19273,7 @@ printf %s "checking jakarta.activation-api... " >&6; }
     if test ! -f conftestSharedChecker.class ; then
 
     cat << \EOF > conftestSharedChecker.java
-// #line 19258 "configure"
+// #line 19276 "configure"
 import java.util.regex.Pattern;
 import java.io.File;
 import java.io.IOException;
@@ -19489,7 +19507,7 @@ printf %s "checking jogl... " >&6; }
     if test ! -f conftestSharedChecker.class ; then
 
     cat << \EOF > conftestSharedChecker.java
-// #line 19492 "configure"
+// #line 19510 "configure"
 import java.util.regex.Pattern;
 import java.io.File;
 import java.io.IOException;
@@ -19829,7 +19847,7 @@ printf %s "checking gluegen... " >&6; }
     if test ! -f conftestSharedChecker.class ; then
 
     cat << \EOF > conftestSharedChecker.java
-// #line 19832 "configure"
+// #line 19850 "configure"
 import java.util.regex.Pattern;
 import java.io.File;
 import java.io.IOException;
@@ -20120,7 +20138,7 @@ printf %s "checking jhall... " >&6; }
     if test ! -f conftestSharedChecker.class ; then
 
     cat << \EOF > conftestSharedChecker.java
-// #line 20123 "configure"
+// #line 20141 "configure"
 import java.util.regex.Pattern;
 import java.io.File;
 import java.io.IOException;
@@ -20352,7 +20370,7 @@ printf %s "checking javahelp2... " >&6; }
     if test ! -f conftestSharedChecker.class ; then
 
     cat << \EOF > conftestSharedChecker.java
-// #line 20355 "configure"
+// #line 20373 "configure"
 import java.util.regex.Pattern;
 import java.io.File;
 import java.io.IOException;
@@ -20587,7 +20605,7 @@ printf %s "checking lucene-core... " >&6; }
     if test ! -f conftestSharedChecker.class ; then
 
     cat << \EOF > conftestSharedChecker.java
-// #line 20590 "configure"
+// #line 20608 "configure"
 import java.util.regex.Pattern;
 import java.io.File;
 import java.io.IOException;
@@ -20821,7 +20839,7 @@ printf %s "checking lucene-analyzers-common... " >&6; }
     if test ! -f conftestSharedChecker.class ; then
 
     cat << \EOF > conftestSharedChecker.java
-// #line 20824 "configure"
+// #line 20842 "configure"
 import java.util.regex.Pattern;
 import java.io.File;
 import java.io.IOException;
@@ -21055,7 +21073,7 @@ printf %s "checking lucene-queryparser... " >&6; }
     if test ! -f conftestSharedChecker.class ; then
 
     cat << \EOF > conftestSharedChecker.java
-// #line 21058 "configure"
+// #line 21076 "configure"
 import java.util.regex.Pattern;
 import java.io.File;
 import java.io.IOException;
@@ -21289,7 +21307,7 @@ printf %s "checking jrosetta-API... " >&6; }
     if test ! -f conftestSharedChecker.class ; then
 
     cat << \EOF > conftestSharedChecker.java
-// #line 21292 "configure"
+// #line 21310 "configure"
 import java.util.regex.Pattern;
 import java.io.File;
 import java.io.IOException;
@@ -21520,7 +21538,7 @@ printf %s "checking jrosetta-api... " >&6; }
     if test ! -f conftestSharedChecker.class ; then
 
     cat << \EOF > conftestSharedChecker.java
-// #line 21523 "configure"
+// #line 21541 "configure"
 import java.util.regex.Pattern;
 import java.io.File;
 import java.io.IOException;
@@ -21755,7 +21773,7 @@ printf %s "checking jrosetta-engine... " >&6; }
     if test ! -f conftestSharedChecker.class ; then
 
     cat << \EOF > conftestSharedChecker.java
-// #line 21758 "configure"
+// #line 21776 "configure"
 import java.util.regex.Pattern;
 import java.io.File;
 import java.io.IOException;
@@ -21991,7 +22009,7 @@ printf %s "checking jeuclid-core... " >&6; }
     if test ! -f conftestSharedChecker.class ; then
 
     cat << \EOF > conftestSharedChecker.java
-// #line 21994 "configure"
+// #line 22012 "configure"
 import java.util.regex.Pattern;
 import java.io.File;
 import java.io.IOException;
@@ -22226,7 +22244,7 @@ printf %s "checking javafx.base... " >&6; }
     if test ! -f conftestSharedChecker.class ; then
 
     cat << \EOF > conftestSharedChecker.java
-// #line 22229 "configure"
+// #line 22247 "configure"
 import java.util.regex.Pattern;
 import java.io.File;
 import java.io.IOException;
@@ -22461,7 +22479,7 @@ printf %s "checking javafx.swing... " >&6; }
     if test ! -f conftestSharedChecker.class ; then
 
     cat << \EOF > conftestSharedChecker.java
-// #line 22464 "configure"
+// #line 22482 "configure"
 import java.util.regex.Pattern;
 import java.io.File;
 import java.io.IOException;
@@ -22696,7 +22714,7 @@ printf %s "checking javafx.graphics... " >&6; }
     if test ! -f conftestSharedChecker.class ; then
 
     cat << \EOF > conftestSharedChecker.java
-// #line 22699 "configure"
+// #line 22717 "configure"
 import java.util.regex.Pattern;
 import java.io.File;
 import java.io.IOException;
@@ -22931,7 +22949,7 @@ printf %s "checking fop... " >&6; }
     if test ! -f conftestSharedChecker.class ; then
 
     cat << \EOF > conftestSharedChecker.java
-// #line 22934 "configure"
+// #line 22952 "configure"
 import java.util.regex.Pattern;
 import java.io.File;
 import java.io.IOException;
@@ -23173,7 +23191,7 @@ printf %s "checking freehep-graphics2d... " >&6; }
     if test ! -f conftestSharedChecker.class ; then
 
     cat << \EOF > conftestSharedChecker.java
-// #line 23176 "configure"
+// #line 23194 "configure"
 import java.util.regex.Pattern;
 import java.io.File;
 import java.io.IOException;
@@ -23407,7 +23425,7 @@ printf %s "checking freehep-graphicsio... " >&6; }
     if test ! -f conftestSharedChecker.class ; then
 
     cat << \EOF > conftestSharedChecker.java
-// #line 23410 "configure"
+// #line 23428 "configure"
 import java.util.regex.Pattern;
 import java.io.File;
 import java.io.IOException;
@@ -23641,7 +23659,7 @@ printf %s "checking freehep-graphicsio-emf... " >&6; }
     if test ! -f conftestSharedChecker.class ; then
 
     cat << \EOF > conftestSharedChecker.java
-// #line 23644 "configure"
+// #line 23662 "configure"
 import java.util.regex.Pattern;
 import java.io.File;
 import java.io.IOException;
@@ -23875,7 +23893,7 @@ printf %s "checking freehep-io... " >&6; }
     if test ! -f conftestSharedChecker.class ; then
 
     cat << \EOF > conftestSharedChecker.java
-// #line 23878 "configure"
+// #line 23896 "configure"
 import java.util.regex.Pattern;
 import java.io.File;
 import java.io.IOException;
@@ -24109,7 +24127,7 @@ printf %s "checking freehep-util... " >&6; }
     if test ! -f conftestSharedChecker.class ; then
 
     cat << \EOF > conftestSharedChecker.java
-// #line 24112 "configure"
+// #line 24130 "configure"
 import java.util.regex.Pattern;
 import java.io.File;
 import java.io.IOException;
@@ -24344,7 +24362,7 @@ printf %s "checking batik-all... " >&6; }
     if test ! -f conftestSharedChecker.class ; then
 
     cat << \EOF > conftestSharedChecker.java
-// #line 24347 "configure"
+// #line 24365 "configure"
 import java.util.regex.Pattern;
 import java.io.File;
 import java.io.IOException;
@@ -24578,7 +24596,7 @@ printf %s "checking batik... " >&6; }
     if test ! -f conftestSharedChecker.class ; then
 
     cat << \EOF > conftestSharedChecker.java
-// #line 24581 "configure"
+// #line 24599 "configure"
 import java.util.regex.Pattern;
 import java.io.File;
 import java.io.IOException;
@@ -24813,7 +24831,7 @@ printf %s "checking commons-io... " >&6; }
     if test ! -f conftestSharedChecker.class ; then
 
     cat << \EOF > conftestSharedChecker.java
-// #line 24816 "configure"
+// #line 24834 "configure"
 import java.util.regex.Pattern;
 import java.io.File;
 import java.io.IOException;
@@ -25047,7 +25065,7 @@ printf %s "checking xmlgraphics-commons... " >&6; }
     if test ! -f conftestSharedChecker.class ; then
 
     cat << \EOF > conftestSharedChecker.java
-// #line 25050 "configure"
+// #line 25068 "configure"
 import java.util.regex.Pattern;
 import java.io.File;
 import java.io.IOException;
@@ -25281,7 +25299,7 @@ printf %s "checking avalon-framework... " >&6; }
     if test ! -f conftestSharedChecker.class ; then
 
     cat << \EOF > conftestSharedChecker.java
-// #line 25284 "configure"
+// #line 25302 "configure"
 import java.util.regex.Pattern;
 import java.io.File;
 import java.io.IOException;
@@ -25515,7 +25533,7 @@ printf %s "checking xml-apis-ext... " >&6; }
     if test ! -f conftestSharedChecker.class ; then
 
     cat << \EOF > conftestSharedChecker.java
-// #line 25518 "configure"
+// #line 25536 "configure"
 import java.util.regex.Pattern;
 import java.io.File;
 import java.io.IOException;
@@ -25749,7 +25767,7 @@ printf %s "checking xml-commons-apis-ext... " >&6; }
     if test ! -f conftestSharedChecker.class ; then
 
     cat << \EOF > conftestSharedChecker.java
-// #line 25752 "configure"
+// #line 25770 "configure"
 import java.util.regex.Pattern;
 import java.io.File;
 import java.io.IOException;
@@ -25987,7 +26005,7 @@ printf %s "checking commons-logging... " >&6; }
     if test ! -f conftestSharedChecker.class ; then
 
     cat << \EOF > conftestSharedChecker.java
-// #line 25990 "configure"
+// #line 26008 "configure"
 import java.util.regex.Pattern;
 import java.io.File;
 import java.io.IOException;
@@ -26221,7 +26239,7 @@ printf %s "checking jlatexmath... " >&6; }
     if test ! -f conftestSharedChecker.class ; then
 
     cat << \EOF > conftestSharedChecker.java
-// #line 26224 "configure"
+// #line 26242 "configure"
 import java.util.regex.Pattern;
 import java.io.File;
 import java.io.IOException;
@@ -26455,7 +26473,7 @@ printf %s "checking jlatexmath-fop... " >&6; }
     if test ! -f conftestSharedChecker.class ; then
 
     cat << \EOF > conftestSharedChecker.java
-// #line 26458 "configure"
+// #line 26476 "configure"
 import java.util.regex.Pattern;
 import java.io.File;
 import java.io.IOException;
@@ -26689,7 +26707,7 @@ printf %s "checking saxon9he... " >&6; }
     if test ! -f conftestSharedChecker.class ; then
 
     cat << \EOF > conftestSharedChecker.java
-// #line 26692 "configure"
+// #line 26710 "configure"
 import java.util.regex.Pattern;
 import java.io.File;
 import java.io.IOException;
@@ -26929,7 +26947,7 @@ printf %s "checking checkstyle... " >&6; }
     if test ! -f conftestSharedChecker.class ; then
 
     cat << \EOF > conftestSharedChecker.java
-// #line 26932 "configure"
+// #line 26950 "configure"
 import java.util.regex.Pattern;
 import java.io.File;
 import java.io.IOException;
@@ -27163,7 +27181,7 @@ printf %s "checking commons-beanutils... " >&6; }
     if test ! -f conftestSharedChecker.class ; then
 
     cat << \EOF > conftestSharedChecker.java
-// #line 27166 "configure"
+// #line 27184 "configure"
 import java.util.regex.Pattern;
 import java.io.File;
 import java.io.IOException;
@@ -27397,7 +27415,7 @@ printf %s "checking antlr... " >&6; }
     if test ! -f conftestSharedChecker.class ; then
 
     cat << \EOF > conftestSharedChecker.java
-// #line 27400 "configure"
+// #line 27418 "configure"
 import java.util.regex.Pattern;
 import java.io.File;
 import java.io.IOException;
@@ -27631,7 +27649,7 @@ printf %s "checking junit4... " >&6; }
     if test ! -f conftestSharedChecker.class ; then
 
     cat << \EOF > conftestSharedChecker.java
-// #line 27634 "configure"
+// #line 27652 "configure"
 import java.util.regex.Pattern;
 import java.io.File;
 import java.io.IOException;
@@ -27862,7 +27880,7 @@ printf %s "checking junit... " >&6; }
     if test ! -f conftestSharedChecker.class ; then
 
     cat << \EOF > conftestSharedChecker.java
-// #line 27865 "configure"
+// #line 27883 "configure"
 import java.util.regex.Pattern;
 import java.io.File;
 import java.io.IOException;
@@ -28100,7 +28118,7 @@ printf %s "checking hamcrest-all... " >&6; }
     if test ! -f conftestSharedChecker.class ; then
 
     cat << \EOF > conftestSharedChecker.java
-// #line 28103 "configure"
+// #line 28121 "configure"
 import java.util.regex.Pattern;
 import java.io.File;
 import java.io.IOException;
@@ -28331,7 +28349,7 @@ printf %s "checking hamcrest/all... " >&6; }
     if test ! -f conftestSharedChecker.class ; then
 
     cat << \EOF > conftestSharedChecker.java
-// #line 28334 "configure"
+// #line 28352 "configure"
 import java.util.regex.Pattern;
 import java.io.File;
 import java.io.IOException;
@@ -28566,7 +28584,7 @@ printf %s "checking cobertura... " >&6; }
     if test ! -f conftestSharedChecker.class ; then
 
     cat << \EOF > conftestSharedChecker.java
-// #line 28569 "configure"
+// #line 28587 "configure"
 import java.util.regex.Pattern;
 import java.io.File;
 import java.io.IOException;
@@ -28800,7 +28818,7 @@ printf %s "checking asm3... " >&6; }
     if test ! -f conftestSharedChecker.class ; then
 
     cat << \EOF > conftestSharedChecker.java
-// #line 28803 "configure"
+// #line 28821 "configure"
 import java.util.regex.Pattern;
 import java.io.File;
 import java.io.IOException;
@@ -29031,7 +29049,7 @@ printf %s "checking asm... " >&6; }
     if test ! -f conftestSharedChecker.class ; then
 
     cat << \EOF > conftestSharedChecker.java
-// #line 29034 "configure"
+// #line 29052 "configure"
 import java.util.regex.Pattern;
 import java.io.File;
 import java.io.IOException;
@@ -29265,7 +29283,7 @@ printf %s "checking ecj... " >&6; }
     if test ! -f conftestSharedChecker.class ; then
 
     cat << \EOF > conftestSharedChecker.java
-// #line 29268 "configure"
+// #line 29286 "configure"
 import java.util.regex.Pattern;
 import java.io.File;
 import java.io.IOException;
@@ -56334,6 +56352,10 @@ Usually this means the macro was only invoked conditionally." "$LINENO" 5
 fi
 if test -z "${IS_MIPS_SGI_IRIX_TRUE}" && test -z "${IS_MIPS_SGI_IRIX_FALSE}"; then
   as_fn_error $? "conditional \"IS_MIPS_SGI_IRIX\" was never defined.
+Usually this means the macro was only invoked conditionally." "$LINENO" 5
+fi
+if test -z "${IS_SYS_FMEMOPEN_TRUE}" && test -z "${IS_SYS_FMEMOPEN_FALSE}"; then
+  as_fn_error $? "conditional \"IS_SYS_FMEMOPEN\" was never defined.
 Usually this means the macro was only invoked conditionally." "$LINENO" 5
 fi
 if test -z "${CODE_COVERAGE_TRUE}" && test -z "${CODE_COVERAGE_FALSE}"; then
