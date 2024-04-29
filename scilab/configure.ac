@@ -516,7 +516,7 @@ g++-* | g++ | ccache*g++ | ccache*g++-* )
     fi
 
     if test "$enable_debug_CXX" = yes; then
-        DEBUG_CXXFLAGS="-Wall -Wextra -O0 -g3"
+        DEBUG_CXXFLAGS="-Wall -Wextra -Wno-unused-parameter -O0 -g3"
         case "$host" in
         *-linux-gnu )
             # Only doing that under Linux
@@ -539,7 +539,7 @@ g++-* | g++ | ccache*g++ | ccache*g++-* )
         CODECOVERAGE_CXXFLAGS="-fprofile-arcs -ftest-coverage"
     fi
     if test "$enable_debug_CXX" = yes; then
-        DEBUG_CXXFLAGS="-Wall -Wextra -O0 -g3"
+        DEBUG_CXXFLAGS="-Wall -Wextra -Wno-unused-parameter -O0 -g3"
     else
         DEBUG_CXXFLAGS="-DNDEBUG -g1 -O2"
     fi
@@ -590,7 +590,7 @@ gcc-* | gcc | ccache*gcc | ccache*gcc-* )
     fi
 
     if test "$enable_debug_C" = yes; then
-        DEBUG_CFLAGS="-Wall -Wextra -O0 -g3"
+        DEBUG_CFLAGS="-Wall -Wextra -Wno-unused-parameter -O0 -g3"
         # used to be -O0
         case "$host" in
         *-linux-gnu )
@@ -677,7 +677,7 @@ gcc-* | gcc | ccache*gcc | ccache*gcc-* )
         CODECOVERAGE_CFLAGS="-fprofile-arcs -ftest-coverage"
     fi
     if test "$enable_debug_C" = yes; then
-        DEBUG_CFLAGS="-Wall -Wextra -O0 -g3"
+        DEBUG_CFLAGS="-Wall -Wextra -Wno-unused-parameter -O0 -g3"
         # used to be -O0
     else
         DEBUG_CFLAGS="-DNDEBUG -g1 -O2"
@@ -2065,6 +2065,7 @@ AC_DEFINE_UNQUOTED([SHARED_LIB_EXTW],[L"$shrext_cmds"],[Extension of a shared li
 #########
 AC_CHECK_STDCPP_STATIC()
 AC_CHECK_ADDRESS_SANTIZER()
+AC_CHECK_ANALYZER()
 
 #################
 ## stop on warning
