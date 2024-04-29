@@ -297,7 +297,7 @@ atomsRemove("toolbox_7");
                 <revnumber>2023.0.0</revnumber>
                 <revdescription>
                     When a <literal>module</literal> has no binary compiled for the running Scilab
-                    M.m version but has published (former) sources, <function>atomsInstal</function>
+                    M.m version but has published (former) sources, <function>atomsInstall</function>
                     automatically tries to compile them.
                 </revdescription>
             </revision>

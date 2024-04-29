@@ -167,7 +167,7 @@ for  c = M, c, end
    6.
 ]]></screen>
 
-        <para>Iterate on the columns of a cells array :</para>
+        <para>Iterate on the columns of a cells array:</para>
         <programlisting role="example"><![CDATA[
 C = {%pi, "This is πι" ; %z^2, %t}
 for  c = C, c, end

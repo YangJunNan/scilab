@@ -25,18 +25,18 @@
     </refnamediv>
     <refsynopsisdiv>
         <title>Синтаксис</title>
-        <synopsis>headsLengths = strspn(Texts, allowedChars)</synopsis>
+        <synopsis>headsLengths = strspn(Strings, allowedChars)</synopsis>
     </refsynopsisdiv>
     <refsection>
         <title>Аргументы</title>
         <variablelist>
             <varlistentry>
-                <term>Texts, allowedChars</term>
+                <term>Strings, allowedChars</term>
                 <listitem>
                     <para>
                         Матрицы текстов одинаковых размеров.
                         Разрешённые символы <varname>allowedChars</varname> могут быть в виде скалярной строки.
-                        Тогда она используется для всех элементов текстов <varname>Texts</varname>.
+                        Тогда она используется для всех элементов текстов <varname>Strings</varname>.
                     </para>
                 </listitem>
             </varlistentry>
@@ -45,7 +45,7 @@
                 <listitem>
                     <para>
                         Matrix of positive real integers, of the size of <varname>Strings</varname>:
-						lengths of the selected <varname>Texts</varname> heads.
+						lengths of the selected <varname>Strings</varname> heads.
                     </para>
                 </listitem>
             </varlistentry>
@@ -54,8 +54,8 @@
     <refsection>
         <title>Описание</title>
         <para>
-            <literal>headsLengths = strspn(Texts, allowedChars)</literal> возвращает длину начальной
-            части <varname>Texts</varname>, которая состоит только из символов,
+            <literal>headsLengths = strspn(Strings, allowedChars)</literal> возвращает длину начальной
+            части <varname>Strings</varname>, которая состоит только из символов,
             которые являются частью разрешённых символов <varname>allowedChars</varname>.
         </para>
     </refsection>
