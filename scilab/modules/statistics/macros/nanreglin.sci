@@ -42,12 +42,22 @@ function [a, b] = nanreglin(x, y, dflag)
         x2 = x(:, noNanY);
         nanX = isnan(x2);
         if or(nanX) then // At least one NaN is x or y.
-            [k, j] = find(nanX);
-            x2(k, j) = [];
-            y2(1, j) = [];
+            if isvector(x2) then
+                j = find(nanX);
+                x2(j) = [];
+                y2(j) = [];
+            else
+                [k, j] = find(nanX);
+                x2(:, j) = [];
+                y2(1, j) = [];
+            end
         end
 
-        [a(i, :), b(i)] = reglin(x2, y2, dflag);
+        if x2 == [] then
+            continue;
+        end
+
+        [a(i, 1:size(x2, "r")), b(i)] = reglin(x2, y2, dflag);
     end
 
 endfunction
