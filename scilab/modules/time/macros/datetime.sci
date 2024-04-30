@@ -37,7 +37,7 @@ function out = datetime(varargin)
             [r, km, vindex, nb] = unique(m, "keepOrder");
             [m_nb, m_loc] = members(r, mount_list1);
             if or(m_loc == 0) then
-                error(msprintf(_("%s: Impossible to apply the %s input format.\n"), "datetime", sci2exp(infmtRef)));
+                error(msprintf(_("%s: Unable to apply the %s input format.\n"), "datetime", sci2exp(infmtRef)));
             end
         end
 
@@ -48,7 +48,7 @@ function out = datetime(varargin)
         nbSpace = length(strindex(t(jdx), " "));
 
         if nbSpace <> nbSpaceExpected then
-            error(msprintf(_("%s: Impossible to apply the %s input format.\n"), "datetime", sci2exp(infmtRef)));
+            error(msprintf(_("%s: Unable to apply the %s input format.\n"), "datetime", sci2exp(infmtRef)));
         end
         
         test = find(length(t) <> expectedLen);
@@ -95,7 +95,7 @@ function out = datetime(varargin)
             tmp(:,$) = [];
         else
             if grep(infmt, "hh") then
-                error(msprintf(_("%s: Impossible to apply the %s input format, use ""HH"" instead of ""hh"".\n"), "datetime", sci2exp(infmtRef)));
+                error(msprintf(_("%s: Unable to apply the %s input format, use ""HH"" instead of ""hh"".\n"), "datetime", sci2exp(infmtRef)));
             end
         end
         
