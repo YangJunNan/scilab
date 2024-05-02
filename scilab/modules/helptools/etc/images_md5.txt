@@ -990,6 +990,7 @@ polyline_properties_3.png=3349e39fe563e09fc488e9ed03c6e4ae
 prbs_a_1.png=4e8551544fa2d2085e74ddfe799ec579
 prbs_a_2.png=ef716bac583e1660fe1f49a4352b7b4b
 prettyprint_1.png=5d60f609825ec81746672b39278e27ad
+rainbow_1.png=6aedcca26ea28eae45509ca2e828dc92
 rainbowcolormap_1.png=68be57c62080633d0e67a91389f5ecd8
 reglin_1.png=9b22e4b782eb58eb90e5dccd50dfb466
 remezb_1.png=17a8eb044482a1871bede91c36eddf0f

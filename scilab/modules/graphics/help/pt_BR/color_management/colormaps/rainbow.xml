@@ -13,14 +13,18 @@
  * along with this program.
  *
  -->
-<refentry xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svg="http://www.w3.org/2000/svg" xmlns:ns3="http://www.w3.org/1999/xhtml" xmlns:mml="http://www.w3.org/1998/Math/MathML" xmlns:db="http://docbook.org/ns/docbook" xmlns:scilab="http://www.scilab.org" xml:id="rainbowcolormap" xml:lang="pt">
+<refentry xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svg="http://www.w3.org/2000/svg" xmlns:ns3="http://www.w3.org/1999/xhtml" xmlns:mml="http://www.w3.org/1998/Math/MathML" xmlns:db="http://docbook.org/ns/docbook" xmlns:scilab="http://www.scilab.org" xml:id="rainbow" xml:lang="pt">
     <refnamediv>
-        <refname>rainbowcolormap</refname>
+        <refname>rainbow</refname>
         <refpurpose>Mapa de cores que varia como um de arco-íris</refpurpose>
+    </refnamediv>
+    <refnamediv xml:id="rainbowcolormap">
+        <refname>rainbowcolormap</refname>
+        <refpurpose>This function is obsolete and will be removed in Scilab 2026.0.0, please use <link linkend="rainbow">rainbow</link> instead.</refpurpose>
     </refnamediv>
     <refsynopsisdiv>
         <title>Seqüência de Chamamento</title>
-        <synopsis>cmap=rainbowcolormap(n)</synopsis>
+        <synopsis>cmap=rainbow(n)</synopsis>
     </refsynopsisdiv>
     <refsection>
         <title>Parâmetros</title>
@@ -44,7 +48,7 @@
     <refsection>
         <title>Descrição</title>
         <para>
-            <literal>rainbowcolormap</literal> computa um mapa de cores com
+            <literal>rainbow</literal> computa um mapa de cores com
             <literal>n</literal> cores variando como um arco-íris.
         </para>
     </refsection>
@@ -53,7 +57,7 @@
         <programlisting role="example"><![CDATA[
 f = scf();
 plot3d1();
-f.color_map = rainbowcolormap(32);
+f.color_map = rainbow(32);
  ]]></programlisting>
     </refsection>
     <refsection role="see also">

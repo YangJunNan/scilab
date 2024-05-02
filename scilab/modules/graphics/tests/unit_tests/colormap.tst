@@ -30,9 +30,11 @@ for cmapFun = cmapFunctions
 end
 
 // Check that obsolete functions can still be called until removed
-cmapFunctions = ["autumn", "bone", "cool", "copper", "gray", "hot", "hsv", "jet", "ocean", "parula", "pink"];
+cmapFunctions = ["autumn", "bone", "cool", "copper", "gray", "hot", "hsv", "jet", ...
+                 "ocean", "parula", "pink", "rainbow"];
 
 for cmapFun = cmapFunctions
-    execstr("cmap = " + cmapFun + "colormap(42)");
+    cmap = [];
+    execstr("cmap = " + cmapFun + "colormap(42);");
     assert_checkequal(size(cmap), [42, 3]);
 end
