@@ -13,14 +13,18 @@
  * along with this program.
  *
  -->
-<refentry xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svg="http://www.w3.org/2000/svg" xmlns:mml="http://www.w3.org/1998/Math/MathML" xmlns:db="http://docbook.org/ns/docbook" xmlns:scilab="http://www.scilab.org"  xml:lang="en" xml:id="jetcolormap">
+<refentry xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svg="http://www.w3.org/2000/svg" xmlns:mml="http://www.w3.org/1998/Math/MathML" xmlns:db="http://docbook.org/ns/docbook" xmlns:scilab="http://www.scilab.org"  xml:lang="en" xml:id="jet">
     <refnamediv>
-        <refname>jetcolormap</refname>
+        <refname>jet</refname>
         <refpurpose>blue to red colormap</refpurpose>
+    </refnamediv>
+    <refnamediv xml:id="jetcolormap">
+        <refname>jetcolormap</refname>
+        <refpurpose>This function is obsolete and will be removed in Scilab 2026.0.0, please use <link linkend="jet">jet</link> instead.</refpurpose>
     </refnamediv>
     <refsynopsisdiv>
         <title>Syntax</title>
-        <synopsis>cmap=jetcolormap(n)</synopsis>
+        <synopsis>cmap=jet(n)</synopsis>
     </refsynopsisdiv>
     <refsection>
         <title>Arguments</title>
@@ -44,7 +48,7 @@
     <refsection>
         <title>Description</title>
         <para>
-            <literal>jetcolormap</literal> computes a colormap with <literal>n</literal> colors
+            <literal>jet</literal> computes a colormap with <literal>n</literal> colors
             varying from blue, lightblue, green, yellow, orange then red
         </para>
     </refsection>
@@ -54,12 +58,12 @@
         <programlisting role="example"><![CDATA[
 f = scf();
 plot3d1();
-f.color_map = jetcolormap(32);
+f.color_map = jet(32);
  ]]></programlisting>
         <scilab:image>
             f = scf();
             plot3d1();
-            f.color_map = jetcolormap(32);
+            f.color_map = jet(32);
         </scilab:image>
     </refsection>
     <refsection role="see also">
@@ -114,5 +118,22 @@ f.color_map = jetcolormap(32);
                 <link linkend="wintercolormap">wintercolormap</link>
             </member>
         </simplelist>
+    </refsection>
+    <refsection>
+        <title>History</title>
+        <revhistory>
+            <revision>
+                <revnumber>2024.1.0</revnumber>
+                <revremark>
+                    Function <literal>jet</literal> introduced.
+                </revremark>
+            </revision>
+            <revision>
+                <revnumber>2024.1.0</revnumber>
+                <revremark>
+                    Function <literal>jetcolormap</literal> is obsolete and will be removed in Scilab 2026.0.0, please use <link linkend="jet">jet</link> instead.
+                </revremark>
+            </revision>
+        </revhistory>
     </refsection>
 </refentry>

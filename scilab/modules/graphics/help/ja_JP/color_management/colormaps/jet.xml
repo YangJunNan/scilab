@@ -22,13 +22,21 @@
 
  -->
 
-<refentry xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svg="http://www.w3.org/2000/svg" xmlns:mml="http://www.w3.org/1998/Math/MathML" xmlns:db="http://docbook.org/ns/docbook" xmlns:scilab="http://www.scilab.org" xml:lang="ja" xml:id="jetcolormap">
+<refentry xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svg="http://www.w3.org/2000/svg" xmlns:mml="http://www.w3.org/1998/Math/MathML" xmlns:db="http://docbook.org/ns/docbook" xmlns:scilab="http://www.scilab.org" xml:lang="ja" xml:id="jet">
 
     <refnamediv>
 
-        <refname>jetcolormap</refname>
+        <refname>jet</refname>
 
         <refpurpose>青から赤へのカラーマップ</refpurpose>
+
+    </refnamediv>
+
+    <refnamediv xml:id="jetcolormap">
+
+        <refname>jetcolormap</refname>
+
+        <refpurpose>This function is obsolete and will be removed in Scilab 2026.0.0, please use <link linkend="jet">jet</link> instead.</refpurpose>
 
     </refnamediv>
 
@@ -36,7 +44,7 @@
 
         <title>呼び出し手順</title>
 
-        <synopsis>cmap=jetcolormap(n)</synopsis>
+        <synopsis>cmap=jet(n)</synopsis>
 
     </refsynopsisdiv>
 
@@ -84,7 +92,7 @@
 
         <para>
 
-            <literal>jetcolormap</literal> は青から
+            <literal>jet</literal> は青から
 
             ライトブルー,緑,黄色,オレンジ,赤へと至る
 
@@ -104,7 +112,7 @@ f = scf();
 
 plot3d1();
 
-f.color_map = jetcolormap(32);
+f.color_map = jet(32);
 
  ]]></programlisting>
 
@@ -114,7 +122,7 @@ f.color_map = jetcolormap(32);
 
             plot3d1();
 
-            f.color_map = jetcolormap(32);
+            f.color_map = jet(32);
 
         </scilab:image>
 
@@ -171,12 +179,6 @@ f.color_map = jetcolormap(32);
             <member>
 
                 <link linkend="hsvcolormap">hsvcolormap</link>
-
-            </member>
-
-            <member>
-
-                <link linkend="jetcolormap">jetcolormap</link>
 
             </member>
 
