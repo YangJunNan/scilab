@@ -13,14 +13,18 @@
  * along with this program.
  *
  -->
-<refentry xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svg="http://www.w3.org/2000/svg" xmlns:mml="http://www.w3.org/1998/Math/MathML" xmlns:db="http://docbook.org/ns/docbook" xmlns:scilab="http://www.scilab.org"  xml:lang="en" xml:id="graycolormap">
+<refentry xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svg="http://www.w3.org/2000/svg" xmlns:mml="http://www.w3.org/1998/Math/MathML" xmlns:db="http://docbook.org/ns/docbook" xmlns:scilab="http://www.scilab.org"  xml:lang="en" xml:id="gray">
     <refnamediv>
-        <refname>graycolormap</refname>
+        <refname>gray</refname>
         <refpurpose>linear gray colormap</refpurpose>
+    </refnamediv>
+    <refnamediv xml:id="graycolormap">
+        <refname>graycolormap</refname>
+        <refpurpose>This function is obsolete and will be removed in Scilab 2026.0.0, please use <link linkend="gray">gray</link> instead.</refpurpose>
     </refnamediv>
     <refsynopsisdiv>
         <title>Syntax</title>
-        <synopsis>cmap=graycolormap(n)</synopsis>
+        <synopsis>cmap=gray(n)</synopsis>
     </refsynopsisdiv>
     <refsection>
         <title>Arguments</title>
@@ -44,7 +48,7 @@
     <refsection>
         <title>Description</title>
         <para>
-            <literal>graycolormap</literal> computes a colormap with <literal>n</literal> gray colors
+            <literal>gray</literal> computes a colormap with <literal>n</literal> gray colors
             varying linearly from black to white.
         </para>
     </refsection>
@@ -53,12 +57,12 @@
         <programlisting role="example"><![CDATA[
 f = scf();
 plot3d1();
-f.color_map = graycolormap(32);
+f.color_map = gray(32);
  ]]></programlisting>
         <scilab:image>
             f = scf();
             plot3d1();
-            f.color_map = graycolormap(32);
+            f.color_map = gray(32);
         </scilab:image>
     </refsection>
     <refsection role="see also">
@@ -78,9 +82,6 @@ f.color_map = graycolormap(32);
             </member>
             <member>
                 <link linkend="coppercolormap">coppercolormap</link>
-            </member>
-            <member>
-                <link linkend="graycolormap">graycolormap</link>
             </member>
             <member>
                 <link linkend="hotcolormap">hotcolormap</link>
@@ -116,5 +117,22 @@ f.color_map = graycolormap(32);
                 <link linkend="wintercolormap">wintercolormap</link>
             </member>
         </simplelist>
+    </refsection>
+    <refsection>
+        <title>History</title>
+        <revhistory>
+            <revision>
+                <revnumber>2024.1.0</revnumber>
+                <revremark>
+                    Function <literal>gray</literal> introduced.
+                </revremark>
+            </revision>
+            <revision>
+                <revnumber>2024.1.0</revnumber>
+                <revremark>
+                    Function <literal>graycolormap</literal> is obsolete and will be removed in Scilab 2026.0.0, please use <link linkend="gray">gray</link> instead.
+                </revremark>
+            </revision>
+        </revhistory>
     </refsection>
 </refentry>

@@ -762,6 +762,7 @@ grand_ru_RU_3.png=5a2fb0595561f307c034c883e13624a2
 grand_ru_RU_4.png=170b2f4f673f1fac9046f3d2fd7c5c2e
 grand_ru_RU_5.png=7878888671f2fa747c5a9a07399110b3
 grand_ru_RU_6.png=ed08a1918cab6b83b153ade49a353a7c
+gray_1.png=ed9dad96b4b1455a858e3ba73ee5538c
 graycolormap_1.png=d833922c17d3d671dd79cee1e14578d8
 grayplot_1.png=a24a994d92924535d660c5655aaa2089
 grayplot_2.png=a9e3251523550c0c43869fdf37c7f127
