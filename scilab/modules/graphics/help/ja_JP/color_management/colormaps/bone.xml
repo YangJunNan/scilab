@@ -22,13 +22,21 @@
 
  -->
 
-<refentry xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svg="http://www.w3.org/2000/svg" xmlns:mml="http://www.w3.org/1998/Math/MathML" xmlns:db="http://docbook.org/ns/docbook" xmlns:scilab="http://www.scilab.org" xml:lang="ja" xml:id="bonecolormap">
+<refentry xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svg="http://www.w3.org/2000/svg" xmlns:mml="http://www.w3.org/1998/Math/MathML" xmlns:db="http://docbook.org/ns/docbook" xmlns:scilab="http://www.scilab.org" xml:lang="ja" xml:id="bone">
 
     <refnamediv>
 
-        <refname>bonecolormap</refname>
+        <refname>bone</refname>
 
         <refpurpose>ライトブルー色調のグレーカラーマップ</refpurpose>
+
+    </refnamediv>
+
+    <refnamediv xml:id="bonecolormap">
+
+        <refname>bonecolormap</refname>
+
+        <refpurpose>This function is obsolete and will be removed in Scilab 2026.0.0, please use <link linkend="bone">bone</link> instead.</refpurpose>
 
     </refnamediv>
 
@@ -36,7 +44,7 @@
 
         <title>呼び出し手順</title>
 
-        <synopsis>cmap=bonecolormap(n)</synopsis>
+        <synopsis>cmap=bone(n)</synopsis>
 
     </refsynopsisdiv>
 
@@ -84,7 +92,7 @@
 
         <para>
 
-            <literal>bonecolormap</literal> はライトブルー色調のグレーカラーマップ
+            <literal>bone</literal> はライトブルー色調のグレーカラーマップ
 
             を計算します.
 
@@ -102,7 +110,7 @@ f = scf();
 
 plot3d1();
 
-f.color_map = bonecolormap(32);
+f.color_map = bone(32);
 
  ]]></programlisting>
 
@@ -112,7 +120,7 @@ f.color_map = bonecolormap(32);
 
             plot3d1();
 
-            f.color_map = bonecolormap(32);
+            f.color_map = bone(32);
 
         </scilab:image>
 

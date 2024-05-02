@@ -13,51 +13,59 @@
  * along with this program.
  *
  -->
-<refentry xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svg="http://www.w3.org/2000/svg" xmlns:ns4="http://www.w3.org/1999/xhtml" xmlns:mml="http://www.w3.org/1998/Math/MathML" xmlns:db="http://docbook.org/ns/docbook" xmlns:scilab="http://www.scilab.org" xml:id="bonecolormap" xml:lang="pt">
+<refentry xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svg="http://www.w3.org/2000/svg" xmlns:mml="http://www.w3.org/1998/Math/MathML" xmlns:db="http://docbook.org/ns/docbook" xmlns:scilab="http://www.scilab.org"  xml:lang="en" xml:id="bone">
     <refnamediv>
+        <refname>bone</refname>
+        <refpurpose>gray colormap with a light blue tone</refpurpose>
+    </refnamediv>
+    <refnamediv xml:id="bonecolormap">
         <refname>bonecolormap</refname>
-        <refpurpose>Mapa de cores cinza com um tom claro de azul</refpurpose>
+        <refpurpose>This function is obsolete and will be removed in Scilab 2026.0.0, please use <link linkend="bone">bone</link> instead.</refpurpose>
     </refnamediv>
     <refsynopsisdiv>
-        <title>Seqüência de Chamamento</title>
-        <synopsis>cmap=bonecolormap(n)</synopsis>
+        <title>Syntax</title>
+        <synopsis>cmap=bone(n)</synopsis>
     </refsynopsisdiv>
     <refsection>
-        <title>Parâmetros</title>
+        <title>Arguments</title>
         <variablelist>
             <varlistentry>
                 <term>n</term>
                 <listitem>
-                    <para>inteiro &gt;= 3, o tamanho do mapa de cores. </para>
+                    <para>integer &gt;= 3, the colormap size.</para>
                 </listitem>
             </varlistentry>
             <varlistentry>
                 <term>cmap</term>
                 <listitem>
                     <para>
-                        matriz com 3 colunas <literal>[R,G,B]</literal>.
+                        matrix with 3 columns <literal>[R,G,B]</literal>.
                     </para>
                 </listitem>
             </varlistentry>
         </variablelist>
     </refsection>
     <refsection>
-        <title>Descrição</title>
+        <title>Description</title>
         <para>
-            <literal>bonecolormap</literal> computa um mapa de cores cinza com
-            um tom azul claro
+            <literal>bone</literal> computes a gray colormap with a light blue tone.
         </para>
     </refsection>
     <refsection>
-        <title>Exemplos</title>
+        <title>Examples</title>
         <programlisting role="example"><![CDATA[
 f = scf();
 plot3d1();
-f.color_map = bonecolormap(32);
+f.color_map = bone(32);
  ]]></programlisting>
+        <scilab:image>
+            f = scf();
+            plot3d1();
+            f.color_map = bone(32);
+        </scilab:image>
     </refsection>
     <refsection role="see also">
-        <title>Ver Também</title>
+        <title>See also</title>
         <simplelist type="inline">
             <member>
                 <link linkend="colormap">colormap</link>
@@ -87,6 +95,9 @@ f.color_map = bonecolormap(32);
                 <link linkend="oceancolormap">oceancolormap</link>
             </member>
             <member>
+                <link linkend="parulacolormap">parulacolormap</link>
+            </member>
+            <member>
                 <link linkend="pinkcolormap">pinkcolormap</link>
             </member>
             <member>
@@ -105,5 +116,22 @@ f.color_map = bonecolormap(32);
                 <link linkend="wintercolormap">wintercolormap</link>
             </member>
         </simplelist>
+    </refsection>
+    <refsection>
+        <title>History</title>
+        <revhistory>
+            <revision>
+                <revnumber>2024.1.0</revnumber>
+                <revremark>
+                    Function <literal>bone</literal> introduced.
+                </revremark>
+            </revision>
+            <revision>
+                <revnumber>2024.1.0</revnumber>
+                <revremark>
+                    Function <literal>bonecolormap</literal> is obsolete and will be removed in Scilab 2026.0.0, please use <link linkend="bone">bone</link> instead.
+                </revremark>
+            </revision>
+        </revhistory>
     </refsection>
 </refentry>

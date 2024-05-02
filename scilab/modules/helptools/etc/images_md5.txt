@@ -563,6 +563,7 @@ bode_pt_BR_3.png=54e2e49410f3da1d8f49577b573bc289
 bode_ru_RU_1.png=5d7c38b094cee911ec2cc42dd7050176
 bode_ru_RU_2.png=3a40a98fd3fb7a58e9f8282a4b515f71
 bode_ru_RU_3.png=54e2e49410f3da1d8f49577b573bc289
+bone_1.png=094506d00d10f8027e5ee4e352978351
 bonecolormap_1.png=92247210e578a35b3770d67e94bae718
 buttmag_1.png=9fff0bd432661a67efdde3c0c3a34465
 bvode_en_US_1.png=f5839719400ab9f8ae4004c3c7bad4ff
