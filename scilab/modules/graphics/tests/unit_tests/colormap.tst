@@ -20,13 +20,21 @@ cmapFunctions = [
 for cmapFun = cmapFunctions
 
     // Call function directly
-    // Default size
-    execstr("cmap = " + cmapFun + "()");
-    assert_checkequal(size(cmap), [32, 3]);
-    // Given size
-    execstr("cmap = " + cmapFun + "(42)");
-    assert_checkequal(size(cmap), [42, 3]);
+    execstr("cmap1 = " + cmapFun + "(42);");
+    assert_checkequal(size(cmap1), [42, 3]);
 
+    // Use colormap function with a string
+    execstr("cmap2 = colormap(""" + cmapFun + """, 42);");
+    assert_checkequal(size(cmap2), [42, 3]);
+
+    assert_checkequal(cmap1, cmap2);
+
+    // Use colormap function with a function
+    execstr("cmap3 = colormap(" + cmapFun + ", 42);");
+    assert_checkequal(size(cmap3), [42, 3]);
+
+    assert_checkequal(cmap1, cmap3);
+    
 end
 
 // Check that obsolete functions can still be called until removed
