@@ -30,7 +30,7 @@ for cmapFun = cmapFunctions
 end
 
 // Check that obsolete functions can still be called until removed
-cmapFunctions = ["autumn", "bone", "cool"];
+cmapFunctions = ["autumn", "bone", "cool", "copper"];
 
 for cmapFun = cmapFunctions
     execstr("cmap = " + cmapFun + "(42)");

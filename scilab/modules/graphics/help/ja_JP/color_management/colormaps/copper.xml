@@ -22,13 +22,21 @@
 
  -->
 
-<refentry xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svg="http://www.w3.org/2000/svg" xmlns:mml="http://www.w3.org/1998/Math/MathML" xmlns:db="http://docbook.org/ns/docbook" xmlns:scilab="http://www.scilab.org" xml:lang="ja" xml:id="coppercolormap">
+<refentry xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svg="http://www.w3.org/2000/svg" xmlns:mml="http://www.w3.org/1998/Math/MathML" xmlns:db="http://docbook.org/ns/docbook" xmlns:scilab="http://www.scilab.org" xml:lang="ja" xml:id="copper">
 
     <refnamediv>
 
-        <refname>coppercolormap</refname>
+        <refname>copper</refname>
 
         <refpurpose>黒から明るい銅色へのカラーマップ</refpurpose>
+
+    </refnamediv>
+
+    <refnamediv xml:id="coppercolormap">
+
+        <refname>coppercolormap</refname>
+
+        <refpurpose>This function is obsolete and will be removed in Scilab 2026.0.0, please use <link linkend="copper">copper</link> instead.</refpurpose>
 
     </refnamediv>
 
@@ -36,7 +44,7 @@
 
         <title>呼び出し手順</title>
 
-        <synopsis>cmap=coppercolormap(n)</synopsis>
+        <synopsis>cmap=copper(n)</synopsis>
 
     </refsynopsisdiv>
 
@@ -84,7 +92,7 @@
 
         <para>
 
-            <literal>coppercolormap</literal>は,
+            <literal>copper</literal>は,
 
             黒から明るい銅色へ変化する<literal>n</literal>色のカラーマップを計算します.
 
@@ -102,7 +110,7 @@ f = scf();
 
 plot3d1();
 
-f.color_map = coppercolormap(32);
+f.color_map = copper(32);
 
  ]]></programlisting>
 
@@ -112,7 +120,7 @@ f.color_map = coppercolormap(32);
 
             plot3d1();
 
-            f.color_map = coppercolormap(32);
+            f.color_map = copper(32);
 
         </scilab:image>
 

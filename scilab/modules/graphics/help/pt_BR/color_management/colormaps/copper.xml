@@ -13,56 +13,56 @@
  * along with this program.
  *
  -->
-<refentry xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svg="http://www.w3.org/2000/svg" xmlns:mml="http://www.w3.org/1998/Math/MathML" xmlns:db="http://docbook.org/ns/docbook" xmlns:scilab="http://www.scilab.org"  xml:lang="en" xml:id="coppercolormap">
+<refentry xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svg="http://www.w3.org/2000/svg" xmlns:ns5="http://www.w3.org/1999/xhtml" xmlns:mml="http://www.w3.org/1998/Math/MathML" xmlns:db="http://docbook.org/ns/docbook" xmlns:scilab="http://www.scilab.org" xml:id="copper" xml:lang="pt">
     <refnamediv>
+        <refname>copper</refname>
+        <refpurpose>Mapa de cores de preto a um tom claro de cobre</refpurpose>
+    </refnamediv>
+    <refnamediv xml:id="coppercolormap">
         <refname>coppercolormap</refname>
-        <refpurpose>black to a light copper tone colormap</refpurpose>
+        <refpurpose>This function is obsolete and will be removed in Scilab 2026.0.0, please use <link linkend="copper">copper</link> instead.</refpurpose>
     </refnamediv>
     <refsynopsisdiv>
-        <title>Syntax</title>
-        <synopsis>cmap=coppercolormap(n)</synopsis>
+        <title>Seqüência de Chamamento</title>
+        <synopsis>cmap=copper(n)</synopsis>
     </refsynopsisdiv>
     <refsection>
-        <title>Arguments</title>
+        <title>Parâmetros</title>
         <variablelist>
             <varlistentry>
                 <term>n</term>
                 <listitem>
-                    <para>integer &gt;= 3, the colormap size.</para>
+                    <para>inteiro &gt;= 3, o tamanho do mapa de cores. </para>
                 </listitem>
             </varlistentry>
             <varlistentry>
                 <term>cmap</term>
                 <listitem>
                     <para>
-                        matrix with 3 columns <literal>[R,G,B]</literal>.
+                        matriz com 3 colunas <literal>[R,G,B]</literal>.
                     </para>
                 </listitem>
             </varlistentry>
         </variablelist>
     </refsection>
     <refsection>
-        <title>Description</title>
+        <title>Descrição</title>
         <para>
-            <literal>coppercolormap</literal> computes a colormap with <literal>n</literal> colors
-            varying from black to a light copper tone.
+            <literal>copper</literal> computa um mapa de cores com
+            <literal>n</literal> cores que variam de preto a um tom claro de
+            cobre.
         </para>
     </refsection>
     <refsection>
-        <title>Examples</title>
+        <title>Exemplos</title>
         <programlisting role="example"><![CDATA[
 f = scf();
 plot3d1();
-f.color_map = coppercolormap(32);
+f.color_map = copper(32);
  ]]></programlisting>
-        <scilab:image>
-            f = scf();
-            plot3d1();
-            f.color_map = coppercolormap(32);
-        </scilab:image>
     </refsection>
     <refsection role="see also">
-        <title>See also</title>
+        <title>Ver Também</title>
         <simplelist type="inline">
             <member>
                 <link linkend="colormap">colormap</link>

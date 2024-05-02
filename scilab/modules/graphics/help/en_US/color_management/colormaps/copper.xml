@@ -13,52 +13,60 @@
  * along with this program.
  *
  -->
-<refentry xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svg="http://www.w3.org/2000/svg" xmlns:ns5="http://www.w3.org/1999/xhtml" xmlns:mml="http://www.w3.org/1998/Math/MathML" xmlns:db="http://docbook.org/ns/docbook" xmlns:scilab="http://www.scilab.org" xml:id="coppercolormap" xml:lang="pt">
+<refentry xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svg="http://www.w3.org/2000/svg" xmlns:mml="http://www.w3.org/1998/Math/MathML" xmlns:db="http://docbook.org/ns/docbook" xmlns:scilab="http://www.scilab.org"  xml:lang="en" xml:id="copper">
     <refnamediv>
+        <refname>copper</refname>
+        <refpurpose>black to a light copper tone colormap</refpurpose>
+    </refnamediv>
+    <refnamediv xml:id="coppercolormap">
         <refname>coppercolormap</refname>
-        <refpurpose>Mapa de cores de preto a um tom claro de cobre</refpurpose>
+        <refpurpose>This function is obsolete and will be removed in Scilab 2026.0.0, please use <link linkend="copper">copper</link> instead.</refpurpose>
     </refnamediv>
     <refsynopsisdiv>
-        <title>Seqüência de Chamamento</title>
-        <synopsis>cmap=coppercolormap(n)</synopsis>
+        <title>Syntax</title>
+        <synopsis>cmap=copper(n)</synopsis>
     </refsynopsisdiv>
     <refsection>
-        <title>Parâmetros</title>
+        <title>Arguments</title>
         <variablelist>
             <varlistentry>
                 <term>n</term>
                 <listitem>
-                    <para>inteiro &gt;= 3, o tamanho do mapa de cores. </para>
+                    <para>integer &gt;= 3, the colormap size.</para>
                 </listitem>
             </varlistentry>
             <varlistentry>
                 <term>cmap</term>
                 <listitem>
                     <para>
-                        matriz com 3 colunas <literal>[R,G,B]</literal>.
+                        matrix with 3 columns <literal>[R,G,B]</literal>.
                     </para>
                 </listitem>
             </varlistentry>
         </variablelist>
     </refsection>
     <refsection>
-        <title>Descrição</title>
+        <title>Description</title>
         <para>
-            <literal>coppercolormap</literal> computa um mapa de cores com
-            <literal>n</literal> cores que variam de preto a um tom claro de
-            cobre.
+            <literal>copper</literal> computes a colormap with <literal>n</literal> colors
+            varying from black to a light copper tone.
         </para>
     </refsection>
     <refsection>
-        <title>Exemplos</title>
+        <title>Examples</title>
         <programlisting role="example"><![CDATA[
 f = scf();
 plot3d1();
-f.color_map = coppercolormap(32);
+f.color_map = copper(32);
  ]]></programlisting>
+        <scilab:image>
+            f = scf();
+            plot3d1();
+            f.color_map = copper(32);
+        </scilab:image>
     </refsection>
     <refsection role="see also">
-        <title>Ver Também</title>
+        <title>See also</title>
         <simplelist type="inline">
             <member>
                 <link linkend="colormap">colormap</link>
@@ -106,5 +114,22 @@ f.color_map = coppercolormap(32);
                 <link linkend="wintercolormap">wintercolormap</link>
             </member>
         </simplelist>
+    </refsection>
+    <refsection>
+        <title>History</title>
+        <revhistory>
+            <revision>
+                <revnumber>2024.1.0</revnumber>
+                <revremark>
+                    Function <literal>copper</literal> introduced.
+                </revremark>
+            </revision>
+            <revision>
+                <revnumber>2024.1.0</revnumber>
+                <revremark>
+                    Function <literal>coppercolormap</literal> is obsolete and will be removed in Scilab 2026.0.0, please use <link linkend="copper">copper</link> instead.
+                </revremark>
+            </revision>
+        </revhistory>
     </refsection>
 </refentry>
