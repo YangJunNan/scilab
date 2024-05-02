@@ -1103,6 +1103,7 @@ wigner_1.png=f775cca252e20dd1029d24f5cc6f430a
 window_1.png=4de5a4eee9a8a1ef039c8c9c8e65d6bb
 window_2.png=44cddcb55562ebc6e02da35aafb9c0c0
 window_3.png=5da80737d10d701654fe8d0b5b5bc703
+winter_1.png=bc1c7973c30b3dc7efd470e02f665cb9
 wintercolormap_1.png=149a68e3ce0fc6154a1b5f9ee7c63796
 xarc_1.png=98ae0ca8816136f1aa553ffb527209b6
 xarc_2.png=cc873861271071e2fdc147d8fa82617c
