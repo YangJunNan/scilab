@@ -1046,6 +1046,7 @@ splin3d_pt_BR_1.png=824351144431623cf3cd917f2453dc1e
 splin3d_ru_RU_1.png=924b5de4c3968e33949dd67fbeac437d
 splin_1.png=4982eeb64b3dc94cc23e16b4e5af0b15
 splin_2.png=446983411e4aa2a48c9aa96edef44404
+spring_1.png=53f250f4d180ed846640b90ca9ec948b
 springcolormap_1.png=b6f8f97a269786a9d53e4fe31b097861
 spyCol_1.png=4d3caa87def344e3fa04aa51c62c97b6
 stackedplot_1.png=6ed594cd1ee3617d62b3d18d59bc901e
