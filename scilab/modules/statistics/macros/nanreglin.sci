@@ -47,7 +47,7 @@ function [a, b] = nanreglin(x, y, dflag)
             continue;
         end
 
-        [a(i, 1:n1), b(i)] = reglin(x2, y2, dflag);
+        [a(i, :), b(i)] = reglin(x2, y2, dflag);
     end
 
 endfunction
