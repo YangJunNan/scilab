@@ -13,16 +13,20 @@
  * along with this program.
  *
  -->
-<refentry xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svg="http://www.w3.org/2000/svg" xmlns:ns5="http://www.w3.org/1999/xhtml" xmlns:mml="http://www.w3.org/1998/Math/MathML" xmlns:db="http://docbook.org/ns/docbook" xmlns:scilab="http://www.scilab.org" xml:id="pinkcolormap" xml:lang="pt">
+<refentry xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svg="http://www.w3.org/2000/svg" xmlns:ns5="http://www.w3.org/1999/xhtml" xmlns:mml="http://www.w3.org/1998/Math/MathML" xmlns:db="http://docbook.org/ns/docbook" xmlns:scilab="http://www.scilab.org" xml:id="pink" xml:lang="pt">
     <refnamediv>
-        <refname>pinkcolormap</refname>
+        <refname>pink</refname>
         <refpurpose>Coloração de tons em sépia de imagens em preto e
             branco
         </refpurpose>
     </refnamediv>
+    <refnamediv xml:id="pinkcolormap">
+        <refname>pinkcolormap</refname>
+        <refpurpose>This function is obsolete and will be removed in Scilab 2026.0.0, please use <link linkend="pink">pink</link> instead.</refpurpose>
+    </refnamediv>
     <refsynopsisdiv>
         <title>Seqüência de Chamamento</title>
-        <synopsis>cmap=pinkcolormap(n)</synopsis>
+        <synopsis>cmap=pink(n)</synopsis>
     </refsynopsisdiv>
     <refsection>
         <title>Parâmetros</title>
@@ -46,7 +50,7 @@
     <refsection>
         <title>Descrição</title>
         <para>
-            <literal>pinkcolormap</literal> computa um mapa de cores que fornece
+            <literal>pink</literal> computa um mapa de cores que fornece
             uma coloração de tons em sépia de imagens em preto e branco
         </para>
     </refsection>
@@ -55,7 +59,7 @@
         <programlisting role="example"><![CDATA[
 f = scf();
 plot3d1();
-f.color_map = pinkcolormap(32);
+f.color_map = pink(32);
  ]]></programlisting>
     </refsection>
     <refsection role="see also">

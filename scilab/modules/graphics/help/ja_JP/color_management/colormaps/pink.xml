@@ -22,13 +22,21 @@
 
  -->
 
-<refentry xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svg="http://www.w3.org/2000/svg" xmlns:mml="http://www.w3.org/1998/Math/MathML" xmlns:db="http://docbook.org/ns/docbook" xmlns:scilab="http://www.scilab.org" xml:lang="ja" xml:id="pinkcolormap">
+<refentry xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svg="http://www.w3.org/2000/svg" xmlns:mml="http://www.w3.org/1998/Math/MathML" xmlns:db="http://docbook.org/ns/docbook" xmlns:scilab="http://www.scilab.org" xml:lang="ja" xml:id="pink">
 
     <refnamediv>
 
-        <refname>pinkcolormap</refname>
+        <refname>pink</refname>
 
         <refpurpose>白黒画像のセピア調カラー化</refpurpose>
+
+    </refnamediv>
+
+    <refnamediv xml:id="pinkcolormap">
+
+        <refname>pinkcolormap</refname>
+
+        <refpurpose>This function is obsolete and will be removed in Scilab 2026.0.0, please use <link linkend="pink">pink</link> instead.</refpurpose>
 
     </refnamediv>
 
@@ -36,7 +44,7 @@
 
         <title>呼び出し手順</title>
 
-        <synopsis>cmap=pinkcolormap(n)</synopsis>
+        <synopsis>cmap=pink(n)</synopsis>
 
     </refsynopsisdiv>
 
@@ -84,7 +92,7 @@
 
         <para>
 
-            <literal>pinkcolormap</literal> は白黒画像のセピア調カラー化
+            <literal>pink</literal> は白黒画像のセピア調カラー化
 
             を行うカラーマップを計算します.
 
@@ -102,7 +110,7 @@ f = scf();
 
 plot3d1();
 
-f.color_map = pinkcolormap(32);
+f.color_map = pink(32);
 
  ]]></programlisting>
 
@@ -112,7 +120,7 @@ f.color_map = pinkcolormap(32);
 
             plot3d1();
 
-            f.color_map = pinkcolormap(32);
+            f.color_map = pink(32);
 
         </scilab:image>
 
