@@ -13,14 +13,18 @@
  * along with this program.
  *
  -->
-<refentry xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svg="http://www.w3.org/2000/svg" xmlns:ns4="http://www.w3.org/1999/xhtml" xmlns:mml="http://www.w3.org/1998/Math/MathML" xmlns:db="http://docbook.org/ns/docbook" xmlns:scilab="http://www.scilab.org" xml:id="whitecolormap" xml:lang="pt">
+<refentry xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svg="http://www.w3.org/2000/svg" xmlns:ns4="http://www.w3.org/1999/xhtml" xmlns:mml="http://www.w3.org/1998/Math/MathML" xmlns:db="http://docbook.org/ns/docbook" xmlns:scilab="http://www.scilab.org" xml:id="white" xml:lang="pt">
     <refnamediv>
-        <refname>whitecolormap</refname>
+        <refname>white</refname>
         <refpurpose>Mapa de cores completamente branco</refpurpose>
+    </refnamediv>
+    <refnamediv xml:id="whitecolormap">
+        <refname>whitecolormap</refname>
+        <refpurpose>This function is obsolete and will be removed in Scilab 2026.0.0, please use <link linkend="white">white</link> instead.</refpurpose>
     </refnamediv>
     <refsynopsisdiv>
         <title>Seqüência de Chamamento</title>
-        <synopsis>cmap=whitecolormap(n)</synopsis>
+        <synopsis>cmap=white(n)</synopsis>
     </refsynopsisdiv>
     <refsection>
         <title>Parâmetros</title>
@@ -50,7 +54,7 @@
         <programlisting role="example"><![CDATA[
 f = scf();
 plot3d1();
-f.color_map = whitecolormap(32);
+f.color_map = white(32);
  ]]></programlisting>
     </refsection>
     <refsection role="see also">

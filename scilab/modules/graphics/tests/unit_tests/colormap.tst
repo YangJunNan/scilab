@@ -31,7 +31,7 @@ end
 
 // Check that obsolete functions can still be called until removed
 cmapFunctions = ["autumn", "bone", "cool", "copper", "gray", "hot", "hsv", "jet", ...
-                 "ocean", "parula", "pink", "rainbow", "spring", "summer"];
+                 "ocean", "parula", "pink", "rainbow", "spring", "summer", "white"];
 
 for cmapFun = cmapFunctions
     cmap = [];

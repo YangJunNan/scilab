@@ -1096,6 +1096,7 @@ titlepage_ru_RU_2.png=4442891fd6f287a8fb39b92006ff40c5
 trans_1.png=0a5ddde2263a28ffaba21606bcfc2232
 unwrap_1.png=b55bd8834f6ed873c3c614d5b81a7484
 wavread_1.png=7f4fa7fd3215e86c6beac1b99ed5c107
+white_1.png=9b737d99d86ab93c9168b53770cdc870
 whitecolormap_1.png=5c902a640b651c5ec7bcfdeba604e3c0
 wiener_1.png=07cf1c15abff7e9f0c2ca9bd45882a5c
 wigner_1.png=f775cca252e20dd1029d24f5cc6f430a
