@@ -485,6 +485,11 @@ dt = datetime(d, "OutputFormat", "MM/dd/yyyy hh:mm a");
 expected = ["04/10/2024 02:48 PM"; "04/10/2024 02:49 PM"];
 assert_checkequal(string(dt), expected);
 
+d = "2024-04-10 14";
+dt = datetime(d, "InputFormat", "yyyy-MM-dd HH");
+expected = "2024-04-10 14:00:00";
+assert_checkequal(string(dt), expected);
+
 // check error
 msg = msprintf(_("%s: Wrong number of input argument: %d to %d expected, except %d, %d and %d.\n"), "datetime", 0, 7, 2, 4, 5);
 assert_checkerror("datetime(1, 2, 3, 4, 5, 6, 7, 8)", msg);

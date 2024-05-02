@@ -219,7 +219,6 @@ function out = %datetime_string(dt)
                     if idx <> [] then
                         hh(idx) = 12;
                     end
-                    // pause
 
                     select index(i, 2)
                     case 1
