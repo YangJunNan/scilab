@@ -11,13 +11,14 @@
 // along with this program.
 
 // <-- TEST WITH GRAPHIC -->
+// <-- NO CHECK REF -->
 
-assert_checkerror("parulacolormap(0,1,2,3)", "%s: Wrong number of input argument(s): %d expected.\n", 10000, "parulacolormap", 1);
+assert_checkerror("parula(0,1,2,3)", "%s: Wrong number of input argument(s): %d expected.\n", 10000, "parula", 1);
 
-assert_checkerror("parulacolormap(%t)", "%s: Wrong type for input argument #%d: a real scalar expected.\n", 10000, "parulacolormap", 1);
+assert_checkerror("parula(%t)", "%s: Wrong type for input argument #%d: a real scalar expected.\n", 10000, "parula", 1);
 
-assert_checkerror("parulacolormap(%i)", "%s: Wrong type for input argument #%d: a real scalar expected.\n", 10000, "parulacolormap", 1);
+assert_checkerror("parula(%i)", "%s: Wrong type for input argument #%d: a real scalar expected.\n", 10000, "parula", 1);
 
-assert_checkerror("parulacolormap([0 1 2 3])", "%s: Wrong size for input argument #%d: a real scalar expected.\n", 10000, "parulacolormap", 1);
+assert_checkerror("parula([0 1 2 3])", "%s: Wrong size for input argument #%d: a real scalar expected.\n", 10000, "parula", 1);
 
-assert_checkequal(parulacolormap(0), []);
+assert_checkequal(parula(0), []);

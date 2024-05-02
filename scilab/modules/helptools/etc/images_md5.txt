@@ -911,6 +911,7 @@ param3d_1.png=a13e8ee1973383456316f059e1527b10
 param3d_2.png=7c101a361b575bb927013e52b76cb3ea
 param3d_3.png=b0f376ac390de56c3c2cba61456e75db
 param3d_4.png=d2aca1e05df03e8bee45d115c6668285
+parula_1.png=9c1d2f5af2be6514d584867a2d1c2ac4
 parulacolormap_1.png=6d19dadbcf270d0bd89aeda86573f45e
 phasemag_1.png=461defdcbb7fea7738cb6657571edc15
 phasemag_2.png=b937bb324ac0206d43d82aed0f6ccd16

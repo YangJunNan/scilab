@@ -30,7 +30,7 @@ for cmapFun = cmapFunctions
 end
 
 // Check that obsolete functions can still be called until removed
-cmapFunctions = ["autumn", "bone", "cool", "copper", "gray", "hot", "hsv", "jet", "ocean"];
+cmapFunctions = ["autumn", "bone", "cool", "copper", "gray", "hot", "hsv", "jet", "ocean", "parula"];
 
 for cmapFun = cmapFunctions
     execstr("cmap = " + cmapFun + "colormap(42)");
