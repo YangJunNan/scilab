@@ -22,13 +22,21 @@
 
  -->
 
-<refentry xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svg="http://www.w3.org/2000/svg" xmlns:mml="http://www.w3.org/1998/Math/MathML" xmlns:db="http://docbook.org/ns/docbook" xmlns:scilab="http://www.scilab.org" xml:lang="ja" xml:id="coolcolormap">
+<refentry xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svg="http://www.w3.org/2000/svg" xmlns:mml="http://www.w3.org/1998/Math/MathML" xmlns:db="http://docbook.org/ns/docbook" xmlns:scilab="http://www.scilab.org" xml:lang="ja" xml:id="cool">
 
     <refnamediv>
 
-        <refname>coolcolormap</refname>
+        <refname>cool</refname>
 
         <refpurpose>シアンからマゼンタに至るカラーマップ</refpurpose>
+
+    </refnamediv>
+
+    <refnamediv xml:id="coolcolormap">
+
+        <refname>coolcolormap</refname>
+
+        <refpurpose>This function is obsolete and will be removed in Scilab 2026.0.0, please use <link linkend="cool">cool</link> instead.</refpurpose>
 
     </refnamediv>
 
@@ -36,7 +44,7 @@
 
         <title>呼び出し手順</title>
 
-        <synopsis>cmap=coolcolormap(n)</synopsis>
+        <synopsis>cmap=cool(n)</synopsis>
 
     </refsynopsisdiv>
 
@@ -84,7 +92,7 @@
 
         <para>
 
-            <literal>coolcolormap</literal> はシアンからマゼンタに変化する
+            <literal>cool</literal> はシアンからマゼンタに変化する
 
             <literal>n</literal>色を有するカラーマップを計算します.
 
@@ -102,7 +110,7 @@ f = scf();
 
 plot3d1();
 
-f.color_map = coolcolormap(32);
+f.color_map = cool(32);
 
  ]]></programlisting>
 
@@ -112,7 +120,7 @@ f.color_map = coolcolormap(32);
 
             plot3d1();
 
-            f.color_map = coolcolormap(32);
+            f.color_map = cool(32);
 
         </scilab:image>
 

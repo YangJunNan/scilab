@@ -13,51 +13,61 @@
  * along with this program.
  *
  -->
-<refentry xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svg="http://www.w3.org/2000/svg" xmlns:ns3="http://www.w3.org/1999/xhtml" xmlns:mml="http://www.w3.org/1998/Math/MathML" xmlns:db="http://docbook.org/ns/docbook" xmlns:scilab="http://www.scilab.org" xml:id="coolcolormap" xml:lang="pt">
+<refentry xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svg="http://www.w3.org/2000/svg" xmlns:mml="http://www.w3.org/1998/Math/MathML" xmlns:db="http://docbook.org/ns/docbook" xmlns:scilab="http://www.scilab.org"  xml:lang="en" xml:id="cool">
     <refnamediv>
+        <refname>cool</refname>
+        <refpurpose>cyan to magenta colormap</refpurpose>
+    </refnamediv>
+    <refnamediv xml:id="coolcolormap">
         <refname>coolcolormap</refname>
-        <refpurpose>Mapa de cores de ciano a magenta</refpurpose>
+        <refpurpose>This function is obsolete and will be removed in Scilab 2026.0.0, please use <link linkend="cool">cool</link> instead.</refpurpose>
     </refnamediv>
     <refsynopsisdiv>
-        <title>Seqüência de Chamamento</title>
-        <synopsis>cmap=coolcolormap(n)</synopsis>
+        <title>Syntax</title>
+        <synopsis>cmap=cool(n)</synopsis>
     </refsynopsisdiv>
     <refsection>
-        <title>Parâmetros</title>
+        <title>Arguments</title>
         <variablelist>
             <varlistentry>
                 <term>n</term>
                 <listitem>
-                    <para>inteiro &gt;= 3, o tamanho do mapa de cores. </para>
+                    <para>integer &gt;= 3, the colormap size.</para>
                 </listitem>
             </varlistentry>
             <varlistentry>
                 <term>cmap</term>
                 <listitem>
                     <para>
-                        matriz com 3 colunas <literal>[R,G,B]</literal>.
+                        matrix with 3 columns <literal>[R,G,B]</literal>.
                     </para>
                 </listitem>
             </varlistentry>
         </variablelist>
     </refsection>
     <refsection>
-        <title>Descrição</title>
+        <title>Description</title>
         <para>
-            <literal>coolcolormap</literal> computa um mapa de cores com
-            <literal>n</literal> cores variando de ciano a magenta.
+            <literal>cool</literal> computes a colormap with <literal>n</literal> colors
+            varying from cyan to magenta.
         </para>
     </refsection>
     <refsection>
-        <title>Exemplos</title>
+        <title>Examples</title>
         <programlisting role="example"><![CDATA[
 f = scf();
 plot3d1();
-f.color_map = coolcolormap(32);
+f.color_map = cool(32);
  ]]></programlisting>
+        <scilab:image>
+            f = scf();
+            plot3d1();
+            f.color_map = cool(32);
+        </scilab:image>
+
     </refsection>
     <refsection role="see also">
-        <title>Ver Também</title>
+        <title>See also</title>
         <simplelist type="inline">
             <member>
                 <link linkend="colormap">colormap</link>
@@ -87,6 +97,9 @@ f.color_map = coolcolormap(32);
                 <link linkend="oceancolormap">oceancolormap</link>
             </member>
             <member>
+                <link linkend="parulacolormap">parulacolormap</link>
+            </member>
+            <member>
                 <link linkend="pinkcolormap">pinkcolormap</link>
             </member>
             <member>
@@ -105,5 +118,22 @@ f.color_map = coolcolormap(32);
                 <link linkend="wintercolormap">wintercolormap</link>
             </member>
         </simplelist>
+    </refsection>
+    <refsection>
+        <title>History</title>
+        <revhistory>
+            <revision>
+                <revnumber>2024.1.0</revnumber>
+                <revremark>
+                    Function <literal>cool</literal> introduced.
+                </revremark>
+            </revision>
+            <revision>
+                <revnumber>2024.1.0</revnumber>
+                <revremark>
+                    Function <literal>coolcolormap</literal> is obsolete and will be removed in Scilab 2026.0.0, please use <link linkend="cool">cool</link> instead.
+                </revremark>
+            </revision>
+        </revhistory>
     </refsection>
 </refentry>

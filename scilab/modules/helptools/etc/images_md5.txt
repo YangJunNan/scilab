@@ -621,6 +621,7 @@ contour_3.png=634fbf34f0fd9907ddcf7a2faca80a9f
 contour_ja_JP_2.png=a258fbbbca3c5fbc630a6a036d191cf1
 contourf_1.png=97e4db28e729f0b311fc4fc9c6ab7b4d
 contourf_2.png=e1297e14d0d0a86bd97becc5015d2e67
+cool_1.png=45477f939e10958b057b001f431c14e0
 coolcolormap_1.png=7f2f2f75aa4a87ce1f3ddc2f579aed8a
 coppercolormap_1.png=fa3c836b1428445343c73fc567f231f6
 cos_1.png=c6c7f3d98fff71c465752251dd629a91
