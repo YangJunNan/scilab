@@ -28,3 +28,11 @@ for cmapFun = cmapFunctions
     assert_checkequal(size(cmap), [42, 3]);
 
 end
+
+// Check that obsolete functions can still be called until removed
+cmapFunctions = ["autumn"];
+
+for cmapFun = cmapFunctions
+    execstr("cmap = " + cmapFun + "(42)");
+    assert_checkequal(size(cmap), [42, 3]);
+end
