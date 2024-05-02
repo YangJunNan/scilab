@@ -29,5 +29,5 @@ function cmap = RdYlGn(cmapSize)
         0,104,55
     ] / 255;
 
-    cmap = %_InterpolatedColormap(RdYlGn, cmapSize, "linear");
+    cmap = %_InterpolatedColormap(RdYlGn_Data, cmapSize, "linear");
 endfunction
