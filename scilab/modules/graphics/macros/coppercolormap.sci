@@ -13,6 +13,6 @@ function cmap = coppercolormap(varargin)
 
     warnobsolete("copper", "2026.0.0")
 
-    cmap = copper(varargin);
+    cmap = copper(varargin(:));
 
 endfunction

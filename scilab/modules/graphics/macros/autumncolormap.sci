@@ -14,6 +14,6 @@ function cmap = autumncolormap(varargin)
 
     warnobsolete("autumn", "2026.0.0")
 
-    cmap = autumn(varargin);
+    cmap = autumn(varargin(:));
 
 endfunction

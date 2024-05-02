@@ -33,6 +33,6 @@ end
 cmapFunctions = ["autumn", "bone", "cool", "copper", "gray"];
 
 for cmapFun = cmapFunctions
-    execstr("cmap = " + cmapFun + "(42)");
+    execstr("cmap = " + cmapFun + "colormap(42)");
     assert_checkequal(size(cmap), [42, 3]);
 end

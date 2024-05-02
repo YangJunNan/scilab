@@ -13,6 +13,6 @@ function cmap = bonecolormap(varargin)
 
     warnobsolete("bone", "2026.0.0")
 
-    cmap = bone(varargin);
+    cmap = bone(varargin(:));
 
 endfunction

@@ -14,6 +14,6 @@ function cmap = graycolormap(varargin)
 
     warnobsolete("gray", "2026.0.0")
 
-    cmap = gray(varargin);
+    cmap = gray(varargin(:));
 
 endfunction
