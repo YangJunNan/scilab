@@ -801,6 +801,7 @@ hot_1.png=88464e438b946f6d76cebb36e5145bf4
 hotcolormap_1.png=93b81776ad0b15d88239eab74997022e
 householder_1.png=8a7bce8cfadfbf5d70436734b66ec20d
 hsv2rgb_1.png=7d20c259e94301d9763fbddb7bff4784
+hsv_1.png=fc251bc79b4b90f42ae9ab568266eac9
 hsvcolormap_1.png=11918d88bcc793200af0b9f1b58b0554
 ida_solve_1.png=1db78f4f4906e71d0b399a45b4efcd02
 iir_1.png=e675c2755f68ddc4611c849895b63012

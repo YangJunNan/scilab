@@ -22,13 +22,21 @@
 
  -->
 
-<refentry xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svg="http://www.w3.org/2000/svg" xmlns:mml="http://www.w3.org/1998/Math/MathML" xmlns:db="http://docbook.org/ns/docbook" xmlns:scilab="http://www.scilab.org" xml:lang="ja" xml:id="hsvcolormap">
+<refentry xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svg="http://www.w3.org/2000/svg" xmlns:mml="http://www.w3.org/1998/Math/MathML" xmlns:db="http://docbook.org/ns/docbook" xmlns:scilab="http://www.scilab.org" xml:lang="ja" xml:id="hsv">
 
     <refnamediv>
 
-        <refname>hsvcolormap</refname>
+        <refname>hsv</refname>
 
         <refpurpose>Hue-saturation-value カラーマップ</refpurpose>
+
+    </refnamediv>
+
+    <refnamediv xml:id="hsvcolormap">
+
+        <refname>hsvcolormap</refname>
+
+        <refpurpose>This function is obsolete and will be removed in Scilab 2026.0.0, please use <link linkend="hsv">hsv</link> instead.</refpurpose>
 
     </refnamediv>
 
@@ -36,7 +44,7 @@
 
         <title>呼び出し手順</title>
 
-        <synopsis>cmap = hsvcolormap(n)</synopsis>
+        <synopsis>cmap = hsv(n)</synopsis>
 
     </refsynopsisdiv>
 
@@ -86,7 +94,7 @@
 
         <para>
 
-            <literal>hsvcolormap</literal> は<literal>n</literal>色を有するカラーマップを
+            <literal>hsv</literal> は<literal>n</literal>色を有するカラーマップを
 
             計算します.このカラーマップは hsv カラーモデルの hue 要素を変化させます.
 
@@ -106,7 +114,7 @@
 
 t=[0:0.1:2*%pi]'; z=sin(t)*cos(t');
 
-f=gcf();f.color_map=hsvcolormap(64);
+f=gcf();f.color_map=hsv(64);
 
 plot3d1(t,t,z,35,45,"X@Y@Z",[-2,2,2])
 
@@ -116,7 +124,7 @@ plot3d1(t,t,z,35,45,"X@Y@Z",[-2,2,2])
 
             t=[0:0.1:2*%pi]'; z=sin(t)*cos(t');
 
-            f=gcf();f.color_map=hsvcolormap(64);
+            f=gcf();f.color_map=hsv(64);
 
             plot3d1(t,t,z,35,45,"X@Y@Z",[-2,2,2])
 
@@ -169,12 +177,6 @@ plot3d1(t,t,z,35,45,"X@Y@Z",[-2,2,2])
             <member>
 
                 <link linkend="hotcolormap">hotcolormap</link>
-
-            </member>
-
-            <member>
-
-                <link linkend="hsvcolormap">hsvcolormap</link>
 
             </member>
 

@@ -13,16 +13,20 @@
  * along with this program.
  *
  -->
-<refentry xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svg="http://www.w3.org/2000/svg" xmlns:ns4="http://www.w3.org/1999/xhtml" xmlns:mml="http://www.w3.org/1998/Math/MathML" xmlns:db="http://docbook.org/ns/docbook" xmlns:scilab="http://www.scilab.org" xml:id="hsvcolormap" xml:lang="pt">
+<refentry xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svg="http://www.w3.org/2000/svg" xmlns:ns4="http://www.w3.org/1999/xhtml" xmlns:mml="http://www.w3.org/1998/Math/MathML" xmlns:db="http://docbook.org/ns/docbook" xmlns:scilab="http://www.scilab.org" xml:id="hsv" xml:lang="pt">
     <refnamediv>
-        <refname>hsvcolormap</refname>
+        <refname>hsv</refname>
         <refpurpose>Mapa de cores de matiz-saturação-valor
             (hue-saturation-value)
         </refpurpose>
     </refnamediv>
+    <refnamediv xml:id="hsvcolormap">
+        <refname>hsvcolormap</refname>
+        <refpurpose>This function is obsolete and will be removed in Scilab 2026.0.0, please use <link linkend="hsv">hsv</link> instead.</refpurpose>
+    </refnamediv>
     <refsynopsisdiv>
         <title>Seqüência de Chamamento</title>
-        <synopsis>cmap = hsvcolormap(n)</synopsis>
+        <synopsis>cmap = hsv(n)</synopsis>
     </refsynopsisdiv>
     <refsection>
         <title>Parâmetros</title>
@@ -46,7 +50,7 @@
     <refsection>
         <title>Descrição</title>
         <para>
-            <literal>hsvcolormap</literal> computa um mapa de cores com
+            <literal>hsv</literal> computa um mapa de cores com
             <literal>n</literal> cores. Este mapa de cores varia o componente de matiz
             do modelo de cor hsv (hue-saturation-value, "matiz-saturação-valor "). As
             cores começam do vermelho, passando por amarelo, verde, azul celeste,
@@ -58,7 +62,7 @@
         <title>Exemplos</title>
         <programlisting role="example"><![CDATA[
 t=[0:0.1:2*%pi]'; z=sin(t)*cos(t');
-f=gcf();f.color_map=hsvcolormap(64);
+f=gcf();f.color_map=hsv(64);
 plot3d1(t,t,z,35,45,"X@Y@Z",[-2,2,2])
  ]]></programlisting>
     </refsection>
@@ -85,9 +89,6 @@ plot3d1(t,t,z,35,45,"X@Y@Z",[-2,2,2])
             </member>
             <member>
                 <link linkend="hotcolormap">hotcolormap</link>
-            </member>
-            <member>
-                <link linkend="hsvcolormap">hsvcolormap</link>
             </member>
             <member>
                 <link linkend="jetcolormap">jetcolormap</link>

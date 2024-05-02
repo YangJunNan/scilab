@@ -14,6 +14,6 @@ function cmap = hotcolormap(varargin)
 
     warnobsolete("hot", "2026.0.0")
 
-    cmap = hot(varargin);
+    cmap = hot(varargin(:));
 
 endfunction

@@ -13,14 +13,18 @@
  * along with this program.
  *
  -->
-<refentry xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svg="http://www.w3.org/2000/svg" xmlns:mml="http://www.w3.org/1998/Math/MathML" xmlns:db="http://docbook.org/ns/docbook" xmlns:scilab="http://www.scilab.org"  xml:lang="en" xml:id="hsvcolormap">
+<refentry xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svg="http://www.w3.org/2000/svg" xmlns:mml="http://www.w3.org/1998/Math/MathML" xmlns:db="http://docbook.org/ns/docbook" xmlns:scilab="http://www.scilab.org"  xml:lang="en" xml:id="hsv">
     <refnamediv>
-        <refname>hsvcolormap</refname>
+        <refname>hsv</refname>
         <refpurpose>Hue-saturation-value colormap</refpurpose>
+    </refnamediv>
+    <refnamediv xml:id="hsvcolormap">
+        <refname>hsvcolormap</refname>
+        <refpurpose>This function is obsolete and will be removed in Scilab 2026.0.0, please use <link linkend="hsv">hsv</link> instead.</refpurpose>
     </refnamediv>
     <refsynopsisdiv>
         <title>Syntax</title>
-        <synopsis>cmap = hsvcolormap(n)</synopsis>
+        <synopsis>cmap = hsv(n)</synopsis>
     </refsynopsisdiv>
     <refsection>
         <title>Arguments</title>
@@ -45,7 +49,7 @@
     <refsection>
         <title>Description</title>
         <para>
-            <literal>hsvcolormap</literal> computes a colormap with
+            <literal>hsv</literal> computes a colormap with
             <literal>n</literal>colors. This colormap  varies the hue component of the
             hsv color model.  The colors begin with red, pass through yellow, green,
             cyan, blue, magenta, and return to red.  The map is particularly
@@ -56,12 +60,12 @@
         <title>Examples</title>
         <programlisting role="example"><![CDATA[
 t=[0:0.1:2*%pi]'; z=sin(t)*cos(t');
-f=gcf();f.color_map=hsvcolormap(64);
+f=gcf();f.color_map=hsv(64);
 plot3d1(t,t,z,35,45,"X@Y@Z",[-2,2,2])
  ]]></programlisting>
         <scilab:image>
             t=[0:0.1:2*%pi]'; z=sin(t)*cos(t');
-            f=gcf();f.color_map=hsvcolormap(64);
+            f=gcf();f.color_map=hsv(64);
             plot3d1(t,t,z,35,45,"X@Y@Z",[-2,2,2])
         </scilab:image>
     </refsection>
@@ -88,9 +92,6 @@ plot3d1(t,t,z,35,45,"X@Y@Z",[-2,2,2])
             </member>
             <member>
                 <link linkend="hotcolormap">hotcolormap</link>
-            </member>
-            <member>
-                <link linkend="hsvcolormap">hsvcolormap</link>
             </member>
             <member>
                 <link linkend="jetcolormap">jetcolormap</link>
@@ -120,5 +121,22 @@ plot3d1(t,t,z,35,45,"X@Y@Z",[-2,2,2])
                 <link linkend="wintercolormap">wintercolormap</link>
             </member>
         </simplelist>
+    </refsection>
+    <refsection>
+        <title>History</title>
+        <revhistory>
+            <revision>
+                <revnumber>2024.1.0</revnumber>
+                <revremark>
+                    Function <literal>hsv</literal> introduced.
+                </revremark>
+            </revision>
+            <revision>
+                <revnumber>2024.1.0</revnumber>
+                <revremark>
+                    Function <literal>hsvcolormap</literal> is obsolete and will be removed in Scilab 2026.0.0, please use <link linkend="hsv">hsv</link> instead.
+                </revremark>
+            </revision>
+        </revhistory>
     </refsection>
 </refentry>
