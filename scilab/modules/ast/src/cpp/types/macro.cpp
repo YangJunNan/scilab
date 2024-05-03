@@ -1636,8 +1636,6 @@ Callable::ReturnValue Macro::call(typed_list& in, optional_list& opt, int _iRetC
                     expectedmax += 1;
                 }
 
-                expectedmin -= bVarargin ? 1 : 0;
-                expectedmax -= bVarargin ? 1 : 0;
                 if (in.size() < expectedmin || (bVarargin == false && in.size() > m_arguments.size()))
                 {
                     char msg[128];
@@ -1649,7 +1647,7 @@ Callable::ReturnValue Macro::call(typed_list& in, optional_list& opt, int _iRetC
                     {
                         if (bVarargin)
                         {
-                            os_sprintf(msg, _("%s: Wrong number of input argument(s): at least %d expected.\n"), scilab::UTF8::toUTF8(m_wstName).data(), (int)m_arguments.size() - 1);
+                            os_sprintf(msg, _("%s: Wrong number of input argument(s): at least %d expected.\n"), scilab::UTF8::toUTF8(m_wstName).data(), (int)m_arguments.size());
                         }
                         else
                         {
@@ -1665,6 +1663,11 @@ Callable::ReturnValue Macro::call(typed_list& in, optional_list& opt, int _iRetC
             for (int i = 0; i < m_inputArgs->size(); ++i)
             {
                 std::wstring name = (*m_inputArgs)[i]->getSymbol().getName();
+                if (m_arguments.find(name) == m_arguments.end())
+                {
+                    continue;
+                }
+
                 ARG arg = m_arguments[name];
                 if (i >= in.size())
                 {
@@ -1691,6 +1694,11 @@ Callable::ReturnValue Macro::call(typed_list& in, optional_list& opt, int _iRetC
             for (int i = 0; i < m_inputArgs->size(); ++i)
             {
                 std::wstring name = (*m_inputArgs)[i]->getSymbol().getName();
+                if (m_arguments.find(name) == m_arguments.end())
+                {
+                    continue;
+                }
+
                 ARG arg = m_arguments[name];
                 if (arg.dimsConvertor)
                 {
