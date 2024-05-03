@@ -194,7 +194,9 @@ public class SwingScilabFileChooser extends JFileChooser implements SimpleFileCh
                 FileFilter fileFilter = this.getFileFilter();
                 if (!fileFilter.accept(file)) {
                     String[] extensions = ((SciFileFilter)fileFilter).getExtensions();
-                    file = new File(file.getPath() + "." + extensions[0]);
+                    if (extensions != null && extensions.length > 0) {
+                        file = new File(file.getPath() + "." + extensions[0]);
+                    }
                 }
                 if (this.dialogType == JFileChooser.SAVE_DIALOG) {
                     //Test if there is a file with the same name

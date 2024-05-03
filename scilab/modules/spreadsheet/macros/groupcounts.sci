@@ -20,6 +20,7 @@ function g = groupcounts(varargin)
     
     includeEmpty = %f;
     includePercent = %f;
+    includedEdge = "left";
     percent = [];
     groupbins = "none";
 
@@ -34,13 +35,22 @@ function g = groupcounts(varargin)
             case "IncludeEmptyGroups"
                 includeEmpty = varargin(i + 1);
                 if type(includeEmpty) <> 4 then
-                    error(msprintf(_("%s: Wrong type for input argument #%d: boolean expected.\n"), fname, i));
+                    error(msprintf(_("%s: Wrong type for input argument #%d: A boolean expected.\n"), fname, i));
                 end
             case "IncludePercentGroups"
                 includePercent = varargin(i + 1);
                 if type(includePercent) <> 4 then
-                    error(msprintf(_("%s: Wrong type for input argument #%d: boolean expected.\n"), fname, i));
+                    error(msprintf(_("%s: Wrong type for input argument #%d: A boolean expected.\n"), fname, i));
                 end
+            case "IncludedEdge"
+                includedEdge = varargin(i+1);
+                if type(includedEdge) <> 10 then
+                    error(msprintf(_("%s: Wrong type for input argument #%d: A string expected.\n"), fname, i+1));
+                end
+
+                if and(includedEdge <> ["left", "right"]) then
+                    error(msprintf(_("%s: Wrong value for input argument #%d: ""%s"" or ""%s"" expected.\n"), fname, i+1, "left", "right"));
+                end   
             else
                 error(msprintf(_("%s: Wrong value for input argument #%d: ''%s'' not allowed.\n"), fname, i, varargin(i)));
             end
@@ -50,7 +60,7 @@ function g = groupcounts(varargin)
 
     t = varargin(1);
     if ~istable(t) && ~istimeseries(t) then
-        error(msprintf(_("%s: Wrong type for input argument #%d: table or timeseries expected.\n"), fname, 1));
+        error(msprintf(_("%s: Wrong type for input argument #%d: A table or timeseries expected.\n"), fname, 1));
     end
 
     groupvars = varargin(2);
@@ -74,7 +84,7 @@ function g = groupcounts(varargin)
         end
         groupvars = index;
     else
-        error(msprintf(_("%s: Wrong type for input argument #%d: string or double vector expected.\n"), fname, 2));
+        error(msprintf(_("%s: Wrong type for input argument #%d: A string or double vector expected.\n"), fname, 2));
     end
 
     
@@ -82,13 +92,13 @@ function g = groupcounts(varargin)
         // groupbins
         // groupcounts(t, groupvars, groupbins, opts)
         groupbins = varargin(3);
-        defaultGroupbins = ["none","second", "minute", "hour", "day", "month", "year", "dayname", "monthname"];
+        defaultGroupbins = ["none", "second", "minute", "hour", "day", "month", "year", "dayname", "monthname"];
         previousname = emptystr(1, size(groupbins, "*"));
 
         if typeof(groupbins) == "constant" then
             for i = groupvars
                 if type(t.vars(i).data) <> 1 then
-                    error(msprintf(_("%s: Wrong data type for #%d: double expected.\n"), fname, 3))
+                    error(msprintf(_("%s: Wrong data type for #%d: A double expected.\n"), fname, 3))
                 end
             end
             previousname = "disc_";
@@ -96,6 +106,19 @@ function g = groupcounts(varargin)
         else
             if size(groupbins, "*") <> 1 && size(groupbins, "*") <> size(groupvars, "*") then
                 error(msprintf(_("%s: Wrong size for input argument #%d: Must be the same size as #%d.\n"), fname, 3, 2));
+            end
+
+            if size(groupbins, "*") == 1 then
+                if typeof(groupbins) == "ce" then
+                    groupbins = groupbins{1};
+                end
+                if groupbins <> "none" then
+                    for i = 1:size(groupvars, "*")
+                        if ~isdatetime(t.vars(groupvars(i)).data) && ~isduration(t.vars(groupvars(i)).data) then
+                            error(msprintf(_("%s: Wrong value for input argument #%d.\n"), fname, 3))
+                        end
+                    end
+                end
             end
 
             if typeof(groupbins) == "string" then
@@ -114,7 +137,7 @@ function g = groupcounts(varargin)
                     bins = groupbins{k};
                     if typeof(bins) == "constant" then
                         if type(t.vars(groupvars(k)).data) <> 1 then
-                            error(msprintf(_("%s: Wrong data type for #%d: double expected.\n"), fname, 3))
+                            error(msprintf(_("%s: Wrong data type for #%d: A double expected.\n"), fname, 3))
                         end
                         previousname(k) = "disc_";
 
@@ -144,7 +167,7 @@ function g = groupcounts(varargin)
         uniqueGroupbins = {};
         ki1 = [];
         tmp = groupbins;
-        //pause
+
         while tmp <> {}
             val = tmp{1};
             for k = 1:size(groupbins, "*")
@@ -171,7 +194,7 @@ function g = groupcounts(varargin)
         previousname = previousname(ki1);
     end
 
-    [val, count, vindex] = %_groupcounts(t, groupvars, groupbins, includeEmpty)
+    [val, count, vindex] = %_groupcounts(t, groupvars, groupbins, includeEmpty, includedEdge);
 
     g = table(val(:), count, "VariableNames", [previousname + varnames(groupvars) "GroupCount"]); 
      

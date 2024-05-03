@@ -38,6 +38,7 @@ linux_set_env:
 windows_set_env:
   stage: prebuild
   tags: [x64_windows, shell, scilab]
+  needs: []
   variables:
     GIT_STRATEGY: none
   script:
@@ -73,6 +74,9 @@ linux_build_prereq:
   rules:
     # do not rebuild on scheduled
     - if: $CI_PIPELINE_SOURCE == "schedule"
+      when: never
+    # do not rebuild on tag
+    - if: $CI_COMMIT_TAG
       when: never
     # rebuild on demand
     - changes:

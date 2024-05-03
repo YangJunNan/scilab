@@ -404,6 +404,7 @@ PYTHON = @PYTHON@
 RANLIB = @RANLIB@
 RELOCATABLE = @RELOCATABLE@
 RT_LIB = @RT_LIB@
+SAXON = @SAXON@
 SCILAB_BINARY_VERSION = @SCILAB_BINARY_VERSION@
 SCILAB_LIBRARY_VERSION = @SCILAB_LIBRARY_VERSION@
 SCILAB_VERSION_MAINTENANCE = @SCILAB_VERSION_MAINTENANCE@
@@ -530,7 +531,10 @@ libdemo_tools_la_gui_DATA = gui/demo_gui.xml
 
 #### demo_tools : images files ####
 libdemo_tools_la_imagesdir = $(mydatadir)/images
-libdemo_tools_la_images_DATA = images/logo_scilab.png
+libdemo_tools_la_images_DATA = \
+images/logo_scilab.png \
+images/scilab-logo.png
+
 
 # Where all the Scilab stuff is installed (macros, help, ...)
 mydatadir = $(pkgdatadir)/modules/$(modulename)

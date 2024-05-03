@@ -12,6 +12,7 @@
 function out = groupsummary(varargin)
     fname = "groupsummary";
     includeEmptyGroups = %f;
+    includedEdge = "left";
     inputVariables = "";
     method = "";
     groupbins = "none";
@@ -27,6 +28,18 @@ function out = groupsummary(varargin)
             select varargin(i)
             case "IncludeEmptyGroups"
                 includeEmptyGroups = varargin(i + 1);
+                if type(includeEmptyGroups) <> 4 then
+                    error(msprintf(_("%s: Wrong type for input argument #%d: A boolean expected.\n"), fname, i));
+                end
+            case "IncludedEdge"
+                includedEdge = varargin(i+1);
+                if type(includedEdge) <> 10 then
+                    error(msprintf(_("%s: Wrong type for input argument #%d: A string expected.\n"), fname, i+1));
+                end
+
+                if and(includedEdge <> ["left", "right"]) then
+                    error(msprintf(_("%s: Wrong value for input argument #%d: ""%s"" or ""%s"" expected.\n"), fname, i+1, "left", "right"));
+                end
             else
                 break;
             end
@@ -36,12 +49,12 @@ function out = groupsummary(varargin)
 
     t = varargin(1);
     if ~istable(t) & ~istimeseries(t) then
-        error(msprintf(_("%s: Wrong type for input argument #%d: table or timeseries expected.\n"), fname, 1));
+        error(msprintf(_("%s: Wrong type for input argument #%d: A table or timeseries expected.\n"), fname, 1));
     end
 
     groupvars = varargin(2);
     if and(typeof(groupvars) <> ["string", "constant"]) then
-        error(msprintf(_("%s: Wrong type for input argument #%d: string or double expected.\n"), fname, 2));
+        error(msprintf(_("%s: Wrong type for input argument #%d: A string or double expected.\n"), fname, 2));
     end
 
     isGroupBins = %f;
@@ -49,7 +62,7 @@ function out = groupsummary(varargin)
     if rhs == 5 then
         inputVariables = varargin(5);
         if and(typeof(inputVariables) <> ["constant", "string", "ce"]) then
-            error(msprintf(_("%s: Wrong type for input argument #%d: string, double or cell of strings expected.\n"), fname, rhs));
+            error(msprintf(_("%s: Wrong type for input argument #%d: A string, double or cell of strings expected.\n"), fname, rhs));
         end
         
         [method, nameMethod] = groupsummary_method(varargin(4));
@@ -66,7 +79,7 @@ function out = groupsummary(varargin)
         catch
             inputVariables = v;
             if and(typeof(inputVariables) <> ["constant", "string", "ce"]) then
-                error(msprintf(_("%s: Wrong type for input argument #%d: string, double or cell of strings expected.\n"), fname, rhs));
+                error(msprintf(_("%s: Wrong type for input argument #%d: A string, double or cell of strings expected.\n"), fname, rhs));
             end
             [method, nameMethod] = groupsummary_method(varargin(3));
         end
@@ -89,9 +102,9 @@ function out = groupsummary(varargin)
     out = [];
 
     if rhs == 2 then
-        out = groupcounts(t, groupvars, "IncludeEmptyGroups", includeEmptyGroups);
+        out = groupcounts(t, groupvars, "IncludeEmptyGroups", includeEmptyGroups, "IncludedEdge", includedEdge);
     elseif rhs == 3 && isGroupBins then
-        out = groupcounts(t, groupvars, groupbins, "IncludeEmptyGroups", includeEmptyGroups);
+        out = groupcounts(t, groupvars, groupbins, "IncludeEmptyGroups", includeEmptyGroups, "IncludedEdge", includedEdge);
     else
         isT = istimeseries(t);
         if isT then
@@ -113,6 +126,7 @@ function out = groupsummary(varargin)
                 //     outputVariable = "func1_" + outputVariable;
                 // end
                 opts = struct("includeEmpty", includeEmptyGroups, ...
+                "includedEdge", includedEdge, ...
                 "method", method, ...
                 "nameMethod", nameMethod, ...
                 "outputVariable", outputVariable, ...
@@ -133,6 +147,7 @@ function out = groupsummary(varargin)
 
             try
                 opts = struct("includeEmpty", includeEmptyGroups, ...
+                    "includedEdge", includedEdge, ...
                     "method", method, ...
                     "nameMethod", nameMethod);
                 out = %_rowvarfun("varfun", t, groupvars, opts, groupbins)
@@ -147,10 +162,11 @@ function out = groupsummary(varargin)
                         outputVariable = "fun_" + outputVariable;
                     end
                     opts = struct("includeEmpty", includeEmptyGroups, ...
+                        "includedEdge", includedEdge, ...
                         "method", method, ...
                         "nameMethod", nameMethod, ...
                         "outputVariable", outputVariable, ...
-                        "nb", 1);
+                        "nb", nb);
                     out = %_rowvarfun("rowfun", t, groupvars, opts, groupbins);
                 catch
                     error(msprintf(_("%s: problem with function.\n"), "groupsummary"));
@@ -172,7 +188,7 @@ function [m, name] = groupsummary_method(method)
     
     typ = typeof(method);
     if and(typ <> ["string", "function", "fptr", "ce"]) then
-        error(msprintf(_("%s: Wrong type for ""%s"" argument: a string, cell or function expected.\n"), "groupsummary", "method"));
+        error(msprintf(_("%s: Wrong type for ""%s"" argument: A string, cell or function expected.\n"), "groupsummary", "method"));
     end
     previousprot = funcprot(0);
 
@@ -244,8 +260,8 @@ function [m, name] = groupsummary_method(method)
                 m(i) = nanmean;
             else
                 if and(method(i) <> ["min", "max", "nnz"]) then
-                    error(msprintf(_("%s: Wrong value of ""%s"" argument: %s expected.\n"), "groupsummary", ...
-                    "method", """" + strcat(["mean", "sum", "min", "max", "median", "mode", "nnz", "var", "std", "range", "nummissing"], """, """) + """" +  " or ""numunique"""));
+                    errargs = sci2exp(["mean", "sum", "min", "max", "median", "mode", "nnz", "var", "std", "range", "nummissing", "numunique"]);
+                    error(msprintf(_("%s: Wrong value of ""%s"" argument: %s expected.\n"), "groupsummary", "method", errargs));
                 end
                 execstr("m("+ string(i) + ") = " + method(i));
             end

@@ -9,7 +9,7 @@
 // For more information, see the COPYING file which you should have received
 // along with this program.
 
-function f = stackedplot(varargin)
+function varargout = stackedplot(varargin)
     combineMatchingNames = %t;
     tss = list();
     linespec = [];
@@ -60,7 +60,7 @@ function f = stackedplot(varargin)
     function update_margins(f)
         k = size(f.children, "*");
         margins = f.children.margins;
-// disp(k)
+
         if k > 2 then
             axes_bounds = f.children.axes_bounds;           
 
@@ -76,7 +76,6 @@ function f = stackedplot(varargin)
             margins(1, 4) = 0.25;
             margins(k, 3) = 0.25;
             f.children.axes_bounds = axes_bounds;
-            // disp(margins, axes_bounds)
             
         elseif k == 2 then
             margins(:, 3:4) = [0.05 0.2;0.2 0.05];
@@ -84,6 +83,21 @@ function f = stackedplot(varargin)
 
         f.children.margins = margins;
     endfunction
+
+    if nargin == 0 then
+        n = 100;
+        t = seconds(1:n)';
+        y1 = floor(10 * rand(n, 3)) + 10;
+        ts1 = timeseries(t, y1(:, 1), y1(:, 2), y1(:, 3), "VariableNames", ["Time", "Var 1", "Var 2", "Var3"]);
+
+        y2 = floor(10 * rand(n, 2)) + 20;
+        ts2 = timeseries(t, y2(:, 1), y2(:, 2), "VariableNames", ["Time", "Var 1", "Var 2"]);
+        f = stackedplot(ts1, ts2);
+        if nargout
+            varargout(1) = f;
+        end
+        return
+    end
 
     //list of ts
     for i = 1:size(varargin)
@@ -215,7 +229,7 @@ function f = stackedplot(varargin)
     if typeof(tss(1).vars(1).data) == "duration" then
         x = tss(1).vars(1).data.duration;
         isDuration = %t;
-    else //datatime
+    else //datetime
         x = tss(1).vars(1).data.date * 24*60*60 + tss(1).vars(1).data.time;
         isDuration = %f;
     end
@@ -244,20 +258,13 @@ function f = stackedplot(varargin)
                                 vars = varnames{k};
                                 idx = find(st.ylabel == vars);
                                 if idx <> [] then
-                                    //disp(idx, idx + size(vars, "*")*(i-1))
                                     if definedfields(stacked) == [] || and(definedfields(stacked) <> k) then 
-                                        //disp(st)
                                         if size(tss) > 1 then
                                             st.line_style = idx;
                                         end
                                         stacked(k) = [];
                                         stacked(k)(idx + size(vars, "*")*(i-1)) = st;
                                     else
-                                        // s = size(stacked(inSameAxe(index)), "*");
-                                        // if stacked(inSameAxe(index)).ts(s) == st.ts then
-                                        //     st.line_style = stacked(inSameAxe(index)).line_style(s) + 1;
-                                        // end
-                                        //stacked(inSameAxe(index)) = [stacked(inSameAxe(index)) st];
                                         if size(tss) > 1 then
                                             if i == 1 then
                                                 st.line_style = idx;
@@ -273,27 +280,9 @@ function f = stackedplot(varargin)
                             // varnames is string or indices
                             idx = find(st.ylabel == varnames);
                             if idx <> [] then
-                            // disp(idx, st.ylabel)
-                            // if idx <> [] then
-                            //     if inSameAxe <> [] then
-                            //         // st.ylabel is contained multiple times in varnames
-                            //         for k = 1:length(idx)
-                            //             index = idx(k);
-                            //             labels(st.ylabel) = inSameAxe(index);
-                            //             if definedfields(stacked) == [] || and(definedfields(stacked) <> inSameAxe(index)) then 
-                            //                 stacked(inSameAxe(index)) = st;
-                            //             else
-                            //                 s = size(stacked(inSameAxe(index)), "*");
-                            //                 if stacked(inSameAxe(index)).ts(s) == st.ts then
-                            //                     st.line_style = stacked(inSameAxe(index)).line_style(s) + 1;
-                            //                 end
-                            //                 stacked(inSameAxe(index)) = [stacked(inSameAxe(index)) st];
-                            //             end
-                            //         end
-                            //     else
                                 if labels == [] | ~isfield(labels, st.ylabel) then
                                     stacked(idx) = st;
-                                    labels(st.ylabel) = idx //length(stacked);
+                                    labels(st.ylabel) = idx;
                                 else
                                     stacked(labels(st.ylabel)) = [stacked(labels(st.ylabel)) st];
                                 end
@@ -333,7 +322,6 @@ function f = stackedplot(varargin)
             end
         end
     end
-    //disp(stacked)
 
     if yLabels <> [] then
         if inSameAxe <> [] then
@@ -359,9 +347,10 @@ function f = stackedplot(varargin)
 
     //open a new plot
     f = scf();
-    f.visible = "off";
+    f.immediate_drawing = "off";
 
     stackedsize = size(stacked);
+    m = 0;
     for i = 1:stackedsize
         info = stacked(i);
         subplot(size(stacked), 1, i);
@@ -371,8 +360,10 @@ function f = stackedplot(varargin)
             y = tss(var.ts).vars(var.var).data;
 
             if var.type == "duration" then
+                fmt = y.format;
                 y = y.duration;
             elseif var.type == "datetime" then
+                fmt = y.format;
                 y = y.date * 24*60*60 + y.time;
                 if or(y < 0) then
                     y(y < 0) = %nan;
@@ -388,10 +379,11 @@ function f = stackedplot(varargin)
             e.thickness = var.thickness;
 
             if linespec == [] then
+                s = size(colors, "r");
                 if size(tss) > 1 then
-                    c = modulo(var.ts, size(colors, "*"));
+                    c = modulo(var.ts-1, s) + 1;
                 else
-                    c = modulo(j, size(colors, "*"));
+                    c = modulo(j - 1, s) + 1;
                 end
                 e.foreground = color(colors(c, 1), colors(c, 2), colors(c, 3));
                 e.line_style = var.line_style;
@@ -402,17 +394,26 @@ function f = stackedplot(varargin)
         if i <> stackedsize then
             a.axes_visible(1) = "off";
         end
+        a.box = "off";
+        a.tight_limits = "on";
+        a.sub_ticks  = [0 4];
 
-        loc = a.y_ticks.locations;
+        yticks = a.y_ticks;
+        loc = linspace(a.data_bounds(3), a.data_bounds(4), length(yticks(2))+1)'
+
         if var.type == "duration" then
-            d = duration(0, 0, zeros(loc));
+            d = duration(0, 0, zeros(loc), "OutputFormat", fmt);
             d.duration = loc;
-            a.y_ticks.labels = string(d);
+            yticks(3) = string(d);
         elseif var.type == "datetime" then //datatime
-            d = datetime(zeros(loc), 1, 1);
+            d = datetime(zeros(loc), 1, 1, "OutputFormat", fmt);
             d.date = floor(loc / (24*60*60));
-            a.y_ticks.labels = string(d);
+            yticks(3) = string(d);
+        else
+            yticks(3) = string(loc)
         end
+        yticks(2) = loc;
+        a.y_ticks = yticks;
 
         if yLabels <> [] then
             if combineMatchingNames then
@@ -426,11 +427,9 @@ function f = stackedplot(varargin)
         [tmp, k] = unique(ytext);
         yy(k) = tmp;
         ylabel(yy)
+        m = max(m, max(length(yy)))
+
         clear yy;
-        a.y_label.font_angle = 0;
-        a.y_label.auto_rotation = "on";
-        a.box = "off";
-        // a.tight_limits = "on";
 
         if size(info, "*") > 1 | legendLabels <> "" then
             t = "";
@@ -447,22 +446,31 @@ function f = stackedplot(varargin)
             hl.font_size = 2
         end
     end
-    update_margins(f)
+    //update_margins(f)
 
-    a = gca();
-    xlabel(xLabel)
-    loc = a.x_ticks.locations;
+
+    a = f.children(1);
+    a.x_label.text = xLabel;
+    xticks = a.x_ticks;
+    l = length(xticks(2))
+    if l < 10 then
+        l = l + 1;
+    end
+    loc = round(linspace(a.data_bounds(1), a.data_bounds(2), l))'
+
+    xticks(2) = loc;
 
     if isDuration then
         d = duration(0, 0, zeros(loc), "OutputFormat", datatime.format);
         d.duration = loc;
-        a.x_ticks.labels = string(d);
+        xticks(3) = string(d);
     else
         d = datetime(zeros(loc), 1, 1, "OutputFormat", datatime.format);
         d.date = floor(loc / (24*60*60));
         d.time = modulo(loc, 24*60*60);
-        a.x_ticks.labels = string(d);
+        xticks(3) = string(d);
     end
+    a.x_ticks = xticks;
 
     if titleFigure <> [] then
         title(f.children($), titleFigure)
@@ -471,6 +479,26 @@ function f = stackedplot(varargin)
 
     f.axes_size = f.axes_size + 1;
     f.axes_size = f.axes_size - 1;
-    f.visible = "on";
+    f.immediate_drawing = "on";
+
+    // manage font_angle instead of the length of ylabel
+    if m < 16 then
+        for i = 1:size(f.children, "*")
+            a = f.children(i)
+            a.y_label.font_angle = 0;
+        
+            if m > 7 then
+                c = 0.15:0.01:0.22;
+                idx = find(m == 8:15);
+                a.margins(1) = c(idx);
+            end
+        end
+    end
+
+    if nargout
+        varargout(1) = f;
+    end
     
 endfunction
+
+

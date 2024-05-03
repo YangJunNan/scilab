@@ -611,14 +611,6 @@
                     <para>見栄えの良い軸のグラデーション</para>
                 </listitem>
             </varlistentry>
-            <varlistentry>
-                <term>
-                    <link linkend="plotframe">plotframe</link>
-                </term>
-                <listitem>
-                    <para>目盛およびグリッドを有するフレームをプロット</para>
-                </listitem>
-            </varlistentry>
         </variablelist>
     </refsection>
     <refsection>

@@ -35,36 +35,15 @@ function subplot(m ,n, p)
 
     // Determining the subplot' substrate
     // ----------------------------------
-    e = gcf()
-    t = e.children.type
-    k = findobj(e, "type","Axes");
-    if k <> []
-        e = gce();
-    else
-        k = findobj(e, "type","uicontrol", "-and", "style","frame");
-        if k <> []
-            e = k(1)
-        end
-    end
-    if e.type=="Figure" | (e.type=="uicontrol" & e.style=="frame") then
-        f = e
-    else
-        tmp = e.parent
-        while tmp.type<>"Figure" & (tmp.type<>"uicontrol" | tmp.style<>"frame")
-            tmp = tmp.parent
-        end
-        f = tmp
-    end
+    a = gca();
+    f = a.parent;
+    na = sum(f.children.type=="Axes");
 
-    na = 0
-    if f.children <> []
-        na = sum(f.children.type=="Axes")
-    end
-    if f.type=="Figure" & na==1 then
+    if na==1 then
         // an axes is automatically created when a figure is created
         // do not create a new axes if we have just this one
-        a = f.children
-        da = gda()
+        a = f.children(f.children.type == "Axes")(1);
+        da = gda();
         if a.children==[] & and(a.axes_bounds==da.axes_bounds) & ..
            a.title.text==da.title.text & ..
            a.x_label.text==da.x_label.text & a.y_label.text==da.y_label.text
@@ -73,6 +52,7 @@ function subplot(m ,n, p)
             return
         end
     end
+
     // look for an axes with the same axes_bounds
     for k = 1:na
         child = f.children(k);
@@ -82,6 +62,7 @@ function subplot(m ,n, p)
             return
         end
     end
+
     //create a new axes
     a = newaxes(f)
     a.axes_bounds = axes_bounds

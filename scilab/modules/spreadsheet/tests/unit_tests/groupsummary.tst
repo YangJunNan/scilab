@@ -116,6 +116,26 @@ expected = ["[-5, 0)" "[-5, 0)" "3"; "[0, 5]" "[-5, 0)" "1"; "[0, 5]" "[0, 5]" "
 assert_checkequal(G.Properties.VariableNames, varnames);
 assert_checkequal(string(G), expected);
 
+// With IncludedEdge - right
+G = groupsummary(A, "x1", [-1.5 -0.5 0.5 1.5], "IncludedEdge", "right");
+varnames = ["disc_x1", "GroupCount"];
+expected = ["[-1.5, -0.5]" "3"; "(0.5, 1.5]" "2"];
+assert_checkequal(G.Properties.VariableNames, varnames);
+assert_checkequal(string(G), expected);
+
+G = groupsummary(A, "x1", [-1.5 -0.5 0.5 1.5], sum, "x2", "IncludedEdge", "right");
+varnames = ["disc_x1", "GroupCount", "fun_x2"];
+expected = ["[-1.5, -0.5]" "3" "-8.5"; "(0.5, 1.5]" "2" "-3"];
+assert_checkequal(G.Properties.VariableNames, varnames);
+assert_checkequal(string(G), expected);
+
+G = groupsummary(A, ["x1", "x2"], {[-1.5 -0.5 0.5 1.5], [-4 -1.5 0 1.5]}, "IncludedEdge", "right");
+varnames = ["disc_x1", "disc_x2", "GroupCount"];
+expected = ["[-1.5, -0.5]" "[-4, -1.5]" "3"; "(0.5, 1.5]" "[-4, -1.5]" "1"; "(0.5, 1.5]" "(0, 1.5]" "1"];
+assert_checkequal(G.Properties.VariableNames, varnames);
+assert_checkequal(string(G), expected);
+
+
 timestamp = hours([1 3 2 2 3])';
 A = timeseries(timestamp, x1, x2, "VariableNames", ["hours", "x1", "x2"]);
 
@@ -123,6 +143,7 @@ G = groupsummary(A, "hours", sum);
 expected = [string(hours(1:3))' string([1;2;2]), string([-0.5;-2; 3]), string([-2.5; -6; -3])];
 assert_checkequal(G.Properties.VariableNames, ["hours", "GroupCount", "fun_x1", "fun_x2"]);
 assert_checkequal(string(G), expected);
+
 
 // -----------------------------------------------------------------------------
 // Data from www.historique-meteo.net
@@ -136,3 +157,35 @@ expected = ["météo correcte" "7" "25" "19" "13.5" "23" "17.714286" "12.371429"
             "météo idéale" "10" "31" "19" "14.5" "26.7" "17.8" "14.2"];
 assert_checkequal(G.Properties.VariableNames, ["OPINION" "GroupCount", "fun1_MAX_TEMPERATURE_C", "fun1_MIN_TEMPERATURE_C", "fun1_SUNHOUR", "fun2_MAX_TEMPERATURE_C", "fun2_MIN_TEMPERATURE_C", "fun2_SUNHOUR"]);
 assert_checkequal(string(G), expected);
+
+
+d = [datetime(2023, 1, 1): caldays(15): datetime(2023, 6, 15)]';
+s = size(d, "*");
+v1 = [1; 4; 3; 5; 3; 3; 3; 5; 2; 5; 2; 5];
+v2 = ["B"; "B"; "A"; "A"; "C"; "C"; "C"; "A"; "B"; "B"; "B"; "C"];
+v3 = ["B"; "A"; "A"; "C"; "C"; "B"; "C"; "B"; "B"; "A"; "B"; "A"];
+ts = timeseries(d, v1, v2, v3, "VariableNames", ["Time", "value", "string1", "string2"]);
+
+function r = findA(x)
+    ind = find(x == "A");
+    r = sum(ind)
+endfunction
+
+function r = findB(x)
+    ind = find(x == "B");
+    r = sum(ind)
+endfunction
+
+function r = findC(x)
+    ind = find(x == "C");
+    r = sum(ind)
+endfunction
+
+g = groupsummary(ts, "Time", "month", findA, "string1");
+assert_checkequal(g.fun_string1, [3; 1; 0; 2; 0; 0]);
+g = groupsummary(ts, "Time", "month", {findA, findB, findC}, "string1");
+expected = [3 3 0; 1 0 0; 0 0 3; 2 0 1; 0 6 0; 0 0 1];
+assert_checkequal(g(["fun1_string1", "fun2_string1", "fun3_string1"]), expected);
+g = groupsummary(ts, "Time", "month", {findA, findB, findC}, ["string1", "string2"]);
+expected = [3 5 3 1 0 0; 1 0 0 0 0 1; 0 0 0 2 3 1; 2 0 0 2 1 1; 0 2 6 4 0 0; 0 1 0 0 1 0];
+assert_checkequal(g(["fun1_string1", "fun1_string2","fun2_string1", "fun2_string2", "fun3_string1", "fun3_string2"]), expected);

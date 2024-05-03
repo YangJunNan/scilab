@@ -33,7 +33,7 @@
             <varlistentry>
                 <term>opts</term>
                 <listitem>
-                    <para>file import options obtained by detectImportOptions</para>
+                    <para>file import options obtained by <link linkend="detectImportOptions"></link></para>
                     <para/>
                 </listitem>
             </varlistentry>
@@ -48,7 +48,7 @@
                 </listitem>
                 <listitem>
                     <para>
-                        <emphasis role="bold">Name: 'RowTimes', Value: duration or datetime column vector</emphasis>: 
+                        <emphasis role="bold">Name: 'RowTimes', Value: <link linkend="duration"></link> or <link linkend="datetime"></link> column vector</emphasis>: 
                         if the filename has no time, use this property to add a time index in the timeseries.
                     </para>
                     <para/>
@@ -92,7 +92,7 @@
             Accepted file formats are .txt, .dat or .csv.
         </para>
         <para>
-            readtimeseries detects the format file thanks to detectImportOptions function. opts contains all information on the file.
+            readtimeseries detects the format file thanks to <link linkend="detectImportOptions"></link> function. opts contains all information on the file.
         </para>
         <para>
             To extract only the necessary variables (columns), use <emphasis role="bold">ts = readtimeseries(filename, "VariableNames", value)</emphasis>.
@@ -100,6 +100,16 @@
     </refsection>
     <refsection>
         <title>Examples</title>
+        <programlisting role="example"><![CDATA[
+            dt = [datetime(2022,1,10):caldays(1):datetime(2022,1,21)]';
+            hc = [13574; 13169; 11999; 12146; 15456; 10545; 11091; 21657; 11393; 10283; 10924; 16208];
+            hp = [13593; 15306; 16766; 15941; 14558; 13722; 18401; 14632; 14571; 14925; 14284; 15028];
+            ts = timeseries(dt, hc, hp, "VariableNames", ["Time", "HC", "HP"]);
+            writetimeseries(ts, fullfile(TMPDIR, "data.txt"));
+
+            r = readtimeseries(fullfile(TMPDIR, "data.txt"));
+        ]]>
+        </programlisting>
     </refsection>
     <refsection role="see also">
         <title>See also</title>
@@ -110,6 +120,20 @@
             <member>
                 <link linkend="timeseries">timeseries</link>
             </member>
+            <member>
+                <link linkend="detectImportOptions">detectImportOptions</link>
+            </member>
         </simplelist>
+    </refsection>
+    <refsection role="history">
+        <title>History</title>
+        <revhistory>
+            <revision>
+                <revnumber>2024.0.0</revnumber>
+                <revdescription>
+                    Introduction in Scilab.
+                </revdescription>
+            </revision>
+        </revhistory>
     </refsection>
 </refentry>

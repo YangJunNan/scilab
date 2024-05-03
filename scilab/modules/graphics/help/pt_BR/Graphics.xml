@@ -615,19 +615,6 @@
                     <para>Pretty axis graduations</para>
                 </listitem>
             </varlistentry>
-            <varlistentry>
-                <term>
-                    <link linkend="plotframe">plotframe</link>
-                </term>
-                <listitem>
-                    <para>
-                        Plot a frame with scaling and grids
-                        <warning>
-                            This function is obsolete.
-                        </warning>
-                    </para>
-                </listitem>
-            </varlistentry>
         </variablelist>
     </refsection>
     <refsection>

@@ -21,6 +21,7 @@
 #include "macrofile.hxx"
 #include "threadId.hxx"
 #include "threadmanagement.hxx"
+
 #include <iomanip>
 #include <list>
 #include <vector>
@@ -1642,4 +1643,16 @@ bool ConfigVariable::getWebMode()
 void ConfigVariable::setWebMode(bool _mode)
 {
     webMode = _mode;
+}
+
+// stdin redirected
+bool ConfigVariable::m_isatty = false;
+bool ConfigVariable::isatty()
+{
+    return m_isatty;
+}
+
+void ConfigVariable::setisatty(bool _isatty)
+{
+    m_isatty = _isatty;
 }

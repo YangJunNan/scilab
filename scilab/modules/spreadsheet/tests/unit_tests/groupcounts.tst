@@ -78,6 +78,49 @@ expected = ["[-5, 0)" "[-4, -2)" "3"; "[0, 5]" "[-4, -2)" "1"; "[0, 5]" "<undefi
 assert_checkequal(G.Properties.VariableNames, ["disc_Var2", "disc_Var3", "GroupCount"]);
 assert_checkequal(string(G), expected);
 
+// With IncludedEdge
+// -----------------------------------------------------------------------------
+G = groupcounts(A, "Var2", [-1.5 -0.5 0.5 1.5]);
+expected = ["[-1.5, -0.5)" "1"; "[-0.5, 0.5)" "2"; "[0.5, 1.5]" "2"];
+assert_checkequal(G.Properties.VariableNames, ["disc_Var2", "GroupCount"]);
+assert_checkequal(string(G), expected);
+
+G = groupcounts(A, "Var2", [-1.5 -0.5 0.5 1.5], "IncludedEdge", "left");
+assert_checkequal(G.Properties.VariableNames, ["disc_Var2", "GroupCount"]);
+assert_checkequal(string(G), expected);
+
+G = groupcounts(A, "Var2", [-1.5 -0.5 0.5 1.5], "IncludedEdge", "right");
+expected = ["[-1.5, -0.5]" "3"; "(0.5, 1.5]" "2"];
+assert_checkequal(G.Properties.VariableNames, ["disc_Var2", "GroupCount"]);
+assert_checkequal(string(G), expected);
+
+G = groupcounts(A, ["Var2", "Var3"], [-4 -1.5 0 1.5]);
+expected = ["[-1.5, 0)" "[-4, -1.5)" "3"; "[0, 1.5]" "[-4, -1.5)" "1"; "[0, 1.5]" "[0, 1.5]" "1"];
+assert_checkequal(G.Properties.VariableNames, ["disc_Var2", "disc_Var3", "GroupCount"]);
+assert_checkequal(string(G), expected);
+
+G = groupcounts(A, ["Var2", "Var3"], [-4 -1.5 0 1.5], "IncludedEdge", "left");
+assert_checkequal(G.Properties.VariableNames, ["disc_Var2", "disc_Var3", "GroupCount"]);
+assert_checkequal(string(G), expected);
+
+G = groupcounts(A, ["Var2", "Var3"], [-4 -1.5 0 1.5], "IncludedEdge", "right");
+expected = ["[-4, -1.5]" "[-4, -1.5]" "1"; "(-1.5, 0]" "[-4, -1.5]" "2"; "(0, 1.5]" "[-4, -1.5]" "1"; "(0, 1.5]" "(0, 1.5]" "1"];
+assert_checkequal(G.Properties.VariableNames, ["disc_Var2", "disc_Var3", "GroupCount"]);
+assert_checkequal(string(G), expected);
+
+G = groupcounts(A, ["Var2", "Var3"],{[-1.5 -0.5 0.5 1.5], [-4 -1.5 0 1.5]});
+expected = ["[-1.5, -0.5)" "[-4, -1.5)" "1"; "[-0.5, 0.5)" "[-4, -1.5)" "2"; "[0.5, 1.5]" "[-4, -1.5)" "1"; "[0.5, 1.5]" "[0, 1.5]" "1"];
+assert_checkequal(G.Properties.VariableNames, ["disc_Var2", "disc_Var3", "GroupCount"]);
+assert_checkequal(string(G), expected);
+
+G = groupcounts(A, ["Var2", "Var3"],{[-1.5 -0.5 0.5 1.5], [-4 -1.5 0 1.5]}, "IncludedEdge", "left");
+assert_checkequal(G.Properties.VariableNames, ["disc_Var2", "disc_Var3", "GroupCount"]);
+assert_checkequal(string(G), expected);
+
+G = groupcounts(A, ["Var2", "Var3"],{[-1.5 -0.5 0.5 1.5], [-4 -1.5 0 1.5]}, "IncludedEdge", "right");
+expected = ["[-1.5, -0.5]" "[-4, -1.5]" "3"; "(0.5, 1.5]" "[-4, -1.5]" "1"; "(0.5, 1.5]" "(0, 1.5]" "1"];
+assert_checkequal(G.Properties.VariableNames, ["disc_Var2", "disc_Var3", "GroupCount"]);
+assert_checkequal(string(G), expected);
 
 // Second test
 // -----------------------------------------------------------------------------
@@ -138,7 +181,7 @@ assert_checkequal(G.Properties.VariableNames, ["OPINION", "UV_INDEX", "GroupCoun
 assert_checkequal(string(G), expected);
 
 G = groupcounts(TS, "DATE", "dayname");
-expected = ["Friday" "5"; "Monday" "4"; "Saturday" "4"; "Sunday" "4"; "Thursday", "5"; "Tuesday" "4"; "Wednesday", "4"];
+expected = ["Sunday" "4"; "Monday" "4"; "Tuesday" "4"; "Wednesday" "4"; "Thursday" "5"; "Friday" "5"; "Saturday" "4"];
 assert_checkequal(G.Properties.VariableNames, ["dayname_DATE" "GroupCount"]);
 assert_checkequal(string(G), expected);
 
@@ -159,3 +202,22 @@ str(22) = "103";
 expected = [gsort(unique(T.LOCATION)(ones(4,1).*.matrix(1:38, [38 1])), 'g', 'i'), repmat(unique(T.SUBJECT), 38, 1), str];
 assert_checkequal(G.Properties.VariableNames, ["LOCATION", "SUBJECT", "GroupCount"]);
 assert_checkequal(string(G), expected);
+
+rand("seed", 0)
+// with datetime
+dt = datetime(2023,[5 3:2:10]', 1);
+x = ["a"; "b"; "b"; "c"; "a"];
+A = timeseries(dt, x, x1, "VariableNames", ["dt", "x", "x1"]);
+
+G = groupcounts(A, "dt", "monthname");
+m = ["March"; "May"; "July"; "September"];
+values = [1; 2; 1; 1];
+expected = table(m, values, "VariableNames", ["monthname_dt", "GroupCount"]);
+assert_checkequal(G, expected);
+
+// With IncludeEmptyGroups
+G = groupcounts(A, "dt", "monthname", "IncludeEmptyGroups", %t);
+m = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]';
+values = [0 0 1 0 2 0 1 0 1 0 0 0]';
+expected = table(m, values, "VariableNames", ["monthname_dt", "GroupCount"]);
+assert_checkequal(G, expected);

@@ -15,6 +15,12 @@ function out = %_rowvarfun(fname, t, groupingVariables, opts, varargin)
     method = opts.method;
     nameMethod = opts.nameMethod;
 
+    if or(fieldnames(opts) == "includedEdge") then
+        includedEdge = opts.includedEdge;
+    else
+        includedEdge = "left";
+    end
+
     out = [];
     isT = istimeseries(t);
     varnames = t.props.variableNames;
@@ -115,7 +121,7 @@ function out = %_rowvarfun(fname, t, groupingVariables, opts, varargin)
         previousname = previousname(ki1);
     end
 
-    [val, count, vindex] = %_groupcounts(t, groupingVariables, groupbins, includeEmpty)
+    [val, count, vindex] = %_groupcounts(t, groupingVariables, groupbins, includeEmpty, includedEdge)
 
     newval = list();
     newcount = [];
@@ -124,7 +130,6 @@ function out = %_rowvarfun(fname, t, groupingVariables, opts, varargin)
     end
 
     if fname == "varfun" then
-
         results = list();
         [B,k] = gsort(vindex, "g", "i");
         km = find([1; B(2:$) - B(1:$-1)] <> 0)';
@@ -146,7 +151,7 @@ function out = %_rowvarfun(fname, t, groupingVariables, opts, varargin)
                         mat(i) = func(data(i));
                     end
                 else
-                    if or(type(data) == [1, 4, 8]) then
+                    if or(type(data) == [1, 4, 8, 10]) then
                         mat = zeros(count);
                         res = zeros(lenkm, 1)
                         for i = 1:lenkm
@@ -188,7 +193,7 @@ function out = %_rowvarfun(fname, t, groupingVariables, opts, varargin)
                             end
                         end
                     else
-                        errargs = sci2exp(["double", "boolean", "int", "datetime", "duration"]);
+                        errargs = sci2exp(["double", "boolean", "int", "datetime", "duration", "string"]);
                         error(msprintf(_("%s: Wrong type for variable %s: Must be in %s.\n"), fname, t.props.variableNames(jdx), errargs));
                     end
 

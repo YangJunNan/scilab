@@ -34,17 +34,17 @@ function demo_single_pendulum()
             title(msprintf("t=%4.1f",t))
         else
             try
-                h=findobj("tag","pendulum");
-                if is_handle_valid(h)
-                    realtime(t)
-                    x=y(1:2*nb);
-                    lambda=y($);
-                    h.data=[0 0;x'];
-                    h.foreground=min(128,1+floor((lambda+50)/(60)*128));
-                    gca().title.text=msprintf("t=%4.1f",t);
-                else
-                term=%t;
-                end
+                realtime(t)
+                data = get("pendulum", "data");
+                if data == [] then term=%t; return; end
+                
+                nb=size(data,1)-1;
+                x=y(1:2*nb);
+                lambda=y($);
+                data=[0 0;x'];
+                set("pendulum", "data", data);
+                set("pendulum", "foreground", min(128,1+floor((lambda+50)/(60)*128)));
+                gca().title.text=msprintf("t=%4.1f",t);
             catch
                 term=%t
             end

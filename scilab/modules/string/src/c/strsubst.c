@@ -267,16 +267,21 @@ wchar_t *wcssub_reg(const wchar_t* _pwstInput, const wchar_t* _pwstSearch, const
         return NULL;
     }
 
+    // early return, NULL might be given as unspecified
+    if (_pwstSearch == NULL || _pwstReplace == NULL)
+    {
+        return os_wcsdup(_pwstInput);
+    }
+
+    // early return, empty strings will not be modified
+    if (_pwstSearch[0] == L'\0' || _pwstInput[0] == L'\0')
+    {
+        return os_wcsdup(_pwstInput);
+    }
+
     len = (int)wcslen(_pwstInput);
     arriStart = (int*)MALLOC(sizeof(int) * len);
     arriEnd = (int*)MALLOC(sizeof(int) * len);
-
-    if (_pwstSearch == NULL || _pwstReplace == NULL)
-    {
-        FREE(arriStart);
-        FREE(arriEnd);
-        return os_wcsdup(_pwstInput);
-    }
 
     //check replacement
     int* replacement = (int*)MALLOC(sizeof(int) * wcslen(_pwstReplace));
@@ -309,8 +314,8 @@ wchar_t *wcssub_reg(const wchar_t* _pwstInput, const wchar_t* _pwstSearch, const
         }
     }
 
-    wchar_t*** captured = (wchar_t***)MALLOC(sizeof(wchar_t**) * wcslen(_pwstInput));
-    int* captured_count = (int*)CALLOC(wcslen(_pwstInput), sizeof(int));
+    wchar_t*** captured = (wchar_t***)MALLOC(sizeof(wchar_t**) * len);
+    int* captured_count = (int*)CALLOC(len, sizeof(int));
     do
     {
         iPcreStatus = wide_pcre_private(_pwstInput + iJump, _pwstSearch, &iStart, &iEnd, &captured[iOccurs], &captured_count[iOccurs]);
@@ -340,7 +345,7 @@ wchar_t *wcssub_reg(const wchar_t* _pwstInput, const wchar_t* _pwstSearch, const
             return NULL;
         }
     }
-    while (iPcreStatus == PCRE_FINISHED_OK && iStart != iEnd);
+    while (iOccurs < len && iPcreStatus == PCRE_FINISHED_OK && iStart != iEnd);
 
     if (iOccurs)
     {
@@ -380,7 +385,7 @@ wchar_t *wcssub_reg(const wchar_t* _pwstInput, const wchar_t* _pwstSearch, const
         /*group substitution*/
         wchar_t* p = result;
         int iDollar = 0;
-        while ((p = wcsstr(p, L"$")) != NULL)
+        while ((p = wcsstr(p, L"$")) != NULL && iDollar < replacement_len)
         {
             BOOL sfree = FALSE;
             wchar_t* s = NULL;

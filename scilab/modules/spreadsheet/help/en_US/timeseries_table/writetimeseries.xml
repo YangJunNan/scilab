@@ -76,7 +76,7 @@
             dt = [datetime(2022,1,10):caldays(1):datetime(2022,1,21)]';
             hc = [13574; 13169; 11999; 12146; 15456; 10545; 11091; 21657; 11393; 10283; 10924; 16208];
             hp = [13593; 15306; 16766; 15941; 14558; 13722; 18401; 14632; 14571; 14925; 14284; 15028];
-            ts = timeseries(dt, hc, hp, "VariableNames", ["Time", "HC", "HP"];
+            ts = timeseries(dt, hc, hp, "VariableNames", ["Time", "HC", "HP"]);
             writetimeseries(ts, fullfile(TMPDIR, "data.txt"));
 
             r = readtimeseries(fullfile(TMPDIR, "data.txt"));
@@ -93,5 +93,16 @@
                 <link linkend="timeseries">timeseries</link>
             </member>
         </simplelist>
+    </refsection>
+    <refsection role="history">
+        <title>History</title>
+        <revhistory>
+            <revision>
+                <revnumber>2024.0.0</revnumber>
+                <revdescription>
+                    Introduction in Scilab.
+                </revdescription>
+            </revision>
+        </revhistory>
     </refsection>
 </refentry>

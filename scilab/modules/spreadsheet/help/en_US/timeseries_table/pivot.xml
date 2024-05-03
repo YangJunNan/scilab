@@ -96,6 +96,16 @@
                     </para>
                     <para/>
                 </listitem>
+                <listitem>
+                    <para><emphasis role="bold">Name: IncludedEdge, Value: "left" or "right"</emphasis>: 
+                        (default value: 'left'): this option must use only if RowsBinMethod or/and ColumnsBinMethod are specified (i.e RowsBinMethod = [0 2 4]). 
+                        When IncludedEdge is equal to 'left', data will be contained in the groups
+                        [bins(1), bins(2)), [bins(2), bins(3)), ..., [bins(n-1), bins(n)]. The last bins(n) is included. 
+                        If IncludedEdge is equal to 'right', the intervals will be: [bins(1), bins(2)], (bins(2), bins(3)], ... (bins(n-1), bins(n)]. 
+                        In this case, the first bins(1) is included. The values in RowsBinMethod or/and ColumnsBinMethod must be in strictly increasing order.
+                    </para>
+                    <para/>
+                </listitem>
             </varlistentry>
             <varlistentry>
                 <term>p</term>
@@ -113,9 +123,9 @@
             data by allowing them to be grouped, compared and combined.
         </para>
         <para>
-            <emphasis role="bold">p = pivot(t, Columns=colvarnames, Rows=rowvarnames)</emphasis> creates a pivoted table. From colvarnames, the groups 
-            found form the variables of p. Each row corresponds to one group of data present in t(:, rowvarnames). The content of p is the number of occurrences 
-            for each unique combination of rowvarnames and colvarnames.            
+            <emphasis role="bold">p = pivot(t, Columns=colvarnames, Rows=rowvarnames)</emphasis> creates a pivoted table.
+            The <literal>p</literal> columns names are generated using the unique combination between given <literal>colvarnames</literal> data.
+            Each row corresponds to one group of data present in t(:, rowvarnames). The content of <literal>p</literal> is the unique combination of rowvarnames and colvarnames.
         </para>
         <para>
             Specifying only colvarnames, the pivot table contains one row of group counts. And if only rowvarnames is specified, the pivot table contains one variable 
@@ -155,6 +165,31 @@
         ]]>
         </programlisting>
         </para>
+        <para><emphasis role="bold">With IncludedEdge</emphasis></para>
+        <para>
+        <programlisting role="example"><![CDATA[
+            rand("seed", 0)
+            x1 = floor(rand(5,1)*5)-1.5;
+            x2 = -floor(rand(5,1)*5)+0.5;
+            x = ["a"; "b"; "b"; "c"; "a"];
+            y = ["x"; "x"; "x"; "y"; "y"];
+
+            A = table(x, y, x1, x2, "VariableNames", ["x", "y", "v1", "v2"])
+
+            // With ColumnsBinMethod and IncludedEdge = "left" (default value so no need to specify it)
+            P = pivot(A, Rows="x", Columns="v1", ColumnsBinMethod=[-1.5 0 1.5])
+
+            // With ColumnsBinMethod and IncludedEdge = "right"
+            P = pivot(A, Rows="x", Columns="v1", ColumnsBinMethod=[-1.5 0 1.5], IncludedEdge="right")
+
+            // With RowsBinMethod and IncludedEdge = "left" (default value so no need to specify it)
+            P = pivot(A, Rows="v1", Columns="x", RowsBinMethod=[-1.5 0 1.5])
+
+            // With RowsBinMethod and IncludedEdge = "right"
+            P = pivot(A, Rows="v1", Columns="x", RowsBinMethod=[-1.5 0 1.5], IncludedEdge="right")
+        ]]>
+        </programlisting>
+        </para>
     </refsection>
     <refsection role="see also">
         <title>See also</title>
@@ -178,5 +213,16 @@
                 <link linkend="groupsummary">groupsummary</link>
             </member>
         </simplelist>
+    </refsection>
+    <refsection role="history">
+        <title>History</title>
+        <revhistory>
+            <revision>
+                <revnumber>2024.0.0</revnumber>
+                <revdescription>
+                    Introduction in Scilab.
+                </revdescription>
+            </revision>
+        </revhistory>
     </refsection>
 </refentry>
