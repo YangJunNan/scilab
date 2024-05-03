@@ -798,6 +798,8 @@ function %h_p(h)
             t=[t;
                 "color_mode = "+string(h.color_mode)
                 "color_flag = "+sci2exp(h.color_flag,0)
+                "color_range = "+sci2exp(h.color_range)
+                "cdata_bounds = "+sci2exp(h.cdata_bounds)
                 "cdata_mapping = "+sci2exp(h.cdata_mapping)
                 "hiddencolor = "+string(h.hiddencolor)
                 "clip_state = "+sci2exp(h.clip_state)
