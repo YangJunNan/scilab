@@ -328,7 +328,7 @@ bool TList::toString(std::wostringstream& ostr)
 
     IncreaseRef();
     in.push_back(this);
-    types::Function::ReturnValue ret = Overload::generateNameAndCall(L"p", in, 1, out, false, false);
+    types::Function::ReturnValue ret = Overload::generateNameAndCall(L"p", in, 0, out, false, false);
     if (ret == types::Callable::OK_NoResult)
     {
         std::wstring wstrFuncName = L"%l_p";
