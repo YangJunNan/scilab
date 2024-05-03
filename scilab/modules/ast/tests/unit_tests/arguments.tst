@@ -384,9 +384,9 @@ function r = test_varargin(a, varargin)
     r = nargin;
 endfunction
 
+assert_checkequal(test_varargin(1), 1);
 assert_checkequal(test_varargin(1, 2), 2);
 assert_checkequal(test_varargin(1, 2, 3), 3);
-assert_checkequal(test_varargin(1, 2, 3, 4), 4);
 
 code = [
     "function test_varargin(a, b, varargin)"
