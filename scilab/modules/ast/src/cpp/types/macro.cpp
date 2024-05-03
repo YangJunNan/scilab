@@ -894,10 +894,29 @@ int mustBeValidVariableName(types::typed_list& x)
 
 int mustBeEqualDims(types::typed_list& x)
 {
-    int iDims1 = x[0]->getAs<types::GenericType>()->getDims();
-    int iDims2 = x[1]->getAs<types::GenericType>()->getDims();
-    std::vector<int> ref = {-1};
+    types::typed_list in1 = {x[0]};
+    types::typed_list out1;
+    if (Overload::call(L"size", in1, 1, out1) != types::Function::OK)
+    {
+        return 1;
+    }
 
+    types::typed_list in2 = {x[1]};
+    types::typed_list out2;
+    if (Overload::call(L"size", in2, 1, out2) != types::Function::OK)
+    {
+        return 1;
+    }
+
+    types::Double* p1 = out1[0]->getAs<types::Double>();
+    std::vector<int> dims1(p1->get(), p1->get() + p1->getSize());
+    p1->killMe();
+
+    types::Double* p2 = out2[0]->getAs<types::Double>();
+    std::vector<int> dims2(p2->get(), p2->get() + p2->getSize());
+    p2->killMe();
+
+    std::vector<int> ref = {-1};
     if (x.size() == 3)
     {
         types::Double* pref = x[2]->getAs<types::Double>();
@@ -913,7 +932,7 @@ int mustBeEqualDims(types::typed_list& x)
     {
         for (int i = 0; i < ref.size(); ++i)
         {
-            if (iDims1 < ref[i] || iDims2 < ref[i])
+            if (dims1.size() < ref[i] || dims2.size() < ref[i])
             {
                 return 1;
             }
@@ -921,19 +940,17 @@ int mustBeEqualDims(types::typed_list& x)
     }
     else
     {
-        if (iDims2 != iDims2)
+        if (dims1.size() != dims2.size())
         {
             return 1;
         }
     }
 
-    int* piDims1 = x[0]->getAs<types::GenericType>()->getDimsArray();
-    int* piDims2 = x[1]->getAs<types::GenericType>()->getDimsArray();
     if (ref.size() >= 1 && ref[0] != -1)
     {
         for (int i = 0; i < ref.size(); ++i)
         {
-            if (piDims1[ref[i] - 1] != piDims2[ref[i] - 1])
+            if (dims1[ref[i] - 1] != dims2[ref[i] - 1])
             {
                 return 1;
             }
@@ -941,9 +958,9 @@ int mustBeEqualDims(types::typed_list& x)
     }
     else
     {
-        for (int i = 0; i < iDims1; ++i)
+        for (int i = 0; i < dims1.size(); ++i)
         {
-            if (piDims1[i] != piDims2[i])
+            if (dims1[i] != dims2[i])
             {
                 return 1;
             }
