@@ -1,13 +1,21 @@
 // Scilab ( https://www.scilab.org/ ) - This file is part of Scilab
+//
 // Copyright (C) 2024 - 3DS - Antoine ELIAS
+//
+// This file is hereby licensed under the terms of the GNU GPL v2.0,
+// pursuant to article 5.3.4 of the CeCILL v.2.1.
+// This file was originally licensed under the terms of the CeCILL v2.1,
+// and continues to be available under such terms.
+// For more information, see the COPYING file which you should have received
+// along with this program.
 
 function varargout = scilab(code, file, mode, quit, args, background)
     if isdef("code", "l") && isdef("file", "l") then
-        error(sprintf(_("%s: code and file cannot both be defined."), "scilab"));
+        error(sprintf(_("%s: Wrong input arguments: ''code'' and ''file'' cannot be both provided.\n"), "scilab"));
     end
 
     if ~isdef("code", "l") && ~isdef("file", "l") then
-        error(sprintf(_("%s: code or file must be defined."), "scilab"));
+        error(sprintf(_("%s: Wrong input arguments: ''code'' or ''file'' must be provided.\n"), "scilab"));
     end
 
     if ~isdef("code", "l") then
@@ -18,7 +26,7 @@ function varargout = scilab(code, file, mode, quit, args, background)
         file = [];
     else
         if isfile(file) == %f then
-            error(sprintf(_("%s: file ""%s"" must exist."), "scilab", file));
+            error(sprintf(_("%s: Wrong value for ''%s'' input argument: an existing file ""%s"" expected.\n"), "scilab", "file", file));
         end
 
         if getos() == "Windows" then
@@ -30,7 +38,7 @@ function varargout = scilab(code, file, mode, quit, args, background)
         mode = "nw";
     else
         if ~or(mode == ["nw" "nwni"])then
-            error(sprintf(_("%s: mode must be in [""nw"", ""nwni""]."), "scilab"));
+            error(sprintf(_("%s: Wrong value for ''%s'' input argument: must be in the set {%s}.\n"), "scilab", "mode", "''nw'', ''nwni''"));
         end
     end
 
@@ -38,7 +46,7 @@ function varargout = scilab(code, file, mode, quit, args, background)
         quit = "-quit";
     else
         if type(quit) <> 4 then
-            error(sprintf(_("%s: ''%s'' must be a boolean."), "scilab", "quit"));
+            error(sprintf(_("%s: Wrong type for ''%s'' input argument: a boolean expected.\n"), "scilab", "quit"));
         end
 
         if quit then
@@ -56,7 +64,7 @@ function varargout = scilab(code, file, mode, quit, args, background)
         background = %f;
     else
         if type(background) <> 4 then
-            error(sprintf(_("%s: ''%s'' must be a boolean."), "scilab", "background"));
+            error(sprintf(_("%s: Wrong type for ''%s'' input argument: a boolean expected.\n"), "scilab", "background"));
         end
 
         if background then
