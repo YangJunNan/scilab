@@ -76,20 +76,9 @@ function tbx_build_help(moduletitle, path)
 
         mputl(code, tmp);
 
-        if (0) then
-            if getos() == "Windows" then
-                bin = "wscilex-cli"
-            else
-                bin = "scilab-adv-cli"
-            end
-
-            command = sprintf("%s -nb -quit -f %s", fullfile(SCI, "bin", bin), tmp);
-            unix_g(command)
-        else
-            scilab(file=tmp);
-        end
+        scilab(file=tmp);
     else
-        warning(".start file was not found, help pages with <scilab:image> tag may failed");
+        warning(_(".start file was not found, build of help pages using <scilab:image> tag may failed."));
         xmltojar(path, moduletitle, directory_language, default_language);
     end
 endfunction
