@@ -58,12 +58,12 @@ function tbx_build_help(moduletitle, path)
 
     // Check scilab mode
     if and(getscilabmode() <> ["STD" "NW"]) then
-        error(msprintf(gettext("%s: documentation cannot be built in this scilab mode: %s.\n"),"tbx_build_help",getscilabmode()));
+        msprintf(gettext("%s: documentation cannot be built in this scilab mode: %s.\n"),"tbx_build_help",getscilabmode());
+    else
+        directory_language = basename(path);
+        default_language = "en_US"
+
+        xmltojar(path, moduletitle, directory_language, default_language);
     end
-
-    directory_language = basename(path);
-    default_language = "en_US"
-
-    xmltojar(path, moduletitle, directory_language, default_language);
 
 endfunction
