@@ -36,6 +36,9 @@ The option is "disableUnderMode" and can be:
     <path value="$SCILAB/thirdparty/lucene-core-8.4.0.jar"/>
     <path value="$SCILAB/thirdparty/lucene-analyzers-common-8.4.0.jar"/>
     <path value="$SCILAB/thirdparty/lucene-queryparser-8.4.0.jar"/>
+    <path value="$SCILAB/thirdparty/javafx.base.jar"/>
+    <path value="$SCILAB/thirdparty/javafx.graphics.jar"/>
+    <path value="$SCILAB/thirdparty/javafx.swing.jar"/>
 
     <!-- Load when needed -->
 
@@ -70,6 +73,33 @@ The option is "disableUnderMode" and can be:
 
     <path value="$SCILAB/thirdparty/jgraphx.jar" load="onUse">
         <load on="Xcos"/>
+        <load on="documentationGeneration"/>
+    </path>
+
+    <path value="$SCILAB/thirdparty/jaxb-runtime-2.3.1.jar" load="onUse">
+        <load on="Xcos"/>
+        <load on="documentationGeneration"/>
+    </path>
+
+    <path value="$SCILAB/thirdparty/jaxb-impl-2.3.1.jar" load="onUse">
+        <load on="Xcos"/>
+        <load on="documentationGeneration"/>
+    </path>
+
+    <!-- java.lang.NoClassDefFoundError: javax/activation/DataSource -->
+    <path value="$SCILAB/thirdparty/activation-1.1.1.jar" load="onUse">
+        <load on="Xcos"/>
+        <load on="documentationGeneration"/>
+    </path>
+
+    <path value="$SCILAB/thirdparty/istack-commons-runtime-4.2.0.jar" load="onUse">
+        <load on="Xcos"/>
+        <load on="documentationGeneration"/>
+    </path>
+
+    <!-- java.lang.NoClassDefFoundError: jakarta/activation/MimetypesFileTypeMap -->
+    <!-- java.lang.RuntimeException: Provider for jakarta.activation.spi.MimeTypeRegistryProvider cannot be found -->
+    <path value="$SCILAB/thirdparty/jakarta.activation-2.0.1.jar" load="onUse"> 
         <load on="documentationGeneration"/>
     </path>
 
@@ -141,7 +171,7 @@ The option is "disableUnderMode" and can be:
         <load on="Xcos"/>
     </path>
 
-    <path value="$SCILAB/thirdparty/ecj.jar" load="onUse">
+    <path value="$SCILAB/thirdparty/ecj-3.34.0.jar" load="onUse">
         <load on="external_objects_java"/>
     </path>
 

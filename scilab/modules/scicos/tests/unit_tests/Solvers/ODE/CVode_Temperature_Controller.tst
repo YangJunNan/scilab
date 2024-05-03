@@ -39,7 +39,7 @@ CVode_time_ref = (28720.1:10:29990.1)';
 for i=1:4
 
     scs_m.props.tol(6) = i; // Solver
-    try scicos_simulate(scs_m); catch disp(lasterror()); end; // CVode
+    try scicos_simulate(scs_m); catch disp(lasterror()); exit(1); end; // CVode
 
     assert_checkalmostequal(res.values($-19:$, :), CVode_val_ref, [], 1d-4);
     assert_checkalmostequal(res.time, CVode_time_ref);

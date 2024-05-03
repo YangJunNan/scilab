@@ -115,6 +115,30 @@ public class G2DTextureDrawingTools implements TextureDrawingTools {
     }
 
     @Override
+    public void drawMinus(int size, Appearance appearance) {
+        if (size > 1) {
+            int r = size / 2;
+            int[] coords1 = new int[] { -r, 0, r, 0};
+
+            drawPolyline(coords1, appearance);
+        } else {
+            fillDisc(0, 0, 1, appearance.getLineColor());
+        }
+    }
+
+    @Override
+    public void drawVerticalLine(int size, Appearance appearance) {
+        if (size > 1) {
+            int r = size / 2;
+            int[] coords1 = new int[] { 0, -r, 0, r};
+
+            drawPolyline(coords1, appearance);
+        } else {
+            fillDisc(0, 0, 1, appearance.getLineColor());
+        }
+    }
+
+    @Override
     public void drawPolyline(int[] coordinates, Appearance appearance) {
         if (coordinates.length == 2) {
 

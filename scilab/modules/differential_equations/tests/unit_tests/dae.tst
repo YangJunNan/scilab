@@ -476,3 +476,6 @@ assert_checkalmostequal(nn(1),81.163512,0.003);
 t01=nn(1);t=100:20:200;[pp,qq]=size(yy);y01=yy(2:3,qq);y0d1=yy(3:4,qq);
 [yy,nn,hotd]=dae("root2",[y01,y0d1],t01,t,rtol,atol,"res2","jac2",ng,"gr2",hotd);
 assert_checkalmostequal(nn(1),162.57763,0.004);
+
+// cleanup memory
+ludel();

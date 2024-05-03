@@ -292,7 +292,7 @@ doc-images:
 	mkdir $(top_srcdir)/modules/helptools/images/
 	$(MAKE) doc
 
-doc: javadoc $(top_builddir)/scilab-bin $(top_builddir)/bin/scilab-adv-cli
+doc: function-list javadoc $(top_builddir)/scilab-bin $(top_builddir)/bin/scilab-adv-cli
 if BUILD_HELP
 	@if test -x $(top_builddir)/scilab-bin; then \
 		cd $(top_builddir);\
@@ -314,7 +314,7 @@ else
 	@echo "Cannot buid help. Add --enable-build-help to the ./configure if you want to build it."
 endif
 
-doc-web: javadoc $(top_builddir)/scilab-bin $(top_builddir)/bin/scilab-adv-cli
+doc-web: function-list javadoc $(top_builddir)/scilab-bin $(top_builddir)/bin/scilab-adv-cli
 if BUILD_HELP
 	@if test -x $(top_builddir)/scilab-bin; then \
 		cd $(top_builddir);\
@@ -374,6 +374,11 @@ if CODE_COVERAGE
 else
 	@echo "Cannot start the code coverage. Add --enable-code-coverage to the ./configure and 'make clean all'."
 endif
+
+function-list:  $(top_builddir)/bin/scilab-adv-cli $(top_builddir)/scilab-bin
+	-@( cd $(top_builddir) ; \
+	echo "$(top_builddir)/bin/scilab-adv-cli -nb -noatomsautoload -nouserstartup -quit -f modules/helptools/data/configuration/regen_list.sce" ; \
+	HOME=/tmp $(top_builddir)/bin/scilab-adv-cli -nb -noatomsautoload -nouserstartup -quit -f $(top_builddir)/modules/helptools/data/configuration/regen_list.sce) || exit 1
 
 distclean-recursive: distclean-generated clean-recursive
 
@@ -488,7 +493,6 @@ localization:
 		fi; \
 		POFILE=$$PATHTO/$(LANG_DOMAIN).po; \
 		$(MSGCAT) --use-first -o $$POFILE $$FILES || exit 2; \
-		if test "$(MACOSX)" = "1"; then sed -i -e '/charset=UTF-8/d' $$POFILE; fi; \
 		$(MSGFMT) $(MSGFMT_OPTS) --statistics -o $$PATHTO/$(LANG_DOMAIN).mo $$POFILE || exit 2; \
 	done;
 

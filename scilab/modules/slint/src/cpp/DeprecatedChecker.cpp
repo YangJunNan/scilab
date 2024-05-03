@@ -14,6 +14,9 @@
  */
 
 #include "checkers/DeprecatedChecker.hxx"
+#include "callexp.hxx"
+#include "simplevar.hxx"
+#include "doubleexp.hxx"
 
 namespace slint
 {

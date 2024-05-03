@@ -15,8 +15,18 @@ REM Create log folder
 set LOG_PATH=%SCI_VERSION_STRING%
 if not exist %LOG_PATH% mkdir %LOG_PATH%
 
-curl.exe -k -o prereq.zip https://oos.eu-west-2.outscale.com/scilab-releases-dev/prerequirements/prerequirements-scilab-branch-%BRANCH%-windows_x64.zip
+curl.exe -k -o prereq.zip https://oos.eu-west-2.outscale.com/scilab-releases-dev/prerequirements/prerequirements-%SCI_VERSION_STRING%-windows_x64.zip
 unzip -o prereq.zip -d scilab > %LOG_PATH%\log_prereq_%CI_COMMIT_SHORT_SHA%.txt
+if errorlevel 1 (
+    REM no specific prereq build, use the branch one
+    curl.exe -k -o prereq.zip https://oos.eu-west-2.outscale.com/scilab-releases-dev/prerequirements/prerequirements-scilab-branch-%BRANCH%-windows_x64.zip
+    unzip -o prereq.zip -d scilab >> %LOG_PATH%\log_prereq_%CI_COMMIT_SHORT_SHA%.txt
+)
+if errorlevel 1 (
+    REM fallback to the default branch
+    curl.exe -k -o prereq.zip https://oos.eu-west-2.outscale.com/scilab-releases-dev/prerequirements/prerequirements-scilab-branch-%CI_DEFAULT_BRANCH%-windows_x64.zip
+    unzip -o prereq.zip -d scilab >> %LOG_PATH%\log_prereq_%CI_COMMIT_SHORT_SHA%.txt
+)
 @REM REM display svn revision
 type scilab\svn-info.txt
 if errorlevel 1 exit 1
@@ -46,7 +56,9 @@ devenv Scilab.sln /build "Release|x64" /project dumpexts > ..\%LOG_PATH%\log_dum
 devenv Scilab.sln /build "Release|x64" > ..\%LOG_PATH%\log_build_%CI_COMMIT_SHORT_SHA%.txt
 if errorlevel 1 tail --lines=20 ..\%LOG_PATH%\log_build_%CI_COMMIT_SHORT_SHA%.txt 1>&2 & exit 1
 devenv Scilab.sln /build "Release|x64" /project buildhelp > ..\%LOG_PATH%\log_buildhelp_%CI_COMMIT_SHORT_SHA%.txt
+if errorlevel 1 tail --lines=20 ..\%LOG_PATH%\log_buildhelp_%CI_COMMIT_SHORT_SHA%.txt 1>&2 & exit 1
 devenv Scilab.sln /build "Release|x64" /project buildjavadoc > ..\%LOG_PATH%\log_buildjavadoc_%CI_COMMIT_SHORT_SHA%.txt
+if errorlevel 1 tail --lines=20 ..\%LOG_PATH%\log_buildjavadoc_%CI_COMMIT_SHORT_SHA%.txt 1>&2 & exit 1
 
 REM Package with Inno Setup 6
 if exist "Scilab.iss" del /f "Scilab.iss"

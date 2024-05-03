@@ -231,7 +231,7 @@ structureKwds = "then" | "do" | "catch" | "case" | "otherwise"
 
 elseif = "elseif" | "else"
 
-openCloseStructureKwds = "if" | "for" | "while" | "try" | "select" | "switch"
+openCloseStructureKwds = "if" | "for" | "while" | "try" | "select" | "switch" | "arguments"
 
 end = "end"
 

@@ -495,6 +495,9 @@
 /* If it is UMFPACK/Suitesparse or UMFPACK standalone */
 #undef UMFPACK_SUITESPARSE
 
+/* If it is KLU/Suitesparse or KLU standalone */
+#undef KLU_SUITESPARSE
+
 /* Enable valgrind specific tweaks */
 #undef VALGRIND_ENABLE
 
@@ -524,6 +527,9 @@
 
 /* With the UMFPACK library */
 #undef WITH_UMFPACK
+
+/* With the KLU library */
+#undef WITH_KLU
 
 /* with XCos */
 #undef WITH_XCOS

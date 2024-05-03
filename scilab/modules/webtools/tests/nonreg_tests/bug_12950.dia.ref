@@ -16,7 +16,7 @@
 atomsSaveConfig(%T);
 atomsSetConfig("useProxy", "True");
 atomsSetConfig("proxyHost", "123aa");
-errMsg = msprintf(_("%s: Wrong proxy information, please check in the ''internet'' Scilab preference.\n"), "http_get");
+errMsg = msprintf(_("%s: CURL execution failed.\n%s\n"), "http_get", "Couldn''t resolve proxy name");
 try
     http_get("https://www.scilab.org", fullfile(TMPDIR,"scilab_homepage.html"));
 catch

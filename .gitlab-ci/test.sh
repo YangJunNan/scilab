@@ -9,6 +9,11 @@
 # latest build if needed.
 #
 
+
+# predefined env
+CCACHE_DIR="${CI_PROJECT_DIR}/ccache"
+export CCACHE_DIR
+
 # install
 echo -e "\e[0Ksection_start:$(date +%s):install\r\e[0KInstall Scilab binary"
 tar -xJf "${SCI_VERSION_STRING}.bin.${ARCH}.tar.xz" -C $HOME

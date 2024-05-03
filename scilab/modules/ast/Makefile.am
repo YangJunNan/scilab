@@ -118,6 +118,12 @@ if ENABLE_DEBUG
 libsciast_la_SOURCES += src/cpp/types/inspector.cpp
 endif
 
+if IS_MACOSX
+if !IS_SYS_FMEMOPEN
+libsciast_la_SOURCES += src/cpp/parse/fmemopen.c
+endif
+endif
+
 
 libsciast_la_CPPFLAGS = \
 	-I$(srcdir)/includes/ast \
@@ -141,8 +147,15 @@ libsciast_la_CPPFLAGS = \
 	-I$(top_srcdir)/modules/fileio/includes \
 	-I$(top_srcdir)/modules/fileio/src/c \
 	-I$(top_srcdir)/modules/coverage/includes \
+	-I$(top_srcdir)/modules/graphic_objects/includes \
 	$(EIGEN_CPPFLAGS) \
 	$(AM_CPPFLAGS)
+
+if IS_MACOSX
+if IS_SYS_FMEMOPEN
+libsciast_la_CPPFLAGS += -DHAVE_SYS_FMEMOPEN
+endif
+endif
 
 
 libsciast_la_includedir=$(pkgincludedir)
@@ -203,7 +216,6 @@ includes/exps/commentexp.hxx \
 includes/exps/constexp.hxx \
 includes/exps/continueexp.hxx \
 includes/exps/controlexp.hxx \
-includes/exps/daxpyexp.hxx \
 includes/exps/dec.hxx \
 includes/exps/decls.hxx \
 includes/exps/dollarvar.hxx \
@@ -222,7 +234,6 @@ includes/exps/matrixlineexp.hxx \
 includes/exps/nilexp.hxx \
 includes/exps/notexp.hxx \
 includes/exps/opexp.hxx \
-includes/exps/optimizedexp.hxx \
 includes/exps/returnexp.hxx \
 includes/exps/selectexp.hxx \
 includes/exps/seqexp.hxx \

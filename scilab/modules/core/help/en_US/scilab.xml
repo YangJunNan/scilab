@@ -47,7 +47,7 @@ Usage: Scilab <options>
       -f File          : Execute the scilab script given in File argument.
                          -e and -f arguments are mutually exclusive.
       -quit            : force scilab exit after execution of script from -e or -f argument.
-                         Flag ignored if it is not used with -e or -f argument.
+                         Flag ignored if it is not used with -e or -f argument and when Scilab is in a pipe.
       -l lang          : Change the language of scilab (default : en_US).
       -nw              : Enable console mode.
       -nwni            : Enable terminal mode.

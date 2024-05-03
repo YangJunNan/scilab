@@ -15,6 +15,7 @@
 #include <cfloat> // DBL_MAX
 #include <cmath> // std::nextafter
 #include <complex>
+#include <limits> // std::numeric_limits
 #include "string.hxx"
 #include "elem_func_gw.hxx"
 #include "function.hxx"

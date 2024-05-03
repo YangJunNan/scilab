@@ -16,7 +16,8 @@ function subdemolist = demo_gateway()
     _("ODE''S")             ,"ode/ode.dem.gateway.sce"       ;
     _("DAE''S")             ,"dae/dae.dem.gateway.sce"       ;
     _("Flow simulation")    ,"flow/flow.dem.gateway.sce"     ;
-    _("Levitron")           ,"levitron/levitron.dem.sce"     ];
+    _("Levitron")           ,"levitron/levitron.dem.sce"     ;
+    _("Sundials")           ,"sundials/sundials.dem.gateway.sce"];
 
 
     subdemolist(:,2) = demopath + subdemolist(:,2);

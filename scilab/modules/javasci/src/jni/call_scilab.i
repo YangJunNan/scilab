@@ -130,8 +130,8 @@ int getLastErrorNumber(void);
 
 BOOL isExistingVariable(char* varname);
 
-%rename(getLastErrorMessage) getLastErrorMessage;
-const char* getLastErrorMessage();
+%rename(getLastErrorMessage) getLastErrorMessageSingle;
+char* getLastErrorMessageSingle();
 
 sci_types getVariableType(char *varname);
 

@@ -14,6 +14,7 @@
  */
 
 #include "checkers/RedefinitionChecker.hxx"
+#include "simplevar.hxx"
 
 namespace slint
 {

@@ -43,7 +43,7 @@ if test "x$with_hdf5_include" != "xyes"; then
 else
     HDF5_CFLAGS=""
     if $WITH_DEVTOOLS; then # Scilab thirdparties
-        HDF5_CFLAGS="-I$DEVTOOLS_INCDIR"
+        HDF5_CFLAGS="-I$DEVTOOLS_INCDIR -DH5_NO_DEPRECATED_SYMBOLS"
     else
         if test -d /usr/include/hdf5/serial; then # New Debian packaging layout since hdf5-1.8.13
             AC_CHECK_HEADER([hdf5/serial/hdf5.h],

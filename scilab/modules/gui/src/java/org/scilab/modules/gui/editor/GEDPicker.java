@@ -62,7 +62,7 @@ public class GEDPicker {
         Integer[] AllObjs;
         boolean curObj = false;
 
-        axesUID = AxesHandler.clickedAxes(figureUID, position);
+        axesUID = AxesHandler.clickedAxes(figureUID, position)[0];
         axes = AxesHandler.getAxesFromUid(axesUID);
 
         if (axes == null) {

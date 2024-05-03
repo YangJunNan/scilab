@@ -268,6 +268,7 @@ lib /DEF:"$(ProjectDir)functions_manager_import.def" /SUBSYSTEM:WINDOWS /MACHINE
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="includes\ast\abstractdebugger.hxx" />
+    <ClInclude Include="includes\ast\argumentvisitor.hxx" />
     <ClInclude Include="includes\ast\breakpoint.hxx" />
     <ClInclude Include="includes\ast\consoledebugger.hxx" />
     <ClInclude Include="includes\ast\debuggervisitor.hxx" />
@@ -293,6 +294,8 @@ lib /DEF:"$(ProjectDir)functions_manager_import.def" /SUBSYSTEM:WINDOWS /MACHINE
     <ClInclude Include="includes\exps\alldec.hxx" />
     <ClInclude Include="includes\exps\allexp.hxx" />
     <ClInclude Include="includes\exps\allvar.hxx" />
+    <ClInclude Include="includes\exps\argumentdec.hxx" />
+    <ClInclude Include="includes\exps\argumentsexp.hxx" />
     <ClInclude Include="includes\exps\arraylistexp.hxx" />
     <ClInclude Include="includes\exps\arraylistvar.hxx" />
     <ClInclude Include="includes\exps\assignexp.hxx" />
@@ -309,7 +312,6 @@ lib /DEF:"$(ProjectDir)functions_manager_import.def" /SUBSYSTEM:WINDOWS /MACHINE
     <ClInclude Include="includes\exps\constexp.hxx" />
     <ClInclude Include="includes\exps\continueexp.hxx" />
     <ClInclude Include="includes\exps\controlexp.hxx" />
-    <ClInclude Include="includes\exps\daxpyexp.hxx" />
     <ClInclude Include="includes\exps\dec.hxx" />
     <ClInclude Include="includes\exps\decls.hxx" />
     <ClInclude Include="includes\exps\dollarvar.hxx" />
@@ -328,13 +330,12 @@ lib /DEF:"$(ProjectDir)functions_manager_import.def" /SUBSYSTEM:WINDOWS /MACHINE
     <ClInclude Include="includes\exps\nilexp.hxx" />
     <ClInclude Include="includes\exps\notexp.hxx" />
     <ClInclude Include="includes\exps\opexp.hxx" />
-    <ClInclude Include="includes\exps\optimizedexp.hxx" />
     <ClInclude Include="includes\exps\returnexp.hxx" />
     <ClInclude Include="includes\exps\selectexp.hxx" />
     <ClInclude Include="includes\exps\seqexp.hxx" />
     <ClInclude Include="includes\exps\simplevar.hxx" />
+    <ClInclude Include="includes\exps\stepvisitor.hxx" />
     <ClInclude Include="includes\exps\stringexp.hxx" />
-    <ClInclude Include="includes\exps\tableintselectexp.hxx" />
     <ClInclude Include="includes\exps\token.hxx" />
     <ClInclude Include="includes\exps\transposeexp.hxx" />
     <ClInclude Include="includes\exps\trycatchexp.hxx" />

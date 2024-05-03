@@ -611,14 +611,6 @@
                     <para>graduations simplifiées</para>
                 </listitem>
             </varlistentry>
-            <varlistentry>
-                <term>
-                    <link linkend="plotframe">plotframe</link>
-                </term>
-                <listitem>
-                    <para>dessine un cadre avec axes et mise à l'échelle</para>
-                </listitem>
-            </varlistentry>
         </variablelist>
     </refsection>
     <refsection>

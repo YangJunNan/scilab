@@ -801,7 +801,7 @@ function status = test_single(_module, _testPath, _testName)
         head = [ head ;
         "prot=funcprot(0);";
         "function []=messagebox(msg, msg_title, info, buttons, isModal), disp(''messagebox: '' + msg);endfunction";
-        "funcprot(prot);";
+        "prot=funcprot(prot);"; // Assign result to prot to avoid to create 'ans'
         "clear prot";
         ];
     end
@@ -815,7 +815,7 @@ function status = test_single(_module, _testPath, _testName)
         head = [ head;
         "prot=funcprot(0);";
         "loadXcosLibs(); loadScicos();";
-        "funcprot(prot);";
+        "prot=funcprot(prot);"; // Assign result to prot to avoid to create 'ans'
         "clear prot";
         ];
     end
@@ -825,7 +825,7 @@ function status = test_single(_module, _testPath, _testName)
         head = [ head ;
         "prot=funcprot(0);";
         assert_generror_def;
-        "funcprot(prot);";
+        "prot=funcprot(prot);"; // Assign result to prot to avoid to create 'ans'
         "clear prot";
         ];
     end
@@ -854,6 +854,8 @@ function status = test_single(_module, _testPath, _testName)
         "   lasterror()";
         "end";
         ];
+    else
+        tail = [tail; "errclear();"];
     end
 
     tail = [ tail; "diary(0);" ];
@@ -963,13 +965,18 @@ function status = test_single(_module, _testPath, _testName)
         if ~isempty(tmp_errfile_info) then
             txt = mgetl(tmp_err);
 
-            
+
             if ~isempty(txt) then
                 // some Concurrent exception are reported on the console without stacktrace
                 toRemove = grep(txt, "java.util.ConcurrentModificationException");
                 txt(toRemove) = [];
             end
 
+            if ~isempty(txt) then
+                // Message displayed at startup because we force the JVM to use Scilab custom class loader
+                toRemove = grep(txt, "OpenJDK 64-Bit Server VM warning: Archived non-system classes are disabled because the java.system.class.loader property is specified");
+                txt(toRemove) = [];
+            end
 
             if getos() == "Darwin" then
                 if ~isempty(txt) then
@@ -984,7 +991,7 @@ function status = test_single(_module, _testPath, _testName)
                     txt(toRemove) = [];
                 end
             end
-        
+
             if getos() == "Linux" then
                 if ~isempty(txt) then
                     // Ignore JOGL2 debug message
@@ -1036,7 +1043,7 @@ function status = test_single(_module, _testPath, _testName)
                     txt(toRemove) = [];
                 end
             end
-            
+
             if isempty(txt) then
                 deletefile(tmp_err);
             end
@@ -1059,7 +1066,7 @@ function status = test_single(_module, _testPath, _testName)
 
         if isfile(tmp_err) & tmp_errfile_info(1) <> 0 then
             status.id = 5;
-            status.message = "failed: error_output not empty\n   Use ''no_check_error_output'' option to disable this check.";
+            status.message = "failed: error_output not empty. Use ''no_check_error_output'' option to disable this check.";
             status.details = checkthefile(tmp_err);
             return;
         end
@@ -1072,17 +1079,24 @@ function status = test_single(_module, _testPath, _testName)
         dia = mgetl(tmp_dia);
     else
         status.id = 6;
-        status.message = "failed: Cannot find the dia file: " + tmp_dia + "\nCheck if the Scilab used correctly starts";
+        status.message = "failed: Cannot find the dia file: " + tmp_dia + ". Check if the Scilab used correctly starts.";
         status.details = checkthefile(tmp_dia);
         return;
     end
 
     // To get TMPDIR value
-    tmpdir1_line = grep(dia, "/^TMPDIR1=/", "r");
-    execstr(dia(tmpdir1_line));
-    tmpdir2_line = grep(dia, "/^TMPDIR2=/", "r");
-    execstr(dia(tmpdir2_line));
-    
+    try
+        tmpdir1_line = grep(dia, "/^TMPDIR1=/", "r");
+        execstr(dia(tmpdir1_line));
+        tmpdir2_line = grep(dia, "/^TMPDIR2=/", "r");
+        execstr(dia(tmpdir2_line));
+    catch
+        status.id = 6;
+        status.message = "failed: Cannot grep the dia file: " + tmp_dia + ". Check its content.";
+        status.details = "";
+        return;
+    end
+
     //Check for execution errors
     if try_catch & grep(dia,"<--Error on the test script file-->") <> [] then
         details = [ launchthecommand(testFile); ..
@@ -1157,7 +1171,7 @@ function status = test_single(_module, _testPath, _testName)
         status.details = details;
         if params.show_error == %t then
             status.details = [ status.details; dia($-min(10, size(dia, "*")-1):$) ]
-        end          
+        end
         return;
     end
 
@@ -1169,7 +1183,7 @@ function status = test_single(_module, _testPath, _testName)
         return;
     end
 
-    
+
     // Check the reference file only if check_ref (i.e. for the whole
     // test sequence) is true and this_check_ref (i.e. for the specific current .tst)
     // is true.
@@ -1182,7 +1196,7 @@ function status = test_single(_module, _testPath, _testName)
             return;
         end
     end
-    
+
     // Comparaison ref <--> dia
 
     if   (reference=="check" & _module.reference=="check") | ..
@@ -1287,7 +1301,7 @@ function status = test_single(_module, _testPath, _testName)
             end
         end
     end
-    
+
     deletetmpfiles(tmp_tst, tmp_dia, tmp_res, tmp_err);
 endfunction
 

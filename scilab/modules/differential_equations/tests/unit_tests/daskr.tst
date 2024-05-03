@@ -232,3 +232,6 @@ t0=0;y0=[2;0];y0d=[0;-2];t=[20:20:200];ng=1;
 [yy,nn,hotd]=daskr([y0,y0d],t0,t,atol,rtol,"res22","jac22",ng,"gr22",info);
 t01=nn(1);t=100:20:200;[pp,qq]=size(yy);y01=yy(3:4,qq);y0d1=yy(4:5,qq);
 [yy,nn,hotd]=daskr([y01,y0d1],t01,t,atol,rtol,"res22","jac22",ng,"gr22",info,hotd);
+
+// cleanup memory
+ludel();

@@ -119,7 +119,9 @@ POST_UNINSTALL = :
 build_triplet = @build@
 host_triplet = @host@
 @ENABLE_DEBUG_TRUE@am__append_1 = src/cpp/types/inspector.cpp
-@NEED_JAVA_TRUE@am__append_2 = java
+@IS_MACOSX_TRUE@@IS_SYS_FMEMOPEN_FALSE@am__append_2 = src/cpp/parse/fmemopen.c
+@IS_MACOSX_TRUE@@IS_SYS_FMEMOPEN_TRUE@am__append_3 = -DHAVE_SYS_FMEMOPEN
+@NEED_JAVA_TRUE@am__append_4 = java
 subdir = modules/ast
 ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
 am__aclocal_m4_deps = $(top_srcdir)/m4/ax_cxx_compile_stdcxx.m4 \
@@ -129,16 +131,16 @@ am__aclocal_m4_deps = $(top_srcdir)/m4/ax_cxx_compile_stdcxx.m4 \
 	$(top_srcdir)/m4/fortran.m4 $(top_srcdir)/m4/giws.m4 \
 	$(top_srcdir)/m4/hdf5.m4 $(top_srcdir)/m4/intel_compiler.m4 \
 	$(top_srcdir)/m4/java-thirdparty.m4 $(top_srcdir)/m4/java.m4 \
-	$(top_srcdir)/m4/lib-ld.m4 $(top_srcdir)/m4/libsmath.m4 \
+	$(top_srcdir)/m4/klu.m4 $(top_srcdir)/m4/lib-ld.m4 \
+	$(top_srcdir)/m4/libarchive.m4 $(top_srcdir)/m4/libsmath.m4 \
 	$(top_srcdir)/m4/libtool.m4 $(top_srcdir)/m4/libxml2.m4 \
 	$(top_srcdir)/m4/ltoptions.m4 $(top_srcdir)/m4/ltsugar.m4 \
 	$(top_srcdir)/m4/ltversion.m4 $(top_srcdir)/m4/lt~obsolete.m4 \
-	$(top_srcdir)/m4/macosx.m4 $(top_srcdir)/m4/mpi.m4 \
-	$(top_srcdir)/m4/ocaml.m4 $(top_srcdir)/m4/pcre.m4 \
-	$(top_srcdir)/m4/pkg.m4 $(top_srcdir)/m4/relocatable.m4 \
-	$(top_srcdir)/m4/swig.m4 $(top_srcdir)/m4/symlinks.m4 \
-	$(top_srcdir)/m4/tcltk.m4 $(top_srcdir)/m4/umfpack.m4 \
-	$(top_srcdir)/configure.ac
+	$(top_srcdir)/m4/mpi.m4 $(top_srcdir)/m4/ocaml.m4 \
+	$(top_srcdir)/m4/pcre.m4 $(top_srcdir)/m4/pkg.m4 \
+	$(top_srcdir)/m4/relocatable.m4 $(top_srcdir)/m4/swig.m4 \
+	$(top_srcdir)/m4/symlinks.m4 $(top_srcdir)/m4/tcltk.m4 \
+	$(top_srcdir)/m4/umfpack.m4 $(top_srcdir)/configure.ac
 am__configure_deps = $(am__aclocal_m4_deps) $(CONFIGURE_DEPENDENCIES) \
 	$(ACLOCAL_M4)
 DIST_COMMON = $(srcdir)/Makefile.am $(libsciast_la_include_HEADERS) \
@@ -248,10 +250,11 @@ am__libsciast_la_SOURCES_DIST = src/c/operations/doublecomplex.c \
 	src/cpp/types/threadId.cpp src/cpp/types/tlist.cpp \
 	src/cpp/types/tostring_common.cpp src/cpp/types/types.cpp \
 	src/cpp/types/types_tools.cpp src/cpp/types/void.cpp \
-	src/cpp/types/inspector.cpp
+	src/cpp/types/inspector.cpp src/cpp/parse/fmemopen.c
 am__dirstamp = $(am__leading_dot)dirstamp
 @ENABLE_DEBUG_TRUE@am__objects_1 =  \
 @ENABLE_DEBUG_TRUE@	src/cpp/types/libsciast_la-inspector.lo
+@IS_MACOSX_TRUE@@IS_SYS_FMEMOPEN_FALSE@am__objects_2 = src/cpp/parse/libsciast_la-fmemopen.lo
 am_libsciast_la_OBJECTS =  \
 	src/c/operations/libsciast_la-doublecomplex.lo \
 	src/c/operations/libsciast_la-invert_matrix.lo \
@@ -348,7 +351,8 @@ am_libsciast_la_OBJECTS =  \
 	src/cpp/types/libsciast_la-tostring_common.lo \
 	src/cpp/types/libsciast_la-types.lo \
 	src/cpp/types/libsciast_la-types_tools.lo \
-	src/cpp/types/libsciast_la-void.lo $(am__objects_1)
+	src/cpp/types/libsciast_la-void.lo $(am__objects_1) \
+	$(am__objects_2)
 libsciast_la_OBJECTS = $(am_libsciast_la_OBJECTS)
 AM_V_lt = $(am__v_lt_@AM_V@)
 am__v_lt_ = $(am__v_lt_@AM_DEFAULT_V@)
@@ -410,6 +414,7 @@ am__depfiles_remade =  \
 	src/cpp/operations/$(DEPDIR)/libsciast_la-types_or.Plo \
 	src/cpp/operations/$(DEPDIR)/libsciast_la-types_power.Plo \
 	src/cpp/operations/$(DEPDIR)/libsciast_la-types_subtraction.Plo \
+	src/cpp/parse/$(DEPDIR)/libsciast_la-fmemopen.Plo \
 	src/cpp/parse/$(DEPDIR)/libsciast_la-parser.Plo \
 	src/cpp/parse/$(DEPDIR)/libsciast_la-parsescilab.Plo \
 	src/cpp/parse/$(DEPDIR)/libsciast_la-printerror.Plo \
@@ -536,6 +541,7 @@ am__DIST_COMMON = $(srcdir)/Makefile.in $(top_srcdir)/Makefile.incl.am \
 	$(top_srcdir)/config/mkinstalldirs
 DISTFILES = $(DIST_COMMON) $(DIST_SOURCES) $(TEXINFOS) $(EXTRA_DIST)
 ACLOCAL = @ACLOCAL@
+ACTIVATION = @ACTIVATION@
 ALL_LINGUAS = @ALL_LINGUAS@
 ALL_LINGUAS_DOC = @ALL_LINGUAS_DOC@
 AMTAR = @AMTAR@
@@ -627,17 +633,27 @@ INSTALL_SCRIPT = @INSTALL_SCRIPT@
 INSTALL_STRIP_PROGRAM = @INSTALL_STRIP_PROGRAM@
 INTLLIBS = @INTLLIBS@
 INTL_MACOSX_LIBS = @INTL_MACOSX_LIBS@
+ISTACK_COMMONS_RUNTIME = @ISTACK_COMMONS_RUNTIME@
+JAKARTA_ACTIVATION = @JAKARTA_ACTIVATION@
+JAKARTA_ACTIVATION_API = @JAKARTA_ACTIVATION_API@
 JAR = @JAR@
 JAVA = @JAVA@
 JAVAC = @JAVAC@
 JAVAC_DEBUG = @JAVAC_DEBUG@
 JAVADOC = @JAVADOC@
+JAVAFX_BASE = @JAVAFX_BASE@
+JAVAFX_GRAPHICS = @JAVAFX_GRAPHICS@
+JAVAFX_SWING = @JAVAFX_SWING@
 JAVASCI_ENABLE = @JAVASCI_ENABLE@
+JAVAX_ANNOTATION = @JAVAX_ANNOTATION@
 JAVA_ENABLE = @JAVA_ENABLE@
 JAVA_G = @JAVA_G@
 JAVA_HOME = @JAVA_HOME@
 JAVA_JNI_INCLUDE = @JAVA_JNI_INCLUDE@
 JAVA_JNI_LIBS = @JAVA_JNI_LIBS@
+JAXB_API = @JAXB_API@
+JAXB_IMPL = @JAXB_IMPL@
+JAXB_RUNTIME = @JAXB_RUNTIME@
 JDB = @JDB@
 JEUCLID_CORE = @JEUCLID_CORE@
 JGRAPHX = @JGRAPHX@
@@ -648,6 +664,9 @@ JOGL2 = @JOGL2@
 JROSETTA_API = @JROSETTA_API@
 JROSETTA_ENGINE = @JROSETTA_ENGINE@
 JUNIT4 = @JUNIT4@
+KLU_CFLAGS = @KLU_CFLAGS@
+KLU_ENABLE = @KLU_ENABLE@
+KLU_LIBS = @KLU_LIBS@
 LAPACK_LIBS = @LAPACK_LIBS@
 LCOV = @LCOV@
 LD = @LD@
@@ -655,6 +674,9 @@ LDFLAGS = @LDFLAGS@
 LEX = @LEX@
 LEXLIB = @LEXLIB@
 LEX_OUTPUT_ROOT = @LEX_OUTPUT_ROOT@
+LIBARCHIVE_CFLAGS = @LIBARCHIVE_CFLAGS@
+LIBARCHIVE_LIBS = @LIBARCHIVE_LIBS@
+LIBARCHIVE_VERSION = @LIBARCHIVE_VERSION@
 LIBICONV = @LIBICONV@
 LIBINTL = @LIBINTL@
 LIBM = @LIBM@
@@ -727,6 +749,7 @@ PYTHON = @PYTHON@
 RANLIB = @RANLIB@
 RELOCATABLE = @RELOCATABLE@
 RT_LIB = @RT_LIB@
+SAXON = @SAXON@
 SCILAB_BINARY_VERSION = @SCILAB_BINARY_VERSION@
 SCILAB_LIBRARY_VERSION = @SCILAB_LIBRARY_VERSION@
 SCILAB_VERSION_MAINTENANCE = @SCILAB_VERSION_MAINTENANCE@
@@ -754,7 +777,7 @@ TCL_INC_PATH = @TCL_INC_PATH@
 TK_INC_PATH = @TK_INC_PATH@
 UMFPACK_CFLAGS = @UMFPACK_CFLAGS@
 UMFPACK_ENABLE = @UMFPACK_ENABLE@
-UMFPACK_LIB = @UMFPACK_LIB@
+UMFPACK_LIBS = @UMFPACK_LIBS@
 USE_NLS = @USE_NLS@
 VALGRIND_CFLAGS = @VALGRIND_CFLAGS@
 VALGRIND_LIBS = @VALGRIND_LIBS@
@@ -904,15 +927,11 @@ libsciast_la_SOURCES = src/c/operations/doublecomplex.c \
 	src/cpp/types/threadId.cpp src/cpp/types/tlist.cpp \
 	src/cpp/types/tostring_common.cpp src/cpp/types/types.cpp \
 	src/cpp/types/types_tools.cpp src/cpp/types/void.cpp \
-	$(am__append_1)
-libsciast_la_CPPFLAGS = \
-	-I$(srcdir)/includes/ast \
-	-I$(srcdir)/includes/exps \
-	-I$(srcdir)/includes/operations \
-	-I$(srcdir)/includes/parse \
-	-I$(srcdir)/includes/symbol \
-	-I$(srcdir)/includes/system_env \
-	-I$(srcdir)/includes/types \
+	$(am__append_1) $(am__append_2)
+libsciast_la_CPPFLAGS = -I$(srcdir)/includes/ast \
+	-I$(srcdir)/includes/exps -I$(srcdir)/includes/operations \
+	-I$(srcdir)/includes/parse -I$(srcdir)/includes/symbol \
+	-I$(srcdir)/includes/system_env -I$(srcdir)/includes/types \
 	-I$(srcdir)/src/cpp \
 	-I$(top_srcdir)/modules/dynamic_link/includes \
 	-I$(top_srcdir)/modules/functions_manager/includes \
@@ -927,9 +946,8 @@ libsciast_la_CPPFLAGS = \
 	-I$(top_srcdir)/modules/fileio/includes \
 	-I$(top_srcdir)/modules/fileio/src/c \
 	-I$(top_srcdir)/modules/coverage/includes \
-	$(EIGEN_CPPFLAGS) \
-	$(AM_CPPFLAGS)
-
+	-I$(top_srcdir)/modules/graphic_objects/includes \
+	$(EIGEN_CPPFLAGS) $(AM_CPPFLAGS) $(am__append_3)
 libsciast_la_includedir = $(pkgincludedir)
 libsciast_la_include_HEADERS = 
 
@@ -987,7 +1005,6 @@ includes/exps/commentexp.hxx \
 includes/exps/constexp.hxx \
 includes/exps/continueexp.hxx \
 includes/exps/controlexp.hxx \
-includes/exps/daxpyexp.hxx \
 includes/exps/dec.hxx \
 includes/exps/decls.hxx \
 includes/exps/dollarvar.hxx \
@@ -1006,7 +1023,6 @@ includes/exps/matrixlineexp.hxx \
 includes/exps/nilexp.hxx \
 includes/exps/notexp.hxx \
 includes/exps/opexp.hxx \
-includes/exps/optimizedexp.hxx \
 includes/exps/returnexp.hxx \
 includes/exps/selectexp.hxx \
 includes/exps/seqexp.hxx \
@@ -1155,7 +1171,7 @@ SPLINT_OPTIONS = -weak -booltype BOOL
 #### the procedure will be the same with Microsoft Windows (C)
 #### and Linux/Unix
 #######################################################################
-TARGETS_ALL = $(am__append_2)
+TARGETS_ALL = $(am__append_4)
 
 ################ MACROS ######################
 # Rule to build a macro
@@ -1585,6 +1601,8 @@ src/cpp/types/libsciast_la-void.lo: src/cpp/types/$(am__dirstamp) \
 src/cpp/types/libsciast_la-inspector.lo:  \
 	src/cpp/types/$(am__dirstamp) \
 	src/cpp/types/$(DEPDIR)/$(am__dirstamp)
+src/cpp/parse/libsciast_la-fmemopen.lo: src/cpp/parse/$(am__dirstamp) \
+	src/cpp/parse/$(DEPDIR)/$(am__dirstamp)
 
 libsciast.la: $(libsciast_la_OBJECTS) $(libsciast_la_DEPENDENCIES) $(EXTRA_libsciast_la_DEPENDENCIES) 
 	$(AM_V_CXXLD)$(CXXLINK) -rpath $(pkglibdir) $(libsciast_la_OBJECTS) $(libsciast_la_LIBADD) $(LIBS)
@@ -1651,6 +1669,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@src/cpp/operations/$(DEPDIR)/libsciast_la-types_or.Plo@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@src/cpp/operations/$(DEPDIR)/libsciast_la-types_power.Plo@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@src/cpp/operations/$(DEPDIR)/libsciast_la-types_subtraction.Plo@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@src/cpp/parse/$(DEPDIR)/libsciast_la-fmemopen.Plo@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@src/cpp/parse/$(DEPDIR)/libsciast_la-parser.Plo@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@src/cpp/parse/$(DEPDIR)/libsciast_la-parsescilab.Plo@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@src/cpp/parse/$(DEPDIR)/libsciast_la-printerror.Plo@am__quote@ # am--include-marker
@@ -1815,6 +1834,13 @@ src/c/types/libsciast_la-dtoa.lo: src/c/types/dtoa.c
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='src/c/types/dtoa.c' object='src/c/types/libsciast_la-dtoa.lo' libtool=yes @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libsciast_la_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o src/c/types/libsciast_la-dtoa.lo `test -f 'src/c/types/dtoa.c' || echo '$(srcdir)/'`src/c/types/dtoa.c
+
+src/cpp/parse/libsciast_la-fmemopen.lo: src/cpp/parse/fmemopen.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libsciast_la_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT src/cpp/parse/libsciast_la-fmemopen.lo -MD -MP -MF src/cpp/parse/$(DEPDIR)/libsciast_la-fmemopen.Tpo -c -o src/cpp/parse/libsciast_la-fmemopen.lo `test -f 'src/cpp/parse/fmemopen.c' || echo '$(srcdir)/'`src/cpp/parse/fmemopen.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) src/cpp/parse/$(DEPDIR)/libsciast_la-fmemopen.Tpo src/cpp/parse/$(DEPDIR)/libsciast_la-fmemopen.Plo
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='src/cpp/parse/fmemopen.c' object='src/cpp/parse/libsciast_la-fmemopen.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libsciast_la_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o src/cpp/parse/libsciast_la-fmemopen.lo `test -f 'src/cpp/parse/fmemopen.c' || echo '$(srcdir)/'`src/cpp/parse/fmemopen.c
 
 .cpp.o:
 @am__fastdepCXX_TRUE@	$(AM_V_CXX)depbase=`echo $@ | sed 's|[^/]*$$|$(DEPDIR)/&|;s|\.o$$||'`;\
@@ -2707,6 +2733,7 @@ distclean: distclean-am
 	-rm -f src/cpp/operations/$(DEPDIR)/libsciast_la-types_or.Plo
 	-rm -f src/cpp/operations/$(DEPDIR)/libsciast_la-types_power.Plo
 	-rm -f src/cpp/operations/$(DEPDIR)/libsciast_la-types_subtraction.Plo
+	-rm -f src/cpp/parse/$(DEPDIR)/libsciast_la-fmemopen.Plo
 	-rm -f src/cpp/parse/$(DEPDIR)/libsciast_la-parser.Plo
 	-rm -f src/cpp/parse/$(DEPDIR)/libsciast_la-parsescilab.Plo
 	-rm -f src/cpp/parse/$(DEPDIR)/libsciast_la-printerror.Plo
@@ -2851,6 +2878,7 @@ maintainer-clean: maintainer-clean-am
 	-rm -f src/cpp/operations/$(DEPDIR)/libsciast_la-types_or.Plo
 	-rm -f src/cpp/operations/$(DEPDIR)/libsciast_la-types_power.Plo
 	-rm -f src/cpp/operations/$(DEPDIR)/libsciast_la-types_subtraction.Plo
+	-rm -f src/cpp/parse/$(DEPDIR)/libsciast_la-fmemopen.Plo
 	-rm -f src/cpp/parse/$(DEPDIR)/libsciast_la-parser.Plo
 	-rm -f src/cpp/parse/$(DEPDIR)/libsciast_la-parsescilab.Plo
 	-rm -f src/cpp/parse/$(DEPDIR)/libsciast_la-printerror.Plo

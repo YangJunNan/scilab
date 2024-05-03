@@ -16,6 +16,10 @@
 #include <iostream>
 
 #include "checkers/MopenMcloseChecker.hxx"
+#include "assignexp.hxx"
+#include "simplevar.hxx"
+#include "callexp.hxx"
+#include "stringexp.hxx"
 
 namespace slint
 {

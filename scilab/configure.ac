@@ -44,7 +44,7 @@ fi
 
 # Change version here, other files will be updated at the end of configure
 SCILAB_VERSION_MAJOR=2024
-SCILAB_VERSION_MINOR=0
+SCILAB_VERSION_MINOR=1
 SCILAB_VERSION_MAINTENANCE=0
 AC_SUBST(SCILAB_VERSION_MAJOR)
 AC_SUBST(SCILAB_VERSION_MINOR)
@@ -170,44 +170,6 @@ AC_ARG_ENABLE(build-parser,
 
 AC_PROG_CPP
 AC_PROG_GREP
-
-######
-#### Mac OS X set of fink path with provided
-######
-
-AC_ARG_WITH(fink_prefix,
-AS_HELP_STRING([--with-fink-prefix],[Provide a fink prefix. Default: /sw/ ]))
-# Need MacosX Version to specify some path.
-case "$host_os" in
-     *Darwin* | *darwin*)
-               AC_GET_MACOSX_VERSION
-     ;;
-esac
-
-case "$host" in
-    *darwin*)
-        if test -n "$with_fink_prefix"; then
-            # If with-fink-prefix is provided, use the provided path to make sure that we will
-            # use it to detect dependencies (for example, gfortran is not provided in xcode.
-            # Therefor, we use the one in fink)
-            FINK_PREFIX="$with_fink_prefix/"
-
-            # Exec the init script of fink to make sure that the env is set
-            if test -f $with_fink_prefix/bin/init.sh; then
-                echo "source $with_fink_prefix/bin/init.sh executed to set the env"
-                source $with_fink_prefix/bin/init.sh
-            else
-                AC_MSG_WARN([Could not find the fink init.sh script: $with_fink_prefix/bin/init.sh])
-            fi
-        else
-            FINK_PREFIX="/sw/"
-        fi
-
-        #Append to the default flags on Apple machines
-        CPPFLAGS="$CPPFLAGS -I$FINK_PREFIX/include/"
-        LDFLAGS="$LDFLAGS -L$FINK_PREFIX/lib/"
-        ;;
-esac
 
 AC_ARG_WITH(min_macosx_version,
 AS_HELP_STRING([--with-min-macosx-version],[Force compilers to generate binaries compatible with MacOSX minimal version.]))
@@ -554,7 +516,7 @@ g++-* | g++ | ccache*g++ | ccache*g++-* )
     fi
 
     if test "$enable_debug_CXX" = yes; then
-        DEBUG_CXXFLAGS="-Wall -Wextra -O0 -g3"
+        DEBUG_CXXFLAGS="-Wall -Wextra -Wno-unused-parameter -O0 -g3"
         case "$host" in
         *-linux-gnu )
             # Only doing that under Linux
@@ -577,12 +539,13 @@ g++-* | g++ | ccache*g++ | ccache*g++-* )
         CODECOVERAGE_CXXFLAGS="-fprofile-arcs -ftest-coverage"
     fi
     if test "$enable_debug_CXX" = yes; then
-        DEBUG_CXXFLAGS="-Wall -Wextra -O0 -g3"
+        DEBUG_CXXFLAGS="-Wall -Wextra -Wno-unused-parameter -O0 -g3"
     else
         DEBUG_CXXFLAGS="-DNDEBUG -g1 -O2"
     fi
     COMPILER_CXXFLAGS="$COMPILER_CXXFLAGS -fno-stack-protector " # bug 3131
     # allow to compile under macOS < Catalina with c++17 enabled clang
+    # or compile under macOS > Catalina with min_macosx_version < 11
     case "$host_os" in
          *Darwin* | *darwin*)
            macosx_version=`sw_vers -productVersion`
@@ -593,11 +556,28 @@ g++-* | g++ | ccache*g++ | ccache*g++-* )
                        COMPILER_CXXFLAGS="$COMPILER_CXXFLAGS -D_LIBCPP_DISABLE_AVAILABILITY"
                    fi
                ;;
+               *)
+                   if test -n "$with_min_macosx_version"; then
+                        min_macosx_version_major=`echo $with_min_macosx_version | awk -F\. {'print $1'}`
+                        min_macosx_version_minor=`echo $with_min_macosx_version | awk -F\. {'print $2'}`
+                        if [[ $min_macosx_version_major -eq 10 ]]; then
+                            COMPILER_CXXFLAGS="$COMPILER_CXXFLAGS -D_LIBCPP_DISABLE_AVAILABILITY"
+                            if [[ $min_macosx_version_minor -ge 13 ]]; then
+                                # fmemopen() appeared in macos >= 10.13
+                                SYS_FMEMOPEN=1
+                            fi
+                        fi
+                        
+                    fi
+                ;;
            esac
            ;;
     esac    
     ;;
 esac
+
+AM_CONDITIONAL(IS_SYS_FMEMOPEN, test -n "$SYS_FMEMOPEN")
+
 
 #### 64 bits detection
 IS_64_BITS_CPU=false
@@ -619,7 +599,7 @@ gcc-* | gcc | ccache*gcc | ccache*gcc-* )
     fi
 
     if test "$enable_debug_C" = yes; then
-        DEBUG_CFLAGS="-Wall -Wextra -O0 -g3"
+        DEBUG_CFLAGS="-Wall -Wextra -Wno-unused-parameter -O0 -g3"
         # used to be -O0
         case "$host" in
         *-linux-gnu )
@@ -706,7 +686,7 @@ gcc-* | gcc | ccache*gcc | ccache*gcc-* )
         CODECOVERAGE_CFLAGS="-fprofile-arcs -ftest-coverage"
     fi
     if test "$enable_debug_C" = yes; then
-        DEBUG_CFLAGS="-Wall -Wextra -O0 -g3"
+        DEBUG_CFLAGS="-Wall -Wextra -Wno-unused-parameter -O0 -g3"
         # used to be -O0
     else
         DEBUG_CFLAGS="-DNDEBUG -g1 -O2"
@@ -931,12 +911,10 @@ if test "$with_javasci" != no -o "$with_gui" != no -o "$enable_build_help" != no
 
      AC_JAVA_DETECT_JVM
      case "$ac_java_jvm_version" in
-        1.9)
-        ;;
-        1.8)
+        17)
         ;;
         *)
-            AC_MSG_ERROR([Wrong version of Java. Expected at least 1.8. Found $ac_java_jvm_version])
+            AC_MSG_ERROR([Wrong version of Java. Expected at least 17. Found $ac_java_jvm_version])
         ;;
      esac
 
@@ -959,11 +937,43 @@ if test "$with_javasci" != no -o "$with_gui" != no -o "$enable_build_help" != no
 
         if test "$with_gui" != no; then
 
+                # Jakarta Activation (Run dependency)
+                # Do not look for jakarta.activation.spi.MimeTypeRegistry here since it will detect jakarta.activation-api.jar
+                # Checked before activation.jar to avoid false detection
+                AC_JAVA_CHECK_JAR([jakarta.activation],[com.sun.activation.registries.MimeTypeFile],[Scilab Help - MimeTypes for image conversion])
+                JAKARTA_ACTIVATION=$PACKAGE_JAR_FILE
+                AC_SUBST(JAKARTA_ACTIVATION)
+
                 if test "$with_xcos" != no; then
                    # jgraphx
                    AC_JAVA_CHECK_JAR([jgraphx],[com.mxgraph.view.mxGraph],[Diagram design],[],[VERSION],[2.0.0.1])
                    JGRAPHX=$PACKAGE_JAR_FILE
                    AC_SUBST(JGRAPHX)
+
+                   # Jaxb (Build dependency)
+                   AC_JAVA_CHECK_JAR([jaxb-api],[javax.xml.bind.annotation.XmlElement],[XML file reading/validation])
+                   JAXB_API=$PACKAGE_JAR_FILE
+                   AC_SUBST(JAXB_API)
+
+                   # Jaxb Runtime (Run dependency)
+                   AC_JAVA_CHECK_JAR([jaxb-runtime],[javax.xml.bind.JAXBException],[XML file reading/validation])
+                   JAXB_RUNTIME=$PACKAGE_JAR_FILE
+                   AC_SUBST(JAXB_RUNTIME)
+
+                   # Jaxb Impl
+                   AC_JAVA_CHECK_JAR([jaxb-impl],[com.sun.xml.bind.v2.ContextFactory],[XML file reading/validation])
+                   JAXB_IMPL=$PACKAGE_JAR_FILE
+                   AC_SUBST(JAXB_IMPL)
+
+                   # Activation
+                   AC_JAVA_CHECK_JAR([activation],[javax.activation.DataSource],[XML file reading/validation])
+                   ACTIVATION=$PACKAGE_JAR_FILE
+                   AC_SUBST(ACTIVATION)
+
+                   # Istack Commons Runtime
+                   AC_JAVA_CHECK_JAR([istack-commons-runtime],[com.sun.istack.FinalArrayList],[XML file reading/validation])
+                   ISTACK_COMMONS_RUNTIME=$PACKAGE_JAR_FILE
+                   AC_SUBST(ISTACK_COMMONS_RUNTIME)
                 fi
 
                 if test "$with_external_scirenderer" = yes; then
@@ -980,7 +990,7 @@ if test "$with_javasci" != no -o "$with_gui" != no -o "$enable_build_help" != no
                 AC_SUBST(SCIRENDERER)
                 AC_SUBST(SCIRENDERER_CP)
 
-               # Docking system
+                # Docking system
                 AC_JAVA_CHECK_JAR([flexdock],[org.flexdock.util.Utilities],[Scilab Gui],[],[VERSION],[1.2.4])
                 FLEXDOCK=$PACKAGE_JAR_FILE
                 AC_SUBST(FLEXDOCK)
@@ -1001,8 +1011,18 @@ if test "$with_javasci" != no -o "$with_gui" != no -o "$enable_build_help" != no
                 SKINLF=$PACKAGE_JAR_FILE
                 AC_SUBST(SKINLF)
 
+                # Javax Annotation (Build dependency)
+                AC_JAVA_CHECK_JAR([javax.annotation-api],[javax.annotation.Generated],[Scilab Graphics - CSS Validation])
+                JAVAX_ANNOTATION=$PACKAGE_JAR_FILE
+                AC_SUBST(JAVAX_ANNOTATION)
+
+                # Jakarta Activation API (Build dependency)
+                AC_JAVA_CHECK_JAR([jakarta.activation-api],[jakarta.activation.spi.MimeTypeRegistryProvider],[Scilab Help - MimeTypes for image conversion])
+                JAKARTA_ACTIVATION_API=$PACKAGE_JAR_FILE
+                AC_SUBST(JAKARTA_ACTIVATION_API)
+
                 # JOGL 2
-                AC_JAVA_CHECK_JAR([jogl],[jogamp.opengl.x11.glx.GLX],[Scilab 3D rendering], [], [], 2.4)
+                AC_JAVA_CHECK_JAR([jogl],[com.jogamp.opengl.GLAutoDrawable],[Scilab 3D rendering], [], [], 2.5)
                 JOGL2=$PACKAGE_JAR_FILE
                 AC_SUBST(JOGL2)
 
@@ -1095,6 +1115,23 @@ interface for JOGL2 - or libGL (OpenGL library) are installed and if the version
                 JEUCLID_CORE=$PACKAGE_JAR_FILE
                 AC_SUBST(JEUCLID_CORE)
 
+                # JavaFX base
+                # Used in native file chooser
+                AC_JAVA_CHECK_JAR([javafx.base],[javafx.collections.ObservableList],[JavaFX base])
+                JAVAFX_BASE=$PACKAGE_JAR_FILE
+                AC_SUBST(JAVAFX_BASE)
+
+                # JavaFX Swing
+                # Used in native file chooser
+                AC_JAVA_CHECK_JAR([javafx.swing],[javafx.embed.swing.JFXPanel],[JavaFX Swing])
+                JAVAFX_SWING=$PACKAGE_JAR_FILE
+                AC_SUBST(JAVAFX_SWING)
+
+                # JavaFX graphics
+                # Used in native file chooser
+                AC_JAVA_CHECK_JAR([javafx.graphics],[javafx.stage.Stage],[JavaFX graphics])
+                JAVAFX_GRAPHICS=$PACKAGE_JAR_FILE
+                AC_SUBST(JAVAFX_GRAPHICS)
 
                 ################ Mandatory for graphic_export features #####
                 # XML to PDF/other Translator
@@ -1188,6 +1225,11 @@ interface for JOGL2 - or libGL (OpenGL library) are installed and if the version
                 JLATEXMATH_FOP=$PACKAGE_JAR_FILE
                 AC_SUBST(JLATEXMATH_FOP)
 
+                # Saxon 9 HE
+                AC_JAVA_CHECK_JAR([saxon9he],[net.sf.saxon.TransformerFactoryImpl],[Saxon processor for XSLT, XQuery, and XML Schema])
+                SAXON=$PACKAGE_JAR_FILE
+                AC_SUBST(SAXON)
+
                 AC_DEFINE([WITH_GUI],[],[With the JAVA stuff (GUI, Console, JOGL...)])
 
         fi
@@ -1240,7 +1282,7 @@ Unit tests],"yes")
         AC_JAVA_CHECK_JAR([ecj],[org.eclipse.jdt.core.compiler.batch.BatchCompiler],[Eclipse Java compiler],"yes")
         ECJ=$PACKAGE_JAR_FILE
         if test -z "$ECJ"; then
-           ECJ='$SCILAB/thirdparty/ecj.jar'
+           ECJ='$SCILAB/thirdparty/ecj-3.34.0.jar'
         fi
         AC_SUBST(ECJ)
 
@@ -1671,6 +1713,23 @@ fi
 AC_SUBST(UMFPACK_ENABLE)
 AM_CONDITIONAL(UMFPACK, test "$with_umfpack" != no)
 
+#################
+## KLU
+#################
+
+AC_ARG_WITH(klu,
+    AS_HELP_STRING([--without-klu],[Disable the interface to the KLU library]))
+
+KLU_ENABLE=no
+if test "$with_klu" != no; then
+   AC_KLU([$BLAS_LIBS])
+   KLU_ENABLE=yes
+fi
+
+AC_SUBST(KLU_ENABLE)
+AM_CONDITIONAL(KLU, test "$with_klu" != no)
+
+
 #######################
 ## Test for PCRE
 #######################
@@ -1807,6 +1866,10 @@ fi
 AC_SUBST(MATIO_ENABLE)
 AM_CONDITIONAL(MATIO, test "$with_matio" != no)
 
+##############################################################
+# LIBARCHIVE LIBRARY (reading and writing compressed files)) #
+##############################################################
+AC_LIBARCHIVE()
 
 #############################
 ## Documentation management #
@@ -2011,6 +2074,7 @@ AC_DEFINE_UNQUOTED([SHARED_LIB_EXTW],[L"$shrext_cmds"],[Extension of a shared li
 #########
 AC_CHECK_STDCPP_STATIC()
 AC_CHECK_ADDRESS_SANTIZER()
+AC_CHECK_ANALYZER()
 
 #################
 ## stop on warning
@@ -2152,6 +2216,7 @@ modules/webtools/Makefile
 modules/Makefile
 Makefile
 scilab.pc
+build.incl.xml
 etc/modules.xml
 etc/classpath.xml
 etc/Info.plist
@@ -2286,6 +2351,12 @@ echo "Eigen3 Configuration:"
 echo "  EIGEN CPPFLAGS ...... = $EIGEN_CPPFLAGS"
 
 echo ""
+echo "libarchive Configuration:"
+echo "  LIBARCHIVE_CFLAGS ... = $LIBARCHIVE_CFLAGS"
+echo "  LIBARCHIVE_LIBS ..... = $LIBARCHIVE_LIBS"
+echo "  LIBARCHIVE_VERSION .. = $LIBARCHIVE_VERSION"
+
+echo ""
 if test $MATIO_ENABLE = yes;  then
    echo "MATIO Configuration:"
    echo "  MATIO LIBS .......... = $MATIO_LIBS"
@@ -2297,7 +2368,7 @@ fi
 echo ""
 if test $UMFPACK_ENABLE = yes;  then
    echo "UMFPACK Configuration:"
-   echo "  UMFPACK LIBS ....... = $UMFPACK_LIB"
+   echo "  UMFPACK LIBS ....... = $UMFPACK_LIBS"
    echo "  UMFPACK CFLAGS ..... = $UMFPACK_CFLAGS"
    if test $SUITESPARSE = yes; then
       echo "  UMFPACK SUITESPARSE  = Yes"
@@ -2308,6 +2379,19 @@ else
    echo "Not using UMFPACK"
 fi
 
+echo ""
+if test $KLU_ENABLE = yes;  then
+   echo "KLU Configuration:"
+   echo "  KLU LIBS ....... = $KLU_LIBS"
+   echo "  KLU CFLAGS ..... = $KLU_CFLAGS"
+   if test "$SUITESPARSE" = "yes"; then
+      echo "  KLU SUITESPARSE  = Yes"
+   else
+      echo "  KLU SUITESPARSE  = No"
+   fi
+else
+   echo "Not using KLU"
+fi
 
 echo ""
 echo "BLAS/LAPACK/ATLAS Configuration:"
@@ -2343,7 +2427,6 @@ fi
 echo ""
 if test $HELP_ENABLE = yes; then
    echo "Documentation building configuration:"
-   echo "  Saxon XSLT ............. = $SAXON"
    echo "  XML commons external ... = $XML_APIS_EXT"
 else
    echo "No documentation generated"

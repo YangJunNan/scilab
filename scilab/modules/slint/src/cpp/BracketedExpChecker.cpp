@@ -15,6 +15,7 @@
 
 #include "checkers/BracketedExpChecker.hxx"
 
+#include "opexp.hxx"
 namespace slint
 {
 

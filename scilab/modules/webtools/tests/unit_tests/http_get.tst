@@ -42,13 +42,13 @@ checkFile(filePath, fullfile(destdir, "index.html"), 1000);
 filePath = http_get("https://www.scilab.org/", fullfile(destdir, "index.html"));
 checkFile(filePath, fullfile(destdir, "index.html"), 1000);
 
-filePath = http_get("https://www.scilab.org/product/man/numderivative.html", fullfile(destdir, "numderivative.html"));
+filePath = http_get("https://help.scilab.org/numderivative.html", fullfile(destdir, "numderivative.html"));
 checkFile(filePath, fullfile(destdir, "numderivative.html"), 1000);
 
 filePath = http_get("www.scilab.org", fullfile(destdir, "index.html"), follow=%t);
 checkFile(filePath, fullfile(destdir, "index.html"), 1000);
 
-filePath = http_get("www.scilab.org/product/man/numderivative.html", fullfile(destdir, "numderivative.html"), follow=%t);
+filePath = http_get("https://help.scilab.org/numderivative.html", fullfile(destdir, "numderivative.html"), follow=%t);
 checkFile(filePath, fullfile(destdir, "numderivative.html"), 1000);
 
 filePath = http_get("ftp://ftp.free.fr/pub/Distributions_Linux/debian/README", fullfile(destdir, "README"));
@@ -96,5 +96,11 @@ assert_checkequal(content.user, "user");
 
 // Badly formatted URL
 assert_checkerror("http_get(''https://plop@ae:www.scilab.org:80'');", [], 999);
+
+// Headers
+[_, _, headers] = http_get("https://www.google.com/");
+assert_checkequal(typeof(headers), "st");
+[_, _, headers] = http_get("google.com", follow=%T);
+assert_checkequal(typeof(headers), "list");
 
 cd(curdir);

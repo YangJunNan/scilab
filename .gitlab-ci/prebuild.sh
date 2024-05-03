@@ -23,7 +23,7 @@ INSTALLROOTDIR=$(pwd)/install
 INSTALLUSRDIR=$(pwd)/install/usr
 DOWNLOADDIR=$(pwd)/downloads
 BUILDDIR=$(pwd)/builds
-LOGDIR=$(pwd)/log
+LOGDIR=$(pwd)/$SCI_VERSION_STRING
 
 echo
 echo "INSTALLROOTDIR = $INSTALLROOTDIR"
@@ -56,17 +56,17 @@ export PATH="/usr/local/bin:$INSTALLUSRDIR/bin:$PATH"
 ##### DEPENDENCIES VERSION #####
 ################################
 JDK_VERSION=17.0.7+7
-JRE_VERSION=8u372-b07
+JRE_VERSION=17.0.7_7
 ANT_VERSION=1.10.5
 OPENBLAS_VERSION=0.3.7
 ARPACK_VERSION=3.1.5
 CURL_VERSION=7.64.1
 EIGEN_VERSION=3.3.2
 FFTW_VERSION=3.3.3
-HDF5_VERSION=1.8.14
+HDF5_VERSION=1.10.10
 NCURSES_VERSION=6.4
 LIBXML2_VERSION=2.9.9
-MATIO_VERSION=1.5.2
+MATIO_VERSION=1.5.9
 OPENSSL_VERSION=1.1.1c
 PCRE_VERSION=8.38
 SUITESPARSE_VERSION=4.4.5
@@ -74,10 +74,11 @@ TCL_VERSION=8.5.15
 TK_VERSION=8.5.15
 BWIDGET_VERSION=1.9.16
 ZLIB_VERSION=1.2.11
-# PNG_VERSION=1.6.37
-JOGL_VERSION=2.4.0
+XZ_VERSION=5.4.4
+JOGL_VERSION=2.5.0
 OPENXLSX_VERSION=0.3.2
 FOP_VERSION=2.0
+LIBARCHIVE_VERSION=3.7.1
 
 # Variables used by ant to build Java deps in Java 8
 export JAVA_HOME="$BUILDDIR/java/jdk-$JDK_VERSION/"
@@ -106,10 +107,11 @@ make_versions() {
     echo "TK_VERSION            = $TK_VERSION"
     echo "BWIDGET_VERSION       = $BWIDGET_VERSION"
     echo "ZLIB_VERSION          = $ZLIB_VERSION"
-    # echo "PNG_VERSION           = $PNG_VERSION"
+    echo "XZ_VERSION            = $XZ_VERSION"
     echo "JOGL_VERSION          = $JOGL_VERSION"
     echo "OPENXLSX_VERSION      = $OPENXLSX_VERSION"
     echo "FOP_VERSION           = $FOP_VERSION"
+    echo "LIBARCHIVE_VERSION    = $LIBARCHIVE_VERSION"
 }
 
 ####################
@@ -118,9 +120,10 @@ make_versions() {
 download_dependencies() {
     cd "$DOWNLOADDIR" || exit 1
 
-    [ ! -f jre-$JRE_VERSION.tar.gz ] && curl -L -o jre-$JRE_VERSION.tar.gz "https://oos.eu-west-2.outscale.com/scilab-releases-dev/prerequirements-sources/OpenJDK8U-jdk_x64_linux_hotspot_$(echo ${JRE_VERSION} |sed 's/-//g').tar.gz"
-    [ ! -f jdk-$JDK_VERSION.tar.gz ] && curl -L -o jdk-$JDK_VERSION.tar.gz "https://oos.eu-west-2.outscale.com/scilab-releases-dev/prerequirements-sources/ibm-semeru-open-jdk_x64_linux_$(echo ${JDK_VERSION} |sed 's/+/_/g')_openj9-0.38.0.tar.gz"
 
+    [ ! -f jre-$JRE_VERSION.tar.gz ] && curl -L -o jre-$JRE_VERSION.tar.gz "https://oos.eu-west-2.outscale.com/scilab-releases-dev/prerequirements-sources/OpenJDK17U-jre_x64_linux_hotspot_$(echo ${JRE_VERSION} |sed 's/-//g').tar.gz"
+    [ ! -f jdk-$JDK_VERSION.tar.gz ] && curl -L -o jdk-$JDK_VERSION.tar.gz "https://oos.eu-west-2.outscale.com/scilab-releases-dev/prerequirements-sources/ibm-semeru-open-jdk_x64_linux_$(echo ${JDK_VERSION} |sed 's/+/_/g')_openj9-0.38.0.tar.gz"
+    
     [ ! -f OpenBLAS-$OPENBLAS_VERSION.tar.gz ] && curl -LO https://oos.eu-west-2.outscale.com/scilab-releases-dev/prerequirements-sources/OpenBLAS-$OPENBLAS_VERSION.tar.gz
     [ ! -f apache-ant-$ANT_VERSION-bin.tar.gz ] && curl -LO https://oos.eu-west-2.outscale.com/scilab-releases-dev/prerequirements-sources/apache-ant-$ANT_VERSION-bin.tar.gz
     [ ! -f arpack-ng-$ARPACK_VERSION.tar.gz ] && curl -LO https://oos.eu-west-2.outscale.com/scilab-releases-dev/prerequirements-sources/arpack-ng-$ARPACK_VERSION.tar.gz
@@ -138,10 +141,10 @@ download_dependencies() {
     [ ! -f tk$TK_VERSION-src.tar.gz ] && curl -LO https://oos.eu-west-2.outscale.com/scilab-releases-dev/prerequirements-sources/tk$TK_VERSION-src.tar.gz
     [ ! -f bwidget-$BWIDGET_VERSION.tar.gz ] && curl -LO https://oos.eu-west-2.outscale.com/scilab-releases-dev/prerequirements-sources/bwidget-$BWIDGET_VERSION.tar.gz
     [ ! -f zlib-$ZLIB_VERSION.tar.gz ] && curl -LO https://oos.eu-west-2.outscale.com/scilab-releases-dev/prerequirements-sources/zlib-$ZLIB_VERSION.tar.gz
-    # [ ! -f libpng-$PNG_VERSION.tar.gz ] && curl -LO https://oos.eu-west-2.outscale.com/scilab-releases-dev/prerequirements-sources/libpng-$PNG_VERSION.tar.gz
-
+    [ ! -f xz-$XZ_VERSION.tar.gz ] && curl -LO https://oos.eu-west-2.outscale.com/scilab-releases-dev/prerequirements-sources/xz-$XZ_VERSION.tar.gz
+    
     [ ! -f gluegen-v$JOGL_VERSION.tar.xz ] && curl -LO https://oos.eu-west-2.outscale.com/scilab-releases-dev/prerequirements-sources/gluegen-v$JOGL_VERSION.tar.xz
-    [ ! -f gluegen-jcpp-v$JOGL_VERSION.zip ] && curl -LO https://oos.eu-west-2.outscale.com/scilab-releases-dev/prerequirements-sources/gluegen-jcpp-v$JOGL_VERSION.zip
+    [ ! -f jcpp-v$JOGL_VERSION.tar.xz ] && curl -LO https://oos.eu-west-2.outscale.com/scilab-releases-dev/prerequirements-sources/jcpp-v$JOGL_VERSION.tar.xz
     [ ! -f jogl-v$JOGL_VERSION.tar.xz ] && curl -LO https://oos.eu-west-2.outscale.com/scilab-releases-dev/prerequirements-sources/jogl-v$JOGL_VERSION.tar.xz
 
     [ ! -f OpenXLSX-$OPENXLSX_VERSION.tar.gz ] && curl -LO https://oos.eu-west-2.outscale.com/scilab-releases-dev/prerequirements-sources/OpenXLSX-$OPENXLSX_VERSION.tar.gz
@@ -150,8 +153,15 @@ download_dependencies() {
     # Batik is included within FOP
     [ ! -f fop-$FOP_VERSION-bin.zip ] && curl -LO https://oos.eu-west-2.outscale.com/scilab-releases-dev/prerequirements-sources/fop-$FOP_VERSION-bin.zip
 
-    # This archive contains .jar that have been copied from Scilab prerequirements thirdparty
-    [ ! -f thirdparty-jar.zip ] && curl -LO https://oos.eu-west-2.outscale.com/scilab-releases-dev/prerequirements-sources/thirdparty-jar.zip
+    # This archive contains .jar and directories that have been copied from Scilab prerequirements
+    # JavaFX/openjfx is only shipped as JARs, no rebuild is needed for now
+    curl -L --time-cond thirdparty-jar.zip -o thirdparty-jar.zip https://oos.eu-west-2.outscale.com/scilab-releases-dev/prerequirements-sources/thirdparty-jar-${BRANCH}.zip
+    if ! unzip -t "thirdparty-jar.zip"; then
+        # fallback to the default branch
+        curl -L --time-cond thirdparty-jar.zip -o thirdparty-jar.zip https://oos.eu-west-2.outscale.com/scilab-releases-dev/prerequirements-sources/thirdparty-jar-${CI_DEFAULT_BRANCH}.zip
+    fi
+
+    [ ! -f libarchive-$LIBARCHIVE_VERSION.tar.xz ] && curl -LO https://oos.eu-west-2.outscale.com/scilab-releases-dev/prerequirements-sources/libarchive-$LIBARCHIVE_VERSION.tar.xz
 
     true;
 }
@@ -164,6 +174,7 @@ make_all() {
     build_openblas
     build_eigen
     build_zlib
+    build_lzma
     build_hdf5
     build_pcre
     build_fftw
@@ -177,6 +188,7 @@ make_all() {
     build_curl
     build_ncurses
     build_openxlsx
+    build_libarchive
 }
 
 make_binary_directory() {
@@ -193,6 +205,9 @@ make_binary_directory() {
         --strip-components=1 \
         --exclude=demo \
         bwidget-$BWIDGET_VERSION/images bwidget-$BWIDGET_VERSION/lang --wildcards bwidget-$BWIDGET_VERSION/*.tcl
+    # fix permissions to fix issue #17231
+    chmod 644 $(find "$TCL_DIR/BWidget" -type f)
+    chmod 755 $(find "$TCL_DIR/BWidget" -type d)
 
     #################
     ##### EIGEN #####
@@ -224,6 +239,9 @@ make_binary_directory() {
 
     rm -f "$LIBTHIRDPARTYDIR"/libcurl.*
     cp -d "$INSTALLUSRDIR"/lib/libcurl.* "$LIBTHIRDPARTYDIR/"
+
+    rm -f "$LIBTHIRDPARTYDIR"/libarchive.*
+    cp -d "$INSTALLUSRDIR"/lib/libarchive.* "$LIBTHIRDPARTYDIR/"
 
     rm -f "$LIBTHIRDPARTYDIR"/libfftw3.*
     cp -d "$INSTALLUSRDIR"/lib/libfftw3.* "$LIBTHIRDPARTYDIR/"
@@ -270,6 +288,10 @@ make_binary_directory() {
     cp -d "$INSTALLUSRDIR"/lib/libccolamd.* "$LIBTHIRDPARTYDIR/"
     rm -f "$LIBTHIRDPARTYDIR"/libcamd.*
     cp -d "$INSTALLUSRDIR"/lib/libcamd.* "$LIBTHIRDPARTYDIR/"
+    rm -f "$LIBTHIRDPARTYDIR"/libbtf.*
+    cp -d "$INSTALLUSRDIR"/lib/libbtf.* "$LIBTHIRDPARTYDIR/"
+    rm -f "$LIBTHIRDPARTYDIR"/libklu.*
+    cp -d "$INSTALLUSRDIR"/lib/libklu.* "$LIBTHIRDPARTYDIR/"
 
     rm -f "$LIBTHIRDPARTYDIR"/libOpenXLSX.*
     cp -d "$INSTALLUSRDIR"/lib/libOpenXLSX.* "$LIBTHIRDPARTYDIR/"
@@ -285,14 +307,14 @@ make_binary_directory() {
     rm -f "$LIBTHIRDPARTYDIR"/redist/libz.* "$LIBTHIRDPARTYDIR"/redist/libsciz.*
     cp -d "$INSTALLUSRDIR"/lib/libsciz.* "$LIBTHIRDPARTYDIR/redist/"
 
-    # do not re-ship libpng16 it is now present on most machines
-    # rm -f "$LIBTHIRDPARTYDIR"/libpng*
-    # rm -f "$LIBTHIRDPARTYDIR"/redist/libpng*
-    # cp -d "$INSTALLDIR"/lib/libpng* "$LIBTHIRDPARTYDIR/redist/"
+    rm -f "$LIBTHIRDPARTYDIR"/liblzma.* "$LIBTHIRDPARTYDIR"/libscilzma.*
+    rm -f "$LIBTHIRDPARTYDIR"/redist/liblzma.* "$LIBTHIRDPARTYDIR"/redist/libscilzma.*
+    cp -d "$INSTALLUSRDIR"/lib/libscilzma.* "$LIBTHIRDPARTYDIR/redist/"
 
     rm -f "$LIBTHIRDPARTYDIR"/libxml2.* "$LIBTHIRDPARTYDIR"/libscixml2.*
     rm -f "$LIBTHIRDPARTYDIR"/redist/libxml2.* "$LIBTHIRDPARTYDIR"/redist/libscixml2.*
     cp -d "$INSTALLUSRDIR"/lib/libscixml2.* "$LIBTHIRDPARTYDIR/redist/"
+    
     rm -f "$LIBTHIRDPARTYDIR"/libncurses.* "$LIBTHIRDPARTYDIR"/libscincurses.*
     rm -f "$LIBTHIRDPARTYDIR"/redist/libncurses.* "$LIBTHIRDPARTYDIR"/redist/libscincurses.*
     cp -d "$INSTALLUSRDIR"/lib/libscincurses.so* "$LIBTHIRDPARTYDIR/redist/"
@@ -372,7 +394,7 @@ make_jar() {
     cd thirdparty-jar || exit 1
     unzip "$DOWNLOADDIR/thirdparty-jar.zip"
     # remove .jar already managed
-    rm xml* fontbox* commons* batik* avalon* fop.jar gluegen-rt.jar jogl-all.jar
+    rm xml* fontbox* commons* batik* avalon* fop.jar gluegen2-rt.jar jogl2.jar gluegen-rt.jar jogl-all.jar
     cp -a ./* "$JAVATHIRDPARTYDIR"
 }
 
@@ -414,16 +436,16 @@ build_openblas() {
 
 build_openjdk() {
     [ -e "$BUILDDIR/java" ] && rm -fr "$BUILDDIR/java"
-    [ -d "$INSTALLROOTDIR/java/jdk$JRE_VERSION-jre" ] && rm -fr "$INSTALLROOTDIR/java/jdk$JRE_VERSION-jre"
+    [ -d "$INSTALLROOTDIR/java/jdk-$JDK_VERSION-jre" ] && rm -fr "$INSTALLROOTDIR/java/jdk-$JDK_VERSION-jre"
     [ -e "$INSTALLROOTDIR/java/jre" ] && rm -fr "$INSTALLROOTDIR/java/jre"
 
     mkdir -p "$BUILDDIR/java/"
     cd "$BUILDDIR/java/" || exit 1
-    tar -xzf "$DOWNLOADDIR/jdk-$JDK_VERSION.tar.gz"
+    tar -xzf "$DOWNLOADDIR/jdk-$JDK_VERSION.tar.gz" # Needed to build other dependencies such as JoGL
     tar -xzf "$DOWNLOADDIR/jre-$JRE_VERSION.tar.gz"
     
-    cp -a "jdk$JRE_VERSION/jre" "$INSTALLROOTDIR/java/jdk$JRE_VERSION-jre"
-    ln -s "jdk$JRE_VERSION-jre" "$INSTALLROOTDIR/java/jre"
+    cp -a "jdk-$JDK_VERSION-jre" "$INSTALLROOTDIR/java/jdk-$JRE_VERSION-jre"
+    ln -s "jdk-$JRE_VERSION-jre" "$INSTALLROOTDIR/java/jre"
 }
 
 build_ant() {
@@ -485,7 +507,6 @@ build_hdf5() {
         -DHDF5_BUILD_HL_LIB=ON
     cmake --build . --parallel --target install
 
-    cp "$INSTALL_DIR/share/cmake/hdf5/libhdf5.settings" "$INSTALLUSRDIR/lib/"
     cp -a "$INSTALL_DIR"/lib/*.so* "$INSTALLUSRDIR/lib/"
     cp -a "$INSTALL_DIR"/include/* "$INSTALLUSRDIR/include/"
 }
@@ -527,16 +548,27 @@ build_zlib() {
     patchelf --set-soname libsciz.so.1 libsciz.so.$ZLIB_VERSION
 }
 
-# build_libpng() {
-#     # do not re-ship libpng16 it is now present on most machines
-#     cd $BUILDDIR
+build_lzma() {
+    cd "$BUILDDIR" || exit 1
 
-#     tar -xzf "$DOWNLOADDIR/libpng-$PNG_VERSION.tar.gz"
-#     cd libpng-$PNG_VERSION
-#     ./configure --prefix= LDFLAGS="-L$INSTALLUSRDIR/lib" CPPFLAGS="-I$INSTALLUSRDIR/include"
-#     make "-j$(nproc)" LDFLAGS="-L$INSTALLUSRDIR/lib -lsciz" CPPFLAGS="-I$INSTALLUSRDIR/include"
-#     make install DESTDIR="$INSTALLUSRDIR"
-# }
+    INSTALL_DIR=$BUILDDIR/xz-$XZ_VERSION/install_dir
+
+    tar -xzf "$DOWNLOADDIR/xz-$XZ_VERSION.tar.gz"
+    cd "xz-$XZ_VERSION" || exit 1
+    ./configure --prefix=
+    make "-j$(nproc)"
+    make install DESTDIR="$INSTALL_DIR"
+
+    cp -a "$INSTALL_DIR"/include/* "$INSTALLUSRDIR/include/"
+
+    # Rename liblzma to sciliblzma
+    cp "$INSTALL_DIR/lib/liblzma.so.$XZ_VERSION" "$INSTALLUSRDIR/lib/libscilzma.so.$XZ_VERSION"
+    cd "$INSTALLUSRDIR/lib" || exit 1
+    ln -sf "libscilzma.so.$XZ_VERSION" liblzma.so
+    ln -sf "libscilzma.so.$XZ_VERSION" libscilzma.so.1
+    ln -sf libscilzma.so.1 libscilzma.so
+    patchelf --set-soname libscilzma.so.1 "libscilzma.so.$XZ_VERSION"
+}
 
 build_openssl() {
     cd "$BUILDDIR" || exit 1
@@ -568,7 +600,7 @@ build_tcl() {
     make install DESTDIR="$INSTALL_DIR"
 
     cp -a "$INSTALL_DIR"/lib/libtcl*.so* "$INSTALLUSRDIR/lib/"
-    chmod 644 "$INSTALLUSRDIR"/lib/libtcl*.so*
+    chmod 755 "$INSTALLUSRDIR"/lib/libtcl*.so*
 
     cp -a "$INSTALL_DIR"/include/* "$INSTALLUSRDIR/include/"
 
@@ -577,9 +609,11 @@ build_tcl() {
     # install in module
     cp -a "$INSTALL_DIR"/lib/tcl* "$TCL_DIR"
     rm "$TCL_DIR/tclConfig.sh"
+    rm -rf "$TCL_DIR/tcl*/tzdata"
     # install in usr/lib
     cp -a "$INSTALL_DIR"/lib/tcl* "$INSTALLUSRDIR/lib/"
     rm "$INSTALLUSRDIR/lib/tclConfig.sh"
+    rm -rf "$INSTALLUSRDIR/tcl*/tzdata"
 }
 
 build_tk() {
@@ -594,7 +628,7 @@ build_tk() {
     make install DESTDIR="$INSTALL_DIR"
 
     cp -a "$INSTALL_DIR"/lib/libtk*.so* "$INSTALLUSRDIR/lib/"
-    chmod 644 "$INSTALLUSRDIR"/lib/libtk*.so*
+    chmod 755 "$INSTALLUSRDIR"/lib/libtk*.so*
 
     cp -a "$INSTALL_DIR"/include/* "$INSTALLUSRDIR/include/"
 
@@ -615,8 +649,11 @@ build_matio() {
 
     INSTALL_DIR=$BUILDDIR/matio-$MATIO_VERSION/install_dir
 
+    rm -rf matio-$MATIO_VERSION
     tar -xzf "$DOWNLOADDIR/matio-$MATIO_VERSION.tar.gz"
     cd matio-$MATIO_VERSION || exit 1
+
+    ./autogen.sh
     ./configure --enable-shared --with-hdf5="$INSTALLUSRDIR" --with-zlib="$INSTALLUSRDIR" --prefix=
     make "-j$(nproc)"
     make install DESTDIR="$INSTALL_DIR"
@@ -674,7 +711,7 @@ build_libxml2() {
     tar -xzf "$DOWNLOADDIR/libxml2-$LIBXML2_VERSION.tar.gz"
     cd libxml2-$LIBXML2_VERSION || exit 1
     rm -rf "$INSTALL_DIR" && mkdir "$INSTALL_DIR"
-    ./configure --without-python --with-zlib="$INSTALLUSRDIR" --prefix=
+    ./configure --without-python --with-zlib="$INSTALLUSRDIR" --without-lzma --prefix=
     make "-j$(nproc)"
     make install DESTDIR="$INSTALL_DIR"
 
@@ -689,6 +726,7 @@ build_libxml2() {
     ln -sf libscixml2.so.$LIBXML2_VERSION libxml2.so
     ln -sf libscixml2.so.$LIBXML2_VERSION libscixml2.so.2
     ln -sf libscixml2.so.2 libscixml2.so
+    ln -sf libscixml2.so.2 libxml2.so
     patchelf --set-soname libscixml2.so.2 libscixml2.so.$LIBXML2_VERSION
 }
 
@@ -712,6 +750,32 @@ build_curl() {
     # shellcheck disable=SC2016
     sed -i -e 's|^prefix=.*|prefix=$( cd -- "$(dirname "$0")" >/dev/null 2>\&1 ; pwd -P )/..|' "$INSTALL_DIR/bin/curl-config"
     cp "$INSTALL_DIR/bin/curl-config" "$INSTALLUSRDIR/bin/"
+
+    cp -a "$INSTALL_DIR"/lib/*.so* "$INSTALLUSRDIR/lib/"
+    cp -a "$INSTALL_DIR"/include/* "$INSTALLUSRDIR/include/"
+}
+
+build_libarchive() {
+    cd "$BUILDDIR" || exit 1
+
+    INSTALL_DIR=$BUILDDIR/libarchive-$LIBARCHIVE_VERSION/install_dir
+
+    tar -xf "$DOWNLOADDIR/libarchive-$LIBARCHIVE_VERSION.tar.xz"
+    cd libarchive-$LIBARCHIVE_VERSION || exit 1
+    
+    # this configure does not support passing path, overwrite variables
+    saved_CFLAGS="$CFLAGS"
+    saved_LDFLAGS="$LDFLAGS"
+    CFLAGS="$CFLAGS -I$INSTALLUSRDIR/include -I$INSTALLUSRDIR/include/libxml2"
+    LDFLAGS="$LDFLAGS -L$INSTALLUSRDIR/lib"
+
+    ./configure --prefix= \
+        --enable-posix-regex-lib=libpcreposix
+    make "-j$(nproc)"
+    make install DESTDIR="$INSTALL_DIR"
+
+    CFLAGS="$saved_CFLAGS"
+    LDFLAGS="$saved_LDFLAGS"
 
     cp -a "$INSTALL_DIR"/lib/*.so* "$INSTALLUSRDIR/lib/"
     cp -a "$INSTALL_DIR"/include/* "$INSTALLUSRDIR/include/"
@@ -788,6 +852,28 @@ build_suitesparse() {
     cp "libcholmod.so.${CHOLMOD_VERSION}" "$INSTALLUSRDIR/lib/"
     cd ../..
 
+    # libbtf.so
+    BTF_VERSION=$(grep -m1 VERSION BTF/Makefile | sed -e "s|\VERSION = ||")
+    BTF_MAJOR_VERSION=$(echo "$BTF_VERSION" | awk -F \. '{print $1}')
+    cd BTF/Lib/ || exit 1
+    # shellcheck disable=SC2046
+    gcc -shared "-Wl,-soname,libbtf.so.${BTF_MAJOR_VERSION}" -o "libbtf.so.${BTF_VERSION}" $(ls ./*.o)
+    rm -f "$INSTALLUSRDIR"/lib/libbtf.so*
+    cp "libbtf.so.${BTF_VERSION}" "$INSTALLUSRDIR/lib/"
+    cd ../..
+
+    # libklu.so
+    KLU_VERSION=$(grep -m1 VERSION KLU/Makefile | sed -e "s|\VERSION = ||")
+    KLU_MAJOR_VERSION=$(echo "$KLU_VERSION" | awk -F \. '{print $1}')
+    cd KLU/Lib/ || exit 1
+    # shellcheck disable=SC2046
+    gcc -shared "-Wl,-soname,libklu.so.${KLU_MAJOR_VERSION}" -o "libklu.so.${KLU_VERSION}" $(ls ./*.o) \
+        "$INSTALLUSRDIR/lib/libamd.so.${AMD_VERSION}" "$INSTALLUSRDIR/lib/libcolamd.so.${COLAMD_VERSION}" \
+        "$INSTALLUSRDIR/lib/libbtf.so.${BTF_VERSION}"
+    rm -f "$INSTALLUSRDIR"/lib/libklu.so*
+    cp "libklu.so.${KLU_VERSION}" "$INSTALLUSRDIR/lib/"
+    cd ../..
+
     # libumfpack.so
     UMFPACK_VERSION=$(grep -m1 VERSION UMFPACK/Makefile | sed -e "s|\VERSION = ||")
     UMFPACK_MAJOR_VERSION=$(echo "$UMFPACK_VERSION" | awk -F \. '{print $1}')
@@ -798,7 +884,9 @@ build_suitesparse() {
       /usr/local/lib/libscigfortran.so.5 /usr/local/lib/libsciquadmath.so.0 \
       "$INSTALLUSRDIR/lib/libblas.so.3" "$INSTALLUSRDIR/lib/liblapack.so.3" -lm -lrt \
       "$INSTALLUSRDIR/lib/libcholmod.so.${CHOLMOD_VERSION}" "$INSTALLUSRDIR/lib/libcolamd.so.${COLAMD_VERSION}" \
-      "$INSTALLUSRDIR/lib/libccolamd.so.${CCOLAMD_VERSION}" "$INSTALLUSRDIR/lib/libcamd.so.${CAMD_VERSION}"
+      "$INSTALLUSRDIR/lib/libccolamd.so.${CCOLAMD_VERSION}" "$INSTALLUSRDIR/lib/libcamd.so.${CAMD_VERSION}" \
+      "$INSTALLUSRDIR/lib/libbtf.so.${BTF_VERSION}" "$INSTALLUSRDIR/lib/libklu.so.${KLU_VERSION}" \
+      "$INSTALLUSRDIR/lib/libamd.so.${AMD_VERSION}"
     rm -f "$INSTALLUSRDIR"/lib/libumfpack.so*
     cp "libumfpack.so.${UMFPACK_VERSION}" "$INSTALLUSRDIR/lib/"
     cd ../..
@@ -814,6 +902,10 @@ build_suitesparse() {
     ln -fs "libccolamd.so.${CCOLAMD_VERSION}" "libccolamd.so.${CCOLAMD_MAJOR_VERSION}"
     ln -fs "libcholmod.so.${CHOLMOD_VERSION}" libcholmod.so
     ln -fs "libcholmod.so.${CHOLMOD_VERSION}" "libcholmod.so.${CHOLMOD_MAJOR_VERSION}"
+    ln -fs "libbtf.so.${BTF_VERSION}" libbtf.so
+    ln -fs "libbtf.so.${BTF_VERSION}" "libbtf.so.${BTF_MAJOR_VERSION}"
+    ln -fs "libklu.so.${KLU_VERSION}" libklu.so
+    ln -fs "libklu.so.${KLU_VERSION}" "libklu.so.${KLU_MAJOR_VERSION}"
     ln -fs "libumfpack.so.${UMFPACK_VERSION}" libumfpack.so
     ln -fs "libumfpack.so.${UMFPACK_VERSION}" "libumfpack.so.${UMFPACK_MAJOR_VERSION}"
 }
@@ -823,8 +915,8 @@ build_gluegen() {
 
     tar -xJf "$DOWNLOADDIR/gluegen-v$JOGL_VERSION.tar.xz"
     cd gluegen-v$JOGL_VERSION || exit 1
-    unzip "$DOWNLOADDIR/gluegen-jcpp-v$JOGL_VERSION.zip"
-    rm -fr jcpp && mv jcpp-master jcpp
+    tar -xJf "$DOWNLOADDIR/jcpp-v$JOGL_VERSION.tar.xz"
+    rm -fr jcpp && mv jcpp-v$JOGL_VERSION jcpp
 
     cd make || exit 1
     "$ANT_HOME/bin/ant"

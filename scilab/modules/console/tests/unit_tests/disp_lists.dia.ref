@@ -65,13 +65,13 @@ L = list([%t %f %f]',                ..
   (6) = ["This","is","some","text"]
   (7) = (void)
   (8) : fptr
-  (9) : logspace(d1,d2,n) => [y] (42 lines)
+  (9) : logspace(d1,d2,n) => [y] (24 lines)
   (10) : iolib library with 5 functions @ SCI\modules\io\macros\
   (11) : [2x2 cell]
   (12) = {}
   (13) : list:
       (1) = ["Hello","Allo","Hé"]
-      (2) = uint64([12345678,1.524D+14,9.223D+18])
+      (2) = uint64([12345678,152415765279684,9223372036854775808])
       (3) = (void)
       (4) : [2x4 constant]
   (14) : empty list()

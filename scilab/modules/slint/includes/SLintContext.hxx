@@ -22,9 +22,7 @@
 #include <unordered_set>
 #include <vector>
 
-#include "allexp.hxx"
-#include "allvar.hxx"
-#include "alldec.hxx"
+#include "exp.hxx"
 
 #include "SciFile.hxx"
 

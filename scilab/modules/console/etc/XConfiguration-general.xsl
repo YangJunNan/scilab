@@ -113,9 +113,18 @@
                         <xsl:variable name="code" select="@lang"/>
                         <xsl:for-each select="language">
                             <option value="{@desc}" key="{@code}">
-                                <xsl:if test="@code=$SCILAB_LANGUAGE or @code=$code">
+                                <xsl:choose>
+                                    <xsl:when test="$code=''"> <!-- Default value in XConfiguration-general.xml -->
+                                        <xsl:if test="@code=$SCILAB_LANGUAGE"> <!-- Use Scilab default language -->
+                                            <xsl:attribute name="selected">selected</xsl:attribute>
+                                        </xsl:if>
+                                    </xsl:when>
+                                    <xsl:otherwise> <!-- Use value from preferences -->
+                                        <xsl:if test="@code=$code">
                                     <xsl:attribute name="selected">selected</xsl:attribute>
                                 </xsl:if>
+                                    </xsl:otherwise>
+                                </xsl:choose>
                             </option>
                         </xsl:for-each>
                     </Select>

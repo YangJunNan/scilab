@@ -130,7 +130,7 @@ function [ok,name,nipar,nrpar,nopar,nz,nx,nx_der,nx_ns,nin,nout,nm,ng,dep_u]=com
     msprintf(_("Generated files path: %s"),outpath)
     ""];
 
-    if getscilabmode() <> "NW" then
+    if getscilabmode() == "STD" then
         messagebox(txt, "info");
     else
         disp(txt);

@@ -16,7 +16,7 @@
 #ifndef __DIFFERENTIALEQUATIONS_HXX__
 #define __DIFFERENTIALEQUATIONS_HXX__
 
-#include <list>
+#include <vector>
 #include <map>
 
 #include "dynlib_differential_equations.h"
@@ -314,7 +314,7 @@ class DIFFERENTIAL_EQUATIONS_IMPEXP DifferentialEquation
 {
     // differential equation functions
 private :
-    static std::list<DifferentialEquationFunctions*> m_DifferentialEquationFunctions;
+    static std::vector<DifferentialEquationFunctions*> m_DifferentialEquationFunctions;
 
 public :
     static void addDifferentialEquationFunctions(DifferentialEquationFunctions* _deFunction);

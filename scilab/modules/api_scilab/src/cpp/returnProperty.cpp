@@ -141,13 +141,13 @@ void* sciReturnUserData(const int * userData, int userDataSize)
     {
         //32 bits
         int* p = (int*)userData;
-        return ((types::InternalType*) * p);
+        return ((types::InternalType*)*p);
     }
     else
     {
         //64 bits
         long long* p = (long long*)userData;
-        return ((types::InternalType*) * p);
+        return ((types::InternalType*)*p);
     }
 }
 /*--------------------------------------------------------------------------*/

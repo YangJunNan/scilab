@@ -101,7 +101,7 @@ types::Function::ReturnValue sci_scicos_log(types::typed_list &in, int _iRetCoun
 
         types::Double* refCounts = new types::Double((int) objects.size(), 3);
 
-        for (int i = 0; i < objects.size(); ++i)
+        for (int i = 0; i < (int) objects.size(); ++i)
         {
             model::BaseObject* o = controller.getBaseObject(objects[i]);
 

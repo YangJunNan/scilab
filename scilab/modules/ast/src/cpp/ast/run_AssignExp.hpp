@@ -453,6 +453,17 @@ void RunVisitorT<T>::visitprivate(const AssignExp  &e)
 
             for (i = 0, it = exps.begin(); it != exps.end(); it++, i++)
             {
+                //[_, b, _] = func(...)
+                //avoid to assign non requested return argument
+                if ((*it)->isSimpleVar())
+                {
+                    if ((*it)->getAs<ast::SimpleVar>()->getSymbol().getName() == L"_")
+                    {
+                        exec.setResult(i, NULL);
+                        continue;
+                    }
+                }
+
                 Exp* pExp = e.getRightExp().clone();
                 AssignExp pAssign((*it)->getLocation(), *(*it), *pExp, pIT[i]);
                 pAssign.setLrOwner(false);

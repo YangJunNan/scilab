@@ -16,9 +16,6 @@
 #include "CoverModule.hxx"
 #include "CoverResult.hxx"
 #include "cover_tools.hxx"
-#include "allexp.hxx"
-#include "allvar.hxx"
-#include "alltypes.hxx"
 #include "printvisitor.hxx"
 
 extern "C"

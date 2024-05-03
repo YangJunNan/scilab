@@ -89,6 +89,14 @@ COMPLETION_IMPEXP char **completionOnFields(char *lineBeforeCaret, char *pattern
 * @param[out] sizeArrayReturned
 * @return an array of chars
 */
-COMPLETION_IMPEXP char **completionOnHandleGraphicsProperties(const char *somechars, int *sizeArrayReturned);
+COMPLETION_IMPEXP char** completionOnHandleGraphicsProperties(const char* somechars, int* sizeArrayReturned);
+
+/**
+* completion on MustBe helpers from arguments blocks
+* @param[in] somechars first characters of a word
+* @param[out] sizeArrayReturned
+* @return an array of chars
+*/
+COMPLETION_IMPEXP char** completionOnMustBe(const char* somechars, int* sizeArrayReturned);
 /*--------------------------------------------------------------------------*/
 #endif /* __COMPLETION_H__ */

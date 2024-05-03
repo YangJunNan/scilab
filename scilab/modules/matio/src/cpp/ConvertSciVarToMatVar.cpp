@@ -45,6 +45,11 @@ matvar_t *ConvertSciVarToMatVar(types::InternalType* pIT, const char *name, int 
             return GetIntegerMatVar(pIT, name);
         }
         break;
+        case types::GenericType::ScilabBool:
+        {
+            return GetBooleanMatVar(pIT->getAs<types::Bool>(), name);
+        }
+        break;
         case types::InternalType::ScilabString:
         {
             return GetCharMatVar(pIT->getAs<types::String>(), name);

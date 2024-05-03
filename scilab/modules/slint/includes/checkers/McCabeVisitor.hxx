@@ -17,9 +17,6 @@
 #define __LINT_MCCABE_VISITOR_HXX__
 
 #include "dummyvisitor.hxx"
-#include "allexp.hxx"
-#include "allvar.hxx"
-#include "alldec.hxx"
 
 namespace slint
 {
@@ -73,11 +70,6 @@ private:
     void visit(const ast::ArrayListExp & e);
     void visit(const ast::AssignListExp & e);
     void visit(const ast::VarDec & e);
-    void visit(const ast::OptimizedExp & e);
-    void visit(const ast::DAXPYExp & e);
-    void visit(const ast::IntSelectExp & e);
-    void visit(const ast::StringSelectExp & e);
-    void visit(const ast::MemfillExp & e);
 };
 
 } // namespace mcCabe

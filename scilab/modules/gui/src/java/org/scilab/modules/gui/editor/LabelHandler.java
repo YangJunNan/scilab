@@ -123,7 +123,7 @@ public class LabelHandler {
 
         if (update) {
             axis = EntityPicker.pickLabel(figure, pos);
-            axes = AxesHandler.clickedAxes(figure, pos);
+            axes = AxesHandler.clickedAxes(figure, pos)[0];
         }
         if (axes == null || axis == null) {
             return;

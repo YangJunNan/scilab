@@ -143,6 +143,9 @@ pathconvert("/cygdrive/c/tmp", %f, %f, "w")
                 <link linkend="basename">basename</link>
             </member>
             <member>
+                <link linkend="fileparts">fileparts</link>
+            </member>
+            <member>
                 <link linkend="listfiles">listfiles</link>
             </member>
         </simplelist>

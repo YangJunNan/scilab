@@ -137,7 +137,7 @@ RUN apt-get update && apt-get install -y \
         curl rsync git \
         make binutils libc-dev \
         gettext ccache \
-        openjdk-8-jdk \
+        openjdk-17-jdk \
         libgl1-mesa-dev \
         dumb-init \
     && apt-get clean
@@ -147,7 +147,8 @@ RUN locale-gen  en_US en_US.UTF-8 \
                 fr_FR fr_FR.UTF-8 \
                 ja_JP ja_JP.UTF-8 \
                 pt_BR pt_BR.UTF-8 \
-                ru_RU ru_RU.UTF-8
+                ru_RU ru_RU.UTF-8 \
+                zh_TW zh_TW.UTF-8
 
 RUN update-locale
 
@@ -156,7 +157,7 @@ COPY --from=0 /usr/local /usr/local
 ENV PATH /usr/local/bin:$PATH
 ENV LD_LIBRARY_PATH /usr/local/lib
 
-# Add a scilab build user
+# Add a scilab build user with default home directory
 RUN useradd --create-home scilab
 
 # start docker using scilab user
@@ -166,6 +167,3 @@ USER scilab
 ENV LC_ALL=en_US.UTF-8
 ENV LANG=en_US.UTF-8
 ENV LANGUAGE=en_US.UTF-8
-
-# Use ccache with local gcc
-ENV CCACHE_DIR /builds/scilab/scilab/ccache

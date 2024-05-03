@@ -92,10 +92,6 @@ end
         <programlisting role=""><![CDATA[
 i = 0; while i<5, disp(i), i = i + 1; end
 ]]></programlisting>
-      <warning>
-        条件付き命令(if while for または select/case)の本文を定義するために使用可能な
-        文字数は 16 k以下とする必要があります.
-      </warning>
     </refsection>
     <refsection>
         <title>例</title>

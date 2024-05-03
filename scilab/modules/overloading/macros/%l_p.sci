@@ -18,7 +18,7 @@ function %l_p(s, parentType)
     consoleWidth = lines()(1)
     //l_p_compacity = "";   // "" vspacing of blocks
     l_p_compacity = [];      // for compact display
-    t = %l_p_inc(s, parentType)
+    t = %l_string(s, parentType)
     if t<>[] then
         mprintf("  %s\n", t)
     else

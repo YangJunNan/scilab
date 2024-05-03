@@ -649,6 +649,29 @@ void PrintVisitor::visit(const CallExp &e)
     *ostr << SCI_CLOSE_CALL;
 }
 
+void PrintVisitor::visit (const ArgumentsExp  &e)
+{
+    *ostr << SCI_ARGUMENTS << std::endl;
+    ++indent;
+    for (exps_t::const_iterator it = e.getExps().begin (), itEnd = e.getExps().end(); it != itEnd; /**/)
+    {
+        if ((*it)->isCommentExp())
+        {
+            this->apply_indent();
+        }
+        (*it)->accept(*this);
+        if ((*it)->isCommentExp())
+        {
+            // Force EOL
+            *ostr << std::endl;
+        }
+        ++it;
+    }
+    --indent;
+    this->apply_indent();
+    *ostr << SCI_ARGUMENTS_END;
+}
+
 void PrintVisitor::visit (const IfExp  &e)
 {
     *ostr << SCI_IF;
@@ -1104,6 +1127,36 @@ void PrintVisitor::visit (const FunctionDec  &e)
     // Close function declaration
     *ostr << SCI_ENDFUNCTION;
 }
+
+void PrintVisitor::visit (const ArgumentDec  &e)
+{
+    this->apply_indent();
+    e.getArgumentName()->accept(*this);
+    if (e.getArgumentDims()->getExps().size() != 0)
+    {
+        *ostr << L" " << SCI_LPAREN;
+        e.getArgumentDims()->accept(*this);
+        *ostr << SCI_RPAREN;
+    }
+    if (!e.getArgumentType()->isNilExp())
+    {
+        *ostr << L" ";
+        e.getArgumentType()->accept(*this);
+    }
+    if (e.getArgumentValidators()->getExps().size() != 0)
+    {
+        *ostr << L" " << SCI_LBRACE;
+        e.getArgumentValidators()->accept(*this);
+        *ostr << SCI_RBRACE;
+    }
+    if (!e.getArgumentDefaultValue()->isNilExp())
+    {
+        *ostr << L" " << SCI_ASSIGN << L" ";
+        e.getArgumentDefaultValue()->accept(*this);
+    }
+    *ostr << std::endl;
+}
+
 /** \} */
 
 /** \name Visit Type dedicated Expressions related node.
@@ -1143,32 +1196,6 @@ void PrintVisitor::visit(const ListExp &e)
     *ostr << SCI_RPAREN;
 }
 /** \} */
-
-
-void PrintVisitor::visit(const OptimizedExp &e)
-{
-    e.getOriginal()->accept(*this);
-}
-
-void PrintVisitor::visit(const MemfillExp &e)
-{
-    e.getOriginal()->accept(*this);
-}
-
-void PrintVisitor::visit(const DAXPYExp &e)
-{
-    e.getOriginal()->accept(*this);
-}
-
-void PrintVisitor::visit(const IntSelectExp &e)
-{
-    e.getOriginal()->accept(*this);
-}
-
-void PrintVisitor::visit(const StringSelectExp &e)
-{
-    e.getOriginal()->accept(*this);
-}
 
 void PrintVisitor::apply_indent()
 {

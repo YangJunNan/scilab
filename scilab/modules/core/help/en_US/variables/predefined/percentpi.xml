@@ -21,6 +21,7 @@
         <refname>%pi</refname>
         <refpurpose>ratio of circle's circumference to its diameter</refpurpose>
     </refnamediv>
+    <refnamediv xml:id="pi"/>
     <refsynopsisdiv>
         <title>Syntax</title>
         <synopsis>%pi</synopsis>

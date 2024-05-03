@@ -1718,8 +1718,10 @@ types::InternalType* evaluateFields(const ast::Exp* _pExp, std::list<ExpHistory*
                         }
                     }
                 }
-
+                // prevent deletion of userdata in set_user_data_property
+                pEH->getCurrent()->IncreaseRef();
                 types::InternalType* pIT = insertionCall(*_pExp, pParentArgs, pEHParent->getCurrent(), pEH->getCurrent());
+                pEH->getCurrent()->DecreaseRef();
                 if (pIT == NULL)
                 {
                     std::wostringstream os;

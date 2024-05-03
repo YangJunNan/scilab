@@ -131,6 +131,11 @@ class EXTERN_AST StepVisitor : public RunVisitorT<StepVisitor>
         visitprivate(e);
     }
 
+    void visit (const ArgumentsExp &e)
+    {
+        visitprivate(e);
+    }
+
     void visit (const IfExp &e)
     {
         visitprivate(e);
@@ -206,33 +211,12 @@ class EXTERN_AST StepVisitor : public RunVisitorT<StepVisitor>
         visitprivate(e);
     }
 
+    void visit (const ArgumentDec &e)
+    {
+        visitprivate(e);
+    }
+
     void visit(const ListExp &e)
-    {
-        visitprivate(e);
-    }
-
-    /* optimized */
-    void visit(const OptimizedExp &e)
-    {
-        visitprivate(e);
-    }
-
-    void visit(const MemfillExp &e)
-    {
-        visitprivate(e);
-    }
-
-    void visit(const DAXPYExp &e)
-    {
-        visitprivate(e);
-    }
-
-    void visit(const IntSelectExp &e)
-    {
-        visitprivate(e);
-    }
-
-    void visit(const StringSelectExp &e)
     {
         visitprivate(e);
     }

@@ -42,6 +42,10 @@
                         Single text containing Windows, Linux, or MacOS instructions sent to the
                         OS command interpreter.
                     </para>
+                    <para>
+                        On Windows, <varname>commands</varname> must have less than 8191 characters
+                        (after expansion of possibly included environment variables).
+                    </para>
                 </listitem>
             </varlistentry>
             <varlistentry>

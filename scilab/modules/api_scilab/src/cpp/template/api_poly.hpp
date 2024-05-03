@@ -74,7 +74,7 @@ int API_PROTO(getPolyVarname)(scilabEnv env, scilabVar var, const wchar_t** varn
 #endif
 
     std::wstring v = p->getVariableName();
-    *varname = wcsdup(v.data());
+    *varname = os_wcsdup(v.data());
     return STATUS_OK;
 }
 

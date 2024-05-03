@@ -14,6 +14,8 @@
  */
 
 #include "checkers/NaNChecker.hxx"
+#include "opexp.hxx"
+#include "simplevar.hxx"
 
 namespace slint
 {

@@ -22,7 +22,7 @@
         <title>Syntax</title>
         <synopsis>
             xs2ppm(win_num, file_name)
-            xs2ppm(fig, file_name)
+            xs2ppm(hdl, file_name)
         </synopsis>
     </refsynopsisdiv>
     <refsection>
@@ -31,13 +31,13 @@
             <varlistentry>
                 <term>win_num</term>
                 <listitem>
-                    <para>an integer, ID of the figure to export.</para>
+                    <para>an integer, ID of the Figure to export.</para>
                 </listitem>
             </varlistentry>
             <varlistentry>
-                <term>fig</term>
+                <term>hdl</term>
                 <listitem>
-                    <para>handle of the figure to export.</para>
+                    <para>handle of the Figure or Frame to export.</para>
                 </listitem>
             </varlistentry>
             <varlistentry>
@@ -51,7 +51,7 @@
     <refsection>
         <title>Description</title>
         <para>
-            <function>xs2ppm</function> exports the display of a graphic window into a PPM file.
+            <function>xs2ppm</function> exports the display of a Figure or a Frame into a PPM file.
         </para>
     </refsection>
     <refsection>

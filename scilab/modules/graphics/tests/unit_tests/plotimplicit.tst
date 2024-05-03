@@ -75,12 +75,12 @@ clf
 assert_checkequal(execstr("plotimplicit(""x^2+y^2=1"")", "errcatch"), 0);
 ax = gca();
 h = [ax.title ax.x_label ax.y_label]
-assert_checkequal(h.text, ["$x^2+y^2=1$", "$x$", "$y$"]');
-assert_checkequal(h.font_size, [4 4 4]');
+assert_checkequal(h.text, ["$x^2+y^2=1$", "$x$", "$y$"]);
+assert_checkequal(h.font_size, [4 4 4]);
 xlabel("x");
 
 assert_checkequal(execstr("plotimplicit(""x^2+y^2-2"")", "errcatch"), 0);
-assert_checkequal(h.text, ["$x^2+y^2=1$", "x", "$y$"]');
+assert_checkequal(h.text, ["$x^2+y^2=1$", "x", "$y$"]);
 
 clear fun
 function result = fun(x, y, a, b, c)

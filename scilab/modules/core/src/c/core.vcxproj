@@ -89,14 +89,15 @@
     <PreLinkEvent>
       <Message>Make dependencies</Message>
       <Command>setlocal EnableDelayedExpansion
-cd $(ConfigurationName)
+set PWD=!cd!
+cd ..
 set LIST_OBJ=
-for %%f in (*.obj) do set LIST_OBJ=!LIST_OBJ! %%f
+for /f %%f in ('dir /A-D /S /B *.c *.cpp *.f') do if exist %PWD%\$(ConfigurationName)\%%~nf.obj set LIST_OBJ=!LIST_OBJ! %PWD%\$(ConfigurationName)\%%~nf.obj
+cd %PWD%\$(ConfigurationName)
 "$(SolutionDir)bin\dumpexts" -o $(ProjectName).def $(ProjectName).dll %LIST_OBJ%
 copy $(ProjectName).def+..\core_export.def ..\$(ProjectName).def &gt;nul
 del *.def &gt;nul
 cd ..
-
 </Command>
     </PreLinkEvent>
     <Link>
@@ -129,14 +130,15 @@ cd ..
     <PreLinkEvent>
       <Message>Make dependencies</Message>
       <Command>setlocal EnableDelayedExpansion
-cd $(ConfigurationName)
+set PWD=!cd!
+cd ..
 set LIST_OBJ=
-for %%f in (*.obj) do set LIST_OBJ=!LIST_OBJ! %%f
+for /f %%f in ('dir /A-D /S /B *.c *.cpp *.f') do if exist %PWD%\$(ConfigurationName)\%%~nf.obj set LIST_OBJ=!LIST_OBJ! %PWD%\$(ConfigurationName)\%%~nf.obj
+cd %PWD%\$(ConfigurationName)
 "$(SolutionDir)bin\dumpexts" -o $(ProjectName).def $(ProjectName).dll %LIST_OBJ%
 copy $(ProjectName).def+..\core_export.def ..\$(ProjectName).def &gt;nul
 del *.def &gt;nul
 cd ..
-
 </Command>
     </PreLinkEvent>
     <Link>
@@ -169,14 +171,15 @@ cd ..
     <PreLinkEvent>
       <Message>Make dependencies</Message>
       <Command>setlocal EnableDelayedExpansion
-cd $(ConfigurationName)
+set PWD=!cd!
+cd ..
 set LIST_OBJ=
-for %%f in (*.obj) do set LIST_OBJ=!LIST_OBJ! %%f
+for /f %%f in ('dir /A-D /S /B *.c *.cpp *.f') do if exist %PWD%\$(ConfigurationName)\%%~nf.obj set LIST_OBJ=!LIST_OBJ! %PWD%\$(ConfigurationName)\%%~nf.obj
+cd %PWD%\$(ConfigurationName)
 "$(SolutionDir)bin\dumpexts" -o $(ProjectName).def $(ProjectName).dll %LIST_OBJ%
 copy $(ProjectName).def+..\core_export.def ..\$(ProjectName).def &gt;nul
 del *.def &gt;nul
 cd ..
-
 </Command>
     </PreLinkEvent>
     <Link>
@@ -214,14 +217,15 @@ cd ..
     <PreLinkEvent>
       <Message>Make dependencies</Message>
       <Command>setlocal EnableDelayedExpansion
-cd $(ConfigurationName)
+set PWD=!cd!
+cd ..
 set LIST_OBJ=
-for %%f in (*.obj) do set LIST_OBJ=!LIST_OBJ! %%f
+for /f %%f in ('dir /A-D /S /B *.c *.cpp *.f') do if exist %PWD%\$(ConfigurationName)\%%~nf.obj set LIST_OBJ=!LIST_OBJ! %PWD%\$(ConfigurationName)\%%~nf.obj
+cd %PWD%\$(ConfigurationName)
 "$(SolutionDir)bin\dumpexts" -o $(ProjectName).def $(ProjectName).dll %LIST_OBJ%
 copy $(ProjectName).def+..\core_export.def ..\$(ProjectName).def &gt;nul
 del *.def &gt;nul
 cd ..
-
 </Command>
     </PreLinkEvent>
     <Link>
@@ -279,8 +283,10 @@ cd ..
     <ClCompile Include="getstaticDebugInfo_Windows.c" />
     <ClCompile Include="getversion.c" />
     <ClCompile Include="GetXmlFileEncoding.c" />
+    <ClCompile Include="hasHandleType.c" />
     <ClCompile Include="hashtable\hashtable.c" />
     <ClCompile Include="hashtable\hashtable_utility.c" />
+    <ClCompile Include="hasUIControlStyle.c" />
     <ClCompile Include="InitializePreferences.c" />
     <ClCompile Include="isanan.c" />
     <ClCompile Include="islittleendian.c" />
@@ -330,9 +336,11 @@ cd ..
     <ClInclude Include="..\..\includes\gw_core.h" />
     <ClInclude Include="..\..\includes\gw_user.h" />
     <ClInclude Include="..\..\includes\gw_user2.h" />
+    <ClInclude Include="..\..\includes\hasHandleType.h" />
     <ClInclude Include="..\..\includes\hashtable.h" />
     <ClInclude Include="..\..\includes\hashtable_private.h" />
     <ClInclude Include="..\..\includes\hashtable_utility.h" />
+    <ClInclude Include="..\..\includes\hasUIControlStyle.h" />
     <ClInclude Include="..\..\includes\inffic.h" />
     <ClInclude Include="..\..\includes\InitializePreferences.h" />
     <ClInclude Include="..\..\includes\initMacOSXEnv.h" />

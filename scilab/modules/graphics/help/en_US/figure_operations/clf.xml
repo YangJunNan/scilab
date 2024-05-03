@@ -154,7 +154,7 @@
                 </listitem>
                 <listitem>
                     Deleting only menus: <literal>c=gcf().children; delete(c(c.type=="uimenu"))</literal>.
-                    This assumes that <literal>get(get(0), "ShowHiddenHandles")</literal> is
+                    This assumes that <literal>get(0).ShowHiddenHandles</literal> is
                     <literal>"on"</literal>.
                 </listitem>
             </itemizedlist>

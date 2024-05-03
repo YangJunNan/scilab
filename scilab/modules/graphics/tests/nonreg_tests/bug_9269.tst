@@ -7,6 +7,7 @@
 
 // <-- TEST WITH GRAPHIC -->
 // <-- ENGLISH IMPOSED -->
+// <-- NO CHECK REF -->
 
 // <-- Non-regression test for bug 9269 -->
 //
@@ -55,5 +56,5 @@ ha = gca();          // handle on axis
 hc = ha.children(1); // handle on compound
 he = hc.children;    // handle on polylines
 l=legend(he(MyOrder), NameList(MyOrder));
-assert_checkequal(l.links(4:-1:1).foreground,he(MyOrder).foreground);
+assert_checkequal(l.links(4:-1:1).foreground,he(MyOrder)'.foreground);
 

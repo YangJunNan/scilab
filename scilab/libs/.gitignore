@@ -2,6 +2,7 @@
 # windows directories (binaries)
 #
 LibScilab.def
+archive
 *.vcdef
 f2c
 intl
@@ -17,3 +18,4 @@ curl
 mpi
 sioclient
 xlsx
+archive

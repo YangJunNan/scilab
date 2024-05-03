@@ -17,7 +17,7 @@
 #define __COVER_TOOLS_HXX__
 
 #include <string>
-#include "allexp.hxx"
+#include "exp.hxx"
 
 namespace coverage
 {

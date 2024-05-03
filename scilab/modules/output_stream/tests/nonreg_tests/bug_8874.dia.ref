@@ -68,7 +68,7 @@ As
 (  2,  4)	  4. + 0.i
 P
  P  = 
-  -1+Infi +(1+Nani)s +(Inf+Nani)s² -(Nan+Nani)s³
+  -1+Infi +(1+Nani)s +(Inf+Nani)s^2 -(Nan+Nani)s^3
 format("e")
 // Check string
 assert_checkequal(string(complex(0,%inf)),"%i*Inf");
@@ -123,4 +123,4 @@ As
 (  2,  4)	  4.000D+00 + 0.000D+00i
 P
  P  = 
-  -1.000D+00+Infi +(1.000D+00+Nani)s +(Inf+Nani)s² -(Nan+Nani)s³
+  -1.000D+00+Infi +(1.000D+00+Nani)s +(Inf+Nani)s^2 -(Nan+Nani)s^3

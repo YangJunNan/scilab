@@ -23,6 +23,7 @@
 #include "scilabexception.hxx"
 #include "configvariable.hxx"
 #include "context.hxx"
+#include "macrofile.hxx"
 
 #include <iostream>
 #include <fstream>

@@ -408,7 +408,6 @@ GRAPHICS_C_SOURCES = \
     src/c/DllmainGraphics.c
 
 GRAPHICS_CXX_SOURCES = \
-    src/cpp/configgraphicvariable.cpp \
     src/cpp/get_tag_property.cpp \
     src/cpp/set_data_property.cpp \
     src/cpp/ContourOnMesh.cpp
@@ -470,8 +469,6 @@ GATEWAY_C_SOURCES = \
 
 GATEWAY_CXX_SOURCES = \
     sci_gateway/cpp/sci_get.cpp \
-    sci_gateway/cpp/sci_xget.cpp \
-    sci_gateway/cpp/sci_xset.cpp \
     sci_gateway/cpp/sci_matplot.cpp \
     sci_gateway/cpp/sci_matplot1.cpp \
     sci_gateway/cpp/sci_winsid.cpp \

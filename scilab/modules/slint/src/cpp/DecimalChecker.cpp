@@ -14,6 +14,7 @@
  */
 
 #include "checkers/DecimalChecker.hxx"
+#include "doubleexp.hxx"
 
 namespace slint
 {

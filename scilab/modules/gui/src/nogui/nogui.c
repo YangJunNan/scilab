@@ -180,5 +180,15 @@ void InitXsession(void)
 {
     Scierror(999, _("Scilab '%s' module not installed.\n"), "GUI");
 }
+
+int getUIStyle(long handle)
+{
+    return 0;
+}
+
+int getHandleType(long handle)
+{
+    return 0;
+}
 /*--------------------------------------------------------------------------*/
 #endif /* not  _MSC_VER */

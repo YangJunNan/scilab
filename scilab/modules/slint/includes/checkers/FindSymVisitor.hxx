@@ -19,9 +19,7 @@
 #include <set>
 
 #include "dummyvisitor.hxx"
-#include "allexp.hxx"
-#include "allvar.hxx"
-#include "alldec.hxx"
+#include "exp.hxx"
 
 namespace slint
 {

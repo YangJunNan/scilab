@@ -18,9 +18,8 @@
 
 #include <chrono>
 
-#include "allexp.hxx"
-#include "alltypes.hxx"
-#include "allvar.hxx"
+#include "exp.hxx"
+#include "macro.hxx"
 
 #include "MacroLoc.hxx"
 

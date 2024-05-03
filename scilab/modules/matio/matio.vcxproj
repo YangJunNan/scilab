@@ -202,6 +202,7 @@ lib /DEF:"$(ProjectDir)Sparse_f_Import.def" /SUBSYSTEM:WINDOWS /MACHINE:$(Platfo
     <ClCompile Include="src\cpp\CreateHyperMatrixVariable.cpp" />
     <ClCompile Include="src\cpp\CreateMatlabTreeVariable.cpp" />
     <ClCompile Include="src\cpp\CreateStructVariable.cpp" />
+    <ClCompile Include="src\cpp\GetBooleanVariable.cpp" />
     <ClCompile Include="src\cpp\GetCellVariable.cpp" />
     <ClCompile Include="src\cpp\GetCharVariable.cpp" />
     <ClCompile Include="src\cpp\GetDoubleVariable.cpp" />

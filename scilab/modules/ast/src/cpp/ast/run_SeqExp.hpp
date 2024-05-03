@@ -56,12 +56,15 @@ void RunVisitorT<T>::visitprivate(const SeqExp  &e)
             }
 
             StorePrioritaryCommand("pause");
-            ThreadManagement::WaitForRunMeSignal();
         }
 
         // interrupt me to execute a prioritary command
-        while (StaticRunner_isRunnerAvailable() == 1 && StaticRunner_isInterruptibleCommand() == 1)
+        while (isEmptyCommandQueuePrioritary() == 0 && StaticRunner_isInterruptibleCommand() == 1)
         {
+            // Awake the runner thread to create a runner for the prioritary command
+            ThreadManagement::SendAwakeRunnerSignal();
+            ThreadManagement::WaitForRunMeSignal();
+
             StaticRunner_launch();
         }
 
@@ -86,12 +89,15 @@ void RunVisitorT<T>::visitprivate(const SeqExp  &e)
             }
 
             StorePrioritaryCommand("pause");
-            ThreadManagement::WaitForRunMeSignal();
         }
 
         // interrupt me to execute a prioritary command
-        while (StaticRunner_isRunnerAvailable() == 1 && StaticRunner_isInterruptibleCommand() == 1)
+        while (isEmptyCommandQueuePrioritary() == 0 && StaticRunner_isInterruptibleCommand() == 1)
         {
+            // Awake the runner thread to create a runner for the prioritary command
+            ThreadManagement::SendAwakeRunnerSignal();
+            ThreadManagement::WaitForRunMeSignal();
+
             StaticRunner_launch();
         }
 

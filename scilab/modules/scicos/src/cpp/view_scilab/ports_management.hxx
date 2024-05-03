@@ -266,16 +266,7 @@ types::InternalType* get_ports_property(const Adaptor& adaptor, const object_pro
                 }
                 else
                 {
-                    std::vector<ScicosID>::iterator found = std::find(children.begin(), children.end(), id);
-                    if (found != children.end())
-                    {
-                        v[i] = static_cast<double>(std::distance(children.begin(), found)) + 1;
-                    }
-                    else
-                    {
-                        // connected link not found ; discard it !
-                        v[i] = 0;
-                    }
+                    v[i] = indexOf(id, children) + 1;
                 }
             }
             return o;
@@ -391,7 +382,7 @@ bool set_ports_property(const Adaptor& adaptor, const object_properties_t port_k
                 {
                     std::string adapter = adapterName<p>(port_kind);
                     std::string field = adapterFieldName<p>(port_kind);
-                    get_or_allocate_logger()->log(LOG_ERROR, _("Wrong dimension for field %s.%s: %d-by-%d expected.\n"), adapter.data(), field.data(), ids.size(), 1);
+                    get_or_allocate_logger()->log(LOG_ERROR, _("Wrong dimension for field %s.%s: %d-by-%d expected.\n"), adapter.data(), field.data(), (int) ids.size(), 1);
                     return false;
                 }
 
@@ -524,7 +515,7 @@ inline bool updateNewPort(model::Port* oldPortObject, int newPort, Controller& c
             return controller.setObjectProperty(oldPortObject, DATATYPE, datatype) != FAIL;
         }
         case CONNECTED_SIGNALS:
-            if (0 <= newPort && newPort < children.size())
+            if (0 <= newPort && newPort < (int) children.size())
             {
                 return controller.setObjectProperty(oldPortObject, p,
                                                     children[newPort]) != FAIL;

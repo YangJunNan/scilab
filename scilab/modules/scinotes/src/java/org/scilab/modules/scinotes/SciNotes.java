@@ -2,8 +2,8 @@
  * Scilab ( https://www.scilab.org/ ) - This file is part of Scilab
  * Copyright (C) 2009 - DIGITEO - Bruno JOFRET
  * Copyright (C) 2010 - 2011 - Calixte DENIZET
- *
  * Copyright (C) 2012 - 2016 - Scilab Enterprises
+ * Copyright (C) 2021 - Stéphane MOTTELET
  *
  * This file is hereby licensed under the terms of the GNU GPL v2.0,
  * pursuant to article 5.3.4 of the CeCILL v.2.1.
@@ -73,11 +73,12 @@ import org.scilab.modules.commons.xml.ScilabXMLUtilities;
 import org.scilab.modules.commons.xml.XConfiguration;
 import static org.scilab.modules.commons.xml.XConfiguration.XConfAttribute;
 import org.scilab.modules.core.Scilab;
-import org.scilab.modules.gui.bridge.filechooser.SwingScilabFileChooser;
+import org.scilab.modules.gui.bridge.filechooser.JFXScilabFileChooser;
 import org.scilab.modules.gui.bridge.tab.SwingScilabDockablePanel;
 import org.scilab.modules.gui.bridge.window.SwingScilabWindow;
 import org.scilab.modules.gui.filechooser.Juigetfile;
 import org.scilab.modules.gui.filechooser.ScilabFileChooser;
+import org.scilab.modules.gui.filechooser.FileChooser;
 import org.scilab.modules.gui.menubar.MenuBar;
 import org.scilab.modules.gui.messagebox.MessageBox;
 import org.scilab.modules.gui.messagebox.ScilabMessageBox;
@@ -151,7 +152,7 @@ public class SciNotes extends SwingScilabDockablePanel {
     private static final String ALL_SCI_FILES = "*.sci";
     private static final String ALL_SCE_FILES = "*.sce";
     private static final String ALL_DEM_FILES = "*.dem";
-    private static final String ALL_SCX_FILES = "*.sc*";
+    private static final String ALL_SCX_FILES = "*.sci | *.sce";
     private static final String ALL_SCILAB = "all";
     private static final String ALL_FILES = "*.*";
     private static final String DOT = ".";
@@ -1236,12 +1237,17 @@ public class SciNotes extends SwingScilabDockablePanel {
      */
     public String chooseFileToSave(String title, String path) {
         String extension = "";
-
+        String name = null;
         String initialDirectoryPath = path;
         if (initialDirectoryPath == null) {
-            initialDirectoryPath = getTextPane().getName();
+            name = getTextPane().getName();
+            if (name != null) {
+                File file = new File(name);
+                name = file.getName();
+                initialDirectoryPath = file.getParent();                 
+            }
         }
-        if (initialDirectoryPath == null) {
+        if (name == null) {
             if (firstOpen) {
                 initialDirectoryPath = CommonFileUtils.getCWD();
                 firstOpen = false;
@@ -1250,47 +1256,14 @@ public class SciNotes extends SwingScilabDockablePanel {
             }
         }
 
-        SciFileFilter sceFilter = new SciFileFilter(ALL_SCE_FILES, null, 0);
-        SciFileFilter sciFilter = new SciFileFilter(ALL_SCI_FILES, null, 1);
-        SciFileFilter scxFilter = new SciFileFilter(ALL_SCX_FILES, null, 2);
-        SciFileFilter tstFilter = new SciFileFilter(ALL_TST_FILES, null, 3);
-        SciFileFilter startFilter = new SciFileFilter(ALL_START_FILES, null, 4);
-        SciFileFilter quitFilter = new SciFileFilter(ALL_QUIT_FILES, null, 5);
-        SciFileFilter demFilter = new SciFileFilter(ALL_DEM_FILES, null, 6);
-        SciFileFilter allFilter = new SciFileFilter(ALL_FILES, null, 7);
-        SciFileFilter allScilabFilter = new SciFileFilter(ALL_SCILAB, null, 8);
+        String[] DEFAULT_MASK = {ALL_SCE_FILES,ALL_SCI_FILES,ALL_SCX_FILES,ALL_TST_FILES,ALL_START_FILES,ALL_QUIT_FILES,ALL_DEM_FILES,ALL_FILES,ALL_SCILAB};
 
-        SwingScilabFileChooser fileChooser = ((SwingScilabFileChooser) ScilabFileChooser.createFileChooser().getAsSimpleFileChooser());
-
-        fileChooser.setAcceptAllFileFilterUsed(false);
-        fileChooser.setInitialDirectory(initialDirectoryPath);
-        fileChooser.setUiDialogType(Juigetfile.SAVE_DIALOG);
-
-        // order is also important here
-        fileChooser.addChoosableFileFilter(sceFilter);
-        fileChooser.addChoosableFileFilter(sciFilter);
-        fileChooser.addChoosableFileFilter(scxFilter);
-        fileChooser.addChoosableFileFilter(tstFilter);
-        fileChooser.addChoosableFileFilter(startFilter);
-        fileChooser.addChoosableFileFilter(quitFilter);
-        fileChooser.addChoosableFileFilter(demFilter);
-        fileChooser.addChoosableFileFilter(allFilter);
-        fileChooser.addChoosableFileFilter(allScilabFilter);
-
-        String name = initialDirectoryPath;
-        File tempFile = new File(name);
-
-        // Select default file type
-        SciFileFilter fileFilter = sceFilter;
-        // Look for a supported extension
-        for (FileFilter filter : fileChooser.getChoosableFileFilters()) {
-            if (((SciFileFilter) filter).accept(tempFile)) {
-                fileFilter = (SciFileFilter) filter;
-                break;
-            }
-        }
-        fileChooser.setFileFilter(fileFilter);
-        fileChooser.setTitle(title);
+        FileChooser sfc = ScilabFileChooser.createFileChooser();
+        sfc.addMask(DEFAULT_MASK, null);
+        sfc.setInitialDirectory(initialDirectoryPath);
+        sfc.setTitle(title);
+        sfc.setMultipleSelection(false);
+        sfc.setUiDialogType(Juigetfile.SAVE_DIALOG);
 
         if (name == null) {
             name = ((ScilabDocument) getTextPane().getDocument()).getFirstFunctionName();
@@ -1299,70 +1272,20 @@ public class SciNotes extends SwingScilabDockablePanel {
             }
         }
 
-        if (name != null) {
-            fileChooser.setSelectedFile(new File(name));
-        }
+        sfc.setInitialFileName(name);
+        sfc.displayAndWait();
+        sfc.invalidate();
 
-        int retval = fileChooser.showSaveDialog(this);
-
-        if (retval == JFileChooser.APPROVE_OPTION) {
-            File f = fileToCanonicalFile(fileChooser.getSelectedFile());
-            initialDirectoryPath = f.getPath();
-            if (f.exists()) {
-                if (ScilabModalDialog.show(this, SciNotesMessages.REPLACE_FILE_TITLE, SciNotesMessages.FILE_ALREADY_EXIST, IconType.QUESTION_ICON,
-                                           ButtonType.YES_NO) == AnswerOption.NO_OPTION) {
-                    return chooseFileToSave(SciNotesMessages.SAVE);
-                }
-            }
-
-            /* we test if the file has already a scilab extension */
-            boolean hasNoExtension = true;
-
-            // if the file name is like this : any character , a dot , then
-            // 2,3or 4 characters, then
-            // we consider the file has already an extension
-            // we previously only check for .sci and .sce extension, but what if
-            // the user open a txt file
-            String fileName = f.getName();
-            if (fileName.lastIndexOf(DOT) != -1) {
-                if (fileName.substring(fileName.lastIndexOf(DOT), fileName.length()).length() >= 2
-                        && fileName.substring(fileName.lastIndexOf(DOT), fileName.length()).length() <= 4) {
-                    hasNoExtension = false;
-                }
-            }
-
-            /* if no extension , we add it */
-            if (hasNoExtension) {
-                if (fileChooser.getFileFilter() == sciFilter) {
-                    extension = SCI_EXTENSION;
-                } else if (fileChooser.getFileFilter() == sceFilter) {
-                    extension = SCE_EXTENSION;
-                } else if (fileChooser.getFileFilter() == scxFilter) {
-                    extension = SCE_EXTENSION;
-                } else if (fileChooser.getFileFilter() == tstFilter) {
-                    extension = TST_EXTENSION;
-                } else if (fileChooser.getFileFilter() == startFilter) {
-                    extension = START_EXTENSION;
-                } else if (fileChooser.getFileFilter() == quitFilter) {
-                    extension = QUIT_EXTENSION;
-                } else if (fileChooser.getFileFilter() == demFilter) {
-                    extension = DEM_EXTENSION;
-                } else {
-                    extension = "";
-                }
-                return f.getPath() + extension;
-            }
-
-            if (initialDirectoryPath != null) {
-                ConfigManager.saveLastOpenedDirectory(initialDirectoryPath);
-            }
-
-            return f.getPath();
-        } else if (retval == JFileChooser.CANCEL_OPTION) {
+        String[] selection = sfc.getSelection();
+        if (selection.length>0 && selection[0] != "") {
+            String fileName = selection[0];
+                
+            ConfigManager.saveLastOpenedDirectory(sfc.getSelectionPathName());
+            
+            return fileName;
+        }  else {
             return "";
-        }
-
-        return null;
+        }       
     }
 
     /**

@@ -56,45 +56,30 @@ public:
     {
         return new PrettyPrintVisitor(*ostr);
     }
-    /** \name Visit Matrix Expressions nodes.
-     ** \{ */
 public :
     virtual void visit (const MatrixExp &e);
     virtual void visit (const MatrixLineExp &e);
-    /** \} */
 
-    /** \name Visit Cell Expressions nodes.
-     ** \{ */
 public :
     virtual void visit (const CellExp &e);
-    /** \} */
 
-    /** \name Visit Constant Expressions nodes.
-     ** \{ */
 public :
     virtual void visit (const StringExp &e);
     virtual void visit (const CommentExp &e);
     virtual void visit (const DoubleExp  &e);
     virtual void visit (const BoolExp  &e);
     virtual void visit (const NilExp &e);
-    /** \} */
-
-    /** \name Visit Variable related nodes.
-     ** \{ */
     virtual void visit (const SimpleVar &e);
     virtual void visit (const ColonVar &e);
     virtual void visit (const DollarVar &e);
     virtual void visit (const ArrayListVar &e);
-    /** \} */
-
-    /** \name Visit Control Expressions or Instructions nodes.
-     ** \{ */
     virtual void visit (const FieldExp &e);
     virtual void visit (const OpExp &e);
     virtual void visit (const LogicalOpExp &e);
     virtual void visit (const AssignExp  &e);
     virtual void visit (const CellCallExp &e);
     virtual void visit (const CallExp &e);
+    virtual void visit (const ArgumentsExp  &e);
     virtual void visit (const IfExp  &e);
     virtual void visit (const TryCatchExp  &e);
     virtual void visit (const WhileExp  &e);
@@ -107,33 +92,14 @@ public :
     virtual void visit (const CaseExp  &e);
     virtual void visit (const ArrayListExp  &e);
     virtual void visit (const AssignListExp  &e);
-    /** \} */
-
-    /** \name Visit Single Operation nodes.
-     ** \{ */
     virtual void visit (const NotExp &e);
     virtual void visit (const TransposeExp &e);
-    /** \} */
-
-    /** \name Visit Declaration nodes.
-     ** \{ */
-    /** \brief Visit Var declarations. */
     virtual void visit (const VarDec &e);
     virtual void visit (const FunctionDec &e);
-    /** \} */
+    virtual void visit (const ArgumentDec &e);
 
-    /** \name Visit Type dedicated Expressions related node.
-     ** \{ */
 public:
     virtual void visit(const ListExp &e);
-
-    /* optimized */
-    virtual void visit(const OptimizedExp &e);
-    virtual void visit(const MemfillExp &e);
-    virtual void visit(const DAXPYExp &e);
-    virtual void visit(const IntSelectExp &e);
-    virtual void visit(const StringSelectExp &e);
-    /** \} */
 
     template<typename T>
     inline void printInternalType(std::wostringstream & stream, types::InternalType * pIT)

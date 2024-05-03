@@ -354,6 +354,7 @@ public :
 
     void visitprivate(const CellExp &e);
     void visitprivate(const FieldExp &e);
+    void visitprivate(const ArgumentsExp &e);
     void visitprivate(const IfExp &e);
     void visitprivate(const WhileExp &e);
     void visitprivate(const ForExp  &e);
@@ -362,6 +363,7 @@ public :
     void visitprivate(const SeqExp  &e);
     void visitprivate(const NotExp &e);
     void visitprivate(const TransposeExp &e);
+    void visitprivate(const ArgumentDec &e);
     void visitprivate(const FunctionDec &e);
     void visitprivate(const ListExp &e);
     void visitprivate(const AssignExp &e);
@@ -370,11 +372,6 @@ public :
     void visitprivate(const MatrixExp &e);
     void visitprivate(const CallExp &e);
     void visitprivate(const CellCallExp &e);
-    void visitprivate(const OptimizedExp &e);
-    void visitprivate(const MemfillExp &e);
-    void visitprivate(const DAXPYExp &e);
-    void visitprivate(const IntSelectExp &e);
-    void visitprivate(const StringSelectExp &e);
     void visitprivate(const TryCatchExp &e);
 
     void visitprivate(const StringExp & e);
