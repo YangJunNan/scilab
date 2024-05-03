@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ * Scilab ( https://www.scilab.org/ ) - This file is part of Scilab
+ * Copyright (C) 2024 - 3DS - Vincent COUVERT
+ *
+ * This file is hereby licensed under the terms of the GNU GPL v2.0,
+ * pursuant to article 5.3.4 of the CeCILL v.2.1.
+ * This file was originally licensed under the terms of the CeCILL v2.1,
+ * and continues to be available under such terms.
+ * For more information, see the COPYING file which you should have received
+ * along with this program.
+ *
+ -->
+<refentry xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:svg="http://www.w3.org/2000/svg" xmlns:mml="http://www.w3.org/1998/Math/MathML"
+          xmlns:db="http://docbook.org/ns/docbook" xmlns:scilab="http://www.scilab.org"
+          xml:lang="en" xml:id="colormap">
+    <refnamediv>
+        <refname>colormap</refname>
+        <refpurpose>generates a colormap using a predefined one.</refpurpose>
+    </refnamediv>
+    <refsynopsisdiv>
+        <title>Syntax</title>
+        <synopsis>
+            cmap = colormap(cmapfunc)
+            cmap = colormap(cmapfunc, cmapSize)
+        </synopsis>
+    </refsynopsisdiv>
+    <refsection role="parameters">
+        <title>Arguments</title>
+        <variablelist>
+            <varlistentry>
+                <term>cmapfunc</term>
+                <listitem>
+                    <para>
+                        A string (function name) or a function itself. The predefined map to be used.
+                    </para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term>cmapSize</term>
+                <listitem>
+                    <para>
+                        The size of the colormap to be generated.
+                    </para>
+                </listitem>
+            </varlistentry>
+        </variablelist>
+    </refsection>
+    <refsection>
+        <title>Description</title>
+        <para>
+            <literal>colormap</literal> is a helper to generate colormaps (to be set for a figure) by calling dedicated function containing predefined color maps.
+        </para>
+    </refsection>
+    <refsection>
+        <title>Examples</title>
+        <programlisting role="example"><![CDATA[
+plot3d();
+// Change colormap to parula
+gcf().color_map = colormap("parula", 32);
+// Change colormap to jet (without using colormap function)
+gcf().color_map = jet(32);
+// Change colormap to jet (using colormap function)
+gcf().color_map = colormap(jet, 64);
+            ]]></programlisting>
+    </refsection>
+    <refsection role="see also">
+        <title>See also</title>
+        <simplelist type="inline">
+            <member>
+                <link linkend="colormaps">Using colormaps</link>
+            </member>
+            <member>
+                <link linkend="jet">jet</link>
+            </member>
+            <member>
+                <link linkend="parula">parula</link>
+            </member>
+        </simplelist>
+    </refsection>
+    <refsection role="history">
+        <title>History</title>
+        <revhistory>
+            <revision>
+                <revnumber>2024.1.0</revnumber>
+                <revdescription>
+                    <revremark>
+                        Function <literal>colormap</literal> introduced.
+                    </revremark>
+                </revdescription>
+            </revision>
+        </revhistory>
+    </refsection>
+</refentry>
