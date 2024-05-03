@@ -90,11 +90,17 @@ extern "C"
 #endif
 
 #include "InitializeTclTk.h"
+#include "TerminateTclTk.h"
 #include "dynamic_link.h"
 
     /* Defined without include to avoid useless header dependency */
     extern BOOL isItTheDisabledLib(void);
 }
+
+__threadId threadIdConsole;
+__threadKey threadKeyConsole;
+__threadId threadIdCommand;
+__threadKey threadKeyCommand;
 
 static void Add_i(void);
 static void Add_pi(void);
@@ -573,6 +579,7 @@ void StopScilabEngine(ScilabEngineInfo* _pSEI)
     {
         TerminateGraphics();
         TerminateJVM();
+        TerminateTclTk();
     }
 
     // reset struct to prevent the use of deleted objects
@@ -631,6 +638,11 @@ void StopScilabEngine(ScilabEngineInfo* _pSEI)
 
     ConfigVariable::clearLastError();
     ConfigVariable::setEndProcessing(false);
+
+    // wait for the "command" thread end before leaving (and free _pSEI)
+    // the "console" thread may be waiting for a command, so don't wait for it to die
+    // ie: exit in a callback will not release the console
+    __WaitThreadDie(threadIdCommand);
 }
 
 static void processCommand(ScilabEngineInfo* _pSEI)
@@ -719,7 +731,7 @@ void* scilabReadAndExecCommand(void* param)
         processCommand(_pSEI);
         FREE(command);
     }
-    while (ConfigVariable::getForceQuit() == false);
+    while (ConfigVariable::getForceQuit() == false || isEmptyCommandQueue() == false);
 
     return NULL;
 }
@@ -926,11 +938,6 @@ static int interactiveMain(ScilabEngineInfo* _pSEI)
         return 1;
     }
 
-    __threadId threadIdConsole;
-    __threadKey threadKeyConsole;
-    __threadId threadIdCommand;
-    __threadKey threadKeyCommand;
-
     if (_pSEI->iStartConsoleThread)
     {
         // thread to manage console command
@@ -972,7 +979,7 @@ static int interactiveMain(ScilabEngineInfo* _pSEI)
 
         ThreadManagement::SendAwakeRunnerSignal();
     }
-    while (ConfigVariable::getForceQuit() == false);
+    while (ConfigVariable::getForceQuit() == false || isEmptyCommandQueue() == false);
 
     return iRet;
 }

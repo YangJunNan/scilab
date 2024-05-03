@@ -155,7 +155,11 @@ download_dependencies() {
 
     # This archive contains .jar and directories that have been copied from Scilab prerequirements
     # JavaFX/openjfx is only shipped as JARs, no rebuild is needed for now
-    curl -LO --time-cond thirdparty-jar.zip https://oos.eu-west-2.outscale.com/scilab-releases-dev/prerequirements-sources/thirdparty-jar.zip
+    curl -L --time-cond thirdparty-jar.zip -o thirdparty-jar.zip https://oos.eu-west-2.outscale.com/scilab-releases-dev/prerequirements-sources/thirdparty-jar-${BRANCH}.zip
+    if ! unzip -t "thirdparty-jar.zip"; then
+        # fallback to the default branch
+        curl -L --time-cond thirdparty-jar.zip -o thirdparty-jar.zip https://oos.eu-west-2.outscale.com/scilab-releases-dev/prerequirements-sources/thirdparty-jar-${CI_DEFAULT_BRANCH}.zip
+    fi
 
     [ ! -f libarchive-$LIBARCHIVE_VERSION.tar.xz ] && curl -LO https://oos.eu-west-2.outscale.com/scilab-releases-dev/prerequirements-sources/libarchive-$LIBARCHIVE_VERSION.tar.xz
 
@@ -201,6 +205,9 @@ make_binary_directory() {
         --strip-components=1 \
         --exclude=demo \
         bwidget-$BWIDGET_VERSION/images bwidget-$BWIDGET_VERSION/lang --wildcards bwidget-$BWIDGET_VERSION/*.tcl
+    # fix permissions to fix issue #17231
+    chmod 644 $(find "$TCL_DIR/BWidget" -type f)
+    chmod 755 $(find "$TCL_DIR/BWidget" -type d)
 
     #################
     ##### EIGEN #####
@@ -593,7 +600,7 @@ build_tcl() {
     make install DESTDIR="$INSTALL_DIR"
 
     cp -a "$INSTALL_DIR"/lib/libtcl*.so* "$INSTALLUSRDIR/lib/"
-    chmod 644 "$INSTALLUSRDIR"/lib/libtcl*.so*
+    chmod 755 "$INSTALLUSRDIR"/lib/libtcl*.so*
 
     cp -a "$INSTALL_DIR"/include/* "$INSTALLUSRDIR/include/"
 
@@ -602,9 +609,11 @@ build_tcl() {
     # install in module
     cp -a "$INSTALL_DIR"/lib/tcl* "$TCL_DIR"
     rm "$TCL_DIR/tclConfig.sh"
+    rm -rf "$TCL_DIR/tcl*/tzdata"
     # install in usr/lib
     cp -a "$INSTALL_DIR"/lib/tcl* "$INSTALLUSRDIR/lib/"
     rm "$INSTALLUSRDIR/lib/tclConfig.sh"
+    rm -rf "$INSTALLUSRDIR/tcl*/tzdata"
 }
 
 build_tk() {
@@ -619,7 +628,7 @@ build_tk() {
     make install DESTDIR="$INSTALL_DIR"
 
     cp -a "$INSTALL_DIR"/lib/libtk*.so* "$INSTALLUSRDIR/lib/"
-    chmod 644 "$INSTALLUSRDIR"/lib/libtk*.so*
+    chmod 755 "$INSTALLUSRDIR"/lib/libtk*.so*
 
     cp -a "$INSTALL_DIR"/include/* "$INSTALLUSRDIR/include/"
 
