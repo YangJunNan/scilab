@@ -1,6 +1,7 @@
 // Scilab ( https://www.scilab.org/ ) - This file is part of Scilab
 // Copyright (C) XXXX-2008 - INRIA
 // Copyright (C) XXXX-2008 - INRIA - Allan CORNET
+// Copyright (C) 2024 - Dassault Systèmes - Clément DAVID
 
 //
 // Copyright (C) 2012 - 2016 - Scilab Enterprises
@@ -16,13 +17,13 @@
 function varargout = unix_g(cmd)
     //unix_g - shell command execution
     //%Syntax
-    //rep=unix_g(cmd)
+    //stdout=unix_g(cmd)
     //%Parameters
     // cmd - a character string
-    // rep - a column vector of character strings
+    // stdout - a column vector of character strings
     //%Description
     // cmd instruction (sh syntax) is passed to shell, the standard output
-    // is redirected  to scilab variable rep.
+    // is redirected  to scilab variable stdout.
     //%Examples
     // unix_g("ls")
     //%See also
@@ -48,64 +49,73 @@ function varargout = unix_g(cmd)
     end
 
     // initialize variables
-    stderr = emptystr();
+    stdout = emptystr();
     stat = 1;
-    rep = emptystr();
+    stderr = emptystr();
 
     if getos() == "Windows" then
-        [rep,stat] = dos(cmd);
+        [stdout,stat] = dos(cmd);
         if (stat == %t) then
             stat = 0;
         else
             if lhs == 3 then
-                stderr = rep;
+                stderr = stdout;
             else
-                for i=1:size(rep,"*") do printf("   %s", rep(i));end
+                for i=1:size(stdout,"*") do printf("   %s", stdout(i));end
             end
 
             stat = 1;
-            rep = emptystr();
+            stdout = emptystr();
         end
     else
-        tmp = TMPDIR+"/unix.out";
-        cmd1 = "("+cmd+")>"+ tmp +" 2>"+TMPDIR+"/unix.err;";
+        fout = TMPDIR+"/unix.out";
+        ferr = TMPDIR+"/unix.err";
+
+        cmd1 = "(" + cmd + ")>" + fout + " 2>" + ferr + ";";
         stat = host(cmd1);
+
+        if lhs >= 2 then
+            stdout = mgetl(fout);
+        end
+        if lhs >= 3 then
+            stderr = mgetl(ferr);
+        end
 
         select stat
 
         case 0 then
-            rep = mgetl(tmp);
-            if (size(rep,"*")==0) | (length(rep)==0) then
-                rep = [];
-            end;
+            // everything is ok
 
         case 1 then
-            rep = mgetl(tmp);
+            // on error, display some error messages
+            if lhs < 3 then
+                stderr = mgetl(ferr);
+            end
+            if stdout == "" then
+                stdout = stderr;
+            end
 
         case -1 then
-            // host failed
+            // host failed, append to the stderr stream
             if lhs == 3 then
-                stderr = msprintf(gettext("%s: The system interpreter does not answer..."),"unix_g");
+                stderr = [ stderr ; msprintf(gettext("%s: The system interpreter does not answer..."),"unix_g") ];
             else
                 disp(msprintf(gettext("%s: The system interpreter does not answer..."),"unix_g"));
             end
-            rep = emptystr();
         else
-            msg = mgetl(TMPDIR+"/unix.err");
-            if lhs == 3 then
-                stderr = msg;
-            else
-                disp(msg(1));
+            if lhs < 3 then
+                // display something on error
+                disp(stderr(1));
             end
-            rep = emptystr();
         end
-
-        mdelete(tmp);
+        
+        mdelete(fout);
+        mdelete(ferr);
     end
 
     // output arguments
 
-    varargout(1) = rep;
+    varargout(1) = stdout;
 
     if lhs >= 2 then
         varargout(2) = stat;
