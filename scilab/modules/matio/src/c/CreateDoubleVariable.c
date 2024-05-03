@@ -17,6 +17,8 @@
 #include "CreateMatlabVariable.h"
 #include "api_scilab.h"
 #include "sci_malloc.h"
+#include "localization.h"
+#include "Sciwarning.h"
 
 int CreateDoubleVariable(void *pvApiCtx, int iVar, matvar_t *matVariable, int * parent, int item_position)
 {
@@ -89,6 +91,11 @@ int CreateFloatVariable(void* pvApiCtx, int iVar, matvar_t* matVariable, int* pa
     SciErr sciErr;
     int* piDims = NULL;
     int i = 0;
+
+    if (getWarningMode())
+    {
+        Sciwarning(_("%s: single-precision variable named '%s' will be loaded as double-precision.\n"), "loadmatfile", matVariable->name);
+    }
 
     if (matVariable->rank == 2) /* 2-D array */
     {

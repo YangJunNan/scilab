@@ -6,6 +6,7 @@
 // =============================================================================
 
 // <-- CLI SHELL MODE -->
+// <-- ENGLISH IMPOSED --> // For warnings
 
 // This Scilab script loads MAT-files to test the MATIO module
 
