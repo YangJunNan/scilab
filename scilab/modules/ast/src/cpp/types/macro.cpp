@@ -921,7 +921,7 @@ int mustBeEqualDims(types::typed_list& x)
     }
     else
     {
-        if (iDims1 != iDims2)
+        if (iDims2 != iDims2)
         {
             return 1;
         }
