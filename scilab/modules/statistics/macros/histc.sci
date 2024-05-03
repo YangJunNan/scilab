@@ -57,8 +57,8 @@ function [heights, jokers, binsOut, ind] = histc(data, bins, options)
 
     [lhs, rhs] = argn();
     fname = "histc"
-    [heights, jokers, binsOut, ind] = deal([],[],[],[])
-    [Nout, Nleftout, Nzeros, Nrightout, Ninf, Nnan] = deal(0,0,0,0,0,0)
+    [heights, jokers, binsOut, ind] = ([],[],[],[])
+    [Nout, Nleftout, Nzeros, Nrightout, Ninf, Nnan] = (0,0,0,0,0,0)
 
     // PARSING INPUT ARGUMENTS
     // =======================
@@ -76,7 +76,7 @@ function [heights, jokers, binsOut, ind] = histc(data, bins, options)
         msg = _("%s: data are now expected in argument #1 => arguments #1 and #2 switched.\n")
         warning(msprintf(msg, fname))
         mode55 = %t
-        [data, bins] = deal(bins, data)
+        [data, bins] = (bins, data)
         tmp = isdef("options","l") && type(options)==4
         norma = %f
         if isdef("normalization","l")

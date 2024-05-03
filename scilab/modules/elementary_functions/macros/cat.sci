@@ -70,11 +70,11 @@ function  y = cat(dim, varargin)
     // PROCESSING
     // ----------
     y = varargin(1);
-    [vcat, hcat] = deal(%t, %t);
+    [vcat, hcat] = (%t, %t);
     if type(y)>10
         t = typeof(y, "overload");
         if ~or(t==["ce" "st"])
-            [vcat, hcat] = deal(isdef("%"+t+"_f_"+t,"n"), isdef("%"+t+"_c_"+t,"n"));
+            [vcat, hcat] = (isdef("%"+t+"_f_"+t,"n"), isdef("%"+t+"_c_"+t,"n"));
         end
     end
     if dim==1 & vcat then

@@ -84,7 +84,7 @@ endfunction
 
 function openURL(url)
     v = xmlGetValues("//web/body/web", ["default-browser" "command-browser"])
-    [default, cmd] = deal(v(1)=="true", v(2))
+    [default, cmd] = (v(1)=="true", v(2))
 
     select getos()
     case "Windows"

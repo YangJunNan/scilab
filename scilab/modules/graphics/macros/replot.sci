@@ -269,7 +269,7 @@ function bounds = buildEnclosingBounds(e,bounds)
 
         // ---------------------------------------------------------
         case "Text"
-            [currentA, a] = deal(gca(), e);
+            [currentA, a] = (gca(), e);
             while a.type <> "Axes", a = a.parent, end
             sca(a);
             bb = stringbox(e.text, e.data(1), e.data(2), e.font_angle, e.font_style, e.font_size)

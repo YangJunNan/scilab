@@ -34,7 +34,7 @@ for o = ["d" "i"]
 
     a       = matrix(A, 6, 4, 16); // 2 * 8 = 16
     z = zeros(a);
-    [sc, indc, sr, indr, slc, slr] = deal(z, z, z, z, z, z);
+    [sc, indc, sr, indr, slc, slr] = (z, z, z, z, z, z);
     indlc   = zeros(1, 4, 16);
     indlr   = zeros(6, 1, 16);
 

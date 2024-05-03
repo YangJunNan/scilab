@@ -13,7 +13,7 @@
 %l_p(list())
 %l_p(list(1,2,3))
 %l_p(list(list(1,list()),2))
-[p, q] = deal(poly(rand(5,1),"z"), poly(rand(6,1),"z"));
+[p, q] = (poly(rand(5,1),"z"), poly(rand(6,1),"z"));
 %l_p(list(rlist(q,p), 1.23))
 %l_p(list(1,1:$))
 %l_p(list(list(1:$)))

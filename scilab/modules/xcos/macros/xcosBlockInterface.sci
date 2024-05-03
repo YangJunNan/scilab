@@ -40,8 +40,7 @@ function blk = xcosBlockInterface(interfaceAlias, job, blk, context)
     if ierr <> 0 then
         [msg, err] = lasterror();
         disp(msg);
-        //return blk;
-        return
+        return blk;
     end
 
     // Check if the block has been updated or not.

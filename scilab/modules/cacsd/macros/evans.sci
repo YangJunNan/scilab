@@ -120,13 +120,13 @@ function evans(n,d,kmax)
     end
     //draw the axis
     x1 =[nroots;matrix(racines,md*nr,1)];
-    [xmin, xmax] = deal(min(real(x1)), max(real(x1)));
-    [ymin, ymax] = deal(min(imag(x1)), max(imag(x1)));
+    [xmin, xmax] = (min(real(x1)), max(real(x1)));
+    [ymin, ymax] = (min(imag(x1)), max(imag(x1)));
     dx = abs(xmax-xmin)*0.05
     dy = abs(ymax-ymin)*0.05
     if dx<1d-10, dx = 0.01, end
     if dy<1d-10, dy = 0.01, end
-    [legs, lstyle, lhandle] = deal([],[],[]);
+    [legs, lstyle, lhandle] = ([],[],[]);
     rect = [xmin-dx; ymin-dy ;xmax+dx; ymax+dy];
     f=gcf();
     immediate_drawing= f.immediate_drawing;

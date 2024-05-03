@@ -113,7 +113,7 @@ function t=trimmean(x,discard,orien, verbose)
     k1 = 1 + nomdis
     k2 = sizx - nomdis
     if k2 < k1 then
-        [k1,k2] = deal(k2,k1)
+        [k1,k2] = (k2,k1)
     end
     nb = k2-k1+1
     if (verbose==1) then

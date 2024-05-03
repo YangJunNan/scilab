@@ -40,9 +40,9 @@ function tree = %cc2sci(tree)
         if ck.vtype==Unknown & vtype<>String
             vtype = Unknown
         elseif ck.vtype==Int & or(vtype==[1 4 5])
-            [vtype, prop] = deal(Int, ck.property)
+            [vtype, prop] = (Int, ck.property)
         elseif ck.vtype==Sparse & or(vtype==[1 4 5])
-            [sparseRes, vtype] = deal(%t, Sparse)
+            [sparseRes, vtype] = (%t, Sparse)
             if or(vtype==[1 5])
                 if ck.property==Complex
                     prop = Complex
@@ -60,15 +60,15 @@ function tree = %cc2sci(tree)
             end
         elseif ck.vtype==Double & vtype==Boolean
             if sparseRes
-                [vtype, prop] = deal(Sparse, ck.property)
+                [vtype, prop] = (Sparse, ck.property)
             else
-                [vtype, prop] = deal(Double, ck.property)
+                [vtype, prop] = (Double, ck.property)
             end
         elseif ck.property==Sparse
             if vtype==Boolean               // Boolean < Unknown < SparseBool
-                [sparseRes, prop] = deal(%t, Sparse)
+                [sparseRes, prop] = (%t, Sparse)
             elseif vtype==Double
-                [sparseRes, vtype] = deal(%t, Sparse)
+                [sparseRes, vtype] = (%t, Sparse)
             end
         end
         rowsize = [rowsize ck.dims(1)]

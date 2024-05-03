@@ -38,7 +38,7 @@ function const = Cste(value)
     elseif typ==Boolean
         prop = Boolean
     elseif typ==6   // boolean sparse
-        [typ, prop] = deal(Boolean, Sparse)
+        [typ, prop] = (Boolean, Sparse)
     elseif typ==Int
         prop = typeof(value)
     elseif typ==Handle
@@ -47,9 +47,9 @@ function const = Cste(value)
             prop = Unknown
         end
     elseif typ==Macro
-        [typ, prop] = deal(Function, Macro)
+        [typ, prop] = (Function, Macro)
     elseif typ==Builtin
-        [typ, prop] = deal(Function, Builtin)
+        [typ, prop] = (Function, Builtin)
     end
 
     // Size

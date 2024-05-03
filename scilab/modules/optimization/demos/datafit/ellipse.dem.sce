@@ -68,13 +68,13 @@ function demo_datafit()
     x = P(1) * cosd(Theta);
     y = P(2) * sind(Theta);
     A = P(5);
-    [x, y] = deal(x*cosd(A)+y*sind(A)+P(3), -x*sind(A)+y*cosd(A)+P(4));
+    [x, y] = (x*cosd(A)+y*sind(A)+P(3), -x*sind(A)+y*cosd(A)+P(4));
 
     // COMPUTING THE TRUE ELLIPSE CURVE
     xt = Pa(1) * cosd(Theta);
     yt = Pa(2) * sind(Theta);
     At = Pa(5);
-    [xt, yt] = deal(xt*cosd(At)+yt*sind(At)+Pa(3), -xt*sind(At)+yt*cosd(At)+Pa(4));
+    [xt, yt] = (xt*cosd(At)+yt*sind(At)+Pa(3), -xt*sind(At)+yt*cosd(At)+Pa(4));
 
     // DISPLAY
     // -------

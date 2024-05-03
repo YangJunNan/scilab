@@ -13,14 +13,14 @@
 function [res1, res2] = %sp_det(A)
     [lhs, rhs] = argn(0);
     if length(A)==0 then
-        [res1, res2] = deal(1,1);
+        [res1, res2] = (1,1);
         if lhs>1
             res1 = 0
         end
         return
     end
     if nnz(A)==0 then
-        [res1, res2] = deal(0,0)
+        [res1, res2] = (0,0)
         return
     end
 
@@ -56,7 +56,7 @@ function [res1, res2] = %sp_det(A)
         end
     end
     if res1 == -%inf
-        [res1, res2] = deal(0,0)
+        [res1, res2] = (0,0)
     end
     if lhs == 1 then
         res1 = res2 * 10^res1

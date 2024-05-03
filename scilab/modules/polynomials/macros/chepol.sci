@@ -26,7 +26,7 @@ function Tn=chepol(n,var)
         T1=poly(0,var)
         for k=2:n
             Tn=2*poly(0,var)*T1-T0
-            [T1,T0] = deal(Tn,T1);
+            [T1,T0]=(Tn,T1);
         end
     end
 

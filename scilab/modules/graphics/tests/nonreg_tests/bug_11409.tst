@@ -18,7 +18,7 @@
 xf = 40;
 yf = 40;
 
-[orig,sz,orient] = deal([0 0], [2 3], [%t]);
+[orig,sz,orient] = ([0 0], [2 3], [%t]);
 
 inout = 0.6*[ -1  -1
                1  -1

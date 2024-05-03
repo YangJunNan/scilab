@@ -137,7 +137,7 @@ endfunction
 
 function draw_car(C,pos)
     if is_handle_valid(C) then
-        [x,y,theta,phi]=deal(pos(1),pos(2),pos(3),pos(4))
+        [x,y,theta,phi]=(pos(1),pos(2),pos(3),pos(4))
         bigL=1
         Rc=[cos(theta) sin(theta);-sin(theta) cos(theta)]
         // the car

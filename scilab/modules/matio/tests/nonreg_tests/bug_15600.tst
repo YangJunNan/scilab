@@ -74,11 +74,11 @@ assert_checkfalse(isfile(File));
 // ---------------------------------------------------------------------------------------
 // -v4: Saving the variables flag, head, it, it1, mn, v, x, x1, M, O, P, T, MOPT
 V = rand(1);
-[flag, head, it, x, x1, M, O, P, T, MOPT] = deal(V,V,V,V,V,V,V,V,V,V);
+[flag, head, it, x, x1, M, O, P, T, MOPT] = (V,V,V,V,V,V,V,V,V,V);
 // Uncomment after fixing https://gitlab.com/scilab/scilab/-/issues/15731
 //it1 = sparse(V);
 //[mn, v, it10, mn0, v0] = (it1, it1, it1, it1, it1);
-[it1, mn, v] = deal(V,V,V);
+[it1, mn, v] = (V,V,V);
 
 vnames = list("flag","head","it","it1","mn","v","x","x1","M","O","P","T","MOPT");
 savematfile(File,"-v4", vnames(:));

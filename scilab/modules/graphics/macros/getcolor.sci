@@ -76,7 +76,7 @@ function [c] = getcolor(Title,cini)
     wdim = [1,1];
     m = ceil(sqrt(N));
     n = ceil(N/m);
-    [W, H] = deal(max(m*35,320), n*40)  // minW=320 for infos in status bar
+    [W, H] = (max(m*35,320), n*40)  // minW=320 for infos in status bar
     fig.axes_size = [W,H];
     // position = center of screen:
     c = get(0,"screensize_px")

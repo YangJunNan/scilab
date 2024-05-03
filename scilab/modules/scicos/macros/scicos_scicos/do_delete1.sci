@@ -81,7 +81,7 @@ function [scs_m,DEL,DELL]=do_delete1(scs_m,K,gr)
         //**----------------------------------- Link -------------------------------------------
         if typ=="Link" then
 
-            [ct,from,to]=deal(o.ct,o.from,o.to)
+            [ct,from,to]=(o.ct,o.from,o.to)
 
             //  free connected ports
             if ct(2)==2 then //Implicit link
@@ -135,7 +135,7 @@ function [scs_m,DEL,DELL]=do_delete1(scs_m,K,gr)
                         elseif o1.to(1)<>ksplit then
                             //o1 comes from the split while o2 goes to the split,
                             //switch o1 and o2
-                            [o1,o2]=deal(o2,o1),
+                            [o1,o2]=(o2,o1),
                             connected=connected([2 1]);
                         end
 

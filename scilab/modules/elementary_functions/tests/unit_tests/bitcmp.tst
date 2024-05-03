@@ -79,7 +79,7 @@ for i = 2:63
     assert_checkequal(bitcmp(ui64, i), bitset(uint64(0), 1:i, 1-b(1:i)));
 end
 // bitnum array
-[in, out] = deal([0 0 0 0 0], [7 15 31 63 127]);
+[in, out] = ([0 0 0 0 0], [7 15 31 63 127]);
 assert_checkequal(bitcmp(uint8(in), 3:7), uint8(out));
 assert_checkequal(bitcmp(uint16(in), 3:7), uint16(out));
 assert_checkequal(bitcmp(uint32(in), 3:7), uint32(out));

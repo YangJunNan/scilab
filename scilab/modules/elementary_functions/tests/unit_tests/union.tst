@@ -44,7 +44,7 @@ assert_checkequal(union([], a, "c"), ref);
 
 // With Booleans
 // -------------
-[T, F] = deal(%t, %f);
+[T, F] = (%t, %f);
 a = [T T F T F T
      F F F F T T
      T F F F F T ];
@@ -126,7 +126,7 @@ for p = add
           2.   0.   0.   1.   1. ] + p;
     Ref= [0.   0.   1.   1.   2.   2.
           0.   1.   1.   2.   0.   2. ] + p;
-    [a, b, Ref] = deal(sparse(a), sparse(b), sparse(Ref));
+    [a, b, Ref] = (sparse(a), sparse(b), sparse(Ref));
     assert_checkequal(union(a,b,"c"), Ref);
     assert_checkequal(union(a',b',"r"), Ref');
     [v,ka,kb] = union(a,b,"c");

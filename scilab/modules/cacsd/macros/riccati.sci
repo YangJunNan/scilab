@@ -27,7 +27,7 @@ function [x1, x2, residual] = riccati(a, b, c, dom, method)
     // -- method = 'eigen' --->block diagonalization
     //    method = 'schur' --->schur method
 
-    [x1, x2, residual] = deal([], [], [])
+    [x1, x2, residual] = ([], [], [])
     [lhs,rhs] = argn(0)
     if ~or(rhs==[1 2 4 5]) then
         msg = _("%s: Wrong number of input arguments: %s expected.\n")

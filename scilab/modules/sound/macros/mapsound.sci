@@ -25,7 +25,7 @@ function varargout = mapsound(w, dt, frange, rate, Colormap)
         fmin = 0
         fmax = frange
     else
-        [fmin, fmax]= deal(frange(1), frange(2))
+        [fmin, fmax]= (frange(1), frange(2))
     end
     if fmin < 0
         fmin = rate * abs(fmin)

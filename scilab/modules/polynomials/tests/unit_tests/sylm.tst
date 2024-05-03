@@ -35,7 +35,7 @@ for j = 1:10    // 10 random examples
         p2 = p2 + %s^d2;
     end
     xy  = diophant([p1 p2],1);
-    [x,y] = deal(xy(1), xy(2));         // p1*x1 + p2*x2 = 1;
+    [x,y] = (xy(1), xy(2));         // p1*x1 + p2*x2 = 1;
     // assert_checkalmostequal(clean(p1*x + p2*y, 1e-15), 1+0*%s, 1e-15)
     S = sylm(p1, p2)
 

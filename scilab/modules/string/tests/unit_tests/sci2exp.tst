@@ -39,11 +39,11 @@ S = [1 1 1; 1 3 1; 3 1 1; 2 5 1; 2 5 3];  // sizes
 F = list(int8,uint8,int16,uint16,int32,uint32,int64,uint64);
 for f = F
     if f==int64 then
-        [low, high] = deal(f(-(2^52)), f(2^52))
+        [low, high] = (f(-(2^52)), f(2^52))
     elseif f==uint64
-        [low, high] = deal(f(0), f(2^52))
+        [low, high] = (f(0), f(2^52))
     else
-        [low, high] = deal(f(-%inf), f(%inf))
+        [low, high] = (f(-%inf), f(%inf))
     end
     for s = S'
         i = f(grand(s(1),s(2), s(3), "unf", double(low), double(high)))
@@ -72,7 +72,7 @@ for s = S'
     n = prod(s)
     if n > 10
         ns = ceil(n/10)
-        [reM,imM] = deal(re,im);
+        [reM,imM] = (re,im);
         t = samwr(ns,6,1:n)
         reM(t(:,1)) = -%inf
         reM(t(:,2)) = %inf

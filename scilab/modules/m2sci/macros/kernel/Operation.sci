@@ -46,11 +46,11 @@ function operation_tlist = Operation(operator,operands,out)
     if or(operator==["<" "<=" "==" "~=" ">=" ">"]) // & ..
             // (or(operands(1).vtype==[Sparse, Boolean]) | ..
             // or(operands(2).vtype==[Sparse, Boolean])) then
-        [L, R] = deal(operands(1), operands(2));
+        [L, R] = (operands(1), operands(2));
         if is_sparse(L)>0 | is_sparse(R)>0
             operation_tlist.type = Type(Boolean, Sparse)
         else
-            [tL, tR] = deal(L.type, R.type)
+            [tL, tR] = (L.type, R.type)
             if tL.vtype==Unknown | tR.vtype==Unknown |..
                (tL.vtype==Boolean & tL.property==Unknown) | ..
                (tR.vtype==Boolean & tR.property==Unknown)

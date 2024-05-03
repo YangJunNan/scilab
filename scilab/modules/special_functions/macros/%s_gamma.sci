@@ -111,7 +111,7 @@ function y = %s_gamma(varargin)
     n = ndims(x)
     sa = size(a)
     if n > 2 then
-        [x, a, b] = deal(x(:), a(:), b(:))
+        [x, a, b] = (x(:), a(:), b(:))
     end
     z = find(a==0)
     a(z) = 1

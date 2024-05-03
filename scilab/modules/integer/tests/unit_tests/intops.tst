@@ -249,7 +249,7 @@ assert_checkequal([x1; []], int8(1));
 assert_checkequal([[], x2], int8(7));
 assert_checkequal([[]; x2], int8(7));
 
-[x1, x2] = deal([x1 x2 x1 x2],[x2 x2 x1 x1]);
+[x1, x2] = ([x1 x2 x1 x2],[x2 x2 x1 x1]);
 assert_checkequal([x1 x2], int8([1 7 1 7 7 7 1 1]));
 assert_checkequal([x1; x2], int8([1 7 1 7; 7 7 1 1]));
 assert_checkequal([x1 []], int8([1 7 1 7]));

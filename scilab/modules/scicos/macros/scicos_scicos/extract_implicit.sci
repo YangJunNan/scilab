@@ -29,7 +29,7 @@ function [blklstr,cmatr,ccmat,cor,corinv,ok]=extract_implicit(blklst,cmat,ccmat)
             if blklst(k).equations<>list() then imp=[imp,k];end
         end
     end
-    if imp==[] then [blklstr,cmatr]=deal(blklst,cmat), return,end
+    if imp==[] then [blklstr,cmatr]=(blklst,cmat), return,end
 
     if size(ccmat,1)>0 then
         if or(dsearch(ccmat(:,1),imp,"d")<>0) then

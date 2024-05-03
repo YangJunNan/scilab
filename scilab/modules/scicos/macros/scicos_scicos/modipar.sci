@@ -79,7 +79,7 @@ function [%state0,state,sim,ok]=modipar(newparameters,%state0,state,sim,scs_m,co
             statekd=[]
             om=o.model
             [fun,statek,dstatek,odstatek,rpark,ipark,opark]=...
-            deal(om.sim,om.state,om.dstate,om.odstate,om.rpar,om.ipar,om.opar);
+            (om.sim,om.state,om.dstate,om.odstate,om.rpar,om.ipar,om.opar);
             if type(fun)==15 then
                 if fun(2)>10000 then
                     statekd=statek($/2+1:$)

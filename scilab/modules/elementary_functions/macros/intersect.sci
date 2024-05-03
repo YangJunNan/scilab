@@ -15,7 +15,7 @@ function [x_out, ka_out, kb_out] = intersect(a_in, b_in, orient)
     // returns the vector of common values of two vectors
 
     [lhs, rhs] = argn()
-    [x_out, ka_out, kb_out] = deal([], [], [])
+    [x_out, ka_out, kb_out] = ([], [], [])
 
     if rhs < 2 then
         msg = gettext("%s: Wrong number of input arguments: %d or %d expected.\n")
@@ -23,7 +23,7 @@ function [x_out, ka_out, kb_out] = intersect(a_in, b_in, orient)
     end
 
     // Special empty cases
-    [esp, espb] = deal(sparse([]), sparse(%f)); espb(1) = []
+    [esp, espb] = (sparse([]), sparse(%f)); espb(1) = []
     if a_in == [] || b_in == [] | isequal(a_in, esp) || isequal(b_in, esp) | ..
         isequal(a_in, espb) | isequal(b_in, espb)
         return

@@ -29,5 +29,5 @@ function str = atomsNormalizeName(str)
     str = strsubst(str, "ç", "c")
     str = strsubst(str, "/", "")
     str = strsubst(str, "\", "")
-    //return str
+    return str
 endfunction
