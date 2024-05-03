@@ -4,7 +4,7 @@
 //
 //  This file is distributed under the same license as the Scilab package.
 // =============================================================================
-// <-- NOT FIXED -->
+
 // <-- CLI SHELL MODE -->
 
 // <-- Non-regression test for bug 7019 -->
@@ -25,7 +25,7 @@ if execstr("y=2;resume();y=-1",'errcatch')<>46 then pause,end
 if y<>2  then pause,end
 function y=foo()
 y=1
-return()
+return
 y=2
 endfunction
 

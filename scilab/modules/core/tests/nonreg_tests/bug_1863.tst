@@ -4,7 +4,10 @@
 //
 //  This file is distributed under the same license as the Scilab package.
 // =============================================================================
-// <-- NOT FIXED -->
+
+// <-- CLI SHELL MODE -->
+// <-- NO CHECK REF -->
+
 // <-- Non-regression test for bug 1863 -->
 //
 // <-- GitLab URL -->
@@ -12,36 +15,30 @@
 //
 // <-- Short Description -->
 //Incomplete if while select (missing first expression are not well handled
-pb=%f
-try        
-  function foo
-    if
-    end
-  endfunction
-catch
-  pb=%t
-end
-if ~pb  then pause,end
+ierr = execstr([
+  "function foo"
+    "if"
+    "end"
+  "endfunction"], "errcatch");
+msg = lasterror(%t)
+assert_checktrue(ierr <> 0);
+assert_checktrue(grep(msg, "syntax error") <> []);
 
-pb=%f
-try        
-  function foo1
-    while
-    end
-  endfunction
-catch
-  pb=%t
-end
-if ~pb  then pause,end
-
-pb=%f
-try        
-  function foo2
-    select
-    end
-  endfunction
-catch
-  pb=%t
-end
-if ~pb  then pause,end
-
+ierr = execstr([
+  "function foo1"
+    "while"
+    "end"
+  "endfunction"], "errcatch");
+msg = lasterror(%t)
+assert_checktrue(ierr <> 0);
+assert_checktrue(grep(msg, "syntax error") <> []);
+  
+ierr = execstr([
+  "function foo2"
+    "select"
+    "end"
+  "endfunction"], "errcatch");
+msg = lasterror(%t)
+assert_checktrue(ierr <> 0);
+assert_checktrue(grep(msg, "syntax error") <> []);
+  

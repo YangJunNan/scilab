@@ -7,6 +7,8 @@
 // =============================================================================
 
 // <-- ENGLISH IMPOSED -->
+// <-- CLI SHELL MODE -->
+// <-- NO CHECK REF -->
 
 //type
 
@@ -38,9 +40,6 @@ if type(int16(0)) <> 8 then pause,end
 if type(uint16(0)) <> 8 then pause,end
 if type(int32(0)) <> 8 then pause,end
 if type(uint32(0)) <> 8 then pause,end
-
-// handle <-> 9
-if type(gdf()) <> 9 then pause,end
 
 // string <-> 10
 if type("scilab") <> 10 then pause,end

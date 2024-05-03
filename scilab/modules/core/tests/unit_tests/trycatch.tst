@@ -5,6 +5,8 @@
 //  This file is distributed under the same license as the Scilab package.
 // =============================================================================
 
+// <-- CLI SHELL MODE -->
+
 //interactive mode
 clear a b
 try

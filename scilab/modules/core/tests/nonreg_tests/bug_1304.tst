@@ -13,6 +13,8 @@
 // <-- Short Description -->
 // macr2tree(expression) doesn't work
 
+// <-- CLI SHELL MODE -->
+
 //
 // TESTS WITH A 'SIMPLE' FUNCTION
 //

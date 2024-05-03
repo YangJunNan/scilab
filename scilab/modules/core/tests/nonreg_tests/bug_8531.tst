@@ -7,8 +7,6 @@
 //
 // <-- Non-regression test for bug 8531 -->
 //
-// <-- CLI SHELL MODE -->
-// 
 // <-- GitLab URL -->
 // https://gitlab.com/scilab/scilab/-/issues/8531
 //
