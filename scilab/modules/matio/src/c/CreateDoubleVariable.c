@@ -140,7 +140,6 @@ int CreateFloatVariable(void* pvApiCtx, int iVar, matvar_t* matVariable, int* pa
             if (parent == NULL)
             {
                 allocComplexMatrixOfDouble(pvApiCtx, iVar, nbRow, nbCol, &pdblReal, &pdblImg);
-                //sciErr = createComplexMatrixOfDouble(pvApiCtx, iVar, nbRow, nbCol, (double*)mat5ComplexData->Re, (double*)mat5ComplexData->Im);
             }
             else
             {
