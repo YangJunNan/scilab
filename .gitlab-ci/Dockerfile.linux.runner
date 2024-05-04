@@ -1,0 +1,15 @@
+ARG DOCKER_LINUX_RUNNER=registry.gitlab.com/scilab/scilab/linux-runner
+ARG DOCKER_LINUX_BUILDER=registry.gitlab.com/scilab/scilab/linux-builder-main
+ARG DOCKER_TAG=
+
+FROM ${DOCKER_LINUX_BUILDER}:${DOCKER_TAG}
+
+# the "$SCI_VERSION_STRING.bin.$ARCH.tar.xz" tarball has been passed as context and extracted by docker
+ADD *.bin.*.tar.xz /opt
+
+ARG DOCKER_TAG
+ENV PATH="${PATH}:/opt/scilab-${DOCKER_TAG}/bin"
+
+# TCL/TK will not fallback to offscreen rendering, disable it
+ENV SCI_DISABLE_TK=1
+
