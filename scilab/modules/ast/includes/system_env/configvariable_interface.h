@@ -24,10 +24,15 @@
 
 typedef enum
 {
-    SCILAB_API = 1, /* Scilab is launch as an API */
-    SCILAB_STD,     /* The standard Scilab (gui, plot ...) */
-    SCILAB_NW,      /* Scilab in command line with the plots */
-    SCILAB_NWNI     /* Scilab in command line without any graphics. What not mandataroy here */
+    /* you can use these values as mask */
+    SCILAB_API_MASK         = 1 << 2, /* launched as an API */
+    SCILAB_WITH_JVM_MASK    = 1 << 1, /* launched with a JVM */
+    SCILAB_CLI_MASK         = 1 << 0, /* launched with a native console (not Java console) */
+    
+    /* Pre-encoded mask values, do not use as mask */
+    SCILAB_STD              = 2,      /* The standard Scilab (desktop, gui, plots ...) */
+    SCILAB_NW               = 3,      /* Scilab with the gui, plots but without desktop */
+    SCILAB_NWNI             = 1       /* Scilab without JVM, plots, desktop */
 } scilabMode;
 
 EXTERN_AST int getSimpMode(void);
